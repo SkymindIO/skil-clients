@@ -229,6 +229,7 @@ class TestDefaultApi(unittest.TestCase):
         deployment_id = self.get_deployment_id()
         model_id = self.get_model_id()
         self.pp.pprint(self.api_instance.model_state_change(deployment_id, model_id, SetState("start")))
+        self.pp.pprint(self.api_instance.model_state_change(deployment_id, model_id, SetState("stop")))
 
     def test_delete_model(self):
         """Test case for delete_model
