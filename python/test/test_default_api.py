@@ -215,7 +215,10 @@ class TestDefaultApi(unittest.TestCase):
                                                     uri=["{}/model/{}/default".format(self.deployment_name,
                                                                                       self.model_name),
                                                          "{}/model/{}/v1".format(self.deployment_name,
-                                                                                 self.model_name)])
+                                                                                 self.model_name)],
+                                                    jvm_args="-Xmx4g",
+                                                    input_names=["x_in"],
+                                                    output_names=["vs3model/prediction"])
         self.api_instance.reimport_model(deployment_id, model_id, reimport_model_request)
 
     def test_model_state_change(self):
