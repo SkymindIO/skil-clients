@@ -16,7 +16,7 @@ import re  # noqa: F401
 
 import six
 
-from skil_client.models.deployment_objects import DeploymentObjects  # noqa: F401,E501
+from skil_client.models.model_response import ModelResponse  # noqa: F401,E501
 
 
 class DeploymentObjects(object):
@@ -33,9 +33,9 @@ class DeploymentObjects(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'models': 'list[DeploymentObjects]',
-        'transforms': 'list[DeploymentObjects]',
-        'knn': 'list[DeploymentObjects]'
+        'models': 'list[ModelResponse]',
+        'transforms': 'list[ModelResponse]',
+        'knn': 'list[ModelResponse]'
     }
 
     attribute_map = {
@@ -65,7 +65,7 @@ class DeploymentObjects(object):
 
 
         :return: The models of this DeploymentObjects.  # noqa: E501
-        :rtype: list[DeploymentObjects]
+        :rtype: list[ModelResponse]
         """
         return self._models
 
@@ -75,7 +75,7 @@ class DeploymentObjects(object):
 
 
         :param models: The models of this DeploymentObjects.  # noqa: E501
-        :type: list[DeploymentObjects]
+        :type: list[ModelResponse]
         """
 
         self._models = models
@@ -86,7 +86,7 @@ class DeploymentObjects(object):
 
 
         :return: The transforms of this DeploymentObjects.  # noqa: E501
-        :rtype: list[DeploymentObjects]
+        :rtype: list[ModelResponse]
         """
         return self._transforms
 
@@ -96,7 +96,7 @@ class DeploymentObjects(object):
 
 
         :param transforms: The transforms of this DeploymentObjects.  # noqa: E501
-        :type: list[DeploymentObjects]
+        :type: list[ModelResponse]
         """
 
         self._transforms = transforms
@@ -107,7 +107,7 @@ class DeploymentObjects(object):
 
 
         :return: The knn of this DeploymentObjects.  # noqa: E501
-        :rtype: list[DeploymentObjects]
+        :rtype: list[ModelResponse]
         """
         return self._knn
 
@@ -117,7 +117,7 @@ class DeploymentObjects(object):
 
 
         :param knn: The knn of this DeploymentObjects.  # noqa: E501
-        :type: list[DeploymentObjects]
+        :type: list[ModelResponse]
         """
 
         self._knn = knn

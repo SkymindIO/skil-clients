@@ -14,17 +14,45 @@
 from __future__ import absolute_import
 
 import unittest
+import uuid
+from pprint import pprint
 
 import skil_client
-from skil_client.api.default_api import DefaultApi  # noqa: E501
+from skil_client import Configuration, ApiClient
 from skil_client.rest import ApiException
 
 
 class TestDefaultApi(unittest.TestCase):
     """DefaultApi unit test stubs"""
+    @classmethod
+    def setUpClass(cls):
+        cls.config = Configuration()
+        cls.config.host = "localhost:9008" # change this!
+        cls.config.debug = True
+        cls.api_client = ApiClient(configuration=cls.config)
+        cls.unique_id = str(uuid.uuid4())[:8]
+        # create an instance of the API class
+        cls.api_instance = skil_client.DefaultApi(api_client=cls.api_client)
+        # authenticate
+        try:
+            print("Authenticating with SKIL API...")
+            creds = skil_client.Credentials(user_id="admin", password="admin")
+            token = cls.api_instance.login(creds)
+            pprint(token)
+            # add credentials to config
+            cls.config.api_key['authorization'] = token.token
+            cls.config.api_key_prefix['authorization'] = "Bearer"
+        except ApiException as e:
+            print("Exception when calling DefaultApi->login: %s\n" % e)
+
+
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
 
     def setUp(self):
-        self.api = skil_client.api.default_api.DefaultApi()  # noqa: E501
+        pass
 
     def tearDown(self):
         pass
@@ -174,6 +202,7 @@ class TestDefaultApi(unittest.TestCase):
 
         Get a list of deployments  # noqa: E501
         """
+        pprint(self.api_instance.deployments())
         pass
 
     def test_detectobjects(self):

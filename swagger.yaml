@@ -1929,15 +1929,15 @@ definitions:
       models:
         type: array
         items:
-          $ref: '#/definitions/DeploymentObjects'
+          $ref: '#/definitions/ModelResponse'
       transforms:
         type: array
         items:
-          $ref: '#/definitions/DeploymentObjects'
+          $ref: '#/definitions/ModelResponse'
       knn:
         type: array
         items:
-          $ref: '#/definitions/DeploymentObjects'
+          $ref: '#/definitions/ModelResponse'
   CreateDeploymentRequest:
     type: object
     properties:
