@@ -26,9 +26,13 @@ class TestDefaultApi(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # Test variables
+        # Test variables -------------------------------------------------------------------------------------------
         cls.deployment_name = "new_deployment_12345"
-        # ------------------------
+        cls.model_file = "file:///var/skil/storage/models/ecba969f-46fc-4022-9808-d71706e83585-f3899006" \
+                         "-b51b-4b77-9c10-2bc399814c3b.zip"
+        cls.model_name = "new_model_12345"
+        cls.reimport_model_file = "file:///var/skil/storage/models/e5b0640e-5fd0-11e8-b8bd-000d3a763fb3.pb"
+        # ----------------------------------------------------------------------------------------------------------
 
         cls.config = Configuration()
         cls.config.host = "localhost:9008"  # change this!
@@ -145,13 +149,6 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_delete_model(self):
-        """Test case for delete_model
-
-        Delete a model by deployment and model id  # noqa: E501
-        """
-        pass
-
     def test_delete_model_history(self):
         """Test case for delete_model_history
 
@@ -163,13 +160,6 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for delete_model_instance
 
         Deletes a model instance, given its ID  # noqa: E501
-        """
-        pass
-
-    def test_deploy_model(self):
-        """Test case for deploy_model
-
-        Deploy a model in a deployment group.  # noqa: E501
         """
         pass
 
@@ -196,20 +186,63 @@ class TestDefaultApi(unittest.TestCase):
 
         Get a deployment details by id  # noqa: E501
         """
-        for deployment in self.api_instance.deployments():
-            if deployment.name == self.deployment_name:
-                self.pp.pprint(self.api_instance.deployment_get(str(deployment.id)))
-                break
+        id_to_get = self.get_deployment_id()
+        self.pp.pprint(self.api_instance.deployment_get(id_to_get))
+
+    def test_deploy_model(self):
+        """Test case for deploy_model
+
+        Deploy a model in a deployment group.  # noqa: E501
+        """
+        deployment_id = self.get_deployment_id()
+        deploy_model_request = ImportModelRequest(self.model_name, 1, file_location=self.model_file,
+                                                  model_type="model",
+                                                  uri=["{}/model/{}/default".format(self.deployment_name,
+                                                                                    self.model_name),
+                                                       "{}/model/{}/v1".format(self.deployment_name,
+                                                                               self.model_name)])
+        self.pp.pprint(self.api_instance.deploy_model(deployment_id, deploy_model_request))
+
+    def test_reimport_model(self):
+        """Test case for reimport_model
+
+        Reimport a model to a previous deployed model in a deployment  # noqa: E501
+        """
+        deployment_id = self.get_deployment_id()
+        model_id = self.get_model_id()
+        reimport_model_request = ImportModelRequest(self.model_name, 1, file_location=self.reimport_model_file,
+                                                    model_type="model",
+                                                    uri=["{}/model/{}/default".format(self.deployment_name,
+                                                                                      self.model_name),
+                                                         "{}/model/{}/v1".format(self.deployment_name,
+                                                                                 self.model_name)])
+        self.api_instance.reimport_model(deployment_id, model_id, reimport_model_request)
+
+    def test_model_state_change(self):
+        """Test case for model_state_change
+
+        Modify the state (start/stop) of a deployed model  # noqa: E501
+        """
+        deployment_id = self.get_deployment_id()
+        model_id = self.get_model_id()
+        self.pp.pprint(self.api_instance.model_state_change(deployment_id, model_id, SetState("start")))
+
+    def test_delete_model(self):
+        """Test case for delete_model
+
+        Delete a model by deployment and model id  # noqa: E501
+        """
+        deployment_id = self.get_deployment_id()
+        model_id_to_delete = self.get_model_id()
+        self.pp.pprint(self.api_instance.delete_model(deployment_id, model_id_to_delete))
 
     def test_deployment_delete(self):
         """Test case for deployment_delete
 
         Delete a deployment by id  # noqa: E501
         """
-        for deployment in self.api_instance.deployments():
-            if deployment.name == self.deployment_name:
-                self.pp.pprint(self.api_instance.deployment_delete(str(deployment.id)))
-                break
+        id_to_delete = self.get_deployment_id()
+        self.pp.pprint(self.api_instance.deployment_delete(id_to_delete))
 
     def test_detectobjects(self):
         """Test case for detectobjects
@@ -358,13 +391,6 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_model_state_change(self):
-        """Test case for model_state_change
-
-        Modify the state (start/stop) of a deployed model  # noqa: E501
-        """
-        pass
-
     def test_models(self):
         """Test case for models
 
@@ -425,13 +451,6 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for predictwithpreprocessjson
 
         Preprocesses the input and run inference on it and returns it as a JsonArrayResponse  # noqa: E501
-        """
-        pass
-
-    def test_reimport_model(self):
-        """Test case for reimport_model
-
-        Reimport a model to a previous deployed model in a deployment  # noqa: E501
         """
         pass
 
@@ -532,6 +551,20 @@ class TestDefaultApi(unittest.TestCase):
         Upload a model file to SKIL for import.  # noqa: E501
         """
         pass
+
+    def get_deployment_id(self):
+        for deployment in self.api_instance.deployments():
+            if deployment.name == self.deployment_name:
+                return str(deployment.id)
+        return str(-1)
+
+    def get_model_id(self):
+        deployment_id = self.get_deployment_id()
+
+        for model in self.api_instance.models(deployment_id):
+            if model.name == self.model_name:
+                return str(model.id)
+        return str(-1)
 
 
 if __name__ == '__main__':

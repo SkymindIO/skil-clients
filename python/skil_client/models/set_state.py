@@ -24,12 +24,6 @@ class SetState(object):
     """
 
     """
-    allowed enum values
-    """
-    START = "start"
-    STOP = "stop"
-
-    """
     Attributes:
       swagger_types (dict): The key is attribute name
                             and the value is attribute type.
@@ -37,14 +31,48 @@ class SetState(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'state': 'str'
     }
 
     attribute_map = {
+        'state': 'state'
     }
 
-    def __init__(self):  # noqa: E501
+    def __init__(self, state=None):  # noqa: E501
         """SetState - a model defined in Swagger"""  # noqa: E501
+
+        self._state = None
         self.discriminator = None
+
+        if state is not None:
+            self.state = state
+
+    @property
+    def state(self):
+        """Gets the state of this SetState.  # noqa: E501
+
+
+        :return: The state of this SetState.  # noqa: E501
+        :rtype: str
+        """
+        return self._state
+
+    @state.setter
+    def state(self, state):
+        """Sets the state of this SetState.
+
+
+        :param state: The state of this SetState.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["start", "stop"]  # noqa: E501
+        if state not in allowed_values:
+            raise ValueError(
+                "Invalid value for `state` ({0}), must be one of {1}"  # noqa: E501
+                .format(state, allowed_values)
+            )
+
+        self._state = state
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -2002,10 +2002,13 @@ definitions:
         - UNHEALTHY
         - FAILED
   SetState:
-    type: string
-    enum:
-    - start
-    - stop
+    type: object
+    properties:
+      state:
+        type: string
+        enum:
+        - start
+        - stop
   ModelResponse:
     type: object
     properties:
