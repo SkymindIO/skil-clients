@@ -32,15 +32,228 @@ class TestDefaultApi(unittest.TestCase):
                          "-b51b-4b77-9c10-2bc399814c3b.zip"
         cls.model_name = "new_model_12345"
         cls.reimport_model_file = "file:///var/skil/storage/models/e5b0640e-5fd0-11e8-b8bd-000d3a763fb3.pb"
+
+        cls.model_history_id = "82ea36bd-8ccd-4df2-92a6-d188e85cb14f"
+        cls.model_history_name = "new_workspace_12345"
+
+        cls.model_instance_id = "8b80de8a-cbef-4269-89c6-1492ab66aa3c"
+
+        cls.experiment_id = "7ab87838-56ec-430a-a147-d6fbbc83d223"
+
+        cls.experiment_name = "new_experiment_12345"
+        cls.experiment_notebook_json = '{"paragraphs":[{"title":"Documentation and Samples","text":"%md\n<a ' \
+                                       'target=\"_blank\" rel=\"noopener\" href=\"//deeplearning4j.org/doc\">DL4J ' \
+                                       'Documentation</a>\n<a target=\"_blank\" rel=\"noopener\" ' \
+                                       'href=\"//nd4j.org/doc/\">ND4J Documentation</a>\n<a target=\"_blank\" ' \
+                                       'rel=\"noopener\" href=\"//deeplearning4j.org/datavecdoc/\">DataVec (ETL) ' \
+                                       'Documentation</a>\nSKIL also comes with support for <a target=\"_blank\" ' \
+                                       'rel=\"noopener\" href=\"//keras.io\">Keras</a> and <a target=\"_blank\" ' \
+                                       'rel=\"noopener\" href=\"//www.tensorflow.org/\">Tensorflow</a> with ' \
+                                       '%pyspark\nFor examples please see <a target=\"_blank\" rel=\"noopener\" ' \
+                                       'href=\"//github.com/SkymindIO/SKIL_Examples\">SKIL_Examples</a>",' \
+                                       '"user":"admin","dateUpdated":"2018-05-23T13:22:01+0000","config":{' \
+                                       '"colWidth":12,"enabled":true,"results":{},"editorSetting":{"language":"text",' \
+                                       '"editOnDblClick":false},"editorMode":"ace/mode/text"},"settings":{"params":{' \
+                                       '},"forms":{}},"results":{"code":"SUCCESS",' \
+                                       '"msg":[{"type":"HTML","data":"<p><a ' \
+                                       'target=\"_blank\" rel=\"noopener\" href=\" //deeplearning4j.org/doc\">DL4J ' \
+                                       'Documentation</a>\n<br  /><a target=\"_blank\" rel=\"noopener\" href=\" ' \
+                                       '//nd4j.org/doc/\">ND4J Documentation</a>\n<br  /><a target=\"_blank\" ' \
+                                       'rel=\"noopener\" href=\" //deeplearning4j.org/datavecdoc/\">DataVec (ETL) ' \
+                                       'Documentation</a>\n<br  />SKIL also comes with support for <a ' \
+                                       'target=\"_blank\" rel=\"noopener\" href=\" //keras.io\">Keras</a> and <a ' \
+                                       'target=\"_blank\" rel=\"noopener\" href=\" ' \
+                                       '//www.tensorflow.org/\">Tensorflow</a> with %pyspark\n<br  />For examples ' \
+                                       'please see <a target=\"_blank\" rel=\"noopener\" href=\" ' \
+                                       '//github.com/SkymindIO/SKIL_Examples\">SKIL_Examples</a></p>\n"}]},"apps":[],' \
+                                       '"jobName":"paragraph_1527074480510_-105008605",' \
+                                       '"id":"20180523-112120_1144547931","dateCreated":"2018-05-23T11:21:20+0000",' \
+                                       '"dateStarted":"2018-05-23T13:22:01+0000",' \
+                                       '"dateFinished":"2018-05-23T13:22:01+0000","status":"FINISHED",' \
+                                       '"progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:110"},' \
+                                       '{"title":"Imports","text":"import io.skymind.zeppelin.utils._\nimport ' \
+                                       'io.skymind.modelproviders.history.client.ModelHistoryClient\nimport ' \
+                                       'io.skymind.modelproviders.history.model._\nimport ' \
+                                       'org.deeplearning4j.datasets.iterator._\nimport ' \
+                                       'org.deeplearning4j.datasets.iterator.impl._\nimport ' \
+                                       'org.deeplearning4j.nn.api._\nimport ' \
+                                       'org.deeplearning4j.nn.multilayer._\nimport ' \
+                                       'org.deeplearning4j.nn.graph._\nimport org.deeplearning4j.nn.conf._\nimport ' \
+                                       'org.deeplearning4j.nn.conf.inputs._\nimport ' \
+                                       'org.deeplearning4j.nn.conf.layers._\nimport ' \
+                                       'org.deeplearning4j.nn.conf.layers._\nimport ' \
+                                       'org.deeplearning4j.nn.weights._\nimport ' \
+                                       'org.deeplearning4j.optimize.listeners._\nimport ' \
+                                       'org.deeplearning4j.api.storage.impl.RemoteUIStatsStorageRouter\nimport ' \
+                                       'org.deeplearning4j.ui.stats.StatsListener\nimport ' \
+                                       'org.datavec.api.transform._\nimport ' \
+                                       'org.nd4j.linalg.activations.Activation\nimport ' \
+                                       'org.nd4j.linalg.learning.config._\nimport ' \
+                                       'org.nd4j.linalg.lossfunctions.LossFunctions._\nimport ' \
+                                       'org.nd4j.linalg.factory.Nd4j\n","user":"admin",' \
+                                       '"dateUpdated":"2018-05-23T13:23:32+0000","config":{"colWidth":12,' \
+                                       '"enabled":true,"results":{},"editorSetting":{"language":"text",' \
+                                       '"editOnDblClick":false},"editorMode":"ace/mode/text"},"settings":{"params":{' \
+                                       '},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TEXT",' \
+                                       '"data":"import io.skymind.zeppelin.utils._\nimport ' \
+                                       'io.skymind.modelproviders.history.client.ModelHistoryClient\nimport ' \
+                                       'io.skymind.modelproviders.history.model._\nimport ' \
+                                       'org.deeplearning4j.datasets.iterator._\nimport ' \
+                                       'org.deeplearning4j.datasets.iterator.impl._\nimport ' \
+                                       'org.deeplearning4j.nn.api._\nimport ' \
+                                       'org.deeplearning4j.nn.multilayer._\nimport ' \
+                                       'org.deeplearning4j.nn.graph._\nimport org.deeplearning4j.nn.conf._\nimport ' \
+                                       'org.deeplearning4j.nn.conf.inputs._\nimport ' \
+                                       'org.deeplearning4j.nn.conf.layers._\nimport ' \
+                                       'org.deeplearning4j.nn.conf.layers._\nimport ' \
+                                       'org.deeplearning4j.nn.weights._\nimport ' \
+                                       'org.deeplearning4j.optimize.listeners._\nimport ' \
+                                       'org.deeplearning4j.api.storage.impl.RemoteUIStatsStorageRouter\nimport ' \
+                                       'org.deeplearning4j.ui.stats.StatsListener\nimport ' \
+                                       'org.datavec.api.transform._\nimport ' \
+                                       'org.nd4j.linalg.activations.Activation\nimport ' \
+                                       'org.nd4j.linalg.learning.config._\nimport ' \
+                                       'org.nd4j.linalg.lossfunctions.LossFunctions._\nimport ' \
+                                       'org.nd4j.linalg.factory.Nd4j\n"}]},"apps":[],' \
+                                       '"jobName":"paragraph_1527074480512_-21133345",' \
+                                       '"id":"20180523-112120_692958623","dateCreated":"2018-05-23T11:21:20+0000",' \
+                                       '"dateStarted":"2018-05-23T13:23:33+0000",' \
+                                       '"dateFinished":"2018-05-23T13:23:47+0000","status":"FINISHED",' \
+                                       '"progressUpdateIntervalMs":500,"$$hashKey":"object:111"},{"title":"Skil ' \
+                                       'Context","text":"val skilContext = new SkilContext()\nval client = ' \
+                                       'skilContext.client","user":"admin","dateUpdated":"2018-05-23T13:23:52+0000",' \
+                                       '"config":{"colWidth":12,"enabled":true,"results":{},"editorSetting":{' \
+                                       '"language":"text","editOnDblClick":false},"editorMode":"ace/mode/text"},' \
+                                       '"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS",' \
+                                       '"msg":[{"type":"TEXT","data":"skilContext: ' \
+                                       'io.skymind.zeppelin.utils.SkilContext = ' \
+                                       'io.skymind.zeppelin.utils.SkilContext@2816b6b3\nclient: ' \
+                                       'io.skymind.modelproviders.history.client.ModelHistoryClient = ' \
+                                       'io.skymind.modelproviders.history.client.ModelHistoryClient@70a5e002\n"}]},' \
+                                       '"apps":[],"jobName":"paragraph_1527074480512_-21133345",' \
+                                       '"id":"20180523-112120_289059647","dateCreated":"2018-05-23T11:21:20+0000",' \
+                                       '"dateStarted":"2018-05-23T13:23:52+0000",' \
+                                       '"dateFinished":"2018-05-23T13:23:53+0000","status":"FINISHED",' \
+                                       '"progressUpdateIntervalMs":500,"$$hashKey":"object:112"},{"title":"How to ' \
+                                       'interact with SKIL","text":"val numRows = 28\nval numColumns = 28\nval ' \
+                                       'outputNum = 10 // number of output classes\nval batchSize = 32 // batch size ' \
+                                       'for each epoch\nval rngSeed = 123 // random number seed for ' \
+                                       'reproducibility\nval numEpochs = 2 // number of epochs to perform\n\nval ' \
+                                       'trainData = ' \
+                                       'new MnistDataSetIterator(batchSize, true, 42)\nval testData = new ' \
+                                       'MnistDataSetIterator(batchSize, false, 42)\n\nval conf: ' \
+                                       'MultiLayerConfiguration = new NeuralNetConfiguration.Builder()\n    .seed(' \
+                                       'rngSeed) //include a random seed for reproducibility\n    .optimizationAlgo(' \
+                                       'OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)  // use stochastic ' \
+                                       'gradient descent as an optimization algorithm\n    .updater(new Nesterovs(' \
+                                       '0.006, 0.9)) //specify the rate of change of the learning rate.\n    .l2(' \
+                                       '1e-4)\n    .list()\n    .layer(0, new DenseLayer.Builder() //create the ' \
+                                       'first, input layer with xavier initialization\n            .nIn(numRows * ' \
+                                       'numColumns)\n            .nOut(1000)\n            .activation(' \
+                                       'Activation.RELU)\n            .weightInit(WeightInit.XAVIER)\n            ' \
+                                       '.build())\n    .layer(1, new OutputLayer.Builder(' \
+                                       'LossFunction.NEGATIVELOGLIKELIHOOD) //create hidden layer\n            .nIn(' \
+                                       '1000)\n            .nOut(outputNum)\n            .activation(' \
+                                       'Activation.SOFTMAX)\n            .weightInit(WeightInit.XAVIER)\n            ' \
+                                       '.build())\n    .build()\n\nval model = new MultiLayerNetwork(' \
+                                       'conf)\nmodel.init()\n\n// To see the UI start a UI server with \"%sh skil ' \
+                                       'ui\", uncomment the following code and open a new browser \n// ' \
+                                       'window to port ' \
+                                       '9002.\n//val remoteUIRouter = new RemoteUIStatsStorageRouter(' \
+                                       '\"http://localhost:9002\")\n//model.setListeners(new StatsListener(' \
+                                       'remoteUIRouter))\n\nmodel.fit(new MultipleEpochsIterator(numEpochs, ' \
+                                       'trainData))\n//for (i <- 1 to 10) {\n//  model.fit(trainData.next(' \
+                                       '))\n//}\n\nval evaluation = model.evaluate(testData)\n\nval modelId = ' \
+                                       'skilContext.addModelToExperiment(z, model, \"Sample MNIST model\")\nval ' \
+                                       'evalId = skilContext.addEvaluationToModel(z, modelId, evaluation, \"mlp \" + ' \
+                                       'numEpochs + \" epochs\")\n// To use your trained model in your Spark cluster ' \
+                                       'add a KeyedDataProvider to a plugin jar and run:\n// import ' \
+                                       'io.skymind.skil.daemon.model.SparkArgs\n// val args = SparkArgs.builder(' \
+                                       ').master(\"yarn\").build() // All spark-submit options available.\n// ' \
+                                       'skilContext.batchInference(z, args, modelId, ' \
+                                       '\"io.skymind.skil.train.spark.MnistKeyedProvider\", \"hdfs:/tmp/out1\")",' \
+                                       '"user":"admin","dateUpdated":"2018-05-23T13:23:54+0000","config":{' \
+                                       '"colWidth":12,"enabled":true,"results":{},"editorSetting":{"language":"text",' \
+                                       '"editOnDblClick":false},"editorMode":"ace/mode/text"},"settings":{"params":{' \
+                                       '},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TEXT",' \
+                                       '"data":"numRows: Int = 28\nnumColumns: Int = 28\noutputNum: Int = ' \
+                                       '10\nbatchSize: Int = 32\nrngSeed: Int = 123\nnumEpochs: Int = 2\ntrainData: ' \
+                                       'org.deeplearning4j.datasets.iterator.impl.MnistDataSetIterator = ' \
+                                       'org.deeplearning4j.datasets.iterator.impl.MnistDataSetIterator@55ba1f0f' \
+                                       '\ntestData: org.deeplearning4j.datasets.iterator.impl.MnistDataSetIterator = ' \
+                                       'org.deeplearning4j.datasets.iterator.impl.MnistDataSetIterator@1bd40acf\nconf' \
+                                       ': org.deeplearning4j.nn.conf.MultiLayerConfiguration = \n{\n  \"backprop\" : ' \
+                                       'true,\n  \"backpropType\" : \"Standard\",\n  \"cacheMode\" : \"NONE\",' \
+                                       '\n  \"confs\" : [ {\n    \"cacheMode\" : \"NONE\",\n    \"epochCount\" : 0,' \
+                                       '\n    \"iterationCount\" : 0,\n    \"l1ByParam\" : { },\n    \"l2ByParam\" : ' \
+                                       '{ },\n    \"layer\" : {\n      \"@class\" : ' \
+                                       '\"org.deeplearning4j.nn.conf.layers.DenseLayer\",\n      \"activationFn\" : {' \
+                                       '\n        \"@class\" : ' \
+                                       '\"org.nd4j.linalg.activations.impl.ActivationReLU\"\n  ' \
+                                       '    },\n      \"biasInit\" : 0.0,\n      \"biasUpdater\" : null,' \
+                                       '\n      \"constraints\" : null,\n      \"dist\" : null,' \
+                                       '\n      \"gradientNormalization\" : \"None\",' \
+                                       '\n      \"gradientNormalizationThreshold\" : 1.0,\n      \"hasBias\" : true,' \
+                                       '\n      \"idropout\" : null,\n      \"iupdater\" : {\n        \"@class\" : ' \
+                                       '\"org.nd4j.linalg.learning.config.Nesterovs\",\n        \"learningR...model: ' \
+                                       'org.deeplearning4j.nn.multilayer.MultiLayerNetwork = ' \
+                                       'org.deeplearning4j.nn.multilayer.MultiLayerNetwork@2a294038\nwarning: there ' \
+                                       'were 2 deprecation warning(s); re-run with -deprecation for ' \
+                                       'details\nevaluation: org.deeplearning4j.eval.Evaluation = ' \
+                                       '\n\n\n========================Evaluation Metrics========================\n # ' \
+                                       'of classes:    10\n Accuracy:        0.9626\n Precision:       0.9628\n ' \
+                                       'Recall:          0.9621\n F1 Score:        0.9623\nPrecision, recall & F1: ' \
+                                       'macro-averaged (equally weighted avg. of 10 ' \
+                                       'classes)\n\n\n=========================Confusion ' \
+                                       'Matrix=========================\n ' \
+                                       '   0    1    2    3    4    5    6    7    ' \
+                                       '8    9\n---------------------------------------------------\n' \
+                                       '  950    0    4  ' \
+                                       '  2    1    5   13    1    2    2 | 0 = 0\n    0 1126    2    1    0    1    ' \
+                                       '3    0    2    0 | 1 = 1\n    3    1 1003    4    5    0    3    7    6    0 ' \
+                                       '| 2 = 2\n    ' \
+                                       '0    1    8  979    0    6    1    7    4    4 | 3 = 3\n    1    ' \
+                                       '0    8    0  938    0    7    2    2   24 | 4 = 4\n    4    2   ...modelId: ' \
+                                       'String = 8b80de8a-cbef-4269-89c6-1492ab66aa3c\nevalId: String = ' \
+                                       '894f58aa-7271-4cb1-ad77-8dccbe9bb64a\n"}]},"apps":[],' \
+                                       '"jobName":"paragraph_1527074480512_-21133345",' \
+                                       '"id":"20180523-112120_1941505826","dateCreated":"2018-05-23T11:21:20+0000",' \
+                                       '"dateStarted":"2018-05-23T13:23:54+0000",' \
+                                       '"dateFinished":"2018-05-23T13:31:18+0000","status":"FINISHED",' \
+                                       '"progressUpdateIntervalMs":500,"$$hashKey":"object:113"},{"user":"admin",' \
+                                       '"dateUpdated":"2018-05-23T13:22:01+0000","config":{"colWidth":12,' \
+                                       '"enabled":true,"results":{},"editorSetting":{"language":"text",' \
+                                       '"editOnDblClick":false},"editorMode":"ace/mode/text"},"settings":{"params":{' \
+                                       '},"forms":{}},"apps":[],"jobName":"paragraph_1527074480512_-21133345",' \
+                                       '"id":"20180523-112120_2028902527","dateCreated":"2018-05-23T11:21:20+0000",' \
+                                       '"status":"READY","progressUpdateIntervalMs":500,"$$hashKey":"object:114"}],' \
+                                       '"name":"/tests/new_experiment_notebook1","id":"2DH623MMT","angularObjects":{' \
+                                       '"2DF46NRTZ:existing_process":[],"2DF36G3R9:existing_process":[],' \
+                                       '"2DFYYU12F:existing_process":[],"2DEYW4UWG:existing_process":[],' \
+                                       '"2DFQEX7SA:existing_process":[],"2DFSHTZJP:existing_process":[],' \
+                                       '"2DFBEJ7AM:existing_process":[],"2DGG7Z6Q4:existing_process":[]},' \
+                                       '"config":{"looknfeel":"default","personalizedMode":"false"},"info":{}} '
         # ----------------------------------------------------------------------------------------------------------
 
+        debug = False
+
+        cls.host = "localhost"
+
         cls.config = Configuration()
-        cls.config.host = "localhost:9008"  # change this!
-        cls.config.debug = True
+        cls.config.host = "{}:9008".format(cls.host)  # change this!
+        cls.config.debug = debug
         cls.api_client = ApiClient(configuration=cls.config)
         cls.unique_id = str(uuid.uuid4())[:8]
         # create an instance of the API class
         cls.api_instance = skil_client.DefaultApi(api_client=cls.api_client)
+
+        cls.config_mh = Configuration()
+        cls.config_mh.host = "{}:9100".format(cls.host)  # change this!
+        cls.config_mh.debug = debug
+        cls.api_client_mh = ApiClient(configuration=cls.config_mh)
+        # create an instance of the Model History API class
+        cls.api_instance_mh = skil_client.DefaultApi(api_client=cls.api_client_mh)
+
         # authenticate
         cls.pp = pprint.PrettyPrinter(indent=4)
         try:
@@ -51,6 +264,9 @@ class TestDefaultApi(unittest.TestCase):
             # add credentials to config
             cls.config.api_key['authorization'] = token.token
             cls.config.api_key_prefix['authorization'] = "Bearer"
+            # for model history
+            cls.config_mh.api_key['authorization'] = token.token
+            cls.config_mh.api_key_prefix['authorization'] = "Bearer"
         except ApiException as e:
             print("Exception when calling DefaultApi->login: %s\n" % e)
 
@@ -58,11 +274,102 @@ class TestDefaultApi(unittest.TestCase):
     def tearDownClass(cls):
         pass
 
+    def test_get_model_history(self):
+        """Test case for get_model_history
+
+        Gets a model history, given its ID  # noqa: E501
+        """
+        self.pp.pprint(
+            self.api_instance_mh.get_model_history(self.model_history_id)
+        )
+
+    def test_add_model_history(self):
+        """Test case for add_model_history
+
+        Add a model history / workspace  # noqa: E501
+        """
+        model_history_request = AddModelHistoryRequest(self.model_history_name, "Label 1, Label 2")
+        self.pp.pprint(
+            self.api_instance_mh.add_model_history(model_history_request)
+        )
+
+    def test_list_all_experiments(self):
+        """Test case for list_all_experiments
+
+        List all of the experiments in every model history / workspace  # noqa: E501
+        """
+        self.pp.pprint(
+            self.api_instance_mh.list_all_experiments()
+        )
+
+    def test_add_experiment(self):
+        """Test case for add_experiment
+
+        Add an experiment, given an experiment entity  # noqa: E501
+        """
+        self.api_instance_mh.add_experiment(
+            ExperimentEntity(
+                experiment_id="12345",
+                best_model_id=self.model_instance_id,
+                experiment_name=self.experiment_name,
+                experiment_description="My First experiment",
+                model_history_id="d74826ce-3c95-4348-aea3-c730b18a1893"
+            )
+        )
+
+    def test_add_model_instance(self):
+        """Test case for add_model_instance
+
+        Adds a model  # noqa: E501
+        """
+        self.pp.pprint(
+            self.api_instance_mh.add_model_instance(
+                ModelInstanceEntity(
+                    uri="test_uri.zip",
+                    model_id="12345",
+                    eval_id="12345",
+                    model_name="testModel",
+                    model_version=1,
+                    experiment_id="12345"
+                )
+            )
+        )
+
+    def test_delete_model_history(self):
+        """Test case for delete_model_history
+
+        Deletes a model history / workspace, given its ID  # noqa: E501
+        """
+        self.pp.pprint(
+            self.api_instance_mh.delete_model_history("d74826ce-3c95-4348-aea3-c730b18a1893")
+        )
+
     def test_add_evaluation_result(self):
         """Test case for add_evaluation_result
 
         Adds an evaluation result  # noqa: E501
         """
+        self.pp.pprint(
+            self.api_instance_mh.add_evaluation_result(
+                EvaluationResultsEntity(
+                    evaluation="",
+                    eval_name="evaluation",
+                    model_instance_id="12345",
+                    f1=0.5,
+                    precision=0.5,
+                    recall=0.5,
+                    accuracy=0.5,
+                    rmse=0.5,
+                    auc=1,
+                    mean_absolute_error=0.5,
+                    mean_relative_error=0.5,
+                    r2=0.5,
+                    eval_id="12345",
+                    eval_version=1,
+                    binary_threshold=0.5
+                )
+            )
+        )
         pass
 
     def test_add_example_for_batch(self):
@@ -79,31 +386,10 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_add_experiment(self):
-        """Test case for add_experiment
-
-        Add an experiment, given an experiment entity  # noqa: E501
-        """
-        pass
-
     def test_add_minibatch(self):
         """Test case for add_minibatch
 
         Adds a minibatch  # noqa: E501
-        """
-        pass
-
-    def test_add_model_history(self):
-        """Test case for add_model_history
-
-        Add a model history / workspace  # noqa: E501
-        """
-        pass
-
-    def test_add_model_instance(self):
-        """Test case for add_model_instance
-
-        Adds a model  # noqa: E501
         """
         pass
 
@@ -146,13 +432,6 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for delete_experiment
 
         Deletes an experiment, given an experiment entity  # noqa: E501
-        """
-        pass
-
-    def test_delete_model_history(self):
-        """Test case for delete_model_history
-
-        Deletes a model history / workspace, given its ID  # noqa: E501
         """
         pass
 
@@ -281,6 +560,9 @@ class TestDefaultApi(unittest.TestCase):
 
         Obtain an experiment's details, given its ID  # noqa: E501
         """
+        self.pp.pprint(
+            self.api_instance_mh.get_experiment(self.experiment_id)
+        )
         pass
 
     def test_get_experiments_for_model_history(self):
@@ -288,6 +570,9 @@ class TestDefaultApi(unittest.TestCase):
 
         Obtain all experiments for a model history / workspace  # noqa: E501
         """
+        self.pp.pprint(
+            self.api_instance_mh.get_experiments_for_model_history(self.model_history_id)
+        )
         pass
 
     def test_get_minibatch(self):
@@ -297,26 +582,23 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_get_model_history(self):
-        """Test case for get_model_history
-
-        Gets a model history, given its ID  # noqa: E501
-        """
-        pass
-
     def test_get_model_instance(self):
         """Test case for get_model_instance
 
         Gets a model instance, given its ID  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.get_model_instance(self.model_instance_id)
+        )
 
     def test_get_models_for_experiment(self):
         """Test case for get_models_for_experiment
 
         Obtain a list of all the models for an experiment  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.get_models_for_experiment(self.experiment_id)
+        )
 
     def test_imagetransformprocess_get(self):
         """Test case for imagetransformprocess_get
@@ -350,13 +632,6 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for knnnew
 
         Run a k nearest neighbors search on a NEW data point  # noqa: E501
-        """
-        pass
-
-    def test_list_all_experiments(self):
-        """Test case for list_all_experiments
-
-        List all of the experiments in every model history / workspace  # noqa: E501
         """
         pass
 

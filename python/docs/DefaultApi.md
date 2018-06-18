@@ -4,7 +4,7 @@ All URIs are relative to *https://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_evaluation_result**](DefaultApi.md#add_evaluation_result) | **POST** /model/revisions/evaluations | Adds an evaluation result
+[**add_evaluation_result**](DefaultApi.md#add_evaluation_result) | **POST** /model/revisions/evaluations/ | Adds an evaluation result
 [**add_example_for_batch**](DefaultApi.md#add_example_for_batch) | **POST** /model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 [**add_example_to_minibatch**](DefaultApi.md#add_example_to_minibatch) | **POST** /model/example | Adds an example to a minibatch
 [**add_experiment**](DefaultApi.md#add_experiment) | **POST** /experiment | Add an experiment, given an experiment entity
@@ -1395,7 +1395,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_experiment**
-> InlineResponse200 get_experiment(experiment_id)
+> ExperimentEntity get_experiment(experiment_id)
 
 Obtain an experiment's details, given its ID
 
@@ -1415,7 +1415,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-experiment_id = 'experiment_id_example' # str | the GUID of the experiment to delete
+experiment_id = 'experiment_id_example' # str | the GUID of the experiment to obtain
 
 try:
     # Obtain an experiment's details, given its ID
@@ -1429,11 +1429,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **experiment_id** | **str**| the GUID of the experiment to delete | 
+ **experiment_id** | **str**| the GUID of the experiment to obtain | 
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**ExperimentEntity**](ExperimentEntity.md)
 
 ### Authorization
 
@@ -1655,7 +1655,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_models_for_experiment**
-> object get_models_for_experiment(experiment_id)
+> list[ModelInstanceEntity] get_models_for_experiment(experiment_id)
 
 Obtain a list of all the models for an experiment
 
@@ -1693,7 +1693,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**list[ModelInstanceEntity]**](ModelInstanceEntity.md)
 
 ### Authorization
 

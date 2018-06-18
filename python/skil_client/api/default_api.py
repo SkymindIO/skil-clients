@@ -115,7 +115,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/revisions/evaluations', 'POST',
+            '/model/revisions/evaluations/', 'POST',
             path_params,
             query_params,
             header_params,
@@ -2523,8 +2523,8 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str experiment_id: the GUID of the experiment to delete (required)
-        :return: InlineResponse200
+        :param str experiment_id: the GUID of the experiment to obtain (required)
+        :return: ExperimentEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2544,8 +2544,8 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str experiment_id: the GUID of the experiment to delete (required)
-        :return: InlineResponse200
+        :param str experiment_id: the GUID of the experiment to obtain (required)
+        :return: ExperimentEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2599,7 +2599,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse200',  # noqa: E501
+            response_type='ExperimentEntity',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -2989,7 +2989,7 @@ class DefaultApi(object):
 
         :param async bool
         :param str experiment_id: the GUID of the experiment (required)
-        :return: object
+        :return: list[ModelInstanceEntity]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -3010,7 +3010,7 @@ class DefaultApi(object):
 
         :param async bool
         :param str experiment_id: the GUID of the experiment (required)
-        :return: object
+        :return: list[ModelInstanceEntity]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -3064,7 +3064,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='object',  # noqa: E501
+            response_type='list[ModelInstanceEntity]',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),

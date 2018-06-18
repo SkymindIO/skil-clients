@@ -1410,15 +1410,12 @@ paths:
         type: string
         required: true
         format: guid
-        description: the GUID of the experiment to delete
+        description: the GUID of the experiment to obtain
       responses:
         200:
           description: Experiment Entity
           schema:
-            type: object
-            properties:
-              status:
-                type: string
+            $ref: '#/definitions/ExperimentEntity'
     put:
       operationId: updateExperiment
       summary: Updates an experiment, given an experiment entity
@@ -1531,7 +1528,7 @@ paths:
         200:
           description: List of all the models for the specified experiment
           schema:
-            type: object
+            type: array
             items:
               $ref: '#/definitions/ModelInstanceEntity'
   /model/{modelInstanceID}:
@@ -1628,7 +1625,7 @@ paths:
           description: The created model history
           schema:
             $ref: '#/definitions/ModelHistoryEntity'
-  /model/revisions/evaluations:
+  /model/revisions/evaluations/:
     post:
       operationId: addEvaluationResult
       summary: Adds an evaluation result

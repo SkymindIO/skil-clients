@@ -76,7 +76,7 @@ All URIs are relative to *https://localhost:9008*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**add_evaluation_result**](docs/DefaultApi.md#add_evaluation_result) | **POST** /model/revisions/evaluations | Adds an evaluation result
+*DefaultApi* | [**add_evaluation_result**](docs/DefaultApi.md#add_evaluation_result) | **POST** /model/revisions/evaluations/ | Adds an evaluation result
 *DefaultApi* | [**add_example_for_batch**](docs/DefaultApi.md#add_example_for_batch) | **POST** /model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 *DefaultApi* | [**add_example_to_minibatch**](docs/DefaultApi.md#add_example_to_minibatch) | **POST** /model/example | Adds an example to a minibatch
 *DefaultApi* | [**add_experiment**](docs/DefaultApi.md#add_experiment) | **POST** /experiment | Add an experiment, given an experiment entity
