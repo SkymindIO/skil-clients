@@ -768,6 +768,50 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     Change the state of model to \"start\" or \"stop\"
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter modelId: (path) ID of model 
+     - parameter body: (body) the state request 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func updateState(deploymentId: String, modelId: String, body: UpdateState, completion: @escaping ((_ data: Any?, _ error: ErrorResponse?) -> Void)) {
+        updateStateWithRequestBuilder(deploymentId: deploymentId, modelId: modelId, body: body).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Change the state of model to \"start\" or \"stop\"
+     - POST /deployment/{deploymentId}/model/{modelId}/state
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example="{}"}]
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter modelId: (path) ID of model 
+     - parameter body: (body) the state request 
+     - returns: RequestBuilder<Any> 
+     */
+    open class func updateStateWithRequestBuilder(deploymentId: String, modelId: String, body: UpdateState) -> RequestBuilder<Any> {
+        var path = "/deployment/{deploymentId}/model/{modelId}/state"
+        let deploymentIdPreEscape = "\(deploymentId)"
+        let deploymentIdPostEscape = deploymentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentId}", with: deploymentIdPostEscape, options: .literal, range: nil)
+        let modelIdPreEscape = "\(modelId)"
+        let modelIdPostEscape = modelIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelId}", with: modelIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = body.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Any>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
      Upload a model file to SKIL for import.
      - parameter file: (form) The file to upload. (optional)
      - parameter completion: completion handler to receive the data and the error objects

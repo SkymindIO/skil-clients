@@ -531,6 +531,38 @@ paths:
             type: object
         500:
           description: Error creating deployment
+  /deployment/{deploymentId}/model/{modelId}/state:
+    post:
+      operationId: updateState
+      summary: Change the state of model to "start" or "stop"
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: deploymentId
+        in: path
+        description: ID deployment group
+        required: true
+        type: string
+      - name: modelId
+        in: path
+        description: ID of model
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: the state request
+        required: true
+        schema:
+          $ref: '#/definitions/UpdateState'
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: object
+        500:
+          description: Error creating deployment      
 definitions:
   DeployModel:
     type: object
@@ -606,6 +638,13 @@ definitions:
         type: string
     example:
       name: productiongroup
+  UpdateState:
+    type: object
+    properties:
+      state:
+        type: string
+    example:
+      state: start
   Credentials:
     type: object
     properties:

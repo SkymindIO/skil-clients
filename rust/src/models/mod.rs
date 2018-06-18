@@ -32,6 +32,8 @@ mod prediction;
 pub use self::prediction::Prediction;
 mod token;
 pub use self::token::Token;
+mod update_state;
+pub use self::update_state::UpdateState;
 
 // TODO(farcaller): sort out files
 pub struct File;

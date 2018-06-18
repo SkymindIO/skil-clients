@@ -413,6 +413,31 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of JsonArrayResponse</returns>
         ApiResponse<JsonArrayResponse> PredictwithpreprocessjsonWithHttpInfo (List<string> body, string deploymentName, string modelName);
         /// <summary>
+        /// Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">ID of model</param>
+        /// <param name="body">the state request</param>
+        /// <returns>Object</returns>
+        Object UpdateState (string deploymentId, string modelId, UpdateState body);
+
+        /// <summary>
+        /// Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">ID of model</param>
+        /// <param name="body">the state request</param>
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> UpdateStateWithHttpInfo (string deploymentId, string modelId, UpdateState body);
+        /// <summary>
         /// Upload a model file to SKIL for import.
         /// </summary>
         /// <remarks>
@@ -823,6 +848,31 @@ namespace Skymind.SKIL.Api
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> PredictwithpreprocessjsonAsyncWithHttpInfo (List<string> body, string deploymentName, string modelName);
+        /// <summary>
+        /// Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">ID of model</param>
+        /// <param name="body">the state request</param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> UpdateStateAsync (string deploymentId, string modelId, UpdateState body);
+
+        /// <summary>
+        /// Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">ID of model</param>
+        /// <param name="body">the state request</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateStateAsyncWithHttpInfo (string deploymentId, string modelId, UpdateState body);
         /// <summary>
         /// Upload a model file to SKIL for import.
         /// </summary>
@@ -3702,6 +3752,189 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<JsonArrayResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (JsonArrayResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonArrayResponse)));
+        }
+
+        /// <summary>
+        /// Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot; 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">ID of model</param>
+        /// <param name="body">the state request</param>
+        /// <returns>Object</returns>
+        public Object UpdateState (string deploymentId, string modelId, UpdateState body)
+        {
+             ApiResponse<Object> localVarResponse = UpdateStateWithHttpInfo(deploymentId, modelId, body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot; 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">ID of model</param>
+        /// <param name="body">the state request</param>
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > UpdateStateWithHttpInfo (string deploymentId, string modelId, UpdateState body)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->UpdateState");
+            // verify the required parameter 'modelId' is set
+            if (modelId == null)
+                throw new ApiException(400, "Missing required parameter 'modelId' when calling DefaultApi->UpdateState");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->UpdateState");
+
+            var localVarPath = "/deployment/{deploymentId}/model/{modelId}/state";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateState", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Object) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+        }
+
+        /// <summary>
+        /// Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot; 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">ID of model</param>
+        /// <param name="body">the state request</param>
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> UpdateStateAsync (string deploymentId, string modelId, UpdateState body)
+        {
+             ApiResponse<Object> localVarResponse = await UpdateStateAsyncWithHttpInfo(deploymentId, modelId, body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot; 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">ID of model</param>
+        /// <param name="body">the state request</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateStateAsyncWithHttpInfo (string deploymentId, string modelId, UpdateState body)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->UpdateState");
+            // verify the required parameter 'modelId' is set
+            if (modelId == null)
+                throw new ApiException(400, "Missing required parameter 'modelId' when calling DefaultApi->UpdateState");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->UpdateState");
+
+            var localVarPath = "/deployment/{deploymentId}/model/{modelId}/state";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateState", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Object) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>

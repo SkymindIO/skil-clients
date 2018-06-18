@@ -826,6 +826,26 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "Token", actual: "\(source)"))
             }
         }
+        // Decoder for [UpdateState]
+        Decoders.addDecoder(clazz: [UpdateState].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[UpdateState]> in
+            return Decoders.decode(clazz: [UpdateState].self, source: source)
+        }
+
+        // Decoder for UpdateState
+        Decoders.addDecoder(clazz: UpdateState.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<UpdateState> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? UpdateState() : instance as! UpdateState
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["state"] as AnyObject?) {
+                
+                case let .success(value): _result.state = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "UpdateState", actual: "\(source)"))
+            }
+        }
     }()
 
     static fileprivate func initialize() {

@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**update_state**](DefaultApi.md#update_state) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
@@ -925,6 +926,64 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JsonArrayResponse**](JsonArrayResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_state**
+> Object update_state(deployment_id, model_id, body)
+
+Change the state of model to \"start\" or \"stop\"
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+deployment_id = "deployment_id_example" # String | ID deployment group
+
+model_id = "model_id_example" # String | ID of model
+
+body = SkilCient::UpdateState.new # UpdateState | the state request
+
+
+begin
+  #Change the state of model to \"start\" or \"stop\"
+  result = api_instance.update_state(deployment_id, model_id, body)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->update_state: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deployment_id** | **String**| ID deployment group | 
+ **model_id** | **String**| ID of model | 
+ **body** | [**UpdateState**](UpdateState.md)| the state request | 
+
+### Return type
+
+**Object**
 
 ### Authorization
 

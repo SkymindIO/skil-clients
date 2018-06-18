@@ -22,6 +22,7 @@ import ai.skymind.skil.client.model.NewDeployment;
 import ai.skymind.skil.client.model.Object;
 import ai.skymind.skil.client.model.Prediction;
 import ai.skymind.skil.client.model.Token;
+import ai.skymind.skil.client.model.UpdateState;
 
 import mx.rpc.AsyncToken;
 import mx.utils.UIDUtil;
@@ -54,6 +55,7 @@ public class DefaultApi extends SwaggerApi {
         public static const event_predictimage: String = "predictimage";
         public static const event_predictwithpreprocess: String = "predictwithpreprocess";
         public static const event_predictwithpreprocessjson: String = "predictwithpreprocessjson";
+        public static const event_update_state: String = "update_state";
         public static const event_upload: String = "upload";
 
 
@@ -637,6 +639,44 @@ public class DefaultApi extends SwaggerApi {
         token.completionEventType = "predictwithpreprocessjson";
 
         token.returnType = JsonArrayResponse;
+        return requestId;
+
+    }
+
+    /*
+     * Returns Object 
+     */
+    public function update_state (deploymentId: String, modelId: String, body: UpdateState): String {
+        // create path and map variables
+        var path: String = "/deployment/{deploymentId}/model/{modelId}/state".replace(/{format}/g,"xml").replace("{" + "deploymentId" + "}", getApiInvoker().escapeString(deploymentId)).replace("{" + "modelId" + "}", getApiInvoker().escapeString(modelId));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, body, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "update_state";
+
+        token.returnType = Object;
         return requestId;
 
     }

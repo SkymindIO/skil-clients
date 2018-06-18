@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**updateState**](DefaultApi.md#updateState) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
@@ -913,6 +914,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JsonArrayResponse**](JsonArrayResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="updateState"></a>
+# **updateState**
+> Object updateState(deploymentId, modelId, body)
+
+Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String deploymentId = "deploymentId_example"; // String | ID deployment group
+String modelId = "modelId_example"; // String | ID of model
+UpdateState body = new UpdateState(); // UpdateState | the state request
+try {
+    Object result = apiInstance.updateState(deploymentId, modelId, body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#updateState");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deploymentId** | **String**| ID deployment group |
+ **modelId** | **String**| ID of model |
+ **body** | [**UpdateState**](UpdateState.md)| the state request |
+
+### Return type
+
+**Object**
 
 ### Authorization
 

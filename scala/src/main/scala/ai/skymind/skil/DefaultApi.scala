@@ -29,6 +29,7 @@ import ai.skymind.skil.model.MultiClassClassificationResult
 import ai.skymind.skil.model.NewDeployment
 import ai.skymind.skil.model.Prediction
 import ai.skymind.skil.model.Token
+import ai.skymind.skil.model.UpdateState
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -562,6 +563,36 @@ class DefaultApi(
   }
 
   /**
+   * Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @param ModelId ID of model 
+   * @param Body the state request 
+   * @return Any
+   */
+  def updateState(DeploymentId: String, ModelId: String, Body: UpdateState): Option[Any] = {
+    val await = Try(Await.result(updateStateAsync(DeploymentId, ModelId, Body), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot; asynchronously
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @param ModelId ID of model 
+   * @param Body the state request 
+   * @return Future(Any)
+   */
+  def updateStateAsync(DeploymentId: String, ModelId: String, Body: UpdateState): Future[Any] = {
+      helper.updateState(DeploymentId, ModelId, Body)
+  }
+
+  /**
    * Upload a model file to SKIL for import.
    * 
    *
@@ -944,6 +975,30 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->predictwithpreprocessjson")
 
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def updateState(DeploymentId: String,
+    ModelId: String,
+    Body: UpdateState)(implicit reader: ClientResponseReader[Any], writer: RequestWriter[UpdateState]): Future[Any] = {
+    // create path and map variables
+    val path = (addFmt("/deployment/{deploymentId}/model/{modelId}/state")
+      replaceAll("\\{" + "deploymentId" + "\\}", DeploymentId.toString)
+      replaceAll("\\{" + "modelId" + "\\}", ModelId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentId == null) throw new Exception("Missing required parameter 'DeploymentId' when calling DefaultApi->updateState")
+
+    if (ModelId == null) throw new Exception("Missing required parameter 'ModelId' when calling DefaultApi->updateState")
+
+    if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->updateState")
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
     resFuture flatMap { resp =>

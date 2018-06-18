@@ -39,6 +39,7 @@ import ai.skymind.skil.model.MultiClassClassificationResult;
 import ai.skymind.skil.model.NewDeployment;
 import ai.skymind.skil.model.Prediction;
 import ai.skymind.skil.model.Token;
+import ai.skymind.skil.model.UpdateState;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -2381,6 +2382,156 @@ public class DefaultApi {
           public void onResponse(String localVarResponse) {
             try {
               responseListener.onResponse((JsonArrayResponse) ApiInvoker.deserialize(localVarResponse,  "", JsonArrayResponse.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
+  * 
+   * @param deploymentId ID deployment group
+   * @param modelId ID of model
+   * @param body the state request
+   * @return Object
+  */
+  public Object updateState (String deploymentId, String modelId, UpdateState body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = body;
+    // verify the required parameter 'deploymentId' is set
+    if (deploymentId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'deploymentId' when calling updateState",
+        new ApiException(400, "Missing the required parameter 'deploymentId' when calling updateState"));
+    }
+    // verify the required parameter 'modelId' is set
+    if (modelId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelId' when calling updateState",
+        new ApiException(400, "Missing the required parameter 'modelId' when calling updateState"));
+    }
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling updateState",
+        new ApiException(400, "Missing the required parameter 'body' when calling updateState"));
+    }
+
+    // create path and map variables
+    String path = "/deployment/{deploymentId}/model/{modelId}/state".replaceAll("\\{" + "deploymentId" + "\\}", apiInvoker.escapeString(deploymentId.toString())).replaceAll("\\{" + "modelId" + "\\}", apiInvoker.escapeString(modelId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (Object) ApiInvoker.deserialize(localVarResponse, "", Object.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
+   * 
+   * @param deploymentId ID deployment group   * @param modelId ID of model   * @param body the state request
+  */
+  public void updateState (String deploymentId, String modelId, UpdateState body, final Response.Listener<Object> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = body;
+
+    // verify the required parameter 'deploymentId' is set
+    if (deploymentId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'deploymentId' when calling updateState",
+        new ApiException(400, "Missing the required parameter 'deploymentId' when calling updateState"));
+    }
+    // verify the required parameter 'modelId' is set
+    if (modelId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelId' when calling updateState",
+        new ApiException(400, "Missing the required parameter 'modelId' when calling updateState"));
+    }
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling updateState",
+        new ApiException(400, "Missing the required parameter 'body' when calling updateState"));
+    }
+
+    // create path and map variables
+    String path = "/deployment/{deploymentId}/model/{modelId}/state".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentId" + "\\}", apiInvoker.escapeString(deploymentId.toString())).replaceAll("\\{" + "modelId" + "\\}", apiInvoker.escapeString(modelId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((Object) ApiInvoker.deserialize(localVarResponse,  "", Object.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

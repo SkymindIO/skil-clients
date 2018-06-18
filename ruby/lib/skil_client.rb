@@ -34,6 +34,7 @@ require 'skil_client/models/multi_class_classification_result'
 require 'skil_client/models/new_deployment'
 require 'skil_client/models/prediction'
 require 'skil_client/models/token'
+require 'skil_client/models/update_state'
 
 # APIs
 require 'skil_client/api/default_api'

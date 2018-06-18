@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeployModel', 'ai/skymind/skil/model/Deployment', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/NewDeployment', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Token'], factory);
+    define(['ApiClient', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeployModel', 'ai/skymind/skil/model/Deployment', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/NewDeployment', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/model/UpdateState'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeployModel'), require('../ai/skymind/skil/model/Deployment'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/NewDeployment'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/Token'));
+    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeployModel'), require('../ai/skymind/skil/model/Deployment'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/NewDeployment'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/Token'), require('../ai/skymind/skil/model/UpdateState'));
   } else {
     // Browser globals (root is window)
     if (!root.SkilClient) {
       root.SkilClient = {};
     }
-    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.Base64NDArrayBody, root.SkilClient.ClassificationResult, root.SkilClient.Credentials, root.SkilClient.DeployModel, root.SkilClient.Deployment, root.SkilClient.FileUploadList, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.NewDeployment, root.SkilClient.Prediction, root.SkilClient.Token);
+    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.Base64NDArrayBody, root.SkilClient.ClassificationResult, root.SkilClient.Credentials, root.SkilClient.DeployModel, root.SkilClient.Deployment, root.SkilClient.FileUploadList, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.NewDeployment, root.SkilClient.Prediction, root.SkilClient.Token, root.SkilClient.UpdateState);
   }
-}(this, function(ApiClient, Base64NDArrayBody, ClassificationResult, Credentials, DeployModel, Deployment, FileUploadList, JsonArrayResponse, LogBatch, LogRequest, ModelStatus, MultiClassClassificationResult, NewDeployment, Prediction, Token) {
+}(this, function(ApiClient, Base64NDArrayBody, ClassificationResult, Credentials, DeployModel, Deployment, FileUploadList, JsonArrayResponse, LogBatch, LogRequest, ModelStatus, MultiClassClassificationResult, NewDeployment, Prediction, Token, UpdateState) {
   'use strict';
 
   /**
@@ -953,6 +953,66 @@
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateState operation.
+     * @callback module:ai/skymind/skil/DefaultApi~updateStateCallback
+     * @param {String} error Error message, if any.
+     * @param {Object} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
+     * @param {String} deploymentId ID deployment group
+     * @param {String} modelId ID of model
+     * @param {module:ai/skymind/skil/model/UpdateState} body the state request
+     * @param {module:ai/skymind/skil/DefaultApi~updateStateCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Object}
+     */
+    this.updateState = function(deploymentId, modelId, body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'deploymentId' is set
+      if (deploymentId === undefined || deploymentId === null) {
+        throw new Error("Missing the required parameter 'deploymentId' when calling updateState");
+      }
+
+      // verify the required parameter 'modelId' is set
+      if (modelId === undefined || modelId === null) {
+        throw new Error("Missing the required parameter 'modelId' when calling updateState");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling updateState");
+      }
+
+
+      var pathParams = {
+        'deploymentId': deploymentId,
+        'modelId': modelId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = Object;
+
+      return this.apiClient.callApi(
+        '/deployment/{deploymentId}/model/{modelId}/state', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

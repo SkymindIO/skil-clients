@@ -39,3 +39,4 @@ from skil_client.models.multi_class_classification_result import MultiClassClass
 from skil_client.models.new_deployment import NewDeployment
 from skil_client.models.prediction import Prediction
 from skil_client.models.token import Token
+from skil_client.models.update_state import UpdateState

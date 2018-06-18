@@ -47,6 +47,7 @@ pub trait DefaultApi {
     fn predictimage(&self, deployment_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::Prediction, Error = Error>>;
     fn predictwithpreprocess(&self, body: Vec<String>, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error>>;
     fn predictwithpreprocessjson(&self, body: Vec<String>, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error>>;
+    fn update_state(&self, deployment_id: &str, model_id: &str, body: ::models::UpdateState) -> Box<Future<Item = Value, Error = Error>>;
     fn upload(&self, file: ::models::File) -> Box<Future<Item = ::models::FileUploadList, Error = Error>>;
 }
 
@@ -523,6 +524,37 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             .map_err(|e| Error::from(e))
             .and_then(|body| {
                 let parsed: Result<::models::JsonArrayResponse, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn update_state(&self, deployment_id: &str, model_id: &str, body: ::models::UpdateState) -> Box<Future<Item = Value, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/deployment/{deploymentId}/model/{modelId}/state", configuration.base_path, deploymentId=deployment_id, modelId=model_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<Value, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             }).map_err(|e| Error::from(e))
         )

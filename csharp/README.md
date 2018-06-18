@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**Predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
 *DefaultApi* | [**Predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
 *DefaultApi* | [**Predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+*DefaultApi* | [**UpdateState**](docs/DefaultApi.md#updatestate) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \"start\" or \"stop\"
 *DefaultApi* | [**Upload**](docs/DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
@@ -142,6 +143,7 @@ Class | Method | HTTP request | Description
  - [Model.NewDeployment](docs/NewDeployment.md)
  - [Model.Prediction](docs/Prediction.md)
  - [Model.Token](docs/Token.md)
+ - [Model.UpdateState](docs/UpdateState.md)
 
 
 <a name="documentation-for-authorization"></a>

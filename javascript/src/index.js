@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeployModel', 'ai/skymind/skil/model/Deployment', 'ai/skymind/skil/model/DeploymentObjects', 'ai/skymind/skil/model/FileUpload', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/INDArray', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/NewDeployment', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/DefaultApi'], factory);
+    define(['ApiClient', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeployModel', 'ai/skymind/skil/model/Deployment', 'ai/skymind/skil/model/DeploymentObjects', 'ai/skymind/skil/model/FileUpload', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/INDArray', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/NewDeployment', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/model/UpdateState', 'ai/skymind/skil/DefaultApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./ai/skymind/skil/model/Base64NDArrayBody'), require('./ai/skymind/skil/model/ClassificationResult'), require('./ai/skymind/skil/model/Credentials'), require('./ai/skymind/skil/model/DeployModel'), require('./ai/skymind/skil/model/Deployment'), require('./ai/skymind/skil/model/DeploymentObjects'), require('./ai/skymind/skil/model/FileUpload'), require('./ai/skymind/skil/model/FileUploadList'), require('./ai/skymind/skil/model/INDArray'), require('./ai/skymind/skil/model/JsonArrayResponse'), require('./ai/skymind/skil/model/LogBatch'), require('./ai/skymind/skil/model/LogRequest'), require('./ai/skymind/skil/model/ModelStatus'), require('./ai/skymind/skil/model/MultiClassClassificationResult'), require('./ai/skymind/skil/model/NewDeployment'), require('./ai/skymind/skil/model/Prediction'), require('./ai/skymind/skil/model/Token'), require('./ai/skymind/skil/DefaultApi'));
+    module.exports = factory(require('./ApiClient'), require('./ai/skymind/skil/model/Base64NDArrayBody'), require('./ai/skymind/skil/model/ClassificationResult'), require('./ai/skymind/skil/model/Credentials'), require('./ai/skymind/skil/model/DeployModel'), require('./ai/skymind/skil/model/Deployment'), require('./ai/skymind/skil/model/DeploymentObjects'), require('./ai/skymind/skil/model/FileUpload'), require('./ai/skymind/skil/model/FileUploadList'), require('./ai/skymind/skil/model/INDArray'), require('./ai/skymind/skil/model/JsonArrayResponse'), require('./ai/skymind/skil/model/LogBatch'), require('./ai/skymind/skil/model/LogRequest'), require('./ai/skymind/skil/model/ModelStatus'), require('./ai/skymind/skil/model/MultiClassClassificationResult'), require('./ai/skymind/skil/model/NewDeployment'), require('./ai/skymind/skil/model/Prediction'), require('./ai/skymind/skil/model/Token'), require('./ai/skymind/skil/model/UpdateState'), require('./ai/skymind/skil/DefaultApi'));
   }
-}(function(ApiClient, Base64NDArrayBody, ClassificationResult, Credentials, DeployModel, Deployment, DeploymentObjects, FileUpload, FileUploadList, INDArray, JsonArrayResponse, LogBatch, LogRequest, ModelStatus, MultiClassClassificationResult, NewDeployment, Prediction, Token, DefaultApi) {
+}(function(ApiClient, Base64NDArrayBody, ClassificationResult, Credentials, DeployModel, Deployment, DeploymentObjects, FileUpload, FileUploadList, INDArray, JsonArrayResponse, LogBatch, LogRequest, ModelStatus, MultiClassClassificationResult, NewDeployment, Prediction, Token, UpdateState, DefaultApi) {
   'use strict';
 
   /**
@@ -146,6 +146,11 @@
      * @property {module:ai/skymind/skil/model/Token}
      */
     Token: Token,
+    /**
+     * The UpdateState model constructor.
+     * @property {module:ai/skymind/skil/model/UpdateState}
+     */
+    UpdateState: UpdateState,
     /**
      * The DefaultApi service constructor.
      * @property {module:ai/skymind/skil/DefaultApi}
