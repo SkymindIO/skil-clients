@@ -377,70 +377,145 @@ class TestDefaultApi(unittest.TestCase):
 
         Adds a number of examples to a minibatch ID given an AddExampleRequest.  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.add_example_for_batch(
+                AddExampleRequest(
+                    minibatch=MinibatchEntity("12345", "12345", 1, 1),
+                    batch_size=10
+                )
+            )
+        )
 
     def test_add_example_to_minibatch(self):
         """Test case for add_example_to_minibatch
 
         Adds an example to a minibatch  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.add_example_to_minibatch(
+                ExampleEntity(
+                    example_id="12345",
+                    example_version=1,
+                    int_row_number=10,
+                    mini_batch_id="12345",
+                    mini_batch_version=1
+                )
+            )
+        )
 
     def test_add_minibatch(self):
         """Test case for add_minibatch
 
         Adds a minibatch  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.add_minibatch(
+                MinibatchEntity(mini_batch_id="12345",
+                                eval_id="12345",
+                                eval_version=1,
+                                batch_version=1)
+            )
+        )
 
     def test_aggregate_model_results(self):
         """Test case for aggregate_model_results
 
         Aggregates the evaluaition results of a model instance, based on the evaluation type  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.aggregate_model_results(
+                AggregatePrediction(
+                    model_id="12345",
+                    eval_type="REGRESSON_EVALUATION"
+                )
+            )
+        )
 
     def test_classify(self):
         """Test case for classify
 
         Use the deployed model to classify the input  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance.classify(
+                deployment_name="deployment_name12345",
+                model_name="model_name12345",
+                body=Prediction(
+                    id="12345",
+                    needs_pre_processing=False,
+                    prediction=INDArray(
+                        shape=[2, 3],
+                        data=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6],
+                        ordering="c",
+                        data_type="FLOAT16"
+                    )
+                )
+            )
+        )
 
     def test_classifyarray(self):
         """Test case for classifyarray
 
         Same as /classify but returns the output as Base64NDArrayBody  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance.classifyarray(
+                deployment_name="deployment_name12345",
+                model_name="model_name12345",
+                body=Prediction(
+                    id="12345",
+                    needs_pre_processing=False,
+                    prediction=INDArray(
+                        shape=[2, 3],
+                        data=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6],
+                        ordering="c",
+                        data_type="FLOAT16"
+                    )
+                )
+            )
+        )
 
     def test_classifyimage(self):
         """Test case for classifyimage
 
         Use the deployed model to classify the input, using input image file from multipart form data.  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance.classifyimage(
+                deployment_name="deployment_name12345",
+                model_name="model_name12345"
+                # Todo: add a file here
+            )
+        )
 
     def test_create_model_history(self):
         """Test case for create_model_history
 
         Creates model History  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.create_model_history(
+                AddModelHistoryRequest("workspace_12345", "label1, label2")
+            )
+        )
 
     def test_delete_experiment(self):
         """Test case for delete_experiment
 
         Deletes an experiment, given an experiment entity  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.delete_experiment("12345")
+        )
 
     def test_delete_model_instance(self):
         """Test case for delete_model_instance
 
         Deletes a model instance, given its ID  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.delete_model_instance("12345")
+        )
 
     def test_deployment_create(self):
         """Test case for deployment_create
@@ -539,21 +614,37 @@ class TestDefaultApi(unittest.TestCase):
 
         Gets the best model among the given model instance IDs, based on the evaluation type and column metric  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.get_best_model_among_model_ids(
+                BestModel(
+                    ids=["12345",
+                         "23456",
+                         "34567",
+                         "45678",
+                         "56789"],
+                    column_name_metric="f1",
+                    eval_type="REGRESSON_EVALUATION",
+                )
+            )
+        )
 
     def test_get_evaluation_for_model_id(self):
         """Test case for get_evaluation_for_model_id
 
         Gets the list of evaluation results entity, given a model instance ID  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.get_evaluation_for_model_id("12345")
+        )
 
     def test_get_examples_for_minibatch(self):
         """Test case for get_examples_for_minibatch
 
         Gets all the examples for a minibatch ID  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.get_examples_for_minibatch("12345")
+        )
 
     def test_get_experiment(self):
         """Test case for get_experiment
@@ -580,7 +671,9 @@ class TestDefaultApi(unittest.TestCase):
 
         Gets a minibatch for the model  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.get_minibatch("12345")
+        )
 
     def test_get_model_instance(self):
         """Test case for get_model_instance
@@ -605,14 +698,25 @@ class TestDefaultApi(unittest.TestCase):
 
         Retrieves the image transform process JSON string  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance.imagetransformprocess_get(
+                "deployment_name12345",
+                "image_transform_name12345"
+            )
+        )
 
     def test_imagetransformprocess_post(self):
         """Test case for imagetransformprocess_post
 
         Sets the image transform process through the provided JSON string  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance.imagetransformprocess_post(
+                "deployment_name12345",
+                "image_transform_name12345",
+                ImageTransformProcess()
+            )
+        )
 
     def test_jsonarray(self):
         """Test case for jsonarray
@@ -647,7 +751,14 @@ class TestDefaultApi(unittest.TestCase):
 
         Post JSON credentials and obtain a JWT authorization token.  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance.login(
+                Credentials(
+                    user_id="admin",
+                    password="admin"
+                )
+            )
+        )
 
     def test_logs(self):
         """Test case for logs
@@ -675,21 +786,35 @@ class TestDefaultApi(unittest.TestCase):
 
         Retrieve a list of all the deployed models given a deployment id  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance.models("12345")
+        )
 
     def test_modelset(self):
         """Test case for modelset
 
         Set the model to be served  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance.modelset(
+                "deployment_name12345",
+                "model_name12345"
+                # Todo: add a file here
+            )
+        )
 
     def test_modelupdate(self):
         """Test case for modelupdate
 
         Update the model to be served  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance.modelupdate(
+                "deployment_name12345",
+                "model_name12345"
+                # Todo: add a file here
+            )
+        )
 
     def test_multiclassify(self):
         """Test case for multiclassify
@@ -808,21 +933,44 @@ class TestDefaultApi(unittest.TestCase):
 
         Updates the best model for an experiment  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.update_best_model_for_experiment(
+                UpdateBestModel(
+                    "12345",
+                    "12345"
+                )
+            )
+        )
 
     def test_update_experiment(self):
         """Test case for update_experiment
 
         Updates an experiment, given an experiment entity  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.update_experiment(
+                experiment_id="12345",
+                experiment_entity=ExperimentEntity(
+                    experiment_name="experiment_name23456",
+                    experiment_description="Updated experiment"
+                )
+            )
+        )
 
     def test_update_model_history(self):
         """Test case for update_model_history
 
         Update a model history / workspace  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance_mh.update_model_history(
+                model_history_id="12345",
+                update_model_history_request=AddModelHistoryRequest(
+                    model_name="model_history23456",
+                    model_labels="label3, label4"
+                )
+            )
+        )
 
     def test_upload(self):
         """Test case for upload
