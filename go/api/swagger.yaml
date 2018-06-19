@@ -75,6 +75,7 @@ paths:
         description: "The URI of the model"
         required: true
         type: "string"
+        format: "uri"
         x-exportParamName: "ModelURI"
       responses:
         200:
@@ -106,6 +107,7 @@ paths:
         description: "The URI of the model"
         required: true
         type: "string"
+        format: "uri"
         x-exportParamName: "ModelURI"
       responses:
         200:
@@ -135,6 +137,7 @@ paths:
         description: "The URI of the model"
         required: true
         type: "string"
+        format: "uri"
         x-exportParamName: "ModelURI"
       responses:
         200:
@@ -166,6 +169,7 @@ paths:
         description: "The URI of the model"
         required: true
         type: "string"
+        format: "uri"
         x-exportParamName: "ModelURI"
       responses:
         200:
@@ -195,6 +199,7 @@ paths:
         description: "The URI of the model"
         required: true
         type: "string"
+        format: "uri"
         x-exportParamName: "ModelURI"
       responses:
         200:
@@ -226,6 +231,7 @@ paths:
         description: "The URI of the model"
         required: true
         type: "string"
+        format: "uri"
         x-exportParamName: "ModelURI"
       responses:
         200:
@@ -257,6 +263,7 @@ paths:
         description: "The URI of the model"
         required: true
         type: "string"
+        format: "uri"
         x-exportParamName: "ModelURI"
       responses:
         200:
@@ -288,6 +295,7 @@ paths:
         description: "The URI of the model"
         required: true
         type: "string"
+        format: "uri"
         x-exportParamName: "ModelURI"
       responses:
         200:
@@ -320,6 +328,7 @@ paths:
         description: "The URI of the model"
         required: true
         type: "string"
+        format: "uri"
         x-exportParamName: "ModelURI"
       responses:
         200:

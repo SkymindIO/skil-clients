@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skymind.SKIL", "src\Skymind.SKIL\Skymind.SKIL.csproj", "{F32D3DEA-9664-4FB3-A294-109664CFC1CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skymind.SKIL", "src\Skymind.SKIL\Skymind.SKIL.csproj", "{82273F22-F9B4-49BF-8E23-3C7B0CFC8E89}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skymind.SKIL.Test", "src\Skymind.SKIL.Test\Skymind.SKIL.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F32D3DEA-9664-4FB3-A294-109664CFC1CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F32D3DEA-9664-4FB3-A294-109664CFC1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F32D3DEA-9664-4FB3-A294-109664CFC1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F32D3DEA-9664-4FB3-A294-109664CFC1CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82273F22-F9B4-49BF-8E23-3C7B0CFC8E89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82273F22-F9B4-49BF-8E23-3C7B0CFC8E89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82273F22-F9B4-49BF-8E23-3C7B0CFC8E89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82273F22-F9B4-49BF-8E23-3C7B0CFC8E89}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU
