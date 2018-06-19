@@ -4,29 +4,27 @@ All URIs are relative to *https://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classify | Use the deployed model to classify the input
-[**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**classify**](DefaultApi.md#classify) | **POST** /endpoints/{modelURI}/default/classify | Use the deployed model to classify the input
+[**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{modelURI}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{modelURI}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
 [**deployModel**](DefaultApi.md#deployModel) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**deploymentCreate**](DefaultApi.md#deploymentCreate) | **POST** /deployment | Create a new deployment group.
-[**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{modelURI}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**logfilepath**](DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/default/logfilepath | Get logs file path
 [**login**](DefaultApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
 [**logs**](DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/logs | Get logs
-[**modelset**](DefaultApi.md#modelset) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelset | Set the model to be served
-[**modelupdate**](DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
-[**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
-[**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
-[**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
-[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{modelURI}/default/multiclassify | Represents all of the labels for a given classification
+[**predict**](DefaultApi.md#predict) | **POST** /endpoints/{modelURI}/default/predict | Run inference on the input array.
+[**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{modelURI}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{modelURI}/default/predictwithpreprocess | Preprocesses the input and run inference on it
+[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{modelURI}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**updateState**](DefaultApi.md#updateState) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
 <a name="classify"></a>
 # **classify**
-> ClassificationResult classify(body, deploymentName, modelName)
+> ClassificationResult classify(body, modelURI)
 
 Use the deployed model to classify the input
 
@@ -45,9 +43,7 @@ var apiInstance = new SkilClient.DefaultApi();
 
 var body = new SkilClient.Prediction(); // Prediction | The input NDArray
 
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
+var modelURI = "modelURI_example"; // String | The URI of the model
 
 
 var callback = function(error, data, response) {
@@ -57,7 +53,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.classify(body, deploymentName, modelName, callback);
+apiInstance.classify(body, modelURI, callback);
 ```
 
 ### Parameters
@@ -65,8 +61,7 @@ apiInstance.classify(body, deploymentName, modelName, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **deploymentName** | **String**| Name of the deployment group | 
- **modelName** | **String**| ID or name of the deployed model | 
+ **modelURI** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -83,7 +78,7 @@ Name | Type | Description  | Notes
 
 <a name="classifyarray"></a>
 # **classifyarray**
-> Base64NDArrayBody classifyarray(body, deploymentName, modelName)
+> Base64NDArrayBody classifyarray(body, modelURI)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
@@ -102,9 +97,7 @@ var apiInstance = new SkilClient.DefaultApi();
 
 var body = new SkilClient.Prediction(); // Prediction | The input NDArray
 
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
+var modelURI = "modelURI_example"; // String | The URI of the model
 
 
 var callback = function(error, data, response) {
@@ -114,7 +107,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.classifyarray(body, deploymentName, modelName, callback);
+apiInstance.classifyarray(body, modelURI, callback);
 ```
 
 ### Parameters
@@ -122,8 +115,7 @@ apiInstance.classifyarray(body, deploymentName, modelName, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **deploymentName** | **String**| Name of the deployment group | 
- **modelName** | **String**| ID or name of the deployed model | 
+ **modelURI** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -140,7 +132,7 @@ Name | Type | Description  | Notes
 
 <a name="classifyimage"></a>
 # **classifyimage**
-> ClassificationResult classifyimage(deploymentName, modelName, opts)
+> ClassificationResult classifyimage(modelURI, opts)
 
 Use the deployed model to classify the input, using input image file from multipart form data.
 
@@ -157,9 +149,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
+var modelURI = "modelURI_example"; // String | The URI of the model
 
 var opts = { 
   'image': "/path/to/file.txt" // File | The file to upload.
@@ -172,15 +162,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.classifyimage(deploymentName, modelName, opts, callback);
+apiInstance.classifyimage(modelURI, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **modelName** | **String**| ID or name of the deployed model | 
+ **modelURI** | **String**| The URI of the model | 
  **image** | **File**| The file to upload. | [optional] 
 
 ### Return type
@@ -303,7 +292,7 @@ Name | Type | Description  | Notes
 
 <a name="jsonarray"></a>
 # **jsonarray**
-> JsonArrayResponse jsonarray(body, deploymentName, modelName)
+> JsonArrayResponse jsonarray(body, modelURI)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
@@ -322,9 +311,7 @@ var apiInstance = new SkilClient.DefaultApi();
 
 var body = new SkilClient.Prediction(); // Prediction | The input NDArray
 
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
+var modelURI = "modelURI_example"; // String | The URI of the model
 
 
 var callback = function(error, data, response) {
@@ -334,7 +321,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.jsonarray(body, deploymentName, modelName, callback);
+apiInstance.jsonarray(body, modelURI, callback);
 ```
 
 ### Parameters
@@ -342,8 +329,7 @@ apiInstance.jsonarray(body, deploymentName, modelName, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **deploymentName** | **String**| Name of the deployment group | 
- **modelName** | **String**| ID or name of the deployed model | 
+ **modelURI** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -520,125 +506,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="modelset"></a>
-# **modelset**
-> ModelStatus modelset(deploymentName, modelName, opts)
-
-Set the model to be served
-
-### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-var opts = { 
-  'file': "/path/to/file.txt" // File | The model file to upload (.pb file)
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.modelset(deploymentName, modelName, opts, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **modelName** | **String**| ID or name of the deployed model | 
- **file** | **File**| The model file to upload (.pb file) | [optional] 
-
-### Return type
-
-[**ModelStatus**](ModelStatus.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-<a name="modelupdate"></a>
-# **modelupdate**
-> ModelStatus modelupdate(deploymentName, modelName, opts)
-
-Update the model to be served
-
-### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-var opts = { 
-  'file': "/path/to/file.txt" // File | The model file to update with (.pb file)
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.modelupdate(deploymentName, modelName, opts, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **modelName** | **String**| ID or name of the deployed model | 
- **file** | **File**| The model file to update with (.pb file) | [optional] 
-
-### Return type
-
-[**ModelStatus**](ModelStatus.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
 <a name="multiclassify"></a>
 # **multiclassify**
-> MultiClassClassificationResult multiclassify(body, deploymentName, modelName)
+> MultiClassClassificationResult multiclassify(body, modelURI)
 
 Represents all of the labels for a given classification
 
@@ -657,9 +527,7 @@ var apiInstance = new SkilClient.DefaultApi();
 
 var body = new SkilClient.Prediction(); // Prediction | The input NDArray
 
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
+var modelURI = "modelURI_example"; // String | The URI of the model
 
 
 var callback = function(error, data, response) {
@@ -669,7 +537,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.multiclassify(body, deploymentName, modelName, callback);
+apiInstance.multiclassify(body, modelURI, callback);
 ```
 
 ### Parameters
@@ -677,8 +545,7 @@ apiInstance.multiclassify(body, deploymentName, modelName, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **deploymentName** | **String**| Name of the deployment group | 
- **modelName** | **String**| ID or name of the deployed model | 
+ **modelURI** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -695,7 +562,7 @@ Name | Type | Description  | Notes
 
 <a name="predict"></a>
 # **predict**
-> Prediction predict(body, deploymentName, modelName)
+> Prediction predict(body, modelURI)
 
 Run inference on the input array.
 
@@ -714,9 +581,7 @@ var apiInstance = new SkilClient.DefaultApi();
 
 var body = new SkilClient.Prediction(); // Prediction | The input NDArray
 
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
+var modelURI = "modelURI_example"; // String | The URI of the model
 
 
 var callback = function(error, data, response) {
@@ -726,7 +591,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.predict(body, deploymentName, modelName, callback);
+apiInstance.predict(body, modelURI, callback);
 ```
 
 ### Parameters
@@ -734,8 +599,7 @@ apiInstance.predict(body, deploymentName, modelName, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **deploymentName** | **String**| Name of the deployment group | 
- **modelName** | **String**| ID or name of the deployed model | 
+ **modelURI** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -752,7 +616,7 @@ Name | Type | Description  | Notes
 
 <a name="predictimage"></a>
 # **predictimage**
-> Prediction predictimage(deploymentName, modelName, opts)
+> Prediction predictimage(modelURI, opts)
 
 Run inference on the input array, using input image file from multipart form data.
 
@@ -769,9 +633,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
+var modelURI = "modelURI_example"; // String | The URI of the model
 
 var opts = { 
   'image': "/path/to/file.txt" // File | The file to upload.
@@ -784,15 +646,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.predictimage(deploymentName, modelName, opts, callback);
+apiInstance.predictimage(modelURI, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **modelName** | **String**| ID or name of the deployed model | 
+ **modelURI** | **String**| The URI of the model | 
  **image** | **File**| The file to upload. | [optional] 
 
 ### Return type
@@ -810,7 +671,7 @@ Name | Type | Description  | Notes
 
 <a name="predictwithpreprocess"></a>
 # **predictwithpreprocess**
-> Prediction predictwithpreprocess(body, deploymentName, modelName)
+> Prediction predictwithpreprocess(body, modelURI)
 
 Preprocesses the input and run inference on it
 
@@ -829,9 +690,7 @@ var apiInstance = new SkilClient.DefaultApi();
 
 var body = [new SkilClient.[String]()]; // [String] | The input array
 
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
+var modelURI = "modelURI_example"; // String | The URI of the model
 
 
 var callback = function(error, data, response) {
@@ -841,7 +700,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.predictwithpreprocess(body, deploymentName, modelName, callback);
+apiInstance.predictwithpreprocess(body, modelURI, callback);
 ```
 
 ### Parameters
@@ -849,8 +708,7 @@ apiInstance.predictwithpreprocess(body, deploymentName, modelName, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **[String]**| The input array | 
- **deploymentName** | **String**| Name of the deployment group | 
- **modelName** | **String**| ID or name of the deployed model | 
+ **modelURI** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -867,7 +725,7 @@ Name | Type | Description  | Notes
 
 <a name="predictwithpreprocessjson"></a>
 # **predictwithpreprocessjson**
-> JsonArrayResponse predictwithpreprocessjson(body, deploymentName, modelName)
+> JsonArrayResponse predictwithpreprocessjson(body, modelURI)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
@@ -886,9 +744,7 @@ var apiInstance = new SkilClient.DefaultApi();
 
 var body = [new SkilClient.[String]()]; // [String] | The input array
 
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
+var modelURI = "modelURI_example"; // String | The URI of the model
 
 
 var callback = function(error, data, response) {
@@ -898,7 +754,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.predictwithpreprocessjson(body, deploymentName, modelName, callback);
+apiInstance.predictwithpreprocessjson(body, modelURI, callback);
 ```
 
 ### Parameters
@@ -906,8 +762,7 @@ apiInstance.predictwithpreprocessjson(body, deploymentName, modelName, callback)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **[String]**| The input array | 
- **deploymentName** | **String**| Name of the deployment group | 
- **modelName** | **String**| ID or name of the deployed model | 
+ **modelURI** | **String**| The URI of the model | 
 
 ### Return type
 

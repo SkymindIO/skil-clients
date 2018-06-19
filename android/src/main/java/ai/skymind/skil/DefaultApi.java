@@ -34,7 +34,6 @@ import ai.skymind.skil.model.JsonArrayResponse;
 import java.util.*;
 import ai.skymind.skil.model.LogBatch;
 import ai.skymind.skil.model.LogRequest;
-import ai.skymind.skil.model.ModelStatus;
 import ai.skymind.skil.model.MultiClassClassificationResult;
 import ai.skymind.skil.model.NewDeployment;
 import ai.skymind.skil.model.Prediction;
@@ -75,30 +74,24 @@ public class DefaultApi {
   * Use the deployed model to classify the input
   * 
    * @param body The input NDArray
-   * @param deploymentName Name of the deployment group
-   * @param modelName ID or name of the deployed model
+   * @param modelURI The URI of the model
    * @return ClassificationResult
   */
-  public ClassificationResult classify (Prediction body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ClassificationResult classify (Prediction body, String modelURI) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling classify",
         new ApiException(400, "Missing the required parameter 'body' when calling classify"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classify",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling classify"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling classify",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling classify"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling classify",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling classify"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classify".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/classify".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -149,9 +142,9 @@ public class DefaultApi {
       /**
    * Use the deployed model to classify the input
    * 
-   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input NDArray   * @param modelURI The URI of the model
   */
-  public void classify (Prediction body, String deploymentName, String modelName, final Response.Listener<ClassificationResult> responseListener, final Response.ErrorListener errorListener) {
+  public void classify (Prediction body, String modelURI, final Response.Listener<ClassificationResult> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -159,19 +152,14 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling classify",
         new ApiException(400, "Missing the required parameter 'body' when calling classify"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classify",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling classify"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling classify",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling classify"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling classify",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling classify"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/classify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -225,30 +213,24 @@ public class DefaultApi {
   * Same as /classify but returns the output as Base64NDArrayBody
   * 
    * @param body The input NDArray
-   * @param deploymentName Name of the deployment group
-   * @param modelName ID or name of the deployed model
+   * @param modelURI The URI of the model
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody classifyarray (Prediction body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody classifyarray (Prediction body, String modelURI) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling classifyarray",
         new ApiException(400, "Missing the required parameter 'body' when calling classifyarray"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classifyarray",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling classifyarray"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling classifyarray",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling classifyarray"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling classifyarray",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling classifyarray"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/classifyarray".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -299,9 +281,9 @@ public class DefaultApi {
       /**
    * Same as /classify but returns the output as Base64NDArrayBody
    * 
-   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input NDArray   * @param modelURI The URI of the model
   */
-  public void classifyarray (Prediction body, String deploymentName, String modelName, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void classifyarray (Prediction body, String modelURI, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -309,19 +291,14 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling classifyarray",
         new ApiException(400, "Missing the required parameter 'body' when calling classifyarray"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classifyarray",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling classifyarray"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling classifyarray",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling classifyarray"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling classifyarray",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling classifyarray"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/classifyarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -374,26 +351,20 @@ public class DefaultApi {
   /**
   * Use the deployed model to classify the input, using input image file from multipart form data.
   * 
-   * @param deploymentName Name of the deployment group
-   * @param modelName ID or name of the deployed model
+   * @param modelURI The URI of the model
    * @param image The file to upload.
    * @return ClassificationResult
   */
-  public ClassificationResult classifyimage (String deploymentName, String modelName, File image) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ClassificationResult classifyimage (String modelURI, File image) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classifyimage",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling classifyimage"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling classifyimage",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling classifyimage"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling classifyimage",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling classifyimage"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/classifyimage".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -447,24 +418,19 @@ public class DefaultApi {
       /**
    * Use the deployed model to classify the input, using input image file from multipart form data.
    * 
-   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model   * @param image The file to upload.
+   * @param modelURI The URI of the model   * @param image The file to upload.
   */
-  public void classifyimage (String deploymentName, String modelName, File image, final Response.Listener<ClassificationResult> responseListener, final Response.ErrorListener errorListener) {
+  public void classifyimage (String modelURI, File image, final Response.Listener<ClassificationResult> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classifyimage",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling classifyimage"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling classifyimage",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling classifyimage"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling classifyimage",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling classifyimage"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/classifyimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -790,30 +756,24 @@ public class DefaultApi {
   * Run inference on the input and returns it as a JsonArrayResponse
   * 
    * @param body The input NDArray
-   * @param deploymentName Name of the deployment group
-   * @param modelName ID or name of the deployed model
+   * @param modelURI The URI of the model
    * @return JsonArrayResponse
   */
-  public JsonArrayResponse jsonarray (Prediction body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public JsonArrayResponse jsonarray (Prediction body, String modelURI) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling jsonarray",
         new ApiException(400, "Missing the required parameter 'body' when calling jsonarray"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling jsonarray",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling jsonarray"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling jsonarray",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling jsonarray"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling jsonarray",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling jsonarray"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/jsonarray".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -864,9 +824,9 @@ public class DefaultApi {
       /**
    * Run inference on the input and returns it as a JsonArrayResponse
    * 
-   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input NDArray   * @param modelURI The URI of the model
   */
-  public void jsonarray (Prediction body, String deploymentName, String modelName, final Response.Listener<JsonArrayResponse> responseListener, final Response.ErrorListener errorListener) {
+  public void jsonarray (Prediction body, String modelURI, final Response.Listener<JsonArrayResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -874,19 +834,14 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling jsonarray",
         new ApiException(400, "Missing the required parameter 'body' when calling jsonarray"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling jsonarray",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling jsonarray"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling jsonarray",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling jsonarray"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling jsonarray",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling jsonarray"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/jsonarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1353,329 +1308,27 @@ public class DefaultApi {
     }
   }
   /**
-  * Set the model to be served
-  * 
-   * @param deploymentName Name of the deployment group
-   * @param modelName ID or name of the deployed model
-   * @param file The model file to upload (.pb file)
-   * @return ModelStatus
-  */
-  public ModelStatus modelset (String deploymentName, String modelName, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = null;
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling modelset",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling modelset"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling modelset",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling modelset"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/modelset".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-    String[] contentTypes = {
-      "multipart/form-data"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      if (file != null) {
-        localVarBuilder.addBinaryBody("file", file);
-      }
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-    }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
-      if (localVarResponse != null) {
-         return (ModelStatus) ApiInvoker.deserialize(localVarResponse, "", ModelStatus.class);
-      } else {
-         return null;
-      }
-    } catch (ApiException ex) {
-       throw ex;
-    } catch (InterruptedException ex) {
-       throw ex;
-    } catch (ExecutionException ex) {
-      if (ex.getCause() instanceof VolleyError) {
-        VolleyError volleyError = (VolleyError)ex.getCause();
-        if (volleyError.networkResponse != null) {
-          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
-        }
-      }
-      throw ex;
-    } catch (TimeoutException ex) {
-      throw ex;
-    }
-  }
-
-      /**
-   * Set the model to be served
-   * 
-   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model   * @param file The model file to upload (.pb file)
-  */
-  public void modelset (String deploymentName, String modelName, File file, final Response.Listener<ModelStatus> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = null;
-
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling modelset",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling modelset"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling modelset",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling modelset"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/modelset".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-
-
-
-    String[] contentTypes = {
-      "multipart/form-data"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      
-      if (file != null) {
-        localVarBuilder.addBinaryBody("file", file);
-      }
-      
-
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-      
-    }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
-        new Response.Listener<String>() {
-          @Override
-          public void onResponse(String localVarResponse) {
-            try {
-              responseListener.onResponse((ModelStatus) ApiInvoker.deserialize(localVarResponse,  "", ModelStatus.class));
-            } catch (ApiException exception) {
-               errorListener.onErrorResponse(new VolleyError(exception));
-            }
-          }
-      }, new Response.ErrorListener() {
-          @Override
-          public void onErrorResponse(VolleyError error) {
-            errorListener.onErrorResponse(error);
-          }
-      });
-    } catch (ApiException ex) {
-      errorListener.onErrorResponse(new VolleyError(ex));
-    }
-  }
-  /**
-  * Update the model to be served
-  * 
-   * @param deploymentName Name of the deployment group
-   * @param modelName ID or name of the deployed model
-   * @param file The model file to update with (.pb file)
-   * @return ModelStatus
-  */
-  public ModelStatus modelupdate (String deploymentName, String modelName, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = null;
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling modelupdate",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling modelupdate"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling modelupdate",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling modelupdate"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-    String[] contentTypes = {
-      "multipart/form-data"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      if (file != null) {
-        localVarBuilder.addBinaryBody("file", file);
-      }
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-    }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
-      if (localVarResponse != null) {
-         return (ModelStatus) ApiInvoker.deserialize(localVarResponse, "", ModelStatus.class);
-      } else {
-         return null;
-      }
-    } catch (ApiException ex) {
-       throw ex;
-    } catch (InterruptedException ex) {
-       throw ex;
-    } catch (ExecutionException ex) {
-      if (ex.getCause() instanceof VolleyError) {
-        VolleyError volleyError = (VolleyError)ex.getCause();
-        if (volleyError.networkResponse != null) {
-          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
-        }
-      }
-      throw ex;
-    } catch (TimeoutException ex) {
-      throw ex;
-    }
-  }
-
-      /**
-   * Update the model to be served
-   * 
-   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model   * @param file The model file to update with (.pb file)
-  */
-  public void modelupdate (String deploymentName, String modelName, File file, final Response.Listener<ModelStatus> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = null;
-
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling modelupdate",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling modelupdate"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling modelupdate",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling modelupdate"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-
-
-
-    String[] contentTypes = {
-      "multipart/form-data"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      
-      if (file != null) {
-        localVarBuilder.addBinaryBody("file", file);
-      }
-      
-
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-      
-    }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
-        new Response.Listener<String>() {
-          @Override
-          public void onResponse(String localVarResponse) {
-            try {
-              responseListener.onResponse((ModelStatus) ApiInvoker.deserialize(localVarResponse,  "", ModelStatus.class));
-            } catch (ApiException exception) {
-               errorListener.onErrorResponse(new VolleyError(exception));
-            }
-          }
-      }, new Response.ErrorListener() {
-          @Override
-          public void onErrorResponse(VolleyError error) {
-            errorListener.onErrorResponse(error);
-          }
-      });
-    } catch (ApiException ex) {
-      errorListener.onErrorResponse(new VolleyError(ex));
-    }
-  }
-  /**
   * Represents all of the labels for a given classification
   * 
    * @param body The input NDArray
-   * @param deploymentName Name of the deployment group
-   * @param modelName ID or name of the deployed model
+   * @param modelURI The URI of the model
    * @return MultiClassClassificationResult
   */
-  public MultiClassClassificationResult multiclassify (Prediction body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public MultiClassClassificationResult multiclassify (Prediction body, String modelURI) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling multiclassify",
         new ApiException(400, "Missing the required parameter 'body' when calling multiclassify"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling multiclassify",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling multiclassify"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling multiclassify",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling multiclassify"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling multiclassify",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling multiclassify"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/multiclassify".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1726,9 +1379,9 @@ public class DefaultApi {
       /**
    * Represents all of the labels for a given classification
    * 
-   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input NDArray   * @param modelURI The URI of the model
   */
-  public void multiclassify (Prediction body, String deploymentName, String modelName, final Response.Listener<MultiClassClassificationResult> responseListener, final Response.ErrorListener errorListener) {
+  public void multiclassify (Prediction body, String modelURI, final Response.Listener<MultiClassClassificationResult> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -1736,19 +1389,14 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling multiclassify",
         new ApiException(400, "Missing the required parameter 'body' when calling multiclassify"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling multiclassify",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling multiclassify"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling multiclassify",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling multiclassify"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling multiclassify",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling multiclassify"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/multiclassify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1802,30 +1450,24 @@ public class DefaultApi {
   * Run inference on the input array.
   * 
    * @param body The input NDArray
-   * @param deploymentName Name of the deployment group
-   * @param modelName ID or name of the deployed model
+   * @param modelURI The URI of the model
    * @return Prediction
   */
-  public Prediction predict (Prediction body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Prediction predict (Prediction body, String modelURI) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling predict",
         new ApiException(400, "Missing the required parameter 'body' when calling predict"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predict",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling predict"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predict",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling predict"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling predict",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling predict"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predict".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/predict".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1876,9 +1518,9 @@ public class DefaultApi {
       /**
    * Run inference on the input array.
    * 
-   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input NDArray   * @param modelURI The URI of the model
   */
-  public void predict (Prediction body, String deploymentName, String modelName, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
+  public void predict (Prediction body, String modelURI, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -1886,19 +1528,14 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling predict",
         new ApiException(400, "Missing the required parameter 'body' when calling predict"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predict",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling predict"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predict",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling predict"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling predict",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling predict"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predict".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/predict".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1951,26 +1588,20 @@ public class DefaultApi {
   /**
   * Run inference on the input array, using input image file from multipart form data.
   * 
-   * @param deploymentName Name of the deployment group
-   * @param modelName ID or name of the deployed model
+   * @param modelURI The URI of the model
    * @param image The file to upload.
    * @return Prediction
   */
-  public Prediction predictimage (String deploymentName, String modelName, File image) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Prediction predictimage (String modelURI, File image) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictimage",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictimage"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predictimage",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling predictimage"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling predictimage",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling predictimage"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/predictimage".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2024,24 +1655,19 @@ public class DefaultApi {
       /**
    * Run inference on the input array, using input image file from multipart form data.
    * 
-   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model   * @param image The file to upload.
+   * @param modelURI The URI of the model   * @param image The file to upload.
   */
-  public void predictimage (String deploymentName, String modelName, File image, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
+  public void predictimage (String modelURI, File image, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictimage",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictimage"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predictimage",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling predictimage"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling predictimage",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling predictimage"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/predictimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2100,30 +1726,24 @@ public class DefaultApi {
   * Preprocesses the input and run inference on it
   * 
    * @param body The input array
-   * @param deploymentName Name of the deployment group
-   * @param modelName ID or name of the deployed model
+   * @param modelURI The URI of the model
    * @return Prediction
   */
-  public Prediction predictwithpreprocess (List<String> body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Prediction predictwithpreprocess (List<String> body, String modelURI) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling predictwithpreprocess",
         new ApiException(400, "Missing the required parameter 'body' when calling predictwithpreprocess"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictwithpreprocess",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictwithpreprocess"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predictwithpreprocess",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling predictwithpreprocess"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling predictwithpreprocess",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling predictwithpreprocess"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/predictwithpreprocess".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2174,9 +1794,9 @@ public class DefaultApi {
       /**
    * Preprocesses the input and run inference on it
    * 
-   * @param body The input array   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input array   * @param modelURI The URI of the model
   */
-  public void predictwithpreprocess (List<String> body, String deploymentName, String modelName, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
+  public void predictwithpreprocess (List<String> body, String modelURI, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -2184,19 +1804,14 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling predictwithpreprocess",
         new ApiException(400, "Missing the required parameter 'body' when calling predictwithpreprocess"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictwithpreprocess",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictwithpreprocess"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predictwithpreprocess",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling predictwithpreprocess"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling predictwithpreprocess",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling predictwithpreprocess"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/predictwithpreprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2250,30 +1865,24 @@ public class DefaultApi {
   * Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
   * 
    * @param body The input array
-   * @param deploymentName Name of the deployment group
-   * @param modelName ID or name of the deployed model
+   * @param modelURI The URI of the model
    * @return JsonArrayResponse
   */
-  public JsonArrayResponse predictwithpreprocessjson (List<String> body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public JsonArrayResponse predictwithpreprocessjson (List<String> body, String modelURI) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling predictwithpreprocessjson",
         new ApiException(400, "Missing the required parameter 'body' when calling predictwithpreprocessjson"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictwithpreprocessjson",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictwithpreprocessjson"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predictwithpreprocessjson",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling predictwithpreprocessjson"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling predictwithpreprocessjson",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling predictwithpreprocessjson"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/predictwithpreprocessjson".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2324,9 +1933,9 @@ public class DefaultApi {
       /**
    * Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
    * 
-   * @param body The input array   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input array   * @param modelURI The URI of the model
   */
-  public void predictwithpreprocessjson (List<String> body, String deploymentName, String modelName, final Response.Listener<JsonArrayResponse> responseListener, final Response.ErrorListener errorListener) {
+  public void predictwithpreprocessjson (List<String> body, String modelURI, final Response.Listener<JsonArrayResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -2334,19 +1943,14 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling predictwithpreprocessjson",
         new ApiException(400, "Missing the required parameter 'body' when calling predictwithpreprocessjson"));
     }
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictwithpreprocessjson",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictwithpreprocessjson"));
-    }
-    // verify the required parameter 'modelName' is set
-    if (modelName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predictwithpreprocessjson",
-        new ApiException(400, "Missing the required parameter 'modelName' when calling predictwithpreprocessjson"));
+    // verify the required parameter 'modelURI' is set
+    if (modelURI == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelURI' when calling predictwithpreprocessjson",
+        new ApiException(400, "Missing the required parameter 'modelURI' when calling predictwithpreprocessjson"));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{modelURI}/default/predictwithpreprocessjson".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();

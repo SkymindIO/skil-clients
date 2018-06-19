@@ -33,47 +33,45 @@ class DefaultApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def classify(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classify(self, body, model_uri, **kwargs):  # noqa: E501
         """Use the deployed model to classify the input  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classify(body, deployment_name, model_name, async=True)
+        >>> thread = api.classify(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: ClassificationResult
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.classify_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.classify_with_http_info(body, model_uri, **kwargs)  # noqa: E501
         else:
-            (data) = self.classify_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.classify_with_http_info(body, model_uri, **kwargs)  # noqa: E501
             return data
 
-    def classify_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classify_with_http_info(self, body, model_uri, **kwargs):  # noqa: E501
         """Use the deployed model to classify the input  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classify_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.classify_with_http_info(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: ClassificationResult
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'model_uri']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -92,22 +90,16 @@ class DefaultApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `classify`")  # noqa: E501
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `classify`")  # noqa: E501
-        # verify the required parameter 'model_name' is set
-        if ('model_name' not in params or
-                params['model_name'] is None):
-            raise ValueError("Missing the required parameter `model_name` when calling `classify`")  # noqa: E501
+        # verify the required parameter 'model_uri' is set
+        if ('model_uri' not in params or
+                params['model_uri'] is None):
+            raise ValueError("Missing the required parameter `model_uri` when calling `classify`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'model_name' in params:
-            path_params['modelName'] = params['model_name']  # noqa: E501
+        if 'model_uri' in params:
+            path_params['modelURI'] = params['model_uri']  # noqa: E501
 
         query_params = []
 
@@ -131,7 +123,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/classify', 'POST',
+            '/endpoints/{modelURI}/default/classify', 'POST',
             path_params,
             query_params,
             header_params,
@@ -146,47 +138,45 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def classifyarray(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classifyarray(self, body, model_uri, **kwargs):  # noqa: E501
         """Same as /classify but returns the output as Base64NDArrayBody  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classifyarray(body, deployment_name, model_name, async=True)
+        >>> thread = api.classifyarray(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.classifyarray_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.classifyarray_with_http_info(body, model_uri, **kwargs)  # noqa: E501
         else:
-            (data) = self.classifyarray_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.classifyarray_with_http_info(body, model_uri, **kwargs)  # noqa: E501
             return data
 
-    def classifyarray_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classifyarray_with_http_info(self, body, model_uri, **kwargs):  # noqa: E501
         """Same as /classify but returns the output as Base64NDArrayBody  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classifyarray_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.classifyarray_with_http_info(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'model_uri']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -205,22 +195,16 @@ class DefaultApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `classifyarray`")  # noqa: E501
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `classifyarray`")  # noqa: E501
-        # verify the required parameter 'model_name' is set
-        if ('model_name' not in params or
-                params['model_name'] is None):
-            raise ValueError("Missing the required parameter `model_name` when calling `classifyarray`")  # noqa: E501
+        # verify the required parameter 'model_uri' is set
+        if ('model_uri' not in params or
+                params['model_uri'] is None):
+            raise ValueError("Missing the required parameter `model_uri` when calling `classifyarray`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'model_name' in params:
-            path_params['modelName'] = params['model_name']  # noqa: E501
+        if 'model_uri' in params:
+            path_params['modelURI'] = params['model_uri']  # noqa: E501
 
         query_params = []
 
@@ -244,7 +228,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/classifyarray', 'POST',
+            '/endpoints/{modelURI}/default/classifyarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -259,17 +243,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def classifyimage(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classifyimage(self, model_uri, **kwargs):  # noqa: E501
         """Use the deployed model to classify the input, using input image file from multipart form data.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classifyimage(deployment_name, model_name, async=True)
+        >>> thread = api.classifyimage(model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :param file image: The file to upload.
         :return: ClassificationResult
                  If the method is called asynchronously,
@@ -277,29 +260,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.classifyimage_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.classifyimage_with_http_info(model_uri, **kwargs)  # noqa: E501
         else:
-            (data) = self.classifyimage_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.classifyimage_with_http_info(model_uri, **kwargs)  # noqa: E501
             return data
 
-    def classifyimage_with_http_info(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classifyimage_with_http_info(self, model_uri, **kwargs):  # noqa: E501
         """Use the deployed model to classify the input, using input image file from multipart form data.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classifyimage_with_http_info(deployment_name, model_name, async=True)
+        >>> thread = api.classifyimage_with_http_info(model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :param file image: The file to upload.
         :return: ClassificationResult
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'model_name', 'image']  # noqa: E501
+        all_params = ['model_uri', 'image']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -314,22 +296,16 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `classifyimage`")  # noqa: E501
-        # verify the required parameter 'model_name' is set
-        if ('model_name' not in params or
-                params['model_name'] is None):
-            raise ValueError("Missing the required parameter `model_name` when calling `classifyimage`")  # noqa: E501
+        # verify the required parameter 'model_uri' is set
+        if ('model_uri' not in params or
+                params['model_uri'] is None):
+            raise ValueError("Missing the required parameter `model_uri` when calling `classifyimage`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'model_name' in params:
-            path_params['modelName'] = params['model_name']  # noqa: E501
+        if 'model_uri' in params:
+            path_params['modelURI'] = params['model_uri']  # noqa: E501
 
         query_params = []
 
@@ -353,7 +329,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/classifyimage', 'POST',
+            '/endpoints/{modelURI}/default/classifyimage', 'POST',
             path_params,
             query_params,
             header_params,
@@ -570,47 +546,45 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def jsonarray(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def jsonarray(self, body, model_uri, **kwargs):  # noqa: E501
         """Run inference on the input and returns it as a JsonArrayResponse  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.jsonarray(body, deployment_name, model_name, async=True)
+        >>> thread = api.jsonarray(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: JsonArrayResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.jsonarray_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.jsonarray_with_http_info(body, model_uri, **kwargs)  # noqa: E501
         else:
-            (data) = self.jsonarray_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.jsonarray_with_http_info(body, model_uri, **kwargs)  # noqa: E501
             return data
 
-    def jsonarray_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def jsonarray_with_http_info(self, body, model_uri, **kwargs):  # noqa: E501
         """Run inference on the input and returns it as a JsonArrayResponse  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.jsonarray_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.jsonarray_with_http_info(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: JsonArrayResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'model_uri']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -629,22 +603,16 @@ class DefaultApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `jsonarray`")  # noqa: E501
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `jsonarray`")  # noqa: E501
-        # verify the required parameter 'model_name' is set
-        if ('model_name' not in params or
-                params['model_name'] is None):
-            raise ValueError("Missing the required parameter `model_name` when calling `jsonarray`")  # noqa: E501
+        # verify the required parameter 'model_uri' is set
+        if ('model_uri' not in params or
+                params['model_uri'] is None):
+            raise ValueError("Missing the required parameter `model_uri` when calling `jsonarray`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'model_name' in params:
-            path_params['modelName'] = params['model_name']  # noqa: E501
+        if 'model_uri' in params:
+            path_params['modelURI'] = params['model_uri']  # noqa: E501
 
         query_params = []
 
@@ -668,7 +636,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/jsonarray', 'POST',
+            '/endpoints/{modelURI}/default/jsonarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -994,265 +962,45 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def modelset(self, deployment_name, model_name, **kwargs):  # noqa: E501
-        """Set the model to be served  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.modelset(deployment_name, model_name, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
-        :param file file: The model file to upload (.pb file)
-        :return: ModelStatus
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
-            return self.modelset_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
-        else:
-            (data) = self.modelset_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
-            return data
-
-    def modelset_with_http_info(self, deployment_name, model_name, **kwargs):  # noqa: E501
-        """Set the model to be served  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.modelset_with_http_info(deployment_name, model_name, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
-        :param file file: The model file to upload (.pb file)
-        :return: ModelStatus
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['deployment_name', 'model_name', 'file']  # noqa: E501
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method modelset" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `modelset`")  # noqa: E501
-        # verify the required parameter 'model_name' is set
-        if ('model_name' not in params or
-                params['model_name'] is None):
-            raise ValueError("Missing the required parameter `model_name` when calling `modelset`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'model_name' in params:
-            path_params['modelName'] = params['model_name']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/modelset', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ModelStatus',  # noqa: E501
-            auth_settings=auth_settings,
-            async=params.get('async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def modelupdate(self, deployment_name, model_name, **kwargs):  # noqa: E501
-        """Update the model to be served  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.modelupdate(deployment_name, model_name, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
-        :param file file: The model file to update with (.pb file)
-        :return: ModelStatus
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
-            return self.modelupdate_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
-        else:
-            (data) = self.modelupdate_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
-            return data
-
-    def modelupdate_with_http_info(self, deployment_name, model_name, **kwargs):  # noqa: E501
-        """Update the model to be served  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.modelupdate_with_http_info(deployment_name, model_name, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
-        :param file file: The model file to update with (.pb file)
-        :return: ModelStatus
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['deployment_name', 'model_name', 'file']  # noqa: E501
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method modelupdate" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `modelupdate`")  # noqa: E501
-        # verify the required parameter 'model_name' is set
-        if ('model_name' not in params or
-                params['model_name'] is None):
-            raise ValueError("Missing the required parameter `model_name` when calling `modelupdate`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'model_name' in params:
-            path_params['modelName'] = params['model_name']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/modelupdate', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ModelStatus',  # noqa: E501
-            auth_settings=auth_settings,
-            async=params.get('async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def multiclassify(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def multiclassify(self, body, model_uri, **kwargs):  # noqa: E501
         """Represents all of the labels for a given classification  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.multiclassify(body, deployment_name, model_name, async=True)
+        >>> thread = api.multiclassify(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: MultiClassClassificationResult
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.multiclassify_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.multiclassify_with_http_info(body, model_uri, **kwargs)  # noqa: E501
         else:
-            (data) = self.multiclassify_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.multiclassify_with_http_info(body, model_uri, **kwargs)  # noqa: E501
             return data
 
-    def multiclassify_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def multiclassify_with_http_info(self, body, model_uri, **kwargs):  # noqa: E501
         """Represents all of the labels for a given classification  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.multiclassify_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.multiclassify_with_http_info(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: MultiClassClassificationResult
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'model_uri']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1271,22 +1019,16 @@ class DefaultApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `multiclassify`")  # noqa: E501
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `multiclassify`")  # noqa: E501
-        # verify the required parameter 'model_name' is set
-        if ('model_name' not in params or
-                params['model_name'] is None):
-            raise ValueError("Missing the required parameter `model_name` when calling `multiclassify`")  # noqa: E501
+        # verify the required parameter 'model_uri' is set
+        if ('model_uri' not in params or
+                params['model_uri'] is None):
+            raise ValueError("Missing the required parameter `model_uri` when calling `multiclassify`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'model_name' in params:
-            path_params['modelName'] = params['model_name']  # noqa: E501
+        if 'model_uri' in params:
+            path_params['modelURI'] = params['model_uri']  # noqa: E501
 
         query_params = []
 
@@ -1310,7 +1052,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/multiclassify', 'POST',
+            '/endpoints/{modelURI}/default/multiclassify', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1325,47 +1067,45 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def predict(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predict(self, body, model_uri, **kwargs):  # noqa: E501
         """Run inference on the input array.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predict(body, deployment_name, model_name, async=True)
+        >>> thread = api.predict(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: Prediction
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.predict_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.predict_with_http_info(body, model_uri, **kwargs)  # noqa: E501
         else:
-            (data) = self.predict_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.predict_with_http_info(body, model_uri, **kwargs)  # noqa: E501
             return data
 
-    def predict_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predict_with_http_info(self, body, model_uri, **kwargs):  # noqa: E501
         """Run inference on the input array.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predict_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.predict_with_http_info(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: Prediction
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'model_uri']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1384,22 +1124,16 @@ class DefaultApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `predict`")  # noqa: E501
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `predict`")  # noqa: E501
-        # verify the required parameter 'model_name' is set
-        if ('model_name' not in params or
-                params['model_name'] is None):
-            raise ValueError("Missing the required parameter `model_name` when calling `predict`")  # noqa: E501
+        # verify the required parameter 'model_uri' is set
+        if ('model_uri' not in params or
+                params['model_uri'] is None):
+            raise ValueError("Missing the required parameter `model_uri` when calling `predict`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'model_name' in params:
-            path_params['modelName'] = params['model_name']  # noqa: E501
+        if 'model_uri' in params:
+            path_params['modelURI'] = params['model_uri']  # noqa: E501
 
         query_params = []
 
@@ -1423,7 +1157,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/predict', 'POST',
+            '/endpoints/{modelURI}/default/predict', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1438,17 +1172,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def predictimage(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictimage(self, model_uri, **kwargs):  # noqa: E501
         """Run inference on the input array, using input image file from multipart form data.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictimage(deployment_name, model_name, async=True)
+        >>> thread = api.predictimage(model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :param file image: The file to upload.
         :return: Prediction
                  If the method is called asynchronously,
@@ -1456,29 +1189,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.predictimage_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.predictimage_with_http_info(model_uri, **kwargs)  # noqa: E501
         else:
-            (data) = self.predictimage_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.predictimage_with_http_info(model_uri, **kwargs)  # noqa: E501
             return data
 
-    def predictimage_with_http_info(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictimage_with_http_info(self, model_uri, **kwargs):  # noqa: E501
         """Run inference on the input array, using input image file from multipart form data.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictimage_with_http_info(deployment_name, model_name, async=True)
+        >>> thread = api.predictimage_with_http_info(model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :param file image: The file to upload.
         :return: Prediction
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'model_name', 'image']  # noqa: E501
+        all_params = ['model_uri', 'image']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1493,22 +1225,16 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `predictimage`")  # noqa: E501
-        # verify the required parameter 'model_name' is set
-        if ('model_name' not in params or
-                params['model_name'] is None):
-            raise ValueError("Missing the required parameter `model_name` when calling `predictimage`")  # noqa: E501
+        # verify the required parameter 'model_uri' is set
+        if ('model_uri' not in params or
+                params['model_uri'] is None):
+            raise ValueError("Missing the required parameter `model_uri` when calling `predictimage`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'model_name' in params:
-            path_params['modelName'] = params['model_name']  # noqa: E501
+        if 'model_uri' in params:
+            path_params['modelURI'] = params['model_uri']  # noqa: E501
 
         query_params = []
 
@@ -1532,7 +1258,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/predictimage', 'POST',
+            '/endpoints/{modelURI}/default/predictimage', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1547,47 +1273,45 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def predictwithpreprocess(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictwithpreprocess(self, body, model_uri, **kwargs):  # noqa: E501
         """Preprocesses the input and run inference on it  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictwithpreprocess(body, deployment_name, model_name, async=True)
+        >>> thread = api.predictwithpreprocess(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param list[str] body: The input array (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: Prediction
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.predictwithpreprocess_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.predictwithpreprocess_with_http_info(body, model_uri, **kwargs)  # noqa: E501
         else:
-            (data) = self.predictwithpreprocess_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.predictwithpreprocess_with_http_info(body, model_uri, **kwargs)  # noqa: E501
             return data
 
-    def predictwithpreprocess_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictwithpreprocess_with_http_info(self, body, model_uri, **kwargs):  # noqa: E501
         """Preprocesses the input and run inference on it  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictwithpreprocess_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.predictwithpreprocess_with_http_info(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param list[str] body: The input array (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: Prediction
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'model_uri']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1606,22 +1330,16 @@ class DefaultApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `predictwithpreprocess`")  # noqa: E501
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `predictwithpreprocess`")  # noqa: E501
-        # verify the required parameter 'model_name' is set
-        if ('model_name' not in params or
-                params['model_name'] is None):
-            raise ValueError("Missing the required parameter `model_name` when calling `predictwithpreprocess`")  # noqa: E501
+        # verify the required parameter 'model_uri' is set
+        if ('model_uri' not in params or
+                params['model_uri'] is None):
+            raise ValueError("Missing the required parameter `model_uri` when calling `predictwithpreprocess`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'model_name' in params:
-            path_params['modelName'] = params['model_name']  # noqa: E501
+        if 'model_uri' in params:
+            path_params['modelURI'] = params['model_uri']  # noqa: E501
 
         query_params = []
 
@@ -1645,7 +1363,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess', 'POST',
+            '/endpoints/{modelURI}/default/predictwithpreprocess', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1660,47 +1378,45 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def predictwithpreprocessjson(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictwithpreprocessjson(self, body, model_uri, **kwargs):  # noqa: E501
         """Preprocesses the input and run inference on it and returns it as a JsonArrayResponse  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictwithpreprocessjson(body, deployment_name, model_name, async=True)
+        >>> thread = api.predictwithpreprocessjson(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param list[str] body: The input array (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: JsonArrayResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.predictwithpreprocessjson_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.predictwithpreprocessjson_with_http_info(body, model_uri, **kwargs)  # noqa: E501
         else:
-            (data) = self.predictwithpreprocessjson_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.predictwithpreprocessjson_with_http_info(body, model_uri, **kwargs)  # noqa: E501
             return data
 
-    def predictwithpreprocessjson_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictwithpreprocessjson_with_http_info(self, body, model_uri, **kwargs):  # noqa: E501
         """Preprocesses the input and run inference on it and returns it as a JsonArrayResponse  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictwithpreprocessjson_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.predictwithpreprocessjson_with_http_info(body, model_uri, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param list[str] body: The input array (required)
-        :param str deployment_name: Name of the deployment group (required)
-        :param str model_name: ID or name of the deployed model (required)
+        :param str model_uri: The URI of the model (required)
         :return: JsonArrayResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'model_uri']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1719,22 +1435,16 @@ class DefaultApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `predictwithpreprocessjson`")  # noqa: E501
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `predictwithpreprocessjson`")  # noqa: E501
-        # verify the required parameter 'model_name' is set
-        if ('model_name' not in params or
-                params['model_name'] is None):
-            raise ValueError("Missing the required parameter `model_name` when calling `predictwithpreprocessjson`")  # noqa: E501
+        # verify the required parameter 'model_uri' is set
+        if ('model_uri' not in params or
+                params['model_uri'] is None):
+            raise ValueError("Missing the required parameter `model_uri` when calling `predictwithpreprocessjson`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'model_name' in params:
-            path_params['modelName'] = params['model_name']  # noqa: E501
+        if 'model_uri' in params:
+            path_params['modelURI'] = params['model_uri']  # noqa: E501
 
         query_params = []
 
@@ -1758,7 +1468,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson', 'POST',
+            '/endpoints/{modelURI}/default/predictwithpreprocessjson', 'POST',
             path_params,
             query_params,
             header_params,

@@ -4,28 +4,26 @@ All URIs are relative to *https://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**classify**](DefaultApi.md#classify) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/classify | Use the deployed model to classify the input
-[**classifyarray**](DefaultApi.md#classifyarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**classifyimage**](DefaultApi.md#classifyimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**classify**](DefaultApi.md#classify) | **Post** /endpoints/{modelURI}/default/classify | Use the deployed model to classify the input
+[**classifyarray**](DefaultApi.md#classifyarray) | **Post** /endpoints/{modelURI}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**classifyimage**](DefaultApi.md#classifyimage) | **Post** /endpoints/{modelURI}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
 [**deploy_model**](DefaultApi.md#deploy_model) | **Post** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**deployment_create**](DefaultApi.md#deployment_create) | **Post** /deployment | Create a new deployment group.
-[**jsonarray**](DefaultApi.md#jsonarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**jsonarray**](DefaultApi.md#jsonarray) | **Post** /endpoints/{modelURI}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**logfilepath**](DefaultApi.md#logfilepath) | **Get** /endpoints/{deploymentName}/model/{modelName}/default/logfilepath | Get logs file path
 [**login**](DefaultApi.md#login) | **Post** /login | Post JSON credentials and obtain a JWT authorization token.
 [**logs**](DefaultApi.md#logs) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/logs | Get logs
-[**modelset**](DefaultApi.md#modelset) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/modelset | Set the model to be served
-[**modelupdate**](DefaultApi.md#modelupdate) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
-[**multiclassify**](DefaultApi.md#multiclassify) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
-[**predict**](DefaultApi.md#predict) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
-[**predictimage**](DefaultApi.md#predictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
-[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**multiclassify**](DefaultApi.md#multiclassify) | **Post** /endpoints/{modelURI}/default/multiclassify | Represents all of the labels for a given classification
+[**predict**](DefaultApi.md#predict) | **Post** /endpoints/{modelURI}/default/predict | Run inference on the input array.
+[**predictimage**](DefaultApi.md#predictimage) | **Post** /endpoints/{modelURI}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **Post** /endpoints/{modelURI}/default/predictwithpreprocess | Preprocesses the input and run inference on it
+[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **Post** /endpoints/{modelURI}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**update_state**](DefaultApi.md#update_state) | **Post** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 [**upload**](DefaultApi.md#upload) | **Post** /api/upload/model | Upload a model file to SKIL for import.
 
 
 # **classify**
-> ::models::ClassificationResult classify(ctx, body, deployment_name, model_name)
+> ::models::ClassificationResult classify(ctx, body, model_uri)
 Use the deployed model to classify the input
 
 ### Required Parameters
@@ -34,8 +32,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **deployment_name** | **String**| Name of the deployment group | 
-  **model_name** | **String**| ID or name of the deployed model | 
+  **model_uri** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -53,7 +50,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classifyarray**
-> ::models::Base64NdArrayBody classifyarray(ctx, body, deployment_name, model_name)
+> ::models::Base64NdArrayBody classifyarray(ctx, body, model_uri)
 Same as /classify but returns the output as Base64NDArrayBody
 
 ### Required Parameters
@@ -62,8 +59,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **deployment_name** | **String**| Name of the deployment group | 
-  **model_name** | **String**| ID or name of the deployed model | 
+  **model_uri** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -81,7 +77,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classifyimage**
-> ::models::ClassificationResult classifyimage(ctx, deployment_name, model_name, optional)
+> ::models::ClassificationResult classifyimage(ctx, model_uri, optional)
 Use the deployed model to classify the input, using input image file from multipart form data.
 
 ### Required Parameters
@@ -89,8 +85,7 @@ Use the deployed model to classify the input, using input image file from multip
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **deployment_name** | **String**| Name of the deployment group | 
-  **model_name** | **String**| ID or name of the deployed model | 
+  **model_uri** | **String**| The URI of the model | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -98,8 +93,7 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **model_name** | **String**| ID or name of the deployed model | 
+ **model_uri** | **String**| The URI of the model | 
  **image** | **File**| The file to upload. | 
 
 ### Return type
@@ -171,7 +165,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **jsonarray**
-> ::models::JsonArrayResponse jsonarray(ctx, body, deployment_name, model_name)
+> ::models::JsonArrayResponse jsonarray(ctx, body, model_uri)
 Run inference on the input and returns it as a JsonArrayResponse
 
 ### Required Parameters
@@ -180,8 +174,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **deployment_name** | **String**| Name of the deployment group | 
-  **model_name** | **String**| ID or name of the deployed model | 
+  **model_uri** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -279,82 +272,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **modelset**
-> ::models::ModelStatus modelset(ctx, deployment_name, model_name, optional)
-Set the model to be served
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **deployment_name** | **String**| Name of the deployment group | 
-  **model_name** | **String**| ID or name of the deployed model | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **model_name** | **String**| ID or name of the deployed model | 
- **file** | **File**| The model file to upload (.pb file) | 
-
-### Return type
-
-[**::models::ModelStatus**](ModelStatus.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **modelupdate**
-> ::models::ModelStatus modelupdate(ctx, deployment_name, model_name, optional)
-Update the model to be served
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **deployment_name** | **String**| Name of the deployment group | 
-  **model_name** | **String**| ID or name of the deployed model | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **model_name** | **String**| ID or name of the deployed model | 
- **file** | **File**| The model file to update with (.pb file) | 
-
-### Return type
-
-[**::models::ModelStatus**](ModelStatus.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **multiclassify**
-> ::models::MultiClassClassificationResult multiclassify(ctx, body, deployment_name, model_name)
+> ::models::MultiClassClassificationResult multiclassify(ctx, body, model_uri)
 Represents all of the labels for a given classification
 
 ### Required Parameters
@@ -363,8 +282,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **deployment_name** | **String**| Name of the deployment group | 
-  **model_name** | **String**| ID or name of the deployed model | 
+  **model_uri** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -382,7 +300,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predict**
-> ::models::Prediction predict(ctx, body, deployment_name, model_name)
+> ::models::Prediction predict(ctx, body, model_uri)
 Run inference on the input array.
 
 ### Required Parameters
@@ -391,8 +309,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **deployment_name** | **String**| Name of the deployment group | 
-  **model_name** | **String**| ID or name of the deployed model | 
+  **model_uri** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -410,7 +327,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictimage**
-> ::models::Prediction predictimage(ctx, deployment_name, model_name, optional)
+> ::models::Prediction predictimage(ctx, model_uri, optional)
 Run inference on the input array, using input image file from multipart form data.
 
 ### Required Parameters
@@ -418,8 +335,7 @@ Run inference on the input array, using input image file from multipart form dat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **deployment_name** | **String**| Name of the deployment group | 
-  **model_name** | **String**| ID or name of the deployed model | 
+  **model_uri** | **String**| The URI of the model | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -427,8 +343,7 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **model_name** | **String**| ID or name of the deployed model | 
+ **model_uri** | **String**| The URI of the model | 
  **image** | **File**| The file to upload. | 
 
 ### Return type
@@ -447,7 +362,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictwithpreprocess**
-> ::models::Prediction predictwithpreprocess(ctx, body, deployment_name, model_name)
+> ::models::Prediction predictwithpreprocess(ctx, body, model_uri)
 Preprocesses the input and run inference on it
 
 ### Required Parameters
@@ -456,8 +371,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | **Vec&lt;String&gt;**| The input array | 
-  **deployment_name** | **String**| Name of the deployment group | 
-  **model_name** | **String**| ID or name of the deployed model | 
+  **model_uri** | **String**| The URI of the model | 
 
 ### Return type
 
@@ -475,7 +389,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictwithpreprocessjson**
-> ::models::JsonArrayResponse predictwithpreprocessjson(ctx, body, deployment_name, model_name)
+> ::models::JsonArrayResponse predictwithpreprocessjson(ctx, body, model_uri)
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
 ### Required Parameters
@@ -484,8 +398,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | **Vec&lt;String&gt;**| The input array | 
-  **deployment_name** | **String**| Name of the deployment group | 
-  **model_name** | **String**| ID or name of the deployed model | 
+  **model_uri** | **String**| The URI of the model | 
 
 ### Return type
 

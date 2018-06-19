@@ -107,9 +107,7 @@ var api = new SkilClient.DefaultApi()
 
 var body = new SkilClient.Prediction(); // {Prediction} The input NDArray
 
-var deploymentName = "deploymentName_example"; // {String} Name of the deployment group
-
-var modelName = "modelName_example"; // {String} ID or name of the deployed model
+var modelURI = "modelURI_example"; // {String} The URI of the model
 
 
 var callback = function(error, data, response) {
@@ -119,7 +117,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.classify(body, deploymentName, modelName, callback);
+api.classify(body, modelURI, callback);
 
 ```
 
@@ -129,22 +127,20 @@ All URIs are relative to *https://localhost:9008*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SkilClient.DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classify | Use the deployed model to classify the input
-*SkilClient.DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-*SkilClient.DefaultApi* | [**classifyimage**](docs/DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+*SkilClient.DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{modelURI}/default/classify | Use the deployed model to classify the input
+*SkilClient.DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{modelURI}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+*SkilClient.DefaultApi* | [**classifyimage**](docs/DefaultApi.md#classifyimage) | **POST** /endpoints/{modelURI}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
 *SkilClient.DefaultApi* | [**deployModel**](docs/DefaultApi.md#deployModel) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 *SkilClient.DefaultApi* | [**deploymentCreate**](docs/DefaultApi.md#deploymentCreate) | **POST** /deployment | Create a new deployment group.
-*SkilClient.DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+*SkilClient.DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{modelURI}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 *SkilClient.DefaultApi* | [**logfilepath**](docs/DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/default/logfilepath | Get logs file path
 *SkilClient.DefaultApi* | [**login**](docs/DefaultApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
 *SkilClient.DefaultApi* | [**logs**](docs/DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/logs | Get logs
-*SkilClient.DefaultApi* | [**modelset**](docs/DefaultApi.md#modelset) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelset | Set the model to be served
-*SkilClient.DefaultApi* | [**modelupdate**](docs/DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
-*SkilClient.DefaultApi* | [**multiclassify**](docs/DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
-*SkilClient.DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
-*SkilClient.DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
-*SkilClient.DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
-*SkilClient.DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+*SkilClient.DefaultApi* | [**multiclassify**](docs/DefaultApi.md#multiclassify) | **POST** /endpoints/{modelURI}/default/multiclassify | Represents all of the labels for a given classification
+*SkilClient.DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{modelURI}/default/predict | Run inference on the input array.
+*SkilClient.DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{modelURI}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
+*SkilClient.DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{modelURI}/default/predictwithpreprocess | Preprocesses the input and run inference on it
+*SkilClient.DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{modelURI}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 *SkilClient.DefaultApi* | [**updateState**](docs/DefaultApi.md#updateState) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 *SkilClient.DefaultApi* | [**upload**](docs/DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 

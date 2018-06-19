@@ -23,23 +23,21 @@ module SkilCient
     # Use the deployed model to classify the input
     # 
     # @param body The input NDArray
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [ClassificationResult]
-    def classify(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = classify_with_http_info(body, deployment_name, model_name, opts)
+    def classify(body, model_uri, opts = {})
+      data, _status_code, _headers = classify_with_http_info(body, model_uri, opts)
       return data
     end
 
     # Use the deployed model to classify the input
     # 
     # @param body The input NDArray
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [Array<(ClassificationResult, Fixnum, Hash)>] ClassificationResult data, response status code and response headers
-    def classify_with_http_info(body, deployment_name, model_name, opts = {})
+    def classify_with_http_info(body, model_uri, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: DefaultApi.classify ..."
       end
@@ -47,16 +45,12 @@ module SkilCient
       if @api_client.config.client_side_validation && body.nil?
         fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.classify"
       end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.classify"
-      end
-      # verify the required parameter 'model_name' is set
-      if @api_client.config.client_side_validation && model_name.nil?
-        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.classify"
+      # verify the required parameter 'model_uri' is set
+      if @api_client.config.client_side_validation && model_uri.nil?
+        fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.classify"
       end
       # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/classify".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = "/endpoints/{modelURI}/default/classify".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -90,23 +84,21 @@ module SkilCient
     # Same as /classify but returns the output as Base64NDArrayBody
     # 
     # @param body The input NDArray
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [Base64NDArrayBody]
-    def classifyarray(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = classifyarray_with_http_info(body, deployment_name, model_name, opts)
+    def classifyarray(body, model_uri, opts = {})
+      data, _status_code, _headers = classifyarray_with_http_info(body, model_uri, opts)
       return data
     end
 
     # Same as /classify but returns the output as Base64NDArrayBody
     # 
     # @param body The input NDArray
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def classifyarray_with_http_info(body, deployment_name, model_name, opts = {})
+    def classifyarray_with_http_info(body, model_uri, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: DefaultApi.classifyarray ..."
       end
@@ -114,16 +106,12 @@ module SkilCient
       if @api_client.config.client_side_validation && body.nil?
         fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.classifyarray"
       end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.classifyarray"
-      end
-      # verify the required parameter 'model_name' is set
-      if @api_client.config.client_side_validation && model_name.nil?
-        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.classifyarray"
+      # verify the required parameter 'model_uri' is set
+      if @api_client.config.client_side_validation && model_uri.nil?
+        fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.classifyarray"
       end
       # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = "/endpoints/{modelURI}/default/classifyarray".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -156,37 +144,31 @@ module SkilCient
 
     # Use the deployed model to classify the input, using input image file from multipart form data.
     # 
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :image The file to upload.
     # @return [ClassificationResult]
-    def classifyimage(deployment_name, model_name, opts = {})
-      data, _status_code, _headers = classifyimage_with_http_info(deployment_name, model_name, opts)
+    def classifyimage(model_uri, opts = {})
+      data, _status_code, _headers = classifyimage_with_http_info(model_uri, opts)
       return data
     end
 
     # Use the deployed model to classify the input, using input image file from multipart form data.
     # 
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :image The file to upload.
     # @return [Array<(ClassificationResult, Fixnum, Hash)>] ClassificationResult data, response status code and response headers
-    def classifyimage_with_http_info(deployment_name, model_name, opts = {})
+    def classifyimage_with_http_info(model_uri, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: DefaultApi.classifyimage ..."
       end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.classifyimage"
-      end
-      # verify the required parameter 'model_name' is set
-      if @api_client.config.client_side_validation && model_name.nil?
-        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.classifyimage"
+      # verify the required parameter 'model_uri' is set
+      if @api_client.config.client_side_validation && model_uri.nil?
+        fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.classifyimage"
       end
       # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = "/endpoints/{modelURI}/default/classifyimage".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -337,23 +319,21 @@ module SkilCient
     # Run inference on the input and returns it as a JsonArrayResponse
     # 
     # @param body The input NDArray
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [JsonArrayResponse]
-    def jsonarray(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = jsonarray_with_http_info(body, deployment_name, model_name, opts)
+    def jsonarray(body, model_uri, opts = {})
+      data, _status_code, _headers = jsonarray_with_http_info(body, model_uri, opts)
       return data
     end
 
     # Run inference on the input and returns it as a JsonArrayResponse
     # 
     # @param body The input NDArray
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [Array<(JsonArrayResponse, Fixnum, Hash)>] JsonArrayResponse data, response status code and response headers
-    def jsonarray_with_http_info(body, deployment_name, model_name, opts = {})
+    def jsonarray_with_http_info(body, model_uri, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: DefaultApi.jsonarray ..."
       end
@@ -361,16 +341,12 @@ module SkilCient
       if @api_client.config.client_side_validation && body.nil?
         fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.jsonarray"
       end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.jsonarray"
-      end
-      # verify the required parameter 'model_name' is set
-      if @api_client.config.client_side_validation && model_name.nil?
-        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.jsonarray"
+      # verify the required parameter 'model_uri' is set
+      if @api_client.config.client_side_validation && model_uri.nil?
+        fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.jsonarray"
       end
       # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = "/endpoints/{modelURI}/default/jsonarray".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -582,154 +558,24 @@ module SkilCient
       return data, status_code, headers
     end
 
-    # Set the model to be served
-    # 
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
-    # @param [Hash] opts the optional parameters
-    # @option opts [File] :file The model file to upload (.pb file)
-    # @return [ModelStatus]
-    def modelset(deployment_name, model_name, opts = {})
-      data, _status_code, _headers = modelset_with_http_info(deployment_name, model_name, opts)
-      return data
-    end
-
-    # Set the model to be served
-    # 
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
-    # @param [Hash] opts the optional parameters
-    # @option opts [File] :file The model file to upload (.pb file)
-    # @return [Array<(ModelStatus, Fixnum, Hash)>] ModelStatus data, response status code and response headers
-    def modelset_with_http_info(deployment_name, model_name, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: DefaultApi.modelset ..."
-      end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.modelset"
-      end
-      # verify the required parameter 'model_name' is set
-      if @api_client.config.client_side_validation && model_name.nil?
-        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.modelset"
-      end
-      # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/modelset".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
-
-      # form parameters
-      form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['api_key']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ModelStatus')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#modelset\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update the model to be served
-    # 
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
-    # @param [Hash] opts the optional parameters
-    # @option opts [File] :file The model file to update with (.pb file)
-    # @return [ModelStatus]
-    def modelupdate(deployment_name, model_name, opts = {})
-      data, _status_code, _headers = modelupdate_with_http_info(deployment_name, model_name, opts)
-      return data
-    end
-
-    # Update the model to be served
-    # 
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
-    # @param [Hash] opts the optional parameters
-    # @option opts [File] :file The model file to update with (.pb file)
-    # @return [Array<(ModelStatus, Fixnum, Hash)>] ModelStatus data, response status code and response headers
-    def modelupdate_with_http_info(deployment_name, model_name, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: DefaultApi.modelupdate ..."
-      end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.modelupdate"
-      end
-      # verify the required parameter 'model_name' is set
-      if @api_client.config.client_side_validation && model_name.nil?
-        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.modelupdate"
-      end
-      # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
-
-      # form parameters
-      form_params = {}
-      form_params["file"] = opts[:'file'] if !opts[:'file'].nil?
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['api_key']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ModelStatus')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#modelupdate\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Represents all of the labels for a given classification
     # 
     # @param body The input NDArray
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [MultiClassClassificationResult]
-    def multiclassify(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = multiclassify_with_http_info(body, deployment_name, model_name, opts)
+    def multiclassify(body, model_uri, opts = {})
+      data, _status_code, _headers = multiclassify_with_http_info(body, model_uri, opts)
       return data
     end
 
     # Represents all of the labels for a given classification
     # 
     # @param body The input NDArray
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [Array<(MultiClassClassificationResult, Fixnum, Hash)>] MultiClassClassificationResult data, response status code and response headers
-    def multiclassify_with_http_info(body, deployment_name, model_name, opts = {})
+    def multiclassify_with_http_info(body, model_uri, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: DefaultApi.multiclassify ..."
       end
@@ -737,16 +583,12 @@ module SkilCient
       if @api_client.config.client_side_validation && body.nil?
         fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.multiclassify"
       end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.multiclassify"
-      end
-      # verify the required parameter 'model_name' is set
-      if @api_client.config.client_side_validation && model_name.nil?
-        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.multiclassify"
+      # verify the required parameter 'model_uri' is set
+      if @api_client.config.client_side_validation && model_uri.nil?
+        fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.multiclassify"
       end
       # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = "/endpoints/{modelURI}/default/multiclassify".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -780,23 +622,21 @@ module SkilCient
     # Run inference on the input array.
     # 
     # @param body The input NDArray
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [Prediction]
-    def predict(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = predict_with_http_info(body, deployment_name, model_name, opts)
+    def predict(body, model_uri, opts = {})
+      data, _status_code, _headers = predict_with_http_info(body, model_uri, opts)
       return data
     end
 
     # Run inference on the input array.
     # 
     # @param body The input NDArray
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [Array<(Prediction, Fixnum, Hash)>] Prediction data, response status code and response headers
-    def predict_with_http_info(body, deployment_name, model_name, opts = {})
+    def predict_with_http_info(body, model_uri, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: DefaultApi.predict ..."
       end
@@ -804,16 +644,12 @@ module SkilCient
       if @api_client.config.client_side_validation && body.nil?
         fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.predict"
       end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.predict"
-      end
-      # verify the required parameter 'model_name' is set
-      if @api_client.config.client_side_validation && model_name.nil?
-        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.predict"
+      # verify the required parameter 'model_uri' is set
+      if @api_client.config.client_side_validation && model_uri.nil?
+        fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.predict"
       end
       # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/predict".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = "/endpoints/{modelURI}/default/predict".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -846,37 +682,31 @@ module SkilCient
 
     # Run inference on the input array, using input image file from multipart form data.
     # 
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :image The file to upload.
     # @return [Prediction]
-    def predictimage(deployment_name, model_name, opts = {})
-      data, _status_code, _headers = predictimage_with_http_info(deployment_name, model_name, opts)
+    def predictimage(model_uri, opts = {})
+      data, _status_code, _headers = predictimage_with_http_info(model_uri, opts)
       return data
     end
 
     # Run inference on the input array, using input image file from multipart form data.
     # 
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :image The file to upload.
     # @return [Array<(Prediction, Fixnum, Hash)>] Prediction data, response status code and response headers
-    def predictimage_with_http_info(deployment_name, model_name, opts = {})
+    def predictimage_with_http_info(model_uri, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: DefaultApi.predictimage ..."
       end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.predictimage"
-      end
-      # verify the required parameter 'model_name' is set
-      if @api_client.config.client_side_validation && model_name.nil?
-        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.predictimage"
+      # verify the required parameter 'model_uri' is set
+      if @api_client.config.client_side_validation && model_uri.nil?
+        fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.predictimage"
       end
       # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = "/endpoints/{modelURI}/default/predictimage".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -911,23 +741,21 @@ module SkilCient
     # Preprocesses the input and run inference on it
     # 
     # @param body The input array
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [Prediction]
-    def predictwithpreprocess(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = predictwithpreprocess_with_http_info(body, deployment_name, model_name, opts)
+    def predictwithpreprocess(body, model_uri, opts = {})
+      data, _status_code, _headers = predictwithpreprocess_with_http_info(body, model_uri, opts)
       return data
     end
 
     # Preprocesses the input and run inference on it
     # 
     # @param body The input array
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [Array<(Prediction, Fixnum, Hash)>] Prediction data, response status code and response headers
-    def predictwithpreprocess_with_http_info(body, deployment_name, model_name, opts = {})
+    def predictwithpreprocess_with_http_info(body, model_uri, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: DefaultApi.predictwithpreprocess ..."
       end
@@ -935,16 +763,12 @@ module SkilCient
       if @api_client.config.client_side_validation && body.nil?
         fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.predictwithpreprocess"
       end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.predictwithpreprocess"
-      end
-      # verify the required parameter 'model_name' is set
-      if @api_client.config.client_side_validation && model_name.nil?
-        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.predictwithpreprocess"
+      # verify the required parameter 'model_uri' is set
+      if @api_client.config.client_side_validation && model_uri.nil?
+        fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.predictwithpreprocess"
       end
       # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = "/endpoints/{modelURI}/default/predictwithpreprocess".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -978,23 +802,21 @@ module SkilCient
     # Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
     # 
     # @param body The input array
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [JsonArrayResponse]
-    def predictwithpreprocessjson(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = predictwithpreprocessjson_with_http_info(body, deployment_name, model_name, opts)
+    def predictwithpreprocessjson(body, model_uri, opts = {})
+      data, _status_code, _headers = predictwithpreprocessjson_with_http_info(body, model_uri, opts)
       return data
     end
 
     # Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
     # 
     # @param body The input array
-    # @param deployment_name Name of the deployment group
-    # @param model_name ID or name of the deployed model
+    # @param model_uri The URI of the model
     # @param [Hash] opts the optional parameters
     # @return [Array<(JsonArrayResponse, Fixnum, Hash)>] JsonArrayResponse data, response status code and response headers
-    def predictwithpreprocessjson_with_http_info(body, deployment_name, model_name, opts = {})
+    def predictwithpreprocessjson_with_http_info(body, model_uri, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: DefaultApi.predictwithpreprocessjson ..."
       end
@@ -1002,16 +824,12 @@ module SkilCient
       if @api_client.config.client_side_validation && body.nil?
         fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.predictwithpreprocessjson"
       end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.predictwithpreprocessjson"
-      end
-      # verify the required parameter 'model_name' is set
-      if @api_client.config.client_side_validation && model_name.nil?
-        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.predictwithpreprocessjson"
+      # verify the required parameter 'model_uri' is set
+      if @api_client.config.client_side_validation && model_uri.nil?
+        fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.predictwithpreprocessjson"
       end
       # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = "/endpoints/{modelURI}/default/predictwithpreprocessjson".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}

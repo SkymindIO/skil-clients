@@ -31,10 +31,9 @@ type DefaultApiService service
 /* DefaultApiService Use the deployed model to classify the input
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input NDArray
- @param deploymentName Name of the deployment group
- @param modelName ID or name of the deployed model
+ @param modelURI The URI of the model
  @return ClassificationResult*/
-func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, deploymentName string, modelName string) (ClassificationResult,  *http.Response, error) {
+func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, modelURI string) (ClassificationResult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -44,9 +43,8 @@ func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, deplo
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/classify"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/classify"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -112,10 +110,9 @@ func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, deplo
 /* DefaultApiService Same as /classify but returns the output as Base64NDArrayBody
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input NDArray
- @param deploymentName Name of the deployment group
- @param modelName ID or name of the deployed model
+ @param modelURI The URI of the model
  @return Base64NdArrayBody*/
-func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, deploymentName string, modelName string) (Base64NdArrayBody,  *http.Response, error) {
+func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, modelURI string) (Base64NdArrayBody,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -125,9 +122,8 @@ func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/classifyarray"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -192,12 +188,11 @@ func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, 
 
 /* DefaultApiService Use the deployed model to classify the input, using input image file from multipart form data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param deploymentName Name of the deployment group
- @param modelName ID or name of the deployed model
+ @param modelURI The URI of the model
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "image" (*os.File) The file to upload.
  @return ClassificationResult*/
-func (a *DefaultApiService) Classifyimage(ctx context.Context, deploymentName string, modelName string, localVarOptionals map[string]interface{}) (ClassificationResult,  *http.Response, error) {
+func (a *DefaultApiService) Classifyimage(ctx context.Context, modelURI string, localVarOptionals map[string]interface{}) (ClassificationResult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -207,9 +202,8 @@ func (a *DefaultApiService) Classifyimage(ctx context.Context, deploymentName st
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/classifyimage"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -439,10 +433,9 @@ func (a *DefaultApiService) DeploymentCreate(ctx context.Context, body NewDeploy
 /* DefaultApiService Run inference on the input and returns it as a JsonArrayResponse
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input NDArray
- @param deploymentName Name of the deployment group
- @param modelName ID or name of the deployed model
+ @param modelURI The URI of the model
  @return JsonArrayResponse*/
-func (a *DefaultApiService) Jsonarray(ctx context.Context, body Prediction, deploymentName string, modelName string) (JsonArrayResponse,  *http.Response, error) {
+func (a *DefaultApiService) Jsonarray(ctx context.Context, body Prediction, modelURI string) (JsonArrayResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -452,9 +445,8 @@ func (a *DefaultApiService) Jsonarray(ctx context.Context, body Prediction, depl
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/jsonarray"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -753,193 +745,12 @@ func (a *DefaultApiService) Logs(ctx context.Context, body LogRequest, deploymen
 	return successPayload, localVarHttpResponse, err
 }
 
-/* DefaultApiService Set the model to be served
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @param deploymentName Name of the deployment group
- @param modelName ID or name of the deployed model
- @param optional (nil or map[string]interface{}) with one or more of:
-     @param "file" (*os.File) The model file to upload (.pb file)
- @return ModelStatus*/
-func (a *DefaultApiService) Modelset(ctx context.Context, deploymentName string, modelName string, localVarOptionals map[string]interface{}) (ModelStatus,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  ModelStatus
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/modelset"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "multipart/form-data",  }
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-		}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var localVarFile (*os.File)
-	if localVarTempParam, localVarOk := localVarOptionals["file"].(*os.File); localVarOk {
-		localVarFile = localVarTempParam
-	}
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
-	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["authorization"] = key
-		}
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return successPayload, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
-	}
-	defer localVarHttpResponse.Body.Close()
-	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
-	}
-
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
-}
-
-/* DefaultApiService Update the model to be served
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @param deploymentName Name of the deployment group
- @param modelName ID or name of the deployed model
- @param optional (nil or map[string]interface{}) with one or more of:
-     @param "file" (*os.File) The model file to update with (.pb file)
- @return ModelStatus*/
-func (a *DefaultApiService) Modelupdate(ctx context.Context, deploymentName string, modelName string, localVarOptionals map[string]interface{}) (ModelStatus,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  ModelStatus
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "multipart/form-data",  }
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-		}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var localVarFile (*os.File)
-	if localVarTempParam, localVarOk := localVarOptionals["file"].(*os.File); localVarOk {
-		localVarFile = localVarTempParam
-	}
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
-	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["authorization"] = key
-		}
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return successPayload, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
-	}
-	defer localVarHttpResponse.Body.Close()
-	if localVarHttpResponse.StatusCode >= 300 {
-		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
-	}
-
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
-}
-
 /* DefaultApiService Represents all of the labels for a given classification
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input NDArray
- @param deploymentName Name of the deployment group
- @param modelName ID or name of the deployed model
+ @param modelURI The URI of the model
  @return MultiClassClassificationResult*/
-func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, deploymentName string, modelName string) (MultiClassClassificationResult,  *http.Response, error) {
+func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, modelURI string) (MultiClassClassificationResult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -949,9 +760,8 @@ func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/multiclassify"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1017,10 +827,9 @@ func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, 
 /* DefaultApiService Run inference on the input array.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input NDArray
- @param deploymentName Name of the deployment group
- @param modelName ID or name of the deployed model
+ @param modelURI The URI of the model
  @return Prediction*/
-func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, deploymentName string, modelName string) (Prediction,  *http.Response, error) {
+func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, modelURI string) (Prediction,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -1030,9 +839,8 @@ func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, deploy
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/predict"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/predict"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1097,12 +905,11 @@ func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, deploy
 
 /* DefaultApiService Run inference on the input array, using input image file from multipart form data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param deploymentName Name of the deployment group
- @param modelName ID or name of the deployed model
+ @param modelURI The URI of the model
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "image" (*os.File) The file to upload.
  @return Prediction*/
-func (a *DefaultApiService) Predictimage(ctx context.Context, deploymentName string, modelName string, localVarOptionals map[string]interface{}) (Prediction,  *http.Response, error) {
+func (a *DefaultApiService) Predictimage(ctx context.Context, modelURI string, localVarOptionals map[string]interface{}) (Prediction,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -1112,9 +919,8 @@ func (a *DefaultApiService) Predictimage(ctx context.Context, deploymentName str
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/predictimage"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/predictimage"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1188,10 +994,9 @@ func (a *DefaultApiService) Predictimage(ctx context.Context, deploymentName str
 /* DefaultApiService Preprocesses the input and run inference on it
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input array
- @param deploymentName Name of the deployment group
- @param modelName ID or name of the deployed model
+ @param modelURI The URI of the model
  @return Prediction*/
-func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []string, deploymentName string, modelName string) (Prediction,  *http.Response, error) {
+func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []string, modelURI string) (Prediction,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -1201,9 +1006,8 @@ func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []st
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/predictwithpreprocess"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1269,10 +1073,9 @@ func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []st
 /* DefaultApiService Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input array
- @param deploymentName Name of the deployment group
- @param modelName ID or name of the deployed model
+ @param modelURI The URI of the model
  @return JsonArrayResponse*/
-func (a *DefaultApiService) Predictwithpreprocessjson(ctx context.Context, body []string, deploymentName string, modelName string) (JsonArrayResponse,  *http.Response, error) {
+func (a *DefaultApiService) Predictwithpreprocessjson(ctx context.Context, body []string, modelURI string) (JsonArrayResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -1282,9 +1085,8 @@ func (a *DefaultApiService) Predictwithpreprocessjson(ctx context.Context, body 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/predictwithpreprocessjson"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

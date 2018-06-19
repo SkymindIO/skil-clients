@@ -32,10 +32,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ClassificationResult</returns>
-        ClassificationResult Classify (Prediction body, string deploymentName, string modelName);
+        ClassificationResult Classify (Prediction body, string modelURI);
 
         /// <summary>
         /// Use the deployed model to classify the input
@@ -45,10 +44,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of ClassificationResult</returns>
-        ApiResponse<ClassificationResult> ClassifyWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        ApiResponse<ClassificationResult> ClassifyWithHttpInfo (Prediction body, string modelURI);
         /// <summary>
         /// Same as /classify but returns the output as Base64NDArrayBody
         /// </summary>
@@ -57,10 +55,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody Classifyarray (Prediction body, string deploymentName, string modelName);
+        Base64NDArrayBody Classifyarray (Prediction body, string modelURI);
 
         /// <summary>
         /// Same as /classify but returns the output as Base64NDArrayBody
@@ -70,10 +67,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> ClassifyarrayWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        ApiResponse<Base64NDArrayBody> ClassifyarrayWithHttpInfo (Prediction body, string modelURI);
         /// <summary>
         /// Use the deployed model to classify the input, using input image file from multipart form data.
         /// </summary>
@@ -81,11 +77,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ClassificationResult</returns>
-        ClassificationResult Classifyimage (string deploymentName, string modelName, System.IO.Stream image = null);
+        ClassificationResult Classifyimage (string modelURI, System.IO.Stream image = null);
 
         /// <summary>
         /// Use the deployed model to classify the input, using input image file from multipart form data.
@@ -94,11 +89,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ApiResponse of ClassificationResult</returns>
-        ApiResponse<ClassificationResult> ClassifyimageWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null);
+        ApiResponse<ClassificationResult> ClassifyimageWithHttpInfo (string modelURI, System.IO.Stream image = null);
         /// <summary>
         /// Deploy a model in a deployment group.
         /// </summary>
@@ -151,10 +145,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>JsonArrayResponse</returns>
-        JsonArrayResponse Jsonarray (Prediction body, string deploymentName, string modelName);
+        JsonArrayResponse Jsonarray (Prediction body, string modelURI);
 
         /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
@@ -164,10 +157,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of JsonArrayResponse</returns>
-        ApiResponse<JsonArrayResponse> JsonarrayWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        ApiResponse<JsonArrayResponse> JsonarrayWithHttpInfo (Prediction body, string modelURI);
         /// <summary>
         /// Get logs file path
         /// </summary>
@@ -238,56 +230,6 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of LogBatch</returns>
         ApiResponse<LogBatch> LogsWithHttpInfo (LogRequest body, string deploymentName, string modelName);
         /// <summary>
-        /// Set the model to be served
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to upload (.pb file) (optional)</param>
-        /// <returns>ModelStatus</returns>
-        ModelStatus Modelset (string deploymentName, string modelName, System.IO.Stream file = null);
-
-        /// <summary>
-        /// Set the model to be served
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to upload (.pb file) (optional)</param>
-        /// <returns>ApiResponse of ModelStatus</returns>
-        ApiResponse<ModelStatus> ModelsetWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null);
-        /// <summary>
-        /// Update the model to be served
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
-        /// <returns>ModelStatus</returns>
-        ModelStatus Modelupdate (string deploymentName, string modelName, System.IO.Stream file = null);
-
-        /// <summary>
-        /// Update the model to be served
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
-        /// <returns>ApiResponse of ModelStatus</returns>
-        ApiResponse<ModelStatus> ModelupdateWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null);
-        /// <summary>
         /// Represents all of the labels for a given classification
         /// </summary>
         /// <remarks>
@@ -295,10 +237,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>MultiClassClassificationResult</returns>
-        MultiClassClassificationResult Multiclassify (Prediction body, string deploymentName, string modelName);
+        MultiClassClassificationResult Multiclassify (Prediction body, string modelURI);
 
         /// <summary>
         /// Represents all of the labels for a given classification
@@ -308,10 +249,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of MultiClassClassificationResult</returns>
-        ApiResponse<MultiClassClassificationResult> MulticlassifyWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        ApiResponse<MultiClassClassificationResult> MulticlassifyWithHttpInfo (Prediction body, string modelURI);
         /// <summary>
         /// Run inference on the input array.
         /// </summary>
@@ -320,10 +260,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Prediction</returns>
-        Prediction Predict (Prediction body, string deploymentName, string modelName);
+        Prediction Predict (Prediction body, string modelURI);
 
         /// <summary>
         /// Run inference on the input array.
@@ -333,10 +272,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of Prediction</returns>
-        ApiResponse<Prediction> PredictWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        ApiResponse<Prediction> PredictWithHttpInfo (Prediction body, string modelURI);
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
         /// </summary>
@@ -344,11 +282,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Prediction</returns>
-        Prediction Predictimage (string deploymentName, string modelName, System.IO.Stream image = null);
+        Prediction Predictimage (string modelURI, System.IO.Stream image = null);
 
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
@@ -357,11 +294,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ApiResponse of Prediction</returns>
-        ApiResponse<Prediction> PredictimageWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null);
+        ApiResponse<Prediction> PredictimageWithHttpInfo (string modelURI, System.IO.Stream image = null);
         /// <summary>
         /// Preprocesses the input and run inference on it
         /// </summary>
@@ -370,10 +306,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Prediction</returns>
-        Prediction Predictwithpreprocess (List<string> body, string deploymentName, string modelName);
+        Prediction Predictwithpreprocess (List<string> body, string modelURI);
 
         /// <summary>
         /// Preprocesses the input and run inference on it
@@ -383,10 +318,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of Prediction</returns>
-        ApiResponse<Prediction> PredictwithpreprocessWithHttpInfo (List<string> body, string deploymentName, string modelName);
+        ApiResponse<Prediction> PredictwithpreprocessWithHttpInfo (List<string> body, string modelURI);
         /// <summary>
         /// Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
         /// </summary>
@@ -395,10 +329,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>JsonArrayResponse</returns>
-        JsonArrayResponse Predictwithpreprocessjson (List<string> body, string deploymentName, string modelName);
+        JsonArrayResponse Predictwithpreprocessjson (List<string> body, string modelURI);
 
         /// <summary>
         /// Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -408,10 +341,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of JsonArrayResponse</returns>
-        ApiResponse<JsonArrayResponse> PredictwithpreprocessjsonWithHttpInfo (List<string> body, string deploymentName, string modelName);
+        ApiResponse<JsonArrayResponse> PredictwithpreprocessjsonWithHttpInfo (List<string> body, string modelURI);
         /// <summary>
         /// Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
         /// </summary>
@@ -468,10 +400,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ClassificationResult</returns>
-        System.Threading.Tasks.Task<ClassificationResult> ClassifyAsync (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ClassificationResult> ClassifyAsync (Prediction body, string modelURI);
 
         /// <summary>
         /// Use the deployed model to classify the input
@@ -481,10 +412,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (ClassificationResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyAsyncWithHttpInfo (Prediction body, string modelURI);
         /// <summary>
         /// Same as /classify but returns the output as Base64NDArrayBody
         /// </summary>
@@ -493,10 +423,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> ClassifyarrayAsync (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<Base64NDArrayBody> ClassifyarrayAsync (Prediction body, string modelURI);
 
         /// <summary>
         /// Same as /classify but returns the output as Base64NDArrayBody
@@ -506,10 +435,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> ClassifyarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> ClassifyarrayAsyncWithHttpInfo (Prediction body, string modelURI);
         /// <summary>
         /// Use the deployed model to classify the input, using input image file from multipart form data.
         /// </summary>
@@ -517,11 +445,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ClassificationResult</returns>
-        System.Threading.Tasks.Task<ClassificationResult> ClassifyimageAsync (string deploymentName, string modelName, System.IO.Stream image = null);
+        System.Threading.Tasks.Task<ClassificationResult> ClassifyimageAsync (string modelURI, System.IO.Stream image = null);
 
         /// <summary>
         /// Use the deployed model to classify the input, using input image file from multipart form data.
@@ -530,11 +457,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ApiResponse (ClassificationResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyimageAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null);
+        System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyimageAsyncWithHttpInfo (string modelURI, System.IO.Stream image = null);
         /// <summary>
         /// Deploy a model in a deployment group.
         /// </summary>
@@ -587,10 +513,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of JsonArrayResponse</returns>
-        System.Threading.Tasks.Task<JsonArrayResponse> JsonarrayAsync (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<JsonArrayResponse> JsonarrayAsync (Prediction body, string modelURI);
 
         /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
@@ -600,10 +525,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> JsonarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> JsonarrayAsyncWithHttpInfo (Prediction body, string modelURI);
         /// <summary>
         /// Get logs file path
         /// </summary>
@@ -674,56 +598,6 @@ namespace Skymind.SKIL.Api
         /// <returns>Task of ApiResponse (LogBatch)</returns>
         System.Threading.Tasks.Task<ApiResponse<LogBatch>> LogsAsyncWithHttpInfo (LogRequest body, string deploymentName, string modelName);
         /// <summary>
-        /// Set the model to be served
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to upload (.pb file) (optional)</param>
-        /// <returns>Task of ModelStatus</returns>
-        System.Threading.Tasks.Task<ModelStatus> ModelsetAsync (string deploymentName, string modelName, System.IO.Stream file = null);
-
-        /// <summary>
-        /// Set the model to be served
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to upload (.pb file) (optional)</param>
-        /// <returns>Task of ApiResponse (ModelStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelsetAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null);
-        /// <summary>
-        /// Update the model to be served
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
-        /// <returns>Task of ModelStatus</returns>
-        System.Threading.Tasks.Task<ModelStatus> ModelupdateAsync (string deploymentName, string modelName, System.IO.Stream file = null);
-
-        /// <summary>
-        /// Update the model to be served
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
-        /// <returns>Task of ApiResponse (ModelStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelupdateAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null);
-        /// <summary>
         /// Represents all of the labels for a given classification
         /// </summary>
         /// <remarks>
@@ -731,10 +605,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of MultiClassClassificationResult</returns>
-        System.Threading.Tasks.Task<MultiClassClassificationResult> MulticlassifyAsync (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<MultiClassClassificationResult> MulticlassifyAsync (Prediction body, string modelURI);
 
         /// <summary>
         /// Represents all of the labels for a given classification
@@ -744,10 +617,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (MultiClassClassificationResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MultiClassClassificationResult>> MulticlassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<MultiClassClassificationResult>> MulticlassifyAsyncWithHttpInfo (Prediction body, string modelURI);
         /// <summary>
         /// Run inference on the input array.
         /// </summary>
@@ -756,10 +628,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of Prediction</returns>
-        System.Threading.Tasks.Task<Prediction> PredictAsync (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<Prediction> PredictAsync (Prediction body, string modelURI);
 
         /// <summary>
         /// Run inference on the input array.
@@ -769,10 +640,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictAsyncWithHttpInfo (Prediction body, string modelURI);
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
         /// </summary>
@@ -780,11 +650,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of Prediction</returns>
-        System.Threading.Tasks.Task<Prediction> PredictimageAsync (string deploymentName, string modelName, System.IO.Stream image = null);
+        System.Threading.Tasks.Task<Prediction> PredictimageAsync (string modelURI, System.IO.Stream image = null);
 
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
@@ -793,11 +662,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictimageAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null);
+        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictimageAsyncWithHttpInfo (string modelURI, System.IO.Stream image = null);
         /// <summary>
         /// Preprocesses the input and run inference on it
         /// </summary>
@@ -806,10 +674,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of Prediction</returns>
-        System.Threading.Tasks.Task<Prediction> PredictwithpreprocessAsync (List<string> body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<Prediction> PredictwithpreprocessAsync (List<string> body, string modelURI);
 
         /// <summary>
         /// Preprocesses the input and run inference on it
@@ -819,10 +686,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictwithpreprocessAsyncWithHttpInfo (List<string> body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictwithpreprocessAsyncWithHttpInfo (List<string> body, string modelURI);
         /// <summary>
         /// Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
         /// </summary>
@@ -831,10 +697,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of JsonArrayResponse</returns>
-        System.Threading.Tasks.Task<JsonArrayResponse> PredictwithpreprocessjsonAsync (List<string> body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<JsonArrayResponse> PredictwithpreprocessjsonAsync (List<string> body, string modelURI);
 
         /// <summary>
         /// Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -844,10 +709,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> PredictwithpreprocessjsonAsyncWithHttpInfo (List<string> body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> PredictwithpreprocessjsonAsyncWithHttpInfo (List<string> body, string modelURI);
         /// <summary>
         /// Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
         /// </summary>
@@ -999,12 +863,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ClassificationResult</returns>
-        public ClassificationResult Classify (Prediction body, string deploymentName, string modelName)
+        public ClassificationResult Classify (Prediction body, string modelURI)
         {
-             ApiResponse<ClassificationResult> localVarResponse = ClassifyWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<ClassificationResult> localVarResponse = ClassifyWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
         }
 
@@ -1013,22 +876,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of ClassificationResult</returns>
-        public ApiResponse< ClassificationResult > ClassifyWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public ApiResponse< ClassificationResult > ClassifyWithHttpInfo (Prediction body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Classify");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classify");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classify");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classify");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classify";
+            var localVarPath = "/endpoints/{modelURI}/default/classify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1050,8 +909,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1090,12 +948,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ClassificationResult</returns>
-        public async System.Threading.Tasks.Task<ClassificationResult> ClassifyAsync (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ClassificationResult> ClassifyAsync (Prediction body, string modelURI)
         {
-             ApiResponse<ClassificationResult> localVarResponse = await ClassifyAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<ClassificationResult> localVarResponse = await ClassifyAsyncWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
 
         }
@@ -1105,22 +962,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (ClassificationResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyAsyncWithHttpInfo (Prediction body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Classify");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classify");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classify");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classify");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classify";
+            var localVarPath = "/endpoints/{modelURI}/default/classify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1142,8 +995,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1182,12 +1034,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody Classifyarray (Prediction body, string deploymentName, string modelName)
+        public Base64NDArrayBody Classifyarray (Prediction body, string modelURI)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = ClassifyarrayWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Base64NDArrayBody> localVarResponse = ClassifyarrayWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
         }
 
@@ -1196,22 +1047,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > ClassifyarrayWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public ApiResponse< Base64NDArrayBody > ClassifyarrayWithHttpInfo (Prediction body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Classifyarray");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classifyarray");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classifyarray");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classifyarray");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray";
+            var localVarPath = "/endpoints/{modelURI}/default/classifyarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1233,8 +1080,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1273,12 +1119,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> ClassifyarrayAsync (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> ClassifyarrayAsync (Prediction body, string modelURI)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await ClassifyarrayAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Base64NDArrayBody> localVarResponse = await ClassifyarrayAsyncWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
 
         }
@@ -1288,22 +1133,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> ClassifyarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> ClassifyarrayAsyncWithHttpInfo (Prediction body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Classifyarray");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classifyarray");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classifyarray");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classifyarray");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray";
+            var localVarPath = "/endpoints/{modelURI}/default/classifyarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1325,8 +1166,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1364,13 +1204,12 @@ namespace Skymind.SKIL.Api
         /// Use the deployed model to classify the input, using input image file from multipart form data. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ClassificationResult</returns>
-        public ClassificationResult Classifyimage (string deploymentName, string modelName, System.IO.Stream image = null)
+        public ClassificationResult Classifyimage (string modelURI, System.IO.Stream image = null)
         {
-             ApiResponse<ClassificationResult> localVarResponse = ClassifyimageWithHttpInfo(deploymentName, modelName, image);
+             ApiResponse<ClassificationResult> localVarResponse = ClassifyimageWithHttpInfo(modelURI, image);
              return localVarResponse.Data;
         }
 
@@ -1378,20 +1217,16 @@ namespace Skymind.SKIL.Api
         /// Use the deployed model to classify the input, using input image file from multipart form data. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ApiResponse of ClassificationResult</returns>
-        public ApiResponse< ClassificationResult > ClassifyimageWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null)
+        public ApiResponse< ClassificationResult > ClassifyimageWithHttpInfo (string modelURI, System.IO.Stream image = null)
         {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classifyimage");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classifyimage");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classifyimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage";
+            var localVarPath = "/endpoints/{modelURI}/default/classifyimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1413,8 +1248,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (image != null) localVarFileParams.Add("image", Configuration.ApiClient.ParameterToFile("image", image));
 
             // authentication (api_key) required
@@ -1445,13 +1279,12 @@ namespace Skymind.SKIL.Api
         /// Use the deployed model to classify the input, using input image file from multipart form data. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ClassificationResult</returns>
-        public async System.Threading.Tasks.Task<ClassificationResult> ClassifyimageAsync (string deploymentName, string modelName, System.IO.Stream image = null)
+        public async System.Threading.Tasks.Task<ClassificationResult> ClassifyimageAsync (string modelURI, System.IO.Stream image = null)
         {
-             ApiResponse<ClassificationResult> localVarResponse = await ClassifyimageAsyncWithHttpInfo(deploymentName, modelName, image);
+             ApiResponse<ClassificationResult> localVarResponse = await ClassifyimageAsyncWithHttpInfo(modelURI, image);
              return localVarResponse.Data;
 
         }
@@ -1460,20 +1293,16 @@ namespace Skymind.SKIL.Api
         /// Use the deployed model to classify the input, using input image file from multipart form data. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ApiResponse (ClassificationResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyimageAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyimageAsyncWithHttpInfo (string modelURI, System.IO.Stream image = null)
         {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classifyimage");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classifyimage");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classifyimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage";
+            var localVarPath = "/endpoints/{modelURI}/default/classifyimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1495,8 +1324,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (image != null) localVarFileParams.Add("image", Configuration.ApiClient.ParameterToFile("image", image));
 
             // authentication (api_key) required
@@ -1858,12 +1686,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>JsonArrayResponse</returns>
-        public JsonArrayResponse Jsonarray (Prediction body, string deploymentName, string modelName)
+        public JsonArrayResponse Jsonarray (Prediction body, string modelURI)
         {
-             ApiResponse<JsonArrayResponse> localVarResponse = JsonarrayWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<JsonArrayResponse> localVarResponse = JsonarrayWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
         }
 
@@ -1872,22 +1699,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of JsonArrayResponse</returns>
-        public ApiResponse< JsonArrayResponse > JsonarrayWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public ApiResponse< JsonArrayResponse > JsonarrayWithHttpInfo (Prediction body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Jsonarray");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Jsonarray");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Jsonarray");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Jsonarray");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray";
+            var localVarPath = "/endpoints/{modelURI}/default/jsonarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1909,8 +1732,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1949,12 +1771,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of JsonArrayResponse</returns>
-        public async System.Threading.Tasks.Task<JsonArrayResponse> JsonarrayAsync (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<JsonArrayResponse> JsonarrayAsync (Prediction body, string modelURI)
         {
-             ApiResponse<JsonArrayResponse> localVarResponse = await JsonarrayAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<JsonArrayResponse> localVarResponse = await JsonarrayAsyncWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
 
         }
@@ -1964,22 +1785,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> JsonarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> JsonarrayAsyncWithHttpInfo (Prediction body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Jsonarray");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Jsonarray");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Jsonarray");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Jsonarray");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray";
+            var localVarPath = "/endpoints/{modelURI}/default/jsonarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2001,8 +1818,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -2534,342 +2350,15 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
-        /// Set the model to be served 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to upload (.pb file) (optional)</param>
-        /// <returns>ModelStatus</returns>
-        public ModelStatus Modelset (string deploymentName, string modelName, System.IO.Stream file = null)
-        {
-             ApiResponse<ModelStatus> localVarResponse = ModelsetWithHttpInfo(deploymentName, modelName, file);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Set the model to be served 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to upload (.pb file) (optional)</param>
-        /// <returns>ApiResponse of ModelStatus</returns>
-        public ApiResponse< ModelStatus > ModelsetWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Modelset");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Modelset");
-
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelset";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "multipart/form-data"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Modelset", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<ModelStatus>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelStatus) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
-        }
-
-        /// <summary>
-        /// Set the model to be served 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to upload (.pb file) (optional)</param>
-        /// <returns>Task of ModelStatus</returns>
-        public async System.Threading.Tasks.Task<ModelStatus> ModelsetAsync (string deploymentName, string modelName, System.IO.Stream file = null)
-        {
-             ApiResponse<ModelStatus> localVarResponse = await ModelsetAsyncWithHttpInfo(deploymentName, modelName, file);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Set the model to be served 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to upload (.pb file) (optional)</param>
-        /// <returns>Task of ApiResponse (ModelStatus)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelsetAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Modelset");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Modelset");
-
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelset";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "multipart/form-data"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Modelset", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<ModelStatus>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelStatus) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
-        }
-
-        /// <summary>
-        /// Update the model to be served 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
-        /// <returns>ModelStatus</returns>
-        public ModelStatus Modelupdate (string deploymentName, string modelName, System.IO.Stream file = null)
-        {
-             ApiResponse<ModelStatus> localVarResponse = ModelupdateWithHttpInfo(deploymentName, modelName, file);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Update the model to be served 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
-        /// <returns>ApiResponse of ModelStatus</returns>
-        public ApiResponse< ModelStatus > ModelupdateWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Modelupdate");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Modelupdate");
-
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "multipart/form-data"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Modelupdate", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<ModelStatus>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelStatus) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
-        }
-
-        /// <summary>
-        /// Update the model to be served 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
-        /// <returns>Task of ModelStatus</returns>
-        public async System.Threading.Tasks.Task<ModelStatus> ModelupdateAsync (string deploymentName, string modelName, System.IO.Stream file = null)
-        {
-             ApiResponse<ModelStatus> localVarResponse = await ModelupdateAsyncWithHttpInfo(deploymentName, modelName, file);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Update the model to be served 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
-        /// <returns>Task of ApiResponse (ModelStatus)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelupdateAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Modelupdate");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Modelupdate");
-
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "multipart/form-data"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Modelupdate", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<ModelStatus>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelStatus) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
-        }
-
-        /// <summary>
         /// Represents all of the labels for a given classification 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>MultiClassClassificationResult</returns>
-        public MultiClassClassificationResult Multiclassify (Prediction body, string deploymentName, string modelName)
+        public MultiClassClassificationResult Multiclassify (Prediction body, string modelURI)
         {
-             ApiResponse<MultiClassClassificationResult> localVarResponse = MulticlassifyWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<MultiClassClassificationResult> localVarResponse = MulticlassifyWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
         }
 
@@ -2878,22 +2367,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of MultiClassClassificationResult</returns>
-        public ApiResponse< MultiClassClassificationResult > MulticlassifyWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public ApiResponse< MultiClassClassificationResult > MulticlassifyWithHttpInfo (Prediction body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Multiclassify");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multiclassify");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multiclassify");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Multiclassify");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify";
+            var localVarPath = "/endpoints/{modelURI}/default/multiclassify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2915,8 +2400,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -2955,12 +2439,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of MultiClassClassificationResult</returns>
-        public async System.Threading.Tasks.Task<MultiClassClassificationResult> MulticlassifyAsync (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<MultiClassClassificationResult> MulticlassifyAsync (Prediction body, string modelURI)
         {
-             ApiResponse<MultiClassClassificationResult> localVarResponse = await MulticlassifyAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<MultiClassClassificationResult> localVarResponse = await MulticlassifyAsyncWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
 
         }
@@ -2970,22 +2453,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (MultiClassClassificationResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MultiClassClassificationResult>> MulticlassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<MultiClassClassificationResult>> MulticlassifyAsyncWithHttpInfo (Prediction body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Multiclassify");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multiclassify");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multiclassify");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Multiclassify");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify";
+            var localVarPath = "/endpoints/{modelURI}/default/multiclassify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3007,8 +2486,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -3047,12 +2525,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Prediction</returns>
-        public Prediction Predict (Prediction body, string deploymentName, string modelName)
+        public Prediction Predict (Prediction body, string modelURI)
         {
-             ApiResponse<Prediction> localVarResponse = PredictWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Prediction> localVarResponse = PredictWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
         }
 
@@ -3061,22 +2538,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of Prediction</returns>
-        public ApiResponse< Prediction > PredictWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public ApiResponse< Prediction > PredictWithHttpInfo (Prediction body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Predict");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predict");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predict");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predict");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predict";
+            var localVarPath = "/endpoints/{modelURI}/default/predict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3098,8 +2571,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -3138,12 +2610,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of Prediction</returns>
-        public async System.Threading.Tasks.Task<Prediction> PredictAsync (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<Prediction> PredictAsync (Prediction body, string modelURI)
         {
-             ApiResponse<Prediction> localVarResponse = await PredictAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Prediction> localVarResponse = await PredictAsyncWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
 
         }
@@ -3153,22 +2624,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictAsyncWithHttpInfo (Prediction body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Predict");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predict");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predict");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predict");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predict";
+            var localVarPath = "/endpoints/{modelURI}/default/predict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3190,8 +2657,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -3229,13 +2695,12 @@ namespace Skymind.SKIL.Api
         /// Run inference on the input array, using input image file from multipart form data. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Prediction</returns>
-        public Prediction Predictimage (string deploymentName, string modelName, System.IO.Stream image = null)
+        public Prediction Predictimage (string modelURI, System.IO.Stream image = null)
         {
-             ApiResponse<Prediction> localVarResponse = PredictimageWithHttpInfo(deploymentName, modelName, image);
+             ApiResponse<Prediction> localVarResponse = PredictimageWithHttpInfo(modelURI, image);
              return localVarResponse.Data;
         }
 
@@ -3243,20 +2708,16 @@ namespace Skymind.SKIL.Api
         /// Run inference on the input array, using input image file from multipart form data. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ApiResponse of Prediction</returns>
-        public ApiResponse< Prediction > PredictimageWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null)
+        public ApiResponse< Prediction > PredictimageWithHttpInfo (string modelURI, System.IO.Stream image = null)
         {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictimage");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictimage");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage";
+            var localVarPath = "/endpoints/{modelURI}/default/predictimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3278,8 +2739,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (image != null) localVarFileParams.Add("image", Configuration.ApiClient.ParameterToFile("image", image));
 
             // authentication (api_key) required
@@ -3310,13 +2770,12 @@ namespace Skymind.SKIL.Api
         /// Run inference on the input array, using input image file from multipart form data. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of Prediction</returns>
-        public async System.Threading.Tasks.Task<Prediction> PredictimageAsync (string deploymentName, string modelName, System.IO.Stream image = null)
+        public async System.Threading.Tasks.Task<Prediction> PredictimageAsync (string modelURI, System.IO.Stream image = null)
         {
-             ApiResponse<Prediction> localVarResponse = await PredictimageAsyncWithHttpInfo(deploymentName, modelName, image);
+             ApiResponse<Prediction> localVarResponse = await PredictimageAsyncWithHttpInfo(modelURI, image);
              return localVarResponse.Data;
 
         }
@@ -3325,20 +2784,16 @@ namespace Skymind.SKIL.Api
         /// Run inference on the input array, using input image file from multipart form data. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictimageAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictimageAsyncWithHttpInfo (string modelURI, System.IO.Stream image = null)
         {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictimage");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictimage");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage";
+            var localVarPath = "/endpoints/{modelURI}/default/predictimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3360,8 +2815,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (image != null) localVarFileParams.Add("image", Configuration.ApiClient.ParameterToFile("image", image));
 
             // authentication (api_key) required
@@ -3393,12 +2847,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Prediction</returns>
-        public Prediction Predictwithpreprocess (List<string> body, string deploymentName, string modelName)
+        public Prediction Predictwithpreprocess (List<string> body, string modelURI)
         {
-             ApiResponse<Prediction> localVarResponse = PredictwithpreprocessWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Prediction> localVarResponse = PredictwithpreprocessWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
         }
 
@@ -3407,22 +2860,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of Prediction</returns>
-        public ApiResponse< Prediction > PredictwithpreprocessWithHttpInfo (List<string> body, string deploymentName, string modelName)
+        public ApiResponse< Prediction > PredictwithpreprocessWithHttpInfo (List<string> body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Predictwithpreprocess");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictwithpreprocess");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictwithpreprocess");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictwithpreprocess");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess";
+            var localVarPath = "/endpoints/{modelURI}/default/predictwithpreprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3444,8 +2893,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -3484,12 +2932,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of Prediction</returns>
-        public async System.Threading.Tasks.Task<Prediction> PredictwithpreprocessAsync (List<string> body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<Prediction> PredictwithpreprocessAsync (List<string> body, string modelURI)
         {
-             ApiResponse<Prediction> localVarResponse = await PredictwithpreprocessAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Prediction> localVarResponse = await PredictwithpreprocessAsyncWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
 
         }
@@ -3499,22 +2946,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictwithpreprocessAsyncWithHttpInfo (List<string> body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictwithpreprocessAsyncWithHttpInfo (List<string> body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Predictwithpreprocess");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictwithpreprocess");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictwithpreprocess");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictwithpreprocess");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess";
+            var localVarPath = "/endpoints/{modelURI}/default/predictwithpreprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3536,8 +2979,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -3576,12 +3018,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>JsonArrayResponse</returns>
-        public JsonArrayResponse Predictwithpreprocessjson (List<string> body, string deploymentName, string modelName)
+        public JsonArrayResponse Predictwithpreprocessjson (List<string> body, string modelURI)
         {
-             ApiResponse<JsonArrayResponse> localVarResponse = PredictwithpreprocessjsonWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<JsonArrayResponse> localVarResponse = PredictwithpreprocessjsonWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
         }
 
@@ -3590,22 +3031,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>ApiResponse of JsonArrayResponse</returns>
-        public ApiResponse< JsonArrayResponse > PredictwithpreprocessjsonWithHttpInfo (List<string> body, string deploymentName, string modelName)
+        public ApiResponse< JsonArrayResponse > PredictwithpreprocessjsonWithHttpInfo (List<string> body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Predictwithpreprocessjson");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictwithpreprocessjson");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictwithpreprocessjson");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictwithpreprocessjson");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson";
+            var localVarPath = "/endpoints/{modelURI}/default/predictwithpreprocessjson";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3627,8 +3064,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -3667,12 +3103,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of JsonArrayResponse</returns>
-        public async System.Threading.Tasks.Task<JsonArrayResponse> PredictwithpreprocessjsonAsync (List<string> body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<JsonArrayResponse> PredictwithpreprocessjsonAsync (List<string> body, string modelURI)
         {
-             ApiResponse<JsonArrayResponse> localVarResponse = await PredictwithpreprocessjsonAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<JsonArrayResponse> localVarResponse = await PredictwithpreprocessjsonAsyncWithHttpInfo(body, modelURI);
              return localVarResponse.Data;
 
         }
@@ -3682,22 +3117,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="modelURI">The URI of the model</param>
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> PredictwithpreprocessjsonAsyncWithHttpInfo (List<string> body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> PredictwithpreprocessjsonAsyncWithHttpInfo (List<string> body, string modelURI)
         {
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Predictwithpreprocessjson");
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictwithpreprocessjson");
-            // verify the required parameter 'modelName' is set
-            if (modelName == null)
-                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictwithpreprocessjson");
+            // verify the required parameter 'modelURI' is set
+            if (modelURI == null)
+                throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictwithpreprocessjson");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson";
+            var localVarPath = "/endpoints/{modelURI}/default/predictwithpreprocessjson";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3719,8 +3150,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (modelURI != null) localVarPathParams.Add("modelURI", Configuration.ApiClient.ParameterToString(modelURI)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter

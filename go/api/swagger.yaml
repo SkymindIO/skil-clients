@@ -54,7 +54,7 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/FileUploadList"
-  /endpoints/{deploymentName}/model/{modelName}/default/predict:
+  /endpoints/{modelURI}/default/predict:
     post:
       summary: "Run inference on the input array."
       operationId: "predict"
@@ -70,18 +70,12 @@ paths:
         schema:
           $ref: "#/definitions/Prediction"
         x-exportParamName: "Body"
-      - name: "deploymentName"
+      - name: "modelURI"
         in: "path"
-        description: "Name of the deployment group"
+        description: "The URI of the model"
         required: true
         type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "modelName"
-        in: "path"
-        description: "ID or name of the deployed model"
-        required: true
-        type: "string"
-        x-exportParamName: "ModelName"
+        x-exportParamName: "ModelURI"
       responses:
         200:
           description: "successful operation"
@@ -91,7 +85,7 @@ paths:
           description: "Invalid input"
         500:
           description: "Invalid deployment or model name"
-  /endpoints/{deploymentName}/model/{modelName}/default/predictimage:
+  /endpoints/{modelURI}/default/predictimage:
     post:
       summary: "Run inference on the input array, using input image file from multipart\
         \ form data."
@@ -107,18 +101,12 @@ paths:
         required: false
         type: "file"
         x-exportParamName: "Image"
-      - name: "deploymentName"
+      - name: "modelURI"
         in: "path"
-        description: "Name of the deployment group"
+        description: "The URI of the model"
         required: true
         type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "modelName"
-        in: "path"
-        description: "ID or name of the deployed model"
-        required: true
-        type: "string"
-        x-exportParamName: "ModelName"
+        x-exportParamName: "ModelURI"
       responses:
         200:
           description: "successful operation"
@@ -126,7 +114,7 @@ paths:
             $ref: "#/definitions/Prediction"
         500:
           description: "Error generating prediction"
-  /endpoints/{deploymentName}/model/{modelName}/default/classify:
+  /endpoints/{modelURI}/default/classify:
     post:
       summary: "Use the deployed model to classify the input"
       operationId: "classify"
@@ -142,18 +130,12 @@ paths:
         schema:
           $ref: "#/definitions/Prediction"
         x-exportParamName: "Body"
-      - name: "deploymentName"
+      - name: "modelURI"
         in: "path"
-        description: "Name of the deployment group"
+        description: "The URI of the model"
         required: true
         type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "modelName"
-        in: "path"
-        description: "ID or name of the deployed model"
-        required: true
-        type: "string"
-        x-exportParamName: "ModelName"
+        x-exportParamName: "ModelURI"
       responses:
         200:
           description: "successful operation"
@@ -163,7 +145,7 @@ paths:
           description: "Invalid input"
         500:
           description: "Invalid deployment or model name"
-  /endpoints/{deploymentName}/model/{modelName}/default/classifyimage:
+  /endpoints/{modelURI}/default/classifyimage:
     post:
       summary: "Use the deployed model to classify the input, using input image file\
         \ from multipart form data."
@@ -179,18 +161,12 @@ paths:
         required: false
         type: "file"
         x-exportParamName: "Image"
-      - name: "deploymentName"
+      - name: "modelURI"
         in: "path"
-        description: "Name of the deployment group"
+        description: "The URI of the model"
         required: true
         type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "modelName"
-        in: "path"
-        description: "ID or name of the deployed model"
-        required: true
-        type: "string"
-        x-exportParamName: "ModelName"
+        x-exportParamName: "ModelURI"
       responses:
         200:
           description: "successful operation"
@@ -198,7 +174,7 @@ paths:
             $ref: "#/definitions/ClassificationResult"
         500:
           description: "Error generating classification"
-  /endpoints/{deploymentName}/model/{modelName}/default/classifyarray:
+  /endpoints/{modelURI}/default/classifyarray:
     post:
       summary: "Same as /classify but returns the output as Base64NDArrayBody"
       operationId: "classifyarray"
@@ -214,18 +190,12 @@ paths:
         schema:
           $ref: "#/definitions/Prediction"
         x-exportParamName: "Body"
-      - name: "deploymentName"
+      - name: "modelURI"
         in: "path"
-        description: "Name of the deployment group"
+        description: "The URI of the model"
         required: true
         type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "modelName"
-        in: "path"
-        description: "ID or name of the deployed model"
-        required: true
-        type: "string"
-        x-exportParamName: "ModelName"
+        x-exportParamName: "ModelURI"
       responses:
         200:
           description: "successful operation"
@@ -235,7 +205,7 @@ paths:
           description: "Invalid input"
         500:
           description: "Invalid deployment or model name"
-  /endpoints/{deploymentName}/model/{modelName}/default/multiclassify:
+  /endpoints/{modelURI}/default/multiclassify:
     post:
       summary: "Represents all of the labels for a given classification"
       operationId: "multiclassify"
@@ -251,18 +221,12 @@ paths:
         schema:
           $ref: "#/definitions/Prediction"
         x-exportParamName: "Body"
-      - name: "deploymentName"
+      - name: "modelURI"
         in: "path"
-        description: "Name of the deployment group"
+        description: "The URI of the model"
         required: true
         type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "modelName"
-        in: "path"
-        description: "ID or name of the deployed model"
-        required: true
-        type: "string"
-        x-exportParamName: "ModelName"
+        x-exportParamName: "ModelURI"
       responses:
         200:
           description: "successful operation"
@@ -272,75 +236,7 @@ paths:
           description: "Invalid input"
         500:
           description: "Invalid deployment or model name"
-  /endpoints/{deploymentName}/model/{modelName}/default/modelset:
-    post:
-      summary: "Set the model to be served"
-      operationId: "modelset"
-      consumes:
-      - "multipart/form-data"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "file"
-        in: "formData"
-        description: "The model file to upload (.pb file)"
-        required: false
-        type: "file"
-        x-exportParamName: "File"
-      - name: "deploymentName"
-        in: "path"
-        description: "Name of the deployment group"
-        required: true
-        type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "modelName"
-        in: "path"
-        description: "ID or name of the deployed model"
-        required: true
-        type: "string"
-        x-exportParamName: "ModelName"
-      responses:
-        200:
-          description: "Model set successfully"
-          schema:
-            $ref: "#/definitions/ModelStatus"
-        500:
-          description: "Error setting model"
-  /endpoints/{deploymentName}/model/{modelName}/default/modelupdate:
-    post:
-      summary: "Update the model to be served"
-      operationId: "modelupdate"
-      consumes:
-      - "multipart/form-data"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "file"
-        in: "formData"
-        description: "The model file to update with (.pb file)"
-        required: false
-        type: "file"
-        x-exportParamName: "File"
-      - name: "deploymentName"
-        in: "path"
-        description: "Name of the deployment group"
-        required: true
-        type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "modelName"
-        in: "path"
-        description: "ID or name of the deployed model"
-        required: true
-        type: "string"
-        x-exportParamName: "ModelName"
-      responses:
-        200:
-          description: "Model updated successfully or model update failed"
-          schema:
-            $ref: "#/definitions/ModelStatus"
-        500:
-          description: "Error updating model"
-  /endpoints/{deploymentName}/model/{modelName}/default/jsonarray:
+  /endpoints/{modelURI}/default/jsonarray:
     post:
       summary: "Run inference on the input and returns it as a JsonArrayResponse"
       operationId: "jsonarray"
@@ -356,18 +252,12 @@ paths:
         schema:
           $ref: "#/definitions/Prediction"
         x-exportParamName: "Body"
-      - name: "deploymentName"
+      - name: "modelURI"
         in: "path"
-        description: "Name of the deployment group"
+        description: "The URI of the model"
         required: true
         type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "modelName"
-        in: "path"
-        description: "ID or name of the deployed model"
-        required: true
-        type: "string"
-        x-exportParamName: "ModelName"
+        x-exportParamName: "ModelURI"
       responses:
         200:
           description: "successful operation"
@@ -375,7 +265,7 @@ paths:
             $ref: "#/definitions/JsonArrayResponse"
         500:
           description: "Error generating array prediction"
-  /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess:
+  /endpoints/{modelURI}/default/predictwithpreprocess:
     post:
       summary: "Preprocesses the input and run inference on it"
       operationId: "predictwithpreprocess"
@@ -393,18 +283,12 @@ paths:
           items:
             type: "string"
         x-exportParamName: "Body"
-      - name: "deploymentName"
+      - name: "modelURI"
         in: "path"
-        description: "Name of the deployment group"
+        description: "The URI of the model"
         required: true
         type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "modelName"
-        in: "path"
-        description: "ID or name of the deployed model"
-        required: true
-        type: "string"
-        x-exportParamName: "ModelName"
+        x-exportParamName: "ModelURI"
       responses:
         200:
           description: "successful operation"
@@ -412,7 +296,7 @@ paths:
             $ref: "#/definitions/Prediction"
         500:
           description: "Error executing predictPreProcess"
-  /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson:
+  /endpoints/{modelURI}/default/predictwithpreprocessjson:
     post:
       summary: "Preprocesses the input and run inference on it and returns it as a\
         \ JsonArrayResponse"
@@ -431,18 +315,12 @@ paths:
           items:
             type: "string"
         x-exportParamName: "Body"
-      - name: "deploymentName"
+      - name: "modelURI"
         in: "path"
-        description: "Name of the deployment group"
+        description: "The URI of the model"
         required: true
         type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "modelName"
-        in: "path"
-        description: "ID or name of the deployed model"
-        required: true
-        type: "string"
-        x-exportParamName: "ModelName"
+        x-exportParamName: "ModelURI"
       responses:
         200:
           description: "successful operation"
