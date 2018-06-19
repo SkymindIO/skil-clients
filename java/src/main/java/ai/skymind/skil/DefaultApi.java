@@ -81,7 +81,7 @@ public class DefaultApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/default/classify"
+        String localVarPath = "/endpoints/{modelURI}/classify"
             .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -213,7 +213,7 @@ public class DefaultApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/default/classifyarray"
+        String localVarPath = "/endpoints/{modelURI}/classifyarray"
             .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -345,7 +345,7 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/default/classifyimage"
+        String localVarPath = "/endpoints/{modelURI}/classifyimage"
             .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -728,7 +728,7 @@ public class DefaultApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/default/jsonarray"
+        String localVarPath = "/endpoints/{modelURI}/jsonarray"
             .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -860,7 +860,7 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath"
+        String localVarPath = "/endpoints/{deploymentName}/model/{modelName}/logfilepath"
             .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
             .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()));
 
@@ -1116,7 +1116,7 @@ public class DefaultApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logs"
+        String localVarPath = "/endpoints/{deploymentName}/model/{modelName}/logs"
             .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
             .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()));
 
@@ -1257,7 +1257,7 @@ public class DefaultApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/default/multiclassify"
+        String localVarPath = "/endpoints/{modelURI}/multiclassify"
             .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1389,7 +1389,7 @@ public class DefaultApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/default/predict"
+        String localVarPath = "/endpoints/{modelURI}/predict"
             .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1521,7 +1521,7 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/default/predictimage"
+        String localVarPath = "/endpoints/{modelURI}/predictimage"
             .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1650,7 +1650,7 @@ public class DefaultApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/default/predictwithpreprocess"
+        String localVarPath = "/endpoints/{modelURI}/predictwithpreprocess"
             .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1782,7 +1782,7 @@ public class DefaultApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/default/predictwithpreprocessjson"
+        String localVarPath = "/endpoints/{modelURI}/predictwithpreprocessjson"
             .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

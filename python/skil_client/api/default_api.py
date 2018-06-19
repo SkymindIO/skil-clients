@@ -123,7 +123,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{modelURI}/default/classify', 'POST',
+            '/endpoints/{modelURI}/classify', 'POST',
             path_params,
             query_params,
             header_params,
@@ -228,7 +228,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{modelURI}/default/classifyarray', 'POST',
+            '/endpoints/{modelURI}/classifyarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -329,7 +329,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{modelURI}/default/classifyimage', 'POST',
+            '/endpoints/{modelURI}/classifyimage', 'POST',
             path_params,
             query_params,
             header_params,
@@ -636,7 +636,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{modelURI}/default/jsonarray', 'POST',
+            '/endpoints/{modelURI}/jsonarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -737,7 +737,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/logfilepath', 'GET',
+            '/endpoints/{deploymentName}/model/{modelName}/logfilepath', 'GET',
             path_params,
             query_params,
             header_params,
@@ -947,7 +947,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/logs', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/logs', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1052,7 +1052,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{modelURI}/default/multiclassify', 'POST',
+            '/endpoints/{modelURI}/multiclassify', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1157,7 +1157,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{modelURI}/default/predict', 'POST',
+            '/endpoints/{modelURI}/predict', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1258,7 +1258,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{modelURI}/default/predictimage', 'POST',
+            '/endpoints/{modelURI}/predictimage', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1363,7 +1363,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{modelURI}/default/predictwithpreprocess', 'POST',
+            '/endpoints/{modelURI}/predictwithpreprocess', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1468,7 +1468,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{modelURI}/default/predictwithpreprocessjson', 'POST',
+            '/endpoints/{modelURI}/predictwithpreprocessjson', 'POST',
             path_params,
             query_params,
             header_params,

@@ -4,20 +4,20 @@ All URIs are relative to *https://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Classify**](DefaultApi.md#Classify) | **Post** /endpoints/{modelURI}/default/classify | Use the deployed model to classify the input
-[**Classifyarray**](DefaultApi.md#Classifyarray) | **Post** /endpoints/{modelURI}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**Classifyimage**](DefaultApi.md#Classifyimage) | **Post** /endpoints/{modelURI}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**Classify**](DefaultApi.md#Classify) | **Post** /endpoints/{modelURI}/classify | Use the deployed model to classify the input
+[**Classifyarray**](DefaultApi.md#Classifyarray) | **Post** /endpoints/{modelURI}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**Classifyimage**](DefaultApi.md#Classifyimage) | **Post** /endpoints/{modelURI}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
 [**DeployModel**](DefaultApi.md#DeployModel) | **Post** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**DeploymentCreate**](DefaultApi.md#DeploymentCreate) | **Post** /deployment | Create a new deployment group.
-[**Jsonarray**](DefaultApi.md#Jsonarray) | **Post** /endpoints/{modelURI}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
-[**Logfilepath**](DefaultApi.md#Logfilepath) | **Get** /endpoints/{deploymentName}/model/{modelName}/default/logfilepath | Get logs file path
+[**Jsonarray**](DefaultApi.md#Jsonarray) | **Post** /endpoints/{modelURI}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**Logfilepath**](DefaultApi.md#Logfilepath) | **Get** /endpoints/{deploymentName}/model/{modelName}/logfilepath | Get logs file path
 [**Login**](DefaultApi.md#Login) | **Post** /login | Post JSON credentials and obtain a JWT authorization token.
-[**Logs**](DefaultApi.md#Logs) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/logs | Get logs
-[**Multiclassify**](DefaultApi.md#Multiclassify) | **Post** /endpoints/{modelURI}/default/multiclassify | Represents all of the labels for a given classification
-[**Predict**](DefaultApi.md#Predict) | **Post** /endpoints/{modelURI}/default/predict | Run inference on the input array.
-[**Predictimage**](DefaultApi.md#Predictimage) | **Post** /endpoints/{modelURI}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**Predictwithpreprocess**](DefaultApi.md#Predictwithpreprocess) | **Post** /endpoints/{modelURI}/default/predictwithpreprocess | Preprocesses the input and run inference on it
-[**Predictwithpreprocessjson**](DefaultApi.md#Predictwithpreprocessjson) | **Post** /endpoints/{modelURI}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**Logs**](DefaultApi.md#Logs) | **Post** /endpoints/{deploymentName}/model/{modelName}/logs | Get logs
+[**Multiclassify**](DefaultApi.md#Multiclassify) | **Post** /endpoints/{modelURI}/multiclassify | Represents all of the labels for a given classification
+[**Predict**](DefaultApi.md#Predict) | **Post** /endpoints/{modelURI}/predict | Run inference on the input array.
+[**Predictimage**](DefaultApi.md#Predictimage) | **Post** /endpoints/{modelURI}/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**Predictwithpreprocess**](DefaultApi.md#Predictwithpreprocess) | **Post** /endpoints/{modelURI}/predictwithpreprocess | Preprocesses the input and run inference on it
+[**Predictwithpreprocessjson**](DefaultApi.md#Predictwithpreprocessjson) | **Post** /endpoints/{modelURI}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**UpdateState**](DefaultApi.md#UpdateState) | **Post** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 [**Upload**](DefaultApi.md#Upload) | **Post** /api/upload/model | Upload a model file to SKIL for import.
 

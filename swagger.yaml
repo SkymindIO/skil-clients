@@ -67,7 +67,7 @@ paths:
           description: successful operation
           schema:
             $ref: '#/definitions/FileUploadList'
-  /endpoints/{modelURI}/default/predict:
+  /endpoints/{modelURI}/predict:
     post:
       operationId: predict
       summary: Run inference on the input array.
@@ -96,7 +96,7 @@ paths:
           description: Invalid input
         500:
           description: Invalid deployment or model name
-  /endpoints/{modelURI}/default/predictimage:
+  /endpoints/{modelURI}/predictimage:
     post:
       operationId: predictimage
       summary: Run inference on the input array, using input image file from multipart form data.
@@ -121,7 +121,7 @@ paths:
             $ref: '#/definitions/Prediction'
         500:
           description: Error generating prediction
-  /endpoints/{modelURI}/default/classify:
+  /endpoints/{modelURI}/classify:
     post:
       operationId: classify
       summary: Use the deployed model to classify the input
@@ -150,7 +150,7 @@ paths:
           description: Invalid input
         500:
           description: Invalid deployment or model name
-  /endpoints/{modelURI}/default/classifyimage:
+  /endpoints/{modelURI}/classifyimage:
     post:
       operationId: classifyimage
       summary: Use the deployed model to classify the input, using input image file from multipart form data.
@@ -175,7 +175,7 @@ paths:
             $ref: '#/definitions/ClassificationResult'
         500:
           description: Error generating classification
-  /endpoints/{modelURI}/default/classifyarray:
+  /endpoints/{modelURI}/classifyarray:
     post:
       operationId: classifyarray
       summary: Same as /classify but returns the output as Base64NDArrayBody
@@ -204,7 +204,7 @@ paths:
           description: Invalid input
         500:
           description: Invalid deployment or model name
-  /endpoints/{modelURI}/default/multiclassify:
+  /endpoints/{modelURI}/multiclassify:
     post:
       operationId: multiclassify
       summary: Represents all of the labels for a given classification
@@ -233,7 +233,7 @@ paths:
           description: Invalid input
         500:
           description: Invalid deployment or model name
-  /endpoints/{modelURI}/default/jsonarray:
+  /endpoints/{modelURI}/jsonarray:
     post:
       operationId: jsonarray
       summary: Run inference on the input and returns it as a JsonArrayResponse
@@ -260,7 +260,7 @@ paths:
             $ref: '#/definitions/JsonArrayResponse'
         500:
           description: Error generating array prediction
-  /endpoints/{modelURI}/default/predictwithpreprocess:
+  /endpoints/{modelURI}/predictwithpreprocess:
     post:
       operationId: predictwithpreprocess
       summary: Preprocesses the input and run inference on it
@@ -289,7 +289,7 @@ paths:
             $ref: '#/definitions/Prediction'
         500:
           description: Error executing predictPreProcess
-  /endpoints/{modelURI}/default/predictwithpreprocessjson:
+  /endpoints/{modelURI}/predictwithpreprocessjson:
     post:
       operationId: predictwithpreprocessjson
       summary: Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -318,7 +318,7 @@ paths:
             $ref: '#/definitions/JsonArrayResponse'
         500:
           description: Error executing predictPreProcessJson
-  /endpoints/{deploymentName}/model/{modelName}/default/logs:
+  /endpoints/{deploymentName}/model/{modelName}/logs:
     post:
       operationId: logs
       summary: Get logs
@@ -350,7 +350,7 @@ paths:
             $ref: '#/definitions/LogBatch'
         500:
           description: Error retrieving logs
-  /endpoints/{deploymentName}/model/{modelName}/default/logfilepath:
+  /endpoints/{deploymentName}/model/{modelName}/logfilepath:
     get:
       operationId: logfilepath
       summary: Get logs file path

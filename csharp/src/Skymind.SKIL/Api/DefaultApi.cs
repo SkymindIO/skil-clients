@@ -887,7 +887,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classify");
 
-            var localVarPath = "/endpoints/{modelURI}/default/classify";
+            var localVarPath = "/endpoints/{modelURI}/classify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -973,7 +973,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classify");
 
-            var localVarPath = "/endpoints/{modelURI}/default/classify";
+            var localVarPath = "/endpoints/{modelURI}/classify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1058,7 +1058,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classifyarray");
 
-            var localVarPath = "/endpoints/{modelURI}/default/classifyarray";
+            var localVarPath = "/endpoints/{modelURI}/classifyarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1144,7 +1144,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classifyarray");
 
-            var localVarPath = "/endpoints/{modelURI}/default/classifyarray";
+            var localVarPath = "/endpoints/{modelURI}/classifyarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1226,7 +1226,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classifyimage");
 
-            var localVarPath = "/endpoints/{modelURI}/default/classifyimage";
+            var localVarPath = "/endpoints/{modelURI}/classifyimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1302,7 +1302,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Classifyimage");
 
-            var localVarPath = "/endpoints/{modelURI}/default/classifyimage";
+            var localVarPath = "/endpoints/{modelURI}/classifyimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1710,7 +1710,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Jsonarray");
 
-            var localVarPath = "/endpoints/{modelURI}/default/jsonarray";
+            var localVarPath = "/endpoints/{modelURI}/jsonarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1796,7 +1796,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Jsonarray");
 
-            var localVarPath = "/endpoints/{modelURI}/default/jsonarray";
+            var localVarPath = "/endpoints/{modelURI}/jsonarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1881,7 +1881,7 @@ namespace Skymind.SKIL.Api
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Logfilepath");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/logfilepath";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1959,7 +1959,7 @@ namespace Skymind.SKIL.Api
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Logfilepath");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/logfilepath";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2200,7 +2200,7 @@ namespace Skymind.SKIL.Api
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Logs");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logs";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/logs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2292,7 +2292,7 @@ namespace Skymind.SKIL.Api
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Logs");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logs";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/logs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2378,7 +2378,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Multiclassify");
 
-            var localVarPath = "/endpoints/{modelURI}/default/multiclassify";
+            var localVarPath = "/endpoints/{modelURI}/multiclassify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2464,7 +2464,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Multiclassify");
 
-            var localVarPath = "/endpoints/{modelURI}/default/multiclassify";
+            var localVarPath = "/endpoints/{modelURI}/multiclassify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2549,7 +2549,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predict");
 
-            var localVarPath = "/endpoints/{modelURI}/default/predict";
+            var localVarPath = "/endpoints/{modelURI}/predict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2635,7 +2635,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predict");
 
-            var localVarPath = "/endpoints/{modelURI}/default/predict";
+            var localVarPath = "/endpoints/{modelURI}/predict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2717,7 +2717,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictimage");
 
-            var localVarPath = "/endpoints/{modelURI}/default/predictimage";
+            var localVarPath = "/endpoints/{modelURI}/predictimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2793,7 +2793,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictimage");
 
-            var localVarPath = "/endpoints/{modelURI}/default/predictimage";
+            var localVarPath = "/endpoints/{modelURI}/predictimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2871,7 +2871,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictwithpreprocess");
 
-            var localVarPath = "/endpoints/{modelURI}/default/predictwithpreprocess";
+            var localVarPath = "/endpoints/{modelURI}/predictwithpreprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2957,7 +2957,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictwithpreprocess");
 
-            var localVarPath = "/endpoints/{modelURI}/default/predictwithpreprocess";
+            var localVarPath = "/endpoints/{modelURI}/predictwithpreprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3042,7 +3042,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictwithpreprocessjson");
 
-            var localVarPath = "/endpoints/{modelURI}/default/predictwithpreprocessjson";
+            var localVarPath = "/endpoints/{modelURI}/predictwithpreprocessjson";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -3128,7 +3128,7 @@ namespace Skymind.SKIL.Api
             if (modelURI == null)
                 throw new ApiException(400, "Missing required parameter 'modelURI' when calling DefaultApi->Predictwithpreprocessjson");
 
-            var localVarPath = "/endpoints/{modelURI}/default/predictwithpreprocessjson";
+            var localVarPath = "/endpoints/{modelURI}/predictwithpreprocessjson";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);

@@ -94,7 +94,7 @@
       var returnType = ClassificationResult;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/default/classify', 'POST',
+        '/endpoints/{modelURI}/classify', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -147,7 +147,7 @@
       var returnType = Base64NDArrayBody;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/default/classifyarray', 'POST',
+        '/endpoints/{modelURI}/classifyarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -198,7 +198,7 @@
       var returnType = ClassificationResult;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/default/classifyimage', 'POST',
+        '/endpoints/{modelURI}/classifyimage', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -350,7 +350,7 @@
       var returnType = JsonArrayResponse;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/default/jsonarray', 'POST',
+        '/endpoints/{modelURI}/jsonarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -404,7 +404,7 @@
       var returnType = 'String';
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/logfilepath', 'GET',
+        '/endpoints/{deploymentName}/model/{modelName}/logfilepath', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -510,7 +510,7 @@
       var returnType = LogBatch;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/logs', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/logs', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -563,7 +563,7 @@
       var returnType = MultiClassClassificationResult;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/default/multiclassify', 'POST',
+        '/endpoints/{modelURI}/multiclassify', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -616,7 +616,7 @@
       var returnType = Prediction;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/default/predict', 'POST',
+        '/endpoints/{modelURI}/predict', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -667,7 +667,7 @@
       var returnType = Prediction;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/default/predictimage', 'POST',
+        '/endpoints/{modelURI}/predictimage', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -720,7 +720,7 @@
       var returnType = Prediction;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/default/predictwithpreprocess', 'POST',
+        '/endpoints/{modelURI}/predictwithpreprocess', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -773,7 +773,7 @@
       var returnType = JsonArrayResponse;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/default/predictwithpreprocessjson', 'POST',
+        '/endpoints/{modelURI}/predictwithpreprocessjson', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

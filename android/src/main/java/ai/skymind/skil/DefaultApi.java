@@ -91,7 +91,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/classify".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/classify".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -159,7 +159,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/classify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/classify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -230,7 +230,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/classifyarray".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/classifyarray".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -298,7 +298,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/classifyarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/classifyarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -364,7 +364,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/classifyimage".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/classifyimage".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -430,7 +430,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/classifyimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/classifyimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -773,7 +773,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/jsonarray".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/jsonarray".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -841,7 +841,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/jsonarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/jsonarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -912,7 +912,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/logfilepath".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -979,7 +979,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/logfilepath".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1184,7 +1184,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/logs".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/logs".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1257,7 +1257,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/logs".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/logs".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1328,7 +1328,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/multiclassify".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/multiclassify".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1396,7 +1396,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/multiclassify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/multiclassify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1467,7 +1467,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/predict".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/predict".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1535,7 +1535,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/predict".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/predict".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1601,7 +1601,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/predictimage".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/predictimage".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1667,7 +1667,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/predictimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/predictimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1743,7 +1743,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/predictwithpreprocess".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/predictwithpreprocess".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1811,7 +1811,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/predictwithpreprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/predictwithpreprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1882,7 +1882,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/predictwithpreprocessjson".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/predictwithpreprocessjson".replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1950,7 +1950,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{modelURI}/default/predictwithpreprocessjson".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
+    String path = "/endpoints/{modelURI}/predictwithpreprocessjson".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelURI" + "\\}", apiInvoker.escapeString(modelURI.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();

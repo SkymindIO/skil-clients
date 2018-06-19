@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * Token
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-18T20:05:56.633-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-18T20:19:23.009-07:00")
 public class Token {
   @SerializedName("token")
   private String token = null;

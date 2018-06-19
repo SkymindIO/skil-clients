@@ -56,7 +56,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/default/classify", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{modelURI}/classify", configuration.base_path, modelURI=model_uri);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -87,7 +87,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/default/classifyarray", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{modelURI}/classifyarray", configuration.base_path, modelURI=model_uri);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -118,7 +118,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/default/classifyimage", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{modelURI}/classifyimage", configuration.base_path, modelURI=model_uri);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -207,7 +207,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/default/jsonarray", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{modelURI}/jsonarray", configuration.base_path, modelURI=model_uri);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -238,7 +238,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
 
         let method = hyper::Method::Get;
 
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/logfilepath", configuration.base_path, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/logfilepath", configuration.base_path, deploymentName=deployment_name, modelName=model_name);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -296,7 +296,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/logs", configuration.base_path, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/logs", configuration.base_path, deploymentName=deployment_name, modelName=model_name);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -327,7 +327,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/default/multiclassify", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{modelURI}/multiclassify", configuration.base_path, modelURI=model_uri);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -358,7 +358,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/default/predict", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{modelURI}/predict", configuration.base_path, modelURI=model_uri);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -389,7 +389,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/default/predictimage", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{modelURI}/predictimage", configuration.base_path, modelURI=model_uri);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -416,7 +416,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/default/predictwithpreprocess", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{modelURI}/predictwithpreprocess", configuration.base_path, modelURI=model_uri);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -447,7 +447,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/default/predictwithpreprocessjson", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{modelURI}/predictwithpreprocessjson", configuration.base_path, modelURI=model_uri);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error

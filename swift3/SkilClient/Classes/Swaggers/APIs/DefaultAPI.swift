@@ -25,7 +25,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Use the deployed model to classify the input
-     - POST /endpoints/{modelURI}/default/classify
+     - POST /endpoints/{modelURI}/classify
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -39,7 +39,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<ClassificationResult> 
      */
     open class func classifyWithRequestBuilder(body: Prediction, modelURI: String) -> RequestBuilder<ClassificationResult> {
-        var path = "/endpoints/{modelURI}/default/classify"
+        var path = "/endpoints/{modelURI}/classify"
         let modelURIPreEscape = "\(modelURI)"
         let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
@@ -68,7 +68,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Same as /classify but returns the output as Base64NDArrayBody
-     - POST /endpoints/{modelURI}/default/classifyarray
+     - POST /endpoints/{modelURI}/classifyarray
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -80,7 +80,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
     open class func classifyarrayWithRequestBuilder(body: Prediction, modelURI: String) -> RequestBuilder<Base64NDArrayBody> {
-        var path = "/endpoints/{modelURI}/default/classifyarray"
+        var path = "/endpoints/{modelURI}/classifyarray"
         let modelURIPreEscape = "\(modelURI)"
         let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
@@ -109,7 +109,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Use the deployed model to classify the input, using input image file from multipart form data.
-     - POST /endpoints/{modelURI}/default/classifyimage
+     - POST /endpoints/{modelURI}/classifyimage
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -123,7 +123,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<ClassificationResult> 
      */
     open class func classifyimageWithRequestBuilder(modelURI: String, image: URL? = nil) -> RequestBuilder<ClassificationResult> {
-        var path = "/endpoints/{modelURI}/default/classifyimage"
+        var path = "/endpoints/{modelURI}/classifyimage"
         let modelURIPreEscape = "\(modelURI)"
         let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
@@ -240,7 +240,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Run inference on the input and returns it as a JsonArrayResponse
-     - POST /endpoints/{modelURI}/default/jsonarray
+     - POST /endpoints/{modelURI}/jsonarray
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -254,7 +254,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<JsonArrayResponse> 
      */
     open class func jsonarrayWithRequestBuilder(body: Prediction, modelURI: String) -> RequestBuilder<JsonArrayResponse> {
-        var path = "/endpoints/{modelURI}/default/jsonarray"
+        var path = "/endpoints/{modelURI}/jsonarray"
         let modelURIPreEscape = "\(modelURI)"
         let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
@@ -283,7 +283,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Get logs file path
-     - GET /endpoints/{deploymentName}/model/{modelName}/default/logfilepath
+     - GET /endpoints/{deploymentName}/model/{modelName}/logfilepath
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -293,7 +293,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<String> 
      */
     open class func logfilepathWithRequestBuilder(deploymentName: String, modelName: String) -> RequestBuilder<String> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath"
+        var path = "/endpoints/{deploymentName}/model/{modelName}/logfilepath"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
@@ -362,7 +362,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Get logs
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/logs
+     - POST /endpoints/{deploymentName}/model/{modelName}/logs
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -377,7 +377,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<LogBatch> 
      */
     open class func logsWithRequestBuilder(body: LogRequest, deploymentName: String, modelName: String) -> RequestBuilder<LogBatch> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/logs"
+        var path = "/endpoints/{deploymentName}/model/{modelName}/logs"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
@@ -409,7 +409,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Represents all of the labels for a given classification
-     - POST /endpoints/{modelURI}/default/multiclassify
+     - POST /endpoints/{modelURI}/multiclassify
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -423,7 +423,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<MultiClassClassificationResult> 
      */
     open class func multiclassifyWithRequestBuilder(body: Prediction, modelURI: String) -> RequestBuilder<MultiClassClassificationResult> {
-        var path = "/endpoints/{modelURI}/default/multiclassify"
+        var path = "/endpoints/{modelURI}/multiclassify"
         let modelURIPreEscape = "\(modelURI)"
         let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
@@ -452,7 +452,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Run inference on the input array.
-     - POST /endpoints/{modelURI}/default/predict
+     - POST /endpoints/{modelURI}/predict
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -468,7 +468,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<Prediction> 
      */
     open class func predictWithRequestBuilder(body: Prediction, modelURI: String) -> RequestBuilder<Prediction> {
-        var path = "/endpoints/{modelURI}/default/predict"
+        var path = "/endpoints/{modelURI}/predict"
         let modelURIPreEscape = "\(modelURI)"
         let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
@@ -497,7 +497,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Run inference on the input array, using input image file from multipart form data.
-     - POST /endpoints/{modelURI}/default/predictimage
+     - POST /endpoints/{modelURI}/predictimage
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -513,7 +513,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<Prediction> 
      */
     open class func predictimageWithRequestBuilder(modelURI: String, image: URL? = nil) -> RequestBuilder<Prediction> {
-        var path = "/endpoints/{modelURI}/default/predictimage"
+        var path = "/endpoints/{modelURI}/predictimage"
         let modelURIPreEscape = "\(modelURI)"
         let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
@@ -547,7 +547,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Preprocesses the input and run inference on it
-     - POST /endpoints/{modelURI}/default/predictwithpreprocess
+     - POST /endpoints/{modelURI}/predictwithpreprocess
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -563,7 +563,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<Prediction> 
      */
     open class func predictwithpreprocessWithRequestBuilder(body: [String], modelURI: String) -> RequestBuilder<Prediction> {
-        var path = "/endpoints/{modelURI}/default/predictwithpreprocess"
+        var path = "/endpoints/{modelURI}/predictwithpreprocess"
         let modelURIPreEscape = "\(modelURI)"
         let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
@@ -592,7 +592,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-     - POST /endpoints/{modelURI}/default/predictwithpreprocessjson
+     - POST /endpoints/{modelURI}/predictwithpreprocessjson
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -606,7 +606,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<JsonArrayResponse> 
      */
     open class func predictwithpreprocessjsonWithRequestBuilder(body: [String], modelURI: String) -> RequestBuilder<JsonArrayResponse> {
-        var path = "/endpoints/{modelURI}/default/predictwithpreprocessjson"
+        var path = "/endpoints/{modelURI}/predictwithpreprocessjson"
         let modelURIPreEscape = "\(modelURI)"
         let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)

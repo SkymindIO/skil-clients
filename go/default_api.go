@@ -43,7 +43,7 @@ func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, model
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/classify"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/classify"
 	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -122,7 +122,7 @@ func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/classifyarray"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/classifyarray"
 	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -202,7 +202,7 @@ func (a *DefaultApiService) Classifyimage(ctx context.Context, modelURI string, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/classifyimage"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/classifyimage"
 	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -445,7 +445,7 @@ func (a *DefaultApiService) Jsonarray(ctx context.Context, body Prediction, mode
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/jsonarray"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/jsonarray"
 	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -524,7 +524,7 @@ func (a *DefaultApiService) Logfilepath(ctx context.Context, deploymentName stri
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/logfilepath"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
@@ -680,7 +680,7 @@ func (a *DefaultApiService) Logs(ctx context.Context, body LogRequest, deploymen
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/logs"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/logs"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
@@ -760,7 +760,7 @@ func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/multiclassify"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/multiclassify"
 	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -839,7 +839,7 @@ func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, modelU
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/predict"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/predict"
 	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -919,7 +919,7 @@ func (a *DefaultApiService) Predictimage(ctx context.Context, modelURI string, l
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/predictimage"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/predictimage"
 	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1006,7 +1006,7 @@ func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []st
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/predictwithpreprocess"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/predictwithpreprocess"
 	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1085,7 +1085,7 @@ func (a *DefaultApiService) Predictwithpreprocessjson(ctx context.Context, body 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/default/predictwithpreprocessjson"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/predictwithpreprocessjson"
 	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
 
 	localVarHeaderParams := make(map[string]string)

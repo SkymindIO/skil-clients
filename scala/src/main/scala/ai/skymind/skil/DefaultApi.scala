@@ -546,7 +546,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def classify(Body: Prediction,
     ModelURI: String)(implicit reader: ClientResponseReader[ClassificationResult], writer: RequestWriter[Prediction]): Future[ClassificationResult] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{modelURI}/default/classify")
+    val path = (addFmt("/endpoints/{modelURI}/classify")
       replaceAll("\\{" + "modelURI" + "\\}", ModelURI.toString))
 
     // query params
@@ -566,7 +566,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def classifyarray(Body: Prediction,
     ModelURI: String)(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Prediction]): Future[Base64NDArrayBody] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{modelURI}/default/classifyarray")
+    val path = (addFmt("/endpoints/{modelURI}/classifyarray")
       replaceAll("\\{" + "modelURI" + "\\}", ModelURI.toString))
 
     // query params
@@ -587,7 +587,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     Image: Option[File] = None
     )(implicit reader: ClientResponseReader[ClassificationResult]): Future[ClassificationResult] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{modelURI}/default/classifyimage")
+    val path = (addFmt("/endpoints/{modelURI}/classifyimage")
       replaceAll("\\{" + "modelURI" + "\\}", ModelURI.toString))
 
     // query params
@@ -642,7 +642,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def jsonarray(Body: Prediction,
     ModelURI: String)(implicit reader: ClientResponseReader[JsonArrayResponse], writer: RequestWriter[Prediction]): Future[JsonArrayResponse] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{modelURI}/default/jsonarray")
+    val path = (addFmt("/endpoints/{modelURI}/jsonarray")
       replaceAll("\\{" + "modelURI" + "\\}", ModelURI.toString))
 
     // query params
@@ -662,7 +662,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def logfilepath(DeploymentName: String,
     ModelName: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/logfilepath")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/logfilepath")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
@@ -701,7 +701,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     DeploymentName: String,
     ModelName: String)(implicit reader: ClientResponseReader[LogBatch], writer: RequestWriter[LogRequest]): Future[LogBatch] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/logs")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/logs")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
@@ -724,7 +724,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def multiclassify(Body: Prediction,
     ModelURI: String)(implicit reader: ClientResponseReader[MultiClassClassificationResult], writer: RequestWriter[Prediction]): Future[MultiClassClassificationResult] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{modelURI}/default/multiclassify")
+    val path = (addFmt("/endpoints/{modelURI}/multiclassify")
       replaceAll("\\{" + "modelURI" + "\\}", ModelURI.toString))
 
     // query params
@@ -744,7 +744,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def predict(Body: Prediction,
     ModelURI: String)(implicit reader: ClientResponseReader[Prediction], writer: RequestWriter[Prediction]): Future[Prediction] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{modelURI}/default/predict")
+    val path = (addFmt("/endpoints/{modelURI}/predict")
       replaceAll("\\{" + "modelURI" + "\\}", ModelURI.toString))
 
     // query params
@@ -765,7 +765,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     Image: Option[File] = None
     )(implicit reader: ClientResponseReader[Prediction]): Future[Prediction] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{modelURI}/default/predictimage")
+    val path = (addFmt("/endpoints/{modelURI}/predictimage")
       replaceAll("\\{" + "modelURI" + "\\}", ModelURI.toString))
 
     // query params
@@ -784,7 +784,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def predictwithpreprocess(Body: List[String],
     ModelURI: String)(implicit reader: ClientResponseReader[Prediction], writer: RequestWriter[List[String]]): Future[Prediction] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{modelURI}/default/predictwithpreprocess")
+    val path = (addFmt("/endpoints/{modelURI}/predictwithpreprocess")
       replaceAll("\\{" + "modelURI" + "\\}", ModelURI.toString))
 
     // query params
@@ -803,7 +803,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def predictwithpreprocessjson(Body: List[String],
     ModelURI: String)(implicit reader: ClientResponseReader[JsonArrayResponse], writer: RequestWriter[List[String]]): Future[JsonArrayResponse] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{modelURI}/default/predictwithpreprocessjson")
+    val path = (addFmt("/endpoints/{modelURI}/predictwithpreprocessjson")
       replaceAll("\\{" + "modelURI" + "\\}", ModelURI.toString))
 
     // query params

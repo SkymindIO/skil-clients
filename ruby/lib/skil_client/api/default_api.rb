@@ -50,7 +50,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.classify"
       end
       # resource path
-      local_var_path = "/endpoints/{modelURI}/default/classify".sub('{' + 'modelURI' + '}', model_uri.to_s)
+      local_var_path = "/endpoints/{modelURI}/classify".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -111,7 +111,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.classifyarray"
       end
       # resource path
-      local_var_path = "/endpoints/{modelURI}/default/classifyarray".sub('{' + 'modelURI' + '}', model_uri.to_s)
+      local_var_path = "/endpoints/{modelURI}/classifyarray".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -168,7 +168,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.classifyimage"
       end
       # resource path
-      local_var_path = "/endpoints/{modelURI}/default/classifyimage".sub('{' + 'modelURI' + '}', model_uri.to_s)
+      local_var_path = "/endpoints/{modelURI}/classifyimage".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -346,7 +346,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.jsonarray"
       end
       # resource path
-      local_var_path = "/endpoints/{modelURI}/default/jsonarray".sub('{' + 'modelURI' + '}', model_uri.to_s)
+      local_var_path = "/endpoints/{modelURI}/jsonarray".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -407,7 +407,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.logfilepath"
       end
       # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/logfilepath".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -527,7 +527,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.logs"
       end
       # resource path
-      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/logs".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/logs".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -588,7 +588,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.multiclassify"
       end
       # resource path
-      local_var_path = "/endpoints/{modelURI}/default/multiclassify".sub('{' + 'modelURI' + '}', model_uri.to_s)
+      local_var_path = "/endpoints/{modelURI}/multiclassify".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -649,7 +649,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.predict"
       end
       # resource path
-      local_var_path = "/endpoints/{modelURI}/default/predict".sub('{' + 'modelURI' + '}', model_uri.to_s)
+      local_var_path = "/endpoints/{modelURI}/predict".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -706,7 +706,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.predictimage"
       end
       # resource path
-      local_var_path = "/endpoints/{modelURI}/default/predictimage".sub('{' + 'modelURI' + '}', model_uri.to_s)
+      local_var_path = "/endpoints/{modelURI}/predictimage".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -768,7 +768,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.predictwithpreprocess"
       end
       # resource path
-      local_var_path = "/endpoints/{modelURI}/default/predictwithpreprocess".sub('{' + 'modelURI' + '}', model_uri.to_s)
+      local_var_path = "/endpoints/{modelURI}/predictwithpreprocess".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
@@ -829,7 +829,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'model_uri' when calling DefaultApi.predictwithpreprocessjson"
       end
       # resource path
-      local_var_path = "/endpoints/{modelURI}/default/predictwithpreprocessjson".sub('{' + 'modelURI' + '}', model_uri.to_s)
+      local_var_path = "/endpoints/{modelURI}/predictwithpreprocessjson".sub('{' + 'modelURI' + '}', model_uri.to_s)
 
       # query parameters
       query_params = {}
