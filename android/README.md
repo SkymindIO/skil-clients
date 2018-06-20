@@ -65,9 +65,11 @@ public class DefaultApiExample {
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
         Prediction body = new Prediction(); // Prediction | The input NDArray
-        String modelURI = "modelURI_example"; // String | The URI of the model
+        String deploymentName = "deploymentName_example"; // String | The unique slug of the deployment
+        String modelName = "modelName_example"; // String | The unique slug of the model
+        String version = "version_example"; // String | A string representing the model version
         try {
-            ClassificationResult result = apiInstance.classify(body, modelURI);
+            ClassificationResult result = apiInstance.classify(body, deploymentName, modelName, version);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#classify");
@@ -84,20 +86,20 @@ All URIs are relative to *https://localhost:9008*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{modelURI}/classify | Use the deployed model to classify the input
-*DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{modelURI}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-*DefaultApi* | [**classifyimage**](docs/DefaultApi.md#classifyimage) | **POST** /endpoints/{modelURI}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+*DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classify | Use the deployed model to classify the input
+*DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+*DefaultApi* | [**classifyimage**](docs/DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
 *DefaultApi* | [**deployModel**](docs/DefaultApi.md#deployModel) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 *DefaultApi* | [**deploymentCreate**](docs/DefaultApi.md#deploymentCreate) | **POST** /deployment | Create a new deployment group.
-*DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{modelURI}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+*DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 *DefaultApi* | [**logfilepath**](docs/DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/logfilepath | Get logs file path
 *DefaultApi* | [**login**](docs/DefaultApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
 *DefaultApi* | [**logs**](docs/DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/logs | Get logs
-*DefaultApi* | [**multiclassify**](docs/DefaultApi.md#multiclassify) | **POST** /endpoints/{modelURI}/multiclassify | Represents all of the labels for a given classification
-*DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{modelURI}/predict | Run inference on the input array.
-*DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{modelURI}/predictimage | Run inference on the input array, using input image file from multipart form data.
-*DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{modelURI}/predictwithpreprocess | Preprocesses the input and run inference on it
-*DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{modelURI}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+*DefaultApi* | [**multiclassify**](docs/DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify | Represents all of the labels for a given classification
+*DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predict | Run inference on the input array.
+*DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictimage | Run inference on the input array, using input image file from multipart form data.
+*DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess | Preprocesses the input and run inference on it
+*DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 *DefaultApi* | [**updateState**](docs/DefaultApi.md#updateState) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 *DefaultApi* | [**upload**](docs/DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 

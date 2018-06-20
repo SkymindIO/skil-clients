@@ -67,7 +67,7 @@ paths:
           description: successful operation
           schema:
             $ref: '#/definitions/FileUploadList'
-  /endpoints/{modelURI}/predict:
+  /endpoints/{deploymentName}/models/{modelName}/{version}/predict:
     post:
       operationId: predict
       summary: Run inference on the input array.
@@ -82,12 +82,21 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/Prediction'
-      - name: modelURI
+      - name: deploymentName
         in: path
-        description: The URI of the model
+        description: The unique slug of the deployment
         required: true
         type: string
-        format: uri
+      - name: modelName
+        in: path
+        description: The unique slug of the model
+        required: true
+        type: string
+      - name: version
+        in: path
+        description: A string representing the model version
+        required: true
+        type: string
       responses:
         200:
           description: successful operation
@@ -97,7 +106,7 @@ paths:
           description: Invalid input
         500:
           description: Invalid deployment or model name
-  /endpoints/{modelURI}/predictimage:
+  /endpoints/{deploymentName}/models/{modelName}/{version}/predictimage:
     post:
       operationId: predictimage
       summary: Run inference on the input array, using input image file from multipart form data.
@@ -110,12 +119,21 @@ paths:
         in: formData
         type: file
         description: The file to upload.
-      - name: modelURI
+      - name: deploymentName
         in: path
-        description: The URI of the model
+        description: The unique slug of the deployment
         required: true
         type: string
-        format: uri
+      - name: modelName
+        in: path
+        description: The unique slug of the model
+        required: true
+        type: string
+      - name: version
+        in: path
+        description: A string representing the model version
+        required: true
+        type: string
       responses:
         200:
           description: successful operation
@@ -123,7 +141,7 @@ paths:
             $ref: '#/definitions/Prediction'
         500:
           description: Error generating prediction
-  /endpoints/{modelURI}/classify:
+  /endpoints/{deploymentName}/models/{modelName}/{version}/classify:
     post:
       operationId: classify
       summary: Use the deployed model to classify the input
@@ -138,12 +156,21 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/Prediction'
-      - name: modelURI
+      - name: deploymentName
         in: path
-        description: The URI of the model
+        description: The unique slug of the deployment
         required: true
         type: string
-        format: uri
+      - name: modelName
+        in: path
+        description: The unique slug of the model
+        required: true
+        type: string
+      - name: version
+        in: path
+        description: A string representing the model version
+        required: true
+        type: string
       responses:
         200:
           description: successful operation
@@ -153,7 +180,7 @@ paths:
           description: Invalid input
         500:
           description: Invalid deployment or model name
-  /endpoints/{modelURI}/classifyimage:
+  /endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage:
     post:
       operationId: classifyimage
       summary: Use the deployed model to classify the input, using input image file from multipart form data.
@@ -166,12 +193,21 @@ paths:
         in: formData
         type: file
         description: The file to upload.
-      - name: modelURI
+      - name: deploymentName
         in: path
-        description: The URI of the model
+        description: The unique slug of the deployment
         required: true
         type: string
-        format: uri
+      - name: modelName
+        in: path
+        description: The unique slug of the model
+        required: true
+        type: string
+      - name: version
+        in: path
+        description: A string representing the model version
+        required: true
+        type: string
       responses:
         200:
           description: successful operation
@@ -179,7 +215,7 @@ paths:
             $ref: '#/definitions/ClassificationResult'
         500:
           description: Error generating classification
-  /endpoints/{modelURI}/classifyarray:
+  /endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray:
     post:
       operationId: classifyarray
       summary: Same as /classify but returns the output as Base64NDArrayBody
@@ -194,12 +230,21 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/Prediction'
-      - name: modelURI
+      - name: deploymentName
         in: path
-        description: The URI of the model
+        description: The unique slug of the deployment
         required: true
         type: string
-        format: uri
+      - name: modelName
+        in: path
+        description: The unique slug of the model
+        required: true
+        type: string
+      - name: version
+        in: path
+        description: A string representing the model version
+        required: true
+        type: string
       responses:
         200:
           description: successful operation
@@ -209,7 +254,7 @@ paths:
           description: Invalid input
         500:
           description: Invalid deployment or model name
-  /endpoints/{modelURI}/multiclassify:
+  /endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify:
     post:
       operationId: multiclassify
       summary: Represents all of the labels for a given classification
@@ -224,12 +269,21 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/Prediction'
-      - name: modelURI
+      - name: deploymentName
         in: path
-        description: The URI of the model
+        description: The unique slug of the deployment
         required: true
         type: string
-        format: uri
+      - name: modelName
+        in: path
+        description: The unique slug of the model
+        required: true
+        type: string
+      - name: version
+        in: path
+        description: A string representing the model version
+        required: true
+        type: string
       responses:
         200:
           description: successful operation
@@ -239,7 +293,7 @@ paths:
           description: Invalid input
         500:
           description: Invalid deployment or model name
-  /endpoints/{modelURI}/jsonarray:
+  /endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray:
     post:
       operationId: jsonarray
       summary: Run inference on the input and returns it as a JsonArrayResponse
@@ -254,12 +308,21 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/Prediction'
-      - name: modelURI
+      - name: deploymentName
         in: path
-        description: The URI of the model
+        description: The unique slug of the deployment
         required: true
         type: string
-        format: uri
+      - name: modelName
+        in: path
+        description: The unique slug of the model
+        required: true
+        type: string
+      - name: version
+        in: path
+        description: A string representing the model version
+        required: true
+        type: string
       responses:
         200:
           description: successful operation
@@ -267,7 +330,7 @@ paths:
             $ref: '#/definitions/JsonArrayResponse'
         500:
           description: Error generating array prediction
-  /endpoints/{modelURI}/predictwithpreprocess:
+  /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess:
     post:
       operationId: predictwithpreprocess
       summary: Preprocesses the input and run inference on it
@@ -284,12 +347,21 @@ paths:
           type: array
           items:
             type: string
-      - name: modelURI
+      - name: deploymentName
         in: path
-        description: The URI of the model
+        description: The unique slug of the deployment
         required: true
         type: string
-        format: uri
+      - name: modelName
+        in: path
+        description: The unique slug of the model
+        required: true
+        type: string
+      - name: version
+        in: path
+        description: A string representing the model version
+        required: true
+        type: string
       responses:
         200:
           description: successful operation
@@ -297,7 +369,7 @@ paths:
             $ref: '#/definitions/Prediction'
         500:
           description: Error executing predictPreProcess
-  /endpoints/{modelURI}/predictwithpreprocessjson:
+  /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson:
     post:
       operationId: predictwithpreprocessjson
       summary: Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -314,12 +386,21 @@ paths:
           type: array
           items:
             type: string
-      - name: modelURI
+      - name: deploymentName
         in: path
-        description: The URI of the model
+        description: The unique slug of the deployment
         required: true
         type: string
-        format: uri
+      - name: modelName
+        in: path
+        description: The unique slug of the model
+        required: true
+        type: string
+      - name: version
+        in: path
+        description: A string representing the model version
+        required: true
+        type: string
       responses:
         200:
           description: successful operation
@@ -502,7 +583,7 @@ definitions:
     example:
       name: new_model
       scale: 1
-      uri: 'my_deployment/model/new_model/v1'
+      uri: 'my_deployment/model/my_model/v1'
       modelType: model
       fileLocation: 'file:///var/skil/storage/models/d8...eb28.zip'
   Deployment:

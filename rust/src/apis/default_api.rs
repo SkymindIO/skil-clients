@@ -31,32 +31,32 @@ impl<C: hyper::client::Connect> DefaultApiClient<C> {
 }
 
 pub trait DefaultApi {
-    fn classify(&self, body: ::models::Prediction, model_uri: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error>>;
-    fn classifyarray(&self, body: ::models::Prediction, model_uri: &str) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>>;
-    fn classifyimage(&self, model_uri: &str, image: ::models::File) -> Box<Future<Item = ::models::ClassificationResult, Error = Error>>;
+    fn classify(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error>>;
+    fn classifyarray(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>>;
+    fn classifyimage(&self, deployment_name: &str, model_name: &str, version: &str, image: ::models::File) -> Box<Future<Item = ::models::ClassificationResult, Error = Error>>;
     fn deploy_model(&self, deployment_id: &str, body: ::models::DeployModel) -> Box<Future<Item = Value, Error = Error>>;
     fn deployment_create(&self, body: ::models::NewDeployment) -> Box<Future<Item = ::models::Deployment, Error = Error>>;
-    fn jsonarray(&self, body: ::models::Prediction, model_uri: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error>>;
+    fn jsonarray(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error>>;
     fn logfilepath(&self, deployment_name: &str, model_name: &str) -> Box<Future<Item = String, Error = Error>>;
     fn login(&self, credentials: ::models::Credentials) -> Box<Future<Item = ::models::Token, Error = Error>>;
     fn logs(&self, body: ::models::LogRequest, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::LogBatch, Error = Error>>;
-    fn multiclassify(&self, body: ::models::Prediction, model_uri: &str) -> Box<Future<Item = ::models::MultiClassClassificationResult, Error = Error>>;
-    fn predict(&self, body: ::models::Prediction, model_uri: &str) -> Box<Future<Item = ::models::Prediction, Error = Error>>;
-    fn predictimage(&self, model_uri: &str, image: ::models::File) -> Box<Future<Item = ::models::Prediction, Error = Error>>;
-    fn predictwithpreprocess(&self, body: Vec<String>, model_uri: &str) -> Box<Future<Item = ::models::Prediction, Error = Error>>;
-    fn predictwithpreprocessjson(&self, body: Vec<String>, model_uri: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error>>;
+    fn multiclassify(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::MultiClassClassificationResult, Error = Error>>;
+    fn predict(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::Prediction, Error = Error>>;
+    fn predictimage(&self, deployment_name: &str, model_name: &str, version: &str, image: ::models::File) -> Box<Future<Item = ::models::Prediction, Error = Error>>;
+    fn predictwithpreprocess(&self, body: Vec<String>, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::Prediction, Error = Error>>;
+    fn predictwithpreprocessjson(&self, body: Vec<String>, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error>>;
     fn update_state(&self, deployment_id: &str, model_id: &str, body: ::models::UpdateState) -> Box<Future<Item = Value, Error = Error>>;
     fn upload(&self, file: ::models::File) -> Box<Future<Item = ::models::FileUploadList, Error = Error>>;
 }
 
 
 impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
-    fn classify(&self, body: ::models::Prediction, model_uri: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error>> {
+    fn classify(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/classify", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{deploymentName}/models/{modelName}/{version}/classify", configuration.base_path, deploymentName=deployment_name, modelName=model_name, version=version);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -82,12 +82,12 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn classifyarray(&self, body: ::models::Prediction, model_uri: &str) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>> {
+    fn classifyarray(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/classifyarray", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray", configuration.base_path, deploymentName=deployment_name, modelName=model_name, version=version);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -113,12 +113,12 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn classifyimage(&self, model_uri: &str, image: ::models::File) -> Box<Future<Item = ::models::ClassificationResult, Error = Error>> {
+    fn classifyimage(&self, deployment_name: &str, model_name: &str, version: &str, image: ::models::File) -> Box<Future<Item = ::models::ClassificationResult, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/classifyimage", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage", configuration.base_path, deploymentName=deployment_name, modelName=model_name, version=version);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -202,12 +202,12 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn jsonarray(&self, body: ::models::Prediction, model_uri: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error>> {
+    fn jsonarray(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/jsonarray", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray", configuration.base_path, deploymentName=deployment_name, modelName=model_name, version=version);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -322,12 +322,12 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn multiclassify(&self, body: ::models::Prediction, model_uri: &str) -> Box<Future<Item = ::models::MultiClassClassificationResult, Error = Error>> {
+    fn multiclassify(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::MultiClassClassificationResult, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/multiclassify", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify", configuration.base_path, deploymentName=deployment_name, modelName=model_name, version=version);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -353,12 +353,12 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn predict(&self, body: ::models::Prediction, model_uri: &str) -> Box<Future<Item = ::models::Prediction, Error = Error>> {
+    fn predict(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::Prediction, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/predict", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{deploymentName}/models/{modelName}/{version}/predict", configuration.base_path, deploymentName=deployment_name, modelName=model_name, version=version);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -384,12 +384,12 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn predictimage(&self, model_uri: &str, image: ::models::File) -> Box<Future<Item = ::models::Prediction, Error = Error>> {
+    fn predictimage(&self, deployment_name: &str, model_name: &str, version: &str, image: ::models::File) -> Box<Future<Item = ::models::Prediction, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/predictimage", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{deploymentName}/models/{modelName}/{version}/predictimage", configuration.base_path, deploymentName=deployment_name, modelName=model_name, version=version);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -411,12 +411,12 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn predictwithpreprocess(&self, body: Vec<String>, model_uri: &str) -> Box<Future<Item = ::models::Prediction, Error = Error>> {
+    fn predictwithpreprocess(&self, body: Vec<String>, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::Prediction, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/predictwithpreprocess", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess", configuration.base_path, deploymentName=deployment_name, modelName=model_name, version=version);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error
@@ -442,12 +442,12 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn predictwithpreprocessjson(&self, body: Vec<String>, model_uri: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error>> {
+    fn predictwithpreprocessjson(&self, body: Vec<String>, deployment_name: &str, model_name: &str, version: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Post;
 
-        let uri_str = format!("{}/endpoints/{modelURI}/predictwithpreprocessjson", configuration.base_path, modelURI=model_uri);
+        let uri_str = format!("{}/endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson", configuration.base_path, deploymentName=deployment_name, modelName=model_name, version=version);
 
         let uri = uri_str.parse();
         // TODO(farcaller): handle error

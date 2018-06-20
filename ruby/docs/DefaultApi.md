@@ -4,26 +4,26 @@ All URIs are relative to *https://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**classify**](DefaultApi.md#classify) | **POST** /endpoints/{modelURI}/classify | Use the deployed model to classify the input
-[**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{modelURI}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{modelURI}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classify | Use the deployed model to classify the input
+[**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
 [**deploy_model**](DefaultApi.md#deploy_model) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**deployment_create**](DefaultApi.md#deployment_create) | **POST** /deployment | Create a new deployment group.
-[**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{modelURI}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**logfilepath**](DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/logfilepath | Get logs file path
 [**login**](DefaultApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
 [**logs**](DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/logs | Get logs
-[**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{modelURI}/multiclassify | Represents all of the labels for a given classification
-[**predict**](DefaultApi.md#predict) | **POST** /endpoints/{modelURI}/predict | Run inference on the input array.
-[**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{modelURI}/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{modelURI}/predictwithpreprocess | Preprocesses the input and run inference on it
-[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{modelURI}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify | Represents all of the labels for a given classification
+[**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predict | Run inference on the input array.
+[**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess | Preprocesses the input and run inference on it
+[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**update_state**](DefaultApi.md#update_state) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
 # **classify**
-> ClassificationResult classify(body, model_uri)
+> ClassificationResult classify(body, deployment_name, model_name, version)
 
 Use the deployed model to classify the input
 
@@ -43,12 +43,16 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::Prediction.new # Prediction | The input NDArray
 
-model_uri = "model_uri_example" # String | The URI of the model
+deployment_name = "deployment_name_example" # String | The unique slug of the deployment
+
+model_name = "model_name_example" # String | The unique slug of the model
+
+version = "version_example" # String | A string representing the model version
 
 
 begin
   #Use the deployed model to classify the input
-  result = api_instance.classify(body, model_uri)
+  result = api_instance.classify(body, deployment_name, model_name, version)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->classify: #{e}"
@@ -60,7 +64,9 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **model_uri** | **String**| The URI of the model | 
+ **deployment_name** | **String**| The unique slug of the deployment | 
+ **model_name** | **String**| The unique slug of the model | 
+ **version** | **String**| A string representing the model version | 
 
 ### Return type
 
@@ -78,7 +84,7 @@ Name | Type | Description  | Notes
 
 
 # **classifyarray**
-> Base64NDArrayBody classifyarray(body, model_uri)
+> Base64NDArrayBody classifyarray(body, deployment_name, model_name, version)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
@@ -98,12 +104,16 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::Prediction.new # Prediction | The input NDArray
 
-model_uri = "model_uri_example" # String | The URI of the model
+deployment_name = "deployment_name_example" # String | The unique slug of the deployment
+
+model_name = "model_name_example" # String | The unique slug of the model
+
+version = "version_example" # String | A string representing the model version
 
 
 begin
   #Same as /classify but returns the output as Base64NDArrayBody
-  result = api_instance.classifyarray(body, model_uri)
+  result = api_instance.classifyarray(body, deployment_name, model_name, version)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->classifyarray: #{e}"
@@ -115,7 +125,9 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **model_uri** | **String**| The URI of the model | 
+ **deployment_name** | **String**| The unique slug of the deployment | 
+ **model_name** | **String**| The unique slug of the model | 
+ **version** | **String**| A string representing the model version | 
 
 ### Return type
 
@@ -133,7 +145,7 @@ Name | Type | Description  | Notes
 
 
 # **classifyimage**
-> ClassificationResult classifyimage(model_uri, opts)
+> ClassificationResult classifyimage(deployment_name, model_name, version, opts)
 
 Use the deployed model to classify the input, using input image file from multipart form data.
 
@@ -151,7 +163,11 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_uri = "model_uri_example" # String | The URI of the model
+deployment_name = "deployment_name_example" # String | The unique slug of the deployment
+
+model_name = "model_name_example" # String | The unique slug of the model
+
+version = "version_example" # String | A string representing the model version
 
 opts = { 
   image: File.new("/path/to/file.txt") # File | The file to upload.
@@ -159,7 +175,7 @@ opts = {
 
 begin
   #Use the deployed model to classify the input, using input image file from multipart form data.
-  result = api_instance.classifyimage(model_uri, opts)
+  result = api_instance.classifyimage(deployment_name, model_name, version, opts)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->classifyimage: #{e}"
@@ -170,7 +186,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_uri** | **String**| The URI of the model | 
+ **deployment_name** | **String**| The unique slug of the deployment | 
+ **model_name** | **String**| The unique slug of the model | 
+ **version** | **String**| A string representing the model version | 
  **image** | **File**| The file to upload. | [optional] 
 
 ### Return type
@@ -296,7 +314,7 @@ Name | Type | Description  | Notes
 
 
 # **jsonarray**
-> JsonArrayResponse jsonarray(body, model_uri)
+> JsonArrayResponse jsonarray(body, deployment_name, model_name, version)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
@@ -316,12 +334,16 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::Prediction.new # Prediction | The input NDArray
 
-model_uri = "model_uri_example" # String | The URI of the model
+deployment_name = "deployment_name_example" # String | The unique slug of the deployment
+
+model_name = "model_name_example" # String | The unique slug of the model
+
+version = "version_example" # String | A string representing the model version
 
 
 begin
   #Run inference on the input and returns it as a JsonArrayResponse
-  result = api_instance.jsonarray(body, model_uri)
+  result = api_instance.jsonarray(body, deployment_name, model_name, version)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->jsonarray: #{e}"
@@ -333,7 +355,9 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **model_uri** | **String**| The URI of the model | 
+ **deployment_name** | **String**| The unique slug of the deployment | 
+ **model_name** | **String**| The unique slug of the model | 
+ **version** | **String**| A string representing the model version | 
 
 ### Return type
 
@@ -516,7 +540,7 @@ Name | Type | Description  | Notes
 
 
 # **multiclassify**
-> MultiClassClassificationResult multiclassify(body, model_uri)
+> MultiClassClassificationResult multiclassify(body, deployment_name, model_name, version)
 
 Represents all of the labels for a given classification
 
@@ -536,12 +560,16 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::Prediction.new # Prediction | The input NDArray
 
-model_uri = "model_uri_example" # String | The URI of the model
+deployment_name = "deployment_name_example" # String | The unique slug of the deployment
+
+model_name = "model_name_example" # String | The unique slug of the model
+
+version = "version_example" # String | A string representing the model version
 
 
 begin
   #Represents all of the labels for a given classification
-  result = api_instance.multiclassify(body, model_uri)
+  result = api_instance.multiclassify(body, deployment_name, model_name, version)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->multiclassify: #{e}"
@@ -553,7 +581,9 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **model_uri** | **String**| The URI of the model | 
+ **deployment_name** | **String**| The unique slug of the deployment | 
+ **model_name** | **String**| The unique slug of the model | 
+ **version** | **String**| A string representing the model version | 
 
 ### Return type
 
@@ -571,7 +601,7 @@ Name | Type | Description  | Notes
 
 
 # **predict**
-> Prediction predict(body, model_uri)
+> Prediction predict(body, deployment_name, model_name, version)
 
 Run inference on the input array.
 
@@ -591,12 +621,16 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::Prediction.new # Prediction | The input NDArray
 
-model_uri = "model_uri_example" # String | The URI of the model
+deployment_name = "deployment_name_example" # String | The unique slug of the deployment
+
+model_name = "model_name_example" # String | The unique slug of the model
+
+version = "version_example" # String | A string representing the model version
 
 
 begin
   #Run inference on the input array.
-  result = api_instance.predict(body, model_uri)
+  result = api_instance.predict(body, deployment_name, model_name, version)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->predict: #{e}"
@@ -608,7 +642,9 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **model_uri** | **String**| The URI of the model | 
+ **deployment_name** | **String**| The unique slug of the deployment | 
+ **model_name** | **String**| The unique slug of the model | 
+ **version** | **String**| A string representing the model version | 
 
 ### Return type
 
@@ -626,7 +662,7 @@ Name | Type | Description  | Notes
 
 
 # **predictimage**
-> Prediction predictimage(model_uri, opts)
+> Prediction predictimage(deployment_name, model_name, version, opts)
 
 Run inference on the input array, using input image file from multipart form data.
 
@@ -644,7 +680,11 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_uri = "model_uri_example" # String | The URI of the model
+deployment_name = "deployment_name_example" # String | The unique slug of the deployment
+
+model_name = "model_name_example" # String | The unique slug of the model
+
+version = "version_example" # String | A string representing the model version
 
 opts = { 
   image: File.new("/path/to/file.txt") # File | The file to upload.
@@ -652,7 +692,7 @@ opts = {
 
 begin
   #Run inference on the input array, using input image file from multipart form data.
-  result = api_instance.predictimage(model_uri, opts)
+  result = api_instance.predictimage(deployment_name, model_name, version, opts)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->predictimage: #{e}"
@@ -663,7 +703,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_uri** | **String**| The URI of the model | 
+ **deployment_name** | **String**| The unique slug of the deployment | 
+ **model_name** | **String**| The unique slug of the model | 
+ **version** | **String**| A string representing the model version | 
  **image** | **File**| The file to upload. | [optional] 
 
 ### Return type
@@ -682,7 +724,7 @@ Name | Type | Description  | Notes
 
 
 # **predictwithpreprocess**
-> Prediction predictwithpreprocess(body, model_uri)
+> Prediction predictwithpreprocess(body, deployment_name, model_name, version)
 
 Preprocesses the input and run inference on it
 
@@ -702,12 +744,16 @@ api_instance = SkilCient::DefaultApi.new
 
 body = [SkilCient::Array<String>.new] # Array<String> | The input array
 
-model_uri = "model_uri_example" # String | The URI of the model
+deployment_name = "deployment_name_example" # String | The unique slug of the deployment
+
+model_name = "model_name_example" # String | The unique slug of the model
+
+version = "version_example" # String | A string representing the model version
 
 
 begin
   #Preprocesses the input and run inference on it
-  result = api_instance.predictwithpreprocess(body, model_uri)
+  result = api_instance.predictwithpreprocess(body, deployment_name, model_name, version)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->predictwithpreprocess: #{e}"
@@ -719,7 +765,9 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Array&lt;String&gt;**| The input array | 
- **model_uri** | **String**| The URI of the model | 
+ **deployment_name** | **String**| The unique slug of the deployment | 
+ **model_name** | **String**| The unique slug of the model | 
+ **version** | **String**| A string representing the model version | 
 
 ### Return type
 
@@ -737,7 +785,7 @@ Name | Type | Description  | Notes
 
 
 # **predictwithpreprocessjson**
-> JsonArrayResponse predictwithpreprocessjson(body, model_uri)
+> JsonArrayResponse predictwithpreprocessjson(body, deployment_name, model_name, version)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
@@ -757,12 +805,16 @@ api_instance = SkilCient::DefaultApi.new
 
 body = [SkilCient::Array<String>.new] # Array<String> | The input array
 
-model_uri = "model_uri_example" # String | The URI of the model
+deployment_name = "deployment_name_example" # String | The unique slug of the deployment
+
+model_name = "model_name_example" # String | The unique slug of the model
+
+version = "version_example" # String | A string representing the model version
 
 
 begin
   #Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-  result = api_instance.predictwithpreprocessjson(body, model_uri)
+  result = api_instance.predictwithpreprocessjson(body, deployment_name, model_name, version)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->predictwithpreprocessjson: #{e}"
@@ -774,7 +826,9 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Array&lt;String&gt;**| The input array | 
- **model_uri** | **String**| The URI of the model | 
+ **deployment_name** | **String**| The unique slug of the deployment | 
+ **model_name** | **String**| The unique slug of the model | 
+ **version** | **String**| A string representing the model version | 
 
 ### Return type
 

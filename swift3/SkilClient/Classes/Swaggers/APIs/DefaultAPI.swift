@@ -13,11 +13,13 @@ open class DefaultAPI: APIBase {
     /**
      Use the deployed model to classify the input
      - parameter body: (body) The input NDArray 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func classify(body: Prediction, modelURI: String, completion: @escaping ((_ data: ClassificationResult?, _ error: ErrorResponse?) -> Void)) {
-        classifyWithRequestBuilder(body: body, modelURI: modelURI).execute { (response, error) -> Void in
+    open class func classify(body: Prediction, deploymentName: String, modelName: String, version: String, completion: @escaping ((_ data: ClassificationResult?, _ error: ErrorResponse?) -> Void)) {
+        classifyWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName, version: version).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -25,7 +27,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Use the deployed model to classify the input
-     - POST /endpoints/{modelURI}/classify
+     - POST /endpoints/{deploymentName}/models/{modelName}/{version}/classify
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -35,14 +37,22 @@ open class DefaultAPI: APIBase {
   "probabilities" : [ 0.452, 0.452 ]
 }}]
      - parameter body: (body) The input NDArray 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - returns: RequestBuilder<ClassificationResult> 
      */
-    open class func classifyWithRequestBuilder(body: Prediction, modelURI: String) -> RequestBuilder<ClassificationResult> {
-        var path = "/endpoints/{modelURI}/classify"
-        let modelURIPreEscape = "\(modelURI)"
-        let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
+    open class func classifyWithRequestBuilder(body: Prediction, deploymentName: String, modelName: String, version: String) -> RequestBuilder<ClassificationResult> {
+        var path = "/endpoints/{deploymentName}/models/{modelName}/{version}/classify"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let versionPreEscape = "\(version)"
+        let versionPostEscape = versionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{version}", with: versionPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
@@ -56,11 +66,13 @@ open class DefaultAPI: APIBase {
     /**
      Same as /classify but returns the output as Base64NDArrayBody
      - parameter body: (body) The input NDArray 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func classifyarray(body: Prediction, modelURI: String, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        classifyarrayWithRequestBuilder(body: body, modelURI: modelURI).execute { (response, error) -> Void in
+    open class func classifyarray(body: Prediction, deploymentName: String, modelName: String, version: String, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        classifyarrayWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName, version: version).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -68,7 +80,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Same as /classify but returns the output as Base64NDArrayBody
-     - POST /endpoints/{modelURI}/classifyarray
+     - POST /endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -76,14 +88,22 @@ open class DefaultAPI: APIBase {
   "ndarray" : "ndarray"
 }}]
      - parameter body: (body) The input NDArray 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func classifyarrayWithRequestBuilder(body: Prediction, modelURI: String) -> RequestBuilder<Base64NDArrayBody> {
-        var path = "/endpoints/{modelURI}/classifyarray"
-        let modelURIPreEscape = "\(modelURI)"
-        let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
+    open class func classifyarrayWithRequestBuilder(body: Prediction, deploymentName: String, modelName: String, version: String) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let versionPreEscape = "\(version)"
+        let versionPostEscape = versionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{version}", with: versionPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
@@ -96,12 +116,14 @@ open class DefaultAPI: APIBase {
 
     /**
      Use the deployed model to classify the input, using input image file from multipart form data.
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - parameter image: (form) The file to upload. (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func classifyimage(modelURI: String, image: URL? = nil, completion: @escaping ((_ data: ClassificationResult?, _ error: ErrorResponse?) -> Void)) {
-        classifyimageWithRequestBuilder(modelURI: modelURI, image: image).execute { (response, error) -> Void in
+    open class func classifyimage(deploymentName: String, modelName: String, version: String, image: URL? = nil, completion: @escaping ((_ data: ClassificationResult?, _ error: ErrorResponse?) -> Void)) {
+        classifyimageWithRequestBuilder(deploymentName: deploymentName, modelName: modelName, version: version, image: image).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -109,7 +131,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Use the deployed model to classify the input, using input image file from multipart form data.
-     - POST /endpoints/{modelURI}/classifyimage
+     - POST /endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -118,15 +140,23 @@ open class DefaultAPI: APIBase {
   "results" : [ 0, 0 ],
   "probabilities" : [ 0.452, 0.452 ]
 }}]
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - parameter image: (form) The file to upload. (optional)
      - returns: RequestBuilder<ClassificationResult> 
      */
-    open class func classifyimageWithRequestBuilder(modelURI: String, image: URL? = nil) -> RequestBuilder<ClassificationResult> {
-        var path = "/endpoints/{modelURI}/classifyimage"
-        let modelURIPreEscape = "\(modelURI)"
-        let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
+    open class func classifyimageWithRequestBuilder(deploymentName: String, modelName: String, version: String, image: URL? = nil) -> RequestBuilder<ClassificationResult> {
+        var path = "/endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let versionPreEscape = "\(version)"
+        let versionPostEscape = versionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{version}", with: versionPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let formParams: [String:Any?] = [
             "image": image
@@ -228,11 +258,13 @@ open class DefaultAPI: APIBase {
     /**
      Run inference on the input and returns it as a JsonArrayResponse
      - parameter body: (body) The input NDArray 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func jsonarray(body: Prediction, modelURI: String, completion: @escaping ((_ data: JsonArrayResponse?, _ error: ErrorResponse?) -> Void)) {
-        jsonarrayWithRequestBuilder(body: body, modelURI: modelURI).execute { (response, error) -> Void in
+    open class func jsonarray(body: Prediction, deploymentName: String, modelName: String, version: String, completion: @escaping ((_ data: JsonArrayResponse?, _ error: ErrorResponse?) -> Void)) {
+        jsonarrayWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName, version: version).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -240,7 +272,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Run inference on the input and returns it as a JsonArrayResponse
-     - POST /endpoints/{modelURI}/jsonarray
+     - POST /endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -250,14 +282,22 @@ open class DefaultAPI: APIBase {
   }
 }}]
      - parameter body: (body) The input NDArray 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - returns: RequestBuilder<JsonArrayResponse> 
      */
-    open class func jsonarrayWithRequestBuilder(body: Prediction, modelURI: String) -> RequestBuilder<JsonArrayResponse> {
-        var path = "/endpoints/{modelURI}/jsonarray"
-        let modelURIPreEscape = "\(modelURI)"
-        let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
+    open class func jsonarrayWithRequestBuilder(body: Prediction, deploymentName: String, modelName: String, version: String) -> RequestBuilder<JsonArrayResponse> {
+        var path = "/endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let versionPreEscape = "\(version)"
+        let versionPostEscape = versionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{version}", with: versionPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
@@ -397,11 +437,13 @@ open class DefaultAPI: APIBase {
     /**
      Represents all of the labels for a given classification
      - parameter body: (body) The input NDArray 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func multiclassify(body: Prediction, modelURI: String, completion: @escaping ((_ data: MultiClassClassificationResult?, _ error: ErrorResponse?) -> Void)) {
-        multiclassifyWithRequestBuilder(body: body, modelURI: modelURI).execute { (response, error) -> Void in
+    open class func multiclassify(body: Prediction, deploymentName: String, modelName: String, version: String, completion: @escaping ((_ data: MultiClassClassificationResult?, _ error: ErrorResponse?) -> Void)) {
+        multiclassifyWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName, version: version).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -409,7 +451,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Represents all of the labels for a given classification
-     - POST /endpoints/{modelURI}/multiclassify
+     - POST /endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -419,14 +461,22 @@ open class DefaultAPI: APIBase {
   "probabilities" : [ [ 0.4, 0.4 ], [ 0.4, 0.4 ] ]
 }}]
      - parameter body: (body) The input NDArray 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - returns: RequestBuilder<MultiClassClassificationResult> 
      */
-    open class func multiclassifyWithRequestBuilder(body: Prediction, modelURI: String) -> RequestBuilder<MultiClassClassificationResult> {
-        var path = "/endpoints/{modelURI}/multiclassify"
-        let modelURIPreEscape = "\(modelURI)"
-        let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
+    open class func multiclassifyWithRequestBuilder(body: Prediction, deploymentName: String, modelName: String, version: String) -> RequestBuilder<MultiClassClassificationResult> {
+        var path = "/endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let versionPreEscape = "\(version)"
+        let versionPostEscape = versionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{version}", with: versionPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
@@ -440,11 +490,13 @@ open class DefaultAPI: APIBase {
     /**
      Run inference on the input array.
      - parameter body: (body) The input NDArray 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func predict(body: Prediction, modelURI: String, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
-        predictWithRequestBuilder(body: body, modelURI: modelURI).execute { (response, error) -> Void in
+    open class func predict(body: Prediction, deploymentName: String, modelName: String, version: String, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
+        predictWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName, version: version).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -452,7 +504,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Run inference on the input array.
-     - POST /endpoints/{modelURI}/predict
+     - POST /endpoints/{deploymentName}/models/{modelName}/{version}/predict
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -464,14 +516,22 @@ open class DefaultAPI: APIBase {
   "id" : "id"
 }}]
      - parameter body: (body) The input NDArray 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - returns: RequestBuilder<Prediction> 
      */
-    open class func predictWithRequestBuilder(body: Prediction, modelURI: String) -> RequestBuilder<Prediction> {
-        var path = "/endpoints/{modelURI}/predict"
-        let modelURIPreEscape = "\(modelURI)"
-        let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
+    open class func predictWithRequestBuilder(body: Prediction, deploymentName: String, modelName: String, version: String) -> RequestBuilder<Prediction> {
+        var path = "/endpoints/{deploymentName}/models/{modelName}/{version}/predict"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let versionPreEscape = "\(version)"
+        let versionPostEscape = versionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{version}", with: versionPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
@@ -484,12 +544,14 @@ open class DefaultAPI: APIBase {
 
     /**
      Run inference on the input array, using input image file from multipart form data.
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - parameter image: (form) The file to upload. (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func predictimage(modelURI: String, image: URL? = nil, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
-        predictimageWithRequestBuilder(modelURI: modelURI, image: image).execute { (response, error) -> Void in
+    open class func predictimage(deploymentName: String, modelName: String, version: String, image: URL? = nil, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
+        predictimageWithRequestBuilder(deploymentName: deploymentName, modelName: modelName, version: version, image: image).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -497,7 +559,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Run inference on the input array, using input image file from multipart form data.
-     - POST /endpoints/{modelURI}/predictimage
+     - POST /endpoints/{deploymentName}/models/{modelName}/{version}/predictimage
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -508,15 +570,23 @@ open class DefaultAPI: APIBase {
   },
   "id" : "id"
 }}]
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - parameter image: (form) The file to upload. (optional)
      - returns: RequestBuilder<Prediction> 
      */
-    open class func predictimageWithRequestBuilder(modelURI: String, image: URL? = nil) -> RequestBuilder<Prediction> {
-        var path = "/endpoints/{modelURI}/predictimage"
-        let modelURIPreEscape = "\(modelURI)"
-        let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
+    open class func predictimageWithRequestBuilder(deploymentName: String, modelName: String, version: String, image: URL? = nil) -> RequestBuilder<Prediction> {
+        var path = "/endpoints/{deploymentName}/models/{modelName}/{version}/predictimage"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let versionPreEscape = "\(version)"
+        let versionPostEscape = versionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{version}", with: versionPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let formParams: [String:Any?] = [
             "image": image
@@ -535,11 +605,13 @@ open class DefaultAPI: APIBase {
     /**
      Preprocesses the input and run inference on it
      - parameter body: (body) The input array 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func predictwithpreprocess(body: [String], modelURI: String, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
-        predictwithpreprocessWithRequestBuilder(body: body, modelURI: modelURI).execute { (response, error) -> Void in
+    open class func predictwithpreprocess(body: [String], deploymentName: String, modelName: String, version: String, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
+        predictwithpreprocessWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName, version: version).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -547,7 +619,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Preprocesses the input and run inference on it
-     - POST /endpoints/{modelURI}/predictwithpreprocess
+     - POST /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -559,14 +631,22 @@ open class DefaultAPI: APIBase {
   "id" : "id"
 }}]
      - parameter body: (body) The input array 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - returns: RequestBuilder<Prediction> 
      */
-    open class func predictwithpreprocessWithRequestBuilder(body: [String], modelURI: String) -> RequestBuilder<Prediction> {
-        var path = "/endpoints/{modelURI}/predictwithpreprocess"
-        let modelURIPreEscape = "\(modelURI)"
-        let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
+    open class func predictwithpreprocessWithRequestBuilder(body: [String], deploymentName: String, modelName: String, version: String) -> RequestBuilder<Prediction> {
+        var path = "/endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let versionPreEscape = "\(version)"
+        let versionPostEscape = versionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{version}", with: versionPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
@@ -580,11 +660,13 @@ open class DefaultAPI: APIBase {
     /**
      Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
      - parameter body: (body) The input array 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func predictwithpreprocessjson(body: [String], modelURI: String, completion: @escaping ((_ data: JsonArrayResponse?, _ error: ErrorResponse?) -> Void)) {
-        predictwithpreprocessjsonWithRequestBuilder(body: body, modelURI: modelURI).execute { (response, error) -> Void in
+    open class func predictwithpreprocessjson(body: [String], deploymentName: String, modelName: String, version: String, completion: @escaping ((_ data: JsonArrayResponse?, _ error: ErrorResponse?) -> Void)) {
+        predictwithpreprocessjsonWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName, version: version).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -592,7 +674,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-     - POST /endpoints/{modelURI}/predictwithpreprocessjson
+     - POST /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -602,14 +684,22 @@ open class DefaultAPI: APIBase {
   }
 }}]
      - parameter body: (body) The input array 
-     - parameter modelURI: (path) The URI of the model 
+     - parameter deploymentName: (path) The unique slug of the deployment 
+     - parameter modelName: (path) The unique slug of the model 
+     - parameter version: (path) A string representing the model version 
      - returns: RequestBuilder<JsonArrayResponse> 
      */
-    open class func predictwithpreprocessjsonWithRequestBuilder(body: [String], modelURI: String) -> RequestBuilder<JsonArrayResponse> {
-        var path = "/endpoints/{modelURI}/predictwithpreprocessjson"
-        let modelURIPreEscape = "\(modelURI)"
-        let modelURIPostEscape = modelURIPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{modelURI}", with: modelURIPostEscape, options: .literal, range: nil)
+    open class func predictwithpreprocessjsonWithRequestBuilder(body: [String], deploymentName: String, modelName: String, version: String) -> RequestBuilder<JsonArrayResponse> {
+        var path = "/endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let versionPreEscape = "\(version)"
+        let versionPostEscape = versionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{version}", with: versionPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 

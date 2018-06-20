@@ -4,27 +4,27 @@ All URIs are relative to *https://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**classify**](DefaultApi.md#classify) | **POST** /endpoints/{modelURI}/classify | Use the deployed model to classify the input
-[**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{modelURI}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{modelURI}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classify | Use the deployed model to classify the input
+[**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
 [**deployModel**](DefaultApi.md#deployModel) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**deploymentCreate**](DefaultApi.md#deploymentCreate) | **POST** /deployment | Create a new deployment group.
-[**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{modelURI}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**logfilepath**](DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/logfilepath | Get logs file path
 [**login**](DefaultApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
 [**logs**](DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/logs | Get logs
-[**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{modelURI}/multiclassify | Represents all of the labels for a given classification
-[**predict**](DefaultApi.md#predict) | **POST** /endpoints/{modelURI}/predict | Run inference on the input array.
-[**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{modelURI}/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{modelURI}/predictwithpreprocess | Preprocesses the input and run inference on it
-[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{modelURI}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify | Represents all of the labels for a given classification
+[**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predict | Run inference on the input array.
+[**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess | Preprocesses the input and run inference on it
+[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**updateState**](DefaultApi.md#updateState) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
 <a name="classify"></a>
 # **classify**
-> ClassificationResult classify(body, modelURI)
+> ClassificationResult classify(body, deploymentName, modelName, version)
 
 Use the deployed model to classify the input
 
@@ -35,9 +35,11 @@ Use the deployed model to classify the input
 
 DefaultApi apiInstance = new DefaultApi();
 Prediction body = new Prediction(); // Prediction | The input NDArray
-String modelURI = "modelURI_example"; // String | The URI of the model
+String deploymentName = "deploymentName_example"; // String | The unique slug of the deployment
+String modelName = "modelName_example"; // String | The unique slug of the model
+String version = "version_example"; // String | A string representing the model version
 try {
-    ClassificationResult result = apiInstance.classify(body, modelURI);
+    ClassificationResult result = apiInstance.classify(body, deploymentName, modelName, version);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#classify");
@@ -50,7 +52,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray |
- **modelURI** | **String**| The URI of the model |
+ **deploymentName** | **String**| The unique slug of the deployment |
+ **modelName** | **String**| The unique slug of the model |
+ **version** | **String**| A string representing the model version |
 
 ### Return type
 
@@ -67,7 +71,7 @@ Name | Type | Description  | Notes
 
 <a name="classifyarray"></a>
 # **classifyarray**
-> Base64NDArrayBody classifyarray(body, modelURI)
+> Base64NDArrayBody classifyarray(body, deploymentName, modelName, version)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
@@ -78,9 +82,11 @@ Same as /classify but returns the output as Base64NDArrayBody
 
 DefaultApi apiInstance = new DefaultApi();
 Prediction body = new Prediction(); // Prediction | The input NDArray
-String modelURI = "modelURI_example"; // String | The URI of the model
+String deploymentName = "deploymentName_example"; // String | The unique slug of the deployment
+String modelName = "modelName_example"; // String | The unique slug of the model
+String version = "version_example"; // String | A string representing the model version
 try {
-    Base64NDArrayBody result = apiInstance.classifyarray(body, modelURI);
+    Base64NDArrayBody result = apiInstance.classifyarray(body, deploymentName, modelName, version);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#classifyarray");
@@ -93,7 +99,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray |
- **modelURI** | **String**| The URI of the model |
+ **deploymentName** | **String**| The unique slug of the deployment |
+ **modelName** | **String**| The unique slug of the model |
+ **version** | **String**| A string representing the model version |
 
 ### Return type
 
@@ -110,7 +118,7 @@ Name | Type | Description  | Notes
 
 <a name="classifyimage"></a>
 # **classifyimage**
-> ClassificationResult classifyimage(modelURI, image)
+> ClassificationResult classifyimage(deploymentName, modelName, version, image)
 
 Use the deployed model to classify the input, using input image file from multipart form data.
 
@@ -120,10 +128,12 @@ Use the deployed model to classify the input, using input image file from multip
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
-String modelURI = "modelURI_example"; // String | The URI of the model
+String deploymentName = "deploymentName_example"; // String | The unique slug of the deployment
+String modelName = "modelName_example"; // String | The unique slug of the model
+String version = "version_example"; // String | A string representing the model version
 File image = new File("/path/to/file.txt"); // File | The file to upload.
 try {
-    ClassificationResult result = apiInstance.classifyimage(modelURI, image);
+    ClassificationResult result = apiInstance.classifyimage(deploymentName, modelName, version, image);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#classifyimage");
@@ -135,7 +145,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelURI** | **String**| The URI of the model |
+ **deploymentName** | **String**| The unique slug of the deployment |
+ **modelName** | **String**| The unique slug of the model |
+ **version** | **String**| A string representing the model version |
  **image** | **File**| The file to upload. | [optional]
 
 ### Return type
@@ -237,7 +249,7 @@ Name | Type | Description  | Notes
 
 <a name="jsonarray"></a>
 # **jsonarray**
-> JsonArrayResponse jsonarray(body, modelURI)
+> JsonArrayResponse jsonarray(body, deploymentName, modelName, version)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
@@ -248,9 +260,11 @@ Run inference on the input and returns it as a JsonArrayResponse
 
 DefaultApi apiInstance = new DefaultApi();
 Prediction body = new Prediction(); // Prediction | The input NDArray
-String modelURI = "modelURI_example"; // String | The URI of the model
+String deploymentName = "deploymentName_example"; // String | The unique slug of the deployment
+String modelName = "modelName_example"; // String | The unique slug of the model
+String version = "version_example"; // String | A string representing the model version
 try {
-    JsonArrayResponse result = apiInstance.jsonarray(body, modelURI);
+    JsonArrayResponse result = apiInstance.jsonarray(body, deploymentName, modelName, version);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#jsonarray");
@@ -263,7 +277,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray |
- **modelURI** | **String**| The URI of the model |
+ **deploymentName** | **String**| The unique slug of the deployment |
+ **modelName** | **String**| The unique slug of the model |
+ **version** | **String**| A string representing the model version |
 
 ### Return type
 
@@ -409,7 +425,7 @@ Name | Type | Description  | Notes
 
 <a name="multiclassify"></a>
 # **multiclassify**
-> MultiClassClassificationResult multiclassify(body, modelURI)
+> MultiClassClassificationResult multiclassify(body, deploymentName, modelName, version)
 
 Represents all of the labels for a given classification
 
@@ -420,9 +436,11 @@ Represents all of the labels for a given classification
 
 DefaultApi apiInstance = new DefaultApi();
 Prediction body = new Prediction(); // Prediction | The input NDArray
-String modelURI = "modelURI_example"; // String | The URI of the model
+String deploymentName = "deploymentName_example"; // String | The unique slug of the deployment
+String modelName = "modelName_example"; // String | The unique slug of the model
+String version = "version_example"; // String | A string representing the model version
 try {
-    MultiClassClassificationResult result = apiInstance.multiclassify(body, modelURI);
+    MultiClassClassificationResult result = apiInstance.multiclassify(body, deploymentName, modelName, version);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#multiclassify");
@@ -435,7 +453,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray |
- **modelURI** | **String**| The URI of the model |
+ **deploymentName** | **String**| The unique slug of the deployment |
+ **modelName** | **String**| The unique slug of the model |
+ **version** | **String**| A string representing the model version |
 
 ### Return type
 
@@ -452,7 +472,7 @@ Name | Type | Description  | Notes
 
 <a name="predict"></a>
 # **predict**
-> Prediction predict(body, modelURI)
+> Prediction predict(body, deploymentName, modelName, version)
 
 Run inference on the input array.
 
@@ -463,9 +483,11 @@ Run inference on the input array.
 
 DefaultApi apiInstance = new DefaultApi();
 Prediction body = new Prediction(); // Prediction | The input NDArray
-String modelURI = "modelURI_example"; // String | The URI of the model
+String deploymentName = "deploymentName_example"; // String | The unique slug of the deployment
+String modelName = "modelName_example"; // String | The unique slug of the model
+String version = "version_example"; // String | A string representing the model version
 try {
-    Prediction result = apiInstance.predict(body, modelURI);
+    Prediction result = apiInstance.predict(body, deploymentName, modelName, version);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#predict");
@@ -478,7 +500,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray |
- **modelURI** | **String**| The URI of the model |
+ **deploymentName** | **String**| The unique slug of the deployment |
+ **modelName** | **String**| The unique slug of the model |
+ **version** | **String**| A string representing the model version |
 
 ### Return type
 
@@ -495,7 +519,7 @@ Name | Type | Description  | Notes
 
 <a name="predictimage"></a>
 # **predictimage**
-> Prediction predictimage(modelURI, image)
+> Prediction predictimage(deploymentName, modelName, version, image)
 
 Run inference on the input array, using input image file from multipart form data.
 
@@ -505,10 +529,12 @@ Run inference on the input array, using input image file from multipart form dat
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
-String modelURI = "modelURI_example"; // String | The URI of the model
+String deploymentName = "deploymentName_example"; // String | The unique slug of the deployment
+String modelName = "modelName_example"; // String | The unique slug of the model
+String version = "version_example"; // String | A string representing the model version
 File image = new File("/path/to/file.txt"); // File | The file to upload.
 try {
-    Prediction result = apiInstance.predictimage(modelURI, image);
+    Prediction result = apiInstance.predictimage(deploymentName, modelName, version, image);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#predictimage");
@@ -520,7 +546,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelURI** | **String**| The URI of the model |
+ **deploymentName** | **String**| The unique slug of the deployment |
+ **modelName** | **String**| The unique slug of the model |
+ **version** | **String**| A string representing the model version |
  **image** | **File**| The file to upload. | [optional]
 
 ### Return type
@@ -538,7 +566,7 @@ Name | Type | Description  | Notes
 
 <a name="predictwithpreprocess"></a>
 # **predictwithpreprocess**
-> Prediction predictwithpreprocess(body, modelURI)
+> Prediction predictwithpreprocess(body, deploymentName, modelName, version)
 
 Preprocesses the input and run inference on it
 
@@ -549,9 +577,11 @@ Preprocesses the input and run inference on it
 
 DefaultApi apiInstance = new DefaultApi();
 List<String> body = Arrays.asList(new List<String>()); // List<String> | The input array
-String modelURI = "modelURI_example"; // String | The URI of the model
+String deploymentName = "deploymentName_example"; // String | The unique slug of the deployment
+String modelName = "modelName_example"; // String | The unique slug of the model
+String version = "version_example"; // String | A string representing the model version
 try {
-    Prediction result = apiInstance.predictwithpreprocess(body, modelURI);
+    Prediction result = apiInstance.predictwithpreprocess(body, deploymentName, modelName, version);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#predictwithpreprocess");
@@ -564,7 +594,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **List&lt;String&gt;**| The input array |
- **modelURI** | **String**| The URI of the model |
+ **deploymentName** | **String**| The unique slug of the deployment |
+ **modelName** | **String**| The unique slug of the model |
+ **version** | **String**| A string representing the model version |
 
 ### Return type
 
@@ -581,7 +613,7 @@ Name | Type | Description  | Notes
 
 <a name="predictwithpreprocessjson"></a>
 # **predictwithpreprocessjson**
-> JsonArrayResponse predictwithpreprocessjson(body, modelURI)
+> JsonArrayResponse predictwithpreprocessjson(body, deploymentName, modelName, version)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
@@ -592,9 +624,11 @@ Preprocesses the input and run inference on it and returns it as a JsonArrayResp
 
 DefaultApi apiInstance = new DefaultApi();
 List<String> body = Arrays.asList(new List<String>()); // List<String> | The input array
-String modelURI = "modelURI_example"; // String | The URI of the model
+String deploymentName = "deploymentName_example"; // String | The unique slug of the deployment
+String modelName = "modelName_example"; // String | The unique slug of the model
+String version = "version_example"; // String | A string representing the model version
 try {
-    JsonArrayResponse result = apiInstance.predictwithpreprocessjson(body, modelURI);
+    JsonArrayResponse result = apiInstance.predictwithpreprocessjson(body, deploymentName, modelName, version);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#predictwithpreprocessjson");
@@ -607,7 +641,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **List&lt;String&gt;**| The input array |
- **modelURI** | **String**| The URI of the model |
+ **deploymentName** | **String**| The unique slug of the deployment |
+ **modelName** | **String**| The unique slug of the model |
+ **version** | **String**| A string representing the model version |
 
 ### Return type
 

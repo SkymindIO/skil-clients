@@ -31,9 +31,11 @@ type DefaultApiService service
 /* DefaultApiService Use the deployed model to classify the input
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input NDArray
- @param modelURI The URI of the model
+ @param deploymentName The unique slug of the deployment
+ @param modelName The unique slug of the model
+ @param version A string representing the model version
  @return ClassificationResult*/
-func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, modelURI string) (ClassificationResult,  *http.Response, error) {
+func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, deploymentName string, modelName string, version string) (ClassificationResult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -43,8 +45,10 @@ func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, model
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/classify"
-	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/models/{modelName}/{version}/classify"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"version"+"}", fmt.Sprintf("%v", version), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -110,9 +114,11 @@ func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, model
 /* DefaultApiService Same as /classify but returns the output as Base64NDArrayBody
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input NDArray
- @param modelURI The URI of the model
+ @param deploymentName The unique slug of the deployment
+ @param modelName The unique slug of the model
+ @param version A string representing the model version
  @return Base64NdArrayBody*/
-func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, modelURI string) (Base64NdArrayBody,  *http.Response, error) {
+func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, deploymentName string, modelName string, version string) (Base64NdArrayBody,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -122,8 +128,10 @@ func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/classifyarray"
-	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"version"+"}", fmt.Sprintf("%v", version), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -188,11 +196,13 @@ func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, 
 
 /* DefaultApiService Use the deployed model to classify the input, using input image file from multipart form data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param modelURI The URI of the model
+ @param deploymentName The unique slug of the deployment
+ @param modelName The unique slug of the model
+ @param version A string representing the model version
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "image" (*os.File) The file to upload.
  @return ClassificationResult*/
-func (a *DefaultApiService) Classifyimage(ctx context.Context, modelURI string, localVarOptionals map[string]interface{}) (ClassificationResult,  *http.Response, error) {
+func (a *DefaultApiService) Classifyimage(ctx context.Context, deploymentName string, modelName string, version string, localVarOptionals map[string]interface{}) (ClassificationResult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -202,8 +212,10 @@ func (a *DefaultApiService) Classifyimage(ctx context.Context, modelURI string, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/classifyimage"
-	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"version"+"}", fmt.Sprintf("%v", version), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -433,9 +445,11 @@ func (a *DefaultApiService) DeploymentCreate(ctx context.Context, body NewDeploy
 /* DefaultApiService Run inference on the input and returns it as a JsonArrayResponse
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input NDArray
- @param modelURI The URI of the model
+ @param deploymentName The unique slug of the deployment
+ @param modelName The unique slug of the model
+ @param version A string representing the model version
  @return JsonArrayResponse*/
-func (a *DefaultApiService) Jsonarray(ctx context.Context, body Prediction, modelURI string) (JsonArrayResponse,  *http.Response, error) {
+func (a *DefaultApiService) Jsonarray(ctx context.Context, body Prediction, deploymentName string, modelName string, version string) (JsonArrayResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -445,8 +459,10 @@ func (a *DefaultApiService) Jsonarray(ctx context.Context, body Prediction, mode
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/jsonarray"
-	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"version"+"}", fmt.Sprintf("%v", version), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -748,9 +764,11 @@ func (a *DefaultApiService) Logs(ctx context.Context, body LogRequest, deploymen
 /* DefaultApiService Represents all of the labels for a given classification
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input NDArray
- @param modelURI The URI of the model
+ @param deploymentName The unique slug of the deployment
+ @param modelName The unique slug of the model
+ @param version A string representing the model version
  @return MultiClassClassificationResult*/
-func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, modelURI string) (MultiClassClassificationResult,  *http.Response, error) {
+func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, deploymentName string, modelName string, version string) (MultiClassClassificationResult,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -760,8 +778,10 @@ func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/multiclassify"
-	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"version"+"}", fmt.Sprintf("%v", version), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -827,9 +847,11 @@ func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, 
 /* DefaultApiService Run inference on the input array.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input NDArray
- @param modelURI The URI of the model
+ @param deploymentName The unique slug of the deployment
+ @param modelName The unique slug of the model
+ @param version A string representing the model version
  @return Prediction*/
-func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, modelURI string) (Prediction,  *http.Response, error) {
+func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, deploymentName string, modelName string, version string) (Prediction,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -839,8 +861,10 @@ func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, modelU
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/predict"
-	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/models/{modelName}/{version}/predict"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"version"+"}", fmt.Sprintf("%v", version), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -905,11 +929,13 @@ func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, modelU
 
 /* DefaultApiService Run inference on the input array, using input image file from multipart form data.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @param modelURI The URI of the model
+ @param deploymentName The unique slug of the deployment
+ @param modelName The unique slug of the model
+ @param version A string representing the model version
  @param optional (nil or map[string]interface{}) with one or more of:
      @param "image" (*os.File) The file to upload.
  @return Prediction*/
-func (a *DefaultApiService) Predictimage(ctx context.Context, modelURI string, localVarOptionals map[string]interface{}) (Prediction,  *http.Response, error) {
+func (a *DefaultApiService) Predictimage(ctx context.Context, deploymentName string, modelName string, version string, localVarOptionals map[string]interface{}) (Prediction,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -919,8 +945,10 @@ func (a *DefaultApiService) Predictimage(ctx context.Context, modelURI string, l
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/predictimage"
-	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/models/{modelName}/{version}/predictimage"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"version"+"}", fmt.Sprintf("%v", version), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -994,9 +1022,11 @@ func (a *DefaultApiService) Predictimage(ctx context.Context, modelURI string, l
 /* DefaultApiService Preprocesses the input and run inference on it
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input array
- @param modelURI The URI of the model
+ @param deploymentName The unique slug of the deployment
+ @param modelName The unique slug of the model
+ @param version A string representing the model version
  @return Prediction*/
-func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []string, modelURI string) (Prediction,  *http.Response, error) {
+func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []string, deploymentName string, modelName string, version string) (Prediction,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -1006,8 +1036,10 @@ func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []st
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/predictwithpreprocess"
-	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"version"+"}", fmt.Sprintf("%v", version), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1073,9 +1105,11 @@ func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []st
 /* DefaultApiService Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param body The input array
- @param modelURI The URI of the model
+ @param deploymentName The unique slug of the deployment
+ @param modelName The unique slug of the model
+ @param version A string representing the model version
  @return JsonArrayResponse*/
-func (a *DefaultApiService) Predictwithpreprocessjson(ctx context.Context, body []string, modelURI string) (JsonArrayResponse,  *http.Response, error) {
+func (a *DefaultApiService) Predictwithpreprocessjson(ctx context.Context, body []string, deploymentName string, modelName string, version string) (JsonArrayResponse,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
@@ -1085,8 +1119,10 @@ func (a *DefaultApiService) Predictwithpreprocessjson(ctx context.Context, body 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{modelURI}/predictwithpreprocessjson"
-	localVarPath = strings.Replace(localVarPath, "{"+"modelURI"+"}", fmt.Sprintf("%v", modelURI), -1)
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"version"+"}", fmt.Sprintf("%v", version), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

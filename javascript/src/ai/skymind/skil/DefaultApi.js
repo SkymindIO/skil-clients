@@ -58,11 +58,13 @@
     /**
      * Use the deployed model to classify the input
      * @param {module:ai/skymind/skil/model/Prediction} body The input NDArray
-     * @param {String} modelURI The URI of the model
+     * @param {String} deploymentName The unique slug of the deployment
+     * @param {String} modelName The unique slug of the model
+     * @param {String} version A string representing the model version
      * @param {module:ai/skymind/skil/DefaultApi~classifyCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ClassificationResult}
      */
-    this.classify = function(body, modelURI, callback) {
+    this.classify = function(body, deploymentName, modelName, version, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -70,14 +72,26 @@
         throw new Error("Missing the required parameter 'body' when calling classify");
       }
 
-      // verify the required parameter 'modelURI' is set
-      if (modelURI === undefined || modelURI === null) {
-        throw new Error("Missing the required parameter 'modelURI' when calling classify");
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling classify");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling classify");
+      }
+
+      // verify the required parameter 'version' is set
+      if (version === undefined || version === null) {
+        throw new Error("Missing the required parameter 'version' when calling classify");
       }
 
 
       var pathParams = {
-        'modelURI': modelURI
+        'deploymentName': deploymentName,
+        'modelName': modelName,
+        'version': version
       };
       var queryParams = {
       };
@@ -94,7 +108,7 @@
       var returnType = ClassificationResult;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/classify', 'POST',
+        '/endpoints/{deploymentName}/models/{modelName}/{version}/classify', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -111,11 +125,13 @@
     /**
      * Same as /classify but returns the output as Base64NDArrayBody
      * @param {module:ai/skymind/skil/model/Prediction} body The input NDArray
-     * @param {String} modelURI The URI of the model
+     * @param {String} deploymentName The unique slug of the deployment
+     * @param {String} modelName The unique slug of the model
+     * @param {String} version A string representing the model version
      * @param {module:ai/skymind/skil/DefaultApi~classifyarrayCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
-    this.classifyarray = function(body, modelURI, callback) {
+    this.classifyarray = function(body, deploymentName, modelName, version, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -123,14 +139,26 @@
         throw new Error("Missing the required parameter 'body' when calling classifyarray");
       }
 
-      // verify the required parameter 'modelURI' is set
-      if (modelURI === undefined || modelURI === null) {
-        throw new Error("Missing the required parameter 'modelURI' when calling classifyarray");
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling classifyarray");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling classifyarray");
+      }
+
+      // verify the required parameter 'version' is set
+      if (version === undefined || version === null) {
+        throw new Error("Missing the required parameter 'version' when calling classifyarray");
       }
 
 
       var pathParams = {
-        'modelURI': modelURI
+        'deploymentName': deploymentName,
+        'modelName': modelName,
+        'version': version
       };
       var queryParams = {
       };
@@ -147,7 +175,7 @@
       var returnType = Base64NDArrayBody;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/classifyarray', 'POST',
+        '/endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -163,24 +191,38 @@
 
     /**
      * Use the deployed model to classify the input, using input image file from multipart form data.
-     * @param {String} modelURI The URI of the model
+     * @param {String} deploymentName The unique slug of the deployment
+     * @param {String} modelName The unique slug of the model
+     * @param {String} version A string representing the model version
      * @param {Object} opts Optional parameters
      * @param {File} opts.image The file to upload.
      * @param {module:ai/skymind/skil/DefaultApi~classifyimageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ClassificationResult}
      */
-    this.classifyimage = function(modelURI, opts, callback) {
+    this.classifyimage = function(deploymentName, modelName, version, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
-      // verify the required parameter 'modelURI' is set
-      if (modelURI === undefined || modelURI === null) {
-        throw new Error("Missing the required parameter 'modelURI' when calling classifyimage");
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling classifyimage");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling classifyimage");
+      }
+
+      // verify the required parameter 'version' is set
+      if (version === undefined || version === null) {
+        throw new Error("Missing the required parameter 'version' when calling classifyimage");
       }
 
 
       var pathParams = {
-        'modelURI': modelURI
+        'deploymentName': deploymentName,
+        'modelName': modelName,
+        'version': version
       };
       var queryParams = {
       };
@@ -198,7 +240,7 @@
       var returnType = ClassificationResult;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/classifyimage', 'POST',
+        '/endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -314,11 +356,13 @@
     /**
      * Run inference on the input and returns it as a JsonArrayResponse
      * @param {module:ai/skymind/skil/model/Prediction} body The input NDArray
-     * @param {String} modelURI The URI of the model
+     * @param {String} deploymentName The unique slug of the deployment
+     * @param {String} modelName The unique slug of the model
+     * @param {String} version A string representing the model version
      * @param {module:ai/skymind/skil/DefaultApi~jsonarrayCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/JsonArrayResponse}
      */
-    this.jsonarray = function(body, modelURI, callback) {
+    this.jsonarray = function(body, deploymentName, modelName, version, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -326,14 +370,26 @@
         throw new Error("Missing the required parameter 'body' when calling jsonarray");
       }
 
-      // verify the required parameter 'modelURI' is set
-      if (modelURI === undefined || modelURI === null) {
-        throw new Error("Missing the required parameter 'modelURI' when calling jsonarray");
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling jsonarray");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling jsonarray");
+      }
+
+      // verify the required parameter 'version' is set
+      if (version === undefined || version === null) {
+        throw new Error("Missing the required parameter 'version' when calling jsonarray");
       }
 
 
       var pathParams = {
-        'modelURI': modelURI
+        'deploymentName': deploymentName,
+        'modelName': modelName,
+        'version': version
       };
       var queryParams = {
       };
@@ -350,7 +406,7 @@
       var returnType = JsonArrayResponse;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/jsonarray', 'POST',
+        '/endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -527,11 +583,13 @@
     /**
      * Represents all of the labels for a given classification
      * @param {module:ai/skymind/skil/model/Prediction} body The input NDArray
-     * @param {String} modelURI The URI of the model
+     * @param {String} deploymentName The unique slug of the deployment
+     * @param {String} modelName The unique slug of the model
+     * @param {String} version A string representing the model version
      * @param {module:ai/skymind/skil/DefaultApi~multiclassifyCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/MultiClassClassificationResult}
      */
-    this.multiclassify = function(body, modelURI, callback) {
+    this.multiclassify = function(body, deploymentName, modelName, version, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -539,14 +597,26 @@
         throw new Error("Missing the required parameter 'body' when calling multiclassify");
       }
 
-      // verify the required parameter 'modelURI' is set
-      if (modelURI === undefined || modelURI === null) {
-        throw new Error("Missing the required parameter 'modelURI' when calling multiclassify");
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling multiclassify");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling multiclassify");
+      }
+
+      // verify the required parameter 'version' is set
+      if (version === undefined || version === null) {
+        throw new Error("Missing the required parameter 'version' when calling multiclassify");
       }
 
 
       var pathParams = {
-        'modelURI': modelURI
+        'deploymentName': deploymentName,
+        'modelName': modelName,
+        'version': version
       };
       var queryParams = {
       };
@@ -563,7 +633,7 @@
       var returnType = MultiClassClassificationResult;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/multiclassify', 'POST',
+        '/endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -580,11 +650,13 @@
     /**
      * Run inference on the input array.
      * @param {module:ai/skymind/skil/model/Prediction} body The input NDArray
-     * @param {String} modelURI The URI of the model
+     * @param {String} deploymentName The unique slug of the deployment
+     * @param {String} modelName The unique slug of the model
+     * @param {String} version A string representing the model version
      * @param {module:ai/skymind/skil/DefaultApi~predictCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Prediction}
      */
-    this.predict = function(body, modelURI, callback) {
+    this.predict = function(body, deploymentName, modelName, version, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -592,14 +664,26 @@
         throw new Error("Missing the required parameter 'body' when calling predict");
       }
 
-      // verify the required parameter 'modelURI' is set
-      if (modelURI === undefined || modelURI === null) {
-        throw new Error("Missing the required parameter 'modelURI' when calling predict");
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling predict");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling predict");
+      }
+
+      // verify the required parameter 'version' is set
+      if (version === undefined || version === null) {
+        throw new Error("Missing the required parameter 'version' when calling predict");
       }
 
 
       var pathParams = {
-        'modelURI': modelURI
+        'deploymentName': deploymentName,
+        'modelName': modelName,
+        'version': version
       };
       var queryParams = {
       };
@@ -616,7 +700,7 @@
       var returnType = Prediction;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/predict', 'POST',
+        '/endpoints/{deploymentName}/models/{modelName}/{version}/predict', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -632,24 +716,38 @@
 
     /**
      * Run inference on the input array, using input image file from multipart form data.
-     * @param {String} modelURI The URI of the model
+     * @param {String} deploymentName The unique slug of the deployment
+     * @param {String} modelName The unique slug of the model
+     * @param {String} version A string representing the model version
      * @param {Object} opts Optional parameters
      * @param {File} opts.image The file to upload.
      * @param {module:ai/skymind/skil/DefaultApi~predictimageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Prediction}
      */
-    this.predictimage = function(modelURI, opts, callback) {
+    this.predictimage = function(deploymentName, modelName, version, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
-      // verify the required parameter 'modelURI' is set
-      if (modelURI === undefined || modelURI === null) {
-        throw new Error("Missing the required parameter 'modelURI' when calling predictimage");
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling predictimage");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling predictimage");
+      }
+
+      // verify the required parameter 'version' is set
+      if (version === undefined || version === null) {
+        throw new Error("Missing the required parameter 'version' when calling predictimage");
       }
 
 
       var pathParams = {
-        'modelURI': modelURI
+        'deploymentName': deploymentName,
+        'modelName': modelName,
+        'version': version
       };
       var queryParams = {
       };
@@ -667,7 +765,7 @@
       var returnType = Prediction;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/predictimage', 'POST',
+        '/endpoints/{deploymentName}/models/{modelName}/{version}/predictimage', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -684,11 +782,13 @@
     /**
      * Preprocesses the input and run inference on it
      * @param {Array.<module:ai/skymind/skil/model/String>} body The input array
-     * @param {String} modelURI The URI of the model
+     * @param {String} deploymentName The unique slug of the deployment
+     * @param {String} modelName The unique slug of the model
+     * @param {String} version A string representing the model version
      * @param {module:ai/skymind/skil/DefaultApi~predictwithpreprocessCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Prediction}
      */
-    this.predictwithpreprocess = function(body, modelURI, callback) {
+    this.predictwithpreprocess = function(body, deploymentName, modelName, version, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -696,14 +796,26 @@
         throw new Error("Missing the required parameter 'body' when calling predictwithpreprocess");
       }
 
-      // verify the required parameter 'modelURI' is set
-      if (modelURI === undefined || modelURI === null) {
-        throw new Error("Missing the required parameter 'modelURI' when calling predictwithpreprocess");
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling predictwithpreprocess");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling predictwithpreprocess");
+      }
+
+      // verify the required parameter 'version' is set
+      if (version === undefined || version === null) {
+        throw new Error("Missing the required parameter 'version' when calling predictwithpreprocess");
       }
 
 
       var pathParams = {
-        'modelURI': modelURI
+        'deploymentName': deploymentName,
+        'modelName': modelName,
+        'version': version
       };
       var queryParams = {
       };
@@ -720,7 +832,7 @@
       var returnType = Prediction;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/predictwithpreprocess', 'POST',
+        '/endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -737,11 +849,13 @@
     /**
      * Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
      * @param {Array.<module:ai/skymind/skil/model/String>} body The input array
-     * @param {String} modelURI The URI of the model
+     * @param {String} deploymentName The unique slug of the deployment
+     * @param {String} modelName The unique slug of the model
+     * @param {String} version A string representing the model version
      * @param {module:ai/skymind/skil/DefaultApi~predictwithpreprocessjsonCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/JsonArrayResponse}
      */
-    this.predictwithpreprocessjson = function(body, modelURI, callback) {
+    this.predictwithpreprocessjson = function(body, deploymentName, modelName, version, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -749,14 +863,26 @@
         throw new Error("Missing the required parameter 'body' when calling predictwithpreprocessjson");
       }
 
-      // verify the required parameter 'modelURI' is set
-      if (modelURI === undefined || modelURI === null) {
-        throw new Error("Missing the required parameter 'modelURI' when calling predictwithpreprocessjson");
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling predictwithpreprocessjson");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling predictwithpreprocessjson");
+      }
+
+      // verify the required parameter 'version' is set
+      if (version === undefined || version === null) {
+        throw new Error("Missing the required parameter 'version' when calling predictwithpreprocessjson");
       }
 
 
       var pathParams = {
-        'modelURI': modelURI
+        'deploymentName': deploymentName,
+        'modelName': modelName,
+        'version': version
       };
       var queryParams = {
       };
@@ -773,7 +899,7 @@
       var returnType = JsonArrayResponse;
 
       return this.apiClient.callApi(
-        '/endpoints/{modelURI}/predictwithpreprocessjson', 'POST',
+        '/endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -4,26 +4,26 @@ All URIs are relative to *https://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**classify**](DefaultApi.md#classify) | **POST** /endpoints/{modelURI}/classify | Use the deployed model to classify the input
-[**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{modelURI}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{modelURI}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classify | Use the deployed model to classify the input
+[**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
 [**deploy_model**](DefaultApi.md#deploy_model) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**deployment_create**](DefaultApi.md#deployment_create) | **POST** /deployment | Create a new deployment group.
-[**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{modelURI}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**logfilepath**](DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/logfilepath | Get logs file path
 [**login**](DefaultApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
 [**logs**](DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/logs | Get logs
-[**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{modelURI}/multiclassify | Represents all of the labels for a given classification
-[**predict**](DefaultApi.md#predict) | **POST** /endpoints/{modelURI}/predict | Run inference on the input array.
-[**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{modelURI}/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{modelURI}/predictwithpreprocess | Preprocesses the input and run inference on it
-[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{modelURI}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify | Represents all of the labels for a given classification
+[**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predict | Run inference on the input array.
+[**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess | Preprocesses the input and run inference on it
+[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**update_state**](DefaultApi.md#update_state) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
 # **classify**
-> ClassificationResult classify(body, model_uri)
+> ClassificationResult classify(body, deployment_name, model_name, version)
 
 Use the deployed model to classify the input
 
@@ -44,11 +44,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.Prediction() # Prediction | The input NDArray
-model_uri = 'model_uri_example' # str | The URI of the model
+deployment_name = 'deployment_name_example' # str | The unique slug of the deployment
+model_name = 'model_name_example' # str | The unique slug of the model
+version = 'version_example' # str | A string representing the model version
 
 try:
     # Use the deployed model to classify the input
-    api_response = api_instance.classify(body, model_uri)
+    api_response = api_instance.classify(body, deployment_name, model_name, version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->classify: %s\n" % e)
@@ -59,7 +61,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **model_uri** | **str**| The URI of the model | 
+ **deployment_name** | **str**| The unique slug of the deployment | 
+ **model_name** | **str**| The unique slug of the model | 
+ **version** | **str**| A string representing the model version | 
 
 ### Return type
 
@@ -77,7 +81,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classifyarray**
-> Base64NDArrayBody classifyarray(body, model_uri)
+> Base64NDArrayBody classifyarray(body, deployment_name, model_name, version)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
@@ -98,11 +102,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.Prediction() # Prediction | The input NDArray
-model_uri = 'model_uri_example' # str | The URI of the model
+deployment_name = 'deployment_name_example' # str | The unique slug of the deployment
+model_name = 'model_name_example' # str | The unique slug of the model
+version = 'version_example' # str | A string representing the model version
 
 try:
     # Same as /classify but returns the output as Base64NDArrayBody
-    api_response = api_instance.classifyarray(body, model_uri)
+    api_response = api_instance.classifyarray(body, deployment_name, model_name, version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->classifyarray: %s\n" % e)
@@ -113,7 +119,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **model_uri** | **str**| The URI of the model | 
+ **deployment_name** | **str**| The unique slug of the deployment | 
+ **model_name** | **str**| The unique slug of the model | 
+ **version** | **str**| A string representing the model version | 
 
 ### Return type
 
@@ -131,7 +139,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classifyimage**
-> ClassificationResult classifyimage(model_uri, image=image)
+> ClassificationResult classifyimage(deployment_name, model_name, version, image=image)
 
 Use the deployed model to classify the input, using input image file from multipart form data.
 
@@ -151,12 +159,14 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_uri = 'model_uri_example' # str | The URI of the model
+deployment_name = 'deployment_name_example' # str | The unique slug of the deployment
+model_name = 'model_name_example' # str | The unique slug of the model
+version = 'version_example' # str | A string representing the model version
 image = '/path/to/file.txt' # file | The file to upload. (optional)
 
 try:
     # Use the deployed model to classify the input, using input image file from multipart form data.
-    api_response = api_instance.classifyimage(model_uri, image=image)
+    api_response = api_instance.classifyimage(deployment_name, model_name, version, image=image)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->classifyimage: %s\n" % e)
@@ -166,7 +176,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_uri** | **str**| The URI of the model | 
+ **deployment_name** | **str**| The unique slug of the deployment | 
+ **model_name** | **str**| The unique slug of the model | 
+ **version** | **str**| A string representing the model version | 
  **image** | **file**| The file to upload. | [optional] 
 
 ### Return type
@@ -291,7 +303,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **jsonarray**
-> JsonArrayResponse jsonarray(body, model_uri)
+> JsonArrayResponse jsonarray(body, deployment_name, model_name, version)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
@@ -312,11 +324,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.Prediction() # Prediction | The input NDArray
-model_uri = 'model_uri_example' # str | The URI of the model
+deployment_name = 'deployment_name_example' # str | The unique slug of the deployment
+model_name = 'model_name_example' # str | The unique slug of the model
+version = 'version_example' # str | A string representing the model version
 
 try:
     # Run inference on the input and returns it as a JsonArrayResponse
-    api_response = api_instance.jsonarray(body, model_uri)
+    api_response = api_instance.jsonarray(body, deployment_name, model_name, version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->jsonarray: %s\n" % e)
@@ -327,7 +341,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **model_uri** | **str**| The URI of the model | 
+ **deployment_name** | **str**| The unique slug of the deployment | 
+ **model_name** | **str**| The unique slug of the model | 
+ **version** | **str**| A string representing the model version | 
 
 ### Return type
 
@@ -507,7 +523,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **multiclassify**
-> MultiClassClassificationResult multiclassify(body, model_uri)
+> MultiClassClassificationResult multiclassify(body, deployment_name, model_name, version)
 
 Represents all of the labels for a given classification
 
@@ -528,11 +544,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.Prediction() # Prediction | The input NDArray
-model_uri = 'model_uri_example' # str | The URI of the model
+deployment_name = 'deployment_name_example' # str | The unique slug of the deployment
+model_name = 'model_name_example' # str | The unique slug of the model
+version = 'version_example' # str | A string representing the model version
 
 try:
     # Represents all of the labels for a given classification
-    api_response = api_instance.multiclassify(body, model_uri)
+    api_response = api_instance.multiclassify(body, deployment_name, model_name, version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->multiclassify: %s\n" % e)
@@ -543,7 +561,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **model_uri** | **str**| The URI of the model | 
+ **deployment_name** | **str**| The unique slug of the deployment | 
+ **model_name** | **str**| The unique slug of the model | 
+ **version** | **str**| A string representing the model version | 
 
 ### Return type
 
@@ -561,7 +581,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predict**
-> Prediction predict(body, model_uri)
+> Prediction predict(body, deployment_name, model_name, version)
 
 Run inference on the input array.
 
@@ -582,11 +602,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.Prediction() # Prediction | The input NDArray
-model_uri = 'model_uri_example' # str | The URI of the model
+deployment_name = 'deployment_name_example' # str | The unique slug of the deployment
+model_name = 'model_name_example' # str | The unique slug of the model
+version = 'version_example' # str | A string representing the model version
 
 try:
     # Run inference on the input array.
-    api_response = api_instance.predict(body, model_uri)
+    api_response = api_instance.predict(body, deployment_name, model_name, version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->predict: %s\n" % e)
@@ -597,7 +619,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **model_uri** | **str**| The URI of the model | 
+ **deployment_name** | **str**| The unique slug of the deployment | 
+ **model_name** | **str**| The unique slug of the model | 
+ **version** | **str**| A string representing the model version | 
 
 ### Return type
 
@@ -615,7 +639,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictimage**
-> Prediction predictimage(model_uri, image=image)
+> Prediction predictimage(deployment_name, model_name, version, image=image)
 
 Run inference on the input array, using input image file from multipart form data.
 
@@ -635,12 +659,14 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_uri = 'model_uri_example' # str | The URI of the model
+deployment_name = 'deployment_name_example' # str | The unique slug of the deployment
+model_name = 'model_name_example' # str | The unique slug of the model
+version = 'version_example' # str | A string representing the model version
 image = '/path/to/file.txt' # file | The file to upload. (optional)
 
 try:
     # Run inference on the input array, using input image file from multipart form data.
-    api_response = api_instance.predictimage(model_uri, image=image)
+    api_response = api_instance.predictimage(deployment_name, model_name, version, image=image)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->predictimage: %s\n" % e)
@@ -650,7 +676,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_uri** | **str**| The URI of the model | 
+ **deployment_name** | **str**| The unique slug of the deployment | 
+ **model_name** | **str**| The unique slug of the model | 
+ **version** | **str**| A string representing the model version | 
  **image** | **file**| The file to upload. | [optional] 
 
 ### Return type
@@ -669,7 +697,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictwithpreprocess**
-> Prediction predictwithpreprocess(body, model_uri)
+> Prediction predictwithpreprocess(body, deployment_name, model_name, version)
 
 Preprocesses the input and run inference on it
 
@@ -690,11 +718,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = [skil_client.list[str]()] # list[str] | The input array
-model_uri = 'model_uri_example' # str | The URI of the model
+deployment_name = 'deployment_name_example' # str | The unique slug of the deployment
+model_name = 'model_name_example' # str | The unique slug of the model
+version = 'version_example' # str | A string representing the model version
 
 try:
     # Preprocesses the input and run inference on it
-    api_response = api_instance.predictwithpreprocess(body, model_uri)
+    api_response = api_instance.predictwithpreprocess(body, deployment_name, model_name, version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->predictwithpreprocess: %s\n" % e)
@@ -705,7 +735,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **list[str]**| The input array | 
- **model_uri** | **str**| The URI of the model | 
+ **deployment_name** | **str**| The unique slug of the deployment | 
+ **model_name** | **str**| The unique slug of the model | 
+ **version** | **str**| A string representing the model version | 
 
 ### Return type
 
@@ -723,7 +755,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictwithpreprocessjson**
-> JsonArrayResponse predictwithpreprocessjson(body, model_uri)
+> JsonArrayResponse predictwithpreprocessjson(body, deployment_name, model_name, version)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
@@ -744,11 +776,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = [skil_client.list[str]()] # list[str] | The input array
-model_uri = 'model_uri_example' # str | The URI of the model
+deployment_name = 'deployment_name_example' # str | The unique slug of the deployment
+model_name = 'model_name_example' # str | The unique slug of the model
+version = 'version_example' # str | A string representing the model version
 
 try:
     # Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-    api_response = api_instance.predictwithpreprocessjson(body, model_uri)
+    api_response = api_instance.predictwithpreprocessjson(body, deployment_name, model_name, version)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->predictwithpreprocessjson: %s\n" % e)
@@ -759,7 +793,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **list[str]**| The input array | 
- **model_uri** | **str**| The URI of the model | 
+ **deployment_name** | **str**| The unique slug of the deployment | 
+ **model_name** | **str**| The unique slug of the model | 
+ **version** | **str**| A string representing the model version | 
 
 ### Return type
 

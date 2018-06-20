@@ -71,18 +71,22 @@ public class DefaultApi {
     /**
      * Build call for classify
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call classifyCall(Prediction body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call classifyCall(Prediction body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/classify"
-            .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
+        String localVarPath = "/endpoints/{deploymentName}/models/{modelName}/{version}/classify"
+            .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
+            .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()))
+            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -120,20 +124,30 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call classifyValidateBeforeCall(Prediction body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call classifyValidateBeforeCall(Prediction body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling classify(Async)");
         }
         
-        // verify the required parameter 'modelURI' is set
-        if (modelURI == null) {
-            throw new ApiException("Missing the required parameter 'modelURI' when calling classify(Async)");
+        // verify the required parameter 'deploymentName' is set
+        if (deploymentName == null) {
+            throw new ApiException("Missing the required parameter 'deploymentName' when calling classify(Async)");
+        }
+        
+        // verify the required parameter 'modelName' is set
+        if (modelName == null) {
+            throw new ApiException("Missing the required parameter 'modelName' when calling classify(Async)");
+        }
+        
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling classify(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = classifyCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = classifyCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         return call;
 
     }
@@ -142,12 +156,14 @@ public class DefaultApi {
      * Use the deployed model to classify the input
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return ClassificationResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ClassificationResult classify(Prediction body, String modelURI) throws ApiException {
-        ApiResponse<ClassificationResult> resp = classifyWithHttpInfo(body, modelURI);
+    public ClassificationResult classify(Prediction body, String deploymentName, String modelName, String version) throws ApiException {
+        ApiResponse<ClassificationResult> resp = classifyWithHttpInfo(body, deploymentName, modelName, version);
         return resp.getData();
     }
 
@@ -155,12 +171,14 @@ public class DefaultApi {
      * Use the deployed model to classify the input
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return ApiResponse&lt;ClassificationResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ClassificationResult> classifyWithHttpInfo(Prediction body, String modelURI) throws ApiException {
-        com.squareup.okhttp.Call call = classifyValidateBeforeCall(body, modelURI, null, null);
+    public ApiResponse<ClassificationResult> classifyWithHttpInfo(Prediction body, String deploymentName, String modelName, String version) throws ApiException {
+        com.squareup.okhttp.Call call = classifyValidateBeforeCall(body, deploymentName, modelName, version, null, null);
         Type localVarReturnType = new TypeToken<ClassificationResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -169,12 +187,14 @@ public class DefaultApi {
      * Use the deployed model to classify the input (asynchronously)
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call classifyAsync(Prediction body, String modelURI, final ApiCallback<ClassificationResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call classifyAsync(Prediction body, String deploymentName, String modelName, String version, final ApiCallback<ClassificationResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -195,7 +215,7 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = classifyValidateBeforeCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = classifyValidateBeforeCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ClassificationResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -203,18 +223,22 @@ public class DefaultApi {
     /**
      * Build call for classifyarray
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call classifyarrayCall(Prediction body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call classifyarrayCall(Prediction body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/classifyarray"
-            .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
+        String localVarPath = "/endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray"
+            .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
+            .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()))
+            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -252,20 +276,30 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call classifyarrayValidateBeforeCall(Prediction body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call classifyarrayValidateBeforeCall(Prediction body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling classifyarray(Async)");
         }
         
-        // verify the required parameter 'modelURI' is set
-        if (modelURI == null) {
-            throw new ApiException("Missing the required parameter 'modelURI' when calling classifyarray(Async)");
+        // verify the required parameter 'deploymentName' is set
+        if (deploymentName == null) {
+            throw new ApiException("Missing the required parameter 'deploymentName' when calling classifyarray(Async)");
+        }
+        
+        // verify the required parameter 'modelName' is set
+        if (modelName == null) {
+            throw new ApiException("Missing the required parameter 'modelName' when calling classifyarray(Async)");
+        }
+        
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling classifyarray(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = classifyarrayCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = classifyarrayCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         return call;
 
     }
@@ -274,12 +308,14 @@ public class DefaultApi {
      * Same as /classify but returns the output as Base64NDArrayBody
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return Base64NDArrayBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Base64NDArrayBody classifyarray(Prediction body, String modelURI) throws ApiException {
-        ApiResponse<Base64NDArrayBody> resp = classifyarrayWithHttpInfo(body, modelURI);
+    public Base64NDArrayBody classifyarray(Prediction body, String deploymentName, String modelName, String version) throws ApiException {
+        ApiResponse<Base64NDArrayBody> resp = classifyarrayWithHttpInfo(body, deploymentName, modelName, version);
         return resp.getData();
     }
 
@@ -287,12 +323,14 @@ public class DefaultApi {
      * Same as /classify but returns the output as Base64NDArrayBody
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return ApiResponse&lt;Base64NDArrayBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Base64NDArrayBody> classifyarrayWithHttpInfo(Prediction body, String modelURI) throws ApiException {
-        com.squareup.okhttp.Call call = classifyarrayValidateBeforeCall(body, modelURI, null, null);
+    public ApiResponse<Base64NDArrayBody> classifyarrayWithHttpInfo(Prediction body, String deploymentName, String modelName, String version) throws ApiException {
+        com.squareup.okhttp.Call call = classifyarrayValidateBeforeCall(body, deploymentName, modelName, version, null, null);
         Type localVarReturnType = new TypeToken<Base64NDArrayBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -301,12 +339,14 @@ public class DefaultApi {
      * Same as /classify but returns the output as Base64NDArrayBody (asynchronously)
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call classifyarrayAsync(Prediction body, String modelURI, final ApiCallback<Base64NDArrayBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call classifyarrayAsync(Prediction body, String deploymentName, String modelName, String version, final ApiCallback<Base64NDArrayBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -327,26 +367,30 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = classifyarrayValidateBeforeCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = classifyarrayValidateBeforeCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Base64NDArrayBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for classifyimage
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param image The file to upload. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call classifyimageCall(String modelURI, File image, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call classifyimageCall(String deploymentName, String modelName, String version, File image, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/classifyimage"
-            .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
+        String localVarPath = "/endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage"
+            .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
+            .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()))
+            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -386,15 +430,25 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call classifyimageValidateBeforeCall(String modelURI, File image, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call classifyimageValidateBeforeCall(String deploymentName, String modelName, String version, File image, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'modelURI' is set
-        if (modelURI == null) {
-            throw new ApiException("Missing the required parameter 'modelURI' when calling classifyimage(Async)");
+        // verify the required parameter 'deploymentName' is set
+        if (deploymentName == null) {
+            throw new ApiException("Missing the required parameter 'deploymentName' when calling classifyimage(Async)");
+        }
+        
+        // verify the required parameter 'modelName' is set
+        if (modelName == null) {
+            throw new ApiException("Missing the required parameter 'modelName' when calling classifyimage(Async)");
+        }
+        
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling classifyimage(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = classifyimageCall(modelURI, image, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = classifyimageCall(deploymentName, modelName, version, image, progressListener, progressRequestListener);
         return call;
 
     }
@@ -402,26 +456,30 @@ public class DefaultApi {
     /**
      * Use the deployed model to classify the input, using input image file from multipart form data.
      * 
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param image The file to upload. (optional)
      * @return ClassificationResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ClassificationResult classifyimage(String modelURI, File image) throws ApiException {
-        ApiResponse<ClassificationResult> resp = classifyimageWithHttpInfo(modelURI, image);
+    public ClassificationResult classifyimage(String deploymentName, String modelName, String version, File image) throws ApiException {
+        ApiResponse<ClassificationResult> resp = classifyimageWithHttpInfo(deploymentName, modelName, version, image);
         return resp.getData();
     }
 
     /**
      * Use the deployed model to classify the input, using input image file from multipart form data.
      * 
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param image The file to upload. (optional)
      * @return ApiResponse&lt;ClassificationResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ClassificationResult> classifyimageWithHttpInfo(String modelURI, File image) throws ApiException {
-        com.squareup.okhttp.Call call = classifyimageValidateBeforeCall(modelURI, image, null, null);
+    public ApiResponse<ClassificationResult> classifyimageWithHttpInfo(String deploymentName, String modelName, String version, File image) throws ApiException {
+        com.squareup.okhttp.Call call = classifyimageValidateBeforeCall(deploymentName, modelName, version, image, null, null);
         Type localVarReturnType = new TypeToken<ClassificationResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -429,13 +487,15 @@ public class DefaultApi {
     /**
      * Use the deployed model to classify the input, using input image file from multipart form data. (asynchronously)
      * 
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param image The file to upload. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call classifyimageAsync(String modelURI, File image, final ApiCallback<ClassificationResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call classifyimageAsync(String deploymentName, String modelName, String version, File image, final ApiCallback<ClassificationResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -456,7 +516,7 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = classifyimageValidateBeforeCall(modelURI, image, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = classifyimageValidateBeforeCall(deploymentName, modelName, version, image, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ClassificationResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -718,18 +778,22 @@ public class DefaultApi {
     /**
      * Build call for jsonarray
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call jsonarrayCall(Prediction body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call jsonarrayCall(Prediction body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/jsonarray"
-            .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
+        String localVarPath = "/endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray"
+            .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
+            .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()))
+            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -767,20 +831,30 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call jsonarrayValidateBeforeCall(Prediction body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call jsonarrayValidateBeforeCall(Prediction body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling jsonarray(Async)");
         }
         
-        // verify the required parameter 'modelURI' is set
-        if (modelURI == null) {
-            throw new ApiException("Missing the required parameter 'modelURI' when calling jsonarray(Async)");
+        // verify the required parameter 'deploymentName' is set
+        if (deploymentName == null) {
+            throw new ApiException("Missing the required parameter 'deploymentName' when calling jsonarray(Async)");
+        }
+        
+        // verify the required parameter 'modelName' is set
+        if (modelName == null) {
+            throw new ApiException("Missing the required parameter 'modelName' when calling jsonarray(Async)");
+        }
+        
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling jsonarray(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = jsonarrayCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = jsonarrayCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         return call;
 
     }
@@ -789,12 +863,14 @@ public class DefaultApi {
      * Run inference on the input and returns it as a JsonArrayResponse
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return JsonArrayResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public JsonArrayResponse jsonarray(Prediction body, String modelURI) throws ApiException {
-        ApiResponse<JsonArrayResponse> resp = jsonarrayWithHttpInfo(body, modelURI);
+    public JsonArrayResponse jsonarray(Prediction body, String deploymentName, String modelName, String version) throws ApiException {
+        ApiResponse<JsonArrayResponse> resp = jsonarrayWithHttpInfo(body, deploymentName, modelName, version);
         return resp.getData();
     }
 
@@ -802,12 +878,14 @@ public class DefaultApi {
      * Run inference on the input and returns it as a JsonArrayResponse
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return ApiResponse&lt;JsonArrayResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<JsonArrayResponse> jsonarrayWithHttpInfo(Prediction body, String modelURI) throws ApiException {
-        com.squareup.okhttp.Call call = jsonarrayValidateBeforeCall(body, modelURI, null, null);
+    public ApiResponse<JsonArrayResponse> jsonarrayWithHttpInfo(Prediction body, String deploymentName, String modelName, String version) throws ApiException {
+        com.squareup.okhttp.Call call = jsonarrayValidateBeforeCall(body, deploymentName, modelName, version, null, null);
         Type localVarReturnType = new TypeToken<JsonArrayResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -816,12 +894,14 @@ public class DefaultApi {
      * Run inference on the input and returns it as a JsonArrayResponse (asynchronously)
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call jsonarrayAsync(Prediction body, String modelURI, final ApiCallback<JsonArrayResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call jsonarrayAsync(Prediction body, String deploymentName, String modelName, String version, final ApiCallback<JsonArrayResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -842,7 +922,7 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = jsonarrayValidateBeforeCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = jsonarrayValidateBeforeCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<JsonArrayResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1247,18 +1327,22 @@ public class DefaultApi {
     /**
      * Build call for multiclassify
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call multiclassifyCall(Prediction body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call multiclassifyCall(Prediction body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/multiclassify"
-            .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
+        String localVarPath = "/endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify"
+            .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
+            .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()))
+            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1296,20 +1380,30 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call multiclassifyValidateBeforeCall(Prediction body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call multiclassifyValidateBeforeCall(Prediction body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling multiclassify(Async)");
         }
         
-        // verify the required parameter 'modelURI' is set
-        if (modelURI == null) {
-            throw new ApiException("Missing the required parameter 'modelURI' when calling multiclassify(Async)");
+        // verify the required parameter 'deploymentName' is set
+        if (deploymentName == null) {
+            throw new ApiException("Missing the required parameter 'deploymentName' when calling multiclassify(Async)");
+        }
+        
+        // verify the required parameter 'modelName' is set
+        if (modelName == null) {
+            throw new ApiException("Missing the required parameter 'modelName' when calling multiclassify(Async)");
+        }
+        
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling multiclassify(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = multiclassifyCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = multiclassifyCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1318,12 +1412,14 @@ public class DefaultApi {
      * Represents all of the labels for a given classification
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return MultiClassClassificationResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MultiClassClassificationResult multiclassify(Prediction body, String modelURI) throws ApiException {
-        ApiResponse<MultiClassClassificationResult> resp = multiclassifyWithHttpInfo(body, modelURI);
+    public MultiClassClassificationResult multiclassify(Prediction body, String deploymentName, String modelName, String version) throws ApiException {
+        ApiResponse<MultiClassClassificationResult> resp = multiclassifyWithHttpInfo(body, deploymentName, modelName, version);
         return resp.getData();
     }
 
@@ -1331,12 +1427,14 @@ public class DefaultApi {
      * Represents all of the labels for a given classification
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return ApiResponse&lt;MultiClassClassificationResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MultiClassClassificationResult> multiclassifyWithHttpInfo(Prediction body, String modelURI) throws ApiException {
-        com.squareup.okhttp.Call call = multiclassifyValidateBeforeCall(body, modelURI, null, null);
+    public ApiResponse<MultiClassClassificationResult> multiclassifyWithHttpInfo(Prediction body, String deploymentName, String modelName, String version) throws ApiException {
+        com.squareup.okhttp.Call call = multiclassifyValidateBeforeCall(body, deploymentName, modelName, version, null, null);
         Type localVarReturnType = new TypeToken<MultiClassClassificationResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1345,12 +1443,14 @@ public class DefaultApi {
      * Represents all of the labels for a given classification (asynchronously)
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call multiclassifyAsync(Prediction body, String modelURI, final ApiCallback<MultiClassClassificationResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call multiclassifyAsync(Prediction body, String deploymentName, String modelName, String version, final ApiCallback<MultiClassClassificationResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1371,7 +1471,7 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = multiclassifyValidateBeforeCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = multiclassifyValidateBeforeCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<MultiClassClassificationResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1379,18 +1479,22 @@ public class DefaultApi {
     /**
      * Build call for predict
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call predictCall(Prediction body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call predictCall(Prediction body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/predict"
-            .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
+        String localVarPath = "/endpoints/{deploymentName}/models/{modelName}/{version}/predict"
+            .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
+            .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()))
+            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1428,20 +1532,30 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call predictValidateBeforeCall(Prediction body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call predictValidateBeforeCall(Prediction body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling predict(Async)");
         }
         
-        // verify the required parameter 'modelURI' is set
-        if (modelURI == null) {
-            throw new ApiException("Missing the required parameter 'modelURI' when calling predict(Async)");
+        // verify the required parameter 'deploymentName' is set
+        if (deploymentName == null) {
+            throw new ApiException("Missing the required parameter 'deploymentName' when calling predict(Async)");
+        }
+        
+        // verify the required parameter 'modelName' is set
+        if (modelName == null) {
+            throw new ApiException("Missing the required parameter 'modelName' when calling predict(Async)");
+        }
+        
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling predict(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = predictCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = predictCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1450,12 +1564,14 @@ public class DefaultApi {
      * Run inference on the input array.
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return Prediction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Prediction predict(Prediction body, String modelURI) throws ApiException {
-        ApiResponse<Prediction> resp = predictWithHttpInfo(body, modelURI);
+    public Prediction predict(Prediction body, String deploymentName, String modelName, String version) throws ApiException {
+        ApiResponse<Prediction> resp = predictWithHttpInfo(body, deploymentName, modelName, version);
         return resp.getData();
     }
 
@@ -1463,12 +1579,14 @@ public class DefaultApi {
      * Run inference on the input array.
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return ApiResponse&lt;Prediction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Prediction> predictWithHttpInfo(Prediction body, String modelURI) throws ApiException {
-        com.squareup.okhttp.Call call = predictValidateBeforeCall(body, modelURI, null, null);
+    public ApiResponse<Prediction> predictWithHttpInfo(Prediction body, String deploymentName, String modelName, String version) throws ApiException {
+        com.squareup.okhttp.Call call = predictValidateBeforeCall(body, deploymentName, modelName, version, null, null);
         Type localVarReturnType = new TypeToken<Prediction>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1477,12 +1595,14 @@ public class DefaultApi {
      * Run inference on the input array. (asynchronously)
      * 
      * @param body The input NDArray (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call predictAsync(Prediction body, String modelURI, final ApiCallback<Prediction> callback) throws ApiException {
+    public com.squareup.okhttp.Call predictAsync(Prediction body, String deploymentName, String modelName, String version, final ApiCallback<Prediction> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1503,26 +1623,30 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = predictValidateBeforeCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = predictValidateBeforeCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Prediction>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for predictimage
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param image The file to upload. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call predictimageCall(String modelURI, File image, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call predictimageCall(String deploymentName, String modelName, String version, File image, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/predictimage"
-            .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
+        String localVarPath = "/endpoints/{deploymentName}/models/{modelName}/{version}/predictimage"
+            .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
+            .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()))
+            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1562,15 +1686,25 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call predictimageValidateBeforeCall(String modelURI, File image, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call predictimageValidateBeforeCall(String deploymentName, String modelName, String version, File image, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'modelURI' is set
-        if (modelURI == null) {
-            throw new ApiException("Missing the required parameter 'modelURI' when calling predictimage(Async)");
+        // verify the required parameter 'deploymentName' is set
+        if (deploymentName == null) {
+            throw new ApiException("Missing the required parameter 'deploymentName' when calling predictimage(Async)");
+        }
+        
+        // verify the required parameter 'modelName' is set
+        if (modelName == null) {
+            throw new ApiException("Missing the required parameter 'modelName' when calling predictimage(Async)");
+        }
+        
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling predictimage(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = predictimageCall(modelURI, image, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = predictimageCall(deploymentName, modelName, version, image, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1578,26 +1712,30 @@ public class DefaultApi {
     /**
      * Run inference on the input array, using input image file from multipart form data.
      * 
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param image The file to upload. (optional)
      * @return Prediction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Prediction predictimage(String modelURI, File image) throws ApiException {
-        ApiResponse<Prediction> resp = predictimageWithHttpInfo(modelURI, image);
+    public Prediction predictimage(String deploymentName, String modelName, String version, File image) throws ApiException {
+        ApiResponse<Prediction> resp = predictimageWithHttpInfo(deploymentName, modelName, version, image);
         return resp.getData();
     }
 
     /**
      * Run inference on the input array, using input image file from multipart form data.
      * 
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param image The file to upload. (optional)
      * @return ApiResponse&lt;Prediction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Prediction> predictimageWithHttpInfo(String modelURI, File image) throws ApiException {
-        com.squareup.okhttp.Call call = predictimageValidateBeforeCall(modelURI, image, null, null);
+    public ApiResponse<Prediction> predictimageWithHttpInfo(String deploymentName, String modelName, String version, File image) throws ApiException {
+        com.squareup.okhttp.Call call = predictimageValidateBeforeCall(deploymentName, modelName, version, image, null, null);
         Type localVarReturnType = new TypeToken<Prediction>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1605,13 +1743,15 @@ public class DefaultApi {
     /**
      * Run inference on the input array, using input image file from multipart form data. (asynchronously)
      * 
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param image The file to upload. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call predictimageAsync(String modelURI, File image, final ApiCallback<Prediction> callback) throws ApiException {
+    public com.squareup.okhttp.Call predictimageAsync(String deploymentName, String modelName, String version, File image, final ApiCallback<Prediction> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1632,7 +1772,7 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = predictimageValidateBeforeCall(modelURI, image, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = predictimageValidateBeforeCall(deploymentName, modelName, version, image, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Prediction>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1640,18 +1780,22 @@ public class DefaultApi {
     /**
      * Build call for predictwithpreprocess
      * @param body The input array (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call predictwithpreprocessCall(List<String> body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call predictwithpreprocessCall(List<String> body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/predictwithpreprocess"
-            .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
+        String localVarPath = "/endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess"
+            .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
+            .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()))
+            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1689,20 +1833,30 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call predictwithpreprocessValidateBeforeCall(List<String> body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call predictwithpreprocessValidateBeforeCall(List<String> body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling predictwithpreprocess(Async)");
         }
         
-        // verify the required parameter 'modelURI' is set
-        if (modelURI == null) {
-            throw new ApiException("Missing the required parameter 'modelURI' when calling predictwithpreprocess(Async)");
+        // verify the required parameter 'deploymentName' is set
+        if (deploymentName == null) {
+            throw new ApiException("Missing the required parameter 'deploymentName' when calling predictwithpreprocess(Async)");
+        }
+        
+        // verify the required parameter 'modelName' is set
+        if (modelName == null) {
+            throw new ApiException("Missing the required parameter 'modelName' when calling predictwithpreprocess(Async)");
+        }
+        
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling predictwithpreprocess(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = predictwithpreprocessCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = predictwithpreprocessCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1711,12 +1865,14 @@ public class DefaultApi {
      * Preprocesses the input and run inference on it
      * 
      * @param body The input array (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return Prediction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Prediction predictwithpreprocess(List<String> body, String modelURI) throws ApiException {
-        ApiResponse<Prediction> resp = predictwithpreprocessWithHttpInfo(body, modelURI);
+    public Prediction predictwithpreprocess(List<String> body, String deploymentName, String modelName, String version) throws ApiException {
+        ApiResponse<Prediction> resp = predictwithpreprocessWithHttpInfo(body, deploymentName, modelName, version);
         return resp.getData();
     }
 
@@ -1724,12 +1880,14 @@ public class DefaultApi {
      * Preprocesses the input and run inference on it
      * 
      * @param body The input array (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return ApiResponse&lt;Prediction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Prediction> predictwithpreprocessWithHttpInfo(List<String> body, String modelURI) throws ApiException {
-        com.squareup.okhttp.Call call = predictwithpreprocessValidateBeforeCall(body, modelURI, null, null);
+    public ApiResponse<Prediction> predictwithpreprocessWithHttpInfo(List<String> body, String deploymentName, String modelName, String version) throws ApiException {
+        com.squareup.okhttp.Call call = predictwithpreprocessValidateBeforeCall(body, deploymentName, modelName, version, null, null);
         Type localVarReturnType = new TypeToken<Prediction>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1738,12 +1896,14 @@ public class DefaultApi {
      * Preprocesses the input and run inference on it (asynchronously)
      * 
      * @param body The input array (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call predictwithpreprocessAsync(List<String> body, String modelURI, final ApiCallback<Prediction> callback) throws ApiException {
+    public com.squareup.okhttp.Call predictwithpreprocessAsync(List<String> body, String deploymentName, String modelName, String version, final ApiCallback<Prediction> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1764,7 +1924,7 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = predictwithpreprocessValidateBeforeCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = predictwithpreprocessValidateBeforeCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Prediction>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1772,18 +1932,22 @@ public class DefaultApi {
     /**
      * Build call for predictwithpreprocessjson
      * @param body The input array (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call predictwithpreprocessjsonCall(List<String> body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call predictwithpreprocessjsonCall(List<String> body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/endpoints/{modelURI}/predictwithpreprocessjson"
-            .replaceAll("\\{" + "modelURI" + "\\}", apiClient.escapeString(modelURI.toString()));
+        String localVarPath = "/endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson"
+            .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
+            .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()))
+            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1821,20 +1985,30 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call predictwithpreprocessjsonValidateBeforeCall(List<String> body, String modelURI, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call predictwithpreprocessjsonValidateBeforeCall(List<String> body, String deploymentName, String modelName, String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling predictwithpreprocessjson(Async)");
         }
         
-        // verify the required parameter 'modelURI' is set
-        if (modelURI == null) {
-            throw new ApiException("Missing the required parameter 'modelURI' when calling predictwithpreprocessjson(Async)");
+        // verify the required parameter 'deploymentName' is set
+        if (deploymentName == null) {
+            throw new ApiException("Missing the required parameter 'deploymentName' when calling predictwithpreprocessjson(Async)");
+        }
+        
+        // verify the required parameter 'modelName' is set
+        if (modelName == null) {
+            throw new ApiException("Missing the required parameter 'modelName' when calling predictwithpreprocessjson(Async)");
+        }
+        
+        // verify the required parameter 'version' is set
+        if (version == null) {
+            throw new ApiException("Missing the required parameter 'version' when calling predictwithpreprocessjson(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = predictwithpreprocessjsonCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = predictwithpreprocessjsonCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1843,12 +2017,14 @@ public class DefaultApi {
      * Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
      * 
      * @param body The input array (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return JsonArrayResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public JsonArrayResponse predictwithpreprocessjson(List<String> body, String modelURI) throws ApiException {
-        ApiResponse<JsonArrayResponse> resp = predictwithpreprocessjsonWithHttpInfo(body, modelURI);
+    public JsonArrayResponse predictwithpreprocessjson(List<String> body, String deploymentName, String modelName, String version) throws ApiException {
+        ApiResponse<JsonArrayResponse> resp = predictwithpreprocessjsonWithHttpInfo(body, deploymentName, modelName, version);
         return resp.getData();
     }
 
@@ -1856,12 +2032,14 @@ public class DefaultApi {
      * Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
      * 
      * @param body The input array (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @return ApiResponse&lt;JsonArrayResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<JsonArrayResponse> predictwithpreprocessjsonWithHttpInfo(List<String> body, String modelURI) throws ApiException {
-        com.squareup.okhttp.Call call = predictwithpreprocessjsonValidateBeforeCall(body, modelURI, null, null);
+    public ApiResponse<JsonArrayResponse> predictwithpreprocessjsonWithHttpInfo(List<String> body, String deploymentName, String modelName, String version) throws ApiException {
+        com.squareup.okhttp.Call call = predictwithpreprocessjsonValidateBeforeCall(body, deploymentName, modelName, version, null, null);
         Type localVarReturnType = new TypeToken<JsonArrayResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1870,12 +2048,14 @@ public class DefaultApi {
      * Preprocesses the input and run inference on it and returns it as a JsonArrayResponse (asynchronously)
      * 
      * @param body The input array (required)
-     * @param modelURI The URI of the model (required)
+     * @param deploymentName The unique slug of the deployment (required)
+     * @param modelName The unique slug of the model (required)
+     * @param version A string representing the model version (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call predictwithpreprocessjsonAsync(List<String> body, String modelURI, final ApiCallback<JsonArrayResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call predictwithpreprocessjsonAsync(List<String> body, String deploymentName, String modelName, String version, final ApiCallback<JsonArrayResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1896,7 +2076,7 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = predictwithpreprocessjsonValidateBeforeCall(body, modelURI, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = predictwithpreprocessjsonValidateBeforeCall(body, deploymentName, modelName, version, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<JsonArrayResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

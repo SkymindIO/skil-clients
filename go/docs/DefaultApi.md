@@ -4,26 +4,26 @@ All URIs are relative to *https://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Classify**](DefaultApi.md#Classify) | **Post** /endpoints/{modelURI}/classify | Use the deployed model to classify the input
-[**Classifyarray**](DefaultApi.md#Classifyarray) | **Post** /endpoints/{modelURI}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**Classifyimage**](DefaultApi.md#Classifyimage) | **Post** /endpoints/{modelURI}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**Classify**](DefaultApi.md#Classify) | **Post** /endpoints/{deploymentName}/models/{modelName}/{version}/classify | Use the deployed model to classify the input
+[**Classifyarray**](DefaultApi.md#Classifyarray) | **Post** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**Classifyimage**](DefaultApi.md#Classifyimage) | **Post** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
 [**DeployModel**](DefaultApi.md#DeployModel) | **Post** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**DeploymentCreate**](DefaultApi.md#DeploymentCreate) | **Post** /deployment | Create a new deployment group.
-[**Jsonarray**](DefaultApi.md#Jsonarray) | **Post** /endpoints/{modelURI}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**Jsonarray**](DefaultApi.md#Jsonarray) | **Post** /endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**Logfilepath**](DefaultApi.md#Logfilepath) | **Get** /endpoints/{deploymentName}/model/{modelName}/logfilepath | Get logs file path
 [**Login**](DefaultApi.md#Login) | **Post** /login | Post JSON credentials and obtain a JWT authorization token.
 [**Logs**](DefaultApi.md#Logs) | **Post** /endpoints/{deploymentName}/model/{modelName}/logs | Get logs
-[**Multiclassify**](DefaultApi.md#Multiclassify) | **Post** /endpoints/{modelURI}/multiclassify | Represents all of the labels for a given classification
-[**Predict**](DefaultApi.md#Predict) | **Post** /endpoints/{modelURI}/predict | Run inference on the input array.
-[**Predictimage**](DefaultApi.md#Predictimage) | **Post** /endpoints/{modelURI}/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**Predictwithpreprocess**](DefaultApi.md#Predictwithpreprocess) | **Post** /endpoints/{modelURI}/predictwithpreprocess | Preprocesses the input and run inference on it
-[**Predictwithpreprocessjson**](DefaultApi.md#Predictwithpreprocessjson) | **Post** /endpoints/{modelURI}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**Multiclassify**](DefaultApi.md#Multiclassify) | **Post** /endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify | Represents all of the labels for a given classification
+[**Predict**](DefaultApi.md#Predict) | **Post** /endpoints/{deploymentName}/models/{modelName}/{version}/predict | Run inference on the input array.
+[**Predictimage**](DefaultApi.md#Predictimage) | **Post** /endpoints/{deploymentName}/models/{modelName}/{version}/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**Predictwithpreprocess**](DefaultApi.md#Predictwithpreprocess) | **Post** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess | Preprocesses the input and run inference on it
+[**Predictwithpreprocessjson**](DefaultApi.md#Predictwithpreprocessjson) | **Post** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**UpdateState**](DefaultApi.md#UpdateState) | **Post** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 [**Upload**](DefaultApi.md#Upload) | **Post** /api/upload/model | Upload a model file to SKIL for import.
 
 
 # **Classify**
-> ClassificationResult Classify(ctx, body, modelURI)
+> ClassificationResult Classify(ctx, body, deploymentName, modelName, version)
 Use the deployed model to classify the input
 
 ### Required Parameters
@@ -32,7 +32,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **modelURI** | **string**| The URI of the model | 
+  **deploymentName** | **string**| The unique slug of the deployment | 
+  **modelName** | **string**| The unique slug of the model | 
+  **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -50,7 +52,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Classifyarray**
-> Base64NdArrayBody Classifyarray(ctx, body, modelURI)
+> Base64NdArrayBody Classifyarray(ctx, body, deploymentName, modelName, version)
 Same as /classify but returns the output as Base64NDArrayBody
 
 ### Required Parameters
@@ -59,7 +61,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **modelURI** | **string**| The URI of the model | 
+  **deploymentName** | **string**| The unique slug of the deployment | 
+  **modelName** | **string**| The unique slug of the model | 
+  **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -77,7 +81,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Classifyimage**
-> ClassificationResult Classifyimage(ctx, modelURI, optional)
+> ClassificationResult Classifyimage(ctx, deploymentName, modelName, version, optional)
 Use the deployed model to classify the input, using input image file from multipart form data.
 
 ### Required Parameters
@@ -85,7 +89,9 @@ Use the deployed model to classify the input, using input image file from multip
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **modelURI** | **string**| The URI of the model | 
+  **deploymentName** | **string**| The unique slug of the deployment | 
+  **modelName** | **string**| The unique slug of the model | 
+  **version** | **string**| A string representing the model version | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -93,7 +99,9 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelURI** | **string**| The URI of the model | 
+ **deploymentName** | **string**| The unique slug of the deployment | 
+ **modelName** | **string**| The unique slug of the model | 
+ **version** | **string**| A string representing the model version | 
  **image** | ***os.File**| The file to upload. | 
 
 ### Return type
@@ -165,7 +173,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Jsonarray**
-> JsonArrayResponse Jsonarray(ctx, body, modelURI)
+> JsonArrayResponse Jsonarray(ctx, body, deploymentName, modelName, version)
 Run inference on the input and returns it as a JsonArrayResponse
 
 ### Required Parameters
@@ -174,7 +182,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **modelURI** | **string**| The URI of the model | 
+  **deploymentName** | **string**| The unique slug of the deployment | 
+  **modelName** | **string**| The unique slug of the model | 
+  **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -273,7 +283,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Multiclassify**
-> MultiClassClassificationResult Multiclassify(ctx, body, modelURI)
+> MultiClassClassificationResult Multiclassify(ctx, body, deploymentName, modelName, version)
 Represents all of the labels for a given classification
 
 ### Required Parameters
@@ -282,7 +292,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **modelURI** | **string**| The URI of the model | 
+  **deploymentName** | **string**| The unique slug of the deployment | 
+  **modelName** | **string**| The unique slug of the model | 
+  **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -300,7 +312,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Predict**
-> Prediction Predict(ctx, body, modelURI)
+> Prediction Predict(ctx, body, deploymentName, modelName, version)
 Run inference on the input array.
 
 ### Required Parameters
@@ -309,7 +321,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **modelURI** | **string**| The URI of the model | 
+  **deploymentName** | **string**| The unique slug of the deployment | 
+  **modelName** | **string**| The unique slug of the model | 
+  **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -327,7 +341,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Predictimage**
-> Prediction Predictimage(ctx, modelURI, optional)
+> Prediction Predictimage(ctx, deploymentName, modelName, version, optional)
 Run inference on the input array, using input image file from multipart form data.
 
 ### Required Parameters
@@ -335,7 +349,9 @@ Run inference on the input array, using input image file from multipart form dat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **modelURI** | **string**| The URI of the model | 
+  **deploymentName** | **string**| The unique slug of the deployment | 
+  **modelName** | **string**| The unique slug of the model | 
+  **version** | **string**| A string representing the model version | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -343,7 +359,9 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelURI** | **string**| The URI of the model | 
+ **deploymentName** | **string**| The unique slug of the deployment | 
+ **modelName** | **string**| The unique slug of the model | 
+ **version** | **string**| A string representing the model version | 
  **image** | ***os.File**| The file to upload. | 
 
 ### Return type
@@ -362,7 +380,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Predictwithpreprocess**
-> Prediction Predictwithpreprocess(ctx, body, modelURI)
+> Prediction Predictwithpreprocess(ctx, body, deploymentName, modelName, version)
 Preprocesses the input and run inference on it
 
 ### Required Parameters
@@ -371,7 +389,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **body** | **[]string**| The input array | 
-  **modelURI** | **string**| The URI of the model | 
+  **deploymentName** | **string**| The unique slug of the deployment | 
+  **modelName** | **string**| The unique slug of the model | 
+  **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -389,7 +409,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Predictwithpreprocessjson**
-> JsonArrayResponse Predictwithpreprocessjson(ctx, body, modelURI)
+> JsonArrayResponse Predictwithpreprocessjson(ctx, body, deploymentName, modelName, version)
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
 ### Required Parameters
@@ -398,7 +418,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **body** | **[]string**| The input array | 
-  **modelURI** | **string**| The URI of the model | 
+  **deploymentName** | **string**| The unique slug of the deployment | 
+  **modelName** | **string**| The unique slug of the model | 
+  **version** | **string**| A string representing the model version | 
 
 ### Return type
 

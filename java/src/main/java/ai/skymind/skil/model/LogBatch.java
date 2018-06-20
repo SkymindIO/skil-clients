@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * LogBatch
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-18T21:44:49.827-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-19T19:03:40.966-07:00")
 public class LogBatch {
   @SerializedName("offset")
   private Integer offset = null;

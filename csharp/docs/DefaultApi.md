@@ -4,27 +4,27 @@ All URIs are relative to *https://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Classify**](DefaultApi.md#classify) | **POST** /endpoints/{modelURI}/classify | Use the deployed model to classify the input
-[**Classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{modelURI}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**Classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{modelURI}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**Classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classify | Use the deployed model to classify the input
+[**Classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**Classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
 [**DeployModel**](DefaultApi.md#deploymodel) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**DeploymentCreate**](DefaultApi.md#deploymentcreate) | **POST** /deployment | Create a new deployment group.
-[**Jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{modelURI}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**Jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**Logfilepath**](DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/logfilepath | Get logs file path
 [**Login**](DefaultApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
 [**Logs**](DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/logs | Get logs
-[**Multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{modelURI}/multiclassify | Represents all of the labels for a given classification
-[**Predict**](DefaultApi.md#predict) | **POST** /endpoints/{modelURI}/predict | Run inference on the input array.
-[**Predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{modelURI}/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**Predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{modelURI}/predictwithpreprocess | Preprocesses the input and run inference on it
-[**Predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{modelURI}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**Multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/multiclassify | Represents all of the labels for a given classification
+[**Predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predict | Run inference on the input array.
+[**Predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**Predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocess | Preprocesses the input and run inference on it
+[**Predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/models/{modelName}/{version}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**UpdateState**](DefaultApi.md#updatestate) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Change the state of model to \&quot;start\&quot; or \&quot;stop\&quot;
 [**Upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
 <a name="classify"></a>
 # **Classify**
-> ClassificationResult Classify (Prediction body, string modelURI)
+> ClassificationResult Classify (Prediction body, string deploymentName, string modelName, string version)
 
 Use the deployed model to classify the input
 
@@ -49,12 +49,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var body = new Prediction(); // Prediction | The input NDArray
-            var modelURI = modelURI_example;  // string | The URI of the model
+            var deploymentName = deploymentName_example;  // string | The unique slug of the deployment
+            var modelName = modelName_example;  // string | The unique slug of the model
+            var version = version_example;  // string | A string representing the model version
 
             try
             {
                 // Use the deployed model to classify the input
-                ClassificationResult result = apiInstance.Classify(body, modelURI);
+                ClassificationResult result = apiInstance.Classify(body, deploymentName, modelName, version);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -71,7 +73,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **modelURI** | **string**| The URI of the model | 
+ **deploymentName** | **string**| The unique slug of the deployment | 
+ **modelName** | **string**| The unique slug of the model | 
+ **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -90,7 +94,7 @@ Name | Type | Description  | Notes
 
 <a name="classifyarray"></a>
 # **Classifyarray**
-> Base64NDArrayBody Classifyarray (Prediction body, string modelURI)
+> Base64NDArrayBody Classifyarray (Prediction body, string deploymentName, string modelName, string version)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
@@ -115,12 +119,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var body = new Prediction(); // Prediction | The input NDArray
-            var modelURI = modelURI_example;  // string | The URI of the model
+            var deploymentName = deploymentName_example;  // string | The unique slug of the deployment
+            var modelName = modelName_example;  // string | The unique slug of the model
+            var version = version_example;  // string | A string representing the model version
 
             try
             {
                 // Same as /classify but returns the output as Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.Classifyarray(body, modelURI);
+                Base64NDArrayBody result = apiInstance.Classifyarray(body, deploymentName, modelName, version);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -137,7 +143,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **modelURI** | **string**| The URI of the model | 
+ **deploymentName** | **string**| The unique slug of the deployment | 
+ **modelName** | **string**| The unique slug of the model | 
+ **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -156,7 +164,7 @@ Name | Type | Description  | Notes
 
 <a name="classifyimage"></a>
 # **Classifyimage**
-> ClassificationResult Classifyimage (string modelURI, System.IO.Stream image = null)
+> ClassificationResult Classifyimage (string deploymentName, string modelName, string version, System.IO.Stream image = null)
 
 Use the deployed model to classify the input, using input image file from multipart form data.
 
@@ -180,13 +188,15 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var modelURI = modelURI_example;  // string | The URI of the model
+            var deploymentName = deploymentName_example;  // string | The unique slug of the deployment
+            var modelName = modelName_example;  // string | The unique slug of the model
+            var version = version_example;  // string | A string representing the model version
             var image = new System.IO.Stream(); // System.IO.Stream | The file to upload. (optional) 
 
             try
             {
                 // Use the deployed model to classify the input, using input image file from multipart form data.
-                ClassificationResult result = apiInstance.Classifyimage(modelURI, image);
+                ClassificationResult result = apiInstance.Classifyimage(deploymentName, modelName, version, image);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -202,7 +212,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelURI** | **string**| The URI of the model | 
+ **deploymentName** | **string**| The unique slug of the deployment | 
+ **modelName** | **string**| The unique slug of the model | 
+ **version** | **string**| A string representing the model version | 
  **image** | **System.IO.Stream**| The file to upload. | [optional] 
 
 ### Return type
@@ -352,7 +364,7 @@ Name | Type | Description  | Notes
 
 <a name="jsonarray"></a>
 # **Jsonarray**
-> JsonArrayResponse Jsonarray (Prediction body, string modelURI)
+> JsonArrayResponse Jsonarray (Prediction body, string deploymentName, string modelName, string version)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
@@ -377,12 +389,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var body = new Prediction(); // Prediction | The input NDArray
-            var modelURI = modelURI_example;  // string | The URI of the model
+            var deploymentName = deploymentName_example;  // string | The unique slug of the deployment
+            var modelName = modelName_example;  // string | The unique slug of the model
+            var version = version_example;  // string | A string representing the model version
 
             try
             {
                 // Run inference on the input and returns it as a JsonArrayResponse
-                JsonArrayResponse result = apiInstance.Jsonarray(body, modelURI);
+                JsonArrayResponse result = apiInstance.Jsonarray(body, deploymentName, modelName, version);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -399,7 +413,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **modelURI** | **string**| The URI of the model | 
+ **deploymentName** | **string**| The unique slug of the deployment | 
+ **modelName** | **string**| The unique slug of the model | 
+ **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -616,7 +632,7 @@ Name | Type | Description  | Notes
 
 <a name="multiclassify"></a>
 # **Multiclassify**
-> MultiClassClassificationResult Multiclassify (Prediction body, string modelURI)
+> MultiClassClassificationResult Multiclassify (Prediction body, string deploymentName, string modelName, string version)
 
 Represents all of the labels for a given classification
 
@@ -641,12 +657,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var body = new Prediction(); // Prediction | The input NDArray
-            var modelURI = modelURI_example;  // string | The URI of the model
+            var deploymentName = deploymentName_example;  // string | The unique slug of the deployment
+            var modelName = modelName_example;  // string | The unique slug of the model
+            var version = version_example;  // string | A string representing the model version
 
             try
             {
                 // Represents all of the labels for a given classification
-                MultiClassClassificationResult result = apiInstance.Multiclassify(body, modelURI);
+                MultiClassClassificationResult result = apiInstance.Multiclassify(body, deploymentName, modelName, version);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -663,7 +681,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **modelURI** | **string**| The URI of the model | 
+ **deploymentName** | **string**| The unique slug of the deployment | 
+ **modelName** | **string**| The unique slug of the model | 
+ **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -682,7 +702,7 @@ Name | Type | Description  | Notes
 
 <a name="predict"></a>
 # **Predict**
-> Prediction Predict (Prediction body, string modelURI)
+> Prediction Predict (Prediction body, string deploymentName, string modelName, string version)
 
 Run inference on the input array.
 
@@ -707,12 +727,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var body = new Prediction(); // Prediction | The input NDArray
-            var modelURI = modelURI_example;  // string | The URI of the model
+            var deploymentName = deploymentName_example;  // string | The unique slug of the deployment
+            var modelName = modelName_example;  // string | The unique slug of the model
+            var version = version_example;  // string | A string representing the model version
 
             try
             {
                 // Run inference on the input array.
-                Prediction result = apiInstance.Predict(body, modelURI);
+                Prediction result = apiInstance.Predict(body, deploymentName, modelName, version);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -729,7 +751,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
- **modelURI** | **string**| The URI of the model | 
+ **deploymentName** | **string**| The unique slug of the deployment | 
+ **modelName** | **string**| The unique slug of the model | 
+ **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -748,7 +772,7 @@ Name | Type | Description  | Notes
 
 <a name="predictimage"></a>
 # **Predictimage**
-> Prediction Predictimage (string modelURI, System.IO.Stream image = null)
+> Prediction Predictimage (string deploymentName, string modelName, string version, System.IO.Stream image = null)
 
 Run inference on the input array, using input image file from multipart form data.
 
@@ -772,13 +796,15 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var modelURI = modelURI_example;  // string | The URI of the model
+            var deploymentName = deploymentName_example;  // string | The unique slug of the deployment
+            var modelName = modelName_example;  // string | The unique slug of the model
+            var version = version_example;  // string | A string representing the model version
             var image = new System.IO.Stream(); // System.IO.Stream | The file to upload. (optional) 
 
             try
             {
                 // Run inference on the input array, using input image file from multipart form data.
-                Prediction result = apiInstance.Predictimage(modelURI, image);
+                Prediction result = apiInstance.Predictimage(deploymentName, modelName, version, image);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -794,7 +820,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelURI** | **string**| The URI of the model | 
+ **deploymentName** | **string**| The unique slug of the deployment | 
+ **modelName** | **string**| The unique slug of the model | 
+ **version** | **string**| A string representing the model version | 
  **image** | **System.IO.Stream**| The file to upload. | [optional] 
 
 ### Return type
@@ -814,7 +842,7 @@ Name | Type | Description  | Notes
 
 <a name="predictwithpreprocess"></a>
 # **Predictwithpreprocess**
-> Prediction Predictwithpreprocess (List<string> body, string modelURI)
+> Prediction Predictwithpreprocess (List<string> body, string deploymentName, string modelName, string version)
 
 Preprocesses the input and run inference on it
 
@@ -839,12 +867,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var body = ;  // List<string> | The input array
-            var modelURI = modelURI_example;  // string | The URI of the model
+            var deploymentName = deploymentName_example;  // string | The unique slug of the deployment
+            var modelName = modelName_example;  // string | The unique slug of the model
+            var version = version_example;  // string | A string representing the model version
 
             try
             {
                 // Preprocesses the input and run inference on it
-                Prediction result = apiInstance.Predictwithpreprocess(body, modelURI);
+                Prediction result = apiInstance.Predictwithpreprocess(body, deploymentName, modelName, version);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -861,7 +891,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **List&lt;string&gt;**| The input array | 
- **modelURI** | **string**| The URI of the model | 
+ **deploymentName** | **string**| The unique slug of the deployment | 
+ **modelName** | **string**| The unique slug of the model | 
+ **version** | **string**| A string representing the model version | 
 
 ### Return type
 
@@ -880,7 +912,7 @@ Name | Type | Description  | Notes
 
 <a name="predictwithpreprocessjson"></a>
 # **Predictwithpreprocessjson**
-> JsonArrayResponse Predictwithpreprocessjson (List<string> body, string modelURI)
+> JsonArrayResponse Predictwithpreprocessjson (List<string> body, string deploymentName, string modelName, string version)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
@@ -905,12 +937,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var body = ;  // List<string> | The input array
-            var modelURI = modelURI_example;  // string | The URI of the model
+            var deploymentName = deploymentName_example;  // string | The unique slug of the deployment
+            var modelName = modelName_example;  // string | The unique slug of the model
+            var version = version_example;  // string | A string representing the model version
 
             try
             {
                 // Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-                JsonArrayResponse result = apiInstance.Predictwithpreprocessjson(body, modelURI);
+                JsonArrayResponse result = apiInstance.Predictwithpreprocessjson(body, deploymentName, modelName, version);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -927,7 +961,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **List&lt;string&gt;**| The input array | 
- **modelURI** | **string**| The URI of the model | 
+ **deploymentName** | **string**| The unique slug of the deployment | 
+ **modelName** | **string**| The unique slug of the model | 
+ **version** | **string**| A string representing the model version | 
 
 ### Return type
 
