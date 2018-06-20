@@ -1,6 +1,6 @@
 /*
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -14,6 +14,7 @@
 package ai.skymind.skil.model;
 
 import java.util.Objects;
+import ai.skymind.skil.model.ModelResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -28,25 +29,25 @@ import java.util.List;
 /**
  * DeploymentObjects
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-05-16T22:40:33.924-04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-20T09:58:20.972-07:00")
 public class DeploymentObjects {
   @SerializedName("models")
-  private List<Object> models = null;
+  private List<ModelResponse> models = null;
 
   @SerializedName("transforms")
-  private List<Object> transforms = null;
+  private List<ModelResponse> transforms = null;
 
   @SerializedName("knn")
-  private List<Object> knn = null;
+  private List<ModelResponse> knn = null;
 
-  public DeploymentObjects models(List<Object> models) {
+  public DeploymentObjects models(List<ModelResponse> models) {
     this.models = models;
     return this;
   }
 
-  public DeploymentObjects addModelsItem(Object modelsItem) {
+  public DeploymentObjects addModelsItem(ModelResponse modelsItem) {
     if (this.models == null) {
-      this.models = new ArrayList<Object>();
+      this.models = new ArrayList<ModelResponse>();
     }
     this.models.add(modelsItem);
     return this;
@@ -57,22 +58,22 @@ public class DeploymentObjects {
    * @return models
   **/
   @ApiModelProperty(value = "")
-  public List<Object> getModels() {
+  public List<ModelResponse> getModels() {
     return models;
   }
 
-  public void setModels(List<Object> models) {
+  public void setModels(List<ModelResponse> models) {
     this.models = models;
   }
 
-  public DeploymentObjects transforms(List<Object> transforms) {
+  public DeploymentObjects transforms(List<ModelResponse> transforms) {
     this.transforms = transforms;
     return this;
   }
 
-  public DeploymentObjects addTransformsItem(Object transformsItem) {
+  public DeploymentObjects addTransformsItem(ModelResponse transformsItem) {
     if (this.transforms == null) {
-      this.transforms = new ArrayList<Object>();
+      this.transforms = new ArrayList<ModelResponse>();
     }
     this.transforms.add(transformsItem);
     return this;
@@ -83,22 +84,22 @@ public class DeploymentObjects {
    * @return transforms
   **/
   @ApiModelProperty(value = "")
-  public List<Object> getTransforms() {
+  public List<ModelResponse> getTransforms() {
     return transforms;
   }
 
-  public void setTransforms(List<Object> transforms) {
+  public void setTransforms(List<ModelResponse> transforms) {
     this.transforms = transforms;
   }
 
-  public DeploymentObjects knn(List<Object> knn) {
+  public DeploymentObjects knn(List<ModelResponse> knn) {
     this.knn = knn;
     return this;
   }
 
-  public DeploymentObjects addKnnItem(Object knnItem) {
+  public DeploymentObjects addKnnItem(ModelResponse knnItem) {
     if (this.knn == null) {
-      this.knn = new ArrayList<Object>();
+      this.knn = new ArrayList<ModelResponse>();
     }
     this.knn.add(knnItem);
     return this;
@@ -109,11 +110,11 @@ public class DeploymentObjects {
    * @return knn
   **/
   @ApiModelProperty(value = "")
-  public List<Object> getKnn() {
+  public List<ModelResponse> getKnn() {
     return knn;
   }
 
-  public void setKnn(List<Object> knn) {
+  public void setKnn(List<ModelResponse> knn) {
     this.knn = knn;
   }
 

@@ -10,12 +10,15 @@ import ai.skymind.skil.client.model.INDArray;
         public var needsPreProcessing: Boolean = false;
                 [XmlElement(name="prediction")]
         public var prediction: INDArray = NaN;
+                [XmlElement(name="inputMask")]
+        public var inputMask: INDArray = NaN;
 
     public function toString(): String {
         var str: String = "Prediction: ";
         str += " (id: " + id + ")";
         str += " (needsPreProcessing: " + needsPreProcessing + ")";
         str += " (prediction: " + prediction + ")";
+        str += " (inputMask: " + inputMask + ")";
         return str;
     }
 

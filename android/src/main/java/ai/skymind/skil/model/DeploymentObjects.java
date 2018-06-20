@@ -1,6 +1,6 @@
 /**
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -12,6 +12,7 @@
 
 package ai.skymind.skil.model;
 
+import ai.skymind.skil.model.ModelResponse;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
@@ -21,39 +22,39 @@ import java.io.Serializable;
 public class DeploymentObjects implements Serializable {
   
   @SerializedName("models")
-  private List<Object> models = null;
+  private List<ModelResponse> models = null;
   @SerializedName("transforms")
-  private List<Object> transforms = null;
+  private List<ModelResponse> transforms = null;
   @SerializedName("knn")
-  private List<Object> knn = null;
+  private List<ModelResponse> knn = null;
 
   /**
    **/
   @ApiModelProperty(value = "")
-  public List<Object> getModels() {
+  public List<ModelResponse> getModels() {
     return models;
   }
-  public void setModels(List<Object> models) {
+  public void setModels(List<ModelResponse> models) {
     this.models = models;
   }
 
   /**
    **/
   @ApiModelProperty(value = "")
-  public List<Object> getTransforms() {
+  public List<ModelResponse> getTransforms() {
     return transforms;
   }
-  public void setTransforms(List<Object> transforms) {
+  public void setTransforms(List<ModelResponse> transforms) {
     this.transforms = transforms;
   }
 
   /**
    **/
   @ApiModelProperty(value = "")
-  public List<Object> getKnn() {
+  public List<ModelResponse> getKnn() {
     return knn;
   }
-  public void setKnn(List<Object> knn) {
+  public void setKnn(List<ModelResponse> knn) {
     this.knn = knn;
   }
 

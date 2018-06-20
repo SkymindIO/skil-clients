@@ -1,6 +1,6 @@
 /**
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -14,6 +14,10 @@ package ai.skymind.skil.model
 
 
 case class INDArray (
-  Array: Option[String] = None
+  Array: Option[String] = None,
+  Shape: Option[List[Integer]] = None,
+  Ordering: Option[String] = None,
+  Data: Option[List[Float]] = None,
+  DataType: Option[String] = None
 )
 

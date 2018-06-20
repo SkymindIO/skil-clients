@@ -1,7 +1,7 @@
 package ai.skymind.skil.client.model {
 
 import io.swagger.common.ListWrapper;
-import ai.skymind.skil.client.model.Object;
+import ai.skymind.skil.client.model.ModelResponse;
 
     public class DeploymentObjectsList implements ListWrapper {
         // This declaration below of _DeploymentObjects_obj_class is to force flash compiler to include this class

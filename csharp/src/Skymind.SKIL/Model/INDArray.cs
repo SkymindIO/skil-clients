@@ -1,7 +1,7 @@
 /* 
- * Predict
+ * Endpoints
  *
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -31,12 +31,88 @@ namespace Skymind.SKIL.Model
     public partial class INDArray :  IEquatable<INDArray>, IValidatableObject
     {
         /// <summary>
+        /// Defines Ordering
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum OrderingEnum
+        {
+            
+            /// <summary>
+            /// Enum F for value: f
+            /// </summary>
+            [EnumMember(Value = "f")]
+            F = 1,
+            
+            /// <summary>
+            /// Enum C for value: c
+            /// </summary>
+            [EnumMember(Value = "c")]
+            C = 2
+        }
+
+        /// <summary>
+        /// Gets or Sets Ordering
+        /// </summary>
+        [DataMember(Name="ordering", EmitDefaultValue=false)]
+        public OrderingEnum? Ordering { get; set; }
+        /// <summary>
+        /// Defines DataType
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DataTypeEnum
+        {
+            
+            /// <summary>
+            /// Enum INT8 for value: INT8
+            /// </summary>
+            [EnumMember(Value = "INT8")]
+            INT8 = 1,
+            
+            /// <summary>
+            /// Enum UINT8 for value: UINT8
+            /// </summary>
+            [EnumMember(Value = "UINT8")]
+            UINT8 = 2,
+            
+            /// <summary>
+            /// Enum INT16 for value: INT16
+            /// </summary>
+            [EnumMember(Value = "INT16")]
+            INT16 = 3,
+            
+            /// <summary>
+            /// Enum INT16 for value: INT16
+            /// </summary>
+            [EnumMember(Value = "INT16")]
+            INT16 = 4,
+            
+            /// <summary>
+            /// Enum FLOAT16 for value: FLOAT16
+            /// </summary>
+            [EnumMember(Value = "FLOAT16")]
+            FLOAT16 = 5
+        }
+
+        /// <summary>
+        /// Gets or Sets DataType
+        /// </summary>
+        [DataMember(Name="dataType", EmitDefaultValue=false)]
+        public DataTypeEnum? DataType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="INDArray" /> class.
         /// </summary>
         /// <param name="Array">Array.</param>
-        public INDArray(string Array = default(string))
+        /// <param name="Shape">Shape.</param>
+        /// <param name="Ordering">Ordering.</param>
+        /// <param name="Data">Data.</param>
+        /// <param name="DataType">DataType.</param>
+        public INDArray(string Array = default(string), List<int?> Shape = default(List<int?>), OrderingEnum? Ordering = default(OrderingEnum?), List<float?> Data = default(List<float?>), DataTypeEnum? DataType = default(DataTypeEnum?))
         {
             this.Array = Array;
+            this.Shape = Shape;
+            this.Ordering = Ordering;
+            this.Data = Data;
+            this.DataType = DataType;
         }
         
         /// <summary>
@@ -44,6 +120,20 @@ namespace Skymind.SKIL.Model
         /// </summary>
         [DataMember(Name="array", EmitDefaultValue=false)]
         public string Array { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Shape
+        /// </summary>
+        [DataMember(Name="shape", EmitDefaultValue=false)]
+        public List<int?> Shape { get; set; }
+
+
+        /// <summary>
+        /// Gets or Sets Data
+        /// </summary>
+        [DataMember(Name="data", EmitDefaultValue=false)]
+        public List<float?> Data { get; set; }
+
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -54,6 +144,10 @@ namespace Skymind.SKIL.Model
             var sb = new StringBuilder();
             sb.Append("class INDArray {\n");
             sb.Append("  Array: ").Append(Array).Append("\n");
+            sb.Append("  Shape: ").Append(Shape).Append("\n");
+            sb.Append("  Ordering: ").Append(Ordering).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("  DataType: ").Append(DataType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -92,6 +186,26 @@ namespace Skymind.SKIL.Model
                     this.Array == input.Array ||
                     (this.Array != null &&
                     this.Array.Equals(input.Array))
+                ) && 
+                (
+                    this.Shape == input.Shape ||
+                    this.Shape != null &&
+                    this.Shape.SequenceEqual(input.Shape)
+                ) && 
+                (
+                    this.Ordering == input.Ordering ||
+                    (this.Ordering != null &&
+                    this.Ordering.Equals(input.Ordering))
+                ) && 
+                (
+                    this.Data == input.Data ||
+                    this.Data != null &&
+                    this.Data.SequenceEqual(input.Data)
+                ) && 
+                (
+                    this.DataType == input.DataType ||
+                    (this.DataType != null &&
+                    this.DataType.Equals(input.DataType))
                 );
         }
 
@@ -106,6 +220,14 @@ namespace Skymind.SKIL.Model
                 int hashCode = 41;
                 if (this.Array != null)
                     hashCode = hashCode * 59 + this.Array.GetHashCode();
+                if (this.Shape != null)
+                    hashCode = hashCode * 59 + this.Shape.GetHashCode();
+                if (this.Ordering != null)
+                    hashCode = hashCode * 59 + this.Ordering.GetHashCode();
+                if (this.Data != null)
+                    hashCode = hashCode * 59 + this.Data.GetHashCode();
+                if (this.DataType != null)
+                    hashCode = hashCode * 59 + this.DataType.GetHashCode();
                 return hashCode;
             }
         }

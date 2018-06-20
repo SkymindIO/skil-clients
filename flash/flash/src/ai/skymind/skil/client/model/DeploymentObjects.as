@@ -1,6 +1,6 @@
 package ai.skymind.skil.client.model {
 
-import ai.skymind.skil.client.model.Object;
+import ai.skymind.skil.client.model.ModelResponse;
 
     [XmlRootNode(name="DeploymentObjects")]
     public class DeploymentObjects {

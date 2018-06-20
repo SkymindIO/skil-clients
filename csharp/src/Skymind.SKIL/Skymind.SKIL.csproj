@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-Predict
+Endpoints
 
-Endpoints API for classification and other prediction services in SKIL
+Endpoints API for different services in SKIL
 
 OpenAPI spec version: 1.1.0-beta
 
@@ -12,7 +12,7 @@ OpenAPI spec version: 1.1.0-beta
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B6342182-8E94-4F6C-B665-304894D0BDF0}</ProjectGuid>
+    <ProjectGuid>{C02F9B0C-6D43-4307-A078-182DF9FC8F04}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Skymind.SKIL</RootNamespace>

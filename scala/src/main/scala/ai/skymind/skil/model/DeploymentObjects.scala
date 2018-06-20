@@ -1,6 +1,6 @@
 /**
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -14,8 +14,8 @@ package ai.skymind.skil.model
 
 
 case class DeploymentObjects (
-  Models: Option[List[Any]] = None,
-  Transforms: Option[List[Any]] = None,
-  Knn: Option[List[Any]] = None
+  Models: Option[List[ModelResponse]] = None,
+  Transforms: Option[List[ModelResponse]] = None,
+  Knn: Option[List[ModelResponse]] = None
 )
 

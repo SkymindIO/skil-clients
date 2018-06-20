@@ -13,6 +13,7 @@ open class Prediction: JSONEncodable {
     public var id: String?
     public var needsPreProcessing: Bool?
     public var prediction: INDArray?
+    public var inputMask: INDArray?
 
     public init() {}
 
@@ -22,6 +23,7 @@ open class Prediction: JSONEncodable {
         nillableDictionary["id"] = self.id
         nillableDictionary["needsPreProcessing"] = self.needsPreProcessing
         nillableDictionary["prediction"] = self.prediction?.encodeToJSON()
+        nillableDictionary["inputMask"] = self.inputMask?.encodeToJSON()
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

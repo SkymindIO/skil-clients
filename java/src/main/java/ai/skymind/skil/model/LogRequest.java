@@ -1,6 +1,6 @@
 /*
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * LogRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-05-16T22:40:33.924-04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-20T09:58:20.972-07:00")
 public class LogRequest {
   @SerializedName("offset")
   private Integer offset = null;

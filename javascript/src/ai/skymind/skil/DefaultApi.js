@@ -1,6 +1,6 @@
 /**
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  *
@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeployModel', 'ai/skymind/skil/model/Deployment', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/NewDeployment', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Token'], factory);
+    define(['ApiClient', 'ai/skymind/skil/model/AddExampleRequest', 'ai/skymind/skil/model/AddModelHistoryRequest', 'ai/skymind/skil/model/AggregatePrediction', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/Base64NDArrayBodyKNN', 'ai/skymind/skil/model/BatchCSVRecord', 'ai/skymind/skil/model/BatchImageRecord', 'ai/skymind/skil/model/BestModel', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/CreateDeploymentRequest', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeploymentResponse', 'ai/skymind/skil/model/DetectionResult', 'ai/skymind/skil/model/EvaluationResultsEntity', 'ai/skymind/skil/model/ExampleEntity', 'ai/skymind/skil/model/ExperimentEntity', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/ImageTransformProcess', 'ai/skymind/skil/model/ImportModelRequest', 'ai/skymind/skil/model/InlineResponse200', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/MetaData', 'ai/skymind/skil/model/MinibatchEntity', 'ai/skymind/skil/model/ModelEntity', 'ai/skymind/skil/model/ModelHistoryEntity', 'ai/skymind/skil/model/ModelInstanceEntity', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/MultiPredictRequest', 'ai/skymind/skil/model/MultiPredictResponse', 'ai/skymind/skil/model/NearestNeighborRequest', 'ai/skymind/skil/model/NearestNeighborsResults', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/SetState', 'ai/skymind/skil/model/SingleCSVRecord', 'ai/skymind/skil/model/SingleImageRecord', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/model/TransformProcess', 'ai/skymind/skil/model/UpdateBestModel'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeployModel'), require('../ai/skymind/skil/model/Deployment'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/NewDeployment'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/Token'));
+    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/AddExampleRequest'), require('../ai/skymind/skil/model/AddModelHistoryRequest'), require('../ai/skymind/skil/model/AggregatePrediction'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/Base64NDArrayBodyKNN'), require('../ai/skymind/skil/model/BatchCSVRecord'), require('../ai/skymind/skil/model/BatchImageRecord'), require('../ai/skymind/skil/model/BestModel'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/CreateDeploymentRequest'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeploymentResponse'), require('../ai/skymind/skil/model/DetectionResult'), require('../ai/skymind/skil/model/EvaluationResultsEntity'), require('../ai/skymind/skil/model/ExampleEntity'), require('../ai/skymind/skil/model/ExperimentEntity'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/ImageTransformProcess'), require('../ai/skymind/skil/model/ImportModelRequest'), require('../ai/skymind/skil/model/InlineResponse200'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/MetaData'), require('../ai/skymind/skil/model/MinibatchEntity'), require('../ai/skymind/skil/model/ModelEntity'), require('../ai/skymind/skil/model/ModelHistoryEntity'), require('../ai/skymind/skil/model/ModelInstanceEntity'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/MultiPredictRequest'), require('../ai/skymind/skil/model/MultiPredictResponse'), require('../ai/skymind/skil/model/NearestNeighborRequest'), require('../ai/skymind/skil/model/NearestNeighborsResults'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/SetState'), require('../ai/skymind/skil/model/SingleCSVRecord'), require('../ai/skymind/skil/model/SingleImageRecord'), require('../ai/skymind/skil/model/Token'), require('../ai/skymind/skil/model/TransformProcess'), require('../ai/skymind/skil/model/UpdateBestModel'));
   } else {
     // Browser globals (root is window)
     if (!root.SkilClient) {
       root.SkilClient = {};
     }
-    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.Base64NDArrayBody, root.SkilClient.ClassificationResult, root.SkilClient.Credentials, root.SkilClient.DeployModel, root.SkilClient.Deployment, root.SkilClient.FileUploadList, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.NewDeployment, root.SkilClient.Prediction, root.SkilClient.Token);
+    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.AddExampleRequest, root.SkilClient.AddModelHistoryRequest, root.SkilClient.AggregatePrediction, root.SkilClient.Base64NDArrayBody, root.SkilClient.Base64NDArrayBodyKNN, root.SkilClient.BatchCSVRecord, root.SkilClient.BatchImageRecord, root.SkilClient.BestModel, root.SkilClient.ClassificationResult, root.SkilClient.CreateDeploymentRequest, root.SkilClient.Credentials, root.SkilClient.DeploymentResponse, root.SkilClient.DetectionResult, root.SkilClient.EvaluationResultsEntity, root.SkilClient.ExampleEntity, root.SkilClient.ExperimentEntity, root.SkilClient.FileUploadList, root.SkilClient.ImageTransformProcess, root.SkilClient.ImportModelRequest, root.SkilClient.InlineResponse200, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.MetaData, root.SkilClient.MinibatchEntity, root.SkilClient.ModelEntity, root.SkilClient.ModelHistoryEntity, root.SkilClient.ModelInstanceEntity, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.MultiPredictRequest, root.SkilClient.MultiPredictResponse, root.SkilClient.NearestNeighborRequest, root.SkilClient.NearestNeighborsResults, root.SkilClient.Prediction, root.SkilClient.SetState, root.SkilClient.SingleCSVRecord, root.SkilClient.SingleImageRecord, root.SkilClient.Token, root.SkilClient.TransformProcess, root.SkilClient.UpdateBestModel);
   }
-}(this, function(ApiClient, Base64NDArrayBody, ClassificationResult, Credentials, DeployModel, Deployment, FileUploadList, JsonArrayResponse, LogBatch, LogRequest, ModelStatus, MultiClassClassificationResult, NewDeployment, Prediction, Token) {
+}(this, function(ApiClient, AddExampleRequest, AddModelHistoryRequest, AggregatePrediction, Base64NDArrayBody, Base64NDArrayBodyKNN, BatchCSVRecord, BatchImageRecord, BestModel, ClassificationResult, CreateDeploymentRequest, Credentials, DeploymentResponse, DetectionResult, EvaluationResultsEntity, ExampleEntity, ExperimentEntity, FileUploadList, ImageTransformProcess, ImportModelRequest, InlineResponse200, JsonArrayResponse, LogBatch, LogRequest, MetaData, MinibatchEntity, ModelEntity, ModelHistoryEntity, ModelInstanceEntity, ModelStatus, MultiClassClassificationResult, MultiPredictRequest, MultiPredictResponse, NearestNeighborRequest, NearestNeighborsResults, Prediction, SetState, SingleCSVRecord, SingleImageRecord, Token, TransformProcess, UpdateBestModel) {
   'use strict';
 
   /**
@@ -46,6 +46,374 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
+
+    /**
+     * Callback function to receive the result of the addEvaluationResult operation.
+     * @callback module:ai/skymind/skil/DefaultApi~addEvaluationResultCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/EvaluationResultsEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Adds an evaluation result
+     * @param {module:ai/skymind/skil/model/EvaluationResultsEntity} evaluationResultsEntity The evaluation result entity
+     * @param {module:ai/skymind/skil/DefaultApi~addEvaluationResultCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/EvaluationResultsEntity}
+     */
+    this.addEvaluationResult = function(evaluationResultsEntity, callback) {
+      var postBody = evaluationResultsEntity;
+
+      // verify the required parameter 'evaluationResultsEntity' is set
+      if (evaluationResultsEntity === undefined || evaluationResultsEntity === null) {
+        throw new Error("Missing the required parameter 'evaluationResultsEntity' when calling addEvaluationResult");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = EvaluationResultsEntity;
+
+      return this.apiClient.callApi(
+        '/model/revisions/evaluations/', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the addExampleForBatch operation.
+     * @callback module:ai/skymind/skil/DefaultApi~addExampleForBatchCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/AddExampleRequest} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Adds a number of examples to a minibatch ID given an AddExampleRequest.
+     * @param {module:ai/skymind/skil/model/AddExampleRequest} addExampleRequest The add example request, encapsulating minibatch details and examples batch size
+     * @param {module:ai/skymind/skil/DefaultApi~addExampleForBatchCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/AddExampleRequest}
+     */
+    this.addExampleForBatch = function(addExampleRequest, callback) {
+      var postBody = addExampleRequest;
+
+      // verify the required parameter 'addExampleRequest' is set
+      if (addExampleRequest === undefined || addExampleRequest === null) {
+        throw new Error("Missing the required parameter 'addExampleRequest' when calling addExampleForBatch");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = AddExampleRequest;
+
+      return this.apiClient.callApi(
+        '/model/exampleForBatch', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the addExampleToMinibatch operation.
+     * @callback module:ai/skymind/skil/DefaultApi~addExampleToMinibatchCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ExampleEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Adds an example to a minibatch
+     * @param {module:ai/skymind/skil/model/ExampleEntity} exampleEntity The example to add to the minibatch
+     * @param {module:ai/skymind/skil/DefaultApi~addExampleToMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ExampleEntity}
+     */
+    this.addExampleToMinibatch = function(exampleEntity, callback) {
+      var postBody = exampleEntity;
+
+      // verify the required parameter 'exampleEntity' is set
+      if (exampleEntity === undefined || exampleEntity === null) {
+        throw new Error("Missing the required parameter 'exampleEntity' when calling addExampleToMinibatch");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ExampleEntity;
+
+      return this.apiClient.callApi(
+        '/model/example', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the addExperiment operation.
+     * @callback module:ai/skymind/skil/DefaultApi~addExperimentCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ExperimentEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Add an experiment, given an experiment entity
+     * @param {module:ai/skymind/skil/model/ExperimentEntity} experimentEntity The experiment entity to add
+     * @param {module:ai/skymind/skil/DefaultApi~addExperimentCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
+     */
+    this.addExperiment = function(experimentEntity, callback) {
+      var postBody = experimentEntity;
+
+      // verify the required parameter 'experimentEntity' is set
+      if (experimentEntity === undefined || experimentEntity === null) {
+        throw new Error("Missing the required parameter 'experimentEntity' when calling addExperiment");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ExperimentEntity;
+
+      return this.apiClient.callApi(
+        '/experiment', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the addMinibatch operation.
+     * @callback module:ai/skymind/skil/DefaultApi~addMinibatchCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/MinibatchEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Adds a minibatch
+     * @param {module:ai/skymind/skil/model/MinibatchEntity} minibatchEntity The minibatch entity to add
+     * @param {module:ai/skymind/skil/DefaultApi~addMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/MinibatchEntity}
+     */
+    this.addMinibatch = function(minibatchEntity, callback) {
+      var postBody = minibatchEntity;
+
+      // verify the required parameter 'minibatchEntity' is set
+      if (minibatchEntity === undefined || minibatchEntity === null) {
+        throw new Error("Missing the required parameter 'minibatchEntity' when calling addMinibatch");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = MinibatchEntity;
+
+      return this.apiClient.callApi(
+        '/model/minibatch', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the addModelHistory operation.
+     * @callback module:ai/skymind/skil/DefaultApi~addModelHistoryCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ModelHistoryEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Add a model history / workspace
+     * @param {module:ai/skymind/skil/model/AddModelHistoryRequest} addModelHistoryRequest The model history request object
+     * @param {module:ai/skymind/skil/DefaultApi~addModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ModelHistoryEntity}
+     */
+    this.addModelHistory = function(addModelHistoryRequest, callback) {
+      var postBody = addModelHistoryRequest;
+
+      // verify the required parameter 'addModelHistoryRequest' is set
+      if (addModelHistoryRequest === undefined || addModelHistoryRequest === null) {
+        throw new Error("Missing the required parameter 'addModelHistoryRequest' when calling addModelHistory");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ModelHistoryEntity;
+
+      return this.apiClient.callApi(
+        '/modelhistory', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the addModelInstance operation.
+     * @callback module:ai/skymind/skil/DefaultApi~addModelInstanceCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ModelInstanceEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Adds a model
+     * @param {module:ai/skymind/skil/model/ModelInstanceEntity} modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate
+     * @param {module:ai/skymind/skil/DefaultApi~addModelInstanceCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ModelInstanceEntity}
+     */
+    this.addModelInstance = function(modelInstanceEntity, callback) {
+      var postBody = modelInstanceEntity;
+
+      // verify the required parameter 'modelInstanceEntity' is set
+      if (modelInstanceEntity === undefined || modelInstanceEntity === null) {
+        throw new Error("Missing the required parameter 'modelInstanceEntity' when calling addModelInstance");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ModelInstanceEntity;
+
+      return this.apiClient.callApi(
+        '/model', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the aggregateModelResults operation.
+     * @callback module:ai/skymind/skil/DefaultApi~aggregateModelResultsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/EvaluationResultsEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Aggregates the evaluaition results of a model instance, based on the evaluation type
+     * @param {module:ai/skymind/skil/model/AggregatePrediction} aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate
+     * @param {module:ai/skymind/skil/DefaultApi~aggregateModelResultsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/EvaluationResultsEntity}
+     */
+    this.aggregateModelResults = function(aggregatePrediction, callback) {
+      var postBody = aggregatePrediction;
+
+      // verify the required parameter 'aggregatePrediction' is set
+      if (aggregatePrediction === undefined || aggregatePrediction === null) {
+        throw new Error("Missing the required parameter 'aggregatePrediction' when calling aggregateModelResults");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = EvaluationResultsEntity;
+
+      return this.apiClient.callApi(
+        '/model/aggregateresults', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the classify operation.
@@ -226,19 +594,259 @@
     }
 
     /**
+     * Callback function to receive the result of the createModelHistory operation.
+     * @callback module:ai/skymind/skil/DefaultApi~createModelHistoryCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ModelHistoryEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Creates model History
+     * @param {module:ai/skymind/skil/model/ModelHistoryEntity} modelHistoryEntity The model history entity
+     * @param {module:ai/skymind/skil/DefaultApi~createModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ModelHistoryEntity}
+     */
+    this.createModelHistory = function(modelHistoryEntity, callback) {
+      var postBody = modelHistoryEntity;
+
+      // verify the required parameter 'modelHistoryEntity' is set
+      if (modelHistoryEntity === undefined || modelHistoryEntity === null) {
+        throw new Error("Missing the required parameter 'modelHistoryEntity' when calling createModelHistory");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ModelHistoryEntity;
+
+      return this.apiClient.callApi(
+        '/model/revisions', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteExperiment operation.
+     * @callback module:ai/skymind/skil/DefaultApi~deleteExperimentCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/InlineResponse200} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Deletes an experiment, given an experiment entity
+     * @param {String} experimentID the GUID of the experiment to delete
+     * @param {module:ai/skymind/skil/DefaultApi~deleteExperimentCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/InlineResponse200}
+     */
+    this.deleteExperiment = function(experimentID, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'experimentID' is set
+      if (experimentID === undefined || experimentID === null) {
+        throw new Error("Missing the required parameter 'experimentID' when calling deleteExperiment");
+      }
+
+
+      var pathParams = {
+        'experimentID': experimentID
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = InlineResponse200;
+
+      return this.apiClient.callApi(
+        '/experiment/{experimentID}', 'DELETE',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteModel operation.
+     * @callback module:ai/skymind/skil/DefaultApi~deleteModelCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/InlineResponse200} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Delete a model by deployment and model id
+     * @param {String} deploymentId ID deployment group
+     * @param {String} modelId the id of the deployed model
+     * @param {module:ai/skymind/skil/DefaultApi~deleteModelCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/InlineResponse200}
+     */
+    this.deleteModel = function(deploymentId, modelId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'deploymentId' is set
+      if (deploymentId === undefined || deploymentId === null) {
+        throw new Error("Missing the required parameter 'deploymentId' when calling deleteModel");
+      }
+
+      // verify the required parameter 'modelId' is set
+      if (modelId === undefined || modelId === null) {
+        throw new Error("Missing the required parameter 'modelId' when calling deleteModel");
+      }
+
+
+      var pathParams = {
+        'deploymentId': deploymentId,
+        'modelId': modelId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = InlineResponse200;
+
+      return this.apiClient.callApi(
+        '/deployment/{deploymentId}/model/{modelId}', 'DELETE',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteModelHistory operation.
+     * @callback module:ai/skymind/skil/DefaultApi~deleteModelHistoryCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/InlineResponse200} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Deletes a model history / workspace, given its ID
+     * @param {String} modelHistoryID the GUID of the model history / workspace to delete
+     * @param {module:ai/skymind/skil/DefaultApi~deleteModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/InlineResponse200}
+     */
+    this.deleteModelHistory = function(modelHistoryID, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'modelHistoryID' is set
+      if (modelHistoryID === undefined || modelHistoryID === null) {
+        throw new Error("Missing the required parameter 'modelHistoryID' when calling deleteModelHistory");
+      }
+
+
+      var pathParams = {
+        'modelHistoryID': modelHistoryID
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = InlineResponse200;
+
+      return this.apiClient.callApi(
+        '/modelhistory/{modelHistoryID}', 'DELETE',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deleteModelInstance operation.
+     * @callback module:ai/skymind/skil/DefaultApi~deleteModelInstanceCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Deletes a model instance, given its ID
+     * @param {String} modelInstanceID GUID of the model instance to delete.
+     * @param {module:ai/skymind/skil/DefaultApi~deleteModelInstanceCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.deleteModelInstance = function(modelInstanceID, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'modelInstanceID' is set
+      if (modelInstanceID === undefined || modelInstanceID === null) {
+        throw new Error("Missing the required parameter 'modelInstanceID' when calling deleteModelInstance");
+      }
+
+
+      var pathParams = {
+        'modelInstanceID': modelInstanceID
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/model/{modelInstanceID}', 'DELETE',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the deployModel operation.
      * @callback module:ai/skymind/skil/DefaultApi~deployModelCallback
      * @param {String} error Error message, if any.
-     * @param {Object} data The data returned by the service call.
+     * @param {module:ai/skymind/skil/model/ModelEntity} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Deploy a model in a deployment group.
      * @param {String} deploymentId ID deployment group
-     * @param {module:ai/skymind/skil/model/DeployModel} body the deployment request
+     * @param {module:ai/skymind/skil/model/ImportModelRequest} body the model import request
      * @param {module:ai/skymind/skil/DefaultApi~deployModelCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Object}
+     * data is of type: {@link module:ai/skymind/skil/model/ModelEntity}
      */
     this.deployModel = function(deploymentId, body, callback) {
       var postBody = body;
@@ -269,7 +877,7 @@
       var authNames = ['api_key'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = Object;
+      var returnType = ModelEntity;
 
       return this.apiClient.callApi(
         '/deployment/{deploymentId}/model', 'POST',
@@ -282,15 +890,15 @@
      * Callback function to receive the result of the deploymentCreate operation.
      * @callback module:ai/skymind/skil/DefaultApi~deploymentCreateCallback
      * @param {String} error Error message, if any.
-     * @param {module:ai/skymind/skil/model/Deployment} data The data returned by the service call.
+     * @param {module:ai/skymind/skil/model/DeploymentResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Create a new deployment group.
-     * @param {module:ai/skymind/skil/model/NewDeployment} body the deployment request
+     * @param {module:ai/skymind/skil/model/CreateDeploymentRequest} body the deployment request
      * @param {module:ai/skymind/skil/DefaultApi~deploymentCreateCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:ai/skymind/skil/model/Deployment}
+     * data is of type: {@link module:ai/skymind/skil/model/DeploymentResponse}
      */
     this.deploymentCreate = function(body, callback) {
       var postBody = body;
@@ -315,10 +923,762 @@
       var authNames = ['api_key'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = Deployment;
+      var returnType = DeploymentResponse;
 
       return this.apiClient.callApi(
         '/deployment', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deploymentDelete operation.
+     * @callback module:ai/skymind/skil/DefaultApi~deploymentDeleteCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/InlineResponse200} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Delete a deployment by id
+     * @param {String} deploymentId Id of the deployment group
+     * @param {module:ai/skymind/skil/DefaultApi~deploymentDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/InlineResponse200}
+     */
+    this.deploymentDelete = function(deploymentId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'deploymentId' is set
+      if (deploymentId === undefined || deploymentId === null) {
+        throw new Error("Missing the required parameter 'deploymentId' when calling deploymentDelete");
+      }
+
+
+      var pathParams = {
+        'deploymentId': deploymentId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = InlineResponse200;
+
+      return this.apiClient.callApi(
+        '/deployment/{deploymentId}', 'DELETE',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deploymentGet operation.
+     * @callback module:ai/skymind/skil/DefaultApi~deploymentGetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/DeploymentResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get a deployment details by id
+     * @param {String} deploymentId Id of the deployment group
+     * @param {module:ai/skymind/skil/DefaultApi~deploymentGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/DeploymentResponse}
+     */
+    this.deploymentGet = function(deploymentId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'deploymentId' is set
+      if (deploymentId === undefined || deploymentId === null) {
+        throw new Error("Missing the required parameter 'deploymentId' when calling deploymentGet");
+      }
+
+
+      var pathParams = {
+        'deploymentId': deploymentId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = DeploymentResponse;
+
+      return this.apiClient.callApi(
+        '/deployment/{deploymentId}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the deployments operation.
+     * @callback module:ai/skymind/skil/DefaultApi~deploymentsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:ai/skymind/skil/model/DeploymentResponse>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get a list of deployments
+     * @param {module:ai/skymind/skil/DefaultApi~deploymentsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:ai/skymind/skil/model/DeploymentResponse>}
+     */
+    this.deployments = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [DeploymentResponse];
+
+      return this.apiClient.callApi(
+        '/deployments', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the detectobjects operation.
+     * @callback module:ai/skymind/skil/DefaultApi~detectobjectsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/DetectionResult} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Detect the objects, given a (input) prediction request
+     * @param {String} id the GUID for mapping the results in the detections
+     * @param {Boolean} needsPreprocessing (true) if the image needs preprocessing
+     * @param {Number} threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
+     * @param {File} imageFile the image file to detect objects from
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} modelName ID or name of the deployed model
+     * @param {module:ai/skymind/skil/DefaultApi~detectobjectsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/DetectionResult}
+     */
+    this.detectobjects = function(id, needsPreprocessing, threshold, imageFile, deploymentName, modelName, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling detectobjects");
+      }
+
+      // verify the required parameter 'needsPreprocessing' is set
+      if (needsPreprocessing === undefined || needsPreprocessing === null) {
+        throw new Error("Missing the required parameter 'needsPreprocessing' when calling detectobjects");
+      }
+
+      // verify the required parameter 'threshold' is set
+      if (threshold === undefined || threshold === null) {
+        throw new Error("Missing the required parameter 'threshold' when calling detectobjects");
+      }
+
+      // verify the required parameter 'imageFile' is set
+      if (imageFile === undefined || imageFile === null) {
+        throw new Error("Missing the required parameter 'imageFile' when calling detectobjects");
+      }
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling detectobjects");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling detectobjects");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'modelName': modelName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+        'id': id,
+        'needsPreprocessing': needsPreprocessing,
+        'threshold': threshold,
+        'imageFile': imageFile
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['multipart/form-data'];
+      var accepts = ['application/json'];
+      var returnType = DetectionResult;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/model/{modelName}/default/detectobjects', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getBestModelAmongModelIds operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getBestModelAmongModelIdsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ModelInstanceEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+     * @param {module:ai/skymind/skil/model/BestModel} bestModel Object encapsulating the model ids, eval type and column metric name
+     * @param {module:ai/skymind/skil/DefaultApi~getBestModelAmongModelIdsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ModelInstanceEntity}
+     */
+    this.getBestModelAmongModelIds = function(bestModel, callback) {
+      var postBody = bestModel;
+
+      // verify the required parameter 'bestModel' is set
+      if (bestModel === undefined || bestModel === null) {
+        throw new Error("Missing the required parameter 'bestModel' when calling getBestModelAmongModelIds");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ModelInstanceEntity;
+
+      return this.apiClient.callApi(
+        '/model/best', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getEvaluationForModelID operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getEvaluationForModelIDCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:ai/skymind/skil/model/EvaluationResultsEntity>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Gets the list of evaluation results entity, given a model instance ID
+     * @param {String} modelInstanceID GUID of the model instance to get evaluation results for.
+     * @param {module:ai/skymind/skil/DefaultApi~getEvaluationForModelIDCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:ai/skymind/skil/model/EvaluationResultsEntity>}
+     */
+    this.getEvaluationForModelID = function(modelInstanceID, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'modelInstanceID' is set
+      if (modelInstanceID === undefined || modelInstanceID === null) {
+        throw new Error("Missing the required parameter 'modelInstanceID' when calling getEvaluationForModelID");
+      }
+
+
+      var pathParams = {
+        'modelInstanceID': modelInstanceID
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [EvaluationResultsEntity];
+
+      return this.apiClient.callApi(
+        '/model/revisions/evaluations/{modelInstanceID}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getExamplesForMinibatch operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getExamplesForMinibatchCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:ai/skymind/skil/model/ExampleEntity>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Gets all the examples for a minibatch ID
+     * @param {String} minibatchId The GUID of the minibatch
+     * @param {module:ai/skymind/skil/DefaultApi~getExamplesForMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:ai/skymind/skil/model/ExampleEntity>}
+     */
+    this.getExamplesForMinibatch = function(minibatchId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'minibatchId' is set
+      if (minibatchId === undefined || minibatchId === null) {
+        throw new Error("Missing the required parameter 'minibatchId' when calling getExamplesForMinibatch");
+      }
+
+
+      var pathParams = {
+        'minibatchId': minibatchId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [ExampleEntity];
+
+      return this.apiClient.callApi(
+        '/model/example/{minibatchId}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getExperiment operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getExperimentCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ExperimentEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Obtain an experiment&#39;s details, given its ID
+     * @param {String} experimentID the GUID of the experiment to obtain
+     * @param {module:ai/skymind/skil/DefaultApi~getExperimentCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
+     */
+    this.getExperiment = function(experimentID, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'experimentID' is set
+      if (experimentID === undefined || experimentID === null) {
+        throw new Error("Missing the required parameter 'experimentID' when calling getExperiment");
+      }
+
+
+      var pathParams = {
+        'experimentID': experimentID
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ExperimentEntity;
+
+      return this.apiClient.callApi(
+        '/experiment/{experimentID}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getExperimentsForModelHistory operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getExperimentsForModelHistoryCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ExperimentEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Obtain all experiments for a model history / workspace
+     * @param {String} modelHistoryID the GUID of the model history / workspace
+     * @param {module:ai/skymind/skil/DefaultApi~getExperimentsForModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
+     */
+    this.getExperimentsForModelHistory = function(modelHistoryID, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'modelHistoryID' is set
+      if (modelHistoryID === undefined || modelHistoryID === null) {
+        throw new Error("Missing the required parameter 'modelHistoryID' when calling getExperimentsForModelHistory");
+      }
+
+
+      var pathParams = {
+        'modelHistoryID': modelHistoryID
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ExperimentEntity;
+
+      return this.apiClient.callApi(
+        '/experiments/{modelHistoryID}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getMinibatch operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getMinibatchCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/MinibatchEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Gets a minibatch for the model
+     * @param {String} minibatchId The GUID of the minibatch
+     * @param {module:ai/skymind/skil/DefaultApi~getMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/MinibatchEntity}
+     */
+    this.getMinibatch = function(minibatchId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'minibatchId' is set
+      if (minibatchId === undefined || minibatchId === null) {
+        throw new Error("Missing the required parameter 'minibatchId' when calling getMinibatch");
+      }
+
+
+      var pathParams = {
+        'minibatchId': minibatchId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = MinibatchEntity;
+
+      return this.apiClient.callApi(
+        '/model/minibatch/{minibatchId}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getModelHistory operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getModelHistoryCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ModelHistoryEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Gets a model history, given its ID
+     * @param {String} modelHistoryID GUID of the model history to get information of.
+     * @param {module:ai/skymind/skil/DefaultApi~getModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ModelHistoryEntity}
+     */
+    this.getModelHistory = function(modelHistoryID, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'modelHistoryID' is set
+      if (modelHistoryID === undefined || modelHistoryID === null) {
+        throw new Error("Missing the required parameter 'modelHistoryID' when calling getModelHistory");
+      }
+
+
+      var pathParams = {
+        'modelHistoryID': modelHistoryID
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ModelHistoryEntity;
+
+      return this.apiClient.callApi(
+        '/model/revision/{modelHistoryID}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getModelInstance operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getModelInstanceCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ModelInstanceEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Gets a model instance, given its ID
+     * @param {String} modelInstanceID GUID of the model instance to get information of.
+     * @param {module:ai/skymind/skil/DefaultApi~getModelInstanceCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ModelInstanceEntity}
+     */
+    this.getModelInstance = function(modelInstanceID, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'modelInstanceID' is set
+      if (modelInstanceID === undefined || modelInstanceID === null) {
+        throw new Error("Missing the required parameter 'modelInstanceID' when calling getModelInstance");
+      }
+
+
+      var pathParams = {
+        'modelInstanceID': modelInstanceID
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ModelInstanceEntity;
+
+      return this.apiClient.callApi(
+        '/model/{modelInstanceID}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getModelsForExperiment operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getModelsForExperimentCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:ai/skymind/skil/model/ModelInstanceEntity>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Obtain a list of all the models for an experiment
+     * @param {String} experimentID the GUID of the experiment
+     * @param {module:ai/skymind/skil/DefaultApi~getModelsForExperimentCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:ai/skymind/skil/model/ModelInstanceEntity>}
+     */
+    this.getModelsForExperiment = function(experimentID, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'experimentID' is set
+      if (experimentID === undefined || experimentID === null) {
+        throw new Error("Missing the required parameter 'experimentID' when calling getModelsForExperiment");
+      }
+
+
+      var pathParams = {
+        'experimentID': experimentID
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [ModelInstanceEntity];
+
+      return this.apiClient.callApi(
+        '/experiment/{experimentID}/models', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the imagetransformprocessGet operation.
+     * @callback module:ai/skymind/skil/DefaultApi~imagetransformprocessGetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ImageTransformProcess} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Retrieves the image transform process JSON string
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} imageTransformName ID or name of the deployed image transform
+     * @param {module:ai/skymind/skil/DefaultApi~imagetransformprocessGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ImageTransformProcess}
+     */
+    this.imagetransformprocessGet = function(deploymentName, imageTransformName, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling imagetransformprocessGet");
+      }
+
+      // verify the required parameter 'imageTransformName' is set
+      if (imageTransformName === undefined || imageTransformName === null) {
+        throw new Error("Missing the required parameter 'imageTransformName' when calling imagetransformprocessGet");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'imageTransformName': imageTransformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ImageTransformProcess;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the imagetransformprocessPost operation.
+     * @callback module:ai/skymind/skil/DefaultApi~imagetransformprocessPostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ImageTransformProcess} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Sets the image transform process through the provided JSON string
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} imageTransformName ID or name of the deployed image transform
+     * @param {module:ai/skymind/skil/model/ImageTransformProcess} body The image transform process JSON
+     * @param {module:ai/skymind/skil/DefaultApi~imagetransformprocessPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ImageTransformProcess}
+     */
+    this.imagetransformprocessPost = function(deploymentName, imageTransformName, body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling imagetransformprocessPost");
+      }
+
+      // verify the required parameter 'imageTransformName' is set
+      if (imageTransformName === undefined || imageTransformName === null) {
+        throw new Error("Missing the required parameter 'imageTransformName' when calling imagetransformprocessPost");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling imagetransformprocessPost");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'imageTransformName': imageTransformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ImageTransformProcess;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -379,6 +1739,167 @@
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/model/{modelName}/default/jsonarray', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the knn operation.
+     * @callback module:ai/skymind/skil/DefaultApi~knnCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/NearestNeighborsResults} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Runs knn on the given index with the given k
+     * Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} knnName ID or name of the deployed knn
+     * @param {module:ai/skymind/skil/model/NearestNeighborRequest} body 
+     * @param {module:ai/skymind/skil/DefaultApi~knnCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/NearestNeighborsResults}
+     */
+    this.knn = function(deploymentName, knnName, body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling knn");
+      }
+
+      // verify the required parameter 'knnName' is set
+      if (knnName === undefined || knnName === null) {
+        throw new Error("Missing the required parameter 'knnName' when calling knn");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling knn");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'knnName': knnName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = NearestNeighborsResults;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/knn/{knnName}/default/knn', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the knnnew operation.
+     * @callback module:ai/skymind/skil/DefaultApi~knnnewCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/NearestNeighborsResults} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Run a k nearest neighbors search on a NEW data point
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} knnName ID or name of the deployed knn
+     * @param {module:ai/skymind/skil/model/Base64NDArrayBodyKNN} body The input NDArray
+     * @param {module:ai/skymind/skil/DefaultApi~knnnewCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/NearestNeighborsResults}
+     */
+    this.knnnew = function(deploymentName, knnName, body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling knnnew");
+      }
+
+      // verify the required parameter 'knnName' is set
+      if (knnName === undefined || knnName === null) {
+        throw new Error("Missing the required parameter 'knnName' when calling knnnew");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling knnnew");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'knnName': knnName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = NearestNeighborsResults;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/knn/{knnName}/default/knnnew', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the listAllExperiments operation.
+     * @callback module:ai/skymind/skil/DefaultApi~listAllExperimentsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:ai/skymind/skil/model/ExperimentEntity>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List all of the experiments in every model history / workspace
+     * @param {module:ai/skymind/skil/DefaultApi~listAllExperimentsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:ai/skymind/skil/model/ExperimentEntity>}
+     */
+    this.listAllExperiments = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [ExperimentEntity];
+
+      return this.apiClient.callApi(
+        '/experiments', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -539,6 +2060,227 @@
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/model/{modelName}/default/logs', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the metaGet operation.
+     * @callback module:ai/skymind/skil/DefaultApi~metaGetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/MetaData} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * this method can be used to get the meta data for the current model which set to the server
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} modelName ID or name of the deployed model
+     * @param {module:ai/skymind/skil/DefaultApi~metaGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/MetaData}
+     */
+    this.metaGet = function(deploymentName, modelName, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling metaGet");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling metaGet");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'modelName': modelName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = MetaData;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/model/{modelName}/default/meta', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the metaPost operation.
+     * @callback module:ai/skymind/skil/DefaultApi~metaPostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/MetaData} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * This method can be used to set meta data for the current model which is set to the server
+     * @param {module:ai/skymind/skil/model/MetaData} body the meta data object
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} modelName ID or name of the deployed model
+     * @param {module:ai/skymind/skil/DefaultApi~metaPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/MetaData}
+     */
+    this.metaPost = function(body, deploymentName, modelName, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling metaPost");
+      }
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling metaPost");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling metaPost");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'modelName': modelName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = MetaData;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/model/{modelName}/default/meta', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the modelStateChange operation.
+     * @callback module:ai/skymind/skil/DefaultApi~modelStateChangeCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ModelEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Modify the state (start/stop) of a deployed model
+     * @param {String} deploymentId ID deployment group
+     * @param {String} modelId the id of the deployed model
+     * @param {module:ai/skymind/skil/model/SetState} body the model state object
+     * @param {module:ai/skymind/skil/DefaultApi~modelStateChangeCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ModelEntity}
+     */
+    this.modelStateChange = function(deploymentId, modelId, body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'deploymentId' is set
+      if (deploymentId === undefined || deploymentId === null) {
+        throw new Error("Missing the required parameter 'deploymentId' when calling modelStateChange");
+      }
+
+      // verify the required parameter 'modelId' is set
+      if (modelId === undefined || modelId === null) {
+        throw new Error("Missing the required parameter 'modelId' when calling modelStateChange");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling modelStateChange");
+      }
+
+
+      var pathParams = {
+        'deploymentId': deploymentId,
+        'modelId': modelId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ModelEntity;
+
+      return this.apiClient.callApi(
+        '/deployment/{deploymentId}/model/{modelId}/state', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the models operation.
+     * @callback module:ai/skymind/skil/DefaultApi~modelsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:ai/skymind/skil/model/ModelEntity>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Retrieve a list of all the deployed models given a deployment id
+     * @param {String} deploymentId ID deployment group
+     * @param {module:ai/skymind/skil/DefaultApi~modelsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:ai/skymind/skil/model/ModelEntity>}
+     */
+    this.models = function(deploymentId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'deploymentId' is set
+      if (deploymentId === undefined || deploymentId === null) {
+        throw new Error("Missing the required parameter 'deploymentId' when calling models");
+      }
+
+
+      var pathParams = {
+        'deploymentId': deploymentId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [ModelEntity];
+
+      return this.apiClient.callApi(
+        '/deployment/{deploymentId}/models', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -715,6 +2457,67 @@
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/model/{modelName}/default/multiclassify', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the multipredict operation.
+     * @callback module:ai/skymind/skil/DefaultApi~multipredictCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/MultiPredictResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the output from the network, based on the given INDArray[] input
+     * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+     * @param {module:ai/skymind/skil/model/MultiPredictRequest} body The multiple input arrays with mask inputs to run inferences on
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} modelName ID or name of the deployed model
+     * @param {module:ai/skymind/skil/DefaultApi~multipredictCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/MultiPredictResponse}
+     */
+    this.multipredict = function(body, deploymentName, modelName, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling multipredict");
+      }
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling multipredict");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling multipredict");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'modelName': modelName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = MultiPredictResponse;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/model/{modelName}/default/multipredict', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -953,6 +2756,808 @@
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the reimportModel operation.
+     * @callback module:ai/skymind/skil/DefaultApi~reimportModelCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ModelEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Reimport a model to a previous deployed model in a deployment
+     * @param {String} deploymentId ID deployment group
+     * @param {String} modelId the id of the deployed model
+     * @param {module:ai/skymind/skil/model/ImportModelRequest} body the deployment request
+     * @param {module:ai/skymind/skil/DefaultApi~reimportModelCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ModelEntity}
+     */
+    this.reimportModel = function(deploymentId, modelId, body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'deploymentId' is set
+      if (deploymentId === undefined || deploymentId === null) {
+        throw new Error("Missing the required parameter 'deploymentId' when calling reimportModel");
+      }
+
+      // verify the required parameter 'modelId' is set
+      if (modelId === undefined || modelId === null) {
+        throw new Error("Missing the required parameter 'modelId' when calling reimportModel");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling reimportModel");
+      }
+
+
+      var pathParams = {
+        'deploymentId': deploymentId,
+        'modelId': modelId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ModelEntity;
+
+      return this.apiClient.callApi(
+        '/deployment/{deploymentId}/model/{modelId}', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the transformCsv operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformCsvCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/BatchCSVRecord} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+     * Takes a batch of SingleCSVRecord object and transforms it into the desired format
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} transformName ID or name of the deployed transform
+     * @param {Object} opts Optional parameters
+     * @param {module:ai/skymind/skil/model/BatchCSVRecord} opts.batchCSVRecord The input batch of record arrays
+     * @param {module:ai/skymind/skil/DefaultApi~transformCsvCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/BatchCSVRecord}
+     */
+    this.transformCsv = function(deploymentName, transformName, opts, callback) {
+      opts = opts || {};
+      var postBody = opts['batchCSVRecord'];
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformCsv");
+      }
+
+      // verify the required parameter 'transformName' is set
+      if (transformName === undefined || transformName === null) {
+        throw new Error("Missing the required parameter 'transformName' when calling transformCsv");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'transformName': transformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = BatchCSVRecord;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{transformName}/default/transform', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the transformarrayCsv operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformarrayCsvCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/Base64NDArrayBody} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Takes a batch input arrays and transforms it
+     * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} transformName ID or name of the deployed transform
+     * @param {Object} opts Optional parameters
+     * @param {module:ai/skymind/skil/model/BatchCSVRecord} opts.batchCSVRecord The input batch of record arrays
+     * @param {module:ai/skymind/skil/DefaultApi~transformarrayCsvCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
+     */
+    this.transformarrayCsv = function(deploymentName, transformName, opts, callback) {
+      opts = opts || {};
+      var postBody = opts['batchCSVRecord'];
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformarrayCsv");
+      }
+
+      // verify the required parameter 'transformName' is set
+      if (transformName === undefined || transformName === null) {
+        throw new Error("Missing the required parameter 'transformName' when calling transformarrayCsv");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'transformName': transformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = Base64NDArrayBody;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the transformarrayImage operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformarrayImageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/Base64NDArrayBody} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+     * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} imageTransformName ID or name of the deployed image transform
+     * @param {module:ai/skymind/skil/model/BatchImageRecord} batchImageRecord The input batch of record arrays
+     * @param {module:ai/skymind/skil/DefaultApi~transformarrayImageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
+     */
+    this.transformarrayImage = function(deploymentName, imageTransformName, batchImageRecord, callback) {
+      var postBody = batchImageRecord;
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformarrayImage");
+      }
+
+      // verify the required parameter 'imageTransformName' is set
+      if (imageTransformName === undefined || imageTransformName === null) {
+        throw new Error("Missing the required parameter 'imageTransformName' when calling transformarrayImage");
+      }
+
+      // verify the required parameter 'batchImageRecord' is set
+      if (batchImageRecord === undefined || batchImageRecord === null) {
+        throw new Error("Missing the required parameter 'batchImageRecord' when calling transformarrayImage");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'imageTransformName': imageTransformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = Base64NDArrayBody;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the transformimage operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformimageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/Base64NDArrayBody} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Takes multiple multipart image file to transform and returns Base64NDArrayBody
+     * Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} imageTransformName ID or name of the deployed image transform
+     * @param {Array.<Blob>} files The image files to upload
+     * @param {module:ai/skymind/skil/DefaultApi~transformimageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
+     */
+    this.transformimage = function(deploymentName, imageTransformName, files, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformimage");
+      }
+
+      // verify the required parameter 'imageTransformName' is set
+      if (imageTransformName === undefined || imageTransformName === null) {
+        throw new Error("Missing the required parameter 'imageTransformName' when calling transformimage");
+      }
+
+      // verify the required parameter 'files' is set
+      if (files === undefined || files === null) {
+        throw new Error("Missing the required parameter 'files' when calling transformimage");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'imageTransformName': imageTransformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+        'files': this.apiClient.buildCollectionParam(files, 'csv')
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['multipart/form-data'];
+      var accepts = ['application/json'];
+      var returnType = Base64NDArrayBody;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the transformincrementalCsv operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformincrementalCsvCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/SingleCSVRecord} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+     * Takes a SingleCSVRecord object and transforms it into the desired format
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} transformName ID or name of the deployed transform
+     * @param {Object} opts Optional parameters
+     * @param {module:ai/skymind/skil/model/SingleCSVRecord} opts.singleCSVRecord The input record array
+     * @param {module:ai/skymind/skil/DefaultApi~transformincrementalCsvCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/SingleCSVRecord}
+     */
+    this.transformincrementalCsv = function(deploymentName, transformName, opts, callback) {
+      opts = opts || {};
+      var postBody = opts['singleCSVRecord'];
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformincrementalCsv");
+      }
+
+      // verify the required parameter 'transformName' is set
+      if (transformName === undefined || transformName === null) {
+        throw new Error("Missing the required parameter 'transformName' when calling transformincrementalCsv");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'transformName': transformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = SingleCSVRecord;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the transformincrementalarrayCsv operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformincrementalarrayCsvCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/Base64NDArrayBody} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Same as /transformincremental but returns Base64NDArrayBody
+     * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} transformName ID or name of the deployed transform
+     * @param {Object} opts Optional parameters
+     * @param {module:ai/skymind/skil/model/SingleCSVRecord} opts.singleCSVRecord The input record array
+     * @param {module:ai/skymind/skil/DefaultApi~transformincrementalarrayCsvCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
+     */
+    this.transformincrementalarrayCsv = function(deploymentName, transformName, opts, callback) {
+      opts = opts || {};
+      var postBody = opts['singleCSVRecord'];
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformincrementalarrayCsv");
+      }
+
+      // verify the required parameter 'transformName' is set
+      if (transformName === undefined || transformName === null) {
+        throw new Error("Missing the required parameter 'transformName' when calling transformincrementalarrayCsv");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'transformName': transformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = Base64NDArrayBody;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the transformincrementalarrayImage operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformincrementalarrayImageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/Base64NDArrayBody} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Takes SingleImageRecord to transform and returns Base64NDArrayBody
+     * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} imageTransformName ID or name of the deployed image transform
+     * @param {module:ai/skymind/skil/model/SingleImageRecord} singleImageRecord The input record array
+     * @param {module:ai/skymind/skil/DefaultApi~transformincrementalarrayImageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
+     */
+    this.transformincrementalarrayImage = function(deploymentName, imageTransformName, singleImageRecord, callback) {
+      var postBody = singleImageRecord;
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformincrementalarrayImage");
+      }
+
+      // verify the required parameter 'imageTransformName' is set
+      if (imageTransformName === undefined || imageTransformName === null) {
+        throw new Error("Missing the required parameter 'imageTransformName' when calling transformincrementalarrayImage");
+      }
+
+      // verify the required parameter 'singleImageRecord' is set
+      if (singleImageRecord === undefined || singleImageRecord === null) {
+        throw new Error("Missing the required parameter 'singleImageRecord' when calling transformincrementalarrayImage");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'imageTransformName': imageTransformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = Base64NDArrayBody;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the transformincrementalimage operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformincrementalimageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/Base64NDArrayBody} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Takes a single multipart image file to transform and returns Base64NDArrayBody
+     * Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} imageTransformName ID or name of the deployed image transform
+     * @param {File} file The image file to upload
+     * @param {module:ai/skymind/skil/DefaultApi~transformincrementalimageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
+     */
+    this.transformincrementalimage = function(deploymentName, imageTransformName, file, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformincrementalimage");
+      }
+
+      // verify the required parameter 'imageTransformName' is set
+      if (imageTransformName === undefined || imageTransformName === null) {
+        throw new Error("Missing the required parameter 'imageTransformName' when calling transformincrementalimage");
+      }
+
+      // verify the required parameter 'file' is set
+      if (file === undefined || file === null) {
+        throw new Error("Missing the required parameter 'file' when calling transformincrementalimage");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'imageTransformName': imageTransformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+        'file': file
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['multipart/form-data'];
+      var accepts = ['application/json'];
+      var returnType = Base64NDArrayBody;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the transformprocessGet operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformprocessGetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/TransformProcess} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Gets the JSON string of the deployed transform process
+     * Retrieves the JSON string of the deployed transform process 
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} transformName ID or name of the deployed transform
+     * @param {module:ai/skymind/skil/DefaultApi~transformprocessGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/TransformProcess}
+     */
+    this.transformprocessGet = function(deploymentName, transformName, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformprocessGet");
+      }
+
+      // verify the required parameter 'transformName' is set
+      if (transformName === undefined || transformName === null) {
+        throw new Error("Missing the required parameter 'transformName' when calling transformprocessGet");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'transformName': transformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = TransformProcess;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the transformprocessPost operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformprocessPostCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Sets the deployed transform process through the provided JSON string
+     * Sets the transform process with the provided JSON string
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} transformName ID or name of the deployed transform
+     * @param {Object} opts Optional parameters
+     * @param {module:ai/skymind/skil/model/TransformProcess} opts.transformProcess The transform process to set
+     * @param {module:ai/skymind/skil/DefaultApi~transformprocessPostCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.transformprocessPost = function(deploymentName, transformName, opts, callback) {
+      opts = opts || {};
+      var postBody = opts['transformProcess'];
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformprocessPost");
+      }
+
+      // verify the required parameter 'transformName' is set
+      if (transformName === undefined || transformName === null) {
+        throw new Error("Missing the required parameter 'transformName' when calling transformprocessPost");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'transformName': transformName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateBestModelForExperiment operation.
+     * @callback module:ai/skymind/skil/DefaultApi~updateBestModelForExperimentCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ExperimentEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Updates the best model for an experiment
+     * @param {module:ai/skymind/skil/model/UpdateBestModel} updateBestModel Model encapsulating the experiment id to update and the best model id.
+     * @param {module:ai/skymind/skil/DefaultApi~updateBestModelForExperimentCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
+     */
+    this.updateBestModelForExperiment = function(updateBestModel, callback) {
+      var postBody = updateBestModel;
+
+      // verify the required parameter 'updateBestModel' is set
+      if (updateBestModel === undefined || updateBestModel === null) {
+        throw new Error("Missing the required parameter 'updateBestModel' when calling updateBestModelForExperiment");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ExperimentEntity;
+
+      return this.apiClient.callApi(
+        '/experiment/best', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateExperiment operation.
+     * @callback module:ai/skymind/skil/DefaultApi~updateExperimentCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ExperimentEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Updates an experiment, given an experiment entity
+     * @param {String} experimentID the GUID of the experiment to update
+     * @param {module:ai/skymind/skil/model/ExperimentEntity} experimentEntity The experiment entity to update with
+     * @param {module:ai/skymind/skil/DefaultApi~updateExperimentCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
+     */
+    this.updateExperiment = function(experimentID, experimentEntity, callback) {
+      var postBody = experimentEntity;
+
+      // verify the required parameter 'experimentID' is set
+      if (experimentID === undefined || experimentID === null) {
+        throw new Error("Missing the required parameter 'experimentID' when calling updateExperiment");
+      }
+
+      // verify the required parameter 'experimentEntity' is set
+      if (experimentEntity === undefined || experimentEntity === null) {
+        throw new Error("Missing the required parameter 'experimentEntity' when calling updateExperiment");
+      }
+
+
+      var pathParams = {
+        'experimentID': experimentID
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ExperimentEntity;
+
+      return this.apiClient.callApi(
+        '/experiment/{experimentID}', 'PUT',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateModelHistory operation.
+     * @callback module:ai/skymind/skil/DefaultApi~updateModelHistoryCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ModelHistoryEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Update a model history / workspace
+     * @param {String} modelHistoryID the GUID of the model history / workspace to update
+     * @param {module:ai/skymind/skil/model/AddModelHistoryRequest} updateModelHistoryRequest The model history request object
+     * @param {module:ai/skymind/skil/DefaultApi~updateModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ModelHistoryEntity}
+     */
+    this.updateModelHistory = function(modelHistoryID, updateModelHistoryRequest, callback) {
+      var postBody = updateModelHistoryRequest;
+
+      // verify the required parameter 'modelHistoryID' is set
+      if (modelHistoryID === undefined || modelHistoryID === null) {
+        throw new Error("Missing the required parameter 'modelHistoryID' when calling updateModelHistory");
+      }
+
+      // verify the required parameter 'updateModelHistoryRequest' is set
+      if (updateModelHistoryRequest === undefined || updateModelHistoryRequest === null) {
+        throw new Error("Missing the required parameter 'updateModelHistoryRequest' when calling updateModelHistory");
+      }
+
+
+      var pathParams = {
+        'modelHistoryID': modelHistoryID
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ModelHistoryEntity;
+
+      return this.apiClient.callApi(
+        '/modelhistory/{modelHistoryID}', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

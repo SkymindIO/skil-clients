@@ -1,6 +1,6 @@
 /*
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Prediction
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-05-16T22:40:33.924-04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-20T09:58:20.972-07:00")
 public class Prediction {
   @SerializedName("id")
   private String id = null;
@@ -37,6 +37,9 @@ public class Prediction {
 
   @SerializedName("prediction")
   private INDArray prediction = null;
+
+  @SerializedName("inputMask")
+  private INDArray inputMask = null;
 
   public Prediction id(String id) {
     this.id = id;
@@ -92,6 +95,24 @@ public class Prediction {
     this.prediction = prediction;
   }
 
+  public Prediction inputMask(INDArray inputMask) {
+    this.inputMask = inputMask;
+    return this;
+  }
+
+   /**
+   * Get inputMask
+   * @return inputMask
+  **/
+  @ApiModelProperty(value = "")
+  public INDArray getInputMask() {
+    return inputMask;
+  }
+
+  public void setInputMask(INDArray inputMask) {
+    this.inputMask = inputMask;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -104,12 +125,13 @@ public class Prediction {
     Prediction prediction = (Prediction) o;
     return Objects.equals(this.id, prediction.id) &&
         Objects.equals(this.needsPreProcessing, prediction.needsPreProcessing) &&
-        Objects.equals(this.prediction, prediction.prediction);
+        Objects.equals(this.prediction, prediction.prediction) &&
+        Objects.equals(this.inputMask, prediction.inputMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, needsPreProcessing, prediction);
+    return Objects.hash(id, needsPreProcessing, prediction, inputMask);
   }
 
 
@@ -121,6 +143,7 @@ public class Prediction {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    needsPreProcessing: ").append(toIndentedString(needsPreProcessing)).append("\n");
     sb.append("    prediction: ").append(toIndentedString(prediction)).append("\n");
+    sb.append("    inputMask: ").append(toIndentedString(inputMask)).append("\n");
     sb.append("}");
     return sb.toString();
   }

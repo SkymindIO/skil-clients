@@ -1,7 +1,7 @@
 /* 
- * Predict
+ * Endpoints
  *
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 

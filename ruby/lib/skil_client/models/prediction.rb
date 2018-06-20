@@ -1,7 +1,7 @@
 =begin
-#Predict
+#Endpoints
 
-#Endpoints API for classification and other prediction services in SKIL
+#Endpoints API for different services in SKIL
 
 OpenAPI spec version: 1.1.0-beta
 
@@ -21,13 +21,16 @@ module SkilCient
 
     attr_accessor :prediction
 
+    attr_accessor :input_mask
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'needs_pre_processing' => :'needsPreProcessing',
-        :'prediction' => :'prediction'
+        :'prediction' => :'prediction',
+        :'input_mask' => :'inputMask'
       }
     end
 
@@ -36,7 +39,8 @@ module SkilCient
       {
         :'id' => :'String',
         :'needs_pre_processing' => :'BOOLEAN',
-        :'prediction' => :'INDArray'
+        :'prediction' => :'INDArray',
+        :'input_mask' => :'INDArray'
       }
     end
 
@@ -58,6 +62,10 @@ module SkilCient
 
       if attributes.has_key?(:'prediction')
         self.prediction = attributes[:'prediction']
+      end
+
+      if attributes.has_key?(:'inputMask')
+        self.input_mask = attributes[:'inputMask']
       end
 
     end
@@ -82,7 +90,8 @@ module SkilCient
       self.class == o.class &&
           id == o.id &&
           needs_pre_processing == o.needs_pre_processing &&
-          prediction == o.prediction
+          prediction == o.prediction &&
+          input_mask == o.input_mask
     end
 
     # @see the `==` method
@@ -94,7 +103,7 @@ module SkilCient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, needs_pre_processing, prediction].hash
+      [id, needs_pre_processing, prediction, input_mask].hash
     end
 
     # Builds the object from hash

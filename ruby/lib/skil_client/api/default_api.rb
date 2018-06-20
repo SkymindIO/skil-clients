@@ -1,7 +1,7 @@
 =begin
-#Predict
+#Endpoints
 
-#Endpoints API for classification and other prediction services in SKIL
+#Endpoints API for different services in SKIL
 
 OpenAPI spec version: 1.1.0-beta
 
@@ -18,6 +18,446 @@ module SkilCient
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
+    end
+
+    # Adds an evaluation result
+    # 
+    # @param evaluation_results_entity The evaluation result entity
+    # @param [Hash] opts the optional parameters
+    # @return [EvaluationResultsEntity]
+    def add_evaluation_result(evaluation_results_entity, opts = {})
+      data, _status_code, _headers = add_evaluation_result_with_http_info(evaluation_results_entity, opts)
+      return data
+    end
+
+    # Adds an evaluation result
+    # 
+    # @param evaluation_results_entity The evaluation result entity
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EvaluationResultsEntity, Fixnum, Hash)>] EvaluationResultsEntity data, response status code and response headers
+    def add_evaluation_result_with_http_info(evaluation_results_entity, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.add_evaluation_result ..."
+      end
+      # verify the required parameter 'evaluation_results_entity' is set
+      if @api_client.config.client_side_validation && evaluation_results_entity.nil?
+        fail ArgumentError, "Missing the required parameter 'evaluation_results_entity' when calling DefaultApi.add_evaluation_result"
+      end
+      # resource path
+      local_var_path = "/model/revisions/evaluations/"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(evaluation_results_entity)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EvaluationResultsEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#add_evaluation_result\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Adds a number of examples to a minibatch ID given an AddExampleRequest.
+    # 
+    # @param add_example_request The add example request, encapsulating minibatch details and examples batch size
+    # @param [Hash] opts the optional parameters
+    # @return [AddExampleRequest]
+    def add_example_for_batch(add_example_request, opts = {})
+      data, _status_code, _headers = add_example_for_batch_with_http_info(add_example_request, opts)
+      return data
+    end
+
+    # Adds a number of examples to a minibatch ID given an AddExampleRequest.
+    # 
+    # @param add_example_request The add example request, encapsulating minibatch details and examples batch size
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AddExampleRequest, Fixnum, Hash)>] AddExampleRequest data, response status code and response headers
+    def add_example_for_batch_with_http_info(add_example_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.add_example_for_batch ..."
+      end
+      # verify the required parameter 'add_example_request' is set
+      if @api_client.config.client_side_validation && add_example_request.nil?
+        fail ArgumentError, "Missing the required parameter 'add_example_request' when calling DefaultApi.add_example_for_batch"
+      end
+      # resource path
+      local_var_path = "/model/exampleForBatch"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(add_example_request)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AddExampleRequest')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#add_example_for_batch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Adds an example to a minibatch
+    # 
+    # @param example_entity The example to add to the minibatch
+    # @param [Hash] opts the optional parameters
+    # @return [ExampleEntity]
+    def add_example_to_minibatch(example_entity, opts = {})
+      data, _status_code, _headers = add_example_to_minibatch_with_http_info(example_entity, opts)
+      return data
+    end
+
+    # Adds an example to a minibatch
+    # 
+    # @param example_entity The example to add to the minibatch
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ExampleEntity, Fixnum, Hash)>] ExampleEntity data, response status code and response headers
+    def add_example_to_minibatch_with_http_info(example_entity, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.add_example_to_minibatch ..."
+      end
+      # verify the required parameter 'example_entity' is set
+      if @api_client.config.client_side_validation && example_entity.nil?
+        fail ArgumentError, "Missing the required parameter 'example_entity' when calling DefaultApi.add_example_to_minibatch"
+      end
+      # resource path
+      local_var_path = "/model/example"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(example_entity)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ExampleEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#add_example_to_minibatch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add an experiment, given an experiment entity
+    # 
+    # @param experiment_entity The experiment entity to add
+    # @param [Hash] opts the optional parameters
+    # @return [ExperimentEntity]
+    def add_experiment(experiment_entity, opts = {})
+      data, _status_code, _headers = add_experiment_with_http_info(experiment_entity, opts)
+      return data
+    end
+
+    # Add an experiment, given an experiment entity
+    # 
+    # @param experiment_entity The experiment entity to add
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
+    def add_experiment_with_http_info(experiment_entity, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.add_experiment ..."
+      end
+      # verify the required parameter 'experiment_entity' is set
+      if @api_client.config.client_side_validation && experiment_entity.nil?
+        fail ArgumentError, "Missing the required parameter 'experiment_entity' when calling DefaultApi.add_experiment"
+      end
+      # resource path
+      local_var_path = "/experiment"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(experiment_entity)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ExperimentEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#add_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Adds a minibatch
+    # 
+    # @param minibatch_entity The minibatch entity to add
+    # @param [Hash] opts the optional parameters
+    # @return [MinibatchEntity]
+    def add_minibatch(minibatch_entity, opts = {})
+      data, _status_code, _headers = add_minibatch_with_http_info(minibatch_entity, opts)
+      return data
+    end
+
+    # Adds a minibatch
+    # 
+    # @param minibatch_entity The minibatch entity to add
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MinibatchEntity, Fixnum, Hash)>] MinibatchEntity data, response status code and response headers
+    def add_minibatch_with_http_info(minibatch_entity, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.add_minibatch ..."
+      end
+      # verify the required parameter 'minibatch_entity' is set
+      if @api_client.config.client_side_validation && minibatch_entity.nil?
+        fail ArgumentError, "Missing the required parameter 'minibatch_entity' when calling DefaultApi.add_minibatch"
+      end
+      # resource path
+      local_var_path = "/model/minibatch"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(minibatch_entity)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MinibatchEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#add_minibatch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Add a model history / workspace
+    # 
+    # @param add_model_history_request The model history request object
+    # @param [Hash] opts the optional parameters
+    # @return [ModelHistoryEntity]
+    def add_model_history(add_model_history_request, opts = {})
+      data, _status_code, _headers = add_model_history_with_http_info(add_model_history_request, opts)
+      return data
+    end
+
+    # Add a model history / workspace
+    # 
+    # @param add_model_history_request The model history request object
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ModelHistoryEntity, Fixnum, Hash)>] ModelHistoryEntity data, response status code and response headers
+    def add_model_history_with_http_info(add_model_history_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.add_model_history ..."
+      end
+      # verify the required parameter 'add_model_history_request' is set
+      if @api_client.config.client_side_validation && add_model_history_request.nil?
+        fail ArgumentError, "Missing the required parameter 'add_model_history_request' when calling DefaultApi.add_model_history"
+      end
+      # resource path
+      local_var_path = "/modelhistory"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(add_model_history_request)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ModelHistoryEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#add_model_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Adds a model
+    # 
+    # @param model_instance_entity The object encapsulating the model instance id and evaluation type to aggregate
+    # @param [Hash] opts the optional parameters
+    # @return [ModelInstanceEntity]
+    def add_model_instance(model_instance_entity, opts = {})
+      data, _status_code, _headers = add_model_instance_with_http_info(model_instance_entity, opts)
+      return data
+    end
+
+    # Adds a model
+    # 
+    # @param model_instance_entity The object encapsulating the model instance id and evaluation type to aggregate
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ModelInstanceEntity, Fixnum, Hash)>] ModelInstanceEntity data, response status code and response headers
+    def add_model_instance_with_http_info(model_instance_entity, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.add_model_instance ..."
+      end
+      # verify the required parameter 'model_instance_entity' is set
+      if @api_client.config.client_side_validation && model_instance_entity.nil?
+        fail ArgumentError, "Missing the required parameter 'model_instance_entity' when calling DefaultApi.add_model_instance"
+      end
+      # resource path
+      local_var_path = "/model"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(model_instance_entity)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ModelInstanceEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#add_model_instance\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Aggregates the evaluaition results of a model instance, based on the evaluation type
+    # 
+    # @param aggregate_prediction The object encapsulating the model instance id and evaluation type to aggregate
+    # @param [Hash] opts the optional parameters
+    # @return [EvaluationResultsEntity]
+    def aggregate_model_results(aggregate_prediction, opts = {})
+      data, _status_code, _headers = aggregate_model_results_with_http_info(aggregate_prediction, opts)
+      return data
+    end
+
+    # Aggregates the evaluaition results of a model instance, based on the evaluation type
+    # 
+    # @param aggregate_prediction The object encapsulating the model instance id and evaluation type to aggregate
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EvaluationResultsEntity, Fixnum, Hash)>] EvaluationResultsEntity data, response status code and response headers
+    def aggregate_model_results_with_http_info(aggregate_prediction, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.aggregate_model_results ..."
+      end
+      # verify the required parameter 'aggregate_prediction' is set
+      if @api_client.config.client_side_validation && aggregate_prediction.nil?
+        fail ArgumentError, "Missing the required parameter 'aggregate_prediction' when calling DefaultApi.aggregate_model_results"
+      end
+      # resource path
+      local_var_path = "/model/aggregateresults"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(aggregate_prediction)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EvaluationResultsEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#aggregate_model_results\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
     end
 
     # Use the deployed model to classify the input
@@ -218,12 +658,284 @@ module SkilCient
       return data, status_code, headers
     end
 
+    # Creates model History
+    # 
+    # @param model_history_entity The model history entity
+    # @param [Hash] opts the optional parameters
+    # @return [ModelHistoryEntity]
+    def create_model_history(model_history_entity, opts = {})
+      data, _status_code, _headers = create_model_history_with_http_info(model_history_entity, opts)
+      return data
+    end
+
+    # Creates model History
+    # 
+    # @param model_history_entity The model history entity
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ModelHistoryEntity, Fixnum, Hash)>] ModelHistoryEntity data, response status code and response headers
+    def create_model_history_with_http_info(model_history_entity, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.create_model_history ..."
+      end
+      # verify the required parameter 'model_history_entity' is set
+      if @api_client.config.client_side_validation && model_history_entity.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_entity' when calling DefaultApi.create_model_history"
+      end
+      # resource path
+      local_var_path = "/model/revisions"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(model_history_entity)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ModelHistoryEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_model_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Deletes an experiment, given an experiment entity
+    # 
+    # @param experiment_id the GUID of the experiment to delete
+    # @param [Hash] opts the optional parameters
+    # @return [InlineResponse200]
+    def delete_experiment(experiment_id, opts = {})
+      data, _status_code, _headers = delete_experiment_with_http_info(experiment_id, opts)
+      return data
+    end
+
+    # Deletes an experiment, given an experiment entity
+    # 
+    # @param experiment_id the GUID of the experiment to delete
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
+    def delete_experiment_with_http_info(experiment_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.delete_experiment ..."
+      end
+      # verify the required parameter 'experiment_id' is set
+      if @api_client.config.client_side_validation && experiment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'experiment_id' when calling DefaultApi.delete_experiment"
+      end
+      # resource path
+      local_var_path = "/experiment/{experimentID}".sub('{' + 'experimentID' + '}', experiment_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse200')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a model by deployment and model id
+    # 
+    # @param deployment_id ID deployment group
+    # @param model_id the id of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [InlineResponse200]
+    def delete_model(deployment_id, model_id, opts = {})
+      data, _status_code, _headers = delete_model_with_http_info(deployment_id, model_id, opts)
+      return data
+    end
+
+    # Delete a model by deployment and model id
+    # 
+    # @param deployment_id ID deployment group
+    # @param model_id the id of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
+    def delete_model_with_http_info(deployment_id, model_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.delete_model ..."
+      end
+      # verify the required parameter 'deployment_id' is set
+      if @api_client.config.client_side_validation && deployment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_id' when calling DefaultApi.delete_model"
+      end
+      # verify the required parameter 'model_id' is set
+      if @api_client.config.client_side_validation && model_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_id' when calling DefaultApi.delete_model"
+      end
+      # resource path
+      local_var_path = "/deployment/{deploymentId}/model/{modelId}".sub('{' + 'deploymentId' + '}', deployment_id.to_s).sub('{' + 'modelId' + '}', model_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse200')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_model\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Deletes a model history / workspace, given its ID
+    # 
+    # @param model_history_id the GUID of the model history / workspace to delete
+    # @param [Hash] opts the optional parameters
+    # @return [InlineResponse200]
+    def delete_model_history(model_history_id, opts = {})
+      data, _status_code, _headers = delete_model_history_with_http_info(model_history_id, opts)
+      return data
+    end
+
+    # Deletes a model history / workspace, given its ID
+    # 
+    # @param model_history_id the GUID of the model history / workspace to delete
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
+    def delete_model_history_with_http_info(model_history_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.delete_model_history ..."
+      end
+      # verify the required parameter 'model_history_id' is set
+      if @api_client.config.client_side_validation && model_history_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_id' when calling DefaultApi.delete_model_history"
+      end
+      # resource path
+      local_var_path = "/modelhistory/{modelHistoryID}".sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse200')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_model_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Deletes a model instance, given its ID
+    # 
+    # @param model_instance_id GUID of the model instance to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_model_instance(model_instance_id, opts = {})
+      delete_model_instance_with_http_info(model_instance_id, opts)
+      return nil
+    end
+
+    # Deletes a model instance, given its ID
+    # 
+    # @param model_instance_id GUID of the model instance to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_model_instance_with_http_info(model_instance_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.delete_model_instance ..."
+      end
+      # verify the required parameter 'model_instance_id' is set
+      if @api_client.config.client_side_validation && model_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_instance_id' when calling DefaultApi.delete_model_instance"
+      end
+      # resource path
+      local_var_path = "/model/{modelInstanceID}".sub('{' + 'modelInstanceID' + '}', model_instance_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_model_instance\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Deploy a model in a deployment group.
     # 
     # @param deployment_id ID deployment group
-    # @param body the deployment request
+    # @param body the model import request
     # @param [Hash] opts the optional parameters
-    # @return [Object]
+    # @return [ModelEntity]
     def deploy_model(deployment_id, body, opts = {})
       data, _status_code, _headers = deploy_model_with_http_info(deployment_id, body, opts)
       return data
@@ -232,9 +944,9 @@ module SkilCient
     # Deploy a model in a deployment group.
     # 
     # @param deployment_id ID deployment group
-    # @param body the deployment request
+    # @param body the model import request
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Object, Fixnum, Hash)>] Object data, response status code and response headers
+    # @return [Array<(ModelEntity, Fixnum, Hash)>] ModelEntity data, response status code and response headers
     def deploy_model_with_http_info(deployment_id, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: DefaultApi.deploy_model ..."
@@ -272,7 +984,7 @@ module SkilCient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Object')
+        :return_type => 'ModelEntity')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#deploy_model\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -283,7 +995,7 @@ module SkilCient
     # 
     # @param body the deployment request
     # @param [Hash] opts the optional parameters
-    # @return [Deployment]
+    # @return [DeploymentResponse]
     def deployment_create(body, opts = {})
       data, _status_code, _headers = deployment_create_with_http_info(body, opts)
       return data
@@ -293,7 +1005,7 @@ module SkilCient
     # 
     # @param body the deployment request
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Deployment, Fixnum, Hash)>] Deployment data, response status code and response headers
+    # @return [Array<(DeploymentResponse, Fixnum, Hash)>] DeploymentResponse data, response status code and response headers
     def deployment_create_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: DefaultApi.deployment_create ..."
@@ -327,9 +1039,858 @@ module SkilCient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Deployment')
+        :return_type => 'DeploymentResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#deployment_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a deployment by id
+    # 
+    # @param deployment_id Id of the deployment group
+    # @param [Hash] opts the optional parameters
+    # @return [InlineResponse200]
+    def deployment_delete(deployment_id, opts = {})
+      data, _status_code, _headers = deployment_delete_with_http_info(deployment_id, opts)
+      return data
+    end
+
+    # Delete a deployment by id
+    # 
+    # @param deployment_id Id of the deployment group
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
+    def deployment_delete_with_http_info(deployment_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.deployment_delete ..."
+      end
+      # verify the required parameter 'deployment_id' is set
+      if @api_client.config.client_side_validation && deployment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_id' when calling DefaultApi.deployment_delete"
+      end
+      # resource path
+      local_var_path = "/deployment/{deploymentId}".sub('{' + 'deploymentId' + '}', deployment_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'InlineResponse200')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#deployment_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a deployment details by id
+    # 
+    # @param deployment_id Id of the deployment group
+    # @param [Hash] opts the optional parameters
+    # @return [DeploymentResponse]
+    def deployment_get(deployment_id, opts = {})
+      data, _status_code, _headers = deployment_get_with_http_info(deployment_id, opts)
+      return data
+    end
+
+    # Get a deployment details by id
+    # 
+    # @param deployment_id Id of the deployment group
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(DeploymentResponse, Fixnum, Hash)>] DeploymentResponse data, response status code and response headers
+    def deployment_get_with_http_info(deployment_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.deployment_get ..."
+      end
+      # verify the required parameter 'deployment_id' is set
+      if @api_client.config.client_side_validation && deployment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_id' when calling DefaultApi.deployment_get"
+      end
+      # resource path
+      local_var_path = "/deployment/{deploymentId}".sub('{' + 'deploymentId' + '}', deployment_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'DeploymentResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#deployment_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a list of deployments
+    # 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<DeploymentResponse>]
+    def deployments(opts = {})
+      data, _status_code, _headers = deployments_with_http_info(opts)
+      return data
+    end
+
+    # Get a list of deployments
+    # 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<DeploymentResponse>, Fixnum, Hash)>] Array<DeploymentResponse> data, response status code and response headers
+    def deployments_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.deployments ..."
+      end
+      # resource path
+      local_var_path = "/deployments"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<DeploymentResponse>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#deployments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Detect the objects, given a (input) prediction request
+    # 
+    # @param id the GUID for mapping the results in the detections
+    # @param needs_preprocessing (true) if the image needs preprocessing
+    # @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
+    # @param image_file the image file to detect objects from
+    # @param deployment_name Name of the deployment group
+    # @param model_name ID or name of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [DetectionResult]
+    def detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, model_name, opts = {})
+      data, _status_code, _headers = detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, model_name, opts)
+      return data
+    end
+
+    # Detect the objects, given a (input) prediction request
+    # 
+    # @param id the GUID for mapping the results in the detections
+    # @param needs_preprocessing (true) if the image needs preprocessing
+    # @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
+    # @param image_file the image file to detect objects from
+    # @param deployment_name Name of the deployment group
+    # @param model_name ID or name of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(DetectionResult, Fixnum, Hash)>] DetectionResult data, response status code and response headers
+    def detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, model_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.detectobjects ..."
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.detectobjects"
+      end
+      # verify the required parameter 'needs_preprocessing' is set
+      if @api_client.config.client_side_validation && needs_preprocessing.nil?
+        fail ArgumentError, "Missing the required parameter 'needs_preprocessing' when calling DefaultApi.detectobjects"
+      end
+      # verify the required parameter 'threshold' is set
+      if @api_client.config.client_side_validation && threshold.nil?
+        fail ArgumentError, "Missing the required parameter 'threshold' when calling DefaultApi.detectobjects"
+      end
+      # verify the required parameter 'image_file' is set
+      if @api_client.config.client_side_validation && image_file.nil?
+        fail ArgumentError, "Missing the required parameter 'image_file' when calling DefaultApi.detectobjects"
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.detectobjects"
+      end
+      # verify the required parameter 'model_name' is set
+      if @api_client.config.client_side_validation && model_name.nil?
+        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.detectobjects"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["id"] = id
+      form_params["needsPreprocessing"] = needs_preprocessing
+      form_params["threshold"] = threshold
+      form_params["imageFile"] = image_file
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'DetectionResult')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#detectobjects\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+    # 
+    # @param best_model Object encapsulating the model ids, eval type and column metric name
+    # @param [Hash] opts the optional parameters
+    # @return [ModelInstanceEntity]
+    def get_best_model_among_model_ids(best_model, opts = {})
+      data, _status_code, _headers = get_best_model_among_model_ids_with_http_info(best_model, opts)
+      return data
+    end
+
+    # Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+    # 
+    # @param best_model Object encapsulating the model ids, eval type and column metric name
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ModelInstanceEntity, Fixnum, Hash)>] ModelInstanceEntity data, response status code and response headers
+    def get_best_model_among_model_ids_with_http_info(best_model, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.get_best_model_among_model_ids ..."
+      end
+      # verify the required parameter 'best_model' is set
+      if @api_client.config.client_side_validation && best_model.nil?
+        fail ArgumentError, "Missing the required parameter 'best_model' when calling DefaultApi.get_best_model_among_model_ids"
+      end
+      # resource path
+      local_var_path = "/model/best"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(best_model)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ModelInstanceEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_best_model_among_model_ids\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Gets the list of evaluation results entity, given a model instance ID
+    # 
+    # @param model_instance_id GUID of the model instance to get evaluation results for.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<EvaluationResultsEntity>]
+    def get_evaluation_for_model_id(model_instance_id, opts = {})
+      data, _status_code, _headers = get_evaluation_for_model_id_with_http_info(model_instance_id, opts)
+      return data
+    end
+
+    # Gets the list of evaluation results entity, given a model instance ID
+    # 
+    # @param model_instance_id GUID of the model instance to get evaluation results for.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<EvaluationResultsEntity>, Fixnum, Hash)>] Array<EvaluationResultsEntity> data, response status code and response headers
+    def get_evaluation_for_model_id_with_http_info(model_instance_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.get_evaluation_for_model_id ..."
+      end
+      # verify the required parameter 'model_instance_id' is set
+      if @api_client.config.client_side_validation && model_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_instance_id' when calling DefaultApi.get_evaluation_for_model_id"
+      end
+      # resource path
+      local_var_path = "/model/revisions/evaluations/{modelInstanceID}".sub('{' + 'modelInstanceID' + '}', model_instance_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<EvaluationResultsEntity>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_evaluation_for_model_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Gets all the examples for a minibatch ID
+    # 
+    # @param minibatch_id The GUID of the minibatch
+    # @param [Hash] opts the optional parameters
+    # @return [Array<ExampleEntity>]
+    def get_examples_for_minibatch(minibatch_id, opts = {})
+      data, _status_code, _headers = get_examples_for_minibatch_with_http_info(minibatch_id, opts)
+      return data
+    end
+
+    # Gets all the examples for a minibatch ID
+    # 
+    # @param minibatch_id The GUID of the minibatch
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<ExampleEntity>, Fixnum, Hash)>] Array<ExampleEntity> data, response status code and response headers
+    def get_examples_for_minibatch_with_http_info(minibatch_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.get_examples_for_minibatch ..."
+      end
+      # verify the required parameter 'minibatch_id' is set
+      if @api_client.config.client_side_validation && minibatch_id.nil?
+        fail ArgumentError, "Missing the required parameter 'minibatch_id' when calling DefaultApi.get_examples_for_minibatch"
+      end
+      # resource path
+      local_var_path = "/model/example/{minibatchId}".sub('{' + 'minibatchId' + '}', minibatch_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<ExampleEntity>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_examples_for_minibatch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Obtain an experiment's details, given its ID
+    # 
+    # @param experiment_id the GUID of the experiment to obtain
+    # @param [Hash] opts the optional parameters
+    # @return [ExperimentEntity]
+    def get_experiment(experiment_id, opts = {})
+      data, _status_code, _headers = get_experiment_with_http_info(experiment_id, opts)
+      return data
+    end
+
+    # Obtain an experiment&#39;s details, given its ID
+    # 
+    # @param experiment_id the GUID of the experiment to obtain
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
+    def get_experiment_with_http_info(experiment_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.get_experiment ..."
+      end
+      # verify the required parameter 'experiment_id' is set
+      if @api_client.config.client_side_validation && experiment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'experiment_id' when calling DefaultApi.get_experiment"
+      end
+      # resource path
+      local_var_path = "/experiment/{experimentID}".sub('{' + 'experimentID' + '}', experiment_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ExperimentEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Obtain all experiments for a model history / workspace
+    # 
+    # @param model_history_id the GUID of the model history / workspace
+    # @param [Hash] opts the optional parameters
+    # @return [ExperimentEntity]
+    def get_experiments_for_model_history(model_history_id, opts = {})
+      data, _status_code, _headers = get_experiments_for_model_history_with_http_info(model_history_id, opts)
+      return data
+    end
+
+    # Obtain all experiments for a model history / workspace
+    # 
+    # @param model_history_id the GUID of the model history / workspace
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
+    def get_experiments_for_model_history_with_http_info(model_history_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.get_experiments_for_model_history ..."
+      end
+      # verify the required parameter 'model_history_id' is set
+      if @api_client.config.client_side_validation && model_history_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_id' when calling DefaultApi.get_experiments_for_model_history"
+      end
+      # resource path
+      local_var_path = "/experiments/{modelHistoryID}".sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ExperimentEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_experiments_for_model_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Gets a minibatch for the model
+    # 
+    # @param minibatch_id The GUID of the minibatch
+    # @param [Hash] opts the optional parameters
+    # @return [MinibatchEntity]
+    def get_minibatch(minibatch_id, opts = {})
+      data, _status_code, _headers = get_minibatch_with_http_info(minibatch_id, opts)
+      return data
+    end
+
+    # Gets a minibatch for the model
+    # 
+    # @param minibatch_id The GUID of the minibatch
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MinibatchEntity, Fixnum, Hash)>] MinibatchEntity data, response status code and response headers
+    def get_minibatch_with_http_info(minibatch_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.get_minibatch ..."
+      end
+      # verify the required parameter 'minibatch_id' is set
+      if @api_client.config.client_side_validation && minibatch_id.nil?
+        fail ArgumentError, "Missing the required parameter 'minibatch_id' when calling DefaultApi.get_minibatch"
+      end
+      # resource path
+      local_var_path = "/model/minibatch/{minibatchId}".sub('{' + 'minibatchId' + '}', minibatch_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MinibatchEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_minibatch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Gets a model history, given its ID
+    # 
+    # @param model_history_id GUID of the model history to get information of.
+    # @param [Hash] opts the optional parameters
+    # @return [ModelHistoryEntity]
+    def get_model_history(model_history_id, opts = {})
+      data, _status_code, _headers = get_model_history_with_http_info(model_history_id, opts)
+      return data
+    end
+
+    # Gets a model history, given its ID
+    # 
+    # @param model_history_id GUID of the model history to get information of.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ModelHistoryEntity, Fixnum, Hash)>] ModelHistoryEntity data, response status code and response headers
+    def get_model_history_with_http_info(model_history_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.get_model_history ..."
+      end
+      # verify the required parameter 'model_history_id' is set
+      if @api_client.config.client_side_validation && model_history_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_id' when calling DefaultApi.get_model_history"
+      end
+      # resource path
+      local_var_path = "/model/revision/{modelHistoryID}".sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ModelHistoryEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_model_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Gets a model instance, given its ID
+    # 
+    # @param model_instance_id GUID of the model instance to get information of.
+    # @param [Hash] opts the optional parameters
+    # @return [ModelInstanceEntity]
+    def get_model_instance(model_instance_id, opts = {})
+      data, _status_code, _headers = get_model_instance_with_http_info(model_instance_id, opts)
+      return data
+    end
+
+    # Gets a model instance, given its ID
+    # 
+    # @param model_instance_id GUID of the model instance to get information of.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ModelInstanceEntity, Fixnum, Hash)>] ModelInstanceEntity data, response status code and response headers
+    def get_model_instance_with_http_info(model_instance_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.get_model_instance ..."
+      end
+      # verify the required parameter 'model_instance_id' is set
+      if @api_client.config.client_side_validation && model_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_instance_id' when calling DefaultApi.get_model_instance"
+      end
+      # resource path
+      local_var_path = "/model/{modelInstanceID}".sub('{' + 'modelInstanceID' + '}', model_instance_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ModelInstanceEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_model_instance\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Obtain a list of all the models for an experiment
+    # 
+    # @param experiment_id the GUID of the experiment
+    # @param [Hash] opts the optional parameters
+    # @return [Array<ModelInstanceEntity>]
+    def get_models_for_experiment(experiment_id, opts = {})
+      data, _status_code, _headers = get_models_for_experiment_with_http_info(experiment_id, opts)
+      return data
+    end
+
+    # Obtain a list of all the models for an experiment
+    # 
+    # @param experiment_id the GUID of the experiment
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<ModelInstanceEntity>, Fixnum, Hash)>] Array<ModelInstanceEntity> data, response status code and response headers
+    def get_models_for_experiment_with_http_info(experiment_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.get_models_for_experiment ..."
+      end
+      # verify the required parameter 'experiment_id' is set
+      if @api_client.config.client_side_validation && experiment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'experiment_id' when calling DefaultApi.get_models_for_experiment"
+      end
+      # resource path
+      local_var_path = "/experiment/{experimentID}/models".sub('{' + 'experimentID' + '}', experiment_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<ModelInstanceEntity>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_models_for_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieves the image transform process JSON string
+    # 
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param [Hash] opts the optional parameters
+    # @return [ImageTransformProcess]
+    def imagetransformprocess_get(deployment_name, image_transform_name, opts = {})
+      data, _status_code, _headers = imagetransformprocess_get_with_http_info(deployment_name, image_transform_name, opts)
+      return data
+    end
+
+    # Retrieves the image transform process JSON string
+    # 
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ImageTransformProcess, Fixnum, Hash)>] ImageTransformProcess data, response status code and response headers
+    def imagetransformprocess_get_with_http_info(deployment_name, image_transform_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.imagetransformprocess_get ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.imagetransformprocess_get"
+      end
+      # verify the required parameter 'image_transform_name' is set
+      if @api_client.config.client_side_validation && image_transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'image_transform_name' when calling DefaultApi.imagetransformprocess_get"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ImageTransformProcess')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#imagetransformprocess_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Sets the image transform process through the provided JSON string
+    # 
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param body The image transform process JSON
+    # @param [Hash] opts the optional parameters
+    # @return [ImageTransformProcess]
+    def imagetransformprocess_post(deployment_name, image_transform_name, body, opts = {})
+      data, _status_code, _headers = imagetransformprocess_post_with_http_info(deployment_name, image_transform_name, body, opts)
+      return data
+    end
+
+    # Sets the image transform process through the provided JSON string
+    # 
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param body The image transform process JSON
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ImageTransformProcess, Fixnum, Hash)>] ImageTransformProcess data, response status code and response headers
+    def imagetransformprocess_post_with_http_info(deployment_name, image_transform_name, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.imagetransformprocess_post ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.imagetransformprocess_post"
+      end
+      # verify the required parameter 'image_transform_name' is set
+      if @api_client.config.client_side_validation && image_transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'image_transform_name' when calling DefaultApi.imagetransformprocess_post"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.imagetransformprocess_post"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ImageTransformProcess')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#imagetransformprocess_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -397,6 +1958,187 @@ module SkilCient
         :return_type => 'JsonArrayResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#jsonarray\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Runs knn on the given index with the given k
+    # Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+    # @param deployment_name Name of the deployment group
+    # @param knn_name ID or name of the deployed knn
+    # @param body 
+    # @param [Hash] opts the optional parameters
+    # @return [NearestNeighborsResults]
+    def knn(deployment_name, knn_name, body, opts = {})
+      data, _status_code, _headers = knn_with_http_info(deployment_name, knn_name, body, opts)
+      return data
+    end
+
+    # Runs knn on the given index with the given k
+    # Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+    # @param deployment_name Name of the deployment group
+    # @param knn_name ID or name of the deployed knn
+    # @param body 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(NearestNeighborsResults, Fixnum, Hash)>] NearestNeighborsResults data, response status code and response headers
+    def knn_with_http_info(deployment_name, knn_name, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.knn ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.knn"
+      end
+      # verify the required parameter 'knn_name' is set
+      if @api_client.config.client_side_validation && knn_name.nil?
+        fail ArgumentError, "Missing the required parameter 'knn_name' when calling DefaultApi.knn"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.knn"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/knn/{knnName}/default/knn".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'knnName' + '}', knn_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'NearestNeighborsResults')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#knn\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Run a k nearest neighbors search on a NEW data point
+    # 
+    # @param deployment_name Name of the deployment group
+    # @param knn_name ID or name of the deployed knn
+    # @param body The input NDArray
+    # @param [Hash] opts the optional parameters
+    # @return [NearestNeighborsResults]
+    def knnnew(deployment_name, knn_name, body, opts = {})
+      data, _status_code, _headers = knnnew_with_http_info(deployment_name, knn_name, body, opts)
+      return data
+    end
+
+    # Run a k nearest neighbors search on a NEW data point
+    # 
+    # @param deployment_name Name of the deployment group
+    # @param knn_name ID or name of the deployed knn
+    # @param body The input NDArray
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(NearestNeighborsResults, Fixnum, Hash)>] NearestNeighborsResults data, response status code and response headers
+    def knnnew_with_http_info(deployment_name, knn_name, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.knnnew ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.knnnew"
+      end
+      # verify the required parameter 'knn_name' is set
+      if @api_client.config.client_side_validation && knn_name.nil?
+        fail ArgumentError, "Missing the required parameter 'knn_name' when calling DefaultApi.knnnew"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.knnnew"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'knnName' + '}', knn_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'NearestNeighborsResults')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#knnnew\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List all of the experiments in every model history / workspace
+    # 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<ExperimentEntity>]
+    def list_all_experiments(opts = {})
+      data, _status_code, _headers = list_all_experiments_with_http_info(opts)
+      return data
+    end
+
+    # List all of the experiments in every model history / workspace
+    # 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<ExperimentEntity>, Fixnum, Hash)>] Array<ExperimentEntity> data, response status code and response headers
+    def list_all_experiments_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.list_all_experiments ..."
+      end
+      # resource path
+      local_var_path = "/experiments"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<ExperimentEntity>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#list_all_experiments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -578,6 +2320,254 @@ module SkilCient
         :return_type => 'LogBatch')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#logs\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # this method can be used to get the meta data for the current model which set to the server
+    # 
+    # @param deployment_name Name of the deployment group
+    # @param model_name ID or name of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [MetaData]
+    def meta_get(deployment_name, model_name, opts = {})
+      data, _status_code, _headers = meta_get_with_http_info(deployment_name, model_name, opts)
+      return data
+    end
+
+    # this method can be used to get the meta data for the current model which set to the server
+    # 
+    # @param deployment_name Name of the deployment group
+    # @param model_name ID or name of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MetaData, Fixnum, Hash)>] MetaData data, response status code and response headers
+    def meta_get_with_http_info(deployment_name, model_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.meta_get ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.meta_get"
+      end
+      # verify the required parameter 'model_name' is set
+      if @api_client.config.client_side_validation && model_name.nil?
+        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.meta_get"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/meta".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MetaData')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#meta_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # This method can be used to set meta data for the current model which is set to the server
+    # 
+    # @param body the meta data object
+    # @param deployment_name Name of the deployment group
+    # @param model_name ID or name of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [MetaData]
+    def meta_post(body, deployment_name, model_name, opts = {})
+      data, _status_code, _headers = meta_post_with_http_info(body, deployment_name, model_name, opts)
+      return data
+    end
+
+    # This method can be used to set meta data for the current model which is set to the server
+    # 
+    # @param body the meta data object
+    # @param deployment_name Name of the deployment group
+    # @param model_name ID or name of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MetaData, Fixnum, Hash)>] MetaData data, response status code and response headers
+    def meta_post_with_http_info(body, deployment_name, model_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.meta_post ..."
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.meta_post"
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.meta_post"
+      end
+      # verify the required parameter 'model_name' is set
+      if @api_client.config.client_side_validation && model_name.nil?
+        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.meta_post"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/meta".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MetaData')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#meta_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Modify the state (start/stop) of a deployed model
+    # 
+    # @param deployment_id ID deployment group
+    # @param model_id the id of the deployed model
+    # @param body the model state object
+    # @param [Hash] opts the optional parameters
+    # @return [ModelEntity]
+    def model_state_change(deployment_id, model_id, body, opts = {})
+      data, _status_code, _headers = model_state_change_with_http_info(deployment_id, model_id, body, opts)
+      return data
+    end
+
+    # Modify the state (start/stop) of a deployed model
+    # 
+    # @param deployment_id ID deployment group
+    # @param model_id the id of the deployed model
+    # @param body the model state object
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ModelEntity, Fixnum, Hash)>] ModelEntity data, response status code and response headers
+    def model_state_change_with_http_info(deployment_id, model_id, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.model_state_change ..."
+      end
+      # verify the required parameter 'deployment_id' is set
+      if @api_client.config.client_side_validation && deployment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_id' when calling DefaultApi.model_state_change"
+      end
+      # verify the required parameter 'model_id' is set
+      if @api_client.config.client_side_validation && model_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_id' when calling DefaultApi.model_state_change"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.model_state_change"
+      end
+      # resource path
+      local_var_path = "/deployment/{deploymentId}/model/{modelId}/state".sub('{' + 'deploymentId' + '}', deployment_id.to_s).sub('{' + 'modelId' + '}', model_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ModelEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#model_state_change\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a list of all the deployed models given a deployment id
+    # 
+    # @param deployment_id ID deployment group
+    # @param [Hash] opts the optional parameters
+    # @return [Array<ModelEntity>]
+    def models(deployment_id, opts = {})
+      data, _status_code, _headers = models_with_http_info(deployment_id, opts)
+      return data
+    end
+
+    # Retrieve a list of all the deployed models given a deployment id
+    # 
+    # @param deployment_id ID deployment group
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<ModelEntity>, Fixnum, Hash)>] Array<ModelEntity> data, response status code and response headers
+    def models_with_http_info(deployment_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.models ..."
+      end
+      # verify the required parameter 'deployment_id' is set
+      if @api_client.config.client_side_validation && deployment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_id' when calling DefaultApi.models"
+      end
+      # resource path
+      local_var_path = "/deployment/{deploymentId}/models".sub('{' + 'deploymentId' + '}', deployment_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<ModelEntity>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#models\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -773,6 +2763,73 @@ module SkilCient
         :return_type => 'MultiClassClassificationResult')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#multiclassify\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get the output from the network, based on the given INDArray[] input
+    # Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+    # @param body The multiple input arrays with mask inputs to run inferences on
+    # @param deployment_name Name of the deployment group
+    # @param model_name ID or name of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [MultiPredictResponse]
+    def multipredict(body, deployment_name, model_name, opts = {})
+      data, _status_code, _headers = multipredict_with_http_info(body, deployment_name, model_name, opts)
+      return data
+    end
+
+    # Get the output from the network, based on the given INDArray[] input
+    # Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+    # @param body The multiple input arrays with mask inputs to run inferences on
+    # @param deployment_name Name of the deployment group
+    # @param model_name ID or name of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MultiPredictResponse, Fixnum, Hash)>] MultiPredictResponse data, response status code and response headers
+    def multipredict_with_http_info(body, deployment_name, model_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.multipredict ..."
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.multipredict"
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.multipredict"
+      end
+      # verify the required parameter 'model_name' is set
+      if @api_client.config.client_side_validation && model_name.nil?
+        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.multipredict"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MultiPredictResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#multipredict\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1038,6 +3095,893 @@ module SkilCient
         :return_type => 'JsonArrayResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#predictwithpreprocessjson\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Reimport a model to a previous deployed model in a deployment
+    # 
+    # @param deployment_id ID deployment group
+    # @param model_id the id of the deployed model
+    # @param body the deployment request
+    # @param [Hash] opts the optional parameters
+    # @return [ModelEntity]
+    def reimport_model(deployment_id, model_id, body, opts = {})
+      data, _status_code, _headers = reimport_model_with_http_info(deployment_id, model_id, body, opts)
+      return data
+    end
+
+    # Reimport a model to a previous deployed model in a deployment
+    # 
+    # @param deployment_id ID deployment group
+    # @param model_id the id of the deployed model
+    # @param body the deployment request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ModelEntity, Fixnum, Hash)>] ModelEntity data, response status code and response headers
+    def reimport_model_with_http_info(deployment_id, model_id, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.reimport_model ..."
+      end
+      # verify the required parameter 'deployment_id' is set
+      if @api_client.config.client_side_validation && deployment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_id' when calling DefaultApi.reimport_model"
+      end
+      # verify the required parameter 'model_id' is set
+      if @api_client.config.client_side_validation && model_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_id' when calling DefaultApi.reimport_model"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.reimport_model"
+      end
+      # resource path
+      local_var_path = "/deployment/{deploymentId}/model/{modelId}".sub('{' + 'deploymentId' + '}', deployment_id.to_s).sub('{' + 'modelId' + '}', model_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ModelEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#reimport_model\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+    # Takes a batch of SingleCSVRecord object and transforms it into the desired format
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @option opts [BatchCSVRecord] :batch_csv_record The input batch of record arrays
+    # @return [BatchCSVRecord]
+    def transform_csv(deployment_name, transform_name, opts = {})
+      data, _status_code, _headers = transform_csv_with_http_info(deployment_name, transform_name, opts)
+      return data
+    end
+
+    # Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+    # Takes a batch of SingleCSVRecord object and transforms it into the desired format
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @option opts [BatchCSVRecord] :batch_csv_record The input batch of record arrays
+    # @return [Array<(BatchCSVRecord, Fixnum, Hash)>] BatchCSVRecord data, response status code and response headers
+    def transform_csv_with_http_info(deployment_name, transform_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.transform_csv ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transform_csv"
+      end
+      # verify the required parameter 'transform_name' is set
+      if @api_client.config.client_side_validation && transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transform_csv"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'batch_csv_record'])
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'BatchCSVRecord')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#transform_csv\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Takes a batch input arrays and transforms it
+    # Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @option opts [BatchCSVRecord] :batch_csv_record The input batch of record arrays
+    # @return [Base64NDArrayBody]
+    def transformarray_csv(deployment_name, transform_name, opts = {})
+      data, _status_code, _headers = transformarray_csv_with_http_info(deployment_name, transform_name, opts)
+      return data
+    end
+
+    # Takes a batch input arrays and transforms it
+    # Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @option opts [BatchCSVRecord] :batch_csv_record The input batch of record arrays
+    # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
+    def transformarray_csv_with_http_info(deployment_name, transform_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.transformarray_csv ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformarray_csv"
+      end
+      # verify the required parameter 'transform_name' is set
+      if @api_client.config.client_side_validation && transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformarray_csv"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'batch_csv_record'])
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Base64NDArrayBody')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#transformarray_csv\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+    # Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param batch_image_record The input batch of record arrays
+    # @param [Hash] opts the optional parameters
+    # @return [Base64NDArrayBody]
+    def transformarray_image(deployment_name, image_transform_name, batch_image_record, opts = {})
+      data, _status_code, _headers = transformarray_image_with_http_info(deployment_name, image_transform_name, batch_image_record, opts)
+      return data
+    end
+
+    # Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+    # Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param batch_image_record The input batch of record arrays
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
+    def transformarray_image_with_http_info(deployment_name, image_transform_name, batch_image_record, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.transformarray_image ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformarray_image"
+      end
+      # verify the required parameter 'image_transform_name' is set
+      if @api_client.config.client_side_validation && image_transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'image_transform_name' when calling DefaultApi.transformarray_image"
+      end
+      # verify the required parameter 'batch_image_record' is set
+      if @api_client.config.client_side_validation && batch_image_record.nil?
+        fail ArgumentError, "Missing the required parameter 'batch_image_record' when calling DefaultApi.transformarray_image"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(batch_image_record)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Base64NDArrayBody')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#transformarray_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Takes multiple multipart image file to transform and returns Base64NDArrayBody
+    # Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param files The image files to upload
+    # @param [Hash] opts the optional parameters
+    # @return [Base64NDArrayBody]
+    def transformimage(deployment_name, image_transform_name, files, opts = {})
+      data, _status_code, _headers = transformimage_with_http_info(deployment_name, image_transform_name, files, opts)
+      return data
+    end
+
+    # Takes multiple multipart image file to transform and returns Base64NDArrayBody
+    # Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param files The image files to upload
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
+    def transformimage_with_http_info(deployment_name, image_transform_name, files, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.transformimage ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformimage"
+      end
+      # verify the required parameter 'image_transform_name' is set
+      if @api_client.config.client_side_validation && image_transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'image_transform_name' when calling DefaultApi.transformimage"
+      end
+      # verify the required parameter 'files' is set
+      if @api_client.config.client_side_validation && files.nil?
+        fail ArgumentError, "Missing the required parameter 'files' when calling DefaultApi.transformimage"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["files"] = @api_client.build_collection_param(files, :csv)
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Base64NDArrayBody')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#transformimage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+    # Takes a SingleCSVRecord object and transforms it into the desired format
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @option opts [SingleCSVRecord] :single_csv_record The input record array
+    # @return [SingleCSVRecord]
+    def transformincremental_csv(deployment_name, transform_name, opts = {})
+      data, _status_code, _headers = transformincremental_csv_with_http_info(deployment_name, transform_name, opts)
+      return data
+    end
+
+    # Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+    # Takes a SingleCSVRecord object and transforms it into the desired format
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @option opts [SingleCSVRecord] :single_csv_record The input record array
+    # @return [Array<(SingleCSVRecord, Fixnum, Hash)>] SingleCSVRecord data, response status code and response headers
+    def transformincremental_csv_with_http_info(deployment_name, transform_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.transformincremental_csv ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformincremental_csv"
+      end
+      # verify the required parameter 'transform_name' is set
+      if @api_client.config.client_side_validation && transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformincremental_csv"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'single_csv_record'])
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SingleCSVRecord')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#transformincremental_csv\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Same as /transformincremental but returns Base64NDArrayBody
+    # Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @option opts [SingleCSVRecord] :single_csv_record The input record array
+    # @return [Base64NDArrayBody]
+    def transformincrementalarray_csv(deployment_name, transform_name, opts = {})
+      data, _status_code, _headers = transformincrementalarray_csv_with_http_info(deployment_name, transform_name, opts)
+      return data
+    end
+
+    # Same as /transformincremental but returns Base64NDArrayBody
+    # Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @option opts [SingleCSVRecord] :single_csv_record The input record array
+    # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
+    def transformincrementalarray_csv_with_http_info(deployment_name, transform_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.transformincrementalarray_csv ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformincrementalarray_csv"
+      end
+      # verify the required parameter 'transform_name' is set
+      if @api_client.config.client_side_validation && transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformincrementalarray_csv"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'single_csv_record'])
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Base64NDArrayBody')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#transformincrementalarray_csv\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Takes SingleImageRecord to transform and returns Base64NDArrayBody
+    # Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param single_image_record The input record array
+    # @param [Hash] opts the optional parameters
+    # @return [Base64NDArrayBody]
+    def transformincrementalarray_image(deployment_name, image_transform_name, single_image_record, opts = {})
+      data, _status_code, _headers = transformincrementalarray_image_with_http_info(deployment_name, image_transform_name, single_image_record, opts)
+      return data
+    end
+
+    # Takes SingleImageRecord to transform and returns Base64NDArrayBody
+    # Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param single_image_record The input record array
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
+    def transformincrementalarray_image_with_http_info(deployment_name, image_transform_name, single_image_record, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.transformincrementalarray_image ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformincrementalarray_image"
+      end
+      # verify the required parameter 'image_transform_name' is set
+      if @api_client.config.client_side_validation && image_transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'image_transform_name' when calling DefaultApi.transformincrementalarray_image"
+      end
+      # verify the required parameter 'single_image_record' is set
+      if @api_client.config.client_side_validation && single_image_record.nil?
+        fail ArgumentError, "Missing the required parameter 'single_image_record' when calling DefaultApi.transformincrementalarray_image"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(single_image_record)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Base64NDArrayBody')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#transformincrementalarray_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Takes a single multipart image file to transform and returns Base64NDArrayBody
+    # Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param file The image file to upload
+    # @param [Hash] opts the optional parameters
+    # @return [Base64NDArrayBody]
+    def transformincrementalimage(deployment_name, image_transform_name, file, opts = {})
+      data, _status_code, _headers = transformincrementalimage_with_http_info(deployment_name, image_transform_name, file, opts)
+      return data
+    end
+
+    # Takes a single multipart image file to transform and returns Base64NDArrayBody
+    # Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # @param deployment_name Name of the deployment group
+    # @param image_transform_name ID or name of the deployed image transform
+    # @param file The image file to upload
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
+    def transformincrementalimage_with_http_info(deployment_name, image_transform_name, file, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.transformincrementalimage ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformincrementalimage"
+      end
+      # verify the required parameter 'image_transform_name' is set
+      if @api_client.config.client_side_validation && image_transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'image_transform_name' when calling DefaultApi.transformincrementalimage"
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling DefaultApi.transformincrementalimage"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params["file"] = file
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Base64NDArrayBody')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#transformincrementalimage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Gets the JSON string of the deployed transform process
+    # Retrieves the JSON string of the deployed transform process 
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @return [TransformProcess]
+    def transformprocess_get(deployment_name, transform_name, opts = {})
+      data, _status_code, _headers = transformprocess_get_with_http_info(deployment_name, transform_name, opts)
+      return data
+    end
+
+    # Gets the JSON string of the deployed transform process
+    # Retrieves the JSON string of the deployed transform process 
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TransformProcess, Fixnum, Hash)>] TransformProcess data, response status code and response headers
+    def transformprocess_get_with_http_info(deployment_name, transform_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.transformprocess_get ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformprocess_get"
+      end
+      # verify the required parameter 'transform_name' is set
+      if @api_client.config.client_side_validation && transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformprocess_get"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'TransformProcess')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#transformprocess_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Sets the deployed transform process through the provided JSON string
+    # Sets the transform process with the provided JSON string
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @option opts [TransformProcess] :transform_process The transform process to set
+    # @return [nil]
+    def transformprocess_post(deployment_name, transform_name, opts = {})
+      transformprocess_post_with_http_info(deployment_name, transform_name, opts)
+      return nil
+    end
+
+    # Sets the deployed transform process through the provided JSON string
+    # Sets the transform process with the provided JSON string
+    # @param deployment_name Name of the deployment group
+    # @param transform_name ID or name of the deployed transform
+    # @param [Hash] opts the optional parameters
+    # @option opts [TransformProcess] :transform_process The transform process to set
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def transformprocess_post_with_http_info(deployment_name, transform_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.transformprocess_post ..."
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformprocess_post"
+      end
+      # verify the required parameter 'transform_name' is set
+      if @api_client.config.client_side_validation && transform_name.nil?
+        fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformprocess_post"
+      end
+      # resource path
+      local_var_path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess".sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'transform_process'])
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#transformprocess_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Updates the best model for an experiment
+    # 
+    # @param update_best_model Model encapsulating the experiment id to update and the best model id.
+    # @param [Hash] opts the optional parameters
+    # @return [ExperimentEntity]
+    def update_best_model_for_experiment(update_best_model, opts = {})
+      data, _status_code, _headers = update_best_model_for_experiment_with_http_info(update_best_model, opts)
+      return data
+    end
+
+    # Updates the best model for an experiment
+    # 
+    # @param update_best_model Model encapsulating the experiment id to update and the best model id.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
+    def update_best_model_for_experiment_with_http_info(update_best_model, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.update_best_model_for_experiment ..."
+      end
+      # verify the required parameter 'update_best_model' is set
+      if @api_client.config.client_side_validation && update_best_model.nil?
+        fail ArgumentError, "Missing the required parameter 'update_best_model' when calling DefaultApi.update_best_model_for_experiment"
+      end
+      # resource path
+      local_var_path = "/experiment/best"
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(update_best_model)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ExperimentEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_best_model_for_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Updates an experiment, given an experiment entity
+    # 
+    # @param experiment_id the GUID of the experiment to update
+    # @param experiment_entity The experiment entity to update with
+    # @param [Hash] opts the optional parameters
+    # @return [ExperimentEntity]
+    def update_experiment(experiment_id, experiment_entity, opts = {})
+      data, _status_code, _headers = update_experiment_with_http_info(experiment_id, experiment_entity, opts)
+      return data
+    end
+
+    # Updates an experiment, given an experiment entity
+    # 
+    # @param experiment_id the GUID of the experiment to update
+    # @param experiment_entity The experiment entity to update with
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
+    def update_experiment_with_http_info(experiment_id, experiment_entity, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.update_experiment ..."
+      end
+      # verify the required parameter 'experiment_id' is set
+      if @api_client.config.client_side_validation && experiment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'experiment_id' when calling DefaultApi.update_experiment"
+      end
+      # verify the required parameter 'experiment_entity' is set
+      if @api_client.config.client_side_validation && experiment_entity.nil?
+        fail ArgumentError, "Missing the required parameter 'experiment_entity' when calling DefaultApi.update_experiment"
+      end
+      # resource path
+      local_var_path = "/experiment/{experimentID}".sub('{' + 'experimentID' + '}', experiment_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(experiment_entity)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ExperimentEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a model history / workspace
+    # 
+    # @param model_history_id the GUID of the model history / workspace to update
+    # @param update_model_history_request The model history request object
+    # @param [Hash] opts the optional parameters
+    # @return [ModelHistoryEntity]
+    def update_model_history(model_history_id, update_model_history_request, opts = {})
+      data, _status_code, _headers = update_model_history_with_http_info(model_history_id, update_model_history_request, opts)
+      return data
+    end
+
+    # Update a model history / workspace
+    # 
+    # @param model_history_id the GUID of the model history / workspace to update
+    # @param update_model_history_request The model history request object
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ModelHistoryEntity, Fixnum, Hash)>] ModelHistoryEntity data, response status code and response headers
+    def update_model_history_with_http_info(model_history_id, update_model_history_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.update_model_history ..."
+      end
+      # verify the required parameter 'model_history_id' is set
+      if @api_client.config.client_side_validation && model_history_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_id' when calling DefaultApi.update_model_history"
+      end
+      # verify the required parameter 'update_model_history_request' is set
+      if @api_client.config.client_side_validation && update_model_history_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_model_history_request' when calling DefaultApi.update_model_history"
+      end
+      # resource path
+      local_var_path = "/modelhistory/{modelHistoryID}".sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(update_model_history_request)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ModelHistoryEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_model_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

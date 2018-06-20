@@ -1,6 +1,6 @@
 /**
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -14,21 +14,49 @@ package ai.skymind.skil
 
 import java.text.SimpleDateFormat
 
+import ai.skymind.skil.model.AddExampleRequest
+import ai.skymind.skil.model.AddModelHistoryRequest
+import ai.skymind.skil.model.AggregatePrediction
+import ai.skymind.skil.model.ArrayByte
 import ai.skymind.skil.model.Base64NDArrayBody
+import ai.skymind.skil.model.Base64NDArrayBodyKNN
+import ai.skymind.skil.model.BatchCSVRecord
+import ai.skymind.skil.model.BatchImageRecord
+import ai.skymind.skil.model.BestModel
 import ai.skymind.skil.model.ClassificationResult
+import ai.skymind.skil.model.CreateDeploymentRequest
 import ai.skymind.skil.model.Credentials
-import ai.skymind.skil.model.DeployModel
-import ai.skymind.skil.model.Deployment
+import ai.skymind.skil.model.DeploymentResponse
+import ai.skymind.skil.model.DetectionResult
+import ai.skymind.skil.model.EvaluationResultsEntity
+import ai.skymind.skil.model.ExampleEntity
+import ai.skymind.skil.model.ExperimentEntity
 import java.io.File
 import ai.skymind.skil.model.FileUploadList
+import ai.skymind.skil.model.ImageTransformProcess
+import ai.skymind.skil.model.ImportModelRequest
+import ai.skymind.skil.model.InlineResponse200
 import ai.skymind.skil.model.JsonArrayResponse
 import ai.skymind.skil.model.LogBatch
 import ai.skymind.skil.model.LogRequest
+import ai.skymind.skil.model.MetaData
+import ai.skymind.skil.model.MinibatchEntity
+import ai.skymind.skil.model.ModelEntity
+import ai.skymind.skil.model.ModelHistoryEntity
+import ai.skymind.skil.model.ModelInstanceEntity
 import ai.skymind.skil.model.ModelStatus
 import ai.skymind.skil.model.MultiClassClassificationResult
-import ai.skymind.skil.model.NewDeployment
+import ai.skymind.skil.model.MultiPredictRequest
+import ai.skymind.skil.model.MultiPredictResponse
+import ai.skymind.skil.model.NearestNeighborRequest
+import ai.skymind.skil.model.NearestNeighborsResults
 import ai.skymind.skil.model.Prediction
+import ai.skymind.skil.model.SetState
+import ai.skymind.skil.model.SingleCSVRecord
+import ai.skymind.skil.model.SingleImageRecord
 import ai.skymind.skil.model.Token
+import ai.skymind.skil.model.TransformProcess
+import ai.skymind.skil.model.UpdateBestModel
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -92,6 +120,214 @@ class DefaultApi(
   val config: SwaggerConfig = SwaggerConfig.forUrl(new URI(defBasePath))
   val client = new RestClient(config)
   val helper = new DefaultApiAsyncHelper(client, config)
+
+  /**
+   * Adds an evaluation result
+   * 
+   *
+   * @param EvaluationResultsEntity The evaluation result entity 
+   * @return EvaluationResultsEntity
+   */
+  def addEvaluationResult(EvaluationResultsEntity: EvaluationResultsEntity): Option[EvaluationResultsEntity] = {
+    val await = Try(Await.result(addEvaluationResultAsync(EvaluationResultsEntity), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Adds an evaluation result asynchronously
+   * 
+   *
+   * @param EvaluationResultsEntity The evaluation result entity 
+   * @return Future(EvaluationResultsEntity)
+   */
+  def addEvaluationResultAsync(EvaluationResultsEntity: EvaluationResultsEntity): Future[EvaluationResultsEntity] = {
+      helper.addEvaluationResult(EvaluationResultsEntity)
+  }
+
+  /**
+   * Adds a number of examples to a minibatch ID given an AddExampleRequest.
+   * 
+   *
+   * @param AddExampleRequest The add example request, encapsulating minibatch details and examples batch size 
+   * @return AddExampleRequest
+   */
+  def addExampleForBatch(AddExampleRequest: AddExampleRequest): Option[AddExampleRequest] = {
+    val await = Try(Await.result(addExampleForBatchAsync(AddExampleRequest), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Adds a number of examples to a minibatch ID given an AddExampleRequest. asynchronously
+   * 
+   *
+   * @param AddExampleRequest The add example request, encapsulating minibatch details and examples batch size 
+   * @return Future(AddExampleRequest)
+   */
+  def addExampleForBatchAsync(AddExampleRequest: AddExampleRequest): Future[AddExampleRequest] = {
+      helper.addExampleForBatch(AddExampleRequest)
+  }
+
+  /**
+   * Adds an example to a minibatch
+   * 
+   *
+   * @param ExampleEntity The example to add to the minibatch 
+   * @return ExampleEntity
+   */
+  def addExampleToMinibatch(ExampleEntity: ExampleEntity): Option[ExampleEntity] = {
+    val await = Try(Await.result(addExampleToMinibatchAsync(ExampleEntity), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Adds an example to a minibatch asynchronously
+   * 
+   *
+   * @param ExampleEntity The example to add to the minibatch 
+   * @return Future(ExampleEntity)
+   */
+  def addExampleToMinibatchAsync(ExampleEntity: ExampleEntity): Future[ExampleEntity] = {
+      helper.addExampleToMinibatch(ExampleEntity)
+  }
+
+  /**
+   * Add an experiment, given an experiment entity
+   * 
+   *
+   * @param ExperimentEntity The experiment entity to add 
+   * @return ExperimentEntity
+   */
+  def addExperiment(ExperimentEntity: ExperimentEntity): Option[ExperimentEntity] = {
+    val await = Try(Await.result(addExperimentAsync(ExperimentEntity), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Add an experiment, given an experiment entity asynchronously
+   * 
+   *
+   * @param ExperimentEntity The experiment entity to add 
+   * @return Future(ExperimentEntity)
+   */
+  def addExperimentAsync(ExperimentEntity: ExperimentEntity): Future[ExperimentEntity] = {
+      helper.addExperiment(ExperimentEntity)
+  }
+
+  /**
+   * Adds a minibatch
+   * 
+   *
+   * @param MinibatchEntity The minibatch entity to add 
+   * @return MinibatchEntity
+   */
+  def addMinibatch(MinibatchEntity: MinibatchEntity): Option[MinibatchEntity] = {
+    val await = Try(Await.result(addMinibatchAsync(MinibatchEntity), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Adds a minibatch asynchronously
+   * 
+   *
+   * @param MinibatchEntity The minibatch entity to add 
+   * @return Future(MinibatchEntity)
+   */
+  def addMinibatchAsync(MinibatchEntity: MinibatchEntity): Future[MinibatchEntity] = {
+      helper.addMinibatch(MinibatchEntity)
+  }
+
+  /**
+   * Add a model history / workspace
+   * 
+   *
+   * @param AddModelHistoryRequest The model history request object 
+   * @return ModelHistoryEntity
+   */
+  def addModelHistory(AddModelHistoryRequest: AddModelHistoryRequest): Option[ModelHistoryEntity] = {
+    val await = Try(Await.result(addModelHistoryAsync(AddModelHistoryRequest), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Add a model history / workspace asynchronously
+   * 
+   *
+   * @param AddModelHistoryRequest The model history request object 
+   * @return Future(ModelHistoryEntity)
+   */
+  def addModelHistoryAsync(AddModelHistoryRequest: AddModelHistoryRequest): Future[ModelHistoryEntity] = {
+      helper.addModelHistory(AddModelHistoryRequest)
+  }
+
+  /**
+   * Adds a model
+   * 
+   *
+   * @param ModelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate 
+   * @return ModelInstanceEntity
+   */
+  def addModelInstance(ModelInstanceEntity: ModelInstanceEntity): Option[ModelInstanceEntity] = {
+    val await = Try(Await.result(addModelInstanceAsync(ModelInstanceEntity), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Adds a model asynchronously
+   * 
+   *
+   * @param ModelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate 
+   * @return Future(ModelInstanceEntity)
+   */
+  def addModelInstanceAsync(ModelInstanceEntity: ModelInstanceEntity): Future[ModelInstanceEntity] = {
+      helper.addModelInstance(ModelInstanceEntity)
+  }
+
+  /**
+   * Aggregates the evaluaition results of a model instance, based on the evaluation type
+   * 
+   *
+   * @param AggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate 
+   * @return EvaluationResultsEntity
+   */
+  def aggregateModelResults(AggregatePrediction: AggregatePrediction): Option[EvaluationResultsEntity] = {
+    val await = Try(Await.result(aggregateModelResultsAsync(AggregatePrediction), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Aggregates the evaluaition results of a model instance, based on the evaluation type asynchronously
+   * 
+   *
+   * @param AggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate 
+   * @return Future(EvaluationResultsEntity)
+   */
+  def aggregateModelResultsAsync(AggregatePrediction: AggregatePrediction): Future[EvaluationResultsEntity] = {
+      helper.aggregateModelResults(AggregatePrediction)
+  }
 
   /**
    * Use the deployed model to classify the input
@@ -184,14 +420,146 @@ class DefaultApi(
   }
 
   /**
+   * Creates model History
+   * 
+   *
+   * @param ModelHistoryEntity The model history entity 
+   * @return ModelHistoryEntity
+   */
+  def createModelHistory(ModelHistoryEntity: ModelHistoryEntity): Option[ModelHistoryEntity] = {
+    val await = Try(Await.result(createModelHistoryAsync(ModelHistoryEntity), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Creates model History asynchronously
+   * 
+   *
+   * @param ModelHistoryEntity The model history entity 
+   * @return Future(ModelHistoryEntity)
+   */
+  def createModelHistoryAsync(ModelHistoryEntity: ModelHistoryEntity): Future[ModelHistoryEntity] = {
+      helper.createModelHistory(ModelHistoryEntity)
+  }
+
+  /**
+   * Deletes an experiment, given an experiment entity
+   * 
+   *
+   * @param ExperimentID the GUID of the experiment to delete 
+   * @return InlineResponse200
+   */
+  def deleteExperiment(ExperimentID: String): Option[InlineResponse200] = {
+    val await = Try(Await.result(deleteExperimentAsync(ExperimentID), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Deletes an experiment, given an experiment entity asynchronously
+   * 
+   *
+   * @param ExperimentID the GUID of the experiment to delete 
+   * @return Future(InlineResponse200)
+   */
+  def deleteExperimentAsync(ExperimentID: String): Future[InlineResponse200] = {
+      helper.deleteExperiment(ExperimentID)
+  }
+
+  /**
+   * Delete a model by deployment and model id
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @param ModelId the id of the deployed model 
+   * @return InlineResponse200
+   */
+  def deleteModel(DeploymentId: String, ModelId: String): Option[InlineResponse200] = {
+    val await = Try(Await.result(deleteModelAsync(DeploymentId, ModelId), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Delete a model by deployment and model id asynchronously
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @param ModelId the id of the deployed model 
+   * @return Future(InlineResponse200)
+   */
+  def deleteModelAsync(DeploymentId: String, ModelId: String): Future[InlineResponse200] = {
+      helper.deleteModel(DeploymentId, ModelId)
+  }
+
+  /**
+   * Deletes a model history / workspace, given its ID
+   * 
+   *
+   * @param ModelHistoryID the GUID of the model history / workspace to delete 
+   * @return InlineResponse200
+   */
+  def deleteModelHistory(ModelHistoryID: String): Option[InlineResponse200] = {
+    val await = Try(Await.result(deleteModelHistoryAsync(ModelHistoryID), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Deletes a model history / workspace, given its ID asynchronously
+   * 
+   *
+   * @param ModelHistoryID the GUID of the model history / workspace to delete 
+   * @return Future(InlineResponse200)
+   */
+  def deleteModelHistoryAsync(ModelHistoryID: String): Future[InlineResponse200] = {
+      helper.deleteModelHistory(ModelHistoryID)
+  }
+
+  /**
+   * Deletes a model instance, given its ID
+   * 
+   *
+   * @param ModelInstanceID GUID of the model instance to delete. 
+   * @return void
+   */
+  def deleteModelInstance(ModelInstanceID: String) = {
+    val await = Try(Await.result(deleteModelInstanceAsync(ModelInstanceID), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Deletes a model instance, given its ID asynchronously
+   * 
+   *
+   * @param ModelInstanceID GUID of the model instance to delete. 
+   * @return Future(void)
+   */
+  def deleteModelInstanceAsync(ModelInstanceID: String) = {
+      helper.deleteModelInstance(ModelInstanceID)
+  }
+
+  /**
    * Deploy a model in a deployment group.
    * 
    *
    * @param DeploymentId ID deployment group 
-   * @param Body the deployment request 
-   * @return Any
+   * @param Body the model import request 
+   * @return ModelEntity
    */
-  def deployModel(DeploymentId: String, Body: DeployModel): Option[Any] = {
+  def deployModel(DeploymentId: String, Body: ImportModelRequest): Option[ModelEntity] = {
     val await = Try(Await.result(deployModelAsync(DeploymentId, Body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -204,10 +572,10 @@ class DefaultApi(
    * 
    *
    * @param DeploymentId ID deployment group 
-   * @param Body the deployment request 
-   * @return Future(Any)
+   * @param Body the model import request 
+   * @return Future(ModelEntity)
    */
-  def deployModelAsync(DeploymentId: String, Body: DeployModel): Future[Any] = {
+  def deployModelAsync(DeploymentId: String, Body: ImportModelRequest): Future[ModelEntity] = {
       helper.deployModel(DeploymentId, Body)
   }
 
@@ -216,9 +584,9 @@ class DefaultApi(
    * 
    *
    * @param Body the deployment request 
-   * @return Deployment
+   * @return DeploymentResponse
    */
-  def deploymentCreate(Body: NewDeployment): Option[Deployment] = {
+  def deploymentCreate(Body: CreateDeploymentRequest): Option[DeploymentResponse] = {
     val await = Try(Await.result(deploymentCreateAsync(Body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -231,10 +599,414 @@ class DefaultApi(
    * 
    *
    * @param Body the deployment request 
-   * @return Future(Deployment)
+   * @return Future(DeploymentResponse)
    */
-  def deploymentCreateAsync(Body: NewDeployment): Future[Deployment] = {
+  def deploymentCreateAsync(Body: CreateDeploymentRequest): Future[DeploymentResponse] = {
       helper.deploymentCreate(Body)
+  }
+
+  /**
+   * Delete a deployment by id
+   * 
+   *
+   * @param DeploymentId Id of the deployment group 
+   * @return InlineResponse200
+   */
+  def deploymentDelete(DeploymentId: String): Option[InlineResponse200] = {
+    val await = Try(Await.result(deploymentDeleteAsync(DeploymentId), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Delete a deployment by id asynchronously
+   * 
+   *
+   * @param DeploymentId Id of the deployment group 
+   * @return Future(InlineResponse200)
+   */
+  def deploymentDeleteAsync(DeploymentId: String): Future[InlineResponse200] = {
+      helper.deploymentDelete(DeploymentId)
+  }
+
+  /**
+   * Get a deployment details by id
+   * 
+   *
+   * @param DeploymentId Id of the deployment group 
+   * @return DeploymentResponse
+   */
+  def deploymentGet(DeploymentId: String): Option[DeploymentResponse] = {
+    val await = Try(Await.result(deploymentGetAsync(DeploymentId), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get a deployment details by id asynchronously
+   * 
+   *
+   * @param DeploymentId Id of the deployment group 
+   * @return Future(DeploymentResponse)
+   */
+  def deploymentGetAsync(DeploymentId: String): Future[DeploymentResponse] = {
+      helper.deploymentGet(DeploymentId)
+  }
+
+  /**
+   * Get a list of deployments
+   * 
+   *
+   * @return List[DeploymentResponse]
+   */
+  def deployments(): Option[List[DeploymentResponse]] = {
+    val await = Try(Await.result(deploymentsAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get a list of deployments asynchronously
+   * 
+   *
+   * @return Future(List[DeploymentResponse])
+   */
+  def deploymentsAsync(): Future[List[DeploymentResponse]] = {
+      helper.deployments()
+  }
+
+  /**
+   * Detect the objects, given a (input) prediction request
+   * 
+   *
+   * @param Id the GUID for mapping the results in the detections 
+   * @param NeedsPreprocessing (true) if the image needs preprocessing 
+   * @param Threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
+   * @param ImageFile the image file to detect objects from 
+   * @param DeploymentName Name of the deployment group 
+   * @param ModelName ID or name of the deployed model 
+   * @return DetectionResult
+   */
+  def detectobjects(Id: String, NeedsPreprocessing: Boolean, Threshold: Float, ImageFile: File, DeploymentName: String, ModelName: String): Option[DetectionResult] = {
+    val await = Try(Await.result(detectobjectsAsync(Id, NeedsPreprocessing, Threshold, ImageFile, DeploymentName, ModelName), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Detect the objects, given a (input) prediction request asynchronously
+   * 
+   *
+   * @param Id the GUID for mapping the results in the detections 
+   * @param NeedsPreprocessing (true) if the image needs preprocessing 
+   * @param Threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
+   * @param ImageFile the image file to detect objects from 
+   * @param DeploymentName Name of the deployment group 
+   * @param ModelName ID or name of the deployed model 
+   * @return Future(DetectionResult)
+   */
+  def detectobjectsAsync(Id: String, NeedsPreprocessing: Boolean, Threshold: Float, ImageFile: File, DeploymentName: String, ModelName: String): Future[DetectionResult] = {
+      helper.detectobjects(Id, NeedsPreprocessing, Threshold, ImageFile, DeploymentName, ModelName)
+  }
+
+  /**
+   * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+   * 
+   *
+   * @param BestModel Object encapsulating the model ids, eval type and column metric name 
+   * @return ModelInstanceEntity
+   */
+  def getBestModelAmongModelIds(BestModel: BestModel): Option[ModelInstanceEntity] = {
+    val await = Try(Await.result(getBestModelAmongModelIdsAsync(BestModel), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Gets the best model among the given model instance IDs, based on the evaluation type and column metric asynchronously
+   * 
+   *
+   * @param BestModel Object encapsulating the model ids, eval type and column metric name 
+   * @return Future(ModelInstanceEntity)
+   */
+  def getBestModelAmongModelIdsAsync(BestModel: BestModel): Future[ModelInstanceEntity] = {
+      helper.getBestModelAmongModelIds(BestModel)
+  }
+
+  /**
+   * Gets the list of evaluation results entity, given a model instance ID
+   * 
+   *
+   * @param ModelInstanceID GUID of the model instance to get evaluation results for. 
+   * @return List[EvaluationResultsEntity]
+   */
+  def getEvaluationForModelID(ModelInstanceID: String): Option[List[EvaluationResultsEntity]] = {
+    val await = Try(Await.result(getEvaluationForModelIDAsync(ModelInstanceID), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Gets the list of evaluation results entity, given a model instance ID asynchronously
+   * 
+   *
+   * @param ModelInstanceID GUID of the model instance to get evaluation results for. 
+   * @return Future(List[EvaluationResultsEntity])
+   */
+  def getEvaluationForModelIDAsync(ModelInstanceID: String): Future[List[EvaluationResultsEntity]] = {
+      helper.getEvaluationForModelID(ModelInstanceID)
+  }
+
+  /**
+   * Gets all the examples for a minibatch ID
+   * 
+   *
+   * @param MinibatchId The GUID of the minibatch 
+   * @return List[ExampleEntity]
+   */
+  def getExamplesForMinibatch(MinibatchId: String): Option[List[ExampleEntity]] = {
+    val await = Try(Await.result(getExamplesForMinibatchAsync(MinibatchId), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Gets all the examples for a minibatch ID asynchronously
+   * 
+   *
+   * @param MinibatchId The GUID of the minibatch 
+   * @return Future(List[ExampleEntity])
+   */
+  def getExamplesForMinibatchAsync(MinibatchId: String): Future[List[ExampleEntity]] = {
+      helper.getExamplesForMinibatch(MinibatchId)
+  }
+
+  /**
+   * Obtain an experiment&#39;s details, given its ID
+   * 
+   *
+   * @param ExperimentID the GUID of the experiment to obtain 
+   * @return ExperimentEntity
+   */
+  def getExperiment(ExperimentID: String): Option[ExperimentEntity] = {
+    val await = Try(Await.result(getExperimentAsync(ExperimentID), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Obtain an experiment&#39;s details, given its ID asynchronously
+   * 
+   *
+   * @param ExperimentID the GUID of the experiment to obtain 
+   * @return Future(ExperimentEntity)
+   */
+  def getExperimentAsync(ExperimentID: String): Future[ExperimentEntity] = {
+      helper.getExperiment(ExperimentID)
+  }
+
+  /**
+   * Obtain all experiments for a model history / workspace
+   * 
+   *
+   * @param ModelHistoryID the GUID of the model history / workspace 
+   * @return ExperimentEntity
+   */
+  def getExperimentsForModelHistory(ModelHistoryID: String): Option[ExperimentEntity] = {
+    val await = Try(Await.result(getExperimentsForModelHistoryAsync(ModelHistoryID), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Obtain all experiments for a model history / workspace asynchronously
+   * 
+   *
+   * @param ModelHistoryID the GUID of the model history / workspace 
+   * @return Future(ExperimentEntity)
+   */
+  def getExperimentsForModelHistoryAsync(ModelHistoryID: String): Future[ExperimentEntity] = {
+      helper.getExperimentsForModelHistory(ModelHistoryID)
+  }
+
+  /**
+   * Gets a minibatch for the model
+   * 
+   *
+   * @param MinibatchId The GUID of the minibatch 
+   * @return MinibatchEntity
+   */
+  def getMinibatch(MinibatchId: String): Option[MinibatchEntity] = {
+    val await = Try(Await.result(getMinibatchAsync(MinibatchId), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Gets a minibatch for the model asynchronously
+   * 
+   *
+   * @param MinibatchId The GUID of the minibatch 
+   * @return Future(MinibatchEntity)
+   */
+  def getMinibatchAsync(MinibatchId: String): Future[MinibatchEntity] = {
+      helper.getMinibatch(MinibatchId)
+  }
+
+  /**
+   * Gets a model history, given its ID
+   * 
+   *
+   * @param ModelHistoryID GUID of the model history to get information of. 
+   * @return ModelHistoryEntity
+   */
+  def getModelHistory(ModelHistoryID: String): Option[ModelHistoryEntity] = {
+    val await = Try(Await.result(getModelHistoryAsync(ModelHistoryID), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Gets a model history, given its ID asynchronously
+   * 
+   *
+   * @param ModelHistoryID GUID of the model history to get information of. 
+   * @return Future(ModelHistoryEntity)
+   */
+  def getModelHistoryAsync(ModelHistoryID: String): Future[ModelHistoryEntity] = {
+      helper.getModelHistory(ModelHistoryID)
+  }
+
+  /**
+   * Gets a model instance, given its ID
+   * 
+   *
+   * @param ModelInstanceID GUID of the model instance to get information of. 
+   * @return ModelInstanceEntity
+   */
+  def getModelInstance(ModelInstanceID: String): Option[ModelInstanceEntity] = {
+    val await = Try(Await.result(getModelInstanceAsync(ModelInstanceID), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Gets a model instance, given its ID asynchronously
+   * 
+   *
+   * @param ModelInstanceID GUID of the model instance to get information of. 
+   * @return Future(ModelInstanceEntity)
+   */
+  def getModelInstanceAsync(ModelInstanceID: String): Future[ModelInstanceEntity] = {
+      helper.getModelInstance(ModelInstanceID)
+  }
+
+  /**
+   * Obtain a list of all the models for an experiment
+   * 
+   *
+   * @param ExperimentID the GUID of the experiment 
+   * @return List[ModelInstanceEntity]
+   */
+  def getModelsForExperiment(ExperimentID: String): Option[List[ModelInstanceEntity]] = {
+    val await = Try(Await.result(getModelsForExperimentAsync(ExperimentID), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Obtain a list of all the models for an experiment asynchronously
+   * 
+   *
+   * @param ExperimentID the GUID of the experiment 
+   * @return Future(List[ModelInstanceEntity])
+   */
+  def getModelsForExperimentAsync(ExperimentID: String): Future[List[ModelInstanceEntity]] = {
+      helper.getModelsForExperiment(ExperimentID)
+  }
+
+  /**
+   * Retrieves the image transform process JSON string
+   * 
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @return ImageTransformProcess
+   */
+  def imagetransformprocessGet(DeploymentName: String, ImageTransformName: String): Option[ImageTransformProcess] = {
+    val await = Try(Await.result(imagetransformprocessGetAsync(DeploymentName, ImageTransformName), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Retrieves the image transform process JSON string asynchronously
+   * 
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @return Future(ImageTransformProcess)
+   */
+  def imagetransformprocessGetAsync(DeploymentName: String, ImageTransformName: String): Future[ImageTransformProcess] = {
+      helper.imagetransformprocessGet(DeploymentName, ImageTransformName)
+  }
+
+  /**
+   * Sets the image transform process through the provided JSON string
+   * 
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @param Body The image transform process JSON 
+   * @return ImageTransformProcess
+   */
+  def imagetransformprocessPost(DeploymentName: String, ImageTransformName: String, Body: ImageTransformProcess): Option[ImageTransformProcess] = {
+    val await = Try(Await.result(imagetransformprocessPostAsync(DeploymentName, ImageTransformName, Body), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Sets the image transform process through the provided JSON string asynchronously
+   * 
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @param Body The image transform process JSON 
+   * @return Future(ImageTransformProcess)
+   */
+  def imagetransformprocessPostAsync(DeploymentName: String, ImageTransformName: String, Body: ImageTransformProcess): Future[ImageTransformProcess] = {
+      helper.imagetransformprocessPost(DeploymentName, ImageTransformName, Body)
   }
 
   /**
@@ -265,6 +1037,90 @@ class DefaultApi(
    */
   def jsonarrayAsync(Body: Prediction, DeploymentName: String, ModelName: String): Future[JsonArrayResponse] = {
       helper.jsonarray(Body, DeploymentName, ModelName)
+  }
+
+  /**
+   * Runs knn on the given index with the given k
+   * Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param KnnName ID or name of the deployed knn 
+   * @param Body  
+   * @return NearestNeighborsResults
+   */
+  def knn(DeploymentName: String, KnnName: String, Body: NearestNeighborRequest): Option[NearestNeighborsResults] = {
+    val await = Try(Await.result(knnAsync(DeploymentName, KnnName, Body), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Runs knn on the given index with the given k asynchronously
+   * Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param KnnName ID or name of the deployed knn 
+   * @param Body  
+   * @return Future(NearestNeighborsResults)
+   */
+  def knnAsync(DeploymentName: String, KnnName: String, Body: NearestNeighborRequest): Future[NearestNeighborsResults] = {
+      helper.knn(DeploymentName, KnnName, Body)
+  }
+
+  /**
+   * Run a k nearest neighbors search on a NEW data point
+   * 
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param KnnName ID or name of the deployed knn 
+   * @param Body The input NDArray 
+   * @return NearestNeighborsResults
+   */
+  def knnnew(DeploymentName: String, KnnName: String, Body: Base64NDArrayBodyKNN): Option[NearestNeighborsResults] = {
+    val await = Try(Await.result(knnnewAsync(DeploymentName, KnnName, Body), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Run a k nearest neighbors search on a NEW data point asynchronously
+   * 
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param KnnName ID or name of the deployed knn 
+   * @param Body The input NDArray 
+   * @return Future(NearestNeighborsResults)
+   */
+  def knnnewAsync(DeploymentName: String, KnnName: String, Body: Base64NDArrayBodyKNN): Future[NearestNeighborsResults] = {
+      helper.knnnew(DeploymentName, KnnName, Body)
+  }
+
+  /**
+   * List all of the experiments in every model history / workspace
+   * 
+   *
+   * @return List[ExperimentEntity]
+   */
+  def listAllExperiments(): Option[List[ExperimentEntity]] = {
+    val await = Try(Await.result(listAllExperimentsAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * List all of the experiments in every model history / workspace asynchronously
+   * 
+   *
+   * @return Future(List[ExperimentEntity])
+   */
+  def listAllExperimentsAsync(): Future[List[ExperimentEntity]] = {
+      helper.listAllExperiments()
   }
 
   /**
@@ -349,6 +1205,120 @@ class DefaultApi(
    */
   def logsAsync(Body: LogRequest, DeploymentName: String, ModelName: String): Future[LogBatch] = {
       helper.logs(Body, DeploymentName, ModelName)
+  }
+
+  /**
+   * this method can be used to get the meta data for the current model which set to the server
+   * 
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ModelName ID or name of the deployed model 
+   * @return MetaData
+   */
+  def metaGet(DeploymentName: String, ModelName: String): Option[MetaData] = {
+    val await = Try(Await.result(metaGetAsync(DeploymentName, ModelName), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * this method can be used to get the meta data for the current model which set to the server asynchronously
+   * 
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ModelName ID or name of the deployed model 
+   * @return Future(MetaData)
+   */
+  def metaGetAsync(DeploymentName: String, ModelName: String): Future[MetaData] = {
+      helper.metaGet(DeploymentName, ModelName)
+  }
+
+  /**
+   * This method can be used to set meta data for the current model which is set to the server
+   * 
+   *
+   * @param Body the meta data object 
+   * @param DeploymentName Name of the deployment group 
+   * @param ModelName ID or name of the deployed model 
+   * @return MetaData
+   */
+  def metaPost(Body: MetaData, DeploymentName: String, ModelName: String): Option[MetaData] = {
+    val await = Try(Await.result(metaPostAsync(Body, DeploymentName, ModelName), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * This method can be used to set meta data for the current model which is set to the server asynchronously
+   * 
+   *
+   * @param Body the meta data object 
+   * @param DeploymentName Name of the deployment group 
+   * @param ModelName ID or name of the deployed model 
+   * @return Future(MetaData)
+   */
+  def metaPostAsync(Body: MetaData, DeploymentName: String, ModelName: String): Future[MetaData] = {
+      helper.metaPost(Body, DeploymentName, ModelName)
+  }
+
+  /**
+   * Modify the state (start/stop) of a deployed model
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @param ModelId the id of the deployed model 
+   * @param Body the model state object 
+   * @return ModelEntity
+   */
+  def modelStateChange(DeploymentId: String, ModelId: String, Body: SetState): Option[ModelEntity] = {
+    val await = Try(Await.result(modelStateChangeAsync(DeploymentId, ModelId, Body), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Modify the state (start/stop) of a deployed model asynchronously
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @param ModelId the id of the deployed model 
+   * @param Body the model state object 
+   * @return Future(ModelEntity)
+   */
+  def modelStateChangeAsync(DeploymentId: String, ModelId: String, Body: SetState): Future[ModelEntity] = {
+      helper.modelStateChange(DeploymentId, ModelId, Body)
+  }
+
+  /**
+   * Retrieve a list of all the deployed models given a deployment id
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @return List[ModelEntity]
+   */
+  def models(DeploymentId: String): Option[List[ModelEntity]] = {
+    val await = Try(Await.result(modelsAsync(DeploymentId), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Retrieve a list of all the deployed models given a deployment id asynchronously
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @return Future(List[ModelEntity])
+   */
+  def modelsAsync(DeploymentId: String): Future[List[ModelEntity]] = {
+      helper.models(DeploymentId)
   }
 
   /**
@@ -439,6 +1409,36 @@ class DefaultApi(
    */
   def multiclassifyAsync(Body: Prediction, DeploymentName: String, ModelName: String): Future[MultiClassClassificationResult] = {
       helper.multiclassify(Body, DeploymentName, ModelName)
+  }
+
+  /**
+   * Get the output from the network, based on the given INDArray[] input
+   * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+   *
+   * @param Body The multiple input arrays with mask inputs to run inferences on 
+   * @param DeploymentName Name of the deployment group 
+   * @param ModelName ID or name of the deployed model 
+   * @return MultiPredictResponse
+   */
+  def multipredict(Body: MultiPredictRequest, DeploymentName: String, ModelName: String): Option[MultiPredictResponse] = {
+    val await = Try(Await.result(multipredictAsync(Body, DeploymentName, ModelName), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get the output from the network, based on the given INDArray[] input asynchronously
+   * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+   *
+   * @param Body The multiple input arrays with mask inputs to run inferences on 
+   * @param DeploymentName Name of the deployment group 
+   * @param ModelName ID or name of the deployed model 
+   * @return Future(MultiPredictResponse)
+   */
+  def multipredictAsync(Body: MultiPredictRequest, DeploymentName: String, ModelName: String): Future[MultiPredictResponse] = {
+      helper.multipredict(Body, DeploymentName, ModelName)
   }
 
   /**
@@ -562,6 +1562,416 @@ class DefaultApi(
   }
 
   /**
+   * Reimport a model to a previous deployed model in a deployment
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @param ModelId the id of the deployed model 
+   * @param Body the deployment request 
+   * @return ModelEntity
+   */
+  def reimportModel(DeploymentId: String, ModelId: String, Body: ImportModelRequest): Option[ModelEntity] = {
+    val await = Try(Await.result(reimportModelAsync(DeploymentId, ModelId, Body), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Reimport a model to a previous deployed model in a deployment asynchronously
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @param ModelId the id of the deployed model 
+   * @param Body the deployment request 
+   * @return Future(ModelEntity)
+   */
+  def reimportModelAsync(DeploymentId: String, ModelId: String, Body: ImportModelRequest): Future[ModelEntity] = {
+      helper.reimportModel(DeploymentId, ModelId, Body)
+  }
+
+  /**
+   * Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+   * Takes a batch of SingleCSVRecord object and transforms it into the desired format
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @param BatchCSVRecord The input batch of record arrays (optional)
+   * @return BatchCSVRecord
+   */
+  def transformCsv(DeploymentName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Option[BatchCSVRecord] = {
+    val await = Try(Await.result(transformCsvAsync(DeploymentName, TransformName, BatchCSVRecord), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord asynchronously
+   * Takes a batch of SingleCSVRecord object and transforms it into the desired format
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @param BatchCSVRecord The input batch of record arrays (optional)
+   * @return Future(BatchCSVRecord)
+   */
+  def transformCsvAsync(DeploymentName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Future[BatchCSVRecord] = {
+      helper.transformCsv(DeploymentName, TransformName, BatchCSVRecord)
+  }
+
+  /**
+   * Takes a batch input arrays and transforms it
+   * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @param BatchCSVRecord The input batch of record arrays (optional)
+   * @return Base64NDArrayBody
+   */
+  def transformarrayCsv(DeploymentName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformarrayCsvAsync(DeploymentName, TransformName, BatchCSVRecord), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Takes a batch input arrays and transforms it asynchronously
+   * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @param BatchCSVRecord The input batch of record arrays (optional)
+   * @return Future(Base64NDArrayBody)
+   */
+  def transformarrayCsvAsync(DeploymentName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Future[Base64NDArrayBody] = {
+      helper.transformarrayCsv(DeploymentName, TransformName, BatchCSVRecord)
+  }
+
+  /**
+   * Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+   * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @param BatchImageRecord The input batch of record arrays 
+   * @return Base64NDArrayBody
+   */
+  def transformarrayImage(DeploymentName: String, ImageTransformName: String, BatchImageRecord: BatchImageRecord): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformarrayImageAsync(DeploymentName, ImageTransformName, BatchImageRecord), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Takes a batch of images uri and transforms it and returns Base64NDArrayBody asynchronously
+   * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @param BatchImageRecord The input batch of record arrays 
+   * @return Future(Base64NDArrayBody)
+   */
+  def transformarrayImageAsync(DeploymentName: String, ImageTransformName: String, BatchImageRecord: BatchImageRecord): Future[Base64NDArrayBody] = {
+      helper.transformarrayImage(DeploymentName, ImageTransformName, BatchImageRecord)
+  }
+
+  /**
+   * Takes multiple multipart image file to transform and returns Base64NDArrayBody
+   * Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @param Files The image files to upload 
+   * @return Base64NDArrayBody
+   */
+  def transformimage(DeploymentName: String, ImageTransformName: String, Files: List[Array[Byte]]): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformimageAsync(DeploymentName, ImageTransformName, Files), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Takes multiple multipart image file to transform and returns Base64NDArrayBody asynchronously
+   * Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @param Files The image files to upload 
+   * @return Future(Base64NDArrayBody)
+   */
+  def transformimageAsync(DeploymentName: String, ImageTransformName: String, Files: List[Array[Byte]]): Future[Base64NDArrayBody] = {
+      helper.transformimage(DeploymentName, ImageTransformName, Files)
+  }
+
+  /**
+   * Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+   * Takes a SingleCSVRecord object and transforms it into the desired format
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @param SingleCSVRecord The input record array (optional)
+   * @return SingleCSVRecord
+   */
+  def transformincrementalCsv(DeploymentName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Option[SingleCSVRecord] = {
+    val await = Try(Await.result(transformincrementalCsvAsync(DeploymentName, TransformName, SingleCSVRecord), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord asynchronously
+   * Takes a SingleCSVRecord object and transforms it into the desired format
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @param SingleCSVRecord The input record array (optional)
+   * @return Future(SingleCSVRecord)
+   */
+  def transformincrementalCsvAsync(DeploymentName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Future[SingleCSVRecord] = {
+      helper.transformincrementalCsv(DeploymentName, TransformName, SingleCSVRecord)
+  }
+
+  /**
+   * Same as /transformincremental but returns Base64NDArrayBody
+   * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @param SingleCSVRecord The input record array (optional)
+   * @return Base64NDArrayBody
+   */
+  def transformincrementalarrayCsv(DeploymentName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformincrementalarrayCsvAsync(DeploymentName, TransformName, SingleCSVRecord), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Same as /transformincremental but returns Base64NDArrayBody asynchronously
+   * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @param SingleCSVRecord The input record array (optional)
+   * @return Future(Base64NDArrayBody)
+   */
+  def transformincrementalarrayCsvAsync(DeploymentName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Future[Base64NDArrayBody] = {
+      helper.transformincrementalarrayCsv(DeploymentName, TransformName, SingleCSVRecord)
+  }
+
+  /**
+   * Takes SingleImageRecord to transform and returns Base64NDArrayBody
+   * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @param SingleImageRecord The input record array 
+   * @return Base64NDArrayBody
+   */
+  def transformincrementalarrayImage(DeploymentName: String, ImageTransformName: String, SingleImageRecord: SingleImageRecord): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformincrementalarrayImageAsync(DeploymentName, ImageTransformName, SingleImageRecord), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Takes SingleImageRecord to transform and returns Base64NDArrayBody asynchronously
+   * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @param SingleImageRecord The input record array 
+   * @return Future(Base64NDArrayBody)
+   */
+  def transformincrementalarrayImageAsync(DeploymentName: String, ImageTransformName: String, SingleImageRecord: SingleImageRecord): Future[Base64NDArrayBody] = {
+      helper.transformincrementalarrayImage(DeploymentName, ImageTransformName, SingleImageRecord)
+  }
+
+  /**
+   * Takes a single multipart image file to transform and returns Base64NDArrayBody
+   * Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @param File The image file to upload 
+   * @return Base64NDArrayBody
+   */
+  def transformincrementalimage(DeploymentName: String, ImageTransformName: String, File: File): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformincrementalimageAsync(DeploymentName, ImageTransformName, File), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Takes a single multipart image file to transform and returns Base64NDArrayBody asynchronously
+   * Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param ImageTransformName ID or name of the deployed image transform 
+   * @param File The image file to upload 
+   * @return Future(Base64NDArrayBody)
+   */
+  def transformincrementalimageAsync(DeploymentName: String, ImageTransformName: String, File: File): Future[Base64NDArrayBody] = {
+      helper.transformincrementalimage(DeploymentName, ImageTransformName, File)
+  }
+
+  /**
+   * Gets the JSON string of the deployed transform process
+   * Retrieves the JSON string of the deployed transform process 
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @return TransformProcess
+   */
+  def transformprocessGet(DeploymentName: String, TransformName: String): Option[TransformProcess] = {
+    val await = Try(Await.result(transformprocessGetAsync(DeploymentName, TransformName), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Gets the JSON string of the deployed transform process asynchronously
+   * Retrieves the JSON string of the deployed transform process 
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @return Future(TransformProcess)
+   */
+  def transformprocessGetAsync(DeploymentName: String, TransformName: String): Future[TransformProcess] = {
+      helper.transformprocessGet(DeploymentName, TransformName)
+  }
+
+  /**
+   * Sets the deployed transform process through the provided JSON string
+   * Sets the transform process with the provided JSON string
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @param TransformProcess The transform process to set (optional)
+   * @return void
+   */
+  def transformprocessPost(DeploymentName: String, TransformName: String, TransformProcess: Option[TransformProcess] = None) = {
+    val await = Try(Await.result(transformprocessPostAsync(DeploymentName, TransformName, TransformProcess), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Sets the deployed transform process through the provided JSON string asynchronously
+   * Sets the transform process with the provided JSON string
+   *
+   * @param DeploymentName Name of the deployment group 
+   * @param TransformName ID or name of the deployed transform 
+   * @param TransformProcess The transform process to set (optional)
+   * @return Future(void)
+   */
+  def transformprocessPostAsync(DeploymentName: String, TransformName: String, TransformProcess: Option[TransformProcess] = None) = {
+      helper.transformprocessPost(DeploymentName, TransformName, TransformProcess)
+  }
+
+  /**
+   * Updates the best model for an experiment
+   * 
+   *
+   * @param UpdateBestModel Model encapsulating the experiment id to update and the best model id. 
+   * @return ExperimentEntity
+   */
+  def updateBestModelForExperiment(UpdateBestModel: UpdateBestModel): Option[ExperimentEntity] = {
+    val await = Try(Await.result(updateBestModelForExperimentAsync(UpdateBestModel), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Updates the best model for an experiment asynchronously
+   * 
+   *
+   * @param UpdateBestModel Model encapsulating the experiment id to update and the best model id. 
+   * @return Future(ExperimentEntity)
+   */
+  def updateBestModelForExperimentAsync(UpdateBestModel: UpdateBestModel): Future[ExperimentEntity] = {
+      helper.updateBestModelForExperiment(UpdateBestModel)
+  }
+
+  /**
+   * Updates an experiment, given an experiment entity
+   * 
+   *
+   * @param ExperimentID the GUID of the experiment to update 
+   * @param ExperimentEntity The experiment entity to update with 
+   * @return ExperimentEntity
+   */
+  def updateExperiment(ExperimentID: String, ExperimentEntity: ExperimentEntity): Option[ExperimentEntity] = {
+    val await = Try(Await.result(updateExperimentAsync(ExperimentID, ExperimentEntity), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Updates an experiment, given an experiment entity asynchronously
+   * 
+   *
+   * @param ExperimentID the GUID of the experiment to update 
+   * @param ExperimentEntity The experiment entity to update with 
+   * @return Future(ExperimentEntity)
+   */
+  def updateExperimentAsync(ExperimentID: String, ExperimentEntity: ExperimentEntity): Future[ExperimentEntity] = {
+      helper.updateExperiment(ExperimentID, ExperimentEntity)
+  }
+
+  /**
+   * Update a model history / workspace
+   * 
+   *
+   * @param ModelHistoryID the GUID of the model history / workspace to update 
+   * @param UpdateModelHistoryRequest The model history request object 
+   * @return ModelHistoryEntity
+   */
+  def updateModelHistory(ModelHistoryID: String, UpdateModelHistoryRequest: AddModelHistoryRequest): Option[ModelHistoryEntity] = {
+    val await = Try(Await.result(updateModelHistoryAsync(ModelHistoryID, UpdateModelHistoryRequest), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Update a model history / workspace asynchronously
+   * 
+   *
+   * @param ModelHistoryID the GUID of the model history / workspace to update 
+   * @param UpdateModelHistoryRequest The model history request object 
+   * @return Future(ModelHistoryEntity)
+   */
+  def updateModelHistoryAsync(ModelHistoryID: String, UpdateModelHistoryRequest: AddModelHistoryRequest): Future[ModelHistoryEntity] = {
+      helper.updateModelHistory(ModelHistoryID, UpdateModelHistoryRequest)
+  }
+
+  /**
    * Upload a model file to SKIL for import.
    * 
    *
@@ -590,6 +2000,134 @@ class DefaultApi(
 }
 
 class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
+
+  def addEvaluationResult(EvaluationResultsEntity: EvaluationResultsEntity)(implicit reader: ClientResponseReader[EvaluationResultsEntity], writer: RequestWriter[EvaluationResultsEntity]): Future[EvaluationResultsEntity] = {
+    // create path and map variables
+    val path = (addFmt("/model/revisions/evaluations/"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (EvaluationResultsEntity == null) throw new Exception("Missing required parameter 'EvaluationResultsEntity' when calling DefaultApi->addEvaluationResult")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(EvaluationResultsEntity))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def addExampleForBatch(AddExampleRequest: AddExampleRequest)(implicit reader: ClientResponseReader[AddExampleRequest], writer: RequestWriter[AddExampleRequest]): Future[AddExampleRequest] = {
+    // create path and map variables
+    val path = (addFmt("/model/exampleForBatch"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (AddExampleRequest == null) throw new Exception("Missing required parameter 'AddExampleRequest' when calling DefaultApi->addExampleForBatch")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(AddExampleRequest))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def addExampleToMinibatch(ExampleEntity: ExampleEntity)(implicit reader: ClientResponseReader[ExampleEntity], writer: RequestWriter[ExampleEntity]): Future[ExampleEntity] = {
+    // create path and map variables
+    val path = (addFmt("/model/example"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ExampleEntity == null) throw new Exception("Missing required parameter 'ExampleEntity' when calling DefaultApi->addExampleToMinibatch")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(ExampleEntity))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def addExperiment(ExperimentEntity: ExperimentEntity)(implicit reader: ClientResponseReader[ExperimentEntity], writer: RequestWriter[ExperimentEntity]): Future[ExperimentEntity] = {
+    // create path and map variables
+    val path = (addFmt("/experiment"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ExperimentEntity == null) throw new Exception("Missing required parameter 'ExperimentEntity' when calling DefaultApi->addExperiment")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(ExperimentEntity))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def addMinibatch(MinibatchEntity: MinibatchEntity)(implicit reader: ClientResponseReader[MinibatchEntity], writer: RequestWriter[MinibatchEntity]): Future[MinibatchEntity] = {
+    // create path and map variables
+    val path = (addFmt("/model/minibatch"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (MinibatchEntity == null) throw new Exception("Missing required parameter 'MinibatchEntity' when calling DefaultApi->addMinibatch")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(MinibatchEntity))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def addModelHistory(AddModelHistoryRequest: AddModelHistoryRequest)(implicit reader: ClientResponseReader[ModelHistoryEntity], writer: RequestWriter[AddModelHistoryRequest]): Future[ModelHistoryEntity] = {
+    // create path and map variables
+    val path = (addFmt("/modelhistory"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (AddModelHistoryRequest == null) throw new Exception("Missing required parameter 'AddModelHistoryRequest' when calling DefaultApi->addModelHistory")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(AddModelHistoryRequest))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def addModelInstance(ModelInstanceEntity: ModelInstanceEntity)(implicit reader: ClientResponseReader[ModelInstanceEntity], writer: RequestWriter[ModelInstanceEntity]): Future[ModelInstanceEntity] = {
+    // create path and map variables
+    val path = (addFmt("/model"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelInstanceEntity == null) throw new Exception("Missing required parameter 'ModelInstanceEntity' when calling DefaultApi->addModelInstance")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(ModelInstanceEntity))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def aggregateModelResults(AggregatePrediction: AggregatePrediction)(implicit reader: ClientResponseReader[EvaluationResultsEntity], writer: RequestWriter[AggregatePrediction]): Future[EvaluationResultsEntity] = {
+    // create path and map variables
+    val path = (addFmt("/model/aggregateresults"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (AggregatePrediction == null) throw new Exception("Missing required parameter 'AggregatePrediction' when calling DefaultApi->aggregateModelResults")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(AggregatePrediction))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
 
   def classify(Body: Prediction,
     DeploymentName: String,
@@ -663,8 +2201,100 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
+  def createModelHistory(ModelHistoryEntity: ModelHistoryEntity)(implicit reader: ClientResponseReader[ModelHistoryEntity], writer: RequestWriter[ModelHistoryEntity]): Future[ModelHistoryEntity] = {
+    // create path and map variables
+    val path = (addFmt("/model/revisions"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryEntity == null) throw new Exception("Missing required parameter 'ModelHistoryEntity' when calling DefaultApi->createModelHistory")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(ModelHistoryEntity))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def deleteExperiment(ExperimentID: String)(implicit reader: ClientResponseReader[InlineResponse200]): Future[InlineResponse200] = {
+    // create path and map variables
+    val path = (addFmt("/experiment/{experimentID}")
+      replaceAll("\\{" + "experimentID" + "\\}", ExperimentID.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ExperimentID == null) throw new Exception("Missing required parameter 'ExperimentID' when calling DefaultApi->deleteExperiment")
+
+
+    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def deleteModel(DeploymentId: String,
+    ModelId: String)(implicit reader: ClientResponseReader[InlineResponse200]): Future[InlineResponse200] = {
+    // create path and map variables
+    val path = (addFmt("/deployment/{deploymentId}/model/{modelId}")
+      replaceAll("\\{" + "deploymentId" + "\\}", DeploymentId.toString)
+      replaceAll("\\{" + "modelId" + "\\}", ModelId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentId == null) throw new Exception("Missing required parameter 'DeploymentId' when calling DefaultApi->deleteModel")
+
+    if (ModelId == null) throw new Exception("Missing required parameter 'ModelId' when calling DefaultApi->deleteModel")
+
+
+    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def deleteModelHistory(ModelHistoryID: String)(implicit reader: ClientResponseReader[InlineResponse200]): Future[InlineResponse200] = {
+    // create path and map variables
+    val path = (addFmt("/modelhistory/{modelHistoryID}")
+      replaceAll("\\{" + "modelHistoryID" + "\\}", ModelHistoryID.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryID == null) throw new Exception("Missing required parameter 'ModelHistoryID' when calling DefaultApi->deleteModelHistory")
+
+
+    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def deleteModelInstance(ModelInstanceID: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/model/{modelInstanceID}")
+      replaceAll("\\{" + "modelInstanceID" + "\\}", ModelInstanceID.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelInstanceID == null) throw new Exception("Missing required parameter 'ModelInstanceID' when calling DefaultApi->deleteModelInstance")
+
+
+    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
   def deployModel(DeploymentId: String,
-    Body: DeployModel)(implicit reader: ClientResponseReader[Any], writer: RequestWriter[DeployModel]): Future[Any] = {
+    Body: ImportModelRequest)(implicit reader: ClientResponseReader[ModelEntity], writer: RequestWriter[ImportModelRequest]): Future[ModelEntity] = {
     // create path and map variables
     val path = (addFmt("/deployment/{deploymentId}/model")
       replaceAll("\\{" + "deploymentId" + "\\}", DeploymentId.toString))
@@ -683,7 +2313,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def deploymentCreate(Body: NewDeployment)(implicit reader: ClientResponseReader[Deployment], writer: RequestWriter[NewDeployment]): Future[Deployment] = {
+  def deploymentCreate(Body: CreateDeploymentRequest)(implicit reader: ClientResponseReader[DeploymentResponse], writer: RequestWriter[CreateDeploymentRequest]): Future[DeploymentResponse] = {
     // create path and map variables
     val path = (addFmt("/deployment"))
 
@@ -692,6 +2322,292 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->deploymentCreate")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def deploymentDelete(DeploymentId: String)(implicit reader: ClientResponseReader[InlineResponse200]): Future[InlineResponse200] = {
+    // create path and map variables
+    val path = (addFmt("/deployment/{deploymentId}")
+      replaceAll("\\{" + "deploymentId" + "\\}", DeploymentId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentId == null) throw new Exception("Missing required parameter 'DeploymentId' when calling DefaultApi->deploymentDelete")
+
+
+    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def deploymentGet(DeploymentId: String)(implicit reader: ClientResponseReader[DeploymentResponse]): Future[DeploymentResponse] = {
+    // create path and map variables
+    val path = (addFmt("/deployment/{deploymentId}")
+      replaceAll("\\{" + "deploymentId" + "\\}", DeploymentId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentId == null) throw new Exception("Missing required parameter 'DeploymentId' when calling DefaultApi->deploymentGet")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def deployments()(implicit reader: ClientResponseReader[List[DeploymentResponse]]): Future[List[DeploymentResponse]] = {
+    // create path and map variables
+    val path = (addFmt("/deployments"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def detectobjects(Id: String,
+    NeedsPreprocessing: Boolean,
+    Threshold: Float,
+    ImageFile: File,
+    DeploymentName: String,
+    ModelName: String)(implicit reader: ClientResponseReader[DetectionResult]): Future[DetectionResult] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/detectobjects")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (Id == null) throw new Exception("Missing required parameter 'Id' when calling DefaultApi->detectobjects")
+
+    if (ImageFile == null) throw new Exception("Missing required parameter 'ImageFile' when calling DefaultApi->detectobjects")
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->detectobjects")
+
+    if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->detectobjects")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getBestModelAmongModelIds(BestModel: BestModel)(implicit reader: ClientResponseReader[ModelInstanceEntity], writer: RequestWriter[BestModel]): Future[ModelInstanceEntity] = {
+    // create path and map variables
+    val path = (addFmt("/model/best"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (BestModel == null) throw new Exception("Missing required parameter 'BestModel' when calling DefaultApi->getBestModelAmongModelIds")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(BestModel))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getEvaluationForModelID(ModelInstanceID: String)(implicit reader: ClientResponseReader[List[EvaluationResultsEntity]]): Future[List[EvaluationResultsEntity]] = {
+    // create path and map variables
+    val path = (addFmt("/model/revisions/evaluations/{modelInstanceID}")
+      replaceAll("\\{" + "modelInstanceID" + "\\}", ModelInstanceID.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelInstanceID == null) throw new Exception("Missing required parameter 'ModelInstanceID' when calling DefaultApi->getEvaluationForModelID")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getExamplesForMinibatch(MinibatchId: String)(implicit reader: ClientResponseReader[List[ExampleEntity]]): Future[List[ExampleEntity]] = {
+    // create path and map variables
+    val path = (addFmt("/model/example/{minibatchId}")
+      replaceAll("\\{" + "minibatchId" + "\\}", MinibatchId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (MinibatchId == null) throw new Exception("Missing required parameter 'MinibatchId' when calling DefaultApi->getExamplesForMinibatch")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getExperiment(ExperimentID: String)(implicit reader: ClientResponseReader[ExperimentEntity]): Future[ExperimentEntity] = {
+    // create path and map variables
+    val path = (addFmt("/experiment/{experimentID}")
+      replaceAll("\\{" + "experimentID" + "\\}", ExperimentID.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ExperimentID == null) throw new Exception("Missing required parameter 'ExperimentID' when calling DefaultApi->getExperiment")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getExperimentsForModelHistory(ModelHistoryID: String)(implicit reader: ClientResponseReader[ExperimentEntity]): Future[ExperimentEntity] = {
+    // create path and map variables
+    val path = (addFmt("/experiments/{modelHistoryID}")
+      replaceAll("\\{" + "modelHistoryID" + "\\}", ModelHistoryID.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryID == null) throw new Exception("Missing required parameter 'ModelHistoryID' when calling DefaultApi->getExperimentsForModelHistory")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getMinibatch(MinibatchId: String)(implicit reader: ClientResponseReader[MinibatchEntity]): Future[MinibatchEntity] = {
+    // create path and map variables
+    val path = (addFmt("/model/minibatch/{minibatchId}")
+      replaceAll("\\{" + "minibatchId" + "\\}", MinibatchId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (MinibatchId == null) throw new Exception("Missing required parameter 'MinibatchId' when calling DefaultApi->getMinibatch")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getModelHistory(ModelHistoryID: String)(implicit reader: ClientResponseReader[ModelHistoryEntity]): Future[ModelHistoryEntity] = {
+    // create path and map variables
+    val path = (addFmt("/model/revision/{modelHistoryID}")
+      replaceAll("\\{" + "modelHistoryID" + "\\}", ModelHistoryID.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryID == null) throw new Exception("Missing required parameter 'ModelHistoryID' when calling DefaultApi->getModelHistory")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getModelInstance(ModelInstanceID: String)(implicit reader: ClientResponseReader[ModelInstanceEntity]): Future[ModelInstanceEntity] = {
+    // create path and map variables
+    val path = (addFmt("/model/{modelInstanceID}")
+      replaceAll("\\{" + "modelInstanceID" + "\\}", ModelInstanceID.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelInstanceID == null) throw new Exception("Missing required parameter 'ModelInstanceID' when calling DefaultApi->getModelInstance")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getModelsForExperiment(ExperimentID: String)(implicit reader: ClientResponseReader[List[ModelInstanceEntity]]): Future[List[ModelInstanceEntity]] = {
+    // create path and map variables
+    val path = (addFmt("/experiment/{experimentID}/models")
+      replaceAll("\\{" + "experimentID" + "\\}", ExperimentID.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ExperimentID == null) throw new Exception("Missing required parameter 'ExperimentID' when calling DefaultApi->getModelsForExperiment")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def imagetransformprocessGet(DeploymentName: String,
+    ImageTransformName: String)(implicit reader: ClientResponseReader[ImageTransformProcess]): Future[ImageTransformProcess] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->imagetransformprocessGet")
+
+    if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->imagetransformprocessGet")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def imagetransformprocessPost(DeploymentName: String,
+    ImageTransformName: String,
+    Body: ImageTransformProcess)(implicit reader: ClientResponseReader[ImageTransformProcess], writer: RequestWriter[ImageTransformProcess]): Future[ImageTransformProcess] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->imagetransformprocessPost")
+
+    if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->imagetransformprocessPost")
+
+    if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->imagetransformprocessPost")
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
     resFuture flatMap { resp =>
@@ -718,6 +2634,69 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def knn(DeploymentName: String,
+    KnnName: String,
+    Body: NearestNeighborRequest)(implicit reader: ClientResponseReader[NearestNeighborsResults], writer: RequestWriter[NearestNeighborRequest]): Future[NearestNeighborsResults] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/knn/{knnName}/default/knn")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "knnName" + "\\}", KnnName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->knn")
+
+    if (KnnName == null) throw new Exception("Missing required parameter 'KnnName' when calling DefaultApi->knn")
+
+    if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->knn")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def knnnew(DeploymentName: String,
+    KnnName: String,
+    Body: Base64NDArrayBodyKNN)(implicit reader: ClientResponseReader[NearestNeighborsResults], writer: RequestWriter[Base64NDArrayBodyKNN]): Future[NearestNeighborsResults] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/knn/{knnName}/default/knnnew")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "knnName" + "\\}", KnnName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->knnnew")
+
+    if (KnnName == null) throw new Exception("Missing required parameter 'KnnName' when calling DefaultApi->knnnew")
+
+    if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->knnnew")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def listAllExperiments()(implicit reader: ClientResponseReader[List[ExperimentEntity]]): Future[List[ExperimentEntity]] = {
+    // create path and map variables
+    val path = (addFmt("/experiments"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -780,6 +2759,94 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def metaGet(DeploymentName: String,
+    ModelName: String)(implicit reader: ClientResponseReader[MetaData]): Future[MetaData] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/meta")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->metaGet")
+
+    if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->metaGet")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def metaPost(Body: MetaData,
+    DeploymentName: String,
+    ModelName: String)(implicit reader: ClientResponseReader[MetaData], writer: RequestWriter[MetaData]): Future[MetaData] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/meta")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->metaPost")
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->metaPost")
+
+    if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->metaPost")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def modelStateChange(DeploymentId: String,
+    ModelId: String,
+    Body: SetState)(implicit reader: ClientResponseReader[ModelEntity], writer: RequestWriter[SetState]): Future[ModelEntity] = {
+    // create path and map variables
+    val path = (addFmt("/deployment/{deploymentId}/model/{modelId}/state")
+      replaceAll("\\{" + "deploymentId" + "\\}", DeploymentId.toString)
+      replaceAll("\\{" + "modelId" + "\\}", ModelId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentId == null) throw new Exception("Missing required parameter 'DeploymentId' when calling DefaultApi->modelStateChange")
+
+    if (ModelId == null) throw new Exception("Missing required parameter 'ModelId' when calling DefaultApi->modelStateChange")
+
+    if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->modelStateChange")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def models(DeploymentId: String)(implicit reader: ClientResponseReader[List[ModelEntity]]): Future[List[ModelEntity]] = {
+    // create path and map variables
+    val path = (addFmt("/deployment/{deploymentId}/models")
+      replaceAll("\\{" + "deploymentId" + "\\}", DeploymentId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentId == null) throw new Exception("Missing required parameter 'DeploymentId' when calling DefaultApi->models")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -849,6 +2916,30 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->multiclassify")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->multiclassify")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def multipredict(Body: MultiPredictRequest,
+    DeploymentName: String,
+    ModelName: String)(implicit reader: ClientResponseReader[MultiPredictResponse], writer: RequestWriter[MultiPredictRequest]): Future[MultiPredictResponse] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/multipredict")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->multipredict")
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->multipredict")
+
+    if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->multipredict")
 
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
@@ -946,6 +3037,324 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def reimportModel(DeploymentId: String,
+    ModelId: String,
+    Body: ImportModelRequest)(implicit reader: ClientResponseReader[ModelEntity], writer: RequestWriter[ImportModelRequest]): Future[ModelEntity] = {
+    // create path and map variables
+    val path = (addFmt("/deployment/{deploymentId}/model/{modelId}")
+      replaceAll("\\{" + "deploymentId" + "\\}", DeploymentId.toString)
+      replaceAll("\\{" + "modelId" + "\\}", ModelId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentId == null) throw new Exception("Missing required parameter 'DeploymentId' when calling DefaultApi->reimportModel")
+
+    if (ModelId == null) throw new Exception("Missing required parameter 'ModelId' when calling DefaultApi->reimportModel")
+
+    if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->reimportModel")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def transformCsv(DeploymentName: String,
+    TransformName: String,
+    BatchCSVRecord: Option[BatchCSVRecord] = None
+    )(implicit reader: ClientResponseReader[BatchCSVRecord], writer: RequestWriter[Option[BatchCSVRecord]]): Future[BatchCSVRecord] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transform")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformCsv")
+
+    if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformCsv")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(BatchCSVRecord))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def transformarrayCsv(DeploymentName: String,
+    TransformName: String,
+    BatchCSVRecord: Option[BatchCSVRecord] = None
+    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[BatchCSVRecord]]): Future[Base64NDArrayBody] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformarrayCsv")
+
+    if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformarrayCsv")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(BatchCSVRecord))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def transformarrayImage(DeploymentName: String,
+    ImageTransformName: String,
+    BatchImageRecord: BatchImageRecord)(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[BatchImageRecord]): Future[Base64NDArrayBody] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformarrayImage")
+
+    if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->transformarrayImage")
+
+    if (BatchImageRecord == null) throw new Exception("Missing required parameter 'BatchImageRecord' when calling DefaultApi->transformarrayImage")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(BatchImageRecord))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def transformimage(DeploymentName: String,
+    ImageTransformName: String,
+    Files: List[Array[Byte]])(implicit reader: ClientResponseReader[Base64NDArrayBody]): Future[Base64NDArrayBody] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformimage")
+
+    if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->transformimage")
+
+    if (Files == null) throw new Exception("Missing required parameter 'Files' when calling DefaultApi->transformimage")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def transformincrementalCsv(DeploymentName: String,
+    TransformName: String,
+    SingleCSVRecord: Option[SingleCSVRecord] = None
+    )(implicit reader: ClientResponseReader[SingleCSVRecord], writer: RequestWriter[Option[SingleCSVRecord]]): Future[SingleCSVRecord] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformincrementalCsv")
+
+    if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformincrementalCsv")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(SingleCSVRecord))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def transformincrementalarrayCsv(DeploymentName: String,
+    TransformName: String,
+    SingleCSVRecord: Option[SingleCSVRecord] = None
+    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[SingleCSVRecord]]): Future[Base64NDArrayBody] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformincrementalarrayCsv")
+
+    if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformincrementalarrayCsv")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(SingleCSVRecord))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def transformincrementalarrayImage(DeploymentName: String,
+    ImageTransformName: String,
+    SingleImageRecord: SingleImageRecord)(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[SingleImageRecord]): Future[Base64NDArrayBody] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformincrementalarrayImage")
+
+    if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->transformincrementalarrayImage")
+
+    if (SingleImageRecord == null) throw new Exception("Missing required parameter 'SingleImageRecord' when calling DefaultApi->transformincrementalarrayImage")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(SingleImageRecord))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def transformincrementalimage(DeploymentName: String,
+    ImageTransformName: String,
+    File: File)(implicit reader: ClientResponseReader[Base64NDArrayBody]): Future[Base64NDArrayBody] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformincrementalimage")
+
+    if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->transformincrementalimage")
+
+    if (File == null) throw new Exception("Missing required parameter 'File' when calling DefaultApi->transformincrementalimage")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def transformprocessGet(DeploymentName: String,
+    TransformName: String)(implicit reader: ClientResponseReader[TransformProcess]): Future[TransformProcess] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformprocessGet")
+
+    if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformprocessGet")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def transformprocessPost(DeploymentName: String,
+    TransformName: String,
+    TransformProcess: Option[TransformProcess] = None
+    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[Option[TransformProcess]]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformprocessPost")
+
+    if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformprocessPost")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(TransformProcess))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def updateBestModelForExperiment(UpdateBestModel: UpdateBestModel)(implicit reader: ClientResponseReader[ExperimentEntity], writer: RequestWriter[UpdateBestModel]): Future[ExperimentEntity] = {
+    // create path and map variables
+    val path = (addFmt("/experiment/best"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (UpdateBestModel == null) throw new Exception("Missing required parameter 'UpdateBestModel' when calling DefaultApi->updateBestModelForExperiment")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(UpdateBestModel))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def updateExperiment(ExperimentID: String,
+    ExperimentEntity: ExperimentEntity)(implicit reader: ClientResponseReader[ExperimentEntity], writer: RequestWriter[ExperimentEntity]): Future[ExperimentEntity] = {
+    // create path and map variables
+    val path = (addFmt("/experiment/{experimentID}")
+      replaceAll("\\{" + "experimentID" + "\\}", ExperimentID.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ExperimentID == null) throw new Exception("Missing required parameter 'ExperimentID' when calling DefaultApi->updateExperiment")
+
+    if (ExperimentEntity == null) throw new Exception("Missing required parameter 'ExperimentEntity' when calling DefaultApi->updateExperiment")
+
+    val resFuture = client.submit("PUT", path, queryParams.toMap, headerParams.toMap, writer.write(ExperimentEntity))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def updateModelHistory(ModelHistoryID: String,
+    UpdateModelHistoryRequest: AddModelHistoryRequest)(implicit reader: ClientResponseReader[ModelHistoryEntity], writer: RequestWriter[AddModelHistoryRequest]): Future[ModelHistoryEntity] = {
+    // create path and map variables
+    val path = (addFmt("/modelhistory/{modelHistoryID}")
+      replaceAll("\\{" + "modelHistoryID" + "\\}", ModelHistoryID.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryID == null) throw new Exception("Missing required parameter 'ModelHistoryID' when calling DefaultApi->updateModelHistory")
+
+    if (UpdateModelHistoryRequest == null) throw new Exception("Missing required parameter 'UpdateModelHistoryRequest' when calling DefaultApi->updateModelHistory")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(UpdateModelHistoryRequest))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

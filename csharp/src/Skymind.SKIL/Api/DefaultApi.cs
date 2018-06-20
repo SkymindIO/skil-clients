@@ -1,7 +1,7 @@
 /* 
- * Predict
+ * Endpoints
  *
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -24,6 +24,174 @@ namespace Skymind.SKIL.Api
     public interface IDefaultApi : IApiAccessor
     {
         #region Synchronous Operations
+        /// <summary>
+        /// Adds an evaluation result
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="evaluationResultsEntity">The evaluation result entity</param>
+        /// <returns>EvaluationResultsEntity</returns>
+        EvaluationResultsEntity AddEvaluationResult (EvaluationResultsEntity evaluationResultsEntity);
+
+        /// <summary>
+        /// Adds an evaluation result
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="evaluationResultsEntity">The evaluation result entity</param>
+        /// <returns>ApiResponse of EvaluationResultsEntity</returns>
+        ApiResponse<EvaluationResultsEntity> AddEvaluationResultWithHttpInfo (EvaluationResultsEntity evaluationResultsEntity);
+        /// <summary>
+        /// Adds a number of examples to a minibatch ID given an AddExampleRequest.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
+        /// <returns>AddExampleRequest</returns>
+        AddExampleRequest AddExampleForBatch (AddExampleRequest addExampleRequest);
+
+        /// <summary>
+        /// Adds a number of examples to a minibatch ID given an AddExampleRequest.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
+        /// <returns>ApiResponse of AddExampleRequest</returns>
+        ApiResponse<AddExampleRequest> AddExampleForBatchWithHttpInfo (AddExampleRequest addExampleRequest);
+        /// <summary>
+        /// Adds an example to a minibatch
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="exampleEntity">The example to add to the minibatch</param>
+        /// <returns>ExampleEntity</returns>
+        ExampleEntity AddExampleToMinibatch (ExampleEntity exampleEntity);
+
+        /// <summary>
+        /// Adds an example to a minibatch
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="exampleEntity">The example to add to the minibatch</param>
+        /// <returns>ApiResponse of ExampleEntity</returns>
+        ApiResponse<ExampleEntity> AddExampleToMinibatchWithHttpInfo (ExampleEntity exampleEntity);
+        /// <summary>
+        /// Add an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentEntity">The experiment entity to add</param>
+        /// <returns>ExperimentEntity</returns>
+        ExperimentEntity AddExperiment (ExperimentEntity experimentEntity);
+
+        /// <summary>
+        /// Add an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentEntity">The experiment entity to add</param>
+        /// <returns>ApiResponse of ExperimentEntity</returns>
+        ApiResponse<ExperimentEntity> AddExperimentWithHttpInfo (ExperimentEntity experimentEntity);
+        /// <summary>
+        /// Adds a minibatch
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchEntity">The minibatch entity to add</param>
+        /// <returns>MinibatchEntity</returns>
+        MinibatchEntity AddMinibatch (MinibatchEntity minibatchEntity);
+
+        /// <summary>
+        /// Adds a minibatch
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchEntity">The minibatch entity to add</param>
+        /// <returns>ApiResponse of MinibatchEntity</returns>
+        ApiResponse<MinibatchEntity> AddMinibatchWithHttpInfo (MinibatchEntity minibatchEntity);
+        /// <summary>
+        /// Add a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addModelHistoryRequest">The model history request object</param>
+        /// <returns>ModelHistoryEntity</returns>
+        ModelHistoryEntity AddModelHistory (AddModelHistoryRequest addModelHistoryRequest);
+
+        /// <summary>
+        /// Add a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addModelHistoryRequest">The model history request object</param>
+        /// <returns>ApiResponse of ModelHistoryEntity</returns>
+        ApiResponse<ModelHistoryEntity> AddModelHistoryWithHttpInfo (AddModelHistoryRequest addModelHistoryRequest);
+        /// <summary>
+        /// Adds a model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>ModelInstanceEntity</returns>
+        ModelInstanceEntity AddModelInstance (ModelInstanceEntity modelInstanceEntity);
+
+        /// <summary>
+        /// Adds a model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>ApiResponse of ModelInstanceEntity</returns>
+        ApiResponse<ModelInstanceEntity> AddModelInstanceWithHttpInfo (ModelInstanceEntity modelInstanceEntity);
+        /// <summary>
+        /// Aggregates the evaluaition results of a model instance, based on the evaluation type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>EvaluationResultsEntity</returns>
+        EvaluationResultsEntity AggregateModelResults (AggregatePrediction aggregatePrediction);
+
+        /// <summary>
+        /// Aggregates the evaluaition results of a model instance, based on the evaluation type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>ApiResponse of EvaluationResultsEntity</returns>
+        ApiResponse<EvaluationResultsEntity> AggregateModelResultsWithHttpInfo (AggregatePrediction aggregatePrediction);
         /// <summary>
         /// Use the deployed model to classify the input
         /// </summary>
@@ -100,6 +268,113 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of ClassificationResult</returns>
         ApiResponse<ClassificationResult> ClassifyimageWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null);
         /// <summary>
+        /// Creates model History
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryEntity">The model history entity</param>
+        /// <returns>ModelHistoryEntity</returns>
+        ModelHistoryEntity CreateModelHistory (ModelHistoryEntity modelHistoryEntity);
+
+        /// <summary>
+        /// Creates model History
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryEntity">The model history entity</param>
+        /// <returns>ApiResponse of ModelHistoryEntity</returns>
+        ApiResponse<ModelHistoryEntity> CreateModelHistoryWithHttpInfo (ModelHistoryEntity modelHistoryEntity);
+        /// <summary>
+        /// Deletes an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to delete</param>
+        /// <returns>InlineResponse200</returns>
+        InlineResponse200 DeleteExperiment (string experimentID);
+
+        /// <summary>
+        /// Deletes an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to delete</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        ApiResponse<InlineResponse200> DeleteExperimentWithHttpInfo (string experimentID);
+        /// <summary>
+        /// Delete a model by deployment and model id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <returns>InlineResponse200</returns>
+        InlineResponse200 DeleteModel (string deploymentId, string modelId);
+
+        /// <summary>
+        /// Delete a model by deployment and model id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        ApiResponse<InlineResponse200> DeleteModelWithHttpInfo (string deploymentId, string modelId);
+        /// <summary>
+        /// Deletes a model history / workspace, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
+        /// <returns>InlineResponse200</returns>
+        InlineResponse200 DeleteModelHistory (string modelHistoryID);
+
+        /// <summary>
+        /// Deletes a model history / workspace, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        ApiResponse<InlineResponse200> DeleteModelHistoryWithHttpInfo (string modelHistoryID);
+        /// <summary>
+        /// Deletes a model instance, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
+        /// <returns></returns>
+        void DeleteModelInstance (string modelInstanceID);
+
+        /// <summary>
+        /// Deletes a model instance, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteModelInstanceWithHttpInfo (string modelInstanceID);
+        /// <summary>
         /// Deploy a model in a deployment group.
         /// </summary>
         /// <remarks>
@@ -107,9 +382,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentId">ID deployment group</param>
-        /// <param name="body">the deployment request</param>
-        /// <returns>Object</returns>
-        Object DeployModel (string deploymentId, DeployModel body);
+        /// <param name="body">the model import request</param>
+        /// <returns>ModelEntity</returns>
+        ModelEntity DeployModel (string deploymentId, ImportModelRequest body);
 
         /// <summary>
         /// Deploy a model in a deployment group.
@@ -119,9 +394,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentId">ID deployment group</param>
-        /// <param name="body">the deployment request</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> DeployModelWithHttpInfo (string deploymentId, DeployModel body);
+        /// <param name="body">the model import request</param>
+        /// <returns>ApiResponse of ModelEntity</returns>
+        ApiResponse<ModelEntity> DeployModelWithHttpInfo (string deploymentId, ImportModelRequest body);
         /// <summary>
         /// Create a new deployment group.
         /// </summary>
@@ -130,8 +405,8 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the deployment request</param>
-        /// <returns>Deployment</returns>
-        Deployment DeploymentCreate (NewDeployment body);
+        /// <returns>DeploymentResponse</returns>
+        DeploymentResponse DeploymentCreate (CreateDeploymentRequest body);
 
         /// <summary>
         /// Create a new deployment group.
@@ -141,8 +416,337 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the deployment request</param>
-        /// <returns>ApiResponse of Deployment</returns>
-        ApiResponse<Deployment> DeploymentCreateWithHttpInfo (NewDeployment body);
+        /// <returns>ApiResponse of DeploymentResponse</returns>
+        ApiResponse<DeploymentResponse> DeploymentCreateWithHttpInfo (CreateDeploymentRequest body);
+        /// <summary>
+        /// Delete a deployment by id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>InlineResponse200</returns>
+        InlineResponse200 DeploymentDelete (string deploymentId);
+
+        /// <summary>
+        /// Delete a deployment by id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        ApiResponse<InlineResponse200> DeploymentDeleteWithHttpInfo (string deploymentId);
+        /// <summary>
+        /// Get a deployment details by id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>DeploymentResponse</returns>
+        DeploymentResponse DeploymentGet (string deploymentId);
+
+        /// <summary>
+        /// Get a deployment details by id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>ApiResponse of DeploymentResponse</returns>
+        ApiResponse<DeploymentResponse> DeploymentGetWithHttpInfo (string deploymentId);
+        /// <summary>
+        /// Get a list of deployments
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;DeploymentResponse&gt;</returns>
+        List<DeploymentResponse> Deployments ();
+
+        /// <summary>
+        /// Get a list of deployments
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;DeploymentResponse&gt;</returns>
+        ApiResponse<List<DeploymentResponse>> DeploymentsWithHttpInfo ();
+        /// <summary>
+        /// Detect the objects, given a (input) prediction request
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">the GUID for mapping the results in the detections</param>
+        /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
+        /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
+        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>DetectionResult</returns>
+        DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName);
+
+        /// <summary>
+        /// Detect the objects, given a (input) prediction request
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">the GUID for mapping the results in the detections</param>
+        /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
+        /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
+        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>ApiResponse of DetectionResult</returns>
+        ApiResponse<DetectionResult> DetectobjectsWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName);
+        /// <summary>
+        /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
+        /// <returns>ModelInstanceEntity</returns>
+        ModelInstanceEntity GetBestModelAmongModelIds (BestModel bestModel);
+
+        /// <summary>
+        /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
+        /// <returns>ApiResponse of ModelInstanceEntity</returns>
+        ApiResponse<ModelInstanceEntity> GetBestModelAmongModelIdsWithHttpInfo (BestModel bestModel);
+        /// <summary>
+        /// Gets the list of evaluation results entity, given a model instance ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
+        /// <returns>List&lt;EvaluationResultsEntity&gt;</returns>
+        List<EvaluationResultsEntity> GetEvaluationForModelID (string modelInstanceID);
+
+        /// <summary>
+        /// Gets the list of evaluation results entity, given a model instance ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
+        /// <returns>ApiResponse of List&lt;EvaluationResultsEntity&gt;</returns>
+        ApiResponse<List<EvaluationResultsEntity>> GetEvaluationForModelIDWithHttpInfo (string modelInstanceID);
+        /// <summary>
+        /// Gets all the examples for a minibatch ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>List&lt;ExampleEntity&gt;</returns>
+        List<ExampleEntity> GetExamplesForMinibatch (string minibatchId);
+
+        /// <summary>
+        /// Gets all the examples for a minibatch ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>ApiResponse of List&lt;ExampleEntity&gt;</returns>
+        ApiResponse<List<ExampleEntity>> GetExamplesForMinibatchWithHttpInfo (string minibatchId);
+        /// <summary>
+        /// Obtain an experiment&#39;s details, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to obtain</param>
+        /// <returns>ExperimentEntity</returns>
+        ExperimentEntity GetExperiment (string experimentID);
+
+        /// <summary>
+        /// Obtain an experiment&#39;s details, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to obtain</param>
+        /// <returns>ApiResponse of ExperimentEntity</returns>
+        ApiResponse<ExperimentEntity> GetExperimentWithHttpInfo (string experimentID);
+        /// <summary>
+        /// Obtain all experiments for a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
+        /// <returns>ExperimentEntity</returns>
+        ExperimentEntity GetExperimentsForModelHistory (string modelHistoryID);
+
+        /// <summary>
+        /// Obtain all experiments for a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
+        /// <returns>ApiResponse of ExperimentEntity</returns>
+        ApiResponse<ExperimentEntity> GetExperimentsForModelHistoryWithHttpInfo (string modelHistoryID);
+        /// <summary>
+        /// Gets a minibatch for the model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>MinibatchEntity</returns>
+        MinibatchEntity GetMinibatch (string minibatchId);
+
+        /// <summary>
+        /// Gets a minibatch for the model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>ApiResponse of MinibatchEntity</returns>
+        ApiResponse<MinibatchEntity> GetMinibatchWithHttpInfo (string minibatchId);
+        /// <summary>
+        /// Gets a model history, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
+        /// <returns>ModelHistoryEntity</returns>
+        ModelHistoryEntity GetModelHistory (string modelHistoryID);
+
+        /// <summary>
+        /// Gets a model history, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
+        /// <returns>ApiResponse of ModelHistoryEntity</returns>
+        ApiResponse<ModelHistoryEntity> GetModelHistoryWithHttpInfo (string modelHistoryID);
+        /// <summary>
+        /// Gets a model instance, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
+        /// <returns>ModelInstanceEntity</returns>
+        ModelInstanceEntity GetModelInstance (string modelInstanceID);
+
+        /// <summary>
+        /// Gets a model instance, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
+        /// <returns>ApiResponse of ModelInstanceEntity</returns>
+        ApiResponse<ModelInstanceEntity> GetModelInstanceWithHttpInfo (string modelInstanceID);
+        /// <summary>
+        /// Obtain a list of all the models for an experiment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment</param>
+        /// <returns>List&lt;ModelInstanceEntity&gt;</returns>
+        List<ModelInstanceEntity> GetModelsForExperiment (string experimentID);
+
+        /// <summary>
+        /// Obtain a list of all the models for an experiment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment</param>
+        /// <returns>ApiResponse of List&lt;ModelInstanceEntity&gt;</returns>
+        ApiResponse<List<ModelInstanceEntity>> GetModelsForExperimentWithHttpInfo (string experimentID);
+        /// <summary>
+        /// Retrieves the image transform process JSON string
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <returns>ImageTransformProcess</returns>
+        ImageTransformProcess ImagetransformprocessGet (string deploymentName, string imageTransformName);
+
+        /// <summary>
+        /// Retrieves the image transform process JSON string
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <returns>ApiResponse of ImageTransformProcess</returns>
+        ApiResponse<ImageTransformProcess> ImagetransformprocessGetWithHttpInfo (string deploymentName, string imageTransformName);
+        /// <summary>
+        /// Sets the image transform process through the provided JSON string
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="body">The image transform process JSON</param>
+        /// <returns>ImageTransformProcess</returns>
+        ImageTransformProcess ImagetransformprocessPost (string deploymentName, string imageTransformName, ImageTransformProcess body);
+
+        /// <summary>
+        /// Sets the image transform process through the provided JSON string
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="body">The image transform process JSON</param>
+        /// <returns>ApiResponse of ImageTransformProcess</returns>
+        ApiResponse<ImageTransformProcess> ImagetransformprocessPostWithHttpInfo (string deploymentName, string imageTransformName, ImageTransformProcess body);
         /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
         /// </summary>
@@ -168,6 +772,75 @@ namespace Skymind.SKIL.Api
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of JsonArrayResponse</returns>
         ApiResponse<JsonArrayResponse> JsonarrayWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        /// <summary>
+        /// Runs knn on the given index with the given k
+        /// </summary>
+        /// <remarks>
+        /// Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body"></param>
+        /// <returns>NearestNeighborsResults</returns>
+        NearestNeighborsResults Knn (string deploymentName, string knnName, NearestNeighborRequest body);
+
+        /// <summary>
+        /// Runs knn on the given index with the given k
+        /// </summary>
+        /// <remarks>
+        /// Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of NearestNeighborsResults</returns>
+        ApiResponse<NearestNeighborsResults> KnnWithHttpInfo (string deploymentName, string knnName, NearestNeighborRequest body);
+        /// <summary>
+        /// Run a k nearest neighbors search on a NEW data point
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body">The input NDArray</param>
+        /// <returns>NearestNeighborsResults</returns>
+        NearestNeighborsResults Knnnew (string deploymentName, string knnName, Base64NDArrayBodyKNN body);
+
+        /// <summary>
+        /// Run a k nearest neighbors search on a NEW data point
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body">The input NDArray</param>
+        /// <returns>ApiResponse of NearestNeighborsResults</returns>
+        ApiResponse<NearestNeighborsResults> KnnnewWithHttpInfo (string deploymentName, string knnName, Base64NDArrayBodyKNN body);
+        /// <summary>
+        /// List all of the experiments in every model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;ExperimentEntity&gt;</returns>
+        List<ExperimentEntity> ListAllExperiments ();
+
+        /// <summary>
+        /// List all of the experiments in every model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;ExperimentEntity&gt;</returns>
+        ApiResponse<List<ExperimentEntity>> ListAllExperimentsWithHttpInfo ();
         /// <summary>
         /// Get logs file path
         /// </summary>
@@ -237,6 +910,100 @@ namespace Skymind.SKIL.Api
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of LogBatch</returns>
         ApiResponse<LogBatch> LogsWithHttpInfo (LogRequest body, string deploymentName, string modelName);
+        /// <summary>
+        /// this method can be used to get the meta data for the current model which set to the server
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>MetaData</returns>
+        MetaData MetaGet (string deploymentName, string modelName);
+
+        /// <summary>
+        /// this method can be used to get the meta data for the current model which set to the server
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>ApiResponse of MetaData</returns>
+        ApiResponse<MetaData> MetaGetWithHttpInfo (string deploymentName, string modelName);
+        /// <summary>
+        /// This method can be used to set meta data for the current model which is set to the server
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">the meta data object</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>MetaData</returns>
+        MetaData MetaPost (MetaData body, string deploymentName, string modelName);
+
+        /// <summary>
+        /// This method can be used to set meta data for the current model which is set to the server
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">the meta data object</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>ApiResponse of MetaData</returns>
+        ApiResponse<MetaData> MetaPostWithHttpInfo (MetaData body, string deploymentName, string modelName);
+        /// <summary>
+        /// Modify the state (start/stop) of a deployed model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the model state object</param>
+        /// <returns>ModelEntity</returns>
+        ModelEntity ModelStateChange (string deploymentId, string modelId, SetState body);
+
+        /// <summary>
+        /// Modify the state (start/stop) of a deployed model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the model state object</param>
+        /// <returns>ApiResponse of ModelEntity</returns>
+        ApiResponse<ModelEntity> ModelStateChangeWithHttpInfo (string deploymentId, string modelId, SetState body);
+        /// <summary>
+        /// Retrieve a list of all the deployed models given a deployment id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <returns>List&lt;ModelEntity&gt;</returns>
+        List<ModelEntity> Models (string deploymentId);
+
+        /// <summary>
+        /// Retrieve a list of all the deployed models given a deployment id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <returns>ApiResponse of List&lt;ModelEntity&gt;</returns>
+        ApiResponse<List<ModelEntity>> ModelsWithHttpInfo (string deploymentId);
         /// <summary>
         /// Set the model to be served
         /// </summary>
@@ -312,6 +1079,31 @@ namespace Skymind.SKIL.Api
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MultiClassClassificationResult</returns>
         ApiResponse<MultiClassClassificationResult> MulticlassifyWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        /// <summary>
+        /// Get the output from the network, based on the given INDArray[] input
+        /// </summary>
+        /// <remarks>
+        /// Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>MultiPredictResponse</returns>
+        MultiPredictResponse Multipredict (MultiPredictRequest body, string deploymentName, string modelName);
+
+        /// <summary>
+        /// Get the output from the network, based on the given INDArray[] input
+        /// </summary>
+        /// <remarks>
+        /// Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>ApiResponse of MultiPredictResponse</returns>
+        ApiResponse<MultiPredictResponse> MultipredictWithHttpInfo (MultiPredictRequest body, string deploymentName, string modelName);
         /// <summary>
         /// Run inference on the input array.
         /// </summary>
@@ -413,6 +1205,346 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of JsonArrayResponse</returns>
         ApiResponse<JsonArrayResponse> PredictwithpreprocessjsonWithHttpInfo (List<string> body, string deploymentName, string modelName);
         /// <summary>
+        /// Reimport a model to a previous deployed model in a deployment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the deployment request</param>
+        /// <returns>ModelEntity</returns>
+        ModelEntity ReimportModel (string deploymentId, string modelId, ImportModelRequest body);
+
+        /// <summary>
+        /// Reimport a model to a previous deployed model in a deployment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the deployment request</param>
+        /// <returns>ApiResponse of ModelEntity</returns>
+        ApiResponse<ModelEntity> ReimportModelWithHttpInfo (string deploymentId, string modelId, ImportModelRequest body);
+        /// <summary>
+        /// Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>BatchCSVRecord</returns>
+        BatchCSVRecord TransformCsv (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+
+        /// <summary>
+        /// Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>ApiResponse of BatchCSVRecord</returns>
+        ApiResponse<BatchCSVRecord> TransformCsvWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        /// <summary>
+        /// Takes a batch input arrays and transforms it
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>Base64NDArrayBody</returns>
+        Base64NDArrayBody TransformarrayCsv (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+
+        /// <summary>
+        /// Takes a batch input arrays and transforms it
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        ApiResponse<Base64NDArrayBody> TransformarrayCsvWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        /// <summary>
+        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="batchImageRecord">The input batch of record arrays</param>
+        /// <returns>Base64NDArrayBody</returns>
+        Base64NDArrayBody TransformarrayImage (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord);
+
+        /// <summary>
+        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="batchImageRecord">The input batch of record arrays</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        ApiResponse<Base64NDArrayBody> TransformarrayImageWithHttpInfo (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord);
+        /// <summary>
+        /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="files">The image files to upload</param>
+        /// <returns>Base64NDArrayBody</returns>
+        Base64NDArrayBody Transformimage (string deploymentName, string imageTransformName, List<byte[]> files);
+
+        /// <summary>
+        /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="files">The image files to upload</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        ApiResponse<Base64NDArrayBody> TransformimageWithHttpInfo (string deploymentName, string imageTransformName, List<byte[]> files);
+        /// <summary>
+        /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleCSVRecord object and transforms it into the desired format
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>SingleCSVRecord</returns>
+        SingleCSVRecord TransformincrementalCsv (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+
+        /// <summary>
+        /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleCSVRecord object and transforms it into the desired format
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>ApiResponse of SingleCSVRecord</returns>
+        ApiResponse<SingleCSVRecord> TransformincrementalCsvWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        /// <summary>
+        /// Same as /transformincremental but returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>Base64NDArrayBody</returns>
+        Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+
+        /// <summary>
+        /// Same as /transformincremental but returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        ApiResponse<Base64NDArrayBody> TransformincrementalarrayCsvWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        /// <summary>
+        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="singleImageRecord">The input record array</param>
+        /// <returns>Base64NDArrayBody</returns>
+        Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord);
+
+        /// <summary>
+        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="singleImageRecord">The input record array</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        ApiResponse<Base64NDArrayBody> TransformincrementalarrayImageWithHttpInfo (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord);
+        /// <summary>
+        /// Takes a single multipart image file to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="file">The image file to upload</param>
+        /// <returns>Base64NDArrayBody</returns>
+        Base64NDArrayBody Transformincrementalimage (string deploymentName, string imageTransformName, System.IO.Stream file);
+
+        /// <summary>
+        /// Takes a single multipart image file to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="file">The image file to upload</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        ApiResponse<Base64NDArrayBody> TransformincrementalimageWithHttpInfo (string deploymentName, string imageTransformName, System.IO.Stream file);
+        /// <summary>
+        /// Gets the JSON string of the deployed transform process
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the JSON string of the deployed transform process 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <returns>TransformProcess</returns>
+        TransformProcess TransformprocessGet (string deploymentName, string transformName);
+
+        /// <summary>
+        /// Gets the JSON string of the deployed transform process
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the JSON string of the deployed transform process 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <returns>ApiResponse of TransformProcess</returns>
+        ApiResponse<TransformProcess> TransformprocessGetWithHttpInfo (string deploymentName, string transformName);
+        /// <summary>
+        /// Sets the deployed transform process through the provided JSON string
+        /// </summary>
+        /// <remarks>
+        /// Sets the transform process with the provided JSON string
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <returns></returns>
+        void TransformprocessPost (string deploymentName, string transformName, TransformProcess transformProcess = null);
+
+        /// <summary>
+        /// Sets the deployed transform process through the provided JSON string
+        /// </summary>
+        /// <remarks>
+        /// Sets the transform process with the provided JSON string
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string transformName, TransformProcess transformProcess = null);
+        /// <summary>
+        /// Updates the best model for an experiment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
+        /// <returns>ExperimentEntity</returns>
+        ExperimentEntity UpdateBestModelForExperiment (UpdateBestModel updateBestModel);
+
+        /// <summary>
+        /// Updates the best model for an experiment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
+        /// <returns>ApiResponse of ExperimentEntity</returns>
+        ApiResponse<ExperimentEntity> UpdateBestModelForExperimentWithHttpInfo (UpdateBestModel updateBestModel);
+        /// <summary>
+        /// Updates an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to update</param>
+        /// <param name="experimentEntity">The experiment entity to update with</param>
+        /// <returns>ExperimentEntity</returns>
+        ExperimentEntity UpdateExperiment (string experimentID, ExperimentEntity experimentEntity);
+
+        /// <summary>
+        /// Updates an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to update</param>
+        /// <param name="experimentEntity">The experiment entity to update with</param>
+        /// <returns>ApiResponse of ExperimentEntity</returns>
+        ApiResponse<ExperimentEntity> UpdateExperimentWithHttpInfo (string experimentID, ExperimentEntity experimentEntity);
+        /// <summary>
+        /// Update a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
+        /// <param name="updateModelHistoryRequest">The model history request object</param>
+        /// <returns>ModelHistoryEntity</returns>
+        ModelHistoryEntity UpdateModelHistory (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
+
+        /// <summary>
+        /// Update a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
+        /// <param name="updateModelHistoryRequest">The model history request object</param>
+        /// <returns>ApiResponse of ModelHistoryEntity</returns>
+        ApiResponse<ModelHistoryEntity> UpdateModelHistoryWithHttpInfo (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
+        /// <summary>
         /// Upload a model file to SKIL for import.
         /// </summary>
         /// <remarks>
@@ -435,6 +1567,174 @@ namespace Skymind.SKIL.Api
         ApiResponse<FileUploadList> UploadWithHttpInfo (System.IO.Stream file = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Adds an evaluation result
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="evaluationResultsEntity">The evaluation result entity</param>
+        /// <returns>Task of EvaluationResultsEntity</returns>
+        System.Threading.Tasks.Task<EvaluationResultsEntity> AddEvaluationResultAsync (EvaluationResultsEntity evaluationResultsEntity);
+
+        /// <summary>
+        /// Adds an evaluation result
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="evaluationResultsEntity">The evaluation result entity</param>
+        /// <returns>Task of ApiResponse (EvaluationResultsEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AddEvaluationResultAsyncWithHttpInfo (EvaluationResultsEntity evaluationResultsEntity);
+        /// <summary>
+        /// Adds a number of examples to a minibatch ID given an AddExampleRequest.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
+        /// <returns>Task of AddExampleRequest</returns>
+        System.Threading.Tasks.Task<AddExampleRequest> AddExampleForBatchAsync (AddExampleRequest addExampleRequest);
+
+        /// <summary>
+        /// Adds a number of examples to a minibatch ID given an AddExampleRequest.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
+        /// <returns>Task of ApiResponse (AddExampleRequest)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AddExampleRequest>> AddExampleForBatchAsyncWithHttpInfo (AddExampleRequest addExampleRequest);
+        /// <summary>
+        /// Adds an example to a minibatch
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="exampleEntity">The example to add to the minibatch</param>
+        /// <returns>Task of ExampleEntity</returns>
+        System.Threading.Tasks.Task<ExampleEntity> AddExampleToMinibatchAsync (ExampleEntity exampleEntity);
+
+        /// <summary>
+        /// Adds an example to a minibatch
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="exampleEntity">The example to add to the minibatch</param>
+        /// <returns>Task of ApiResponse (ExampleEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ExampleEntity>> AddExampleToMinibatchAsyncWithHttpInfo (ExampleEntity exampleEntity);
+        /// <summary>
+        /// Add an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentEntity">The experiment entity to add</param>
+        /// <returns>Task of ExperimentEntity</returns>
+        System.Threading.Tasks.Task<ExperimentEntity> AddExperimentAsync (ExperimentEntity experimentEntity);
+
+        /// <summary>
+        /// Add an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentEntity">The experiment entity to add</param>
+        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> AddExperimentAsyncWithHttpInfo (ExperimentEntity experimentEntity);
+        /// <summary>
+        /// Adds a minibatch
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchEntity">The minibatch entity to add</param>
+        /// <returns>Task of MinibatchEntity</returns>
+        System.Threading.Tasks.Task<MinibatchEntity> AddMinibatchAsync (MinibatchEntity minibatchEntity);
+
+        /// <summary>
+        /// Adds a minibatch
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchEntity">The minibatch entity to add</param>
+        /// <returns>Task of ApiResponse (MinibatchEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> AddMinibatchAsyncWithHttpInfo (MinibatchEntity minibatchEntity);
+        /// <summary>
+        /// Add a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addModelHistoryRequest">The model history request object</param>
+        /// <returns>Task of ModelHistoryEntity</returns>
+        System.Threading.Tasks.Task<ModelHistoryEntity> AddModelHistoryAsync (AddModelHistoryRequest addModelHistoryRequest);
+
+        /// <summary>
+        /// Add a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addModelHistoryRequest">The model history request object</param>
+        /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> AddModelHistoryAsyncWithHttpInfo (AddModelHistoryRequest addModelHistoryRequest);
+        /// <summary>
+        /// Adds a model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>Task of ModelInstanceEntity</returns>
+        System.Threading.Tasks.Task<ModelInstanceEntity> AddModelInstanceAsync (ModelInstanceEntity modelInstanceEntity);
+
+        /// <summary>
+        /// Adds a model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> AddModelInstanceAsyncWithHttpInfo (ModelInstanceEntity modelInstanceEntity);
+        /// <summary>
+        /// Aggregates the evaluaition results of a model instance, based on the evaluation type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>Task of EvaluationResultsEntity</returns>
+        System.Threading.Tasks.Task<EvaluationResultsEntity> AggregateModelResultsAsync (AggregatePrediction aggregatePrediction);
+
+        /// <summary>
+        /// Aggregates the evaluaition results of a model instance, based on the evaluation type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>Task of ApiResponse (EvaluationResultsEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AggregateModelResultsAsyncWithHttpInfo (AggregatePrediction aggregatePrediction);
         /// <summary>
         /// Use the deployed model to classify the input
         /// </summary>
@@ -511,6 +1811,113 @@ namespace Skymind.SKIL.Api
         /// <returns>Task of ApiResponse (ClassificationResult)</returns>
         System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyimageAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null);
         /// <summary>
+        /// Creates model History
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryEntity">The model history entity</param>
+        /// <returns>Task of ModelHistoryEntity</returns>
+        System.Threading.Tasks.Task<ModelHistoryEntity> CreateModelHistoryAsync (ModelHistoryEntity modelHistoryEntity);
+
+        /// <summary>
+        /// Creates model History
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryEntity">The model history entity</param>
+        /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> CreateModelHistoryAsyncWithHttpInfo (ModelHistoryEntity modelHistoryEntity);
+        /// <summary>
+        /// Deletes an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to delete</param>
+        /// <returns>Task of InlineResponse200</returns>
+        System.Threading.Tasks.Task<InlineResponse200> DeleteExperimentAsync (string experimentID);
+
+        /// <summary>
+        /// Deletes an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to delete</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteExperimentAsyncWithHttpInfo (string experimentID);
+        /// <summary>
+        /// Delete a model by deployment and model id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <returns>Task of InlineResponse200</returns>
+        System.Threading.Tasks.Task<InlineResponse200> DeleteModelAsync (string deploymentId, string modelId);
+
+        /// <summary>
+        /// Delete a model by deployment and model id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteModelAsyncWithHttpInfo (string deploymentId, string modelId);
+        /// <summary>
+        /// Deletes a model history / workspace, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
+        /// <returns>Task of InlineResponse200</returns>
+        System.Threading.Tasks.Task<InlineResponse200> DeleteModelHistoryAsync (string modelHistoryID);
+
+        /// <summary>
+        /// Deletes a model history / workspace, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteModelHistoryAsyncWithHttpInfo (string modelHistoryID);
+        /// <summary>
+        /// Deletes a model instance, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteModelInstanceAsync (string modelInstanceID);
+
+        /// <summary>
+        /// Deletes a model instance, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteModelInstanceAsyncWithHttpInfo (string modelInstanceID);
+        /// <summary>
         /// Deploy a model in a deployment group.
         /// </summary>
         /// <remarks>
@@ -518,9 +1925,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentId">ID deployment group</param>
-        /// <param name="body">the deployment request</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> DeployModelAsync (string deploymentId, DeployModel body);
+        /// <param name="body">the model import request</param>
+        /// <returns>Task of ModelEntity</returns>
+        System.Threading.Tasks.Task<ModelEntity> DeployModelAsync (string deploymentId, ImportModelRequest body);
 
         /// <summary>
         /// Deploy a model in a deployment group.
@@ -530,9 +1937,9 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentId">ID deployment group</param>
-        /// <param name="body">the deployment request</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeployModelAsyncWithHttpInfo (string deploymentId, DeployModel body);
+        /// <param name="body">the model import request</param>
+        /// <returns>Task of ApiResponse (ModelEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ModelEntity>> DeployModelAsyncWithHttpInfo (string deploymentId, ImportModelRequest body);
         /// <summary>
         /// Create a new deployment group.
         /// </summary>
@@ -541,8 +1948,8 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the deployment request</param>
-        /// <returns>Task of Deployment</returns>
-        System.Threading.Tasks.Task<Deployment> DeploymentCreateAsync (NewDeployment body);
+        /// <returns>Task of DeploymentResponse</returns>
+        System.Threading.Tasks.Task<DeploymentResponse> DeploymentCreateAsync (CreateDeploymentRequest body);
 
         /// <summary>
         /// Create a new deployment group.
@@ -552,8 +1959,337 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the deployment request</param>
-        /// <returns>Task of ApiResponse (Deployment)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Deployment>> DeploymentCreateAsyncWithHttpInfo (NewDeployment body);
+        /// <returns>Task of ApiResponse (DeploymentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DeploymentResponse>> DeploymentCreateAsyncWithHttpInfo (CreateDeploymentRequest body);
+        /// <summary>
+        /// Delete a deployment by id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>Task of InlineResponse200</returns>
+        System.Threading.Tasks.Task<InlineResponse200> DeploymentDeleteAsync (string deploymentId);
+
+        /// <summary>
+        /// Delete a deployment by id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeploymentDeleteAsyncWithHttpInfo (string deploymentId);
+        /// <summary>
+        /// Get a deployment details by id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>Task of DeploymentResponse</returns>
+        System.Threading.Tasks.Task<DeploymentResponse> DeploymentGetAsync (string deploymentId);
+
+        /// <summary>
+        /// Get a deployment details by id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>Task of ApiResponse (DeploymentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DeploymentResponse>> DeploymentGetAsyncWithHttpInfo (string deploymentId);
+        /// <summary>
+        /// Get a list of deployments
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of List&lt;DeploymentResponse&gt;</returns>
+        System.Threading.Tasks.Task<List<DeploymentResponse>> DeploymentsAsync ();
+
+        /// <summary>
+        /// Get a list of deployments
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (List&lt;DeploymentResponse&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<DeploymentResponse>>> DeploymentsAsyncWithHttpInfo ();
+        /// <summary>
+        /// Detect the objects, given a (input) prediction request
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">the GUID for mapping the results in the detections</param>
+        /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
+        /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
+        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of DetectionResult</returns>
+        System.Threading.Tasks.Task<DetectionResult> DetectobjectsAsync (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName);
+
+        /// <summary>
+        /// Detect the objects, given a (input) prediction request
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">the GUID for mapping the results in the detections</param>
+        /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
+        /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
+        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of ApiResponse (DetectionResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DetectionResult>> DetectobjectsAsyncWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName);
+        /// <summary>
+        /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
+        /// <returns>Task of ModelInstanceEntity</returns>
+        System.Threading.Tasks.Task<ModelInstanceEntity> GetBestModelAmongModelIdsAsync (BestModel bestModel);
+
+        /// <summary>
+        /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
+        /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetBestModelAmongModelIdsAsyncWithHttpInfo (BestModel bestModel);
+        /// <summary>
+        /// Gets the list of evaluation results entity, given a model instance ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
+        /// <returns>Task of List&lt;EvaluationResultsEntity&gt;</returns>
+        System.Threading.Tasks.Task<List<EvaluationResultsEntity>> GetEvaluationForModelIDAsync (string modelInstanceID);
+
+        /// <summary>
+        /// Gets the list of evaluation results entity, given a model instance ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
+        /// <returns>Task of ApiResponse (List&lt;EvaluationResultsEntity&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<EvaluationResultsEntity>>> GetEvaluationForModelIDAsyncWithHttpInfo (string modelInstanceID);
+        /// <summary>
+        /// Gets all the examples for a minibatch ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>Task of List&lt;ExampleEntity&gt;</returns>
+        System.Threading.Tasks.Task<List<ExampleEntity>> GetExamplesForMinibatchAsync (string minibatchId);
+
+        /// <summary>
+        /// Gets all the examples for a minibatch ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>Task of ApiResponse (List&lt;ExampleEntity&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<ExampleEntity>>> GetExamplesForMinibatchAsyncWithHttpInfo (string minibatchId);
+        /// <summary>
+        /// Obtain an experiment&#39;s details, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to obtain</param>
+        /// <returns>Task of ExperimentEntity</returns>
+        System.Threading.Tasks.Task<ExperimentEntity> GetExperimentAsync (string experimentID);
+
+        /// <summary>
+        /// Obtain an experiment&#39;s details, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to obtain</param>
+        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentAsyncWithHttpInfo (string experimentID);
+        /// <summary>
+        /// Obtain all experiments for a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
+        /// <returns>Task of ExperimentEntity</returns>
+        System.Threading.Tasks.Task<ExperimentEntity> GetExperimentsForModelHistoryAsync (string modelHistoryID);
+
+        /// <summary>
+        /// Obtain all experiments for a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
+        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentsForModelHistoryAsyncWithHttpInfo (string modelHistoryID);
+        /// <summary>
+        /// Gets a minibatch for the model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>Task of MinibatchEntity</returns>
+        System.Threading.Tasks.Task<MinibatchEntity> GetMinibatchAsync (string minibatchId);
+
+        /// <summary>
+        /// Gets a minibatch for the model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>Task of ApiResponse (MinibatchEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> GetMinibatchAsyncWithHttpInfo (string minibatchId);
+        /// <summary>
+        /// Gets a model history, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
+        /// <returns>Task of ModelHistoryEntity</returns>
+        System.Threading.Tasks.Task<ModelHistoryEntity> GetModelHistoryAsync (string modelHistoryID);
+
+        /// <summary>
+        /// Gets a model history, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
+        /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> GetModelHistoryAsyncWithHttpInfo (string modelHistoryID);
+        /// <summary>
+        /// Gets a model instance, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
+        /// <returns>Task of ModelInstanceEntity</returns>
+        System.Threading.Tasks.Task<ModelInstanceEntity> GetModelInstanceAsync (string modelInstanceID);
+
+        /// <summary>
+        /// Gets a model instance, given its ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
+        /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetModelInstanceAsyncWithHttpInfo (string modelInstanceID);
+        /// <summary>
+        /// Obtain a list of all the models for an experiment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment</param>
+        /// <returns>Task of List&lt;ModelInstanceEntity&gt;</returns>
+        System.Threading.Tasks.Task<List<ModelInstanceEntity>> GetModelsForExperimentAsync (string experimentID);
+
+        /// <summary>
+        /// Obtain a list of all the models for an experiment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment</param>
+        /// <returns>Task of ApiResponse (List&lt;ModelInstanceEntity&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<ModelInstanceEntity>>> GetModelsForExperimentAsyncWithHttpInfo (string experimentID);
+        /// <summary>
+        /// Retrieves the image transform process JSON string
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <returns>Task of ImageTransformProcess</returns>
+        System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessGetAsync (string deploymentName, string imageTransformName);
+
+        /// <summary>
+        /// Retrieves the image transform process JSON string
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessGetAsyncWithHttpInfo (string deploymentName, string imageTransformName);
+        /// <summary>
+        /// Sets the image transform process through the provided JSON string
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="body">The image transform process JSON</param>
+        /// <returns>Task of ImageTransformProcess</returns>
+        System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessPostAsync (string deploymentName, string imageTransformName, ImageTransformProcess body);
+
+        /// <summary>
+        /// Sets the image transform process through the provided JSON string
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="body">The image transform process JSON</param>
+        /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessPostAsyncWithHttpInfo (string deploymentName, string imageTransformName, ImageTransformProcess body);
         /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
         /// </summary>
@@ -579,6 +2315,75 @@ namespace Skymind.SKIL.Api
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> JsonarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        /// <summary>
+        /// Runs knn on the given index with the given k
+        /// </summary>
+        /// <remarks>
+        /// Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body"></param>
+        /// <returns>Task of NearestNeighborsResults</returns>
+        System.Threading.Tasks.Task<NearestNeighborsResults> KnnAsync (string deploymentName, string knnName, NearestNeighborRequest body);
+
+        /// <summary>
+        /// Runs knn on the given index with the given k
+        /// </summary>
+        /// <remarks>
+        /// Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (NearestNeighborsResults)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnAsyncWithHttpInfo (string deploymentName, string knnName, NearestNeighborRequest body);
+        /// <summary>
+        /// Run a k nearest neighbors search on a NEW data point
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body">The input NDArray</param>
+        /// <returns>Task of NearestNeighborsResults</returns>
+        System.Threading.Tasks.Task<NearestNeighborsResults> KnnnewAsync (string deploymentName, string knnName, Base64NDArrayBodyKNN body);
+
+        /// <summary>
+        /// Run a k nearest neighbors search on a NEW data point
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body">The input NDArray</param>
+        /// <returns>Task of ApiResponse (NearestNeighborsResults)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnnewAsyncWithHttpInfo (string deploymentName, string knnName, Base64NDArrayBodyKNN body);
+        /// <summary>
+        /// List all of the experiments in every model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of List&lt;ExperimentEntity&gt;</returns>
+        System.Threading.Tasks.Task<List<ExperimentEntity>> ListAllExperimentsAsync ();
+
+        /// <summary>
+        /// List all of the experiments in every model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (List&lt;ExperimentEntity&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<ExperimentEntity>>> ListAllExperimentsAsyncWithHttpInfo ();
         /// <summary>
         /// Get logs file path
         /// </summary>
@@ -648,6 +2453,100 @@ namespace Skymind.SKIL.Api
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (LogBatch)</returns>
         System.Threading.Tasks.Task<ApiResponse<LogBatch>> LogsAsyncWithHttpInfo (LogRequest body, string deploymentName, string modelName);
+        /// <summary>
+        /// this method can be used to get the meta data for the current model which set to the server
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of MetaData</returns>
+        System.Threading.Tasks.Task<MetaData> MetaGetAsync (string deploymentName, string modelName);
+
+        /// <summary>
+        /// this method can be used to get the meta data for the current model which set to the server
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of ApiResponse (MetaData)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaGetAsyncWithHttpInfo (string deploymentName, string modelName);
+        /// <summary>
+        /// This method can be used to set meta data for the current model which is set to the server
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">the meta data object</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of MetaData</returns>
+        System.Threading.Tasks.Task<MetaData> MetaPostAsync (MetaData body, string deploymentName, string modelName);
+
+        /// <summary>
+        /// This method can be used to set meta data for the current model which is set to the server
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">the meta data object</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of ApiResponse (MetaData)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaPostAsyncWithHttpInfo (MetaData body, string deploymentName, string modelName);
+        /// <summary>
+        /// Modify the state (start/stop) of a deployed model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the model state object</param>
+        /// <returns>Task of ModelEntity</returns>
+        System.Threading.Tasks.Task<ModelEntity> ModelStateChangeAsync (string deploymentId, string modelId, SetState body);
+
+        /// <summary>
+        /// Modify the state (start/stop) of a deployed model
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the model state object</param>
+        /// <returns>Task of ApiResponse (ModelEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ModelEntity>> ModelStateChangeAsyncWithHttpInfo (string deploymentId, string modelId, SetState body);
+        /// <summary>
+        /// Retrieve a list of all the deployed models given a deployment id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <returns>Task of List&lt;ModelEntity&gt;</returns>
+        System.Threading.Tasks.Task<List<ModelEntity>> ModelsAsync (string deploymentId);
+
+        /// <summary>
+        /// Retrieve a list of all the deployed models given a deployment id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <returns>Task of ApiResponse (List&lt;ModelEntity&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<ModelEntity>>> ModelsAsyncWithHttpInfo (string deploymentId);
         /// <summary>
         /// Set the model to be served
         /// </summary>
@@ -723,6 +2622,31 @@ namespace Skymind.SKIL.Api
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MultiClassClassificationResult)</returns>
         System.Threading.Tasks.Task<ApiResponse<MultiClassClassificationResult>> MulticlassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        /// <summary>
+        /// Get the output from the network, based on the given INDArray[] input
+        /// </summary>
+        /// <remarks>
+        /// Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of MultiPredictResponse</returns>
+        System.Threading.Tasks.Task<MultiPredictResponse> MultipredictAsync (MultiPredictRequest body, string deploymentName, string modelName);
+
+        /// <summary>
+        /// Get the output from the network, based on the given INDArray[] input
+        /// </summary>
+        /// <remarks>
+        /// Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of ApiResponse (MultiPredictResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictAsyncWithHttpInfo (MultiPredictRequest body, string deploymentName, string modelName);
         /// <summary>
         /// Run inference on the input array.
         /// </summary>
@@ -823,6 +2747,346 @@ namespace Skymind.SKIL.Api
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> PredictwithpreprocessjsonAsyncWithHttpInfo (List<string> body, string deploymentName, string modelName);
+        /// <summary>
+        /// Reimport a model to a previous deployed model in a deployment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the deployment request</param>
+        /// <returns>Task of ModelEntity</returns>
+        System.Threading.Tasks.Task<ModelEntity> ReimportModelAsync (string deploymentId, string modelId, ImportModelRequest body);
+
+        /// <summary>
+        /// Reimport a model to a previous deployed model in a deployment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the deployment request</param>
+        /// <returns>Task of ApiResponse (ModelEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ModelEntity>> ReimportModelAsyncWithHttpInfo (string deploymentId, string modelId, ImportModelRequest body);
+        /// <summary>
+        /// Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>Task of BatchCSVRecord</returns>
+        System.Threading.Tasks.Task<BatchCSVRecord> TransformCsvAsync (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+
+        /// <summary>
+        /// Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>Task of ApiResponse (BatchCSVRecord)</returns>
+        System.Threading.Tasks.Task<ApiResponse<BatchCSVRecord>> TransformCsvAsyncWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        /// <summary>
+        /// Takes a batch input arrays and transforms it
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayCsvAsync (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+
+        /// <summary>
+        /// Takes a batch input arrays and transforms it
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayCsvAsyncWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        /// <summary>
+        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="batchImageRecord">The input batch of record arrays</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayImageAsync (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord);
+
+        /// <summary>
+        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="batchImageRecord">The input batch of record arrays</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayImageAsyncWithHttpInfo (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord);
+        /// <summary>
+        /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="files">The image files to upload</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformimageAsync (string deploymentName, string imageTransformName, List<byte[]> files);
+
+        /// <summary>
+        /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="files">The image files to upload</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformimageAsyncWithHttpInfo (string deploymentName, string imageTransformName, List<byte[]> files);
+        /// <summary>
+        /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleCSVRecord object and transforms it into the desired format
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>Task of SingleCSVRecord</returns>
+        System.Threading.Tasks.Task<SingleCSVRecord> TransformincrementalCsvAsync (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+
+        /// <summary>
+        /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleCSVRecord object and transforms it into the desired format
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>Task of ApiResponse (SingleCSVRecord)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SingleCSVRecord>> TransformincrementalCsvAsyncWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        /// <summary>
+        /// Same as /transformincremental but returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayCsvAsync (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+
+        /// <summary>
+        /// Same as /transformincremental but returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayCsvAsyncWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        /// <summary>
+        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="singleImageRecord">The input record array</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayImageAsync (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord);
+
+        /// <summary>
+        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="singleImageRecord">The input record array</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayImageAsyncWithHttpInfo (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord);
+        /// <summary>
+        /// Takes a single multipart image file to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="file">The image file to upload</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalimageAsync (string deploymentName, string imageTransformName, System.IO.Stream file);
+
+        /// <summary>
+        /// Takes a single multipart image file to transform and returns Base64NDArrayBody
+        /// </summary>
+        /// <remarks>
+        /// Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="file">The image file to upload</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalimageAsyncWithHttpInfo (string deploymentName, string imageTransformName, System.IO.Stream file);
+        /// <summary>
+        /// Gets the JSON string of the deployed transform process
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the JSON string of the deployed transform process 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <returns>Task of TransformProcess</returns>
+        System.Threading.Tasks.Task<TransformProcess> TransformprocessGetAsync (string deploymentName, string transformName);
+
+        /// <summary>
+        /// Gets the JSON string of the deployed transform process
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the JSON string of the deployed transform process 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <returns>Task of ApiResponse (TransformProcess)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransformProcess>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string transformName);
+        /// <summary>
+        /// Sets the deployed transform process through the provided JSON string
+        /// </summary>
+        /// <remarks>
+        /// Sets the transform process with the provided JSON string
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string transformName, TransformProcess transformProcess = null);
+
+        /// <summary>
+        /// Sets the deployed transform process through the provided JSON string
+        /// </summary>
+        /// <remarks>
+        /// Sets the transform process with the provided JSON string
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string transformName, TransformProcess transformProcess = null);
+        /// <summary>
+        /// Updates the best model for an experiment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
+        /// <returns>Task of ExperimentEntity</returns>
+        System.Threading.Tasks.Task<ExperimentEntity> UpdateBestModelForExperimentAsync (UpdateBestModel updateBestModel);
+
+        /// <summary>
+        /// Updates the best model for an experiment
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
+        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateBestModelForExperimentAsyncWithHttpInfo (UpdateBestModel updateBestModel);
+        /// <summary>
+        /// Updates an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to update</param>
+        /// <param name="experimentEntity">The experiment entity to update with</param>
+        /// <returns>Task of ExperimentEntity</returns>
+        System.Threading.Tasks.Task<ExperimentEntity> UpdateExperimentAsync (string experimentID, ExperimentEntity experimentEntity);
+
+        /// <summary>
+        /// Updates an experiment, given an experiment entity
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to update</param>
+        /// <param name="experimentEntity">The experiment entity to update with</param>
+        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateExperimentAsyncWithHttpInfo (string experimentID, ExperimentEntity experimentEntity);
+        /// <summary>
+        /// Update a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
+        /// <param name="updateModelHistoryRequest">The model history request object</param>
+        /// <returns>Task of ModelHistoryEntity</returns>
+        System.Threading.Tasks.Task<ModelHistoryEntity> UpdateModelHistoryAsync (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
+
+        /// <summary>
+        /// Update a model history / workspace
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
+        /// <param name="updateModelHistoryRequest">The model history request object</param>
+        /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> UpdateModelHistoryAsyncWithHttpInfo (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
         /// <summary>
         /// Upload a model file to SKIL for import.
         /// </summary>
@@ -942,6 +3206,1278 @@ namespace Skymind.SKIL.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Adds an evaluation result 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="evaluationResultsEntity">The evaluation result entity</param>
+        /// <returns>EvaluationResultsEntity</returns>
+        public EvaluationResultsEntity AddEvaluationResult (EvaluationResultsEntity evaluationResultsEntity)
+        {
+             ApiResponse<EvaluationResultsEntity> localVarResponse = AddEvaluationResultWithHttpInfo(evaluationResultsEntity);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Adds an evaluation result 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="evaluationResultsEntity">The evaluation result entity</param>
+        /// <returns>ApiResponse of EvaluationResultsEntity</returns>
+        public ApiResponse< EvaluationResultsEntity > AddEvaluationResultWithHttpInfo (EvaluationResultsEntity evaluationResultsEntity)
+        {
+            // verify the required parameter 'evaluationResultsEntity' is set
+            if (evaluationResultsEntity == null)
+                throw new ApiException(400, "Missing required parameter 'evaluationResultsEntity' when calling DefaultApi->AddEvaluationResult");
+
+            var localVarPath = "/model/revisions/evaluations/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (evaluationResultsEntity != null && evaluationResultsEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(evaluationResultsEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = evaluationResultsEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddEvaluationResult", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<EvaluationResultsEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (EvaluationResultsEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
+        }
+
+        /// <summary>
+        /// Adds an evaluation result 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="evaluationResultsEntity">The evaluation result entity</param>
+        /// <returns>Task of EvaluationResultsEntity</returns>
+        public async System.Threading.Tasks.Task<EvaluationResultsEntity> AddEvaluationResultAsync (EvaluationResultsEntity evaluationResultsEntity)
+        {
+             ApiResponse<EvaluationResultsEntity> localVarResponse = await AddEvaluationResultAsyncWithHttpInfo(evaluationResultsEntity);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Adds an evaluation result 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="evaluationResultsEntity">The evaluation result entity</param>
+        /// <returns>Task of ApiResponse (EvaluationResultsEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AddEvaluationResultAsyncWithHttpInfo (EvaluationResultsEntity evaluationResultsEntity)
+        {
+            // verify the required parameter 'evaluationResultsEntity' is set
+            if (evaluationResultsEntity == null)
+                throw new ApiException(400, "Missing required parameter 'evaluationResultsEntity' when calling DefaultApi->AddEvaluationResult");
+
+            var localVarPath = "/model/revisions/evaluations/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (evaluationResultsEntity != null && evaluationResultsEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(evaluationResultsEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = evaluationResultsEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddEvaluationResult", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<EvaluationResultsEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (EvaluationResultsEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
+        }
+
+        /// <summary>
+        /// Adds a number of examples to a minibatch ID given an AddExampleRequest. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
+        /// <returns>AddExampleRequest</returns>
+        public AddExampleRequest AddExampleForBatch (AddExampleRequest addExampleRequest)
+        {
+             ApiResponse<AddExampleRequest> localVarResponse = AddExampleForBatchWithHttpInfo(addExampleRequest);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Adds a number of examples to a minibatch ID given an AddExampleRequest. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
+        /// <returns>ApiResponse of AddExampleRequest</returns>
+        public ApiResponse< AddExampleRequest > AddExampleForBatchWithHttpInfo (AddExampleRequest addExampleRequest)
+        {
+            // verify the required parameter 'addExampleRequest' is set
+            if (addExampleRequest == null)
+                throw new ApiException(400, "Missing required parameter 'addExampleRequest' when calling DefaultApi->AddExampleForBatch");
+
+            var localVarPath = "/model/exampleForBatch";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (addExampleRequest != null && addExampleRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(addExampleRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = addExampleRequest; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddExampleForBatch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AddExampleRequest>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AddExampleRequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddExampleRequest)));
+        }
+
+        /// <summary>
+        /// Adds a number of examples to a minibatch ID given an AddExampleRequest. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
+        /// <returns>Task of AddExampleRequest</returns>
+        public async System.Threading.Tasks.Task<AddExampleRequest> AddExampleForBatchAsync (AddExampleRequest addExampleRequest)
+        {
+             ApiResponse<AddExampleRequest> localVarResponse = await AddExampleForBatchAsyncWithHttpInfo(addExampleRequest);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Adds a number of examples to a minibatch ID given an AddExampleRequest. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
+        /// <returns>Task of ApiResponse (AddExampleRequest)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AddExampleRequest>> AddExampleForBatchAsyncWithHttpInfo (AddExampleRequest addExampleRequest)
+        {
+            // verify the required parameter 'addExampleRequest' is set
+            if (addExampleRequest == null)
+                throw new ApiException(400, "Missing required parameter 'addExampleRequest' when calling DefaultApi->AddExampleForBatch");
+
+            var localVarPath = "/model/exampleForBatch";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (addExampleRequest != null && addExampleRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(addExampleRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = addExampleRequest; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddExampleForBatch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AddExampleRequest>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AddExampleRequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddExampleRequest)));
+        }
+
+        /// <summary>
+        /// Adds an example to a minibatch 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="exampleEntity">The example to add to the minibatch</param>
+        /// <returns>ExampleEntity</returns>
+        public ExampleEntity AddExampleToMinibatch (ExampleEntity exampleEntity)
+        {
+             ApiResponse<ExampleEntity> localVarResponse = AddExampleToMinibatchWithHttpInfo(exampleEntity);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Adds an example to a minibatch 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="exampleEntity">The example to add to the minibatch</param>
+        /// <returns>ApiResponse of ExampleEntity</returns>
+        public ApiResponse< ExampleEntity > AddExampleToMinibatchWithHttpInfo (ExampleEntity exampleEntity)
+        {
+            // verify the required parameter 'exampleEntity' is set
+            if (exampleEntity == null)
+                throw new ApiException(400, "Missing required parameter 'exampleEntity' when calling DefaultApi->AddExampleToMinibatch");
+
+            var localVarPath = "/model/example";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (exampleEntity != null && exampleEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(exampleEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = exampleEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddExampleToMinibatch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExampleEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExampleEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExampleEntity)));
+        }
+
+        /// <summary>
+        /// Adds an example to a minibatch 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="exampleEntity">The example to add to the minibatch</param>
+        /// <returns>Task of ExampleEntity</returns>
+        public async System.Threading.Tasks.Task<ExampleEntity> AddExampleToMinibatchAsync (ExampleEntity exampleEntity)
+        {
+             ApiResponse<ExampleEntity> localVarResponse = await AddExampleToMinibatchAsyncWithHttpInfo(exampleEntity);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Adds an example to a minibatch 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="exampleEntity">The example to add to the minibatch</param>
+        /// <returns>Task of ApiResponse (ExampleEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ExampleEntity>> AddExampleToMinibatchAsyncWithHttpInfo (ExampleEntity exampleEntity)
+        {
+            // verify the required parameter 'exampleEntity' is set
+            if (exampleEntity == null)
+                throw new ApiException(400, "Missing required parameter 'exampleEntity' when calling DefaultApi->AddExampleToMinibatch");
+
+            var localVarPath = "/model/example";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (exampleEntity != null && exampleEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(exampleEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = exampleEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddExampleToMinibatch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExampleEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExampleEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExampleEntity)));
+        }
+
+        /// <summary>
+        /// Add an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentEntity">The experiment entity to add</param>
+        /// <returns>ExperimentEntity</returns>
+        public ExperimentEntity AddExperiment (ExperimentEntity experimentEntity)
+        {
+             ApiResponse<ExperimentEntity> localVarResponse = AddExperimentWithHttpInfo(experimentEntity);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentEntity">The experiment entity to add</param>
+        /// <returns>ApiResponse of ExperimentEntity</returns>
+        public ApiResponse< ExperimentEntity > AddExperimentWithHttpInfo (ExperimentEntity experimentEntity)
+        {
+            // verify the required parameter 'experimentEntity' is set
+            if (experimentEntity == null)
+                throw new ApiException(400, "Missing required parameter 'experimentEntity' when calling DefaultApi->AddExperiment");
+
+            var localVarPath = "/experiment";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = experimentEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+        }
+
+        /// <summary>
+        /// Add an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentEntity">The experiment entity to add</param>
+        /// <returns>Task of ExperimentEntity</returns>
+        public async System.Threading.Tasks.Task<ExperimentEntity> AddExperimentAsync (ExperimentEntity experimentEntity)
+        {
+             ApiResponse<ExperimentEntity> localVarResponse = await AddExperimentAsyncWithHttpInfo(experimentEntity);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Add an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentEntity">The experiment entity to add</param>
+        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> AddExperimentAsyncWithHttpInfo (ExperimentEntity experimentEntity)
+        {
+            // verify the required parameter 'experimentEntity' is set
+            if (experimentEntity == null)
+                throw new ApiException(400, "Missing required parameter 'experimentEntity' when calling DefaultApi->AddExperiment");
+
+            var localVarPath = "/experiment";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = experimentEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+        }
+
+        /// <summary>
+        /// Adds a minibatch 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchEntity">The minibatch entity to add</param>
+        /// <returns>MinibatchEntity</returns>
+        public MinibatchEntity AddMinibatch (MinibatchEntity minibatchEntity)
+        {
+             ApiResponse<MinibatchEntity> localVarResponse = AddMinibatchWithHttpInfo(minibatchEntity);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Adds a minibatch 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchEntity">The minibatch entity to add</param>
+        /// <returns>ApiResponse of MinibatchEntity</returns>
+        public ApiResponse< MinibatchEntity > AddMinibatchWithHttpInfo (MinibatchEntity minibatchEntity)
+        {
+            // verify the required parameter 'minibatchEntity' is set
+            if (minibatchEntity == null)
+                throw new ApiException(400, "Missing required parameter 'minibatchEntity' when calling DefaultApi->AddMinibatch");
+
+            var localVarPath = "/model/minibatch";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (minibatchEntity != null && minibatchEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(minibatchEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = minibatchEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddMinibatch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MinibatchEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MinibatchEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
+        }
+
+        /// <summary>
+        /// Adds a minibatch 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchEntity">The minibatch entity to add</param>
+        /// <returns>Task of MinibatchEntity</returns>
+        public async System.Threading.Tasks.Task<MinibatchEntity> AddMinibatchAsync (MinibatchEntity minibatchEntity)
+        {
+             ApiResponse<MinibatchEntity> localVarResponse = await AddMinibatchAsyncWithHttpInfo(minibatchEntity);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Adds a minibatch 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchEntity">The minibatch entity to add</param>
+        /// <returns>Task of ApiResponse (MinibatchEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> AddMinibatchAsyncWithHttpInfo (MinibatchEntity minibatchEntity)
+        {
+            // verify the required parameter 'minibatchEntity' is set
+            if (minibatchEntity == null)
+                throw new ApiException(400, "Missing required parameter 'minibatchEntity' when calling DefaultApi->AddMinibatch");
+
+            var localVarPath = "/model/minibatch";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (minibatchEntity != null && minibatchEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(minibatchEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = minibatchEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddMinibatch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MinibatchEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MinibatchEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
+        }
+
+        /// <summary>
+        /// Add a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addModelHistoryRequest">The model history request object</param>
+        /// <returns>ModelHistoryEntity</returns>
+        public ModelHistoryEntity AddModelHistory (AddModelHistoryRequest addModelHistoryRequest)
+        {
+             ApiResponse<ModelHistoryEntity> localVarResponse = AddModelHistoryWithHttpInfo(addModelHistoryRequest);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addModelHistoryRequest">The model history request object</param>
+        /// <returns>ApiResponse of ModelHistoryEntity</returns>
+        public ApiResponse< ModelHistoryEntity > AddModelHistoryWithHttpInfo (AddModelHistoryRequest addModelHistoryRequest)
+        {
+            // verify the required parameter 'addModelHistoryRequest' is set
+            if (addModelHistoryRequest == null)
+                throw new ApiException(400, "Missing required parameter 'addModelHistoryRequest' when calling DefaultApi->AddModelHistory");
+
+            var localVarPath = "/modelhistory";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (addModelHistoryRequest != null && addModelHistoryRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(addModelHistoryRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = addModelHistoryRequest; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+        }
+
+        /// <summary>
+        /// Add a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addModelHistoryRequest">The model history request object</param>
+        /// <returns>Task of ModelHistoryEntity</returns>
+        public async System.Threading.Tasks.Task<ModelHistoryEntity> AddModelHistoryAsync (AddModelHistoryRequest addModelHistoryRequest)
+        {
+             ApiResponse<ModelHistoryEntity> localVarResponse = await AddModelHistoryAsyncWithHttpInfo(addModelHistoryRequest);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Add a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addModelHistoryRequest">The model history request object</param>
+        /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> AddModelHistoryAsyncWithHttpInfo (AddModelHistoryRequest addModelHistoryRequest)
+        {
+            // verify the required parameter 'addModelHistoryRequest' is set
+            if (addModelHistoryRequest == null)
+                throw new ApiException(400, "Missing required parameter 'addModelHistoryRequest' when calling DefaultApi->AddModelHistory");
+
+            var localVarPath = "/modelhistory";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (addModelHistoryRequest != null && addModelHistoryRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(addModelHistoryRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = addModelHistoryRequest; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+        }
+
+        /// <summary>
+        /// Adds a model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>ModelInstanceEntity</returns>
+        public ModelInstanceEntity AddModelInstance (ModelInstanceEntity modelInstanceEntity)
+        {
+             ApiResponse<ModelInstanceEntity> localVarResponse = AddModelInstanceWithHttpInfo(modelInstanceEntity);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Adds a model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>ApiResponse of ModelInstanceEntity</returns>
+        public ApiResponse< ModelInstanceEntity > AddModelInstanceWithHttpInfo (ModelInstanceEntity modelInstanceEntity)
+        {
+            // verify the required parameter 'modelInstanceEntity' is set
+            if (modelInstanceEntity == null)
+                throw new ApiException(400, "Missing required parameter 'modelInstanceEntity' when calling DefaultApi->AddModelInstance");
+
+            var localVarPath = "/model";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelInstanceEntity != null && modelInstanceEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(modelInstanceEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = modelInstanceEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddModelInstance", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+        }
+
+        /// <summary>
+        /// Adds a model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>Task of ModelInstanceEntity</returns>
+        public async System.Threading.Tasks.Task<ModelInstanceEntity> AddModelInstanceAsync (ModelInstanceEntity modelInstanceEntity)
+        {
+             ApiResponse<ModelInstanceEntity> localVarResponse = await AddModelInstanceAsyncWithHttpInfo(modelInstanceEntity);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Adds a model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> AddModelInstanceAsyncWithHttpInfo (ModelInstanceEntity modelInstanceEntity)
+        {
+            // verify the required parameter 'modelInstanceEntity' is set
+            if (modelInstanceEntity == null)
+                throw new ApiException(400, "Missing required parameter 'modelInstanceEntity' when calling DefaultApi->AddModelInstance");
+
+            var localVarPath = "/model";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelInstanceEntity != null && modelInstanceEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(modelInstanceEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = modelInstanceEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddModelInstance", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+        }
+
+        /// <summary>
+        /// Aggregates the evaluaition results of a model instance, based on the evaluation type 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>EvaluationResultsEntity</returns>
+        public EvaluationResultsEntity AggregateModelResults (AggregatePrediction aggregatePrediction)
+        {
+             ApiResponse<EvaluationResultsEntity> localVarResponse = AggregateModelResultsWithHttpInfo(aggregatePrediction);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Aggregates the evaluaition results of a model instance, based on the evaluation type 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>ApiResponse of EvaluationResultsEntity</returns>
+        public ApiResponse< EvaluationResultsEntity > AggregateModelResultsWithHttpInfo (AggregatePrediction aggregatePrediction)
+        {
+            // verify the required parameter 'aggregatePrediction' is set
+            if (aggregatePrediction == null)
+                throw new ApiException(400, "Missing required parameter 'aggregatePrediction' when calling DefaultApi->AggregateModelResults");
+
+            var localVarPath = "/model/aggregateresults";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (aggregatePrediction != null && aggregatePrediction.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(aggregatePrediction); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = aggregatePrediction; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AggregateModelResults", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<EvaluationResultsEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (EvaluationResultsEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
+        }
+
+        /// <summary>
+        /// Aggregates the evaluaition results of a model instance, based on the evaluation type 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>Task of EvaluationResultsEntity</returns>
+        public async System.Threading.Tasks.Task<EvaluationResultsEntity> AggregateModelResultsAsync (AggregatePrediction aggregatePrediction)
+        {
+             ApiResponse<EvaluationResultsEntity> localVarResponse = await AggregateModelResultsAsyncWithHttpInfo(aggregatePrediction);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Aggregates the evaluaition results of a model instance, based on the evaluation type 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
+        /// <returns>Task of ApiResponse (EvaluationResultsEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AggregateModelResultsAsyncWithHttpInfo (AggregatePrediction aggregatePrediction)
+        {
+            // verify the required parameter 'aggregatePrediction' is set
+            if (aggregatePrediction == null)
+                throw new ApiException(400, "Missing required parameter 'aggregatePrediction' when calling DefaultApi->AggregateModelResults");
+
+            var localVarPath = "/model/aggregateresults";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (aggregatePrediction != null && aggregatePrediction.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(aggregatePrediction); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = aggregatePrediction; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AggregateModelResults", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<EvaluationResultsEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (EvaluationResultsEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
         }
 
         /// <summary>
@@ -1474,15 +5010,756 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
+        /// Creates model History 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryEntity">The model history entity</param>
+        /// <returns>ModelHistoryEntity</returns>
+        public ModelHistoryEntity CreateModelHistory (ModelHistoryEntity modelHistoryEntity)
+        {
+             ApiResponse<ModelHistoryEntity> localVarResponse = CreateModelHistoryWithHttpInfo(modelHistoryEntity);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Creates model History 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryEntity">The model history entity</param>
+        /// <returns>ApiResponse of ModelHistoryEntity</returns>
+        public ApiResponse< ModelHistoryEntity > CreateModelHistoryWithHttpInfo (ModelHistoryEntity modelHistoryEntity)
+        {
+            // verify the required parameter 'modelHistoryEntity' is set
+            if (modelHistoryEntity == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryEntity' when calling DefaultApi->CreateModelHistory");
+
+            var localVarPath = "/model/revisions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelHistoryEntity != null && modelHistoryEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(modelHistoryEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = modelHistoryEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+        }
+
+        /// <summary>
+        /// Creates model History 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryEntity">The model history entity</param>
+        /// <returns>Task of ModelHistoryEntity</returns>
+        public async System.Threading.Tasks.Task<ModelHistoryEntity> CreateModelHistoryAsync (ModelHistoryEntity modelHistoryEntity)
+        {
+             ApiResponse<ModelHistoryEntity> localVarResponse = await CreateModelHistoryAsyncWithHttpInfo(modelHistoryEntity);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Creates model History 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryEntity">The model history entity</param>
+        /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> CreateModelHistoryAsyncWithHttpInfo (ModelHistoryEntity modelHistoryEntity)
+        {
+            // verify the required parameter 'modelHistoryEntity' is set
+            if (modelHistoryEntity == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryEntity' when calling DefaultApi->CreateModelHistory");
+
+            var localVarPath = "/model/revisions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelHistoryEntity != null && modelHistoryEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(modelHistoryEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = modelHistoryEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+        }
+
+        /// <summary>
+        /// Deletes an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to delete</param>
+        /// <returns>InlineResponse200</returns>
+        public InlineResponse200 DeleteExperiment (string experimentID)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = DeleteExperimentWithHttpInfo(experimentID);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Deletes an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to delete</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        public ApiResponse< InlineResponse200 > DeleteExperimentWithHttpInfo (string experimentID)
+        {
+            // verify the required parameter 'experimentID' is set
+            if (experimentID == null)
+                throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->DeleteExperiment");
+
+            var localVarPath = "/experiment/{experimentID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+        }
+
+        /// <summary>
+        /// Deletes an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to delete</param>
+        /// <returns>Task of InlineResponse200</returns>
+        public async System.Threading.Tasks.Task<InlineResponse200> DeleteExperimentAsync (string experimentID)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = await DeleteExperimentAsyncWithHttpInfo(experimentID);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Deletes an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to delete</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteExperimentAsyncWithHttpInfo (string experimentID)
+        {
+            // verify the required parameter 'experimentID' is set
+            if (experimentID == null)
+                throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->DeleteExperiment");
+
+            var localVarPath = "/experiment/{experimentID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+        }
+
+        /// <summary>
+        /// Delete a model by deployment and model id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <returns>InlineResponse200</returns>
+        public InlineResponse200 DeleteModel (string deploymentId, string modelId)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = DeleteModelWithHttpInfo(deploymentId, modelId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete a model by deployment and model id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        public ApiResponse< InlineResponse200 > DeleteModelWithHttpInfo (string deploymentId, string modelId)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->DeleteModel");
+            // verify the required parameter 'modelId' is set
+            if (modelId == null)
+                throw new ApiException(400, "Missing required parameter 'modelId' when calling DefaultApi->DeleteModel");
+
+            var localVarPath = "/deployment/{deploymentId}/model/{modelId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteModel", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+        }
+
+        /// <summary>
+        /// Delete a model by deployment and model id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <returns>Task of InlineResponse200</returns>
+        public async System.Threading.Tasks.Task<InlineResponse200> DeleteModelAsync (string deploymentId, string modelId)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = await DeleteModelAsyncWithHttpInfo(deploymentId, modelId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Delete a model by deployment and model id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteModelAsyncWithHttpInfo (string deploymentId, string modelId)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->DeleteModel");
+            // verify the required parameter 'modelId' is set
+            if (modelId == null)
+                throw new ApiException(400, "Missing required parameter 'modelId' when calling DefaultApi->DeleteModel");
+
+            var localVarPath = "/deployment/{deploymentId}/model/{modelId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteModel", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+        }
+
+        /// <summary>
+        /// Deletes a model history / workspace, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
+        /// <returns>InlineResponse200</returns>
+        public InlineResponse200 DeleteModelHistory (string modelHistoryID)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = DeleteModelHistoryWithHttpInfo(modelHistoryID);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Deletes a model history / workspace, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        public ApiResponse< InlineResponse200 > DeleteModelHistoryWithHttpInfo (string modelHistoryID)
+        {
+            // verify the required parameter 'modelHistoryID' is set
+            if (modelHistoryID == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->DeleteModelHistory");
+
+            var localVarPath = "/modelhistory/{modelHistoryID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+        }
+
+        /// <summary>
+        /// Deletes a model history / workspace, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
+        /// <returns>Task of InlineResponse200</returns>
+        public async System.Threading.Tasks.Task<InlineResponse200> DeleteModelHistoryAsync (string modelHistoryID)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = await DeleteModelHistoryAsyncWithHttpInfo(modelHistoryID);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Deletes a model history / workspace, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteModelHistoryAsyncWithHttpInfo (string modelHistoryID)
+        {
+            // verify the required parameter 'modelHistoryID' is set
+            if (modelHistoryID == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->DeleteModelHistory");
+
+            var localVarPath = "/modelhistory/{modelHistoryID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+        }
+
+        /// <summary>
+        /// Deletes a model instance, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
+        /// <returns></returns>
+        public void DeleteModelInstance (string modelInstanceID)
+        {
+             DeleteModelInstanceWithHttpInfo(modelInstanceID);
+        }
+
+        /// <summary>
+        /// Deletes a model instance, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> DeleteModelInstanceWithHttpInfo (string modelInstanceID)
+        {
+            // verify the required parameter 'modelInstanceID' is set
+            if (modelInstanceID == null)
+                throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->DeleteModelInstance");
+
+            var localVarPath = "/model/{modelInstanceID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteModelInstance", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Deletes a model instance, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteModelInstanceAsync (string modelInstanceID)
+        {
+             await DeleteModelInstanceAsyncWithHttpInfo(modelInstanceID);
+
+        }
+
+        /// <summary>
+        /// Deletes a model instance, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteModelInstanceAsyncWithHttpInfo (string modelInstanceID)
+        {
+            // verify the required parameter 'modelInstanceID' is set
+            if (modelInstanceID == null)
+                throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->DeleteModelInstance");
+
+            var localVarPath = "/model/{modelInstanceID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteModelInstance", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
         /// Deploy a model in a deployment group. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentId">ID deployment group</param>
-        /// <param name="body">the deployment request</param>
-        /// <returns>Object</returns>
-        public Object DeployModel (string deploymentId, DeployModel body)
+        /// <param name="body">the model import request</param>
+        /// <returns>ModelEntity</returns>
+        public ModelEntity DeployModel (string deploymentId, ImportModelRequest body)
         {
-             ApiResponse<Object> localVarResponse = DeployModelWithHttpInfo(deploymentId, body);
+             ApiResponse<ModelEntity> localVarResponse = DeployModelWithHttpInfo(deploymentId, body);
              return localVarResponse.Data;
         }
 
@@ -1491,9 +5768,9 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentId">ID deployment group</param>
-        /// <param name="body">the deployment request</param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > DeployModelWithHttpInfo (string deploymentId, DeployModel body)
+        /// <param name="body">the model import request</param>
+        /// <returns>ApiResponse of ModelEntity</returns>
+        public ApiResponse< ModelEntity > DeployModelWithHttpInfo (string deploymentId, ImportModelRequest body)
         {
             // verify the required parameter 'deploymentId' is set
             if (deploymentId == null)
@@ -1553,9 +5830,9 @@ namespace Skymind.SKIL.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ModelEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Object) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
         }
 
         /// <summary>
@@ -1563,11 +5840,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentId">ID deployment group</param>
-        /// <param name="body">the deployment request</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> DeployModelAsync (string deploymentId, DeployModel body)
+        /// <param name="body">the model import request</param>
+        /// <returns>Task of ModelEntity</returns>
+        public async System.Threading.Tasks.Task<ModelEntity> DeployModelAsync (string deploymentId, ImportModelRequest body)
         {
-             ApiResponse<Object> localVarResponse = await DeployModelAsyncWithHttpInfo(deploymentId, body);
+             ApiResponse<ModelEntity> localVarResponse = await DeployModelAsyncWithHttpInfo(deploymentId, body);
              return localVarResponse.Data;
 
         }
@@ -1577,9 +5854,9 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentId">ID deployment group</param>
-        /// <param name="body">the deployment request</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeployModelAsyncWithHttpInfo (string deploymentId, DeployModel body)
+        /// <param name="body">the model import request</param>
+        /// <returns>Task of ApiResponse (ModelEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ModelEntity>> DeployModelAsyncWithHttpInfo (string deploymentId, ImportModelRequest body)
         {
             // verify the required parameter 'deploymentId' is set
             if (deploymentId == null)
@@ -1639,9 +5916,9 @@ namespace Skymind.SKIL.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ModelEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Object) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
         }
 
         /// <summary>
@@ -1649,10 +5926,10 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the deployment request</param>
-        /// <returns>Deployment</returns>
-        public Deployment DeploymentCreate (NewDeployment body)
+        /// <returns>DeploymentResponse</returns>
+        public DeploymentResponse DeploymentCreate (CreateDeploymentRequest body)
         {
-             ApiResponse<Deployment> localVarResponse = DeploymentCreateWithHttpInfo(body);
+             ApiResponse<DeploymentResponse> localVarResponse = DeploymentCreateWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -1661,8 +5938,8 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the deployment request</param>
-        /// <returns>ApiResponse of Deployment</returns>
-        public ApiResponse< Deployment > DeploymentCreateWithHttpInfo (NewDeployment body)
+        /// <returns>ApiResponse of DeploymentResponse</returns>
+        public ApiResponse< DeploymentResponse > DeploymentCreateWithHttpInfo (CreateDeploymentRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1718,9 +5995,9 @@ namespace Skymind.SKIL.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Deployment>(localVarStatusCode,
+            return new ApiResponse<DeploymentResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Deployment) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Deployment)));
+                (DeploymentResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
         }
 
         /// <summary>
@@ -1728,10 +6005,10 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the deployment request</param>
-        /// <returns>Task of Deployment</returns>
-        public async System.Threading.Tasks.Task<Deployment> DeploymentCreateAsync (NewDeployment body)
+        /// <returns>Task of DeploymentResponse</returns>
+        public async System.Threading.Tasks.Task<DeploymentResponse> DeploymentCreateAsync (CreateDeploymentRequest body)
         {
-             ApiResponse<Deployment> localVarResponse = await DeploymentCreateAsyncWithHttpInfo(body);
+             ApiResponse<DeploymentResponse> localVarResponse = await DeploymentCreateAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -1741,8 +6018,8 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the deployment request</param>
-        /// <returns>Task of ApiResponse (Deployment)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Deployment>> DeploymentCreateAsyncWithHttpInfo (NewDeployment body)
+        /// <returns>Task of ApiResponse (DeploymentResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<DeploymentResponse>> DeploymentCreateAsyncWithHttpInfo (CreateDeploymentRequest body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1798,9 +6075,2274 @@ namespace Skymind.SKIL.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Deployment>(localVarStatusCode,
+            return new ApiResponse<DeploymentResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Deployment) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Deployment)));
+                (DeploymentResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
+        }
+
+        /// <summary>
+        /// Delete a deployment by id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>InlineResponse200</returns>
+        public InlineResponse200 DeploymentDelete (string deploymentId)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = DeploymentDeleteWithHttpInfo(deploymentId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete a deployment by id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        public ApiResponse< InlineResponse200 > DeploymentDeleteWithHttpInfo (string deploymentId)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->DeploymentDelete");
+
+            var localVarPath = "/deployment/{deploymentId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeploymentDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+        }
+
+        /// <summary>
+        /// Delete a deployment by id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>Task of InlineResponse200</returns>
+        public async System.Threading.Tasks.Task<InlineResponse200> DeploymentDeleteAsync (string deploymentId)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = await DeploymentDeleteAsyncWithHttpInfo(deploymentId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Delete a deployment by id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeploymentDeleteAsyncWithHttpInfo (string deploymentId)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->DeploymentDelete");
+
+            var localVarPath = "/deployment/{deploymentId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeploymentDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+        }
+
+        /// <summary>
+        /// Get a deployment details by id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>DeploymentResponse</returns>
+        public DeploymentResponse DeploymentGet (string deploymentId)
+        {
+             ApiResponse<DeploymentResponse> localVarResponse = DeploymentGetWithHttpInfo(deploymentId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get a deployment details by id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>ApiResponse of DeploymentResponse</returns>
+        public ApiResponse< DeploymentResponse > DeploymentGetWithHttpInfo (string deploymentId)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->DeploymentGet");
+
+            var localVarPath = "/deployment/{deploymentId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeploymentGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<DeploymentResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (DeploymentResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
+        }
+
+        /// <summary>
+        /// Get a deployment details by id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>Task of DeploymentResponse</returns>
+        public async System.Threading.Tasks.Task<DeploymentResponse> DeploymentGetAsync (string deploymentId)
+        {
+             ApiResponse<DeploymentResponse> localVarResponse = await DeploymentGetAsyncWithHttpInfo(deploymentId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get a deployment details by id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">Id of the deployment group</param>
+        /// <returns>Task of ApiResponse (DeploymentResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<DeploymentResponse>> DeploymentGetAsyncWithHttpInfo (string deploymentId)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->DeploymentGet");
+
+            var localVarPath = "/deployment/{deploymentId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeploymentGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<DeploymentResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (DeploymentResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
+        }
+
+        /// <summary>
+        /// Get a list of deployments 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;DeploymentResponse&gt;</returns>
+        public List<DeploymentResponse> Deployments ()
+        {
+             ApiResponse<List<DeploymentResponse>> localVarResponse = DeploymentsWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get a list of deployments 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;DeploymentResponse&gt;</returns>
+        public ApiResponse< List<DeploymentResponse> > DeploymentsWithHttpInfo ()
+        {
+
+            var localVarPath = "/deployments";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Deployments", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<DeploymentResponse>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<DeploymentResponse>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<DeploymentResponse>)));
+        }
+
+        /// <summary>
+        /// Get a list of deployments 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of List&lt;DeploymentResponse&gt;</returns>
+        public async System.Threading.Tasks.Task<List<DeploymentResponse>> DeploymentsAsync ()
+        {
+             ApiResponse<List<DeploymentResponse>> localVarResponse = await DeploymentsAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get a list of deployments 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (List&lt;DeploymentResponse&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<DeploymentResponse>>> DeploymentsAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/deployments";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Deployments", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<DeploymentResponse>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<DeploymentResponse>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<DeploymentResponse>)));
+        }
+
+        /// <summary>
+        /// Detect the objects, given a (input) prediction request 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">the GUID for mapping the results in the detections</param>
+        /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
+        /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
+        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>DetectionResult</returns>
+        public DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName)
+        {
+             ApiResponse<DetectionResult> localVarResponse = DetectobjectsWithHttpInfo(id, needsPreprocessing, threshold, imageFile, deploymentName, modelName);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Detect the objects, given a (input) prediction request 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">the GUID for mapping the results in the detections</param>
+        /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
+        /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
+        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>ApiResponse of DetectionResult</returns>
+        public ApiResponse< DetectionResult > DetectobjectsWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'needsPreprocessing' is set
+            if (needsPreprocessing == null)
+                throw new ApiException(400, "Missing required parameter 'needsPreprocessing' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'threshold' is set
+            if (threshold == null)
+                throw new ApiException(400, "Missing required parameter 'threshold' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'imageFile' is set
+            if (imageFile == null)
+                throw new ApiException(400, "Missing required parameter 'imageFile' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'modelName' is set
+            if (modelName == null)
+                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Detectobjects");
+
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (id != null) localVarFormParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // form parameter
+            if (needsPreprocessing != null) localVarFormParams.Add("needsPreprocessing", Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
+            if (threshold != null) localVarFormParams.Add("threshold", Configuration.ApiClient.ParameterToString(threshold)); // form parameter
+            if (imageFile != null) localVarFileParams.Add("imageFile", Configuration.ApiClient.ParameterToFile("imageFile", imageFile));
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Detectobjects", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<DetectionResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (DetectionResult) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DetectionResult)));
+        }
+
+        /// <summary>
+        /// Detect the objects, given a (input) prediction request 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">the GUID for mapping the results in the detections</param>
+        /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
+        /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
+        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of DetectionResult</returns>
+        public async System.Threading.Tasks.Task<DetectionResult> DetectobjectsAsync (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName)
+        {
+             ApiResponse<DetectionResult> localVarResponse = await DetectobjectsAsyncWithHttpInfo(id, needsPreprocessing, threshold, imageFile, deploymentName, modelName);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Detect the objects, given a (input) prediction request 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">the GUID for mapping the results in the detections</param>
+        /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
+        /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
+        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of ApiResponse (DetectionResult)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<DetectionResult>> DetectobjectsAsyncWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'needsPreprocessing' is set
+            if (needsPreprocessing == null)
+                throw new ApiException(400, "Missing required parameter 'needsPreprocessing' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'threshold' is set
+            if (threshold == null)
+                throw new ApiException(400, "Missing required parameter 'threshold' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'imageFile' is set
+            if (imageFile == null)
+                throw new ApiException(400, "Missing required parameter 'imageFile' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'modelName' is set
+            if (modelName == null)
+                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Detectobjects");
+
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (id != null) localVarFormParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // form parameter
+            if (needsPreprocessing != null) localVarFormParams.Add("needsPreprocessing", Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
+            if (threshold != null) localVarFormParams.Add("threshold", Configuration.ApiClient.ParameterToString(threshold)); // form parameter
+            if (imageFile != null) localVarFileParams.Add("imageFile", Configuration.ApiClient.ParameterToFile("imageFile", imageFile));
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Detectobjects", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<DetectionResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (DetectionResult) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DetectionResult)));
+        }
+
+        /// <summary>
+        /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
+        /// <returns>ModelInstanceEntity</returns>
+        public ModelInstanceEntity GetBestModelAmongModelIds (BestModel bestModel)
+        {
+             ApiResponse<ModelInstanceEntity> localVarResponse = GetBestModelAmongModelIdsWithHttpInfo(bestModel);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
+        /// <returns>ApiResponse of ModelInstanceEntity</returns>
+        public ApiResponse< ModelInstanceEntity > GetBestModelAmongModelIdsWithHttpInfo (BestModel bestModel)
+        {
+            // verify the required parameter 'bestModel' is set
+            if (bestModel == null)
+                throw new ApiException(400, "Missing required parameter 'bestModel' when calling DefaultApi->GetBestModelAmongModelIds");
+
+            var localVarPath = "/model/best";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (bestModel != null && bestModel.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(bestModel); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = bestModel; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetBestModelAmongModelIds", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+        }
+
+        /// <summary>
+        /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
+        /// <returns>Task of ModelInstanceEntity</returns>
+        public async System.Threading.Tasks.Task<ModelInstanceEntity> GetBestModelAmongModelIdsAsync (BestModel bestModel)
+        {
+             ApiResponse<ModelInstanceEntity> localVarResponse = await GetBestModelAmongModelIdsAsyncWithHttpInfo(bestModel);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
+        /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetBestModelAmongModelIdsAsyncWithHttpInfo (BestModel bestModel)
+        {
+            // verify the required parameter 'bestModel' is set
+            if (bestModel == null)
+                throw new ApiException(400, "Missing required parameter 'bestModel' when calling DefaultApi->GetBestModelAmongModelIds");
+
+            var localVarPath = "/model/best";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (bestModel != null && bestModel.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(bestModel); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = bestModel; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetBestModelAmongModelIds", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+        }
+
+        /// <summary>
+        /// Gets the list of evaluation results entity, given a model instance ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
+        /// <returns>List&lt;EvaluationResultsEntity&gt;</returns>
+        public List<EvaluationResultsEntity> GetEvaluationForModelID (string modelInstanceID)
+        {
+             ApiResponse<List<EvaluationResultsEntity>> localVarResponse = GetEvaluationForModelIDWithHttpInfo(modelInstanceID);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets the list of evaluation results entity, given a model instance ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
+        /// <returns>ApiResponse of List&lt;EvaluationResultsEntity&gt;</returns>
+        public ApiResponse< List<EvaluationResultsEntity> > GetEvaluationForModelIDWithHttpInfo (string modelInstanceID)
+        {
+            // verify the required parameter 'modelInstanceID' is set
+            if (modelInstanceID == null)
+                throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->GetEvaluationForModelID");
+
+            var localVarPath = "/model/revisions/evaluations/{modelInstanceID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetEvaluationForModelID", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<EvaluationResultsEntity>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<EvaluationResultsEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EvaluationResultsEntity>)));
+        }
+
+        /// <summary>
+        /// Gets the list of evaluation results entity, given a model instance ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
+        /// <returns>Task of List&lt;EvaluationResultsEntity&gt;</returns>
+        public async System.Threading.Tasks.Task<List<EvaluationResultsEntity>> GetEvaluationForModelIDAsync (string modelInstanceID)
+        {
+             ApiResponse<List<EvaluationResultsEntity>> localVarResponse = await GetEvaluationForModelIDAsyncWithHttpInfo(modelInstanceID);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets the list of evaluation results entity, given a model instance ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
+        /// <returns>Task of ApiResponse (List&lt;EvaluationResultsEntity&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<EvaluationResultsEntity>>> GetEvaluationForModelIDAsyncWithHttpInfo (string modelInstanceID)
+        {
+            // verify the required parameter 'modelInstanceID' is set
+            if (modelInstanceID == null)
+                throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->GetEvaluationForModelID");
+
+            var localVarPath = "/model/revisions/evaluations/{modelInstanceID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetEvaluationForModelID", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<EvaluationResultsEntity>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<EvaluationResultsEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EvaluationResultsEntity>)));
+        }
+
+        /// <summary>
+        /// Gets all the examples for a minibatch ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>List&lt;ExampleEntity&gt;</returns>
+        public List<ExampleEntity> GetExamplesForMinibatch (string minibatchId)
+        {
+             ApiResponse<List<ExampleEntity>> localVarResponse = GetExamplesForMinibatchWithHttpInfo(minibatchId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets all the examples for a minibatch ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>ApiResponse of List&lt;ExampleEntity&gt;</returns>
+        public ApiResponse< List<ExampleEntity> > GetExamplesForMinibatchWithHttpInfo (string minibatchId)
+        {
+            // verify the required parameter 'minibatchId' is set
+            if (minibatchId == null)
+                throw new ApiException(400, "Missing required parameter 'minibatchId' when calling DefaultApi->GetExamplesForMinibatch");
+
+            var localVarPath = "/model/example/{minibatchId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (minibatchId != null) localVarPathParams.Add("minibatchId", Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetExamplesForMinibatch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ExampleEntity>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<ExampleEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExampleEntity>)));
+        }
+
+        /// <summary>
+        /// Gets all the examples for a minibatch ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>Task of List&lt;ExampleEntity&gt;</returns>
+        public async System.Threading.Tasks.Task<List<ExampleEntity>> GetExamplesForMinibatchAsync (string minibatchId)
+        {
+             ApiResponse<List<ExampleEntity>> localVarResponse = await GetExamplesForMinibatchAsyncWithHttpInfo(minibatchId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets all the examples for a minibatch ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>Task of ApiResponse (List&lt;ExampleEntity&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<ExampleEntity>>> GetExamplesForMinibatchAsyncWithHttpInfo (string minibatchId)
+        {
+            // verify the required parameter 'minibatchId' is set
+            if (minibatchId == null)
+                throw new ApiException(400, "Missing required parameter 'minibatchId' when calling DefaultApi->GetExamplesForMinibatch");
+
+            var localVarPath = "/model/example/{minibatchId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (minibatchId != null) localVarPathParams.Add("minibatchId", Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetExamplesForMinibatch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ExampleEntity>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<ExampleEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExampleEntity>)));
+        }
+
+        /// <summary>
+        /// Obtain an experiment&#39;s details, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to obtain</param>
+        /// <returns>ExperimentEntity</returns>
+        public ExperimentEntity GetExperiment (string experimentID)
+        {
+             ApiResponse<ExperimentEntity> localVarResponse = GetExperimentWithHttpInfo(experimentID);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Obtain an experiment&#39;s details, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to obtain</param>
+        /// <returns>ApiResponse of ExperimentEntity</returns>
+        public ApiResponse< ExperimentEntity > GetExperimentWithHttpInfo (string experimentID)
+        {
+            // verify the required parameter 'experimentID' is set
+            if (experimentID == null)
+                throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->GetExperiment");
+
+            var localVarPath = "/experiment/{experimentID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+        }
+
+        /// <summary>
+        /// Obtain an experiment&#39;s details, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to obtain</param>
+        /// <returns>Task of ExperimentEntity</returns>
+        public async System.Threading.Tasks.Task<ExperimentEntity> GetExperimentAsync (string experimentID)
+        {
+             ApiResponse<ExperimentEntity> localVarResponse = await GetExperimentAsyncWithHttpInfo(experimentID);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Obtain an experiment&#39;s details, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to obtain</param>
+        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentAsyncWithHttpInfo (string experimentID)
+        {
+            // verify the required parameter 'experimentID' is set
+            if (experimentID == null)
+                throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->GetExperiment");
+
+            var localVarPath = "/experiment/{experimentID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+        }
+
+        /// <summary>
+        /// Obtain all experiments for a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
+        /// <returns>ExperimentEntity</returns>
+        public ExperimentEntity GetExperimentsForModelHistory (string modelHistoryID)
+        {
+             ApiResponse<ExperimentEntity> localVarResponse = GetExperimentsForModelHistoryWithHttpInfo(modelHistoryID);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Obtain all experiments for a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
+        /// <returns>ApiResponse of ExperimentEntity</returns>
+        public ApiResponse< ExperimentEntity > GetExperimentsForModelHistoryWithHttpInfo (string modelHistoryID)
+        {
+            // verify the required parameter 'modelHistoryID' is set
+            if (modelHistoryID == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->GetExperimentsForModelHistory");
+
+            var localVarPath = "/experiments/{modelHistoryID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetExperimentsForModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+        }
+
+        /// <summary>
+        /// Obtain all experiments for a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
+        /// <returns>Task of ExperimentEntity</returns>
+        public async System.Threading.Tasks.Task<ExperimentEntity> GetExperimentsForModelHistoryAsync (string modelHistoryID)
+        {
+             ApiResponse<ExperimentEntity> localVarResponse = await GetExperimentsForModelHistoryAsyncWithHttpInfo(modelHistoryID);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Obtain all experiments for a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
+        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentsForModelHistoryAsyncWithHttpInfo (string modelHistoryID)
+        {
+            // verify the required parameter 'modelHistoryID' is set
+            if (modelHistoryID == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->GetExperimentsForModelHistory");
+
+            var localVarPath = "/experiments/{modelHistoryID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetExperimentsForModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+        }
+
+        /// <summary>
+        /// Gets a minibatch for the model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>MinibatchEntity</returns>
+        public MinibatchEntity GetMinibatch (string minibatchId)
+        {
+             ApiResponse<MinibatchEntity> localVarResponse = GetMinibatchWithHttpInfo(minibatchId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets a minibatch for the model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>ApiResponse of MinibatchEntity</returns>
+        public ApiResponse< MinibatchEntity > GetMinibatchWithHttpInfo (string minibatchId)
+        {
+            // verify the required parameter 'minibatchId' is set
+            if (minibatchId == null)
+                throw new ApiException(400, "Missing required parameter 'minibatchId' when calling DefaultApi->GetMinibatch");
+
+            var localVarPath = "/model/minibatch/{minibatchId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (minibatchId != null) localVarPathParams.Add("minibatchId", Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetMinibatch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MinibatchEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MinibatchEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
+        }
+
+        /// <summary>
+        /// Gets a minibatch for the model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>Task of MinibatchEntity</returns>
+        public async System.Threading.Tasks.Task<MinibatchEntity> GetMinibatchAsync (string minibatchId)
+        {
+             ApiResponse<MinibatchEntity> localVarResponse = await GetMinibatchAsyncWithHttpInfo(minibatchId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets a minibatch for the model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minibatchId">The GUID of the minibatch</param>
+        /// <returns>Task of ApiResponse (MinibatchEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> GetMinibatchAsyncWithHttpInfo (string minibatchId)
+        {
+            // verify the required parameter 'minibatchId' is set
+            if (minibatchId == null)
+                throw new ApiException(400, "Missing required parameter 'minibatchId' when calling DefaultApi->GetMinibatch");
+
+            var localVarPath = "/model/minibatch/{minibatchId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (minibatchId != null) localVarPathParams.Add("minibatchId", Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetMinibatch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MinibatchEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MinibatchEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
+        }
+
+        /// <summary>
+        /// Gets a model history, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
+        /// <returns>ModelHistoryEntity</returns>
+        public ModelHistoryEntity GetModelHistory (string modelHistoryID)
+        {
+             ApiResponse<ModelHistoryEntity> localVarResponse = GetModelHistoryWithHttpInfo(modelHistoryID);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets a model history, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
+        /// <returns>ApiResponse of ModelHistoryEntity</returns>
+        public ApiResponse< ModelHistoryEntity > GetModelHistoryWithHttpInfo (string modelHistoryID)
+        {
+            // verify the required parameter 'modelHistoryID' is set
+            if (modelHistoryID == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->GetModelHistory");
+
+            var localVarPath = "/model/revision/{modelHistoryID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+        }
+
+        /// <summary>
+        /// Gets a model history, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
+        /// <returns>Task of ModelHistoryEntity</returns>
+        public async System.Threading.Tasks.Task<ModelHistoryEntity> GetModelHistoryAsync (string modelHistoryID)
+        {
+             ApiResponse<ModelHistoryEntity> localVarResponse = await GetModelHistoryAsyncWithHttpInfo(modelHistoryID);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets a model history, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
+        /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> GetModelHistoryAsyncWithHttpInfo (string modelHistoryID)
+        {
+            // verify the required parameter 'modelHistoryID' is set
+            if (modelHistoryID == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->GetModelHistory");
+
+            var localVarPath = "/model/revision/{modelHistoryID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+        }
+
+        /// <summary>
+        /// Gets a model instance, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
+        /// <returns>ModelInstanceEntity</returns>
+        public ModelInstanceEntity GetModelInstance (string modelInstanceID)
+        {
+             ApiResponse<ModelInstanceEntity> localVarResponse = GetModelInstanceWithHttpInfo(modelInstanceID);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets a model instance, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
+        /// <returns>ApiResponse of ModelInstanceEntity</returns>
+        public ApiResponse< ModelInstanceEntity > GetModelInstanceWithHttpInfo (string modelInstanceID)
+        {
+            // verify the required parameter 'modelInstanceID' is set
+            if (modelInstanceID == null)
+                throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->GetModelInstance");
+
+            var localVarPath = "/model/{modelInstanceID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetModelInstance", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+        }
+
+        /// <summary>
+        /// Gets a model instance, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
+        /// <returns>Task of ModelInstanceEntity</returns>
+        public async System.Threading.Tasks.Task<ModelInstanceEntity> GetModelInstanceAsync (string modelInstanceID)
+        {
+             ApiResponse<ModelInstanceEntity> localVarResponse = await GetModelInstanceAsyncWithHttpInfo(modelInstanceID);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets a model instance, given its ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
+        /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetModelInstanceAsyncWithHttpInfo (string modelInstanceID)
+        {
+            // verify the required parameter 'modelInstanceID' is set
+            if (modelInstanceID == null)
+                throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->GetModelInstance");
+
+            var localVarPath = "/model/{modelInstanceID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetModelInstance", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+        }
+
+        /// <summary>
+        /// Obtain a list of all the models for an experiment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment</param>
+        /// <returns>List&lt;ModelInstanceEntity&gt;</returns>
+        public List<ModelInstanceEntity> GetModelsForExperiment (string experimentID)
+        {
+             ApiResponse<List<ModelInstanceEntity>> localVarResponse = GetModelsForExperimentWithHttpInfo(experimentID);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Obtain a list of all the models for an experiment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment</param>
+        /// <returns>ApiResponse of List&lt;ModelInstanceEntity&gt;</returns>
+        public ApiResponse< List<ModelInstanceEntity> > GetModelsForExperimentWithHttpInfo (string experimentID)
+        {
+            // verify the required parameter 'experimentID' is set
+            if (experimentID == null)
+                throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->GetModelsForExperiment");
+
+            var localVarPath = "/experiment/{experimentID}/models";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetModelsForExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ModelInstanceEntity>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<ModelInstanceEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelInstanceEntity>)));
+        }
+
+        /// <summary>
+        /// Obtain a list of all the models for an experiment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment</param>
+        /// <returns>Task of List&lt;ModelInstanceEntity&gt;</returns>
+        public async System.Threading.Tasks.Task<List<ModelInstanceEntity>> GetModelsForExperimentAsync (string experimentID)
+        {
+             ApiResponse<List<ModelInstanceEntity>> localVarResponse = await GetModelsForExperimentAsyncWithHttpInfo(experimentID);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Obtain a list of all the models for an experiment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment</param>
+        /// <returns>Task of ApiResponse (List&lt;ModelInstanceEntity&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<ModelInstanceEntity>>> GetModelsForExperimentAsyncWithHttpInfo (string experimentID)
+        {
+            // verify the required parameter 'experimentID' is set
+            if (experimentID == null)
+                throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->GetModelsForExperiment");
+
+            var localVarPath = "/experiment/{experimentID}/models";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetModelsForExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ModelInstanceEntity>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<ModelInstanceEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelInstanceEntity>)));
+        }
+
+        /// <summary>
+        /// Retrieves the image transform process JSON string 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <returns>ImageTransformProcess</returns>
+        public ImageTransformProcess ImagetransformprocessGet (string deploymentName, string imageTransformName)
+        {
+             ApiResponse<ImageTransformProcess> localVarResponse = ImagetransformprocessGetWithHttpInfo(deploymentName, imageTransformName);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieves the image transform process JSON string 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <returns>ApiResponse of ImageTransformProcess</returns>
+        public ApiResponse< ImageTransformProcess > ImagetransformprocessGetWithHttpInfo (string deploymentName, string imageTransformName)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessGet");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessGet");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ImagetransformprocessGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ImageTransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
+        }
+
+        /// <summary>
+        /// Retrieves the image transform process JSON string 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <returns>Task of ImageTransformProcess</returns>
+        public async System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessGetAsync (string deploymentName, string imageTransformName)
+        {
+             ApiResponse<ImageTransformProcess> localVarResponse = await ImagetransformprocessGetAsyncWithHttpInfo(deploymentName, imageTransformName);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Retrieves the image transform process JSON string 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessGetAsyncWithHttpInfo (string deploymentName, string imageTransformName)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessGet");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessGet");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ImagetransformprocessGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ImageTransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
+        }
+
+        /// <summary>
+        /// Sets the image transform process through the provided JSON string 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="body">The image transform process JSON</param>
+        /// <returns>ImageTransformProcess</returns>
+        public ImageTransformProcess ImagetransformprocessPost (string deploymentName, string imageTransformName, ImageTransformProcess body)
+        {
+             ApiResponse<ImageTransformProcess> localVarResponse = ImagetransformprocessPostWithHttpInfo(deploymentName, imageTransformName, body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Sets the image transform process through the provided JSON string 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="body">The image transform process JSON</param>
+        /// <returns>ApiResponse of ImageTransformProcess</returns>
+        public ApiResponse< ImageTransformProcess > ImagetransformprocessPostWithHttpInfo (string deploymentName, string imageTransformName, ImageTransformProcess body)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessPost");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessPost");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->ImagetransformprocessPost");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ImagetransformprocessPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ImageTransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
+        }
+
+        /// <summary>
+        /// Sets the image transform process through the provided JSON string 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="body">The image transform process JSON</param>
+        /// <returns>Task of ImageTransformProcess</returns>
+        public async System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessPostAsync (string deploymentName, string imageTransformName, ImageTransformProcess body)
+        {
+             ApiResponse<ImageTransformProcess> localVarResponse = await ImagetransformprocessPostAsyncWithHttpInfo(deploymentName, imageTransformName, body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Sets the image transform process through the provided JSON string 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="body">The image transform process JSON</param>
+        /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessPostAsyncWithHttpInfo (string deploymentName, string imageTransformName, ImageTransformProcess body)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessPost");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessPost");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->ImagetransformprocessPost");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ImagetransformprocessPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ImageTransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
         }
 
         /// <summary>
@@ -1984,6 +8526,503 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<JsonArrayResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (JsonArrayResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonArrayResponse)));
+        }
+
+        /// <summary>
+        /// Runs knn on the given index with the given k Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body"></param>
+        /// <returns>NearestNeighborsResults</returns>
+        public NearestNeighborsResults Knn (string deploymentName, string knnName, NearestNeighborRequest body)
+        {
+             ApiResponse<NearestNeighborsResults> localVarResponse = KnnWithHttpInfo(deploymentName, knnName, body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Runs knn on the given index with the given k Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of NearestNeighborsResults</returns>
+        public ApiResponse< NearestNeighborsResults > KnnWithHttpInfo (string deploymentName, string knnName, NearestNeighborRequest body)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Knn");
+            // verify the required parameter 'knnName' is set
+            if (knnName == null)
+                throw new ApiException(400, "Missing required parameter 'knnName' when calling DefaultApi->Knn");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Knn");
+
+            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knn";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (knnName != null) localVarPathParams.Add("knnName", Configuration.ApiClient.ParameterToString(knnName)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Knn", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<NearestNeighborsResults>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (NearestNeighborsResults) Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
+        }
+
+        /// <summary>
+        /// Runs knn on the given index with the given k Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body"></param>
+        /// <returns>Task of NearestNeighborsResults</returns>
+        public async System.Threading.Tasks.Task<NearestNeighborsResults> KnnAsync (string deploymentName, string knnName, NearestNeighborRequest body)
+        {
+             ApiResponse<NearestNeighborsResults> localVarResponse = await KnnAsyncWithHttpInfo(deploymentName, knnName, body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Runs knn on the given index with the given k Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (NearestNeighborsResults)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnAsyncWithHttpInfo (string deploymentName, string knnName, NearestNeighborRequest body)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Knn");
+            // verify the required parameter 'knnName' is set
+            if (knnName == null)
+                throw new ApiException(400, "Missing required parameter 'knnName' when calling DefaultApi->Knn");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Knn");
+
+            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knn";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (knnName != null) localVarPathParams.Add("knnName", Configuration.ApiClient.ParameterToString(knnName)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Knn", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<NearestNeighborsResults>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (NearestNeighborsResults) Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
+        }
+
+        /// <summary>
+        /// Run a k nearest neighbors search on a NEW data point 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body">The input NDArray</param>
+        /// <returns>NearestNeighborsResults</returns>
+        public NearestNeighborsResults Knnnew (string deploymentName, string knnName, Base64NDArrayBodyKNN body)
+        {
+             ApiResponse<NearestNeighborsResults> localVarResponse = KnnnewWithHttpInfo(deploymentName, knnName, body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Run a k nearest neighbors search on a NEW data point 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body">The input NDArray</param>
+        /// <returns>ApiResponse of NearestNeighborsResults</returns>
+        public ApiResponse< NearestNeighborsResults > KnnnewWithHttpInfo (string deploymentName, string knnName, Base64NDArrayBodyKNN body)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Knnnew");
+            // verify the required parameter 'knnName' is set
+            if (knnName == null)
+                throw new ApiException(400, "Missing required parameter 'knnName' when calling DefaultApi->Knnnew");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Knnnew");
+
+            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (knnName != null) localVarPathParams.Add("knnName", Configuration.ApiClient.ParameterToString(knnName)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Knnnew", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<NearestNeighborsResults>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (NearestNeighborsResults) Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
+        }
+
+        /// <summary>
+        /// Run a k nearest neighbors search on a NEW data point 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body">The input NDArray</param>
+        /// <returns>Task of NearestNeighborsResults</returns>
+        public async System.Threading.Tasks.Task<NearestNeighborsResults> KnnnewAsync (string deploymentName, string knnName, Base64NDArrayBodyKNN body)
+        {
+             ApiResponse<NearestNeighborsResults> localVarResponse = await KnnnewAsyncWithHttpInfo(deploymentName, knnName, body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Run a k nearest neighbors search on a NEW data point 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="knnName">ID or name of the deployed knn</param>
+        /// <param name="body">The input NDArray</param>
+        /// <returns>Task of ApiResponse (NearestNeighborsResults)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnnewAsyncWithHttpInfo (string deploymentName, string knnName, Base64NDArrayBodyKNN body)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Knnnew");
+            // verify the required parameter 'knnName' is set
+            if (knnName == null)
+                throw new ApiException(400, "Missing required parameter 'knnName' when calling DefaultApi->Knnnew");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Knnnew");
+
+            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (knnName != null) localVarPathParams.Add("knnName", Configuration.ApiClient.ParameterToString(knnName)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Knnnew", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<NearestNeighborsResults>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (NearestNeighborsResults) Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
+        }
+
+        /// <summary>
+        /// List all of the experiments in every model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;ExperimentEntity&gt;</returns>
+        public List<ExperimentEntity> ListAllExperiments ()
+        {
+             ApiResponse<List<ExperimentEntity>> localVarResponse = ListAllExperimentsWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List all of the experiments in every model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;ExperimentEntity&gt;</returns>
+        public ApiResponse< List<ExperimentEntity> > ListAllExperimentsWithHttpInfo ()
+        {
+
+            var localVarPath = "/experiments";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ListAllExperiments", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ExperimentEntity>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<ExperimentEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExperimentEntity>)));
+        }
+
+        /// <summary>
+        /// List all of the experiments in every model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of List&lt;ExperimentEntity&gt;</returns>
+        public async System.Threading.Tasks.Task<List<ExperimentEntity>> ListAllExperimentsAsync ()
+        {
+             ApiResponse<List<ExperimentEntity>> localVarResponse = await ListAllExperimentsAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// List all of the experiments in every model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (List&lt;ExperimentEntity&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<ExperimentEntity>>> ListAllExperimentsAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/experiments";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ListAllExperiments", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ExperimentEntity>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<ExperimentEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExperimentEntity>)));
         }
 
         /// <summary>
@@ -2481,6 +9520,672 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<LogBatch>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (LogBatch) Configuration.ApiClient.Deserialize(localVarResponse, typeof(LogBatch)));
+        }
+
+        /// <summary>
+        /// this method can be used to get the meta data for the current model which set to the server 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>MetaData</returns>
+        public MetaData MetaGet (string deploymentName, string modelName)
+        {
+             ApiResponse<MetaData> localVarResponse = MetaGetWithHttpInfo(deploymentName, modelName);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// this method can be used to get the meta data for the current model which set to the server 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>ApiResponse of MetaData</returns>
+        public ApiResponse< MetaData > MetaGetWithHttpInfo (string deploymentName, string modelName)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->MetaGet");
+            // verify the required parameter 'modelName' is set
+            if (modelName == null)
+                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->MetaGet");
+
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MetaGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MetaData>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MetaData) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
+        }
+
+        /// <summary>
+        /// this method can be used to get the meta data for the current model which set to the server 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of MetaData</returns>
+        public async System.Threading.Tasks.Task<MetaData> MetaGetAsync (string deploymentName, string modelName)
+        {
+             ApiResponse<MetaData> localVarResponse = await MetaGetAsyncWithHttpInfo(deploymentName, modelName);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// this method can be used to get the meta data for the current model which set to the server 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of ApiResponse (MetaData)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaGetAsyncWithHttpInfo (string deploymentName, string modelName)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->MetaGet");
+            // verify the required parameter 'modelName' is set
+            if (modelName == null)
+                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->MetaGet");
+
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MetaGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MetaData>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MetaData) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
+        }
+
+        /// <summary>
+        /// This method can be used to set meta data for the current model which is set to the server 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">the meta data object</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>MetaData</returns>
+        public MetaData MetaPost (MetaData body, string deploymentName, string modelName)
+        {
+             ApiResponse<MetaData> localVarResponse = MetaPostWithHttpInfo(body, deploymentName, modelName);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// This method can be used to set meta data for the current model which is set to the server 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">the meta data object</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>ApiResponse of MetaData</returns>
+        public ApiResponse< MetaData > MetaPostWithHttpInfo (MetaData body, string deploymentName, string modelName)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->MetaPost");
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->MetaPost");
+            // verify the required parameter 'modelName' is set
+            if (modelName == null)
+                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->MetaPost");
+
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MetaPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MetaData>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MetaData) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
+        }
+
+        /// <summary>
+        /// This method can be used to set meta data for the current model which is set to the server 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">the meta data object</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of MetaData</returns>
+        public async System.Threading.Tasks.Task<MetaData> MetaPostAsync (MetaData body, string deploymentName, string modelName)
+        {
+             ApiResponse<MetaData> localVarResponse = await MetaPostAsyncWithHttpInfo(body, deploymentName, modelName);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// This method can be used to set meta data for the current model which is set to the server 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">the meta data object</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of ApiResponse (MetaData)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaPostAsyncWithHttpInfo (MetaData body, string deploymentName, string modelName)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->MetaPost");
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->MetaPost");
+            // verify the required parameter 'modelName' is set
+            if (modelName == null)
+                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->MetaPost");
+
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MetaPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MetaData>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MetaData) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
+        }
+
+        /// <summary>
+        /// Modify the state (start/stop) of a deployed model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the model state object</param>
+        /// <returns>ModelEntity</returns>
+        public ModelEntity ModelStateChange (string deploymentId, string modelId, SetState body)
+        {
+             ApiResponse<ModelEntity> localVarResponse = ModelStateChangeWithHttpInfo(deploymentId, modelId, body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Modify the state (start/stop) of a deployed model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the model state object</param>
+        /// <returns>ApiResponse of ModelEntity</returns>
+        public ApiResponse< ModelEntity > ModelStateChangeWithHttpInfo (string deploymentId, string modelId, SetState body)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->ModelStateChange");
+            // verify the required parameter 'modelId' is set
+            if (modelId == null)
+                throw new ApiException(400, "Missing required parameter 'modelId' when calling DefaultApi->ModelStateChange");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->ModelStateChange");
+
+            var localVarPath = "/deployment/{deploymentId}/model/{modelId}/state";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ModelStateChange", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
+        }
+
+        /// <summary>
+        /// Modify the state (start/stop) of a deployed model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the model state object</param>
+        /// <returns>Task of ModelEntity</returns>
+        public async System.Threading.Tasks.Task<ModelEntity> ModelStateChangeAsync (string deploymentId, string modelId, SetState body)
+        {
+             ApiResponse<ModelEntity> localVarResponse = await ModelStateChangeAsyncWithHttpInfo(deploymentId, modelId, body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Modify the state (start/stop) of a deployed model 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the model state object</param>
+        /// <returns>Task of ApiResponse (ModelEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ModelEntity>> ModelStateChangeAsyncWithHttpInfo (string deploymentId, string modelId, SetState body)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->ModelStateChange");
+            // verify the required parameter 'modelId' is set
+            if (modelId == null)
+                throw new ApiException(400, "Missing required parameter 'modelId' when calling DefaultApi->ModelStateChange");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->ModelStateChange");
+
+            var localVarPath = "/deployment/{deploymentId}/model/{modelId}/state";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ModelStateChange", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
+        }
+
+        /// <summary>
+        /// Retrieve a list of all the deployed models given a deployment id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <returns>List&lt;ModelEntity&gt;</returns>
+        public List<ModelEntity> Models (string deploymentId)
+        {
+             ApiResponse<List<ModelEntity>> localVarResponse = ModelsWithHttpInfo(deploymentId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a list of all the deployed models given a deployment id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <returns>ApiResponse of List&lt;ModelEntity&gt;</returns>
+        public ApiResponse< List<ModelEntity> > ModelsWithHttpInfo (string deploymentId)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->Models");
+
+            var localVarPath = "/deployment/{deploymentId}/models";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Models", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ModelEntity>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<ModelEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelEntity>)));
+        }
+
+        /// <summary>
+        /// Retrieve a list of all the deployed models given a deployment id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <returns>Task of List&lt;ModelEntity&gt;</returns>
+        public async System.Threading.Tasks.Task<List<ModelEntity>> ModelsAsync (string deploymentId)
+        {
+             ApiResponse<List<ModelEntity>> localVarResponse = await ModelsAsyncWithHttpInfo(deploymentId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Retrieve a list of all the deployed models given a deployment id 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <returns>Task of ApiResponse (List&lt;ModelEntity&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<ModelEntity>>> ModelsAsyncWithHttpInfo (string deploymentId)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->Models");
+
+            var localVarPath = "/deployment/{deploymentId}/models";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Models", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ModelEntity>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<ModelEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelEntity>)));
         }
 
         /// <summary>
@@ -2990,6 +10695,189 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<MultiClassClassificationResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (MultiClassClassificationResult) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiClassClassificationResult)));
+        }
+
+        /// <summary>
+        /// Get the output from the network, based on the given INDArray[] input Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>MultiPredictResponse</returns>
+        public MultiPredictResponse Multipredict (MultiPredictRequest body, string deploymentName, string modelName)
+        {
+             ApiResponse<MultiPredictResponse> localVarResponse = MultipredictWithHttpInfo(body, deploymentName, modelName);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get the output from the network, based on the given INDArray[] input Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>ApiResponse of MultiPredictResponse</returns>
+        public ApiResponse< MultiPredictResponse > MultipredictWithHttpInfo (MultiPredictRequest body, string deploymentName, string modelName)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Multipredict");
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multipredict");
+            // verify the required parameter 'modelName' is set
+            if (modelName == null)
+                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multipredict");
+
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Multipredict", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MultiPredictResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MultiPredictResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiPredictResponse)));
+        }
+
+        /// <summary>
+        /// Get the output from the network, based on the given INDArray[] input Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of MultiPredictResponse</returns>
+        public async System.Threading.Tasks.Task<MultiPredictResponse> MultipredictAsync (MultiPredictRequest body, string deploymentName, string modelName)
+        {
+             ApiResponse<MultiPredictResponse> localVarResponse = await MultipredictAsyncWithHttpInfo(body, deploymentName, modelName);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the output from the network, based on the given INDArray[] input Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of ApiResponse (MultiPredictResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictAsyncWithHttpInfo (MultiPredictRequest body, string deploymentName, string modelName)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Multipredict");
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multipredict");
+            // verify the required parameter 'modelName' is set
+            if (modelName == null)
+                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multipredict");
+
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Multipredict", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MultiPredictResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MultiPredictResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiPredictResponse)));
         }
 
         /// <summary>
@@ -3702,6 +11590,2432 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<JsonArrayResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (JsonArrayResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonArrayResponse)));
+        }
+
+        /// <summary>
+        /// Reimport a model to a previous deployed model in a deployment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the deployment request</param>
+        /// <returns>ModelEntity</returns>
+        public ModelEntity ReimportModel (string deploymentId, string modelId, ImportModelRequest body)
+        {
+             ApiResponse<ModelEntity> localVarResponse = ReimportModelWithHttpInfo(deploymentId, modelId, body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Reimport a model to a previous deployed model in a deployment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the deployment request</param>
+        /// <returns>ApiResponse of ModelEntity</returns>
+        public ApiResponse< ModelEntity > ReimportModelWithHttpInfo (string deploymentId, string modelId, ImportModelRequest body)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->ReimportModel");
+            // verify the required parameter 'modelId' is set
+            if (modelId == null)
+                throw new ApiException(400, "Missing required parameter 'modelId' when calling DefaultApi->ReimportModel");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->ReimportModel");
+
+            var localVarPath = "/deployment/{deploymentId}/model/{modelId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ReimportModel", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
+        }
+
+        /// <summary>
+        /// Reimport a model to a previous deployed model in a deployment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the deployment request</param>
+        /// <returns>Task of ModelEntity</returns>
+        public async System.Threading.Tasks.Task<ModelEntity> ReimportModelAsync (string deploymentId, string modelId, ImportModelRequest body)
+        {
+             ApiResponse<ModelEntity> localVarResponse = await ReimportModelAsyncWithHttpInfo(deploymentId, modelId, body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Reimport a model to a previous deployed model in a deployment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentId">ID deployment group</param>
+        /// <param name="modelId">the id of the deployed model</param>
+        /// <param name="body">the deployment request</param>
+        /// <returns>Task of ApiResponse (ModelEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ModelEntity>> ReimportModelAsyncWithHttpInfo (string deploymentId, string modelId, ImportModelRequest body)
+        {
+            // verify the required parameter 'deploymentId' is set
+            if (deploymentId == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentId' when calling DefaultApi->ReimportModel");
+            // verify the required parameter 'modelId' is set
+            if (modelId == null)
+                throw new ApiException(400, "Missing required parameter 'modelId' when calling DefaultApi->ReimportModel");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->ReimportModel");
+
+            var localVarPath = "/deployment/{deploymentId}/model/{modelId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ReimportModel", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
+        }
+
+        /// <summary>
+        /// Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord Takes a batch of SingleCSVRecord object and transforms it into the desired format
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>BatchCSVRecord</returns>
+        public BatchCSVRecord TransformCsv (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        {
+             ApiResponse<BatchCSVRecord> localVarResponse = TransformCsvWithHttpInfo(deploymentName, transformName, batchCSVRecord);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord Takes a batch of SingleCSVRecord object and transforms it into the desired format
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>ApiResponse of BatchCSVRecord</returns>
+        public ApiResponse< BatchCSVRecord > TransformCsvWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformCsv");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformCsv");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = batchCSVRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformCsv", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<BatchCSVRecord>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (BatchCSVRecord) Configuration.ApiClient.Deserialize(localVarResponse, typeof(BatchCSVRecord)));
+        }
+
+        /// <summary>
+        /// Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord Takes a batch of SingleCSVRecord object and transforms it into the desired format
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>Task of BatchCSVRecord</returns>
+        public async System.Threading.Tasks.Task<BatchCSVRecord> TransformCsvAsync (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        {
+             ApiResponse<BatchCSVRecord> localVarResponse = await TransformCsvAsyncWithHttpInfo(deploymentName, transformName, batchCSVRecord);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord Takes a batch of SingleCSVRecord object and transforms it into the desired format
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>Task of ApiResponse (BatchCSVRecord)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<BatchCSVRecord>> TransformCsvAsyncWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformCsv");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformCsv");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = batchCSVRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformCsv", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<BatchCSVRecord>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (BatchCSVRecord) Configuration.ApiClient.Deserialize(localVarResponse, typeof(BatchCSVRecord)));
+        }
+
+        /// <summary>
+        /// Takes a batch input arrays and transforms it Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>Base64NDArrayBody</returns>
+        public Base64NDArrayBody TransformarrayCsv (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformarrayCsvWithHttpInfo(deploymentName, transformName, batchCSVRecord);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Takes a batch input arrays and transforms it Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        public ApiResponse< Base64NDArrayBody > TransformarrayCsvWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayCsv");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformarrayCsv");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = batchCSVRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformarrayCsv", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Takes a batch input arrays and transforms it Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayCsvAsync (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformarrayCsvAsyncWithHttpInfo(deploymentName, transformName, batchCSVRecord);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Takes a batch input arrays and transforms it Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayCsvAsyncWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayCsv");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformarrayCsv");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = batchCSVRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformarrayCsv", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="batchImageRecord">The input batch of record arrays</param>
+        /// <returns>Base64NDArrayBody</returns>
+        public Base64NDArrayBody TransformarrayImage (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformarrayImageWithHttpInfo(deploymentName, imageTransformName, batchImageRecord);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="batchImageRecord">The input batch of record arrays</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        public ApiResponse< Base64NDArrayBody > TransformarrayImageWithHttpInfo (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayImage");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformarrayImage");
+            // verify the required parameter 'batchImageRecord' is set
+            if (batchImageRecord == null)
+                throw new ApiException(400, "Missing required parameter 'batchImageRecord' when calling DefaultApi->TransformarrayImage");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (batchImageRecord != null && batchImageRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(batchImageRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = batchImageRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformarrayImage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="batchImageRecord">The input batch of record arrays</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayImageAsync (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformarrayImageAsyncWithHttpInfo(deploymentName, imageTransformName, batchImageRecord);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="batchImageRecord">The input batch of record arrays</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayImageAsyncWithHttpInfo (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayImage");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformarrayImage");
+            // verify the required parameter 'batchImageRecord' is set
+            if (batchImageRecord == null)
+                throw new ApiException(400, "Missing required parameter 'batchImageRecord' when calling DefaultApi->TransformarrayImage");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (batchImageRecord != null && batchImageRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(batchImageRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = batchImageRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformarrayImage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Takes multiple multipart image file to transform and returns Base64NDArrayBody Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="files">The image files to upload</param>
+        /// <returns>Base64NDArrayBody</returns>
+        public Base64NDArrayBody Transformimage (string deploymentName, string imageTransformName, List<byte[]> files)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformimageWithHttpInfo(deploymentName, imageTransformName, files);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Takes multiple multipart image file to transform and returns Base64NDArrayBody Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="files">The image files to upload</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        public ApiResponse< Base64NDArrayBody > TransformimageWithHttpInfo (string deploymentName, string imageTransformName, List<byte[]> files)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformimage");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->Transformimage");
+            // verify the required parameter 'files' is set
+            if (files == null)
+                throw new ApiException(400, "Missing required parameter 'files' when calling DefaultApi->Transformimage");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (files != null) localVarFormParams.Add("files", Configuration.ApiClient.ParameterToString(files)); // form parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Transformimage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Takes multiple multipart image file to transform and returns Base64NDArrayBody Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="files">The image files to upload</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformimageAsync (string deploymentName, string imageTransformName, List<byte[]> files)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformimageAsyncWithHttpInfo(deploymentName, imageTransformName, files);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Takes multiple multipart image file to transform and returns Base64NDArrayBody Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="files">The image files to upload</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformimageAsyncWithHttpInfo (string deploymentName, string imageTransformName, List<byte[]> files)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformimage");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->Transformimage");
+            // verify the required parameter 'files' is set
+            if (files == null)
+                throw new ApiException(400, "Missing required parameter 'files' when calling DefaultApi->Transformimage");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (files != null) localVarFormParams.Add("files", Configuration.ApiClient.ParameterToString(files)); // form parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Transformimage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord Takes a SingleCSVRecord object and transforms it into the desired format
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>SingleCSVRecord</returns>
+        public SingleCSVRecord TransformincrementalCsv (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        {
+             ApiResponse<SingleCSVRecord> localVarResponse = TransformincrementalCsvWithHttpInfo(deploymentName, transformName, singleCSVRecord);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord Takes a SingleCSVRecord object and transforms it into the desired format
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>ApiResponse of SingleCSVRecord</returns>
+        public ApiResponse< SingleCSVRecord > TransformincrementalCsvWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalCsv");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformincrementalCsv");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = singleCSVRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformincrementalCsv", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<SingleCSVRecord>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (SingleCSVRecord) Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleCSVRecord)));
+        }
+
+        /// <summary>
+        /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord Takes a SingleCSVRecord object and transforms it into the desired format
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>Task of SingleCSVRecord</returns>
+        public async System.Threading.Tasks.Task<SingleCSVRecord> TransformincrementalCsvAsync (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        {
+             ApiResponse<SingleCSVRecord> localVarResponse = await TransformincrementalCsvAsyncWithHttpInfo(deploymentName, transformName, singleCSVRecord);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord Takes a SingleCSVRecord object and transforms it into the desired format
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>Task of ApiResponse (SingleCSVRecord)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SingleCSVRecord>> TransformincrementalCsvAsyncWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalCsv");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformincrementalCsv");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = singleCSVRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformincrementalCsv", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<SingleCSVRecord>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (SingleCSVRecord) Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleCSVRecord)));
+        }
+
+        /// <summary>
+        /// Same as /transformincremental but returns Base64NDArrayBody Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>Base64NDArrayBody</returns>
+        public Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalarrayCsvWithHttpInfo(deploymentName, transformName, singleCSVRecord);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Same as /transformincremental but returns Base64NDArrayBody Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayCsvWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayCsv");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformincrementalarrayCsv");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = singleCSVRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformincrementalarrayCsv", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Same as /transformincremental but returns Base64NDArrayBody Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayCsvAsync (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalarrayCsvAsyncWithHttpInfo(deploymentName, transformName, singleCSVRecord);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Same as /transformincremental but returns Base64NDArrayBody Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayCsvAsyncWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayCsv");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformincrementalarrayCsv");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = singleCSVRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformincrementalarrayCsv", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="singleImageRecord">The input record array</param>
+        /// <returns>Base64NDArrayBody</returns>
+        public Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalarrayImageWithHttpInfo(deploymentName, imageTransformName, singleImageRecord);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="singleImageRecord">The input record array</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayImageWithHttpInfo (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayImage");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformincrementalarrayImage");
+            // verify the required parameter 'singleImageRecord' is set
+            if (singleImageRecord == null)
+                throw new ApiException(400, "Missing required parameter 'singleImageRecord' when calling DefaultApi->TransformincrementalarrayImage");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (singleImageRecord != null && singleImageRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(singleImageRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = singleImageRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformincrementalarrayImage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="singleImageRecord">The input record array</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayImageAsync (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalarrayImageAsyncWithHttpInfo(deploymentName, imageTransformName, singleImageRecord);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="singleImageRecord">The input record array</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayImageAsyncWithHttpInfo (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayImage");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformincrementalarrayImage");
+            // verify the required parameter 'singleImageRecord' is set
+            if (singleImageRecord == null)
+                throw new ApiException(400, "Missing required parameter 'singleImageRecord' when calling DefaultApi->TransformincrementalarrayImage");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (singleImageRecord != null && singleImageRecord.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(singleImageRecord); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = singleImageRecord; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformincrementalarrayImage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Takes a single multipart image file to transform and returns Base64NDArrayBody Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="file">The image file to upload</param>
+        /// <returns>Base64NDArrayBody</returns>
+        public Base64NDArrayBody Transformincrementalimage (string deploymentName, string imageTransformName, System.IO.Stream file)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalimageWithHttpInfo(deploymentName, imageTransformName, file);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Takes a single multipart image file to transform and returns Base64NDArrayBody Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="file">The image file to upload</param>
+        /// <returns>ApiResponse of Base64NDArrayBody</returns>
+        public ApiResponse< Base64NDArrayBody > TransformincrementalimageWithHttpInfo (string deploymentName, string imageTransformName, System.IO.Stream file)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformincrementalimage");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->Transformincrementalimage");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling DefaultApi->Transformincrementalimage");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Transformincrementalimage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Takes a single multipart image file to transform and returns Base64NDArrayBody Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="file">The image file to upload</param>
+        /// <returns>Task of Base64NDArrayBody</returns>
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalimageAsync (string deploymentName, string imageTransformName, System.IO.Stream file)
+        {
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalimageAsyncWithHttpInfo(deploymentName, imageTransformName, file);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Takes a single multipart image file to transform and returns Base64NDArrayBody Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
+        /// <param name="file">The image file to upload</param>
+        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalimageAsyncWithHttpInfo (string deploymentName, string imageTransformName, System.IO.Stream file)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformincrementalimage");
+            // verify the required parameter 'imageTransformName' is set
+            if (imageTransformName == null)
+                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->Transformincrementalimage");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling DefaultApi->Transformincrementalimage");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Transformincrementalimage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+        }
+
+        /// <summary>
+        /// Gets the JSON string of the deployed transform process Retrieves the JSON string of the deployed transform process 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <returns>TransformProcess</returns>
+        public TransformProcess TransformprocessGet (string deploymentName, string transformName)
+        {
+             ApiResponse<TransformProcess> localVarResponse = TransformprocessGetWithHttpInfo(deploymentName, transformName);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets the JSON string of the deployed transform process Retrieves the JSON string of the deployed transform process 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <returns>ApiResponse of TransformProcess</returns>
+        public ApiResponse< TransformProcess > TransformprocessGetWithHttpInfo (string deploymentName, string transformName)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformprocessGet");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformprocessGet");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformprocessGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TransformProcess>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (TransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransformProcess)));
+        }
+
+        /// <summary>
+        /// Gets the JSON string of the deployed transform process Retrieves the JSON string of the deployed transform process 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <returns>Task of TransformProcess</returns>
+        public async System.Threading.Tasks.Task<TransformProcess> TransformprocessGetAsync (string deploymentName, string transformName)
+        {
+             ApiResponse<TransformProcess> localVarResponse = await TransformprocessGetAsyncWithHttpInfo(deploymentName, transformName);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets the JSON string of the deployed transform process Retrieves the JSON string of the deployed transform process 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <returns>Task of ApiResponse (TransformProcess)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TransformProcess>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string transformName)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformprocessGet");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformprocessGet");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformprocessGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TransformProcess>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (TransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransformProcess)));
+        }
+
+        /// <summary>
+        /// Sets the deployed transform process through the provided JSON string Sets the transform process with the provided JSON string
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <returns></returns>
+        public void TransformprocessPost (string deploymentName, string transformName, TransformProcess transformProcess = null)
+        {
+             TransformprocessPostWithHttpInfo(deploymentName, transformName, transformProcess);
+        }
+
+        /// <summary>
+        /// Sets the deployed transform process through the provided JSON string Sets the transform process with the provided JSON string
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string transformName, TransformProcess transformProcess = null)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformprocessPost");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformprocessPost");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (transformProcess != null && transformProcess.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(transformProcess); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = transformProcess; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformprocessPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Sets the deployed transform process through the provided JSON string Sets the transform process with the provided JSON string
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string transformName, TransformProcess transformProcess = null)
+        {
+             await TransformprocessPostAsyncWithHttpInfo(deploymentName, transformName, transformProcess);
+
+        }
+
+        /// <summary>
+        /// Sets the deployed transform process through the provided JSON string Sets the transform process with the provided JSON string
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="transformName">ID or name of the deployed transform</param>
+        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string transformName, TransformProcess transformProcess = null)
+        {
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformprocessPost");
+            // verify the required parameter 'transformName' is set
+            if (transformName == null)
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformprocessPost");
+
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (transformProcess != null && transformProcess.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(transformProcess); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = transformProcess; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TransformprocessPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Updates the best model for an experiment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
+        /// <returns>ExperimentEntity</returns>
+        public ExperimentEntity UpdateBestModelForExperiment (UpdateBestModel updateBestModel)
+        {
+             ApiResponse<ExperimentEntity> localVarResponse = UpdateBestModelForExperimentWithHttpInfo(updateBestModel);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Updates the best model for an experiment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
+        /// <returns>ApiResponse of ExperimentEntity</returns>
+        public ApiResponse< ExperimentEntity > UpdateBestModelForExperimentWithHttpInfo (UpdateBestModel updateBestModel)
+        {
+            // verify the required parameter 'updateBestModel' is set
+            if (updateBestModel == null)
+                throw new ApiException(400, "Missing required parameter 'updateBestModel' when calling DefaultApi->UpdateBestModelForExperiment");
+
+            var localVarPath = "/experiment/best";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateBestModel != null && updateBestModel.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(updateBestModel); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = updateBestModel; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateBestModelForExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+        }
+
+        /// <summary>
+        /// Updates the best model for an experiment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
+        /// <returns>Task of ExperimentEntity</returns>
+        public async System.Threading.Tasks.Task<ExperimentEntity> UpdateBestModelForExperimentAsync (UpdateBestModel updateBestModel)
+        {
+             ApiResponse<ExperimentEntity> localVarResponse = await UpdateBestModelForExperimentAsyncWithHttpInfo(updateBestModel);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Updates the best model for an experiment 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
+        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateBestModelForExperimentAsyncWithHttpInfo (UpdateBestModel updateBestModel)
+        {
+            // verify the required parameter 'updateBestModel' is set
+            if (updateBestModel == null)
+                throw new ApiException(400, "Missing required parameter 'updateBestModel' when calling DefaultApi->UpdateBestModelForExperiment");
+
+            var localVarPath = "/experiment/best";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updateBestModel != null && updateBestModel.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(updateBestModel); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = updateBestModel; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateBestModelForExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+        }
+
+        /// <summary>
+        /// Updates an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to update</param>
+        /// <param name="experimentEntity">The experiment entity to update with</param>
+        /// <returns>ExperimentEntity</returns>
+        public ExperimentEntity UpdateExperiment (string experimentID, ExperimentEntity experimentEntity)
+        {
+             ApiResponse<ExperimentEntity> localVarResponse = UpdateExperimentWithHttpInfo(experimentID, experimentEntity);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Updates an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to update</param>
+        /// <param name="experimentEntity">The experiment entity to update with</param>
+        /// <returns>ApiResponse of ExperimentEntity</returns>
+        public ApiResponse< ExperimentEntity > UpdateExperimentWithHttpInfo (string experimentID, ExperimentEntity experimentEntity)
+        {
+            // verify the required parameter 'experimentID' is set
+            if (experimentID == null)
+                throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->UpdateExperiment");
+            // verify the required parameter 'experimentEntity' is set
+            if (experimentEntity == null)
+                throw new ApiException(400, "Missing required parameter 'experimentEntity' when calling DefaultApi->UpdateExperiment");
+
+            var localVarPath = "/experiment/{experimentID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+            if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = experimentEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+        }
+
+        /// <summary>
+        /// Updates an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to update</param>
+        /// <param name="experimentEntity">The experiment entity to update with</param>
+        /// <returns>Task of ExperimentEntity</returns>
+        public async System.Threading.Tasks.Task<ExperimentEntity> UpdateExperimentAsync (string experimentID, ExperimentEntity experimentEntity)
+        {
+             ApiResponse<ExperimentEntity> localVarResponse = await UpdateExperimentAsyncWithHttpInfo(experimentID, experimentEntity);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Updates an experiment, given an experiment entity 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="experimentID">the GUID of the experiment to update</param>
+        /// <param name="experimentEntity">The experiment entity to update with</param>
+        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateExperimentAsyncWithHttpInfo (string experimentID, ExperimentEntity experimentEntity)
+        {
+            // verify the required parameter 'experimentID' is set
+            if (experimentID == null)
+                throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->UpdateExperiment");
+            // verify the required parameter 'experimentEntity' is set
+            if (experimentEntity == null)
+                throw new ApiException(400, "Missing required parameter 'experimentEntity' when calling DefaultApi->UpdateExperiment");
+
+            var localVarPath = "/experiment/{experimentID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+            if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = experimentEntity; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateExperiment", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+        }
+
+        /// <summary>
+        /// Update a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
+        /// <param name="updateModelHistoryRequest">The model history request object</param>
+        /// <returns>ModelHistoryEntity</returns>
+        public ModelHistoryEntity UpdateModelHistory (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
+        {
+             ApiResponse<ModelHistoryEntity> localVarResponse = UpdateModelHistoryWithHttpInfo(modelHistoryID, updateModelHistoryRequest);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
+        /// <param name="updateModelHistoryRequest">The model history request object</param>
+        /// <returns>ApiResponse of ModelHistoryEntity</returns>
+        public ApiResponse< ModelHistoryEntity > UpdateModelHistoryWithHttpInfo (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
+        {
+            // verify the required parameter 'modelHistoryID' is set
+            if (modelHistoryID == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->UpdateModelHistory");
+            // verify the required parameter 'updateModelHistoryRequest' is set
+            if (updateModelHistoryRequest == null)
+                throw new ApiException(400, "Missing required parameter 'updateModelHistoryRequest' when calling DefaultApi->UpdateModelHistory");
+
+            var localVarPath = "/modelhistory/{modelHistoryID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+            if (updateModelHistoryRequest != null && updateModelHistoryRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(updateModelHistoryRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = updateModelHistoryRequest; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+        }
+
+        /// <summary>
+        /// Update a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
+        /// <param name="updateModelHistoryRequest">The model history request object</param>
+        /// <returns>Task of ModelHistoryEntity</returns>
+        public async System.Threading.Tasks.Task<ModelHistoryEntity> UpdateModelHistoryAsync (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
+        {
+             ApiResponse<ModelHistoryEntity> localVarResponse = await UpdateModelHistoryAsyncWithHttpInfo(modelHistoryID, updateModelHistoryRequest);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Update a model history / workspace 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
+        /// <param name="updateModelHistoryRequest">The model history request object</param>
+        /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> UpdateModelHistoryAsyncWithHttpInfo (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
+        {
+            // verify the required parameter 'modelHistoryID' is set
+            if (modelHistoryID == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->UpdateModelHistory");
+            // verify the required parameter 'updateModelHistoryRequest' is set
+            if (updateModelHistoryRequest == null)
+                throw new ApiException(400, "Missing required parameter 'updateModelHistoryRequest' when calling DefaultApi->UpdateModelHistory");
+
+            var localVarPath = "/modelhistory/{modelHistoryID}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+            if (updateModelHistoryRequest != null && updateModelHistoryRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(updateModelHistoryRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = updateModelHistoryRequest; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateModelHistory", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
         }
 
         /// <summary>

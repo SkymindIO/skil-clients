@@ -1,6 +1,6 @@
 /**
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -26,6 +26,8 @@ public class Prediction implements Serializable {
   private Boolean needsPreProcessing = null;
   @SerializedName("prediction")
   private INDArray prediction = null;
+  @SerializedName("inputMask")
+  private INDArray inputMask = null;
 
   /**
    **/
@@ -57,6 +59,16 @@ public class Prediction implements Serializable {
     this.prediction = prediction;
   }
 
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public INDArray getInputMask() {
+    return inputMask;
+  }
+  public void setInputMask(INDArray inputMask) {
+    this.inputMask = inputMask;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -69,7 +81,8 @@ public class Prediction implements Serializable {
     Prediction prediction = (Prediction) o;
     return (this.id == null ? prediction.id == null : this.id.equals(prediction.id)) &&
         (this.needsPreProcessing == null ? prediction.needsPreProcessing == null : this.needsPreProcessing.equals(prediction.needsPreProcessing)) &&
-        (this.prediction == null ? prediction.prediction == null : this.prediction.equals(prediction.prediction));
+        (this.prediction == null ? prediction.prediction == null : this.prediction.equals(prediction.prediction)) &&
+        (this.inputMask == null ? prediction.inputMask == null : this.inputMask.equals(prediction.inputMask));
   }
 
   @Override
@@ -78,6 +91,7 @@ public class Prediction implements Serializable {
     result = 31 * result + (this.id == null ? 0: this.id.hashCode());
     result = 31 * result + (this.needsPreProcessing == null ? 0: this.needsPreProcessing.hashCode());
     result = 31 * result + (this.prediction == null ? 0: this.prediction.hashCode());
+    result = 31 * result + (this.inputMask == null ? 0: this.inputMask.hashCode());
     return result;
   }
 
@@ -89,6 +103,7 @@ public class Prediction implements Serializable {
     sb.append("  id: ").append(id).append("\n");
     sb.append("  needsPreProcessing: ").append(needsPreProcessing).append("\n");
     sb.append("  prediction: ").append(prediction).append("\n");
+    sb.append("  inputMask: ").append(inputMask).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

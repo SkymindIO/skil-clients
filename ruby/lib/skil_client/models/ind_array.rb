@@ -1,7 +1,7 @@
 =begin
-#Predict
+#Endpoints
 
-#Endpoints API for classification and other prediction services in SKIL
+#Endpoints API for different services in SKIL
 
 OpenAPI spec version: 1.1.0-beta
 
@@ -17,18 +17,55 @@ module SkilCient
   class INDArray
     attr_accessor :array
 
+    attr_accessor :shape
+
+    attr_accessor :ordering
+
+    attr_accessor :data
+
+    attr_accessor :data_type
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'array' => :'array'
+        :'array' => :'array',
+        :'shape' => :'shape',
+        :'ordering' => :'ordering',
+        :'data' => :'data',
+        :'data_type' => :'dataType'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'array' => :'String'
+        :'array' => :'String',
+        :'shape' => :'Array<Integer>',
+        :'ordering' => :'String',
+        :'data' => :'Array<Float>',
+        :'data_type' => :'String'
       }
     end
 
@@ -44,6 +81,26 @@ module SkilCient
         self.array = attributes[:'array']
       end
 
+      if attributes.has_key?(:'shape')
+        if (value = attributes[:'shape']).is_a?(Array)
+          self.shape = value
+        end
+      end
+
+      if attributes.has_key?(:'ordering')
+        self.ordering = attributes[:'ordering']
+      end
+
+      if attributes.has_key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
+        end
+      end
+
+      if attributes.has_key?(:'dataType')
+        self.data_type = attributes[:'dataType']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -56,7 +113,31 @@ module SkilCient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      ordering_validator = EnumAttributeValidator.new('String', ["f", "c"])
+      return false unless ordering_validator.valid?(@ordering)
+      data_type_validator = EnumAttributeValidator.new('String', ["INT8", "UINT8", "INT16", "INT16", "FLOAT16"])
+      return false unless data_type_validator.valid?(@data_type)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] ordering Object to be assigned
+    def ordering=(ordering)
+      validator = EnumAttributeValidator.new('String', ["f", "c"])
+      unless validator.valid?(ordering)
+        fail ArgumentError, "invalid value for 'ordering', must be one of #{validator.allowable_values}."
+      end
+      @ordering = ordering
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] data_type Object to be assigned
+    def data_type=(data_type)
+      validator = EnumAttributeValidator.new('String', ["INT8", "UINT8", "INT16", "INT16", "FLOAT16"])
+      unless validator.valid?(data_type)
+        fail ArgumentError, "invalid value for 'data_type', must be one of #{validator.allowable_values}."
+      end
+      @data_type = data_type
     end
 
     # Checks equality by comparing each attribute.
@@ -64,7 +145,11 @@ module SkilCient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          array == o.array
+          array == o.array &&
+          shape == o.shape &&
+          ordering == o.ordering &&
+          data == o.data &&
+          data_type == o.data_type
     end
 
     # @see the `==` method
@@ -76,7 +161,7 @@ module SkilCient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [array].hash
+      [array, shape, ordering, data, data_type].hash
     end
 
     # Builds the object from hash

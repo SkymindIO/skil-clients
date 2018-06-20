@@ -10,9 +10,9 @@ import Foundation
 
 open class DeploymentObjects: JSONEncodable {
 
-    public var models: [Any]?
-    public var transforms: [Any]?
-    public var knn: [Any]?
+    public var models: [ModelResponse]?
+    public var transforms: [ModelResponse]?
+    public var knn: [ModelResponse]?
 
     public init() {}
 

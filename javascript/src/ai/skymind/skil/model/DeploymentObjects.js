@@ -1,6 +1,6 @@
 /**
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  *
@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'ai/skymind/skil/model/ModelResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./ModelResponse'));
   } else {
     // Browser globals (root is window)
     if (!root.SkilClient) {
       root.SkilClient = {};
     }
-    root.SkilClient.DeploymentObjects = factory(root.SkilClient.ApiClient);
+    root.SkilClient.DeploymentObjects = factory(root.SkilClient.ApiClient, root.SkilClient.ModelResponse);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, ModelResponse) {
   'use strict';
 
 
@@ -64,28 +64,28 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('models')) {
-        obj['models'] = ApiClient.convertToType(data['models'], [Object]);
+        obj['models'] = ApiClient.convertToType(data['models'], [ModelResponse]);
       }
       if (data.hasOwnProperty('transforms')) {
-        obj['transforms'] = ApiClient.convertToType(data['transforms'], [Object]);
+        obj['transforms'] = ApiClient.convertToType(data['transforms'], [ModelResponse]);
       }
       if (data.hasOwnProperty('knn')) {
-        obj['knn'] = ApiClient.convertToType(data['knn'], [Object]);
+        obj['knn'] = ApiClient.convertToType(data['knn'], [ModelResponse]);
       }
     }
     return obj;
   }
 
   /**
-   * @member {Array.<Object>} models
+   * @member {Array.<module:ai/skymind/skil/model/ModelResponse>} models
    */
   exports.prototype['models'] = undefined;
   /**
-   * @member {Array.<Object>} transforms
+   * @member {Array.<module:ai/skymind/skil/model/ModelResponse>} transforms
    */
   exports.prototype['transforms'] = undefined;
   /**
-   * @member {Array.<Object>} knn
+   * @member {Array.<module:ai/skymind/skil/model/ModelResponse>} knn
    */
   exports.prototype['knn'] = undefined;
 

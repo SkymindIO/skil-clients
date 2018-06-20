@@ -1,6 +1,6 @@
 /**
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  *
@@ -50,6 +50,7 @@
 
 
 
+
   };
 
   /**
@@ -72,6 +73,9 @@
       if (data.hasOwnProperty('prediction')) {
         obj['prediction'] = INDArray.constructFromObject(data['prediction']);
       }
+      if (data.hasOwnProperty('inputMask')) {
+        obj['inputMask'] = INDArray.constructFromObject(data['inputMask']);
+      }
     }
     return obj;
   }
@@ -88,6 +92,10 @@
    * @member {module:ai/skymind/skil/model/INDArray} prediction
    */
   exports.prototype['prediction'] = undefined;
+  /**
+   * @member {module:ai/skymind/skil/model/INDArray} inputMask
+   */
+  exports.prototype['inputMask'] = undefined;
 
 
 

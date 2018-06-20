@@ -1,7 +1,7 @@
 /* 
- * Predict
+ * Endpoints
  *
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -36,7 +36,7 @@ namespace Skymind.SKIL.Model
         /// <param name="Models">Models.</param>
         /// <param name="Transforms">Transforms.</param>
         /// <param name="Knn">Knn.</param>
-        public DeploymentObjects(List<Object> Models = default(List<Object>), List<Object> Transforms = default(List<Object>), List<Object> Knn = default(List<Object>))
+        public DeploymentObjects(List<ModelResponse> Models = default(List<ModelResponse>), List<ModelResponse> Transforms = default(List<ModelResponse>), List<ModelResponse> Knn = default(List<ModelResponse>))
         {
             this.Models = Models;
             this.Transforms = Transforms;
@@ -47,19 +47,19 @@ namespace Skymind.SKIL.Model
         /// Gets or Sets Models
         /// </summary>
         [DataMember(Name="models", EmitDefaultValue=false)]
-        public List<Object> Models { get; set; }
+        public List<ModelResponse> Models { get; set; }
 
         /// <summary>
         /// Gets or Sets Transforms
         /// </summary>
         [DataMember(Name="transforms", EmitDefaultValue=false)]
-        public List<Object> Transforms { get; set; }
+        public List<ModelResponse> Transforms { get; set; }
 
         /// <summary>
         /// Gets or Sets Knn
         /// </summary>
         [DataMember(Name="knn", EmitDefaultValue=false)]
-        public List<Object> Knn { get; set; }
+        public List<ModelResponse> Knn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
