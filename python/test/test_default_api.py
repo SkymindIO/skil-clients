@@ -12,10 +12,12 @@
 
 from __future__ import absolute_import
 
+import base64
 import unittest
 import uuid
 import pprint
 
+import numpy
 import skil_client
 from skil_client import *
 from skil_client.rest import ApiException
@@ -730,14 +732,34 @@ class TestDefaultApi(unittest.TestCase):
 
         Runs knn on the given index with the given k  # noqa: E501
         """
-        pass
+        self.pp.pprint(
+            self.api_instance.knn(
+                deployment_name="test",
+                knn_name="knn",
+                body=NearestNeighborRequest(
+                    2, 2
+                )
+            )
+        )
 
     def test_knnnew(self):
         """Test case for knnnew
 
         Run a k nearest neighbors search on a NEW data point  # noqa: E501
         """
-        pass
+        self.pp.pprint(numpy.array([0.0, 0.0, 0.0]).tostring())
+        self.pp.pprint(
+            self.api_instance.knnnew(
+                "test",
+                "knn",
+                Base64NDArrayBodyKNN(
+                    ndarray="AAdKQVZBQ1BQAAAACAADSU5UAAAAAgAAAAEAAAADAAAAAQAAAAEAAAAAAAAAAQAAAGMAB0pBVkFD\r"
+                            "\nUFAAAAADAAVGTE9BVAAAAAAAAAAAAAAAAA==\r\n",  # Array: [0.0, 0.0, 0.0] in base64 encoding
+                    k=2,
+                    force_fill_k=False
+                )
+            )
+        )
 
     def test_logfilepath(self):
         """Test case for logfilepath
