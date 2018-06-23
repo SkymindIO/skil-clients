@@ -1,7 +1,7 @@
 /* 
- * Predict
+ * Endpoints
  *
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -36,11 +36,13 @@ namespace Skymind.SKIL.Model
         /// <param name="Id">Id.</param>
         /// <param name="NeedsPreProcessing">NeedsPreProcessing.</param>
         /// <param name="_Prediction">_Prediction.</param>
-        public Prediction(string Id = default(string), bool? NeedsPreProcessing = default(bool?), INDArray _Prediction = default(INDArray))
+        /// <param name="InputMask">InputMask.</param>
+        public Prediction(string Id = default(string), bool? NeedsPreProcessing = default(bool?), INDArray _Prediction = default(INDArray), INDArray InputMask = default(INDArray))
         {
             this.Id = Id;
             this.NeedsPreProcessing = NeedsPreProcessing;
             this._Prediction = _Prediction;
+            this.InputMask = InputMask;
         }
         
         /// <summary>
@@ -62,6 +64,12 @@ namespace Skymind.SKIL.Model
         public INDArray _Prediction { get; set; }
 
         /// <summary>
+        /// Gets or Sets InputMask
+        /// </summary>
+        [DataMember(Name="inputMask", EmitDefaultValue=false)]
+        public INDArray InputMask { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -72,6 +80,7 @@ namespace Skymind.SKIL.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  NeedsPreProcessing: ").Append(NeedsPreProcessing).Append("\n");
             sb.Append("  _Prediction: ").Append(_Prediction).Append("\n");
+            sb.Append("  InputMask: ").Append(InputMask).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -120,6 +129,11 @@ namespace Skymind.SKIL.Model
                     this._Prediction == input._Prediction ||
                     (this._Prediction != null &&
                     this._Prediction.Equals(input._Prediction))
+                ) && 
+                (
+                    this.InputMask == input.InputMask ||
+                    (this.InputMask != null &&
+                    this.InputMask.Equals(input.InputMask))
                 );
         }
 
@@ -138,6 +152,8 @@ namespace Skymind.SKIL.Model
                     hashCode = hashCode * 59 + this.NeedsPreProcessing.GetHashCode();
                 if (this._Prediction != null)
                     hashCode = hashCode * 59 + this._Prediction.GetHashCode();
+                if (this.InputMask != null)
+                    hashCode = hashCode * 59 + this.InputMask.GetHashCode();
                 return hashCode;
             }
         }

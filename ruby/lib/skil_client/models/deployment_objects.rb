@@ -1,7 +1,7 @@
 =begin
-#Predict
+#Endpoints
 
-#Endpoints API for classification and other prediction services in SKIL
+#Endpoints API for different services in SKIL
 
 OpenAPI spec version: 1.1.0-beta
 
@@ -34,9 +34,9 @@ module SkilCient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'models' => :'Array<Object>',
-        :'transforms' => :'Array<Object>',
-        :'knn' => :'Array<Object>'
+        :'models' => :'Array<ModelResponse>',
+        :'transforms' => :'Array<ModelResponse>',
+        :'knn' => :'Array<ModelResponse>'
       }
     end
 

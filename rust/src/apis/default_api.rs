@@ -1,7 +1,7 @@
 /* 
- * Predict
+ * Endpoints
  *
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -31,27 +31,325 @@ impl<C: hyper::client::Connect> DefaultApiClient<C> {
 }
 
 pub trait DefaultApi {
+    fn add_evaluation_result(&self, evaluation_results_entity: ::models::EvaluationResultsEntity) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error>>;
+    fn add_example_for_batch(&self, add_example_request: ::models::AddExampleRequest) -> Box<Future<Item = ::models::AddExampleRequest, Error = Error>>;
+    fn add_example_to_minibatch(&self, example_entity: ::models::ExampleEntity) -> Box<Future<Item = ::models::ExampleEntity, Error = Error>>;
+    fn add_experiment(&self, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error>>;
+    fn add_minibatch(&self, minibatch_entity: ::models::MinibatchEntity) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error>>;
+    fn add_model_history(&self, add_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error>>;
+    fn add_model_instance(&self, model_instance_entity: ::models::ModelInstanceEntity) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error>>;
+    fn aggregate_model_results(&self, aggregate_prediction: ::models::AggregatePrediction) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error>>;
     fn classify(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error>>;
     fn classifyarray(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>>;
     fn classifyimage(&self, deployment_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::ClassificationResult, Error = Error>>;
-    fn deploy_model(&self, deployment_id: &str, body: ::models::DeployModel) -> Box<Future<Item = Value, Error = Error>>;
-    fn deployment_create(&self, body: ::models::NewDeployment) -> Box<Future<Item = ::models::Deployment, Error = Error>>;
+    fn create_model_history(&self, model_history_entity: ::models::ModelHistoryEntity) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error>>;
+    fn delete_experiment(&self, experiment_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error>>;
+    fn delete_model(&self, deployment_id: &str, model_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error>>;
+    fn delete_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error>>;
+    fn delete_model_instance(&self, model_instance_id: &str) -> Box<Future<Item = (), Error = Error>>;
+    fn deploy_model(&self, deployment_id: &str, body: ::models::ImportModelRequest) -> Box<Future<Item = ::models::ModelEntity, Error = Error>>;
+    fn deployment_create(&self, body: ::models::CreateDeploymentRequest) -> Box<Future<Item = ::models::DeploymentResponse, Error = Error>>;
+    fn deployment_delete(&self, deployment_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error>>;
+    fn deployment_get(&self, deployment_id: &str) -> Box<Future<Item = ::models::DeploymentResponse, Error = Error>>;
+    fn deployments(&self, ) -> Box<Future<Item = Vec<::models::DeploymentResponse>, Error = Error>>;
+    fn detectobjects(&self, id: &str, needs_preprocessing: bool, threshold: f32, image_file: ::models::File, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::DetectionResult, Error = Error>>;
+    fn get_best_model_among_model_ids(&self, best_model: ::models::BestModel) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error>>;
+    fn get_evaluation_for_model_id(&self, model_instance_id: &str) -> Box<Future<Item = Vec<::models::EvaluationResultsEntity>, Error = Error>>;
+    fn get_examples_for_minibatch(&self, minibatch_id: &str) -> Box<Future<Item = Vec<::models::ExampleEntity>, Error = Error>>;
+    fn get_experiment(&self, experiment_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error>>;
+    fn get_experiments_for_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error>>;
+    fn get_minibatch(&self, minibatch_id: &str) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error>>;
+    fn get_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error>>;
+    fn get_model_instance(&self, model_instance_id: &str) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error>>;
+    fn get_models_for_experiment(&self, experiment_id: &str) -> Box<Future<Item = Vec<::models::ModelInstanceEntity>, Error = Error>>;
+    fn imagetransformprocess_get(&self, deployment_name: &str, image_transform_name: &str) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error>>;
+    fn imagetransformprocess_post(&self, deployment_name: &str, image_transform_name: &str, body: ::models::ImageTransformProcess) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error>>;
     fn jsonarray(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error>>;
+    fn knn(&self, deployment_name: &str, knn_name: &str, body: ::models::NearestNeighborRequest) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error>>;
+    fn knnnew(&self, deployment_name: &str, knn_name: &str, body: ::models::Base64NdArrayBodyKnn) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error>>;
+    fn list_all_experiments(&self, ) -> Box<Future<Item = Vec<::models::ExperimentEntity>, Error = Error>>;
     fn logfilepath(&self, deployment_name: &str, model_name: &str) -> Box<Future<Item = String, Error = Error>>;
     fn login(&self, credentials: ::models::Credentials) -> Box<Future<Item = ::models::Token, Error = Error>>;
     fn logs(&self, body: ::models::LogRequest, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::LogBatch, Error = Error>>;
+    fn meta_get(&self, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error>>;
+    fn meta_post(&self, body: ::models::MetaData, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error>>;
+    fn model_state_change(&self, deployment_id: &str, model_id: &str, body: ::models::SetState) -> Box<Future<Item = ::models::ModelEntity, Error = Error>>;
+    fn models(&self, deployment_id: &str) -> Box<Future<Item = Vec<::models::ModelEntity>, Error = Error>>;
     fn modelset(&self, deployment_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error>>;
     fn modelupdate(&self, deployment_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error>>;
     fn multiclassify(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiClassClassificationResult, Error = Error>>;
+    fn multipredict(&self, body: ::models::MultiPredictRequest, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error>>;
     fn predict(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error>>;
     fn predictimage(&self, deployment_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::Prediction, Error = Error>>;
     fn predictwithpreprocess(&self, body: Vec<String>, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error>>;
     fn predictwithpreprocessjson(&self, body: Vec<String>, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error>>;
+    fn reimport_model(&self, deployment_id: &str, model_id: &str, body: ::models::ImportModelRequest) -> Box<Future<Item = ::models::ModelEntity, Error = Error>>;
+    fn transform_csv(&self, deployment_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::BatchCsvRecord, Error = Error>>;
+    fn transformarray_csv(&self, deployment_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>>;
+    fn transformarray_image(&self, deployment_name: &str, image_transform_name: &str, batch_image_record: ::models::BatchImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>>;
+    fn transformimage(&self, deployment_name: &str, image_transform_name: &str, files: Vec<Vec<u8>>) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>>;
+    fn transformincremental_csv(&self, deployment_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::SingleCsvRecord, Error = Error>>;
+    fn transformincrementalarray_csv(&self, deployment_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>>;
+    fn transformincrementalarray_image(&self, deployment_name: &str, image_transform_name: &str, single_image_record: ::models::SingleImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>>;
+    fn transformincrementalimage(&self, deployment_name: &str, image_transform_name: &str, file: ::models::File) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>>;
+    fn transformprocess_get(&self, deployment_name: &str, transform_name: &str) -> Box<Future<Item = ::models::TransformProcess, Error = Error>>;
+    fn transformprocess_post(&self, deployment_name: &str, transform_name: &str, transform_process: ::models::TransformProcess) -> Box<Future<Item = (), Error = Error>>;
+    fn update_best_model_for_experiment(&self, update_best_model: ::models::UpdateBestModel) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error>>;
+    fn update_experiment(&self, experiment_id: &str, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error>>;
+    fn update_model_history(&self, model_history_id: &str, update_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error>>;
     fn upload(&self, file: ::models::File) -> Box<Future<Item = ::models::FileUploadList, Error = Error>>;
 }
 
 
 impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
+    fn add_evaluation_result(&self, evaluation_results_entity: ::models::EvaluationResultsEntity) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/model/revisions/evaluations/", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::EvaluationResultsEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn add_example_for_batch(&self, add_example_request: ::models::AddExampleRequest) -> Box<Future<Item = ::models::AddExampleRequest, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/model/exampleForBatch", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::AddExampleRequest, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn add_example_to_minibatch(&self, example_entity: ::models::ExampleEntity) -> Box<Future<Item = ::models::ExampleEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/model/example", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ExampleEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn add_experiment(&self, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/experiment", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ExperimentEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn add_minibatch(&self, minibatch_entity: ::models::MinibatchEntity) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/model/minibatch", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::MinibatchEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn add_model_history(&self, add_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/modelhistory", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ModelHistoryEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn add_model_instance(&self, model_instance_entity: ::models::ModelInstanceEntity) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/model", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ModelInstanceEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn aggregate_model_results(&self, aggregate_prediction: ::models::AggregatePrediction) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/model/aggregateresults", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::EvaluationResultsEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
     fn classify(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
@@ -141,7 +439,143 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn deploy_model(&self, deployment_id: &str, body: ::models::DeployModel) -> Box<Future<Item = Value, Error = Error>> {
+    fn create_model_history(&self, model_history_entity: ::models::ModelHistoryEntity) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/model/revisions", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ModelHistoryEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn delete_experiment(&self, experiment_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Delete;
+
+        let uri_str = format!("{}/experiment/{experimentID}", configuration.base_path, experimentID=experiment_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::InlineResponse200, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn delete_model(&self, deployment_id: &str, model_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Delete;
+
+        let uri_str = format!("{}/deployment/{deploymentId}/model/{modelId}", configuration.base_path, deploymentId=deployment_id, modelId=model_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::InlineResponse200, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn delete_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Delete;
+
+        let uri_str = format!("{}/modelhistory/{modelHistoryID}", configuration.base_path, modelHistoryID=model_history_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::InlineResponse200, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn delete_model_instance(&self, model_instance_id: &str) -> Box<Future<Item = (), Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Delete;
+
+        let uri_str = format!("{}/model/{modelInstanceID}", configuration.base_path, modelInstanceID=model_instance_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|_| futures::future::ok(()))
+        )
+    }
+
+    fn deploy_model(&self, deployment_id: &str, body: ::models::ImportModelRequest) -> Box<Future<Item = ::models::ModelEntity, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Post;
@@ -166,13 +600,13 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             configuration.client.request(req).and_then(|res| { res.body().concat2() })
             .map_err(|e| Error::from(e))
             .and_then(|body| {
-                let parsed: Result<Value, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::ModelEntity, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             }).map_err(|e| Error::from(e))
         )
     }
 
-    fn deployment_create(&self, body: ::models::NewDeployment) -> Box<Future<Item = ::models::Deployment, Error = Error>> {
+    fn deployment_create(&self, body: ::models::CreateDeploymentRequest) -> Box<Future<Item = ::models::DeploymentResponse, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Post;
@@ -197,7 +631,420 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             configuration.client.request(req).and_then(|res| { res.body().concat2() })
             .map_err(|e| Error::from(e))
             .and_then(|body| {
-                let parsed: Result<::models::Deployment, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::DeploymentResponse, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn deployment_delete(&self, deployment_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Delete;
+
+        let uri_str = format!("{}/deployment/{deploymentId}", configuration.base_path, deploymentId=deployment_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::InlineResponse200, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn deployment_get(&self, deployment_id: &str) -> Box<Future<Item = ::models::DeploymentResponse, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/deployment/{deploymentId}", configuration.base_path, deploymentId=deployment_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::DeploymentResponse, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn deployments(&self, ) -> Box<Future<Item = Vec<::models::DeploymentResponse>, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/deployments", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<Vec<::models::DeploymentResponse>, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn detectobjects(&self, id: &str, needs_preprocessing: bool, threshold: f32, image_file: ::models::File, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::DetectionResult, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/detectobjects", configuration.base_path, deploymentName=deployment_name, modelName=model_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::DetectionResult, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn get_best_model_among_model_ids(&self, best_model: ::models::BestModel) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/model/best", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ModelInstanceEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn get_evaluation_for_model_id(&self, model_instance_id: &str) -> Box<Future<Item = Vec<::models::EvaluationResultsEntity>, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/model/revisions/evaluations/{modelInstanceID}", configuration.base_path, modelInstanceID=model_instance_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<Vec<::models::EvaluationResultsEntity>, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn get_examples_for_minibatch(&self, minibatch_id: &str) -> Box<Future<Item = Vec<::models::ExampleEntity>, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/model/example/{minibatchId}", configuration.base_path, minibatchId=minibatch_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<Vec<::models::ExampleEntity>, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn get_experiment(&self, experiment_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/experiment/{experimentID}", configuration.base_path, experimentID=experiment_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ExperimentEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn get_experiments_for_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/experiments/{modelHistoryID}", configuration.base_path, modelHistoryID=model_history_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ExperimentEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn get_minibatch(&self, minibatch_id: &str) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/model/minibatch/{minibatchId}", configuration.base_path, minibatchId=minibatch_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::MinibatchEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn get_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/model/revision/{modelHistoryID}", configuration.base_path, modelHistoryID=model_history_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ModelHistoryEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn get_model_instance(&self, model_instance_id: &str) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/model/{modelInstanceID}", configuration.base_path, modelInstanceID=model_instance_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ModelInstanceEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn get_models_for_experiment(&self, experiment_id: &str) -> Box<Future<Item = Vec<::models::ModelInstanceEntity>, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/experiment/{experimentID}/models", configuration.base_path, experimentID=experiment_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<Vec<::models::ModelInstanceEntity>, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn imagetransformprocess_get(&self, deployment_name: &str, image_transform_name: &str) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess", configuration.base_path, deploymentName=deployment_name, imageTransformName=image_transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ImageTransformProcess, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn imagetransformprocess_post(&self, deployment_name: &str, image_transform_name: &str, body: ::models::ImageTransformProcess) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess", configuration.base_path, deploymentName=deployment_name, imageTransformName=image_transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ImageTransformProcess, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             }).map_err(|e| Error::from(e))
         )
@@ -229,6 +1076,95 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             .map_err(|e| Error::from(e))
             .and_then(|body| {
                 let parsed: Result<::models::JsonArrayResponse, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn knn(&self, deployment_name: &str, knn_name: &str, body: ::models::NearestNeighborRequest) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/knn/{knnName}/default/knn", configuration.base_path, deploymentName=deployment_name, knnName=knn_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::NearestNeighborsResults, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn knnnew(&self, deployment_name: &str, knn_name: &str, body: ::models::Base64NdArrayBodyKnn) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/knn/{knnName}/default/knnnew", configuration.base_path, deploymentName=deployment_name, knnName=knn_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::NearestNeighborsResults, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn list_all_experiments(&self, ) -> Box<Future<Item = Vec<::models::ExperimentEntity>, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/experiments", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<Vec<::models::ExperimentEntity>, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             }).map_err(|e| Error::from(e))
         )
@@ -323,6 +1259,122 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
+    fn meta_get(&self, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/meta", configuration.base_path, deploymentName=deployment_name, modelName=model_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::MetaData, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn meta_post(&self, body: ::models::MetaData, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/meta", configuration.base_path, deploymentName=deployment_name, modelName=model_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::MetaData, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn model_state_change(&self, deployment_id: &str, model_id: &str, body: ::models::SetState) -> Box<Future<Item = ::models::ModelEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/deployment/{deploymentId}/model/{modelId}/state", configuration.base_path, deploymentId=deployment_id, modelId=model_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ModelEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn models(&self, deployment_id: &str) -> Box<Future<Item = Vec<::models::ModelEntity>, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/deployment/{deploymentId}/models", configuration.base_path, deploymentId=deployment_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<Vec<::models::ModelEntity>, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
     fn modelset(&self, deployment_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
@@ -403,6 +1455,37 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             .map_err(|e| Error::from(e))
             .and_then(|body| {
                 let parsed: Result<::models::MultiClassClassificationResult, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn multipredict(&self, body: ::models::MultiPredictRequest, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/multipredict", configuration.base_path, deploymentName=deployment_name, modelName=model_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::MultiPredictResponse, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             }).map_err(|e| Error::from(e))
         )
@@ -523,6 +1606,425 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             .map_err(|e| Error::from(e))
             .and_then(|body| {
                 let parsed: Result<::models::JsonArrayResponse, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn reimport_model(&self, deployment_id: &str, model_id: &str, body: ::models::ImportModelRequest) -> Box<Future<Item = ::models::ModelEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/deployment/{deploymentId}/model/{modelId}", configuration.base_path, deploymentId=deployment_id, modelId=model_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ModelEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn transform_csv(&self, deployment_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::BatchCsvRecord, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transform", configuration.base_path, deploymentName=deployment_name, transformName=transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::BatchCsvRecord, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn transformarray_csv(&self, deployment_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray", configuration.base_path, deploymentName=deployment_name, transformName=transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::Base64NdArrayBody, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn transformarray_image(&self, deployment_name: &str, image_transform_name: &str, batch_image_record: ::models::BatchImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray", configuration.base_path, deploymentName=deployment_name, imageTransformName=image_transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::Base64NdArrayBody, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn transformimage(&self, deployment_name: &str, image_transform_name: &str, files: Vec<Vec<u8>>) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage", configuration.base_path, deploymentName=deployment_name, imageTransformName=image_transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::Base64NdArrayBody, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn transformincremental_csv(&self, deployment_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::SingleCsvRecord, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental", configuration.base_path, deploymentName=deployment_name, transformName=transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::SingleCsvRecord, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn transformincrementalarray_csv(&self, deployment_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray", configuration.base_path, deploymentName=deployment_name, transformName=transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::Base64NdArrayBody, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn transformincrementalarray_image(&self, deployment_name: &str, image_transform_name: &str, single_image_record: ::models::SingleImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray", configuration.base_path, deploymentName=deployment_name, imageTransformName=image_transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::Base64NdArrayBody, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn transformincrementalimage(&self, deployment_name: &str, image_transform_name: &str, file: ::models::File) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage", configuration.base_path, deploymentName=deployment_name, imageTransformName=image_transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::Base64NdArrayBody, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn transformprocess_get(&self, deployment_name: &str, transform_name: &str) -> Box<Future<Item = ::models::TransformProcess, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Get;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess", configuration.base_path, deploymentName=deployment_name, transformName=transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::TransformProcess, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn transformprocess_post(&self, deployment_name: &str, transform_name: &str, transform_process: ::models::TransformProcess) -> Box<Future<Item = (), Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess", configuration.base_path, deploymentName=deployment_name, transformName=transform_name);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|_| futures::future::ok(()))
+        )
+    }
+
+    fn update_best_model_for_experiment(&self, update_best_model: ::models::UpdateBestModel) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/experiment/best", configuration.base_path);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ExperimentEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn update_experiment(&self, experiment_id: &str, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Put;
+
+        let uri_str = format!("{}/experiment/{experimentID}", configuration.base_path, experimentID=experiment_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ExperimentEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            }).map_err(|e| Error::from(e))
+        )
+    }
+
+    fn update_model_history(&self, model_history_id: &str, update_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let method = hyper::Method::Post;
+
+        let uri_str = format!("{}/modelhistory/{modelHistoryID}", configuration.base_path, modelHistoryID=model_history_id);
+
+        let uri = uri_str.parse();
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut req = hyper::Request::new(method, uri.unwrap());
+
+
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+            configuration.client.request(req).and_then(|res| { res.body().concat2() })
+            .map_err(|e| Error::from(e))
+            .and_then(|body| {
+                let parsed: Result<::models::ModelHistoryEntity, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             }).map_err(|e| Error::from(e))
         )

@@ -1,6 +1,6 @@
 /**
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -57,28 +57,76 @@ public class JsonUtil {
   public static Type getListTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
+    if ("AddExampleRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AddExampleRequest>>(){}.getType();
+    }
+    
+    if ("AddModelHistoryRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AddModelHistoryRequest>>(){}.getType();
+    }
+    
+    if ("AggregatePrediction".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AggregatePrediction>>(){}.getType();
+    }
+    
     if ("Base64NDArrayBody".equalsIgnoreCase(className)) {
       return new TypeToken<List<Base64NDArrayBody>>(){}.getType();
+    }
+    
+    if ("Base64NDArrayBodyKNN".equalsIgnoreCase(className)) {
+      return new TypeToken<List<Base64NDArrayBodyKNN>>(){}.getType();
+    }
+    
+    if ("BatchCSVRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<List<BatchCSVRecord>>(){}.getType();
+    }
+    
+    if ("BatchImageRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<List<BatchImageRecord>>(){}.getType();
+    }
+    
+    if ("BestModel".equalsIgnoreCase(className)) {
+      return new TypeToken<List<BestModel>>(){}.getType();
     }
     
     if ("ClassificationResult".equalsIgnoreCase(className)) {
       return new TypeToken<List<ClassificationResult>>(){}.getType();
     }
     
+    if ("CreateDeploymentRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<List<CreateDeploymentRequest>>(){}.getType();
+    }
+    
     if ("Credentials".equalsIgnoreCase(className)) {
       return new TypeToken<List<Credentials>>(){}.getType();
     }
     
-    if ("DeployModel".equalsIgnoreCase(className)) {
-      return new TypeToken<List<DeployModel>>(){}.getType();
-    }
-    
-    if ("Deployment".equalsIgnoreCase(className)) {
-      return new TypeToken<List<Deployment>>(){}.getType();
-    }
-    
     if ("DeploymentObjects".equalsIgnoreCase(className)) {
       return new TypeToken<List<DeploymentObjects>>(){}.getType();
+    }
+    
+    if ("DeploymentResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<List<DeploymentResponse>>(){}.getType();
+    }
+    
+    if ("DetectedObject".equalsIgnoreCase(className)) {
+      return new TypeToken<List<DetectedObject>>(){}.getType();
+    }
+    
+    if ("DetectionResult".equalsIgnoreCase(className)) {
+      return new TypeToken<List<DetectionResult>>(){}.getType();
+    }
+    
+    if ("EvaluationResultsEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<List<EvaluationResultsEntity>>(){}.getType();
+    }
+    
+    if ("ExampleEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ExampleEntity>>(){}.getType();
+    }
+    
+    if ("ExperimentEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ExperimentEntity>>(){}.getType();
     }
     
     if ("FileUpload".equalsIgnoreCase(className)) {
@@ -93,6 +141,18 @@ public class JsonUtil {
       return new TypeToken<List<INDArray>>(){}.getType();
     }
     
+    if ("ImageTransformProcess".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ImageTransformProcess>>(){}.getType();
+    }
+    
+    if ("ImportModelRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ImportModelRequest>>(){}.getType();
+    }
+    
+    if ("InlineResponse200".equalsIgnoreCase(className)) {
+      return new TypeToken<List<InlineResponse200>>(){}.getType();
+    }
+    
     if ("JsonArrayResponse".equalsIgnoreCase(className)) {
       return new TypeToken<List<JsonArrayResponse>>(){}.getType();
     }
@@ -105,12 +165,56 @@ public class JsonUtil {
       return new TypeToken<List<LogRequest>>(){}.getType();
     }
     
+    if ("MetaData".equalsIgnoreCase(className)) {
+      return new TypeToken<List<MetaData>>(){}.getType();
+    }
+    
+    if ("MinibatchEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<List<MinibatchEntity>>(){}.getType();
+    }
+    
+    if ("ModelEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ModelEntity>>(){}.getType();
+    }
+    
+    if ("ModelHistoryEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ModelHistoryEntity>>(){}.getType();
+    }
+    
+    if ("ModelInstanceEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ModelInstanceEntity>>(){}.getType();
+    }
+    
+    if ("ModelResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ModelResponse>>(){}.getType();
+    }
+    
     if ("ModelStatus".equalsIgnoreCase(className)) {
       return new TypeToken<List<ModelStatus>>(){}.getType();
     }
     
     if ("MultiClassClassificationResult".equalsIgnoreCase(className)) {
       return new TypeToken<List<MultiClassClassificationResult>>(){}.getType();
+    }
+    
+    if ("MultiPredictRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<List<MultiPredictRequest>>(){}.getType();
+    }
+    
+    if ("MultiPredictResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<List<MultiPredictResponse>>(){}.getType();
+    }
+    
+    if ("NearestNeighborRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<List<NearestNeighborRequest>>(){}.getType();
+    }
+    
+    if ("NearestNeighborsResult".equalsIgnoreCase(className)) {
+      return new TypeToken<List<NearestNeighborsResult>>(){}.getType();
+    }
+    
+    if ("NearestNeighborsResults".equalsIgnoreCase(className)) {
+      return new TypeToken<List<NearestNeighborsResults>>(){}.getType();
     }
     
     if ("NewDeployment".equalsIgnoreCase(className)) {
@@ -121,8 +225,28 @@ public class JsonUtil {
       return new TypeToken<List<Prediction>>(){}.getType();
     }
     
+    if ("SetState".equalsIgnoreCase(className)) {
+      return new TypeToken<List<SetState>>(){}.getType();
+    }
+    
+    if ("SingleCSVRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<List<SingleCSVRecord>>(){}.getType();
+    }
+    
+    if ("SingleImageRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<List<SingleImageRecord>>(){}.getType();
+    }
+    
     if ("Token".equalsIgnoreCase(className)) {
       return new TypeToken<List<Token>>(){}.getType();
+    }
+    
+    if ("TransformProcess".equalsIgnoreCase(className)) {
+      return new TypeToken<List<TransformProcess>>(){}.getType();
+    }
+    
+    if ("UpdateBestModel".equalsIgnoreCase(className)) {
+      return new TypeToken<List<UpdateBestModel>>(){}.getType();
     }
     
     return new TypeToken<List<Object>>(){}.getType();
@@ -131,28 +255,76 @@ public class JsonUtil {
   public static Type getTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
+    if ("AddExampleRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<AddExampleRequest>(){}.getType();
+    }
+    
+    if ("AddModelHistoryRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<AddModelHistoryRequest>(){}.getType();
+    }
+    
+    if ("AggregatePrediction".equalsIgnoreCase(className)) {
+      return new TypeToken<AggregatePrediction>(){}.getType();
+    }
+    
     if ("Base64NDArrayBody".equalsIgnoreCase(className)) {
       return new TypeToken<Base64NDArrayBody>(){}.getType();
+    }
+    
+    if ("Base64NDArrayBodyKNN".equalsIgnoreCase(className)) {
+      return new TypeToken<Base64NDArrayBodyKNN>(){}.getType();
+    }
+    
+    if ("BatchCSVRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<BatchCSVRecord>(){}.getType();
+    }
+    
+    if ("BatchImageRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<BatchImageRecord>(){}.getType();
+    }
+    
+    if ("BestModel".equalsIgnoreCase(className)) {
+      return new TypeToken<BestModel>(){}.getType();
     }
     
     if ("ClassificationResult".equalsIgnoreCase(className)) {
       return new TypeToken<ClassificationResult>(){}.getType();
     }
     
+    if ("CreateDeploymentRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<CreateDeploymentRequest>(){}.getType();
+    }
+    
     if ("Credentials".equalsIgnoreCase(className)) {
       return new TypeToken<Credentials>(){}.getType();
     }
     
-    if ("DeployModel".equalsIgnoreCase(className)) {
-      return new TypeToken<DeployModel>(){}.getType();
-    }
-    
-    if ("Deployment".equalsIgnoreCase(className)) {
-      return new TypeToken<Deployment>(){}.getType();
-    }
-    
     if ("DeploymentObjects".equalsIgnoreCase(className)) {
       return new TypeToken<DeploymentObjects>(){}.getType();
+    }
+    
+    if ("DeploymentResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<DeploymentResponse>(){}.getType();
+    }
+    
+    if ("DetectedObject".equalsIgnoreCase(className)) {
+      return new TypeToken<DetectedObject>(){}.getType();
+    }
+    
+    if ("DetectionResult".equalsIgnoreCase(className)) {
+      return new TypeToken<DetectionResult>(){}.getType();
+    }
+    
+    if ("EvaluationResultsEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<EvaluationResultsEntity>(){}.getType();
+    }
+    
+    if ("ExampleEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<ExampleEntity>(){}.getType();
+    }
+    
+    if ("ExperimentEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<ExperimentEntity>(){}.getType();
     }
     
     if ("FileUpload".equalsIgnoreCase(className)) {
@@ -167,6 +339,18 @@ public class JsonUtil {
       return new TypeToken<INDArray>(){}.getType();
     }
     
+    if ("ImageTransformProcess".equalsIgnoreCase(className)) {
+      return new TypeToken<ImageTransformProcess>(){}.getType();
+    }
+    
+    if ("ImportModelRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<ImportModelRequest>(){}.getType();
+    }
+    
+    if ("InlineResponse200".equalsIgnoreCase(className)) {
+      return new TypeToken<InlineResponse200>(){}.getType();
+    }
+    
     if ("JsonArrayResponse".equalsIgnoreCase(className)) {
       return new TypeToken<JsonArrayResponse>(){}.getType();
     }
@@ -179,12 +363,56 @@ public class JsonUtil {
       return new TypeToken<LogRequest>(){}.getType();
     }
     
+    if ("MetaData".equalsIgnoreCase(className)) {
+      return new TypeToken<MetaData>(){}.getType();
+    }
+    
+    if ("MinibatchEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<MinibatchEntity>(){}.getType();
+    }
+    
+    if ("ModelEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<ModelEntity>(){}.getType();
+    }
+    
+    if ("ModelHistoryEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<ModelHistoryEntity>(){}.getType();
+    }
+    
+    if ("ModelInstanceEntity".equalsIgnoreCase(className)) {
+      return new TypeToken<ModelInstanceEntity>(){}.getType();
+    }
+    
+    if ("ModelResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<ModelResponse>(){}.getType();
+    }
+    
     if ("ModelStatus".equalsIgnoreCase(className)) {
       return new TypeToken<ModelStatus>(){}.getType();
     }
     
     if ("MultiClassClassificationResult".equalsIgnoreCase(className)) {
       return new TypeToken<MultiClassClassificationResult>(){}.getType();
+    }
+    
+    if ("MultiPredictRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<MultiPredictRequest>(){}.getType();
+    }
+    
+    if ("MultiPredictResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<MultiPredictResponse>(){}.getType();
+    }
+    
+    if ("NearestNeighborRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<NearestNeighborRequest>(){}.getType();
+    }
+    
+    if ("NearestNeighborsResult".equalsIgnoreCase(className)) {
+      return new TypeToken<NearestNeighborsResult>(){}.getType();
+    }
+    
+    if ("NearestNeighborsResults".equalsIgnoreCase(className)) {
+      return new TypeToken<NearestNeighborsResults>(){}.getType();
     }
     
     if ("NewDeployment".equalsIgnoreCase(className)) {
@@ -195,8 +423,28 @@ public class JsonUtil {
       return new TypeToken<Prediction>(){}.getType();
     }
     
+    if ("SetState".equalsIgnoreCase(className)) {
+      return new TypeToken<SetState>(){}.getType();
+    }
+    
+    if ("SingleCSVRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<SingleCSVRecord>(){}.getType();
+    }
+    
+    if ("SingleImageRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<SingleImageRecord>(){}.getType();
+    }
+    
     if ("Token".equalsIgnoreCase(className)) {
       return new TypeToken<Token>(){}.getType();
+    }
+    
+    if ("TransformProcess".equalsIgnoreCase(className)) {
+      return new TypeToken<TransformProcess>(){}.getType();
+    }
+    
+    if ("UpdateBestModel".equalsIgnoreCase(className)) {
+      return new TypeToken<UpdateBestModel>(){}.getType();
     }
     
     return new TypeToken<Object>(){}.getType();

@@ -541,7 +541,7 @@ class ApiClient(object):
         try:
             return klass(data)
         except UnicodeEncodeError:
-            return six.text_type(data)
+            return six.u(data)
         except TypeError:
             return data
 

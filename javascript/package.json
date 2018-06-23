@@ -1,7 +1,7 @@
 {
   "name": "skil-client",
   "version": "1.1.0-beta",
-  "description": "Endpoints_API_for_classification_and_other_prediction_services_in_SKIL",
+  "description": "Endpoints_API_for_different_services_in_SKIL",
   "license": "Apache 2.0",
   "main": "src/index.js",
   "scripts": {

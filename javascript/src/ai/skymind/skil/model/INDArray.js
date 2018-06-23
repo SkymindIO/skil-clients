@@ -1,6 +1,6 @@
 /**
- * Predict
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  *
@@ -48,6 +48,10 @@
     var _this = this;
 
 
+
+
+
+
   };
 
   /**
@@ -64,6 +68,18 @@
       if (data.hasOwnProperty('array')) {
         obj['array'] = ApiClient.convertToType(data['array'], 'String');
       }
+      if (data.hasOwnProperty('shape')) {
+        obj['shape'] = ApiClient.convertToType(data['shape'], ['Number']);
+      }
+      if (data.hasOwnProperty('ordering')) {
+        obj['ordering'] = ApiClient.convertToType(data['ordering'], 'String');
+      }
+      if (data.hasOwnProperty('data')) {
+        obj['data'] = ApiClient.convertToType(data['data'], ['Number']);
+      }
+      if (data.hasOwnProperty('dataType')) {
+        obj['dataType'] = ApiClient.convertToType(data['dataType'], 'String');
+      }
     }
     return obj;
   }
@@ -72,7 +88,72 @@
    * @member {String} array
    */
   exports.prototype['array'] = undefined;
+  /**
+   * @member {Array.<Number>} shape
+   */
+  exports.prototype['shape'] = undefined;
+  /**
+   * @member {module:ai/skymind/skil/model/INDArray.OrderingEnum} ordering
+   */
+  exports.prototype['ordering'] = undefined;
+  /**
+   * @member {Array.<Number>} data
+   */
+  exports.prototype['data'] = undefined;
+  /**
+   * @member {module:ai/skymind/skil/model/INDArray.DataTypeEnum} dataType
+   */
+  exports.prototype['dataType'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>ordering</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.OrderingEnum = {
+    /**
+     * value: "f"
+     * @const
+     */
+    "f": "f",
+    /**
+     * value: "c"
+     * @const
+     */
+    "c": "c"  };
+
+  /**
+   * Allowed values for the <code>dataType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.DataTypeEnum = {
+    /**
+     * value: "INT8"
+     * @const
+     */
+    "INT8": "INT8",
+    /**
+     * value: "UINT8"
+     * @const
+     */
+    "UINT8": "UINT8",
+    /**
+     * value: "INT16"
+     * @const
+     */
+    "INT16": "INT16",
+    /**
+     * value: "INT16"
+     * @const
+     */
+    "INT16": "INT16",
+    /**
+     * value: "FLOAT16"
+     * @const
+     */
+    "FLOAT16": "FLOAT16"  };
 
 
   return exports;

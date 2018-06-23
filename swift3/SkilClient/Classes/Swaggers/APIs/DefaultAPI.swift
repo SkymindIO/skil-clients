@@ -11,6 +11,355 @@ import Alamofire
 
 open class DefaultAPI: APIBase {
     /**
+     Adds an evaluation result
+     - parameter evaluationResultsEntity: (body) The evaluation result entity 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func addEvaluationResult(evaluationResultsEntity: EvaluationResultsEntity, completion: @escaping ((_ data: EvaluationResultsEntity?, _ error: ErrorResponse?) -> Void)) {
+        addEvaluationResultWithRequestBuilder(evaluationResultsEntity: evaluationResultsEntity).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Adds an evaluation result
+     - POST /model/revisions/evaluations/
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "r2" : 2.027123023002322,
+  "binaryThresholds" : "binaryThresholds",
+  "created" : 0,
+  "precision" : 1.4658129805029452,
+  "accuracy" : 5.637376656633329,
+  "f1" : 6.027456183070403,
+  "meanAbsoluteError" : 9.301444243932576,
+  "auc" : 7.061401241503109,
+  "evaluation" : "evaluation",
+  "evalId" : "evalId",
+  "meanRelativeError" : 3.616076749251911,
+  "evalVersion" : 4,
+  "evalName" : "evalName",
+  "modelInstanceId" : "modelInstanceId",
+  "recall" : 5.962133916683182,
+  "rmse" : 2.3021358869347655,
+  "binaryThreshold" : 7.386281948385884
+}}]
+     - parameter evaluationResultsEntity: (body) The evaluation result entity 
+     - returns: RequestBuilder<EvaluationResultsEntity> 
+     */
+    open class func addEvaluationResultWithRequestBuilder(evaluationResultsEntity: EvaluationResultsEntity) -> RequestBuilder<EvaluationResultsEntity> {
+        let path = "/model/revisions/evaluations/"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = evaluationResultsEntity.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<EvaluationResultsEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Adds a number of examples to a minibatch ID given an AddExampleRequest.
+     - parameter addExampleRequest: (body) The add example request, encapsulating minibatch details and examples batch size 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func addExampleForBatch(addExampleRequest: AddExampleRequest, completion: @escaping ((_ data: AddExampleRequest?, _ error: ErrorResponse?) -> Void)) {
+        addExampleForBatchWithRequestBuilder(addExampleRequest: addExampleRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Adds a number of examples to a minibatch ID given an AddExampleRequest.
+     - POST /model/exampleForBatch
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example=""}]
+     - parameter addExampleRequest: (body) The add example request, encapsulating minibatch details and examples batch size 
+     - returns: RequestBuilder<AddExampleRequest> 
+     */
+    open class func addExampleForBatchWithRequestBuilder(addExampleRequest: AddExampleRequest) -> RequestBuilder<AddExampleRequest> {
+        let path = "/model/exampleForBatch"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = addExampleRequest.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<AddExampleRequest>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Adds an example to a minibatch
+     - parameter exampleEntity: (body) The example to add to the minibatch 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func addExampleToMinibatch(exampleEntity: ExampleEntity, completion: @escaping ((_ data: ExampleEntity?, _ error: ErrorResponse?) -> Void)) {
+        addExampleToMinibatchWithRequestBuilder(exampleEntity: exampleEntity).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Adds an example to a minibatch
+     - POST /model/example
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "exampleId" : "exampleId",
+  "int rowNumber" : 6,
+  "created" : 1,
+  "miniBatchId" : "miniBatchId",
+  "miniBatchVersion" : 5,
+  "exampleVersion" : 0
+}}]
+     - parameter exampleEntity: (body) The example to add to the minibatch 
+     - returns: RequestBuilder<ExampleEntity> 
+     */
+    open class func addExampleToMinibatchWithRequestBuilder(exampleEntity: ExampleEntity) -> RequestBuilder<ExampleEntity> {
+        let path = "/model/example"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = exampleEntity.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ExampleEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Add an experiment, given an experiment entity
+     - parameter experimentEntity: (body) The experiment entity to add 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func addExperiment(experimentEntity: ExperimentEntity, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
+        addExperimentWithRequestBuilder(experimentEntity: experimentEntity).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Add an experiment, given an experiment entity
+     - POST /experiment
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "experimentDescription" : "experimentDescription",
+  "lastUpdated" : 0,
+  "modelHistoryId" : "modelHistoryId",
+  "notebookUrl" : "notebookUrl",
+  "bestModelId" : "bestModelId",
+  "inputDataUri" : "inputDataUri",
+  "zeppelinId" : "zeppelinId",
+  "experimentId" : "experimentId",
+  "experimentName" : "experimentName",
+  "notebookJson" : "notebookJson"
+}}]
+     - parameter experimentEntity: (body) The experiment entity to add 
+     - returns: RequestBuilder<ExperimentEntity> 
+     */
+    open class func addExperimentWithRequestBuilder(experimentEntity: ExperimentEntity) -> RequestBuilder<ExperimentEntity> {
+        let path = "/experiment"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = experimentEntity.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ExperimentEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Adds a minibatch
+     - parameter minibatchEntity: (body) The minibatch entity to add 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func addMinibatch(minibatchEntity: MinibatchEntity, completion: @escaping ((_ data: MinibatchEntity?, _ error: ErrorResponse?) -> Void)) {
+        addMinibatchWithRequestBuilder(minibatchEntity: minibatchEntity).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Adds a minibatch
+     - POST /model/minibatch
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "evalId" : "evalId",
+  "batchVersion" : 6,
+  "evalVersion" : 0,
+  "miniBatchId" : "miniBatchId"
+}}]
+     - parameter minibatchEntity: (body) The minibatch entity to add 
+     - returns: RequestBuilder<MinibatchEntity> 
+     */
+    open class func addMinibatchWithRequestBuilder(minibatchEntity: MinibatchEntity) -> RequestBuilder<MinibatchEntity> {
+        let path = "/model/minibatch"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = minibatchEntity.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<MinibatchEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Add a model history / workspace
+     - parameter addModelHistoryRequest: (body) The model history request object 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func addModelHistory(addModelHistoryRequest: AddModelHistoryRequest, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
+        addModelHistoryWithRequestBuilder(addModelHistoryRequest: addModelHistoryRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Add a model history / workspace
+     - POST /modelhistory
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "modelName" : "modelName",
+  "modelHistoryId" : "modelHistoryId",
+  "created" : 0,
+  "modelLabels" : "modelLabels"
+}}]
+     - parameter addModelHistoryRequest: (body) The model history request object 
+     - returns: RequestBuilder<ModelHistoryEntity> 
+     */
+    open class func addModelHistoryWithRequestBuilder(addModelHistoryRequest: AddModelHistoryRequest) -> RequestBuilder<ModelHistoryEntity> {
+        let path = "/modelhistory"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = addModelHistoryRequest.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ModelHistoryEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Adds a model
+     - parameter modelInstanceEntity: (body) The object encapsulating the model instance id and evaluation type to aggregate 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func addModelInstance(modelInstanceEntity: ModelInstanceEntity, completion: @escaping ((_ data: ModelInstanceEntity?, _ error: ErrorResponse?) -> Void)) {
+        addModelInstanceWithRequestBuilder(modelInstanceEntity: modelInstanceEntity).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Adds a model
+     - POST /model
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "evalId" : "evalId",
+  "modelName" : "modelName",
+  "originalModelId" : "originalModelId",
+  "modelId" : "modelId",
+  "created" : 0,
+  "modelVersion" : "modelVersion",
+  "modelLabels" : "modelLabels",
+  "etlJson" : "etlJson",
+  "experimentId" : "experimentId",
+  "inputFormats" : "inputFormats",
+  "uri" : "http://example.com/aeiou",
+  "notebookJson" : "notebookJson"
+}}]
+     - parameter modelInstanceEntity: (body) The object encapsulating the model instance id and evaluation type to aggregate 
+     - returns: RequestBuilder<ModelInstanceEntity> 
+     */
+    open class func addModelInstanceWithRequestBuilder(modelInstanceEntity: ModelInstanceEntity) -> RequestBuilder<ModelInstanceEntity> {
+        let path = "/model"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = modelInstanceEntity.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ModelInstanceEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Aggregates the evaluaition results of a model instance, based on the evaluation type
+     - parameter aggregatePrediction: (body) The object encapsulating the model instance id and evaluation type to aggregate 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func aggregateModelResults(aggregatePrediction: AggregatePrediction, completion: @escaping ((_ data: EvaluationResultsEntity?, _ error: ErrorResponse?) -> Void)) {
+        aggregateModelResultsWithRequestBuilder(aggregatePrediction: aggregatePrediction).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Aggregates the evaluaition results of a model instance, based on the evaluation type
+     - POST /model/aggregateresults
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "r2" : 2.027123023002322,
+  "binaryThresholds" : "binaryThresholds",
+  "created" : 0,
+  "precision" : 1.4658129805029452,
+  "accuracy" : 5.637376656633329,
+  "f1" : 6.027456183070403,
+  "meanAbsoluteError" : 9.301444243932576,
+  "auc" : 7.061401241503109,
+  "evaluation" : "evaluation",
+  "evalId" : "evalId",
+  "meanRelativeError" : 3.616076749251911,
+  "evalVersion" : 4,
+  "evalName" : "evalName",
+  "modelInstanceId" : "modelInstanceId",
+  "recall" : 5.962133916683182,
+  "rmse" : 2.3021358869347655,
+  "binaryThreshold" : 7.386281948385884
+}}]
+     - parameter aggregatePrediction: (body) The object encapsulating the model instance id and evaluation type to aggregate 
+     - returns: RequestBuilder<EvaluationResultsEntity> 
+     */
+    open class func aggregateModelResultsWithRequestBuilder(aggregatePrediction: AggregatePrediction) -> RequestBuilder<EvaluationResultsEntity> {
+        let path = "/model/aggregateresults"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = aggregatePrediction.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<EvaluationResultsEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
      Use the deployed model to classify the input
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
@@ -158,12 +507,209 @@ open class DefaultAPI: APIBase {
     }
 
     /**
-     Deploy a model in a deployment group.
-     - parameter deploymentId: (path) ID deployment group 
-     - parameter body: (body) the deployment request 
+     Creates model History
+     - parameter modelHistoryEntity: (body) The model history entity 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deployModel(deploymentId: String, body: DeployModel, completion: @escaping ((_ data: Any?, _ error: ErrorResponse?) -> Void)) {
+    open class func createModelHistory(modelHistoryEntity: ModelHistoryEntity, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
+        createModelHistoryWithRequestBuilder(modelHistoryEntity: modelHistoryEntity).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Creates model History
+     - POST /model/revisions
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "modelName" : "modelName",
+  "modelHistoryId" : "modelHistoryId",
+  "created" : 0,
+  "modelLabels" : "modelLabels"
+}}]
+     - parameter modelHistoryEntity: (body) The model history entity 
+     - returns: RequestBuilder<ModelHistoryEntity> 
+     */
+    open class func createModelHistoryWithRequestBuilder(modelHistoryEntity: ModelHistoryEntity) -> RequestBuilder<ModelHistoryEntity> {
+        let path = "/model/revisions"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = modelHistoryEntity.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ModelHistoryEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Deletes an experiment, given an experiment entity
+     - parameter experimentID: (path) the GUID of the experiment to delete 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func deleteExperiment(experimentID: String, completion: @escaping ((_ data: InlineResponse200?, _ error: ErrorResponse?) -> Void)) {
+        deleteExperimentWithRequestBuilder(experimentID: experimentID).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Deletes an experiment, given an experiment entity
+     - DELETE /experiment/{experimentID}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "status" : "status"
+}}]
+     - parameter experimentID: (path) the GUID of the experiment to delete 
+     - returns: RequestBuilder<InlineResponse200> 
+     */
+    open class func deleteExperimentWithRequestBuilder(experimentID: String) -> RequestBuilder<InlineResponse200> {
+        var path = "/experiment/{experimentID}"
+        let experimentIDPreEscape = "\(experimentID)"
+        let experimentIDPostEscape = experimentIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{experimentID}", with: experimentIDPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<InlineResponse200>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Delete a model by deployment and model id
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter modelId: (path) the id of the deployed model 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func deleteModel(deploymentId: String, modelId: String, completion: @escaping ((_ data: InlineResponse200?, _ error: ErrorResponse?) -> Void)) {
+        deleteModelWithRequestBuilder(deploymentId: deploymentId, modelId: modelId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Delete a model by deployment and model id
+     - DELETE /deployment/{deploymentId}/model/{modelId}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "status" : "status"
+}}]
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter modelId: (path) the id of the deployed model 
+     - returns: RequestBuilder<InlineResponse200> 
+     */
+    open class func deleteModelWithRequestBuilder(deploymentId: String, modelId: String) -> RequestBuilder<InlineResponse200> {
+        var path = "/deployment/{deploymentId}/model/{modelId}"
+        let deploymentIdPreEscape = "\(deploymentId)"
+        let deploymentIdPostEscape = deploymentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentId}", with: deploymentIdPostEscape, options: .literal, range: nil)
+        let modelIdPreEscape = "\(modelId)"
+        let modelIdPostEscape = modelIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelId}", with: modelIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<InlineResponse200>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Deletes a model history / workspace, given its ID
+     - parameter modelHistoryID: (path) the GUID of the model history / workspace to delete 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func deleteModelHistory(modelHistoryID: String, completion: @escaping ((_ data: InlineResponse200?, _ error: ErrorResponse?) -> Void)) {
+        deleteModelHistoryWithRequestBuilder(modelHistoryID: modelHistoryID).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Deletes a model history / workspace, given its ID
+     - DELETE /modelhistory/{modelHistoryID}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "status" : "status"
+}}]
+     - parameter modelHistoryID: (path) the GUID of the model history / workspace to delete 
+     - returns: RequestBuilder<InlineResponse200> 
+     */
+    open class func deleteModelHistoryWithRequestBuilder(modelHistoryID: String) -> RequestBuilder<InlineResponse200> {
+        var path = "/modelhistory/{modelHistoryID}"
+        let modelHistoryIDPreEscape = "\(modelHistoryID)"
+        let modelHistoryIDPostEscape = modelHistoryIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryID}", with: modelHistoryIDPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<InlineResponse200>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Deletes a model instance, given its ID
+     - parameter modelInstanceID: (path) GUID of the model instance to delete. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func deleteModelInstance(modelInstanceID: String, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        deleteModelInstanceWithRequestBuilder(modelInstanceID: modelInstanceID).execute { (response, error) -> Void in
+            completion(error)
+        }
+    }
+
+
+    /**
+     Deletes a model instance, given its ID
+     - DELETE /model/{modelInstanceID}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - parameter modelInstanceID: (path) GUID of the model instance to delete. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func deleteModelInstanceWithRequestBuilder(modelInstanceID: String) -> RequestBuilder<Void> {
+        var path = "/model/{modelInstanceID}"
+        let modelInstanceIDPreEscape = "\(modelInstanceID)"
+        let modelInstanceIDPostEscape = modelInstanceIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelInstanceID}", with: modelInstanceIDPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Deploy a model in a deployment group.
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter body: (body) the model import request 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func deployModel(deploymentId: String, body: ImportModelRequest, completion: @escaping ((_ data: ModelEntity?, _ error: ErrorResponse?) -> Void)) {
         deployModelWithRequestBuilder(deploymentId: deploymentId, body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -176,12 +722,28 @@ open class DefaultAPI: APIBase {
      - API Key:
        - type: apiKey authorization 
        - name: api_key
-     - examples: [{contentType=application/json, example="{}"}]
+     - examples: [{contentType=application/json, example={
+  "launchPolicy" : "{}",
+  "created" : 6,
+  "modelState" : "CREATED",
+  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "modelType" : "transform",
+  "fileLocation" : "fileLocation",
+  "jvmArgs" : "jvmArgs",
+  "labelsFileLocation" : "labelsFileLocation",
+  "extraArgs" : "extraArgs",
+  "deploymentId" : 5,
+  "name" : "name",
+  "subType" : "subType",
+  "id" : 0,
+  "state" : "created",
+  "updated" : 1
+}}]
      - parameter deploymentId: (path) ID deployment group 
-     - parameter body: (body) the deployment request 
-     - returns: RequestBuilder<Any> 
+     - parameter body: (body) the model import request 
+     - returns: RequestBuilder<ModelEntity> 
      */
-    open class func deployModelWithRequestBuilder(deploymentId: String, body: DeployModel) -> RequestBuilder<Any> {
+    open class func deployModelWithRequestBuilder(deploymentId: String, body: ImportModelRequest) -> RequestBuilder<ModelEntity> {
         var path = "/deployment/{deploymentId}/model"
         let deploymentIdPreEscape = "\(deploymentId)"
         let deploymentIdPostEscape = deploymentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -191,7 +753,7 @@ open class DefaultAPI: APIBase {
 
         let url = NSURLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Any>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<ModelEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -201,7 +763,7 @@ open class DefaultAPI: APIBase {
      - parameter body: (body) the deployment request 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deploymentCreate(body: NewDeployment, completion: @escaping ((_ data: Deployment?, _ error: ErrorResponse?) -> Void)) {
+    open class func deploymentCreate(body: CreateDeploymentRequest, completion: @escaping ((_ data: DeploymentResponse?, _ error: ErrorResponse?) -> Void)) {
         deploymentCreateWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -218,24 +780,931 @@ open class DefaultAPI: APIBase {
   "name" : "name",
   "id" : "id",
   "body" : {
-    "models" : [ "{}", "{}" ],
-    "transforms" : [ "{}", "{}" ],
-    "knn" : [ "{}", "{}" ]
+    "models" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ],
+    "transforms" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ],
+    "knn" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ]
   },
   "deploymentSlug" : "deploymentSlug",
   "status" : "status"
 }}]
      - parameter body: (body) the deployment request 
-     - returns: RequestBuilder<Deployment> 
+     - returns: RequestBuilder<DeploymentResponse> 
      */
-    open class func deploymentCreateWithRequestBuilder(body: NewDeployment) -> RequestBuilder<Deployment> {
+    open class func deploymentCreateWithRequestBuilder(body: CreateDeploymentRequest) -> RequestBuilder<DeploymentResponse> {
         let path = "/deployment"
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
         let url = NSURLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Deployment>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<DeploymentResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Delete a deployment by id
+     - parameter deploymentId: (path) Id of the deployment group 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func deploymentDelete(deploymentId: String, completion: @escaping ((_ data: InlineResponse200?, _ error: ErrorResponse?) -> Void)) {
+        deploymentDeleteWithRequestBuilder(deploymentId: deploymentId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Delete a deployment by id
+     - DELETE /deployment/{deploymentId}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "status" : "status"
+}}]
+     - parameter deploymentId: (path) Id of the deployment group 
+     - returns: RequestBuilder<InlineResponse200> 
+     */
+    open class func deploymentDeleteWithRequestBuilder(deploymentId: String) -> RequestBuilder<InlineResponse200> {
+        var path = "/deployment/{deploymentId}"
+        let deploymentIdPreEscape = "\(deploymentId)"
+        let deploymentIdPostEscape = deploymentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentId}", with: deploymentIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<InlineResponse200>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Get a deployment details by id
+     - parameter deploymentId: (path) Id of the deployment group 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func deploymentGet(deploymentId: String, completion: @escaping ((_ data: DeploymentResponse?, _ error: ErrorResponse?) -> Void)) {
+        deploymentGetWithRequestBuilder(deploymentId: deploymentId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get a deployment details by id
+     - GET /deployment/{deploymentId}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "name" : "name",
+  "id" : "id",
+  "body" : {
+    "models" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ],
+    "transforms" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ],
+    "knn" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ]
+  },
+  "deploymentSlug" : "deploymentSlug",
+  "status" : "status"
+}}]
+     - parameter deploymentId: (path) Id of the deployment group 
+     - returns: RequestBuilder<DeploymentResponse> 
+     */
+    open class func deploymentGetWithRequestBuilder(deploymentId: String) -> RequestBuilder<DeploymentResponse> {
+        var path = "/deployment/{deploymentId}"
+        let deploymentIdPreEscape = "\(deploymentId)"
+        let deploymentIdPostEscape = deploymentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentId}", with: deploymentIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<DeploymentResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Get a list of deployments
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func deployments(completion: @escaping ((_ data: [DeploymentResponse]?, _ error: ErrorResponse?) -> Void)) {
+        deploymentsWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get a list of deployments
+     - GET /deployments
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example=[ {
+  "name" : "name",
+  "id" : "id",
+  "body" : {
+    "models" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ],
+    "transforms" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ],
+    "knn" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ]
+  },
+  "deploymentSlug" : "deploymentSlug",
+  "status" : "status"
+}, {
+  "name" : "name",
+  "id" : "id",
+  "body" : {
+    "models" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ],
+    "transforms" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ],
+    "knn" : [ {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    }, {
+      "name" : "name",
+      "scale" : 0,
+      "id" : "id",
+      "uri" : [ "uri", "uri" ],
+      "status" : "status"
+    } ]
+  },
+  "deploymentSlug" : "deploymentSlug",
+  "status" : "status"
+} ]}]
+     - returns: RequestBuilder<[DeploymentResponse]> 
+     */
+    open class func deploymentsWithRequestBuilder() -> RequestBuilder<[DeploymentResponse]> {
+        let path = "/deployments"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[DeploymentResponse]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Detect the objects, given a (input) prediction request
+     - parameter id: (form) the GUID for mapping the results in the detections 
+     - parameter needsPreprocessing: (form) (true) if the image needs preprocessing 
+     - parameter threshold: (form) A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
+     - parameter imageFile: (form) the image file to detect objects from 
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter modelName: (path) ID or name of the deployed model 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func detectobjects(id: String, needsPreprocessing: Bool, threshold: Float, imageFile: URL, deploymentName: String, modelName: String, completion: @escaping ((_ data: DetectionResult?, _ error: ErrorResponse?) -> Void)) {
+        detectobjectsWithRequestBuilder(id: id, needsPreprocessing: needsPreprocessing, threshold: threshold, imageFile: imageFile, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Detect the objects, given a (input) prediction request
+     - POST /endpoints/{deploymentName}/model/{modelName}/default/detectobjects
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "objects" : [ {
+    "centerY" : 6.0274563,
+    "centerX" : 0.8008282,
+    "predictedClasses" : [ "predictedClasses", "predictedClasses" ],
+    "confidences" : [ 5.637377, 5.637377 ],
+    "width" : 1.4658129,
+    "height" : 5.962134
+  }, {
+    "centerY" : 6.0274563,
+    "centerX" : 0.8008282,
+    "predictedClasses" : [ "predictedClasses", "predictedClasses" ],
+    "confidences" : [ 5.637377, 5.637377 ],
+    "width" : 1.4658129,
+    "height" : 5.962134
+  } ],
+  "id" : "id"
+}}]
+     - parameter id: (form) the GUID for mapping the results in the detections 
+     - parameter needsPreprocessing: (form) (true) if the image needs preprocessing 
+     - parameter threshold: (form) A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
+     - parameter imageFile: (form) the image file to detect objects from 
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter modelName: (path) ID or name of the deployed model 
+     - returns: RequestBuilder<DetectionResult> 
+     */
+    open class func detectobjectsWithRequestBuilder(id: String, needsPreprocessing: Bool, threshold: Float, imageFile: URL, deploymentName: String, modelName: String) -> RequestBuilder<DetectionResult> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let formParams: [String:Any?] = [
+            "id": id,
+            "needsPreprocessing": needsPreprocessing,
+            "threshold": threshold,
+            "imageFile": imageFile
+        ]
+
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<DetectionResult>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+     - parameter bestModel: (body) Object encapsulating the model ids, eval type and column metric name 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getBestModelAmongModelIds(bestModel: BestModel, completion: @escaping ((_ data: ModelInstanceEntity?, _ error: ErrorResponse?) -> Void)) {
+        getBestModelAmongModelIdsWithRequestBuilder(bestModel: bestModel).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+     - POST /model/best
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "evalId" : "evalId",
+  "modelName" : "modelName",
+  "originalModelId" : "originalModelId",
+  "modelId" : "modelId",
+  "created" : 0,
+  "modelVersion" : "modelVersion",
+  "modelLabels" : "modelLabels",
+  "etlJson" : "etlJson",
+  "experimentId" : "experimentId",
+  "inputFormats" : "inputFormats",
+  "uri" : "http://example.com/aeiou",
+  "notebookJson" : "notebookJson"
+}}]
+     - parameter bestModel: (body) Object encapsulating the model ids, eval type and column metric name 
+     - returns: RequestBuilder<ModelInstanceEntity> 
+     */
+    open class func getBestModelAmongModelIdsWithRequestBuilder(bestModel: BestModel) -> RequestBuilder<ModelInstanceEntity> {
+        let path = "/model/best"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = bestModel.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ModelInstanceEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Gets the list of evaluation results entity, given a model instance ID
+     - parameter modelInstanceID: (path) GUID of the model instance to get evaluation results for. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getEvaluationForModelID(modelInstanceID: String, completion: @escaping ((_ data: [EvaluationResultsEntity]?, _ error: ErrorResponse?) -> Void)) {
+        getEvaluationForModelIDWithRequestBuilder(modelInstanceID: modelInstanceID).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Gets the list of evaluation results entity, given a model instance ID
+     - GET /model/revisions/evaluations/{modelInstanceID}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example=[ {
+  "r2" : 2.027123023002322,
+  "binaryThresholds" : "binaryThresholds",
+  "created" : 0,
+  "precision" : 1.4658129805029452,
+  "accuracy" : 5.637376656633329,
+  "f1" : 6.027456183070403,
+  "meanAbsoluteError" : 9.301444243932576,
+  "auc" : 7.061401241503109,
+  "evaluation" : "evaluation",
+  "evalId" : "evalId",
+  "meanRelativeError" : 3.616076749251911,
+  "evalVersion" : 4,
+  "evalName" : "evalName",
+  "modelInstanceId" : "modelInstanceId",
+  "recall" : 5.962133916683182,
+  "rmse" : 2.3021358869347655,
+  "binaryThreshold" : 7.386281948385884
+}, {
+  "r2" : 2.027123023002322,
+  "binaryThresholds" : "binaryThresholds",
+  "created" : 0,
+  "precision" : 1.4658129805029452,
+  "accuracy" : 5.637376656633329,
+  "f1" : 6.027456183070403,
+  "meanAbsoluteError" : 9.301444243932576,
+  "auc" : 7.061401241503109,
+  "evaluation" : "evaluation",
+  "evalId" : "evalId",
+  "meanRelativeError" : 3.616076749251911,
+  "evalVersion" : 4,
+  "evalName" : "evalName",
+  "modelInstanceId" : "modelInstanceId",
+  "recall" : 5.962133916683182,
+  "rmse" : 2.3021358869347655,
+  "binaryThreshold" : 7.386281948385884
+} ]}]
+     - parameter modelInstanceID: (path) GUID of the model instance to get evaluation results for. 
+     - returns: RequestBuilder<[EvaluationResultsEntity]> 
+     */
+    open class func getEvaluationForModelIDWithRequestBuilder(modelInstanceID: String) -> RequestBuilder<[EvaluationResultsEntity]> {
+        var path = "/model/revisions/evaluations/{modelInstanceID}"
+        let modelInstanceIDPreEscape = "\(modelInstanceID)"
+        let modelInstanceIDPostEscape = modelInstanceIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelInstanceID}", with: modelInstanceIDPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[EvaluationResultsEntity]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Gets all the examples for a minibatch ID
+     - parameter minibatchId: (path) The GUID of the minibatch 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getExamplesForMinibatch(minibatchId: String, completion: @escaping ((_ data: [ExampleEntity]?, _ error: ErrorResponse?) -> Void)) {
+        getExamplesForMinibatchWithRequestBuilder(minibatchId: minibatchId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Gets all the examples for a minibatch ID
+     - GET /model/example/{minibatchId}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example=[ {
+  "exampleId" : "exampleId",
+  "int rowNumber" : 6,
+  "created" : 1,
+  "miniBatchId" : "miniBatchId",
+  "miniBatchVersion" : 5,
+  "exampleVersion" : 0
+}, {
+  "exampleId" : "exampleId",
+  "int rowNumber" : 6,
+  "created" : 1,
+  "miniBatchId" : "miniBatchId",
+  "miniBatchVersion" : 5,
+  "exampleVersion" : 0
+} ]}]
+     - parameter minibatchId: (path) The GUID of the minibatch 
+     - returns: RequestBuilder<[ExampleEntity]> 
+     */
+    open class func getExamplesForMinibatchWithRequestBuilder(minibatchId: String) -> RequestBuilder<[ExampleEntity]> {
+        var path = "/model/example/{minibatchId}"
+        let minibatchIdPreEscape = "\(minibatchId)"
+        let minibatchIdPostEscape = minibatchIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{minibatchId}", with: minibatchIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[ExampleEntity]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Obtain an experiment's details, given its ID
+     - parameter experimentID: (path) the GUID of the experiment to obtain 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getExperiment(experimentID: String, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
+        getExperimentWithRequestBuilder(experimentID: experimentID).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Obtain an experiment's details, given its ID
+     - GET /experiment/{experimentID}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "experimentDescription" : "experimentDescription",
+  "lastUpdated" : 0,
+  "modelHistoryId" : "modelHistoryId",
+  "notebookUrl" : "notebookUrl",
+  "bestModelId" : "bestModelId",
+  "inputDataUri" : "inputDataUri",
+  "zeppelinId" : "zeppelinId",
+  "experimentId" : "experimentId",
+  "experimentName" : "experimentName",
+  "notebookJson" : "notebookJson"
+}}]
+     - parameter experimentID: (path) the GUID of the experiment to obtain 
+     - returns: RequestBuilder<ExperimentEntity> 
+     */
+    open class func getExperimentWithRequestBuilder(experimentID: String) -> RequestBuilder<ExperimentEntity> {
+        var path = "/experiment/{experimentID}"
+        let experimentIDPreEscape = "\(experimentID)"
+        let experimentIDPostEscape = experimentIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{experimentID}", with: experimentIDPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ExperimentEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Obtain all experiments for a model history / workspace
+     - parameter modelHistoryID: (path) the GUID of the model history / workspace 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getExperimentsForModelHistory(modelHistoryID: String, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
+        getExperimentsForModelHistoryWithRequestBuilder(modelHistoryID: modelHistoryID).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Obtain all experiments for a model history / workspace
+     - GET /experiments/{modelHistoryID}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "experimentDescription" : "experimentDescription",
+  "lastUpdated" : 0,
+  "modelHistoryId" : "modelHistoryId",
+  "notebookUrl" : "notebookUrl",
+  "bestModelId" : "bestModelId",
+  "inputDataUri" : "inputDataUri",
+  "zeppelinId" : "zeppelinId",
+  "experimentId" : "experimentId",
+  "experimentName" : "experimentName",
+  "notebookJson" : "notebookJson"
+}}]
+     - parameter modelHistoryID: (path) the GUID of the model history / workspace 
+     - returns: RequestBuilder<ExperimentEntity> 
+     */
+    open class func getExperimentsForModelHistoryWithRequestBuilder(modelHistoryID: String) -> RequestBuilder<ExperimentEntity> {
+        var path = "/experiments/{modelHistoryID}"
+        let modelHistoryIDPreEscape = "\(modelHistoryID)"
+        let modelHistoryIDPostEscape = modelHistoryIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryID}", with: modelHistoryIDPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ExperimentEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Gets a minibatch for the model
+     - parameter minibatchId: (path) The GUID of the minibatch 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getMinibatch(minibatchId: String, completion: @escaping ((_ data: MinibatchEntity?, _ error: ErrorResponse?) -> Void)) {
+        getMinibatchWithRequestBuilder(minibatchId: minibatchId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Gets a minibatch for the model
+     - GET /model/minibatch/{minibatchId}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "evalId" : "evalId",
+  "batchVersion" : 6,
+  "evalVersion" : 0,
+  "miniBatchId" : "miniBatchId"
+}}]
+     - parameter minibatchId: (path) The GUID of the minibatch 
+     - returns: RequestBuilder<MinibatchEntity> 
+     */
+    open class func getMinibatchWithRequestBuilder(minibatchId: String) -> RequestBuilder<MinibatchEntity> {
+        var path = "/model/minibatch/{minibatchId}"
+        let minibatchIdPreEscape = "\(minibatchId)"
+        let minibatchIdPostEscape = minibatchIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{minibatchId}", with: minibatchIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<MinibatchEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Gets a model history, given its ID
+     - parameter modelHistoryID: (path) GUID of the model history to get information of. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getModelHistory(modelHistoryID: String, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
+        getModelHistoryWithRequestBuilder(modelHistoryID: modelHistoryID).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Gets a model history, given its ID
+     - GET /model/revision/{modelHistoryID}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "modelName" : "modelName",
+  "modelHistoryId" : "modelHistoryId",
+  "created" : 0,
+  "modelLabels" : "modelLabels"
+}}]
+     - parameter modelHistoryID: (path) GUID of the model history to get information of. 
+     - returns: RequestBuilder<ModelHistoryEntity> 
+     */
+    open class func getModelHistoryWithRequestBuilder(modelHistoryID: String) -> RequestBuilder<ModelHistoryEntity> {
+        var path = "/model/revision/{modelHistoryID}"
+        let modelHistoryIDPreEscape = "\(modelHistoryID)"
+        let modelHistoryIDPostEscape = modelHistoryIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryID}", with: modelHistoryIDPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ModelHistoryEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Gets a model instance, given its ID
+     - parameter modelInstanceID: (path) GUID of the model instance to get information of. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getModelInstance(modelInstanceID: String, completion: @escaping ((_ data: ModelInstanceEntity?, _ error: ErrorResponse?) -> Void)) {
+        getModelInstanceWithRequestBuilder(modelInstanceID: modelInstanceID).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Gets a model instance, given its ID
+     - GET /model/{modelInstanceID}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "evalId" : "evalId",
+  "modelName" : "modelName",
+  "originalModelId" : "originalModelId",
+  "modelId" : "modelId",
+  "created" : 0,
+  "modelVersion" : "modelVersion",
+  "modelLabels" : "modelLabels",
+  "etlJson" : "etlJson",
+  "experimentId" : "experimentId",
+  "inputFormats" : "inputFormats",
+  "uri" : "http://example.com/aeiou",
+  "notebookJson" : "notebookJson"
+}}]
+     - parameter modelInstanceID: (path) GUID of the model instance to get information of. 
+     - returns: RequestBuilder<ModelInstanceEntity> 
+     */
+    open class func getModelInstanceWithRequestBuilder(modelInstanceID: String) -> RequestBuilder<ModelInstanceEntity> {
+        var path = "/model/{modelInstanceID}"
+        let modelInstanceIDPreEscape = "\(modelInstanceID)"
+        let modelInstanceIDPostEscape = modelInstanceIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelInstanceID}", with: modelInstanceIDPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ModelInstanceEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Obtain a list of all the models for an experiment
+     - parameter experimentID: (path) the GUID of the experiment 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getModelsForExperiment(experimentID: String, completion: @escaping ((_ data: [ModelInstanceEntity]?, _ error: ErrorResponse?) -> Void)) {
+        getModelsForExperimentWithRequestBuilder(experimentID: experimentID).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Obtain a list of all the models for an experiment
+     - GET /experiment/{experimentID}/models
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example=[ {
+  "evalId" : "evalId",
+  "modelName" : "modelName",
+  "originalModelId" : "originalModelId",
+  "modelId" : "modelId",
+  "created" : 0,
+  "modelVersion" : "modelVersion",
+  "modelLabels" : "modelLabels",
+  "etlJson" : "etlJson",
+  "experimentId" : "experimentId",
+  "inputFormats" : "inputFormats",
+  "uri" : "http://example.com/aeiou",
+  "notebookJson" : "notebookJson"
+}, {
+  "evalId" : "evalId",
+  "modelName" : "modelName",
+  "originalModelId" : "originalModelId",
+  "modelId" : "modelId",
+  "created" : 0,
+  "modelVersion" : "modelVersion",
+  "modelLabels" : "modelLabels",
+  "etlJson" : "etlJson",
+  "experimentId" : "experimentId",
+  "inputFormats" : "inputFormats",
+  "uri" : "http://example.com/aeiou",
+  "notebookJson" : "notebookJson"
+} ]}]
+     - parameter experimentID: (path) the GUID of the experiment 
+     - returns: RequestBuilder<[ModelInstanceEntity]> 
+     */
+    open class func getModelsForExperimentWithRequestBuilder(experimentID: String) -> RequestBuilder<[ModelInstanceEntity]> {
+        var path = "/experiment/{experimentID}/models"
+        let experimentIDPreEscape = "\(experimentID)"
+        let experimentIDPostEscape = experimentIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{experimentID}", with: experimentIDPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[ModelInstanceEntity]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Retrieves the image transform process JSON string
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func imagetransformprocessGet(deploymentName: String, imageTransformName: String, completion: @escaping ((_ data: ImageTransformProcess?, _ error: ErrorResponse?) -> Void)) {
+        imagetransformprocessGetWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Retrieves the image transform process JSON string
+     - GET /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={ }}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - returns: RequestBuilder<ImageTransformProcess> 
+     */
+    open class func imagetransformprocessGetWithRequestBuilder(deploymentName: String, imageTransformName: String) -> RequestBuilder<ImageTransformProcess> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let imageTransformNamePreEscape = "\(imageTransformName)"
+        let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ImageTransformProcess>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Sets the image transform process through the provided JSON string
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - parameter body: (body) The image transform process JSON 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func imagetransformprocessPost(deploymentName: String, imageTransformName: String, body: ImageTransformProcess, completion: @escaping ((_ data: ImageTransformProcess?, _ error: ErrorResponse?) -> Void)) {
+        imagetransformprocessPostWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName, body: body).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Sets the image transform process through the provided JSON string
+     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={ }}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - parameter body: (body) The image transform process JSON 
+     - returns: RequestBuilder<ImageTransformProcess> 
+     */
+    open class func imagetransformprocessPostWithRequestBuilder(deploymentName: String, imageTransformName: String, body: ImageTransformProcess) -> RequestBuilder<ImageTransformProcess> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let imageTransformNamePreEscape = "\(imageTransformName)"
+        let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = body.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ImageTransformProcess>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -286,6 +1755,169 @@ open class DefaultAPI: APIBase {
         let requestBuilder: RequestBuilder<JsonArrayResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Runs knn on the given index with the given k
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter knnName: (path) ID or name of the deployed knn 
+     - parameter body: (body)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func knn(deploymentName: String, knnName: String, body: NearestNeighborRequest, completion: @escaping ((_ data: NearestNeighborsResults?, _ error: ErrorResponse?) -> Void)) {
+        knnWithRequestBuilder(deploymentName: deploymentName, knnName: knnName, body: body).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Runs knn on the given index with the given k
+     - POST /endpoints/{deploymentName}/knn/{knnName}/default/knn
+     - Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "results" : [ {
+    "distance" : 1.0,
+    "index" : 0,
+    "label" : "label"
+  }, {
+    "distance" : 1.0,
+    "index" : 0,
+    "label" : "label"
+  } ]
+}}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter knnName: (path) ID or name of the deployed knn 
+     - parameter body: (body)  
+     - returns: RequestBuilder<NearestNeighborsResults> 
+     */
+    open class func knnWithRequestBuilder(deploymentName: String, knnName: String, body: NearestNeighborRequest) -> RequestBuilder<NearestNeighborsResults> {
+        var path = "/endpoints/{deploymentName}/knn/{knnName}/default/knn"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let knnNamePreEscape = "\(knnName)"
+        let knnNamePostEscape = knnNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{knnName}", with: knnNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = body.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<NearestNeighborsResults>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Run a k nearest neighbors search on a NEW data point
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter knnName: (path) ID or name of the deployed knn 
+     - parameter body: (body) The input NDArray 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func knnnew(deploymentName: String, knnName: String, body: Base64NDArrayBodyKNN, completion: @escaping ((_ data: NearestNeighborsResults?, _ error: ErrorResponse?) -> Void)) {
+        knnnewWithRequestBuilder(deploymentName: deploymentName, knnName: knnName, body: body).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Run a k nearest neighbors search on a NEW data point
+     - POST /endpoints/{deploymentName}/knn/{knnName}/default/knnnew
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "results" : [ {
+    "distance" : 1.0,
+    "index" : 0,
+    "label" : "label"
+  }, {
+    "distance" : 1.0,
+    "index" : 0,
+    "label" : "label"
+  } ]
+}}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter knnName: (path) ID or name of the deployed knn 
+     - parameter body: (body) The input NDArray 
+     - returns: RequestBuilder<NearestNeighborsResults> 
+     */
+    open class func knnnewWithRequestBuilder(deploymentName: String, knnName: String, body: Base64NDArrayBodyKNN) -> RequestBuilder<NearestNeighborsResults> {
+        var path = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let knnNamePreEscape = "\(knnName)"
+        let knnNamePostEscape = knnNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{knnName}", with: knnNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = body.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<NearestNeighborsResults>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     List all of the experiments in every model history / workspace
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func listAllExperiments(completion: @escaping ((_ data: [ExperimentEntity]?, _ error: ErrorResponse?) -> Void)) {
+        listAllExperimentsWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     List all of the experiments in every model history / workspace
+     - GET /experiments
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example=[ {
+  "experimentDescription" : "experimentDescription",
+  "lastUpdated" : 0,
+  "modelHistoryId" : "modelHistoryId",
+  "notebookUrl" : "notebookUrl",
+  "bestModelId" : "bestModelId",
+  "inputDataUri" : "inputDataUri",
+  "zeppelinId" : "zeppelinId",
+  "experimentId" : "experimentId",
+  "experimentName" : "experimentName",
+  "notebookJson" : "notebookJson"
+}, {
+  "experimentDescription" : "experimentDescription",
+  "lastUpdated" : 0,
+  "modelHistoryId" : "modelHistoryId",
+  "notebookUrl" : "notebookUrl",
+  "bestModelId" : "bestModelId",
+  "inputDataUri" : "inputDataUri",
+  "zeppelinId" : "zeppelinId",
+  "experimentId" : "experimentId",
+  "experimentName" : "experimentName",
+  "notebookJson" : "notebookJson"
+} ]}]
+     - returns: RequestBuilder<[ExperimentEntity]> 
+     */
+    open class func listAllExperimentsWithRequestBuilder() -> RequestBuilder<[ExperimentEntity]> {
+        let path = "/experiments"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[ExperimentEntity]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
 
     /**
@@ -412,6 +2044,221 @@ open class DefaultAPI: APIBase {
         let requestBuilder: RequestBuilder<LogBatch>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     this method can be used to get the meta data for the current model which set to the server
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter modelName: (path) ID or name of the deployed model 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func metaGet(deploymentName: String, modelName: String, completion: @escaping ((_ data: MetaData?, _ error: ErrorResponse?) -> Void)) {
+        metaGetWithRequestBuilder(deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     this method can be used to get the meta data for the current model which set to the server
+     - GET /endpoints/{deploymentName}/model/{modelName}/default/meta
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={ }}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter modelName: (path) ID or name of the deployed model 
+     - returns: RequestBuilder<MetaData> 
+     */
+    open class func metaGetWithRequestBuilder(deploymentName: String, modelName: String) -> RequestBuilder<MetaData> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/default/meta"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<MetaData>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     This method can be used to set meta data for the current model which is set to the server
+     - parameter body: (body) the meta data object 
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter modelName: (path) ID or name of the deployed model 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func metaPost(body: MetaData, deploymentName: String, modelName: String, completion: @escaping ((_ data: MetaData?, _ error: ErrorResponse?) -> Void)) {
+        metaPostWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     This method can be used to set meta data for the current model which is set to the server
+     - POST /endpoints/{deploymentName}/model/{modelName}/default/meta
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={ }}]
+     - parameter body: (body) the meta data object 
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter modelName: (path) ID or name of the deployed model 
+     - returns: RequestBuilder<MetaData> 
+     */
+    open class func metaPostWithRequestBuilder(body: MetaData, deploymentName: String, modelName: String) -> RequestBuilder<MetaData> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/default/meta"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = body.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<MetaData>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Modify the state (start/stop) of a deployed model
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter modelId: (path) the id of the deployed model 
+     - parameter body: (body) the model state object 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func modelStateChange(deploymentId: String, modelId: String, body: SetState, completion: @escaping ((_ data: ModelEntity?, _ error: ErrorResponse?) -> Void)) {
+        modelStateChangeWithRequestBuilder(deploymentId: deploymentId, modelId: modelId, body: body).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Modify the state (start/stop) of a deployed model
+     - POST /deployment/{deploymentId}/model/{modelId}/state
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "launchPolicy" : "{}",
+  "created" : 6,
+  "modelState" : "CREATED",
+  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "modelType" : "transform",
+  "fileLocation" : "fileLocation",
+  "jvmArgs" : "jvmArgs",
+  "labelsFileLocation" : "labelsFileLocation",
+  "extraArgs" : "extraArgs",
+  "deploymentId" : 5,
+  "name" : "name",
+  "subType" : "subType",
+  "id" : 0,
+  "state" : "created",
+  "updated" : 1
+}}]
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter modelId: (path) the id of the deployed model 
+     - parameter body: (body) the model state object 
+     - returns: RequestBuilder<ModelEntity> 
+     */
+    open class func modelStateChangeWithRequestBuilder(deploymentId: String, modelId: String, body: SetState) -> RequestBuilder<ModelEntity> {
+        var path = "/deployment/{deploymentId}/model/{modelId}/state"
+        let deploymentIdPreEscape = "\(deploymentId)"
+        let deploymentIdPostEscape = deploymentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentId}", with: deploymentIdPostEscape, options: .literal, range: nil)
+        let modelIdPreEscape = "\(modelId)"
+        let modelIdPostEscape = modelIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelId}", with: modelIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = body.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ModelEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Retrieve a list of all the deployed models given a deployment id
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func models(deploymentId: String, completion: @escaping ((_ data: [ModelEntity]?, _ error: ErrorResponse?) -> Void)) {
+        modelsWithRequestBuilder(deploymentId: deploymentId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Retrieve a list of all the deployed models given a deployment id
+     - GET /deployment/{deploymentId}/models
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example=[ {
+  "launchPolicy" : "{}",
+  "created" : 6,
+  "modelState" : "CREATED",
+  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "modelType" : "transform",
+  "fileLocation" : "fileLocation",
+  "jvmArgs" : "jvmArgs",
+  "labelsFileLocation" : "labelsFileLocation",
+  "extraArgs" : "extraArgs",
+  "deploymentId" : 5,
+  "name" : "name",
+  "subType" : "subType",
+  "id" : 0,
+  "state" : "created",
+  "updated" : 1
+}, {
+  "launchPolicy" : "{}",
+  "created" : 6,
+  "modelState" : "CREATED",
+  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "modelType" : "transform",
+  "fileLocation" : "fileLocation",
+  "jvmArgs" : "jvmArgs",
+  "labelsFileLocation" : "labelsFileLocation",
+  "extraArgs" : "extraArgs",
+  "deploymentId" : 5,
+  "name" : "name",
+  "subType" : "subType",
+  "id" : 0,
+  "state" : "created",
+  "updated" : 1
+} ]}]
+     - parameter deploymentId: (path) ID deployment group 
+     - returns: RequestBuilder<[ModelEntity]> 
+     */
+    open class func modelsWithRequestBuilder(deploymentId: String) -> RequestBuilder<[ModelEntity]> {
+        var path = "/deployment/{deploymentId}/models"
+        let deploymentIdPreEscape = "\(deploymentId)"
+        let deploymentIdPostEscape = deploymentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentId}", with: deploymentIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[ModelEntity]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
 
     /**
@@ -560,6 +2407,67 @@ open class DefaultAPI: APIBase {
         let url = NSURLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<MultiClassClassificationResult>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Get the output from the network, based on the given INDArray[] input
+     - parameter body: (body) The multiple input arrays with mask inputs to run inferences on 
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter modelName: (path) ID or name of the deployed model 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func multipredict(body: MultiPredictRequest, deploymentName: String, modelName: String, completion: @escaping ((_ data: MultiPredictResponse?, _ error: ErrorResponse?) -> Void)) {
+        multipredictWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get the output from the network, based on the given INDArray[] input
+     - POST /endpoints/{deploymentName}/model/{modelName}/default/multipredict
+     - Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "outputs" : [ {
+    "shape" : [ 0, 0 ],
+    "data" : [ 6.0274563, 6.0274563 ],
+    "array" : "array",
+    "ordering" : "f",
+    "dataType" : "INT8"
+  }, {
+    "shape" : [ 0, 0 ],
+    "data" : [ 6.0274563, 6.0274563 ],
+    "array" : "array",
+    "ordering" : "f",
+    "dataType" : "INT8"
+  } ],
+  "needsPreProcessing" : true,
+  "id" : "id"
+}}]
+     - parameter body: (body) The multiple input arrays with mask inputs to run inferences on 
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter modelName: (path) ID or name of the deployed model 
+     - returns: RequestBuilder<MultiPredictResponse> 
+     */
+    open class func multipredictWithRequestBuilder(body: MultiPredictRequest, deploymentName: String, modelName: String) -> RequestBuilder<MultiPredictResponse> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = body.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<MultiPredictResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -763,6 +2671,682 @@ open class DefaultAPI: APIBase {
         let url = NSURLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<JsonArrayResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Reimport a model to a previous deployed model in a deployment
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter modelId: (path) the id of the deployed model 
+     - parameter body: (body) the deployment request 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func reimportModel(deploymentId: String, modelId: String, body: ImportModelRequest, completion: @escaping ((_ data: ModelEntity?, _ error: ErrorResponse?) -> Void)) {
+        reimportModelWithRequestBuilder(deploymentId: deploymentId, modelId: modelId, body: body).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Reimport a model to a previous deployed model in a deployment
+     - POST /deployment/{deploymentId}/model/{modelId}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "launchPolicy" : "{}",
+  "created" : 6,
+  "modelState" : "CREATED",
+  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "modelType" : "transform",
+  "fileLocation" : "fileLocation",
+  "jvmArgs" : "jvmArgs",
+  "labelsFileLocation" : "labelsFileLocation",
+  "extraArgs" : "extraArgs",
+  "deploymentId" : 5,
+  "name" : "name",
+  "subType" : "subType",
+  "id" : 0,
+  "state" : "created",
+  "updated" : 1
+}}]
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter modelId: (path) the id of the deployed model 
+     - parameter body: (body) the deployment request 
+     - returns: RequestBuilder<ModelEntity> 
+     */
+    open class func reimportModelWithRequestBuilder(deploymentId: String, modelId: String, body: ImportModelRequest) -> RequestBuilder<ModelEntity> {
+        var path = "/deployment/{deploymentId}/model/{modelId}"
+        let deploymentIdPreEscape = "\(deploymentId)"
+        let deploymentIdPostEscape = deploymentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentId}", with: deploymentIdPostEscape, options: .literal, range: nil)
+        let modelIdPreEscape = "\(modelId)"
+        let modelIdPostEscape = modelIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelId}", with: modelIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = body.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ModelEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - parameter batchCSVRecord: (body) The input batch of record arrays (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func transformCsv(deploymentName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil, completion: @escaping ((_ data: BatchCSVRecord?, _ error: ErrorResponse?) -> Void)) {
+        transformCsvWithRequestBuilder(deploymentName: deploymentName, transformName: transformName, batchCSVRecord: batchCSVRecord).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+     - POST /endpoints/{deploymentName}/datavec/{transformName}/default/transform
+     - Takes a batch of SingleCSVRecord object and transforms it into the desired format
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "records" : [ {
+    "values" : [ "values", "values" ]
+  }, {
+    "values" : [ "values", "values" ]
+  } ]
+}}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - parameter batchCSVRecord: (body) The input batch of record arrays (optional)
+     - returns: RequestBuilder<BatchCSVRecord> 
+     */
+    open class func transformCsvWithRequestBuilder(deploymentName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil) -> RequestBuilder<BatchCSVRecord> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let transformNamePreEscape = "\(transformName)"
+        let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = batchCSVRecord?.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<BatchCSVRecord>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Takes a batch input arrays and transforms it
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - parameter batchCSVRecord: (body) The input batch of record arrays (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func transformarrayCsv(deploymentName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformarrayCsvWithRequestBuilder(deploymentName: deploymentName, transformName: transformName, batchCSVRecord: batchCSVRecord).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Takes a batch input arrays and transforms it
+     - POST /endpoints/{deploymentName}/datavec/{transformName}/default/transformarray
+     - Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "ndarray" : "ndarray"
+}}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - parameter batchCSVRecord: (body) The input batch of record arrays (optional)
+     - returns: RequestBuilder<Base64NDArrayBody> 
+     */
+    open class func transformarrayCsvWithRequestBuilder(deploymentName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let transformNamePreEscape = "\(transformName)"
+        let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = batchCSVRecord?.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - parameter batchImageRecord: (body) The input batch of record arrays 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func transformarrayImage(deploymentName: String, imageTransformName: String, batchImageRecord: BatchImageRecord, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformarrayImageWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName, batchImageRecord: batchImageRecord).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray
+     - Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "ndarray" : "ndarray"
+}}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - parameter batchImageRecord: (body) The input batch of record arrays 
+     - returns: RequestBuilder<Base64NDArrayBody> 
+     */
+    open class func transformarrayImageWithRequestBuilder(deploymentName: String, imageTransformName: String, batchImageRecord: BatchImageRecord) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let imageTransformNamePreEscape = "\(imageTransformName)"
+        let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = batchImageRecord.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Takes multiple multipart image file to transform and returns Base64NDArrayBody
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - parameter files: (form) The image files to upload 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func transformimage(deploymentName: String, imageTransformName: String, files: [Data], completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformimageWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName, files: files).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Takes multiple multipart image file to transform and returns Base64NDArrayBody
+     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage
+     - Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "ndarray" : "ndarray"
+}}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - parameter files: (form) The image files to upload 
+     - returns: RequestBuilder<Base64NDArrayBody> 
+     */
+    open class func transformimageWithRequestBuilder(deploymentName: String, imageTransformName: String, files: [Data]) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let imageTransformNamePreEscape = "\(imageTransformName)"
+        let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let formParams: [String:Any?] = [
+            "files": files
+        ]
+
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - parameter singleCSVRecord: (body) The input record array (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func transformincrementalCsv(deploymentName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil, completion: @escaping ((_ data: SingleCSVRecord?, _ error: ErrorResponse?) -> Void)) {
+        transformincrementalCsvWithRequestBuilder(deploymentName: deploymentName, transformName: transformName, singleCSVRecord: singleCSVRecord).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+     - POST /endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental
+     - Takes a SingleCSVRecord object and transforms it into the desired format
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "values" : [ "values", "values" ]
+}}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - parameter singleCSVRecord: (body) The input record array (optional)
+     - returns: RequestBuilder<SingleCSVRecord> 
+     */
+    open class func transformincrementalCsvWithRequestBuilder(deploymentName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil) -> RequestBuilder<SingleCSVRecord> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let transformNamePreEscape = "\(transformName)"
+        let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = singleCSVRecord?.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SingleCSVRecord>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Same as /transformincremental but returns Base64NDArrayBody
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - parameter singleCSVRecord: (body) The input record array (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func transformincrementalarrayCsv(deploymentName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformincrementalarrayCsvWithRequestBuilder(deploymentName: deploymentName, transformName: transformName, singleCSVRecord: singleCSVRecord).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Same as /transformincremental but returns Base64NDArrayBody
+     - POST /endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray
+     - Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "ndarray" : "ndarray"
+}}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - parameter singleCSVRecord: (body) The input record array (optional)
+     - returns: RequestBuilder<Base64NDArrayBody> 
+     */
+    open class func transformincrementalarrayCsvWithRequestBuilder(deploymentName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let transformNamePreEscape = "\(transformName)"
+        let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = singleCSVRecord?.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Takes SingleImageRecord to transform and returns Base64NDArrayBody
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - parameter singleImageRecord: (body) The input record array 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func transformincrementalarrayImage(deploymentName: String, imageTransformName: String, singleImageRecord: SingleImageRecord, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformincrementalarrayImageWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName, singleImageRecord: singleImageRecord).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Takes SingleImageRecord to transform and returns Base64NDArrayBody
+     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray
+     - Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "ndarray" : "ndarray"
+}}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - parameter singleImageRecord: (body) The input record array 
+     - returns: RequestBuilder<Base64NDArrayBody> 
+     */
+    open class func transformincrementalarrayImageWithRequestBuilder(deploymentName: String, imageTransformName: String, singleImageRecord: SingleImageRecord) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let imageTransformNamePreEscape = "\(imageTransformName)"
+        let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = singleImageRecord.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Takes a single multipart image file to transform and returns Base64NDArrayBody
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - parameter file: (form) The image file to upload 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func transformincrementalimage(deploymentName: String, imageTransformName: String, file: URL, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformincrementalimageWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName, file: file).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Takes a single multipart image file to transform and returns Base64NDArrayBody
+     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage
+     - Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "ndarray" : "ndarray"
+}}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter imageTransformName: (path) ID or name of the deployed image transform 
+     - parameter file: (form) The image file to upload 
+     - returns: RequestBuilder<Base64NDArrayBody> 
+     */
+    open class func transformincrementalimageWithRequestBuilder(deploymentName: String, imageTransformName: String, file: URL) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let imageTransformNamePreEscape = "\(imageTransformName)"
+        let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let formParams: [String:Any?] = [
+            "file": file
+        ]
+
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Gets the JSON string of the deployed transform process
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func transformprocessGet(deploymentName: String, transformName: String, completion: @escaping ((_ data: TransformProcess?, _ error: ErrorResponse?) -> Void)) {
+        transformprocessGetWithRequestBuilder(deploymentName: deploymentName, transformName: transformName).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Gets the JSON string of the deployed transform process
+     - GET /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess
+     - Retrieves the JSON string of the deployed transform process 
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={ }}]
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - returns: RequestBuilder<TransformProcess> 
+     */
+    open class func transformprocessGetWithRequestBuilder(deploymentName: String, transformName: String) -> RequestBuilder<TransformProcess> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let transformNamePreEscape = "\(transformName)"
+        let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<TransformProcess>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Sets the deployed transform process through the provided JSON string
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - parameter transformProcess: (body) The transform process to set (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func transformprocessPost(deploymentName: String, transformName: String, transformProcess: TransformProcess? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        transformprocessPostWithRequestBuilder(deploymentName: deploymentName, transformName: transformName, transformProcess: transformProcess).execute { (response, error) -> Void in
+            completion(error)
+        }
+    }
+
+
+    /**
+     Sets the deployed transform process through the provided JSON string
+     - POST /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess
+     - Sets the transform process with the provided JSON string
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter transformName: (path) ID or name of the deployed transform 
+     - parameter transformProcess: (body) The transform process to set (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func transformprocessPostWithRequestBuilder(deploymentName: String, transformName: String, transformProcess: TransformProcess? = nil) -> RequestBuilder<Void> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let transformNamePreEscape = "\(transformName)"
+        let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = transformProcess?.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Updates the best model for an experiment
+     - parameter updateBestModel: (body) Model encapsulating the experiment id to update and the best model id. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func updateBestModelForExperiment(updateBestModel: UpdateBestModel, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
+        updateBestModelForExperimentWithRequestBuilder(updateBestModel: updateBestModel).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Updates the best model for an experiment
+     - POST /experiment/best
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "experimentDescription" : "experimentDescription",
+  "lastUpdated" : 0,
+  "modelHistoryId" : "modelHistoryId",
+  "notebookUrl" : "notebookUrl",
+  "bestModelId" : "bestModelId",
+  "inputDataUri" : "inputDataUri",
+  "zeppelinId" : "zeppelinId",
+  "experimentId" : "experimentId",
+  "experimentName" : "experimentName",
+  "notebookJson" : "notebookJson"
+}}]
+     - parameter updateBestModel: (body) Model encapsulating the experiment id to update and the best model id. 
+     - returns: RequestBuilder<ExperimentEntity> 
+     */
+    open class func updateBestModelForExperimentWithRequestBuilder(updateBestModel: UpdateBestModel) -> RequestBuilder<ExperimentEntity> {
+        let path = "/experiment/best"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = updateBestModel.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ExperimentEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Updates an experiment, given an experiment entity
+     - parameter experimentID: (path) the GUID of the experiment to update 
+     - parameter experimentEntity: (body) The experiment entity to update with 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func updateExperiment(experimentID: String, experimentEntity: ExperimentEntity, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
+        updateExperimentWithRequestBuilder(experimentID: experimentID, experimentEntity: experimentEntity).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Updates an experiment, given an experiment entity
+     - PUT /experiment/{experimentID}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "experimentDescription" : "experimentDescription",
+  "lastUpdated" : 0,
+  "modelHistoryId" : "modelHistoryId",
+  "notebookUrl" : "notebookUrl",
+  "bestModelId" : "bestModelId",
+  "inputDataUri" : "inputDataUri",
+  "zeppelinId" : "zeppelinId",
+  "experimentId" : "experimentId",
+  "experimentName" : "experimentName",
+  "notebookJson" : "notebookJson"
+}}]
+     - parameter experimentID: (path) the GUID of the experiment to update 
+     - parameter experimentEntity: (body) The experiment entity to update with 
+     - returns: RequestBuilder<ExperimentEntity> 
+     */
+    open class func updateExperimentWithRequestBuilder(experimentID: String, experimentEntity: ExperimentEntity) -> RequestBuilder<ExperimentEntity> {
+        var path = "/experiment/{experimentID}"
+        let experimentIDPreEscape = "\(experimentID)"
+        let experimentIDPostEscape = experimentIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{experimentID}", with: experimentIDPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = experimentEntity.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ExperimentEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Update a model history / workspace
+     - parameter modelHistoryID: (path) the GUID of the model history / workspace to update 
+     - parameter updateModelHistoryRequest: (body) The model history request object 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func updateModelHistory(modelHistoryID: String, updateModelHistoryRequest: AddModelHistoryRequest, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
+        updateModelHistoryWithRequestBuilder(modelHistoryID: modelHistoryID, updateModelHistoryRequest: updateModelHistoryRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Update a model history / workspace
+     - POST /modelhistory/{modelHistoryID}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "modelName" : "modelName",
+  "modelHistoryId" : "modelHistoryId",
+  "created" : 0,
+  "modelLabels" : "modelLabels"
+}}]
+     - parameter modelHistoryID: (path) the GUID of the model history / workspace to update 
+     - parameter updateModelHistoryRequest: (body) The model history request object 
+     - returns: RequestBuilder<ModelHistoryEntity> 
+     */
+    open class func updateModelHistoryWithRequestBuilder(modelHistoryID: String, updateModelHistoryRequest: AddModelHistoryRequest) -> RequestBuilder<ModelHistoryEntity> {
+        var path = "/modelhistory/{modelHistoryID}"
+        let modelHistoryIDPreEscape = "\(modelHistoryID)"
+        let modelHistoryIDPostEscape = modelHistoryIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryID}", with: modelHistoryIDPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = updateModelHistoryRequest.encodeToJSON()
+
+        let url = NSURLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ModelHistoryEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }

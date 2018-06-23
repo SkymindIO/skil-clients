@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**models** | **[Object]** |  | [optional] 
-**transforms** | **[Object]** |  | [optional] 
-**knn** | **[Object]** |  | [optional] 
+**models** | [**[ModelResponse]**](ModelResponse.md) |  | [optional] 
+**transforms** | [**[ModelResponse]**](ModelResponse.md) |  | [optional] 
+**knn** | [**[ModelResponse]**](ModelResponse.md) |  | [optional] 
 
 

@@ -1,7 +1,7 @@
 =begin
-#Predict
+#Endpoints
 
-#Endpoints API for classification and other prediction services in SKIL
+#Endpoints API for different services in SKIL
 
 OpenAPI spec version: 1.1.0-beta
 
@@ -17,23 +17,54 @@ require 'skil_client/version'
 require 'skil_client/configuration'
 
 # Models
+require 'skil_client/models/add_example_request'
+require 'skil_client/models/add_model_history_request'
+require 'skil_client/models/aggregate_prediction'
 require 'skil_client/models/base64_nd_array_body'
+require 'skil_client/models/base64_nd_array_body_knn'
+require 'skil_client/models/batch_csv_record'
+require 'skil_client/models/batch_image_record'
+require 'skil_client/models/best_model'
 require 'skil_client/models/classification_result'
+require 'skil_client/models/create_deployment_request'
 require 'skil_client/models/credentials'
-require 'skil_client/models/deploy_model'
-require 'skil_client/models/deployment'
 require 'skil_client/models/deployment_objects'
+require 'skil_client/models/deployment_response'
+require 'skil_client/models/detected_object'
+require 'skil_client/models/detection_result'
+require 'skil_client/models/evaluation_results_entity'
+require 'skil_client/models/example_entity'
+require 'skil_client/models/experiment_entity'
 require 'skil_client/models/file_upload'
 require 'skil_client/models/file_upload_list'
 require 'skil_client/models/ind_array'
+require 'skil_client/models/image_transform_process'
+require 'skil_client/models/import_model_request'
+require 'skil_client/models/inline_response_200'
 require 'skil_client/models/json_array_response'
 require 'skil_client/models/log_batch'
 require 'skil_client/models/log_request'
+require 'skil_client/models/meta_data'
+require 'skil_client/models/minibatch_entity'
+require 'skil_client/models/model_entity'
+require 'skil_client/models/model_history_entity'
+require 'skil_client/models/model_instance_entity'
+require 'skil_client/models/model_response'
 require 'skil_client/models/model_status'
 require 'skil_client/models/multi_class_classification_result'
+require 'skil_client/models/multi_predict_request'
+require 'skil_client/models/multi_predict_response'
+require 'skil_client/models/nearest_neighbor_request'
+require 'skil_client/models/nearest_neighbors_result'
+require 'skil_client/models/nearest_neighbors_results'
 require 'skil_client/models/new_deployment'
 require 'skil_client/models/prediction'
+require 'skil_client/models/set_state'
+require 'skil_client/models/single_csv_record'
+require 'skil_client/models/single_image_record'
 require 'skil_client/models/token'
+require 'skil_client/models/transform_process'
+require 'skil_client/models/update_best_model'
 
 # APIs
 require 'skil_client/api/default_api'

@@ -1,7 +1,7 @@
 /* 
- * Predict
+ * Endpoints
  *
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -19,7 +19,9 @@ pub struct Prediction {
   #[serde(rename = "needsPreProcessing")]
   needs_pre_processing: Option<bool>,
   #[serde(rename = "prediction")]
-  prediction: Option<::models::IndArray>
+  prediction: Option<::models::IndArray>,
+  #[serde(rename = "inputMask")]
+  input_mask: Option<::models::IndArray>
 }
 
 impl Prediction {
@@ -27,7 +29,8 @@ impl Prediction {
     Prediction {
       id: None,
       needs_pre_processing: None,
-      prediction: None
+      prediction: None,
+      input_mask: None
     }
   }
 
@@ -80,6 +83,23 @@ impl Prediction {
 
   pub fn reset_prediction(&mut self) {
     self.prediction = None;
+  }
+
+  pub fn set_input_mask(&mut self, input_mask: ::models::IndArray) {
+    self.input_mask = Some(input_mask);
+  }
+
+  pub fn with_input_mask(mut self, input_mask: ::models::IndArray) -> Prediction {
+    self.input_mask = Some(input_mask);
+    self
+  }
+
+  pub fn input_mask(&self) -> Option<&::models::IndArray> {
+    self.input_mask.as_ref()
+  }
+
+  pub fn reset_input_mask(&mut self) {
+    self.input_mask = None;
   }
 
 }

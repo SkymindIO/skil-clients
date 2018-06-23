@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 #
 =begin
-#Predict
+#Endpoints
 
-#Endpoints API for classification and other prediction services in SKIL
+#Endpoints API for different services in SKIL
 
 OpenAPI spec version: 1.1.0-beta
 
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.email       = [""]
   s.homepage    = "http://skymind.ai/"
   s.summary     = "A ruby wrapper for SKIL HTTP inference"
-  s.description = "Endpoints API for classification and other prediction services in SKIL"
+  s.description = "Endpoints API for different services in SKIL"
   s.license     = "Apache 2.0"
   s.required_ruby_version = ">= 1.9"
 

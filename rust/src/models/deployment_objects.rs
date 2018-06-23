@@ -1,7 +1,7 @@
 /* 
- * Predict
+ * Endpoints
  *
- * Endpoints API for classification and other prediction services in SKIL
+ * Endpoints API for different services in SKIL
  *
  * OpenAPI spec version: 1.1.0-beta
  * 
@@ -15,11 +15,11 @@ use serde_json::Value;
 #[derive(Debug, Serialize, Deserialize)]
 pub struct DeploymentObjects {
   #[serde(rename = "models")]
-  models: Option<Vec<Value>>,
+  models: Option<Vec<::models::ModelResponse>>,
   #[serde(rename = "transforms")]
-  transforms: Option<Vec<Value>>,
+  transforms: Option<Vec<::models::ModelResponse>>,
   #[serde(rename = "knn")]
-  knn: Option<Vec<Value>>
+  knn: Option<Vec<::models::ModelResponse>>
 }
 
 impl DeploymentObjects {
@@ -31,16 +31,16 @@ impl DeploymentObjects {
     }
   }
 
-  pub fn set_models(&mut self, models: Vec<Value>) {
+  pub fn set_models(&mut self, models: Vec<::models::ModelResponse>) {
     self.models = Some(models);
   }
 
-  pub fn with_models(mut self, models: Vec<Value>) -> DeploymentObjects {
+  pub fn with_models(mut self, models: Vec<::models::ModelResponse>) -> DeploymentObjects {
     self.models = Some(models);
     self
   }
 
-  pub fn models(&self) -> Option<&Vec<Value>> {
+  pub fn models(&self) -> Option<&Vec<::models::ModelResponse>> {
     self.models.as_ref()
   }
 
@@ -48,16 +48,16 @@ impl DeploymentObjects {
     self.models = None;
   }
 
-  pub fn set_transforms(&mut self, transforms: Vec<Value>) {
+  pub fn set_transforms(&mut self, transforms: Vec<::models::ModelResponse>) {
     self.transforms = Some(transforms);
   }
 
-  pub fn with_transforms(mut self, transforms: Vec<Value>) -> DeploymentObjects {
+  pub fn with_transforms(mut self, transforms: Vec<::models::ModelResponse>) -> DeploymentObjects {
     self.transforms = Some(transforms);
     self
   }
 
-  pub fn transforms(&self) -> Option<&Vec<Value>> {
+  pub fn transforms(&self) -> Option<&Vec<::models::ModelResponse>> {
     self.transforms.as_ref()
   }
 
@@ -65,16 +65,16 @@ impl DeploymentObjects {
     self.transforms = None;
   }
 
-  pub fn set_knn(&mut self, knn: Vec<Value>) {
+  pub fn set_knn(&mut self, knn: Vec<::models::ModelResponse>) {
     self.knn = Some(knn);
   }
 
-  pub fn with_knn(mut self, knn: Vec<Value>) -> DeploymentObjects {
+  pub fn with_knn(mut self, knn: Vec<::models::ModelResponse>) -> DeploymentObjects {
     self.knn = Some(knn);
     self
   }
 
-  pub fn knn(&self) -> Option<&Vec<Value>> {
+  pub fn knn(&self) -> Option<&Vec<::models::ModelResponse>> {
     self.knn.as_ref()
   }
 
