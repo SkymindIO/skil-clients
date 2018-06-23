@@ -1842,6 +1842,7 @@ definitions:
       forceFillK:
         type: boolean
         example: false
+        description: If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.
   NearestNeighborRequest:
     properties:
       k:
