@@ -12,10 +12,9 @@
 
 from __future__ import absolute_import
 
-import base64
+import pprint
 import unittest
 import uuid
-import pprint
 
 import numpy
 import skil_client
