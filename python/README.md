@@ -52,11 +52,13 @@ from skil_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: api_key
-skil_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# skil_client.configuration.api_key_prefix['authorization'] = 'Bearer'
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = skil_client.DefaultApi()
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 evaluation_results_entity = skil_client.EvaluationResultsEntity() # EvaluationResultsEntity | The evaluation result entity
 
 try:

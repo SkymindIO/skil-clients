@@ -45,7 +45,7 @@ from skil_client.models.file_upload_list import FileUploadList
 from skil_client.models.ind_array import INDArray
 from skil_client.models.image_transform_process import ImageTransformProcess
 from skil_client.models.import_model_request import ImportModelRequest
-from skil_client.models.inline_response_200 import InlineResponse200
+from skil_client.models.inline_response200 import InlineResponse200
 from skil_client.models.json_array_response import JsonArrayResponse
 from skil_client.models.log_batch import LogBatch
 from skil_client.models.log_request import LogRequest

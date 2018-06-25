@@ -109,6 +109,7 @@ class Base64NDArrayBodyKNN(object):
     def force_fill_k(self):
         """Gets the force_fill_k of this Base64NDArrayBodyKNN.  # noqa: E501
 
+        If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.  # noqa: E501
 
         :return: The force_fill_k of this Base64NDArrayBodyKNN.  # noqa: E501
         :rtype: bool
@@ -119,6 +120,7 @@ class Base64NDArrayBodyKNN(object):
     def force_fill_k(self, force_fill_k):
         """Sets the force_fill_k of this Base64NDArrayBodyKNN.
 
+        If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.  # noqa: E501
 
         :param force_fill_k: The force_fill_k of this Base64NDArrayBodyKNN.  # noqa: E501
         :type: bool
