@@ -52,6 +52,7 @@ from skil_client.models.log_request import LogRequest
 from skil_client.models.meta_data import MetaData
 from skil_client.models.minibatch_entity import MinibatchEntity
 from skil_client.models.model_entity import ModelEntity
+from skil_client.models.model_feed_back_request import ModelFeedBackRequest
 from skil_client.models.model_history_entity import ModelHistoryEntity
 from skil_client.models.model_instance_entity import ModelInstanceEntity
 from skil_client.models.model_response import ModelResponse

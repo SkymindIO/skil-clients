@@ -1785,6 +1785,27 @@ paths:
           description: The add example request
           schema:
             $ref: '#/definitions/addExampleRequest'
+  /model/feedback:
+    post:
+      operationId: addModelFeedback
+      summary: Adds an evaluation feedback to the model against a given minibatch id.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: ModelFeedBackRequest
+        in: body
+        type: object
+        required: true
+        description: The model feedback request object
+        schema:
+          $ref: '#/definitions/ModelFeedBackRequest'
+      responses:
+        200:
+          description: The model feedback request object
+          schema:
+            $ref: '#/definitions/ModelFeedBackRequest'
 definitions:
   TransformProcess:
     type: object
@@ -2552,3 +2573,22 @@ definitions:
         - REGRESSON_EVALUATION
         - ROC_MULTI_CLASS
         description: the evaluation type to aggregate for each model's revisions
+  ModelFeedBackRequest:
+    type: object
+    properties:
+      batchId:
+        type: string
+        format: guid
+        description: The GUID of the minibatch this feedback corresponds to
+      guesses:
+        type: array
+        items:
+          type: string
+        description: The guessed label IDs by the model
+        example: '["0", "1", "2"]'
+      correct:
+        type: array
+        items:
+          type: string
+        description: The actual label IDs
+        example: '["0", "0", "2"]'
