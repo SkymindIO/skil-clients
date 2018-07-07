@@ -84,7 +84,7 @@ class ModelFeedBackRequest(object):
     def guesses(self):
         """Gets the guesses of this ModelFeedBackRequest.  # noqa: E501
 
-        The guessed labels IDs by the model  # noqa: E501
+        The guessed label IDs by the model  # noqa: E501
 
         :return: The guesses of this ModelFeedBackRequest.  # noqa: E501
         :rtype: list[str]
@@ -95,7 +95,7 @@ class ModelFeedBackRequest(object):
     def guesses(self, guesses):
         """Sets the guesses of this ModelFeedBackRequest.
 
-        The guessed labels IDs by the model  # noqa: E501
+        The guessed label IDs by the model  # noqa: E501
 
         :param guesses: The guesses of this ModelFeedBackRequest.  # noqa: E501
         :type: list[str]
@@ -107,7 +107,7 @@ class ModelFeedBackRequest(object):
     def correct(self):
         """Gets the correct of this ModelFeedBackRequest.  # noqa: E501
 
-        The actual labels IDs  # noqa: E501
+        The actual label IDs  # noqa: E501
 
         :return: The correct of this ModelFeedBackRequest.  # noqa: E501
         :rtype: list[str]
@@ -118,7 +118,7 @@ class ModelFeedBackRequest(object):
     def correct(self, correct):
         """Sets the correct of this ModelFeedBackRequest.
 
-        The actual labels IDs  # noqa: E501
+        The actual label IDs  # noqa: E501
 
         :param correct: The correct of this ModelFeedBackRequest.  # noqa: E501
         :type: list[str]
