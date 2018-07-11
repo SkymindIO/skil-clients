@@ -33,10 +33,10 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelStatus" /> class.
         /// </summary>
-        /// <param name="Status">100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed .</param>
-        public ModelStatus(int? Status = default(int?))
+        /// <param name="status">100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed .</param>
+        public ModelStatus(int? status = default(int?))
         {
-            this.Status = Status;
+            this.Status = status;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

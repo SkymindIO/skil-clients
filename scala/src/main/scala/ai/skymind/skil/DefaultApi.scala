@@ -42,6 +42,7 @@ import ai.skymind.skil.model.LogRequest
 import ai.skymind.skil.model.MetaData
 import ai.skymind.skil.model.MinibatchEntity
 import ai.skymind.skil.model.ModelEntity
+import ai.skymind.skil.model.ModelFeedBackRequest
 import ai.skymind.skil.model.ModelHistoryEntity
 import ai.skymind.skil.model.ModelInstanceEntity
 import ai.skymind.skil.model.ModelStatus
@@ -249,6 +250,32 @@ class DefaultApi(
    */
   def addMinibatchAsync(MinibatchEntity: MinibatchEntity): Future[MinibatchEntity] = {
       helper.addMinibatch(MinibatchEntity)
+  }
+
+  /**
+   * Adds an evaluation feedback to the model against a given minibatch id.
+   * 
+   *
+   * @param ModelFeedBackRequest The model feedback request object 
+   * @return ModelFeedBackRequest
+   */
+  def addModelFeedback(ModelFeedBackRequest: ModelFeedBackRequest): Option[ModelFeedBackRequest] = {
+    val await = Try(Await.result(addModelFeedbackAsync(ModelFeedBackRequest), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Adds an evaluation feedback to the model against a given minibatch id. asynchronously
+   * 
+   *
+   * @param ModelFeedBackRequest The model feedback request object 
+   * @return Future(ModelFeedBackRequest)
+   */
+  def addModelFeedbackAsync(ModelFeedBackRequest: ModelFeedBackRequest): Future[ModelFeedBackRequest] = {
+      helper.addModelFeedback(ModelFeedBackRequest)
   }
 
   /**
@@ -2076,6 +2103,22 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     if (MinibatchEntity == null) throw new Exception("Missing required parameter 'MinibatchEntity' when calling DefaultApi->addMinibatch")
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(MinibatchEntity))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def addModelFeedback(ModelFeedBackRequest: ModelFeedBackRequest)(implicit reader: ClientResponseReader[ModelFeedBackRequest], writer: RequestWriter[ModelFeedBackRequest]): Future[ModelFeedBackRequest] = {
+    // create path and map variables
+    val path = (addFmt("/model/feedback"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelFeedBackRequest == null) throw new Exception("Missing required parameter 'ModelFeedBackRequest' when calling DefaultApi->addModelFeedback")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(ModelFeedBackRequest))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**add_example_to_minibatch**](DefaultApi.md#add_example_to_minibatch) | **POST** /model/example | Adds an example to a minibatch
 [**add_experiment**](DefaultApi.md#add_experiment) | **POST** /experiment | Add an experiment, given an experiment entity
 [**add_minibatch**](DefaultApi.md#add_minibatch) | **POST** /model/minibatch | Adds a minibatch
+[**add_model_feedback**](DefaultApi.md#add_model_feedback) | **POST** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**add_model_history**](DefaultApi.md#add_model_history) | **POST** /modelhistory | Add a model history / workspace
 [**add_model_instance**](DefaultApi.md#add_model_instance) | **POST** /model | Adds a model
 [**aggregate_model_results**](DefaultApi.md#aggregate_model_results) | **POST** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -333,6 +334,58 @@ Name | Type | Description  | Notes
 
 
 
+# **add_model_feedback**
+> ModelFeedBackRequest add_model_feedback(model_feed_back_request)
+
+Adds an evaluation feedback to the model against a given minibatch id.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+model_feed_back_request = SkilCient::ModelFeedBackRequest.new # ModelFeedBackRequest | The model feedback request object
+
+
+begin
+  #Adds an evaluation feedback to the model against a given minibatch id.
+  result = api_instance.add_model_feedback(model_feed_back_request)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->add_model_feedback: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **model_feed_back_request** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
+
+### Return type
+
+[**ModelFeedBackRequest**](ModelFeedBackRequest.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **add_model_history**
 > ModelHistoryEntity add_model_history(add_model_history_request)
 
@@ -510,9 +563,9 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::Prediction.new # Prediction | The input NDArray
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -568,9 +621,9 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::Prediction.new # Prediction | The input NDArray
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -624,12 +677,12 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 opts = { 
-  image: File.new("/path/to/file.txt") # File | The file to upload.
+  image: File.new('/path/to/file.txt') # File | The file to upload.
 }
 
 begin
@@ -735,7 +788,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-experiment_id = "experiment_id_example" # String | the GUID of the experiment to delete
+experiment_id = 'experiment_id_example' # String | the GUID of the experiment to delete
 
 
 begin
@@ -787,9 +840,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_id = "deployment_id_example" # String | ID deployment group
+deployment_id = 'deployment_id_example' # String | ID deployment group
 
-model_id = "model_id_example" # String | the id of the deployed model
+model_id = 'model_id_example' # String | the id of the deployed model
 
 
 begin
@@ -842,7 +895,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_id = "model_history_id_example" # String | the GUID of the model history / workspace to delete
+model_history_id = 'model_history_id_example' # String | the GUID of the model history / workspace to delete
 
 
 begin
@@ -894,7 +947,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_instance_id = "model_instance_id_example" # String | GUID of the model instance to delete.
+model_instance_id = 'model_instance_id_example' # String | GUID of the model instance to delete.
 
 
 begin
@@ -945,7 +998,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_id = "deployment_id_example" # String | ID deployment group
+deployment_id = 'deployment_id_example' # String | ID deployment group
 
 body = SkilCient::ImportModelRequest.new # ImportModelRequest | the model import request
 
@@ -1052,7 +1105,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_id = "deployment_id_example" # String | Id of the deployment group
+deployment_id = 'deployment_id_example' # String | Id of the deployment group
 
 
 begin
@@ -1104,7 +1157,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_id = "deployment_id_example" # String | Id of the deployment group
+deployment_id = 'deployment_id_example' # String | Id of the deployment group
 
 
 begin
@@ -1202,17 +1255,17 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-id = "id_example" # String | the GUID for mapping the results in the detections
+id = 'id_example' # String | the GUID for mapping the results in the detections
 
 needs_preprocessing = true # BOOLEAN | (true) if the image needs preprocessing
 
 threshold = 3.4 # Float | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
 
-image_file = File.new("/path/to/file.txt") # File | the image file to detect objects from
+image_file = File.new('/path/to/file.txt') # File | the image file to detect objects from
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -1321,7 +1374,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_instance_id = "model_instance_id_example" # String | GUID of the model instance to get evaluation results for.
+model_instance_id = 'model_instance_id_example' # String | GUID of the model instance to get evaluation results for.
 
 
 begin
@@ -1373,7 +1426,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-minibatch_id = "minibatch_id_example" # String | The GUID of the minibatch
+minibatch_id = 'minibatch_id_example' # String | The GUID of the minibatch
 
 
 begin
@@ -1425,7 +1478,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-experiment_id = "experiment_id_example" # String | the GUID of the experiment to obtain
+experiment_id = 'experiment_id_example' # String | the GUID of the experiment to obtain
 
 
 begin
@@ -1477,7 +1530,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_id = "model_history_id_example" # String | the GUID of the model history / workspace
+model_history_id = 'model_history_id_example' # String | the GUID of the model history / workspace
 
 
 begin
@@ -1529,7 +1582,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-minibatch_id = "minibatch_id_example" # String | The GUID of the minibatch
+minibatch_id = 'minibatch_id_example' # String | The GUID of the minibatch
 
 
 begin
@@ -1581,7 +1634,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_id = "model_history_id_example" # String | GUID of the model history to get information of.
+model_history_id = 'model_history_id_example' # String | GUID of the model history to get information of.
 
 
 begin
@@ -1633,7 +1686,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_instance_id = "model_instance_id_example" # String | GUID of the model instance to get information of.
+model_instance_id = 'model_instance_id_example' # String | GUID of the model instance to get information of.
 
 
 begin
@@ -1685,7 +1738,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-experiment_id = "experiment_id_example" # String | the GUID of the experiment
+experiment_id = 'experiment_id_example' # String | the GUID of the experiment
 
 
 begin
@@ -1737,9 +1790,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-image_transform_name = "image_transform_name_example" # String | ID or name of the deployed image transform
+image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
 
 
 begin
@@ -1792,9 +1845,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-image_transform_name = "image_transform_name_example" # String | ID or name of the deployed image transform
+image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
 
 body = SkilCient::ImageTransformProcess.new # ImageTransformProcess | The image transform process JSON
 
@@ -1852,9 +1905,9 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::Prediction.new # Prediction | The input NDArray
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -1910,9 +1963,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-knn_name = "knn_name_example" # String | ID or name of the deployed knn
+knn_name = 'knn_name_example' # String | ID or name of the deployed knn
 
 body = SkilCient::NearestNeighborRequest.new # NearestNeighborRequest | 
 
@@ -1968,9 +2021,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-knn_name = "knn_name_example" # String | ID or name of the deployed knn
+knn_name = 'knn_name_example' # String | ID or name of the deployed knn
 
 body = SkilCient::Base64NDArrayBodyKNN.new # Base64NDArrayBodyKNN | The input NDArray
 
@@ -2072,9 +2125,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -2181,9 +2234,9 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::LogRequest.new # LogRequest | the the log request
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -2237,9 +2290,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -2294,9 +2347,9 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::MetaData.new # MetaData | the meta data object
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -2350,9 +2403,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_id = "deployment_id_example" # String | ID deployment group
+deployment_id = 'deployment_id_example' # String | ID deployment group
 
-model_id = "model_id_example" # String | the id of the deployed model
+model_id = 'model_id_example' # String | the id of the deployed model
 
 body = SkilCient::SetState.new # SetState | the model state object
 
@@ -2408,7 +2461,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_id = "deployment_id_example" # String | ID deployment group
+deployment_id = 'deployment_id_example' # String | ID deployment group
 
 
 begin
@@ -2460,12 +2513,12 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 opts = { 
-  file: File.new("/path/to/file.txt") # File | The model file to upload (.pb file)
+  file: File.new('/path/to/file.txt') # File | The model file to upload (.pb file)
 }
 
 begin
@@ -2519,12 +2572,12 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 opts = { 
-  file: File.new("/path/to/file.txt") # File | The model file to update with (.pb file)
+  file: File.new('/path/to/file.txt') # File | The model file to update with (.pb file)
 }
 
 begin
@@ -2580,9 +2633,9 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::Prediction.new # Prediction | The input NDArray
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -2640,9 +2693,9 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::MultiPredictRequest.new # MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -2698,9 +2751,9 @@ api_instance = SkilCient::DefaultApi.new
 
 body = SkilCient::Prediction.new # Prediction | The input NDArray
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -2754,12 +2807,12 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 opts = { 
-  image: File.new("/path/to/file.txt") # File | The file to upload.
+  image: File.new('/path/to/file.txt') # File | The file to upload.
 }
 
 begin
@@ -2815,9 +2868,9 @@ api_instance = SkilCient::DefaultApi.new
 
 body = [SkilCient::Array<String>.new] # Array<String> | The input array
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -2873,9 +2926,9 @@ api_instance = SkilCient::DefaultApi.new
 
 body = [SkilCient::Array<String>.new] # Array<String> | The input array
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-model_name = "model_name_example" # String | ID or name of the deployed model
+model_name = 'model_name_example' # String | ID or name of the deployed model
 
 
 begin
@@ -2929,9 +2982,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_id = "deployment_id_example" # String | ID deployment group
+deployment_id = 'deployment_id_example' # String | ID deployment group
 
-model_id = "model_id_example" # String | the id of the deployed model
+model_id = 'model_id_example' # String | the id of the deployed model
 
 body = SkilCient::ImportModelRequest.new # ImportModelRequest | the deployment request
 
@@ -2989,9 +3042,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-transform_name = "transform_name_example" # String | ID or name of the deployed transform
+transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
   batch_csv_record: SkilCient::BatchCSVRecord.new # BatchCSVRecord | The input batch of record arrays
@@ -3050,9 +3103,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-transform_name = "transform_name_example" # String | ID or name of the deployed transform
+transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
   batch_csv_record: SkilCient::BatchCSVRecord.new # BatchCSVRecord | The input batch of record arrays
@@ -3111,9 +3164,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-image_transform_name = "image_transform_name_example" # String | ID or name of the deployed image transform
+image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
 
 batch_image_record = SkilCient::BatchImageRecord.new # BatchImageRecord | The input batch of record arrays
 
@@ -3171,11 +3224,11 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-image_transform_name = "image_transform_name_example" # String | ID or name of the deployed image transform
+image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
 
-files = ["files_example"] # Array<String> | The image files to upload
+files = ['files_example'] # Array<String> | The image files to upload
 
 
 begin
@@ -3231,9 +3284,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-transform_name = "transform_name_example" # String | ID or name of the deployed transform
+transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
   single_csv_record: SkilCient::SingleCSVRecord.new # SingleCSVRecord | The input record array
@@ -3292,9 +3345,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-transform_name = "transform_name_example" # String | ID or name of the deployed transform
+transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
   single_csv_record: SkilCient::SingleCSVRecord.new # SingleCSVRecord | The input record array
@@ -3353,9 +3406,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-image_transform_name = "image_transform_name_example" # String | ID or name of the deployed image transform
+image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
 
 single_image_record = SkilCient::SingleImageRecord.new # SingleImageRecord | The input record array
 
@@ -3413,11 +3466,11 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-image_transform_name = "image_transform_name_example" # String | ID or name of the deployed image transform
+image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
 
-file = File.new("/path/to/file.txt") # File | The image file to upload
+file = File.new('/path/to/file.txt') # File | The image file to upload
 
 
 begin
@@ -3473,9 +3526,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-transform_name = "transform_name_example" # String | ID or name of the deployed transform
+transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 
 begin
@@ -3530,9 +3583,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = "deployment_name_example" # String | Name of the deployment group
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
-transform_name = "transform_name_example" # String | ID or name of the deployed transform
+transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
   transform_process: SkilCient::TransformProcess.new # TransformProcess | The transform process to set
@@ -3640,7 +3693,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-experiment_id = "experiment_id_example" # String | the GUID of the experiment to update
+experiment_id = 'experiment_id_example' # String | the GUID of the experiment to update
 
 experiment_entity = SkilCient::ExperimentEntity.new # ExperimentEntity | The experiment entity to update with
 
@@ -3695,7 +3748,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_id = "model_history_id_example" # String | the GUID of the model history / workspace to update
+model_history_id = 'model_history_id_example' # String | the GUID of the model history / workspace to update
 
 update_model_history_request = SkilCient::AddModelHistoryRequest.new # AddModelHistoryRequest | The model history request object
 
@@ -3751,7 +3804,7 @@ end
 api_instance = SkilCient::DefaultApi.new
 
 opts = { 
-  file: File.new("/path/to/file.txt") # File | The file to upload.
+  file: File.new('/path/to/file.txt') # File | The file to upload.
 }
 
 begin

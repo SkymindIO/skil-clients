@@ -20,6 +20,7 @@ pub struct Base64NdArrayBodyKnn {
   /// the number of results to retrieve
   #[serde(rename = "k")]
   k: i32,
+  /// If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.
   #[serde(rename = "forceFillK")]
   force_fill_k: Option<bool>
 }

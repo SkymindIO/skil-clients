@@ -1889,6 +1889,28 @@ paths:
           description: "The add example request"
           schema:
             $ref: "#/definitions/addExampleRequest"
+  /model/feedback:
+    post:
+      summary: "Adds an evaluation feedback to the model against a given minibatch\
+        \ id."
+      operationId: "addModelFeedback"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "ModelFeedBackRequest"
+        description: "The model feedback request object"
+        required: true
+        schema:
+          $ref: "#/definitions/ModelFeedBackRequest"
+        x-exportParamName: "ModelFeedBackRequest"
+      responses:
+        200:
+          description: "The model feedback request object"
+          schema:
+            $ref: "#/definitions/ModelFeedBackRequest"
 securityDefinitions:
   api_key:
     description: "For accessing the API a valid JWT token must be passed in all the\
@@ -1975,6 +1997,9 @@ definitions:
       forceFillK:
         type: "boolean"
         example: false
+        description: "If 'True' it will brute force search for running search relative\
+          \ to a target but forced to fill the result list until the desired k is\
+          \ matched."
   NearestNeighborRequest:
     properties:
       k:
@@ -2945,7 +2970,6 @@ definitions:
       evalVersion: 0
       miniBatchId: "miniBatchId"
   ExampleEntity:
-    type: "null"
     properties:
       exampleId:
         type: "string"
@@ -3030,6 +3054,29 @@ definitions:
       ids:
       - "ids"
       - "ids"
+  ModelFeedBackRequest:
+    type: "object"
+    properties:
+      batchId:
+        type: "string"
+        format: "guid"
+        description: "The GUID of the minibatch this feedback corresponds to"
+      guesses:
+        type: "array"
+        example: "[\"0\", \"1\", \"2\"]"
+        description: "The guessed label IDs by the model"
+        items:
+          type: "string"
+      correct:
+        type: "array"
+        example: "[\"0\", \"0\", \"2\"]"
+        description: "The actual label IDs"
+        items:
+          type: "string"
+    example:
+      correct: "[\"0\", \"0\", \"2\"]"
+      guesses: "[\"0\", \"1\", \"2\"]"
+      batchId: "batchId"
   inline_response_200:
     properties:
       status:

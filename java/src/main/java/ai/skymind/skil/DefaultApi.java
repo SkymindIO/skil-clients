@@ -41,6 +41,7 @@ import ai.skymind.skil.model.Credentials;
 import ai.skymind.skil.model.DeploymentResponse;
 import ai.skymind.skil.model.DetectionResult;
 import ai.skymind.skil.model.EvaluationResultsEntity;
+import ai.skymind.skil.model.ExampleEntity;
 import ai.skymind.skil.model.ExperimentEntity;
 import java.io.File;
 import ai.skymind.skil.model.FileUploadList;
@@ -53,9 +54,9 @@ import ai.skymind.skil.model.LogRequest;
 import ai.skymind.skil.model.MetaData;
 import ai.skymind.skil.model.MinibatchEntity;
 import ai.skymind.skil.model.ModelEntity;
+import ai.skymind.skil.model.ModelFeedBackRequest;
 import ai.skymind.skil.model.ModelHistoryEntity;
 import ai.skymind.skil.model.ModelInstanceEntity;
-import ai.skymind.skil.model.ModelNull;
 import ai.skymind.skil.model.ModelStatus;
 import ai.skymind.skil.model.MultiClassClassificationResult;
 import ai.skymind.skil.model.MultiPredictRequest;
@@ -347,7 +348,7 @@ public class DefaultApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call addExampleToMinibatchCall(ModelNull exampleEntity, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call addExampleToMinibatchCall(ExampleEntity exampleEntity, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = exampleEntity;
 
         // create path and map variables
@@ -389,7 +390,7 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call addExampleToMinibatchValidateBeforeCall(ModelNull exampleEntity, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call addExampleToMinibatchValidateBeforeCall(ExampleEntity exampleEntity, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'exampleEntity' is set
         if (exampleEntity == null) {
@@ -406,11 +407,11 @@ public class DefaultApi {
      * Adds an example to a minibatch
      * 
      * @param exampleEntity The example to add to the minibatch (required)
-     * @return ModelNull
+     * @return ExampleEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ModelNull addExampleToMinibatch(ModelNull exampleEntity) throws ApiException {
-        ApiResponse<ModelNull> resp = addExampleToMinibatchWithHttpInfo(exampleEntity);
+    public ExampleEntity addExampleToMinibatch(ExampleEntity exampleEntity) throws ApiException {
+        ApiResponse<ExampleEntity> resp = addExampleToMinibatchWithHttpInfo(exampleEntity);
         return resp.getData();
     }
 
@@ -418,12 +419,12 @@ public class DefaultApi {
      * Adds an example to a minibatch
      * 
      * @param exampleEntity The example to add to the minibatch (required)
-     * @return ApiResponse&lt;ModelNull&gt;
+     * @return ApiResponse&lt;ExampleEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ModelNull> addExampleToMinibatchWithHttpInfo(ModelNull exampleEntity) throws ApiException {
+    public ApiResponse<ExampleEntity> addExampleToMinibatchWithHttpInfo(ExampleEntity exampleEntity) throws ApiException {
         com.squareup.okhttp.Call call = addExampleToMinibatchValidateBeforeCall(exampleEntity, null, null);
-        Type localVarReturnType = new TypeToken<ModelNull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExampleEntity>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -435,7 +436,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addExampleToMinibatchAsync(ModelNull exampleEntity, final ApiCallback<ModelNull> callback) throws ApiException {
+    public com.squareup.okhttp.Call addExampleToMinibatchAsync(ExampleEntity exampleEntity, final ApiCallback<ExampleEntity> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -457,7 +458,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = addExampleToMinibatchValidateBeforeCall(exampleEntity, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ModelNull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExampleEntity>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -702,6 +703,128 @@ public class DefaultApi {
 
         com.squareup.okhttp.Call call = addMinibatchValidateBeforeCall(minibatchEntity, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<MinibatchEntity>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for addModelFeedback
+     * @param modelFeedBackRequest The model feedback request object (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call addModelFeedbackCall(ModelFeedBackRequest modelFeedBackRequest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = modelFeedBackRequest;
+
+        // create path and map variables
+        String localVarPath = "/model/feedback";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "api_key" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call addModelFeedbackValidateBeforeCall(ModelFeedBackRequest modelFeedBackRequest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'modelFeedBackRequest' is set
+        if (modelFeedBackRequest == null) {
+            throw new ApiException("Missing the required parameter 'modelFeedBackRequest' when calling addModelFeedback(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = addModelFeedbackCall(modelFeedBackRequest, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Adds an evaluation feedback to the model against a given minibatch id.
+     * 
+     * @param modelFeedBackRequest The model feedback request object (required)
+     * @return ModelFeedBackRequest
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ModelFeedBackRequest addModelFeedback(ModelFeedBackRequest modelFeedBackRequest) throws ApiException {
+        ApiResponse<ModelFeedBackRequest> resp = addModelFeedbackWithHttpInfo(modelFeedBackRequest);
+        return resp.getData();
+    }
+
+    /**
+     * Adds an evaluation feedback to the model against a given minibatch id.
+     * 
+     * @param modelFeedBackRequest The model feedback request object (required)
+     * @return ApiResponse&lt;ModelFeedBackRequest&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ModelFeedBackRequest> addModelFeedbackWithHttpInfo(ModelFeedBackRequest modelFeedBackRequest) throws ApiException {
+        com.squareup.okhttp.Call call = addModelFeedbackValidateBeforeCall(modelFeedBackRequest, null, null);
+        Type localVarReturnType = new TypeToken<ModelFeedBackRequest>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Adds an evaluation feedback to the model against a given minibatch id. (asynchronously)
+     * 
+     * @param modelFeedBackRequest The model feedback request object (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call addModelFeedbackAsync(ModelFeedBackRequest modelFeedBackRequest, final ApiCallback<ModelFeedBackRequest> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = addModelFeedbackValidateBeforeCall(modelFeedBackRequest, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ModelFeedBackRequest>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -3217,11 +3340,11 @@ public class DefaultApi {
      * Gets all the examples for a minibatch ID
      * 
      * @param minibatchId The GUID of the minibatch (required)
-     * @return List&lt;ModelNull&gt;
+     * @return List&lt;ExampleEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<ModelNull> getExamplesForMinibatch(String minibatchId) throws ApiException {
-        ApiResponse<List<ModelNull>> resp = getExamplesForMinibatchWithHttpInfo(minibatchId);
+    public List<ExampleEntity> getExamplesForMinibatch(String minibatchId) throws ApiException {
+        ApiResponse<List<ExampleEntity>> resp = getExamplesForMinibatchWithHttpInfo(minibatchId);
         return resp.getData();
     }
 
@@ -3229,12 +3352,12 @@ public class DefaultApi {
      * Gets all the examples for a minibatch ID
      * 
      * @param minibatchId The GUID of the minibatch (required)
-     * @return ApiResponse&lt;List&lt;ModelNull&gt;&gt;
+     * @return ApiResponse&lt;List&lt;ExampleEntity&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<ModelNull>> getExamplesForMinibatchWithHttpInfo(String minibatchId) throws ApiException {
+    public ApiResponse<List<ExampleEntity>> getExamplesForMinibatchWithHttpInfo(String minibatchId) throws ApiException {
         com.squareup.okhttp.Call call = getExamplesForMinibatchValidateBeforeCall(minibatchId, null, null);
-        Type localVarReturnType = new TypeToken<List<ModelNull>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ExampleEntity>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -3246,7 +3369,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getExamplesForMinibatchAsync(String minibatchId, final ApiCallback<List<ModelNull>> callback) throws ApiException {
+    public com.squareup.okhttp.Call getExamplesForMinibatchAsync(String minibatchId, final ApiCallback<List<ExampleEntity>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3268,7 +3391,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = getExamplesForMinibatchValidateBeforeCall(minibatchId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<ModelNull>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ExampleEntity>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -185,7 +185,7 @@ class Decoders {
             return .success(nil)
         }
     }
-    
+
     static func decodeOptional<T>(clazz: [T].Type, source: AnyObject?) -> Decoded<[T]?> where T: RawRepresentable {
         if let source = source as? [AnyObject] {
             var values = [T]()
@@ -1430,6 +1430,38 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "ModelEntity", actual: "\(source)"))
+            }
+        }
+        // Decoder for [ModelFeedBackRequest]
+        Decoders.addDecoder(clazz: [ModelFeedBackRequest].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[ModelFeedBackRequest]> in
+            return Decoders.decode(clazz: [ModelFeedBackRequest].self, source: source)
+        }
+
+        // Decoder for ModelFeedBackRequest
+        Decoders.addDecoder(clazz: ModelFeedBackRequest.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<ModelFeedBackRequest> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? ModelFeedBackRequest() : instance as! ModelFeedBackRequest
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["batchId"] as AnyObject?) {
+                
+                case let .success(value): _result.batchId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: [String].self, source: sourceDictionary["guesses"] as AnyObject?) {
+                
+                case let .success(value): _result.guesses = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: [String].self, source: sourceDictionary["correct"] as AnyObject?) {
+                
+                case let .success(value): _result.correct = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "ModelFeedBackRequest", actual: "\(source)"))
             }
         }
         // Decoder for [ModelHistoryEntity]

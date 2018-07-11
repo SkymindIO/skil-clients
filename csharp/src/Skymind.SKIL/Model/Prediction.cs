@@ -33,16 +33,16 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Prediction" /> class.
         /// </summary>
-        /// <param name="Id">Id.</param>
-        /// <param name="NeedsPreProcessing">NeedsPreProcessing.</param>
-        /// <param name="_Prediction">_Prediction.</param>
-        /// <param name="InputMask">InputMask.</param>
-        public Prediction(string Id = default(string), bool? NeedsPreProcessing = default(bool?), INDArray _Prediction = default(INDArray), INDArray InputMask = default(INDArray))
+        /// <param name="id">id.</param>
+        /// <param name="needsPreProcessing">needsPreProcessing.</param>
+        /// <param name="prediction">prediction.</param>
+        /// <param name="inputMask">inputMask.</param>
+        public Prediction(string id = default(string), bool? needsPreProcessing = default(bool?), INDArray prediction = default(INDArray), INDArray inputMask = default(INDArray))
         {
-            this.Id = Id;
-            this.NeedsPreProcessing = NeedsPreProcessing;
-            this._Prediction = _Prediction;
-            this.InputMask = InputMask;
+            this.Id = id;
+            this.NeedsPreProcessing = needsPreProcessing;
+            this._Prediction = prediction;
+            this.InputMask = inputMask;
         }
         
         /// <summary>
@@ -89,7 +89,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -58,6 +58,8 @@ mod minibatch_entity;
 pub use self::minibatch_entity::MinibatchEntity;
 mod model_entity;
 pub use self::model_entity::ModelEntity;
+mod model_feed_back_request;
+pub use self::model_feed_back_request::ModelFeedBackRequest;
 mod model_history_entity;
 pub use self::model_history_entity::ModelHistoryEntity;
 mod model_instance_entity;

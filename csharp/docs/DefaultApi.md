@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**AddExampleToMinibatch**](DefaultApi.md#addexampletominibatch) | **POST** /model/example | Adds an example to a minibatch
 [**AddExperiment**](DefaultApi.md#addexperiment) | **POST** /experiment | Add an experiment, given an experiment entity
 [**AddMinibatch**](DefaultApi.md#addminibatch) | **POST** /model/minibatch | Adds a minibatch
+[**AddModelFeedback**](DefaultApi.md#addmodelfeedback) | **POST** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**AddModelHistory**](DefaultApi.md#addmodelhistory) | **POST** /modelhistory | Add a model history / workspace
 [**AddModelInstance**](DefaultApi.md#addmodelinstance) | **POST** /model | Adds a model
 [**AggregateModelResults**](DefaultApi.md#aggregatemodelresults) | **POST** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -381,6 +382,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MinibatchEntity**](MinibatchEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="addmodelfeedback"></a>
+# **AddModelFeedback**
+> ModelFeedBackRequest AddModelFeedback (ModelFeedBackRequest modelFeedBackRequest)
+
+Adds an evaluation feedback to the model against a given minibatch id.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class AddModelFeedbackExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var modelFeedBackRequest = new ModelFeedBackRequest(); // ModelFeedBackRequest | The model feedback request object
+
+            try
+            {
+                // Adds an evaluation feedback to the model against a given minibatch id.
+                ModelFeedBackRequest result = apiInstance.AddModelFeedback(modelFeedBackRequest);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.AddModelFeedback: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelFeedBackRequest** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
+
+### Return type
+
+[**ModelFeedBackRequest**](ModelFeedBackRequest.md)
 
 ### Authorization
 

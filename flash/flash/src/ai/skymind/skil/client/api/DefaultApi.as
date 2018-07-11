@@ -33,6 +33,7 @@ import ai.skymind.skil.client.model.LogRequest;
 import ai.skymind.skil.client.model.MetaData;
 import ai.skymind.skil.client.model.MinibatchEntity;
 import ai.skymind.skil.client.model.ModelEntity;
+import ai.skymind.skil.client.model.ModelFeedBackRequest;
 import ai.skymind.skil.client.model.ModelHistoryEntity;
 import ai.skymind.skil.client.model.ModelInstanceEntity;
 import ai.skymind.skil.client.model.ModelStatus;
@@ -69,6 +70,7 @@ public class DefaultApi extends SwaggerApi {
         public static const event_add_example_to_minibatch: String = "add_example_to_minibatch";
         public static const event_add_experiment: String = "add_experiment";
         public static const event_add_minibatch: String = "add_minibatch";
+        public static const event_add_model_feedback: String = "add_model_feedback";
         public static const event_add_model_history: String = "add_model_history";
         public static const event_add_model_instance: String = "add_model_instance";
         public static const event_aggregate_model_results: String = "aggregate_model_results";
@@ -279,6 +281,36 @@ public class DefaultApi extends SwaggerApi {
         token.completionEventType = "add_minibatch";
 
         token.returnType = MinibatchEntity;
+        return requestId;
+
+    }
+
+    /*
+     * Returns ModelFeedBackRequest 
+     */
+    public function add_model_feedback (modelFeedBackRequest: ModelFeedBackRequest): String {
+        // create path and map variables
+        var path: String = "/model/feedback".replace(/{format}/g,"xml");
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, modelFeedBackRequest, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "add_model_feedback";
+
+        token.returnType = ModelFeedBackRequest;
         return requestId;
 
     }

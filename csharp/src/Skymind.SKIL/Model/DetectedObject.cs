@@ -33,20 +33,20 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DetectedObject" /> class.
         /// </summary>
-        /// <param name="CenterX">CenterX.</param>
-        /// <param name="CenterY">CenterY.</param>
-        /// <param name="Width">Width.</param>
-        /// <param name="Height">Height.</param>
-        /// <param name="PredictedClasses">PredictedClasses.</param>
-        /// <param name="Confidences">Confidences.</param>
-        public DetectedObject(float? CenterX = default(float?), float? CenterY = default(float?), float? Width = default(float?), float? Height = default(float?), List<string> PredictedClasses = default(List<string>), List<float?> Confidences = default(List<float?>))
+        /// <param name="centerX">centerX.</param>
+        /// <param name="centerY">centerY.</param>
+        /// <param name="width">width.</param>
+        /// <param name="height">height.</param>
+        /// <param name="predictedClasses">predictedClasses.</param>
+        /// <param name="confidences">confidences.</param>
+        public DetectedObject(float? centerX = default(float?), float? centerY = default(float?), float? width = default(float?), float? height = default(float?), List<string> predictedClasses = default(List<string>), List<float?> confidences = default(List<float?>))
         {
-            this.CenterX = CenterX;
-            this.CenterY = CenterY;
-            this.Width = Width;
-            this.Height = Height;
-            this.PredictedClasses = PredictedClasses;
-            this.Confidences = Confidences;
+            this.CenterX = centerX;
+            this.CenterY = centerY;
+            this.Width = width;
+            this.Height = height;
+            this.PredictedClasses = predictedClasses;
+            this.Confidences = confidences;
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

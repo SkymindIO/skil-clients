@@ -33,12 +33,12 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DetectionResult" /> class.
         /// </summary>
-        /// <param name="Id">Id.</param>
-        /// <param name="Objects">Objects.</param>
-        public DetectionResult(string Id = default(string), List<DetectedObject> Objects = default(List<DetectedObject>))
+        /// <param name="id">id.</param>
+        /// <param name="objects">objects.</param>
+        public DetectionResult(string id = default(string), List<DetectedObject> objects = default(List<DetectedObject>))
         {
-            this.Id = Id;
-            this.Objects = Objects;
+            this.Id = id;
+            this.Objects = objects;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

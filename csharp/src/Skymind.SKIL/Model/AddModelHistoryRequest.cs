@@ -33,12 +33,12 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AddModelHistoryRequest" /> class.
         /// </summary>
-        /// <param name="ModelName">Name of the model history / workspace.</param>
-        /// <param name="ModelLabels">Model history / workspace labels.</param>
-        public AddModelHistoryRequest(string ModelName = default(string), string ModelLabels = default(string))
+        /// <param name="modelName">Name of the model history / workspace.</param>
+        /// <param name="modelLabels">Model history / workspace labels.</param>
+        public AddModelHistoryRequest(string modelName = default(string), string modelLabels = default(string))
         {
-            this.ModelName = ModelName;
-            this.ModelLabels = ModelLabels;
+            this.ModelName = modelName;
+            this.ModelLabels = modelLabels;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

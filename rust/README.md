@@ -26,6 +26,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**add_example_to_minibatch**](docs/DefaultApi.md#add_example_to_minibatch) | **Post** /model/example | Adds an example to a minibatch
 *DefaultApi* | [**add_experiment**](docs/DefaultApi.md#add_experiment) | **Post** /experiment | Add an experiment, given an experiment entity
 *DefaultApi* | [**add_minibatch**](docs/DefaultApi.md#add_minibatch) | **Post** /model/minibatch | Adds a minibatch
+*DefaultApi* | [**add_model_feedback**](docs/DefaultApi.md#add_model_feedback) | **Post** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 *DefaultApi* | [**add_model_history**](docs/DefaultApi.md#add_model_history) | **Post** /modelhistory | Add a model history / workspace
 *DefaultApi* | [**add_model_instance**](docs/DefaultApi.md#add_model_instance) | **Post** /model | Adds a model
 *DefaultApi* | [**aggregate_model_results**](docs/DefaultApi.md#aggregate_model_results) | **Post** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -122,6 +123,7 @@ Class | Method | HTTP request | Description
  - [MetaData](docs/MetaData.md)
  - [MinibatchEntity](docs/MinibatchEntity.md)
  - [ModelEntity](docs/ModelEntity.md)
+ - [ModelFeedBackRequest](docs/ModelFeedBackRequest.md)
  - [ModelHistoryEntity](docs/ModelHistoryEntity.md)
  - [ModelInstanceEntity](docs/ModelInstanceEntity.md)
  - [ModelResponse](docs/ModelResponse.md)

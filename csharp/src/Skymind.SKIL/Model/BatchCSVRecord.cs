@@ -38,17 +38,17 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchCSVRecord" /> class.
         /// </summary>
-        /// <param name="Records">Records (required).</param>
-        public BatchCSVRecord(List<SingleCSVRecord> Records = default(List<SingleCSVRecord>))
+        /// <param name="records">records (required).</param>
+        public BatchCSVRecord(List<SingleCSVRecord> records = default(List<SingleCSVRecord>))
         {
-            // to ensure "Records" is required (not null)
-            if (Records == null)
+            // to ensure "records" is required (not null)
+            if (records == null)
             {
-                throw new InvalidDataException("Records is a required property for BatchCSVRecord and cannot be null");
+                throw new InvalidDataException("records is a required property for BatchCSVRecord and cannot be null");
             }
             else
             {
-                this.Records = Records;
+                this.Records = records;
             }
         }
         
@@ -75,7 +75,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

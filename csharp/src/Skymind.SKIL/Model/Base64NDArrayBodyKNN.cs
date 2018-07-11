@@ -38,30 +38,30 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Base64NDArrayBodyKNN" /> class.
         /// </summary>
-        /// <param name="Ndarray">the array to run the search on. Note that this must be a row vector (required).</param>
-        /// <param name="K">the number of results to retrieve (required).</param>
-        /// <param name="ForceFillK">ForceFillK.</param>
-        public Base64NDArrayBodyKNN(string Ndarray = default(string), int? K = default(int?), bool? ForceFillK = default(bool?))
+        /// <param name="ndarray">the array to run the search on. Note that this must be a row vector (required).</param>
+        /// <param name="k">the number of results to retrieve (required).</param>
+        /// <param name="forceFillK">If &#39;True&#39; it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched..</param>
+        public Base64NDArrayBodyKNN(string ndarray = default(string), int? k = default(int?), bool? forceFillK = default(bool?))
         {
-            // to ensure "Ndarray" is required (not null)
-            if (Ndarray == null)
+            // to ensure "ndarray" is required (not null)
+            if (ndarray == null)
             {
-                throw new InvalidDataException("Ndarray is a required property for Base64NDArrayBodyKNN and cannot be null");
+                throw new InvalidDataException("ndarray is a required property for Base64NDArrayBodyKNN and cannot be null");
             }
             else
             {
-                this.Ndarray = Ndarray;
+                this.Ndarray = ndarray;
             }
-            // to ensure "K" is required (not null)
-            if (K == null)
+            // to ensure "k" is required (not null)
+            if (k == null)
             {
-                throw new InvalidDataException("K is a required property for Base64NDArrayBodyKNN and cannot be null");
+                throw new InvalidDataException("k is a required property for Base64NDArrayBodyKNN and cannot be null");
             }
             else
             {
-                this.K = K;
+                this.K = k;
             }
-            this.ForceFillK = ForceFillK;
+            this.ForceFillK = forceFillK;
         }
         
         /// <summary>
@@ -79,8 +79,9 @@ namespace Skymind.SKIL.Model
         public int? K { get; set; }
 
         /// <summary>
-        /// Gets or Sets ForceFillK
+        /// If &#39;True&#39; it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.
         /// </summary>
+        /// <value>If &#39;True&#39; it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.</value>
         [DataMember(Name="forceFillK", EmitDefaultValue=false)]
         public bool? ForceFillK { get; set; }
 
@@ -103,7 +104,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

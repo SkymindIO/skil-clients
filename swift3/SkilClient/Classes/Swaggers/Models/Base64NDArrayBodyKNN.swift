@@ -14,6 +14,7 @@ open class Base64NDArrayBodyKNN: JSONEncodable {
     public var ndarray: String?
     /** the number of results to retrieve */
     public var k: Int32?
+    /** If &#39;True&#39; it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched. */
     public var forceFillK: Bool?
 
     public init() {}

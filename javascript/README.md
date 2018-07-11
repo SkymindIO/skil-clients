@@ -130,6 +130,7 @@ Class | Method | HTTP request | Description
 *SkilClient.DefaultApi* | [**addExampleToMinibatch**](docs/DefaultApi.md#addExampleToMinibatch) | **POST** /model/example | Adds an example to a minibatch
 *SkilClient.DefaultApi* | [**addExperiment**](docs/DefaultApi.md#addExperiment) | **POST** /experiment | Add an experiment, given an experiment entity
 *SkilClient.DefaultApi* | [**addMinibatch**](docs/DefaultApi.md#addMinibatch) | **POST** /model/minibatch | Adds a minibatch
+*SkilClient.DefaultApi* | [**addModelFeedback**](docs/DefaultApi.md#addModelFeedback) | **POST** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 *SkilClient.DefaultApi* | [**addModelHistory**](docs/DefaultApi.md#addModelHistory) | **POST** /modelhistory | Add a model history / workspace
 *SkilClient.DefaultApi* | [**addModelInstance**](docs/DefaultApi.md#addModelInstance) | **POST** /model | Adds a model
 *SkilClient.DefaultApi* | [**aggregateModelResults**](docs/DefaultApi.md#aggregateModelResults) | **POST** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -226,6 +227,7 @@ Class | Method | HTTP request | Description
  - [SkilClient.MetaData](docs/MetaData.md)
  - [SkilClient.MinibatchEntity](docs/MinibatchEntity.md)
  - [SkilClient.ModelEntity](docs/ModelEntity.md)
+ - [SkilClient.ModelFeedBackRequest](docs/ModelFeedBackRequest.md)
  - [SkilClient.ModelHistoryEntity](docs/ModelHistoryEntity.md)
  - [SkilClient.ModelInstanceEntity](docs/ModelInstanceEntity.md)
  - [SkilClient.ModelResponse](docs/ModelResponse.md)

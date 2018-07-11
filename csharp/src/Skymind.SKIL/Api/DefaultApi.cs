@@ -130,6 +130,27 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of MinibatchEntity</returns>
         ApiResponse<MinibatchEntity> AddMinibatchWithHttpInfo (MinibatchEntity minibatchEntity);
         /// <summary>
+        /// Adds an evaluation feedback to the model against a given minibatch id.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelFeedBackRequest">The model feedback request object</param>
+        /// <returns>ModelFeedBackRequest</returns>
+        ModelFeedBackRequest AddModelFeedback (ModelFeedBackRequest modelFeedBackRequest);
+
+        /// <summary>
+        /// Adds an evaluation feedback to the model against a given minibatch id.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelFeedBackRequest">The model feedback request object</param>
+        /// <returns>ApiResponse of ModelFeedBackRequest</returns>
+        ApiResponse<ModelFeedBackRequest> AddModelFeedbackWithHttpInfo (ModelFeedBackRequest modelFeedBackRequest);
+        /// <summary>
         /// Add a model history / workspace
         /// </summary>
         /// <remarks>
@@ -1673,6 +1694,27 @@ namespace Skymind.SKIL.Api
         /// <returns>Task of ApiResponse (MinibatchEntity)</returns>
         System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> AddMinibatchAsyncWithHttpInfo (MinibatchEntity minibatchEntity);
         /// <summary>
+        /// Adds an evaluation feedback to the model against a given minibatch id.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelFeedBackRequest">The model feedback request object</param>
+        /// <returns>Task of ModelFeedBackRequest</returns>
+        System.Threading.Tasks.Task<ModelFeedBackRequest> AddModelFeedbackAsync (ModelFeedBackRequest modelFeedBackRequest);
+
+        /// <summary>
+        /// Adds an evaluation feedback to the model against a given minibatch id.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelFeedBackRequest">The model feedback request object</param>
+        /// <returns>Task of ApiResponse (ModelFeedBackRequest)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ModelFeedBackRequest>> AddModelFeedbackAsyncWithHttpInfo (ModelFeedBackRequest modelFeedBackRequest);
+        /// <summary>
         /// Add a model history / workspace
         /// </summary>
         /// <remarks>
@@ -3124,7 +3166,7 @@ namespace Skymind.SKIL.Api
         /// <returns></returns>
         public DefaultApi(String basePath)
         {
-            this.Configuration = new Configuration { BasePath = basePath };
+            this.Configuration = new Skymind.SKIL.Client.Configuration { BasePath = basePath };
 
             ExceptionFactory = Skymind.SKIL.Client.Configuration.DefaultExceptionFactory;
         }
@@ -3135,10 +3177,10 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public DefaultApi(Configuration configuration = null)
+        public DefaultApi(Skymind.SKIL.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
-                this.Configuration = Configuration.Default;
+                this.Configuration = Skymind.SKIL.Client.Configuration.Default;
             else
                 this.Configuration = configuration;
 
@@ -3168,7 +3210,7 @@ namespace Skymind.SKIL.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Configuration Configuration {get; set;}
+        public Skymind.SKIL.Client.Configuration Configuration {get; set;}
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -3235,7 +3277,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/revisions/evaluations/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -3244,19 +3286,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (evaluationResultsEntity != null && evaluationResultsEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(evaluationResultsEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(evaluationResultsEntity); // http body (model) parameter
             }
             else
             {
@@ -3264,13 +3306,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -3284,7 +3326,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<EvaluationResultsEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EvaluationResultsEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
+                (EvaluationResultsEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
         }
 
         /// <summary>
@@ -3315,7 +3357,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/revisions/evaluations/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -3324,19 +3366,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (evaluationResultsEntity != null && evaluationResultsEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(evaluationResultsEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(evaluationResultsEntity); // http body (model) parameter
             }
             else
             {
@@ -3344,13 +3386,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -3364,7 +3406,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<EvaluationResultsEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EvaluationResultsEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
+                (EvaluationResultsEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
         }
 
         /// <summary>
@@ -3394,7 +3436,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/exampleForBatch";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -3403,19 +3445,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (addExampleRequest != null && addExampleRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(addExampleRequest); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(addExampleRequest); // http body (model) parameter
             }
             else
             {
@@ -3423,13 +3465,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -3443,7 +3485,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<AddExampleRequest>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (AddExampleRequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddExampleRequest)));
+                (AddExampleRequest) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddExampleRequest)));
         }
 
         /// <summary>
@@ -3474,7 +3516,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/exampleForBatch";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -3483,19 +3525,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (addExampleRequest != null && addExampleRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(addExampleRequest); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(addExampleRequest); // http body (model) parameter
             }
             else
             {
@@ -3503,13 +3545,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -3523,7 +3565,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<AddExampleRequest>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (AddExampleRequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddExampleRequest)));
+                (AddExampleRequest) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddExampleRequest)));
         }
 
         /// <summary>
@@ -3553,7 +3595,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/example";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -3562,19 +3604,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (exampleEntity != null && exampleEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(exampleEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(exampleEntity); // http body (model) parameter
             }
             else
             {
@@ -3582,13 +3624,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -3602,7 +3644,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExampleEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExampleEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExampleEntity)));
+                (ExampleEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExampleEntity)));
         }
 
         /// <summary>
@@ -3633,7 +3675,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/example";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -3642,19 +3684,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (exampleEntity != null && exampleEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(exampleEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(exampleEntity); // http body (model) parameter
             }
             else
             {
@@ -3662,13 +3704,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -3682,7 +3724,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExampleEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExampleEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExampleEntity)));
+                (ExampleEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExampleEntity)));
         }
 
         /// <summary>
@@ -3712,7 +3754,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -3721,19 +3763,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
             }
             else
             {
@@ -3741,13 +3783,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -3761,7 +3803,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExperimentEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
         }
 
         /// <summary>
@@ -3792,7 +3834,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -3801,19 +3843,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
             }
             else
             {
@@ -3821,13 +3863,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -3841,7 +3883,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExperimentEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
         }
 
         /// <summary>
@@ -3871,7 +3913,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/minibatch";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -3880,19 +3922,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (minibatchEntity != null && minibatchEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(minibatchEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(minibatchEntity); // http body (model) parameter
             }
             else
             {
@@ -3900,13 +3942,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -3920,7 +3962,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MinibatchEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MinibatchEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
+                (MinibatchEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
         }
 
         /// <summary>
@@ -3951,7 +3993,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/minibatch";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -3960,19 +4002,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (minibatchEntity != null && minibatchEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(minibatchEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(minibatchEntity); // http body (model) parameter
             }
             else
             {
@@ -3980,13 +4022,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4000,7 +4042,166 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MinibatchEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MinibatchEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
+                (MinibatchEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
+        }
+
+        /// <summary>
+        /// Adds an evaluation feedback to the model against a given minibatch id. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelFeedBackRequest">The model feedback request object</param>
+        /// <returns>ModelFeedBackRequest</returns>
+        public ModelFeedBackRequest AddModelFeedback (ModelFeedBackRequest modelFeedBackRequest)
+        {
+             ApiResponse<ModelFeedBackRequest> localVarResponse = AddModelFeedbackWithHttpInfo(modelFeedBackRequest);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Adds an evaluation feedback to the model against a given minibatch id. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelFeedBackRequest">The model feedback request object</param>
+        /// <returns>ApiResponse of ModelFeedBackRequest</returns>
+        public ApiResponse< ModelFeedBackRequest > AddModelFeedbackWithHttpInfo (ModelFeedBackRequest modelFeedBackRequest)
+        {
+            // verify the required parameter 'modelFeedBackRequest' is set
+            if (modelFeedBackRequest == null)
+                throw new ApiException(400, "Missing required parameter 'modelFeedBackRequest' when calling DefaultApi->AddModelFeedback");
+
+            var localVarPath = "/model/feedback";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelFeedBackRequest != null && modelFeedBackRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(modelFeedBackRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = modelFeedBackRequest; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddModelFeedback", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelFeedBackRequest>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelFeedBackRequest) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelFeedBackRequest)));
+        }
+
+        /// <summary>
+        /// Adds an evaluation feedback to the model against a given minibatch id. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelFeedBackRequest">The model feedback request object</param>
+        /// <returns>Task of ModelFeedBackRequest</returns>
+        public async System.Threading.Tasks.Task<ModelFeedBackRequest> AddModelFeedbackAsync (ModelFeedBackRequest modelFeedBackRequest)
+        {
+             ApiResponse<ModelFeedBackRequest> localVarResponse = await AddModelFeedbackAsyncWithHttpInfo(modelFeedBackRequest);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Adds an evaluation feedback to the model against a given minibatch id. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelFeedBackRequest">The model feedback request object</param>
+        /// <returns>Task of ApiResponse (ModelFeedBackRequest)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ModelFeedBackRequest>> AddModelFeedbackAsyncWithHttpInfo (ModelFeedBackRequest modelFeedBackRequest)
+        {
+            // verify the required parameter 'modelFeedBackRequest' is set
+            if (modelFeedBackRequest == null)
+                throw new ApiException(400, "Missing required parameter 'modelFeedBackRequest' when calling DefaultApi->AddModelFeedback");
+
+            var localVarPath = "/model/feedback";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (modelFeedBackRequest != null && modelFeedBackRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(modelFeedBackRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = modelFeedBackRequest; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddModelFeedback", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ModelFeedBackRequest>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ModelFeedBackRequest) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelFeedBackRequest)));
         }
 
         /// <summary>
@@ -4030,7 +4231,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/modelhistory";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4039,19 +4240,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (addModelHistoryRequest != null && addModelHistoryRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(addModelHistoryRequest); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(addModelHistoryRequest); // http body (model) parameter
             }
             else
             {
@@ -4059,13 +4260,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4079,7 +4280,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+                (ModelHistoryEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
         }
 
         /// <summary>
@@ -4110,7 +4311,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/modelhistory";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4119,19 +4320,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (addModelHistoryRequest != null && addModelHistoryRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(addModelHistoryRequest); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(addModelHistoryRequest); // http body (model) parameter
             }
             else
             {
@@ -4139,13 +4340,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4159,7 +4360,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+                (ModelHistoryEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
         }
 
         /// <summary>
@@ -4189,7 +4390,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4198,19 +4399,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (modelInstanceEntity != null && modelInstanceEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(modelInstanceEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(modelInstanceEntity); // http body (model) parameter
             }
             else
             {
@@ -4218,13 +4419,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4238,7 +4439,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+                (ModelInstanceEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
         }
 
         /// <summary>
@@ -4269,7 +4470,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4278,19 +4479,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (modelInstanceEntity != null && modelInstanceEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(modelInstanceEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(modelInstanceEntity); // http body (model) parameter
             }
             else
             {
@@ -4298,13 +4499,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4318,7 +4519,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+                (ModelInstanceEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
         }
 
         /// <summary>
@@ -4348,7 +4549,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/aggregateresults";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4357,19 +4558,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (aggregatePrediction != null && aggregatePrediction.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(aggregatePrediction); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(aggregatePrediction); // http body (model) parameter
             }
             else
             {
@@ -4377,13 +4578,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4397,7 +4598,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<EvaluationResultsEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EvaluationResultsEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
+                (EvaluationResultsEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
         }
 
         /// <summary>
@@ -4428,7 +4629,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/aggregateresults";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4437,19 +4638,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (aggregatePrediction != null && aggregatePrediction.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(aggregatePrediction); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(aggregatePrediction); // http body (model) parameter
             }
             else
             {
@@ -4457,13 +4658,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4477,7 +4678,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<EvaluationResultsEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EvaluationResultsEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
+                (EvaluationResultsEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
         }
 
         /// <summary>
@@ -4517,7 +4718,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4526,21 +4727,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -4548,13 +4749,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4568,7 +4769,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ClassificationResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ClassificationResult) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClassificationResult)));
+                (ClassificationResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClassificationResult)));
         }
 
         /// <summary>
@@ -4609,7 +4810,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4618,21 +4819,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -4640,13 +4841,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4660,7 +4861,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ClassificationResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ClassificationResult) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClassificationResult)));
+                (ClassificationResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClassificationResult)));
         }
 
         /// <summary>
@@ -4700,7 +4901,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4709,21 +4910,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -4731,13 +4932,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4751,7 +4952,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -4792,7 +4993,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4801,21 +5002,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -4823,13 +5024,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4843,7 +5044,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -4880,7 +5081,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4889,28 +5090,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (image != null) localVarFileParams.Add("image", Configuration.ApiClient.ParameterToFile("image", image));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (image != null) localVarFileParams.Add("image", this.Configuration.ApiClient.ParameterToFile("image", image));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -4924,7 +5125,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ClassificationResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ClassificationResult) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClassificationResult)));
+                (ClassificationResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClassificationResult)));
         }
 
         /// <summary>
@@ -4962,7 +5163,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -4971,28 +5172,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (image != null) localVarFileParams.Add("image", Configuration.ApiClient.ParameterToFile("image", image));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (image != null) localVarFileParams.Add("image", this.Configuration.ApiClient.ParameterToFile("image", image));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5006,7 +5207,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ClassificationResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ClassificationResult) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClassificationResult)));
+                (ClassificationResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClassificationResult)));
         }
 
         /// <summary>
@@ -5036,7 +5237,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/revisions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5045,19 +5246,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (modelHistoryEntity != null && modelHistoryEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(modelHistoryEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(modelHistoryEntity); // http body (model) parameter
             }
             else
             {
@@ -5065,13 +5266,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5085,7 +5286,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+                (ModelHistoryEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
         }
 
         /// <summary>
@@ -5116,7 +5317,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/revisions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5125,19 +5326,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (modelHistoryEntity != null && modelHistoryEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(modelHistoryEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(modelHistoryEntity); // http body (model) parameter
             }
             else
             {
@@ -5145,13 +5346,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5165,7 +5366,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+                (ModelHistoryEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
         }
 
         /// <summary>
@@ -5195,7 +5396,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5203,26 +5404,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+            if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5236,7 +5437,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
         }
 
         /// <summary>
@@ -5267,7 +5468,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5275,26 +5476,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+            if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5308,7 +5509,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
         }
 
         /// <summary>
@@ -5343,7 +5544,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}/model/{modelId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5351,27 +5552,27 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
-            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", this.Configuration.ApiClient.ParameterToString(modelId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5385,7 +5586,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
         }
 
         /// <summary>
@@ -5421,7 +5622,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}/model/{modelId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5429,27 +5630,27 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
-            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", this.Configuration.ApiClient.ParameterToString(modelId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5463,7 +5664,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
         }
 
         /// <summary>
@@ -5493,7 +5694,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/modelhistory/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5501,26 +5702,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5534,7 +5735,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
         }
 
         /// <summary>
@@ -5565,7 +5766,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/modelhistory/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5573,26 +5774,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5606,7 +5807,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
         }
 
         /// <summary>
@@ -5635,7 +5836,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5643,26 +5844,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5706,7 +5907,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5714,26 +5915,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5782,7 +5983,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}/model";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5791,20 +5992,20 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -5812,13 +6013,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5832,7 +6033,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
+                (ModelEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
         }
 
         /// <summary>
@@ -5868,7 +6069,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}/model";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5877,20 +6078,20 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -5898,13 +6099,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5918,7 +6119,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
+                (ModelEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
         }
 
         /// <summary>
@@ -5948,7 +6149,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -5957,19 +6158,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -5977,13 +6178,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -5997,7 +6198,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<DeploymentResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (DeploymentResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
+                (DeploymentResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
         }
 
         /// <summary>
@@ -6028,7 +6229,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6037,19 +6238,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -6057,13 +6258,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6077,7 +6278,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<DeploymentResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (DeploymentResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
+                (DeploymentResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
         }
 
         /// <summary>
@@ -6107,7 +6308,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6115,26 +6316,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6148,7 +6349,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
         }
 
         /// <summary>
@@ -6179,7 +6380,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6187,26 +6388,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6220,7 +6421,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
         }
 
         /// <summary>
@@ -6250,7 +6451,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6258,26 +6459,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6291,7 +6492,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<DeploymentResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (DeploymentResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
+                (DeploymentResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
         }
 
         /// <summary>
@@ -6322,7 +6523,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6330,26 +6531,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6363,7 +6564,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<DeploymentResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (DeploymentResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
+                (DeploymentResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DeploymentResponse)));
         }
 
         /// <summary>
@@ -6388,7 +6589,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployments";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6396,25 +6597,25 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6428,7 +6629,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<DeploymentResponse>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<DeploymentResponse>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<DeploymentResponse>)));
+                (List<DeploymentResponse>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<DeploymentResponse>)));
         }
 
         /// <summary>
@@ -6454,7 +6655,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployments";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6462,25 +6663,25 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6494,7 +6695,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<DeploymentResponse>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<DeploymentResponse>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<DeploymentResponse>)));
+                (List<DeploymentResponse>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<DeploymentResponse>)));
         }
 
         /// <summary>
@@ -6549,7 +6750,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6558,31 +6759,31 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (id != null) localVarFormParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // form parameter
-            if (needsPreprocessing != null) localVarFormParams.Add("needsPreprocessing", Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
-            if (threshold != null) localVarFormParams.Add("threshold", Configuration.ApiClient.ParameterToString(threshold)); // form parameter
-            if (imageFile != null) localVarFileParams.Add("imageFile", Configuration.ApiClient.ParameterToFile("imageFile", imageFile));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (id != null) localVarFormParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // form parameter
+            if (needsPreprocessing != null) localVarFormParams.Add("needsPreprocessing", this.Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
+            if (threshold != null) localVarFormParams.Add("threshold", this.Configuration.ApiClient.ParameterToString(threshold)); // form parameter
+            if (imageFile != null) localVarFileParams.Add("imageFile", this.Configuration.ApiClient.ParameterToFile("imageFile", imageFile));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6596,7 +6797,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<DetectionResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (DetectionResult) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DetectionResult)));
+                (DetectionResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DetectionResult)));
         }
 
         /// <summary>
@@ -6652,7 +6853,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6661,31 +6862,31 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (id != null) localVarFormParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // form parameter
-            if (needsPreprocessing != null) localVarFormParams.Add("needsPreprocessing", Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
-            if (threshold != null) localVarFormParams.Add("threshold", Configuration.ApiClient.ParameterToString(threshold)); // form parameter
-            if (imageFile != null) localVarFileParams.Add("imageFile", Configuration.ApiClient.ParameterToFile("imageFile", imageFile));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (id != null) localVarFormParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // form parameter
+            if (needsPreprocessing != null) localVarFormParams.Add("needsPreprocessing", this.Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
+            if (threshold != null) localVarFormParams.Add("threshold", this.Configuration.ApiClient.ParameterToString(threshold)); // form parameter
+            if (imageFile != null) localVarFileParams.Add("imageFile", this.Configuration.ApiClient.ParameterToFile("imageFile", imageFile));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6699,7 +6900,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<DetectionResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (DetectionResult) Configuration.ApiClient.Deserialize(localVarResponse, typeof(DetectionResult)));
+                (DetectionResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DetectionResult)));
         }
 
         /// <summary>
@@ -6729,7 +6930,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/best";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6738,19 +6939,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (bestModel != null && bestModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(bestModel); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(bestModel); // http body (model) parameter
             }
             else
             {
@@ -6758,13 +6959,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6778,7 +6979,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+                (ModelInstanceEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
         }
 
         /// <summary>
@@ -6809,7 +7010,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/best";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6818,19 +7019,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (bestModel != null && bestModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(bestModel); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(bestModel); // http body (model) parameter
             }
             else
             {
@@ -6838,13 +7039,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6858,7 +7059,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+                (ModelInstanceEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
         }
 
         /// <summary>
@@ -6888,7 +7089,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/revisions/evaluations/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6896,26 +7097,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -6929,7 +7130,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<EvaluationResultsEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<EvaluationResultsEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EvaluationResultsEntity>)));
+                (List<EvaluationResultsEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EvaluationResultsEntity>)));
         }
 
         /// <summary>
@@ -6960,7 +7161,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/revisions/evaluations/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -6968,26 +7169,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7001,7 +7202,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<EvaluationResultsEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<EvaluationResultsEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EvaluationResultsEntity>)));
+                (List<EvaluationResultsEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EvaluationResultsEntity>)));
         }
 
         /// <summary>
@@ -7031,7 +7232,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/example/{minibatchId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7039,26 +7240,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (minibatchId != null) localVarPathParams.Add("minibatchId", Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
+            if (minibatchId != null) localVarPathParams.Add("minibatchId", this.Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7072,7 +7273,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<ExampleEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ExampleEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExampleEntity>)));
+                (List<ExampleEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExampleEntity>)));
         }
 
         /// <summary>
@@ -7103,7 +7304,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/example/{minibatchId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7111,26 +7312,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (minibatchId != null) localVarPathParams.Add("minibatchId", Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
+            if (minibatchId != null) localVarPathParams.Add("minibatchId", this.Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7144,7 +7345,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<ExampleEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ExampleEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExampleEntity>)));
+                (List<ExampleEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExampleEntity>)));
         }
 
         /// <summary>
@@ -7174,7 +7375,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7182,26 +7383,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+            if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7215,7 +7416,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExperimentEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
         }
 
         /// <summary>
@@ -7246,7 +7447,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7254,26 +7455,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+            if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7287,7 +7488,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExperimentEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
         }
 
         /// <summary>
@@ -7317,7 +7518,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiments/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7325,26 +7526,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7358,7 +7559,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExperimentEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
         }
 
         /// <summary>
@@ -7389,7 +7590,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiments/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7397,26 +7598,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7430,7 +7631,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExperimentEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
         }
 
         /// <summary>
@@ -7460,7 +7661,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/minibatch/{minibatchId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7468,26 +7669,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (minibatchId != null) localVarPathParams.Add("minibatchId", Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
+            if (minibatchId != null) localVarPathParams.Add("minibatchId", this.Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7501,7 +7702,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MinibatchEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MinibatchEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
+                (MinibatchEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
         }
 
         /// <summary>
@@ -7532,7 +7733,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/minibatch/{minibatchId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7540,26 +7741,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (minibatchId != null) localVarPathParams.Add("minibatchId", Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
+            if (minibatchId != null) localVarPathParams.Add("minibatchId", this.Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7573,7 +7774,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MinibatchEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MinibatchEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
+                (MinibatchEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MinibatchEntity)));
         }
 
         /// <summary>
@@ -7603,7 +7804,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/revision/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7611,26 +7812,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7644,7 +7845,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+                (ModelHistoryEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
         }
 
         /// <summary>
@@ -7675,7 +7876,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/revision/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7683,26 +7884,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7716,7 +7917,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+                (ModelHistoryEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
         }
 
         /// <summary>
@@ -7746,7 +7947,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7754,26 +7955,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7787,7 +7988,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+                (ModelInstanceEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
         }
 
         /// <summary>
@@ -7818,7 +8019,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/model/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7826,26 +8027,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
+            if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7859,7 +8060,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelInstanceEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+                (ModelInstanceEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
         }
 
         /// <summary>
@@ -7889,7 +8090,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment/{experimentID}/models";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7897,26 +8098,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+            if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -7930,7 +8131,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<ModelInstanceEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ModelInstanceEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelInstanceEntity>)));
+                (List<ModelInstanceEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelInstanceEntity>)));
         }
 
         /// <summary>
@@ -7961,7 +8162,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment/{experimentID}/models";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -7969,26 +8170,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+            if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8002,7 +8203,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<ModelInstanceEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ModelInstanceEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelInstanceEntity>)));
+                (List<ModelInstanceEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelInstanceEntity>)));
         }
 
         /// <summary>
@@ -8037,7 +8238,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8046,27 +8247,27 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8080,7 +8281,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageTransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
+                (ImageTransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
         }
 
         /// <summary>
@@ -8116,7 +8317,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8125,27 +8326,27 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8159,7 +8360,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageTransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
+                (ImageTransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
         }
 
         /// <summary>
@@ -8199,7 +8400,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8208,21 +8409,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -8230,13 +8431,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8250,7 +8451,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageTransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
+                (ImageTransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
         }
 
         /// <summary>
@@ -8291,7 +8492,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8300,21 +8501,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -8322,13 +8523,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8342,7 +8543,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageTransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
+                (ImageTransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
         }
 
         /// <summary>
@@ -8382,7 +8583,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8391,21 +8592,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -8413,13 +8614,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8433,7 +8634,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<JsonArrayResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (JsonArrayResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonArrayResponse)));
+                (JsonArrayResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonArrayResponse)));
         }
 
         /// <summary>
@@ -8474,7 +8675,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8483,21 +8684,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -8505,13 +8706,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8525,7 +8726,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<JsonArrayResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (JsonArrayResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonArrayResponse)));
+                (JsonArrayResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonArrayResponse)));
         }
 
         /// <summary>
@@ -8565,7 +8766,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knn";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8574,21 +8775,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (knnName != null) localVarPathParams.Add("knnName", Configuration.ApiClient.ParameterToString(knnName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (knnName != null) localVarPathParams.Add("knnName", this.Configuration.ApiClient.ParameterToString(knnName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -8596,13 +8797,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8616,7 +8817,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<NearestNeighborsResults>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (NearestNeighborsResults) Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
+                (NearestNeighborsResults) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
         }
 
         /// <summary>
@@ -8657,7 +8858,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knn";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8666,21 +8867,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (knnName != null) localVarPathParams.Add("knnName", Configuration.ApiClient.ParameterToString(knnName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (knnName != null) localVarPathParams.Add("knnName", this.Configuration.ApiClient.ParameterToString(knnName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -8688,13 +8889,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8708,7 +8909,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<NearestNeighborsResults>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (NearestNeighborsResults) Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
+                (NearestNeighborsResults) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
         }
 
         /// <summary>
@@ -8748,7 +8949,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8757,21 +8958,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (knnName != null) localVarPathParams.Add("knnName", Configuration.ApiClient.ParameterToString(knnName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (knnName != null) localVarPathParams.Add("knnName", this.Configuration.ApiClient.ParameterToString(knnName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -8779,13 +8980,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8799,7 +9000,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<NearestNeighborsResults>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (NearestNeighborsResults) Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
+                (NearestNeighborsResults) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
         }
 
         /// <summary>
@@ -8840,7 +9041,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8849,21 +9050,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (knnName != null) localVarPathParams.Add("knnName", Configuration.ApiClient.ParameterToString(knnName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (knnName != null) localVarPathParams.Add("knnName", this.Configuration.ApiClient.ParameterToString(knnName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -8871,13 +9072,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8891,7 +9092,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<NearestNeighborsResults>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (NearestNeighborsResults) Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
+                (NearestNeighborsResults) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NearestNeighborsResults)));
         }
 
         /// <summary>
@@ -8916,7 +9117,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiments";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8924,25 +9125,25 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -8956,7 +9157,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<ExperimentEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ExperimentEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExperimentEntity>)));
+                (List<ExperimentEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExperimentEntity>)));
         }
 
         /// <summary>
@@ -8982,7 +9183,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiments";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -8990,25 +9191,25 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9022,7 +9223,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<ExperimentEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ExperimentEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExperimentEntity>)));
+                (List<ExperimentEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExperimentEntity>)));
         }
 
         /// <summary>
@@ -9057,7 +9258,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -9065,27 +9266,27 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "text"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9099,7 +9300,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -9135,7 +9336,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -9143,27 +9344,27 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "text"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9177,7 +9378,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -9207,7 +9408,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/login";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -9216,19 +9417,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (credentials != null && credentials.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(credentials); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(credentials); // http body (model) parameter
             }
             else
             {
@@ -9236,13 +9437,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9256,7 +9457,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Token>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Token) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Token)));
+                (Token) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Token)));
         }
 
         /// <summary>
@@ -9287,7 +9488,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/login";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -9296,19 +9497,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (credentials != null && credentials.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(credentials); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(credentials); // http body (model) parameter
             }
             else
             {
@@ -9316,13 +9517,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9336,7 +9537,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Token>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Token) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Token)));
+                (Token) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Token)));
         }
 
         /// <summary>
@@ -9376,7 +9577,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -9385,21 +9586,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -9407,13 +9608,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9427,7 +9628,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<LogBatch>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LogBatch) Configuration.ApiClient.Deserialize(localVarResponse, typeof(LogBatch)));
+                (LogBatch) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LogBatch)));
         }
 
         /// <summary>
@@ -9468,7 +9669,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -9477,21 +9678,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -9499,13 +9700,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9519,7 +9720,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<LogBatch>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LogBatch) Configuration.ApiClient.Deserialize(localVarResponse, typeof(LogBatch)));
+                (LogBatch) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LogBatch)));
         }
 
         /// <summary>
@@ -9554,7 +9755,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -9563,27 +9764,27 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9597,7 +9798,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MetaData>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MetaData) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
+                (MetaData) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
         }
 
         /// <summary>
@@ -9633,7 +9834,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -9642,27 +9843,27 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9676,7 +9877,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MetaData>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MetaData) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
+                (MetaData) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
         }
 
         /// <summary>
@@ -9716,7 +9917,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -9725,21 +9926,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -9747,13 +9948,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9767,7 +9968,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MetaData>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MetaData) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
+                (MetaData) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
         }
 
         /// <summary>
@@ -9808,7 +10009,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -9817,21 +10018,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -9839,13 +10040,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9859,7 +10060,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MetaData>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MetaData) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
+                (MetaData) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetaData)));
         }
 
         /// <summary>
@@ -9899,7 +10100,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}/model/{modelId}/state";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -9908,21 +10109,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
-            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", this.Configuration.ApiClient.ParameterToString(modelId)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -9930,13 +10131,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -9950,7 +10151,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
+                (ModelEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
         }
 
         /// <summary>
@@ -9991,7 +10192,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}/model/{modelId}/state";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10000,21 +10201,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
-            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", this.Configuration.ApiClient.ParameterToString(modelId)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -10022,13 +10223,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10042,7 +10243,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
+                (ModelEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
         }
 
         /// <summary>
@@ -10072,7 +10273,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}/models";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10080,26 +10281,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10113,7 +10314,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<ModelEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ModelEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelEntity>)));
+                (List<ModelEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelEntity>)));
         }
 
         /// <summary>
@@ -10144,7 +10345,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}/models";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10152,26 +10353,26 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10185,7 +10386,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<List<ModelEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ModelEntity>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelEntity>)));
+                (List<ModelEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ModelEntity>)));
         }
 
         /// <summary>
@@ -10222,7 +10423,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelset";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10231,28 +10432,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10266,7 +10467,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelStatus>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelStatus) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
+                (ModelStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
         }
 
         /// <summary>
@@ -10304,7 +10505,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelset";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10313,28 +10514,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10348,7 +10549,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelStatus>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelStatus) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
+                (ModelStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
         }
 
         /// <summary>
@@ -10385,7 +10586,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10394,28 +10595,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10429,7 +10630,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelStatus>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelStatus) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
+                (ModelStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
         }
 
         /// <summary>
@@ -10467,7 +10668,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10476,28 +10677,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10511,7 +10712,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelStatus>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelStatus) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
+                (ModelStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelStatus)));
         }
 
         /// <summary>
@@ -10551,7 +10752,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10560,21 +10761,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -10582,13 +10783,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10602,7 +10803,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MultiClassClassificationResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MultiClassClassificationResult) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiClassClassificationResult)));
+                (MultiClassClassificationResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiClassClassificationResult)));
         }
 
         /// <summary>
@@ -10643,7 +10844,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10652,21 +10853,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -10674,13 +10875,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10694,7 +10895,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MultiClassClassificationResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MultiClassClassificationResult) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiClassClassificationResult)));
+                (MultiClassClassificationResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiClassClassificationResult)));
         }
 
         /// <summary>
@@ -10734,7 +10935,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10743,21 +10944,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -10765,13 +10966,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10785,7 +10986,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MultiPredictResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MultiPredictResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiPredictResponse)));
+                (MultiPredictResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiPredictResponse)));
         }
 
         /// <summary>
@@ -10826,7 +11027,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10835,21 +11036,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -10857,13 +11058,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10877,7 +11078,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<MultiPredictResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MultiPredictResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiPredictResponse)));
+                (MultiPredictResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiPredictResponse)));
         }
 
         /// <summary>
@@ -10917,7 +11118,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -10926,21 +11127,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -10948,13 +11149,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -10968,7 +11169,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Prediction>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Prediction) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
+                (Prediction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
         }
 
         /// <summary>
@@ -11009,7 +11210,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11018,21 +11219,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -11040,13 +11241,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -11060,7 +11261,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Prediction>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Prediction) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
+                (Prediction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
         }
 
         /// <summary>
@@ -11097,7 +11298,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11106,28 +11307,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (image != null) localVarFileParams.Add("image", Configuration.ApiClient.ParameterToFile("image", image));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (image != null) localVarFileParams.Add("image", this.Configuration.ApiClient.ParameterToFile("image", image));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -11141,7 +11342,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Prediction>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Prediction) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
+                (Prediction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
         }
 
         /// <summary>
@@ -11179,7 +11380,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11188,28 +11389,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (image != null) localVarFileParams.Add("image", Configuration.ApiClient.ParameterToFile("image", image));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (image != null) localVarFileParams.Add("image", this.Configuration.ApiClient.ParameterToFile("image", image));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -11223,7 +11424,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Prediction>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Prediction) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
+                (Prediction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
         }
 
         /// <summary>
@@ -11263,7 +11464,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11272,21 +11473,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -11294,13 +11495,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -11314,7 +11515,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Prediction>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Prediction) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
+                (Prediction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
         }
 
         /// <summary>
@@ -11355,7 +11556,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11364,21 +11565,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -11386,13 +11587,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -11406,7 +11607,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Prediction>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Prediction) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
+                (Prediction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
         }
 
         /// <summary>
@@ -11446,7 +11647,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11455,21 +11656,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -11477,13 +11678,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -11497,7 +11698,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<JsonArrayResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (JsonArrayResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonArrayResponse)));
+                (JsonArrayResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonArrayResponse)));
         }
 
         /// <summary>
@@ -11538,7 +11739,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11547,21 +11748,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (modelName != null) localVarPathParams.Add("modelName", Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -11569,13 +11770,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -11589,7 +11790,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<JsonArrayResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (JsonArrayResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonArrayResponse)));
+                (JsonArrayResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonArrayResponse)));
         }
 
         /// <summary>
@@ -11629,7 +11830,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}/model/{modelId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11638,21 +11839,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
-            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", this.Configuration.ApiClient.ParameterToString(modelId)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -11660,13 +11861,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -11680,7 +11881,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
+                (ModelEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
         }
 
         /// <summary>
@@ -11721,7 +11922,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/deployment/{deploymentId}/model/{modelId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11730,21 +11931,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentId != null) localVarPathParams.Add("deploymentId", Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
-            if (modelId != null) localVarPathParams.Add("modelId", Configuration.ApiClient.ParameterToString(modelId)); // path parameter
+            if (deploymentId != null) localVarPathParams.Add("deploymentId", this.Configuration.ApiClient.ParameterToString(deploymentId)); // path parameter
+            if (modelId != null) localVarPathParams.Add("modelId", this.Configuration.ApiClient.ParameterToString(modelId)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
             }
             else
             {
@@ -11752,13 +11953,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -11772,7 +11973,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
+                (ModelEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
         }
 
         /// <summary>
@@ -11809,7 +12010,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11818,21 +12019,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
             }
             else
             {
@@ -11840,13 +12041,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -11860,7 +12061,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<BatchCSVRecord>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (BatchCSVRecord) Configuration.ApiClient.Deserialize(localVarResponse, typeof(BatchCSVRecord)));
+                (BatchCSVRecord) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BatchCSVRecord)));
         }
 
         /// <summary>
@@ -11898,7 +12099,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11907,21 +12108,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
             }
             else
             {
@@ -11929,13 +12130,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -11949,7 +12150,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<BatchCSVRecord>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (BatchCSVRecord) Configuration.ApiClient.Deserialize(localVarResponse, typeof(BatchCSVRecord)));
+                (BatchCSVRecord) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BatchCSVRecord)));
         }
 
         /// <summary>
@@ -11986,7 +12187,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -11995,21 +12196,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
             }
             else
             {
@@ -12017,13 +12218,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -12037,7 +12238,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -12075,7 +12276,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -12084,21 +12285,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
             }
             else
             {
@@ -12106,13 +12307,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -12126,7 +12327,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -12166,7 +12367,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -12175,21 +12376,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (batchImageRecord != null && batchImageRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(batchImageRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(batchImageRecord); // http body (model) parameter
             }
             else
             {
@@ -12197,13 +12398,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -12217,7 +12418,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -12258,7 +12459,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -12267,21 +12468,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (batchImageRecord != null && batchImageRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(batchImageRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(batchImageRecord); // http body (model) parameter
             }
             else
             {
@@ -12289,13 +12490,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -12309,7 +12510,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -12349,7 +12550,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -12358,28 +12559,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (files != null) localVarFormParams.Add("files", Configuration.ApiClient.ParameterToString(files)); // form parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (files != null) localVarFormParams.Add("files", this.Configuration.ApiClient.ParameterToString(files)); // form parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -12393,7 +12594,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -12434,7 +12635,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -12443,28 +12644,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (files != null) localVarFormParams.Add("files", Configuration.ApiClient.ParameterToString(files)); // form parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (files != null) localVarFormParams.Add("files", this.Configuration.ApiClient.ParameterToString(files)); // form parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -12478,7 +12679,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -12515,7 +12716,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -12524,21 +12725,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
             }
             else
             {
@@ -12546,13 +12747,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -12566,7 +12767,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<SingleCSVRecord>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (SingleCSVRecord) Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleCSVRecord)));
+                (SingleCSVRecord) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleCSVRecord)));
         }
 
         /// <summary>
@@ -12604,7 +12805,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -12613,21 +12814,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
             }
             else
             {
@@ -12635,13 +12836,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -12655,7 +12856,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<SingleCSVRecord>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (SingleCSVRecord) Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleCSVRecord)));
+                (SingleCSVRecord) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleCSVRecord)));
         }
 
         /// <summary>
@@ -12692,7 +12893,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -12701,21 +12902,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
             }
             else
             {
@@ -12723,13 +12924,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -12743,7 +12944,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -12781,7 +12982,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -12790,21 +12991,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
             }
             else
             {
@@ -12812,13 +13013,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -12832,7 +13033,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -12872,7 +13073,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -12881,21 +13082,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (singleImageRecord != null && singleImageRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(singleImageRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(singleImageRecord); // http body (model) parameter
             }
             else
             {
@@ -12903,13 +13104,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -12923,7 +13124,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -12964,7 +13165,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -12973,21 +13174,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (singleImageRecord != null && singleImageRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(singleImageRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(singleImageRecord); // http body (model) parameter
             }
             else
             {
@@ -12995,13 +13196,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13015,7 +13216,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -13055,7 +13256,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13064,28 +13265,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13099,7 +13300,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -13140,7 +13341,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13149,28 +13350,28 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13184,7 +13385,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
+                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
         }
 
         /// <summary>
@@ -13219,7 +13420,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13227,27 +13428,27 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13261,7 +13462,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<TransformProcess>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (TransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransformProcess)));
+                (TransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransformProcess)));
         }
 
         /// <summary>
@@ -13297,7 +13498,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13305,27 +13506,27 @@ namespace Skymind.SKIL.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13339,7 +13540,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<TransformProcess>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (TransformProcess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransformProcess)));
+                (TransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransformProcess)));
         }
 
         /// <summary>
@@ -13375,7 +13576,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13384,21 +13585,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (transformProcess != null && transformProcess.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(transformProcess); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(transformProcess); // http body (model) parameter
             }
             else
             {
@@ -13406,13 +13607,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13463,7 +13664,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13472,21 +13673,21 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (transformName != null) localVarPathParams.Add("transformName", Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (transformProcess != null && transformProcess.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(transformProcess); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(transformProcess); // http body (model) parameter
             }
             else
             {
@@ -13494,13 +13695,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13544,7 +13745,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment/best";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13553,19 +13754,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (updateBestModel != null && updateBestModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(updateBestModel); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(updateBestModel); // http body (model) parameter
             }
             else
             {
@@ -13573,13 +13774,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13593,7 +13794,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExperimentEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
         }
 
         /// <summary>
@@ -13624,7 +13825,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment/best";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13633,19 +13834,19 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (updateBestModel != null && updateBestModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(updateBestModel); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(updateBestModel); // http body (model) parameter
             }
             else
             {
@@ -13653,13 +13854,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13673,7 +13874,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExperimentEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
         }
 
         /// <summary>
@@ -13708,7 +13909,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13717,20 +13918,20 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+            if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
             if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
             }
             else
             {
@@ -13738,13 +13939,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13758,7 +13959,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExperimentEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
         }
 
         /// <summary>
@@ -13794,7 +13995,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13803,20 +14004,20 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (experimentID != null) localVarPathParams.Add("experimentID", Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
+            if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
             if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
             }
             else
             {
@@ -13824,13 +14025,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13844,7 +14045,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ExperimentEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
         }
 
         /// <summary>
@@ -13879,7 +14080,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/modelhistory/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13888,20 +14089,20 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
             if (updateModelHistoryRequest != null && updateModelHistoryRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(updateModelHistoryRequest); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(updateModelHistoryRequest); // http body (model) parameter
             }
             else
             {
@@ -13909,13 +14110,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -13929,7 +14130,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+                (ModelHistoryEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
         }
 
         /// <summary>
@@ -13965,7 +14166,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/modelhistory/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -13974,20 +14175,20 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
+            if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
             if (updateModelHistoryRequest != null && updateModelHistoryRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(updateModelHistoryRequest); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(updateModelHistoryRequest); // http body (model) parameter
             }
             else
             {
@@ -13995,13 +14196,13 @@ namespace Skymind.SKIL.Api
             }
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -14015,7 +14216,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<ModelHistoryEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelHistoryEntity) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
+                (ModelHistoryEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelHistoryEntity)));
         }
 
         /// <summary>
@@ -14042,7 +14243,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/api/upload/model";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -14051,26 +14252,26 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -14084,7 +14285,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<FileUploadList>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (FileUploadList) Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileUploadList)));
+                (FileUploadList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileUploadList)));
         }
 
         /// <summary>
@@ -14112,7 +14313,7 @@ namespace Skymind.SKIL.Api
             var localVarPath = "/api/upload/model";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -14121,26 +14322,26 @@ namespace Skymind.SKIL.Api
             String[] localVarHttpContentTypes = new String[] {
                 "multipart/form-data"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (file != null) localVarFileParams.Add("file", Configuration.ApiClient.ParameterToFile("file", file));
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
             // authentication (api_key) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
             {
-                localVarHeaderParams["authorization"] = Configuration.GetApiKeyWithPrefix("authorization");
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -14154,7 +14355,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<FileUploadList>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (FileUploadList) Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileUploadList)));
+                (FileUploadList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FileUploadList)));
         }
 
     }

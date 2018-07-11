@@ -58,10 +58,10 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SetState" /> class.
         /// </summary>
-        /// <param name="State">State.</param>
-        public SetState(StateEnum? State = default(StateEnum?))
+        /// <param name="state">state.</param>
+        public SetState(StateEnum? state = default(StateEnum?))
         {
-            this.State = State;
+            this.State = state;
         }
         
 
@@ -82,7 +82,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

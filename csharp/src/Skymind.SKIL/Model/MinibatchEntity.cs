@@ -33,16 +33,16 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MinibatchEntity" /> class.
         /// </summary>
-        /// <param name="MiniBatchId">GUID of mini batch.</param>
-        /// <param name="EvalId">GUID of the evaluation.</param>
-        /// <param name="EvalVersion">Eval version.</param>
-        /// <param name="BatchVersion">Batch version.</param>
-        public MinibatchEntity(string MiniBatchId = default(string), string EvalId = default(string), int? EvalVersion = default(int?), int? BatchVersion = default(int?))
+        /// <param name="miniBatchId">GUID of mini batch.</param>
+        /// <param name="evalId">GUID of the evaluation.</param>
+        /// <param name="evalVersion">Eval version.</param>
+        /// <param name="batchVersion">Batch version.</param>
+        public MinibatchEntity(string miniBatchId = default(string), string evalId = default(string), int? evalVersion = default(int?), int? batchVersion = default(int?))
         {
-            this.MiniBatchId = MiniBatchId;
-            this.EvalId = EvalId;
-            this.EvalVersion = EvalVersion;
-            this.BatchVersion = BatchVersion;
+            this.MiniBatchId = miniBatchId;
+            this.EvalId = evalId;
+            this.EvalVersion = evalVersion;
+            this.BatchVersion = batchVersion;
         }
         
         /// <summary>
@@ -93,7 +93,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

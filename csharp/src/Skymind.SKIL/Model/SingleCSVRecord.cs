@@ -38,17 +38,17 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SingleCSVRecord" /> class.
         /// </summary>
-        /// <param name="Values">Values (required).</param>
-        public SingleCSVRecord(List<string> Values = default(List<string>))
+        /// <param name="values">values (required).</param>
+        public SingleCSVRecord(List<string> values = default(List<string>))
         {
-            // to ensure "Values" is required (not null)
-            if (Values == null)
+            // to ensure "values" is required (not null)
+            if (values == null)
             {
-                throw new InvalidDataException("Values is a required property for SingleCSVRecord and cannot be null");
+                throw new InvalidDataException("values is a required property for SingleCSVRecord and cannot be null");
             }
             else
             {
-                this.Values = Values;
+                this.Values = values;
             }
         }
         
@@ -75,7 +75,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

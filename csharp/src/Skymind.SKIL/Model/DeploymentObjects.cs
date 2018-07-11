@@ -33,14 +33,14 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeploymentObjects" /> class.
         /// </summary>
-        /// <param name="Models">Models.</param>
-        /// <param name="Transforms">Transforms.</param>
-        /// <param name="Knn">Knn.</param>
-        public DeploymentObjects(List<ModelResponse> Models = default(List<ModelResponse>), List<ModelResponse> Transforms = default(List<ModelResponse>), List<ModelResponse> Knn = default(List<ModelResponse>))
+        /// <param name="models">models.</param>
+        /// <param name="transforms">transforms.</param>
+        /// <param name="knn">knn.</param>
+        public DeploymentObjects(List<ModelResponse> models = default(List<ModelResponse>), List<ModelResponse> transforms = default(List<ModelResponse>), List<ModelResponse> knn = default(List<ModelResponse>))
         {
-            this.Models = Models;
-            this.Transforms = Transforms;
-            this.Knn = Knn;
+            this.Models = models;
+            this.Transforms = transforms;
+            this.Knn = knn;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

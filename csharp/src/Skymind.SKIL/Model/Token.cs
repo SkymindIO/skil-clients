@@ -33,10 +33,10 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Token" /> class.
         /// </summary>
-        /// <param name="_Token">_Token.</param>
-        public Token(string _Token = default(string))
+        /// <param name="token">token.</param>
+        public Token(string token = default(string))
         {
-            this._Token = _Token;
+            this._Token = token;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

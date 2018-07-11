@@ -18,6 +18,7 @@ case class Base64NDArrayBodyKNN (
   Ndarray: String,
   // the number of results to retrieve
   K: Integer,
+  // If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.
   ForceFillK: Option[Boolean] = None
 )
 

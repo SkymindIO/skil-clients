@@ -153,14 +153,14 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BestModel" /> class.
         /// </summary>
-        /// <param name="Ids">the list of GUIDs for the models to get the best model from.</param>
-        /// <param name="ColumnNameMetric">Name of the column metric (in an evaluation result) to get the best model from..</param>
-        /// <param name="EvalType">the evaluation type to aggregate for each model&#39;s revisions.</param>
-        public BestModel(List<string> Ids = default(List<string>), ColumnNameMetricEnum? ColumnNameMetric = default(ColumnNameMetricEnum?), EvalTypeEnum? EvalType = default(EvalTypeEnum?))
+        /// <param name="ids">the list of GUIDs for the models to get the best model from.</param>
+        /// <param name="columnNameMetric">Name of the column metric (in an evaluation result) to get the best model from..</param>
+        /// <param name="evalType">the evaluation type to aggregate for each model&#39;s revisions.</param>
+        public BestModel(List<string> ids = default(List<string>), ColumnNameMetricEnum? columnNameMetric = default(ColumnNameMetricEnum?), EvalTypeEnum? evalType = default(EvalTypeEnum?))
         {
-            this.Ids = Ids;
-            this.ColumnNameMetric = ColumnNameMetric;
-            this.EvalType = EvalType;
+            this.Ids = ids;
+            this.ColumnNameMetric = columnNameMetric;
+            this.EvalType = evalType;
         }
         
         /// <summary>
@@ -191,7 +191,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

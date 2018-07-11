@@ -33,32 +33,32 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelInstanceEntity" /> class.
         /// </summary>
-        /// <param name="Uri">The model URI.</param>
-        /// <param name="EtlJson">The json string for the ETL (Extract, Transform and Load).</param>
-        /// <param name="ModelId">GUID of the model..</param>
-        /// <param name="ModelLabels">Comma-separated labels string for the model.</param>
-        /// <param name="InputFormats">Format for the model input.</param>
-        /// <param name="Created">When the model was created.</param>
-        /// <param name="NotebookJson">JSON string of the associated Zeppelin Notebook.</param>
-        /// <param name="EvalId">GUID for the model evaluation.</param>
-        /// <param name="ModelName">Model&#39;s name.</param>
-        /// <param name="OriginalModelId">Original GUID of the model (used for maintaining revisions of a particular model).</param>
-        /// <param name="ModelVersion">Model version.</param>
-        /// <param name="ExperimentId">GUID of the Experiment which is associated with the model..</param>
-        public ModelInstanceEntity(string Uri = default(string), string EtlJson = default(string), string ModelId = default(string), string ModelLabels = default(string), string InputFormats = default(string), long? Created = default(long?), string NotebookJson = default(string), string EvalId = default(string), string ModelName = default(string), string OriginalModelId = default(string), string ModelVersion = default(string), string ExperimentId = default(string))
+        /// <param name="uri">The model URI.</param>
+        /// <param name="etlJson">The json string for the ETL (Extract, Transform and Load).</param>
+        /// <param name="modelId">GUID of the model..</param>
+        /// <param name="modelLabels">Comma-separated labels string for the model.</param>
+        /// <param name="inputFormats">Format for the model input.</param>
+        /// <param name="created">When the model was created.</param>
+        /// <param name="notebookJson">JSON string of the associated Zeppelin Notebook.</param>
+        /// <param name="evalId">GUID for the model evaluation.</param>
+        /// <param name="modelName">Model&#39;s name.</param>
+        /// <param name="originalModelId">Original GUID of the model (used for maintaining revisions of a particular model).</param>
+        /// <param name="modelVersion">Model version.</param>
+        /// <param name="experimentId">GUID of the Experiment which is associated with the model..</param>
+        public ModelInstanceEntity(string uri = default(string), string etlJson = default(string), string modelId = default(string), string modelLabels = default(string), string inputFormats = default(string), long? created = default(long?), string notebookJson = default(string), string evalId = default(string), string modelName = default(string), string originalModelId = default(string), string modelVersion = default(string), string experimentId = default(string))
         {
-            this.Uri = Uri;
-            this.EtlJson = EtlJson;
-            this.ModelId = ModelId;
-            this.ModelLabels = ModelLabels;
-            this.InputFormats = InputFormats;
-            this.Created = Created;
-            this.NotebookJson = NotebookJson;
-            this.EvalId = EvalId;
-            this.ModelName = ModelName;
-            this.OriginalModelId = OriginalModelId;
-            this.ModelVersion = ModelVersion;
-            this.ExperimentId = ExperimentId;
+            this.Uri = uri;
+            this.EtlJson = etlJson;
+            this.ModelId = modelId;
+            this.ModelLabels = modelLabels;
+            this.InputFormats = inputFormats;
+            this.Created = created;
+            this.NotebookJson = notebookJson;
+            this.EvalId = evalId;
+            this.ModelName = modelName;
+            this.OriginalModelId = originalModelId;
+            this.ModelVersion = modelVersion;
+            this.ExperimentId = experimentId;
         }
         
         /// <summary>
@@ -173,7 +173,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

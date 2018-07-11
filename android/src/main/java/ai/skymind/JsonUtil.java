@@ -177,6 +177,10 @@ public class JsonUtil {
       return new TypeToken<List<ModelEntity>>(){}.getType();
     }
     
+    if ("ModelFeedBackRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ModelFeedBackRequest>>(){}.getType();
+    }
+    
     if ("ModelHistoryEntity".equalsIgnoreCase(className)) {
       return new TypeToken<List<ModelHistoryEntity>>(){}.getType();
     }
@@ -373,6 +377,10 @@ public class JsonUtil {
     
     if ("ModelEntity".equalsIgnoreCase(className)) {
       return new TypeToken<ModelEntity>(){}.getType();
+    }
+    
+    if ("ModelFeedBackRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<ModelFeedBackRequest>(){}.getType();
     }
     
     if ("ModelHistoryEntity".equalsIgnoreCase(className)) {

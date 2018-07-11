@@ -33,10 +33,10 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonArrayResponse" /> class.
         /// </summary>
-        /// <param name="Array">Array.</param>
-        public JsonArrayResponse(INDArray Array = default(INDArray))
+        /// <param name="array">array.</param>
+        public JsonArrayResponse(INDArray array = default(INDArray))
         {
-            this.Array = Array;
+            this.Array = array;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

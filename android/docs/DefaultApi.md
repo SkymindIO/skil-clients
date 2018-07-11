@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**addExampleToMinibatch**](DefaultApi.md#addExampleToMinibatch) | **POST** /model/example | Adds an example to a minibatch
 [**addExperiment**](DefaultApi.md#addExperiment) | **POST** /experiment | Add an experiment, given an experiment entity
 [**addMinibatch**](DefaultApi.md#addMinibatch) | **POST** /model/minibatch | Adds a minibatch
+[**addModelFeedback**](DefaultApi.md#addModelFeedback) | **POST** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**addModelHistory**](DefaultApi.md#addModelHistory) | **POST** /modelhistory | Add a model history / workspace
 [**addModelInstance**](DefaultApi.md#addModelInstance) | **POST** /model | Adds a model
 [**aggregateModelResults**](DefaultApi.md#aggregateModelResults) | **POST** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -268,6 +269,47 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MinibatchEntity**](MinibatchEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="addModelFeedback"></a>
+# **addModelFeedback**
+> ModelFeedBackRequest addModelFeedback(modelFeedBackRequest)
+
+Adds an evaluation feedback to the model against a given minibatch id.
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+ModelFeedBackRequest modelFeedBackRequest = new ModelFeedBackRequest(); // ModelFeedBackRequest | The model feedback request object
+try {
+    ModelFeedBackRequest result = apiInstance.addModelFeedback(modelFeedBackRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#addModelFeedback");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelFeedBackRequest** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object |
+
+### Return type
+
+[**ModelFeedBackRequest**](ModelFeedBackRequest.md)
 
 ### Authorization
 

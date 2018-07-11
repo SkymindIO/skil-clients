@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**addExampleToMinibatch**](DefaultApi.md#addExampleToMinibatch) | **POST** /model/example | Adds an example to a minibatch
 [**addExperiment**](DefaultApi.md#addExperiment) | **POST** /experiment | Add an experiment, given an experiment entity
 [**addMinibatch**](DefaultApi.md#addMinibatch) | **POST** /model/minibatch | Adds a minibatch
+[**addModelFeedback**](DefaultApi.md#addModelFeedback) | **POST** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**addModelHistory**](DefaultApi.md#addModelHistory) | **POST** /modelhistory | Add a model history / workspace
 [**addModelInstance**](DefaultApi.md#addModelInstance) | **POST** /model | Adds a model
 [**aggregateModelResults**](DefaultApi.md#aggregateModelResults) | **POST** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -318,6 +319,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MinibatchEntity**](MinibatchEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="addModelFeedback"></a>
+# **addModelFeedback**
+> ModelFeedBackRequest addModelFeedback(modelFeedBackRequest)
+
+Adds an evaluation feedback to the model against a given minibatch id.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var modelFeedBackRequest = new SkilClient.ModelFeedBackRequest(); // ModelFeedBackRequest | The model feedback request object
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.addModelFeedback(modelFeedBackRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelFeedBackRequest** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
+
+### Return type
+
+[**ModelFeedBackRequest**](ModelFeedBackRequest.md)
 
 ### Authorization
 

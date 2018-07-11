@@ -101,18 +101,18 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="INDArray" /> class.
         /// </summary>
-        /// <param name="Array">Array.</param>
-        /// <param name="Shape">Shape.</param>
-        /// <param name="Ordering">Ordering.</param>
-        /// <param name="Data">Data.</param>
-        /// <param name="DataType">DataType.</param>
-        public INDArray(string Array = default(string), List<int?> Shape = default(List<int?>), OrderingEnum? Ordering = default(OrderingEnum?), List<float?> Data = default(List<float?>), DataTypeEnum? DataType = default(DataTypeEnum?))
+        /// <param name="array">array.</param>
+        /// <param name="shape">shape.</param>
+        /// <param name="ordering">ordering.</param>
+        /// <param name="data">data.</param>
+        /// <param name="dataType">dataType.</param>
+        public INDArray(string array = default(string), List<int?> shape = default(List<int?>), OrderingEnum? ordering = default(OrderingEnum?), List<float?> data = default(List<float?>), DataTypeEnum? dataType = default(DataTypeEnum?))
         {
-            this.Array = Array;
-            this.Shape = Shape;
-            this.Ordering = Ordering;
-            this.Data = Data;
-            this.DataType = DataType;
+            this.Array = array;
+            this.Shape = shape;
+            this.Ordering = ordering;
+            this.Data = data;
+            this.DataType = dataType;
         }
         
         /// <summary>
@@ -156,7 +156,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

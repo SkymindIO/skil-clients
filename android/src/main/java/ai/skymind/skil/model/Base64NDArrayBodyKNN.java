@@ -49,8 +49,9 @@ public class Base64NDArrayBodyKNN implements Serializable {
   }
 
   /**
+   * If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.")
   public Boolean getForceFillK() {
     return forceFillK;
   }

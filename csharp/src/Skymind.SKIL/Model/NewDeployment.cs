@@ -33,10 +33,10 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NewDeployment" /> class.
         /// </summary>
-        /// <param name="Name">Name.</param>
-        public NewDeployment(string Name = default(string))
+        /// <param name="name">name.</param>
+        public NewDeployment(string name = default(string))
         {
-            this.Name = Name;
+            this.Name = name;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

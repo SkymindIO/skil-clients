@@ -38,17 +38,17 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SingleImageRecord" /> class.
         /// </summary>
-        /// <param name="Uri">Uri (required).</param>
-        public SingleImageRecord(string Uri = default(string))
+        /// <param name="uri">uri (required).</param>
+        public SingleImageRecord(string uri = default(string))
         {
-            // to ensure "Uri" is required (not null)
-            if (Uri == null)
+            // to ensure "uri" is required (not null)
+            if (uri == null)
             {
-                throw new InvalidDataException("Uri is a required property for SingleImageRecord and cannot be null");
+                throw new InvalidDataException("uri is a required property for SingleImageRecord and cannot be null");
             }
             else
             {
-                this.Uri = Uri;
+                this.Uri = uri;
             }
         }
         
@@ -75,7 +75,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

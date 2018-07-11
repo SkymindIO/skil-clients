@@ -33,32 +33,32 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ImportModelRequest" /> class.
         /// </summary>
-        /// <param name="Name">Name.</param>
-        /// <param name="Scale">Scale.</param>
-        /// <param name="Uri">Uri.</param>
-        /// <param name="ModelType">ModelType.</param>
-        /// <param name="FileLocation">FileLocation.</param>
-        /// <param name="JvmArgs">JvmArgs.</param>
-        /// <param name="SubType">SubType.</param>
-        /// <param name="LabelsFileLocation">LabelsFileLocation.</param>
-        /// <param name="ExtraArgs">ExtraArgs.</param>
-        /// <param name="EtlJson">EtlJson.</param>
-        /// <param name="InputNames">InputNames.</param>
-        /// <param name="OutputNames">OutputNames.</param>
-        public ImportModelRequest(string Name = default(string), int? Scale = default(int?), List<string> Uri = default(List<string>), string ModelType = default(string), string FileLocation = default(string), string JvmArgs = default(string), string SubType = default(string), string LabelsFileLocation = default(string), string ExtraArgs = default(string), string EtlJson = default(string), List<string> InputNames = default(List<string>), List<string> OutputNames = default(List<string>))
+        /// <param name="name">name.</param>
+        /// <param name="scale">scale.</param>
+        /// <param name="uri">uri.</param>
+        /// <param name="modelType">modelType.</param>
+        /// <param name="fileLocation">fileLocation.</param>
+        /// <param name="jvmArgs">jvmArgs.</param>
+        /// <param name="subType">subType.</param>
+        /// <param name="labelsFileLocation">labelsFileLocation.</param>
+        /// <param name="extraArgs">extraArgs.</param>
+        /// <param name="etlJson">etlJson.</param>
+        /// <param name="inputNames">inputNames.</param>
+        /// <param name="outputNames">outputNames.</param>
+        public ImportModelRequest(string name = default(string), int? scale = default(int?), List<string> uri = default(List<string>), string modelType = default(string), string fileLocation = default(string), string jvmArgs = default(string), string subType = default(string), string labelsFileLocation = default(string), string extraArgs = default(string), string etlJson = default(string), List<string> inputNames = default(List<string>), List<string> outputNames = default(List<string>))
         {
-            this.Name = Name;
-            this.Scale = Scale;
-            this.Uri = Uri;
-            this.ModelType = ModelType;
-            this.FileLocation = FileLocation;
-            this.JvmArgs = JvmArgs;
-            this.SubType = SubType;
-            this.LabelsFileLocation = LabelsFileLocation;
-            this.ExtraArgs = ExtraArgs;
-            this.EtlJson = EtlJson;
-            this.InputNames = InputNames;
-            this.OutputNames = OutputNames;
+            this.Name = name;
+            this.Scale = scale;
+            this.Uri = uri;
+            this.ModelType = modelType;
+            this.FileLocation = fileLocation;
+            this.JvmArgs = jvmArgs;
+            this.SubType = subType;
+            this.LabelsFileLocation = labelsFileLocation;
+            this.ExtraArgs = extraArgs;
+            this.EtlJson = etlJson;
+            this.InputNames = inputNames;
+            this.OutputNames = outputNames;
         }
         
         /// <summary>
@@ -161,7 +161,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

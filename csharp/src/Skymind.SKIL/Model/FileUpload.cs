@@ -33,20 +33,20 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FileUpload" /> class.
         /// </summary>
-        /// <param name="Key">Key.</param>
-        /// <param name="FileName">FileName.</param>
-        /// <param name="Status">Status.</param>
-        /// <param name="Type">Type.</param>
-        /// <param name="Path">Path.</param>
-        /// <param name="FileContent">FileContent.</param>
-        public FileUpload(string Key = default(string), string FileName = default(string), string Status = default(string), string Type = default(string), string Path = default(string), string FileContent = default(string))
+        /// <param name="key">key.</param>
+        /// <param name="fileName">fileName.</param>
+        /// <param name="status">status.</param>
+        /// <param name="type">type.</param>
+        /// <param name="path">path.</param>
+        /// <param name="fileContent">fileContent.</param>
+        public FileUpload(string key = default(string), string fileName = default(string), string status = default(string), string type = default(string), string path = default(string), string fileContent = default(string))
         {
-            this.Key = Key;
-            this.FileName = FileName;
-            this.Status = Status;
-            this.Type = Type;
-            this.Path = Path;
-            this.FileContent = FileContent;
+            this.Key = key;
+            this.FileName = fileName;
+            this.Status = status;
+            this.Type = type;
+            this.Path = path;
+            this.FileContent = fileContent;
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

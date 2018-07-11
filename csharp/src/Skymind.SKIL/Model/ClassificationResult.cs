@@ -33,14 +33,14 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ClassificationResult" /> class.
         /// </summary>
-        /// <param name="Results">index classification results for the minibatch.</param>
-        /// <param name="Probabilities">max probabilities for the batch items.</param>
-        /// <param name="MinibatchId">minibatch ID.</param>
-        public ClassificationResult(List<int?> Results = default(List<int?>), List<decimal?> Probabilities = default(List<decimal?>), string MinibatchId = default(string))
+        /// <param name="results">index classification results for the minibatch.</param>
+        /// <param name="probabilities">max probabilities for the batch items.</param>
+        /// <param name="minibatchId">minibatch ID.</param>
+        public ClassificationResult(List<int?> results = default(List<int?>), List<decimal?> probabilities = default(List<decimal?>), string minibatchId = default(string))
         {
-            this.Results = Results;
-            this.Probabilities = Probabilities;
-            this.MinibatchId = MinibatchId;
+            this.Results = results;
+            this.Probabilities = probabilities;
+            this.MinibatchId = minibatchId;
         }
         
         /// <summary>
@@ -83,7 +83,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

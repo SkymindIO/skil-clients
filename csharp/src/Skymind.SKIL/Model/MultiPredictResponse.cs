@@ -33,14 +33,14 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiPredictResponse" /> class.
         /// </summary>
-        /// <param name="Id">Id.</param>
-        /// <param name="NeedsPreProcessing">NeedsPreProcessing.</param>
-        /// <param name="Outputs">Outputs.</param>
-        public MultiPredictResponse(string Id = default(string), bool? NeedsPreProcessing = default(bool?), List<INDArray> Outputs = default(List<INDArray>))
+        /// <param name="id">id.</param>
+        /// <param name="needsPreProcessing">needsPreProcessing.</param>
+        /// <param name="outputs">outputs.</param>
+        public MultiPredictResponse(string id = default(string), bool? needsPreProcessing = default(bool?), List<INDArray> outputs = default(List<INDArray>))
         {
-            this.Id = Id;
-            this.NeedsPreProcessing = NeedsPreProcessing;
-            this.Outputs = Outputs;
+            this.Id = id;
+            this.NeedsPreProcessing = needsPreProcessing;
+            this.Outputs = outputs;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

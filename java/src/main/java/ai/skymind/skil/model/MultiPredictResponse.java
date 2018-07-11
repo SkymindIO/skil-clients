@@ -14,6 +14,7 @@
 package ai.skymind.skil.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import ai.skymind.skil.model.INDArray;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -29,7 +30,7 @@ import java.util.List;
 /**
  * MultiPredictResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-20T09:58:20.972-07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-11T15:09:24.471+05:00")
 public class MultiPredictResponse {
   @SerializedName("id")
   private String id = null;

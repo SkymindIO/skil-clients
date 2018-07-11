@@ -9,7 +9,8 @@ package ai.skymind.skil.client.model {
         /* the number of results to retrieve */
         [XmlElement(name="k")]
         public var k: Number = NaN;
-                [XmlElement(name="forceFillK")]
+        /* If &#39;True&#39; it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched. */
+        [XmlElement(name="forceFillK")]
         public var forceFillK: Boolean = false;
 
     public function toString(): String {

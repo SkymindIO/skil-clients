@@ -33,12 +33,12 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Credentials" /> class.
         /// </summary>
-        /// <param name="UserId">UserId.</param>
-        /// <param name="Password">Password.</param>
-        public Credentials(string UserId = default(string), string Password = default(string))
+        /// <param name="userId">userId.</param>
+        /// <param name="password">password.</param>
+        public Credentials(string userId = default(string), string password = default(string))
         {
-            this.UserId = UserId;
-            this.Password = Password;
+            this.UserId = userId;
+            this.Password = password;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

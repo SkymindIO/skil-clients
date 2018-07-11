@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**AddExampleToMinibatch**](DefaultApi.md#AddExampleToMinibatch) | **Post** /model/example | Adds an example to a minibatch
 [**AddExperiment**](DefaultApi.md#AddExperiment) | **Post** /experiment | Add an experiment, given an experiment entity
 [**AddMinibatch**](DefaultApi.md#AddMinibatch) | **Post** /model/minibatch | Adds a minibatch
+[**AddModelFeedback**](DefaultApi.md#AddModelFeedback) | **Post** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**AddModelHistory**](DefaultApi.md#AddModelHistory) | **Post** /modelhistory | Add a model history / workspace
 [**AddModelInstance**](DefaultApi.md#AddModelInstance) | **Post** /model | Adds a model
 [**AggregateModelResults**](DefaultApi.md#AggregateModelResults) | **Post** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -81,7 +82,7 @@ Adds an evaluation result
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **evaluationResultsEntity** | [**EvaluationResultsEntity**](EvaluationResultsEntity.md)| The evaluation result entity | 
 
 ### Return type
@@ -107,7 +108,7 @@ Adds a number of examples to a minibatch ID given an AddExampleRequest.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **addExampleRequest** | [**AddExampleRequest**](AddExampleRequest.md)| The add example request, encapsulating minibatch details and examples batch size | 
 
 ### Return type
@@ -133,7 +134,7 @@ Adds an example to a minibatch
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **exampleEntity** | [**ExampleEntity**](ExampleEntity.md)| The example to add to the minibatch | 
 
 ### Return type
@@ -159,7 +160,7 @@ Add an experiment, given an experiment entity
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to add | 
 
 ### Return type
@@ -185,12 +186,38 @@ Adds a minibatch
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **minibatchEntity** | [**MinibatchEntity**](MinibatchEntity.md)| The minibatch entity to add | 
 
 ### Return type
 
 [**MinibatchEntity**](MinibatchEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AddModelFeedback**
+> ModelFeedBackRequest AddModelFeedback(ctx, modelFeedBackRequest)
+Adds an evaluation feedback to the model against a given minibatch id.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelFeedBackRequest** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
+
+### Return type
+
+[**ModelFeedBackRequest**](ModelFeedBackRequest.md)
 
 ### Authorization
 
@@ -211,7 +238,7 @@ Add a model history / workspace
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **addModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
 ### Return type
@@ -237,7 +264,7 @@ Adds a model
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **modelInstanceEntity** | [**ModelInstanceEntity**](ModelInstanceEntity.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -263,7 +290,7 @@ Aggregates the evaluaition results of a model instance, based on the evaluation 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **aggregatePrediction** | [**AggregatePrediction**](AggregatePrediction.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -289,7 +316,7 @@ Use the deployed model to classify the input
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
@@ -317,7 +344,7 @@ Same as /classify but returns the output as Base64NDArrayBody
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
@@ -345,19 +372,19 @@ Use the deployed model to classify the input, using input image file from multip
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***ClassifyimageOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a ClassifyimageOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **modelName** | **string**| ID or name of the deployed model | 
- **image** | ***os.File**| The file to upload. | 
+
+
+ **image** | **optional.Interface of *os.File**| The file to upload. | 
 
 ### Return type
 
@@ -382,7 +409,7 @@ Creates model History
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **modelHistoryEntity** | [**ModelHistoryEntity**](ModelHistoryEntity.md)| The model history entity | 
 
 ### Return type
@@ -408,7 +435,7 @@ Deletes an experiment, given an experiment entity
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **experimentID** | **string**| the GUID of the experiment to delete | 
 
 ### Return type
@@ -434,7 +461,7 @@ Delete a model by deployment and model id
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentId** | **string**| ID deployment group | 
   **modelId** | **string**| the id of the deployed model | 
 
@@ -461,7 +488,7 @@ Deletes a model history / workspace, given its ID
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **modelHistoryID** | **string**| the GUID of the model history / workspace to delete | 
 
 ### Return type
@@ -487,7 +514,7 @@ Deletes a model instance, given its ID
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **modelInstanceID** | **string**| GUID of the model instance to delete. | 
 
 ### Return type
@@ -513,7 +540,7 @@ Deploy a model in a deployment group.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentId** | **string**| ID deployment group | 
   **body** | [**ImportModelRequest**](ImportModelRequest.md)| the model import request | 
 
@@ -540,7 +567,7 @@ Create a new deployment group.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**CreateDeploymentRequest**](CreateDeploymentRequest.md)| the deployment request | 
 
 ### Return type
@@ -566,7 +593,7 @@ Delete a deployment by id
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentId** | **string**| Id of the deployment group | 
 
 ### Return type
@@ -592,7 +619,7 @@ Get a deployment details by id
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentId** | **string**| Id of the deployment group | 
 
 ### Return type
@@ -640,7 +667,7 @@ Detect the objects, given a (input) prediction request
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **id** | **string**| the GUID for mapping the results in the detections | 
   **needsPreprocessing** | **bool**| (true) if the image needs preprocessing | 
   **threshold** | **float32**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
@@ -671,7 +698,7 @@ Gets the best model among the given model instance IDs, based on the evaluation 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **bestModel** | [**BestModel**](BestModel.md)| Object encapsulating the model ids, eval type and column metric name | 
 
 ### Return type
@@ -697,7 +724,7 @@ Gets the list of evaluation results entity, given a model instance ID
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **modelInstanceID** | **string**| GUID of the model instance to get evaluation results for. | 
 
 ### Return type
@@ -723,7 +750,7 @@ Gets all the examples for a minibatch ID
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **minibatchId** | **string**| The GUID of the minibatch | 
 
 ### Return type
@@ -749,7 +776,7 @@ Obtain an experiment's details, given its ID
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **experimentID** | **string**| the GUID of the experiment to obtain | 
 
 ### Return type
@@ -775,7 +802,7 @@ Obtain all experiments for a model history / workspace
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **modelHistoryID** | **string**| the GUID of the model history / workspace | 
 
 ### Return type
@@ -801,7 +828,7 @@ Gets a minibatch for the model
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **minibatchId** | **string**| The GUID of the minibatch | 
 
 ### Return type
@@ -827,7 +854,7 @@ Gets a model history, given its ID
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **modelHistoryID** | **string**| GUID of the model history to get information of. | 
 
 ### Return type
@@ -853,7 +880,7 @@ Gets a model instance, given its ID
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **modelInstanceID** | **string**| GUID of the model instance to get information of. | 
 
 ### Return type
@@ -879,7 +906,7 @@ Obtain a list of all the models for an experiment
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **experimentID** | **string**| the GUID of the experiment | 
 
 ### Return type
@@ -905,7 +932,7 @@ Retrieves the image transform process JSON string
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
 
@@ -932,7 +959,7 @@ Sets the image transform process through the provided JSON string
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
   **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
@@ -960,7 +987,7 @@ Run inference on the input and returns it as a JsonArrayResponse
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
@@ -990,7 +1017,7 @@ Runs knn on the given index with the given k (note that this is for data already
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **knnName** | **string**| ID or name of the deployed knn | 
   **body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  | 
@@ -1018,7 +1045,7 @@ Run a k nearest neighbors search on a NEW data point
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **knnName** | **string**| ID or name of the deployed knn | 
   **body** | [**Base64NdArrayBodyKnn**](Base64NdArrayBodyKnn.md)| The input NDArray | 
@@ -1068,7 +1095,7 @@ Get logs file path
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
 
@@ -1095,7 +1122,7 @@ Post JSON credentials and obtain a JWT authorization token.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **credentials** | [**Credentials**](Credentials.md)| Login credentials. | 
 
 ### Return type
@@ -1121,7 +1148,7 @@ Get logs
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**LogRequest**](LogRequest.md)| the the log request | 
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
@@ -1149,7 +1176,7 @@ this method can be used to get the meta data for the current model which set to 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
 
@@ -1176,7 +1203,7 @@ This method can be used to set meta data for the current model which is set to t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**MetaData**](MetaData.md)| the meta data object | 
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
@@ -1204,7 +1231,7 @@ Modify the state (start/stop) of a deployed model
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentId** | **string**| ID deployment group | 
   **modelId** | **string**| the id of the deployed model | 
   **body** | [**SetState**](SetState.md)| the model state object | 
@@ -1232,7 +1259,7 @@ Retrieve a list of all the deployed models given a deployment id
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentId** | **string**| ID deployment group | 
 
 ### Return type
@@ -1258,19 +1285,19 @@ Set the model to be served
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***ModelsetOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a ModelsetOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **modelName** | **string**| ID or name of the deployed model | 
- **file** | ***os.File**| The model file to upload (.pb file) | 
+
+
+ **file** | **optional.Interface of *os.File**| The model file to upload (.pb file) | 
 
 ### Return type
 
@@ -1295,19 +1322,19 @@ Update the model to be served
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***ModelupdateOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a ModelupdateOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **modelName** | **string**| ID or name of the deployed model | 
- **file** | ***os.File**| The model file to update with (.pb file) | 
+
+
+ **file** | **optional.Interface of *os.File**| The model file to update with (.pb file) | 
 
 ### Return type
 
@@ -1332,7 +1359,7 @@ Represents all of the labels for a given classification
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
@@ -1362,7 +1389,7 @@ Networks with multiple input/output are supported via this method. A Normalizer 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
@@ -1390,7 +1417,7 @@ Run inference on the input array.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
@@ -1418,19 +1445,19 @@ Run inference on the input array, using input image file from multipart form dat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***PredictimageOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a PredictimageOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **modelName** | **string**| ID or name of the deployed model | 
- **image** | ***os.File**| The file to upload. | 
+
+
+ **image** | **optional.Interface of *os.File**| The file to upload. | 
 
 ### Return type
 
@@ -1455,7 +1482,7 @@ Preprocesses the input and run inference on it
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | **[]string**| The input array | 
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
@@ -1483,7 +1510,7 @@ Preprocesses the input and run inference on it and returns it as a JsonArrayResp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | **[]string**| The input array | 
   **deploymentName** | **string**| Name of the deployment group | 
   **modelName** | **string**| ID or name of the deployed model | 
@@ -1511,7 +1538,7 @@ Reimport a model to a previous deployed model in a deployment
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentId** | **string**| ID deployment group | 
   **modelId** | **string**| the id of the deployed model | 
   **body** | [**ImportModelRequest**](ImportModelRequest.md)| the deployment request | 
@@ -1541,19 +1568,19 @@ Takes a batch of SingleCSVRecord object and transforms it into the desired forma
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **transformName** | **string**| ID or name of the deployed transform | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***TransformCsvOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a TransformCsvOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **transformName** | **string**| ID or name of the deployed transform | 
- **batchCSVRecord** | [**BatchCsvRecord**](BatchCsvRecord.md)| The input batch of record arrays | 
+
+
+ **batchCSVRecord** | [**optional.Interface of BatchCsvRecord**](BatchCsvRecord.md)| The input batch of record arrays | 
 
 ### Return type
 
@@ -1580,19 +1607,19 @@ Takes a batch of SingleCSVRecord object and transforms it into the desired forma
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **transformName** | **string**| ID or name of the deployed transform | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***TransformarrayCsvOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a TransformarrayCsvOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **transformName** | **string**| ID or name of the deployed transform | 
- **batchCSVRecord** | [**BatchCsvRecord**](BatchCsvRecord.md)| The input batch of record arrays | 
+
+
+ **batchCSVRecord** | [**optional.Interface of BatchCsvRecord**](BatchCsvRecord.md)| The input batch of record arrays | 
 
 ### Return type
 
@@ -1619,7 +1646,7 @@ Takes a batch of SingleImageRecord object and transforms it into the desired for
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
   **batchImageRecord** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
@@ -1649,7 +1676,7 @@ Takes multiple multipart image file and transforms it into the desired format an
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
   **files** | [**[]string**](string.md)| The image files to upload | 
@@ -1679,19 +1706,19 @@ Takes a SingleCSVRecord object and transforms it into the desired format
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **transformName** | **string**| ID or name of the deployed transform | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***TransformincrementalCsvOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a TransformincrementalCsvOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **transformName** | **string**| ID or name of the deployed transform | 
- **singleCSVRecord** | [**SingleCsvRecord**](SingleCsvRecord.md)| The input record array | 
+
+
+ **singleCSVRecord** | [**optional.Interface of SingleCsvRecord**](SingleCsvRecord.md)| The input record array | 
 
 ### Return type
 
@@ -1718,19 +1745,19 @@ Takes a SingleCSVRecord object and transforms it into the desired format and ret
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **transformName** | **string**| ID or name of the deployed transform | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***TransformincrementalarrayCsvOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a TransformincrementalarrayCsvOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **transformName** | **string**| ID or name of the deployed transform | 
- **singleCSVRecord** | [**SingleCsvRecord**](SingleCsvRecord.md)| The input record array | 
+
+
+ **singleCSVRecord** | [**optional.Interface of SingleCsvRecord**](SingleCsvRecord.md)| The input record array | 
 
 ### Return type
 
@@ -1757,7 +1784,7 @@ Takes a SingleImageRecord object and transforms it into the desired format and r
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
   **singleImageRecord** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
@@ -1787,7 +1814,7 @@ Takes a single multipart image file and transforms it into the desired format an
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
   **file** | ***os.File**| The image file to upload | 
@@ -1817,7 +1844,7 @@ Retrieves the JSON string of the deployed transform process
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **transformName** | **string**| ID or name of the deployed transform | 
 
@@ -1846,19 +1873,19 @@ Sets the transform process with the provided JSON string
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
   **transformName** | **string**| ID or name of the deployed transform | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***TransformprocessPostOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a TransformprocessPostOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **transformName** | **string**| ID or name of the deployed transform | 
- **transformProcess** | [**TransformProcess**](TransformProcess.md)| The transform process to set | 
+
+
+ **transformProcess** | [**optional.Interface of TransformProcess**](TransformProcess.md)| The transform process to set | 
 
 ### Return type
 
@@ -1883,7 +1910,7 @@ Updates the best model for an experiment
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **updateBestModel** | [**UpdateBestModel**](UpdateBestModel.md)| Model encapsulating the experiment id to update and the best model id. | 
 
 ### Return type
@@ -1909,7 +1936,7 @@ Updates an experiment, given an experiment entity
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **experimentID** | **string**| the GUID of the experiment to update | 
   **experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to update with | 
 
@@ -1936,7 +1963,7 @@ Update a model history / workspace
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **modelHistoryID** | **string**| the GUID of the model history / workspace to update | 
   **updateModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
@@ -1963,15 +1990,15 @@ Upload a model file to SKIL for import.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***UploadOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a UploadOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | ***os.File**| The file to upload. | 
+ **file** | **optional.Interface of *os.File**| The file to upload. | 
 
 ### Return type
 

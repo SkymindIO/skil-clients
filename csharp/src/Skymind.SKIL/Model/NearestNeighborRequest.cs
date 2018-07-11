@@ -33,12 +33,12 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NearestNeighborRequest" /> class.
         /// </summary>
-        /// <param name="K">the number of results.</param>
-        /// <param name="InputIndex">the index of the EXISTING ndarray to run a search on.</param>
-        public NearestNeighborRequest(int? K = default(int?), int? InputIndex = default(int?))
+        /// <param name="k">the number of results.</param>
+        /// <param name="inputIndex">the index of the EXISTING ndarray to run a search on.</param>
+        public NearestNeighborRequest(int? k = default(int?), int? inputIndex = default(int?))
         {
-            this.K = K;
-            this.InputIndex = InputIndex;
+            this.K = k;
+            this.InputIndex = inputIndex;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

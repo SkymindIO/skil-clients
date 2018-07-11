@@ -84,12 +84,12 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AggregatePrediction" /> class.
         /// </summary>
-        /// <param name="ModelId">GUID of model instance.</param>
-        /// <param name="EvalType">the evaluation type to aggregate.</param>
-        public AggregatePrediction(string ModelId = default(string), EvalTypeEnum? EvalType = default(EvalTypeEnum?))
+        /// <param name="modelId">GUID of model instance.</param>
+        /// <param name="evalType">the evaluation type to aggregate.</param>
+        public AggregatePrediction(string modelId = default(string), EvalTypeEnum? evalType = default(EvalTypeEnum?))
         {
-            this.ModelId = ModelId;
-            this.EvalType = EvalType;
+            this.ModelId = modelId;
+            this.EvalType = evalType;
         }
         
         /// <summary>
@@ -118,7 +118,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

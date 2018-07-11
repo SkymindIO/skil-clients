@@ -33,28 +33,28 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ExperimentEntity" /> class.
         /// </summary>
-        /// <param name="BestModelId">GUID of the best selected model in an experiment.</param>
-        /// <param name="InputDataUri">Input data URI.</param>
-        /// <param name="ExperimentId">GUID of the experiment.</param>
-        /// <param name="ExperimentName">Experiment&#39;s name.</param>
-        /// <param name="ExperimentDescription">Experiment&#39;s description.</param>
-        /// <param name="NotebookJson">The associated Zeppelin notebook JSON string.</param>
-        /// <param name="NotebookUrl">URL of the associated Zeppelin notebook.</param>
-        /// <param name="ZeppelinId">Zeppelin ID.</param>
-        /// <param name="ModelHistoryId">Id of the model history / workspace.</param>
-        /// <param name="LastUpdated">Indicates the time when experiment was last updated.</param>
-        public ExperimentEntity(string BestModelId = default(string), string InputDataUri = default(string), string ExperimentId = default(string), string ExperimentName = default(string), string ExperimentDescription = default(string), string NotebookJson = default(string), string NotebookUrl = default(string), string ZeppelinId = default(string), string ModelHistoryId = default(string), long? LastUpdated = default(long?))
+        /// <param name="bestModelId">GUID of the best selected model in an experiment.</param>
+        /// <param name="inputDataUri">Input data URI.</param>
+        /// <param name="experimentId">GUID of the experiment.</param>
+        /// <param name="experimentName">Experiment&#39;s name.</param>
+        /// <param name="experimentDescription">Experiment&#39;s description.</param>
+        /// <param name="notebookJson">The associated Zeppelin notebook JSON string.</param>
+        /// <param name="notebookUrl">URL of the associated Zeppelin notebook.</param>
+        /// <param name="zeppelinId">Zeppelin ID.</param>
+        /// <param name="modelHistoryId">Id of the model history / workspace.</param>
+        /// <param name="lastUpdated">Indicates the time when experiment was last updated.</param>
+        public ExperimentEntity(string bestModelId = default(string), string inputDataUri = default(string), string experimentId = default(string), string experimentName = default(string), string experimentDescription = default(string), string notebookJson = default(string), string notebookUrl = default(string), string zeppelinId = default(string), string modelHistoryId = default(string), long? lastUpdated = default(long?))
         {
-            this.BestModelId = BestModelId;
-            this.InputDataUri = InputDataUri;
-            this.ExperimentId = ExperimentId;
-            this.ExperimentName = ExperimentName;
-            this.ExperimentDescription = ExperimentDescription;
-            this.NotebookJson = NotebookJson;
-            this.NotebookUrl = NotebookUrl;
-            this.ZeppelinId = ZeppelinId;
-            this.ModelHistoryId = ModelHistoryId;
-            this.LastUpdated = LastUpdated;
+            this.BestModelId = bestModelId;
+            this.InputDataUri = inputDataUri;
+            this.ExperimentId = experimentId;
+            this.ExperimentName = experimentName;
+            this.ExperimentDescription = experimentDescription;
+            this.NotebookJson = notebookJson;
+            this.NotebookUrl = notebookUrl;
+            this.ZeppelinId = zeppelinId;
+            this.ModelHistoryId = modelHistoryId;
+            this.LastUpdated = lastUpdated;
         }
         
         /// <summary>
@@ -153,7 +153,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

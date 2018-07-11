@@ -33,10 +33,10 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse200" /> class.
         /// </summary>
-        /// <param name="Status">Status.</param>
-        public InlineResponse200(string Status = default(string))
+        /// <param name="status">status.</param>
+        public InlineResponse200(string status = default(string))
         {
-            this.Status = Status;
+            this.Status = status;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

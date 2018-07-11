@@ -33,14 +33,14 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LogRequest" /> class.
         /// </summary>
-        /// <param name="Offset">Offset.</param>
-        /// <param name="RowCount">RowCount.</param>
-        /// <param name="Head">Head.</param>
-        public LogRequest(int? Offset = default(int?), int? RowCount = default(int?), bool? Head = default(bool?))
+        /// <param name="offset">offset.</param>
+        /// <param name="rowCount">rowCount.</param>
+        /// <param name="head">head.</param>
+        public LogRequest(int? offset = default(int?), int? rowCount = default(int?), bool? head = default(bool?))
         {
-            this.Offset = Offset;
-            this.RowCount = RowCount;
-            this.Head = Head;
+            this.Offset = offset;
+            this.RowCount = rowCount;
+            this.Head = head;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

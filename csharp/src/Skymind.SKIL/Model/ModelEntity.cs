@@ -174,38 +174,38 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelEntity" /> class.
         /// </summary>
-        /// <param name="Id">Id.</param>
-        /// <param name="Created">Created.</param>
-        /// <param name="Updated">Updated.</param>
-        /// <param name="ModelType">ModelType.</param>
-        /// <param name="DeploymentId">DeploymentId.</param>
-        /// <param name="Name">Name.</param>
-        /// <param name="Scale">Scale.</param>
-        /// <param name="FileLocation">FileLocation.</param>
-        /// <param name="State">State.</param>
-        /// <param name="JvmArgs">JvmArgs.</param>
-        /// <param name="SubType">SubType.</param>
-        /// <param name="LabelsFileLocation">LabelsFileLocation.</param>
-        /// <param name="ExtraArgs">ExtraArgs.</param>
-        /// <param name="LaunchPolicy">LaunchPolicy.</param>
-        /// <param name="ModelState">ModelState.</param>
-        public ModelEntity(long? Id = default(long?), long? Created = default(long?), long? Updated = default(long?), ModelTypeEnum? ModelType = default(ModelTypeEnum?), long? DeploymentId = default(long?), string Name = default(string), decimal? Scale = default(decimal?), string FileLocation = default(string), StateEnum? State = default(StateEnum?), string JvmArgs = default(string), string SubType = default(string), string LabelsFileLocation = default(string), string ExtraArgs = default(string), Object LaunchPolicy = default(Object), ModelStateEnum? ModelState = default(ModelStateEnum?))
+        /// <param name="id">id.</param>
+        /// <param name="created">created.</param>
+        /// <param name="updated">updated.</param>
+        /// <param name="modelType">modelType.</param>
+        /// <param name="deploymentId">deploymentId.</param>
+        /// <param name="name">name.</param>
+        /// <param name="scale">scale.</param>
+        /// <param name="fileLocation">fileLocation.</param>
+        /// <param name="state">state.</param>
+        /// <param name="jvmArgs">jvmArgs.</param>
+        /// <param name="subType">subType.</param>
+        /// <param name="labelsFileLocation">labelsFileLocation.</param>
+        /// <param name="extraArgs">extraArgs.</param>
+        /// <param name="launchPolicy">launchPolicy.</param>
+        /// <param name="modelState">modelState.</param>
+        public ModelEntity(long? id = default(long?), long? created = default(long?), long? updated = default(long?), ModelTypeEnum? modelType = default(ModelTypeEnum?), long? deploymentId = default(long?), string name = default(string), decimal? scale = default(decimal?), string fileLocation = default(string), StateEnum? state = default(StateEnum?), string jvmArgs = default(string), string subType = default(string), string labelsFileLocation = default(string), string extraArgs = default(string), Object launchPolicy = default(Object), ModelStateEnum? modelState = default(ModelStateEnum?))
         {
-            this.Id = Id;
-            this.Created = Created;
-            this.Updated = Updated;
-            this.ModelType = ModelType;
-            this.DeploymentId = DeploymentId;
-            this.Name = Name;
-            this.Scale = Scale;
-            this.FileLocation = FileLocation;
-            this.State = State;
-            this.JvmArgs = JvmArgs;
-            this.SubType = SubType;
-            this.LabelsFileLocation = LabelsFileLocation;
-            this.ExtraArgs = ExtraArgs;
-            this.LaunchPolicy = LaunchPolicy;
-            this.ModelState = ModelState;
+            this.Id = id;
+            this.Created = created;
+            this.Updated = updated;
+            this.ModelType = modelType;
+            this.DeploymentId = deploymentId;
+            this.Name = name;
+            this.Scale = scale;
+            this.FileLocation = fileLocation;
+            this.State = state;
+            this.JvmArgs = jvmArgs;
+            this.SubType = subType;
+            this.LabelsFileLocation = labelsFileLocation;
+            this.ExtraArgs = extraArgs;
+            this.LaunchPolicy = launchPolicy;
+            this.ModelState = modelState;
         }
         
         /// <summary>
@@ -314,7 +314,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

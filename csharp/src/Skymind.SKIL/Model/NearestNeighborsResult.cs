@@ -33,14 +33,14 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NearestNeighborsResult" /> class.
         /// </summary>
-        /// <param name="Index">Index.</param>
-        /// <param name="Distance">Distance.</param>
-        /// <param name="Label">Label.</param>
-        public NearestNeighborsResult(int? Index = default(int?), decimal? Distance = default(decimal?), string Label = default(string))
+        /// <param name="index">index.</param>
+        /// <param name="distance">distance.</param>
+        /// <param name="label">label.</param>
+        public NearestNeighborsResult(int? index = default(int?), decimal? distance = default(decimal?), string label = default(string))
         {
-            this.Index = Index;
-            this.Distance = Distance;
-            this.Label = Label;
+            this.Index = index;
+            this.Distance = distance;
+            this.Label = label;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

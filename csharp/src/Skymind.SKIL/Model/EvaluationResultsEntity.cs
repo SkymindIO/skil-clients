@@ -33,42 +33,42 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EvaluationResultsEntity" /> class.
         /// </summary>
-        /// <param name="Evaluation">Evaluation.</param>
-        /// <param name="EvalName">EvalName.</param>
-        /// <param name="ModelInstanceId">ModelInstanceId.</param>
-        /// <param name="Created">When the evaluation result was created.</param>
-        /// <param name="F1">F1.</param>
-        /// <param name="Precision">Precision.</param>
-        /// <param name="Recall">Recall.</param>
-        /// <param name="Accuracy">Accuracy.</param>
-        /// <param name="Rmse">Rmse.</param>
-        /// <param name="Auc">Auc.</param>
-        /// <param name="MeanAbsoluteError">MeanAbsoluteError.</param>
-        /// <param name="MeanRelativeError">MeanRelativeError.</param>
-        /// <param name="R2">R2.</param>
-        /// <param name="EvalId">GUID of the evaluation.</param>
-        /// <param name="EvalVersion">EvalVersion.</param>
-        /// <param name="BinaryThreshold">BinaryThreshold.</param>
-        /// <param name="BinaryThresholds">BinaryThresholds.</param>
-        public EvaluationResultsEntity(string Evaluation = default(string), string EvalName = default(string), string ModelInstanceId = default(string), long? Created = default(long?), double? F1 = default(double?), double? Precision = default(double?), double? Recall = default(double?), double? Accuracy = default(double?), double? Rmse = default(double?), double? Auc = default(double?), double? MeanAbsoluteError = default(double?), double? MeanRelativeError = default(double?), double? R2 = default(double?), string EvalId = default(string), int? EvalVersion = default(int?), double? BinaryThreshold = default(double?), string BinaryThresholds = default(string))
+        /// <param name="evaluation">evaluation.</param>
+        /// <param name="evalName">evalName.</param>
+        /// <param name="modelInstanceId">modelInstanceId.</param>
+        /// <param name="created">When the evaluation result was created.</param>
+        /// <param name="f1">f1.</param>
+        /// <param name="precision">precision.</param>
+        /// <param name="recall">recall.</param>
+        /// <param name="accuracy">accuracy.</param>
+        /// <param name="rmse">rmse.</param>
+        /// <param name="auc">auc.</param>
+        /// <param name="meanAbsoluteError">meanAbsoluteError.</param>
+        /// <param name="meanRelativeError">meanRelativeError.</param>
+        /// <param name="r2">r2.</param>
+        /// <param name="evalId">GUID of the evaluation.</param>
+        /// <param name="evalVersion">evalVersion.</param>
+        /// <param name="binaryThreshold">binaryThreshold.</param>
+        /// <param name="binaryThresholds">binaryThresholds.</param>
+        public EvaluationResultsEntity(string evaluation = default(string), string evalName = default(string), string modelInstanceId = default(string), long? created = default(long?), double? f1 = default(double?), double? precision = default(double?), double? recall = default(double?), double? accuracy = default(double?), double? rmse = default(double?), double? auc = default(double?), double? meanAbsoluteError = default(double?), double? meanRelativeError = default(double?), double? r2 = default(double?), string evalId = default(string), int? evalVersion = default(int?), double? binaryThreshold = default(double?), string binaryThresholds = default(string))
         {
-            this.Evaluation = Evaluation;
-            this.EvalName = EvalName;
-            this.ModelInstanceId = ModelInstanceId;
-            this.Created = Created;
-            this.F1 = F1;
-            this.Precision = Precision;
-            this.Recall = Recall;
-            this.Accuracy = Accuracy;
-            this.Rmse = Rmse;
-            this.Auc = Auc;
-            this.MeanAbsoluteError = MeanAbsoluteError;
-            this.MeanRelativeError = MeanRelativeError;
-            this.R2 = R2;
-            this.EvalId = EvalId;
-            this.EvalVersion = EvalVersion;
-            this.BinaryThreshold = BinaryThreshold;
-            this.BinaryThresholds = BinaryThresholds;
+            this.Evaluation = evaluation;
+            this.EvalName = evalName;
+            this.ModelInstanceId = modelInstanceId;
+            this.Created = created;
+            this.F1 = f1;
+            this.Precision = precision;
+            this.Recall = recall;
+            this.Accuracy = accuracy;
+            this.Rmse = rmse;
+            this.Auc = auc;
+            this.MeanAbsoluteError = meanAbsoluteError;
+            this.MeanRelativeError = meanRelativeError;
+            this.R2 = r2;
+            this.EvalId = evalId;
+            this.EvalVersion = evalVersion;
+            this.BinaryThreshold = binaryThreshold;
+            this.BinaryThresholds = binaryThresholds;
         }
         
         /// <summary>
@@ -208,7 +208,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

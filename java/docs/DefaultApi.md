@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**addExampleToMinibatch**](DefaultApi.md#addExampleToMinibatch) | **POST** /model/example | Adds an example to a minibatch
 [**addExperiment**](DefaultApi.md#addExperiment) | **POST** /experiment | Add an experiment, given an experiment entity
 [**addMinibatch**](DefaultApi.md#addMinibatch) | **POST** /model/minibatch | Adds a minibatch
+[**addModelFeedback**](DefaultApi.md#addModelFeedback) | **POST** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**addModelHistory**](DefaultApi.md#addModelHistory) | **POST** /modelhistory | Add a model history / workspace
 [**addModelInstance**](DefaultApi.md#addModelInstance) | **POST** /model | Adds a model
 [**aggregateModelResults**](DefaultApi.md#aggregateModelResults) | **POST** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -181,7 +182,7 @@ Name | Type | Description  | Notes
 
 <a name="addExampleToMinibatch"></a>
 # **addExampleToMinibatch**
-> ModelNull addExampleToMinibatch(exampleEntity)
+> ExampleEntity addExampleToMinibatch(exampleEntity)
 
 Adds an example to a minibatch
 
@@ -203,9 +204,9 @@ api_key.setApiKey("YOUR API KEY");
 //api_key.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-ModelNull exampleEntity = new ModelNull(); // ModelNull | The example to add to the minibatch
+ExampleEntity exampleEntity = new ExampleEntity(); // ExampleEntity | The example to add to the minibatch
 try {
-    ModelNull result = apiInstance.addExampleToMinibatch(exampleEntity);
+    ExampleEntity result = apiInstance.addExampleToMinibatch(exampleEntity);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#addExampleToMinibatch");
@@ -217,11 +218,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exampleEntity** | [**ModelNull**](ModelNull.md)| The example to add to the minibatch |
+ **exampleEntity** | [**ExampleEntity**](ExampleEntity.md)| The example to add to the minibatch |
 
 ### Return type
 
-[**ModelNull**](ModelNull.md)
+[**ExampleEntity**](ExampleEntity.md)
 
 ### Authorization
 
@@ -328,6 +329,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MinibatchEntity**](MinibatchEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="addModelFeedback"></a>
+# **addModelFeedback**
+> ModelFeedBackRequest addModelFeedback(modelFeedBackRequest)
+
+Adds an evaluation feedback to the model against a given minibatch id.
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+ModelFeedBackRequest modelFeedBackRequest = new ModelFeedBackRequest(); // ModelFeedBackRequest | The model feedback request object
+try {
+    ModelFeedBackRequest result = apiInstance.addModelFeedback(modelFeedBackRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#addModelFeedback");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelFeedBackRequest** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object |
+
+### Return type
+
+[**ModelFeedBackRequest**](ModelFeedBackRequest.md)
 
 ### Authorization
 
@@ -1368,7 +1422,7 @@ Name | Type | Description  | Notes
 
 <a name="getExamplesForMinibatch"></a>
 # **getExamplesForMinibatch**
-> List&lt;ModelNull&gt; getExamplesForMinibatch(minibatchId)
+> List&lt;ExampleEntity&gt; getExamplesForMinibatch(minibatchId)
 
 Gets all the examples for a minibatch ID
 
@@ -1392,7 +1446,7 @@ api_key.setApiKey("YOUR API KEY");
 DefaultApi apiInstance = new DefaultApi();
 String minibatchId = "minibatchId_example"; // String | The GUID of the minibatch
 try {
-    List<ModelNull> result = apiInstance.getExamplesForMinibatch(minibatchId);
+    List<ExampleEntity> result = apiInstance.getExamplesForMinibatch(minibatchId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#getExamplesForMinibatch");
@@ -1408,7 +1462,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;ModelNull&gt;**](ModelNull.md)
+[**List&lt;ExampleEntity&gt;**](ExampleEntity.md)
 
 ### Authorization
 

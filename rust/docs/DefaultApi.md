@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**add_example_to_minibatch**](DefaultApi.md#add_example_to_minibatch) | **Post** /model/example | Adds an example to a minibatch
 [**add_experiment**](DefaultApi.md#add_experiment) | **Post** /experiment | Add an experiment, given an experiment entity
 [**add_minibatch**](DefaultApi.md#add_minibatch) | **Post** /model/minibatch | Adds a minibatch
+[**add_model_feedback**](DefaultApi.md#add_model_feedback) | **Post** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**add_model_history**](DefaultApi.md#add_model_history) | **Post** /modelhistory | Add a model history / workspace
 [**add_model_instance**](DefaultApi.md#add_model_instance) | **Post** /model | Adds a model
 [**aggregate_model_results**](DefaultApi.md#aggregate_model_results) | **Post** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -191,6 +192,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**::models::MinibatchEntity**](MinibatchEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_model_feedback**
+> ::models::ModelFeedBackRequest add_model_feedback(ctx, model_feed_back_request)
+Adds an evaluation feedback to the model against a given minibatch id.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_feed_back_request** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
+
+### Return type
+
+[**::models::ModelFeedBackRequest**](ModelFeedBackRequest.md)
 
 ### Authorization
 

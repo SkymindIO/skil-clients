@@ -33,14 +33,14 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LogBatch" /> class.
         /// </summary>
-        /// <param name="Offset">Offset.</param>
-        /// <param name="RowCount">RowCount.</param>
-        /// <param name="Logs">Logs.</param>
-        public LogBatch(int? Offset = default(int?), int? RowCount = default(int?), string Logs = default(string))
+        /// <param name="offset">offset.</param>
+        /// <param name="rowCount">rowCount.</param>
+        /// <param name="logs">logs.</param>
+        public LogBatch(int? offset = default(int?), int? rowCount = default(int?), string logs = default(string))
         {
-            this.Offset = Offset;
-            this.RowCount = RowCount;
-            this.Logs = Logs;
+            this.Offset = offset;
+            this.RowCount = rowCount;
+            this.Logs = logs;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

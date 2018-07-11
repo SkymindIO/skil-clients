@@ -51,6 +51,7 @@ import ai.skymind.skil.model.LogRequest;
 import ai.skymind.skil.model.MetaData;
 import ai.skymind.skil.model.MinibatchEntity;
 import ai.skymind.skil.model.ModelEntity;
+import ai.skymind.skil.model.ModelFeedBackRequest;
 import ai.skymind.skil.model.ModelHistoryEntity;
 import ai.skymind.skil.model.ModelInstanceEntity;
 import ai.skymind.skil.model.ModelStatus;
@@ -723,6 +724,134 @@ public class DefaultApi {
           public void onResponse(String localVarResponse) {
             try {
               responseListener.onResponse((MinibatchEntity) ApiInvoker.deserialize(localVarResponse,  "", MinibatchEntity.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Adds an evaluation feedback to the model against a given minibatch id.
+  * 
+   * @param modelFeedBackRequest The model feedback request object
+   * @return ModelFeedBackRequest
+  */
+  public ModelFeedBackRequest addModelFeedback (ModelFeedBackRequest modelFeedBackRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = modelFeedBackRequest;
+    // verify the required parameter 'modelFeedBackRequest' is set
+    if (modelFeedBackRequest == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelFeedBackRequest' when calling addModelFeedback",
+        new ApiException(400, "Missing the required parameter 'modelFeedBackRequest' when calling addModelFeedback"));
+    }
+
+    // create path and map variables
+    String path = "/model/feedback";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (ModelFeedBackRequest) ApiInvoker.deserialize(localVarResponse, "", ModelFeedBackRequest.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Adds an evaluation feedback to the model against a given minibatch id.
+   * 
+   * @param modelFeedBackRequest The model feedback request object
+  */
+  public void addModelFeedback (ModelFeedBackRequest modelFeedBackRequest, final Response.Listener<ModelFeedBackRequest> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = modelFeedBackRequest;
+
+    // verify the required parameter 'modelFeedBackRequest' is set
+    if (modelFeedBackRequest == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelFeedBackRequest' when calling addModelFeedback",
+        new ApiException(400, "Missing the required parameter 'modelFeedBackRequest' when calling addModelFeedback"));
+    }
+
+    // create path and map variables
+    String path = "/model/feedback".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((ModelFeedBackRequest) ApiInvoker.deserialize(localVarResponse,  "", ModelFeedBackRequest.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

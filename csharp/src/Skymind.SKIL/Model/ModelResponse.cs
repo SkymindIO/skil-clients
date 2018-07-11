@@ -33,18 +33,18 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelResponse" /> class.
         /// </summary>
-        /// <param name="Id">Id.</param>
-        /// <param name="Name">Name.</param>
-        /// <param name="Status">Status.</param>
-        /// <param name="Scale">Scale.</param>
-        /// <param name="Uri">Uri.</param>
-        public ModelResponse(string Id = default(string), string Name = default(string), string Status = default(string), int? Scale = default(int?), List<string> Uri = default(List<string>))
+        /// <param name="id">id.</param>
+        /// <param name="name">name.</param>
+        /// <param name="status">status.</param>
+        /// <param name="scale">scale.</param>
+        /// <param name="uri">uri.</param>
+        public ModelResponse(string id = default(string), string name = default(string), string status = default(string), int? scale = default(int?), List<string> uri = default(List<string>))
         {
-            this.Id = Id;
-            this.Name = Name;
-            this.Status = Status;
-            this.Scale = Scale;
-            this.Uri = Uri;
+            this.Id = id;
+            this.Name = name;
+            this.Status = status;
+            this.Scale = scale;
+            this.Uri = uri;
         }
         
         /// <summary>
@@ -98,7 +98,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,16 +33,16 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelHistoryEntity" /> class.
         /// </summary>
-        /// <param name="Created">When the model history / workspace was created.</param>
-        /// <param name="ModelHistoryId">The GUID of the model history / workspace.</param>
-        /// <param name="ModelName">Name of the model history / workspace.</param>
-        /// <param name="ModelLabels">Model history / workspace labels.</param>
-        public ModelHistoryEntity(long? Created = default(long?), string ModelHistoryId = default(string), string ModelName = default(string), string ModelLabels = default(string))
+        /// <param name="created">When the model history / workspace was created.</param>
+        /// <param name="modelHistoryId">The GUID of the model history / workspace.</param>
+        /// <param name="modelName">Name of the model history / workspace.</param>
+        /// <param name="modelLabels">Model history / workspace labels.</param>
+        public ModelHistoryEntity(long? created = default(long?), string modelHistoryId = default(string), string modelName = default(string), string modelLabels = default(string))
         {
-            this.Created = Created;
-            this.ModelHistoryId = ModelHistoryId;
-            this.ModelName = ModelName;
-            this.ModelLabels = ModelLabels;
+            this.Created = created;
+            this.ModelHistoryId = modelHistoryId;
+            this.ModelName = modelName;
+            this.ModelLabels = modelLabels;
         }
         
         /// <summary>
@@ -93,7 +93,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,20 +33,20 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ExampleEntity" /> class.
         /// </summary>
-        /// <param name="ExampleId">the GUID of the example.</param>
-        /// <param name="ExampleVersion">Example version.</param>
-        /// <param name="IntRowNumber">Row Number.</param>
-        /// <param name="Created">when the example was created.</param>
-        /// <param name="MiniBatchId">The GUID of the minibatch.</param>
-        /// <param name="MiniBatchVersion">minibatch version.</param>
-        public ExampleEntity(string ExampleId = default(string), int? ExampleVersion = default(int?), int? IntRowNumber = default(int?), long? Created = default(long?), string MiniBatchId = default(string), int? MiniBatchVersion = default(int?))
+        /// <param name="exampleId">the GUID of the example.</param>
+        /// <param name="exampleVersion">Example version.</param>
+        /// <param name="intRowNumber">Row Number.</param>
+        /// <param name="created">when the example was created.</param>
+        /// <param name="miniBatchId">The GUID of the minibatch.</param>
+        /// <param name="miniBatchVersion">minibatch version.</param>
+        public ExampleEntity(string exampleId = default(string), int? exampleVersion = default(int?), int? intRowNumber = default(int?), long? created = default(long?), string miniBatchId = default(string), int? miniBatchVersion = default(int?))
         {
-            this.ExampleId = ExampleId;
-            this.ExampleVersion = ExampleVersion;
-            this.IntRowNumber = IntRowNumber;
-            this.Created = Created;
-            this.MiniBatchId = MiniBatchId;
-            this.MiniBatchVersion = MiniBatchVersion;
+            this.ExampleId = exampleId;
+            this.ExampleVersion = exampleVersion;
+            this.IntRowNumber = intRowNumber;
+            this.Created = created;
+            this.MiniBatchId = miniBatchId;
+            this.MiniBatchVersion = miniBatchVersion;
         }
         
         /// <summary>
@@ -113,7 +113,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

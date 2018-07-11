@@ -33,10 +33,10 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FileUploadList" /> class.
         /// </summary>
-        /// <param name="FileUploadResponseList">FileUploadResponseList.</param>
-        public FileUploadList(List<FileUpload> FileUploadResponseList = default(List<FileUpload>))
+        /// <param name="fileUploadResponseList">fileUploadResponseList.</param>
+        public FileUploadList(List<FileUpload> fileUploadResponseList = default(List<FileUpload>))
         {
-            this.FileUploadResponseList = FileUploadResponseList;
+            this.FileUploadResponseList = fileUploadResponseList;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

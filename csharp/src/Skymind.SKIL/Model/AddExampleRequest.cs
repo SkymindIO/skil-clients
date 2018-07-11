@@ -33,12 +33,12 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AddExampleRequest" /> class.
         /// </summary>
-        /// <param name="Minibatch">the minibatch the examples are going to be associated with.</param>
-        /// <param name="BatchSize">the size of the batch to create.</param>
-        public AddExampleRequest(MinibatchEntity Minibatch = default(MinibatchEntity), int? BatchSize = default(int?))
+        /// <param name="minibatch">the minibatch the examples are going to be associated with.</param>
+        /// <param name="batchSize">the size of the batch to create.</param>
+        public AddExampleRequest(MinibatchEntity minibatch = default(MinibatchEntity), int? batchSize = default(int?))
         {
-            this.Minibatch = Minibatch;
-            this.BatchSize = BatchSize;
+            this.Minibatch = minibatch;
+            this.BatchSize = batchSize;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -55,7 +55,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = evaluationResultsEntity.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<EvaluationResultsEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -89,7 +89,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = addExampleRequest.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<AddExampleRequest>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -130,7 +130,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = exampleEntity.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ExampleEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -175,7 +175,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = experimentEntity.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ExperimentEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -214,9 +214,47 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = minibatchEntity.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<MinibatchEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Adds an evaluation feedback to the model against a given minibatch id.
+     - parameter modelFeedBackRequest: (body) The model feedback request object 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func addModelFeedback(modelFeedBackRequest: ModelFeedBackRequest, completion: @escaping ((_ data: ModelFeedBackRequest?, _ error: ErrorResponse?) -> Void)) {
+        addModelFeedbackWithRequestBuilder(modelFeedBackRequest: modelFeedBackRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Adds an evaluation feedback to the model against a given minibatch id.
+     - POST /model/feedback
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "correct" : "[\"0\", \"0\", \"2\"]",
+  "guesses" : "[\"0\", \"1\", \"2\"]",
+  "batchId" : "batchId"
+}}]
+     - parameter modelFeedBackRequest: (body) The model feedback request object 
+     - returns: RequestBuilder<ModelFeedBackRequest> 
+     */
+    open class func addModelFeedbackWithRequestBuilder(modelFeedBackRequest: ModelFeedBackRequest) -> RequestBuilder<ModelFeedBackRequest> {
+        let path = "/model/feedback"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = modelFeedBackRequest.encodeToJSON()
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ModelFeedBackRequest>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -253,7 +291,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = addModelHistoryRequest.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelHistoryEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -300,7 +338,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = modelInstanceEntity.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelInstanceEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -352,7 +390,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = aggregatePrediction.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<EvaluationResultsEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -400,7 +438,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ClassificationResult>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -446,7 +484,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -498,8 +536,8 @@ open class DefaultAPI: APIBase {
 
         let nonNullParameters = APIHelper.rejectNil(formParams)
         let parameters = APIHelper.convertBoolToString(nonNullParameters)
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ClassificationResult>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -538,7 +576,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = modelHistoryEntity.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelHistoryEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -576,8 +614,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{experimentID}", with: experimentIDPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<InlineResponse200>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -620,8 +658,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{modelId}", with: modelIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<InlineResponse200>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -659,8 +697,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{modelHistoryID}", with: modelHistoryIDPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<InlineResponse200>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -695,8 +733,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{modelInstanceID}", with: modelInstanceIDPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -751,7 +789,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -831,7 +869,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<DeploymentResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -869,8 +907,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{deploymentId}", with: deploymentIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<InlineResponse200>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -952,8 +990,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{deploymentId}", with: deploymentIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<DeploymentResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1076,8 +1114,8 @@ open class DefaultAPI: APIBase {
         let path = "/deployments"
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<[DeploymentResponse]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1151,8 +1189,8 @@ open class DefaultAPI: APIBase {
 
         let nonNullParameters = APIHelper.rejectNil(formParams)
         let parameters = APIHelper.convertBoolToString(nonNullParameters)
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<DetectionResult>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1199,7 +1237,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = bestModel.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelInstanceEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1271,8 +1309,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{modelInstanceID}", with: modelInstanceIDPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<[EvaluationResultsEntity]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1322,8 +1360,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{minibatchId}", with: minibatchIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<[ExampleEntity]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1370,8 +1408,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{experimentID}", with: experimentIDPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ExperimentEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1418,8 +1456,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{modelHistoryID}", with: modelHistoryIDPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ExperimentEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1460,8 +1498,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{minibatchId}", with: minibatchIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<MinibatchEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1502,8 +1540,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{modelHistoryID}", with: modelHistoryIDPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelHistoryEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1552,8 +1590,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{modelInstanceID}", with: modelInstanceIDPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelInstanceEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1615,8 +1653,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{experimentID}", with: experimentIDPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<[ModelInstanceEntity]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1657,8 +1695,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ImageTransformProcess>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1702,7 +1740,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ImageTransformProcess>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1750,7 +1788,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<JsonArrayResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1805,7 +1843,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<NearestNeighborsResults>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1859,7 +1897,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<NearestNeighborsResults>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1912,8 +1950,8 @@ open class DefaultAPI: APIBase {
         let path = "/experiments"
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<[ExperimentEntity]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1954,8 +1992,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -1991,7 +2029,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = credentials.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Token>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2039,7 +2077,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<LogBatch>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2080,8 +2118,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<MetaData>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2125,7 +2163,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<MetaData>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2185,7 +2223,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2253,8 +2291,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{deploymentId}", with: deploymentIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<[ModelEntity]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2304,8 +2342,8 @@ open class DefaultAPI: APIBase {
 
         let nonNullParameters = APIHelper.rejectNil(formParams)
         let parameters = APIHelper.convertBoolToString(nonNullParameters)
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelStatus>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2355,8 +2393,8 @@ open class DefaultAPI: APIBase {
 
         let nonNullParameters = APIHelper.rejectNil(formParams)
         let parameters = APIHelper.convertBoolToString(nonNullParameters)
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelStatus>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2404,7 +2442,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<MultiClassClassificationResult>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2465,7 +2503,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<MultiPredictResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2515,7 +2553,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Prediction>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2569,8 +2607,8 @@ open class DefaultAPI: APIBase {
 
         let nonNullParameters = APIHelper.rejectNil(formParams)
         let parameters = APIHelper.convertBoolToString(nonNullParameters)
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Prediction>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2620,7 +2658,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Prediction>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2668,7 +2706,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<JsonArrayResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2728,7 +2766,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2779,7 +2817,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = batchCSVRecord?.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<BatchCSVRecord>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2826,7 +2864,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = batchCSVRecord?.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2873,7 +2911,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = batchImageRecord.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2924,8 +2962,8 @@ open class DefaultAPI: APIBase {
 
         let nonNullParameters = APIHelper.rejectNil(formParams)
         let parameters = APIHelper.convertBoolToString(nonNullParameters)
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -2972,7 +3010,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = singleCSVRecord?.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<SingleCSVRecord>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -3019,7 +3057,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = singleCSVRecord?.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -3066,7 +3104,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = singleImageRecord.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -3117,8 +3155,8 @@ open class DefaultAPI: APIBase {
 
         let nonNullParameters = APIHelper.rejectNil(formParams)
         let parameters = APIHelper.convertBoolToString(nonNullParameters)
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -3160,8 +3198,8 @@ open class DefaultAPI: APIBase {
         path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<TransformProcess>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -3205,7 +3243,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = transformProcess?.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -3250,7 +3288,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = updateBestModel.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ExperimentEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -3300,7 +3338,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = experimentEntity.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ExperimentEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -3344,7 +3382,7 @@ open class DefaultAPI: APIBase {
         let URLString = SkilClientAPI.basePath + path
         let parameters = updateModelHistoryRequest.encodeToJSON()
 
-        let url = NSURLComponents(string: URLString)
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ModelHistoryEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
@@ -3398,8 +3436,8 @@ open class DefaultAPI: APIBase {
 
         let nonNullParameters = APIHelper.rejectNil(formParams)
         let parameters = APIHelper.convertBoolToString(nonNullParameters)
-
-        let url = NSURLComponents(string: URLString)
+        
+        let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<FileUploadList>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 

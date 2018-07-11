@@ -33,12 +33,12 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateBestModel" /> class.
         /// </summary>
-        /// <param name="ExperimentId">GUID of the experiment to update..</param>
-        /// <param name="BestModelId">GUID of the model to set as the best model..</param>
-        public UpdateBestModel(string ExperimentId = default(string), string BestModelId = default(string))
+        /// <param name="experimentId">GUID of the experiment to update..</param>
+        /// <param name="bestModelId">GUID of the model to set as the best model..</param>
+        public UpdateBestModel(string experimentId = default(string), string bestModelId = default(string))
         {
-            this.ExperimentId = ExperimentId;
-            this.BestModelId = BestModelId;
+            this.ExperimentId = experimentId;
+            this.BestModelId = bestModelId;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

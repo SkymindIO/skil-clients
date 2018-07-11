@@ -33,18 +33,18 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeploymentResponse" /> class.
         /// </summary>
-        /// <param name="Id">Id.</param>
-        /// <param name="Name">Name.</param>
-        /// <param name="DeploymentSlug">DeploymentSlug.</param>
-        /// <param name="Status">Status.</param>
-        /// <param name="Body">Body.</param>
-        public DeploymentResponse(string Id = default(string), string Name = default(string), string DeploymentSlug = default(string), string Status = default(string), DeploymentObjects Body = default(DeploymentObjects))
+        /// <param name="id">id.</param>
+        /// <param name="name">name.</param>
+        /// <param name="deploymentSlug">deploymentSlug.</param>
+        /// <param name="status">status.</param>
+        /// <param name="body">body.</param>
+        public DeploymentResponse(string id = default(string), string name = default(string), string deploymentSlug = default(string), string status = default(string), DeploymentObjects body = default(DeploymentObjects))
         {
-            this.Id = Id;
-            this.Name = Name;
-            this.DeploymentSlug = DeploymentSlug;
-            this.Status = Status;
-            this.Body = Body;
+            this.Id = id;
+            this.Name = name;
+            this.DeploymentSlug = deploymentSlug;
+            this.Status = status;
+            this.Body = body;
         }
         
         /// <summary>
@@ -98,7 +98,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

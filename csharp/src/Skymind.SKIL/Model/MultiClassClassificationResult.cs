@@ -33,14 +33,14 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiClassClassificationResult" /> class.
         /// </summary>
-        /// <param name="RankedOutcomes">RankedOutcomes.</param>
-        /// <param name="MaxOutcomes">MaxOutcomes.</param>
-        /// <param name="Probabilities">Probabilities.</param>
-        public MultiClassClassificationResult(List<List<string>> RankedOutcomes = default(List<List<string>>), List<string> MaxOutcomes = default(List<string>), List<List<decimal?>> Probabilities = default(List<List<decimal?>>))
+        /// <param name="rankedOutcomes">rankedOutcomes.</param>
+        /// <param name="maxOutcomes">maxOutcomes.</param>
+        /// <param name="probabilities">probabilities.</param>
+        public MultiClassClassificationResult(List<List<string>> rankedOutcomes = default(List<List<string>>), List<string> maxOutcomes = default(List<string>), List<List<decimal?>> probabilities = default(List<List<decimal?>>))
         {
-            this.RankedOutcomes = RankedOutcomes;
-            this.MaxOutcomes = MaxOutcomes;
-            this.Probabilities = Probabilities;
+            this.RankedOutcomes = rankedOutcomes;
+            this.MaxOutcomes = maxOutcomes;
+            this.Probabilities = probabilities;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

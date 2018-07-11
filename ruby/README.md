@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *SkilCient::DefaultApi* | [**add_example_to_minibatch**](docs/DefaultApi.md#add_example_to_minibatch) | **POST** /model/example | Adds an example to a minibatch
 *SkilCient::DefaultApi* | [**add_experiment**](docs/DefaultApi.md#add_experiment) | **POST** /experiment | Add an experiment, given an experiment entity
 *SkilCient::DefaultApi* | [**add_minibatch**](docs/DefaultApi.md#add_minibatch) | **POST** /model/minibatch | Adds a minibatch
+*SkilCient::DefaultApi* | [**add_model_feedback**](docs/DefaultApi.md#add_model_feedback) | **POST** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 *SkilCient::DefaultApi* | [**add_model_history**](docs/DefaultApi.md#add_model_history) | **POST** /modelhistory | Add a model history / workspace
 *SkilCient::DefaultApi* | [**add_model_instance**](docs/DefaultApi.md#add_model_instance) | **POST** /model | Adds a model
 *SkilCient::DefaultApi* | [**aggregate_model_results**](docs/DefaultApi.md#aggregate_model_results) | **POST** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -184,6 +185,7 @@ Class | Method | HTTP request | Description
  - [SkilCient::MetaData](docs/MetaData.md)
  - [SkilCient::MinibatchEntity](docs/MinibatchEntity.md)
  - [SkilCient::ModelEntity](docs/ModelEntity.md)
+ - [SkilCient::ModelFeedBackRequest](docs/ModelFeedBackRequest.md)
  - [SkilCient::ModelHistoryEntity](docs/ModelHistoryEntity.md)
  - [SkilCient::ModelInstanceEntity](docs/ModelInstanceEntity.md)
  - [SkilCient::ModelResponse](docs/ModelResponse.md)

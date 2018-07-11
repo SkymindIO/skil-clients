@@ -33,10 +33,10 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Base64NDArrayBody" /> class.
         /// </summary>
-        /// <param name="Ndarray">Ndarray.</param>
-        public Base64NDArrayBody(string Ndarray = default(string))
+        /// <param name="ndarray">ndarray.</param>
+        public Base64NDArrayBody(string ndarray = default(string))
         {
-            this.Ndarray = Ndarray;
+            this.Ndarray = ndarray;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

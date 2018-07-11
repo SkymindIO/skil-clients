@@ -33,16 +33,16 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiPredictRequest" /> class.
         /// </summary>
-        /// <param name="Id">Id.</param>
-        /// <param name="NeedsPreProcessing">NeedsPreProcessing.</param>
-        /// <param name="Inputs">Inputs.</param>
-        /// <param name="InputMasks">InputMasks.</param>
-        public MultiPredictRequest(string Id = default(string), bool? NeedsPreProcessing = default(bool?), List<INDArray> Inputs = default(List<INDArray>), List<INDArray> InputMasks = default(List<INDArray>))
+        /// <param name="id">id.</param>
+        /// <param name="needsPreProcessing">needsPreProcessing.</param>
+        /// <param name="inputs">inputs.</param>
+        /// <param name="inputMasks">inputMasks.</param>
+        public MultiPredictRequest(string id = default(string), bool? needsPreProcessing = default(bool?), List<INDArray> inputs = default(List<INDArray>), List<INDArray> inputMasks = default(List<INDArray>))
         {
-            this.Id = Id;
-            this.NeedsPreProcessing = NeedsPreProcessing;
-            this.Inputs = Inputs;
-            this.InputMasks = InputMasks;
+            this.Id = id;
+            this.NeedsPreProcessing = needsPreProcessing;
+            this.Inputs = inputs;
+            this.InputMasks = inputMasks;
         }
         
         /// <summary>
@@ -89,7 +89,7 @@ namespace Skymind.SKIL.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
