@@ -31,72 +31,72 @@ class AddModelHistoryRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'model_name': 'str',
-        'model_labels': 'str'
+        'model_history_name': 'str',
+        'model_history_labels': 'str'
     }
 
     attribute_map = {
-        'model_name': 'modelName',
-        'model_labels': 'modelLabels'
+        'model_history_name': 'modelHistoryName',
+        'model_history_labels': 'modelHistoryLabels'
     }
 
-    def __init__(self, model_name=None, model_labels=None):  # noqa: E501
+    def __init__(self, model_history_name=None, model_history_labels=None):  # noqa: E501
         """AddModelHistoryRequest - a model defined in Swagger"""  # noqa: E501
 
-        self._model_name = None
-        self._model_labels = None
+        self._model_history_name = None
+        self._model_history_labels = None
         self.discriminator = None
 
-        if model_name is not None:
-            self.model_name = model_name
-        if model_labels is not None:
-            self.model_labels = model_labels
+        if model_history_name is not None:
+            self.model_history_name = model_history_name
+        if model_history_labels is not None:
+            self.model_history_labels = model_history_labels
 
     @property
-    def model_name(self):
-        """Gets the model_name of this AddModelHistoryRequest.  # noqa: E501
+    def model_history_name(self):
+        """Gets the model_history_name of this AddModelHistoryRequest.  # noqa: E501
 
         Name of the model history / workspace  # noqa: E501
 
-        :return: The model_name of this AddModelHistoryRequest.  # noqa: E501
+        :return: The model_history_name of this AddModelHistoryRequest.  # noqa: E501
         :rtype: str
         """
-        return self._model_name
+        return self._model_history_name
 
-    @model_name.setter
-    def model_name(self, model_name):
-        """Sets the model_name of this AddModelHistoryRequest.
+    @model_history_name.setter
+    def model_history_name(self, model_history_name):
+        """Sets the model_history_name of this AddModelHistoryRequest.
 
         Name of the model history / workspace  # noqa: E501
 
-        :param model_name: The model_name of this AddModelHistoryRequest.  # noqa: E501
+        :param model_history_name: The model_history_name of this AddModelHistoryRequest.  # noqa: E501
         :type: str
         """
 
-        self._model_name = model_name
+        self._model_history_name = model_history_name
 
     @property
-    def model_labels(self):
-        """Gets the model_labels of this AddModelHistoryRequest.  # noqa: E501
+    def model_history_labels(self):
+        """Gets the model_history_labels of this AddModelHistoryRequest.  # noqa: E501
 
         Model history / workspace labels  # noqa: E501
 
-        :return: The model_labels of this AddModelHistoryRequest.  # noqa: E501
+        :return: The model_history_labels of this AddModelHistoryRequest.  # noqa: E501
         :rtype: str
         """
-        return self._model_labels
+        return self._model_history_labels
 
-    @model_labels.setter
-    def model_labels(self, model_labels):
-        """Sets the model_labels of this AddModelHistoryRequest.
+    @model_history_labels.setter
+    def model_history_labels(self, model_history_labels):
+        """Sets the model_history_labels of this AddModelHistoryRequest.
 
         Model history / workspace labels  # noqa: E501
 
-        :param model_labels: The model_labels of this AddModelHistoryRequest.  # noqa: E501
+        :param model_history_labels: The model_history_labels of this AddModelHistoryRequest.  # noqa: E501
         :type: str
         """
 
-        self._model_labels = model_labels
+        self._model_history_labels = model_history_labels
 
     def to_dict(self):
         """Returns the model properties as a dict"""

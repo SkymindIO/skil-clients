@@ -2326,10 +2326,10 @@ definitions:
   AddModelHistoryRequest:
     type: object
     properties:
-      modelName:
+      modelHistoryName:
         type: string
         description: Name of the model history / workspace
-      modelLabels:
+      modelHistoryLabels:
         type: string
         description: Model history / workspace labels
   ExperimentEntity:
