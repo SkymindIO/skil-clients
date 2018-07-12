@@ -6,7 +6,7 @@ info:
   title: Endpoints
 host: localhost:9008
 schemes:
-- https
+- http
 securityDefinitions:
   api_key:
     type: apiKey
