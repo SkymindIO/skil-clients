@@ -81,16 +81,10 @@ namespace Skymind.SKIL.Model
             INT16 = 3,
             
             /// <summary>
-            /// Enum INT16 for value: INT16
-            /// </summary>
-            [EnumMember(Value = "INT16")]
-            INT16 = 4,
-            
-            /// <summary>
             /// Enum FLOAT16 for value: FLOAT16
             /// </summary>
             [EnumMember(Value = "FLOAT16")]
-            FLOAT16 = 5
+            FLOAT16 = 4
         }
 
         /// <summary>

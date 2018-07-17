@@ -31,8 +31,6 @@ Name | Type | Description | Notes
 
 * `INT16` (value: `"INT16"`)
 
-* `INT16` (value: `"INT16"`)
-
 * `FLOAT16` (value: `"FLOAT16"`)
 
 

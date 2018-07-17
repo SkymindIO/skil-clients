@@ -1,6 +1,6 @@
 # SkilCient::DefaultApi
 
-All URIs are relative to *https://localhost:9008*
+All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

@@ -115,7 +115,7 @@ namespace Skymind.SKIL.Client
         public Configuration()
         {
             UserAgent = "Swagger-Codegen/1.1.0-beta/csharp";
-            BasePath = "https://localhost:9008";
+            BasePath = "http://localhost:9008";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -131,7 +131,7 @@ namespace Skymind.SKIL.Client
             IDictionary<string, string> defaultHeader,
             IDictionary<string, string> apiKey,
             IDictionary<string, string> apiKeyPrefix,
-            string basePath = "https://localhost:9008") : this()
+            string basePath = "http://localhost:9008") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");

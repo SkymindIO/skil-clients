@@ -175,7 +175,7 @@ class INDArray(object):
         :param data_type: The data_type of this INDArray.  # noqa: E501
         :type: str
         """
-        allowed_values = ["INT8", "UINT8", "INT16", "INT16", "FLOAT16"]  # noqa: E501
+        allowed_values = ["INT8", "UINT8", "INT16", "FLOAT16"]  # noqa: E501
         if data_type not in allowed_values:
             raise ValueError(
                 "Invalid value for `data_type` ({0}), must be one of {1}"  # noqa: E501

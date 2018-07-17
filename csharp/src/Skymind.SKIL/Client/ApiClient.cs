@@ -53,12 +53,12 @@ namespace Skymind.SKIL.Client
         public ApiClient()
         {
             Configuration = Skymind.SKIL.Client.Configuration.Default;
-            RestClient = new RestClient("https://localhost:9008");
+            RestClient = new RestClient("http://localhost:9008");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (https://localhost:9008).
+        /// with default base path (http://localhost:9008).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config)
@@ -73,7 +73,7 @@ namespace Skymind.SKIL.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "https://localhost:9008")
+        public ApiClient(String basePath = "http://localhost:9008")
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");

@@ -113,7 +113,7 @@ module SkilCient
     def valid?
       ordering_validator = EnumAttributeValidator.new('String', ['f', 'c'])
       return false unless ordering_validator.valid?(@ordering)
-      data_type_validator = EnumAttributeValidator.new('String', ['INT8', 'UINT8', 'INT16', 'INT16', 'FLOAT16'])
+      data_type_validator = EnumAttributeValidator.new('String', ['INT8', 'UINT8', 'INT16', 'FLOAT16'])
       return false unless data_type_validator.valid?(@data_type)
       true
     end
@@ -131,7 +131,7 @@ module SkilCient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] data_type Object to be assigned
     def data_type=(data_type)
-      validator = EnumAttributeValidator.new('String', ['INT8', 'UINT8', 'INT16', 'INT16', 'FLOAT16'])
+      validator = EnumAttributeValidator.new('String', ['INT8', 'UINT8', 'INT16', 'FLOAT16'])
       unless validator.valid?(data_type)
         fail ArgumentError, 'invalid value for "data_type", must be one of #{validator.allowable_values}.'
       end

@@ -18,7 +18,6 @@ open class INDArray: JSONEncodable {
         case int8 = "INT8"
         case uint8 = "UINT8"
         case int16 = "INT16"
-        case int16 = "INT16"
         case float16 = "FLOAT16"
     }
     public var array: String?

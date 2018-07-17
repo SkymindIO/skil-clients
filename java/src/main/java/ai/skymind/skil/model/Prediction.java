@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * Prediction
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-17T18:26:36.552+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-17T18:29:30.949+05:00")
 public class Prediction {
   @SerializedName("id")
   private String id = null;

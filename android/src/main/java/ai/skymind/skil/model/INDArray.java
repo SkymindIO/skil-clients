@@ -32,7 +32,7 @@ public class INDArray implements Serializable {
   @SerializedName("data")
   private List<Float> data = null;
   public enum DataTypeEnum {
-     INT8,  UINT8,  INT16,  INT16,  FLOAT16, 
+     INT8,  UINT8,  INT16,  FLOAT16, 
   };
   @SerializedName("dataType")
   private DataTypeEnum dataType = null;

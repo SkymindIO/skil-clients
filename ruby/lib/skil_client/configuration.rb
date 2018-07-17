@@ -128,7 +128,7 @@ module SkilCient
     attr_accessor :force_ending_format
 
     def initialize
-      @scheme = 'https'
+      @scheme = 'http'
       @host = 'localhost:9008'
       @base_path = ''
       @api_key = {}

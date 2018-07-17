@@ -6,7 +6,7 @@ info:
   title: "Endpoints"
 host: "localhost:9008"
 schemes:
-- "https"
+- "http"
 security:
 - api_key: []
 paths:
@@ -2412,7 +2412,6 @@ definitions:
         enum:
         - "INT8"
         - "UINT8"
-        - "INT16"
         - "INT16"
         - "FLOAT16"
     example:

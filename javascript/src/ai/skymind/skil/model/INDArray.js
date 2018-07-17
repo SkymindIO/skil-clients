@@ -145,11 +145,6 @@
      */
     "INT16": "INT16",
     /**
-     * value: "INT16"
-     * @const
-     */
-    "INT16": "INT16",
-    /**
      * value: "FLOAT16"
      * @const
      */
