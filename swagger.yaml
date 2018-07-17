@@ -2115,7 +2115,6 @@ definitions:
         - INT8
         - UINT8
         - INT16
-        - INT16
         - FLOAT16
   Prediction:
     type: object

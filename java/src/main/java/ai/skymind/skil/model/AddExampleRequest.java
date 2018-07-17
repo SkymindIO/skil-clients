@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * AddExampleRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-11T15:09:24.471+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-17T18:26:36.552+05:00")
 public class AddExampleRequest {
   @SerializedName("minibatch")
   private MinibatchEntity minibatch = null;
