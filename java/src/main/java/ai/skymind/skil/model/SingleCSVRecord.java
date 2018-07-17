@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * SingleCSVRecord
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-11T15:09:24.471+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-17T18:18:25.542+05:00")
 public class SingleCSVRecord {
   @SerializedName("values")
   private List<String> values = new ArrayList<String>();

@@ -26,7 +26,6 @@ Name | Value
 INT8 | &quot;INT8&quot;
 UINT8 | &quot;UINT8&quot;
 INT16 | &quot;INT16&quot;
-INT16 | &quot;INT16&quot;
 FLOAT16 | &quot;FLOAT16&quot;
 
 

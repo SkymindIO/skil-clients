@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * INDArray
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-11T15:09:24.471+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-17T18:18:25.542+05:00")
 public class INDArray {
   @SerializedName("array")
   private String array = null;
@@ -98,8 +98,6 @@ public class INDArray {
     INT8("INT8"),
     
     UINT8("UINT8"),
-    
-    INT16("INT16"),
     
     INT16("INT16"),
     
