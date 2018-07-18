@@ -36,7 +36,7 @@
   /**
    * The DeploymentResponse model module.
    * @module ai/skymind/skil/model/DeploymentResponse
-   * @version 1.1.0-beta
+   * @version 1.1.2
    */
 
   /**

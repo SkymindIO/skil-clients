@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * FileUploadList
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-17T19:25:43.952+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-18T22:27:09.789+05:00")
 public class FileUploadList {
   @SerializedName("fileUploadResponseList")
   private List<FileUpload> fileUploadResponseList = null;

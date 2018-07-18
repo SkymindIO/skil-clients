@@ -2511,6 +2511,78 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     Get the output from the network using the given image file using the /multipredict endpoint's method
+     - parameter file: (form) The image file to run the prediction on 
+     - parameter id: (form) The id of the request (could be self generated) 
+     - parameter needsPreprocessing: (form) Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) 
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter modelName: (path) ID or name of the deployed model 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func multipredictimage(file: URL, id: String, needsPreprocessing: Bool, deploymentName: String, modelName: String, completion: @escaping ((_ data: MultiPredictResponse?, _ error: ErrorResponse?) -> Void)) {
+        multipredictimageWithRequestBuilder(file: file, id: id, needsPreprocessing: needsPreprocessing, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get the output from the network using the given image file using the /multipredict endpoint's method
+     - POST /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage
+     - Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "outputs" : [ {
+    "shape" : [ 0, 0 ],
+    "data" : [ 6.0274563, 6.0274563 ],
+    "array" : "array",
+    "ordering" : "f",
+    "dataType" : "INT8"
+  }, {
+    "shape" : [ 0, 0 ],
+    "data" : [ 6.0274563, 6.0274563 ],
+    "array" : "array",
+    "ordering" : "f",
+    "dataType" : "INT8"
+  } ],
+  "needsPreProcessing" : true,
+  "id" : "id"
+}}]
+     - parameter file: (form) The image file to run the prediction on 
+     - parameter id: (form) The id of the request (could be self generated) 
+     - parameter needsPreprocessing: (form) Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) 
+     - parameter deploymentName: (path) Name of the deployment group 
+     - parameter modelName: (path) ID or name of the deployed model 
+     - returns: RequestBuilder<MultiPredictResponse> 
+     */
+    open class func multipredictimageWithRequestBuilder(file: URL, id: String, needsPreprocessing: Bool, deploymentName: String, modelName: String) -> RequestBuilder<MultiPredictResponse> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage"
+        let deploymentNamePreEscape = "\(deploymentName)"
+        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let modelNamePreEscape = "\(modelName)"
+        let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let formParams: [String:Any?] = [
+            "file": file,
+            "id": id,
+            "needs_preprocessing": needsPreprocessing
+        ]
+
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<MultiPredictResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Run inference on the input array.
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 

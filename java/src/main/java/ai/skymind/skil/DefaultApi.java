@@ -6447,6 +6447,172 @@ public class DefaultApi {
         return call;
     }
     /**
+     * Build call for multipredictimage
+     * @param file The image file to run the prediction on (required)
+     * @param id The id of the request (could be self generated) (required)
+     * @param needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) (required)
+     * @param deploymentName Name of the deployment group (required)
+     * @param modelName ID or name of the deployed model (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call multipredictimageCall(File file, String id, Boolean needsPreprocessing, String deploymentName, String modelName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage"
+            .replaceAll("\\{" + "deploymentName" + "\\}", apiClient.escapeString(deploymentName.toString()))
+            .replaceAll("\\{" + "modelName" + "\\}", apiClient.escapeString(modelName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (file != null)
+        localVarFormParams.put("file", file);
+        if (id != null)
+        localVarFormParams.put("id", id);
+        if (needsPreprocessing != null)
+        localVarFormParams.put("needs_preprocessing", needsPreprocessing);
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "multipart/form-data"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "api_key" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call multipredictimageValidateBeforeCall(File file, String id, Boolean needsPreprocessing, String deploymentName, String modelName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling multipredictimage(Async)");
+        }
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling multipredictimage(Async)");
+        }
+        
+        // verify the required parameter 'needsPreprocessing' is set
+        if (needsPreprocessing == null) {
+            throw new ApiException("Missing the required parameter 'needsPreprocessing' when calling multipredictimage(Async)");
+        }
+        
+        // verify the required parameter 'deploymentName' is set
+        if (deploymentName == null) {
+            throw new ApiException("Missing the required parameter 'deploymentName' when calling multipredictimage(Async)");
+        }
+        
+        // verify the required parameter 'modelName' is set
+        if (modelName == null) {
+            throw new ApiException("Missing the required parameter 'modelName' when calling multipredictimage(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = multipredictimageCall(file, id, needsPreprocessing, deploymentName, modelName, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+     * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+     * @param file The image file to run the prediction on (required)
+     * @param id The id of the request (could be self generated) (required)
+     * @param needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) (required)
+     * @param deploymentName Name of the deployment group (required)
+     * @param modelName ID or name of the deployed model (required)
+     * @return MultiPredictResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public MultiPredictResponse multipredictimage(File file, String id, Boolean needsPreprocessing, String deploymentName, String modelName) throws ApiException {
+        ApiResponse<MultiPredictResponse> resp = multipredictimageWithHttpInfo(file, id, needsPreprocessing, deploymentName, modelName);
+        return resp.getData();
+    }
+
+    /**
+     * Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+     * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+     * @param file The image file to run the prediction on (required)
+     * @param id The id of the request (could be self generated) (required)
+     * @param needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) (required)
+     * @param deploymentName Name of the deployment group (required)
+     * @param modelName ID or name of the deployed model (required)
+     * @return ApiResponse&lt;MultiPredictResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<MultiPredictResponse> multipredictimageWithHttpInfo(File file, String id, Boolean needsPreprocessing, String deploymentName, String modelName) throws ApiException {
+        com.squareup.okhttp.Call call = multipredictimageValidateBeforeCall(file, id, needsPreprocessing, deploymentName, modelName, null, null);
+        Type localVarReturnType = new TypeToken<MultiPredictResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get the output from the network using the given image file using the /multipredict endpoint&#39;s method (asynchronously)
+     * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+     * @param file The image file to run the prediction on (required)
+     * @param id The id of the request (could be self generated) (required)
+     * @param needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) (required)
+     * @param deploymentName Name of the deployment group (required)
+     * @param modelName ID or name of the deployed model (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call multipredictimageAsync(File file, String id, Boolean needsPreprocessing, String deploymentName, String modelName, final ApiCallback<MultiPredictResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = multipredictimageValidateBeforeCall(file, id, needsPreprocessing, deploymentName, modelName, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<MultiPredictResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for predict
      * @param body The input NDArray (required)
      * @param deploymentName Name of the deployment group (required)

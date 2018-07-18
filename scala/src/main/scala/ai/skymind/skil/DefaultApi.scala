@@ -1469,6 +1469,40 @@ class DefaultApi(
   }
 
   /**
+   * Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+   * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+   *
+   * @param File The image file to run the prediction on 
+   * @param Id The id of the request (could be self generated) 
+   * @param NeedsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) 
+   * @param DeploymentName Name of the deployment group 
+   * @param ModelName ID or name of the deployed model 
+   * @return MultiPredictResponse
+   */
+  def multipredictimage(File: File, Id: String, NeedsPreprocessing: Boolean, DeploymentName: String, ModelName: String): Option[MultiPredictResponse] = {
+    val await = Try(Await.result(multipredictimageAsync(File, Id, NeedsPreprocessing, DeploymentName, ModelName), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get the output from the network using the given image file using the /multipredict endpoint&#39;s method asynchronously
+   * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+   *
+   * @param File The image file to run the prediction on 
+   * @param Id The id of the request (could be self generated) 
+   * @param NeedsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) 
+   * @param DeploymentName Name of the deployment group 
+   * @param ModelName ID or name of the deployed model 
+   * @return Future(MultiPredictResponse)
+   */
+  def multipredictimageAsync(File: File, Id: String, NeedsPreprocessing: Boolean, DeploymentName: String, ModelName: String): Future[MultiPredictResponse] = {
+      helper.multipredictimage(File, Id, NeedsPreprocessing, DeploymentName, ModelName)
+  }
+
+  /**
    * Run inference on the input array.
    * 
    *
@@ -2986,6 +3020,34 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def multipredictimage(File: File,
+    Id: String,
+    NeedsPreprocessing: Boolean,
+    DeploymentName: String,
+    ModelName: String)(implicit reader: ClientResponseReader[MultiPredictResponse]): Future[MultiPredictResponse] = {
+    // create path and map variables
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage")
+      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (File == null) throw new Exception("Missing required parameter 'File' when calling DefaultApi->multipredictimage")
+    if (Id == null) throw new Exception("Missing required parameter 'Id' when calling DefaultApi->multipredictimage")
+
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->multipredictimage")
+
+    if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->multipredictimage")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

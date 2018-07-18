@@ -53,6 +53,7 @@ Method | HTTP request | Description
 [**Modelupdate**](DefaultApi.md#Modelupdate) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
 [**Multiclassify**](DefaultApi.md#Multiclassify) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
 [**Multipredict**](DefaultApi.md#Multipredict) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/multipredict | Get the output from the network, based on the given INDArray[] input
+[**Multipredictimage**](DefaultApi.md#Multipredictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
 [**Predict**](DefaultApi.md#Predict) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
 [**Predictimage**](DefaultApi.md#Predictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**Predictwithpreprocess**](DefaultApi.md#Predictwithpreprocess) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
@@ -1405,6 +1406,38 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **Multipredictimage**
+> MultiPredictResponse Multipredictimage(ctx, file, id, needsPreprocessing, deploymentName, modelName)
+Get the output from the network using the given image file using the /multipredict endpoint's method
+
+Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **file** | ***os.File**| The image file to run the prediction on | 
+  **id** | **string**| The id of the request (could be self generated) | 
+  **needsPreprocessing** | **bool**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
+  **deploymentName** | **string**| Name of the deployment group | 
+  **modelName** | **string**| ID or name of the deployed model | 
+
+### Return type
+
+[**MultiPredictResponse**](MultiPredictResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -895,6 +895,26 @@ public class DefaultApiTest {
     }
     
     /**
+     * Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+     *
+     * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void multipredictimageTest() throws ApiException {
+        File file = null;
+        String id = null;
+        Boolean needsPreprocessing = null;
+        String deploymentName = null;
+        String modelName = null;
+        MultiPredictResponse response = api.multipredictimage(file, id, needsPreprocessing, deploymentName, modelName);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Run inference on the input array.
      *
      * 

@@ -689,6 +689,22 @@ namespace Skymind.SKIL.Test
         }
         
         /// <summary>
+        /// Test Multipredictimage
+        /// </summary>
+        [Test]
+        public void MultipredictimageTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //System.IO.Stream file = null;
+            //string id = null;
+            //bool? needsPreprocessing = null;
+            //string deploymentName = null;
+            //string modelName = null;
+            //var response = instance.Multipredictimage(file, id, needsPreprocessing, deploymentName, modelName);
+            //Assert.IsInstanceOf<MultiPredictResponse> (response, "response is MultiPredictResponse");
+        }
+        
+        /// <summary>
         /// Test Predict
         /// </summary>
         [Test]

@@ -663,6 +663,59 @@ paths:
             $ref: "#/definitions/MultiPredictResponse"
         500:
           description: "Error generating prediction"
+  /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage:
+    post:
+      summary: "Get the output from the network using the given image file using the\
+        \ /multipredict endpoint's method"
+      description: "Networks with multiple input/output are supported via this method.\
+        \ A Normalizer will be used if needsPreProcessing is set to true. The output/returned\
+        \ array of INDArray will be the raw predictions, and consequently this method\
+        \ can be used for classification or regression networks, with any type of\
+        \ output layer (standard, time series / RnnOutputLayer, etc)."
+      operationId: "multipredictimage"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "file"
+        in: "formData"
+        description: "The image file to run the prediction on"
+        required: true
+        type: "file"
+        x-exportParamName: "File"
+      - name: "id"
+        in: "formData"
+        description: "The id of the request (could be self generated)"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "needs_preprocessing"
+        in: "formData"
+        description: "Whether or not the preprocessing is required (either 'true'\
+          \ or 'false')"
+        required: true
+        type: "boolean"
+        x-exportParamName: "NeedsPreprocessing"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MultiPredictResponse"
+        500:
+          description: "Error generating prediction"
   /endpoints/{deploymentName}/model/{modelName}/default/classify:
     post:
       summary: "Use the deployed model to classify the input"

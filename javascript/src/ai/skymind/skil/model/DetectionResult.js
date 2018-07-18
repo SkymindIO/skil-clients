@@ -36,7 +36,7 @@
   /**
    * The DetectionResult model module.
    * @module ai/skymind/skil/model/DetectionResult
-   * @version 1.1.0-beta
+   * @version 1.1.2
    */
 
   /**

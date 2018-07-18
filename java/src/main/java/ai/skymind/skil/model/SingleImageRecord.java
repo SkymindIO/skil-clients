@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * SingleImageRecord
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-17T19:25:43.952+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-18T22:27:09.789+05:00")
 public class SingleImageRecord {
   @SerializedName("uri")
   private String uri = null;

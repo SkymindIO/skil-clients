@@ -11,5 +11,5 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 =end
 
 module SkilCient
-  VERSION = '1.1.0-beta'
+  VERSION = '1.1.2'
 end

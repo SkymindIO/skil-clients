@@ -5,7 +5,7 @@
     <artifactId>skil-client</artifactId>
     <packaging>jar</packaging>
     <name>skil-client</name>
-    <version>1.1.0-beta</version>
+    <version>1.1.2</version>
     <url>https://github.com/swagger-api/swagger-codegen</url>
     <description>Client for using the SKIL HTTP inference API</description>
     <scm>

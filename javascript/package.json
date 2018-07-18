@@ -1,6 +1,6 @@
 {
   "name": "skil-client",
-  "version": "1.1.0-beta",
+  "version": "1.1.2",
   "description": "Endpoints_API_for_different_services_in_SKIL",
   "license": "Apache 2.0",
   "main": "src/index.js",

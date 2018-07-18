@@ -4994,6 +4994,137 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def multipredictimage(self, file, id, needs_preprocessing, deployment_name, model_name, **kwargs):  # noqa: E501
+        """Get the output from the network using the given image file using the /multipredict endpoint&#39;s method  # noqa: E501
+
+        Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.multipredictimage(file, id, needs_preprocessing, deployment_name, model_name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param file file: The image file to run the prediction on (required)
+        :param str id: The id of the request (could be self generated) (required)
+        :param bool needs_preprocessing: Whether or not the preprocessing is required (either 'true' or 'false') (required)
+        :param str deployment_name: Name of the deployment group (required)
+        :param str model_name: ID or name of the deployed model (required)
+        :return: MultiPredictResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, model_name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, model_name, **kwargs)  # noqa: E501
+            return data
+
+    def multipredictimage_with_http_info(self, file, id, needs_preprocessing, deployment_name, model_name, **kwargs):  # noqa: E501
+        """Get the output from the network using the given image file using the /multipredict endpoint&#39;s method  # noqa: E501
+
+        Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, model_name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param file file: The image file to run the prediction on (required)
+        :param str id: The id of the request (could be self generated) (required)
+        :param bool needs_preprocessing: Whether or not the preprocessing is required (either 'true' or 'false') (required)
+        :param str deployment_name: Name of the deployment group (required)
+        :param str model_name: ID or name of the deployed model (required)
+        :return: MultiPredictResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['file', 'id', 'needs_preprocessing', 'deployment_name', 'model_name']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method multipredictimage" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'file' is set
+        if ('file' not in params or
+                params['file'] is None):
+            raise ValueError("Missing the required parameter `file` when calling `multipredictimage`")  # noqa: E501
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `multipredictimage`")  # noqa: E501
+        # verify the required parameter 'needs_preprocessing' is set
+        if ('needs_preprocessing' not in params or
+                params['needs_preprocessing'] is None):
+            raise ValueError("Missing the required parameter `needs_preprocessing` when calling `multipredictimage`")  # noqa: E501
+        # verify the required parameter 'deployment_name' is set
+        if ('deployment_name' not in params or
+                params['deployment_name'] is None):
+            raise ValueError("Missing the required parameter `deployment_name` when calling `multipredictimage`")  # noqa: E501
+        # verify the required parameter 'model_name' is set
+        if ('model_name' not in params or
+                params['model_name'] is None):
+            raise ValueError("Missing the required parameter `model_name` when calling `multipredictimage`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'deployment_name' in params:
+            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'model_name' in params:
+            path_params['modelName'] = params['model_name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in params:
+            local_var_files['file'] = params['file']  # noqa: E501
+        if 'id' in params:
+            form_params.append(('id', params['id']))  # noqa: E501
+        if 'needs_preprocessing' in params:
+            form_params.append(('needs_preprocessing', params['needs_preprocessing']))  # noqa: E501
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='MultiPredictResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def predict(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
         """Run inference on the input array.  # noqa: E501
 

@@ -36,7 +36,7 @@
   /**
    * The Token model module.
    * @module ai/skymind/skil/model/Token
-   * @version 1.1.0-beta
+   * @version 1.1.2
    */
 
   /**

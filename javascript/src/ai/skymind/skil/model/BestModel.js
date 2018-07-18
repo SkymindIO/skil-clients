@@ -36,7 +36,7 @@
   /**
    * The BestModel model module.
    * @module ai/skymind/skil/model/BestModel
-   * @version 1.1.0-beta
+   * @version 1.1.2
    */
 
   /**

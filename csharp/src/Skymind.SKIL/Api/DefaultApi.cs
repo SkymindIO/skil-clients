@@ -1126,6 +1126,35 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of MultiPredictResponse</returns>
         ApiResponse<MultiPredictResponse> MultipredictWithHttpInfo (MultiPredictRequest body, string deploymentName, string modelName);
         /// <summary>
+        /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+        /// </summary>
+        /// <remarks>
+        /// Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The image file to run the prediction on</param>
+        /// <param name="id">The id of the request (could be self generated)</param>
+        /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>MultiPredictResponse</returns>
+        MultiPredictResponse Multipredictimage (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName);
+
+        /// <summary>
+        /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+        /// </summary>
+        /// <remarks>
+        /// Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The image file to run the prediction on</param>
+        /// <param name="id">The id of the request (could be self generated)</param>
+        /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>ApiResponse of MultiPredictResponse</returns>
+        ApiResponse<MultiPredictResponse> MultipredictimageWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName);
+        /// <summary>
         /// Run inference on the input array.
         /// </summary>
         /// <remarks>
@@ -2689,6 +2718,35 @@ namespace Skymind.SKIL.Api
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MultiPredictResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictAsyncWithHttpInfo (MultiPredictRequest body, string deploymentName, string modelName);
+        /// <summary>
+        /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+        /// </summary>
+        /// <remarks>
+        /// Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The image file to run the prediction on</param>
+        /// <param name="id">The id of the request (could be self generated)</param>
+        /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of MultiPredictResponse</returns>
+        System.Threading.Tasks.Task<MultiPredictResponse> MultipredictimageAsync (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName);
+
+        /// <summary>
+        /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+        /// </summary>
+        /// <remarks>
+        /// Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The image file to run the prediction on</param>
+        /// <param name="id">The id of the request (could be self generated)</param>
+        /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of ApiResponse (MultiPredictResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictimageAsyncWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName);
         /// <summary>
         /// Run inference on the input array.
         /// </summary>
@@ -11073,6 +11131,199 @@ namespace Skymind.SKIL.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("Multipredict", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MultiPredictResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MultiPredictResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiPredictResponse)));
+        }
+
+        /// <summary>
+        /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The image file to run the prediction on</param>
+        /// <param name="id">The id of the request (could be self generated)</param>
+        /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>MultiPredictResponse</returns>
+        public MultiPredictResponse Multipredictimage (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName)
+        {
+             ApiResponse<MultiPredictResponse> localVarResponse = MultipredictimageWithHttpInfo(file, id, needsPreprocessing, deploymentName, modelName);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The image file to run the prediction on</param>
+        /// <param name="id">The id of the request (could be self generated)</param>
+        /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>ApiResponse of MultiPredictResponse</returns>
+        public ApiResponse< MultiPredictResponse > MultipredictimageWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName)
+        {
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling DefaultApi->Multipredictimage");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->Multipredictimage");
+            // verify the required parameter 'needsPreprocessing' is set
+            if (needsPreprocessing == null)
+                throw new ApiException(400, "Missing required parameter 'needsPreprocessing' when calling DefaultApi->Multipredictimage");
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multipredictimage");
+            // verify the required parameter 'modelName' is set
+            if (modelName == null)
+                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multipredictimage");
+
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
+            if (id != null) localVarFormParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // form parameter
+            if (needsPreprocessing != null) localVarFormParams.Add("needs_preprocessing", this.Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Multipredictimage", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MultiPredictResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (MultiPredictResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MultiPredictResponse)));
+        }
+
+        /// <summary>
+        /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The image file to run the prediction on</param>
+        /// <param name="id">The id of the request (could be self generated)</param>
+        /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of MultiPredictResponse</returns>
+        public async System.Threading.Tasks.Task<MultiPredictResponse> MultipredictimageAsync (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName)
+        {
+             ApiResponse<MultiPredictResponse> localVarResponse = await MultipredictimageAsyncWithHttpInfo(file, id, needsPreprocessing, deploymentName, modelName);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The image file to run the prediction on</param>
+        /// <param name="id">The id of the request (could be self generated)</param>
+        /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
+        /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="modelName">ID or name of the deployed model</param>
+        /// <returns>Task of ApiResponse (MultiPredictResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictimageAsyncWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName)
+        {
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling DefaultApi->Multipredictimage");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->Multipredictimage");
+            // verify the required parameter 'needsPreprocessing' is set
+            if (needsPreprocessing == null)
+                throw new ApiException(400, "Missing required parameter 'needsPreprocessing' when calling DefaultApi->Multipredictimage");
+            // verify the required parameter 'deploymentName' is set
+            if (deploymentName == null)
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multipredictimage");
+            // verify the required parameter 'modelName' is set
+            if (modelName == null)
+                throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multipredictimage");
+
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
+            if (id != null) localVarFormParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // form parameter
+            if (needsPreprocessing != null) localVarFormParams.Add("needs_preprocessing", this.Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Multipredictimage", localVarResponse);
                 if (exception != null) throw exception;
             }
 

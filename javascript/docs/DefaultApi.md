@@ -53,6 +53,7 @@ Method | HTTP request | Description
 [**modelupdate**](DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
 [**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
 [**multipredict**](DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredict | Get the output from the network, based on the given INDArray[] input
+[**multipredictimage**](DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
 [**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
@@ -2680,6 +2681,71 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="multipredictimage"></a>
+# **multipredictimage**
+> MultiPredictResponse multipredictimage(file, id, needsPreprocessing, deploymentName, modelName)
+
+Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+
+Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var file = "/path/to/file.txt"; // File | The image file to run the prediction on
+
+var id = "id_example"; // String | The id of the request (could be self generated)
+
+var needsPreprocessing = true; // Boolean | Whether or not the preprocessing is required (either 'true' or 'false')
+
+var deploymentName = "deploymentName_example"; // String | Name of the deployment group
+
+var modelName = "modelName_example"; // String | ID or name of the deployed model
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.multipredictimage(file, id, needsPreprocessing, deploymentName, modelName, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **File**| The image file to run the prediction on | 
+ **id** | **String**| The id of the request (could be self generated) | 
+ **needsPreprocessing** | **Boolean**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
+ **deploymentName** | **String**| Name of the deployment group | 
+ **modelName** | **String**| ID or name of the deployed model | 
+
+### Return type
+
+[**MultiPredictResponse**](MultiPredictResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 <a name="predict"></a>

@@ -53,6 +53,7 @@ Method | HTTP request | Description
 [**modelupdate**](DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
 [**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
 [**multipredict**](DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredict | Get the output from the network, based on the given INDArray[] input
+[**multipredictimage**](DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
 [**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
@@ -2726,6 +2727,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **multipredictimage**
+> MultiPredictResponse multipredictimage(file, id, needs_preprocessing, deployment_name, model_name)
+
+Get the output from the network using the given image file using the /multipredict endpoint's method
+
+Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+file = File.new('/path/to/file.txt') # File | The image file to run the prediction on
+
+id = 'id_example' # String | The id of the request (could be self generated)
+
+needs_preprocessing = true # BOOLEAN | Whether or not the preprocessing is required (either 'true' or 'false')
+
+deployment_name = 'deployment_name_example' # String | Name of the deployment group
+
+model_name = 'model_name_example' # String | ID or name of the deployed model
+
+
+begin
+  #Get the output from the network using the given image file using the /multipredict endpoint's method
+  result = api_instance.multipredictimage(file, id, needs_preprocessing, deployment_name, model_name)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->multipredictimage: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **File**| The image file to run the prediction on | 
+ **id** | **String**| The id of the request (could be self generated) | 
+ **needs_preprocessing** | **BOOLEAN**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
+ **deployment_name** | **String**| Name of the deployment group | 
+ **model_name** | **String**| ID or name of the deployed model | 
+
+### Return type
+
+[**MultiPredictResponse**](MultiPredictResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 

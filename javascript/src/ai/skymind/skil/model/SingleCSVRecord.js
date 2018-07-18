@@ -36,7 +36,7 @@
   /**
    * The SingleCSVRecord model module.
    * @module ai/skymind/skil/model/SingleCSVRecord
-   * @version 1.1.0-beta
+   * @version 1.1.2
    */
 
   /**

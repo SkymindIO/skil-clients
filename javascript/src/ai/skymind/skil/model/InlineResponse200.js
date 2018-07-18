@@ -36,7 +36,7 @@
   /**
    * The InlineResponse200 model module.
    * @module ai/skymind/skil/model/InlineResponse200
-   * @version 1.1.0-beta
+   * @version 1.1.2
    */
 
   /**

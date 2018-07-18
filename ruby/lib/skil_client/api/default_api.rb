@@ -2745,6 +2745,87 @@ module SkilCient
       end
       return data, status_code, headers
     end
+    # Get the output from the network using the given image file using the /multipredict endpoint's method
+    # Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+    # @param file The image file to run the prediction on
+    # @param id The id of the request (could be self generated)
+    # @param needs_preprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)
+    # @param deployment_name Name of the deployment group
+    # @param model_name ID or name of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [MultiPredictResponse]
+    def multipredictimage(file, id, needs_preprocessing, deployment_name, model_name, opts = {})
+      data, _status_code, _headers = multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, model_name, opts)
+      data
+    end
+
+    # Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+    # Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+    # @param file The image file to run the prediction on
+    # @param id The id of the request (could be self generated)
+    # @param needs_preprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)
+    # @param deployment_name Name of the deployment group
+    # @param model_name ID or name of the deployed model
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MultiPredictResponse, Fixnum, Hash)>] MultiPredictResponse data, response status code and response headers
+    def multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, model_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.multipredictimage ...'
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling DefaultApi.multipredictimage"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.multipredictimage"
+      end
+      # verify the required parameter 'needs_preprocessing' is set
+      if @api_client.config.client_side_validation && needs_preprocessing.nil?
+        fail ArgumentError, "Missing the required parameter 'needs_preprocessing' when calling DefaultApi.multipredictimage"
+      end
+      # verify the required parameter 'deployment_name' is set
+      if @api_client.config.client_side_validation && deployment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.multipredictimage"
+      end
+      # verify the required parameter 'model_name' is set
+      if @api_client.config.client_side_validation && model_name.nil?
+        fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.multipredictimage"
+      end
+      # resource path
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params['file'] = file
+      form_params['id'] = id
+      form_params['needs_preprocessing'] = needs_preprocessing
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MultiPredictResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#multipredictimage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Run inference on the input array.
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group

@@ -2,7 +2,7 @@
 
 Endpoints
 - API version: 1.1.0-beta
-  - Build date: 2018-07-17T19:25:43.952+05:00
+  - Build date: 2018-07-18T22:27:09.789+05:00
 
 Endpoints API for different services in SKIL
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>ai.skymind</groupId>
   <artifactId>skil-client</artifactId>
-  <version>1.1.0-beta</version>
+  <version>1.1.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "ai.skymind:skil-client:1.1.0-beta"
+compile "ai.skymind:skil-client:1.1.2"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/skil-client-1.1.0-beta.jar`
+* `target/skil-client-1.1.2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -160,6 +160,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**modelupdate**](docs/DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
 *DefaultApi* | [**multiclassify**](docs/DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
 *DefaultApi* | [**multipredict**](docs/DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredict | Get the output from the network, based on the given INDArray[] input
+*DefaultApi* | [**multipredictimage**](docs/DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
 *DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
 *DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
 *DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it

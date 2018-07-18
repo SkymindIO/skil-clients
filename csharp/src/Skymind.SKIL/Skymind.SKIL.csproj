@@ -12,7 +12,7 @@ OpenAPI spec version: 1.1.0-beta
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{163D2F4F-C39D-48E3-9163-714D0FF95BF3}</ProjectGuid>
+    <ProjectGuid>{215E6AF6-A856-4C51-9941-0373D819D91E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Skymind.SKIL</RootNamespace>

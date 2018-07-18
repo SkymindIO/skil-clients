@@ -53,6 +53,7 @@ Method | HTTP request | Description
 [**Modelupdate**](DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
 [**Multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
 [**Multipredict**](DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredict | Get the output from the network, based on the given INDArray[] input
+[**Multipredictimage**](DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
 [**Predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
 [**Predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**Predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
@@ -3277,6 +3278,80 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="multipredictimage"></a>
+# **Multipredictimage**
+> MultiPredictResponse Multipredictimage (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName)
+
+Get the output from the network using the given image file using the /multipredict endpoint's method
+
+Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class MultipredictimageExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var file = new System.IO.Stream(); // System.IO.Stream | The image file to run the prediction on
+            var id = id_example;  // string | The id of the request (could be self generated)
+            var needsPreprocessing = true;  // bool? | Whether or not the preprocessing is required (either 'true' or 'false')
+            var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var modelName = modelName_example;  // string | ID or name of the deployed model
+
+            try
+            {
+                // Get the output from the network using the given image file using the /multipredict endpoint's method
+                MultiPredictResponse result = apiInstance.Multipredictimage(file, id, needsPreprocessing, deploymentName, modelName);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.Multipredictimage: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **System.IO.Stream**| The image file to run the prediction on | 
+ **id** | **string**| The id of the request (could be self generated) | 
+ **needsPreprocessing** | **bool?**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
+ **deploymentName** | **string**| Name of the deployment group | 
+ **modelName** | **string**| ID or name of the deployed model | 
+
+### Return type
+
+[**MultiPredictResponse**](MultiPredictResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

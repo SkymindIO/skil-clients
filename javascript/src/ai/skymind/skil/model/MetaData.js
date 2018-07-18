@@ -36,7 +36,7 @@
   /**
    * The MetaData model module.
    * @module ai/skymind/skil/model/MetaData
-   * @version 1.1.0-beta
+   * @version 1.1.2
    */
 
   /**

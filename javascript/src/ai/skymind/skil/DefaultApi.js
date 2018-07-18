@@ -33,7 +33,7 @@
   /**
    * Default service.
    * @module ai/skymind/skil/DefaultApi
-   * @version 1.1.0-beta
+   * @version 1.1.2
    */
 
   /**
@@ -2564,6 +2564,82 @@
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/model/{modelName}/default/multipredict', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the multipredictimage operation.
+     * @callback module:ai/skymind/skil/DefaultApi~multipredictimageCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/MultiPredictResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+     * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+     * @param {File} file The image file to run the prediction on
+     * @param {String} id The id of the request (could be self generated)
+     * @param {Boolean} needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)
+     * @param {String} deploymentName Name of the deployment group
+     * @param {String} modelName ID or name of the deployed model
+     * @param {module:ai/skymind/skil/DefaultApi~multipredictimageCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/MultiPredictResponse}
+     */
+    this.multipredictimage = function(file, id, needsPreprocessing, deploymentName, modelName, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'file' is set
+      if (file === undefined || file === null) {
+        throw new Error("Missing the required parameter 'file' when calling multipredictimage");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling multipredictimage");
+      }
+
+      // verify the required parameter 'needsPreprocessing' is set
+      if (needsPreprocessing === undefined || needsPreprocessing === null) {
+        throw new Error("Missing the required parameter 'needsPreprocessing' when calling multipredictimage");
+      }
+
+      // verify the required parameter 'deploymentName' is set
+      if (deploymentName === undefined || deploymentName === null) {
+        throw new Error("Missing the required parameter 'deploymentName' when calling multipredictimage");
+      }
+
+      // verify the required parameter 'modelName' is set
+      if (modelName === undefined || modelName === null) {
+        throw new Error("Missing the required parameter 'modelName' when calling multipredictimage");
+      }
+
+
+      var pathParams = {
+        'deploymentName': deploymentName,
+        'modelName': modelName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+        'file': file,
+        'id': id,
+        'needs_preprocessing': needsPreprocessing
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['multipart/form-data'];
+      var accepts = ['application/json'];
+      var returnType = MultiPredictResponse;
+
+      return this.apiClient.callApi(
+        '/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

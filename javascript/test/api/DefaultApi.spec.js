@@ -540,6 +540,16 @@
         done();
       });
     });
+    describe('multipredictimage', function() {
+      it('should call multipredictimage successfully', function(done) {
+        //uncomment below and update the code to test multipredictimage
+        //instance.multipredictimage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('predict', function() {
       it('should call predict successfully', function(done) {
         //uncomment below and update the code to test predict

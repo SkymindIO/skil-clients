@@ -36,7 +36,7 @@
   /**
    * The NearestNeighborRequest model module.
    * @module ai/skymind/skil/model/NearestNeighborRequest
-   * @version 1.1.0-beta
+   * @version 1.1.2
    */
 
   /**

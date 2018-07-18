@@ -36,7 +36,7 @@
   /**
    * The INDArray model module.
    * @module ai/skymind/skil/model/INDArray
-   * @version 1.1.0-beta
+   * @version 1.1.2
    */
 
   /**

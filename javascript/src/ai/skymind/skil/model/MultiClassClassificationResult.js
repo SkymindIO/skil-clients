@@ -36,7 +36,7 @@
   /**
    * The MultiClassClassificationResult model module.
    * @module ai/skymind/skil/model/MultiClassClassificationResult
-   * @version 1.1.0-beta
+   * @version 1.1.2
    */
 
   /**

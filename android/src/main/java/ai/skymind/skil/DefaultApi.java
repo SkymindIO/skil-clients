@@ -6774,6 +6774,204 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
   }
   /**
+  * Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+  * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+   * @param file The image file to run the prediction on
+   * @param id The id of the request (could be self generated)
+   * @param needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)
+   * @param deploymentName Name of the deployment group
+   * @param modelName ID or name of the deployed model
+   * @return MultiPredictResponse
+  */
+  public MultiPredictResponse multipredictimage (File file, String id, Boolean needsPreprocessing, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'file' is set
+    if (file == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'file' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'file' when calling multipredictimage"));
+    }
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'id' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'id' when calling multipredictimage"));
+    }
+    // verify the required parameter 'needsPreprocessing' is set
+    if (needsPreprocessing == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'needsPreprocessing' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'needsPreprocessing' when calling multipredictimage"));
+    }
+    // verify the required parameter 'deploymentName' is set
+    if (deploymentName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'deploymentName' when calling multipredictimage"));
+    }
+    // verify the required parameter 'modelName' is set
+    if (modelName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'modelName' when calling multipredictimage"));
+    }
+
+    // create path and map variables
+    String path = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "multipart/form-data"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      if (file != null) {
+        localVarBuilder.addBinaryBody("file", file);
+      }
+      if (id != null) {
+        localVarBuilder.addTextBody("id", ApiInvoker.parameterToString(id), ApiInvoker.TEXT_PLAIN_UTF8);
+      }
+      if (needsPreprocessing != null) {
+        localVarBuilder.addTextBody("needs_preprocessing", ApiInvoker.parameterToString(needsPreprocessing), ApiInvoker.TEXT_PLAIN_UTF8);
+      }
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+      formParams.put("id", ApiInvoker.parameterToString(id));
+      formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreprocessing));
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (MultiPredictResponse) ApiInvoker.deserialize(localVarResponse, "", MultiPredictResponse.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+   * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+   * @param file The image file to run the prediction on   * @param id The id of the request (could be self generated)   * @param needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+  */
+  public void multipredictimage (File file, String id, Boolean needsPreprocessing, String deploymentName, String modelName, final Response.Listener<MultiPredictResponse> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'file' is set
+    if (file == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'file' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'file' when calling multipredictimage"));
+    }
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'id' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'id' when calling multipredictimage"));
+    }
+    // verify the required parameter 'needsPreprocessing' is set
+    if (needsPreprocessing == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'needsPreprocessing' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'needsPreprocessing' when calling multipredictimage"));
+    }
+    // verify the required parameter 'deploymentName' is set
+    if (deploymentName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'deploymentName' when calling multipredictimage"));
+    }
+    // verify the required parameter 'modelName' is set
+    if (modelName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'modelName' when calling multipredictimage"));
+    }
+
+    // create path and map variables
+    String path = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "multipart/form-data"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+      if (file != null) {
+        localVarBuilder.addBinaryBody("file", file);
+      }
+      
+      if (id != null) {
+        localVarBuilder.addTextBody("id", ApiInvoker.parameterToString(id), ApiInvoker.TEXT_PLAIN_UTF8);
+      }
+      
+      if (needsPreprocessing != null) {
+        localVarBuilder.addTextBody("needs_preprocessing", ApiInvoker.parameterToString(needsPreprocessing), ApiInvoker.TEXT_PLAIN_UTF8);
+      }
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+      
+formParams.put("id", ApiInvoker.parameterToString(id));
+formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreprocessing));
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((MultiPredictResponse) ApiInvoker.deserialize(localVarResponse,  "", MultiPredictResponse.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
   * Run inference on the input array.
   * 
    * @param body The input NDArray

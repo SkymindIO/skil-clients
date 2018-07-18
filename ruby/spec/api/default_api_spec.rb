@@ -609,6 +609,22 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for multipredictimage
+  # Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+  # Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+  # @param file The image file to run the prediction on
+  # @param id The id of the request (could be self generated)
+  # @param needs_preprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)
+  # @param deployment_name Name of the deployment group
+  # @param model_name ID or name of the deployed model
+  # @param [Hash] opts the optional parameters
+  # @return [MultiPredictResponse]
+  describe 'multipredictimage test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for predict
   # Run inference on the input array.
   # @param body The input NDArray

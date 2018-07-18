@@ -114,6 +114,7 @@ public class DefaultApi extends SwaggerApi {
         public static const event_modelupdate: String = "modelupdate";
         public static const event_multiclassify: String = "multiclassify";
         public static const event_multipredict: String = "multipredict";
+        public static const event_multipredictimage: String = "multipredictimage";
         public static const event_predict: String = "predict";
         public static const event_predictimage: String = "predictimage";
         public static const event_predictwithpreprocess: String = "predictwithpreprocess";
@@ -1743,6 +1744,52 @@ public class DefaultApi extends SwaggerApi {
 
         token.requestId = requestId;
         token.completionEventType = "multipredict";
+
+        token.returnType = MultiPredictResponse;
+        return requestId;
+
+    }
+
+    /*
+     * Returns MultiPredictResponse 
+     */
+    public function multipredictimage (file: File, id: String, needsPreprocessing: Boolean, deploymentName: String, modelName: String): String {
+        // create path and map variables
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "multipredictimage";
 
         token.returnType = MultiPredictResponse;
         return requestId;
