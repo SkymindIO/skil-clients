@@ -3,10 +3,10 @@ Clients for using SKIL's HTTP inference API in Java, Python, Javascript, and mor
 
 ## Getting Started
 
-Automatically-generated clients are available in each langauge folder in the root of this repository. Clients support SKIL's JWT authentication and currently only work for prediction/inference endpoints.
+Automatically-generated clients are available in each language folder in the root of this repository. Clients support SKIL's JWT authentication and currently only work for prediction/inference endpoints.
 
 **Python**
-If you are a user of `pip`, you can install the python client directly from this repository by using the command:
+If you are a user of `pip`, you can install the Python client directly from this repository by using the command:
 
 ```
 pip install git+https://github.com/SkymindIO/skil-clients#subdirectory=python
@@ -52,7 +52,7 @@ print(res.token)
 
 If you want to fork this repository and make custom changes, you can rebuild them by using the **swagger.yaml** file located in the root of this repository. Clients are built using [swagger-codegen](https://github.com/swagger-api/swagger-codegen) and use a langauge-specific configuration file passed in using the `-c` flag.
 
-For example if you have the `swagger-codegen` command installed on your system, you can build a python client by running this command from the root of this directory:
+For example, if you have the `swagger-codegen` command installed on your system, you can build a Python client by running this command from the root of this directory:
 
 ```
 swagger-codegen generate -i swagger.yaml -l python -o python -c config/python.json
