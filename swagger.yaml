@@ -1507,15 +1507,21 @@ paths:
           schema:
             $ref: '#/definitions/ModelEntity'
   # ---------------------------------------------------------------------------------------
-  # Model History endpoints (host:port <-> locahost:9100)
+  # Model History endpoints
   # ---------------------------------------------------------------------------------------
-  /model/revision/{modelHistoryID}:
+  /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}:
     get:
       operationId: getModelHistory
       summary: Gets a model history, given its ID
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: modelHistoryID
         in: path
         type: string
@@ -1526,7 +1532,7 @@ paths:
           description: Model history entity
           schema:
             $ref: '#/definitions/ModelHistoryEntity'
-  /modelhistory:
+  /rpc/{modelHistoryServerId}/modelhistory:
     post:
       operationId: addModelHistory
       summary: Add a model history / workspace
@@ -1535,6 +1541,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: addModelHistoryRequest
         in: body
         type: object
@@ -1547,7 +1559,7 @@ paths:
           description: The added model history entity
           schema:
             $ref: '#/definitions/ModelHistoryEntity'
-  /modelhistory/{modelHistoryID}:
+  /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}:
     post:
       operationId: updateModelHistory
       summary: Update a model history / workspace
@@ -1556,6 +1568,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: modelHistoryID
         in: path
         type: string
@@ -1580,6 +1598,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: modelHistoryID
         in: path
         type: string
@@ -1601,7 +1625,7 @@ paths:
             properties:
               status:
                 type: string
-  /experiments:
+  /rpc/{modelHistoryServerId}/experiments:
     get:
       operationId: listAllExperiments
       summary: List all of the experiments in every model history / workspace
@@ -1614,13 +1638,19 @@ paths:
             type: array
             items:
               $ref: '#/definitions/ExperimentEntity'
-  /experiments/{modelHistoryID}:
+  /rpc/{modelHistoryServerId}/experiments/{modelHistoryID}:
     get:
       operationId: getExperimentsForModelHistory
       summary: Obtain all experiments for a model history / workspace
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: modelHistoryID
         in: path
         type: string
@@ -1632,13 +1662,19 @@ paths:
           description: List of all the experiment entities in a model history
           schema:
             $ref: '#/definitions/ExperimentEntity'
-  /experiment/{experimentID}:
+  /rpc/{modelHistoryServerId}/experiment/{experimentID}:
     get:
       operationId: getExperiment
       summary: Obtain an experiment's details, given its ID
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: experimentID
         in: path
         type: string
@@ -1658,6 +1694,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: experimentID
         in: path
         type: string
@@ -1682,6 +1724,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: experimentID
         in: path
         type: string
@@ -1703,7 +1751,7 @@ paths:
             properties:
               status:
                 type: string
-  /experiment:
+  /rpc/{modelHistoryServerId}/experiment:
     post:
       operationId: addExperiment
       summary: Add an experiment, given an experiment entity
@@ -1712,6 +1760,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: experimentEntity
         in: body
         type: object
@@ -1724,7 +1778,7 @@ paths:
           description: The added experiment entity.
           schema:
             $ref: '#/definitions/ExperimentEntity'
-  /experiment/best:
+  /rpc/{modelHistoryServerId}/experiment/best:
     post:
       operationId: updateBestModelForExperiment
       summary: Updates the best model for an experiment
@@ -1733,6 +1787,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: updateBestModel
         in: body
         type: object
@@ -1745,13 +1805,19 @@ paths:
           description: The updated experiment entity.
           schema:
             $ref: '#/definitions/ExperimentEntity'
-  /experiment/{experimentID}/models:
+  /rpc/{modelHistoryServerId}/experiment/{experimentID}/models:
     get:
       operationId: getModelsForExperiment
       summary: Obtain a list of all the models for an experiment
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: experimentID
         in: path
         type: string
@@ -1765,13 +1831,19 @@ paths:
             type: array
             items:
               $ref: '#/definitions/ModelInstanceEntity'
-  /model/{modelInstanceID}:
+  /rpc/{modelHistoryServerId}/model/{modelInstanceID}:
     get:
       operationId: getModelInstance
       summary: Gets a model instance, given its ID
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: modelInstanceID
         in: path
         type: string
@@ -1788,6 +1860,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: modelInstanceID
         in: path
         type: string
@@ -1796,7 +1874,7 @@ paths:
       responses:
         200:
           description: Empty content
-  /model:
+  /rpc/{modelHistoryServerId}/model:
     post:
       operationId: addModelInstance
       summary: Adds a model
@@ -1805,6 +1883,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: modelInstanceEntity
         in: body
         type: object
@@ -1817,7 +1901,7 @@ paths:
           description: The added model instance entity
           schema:
             $ref: '#/definitions/ModelInstanceEntity'
-  /model/best:
+  /rpc/{modelHistoryServerId}/model/best:
     post:
       operationId: getBestModelAmongModelIds
       summary: Gets the best model among the given model instance IDs, based on the evaluation type and column metric
@@ -1826,6 +1910,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: bestModel
         in: body
         type: object
@@ -1838,7 +1928,7 @@ paths:
           description: The best model instance entity
           schema:
             $ref: '#/definitions/ModelInstanceEntity'
-  /model/revisions:
+  /rpc/{modelHistoryServerId}/model/revisions:
     post:
       operationId: createModelHistory
       summary: Creates model History
@@ -1847,6 +1937,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: modelHistoryEntity
         in: body
         type: object
@@ -1859,7 +1955,7 @@ paths:
           description: The created model history
           schema:
             $ref: '#/definitions/ModelHistoryEntity'
-  /model/revisions/evaluations/:
+  /rpc/{modelHistoryServerId}/model/revisions/evaluations/:
     post:
       operationId: addEvaluationResult
       summary: Adds an evaluation result
@@ -1868,6 +1964,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: evaluationResultsEntity
         in: body
         type: object
@@ -1880,13 +1982,19 @@ paths:
           description: The added evaluation result entity
           schema:
             $ref: '#/definitions/EvaluationResultsEntity'
-  /model/revisions/evaluations/{modelInstanceID}:
+  /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}:
     get:
       operationId: getEvaluationForModelID
       summary: Gets the list of evaluation results entity, given a model instance ID
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: modelInstanceID
         in: path
         type: string
@@ -1899,7 +2007,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/EvaluationResultsEntity'
-  /model/aggregateresults:
+  /rpc/{modelHistoryServerId}/model/aggregateresults:
     post:
       operationId: aggregateModelResults
       summary: Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -1908,6 +2016,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: aggregatePrediction
         in: body
         type: object
@@ -1920,13 +2034,19 @@ paths:
           description: Evaluation result entity contained the aggregated/merged results
           schema:
             $ref: '#/definitions/EvaluationResultsEntity'
-  /model/minibatch/{minibatchId}:
+  /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}:
     get:
       operationId: getMinibatch
       summary: Gets a minibatch for the model
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: minibatchId
         in: path
         type: string
@@ -1937,7 +2057,7 @@ paths:
           description: The minibatch entity
           schema:
             $ref: '#/definitions/MinibatchEntity'
-  /model/minibatch:
+  /rpc/{modelHistoryServerId}/model/minibatch:
     post:
       operationId: addMinibatch
       summary: Adds a minibatch
@@ -1946,6 +2066,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: minibatchEntity
         in: body
         type: object
@@ -1958,13 +2084,19 @@ paths:
           description: The added minibatch entity
           schema:
             $ref: '#/definitions/MinibatchEntity'
-  /model/example/{minibatchId}:
+  /rpc/{modelHistoryServerId}/model/example/{minibatchId}:
     get:
       operationId: getExamplesForMinibatch
       summary: Gets all the examples for a minibatch ID
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: minibatchId
         in: path
         type: string
@@ -1977,7 +2109,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/ExampleEntity'
-  /model/example:
+  /rpc/{modelHistoryServerId}/model/example:
     post:
       operationId: addExampleToMinibatch
       summary: Adds an example to a minibatch
@@ -1986,6 +2118,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: exampleEntity
         in: body
         type: object
@@ -1998,7 +2136,7 @@ paths:
           description: The added example entity
           schema:
             $ref: '#/definitions/ExampleEntity'
-  /model/exampleForBatch:
+  /rpc/{modelHistoryServerId}/model/exampleForBatch:
     post:
       operationId: addExampleForBatch
       summary: Adds a number of examples to a minibatch ID given an AddExampleRequest.
@@ -2007,6 +2145,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: AddExampleRequest
         in: body
         type: object
@@ -2019,7 +2163,7 @@ paths:
           description: The add example request
           schema:
             $ref: '#/definitions/addExampleRequest'
-  /model/feedback:
+  /rpc/{modelHistoryServerId}/model/feedback:
     post:
       operationId: addModelFeedback
       summary: Adds an evaluation feedback to the model against a given minibatch id.
@@ -2028,6 +2172,12 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       - name: ModelFeedBackRequest
         in: body
         type: object
