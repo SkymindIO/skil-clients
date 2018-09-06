@@ -4,80 +4,80 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddEvaluationResult**](DefaultApi.md#addevaluationresult) | **POST** /model/revisions/evaluations/ | Adds an evaluation result
-[**AddExampleForBatch**](DefaultApi.md#addexampleforbatch) | **POST** /model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
-[**AddExampleToMinibatch**](DefaultApi.md#addexampletominibatch) | **POST** /model/example | Adds an example to a minibatch
-[**AddExperiment**](DefaultApi.md#addexperiment) | **POST** /experiment | Add an experiment, given an experiment entity
-[**AddMinibatch**](DefaultApi.md#addminibatch) | **POST** /model/minibatch | Adds a minibatch
-[**AddModelFeedback**](DefaultApi.md#addmodelfeedback) | **POST** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
-[**AddModelHistory**](DefaultApi.md#addmodelhistory) | **POST** /modelhistory | Add a model history / workspace
-[**AddModelInstance**](DefaultApi.md#addmodelinstance) | **POST** /model | Adds a model
-[**AggregateModelResults**](DefaultApi.md#aggregatemodelresults) | **POST** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
-[**Classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classify | Use the deployed model to classify the input
-[**Classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**Classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-[**CreateModelHistory**](DefaultApi.md#createmodelhistory) | **POST** /model/revisions | Creates model History
-[**DeleteExperiment**](DefaultApi.md#deleteexperiment) | **DELETE** /experiment/{experimentID} | Deletes an experiment, given an experiment entity
+[**AddEvaluationResult**](DefaultApi.md#addevaluationresult) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
+[**AddExampleForBatch**](DefaultApi.md#addexampleforbatch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
+[**AddExampleToMinibatch**](DefaultApi.md#addexampletominibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
+[**AddExperiment**](DefaultApi.md#addexperiment) | **POST** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+[**AddMinibatch**](DefaultApi.md#addminibatch) | **POST** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
+[**AddModelFeedback**](DefaultApi.md#addmodelfeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
+[**AddModelHistory**](DefaultApi.md#addmodelhistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
+[**AddModelInstance**](DefaultApi.md#addmodelinstance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+[**AggregateModelResults**](DefaultApi.md#aggregatemodelresults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
+[**Classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
+[**Classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**Classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**CreateModelHistory**](DefaultApi.md#createmodelhistory) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
+[**DeleteExperiment**](DefaultApi.md#deleteexperiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
 [**DeleteModel**](DefaultApi.md#deletemodel) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
-[**DeleteModelHistory**](DefaultApi.md#deletemodelhistory) | **DELETE** /modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
-[**DeleteModelInstance**](DefaultApi.md#deletemodelinstance) | **DELETE** /model/{modelInstanceID} | Deletes a model instance, given its ID
+[**DeleteModelHistory**](DefaultApi.md#deletemodelhistory) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
+[**DeleteModelInstance**](DefaultApi.md#deletemodelinstance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
 [**DeployModel**](DefaultApi.md#deploymodel) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**DeploymentCreate**](DefaultApi.md#deploymentcreate) | **POST** /deployment | Create a new deployment group.
 [**DeploymentDelete**](DefaultApi.md#deploymentdelete) | **DELETE** /deployment/{deploymentId} | Delete a deployment by id
 [**DeploymentGet**](DefaultApi.md#deploymentget) | **GET** /deployment/{deploymentId} | Get a deployment details by id
 [**Deployments**](DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
-[**Detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/detectobjects | Detect the objects, given a (input) prediction request
-[**GetBestModelAmongModelIds**](DefaultApi.md#getbestmodelamongmodelids) | **POST** /model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-[**GetEvaluationForModelID**](DefaultApi.md#getevaluationformodelid) | **GET** /model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
-[**GetExamplesForMinibatch**](DefaultApi.md#getexamplesforminibatch) | **GET** /model/example/{minibatchId} | Gets all the examples for a minibatch ID
-[**GetExperiment**](DefaultApi.md#getexperiment) | **GET** /experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
-[**GetExperimentsForModelHistory**](DefaultApi.md#getexperimentsformodelhistory) | **GET** /experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-[**GetMinibatch**](DefaultApi.md#getminibatch) | **GET** /model/minibatch/{minibatchId} | Gets a minibatch for the model
-[**GetModelHistory**](DefaultApi.md#getmodelhistory) | **GET** /model/revision/{modelHistoryID} | Gets a model history, given its ID
-[**GetModelInstance**](DefaultApi.md#getmodelinstance) | **GET** /model/{modelInstanceID} | Gets a model instance, given its ID
-[**GetModelsForExperiment**](DefaultApi.md#getmodelsforexperiment) | **GET** /experiment/{experimentID}/models | Obtain a list of all the models for an experiment
-[**ImagetransformprocessGet**](DefaultApi.md#imagetransformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess | Retrieves the image transform process JSON string
-[**ImagetransformprocessPost**](DefaultApi.md#imagetransformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess | Sets the image transform process through the provided JSON string
-[**Jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
-[**Knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/default/knn | Runs knn on the given index with the given k
-[**Knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/default/knnnew | Run a k nearest neighbors search on a NEW data point
-[**ListAllExperiments**](DefaultApi.md#listallexperiments) | **GET** /experiments | List all of the experiments in every model history / workspace
-[**Logfilepath**](DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/default/logfilepath | Get logs file path
+[**Detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
+[**GetBestModelAmongModelIds**](DefaultApi.md#getbestmodelamongmodelids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+[**GetEvaluationForModelID**](DefaultApi.md#getevaluationformodelid) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
+[**GetExamplesForMinibatch**](DefaultApi.md#getexamplesforminibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
+[**GetExperiment**](DefaultApi.md#getexperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
+[**GetExperimentsForModelHistory**](DefaultApi.md#getexperimentsformodelhistory) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
+[**GetMinibatch**](DefaultApi.md#getminibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+[**GetModelHistory**](DefaultApi.md#getmodelhistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
+[**GetModelInstance**](DefaultApi.md#getmodelinstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
+[**GetModelsForExperiment**](DefaultApi.md#getmodelsforexperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+[**ImagetransformprocessGet**](DefaultApi.md#imagetransformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
+[**ImagetransformprocessPost**](DefaultApi.md#imagetransformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
+[**Jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**Knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
+[**Knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
+[**ListAllExperiments**](DefaultApi.md#listallexperiments) | **GET** /rpc/{modelHistoryServerId}/experiments | List all of the experiments in every model history / workspace
+[**Logfilepath**](DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath | Get logs file path
 [**Login**](DefaultApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
-[**Logs**](DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/logs | Get logs
-[**MetaGet**](DefaultApi.md#metaget) | **GET** /endpoints/{deploymentName}/model/{modelName}/default/meta | this method can be used to get the meta data for the current model which set to the server
-[**MetaPost**](DefaultApi.md#metapost) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/meta | This method can be used to set meta data for the current model which is set to the server
+[**Logs**](DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs | Get logs
+[**MetaGet**](DefaultApi.md#metaget) | **GET** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | this method can be used to get the meta data for the current model which set to the server
+[**MetaPost**](DefaultApi.md#metapost) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | This method can be used to set meta data for the current model which is set to the server
 [**ModelStateChange**](DefaultApi.md#modelstatechange) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Modify the state (start/stop) of a deployed model
 [**Models**](DefaultApi.md#models) | **GET** /deployment/{deploymentId}/models | Retrieve a list of all the deployed models given a deployment id
-[**Modelset**](DefaultApi.md#modelset) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelset | Set the model to be served
-[**Modelupdate**](DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
-[**Multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
-[**Multipredict**](DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredict | Get the output from the network, based on the given INDArray[] input
-[**Multipredictimage**](DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
-[**Predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
-[**Predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**Predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
-[**Predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**Modelset**](DefaultApi.md#modelset) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset | Set the model to be served
+[**Modelupdate**](DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate | Update the model to be served
+[**Multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
+[**Multipredict**](DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
+[**Multipredictimage**](DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+[**Predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+[**Predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**Predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
+[**Predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**ReimportModel**](DefaultApi.md#reimportmodel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
-[**TransformCsv**](DefaultApi.md#transformcsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**TransformarrayCsv**](DefaultApi.md#transformarraycsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformarray | Takes a batch input arrays and transforms it
-[**TransformarrayImage**](DefaultApi.md#transformarrayimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-[**Transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
-[**TransformincrementalCsv**](DefaultApi.md#transformincrementalcsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**TransformincrementalarrayCsv**](DefaultApi.md#transformincrementalarraycsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**TransformincrementalarrayImage**](DefaultApi.md#transformincrementalarrayimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
-[**Transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**TransformprocessGet**](DefaultApi.md#transformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess | Gets the JSON string of the deployed transform process
-[**TransformprocessPost**](DefaultApi.md#transformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess | Sets the deployed transform process through the provided JSON string
-[**UpdateBestModelForExperiment**](DefaultApi.md#updatebestmodelforexperiment) | **POST** /experiment/best | Updates the best model for an experiment
-[**UpdateExperiment**](DefaultApi.md#updateexperiment) | **PUT** /experiment/{experimentID} | Updates an experiment, given an experiment entity
-[**UpdateModelHistory**](DefaultApi.md#updatemodelhistory) | **POST** /modelhistory/{modelHistoryID} | Update a model history / workspace
+[**TransformCsv**](DefaultApi.md#transformcsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+[**TransformarrayCsv**](DefaultApi.md#transformarraycsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
+[**TransformarrayImage**](DefaultApi.md#transformarrayimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**Transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
+[**TransformincrementalCsv**](DefaultApi.md#transformincrementalcsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+[**TransformincrementalarrayCsv**](DefaultApi.md#transformincrementalarraycsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
+[**TransformincrementalarrayImage**](DefaultApi.md#transformincrementalarrayimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**Transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
+[**TransformprocessGet**](DefaultApi.md#transformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
+[**TransformprocessPost**](DefaultApi.md#transformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**UpdateBestModelForExperiment**](DefaultApi.md#updatebestmodelforexperiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
+[**UpdateExperiment**](DefaultApi.md#updateexperiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
+[**UpdateModelHistory**](DefaultApi.md#updatemodelhistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**Upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
 <a name="addevaluationresult"></a>
 # **AddEvaluationResult**
-> EvaluationResultsEntity AddEvaluationResult (EvaluationResultsEntity evaluationResultsEntity)
+> EvaluationResultsEntity AddEvaluationResult (string modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity)
 
 Adds an evaluation result
 
@@ -101,12 +101,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var evaluationResultsEntity = new EvaluationResultsEntity(); // EvaluationResultsEntity | The evaluation result entity
 
             try
             {
                 // Adds an evaluation result
-                EvaluationResultsEntity result = apiInstance.AddEvaluationResult(evaluationResultsEntity);
+                EvaluationResultsEntity result = apiInstance.AddEvaluationResult(modelHistoryServerId, evaluationResultsEntity);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -122,6 +123,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **evaluationResultsEntity** | [**EvaluationResultsEntity**](EvaluationResultsEntity.md)| The evaluation result entity | 
 
 ### Return type
@@ -141,7 +143,7 @@ Name | Type | Description  | Notes
 
 <a name="addexampleforbatch"></a>
 # **AddExampleForBatch**
-> AddExampleRequest AddExampleForBatch (AddExampleRequest addExampleRequest)
+> AddExampleRequest AddExampleForBatch (string modelHistoryServerId, AddExampleRequest addExampleRequest)
 
 Adds a number of examples to a minibatch ID given an AddExampleRequest.
 
@@ -165,12 +167,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var addExampleRequest = new AddExampleRequest(); // AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
 
             try
             {
                 // Adds a number of examples to a minibatch ID given an AddExampleRequest.
-                AddExampleRequest result = apiInstance.AddExampleForBatch(addExampleRequest);
+                AddExampleRequest result = apiInstance.AddExampleForBatch(modelHistoryServerId, addExampleRequest);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -186,6 +189,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **addExampleRequest** | [**AddExampleRequest**](AddExampleRequest.md)| The add example request, encapsulating minibatch details and examples batch size | 
 
 ### Return type
@@ -205,7 +209,7 @@ Name | Type | Description  | Notes
 
 <a name="addexampletominibatch"></a>
 # **AddExampleToMinibatch**
-> ExampleEntity AddExampleToMinibatch (ExampleEntity exampleEntity)
+> ExampleEntity AddExampleToMinibatch (string modelHistoryServerId, ExampleEntity exampleEntity)
 
 Adds an example to a minibatch
 
@@ -229,12 +233,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var exampleEntity = new ExampleEntity(); // ExampleEntity | The example to add to the minibatch
 
             try
             {
                 // Adds an example to a minibatch
-                ExampleEntity result = apiInstance.AddExampleToMinibatch(exampleEntity);
+                ExampleEntity result = apiInstance.AddExampleToMinibatch(modelHistoryServerId, exampleEntity);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -250,6 +255,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **exampleEntity** | [**ExampleEntity**](ExampleEntity.md)| The example to add to the minibatch | 
 
 ### Return type
@@ -269,7 +275,7 @@ Name | Type | Description  | Notes
 
 <a name="addexperiment"></a>
 # **AddExperiment**
-> ExperimentEntity AddExperiment (ExperimentEntity experimentEntity)
+> ExperimentEntity AddExperiment (string modelHistoryServerId, ExperimentEntity experimentEntity)
 
 Add an experiment, given an experiment entity
 
@@ -293,12 +299,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var experimentEntity = new ExperimentEntity(); // ExperimentEntity | The experiment entity to add
 
             try
             {
                 // Add an experiment, given an experiment entity
-                ExperimentEntity result = apiInstance.AddExperiment(experimentEntity);
+                ExperimentEntity result = apiInstance.AddExperiment(modelHistoryServerId, experimentEntity);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -314,6 +321,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to add | 
 
 ### Return type
@@ -333,7 +341,7 @@ Name | Type | Description  | Notes
 
 <a name="addminibatch"></a>
 # **AddMinibatch**
-> MinibatchEntity AddMinibatch (MinibatchEntity minibatchEntity)
+> MinibatchEntity AddMinibatch (string modelHistoryServerId, MinibatchEntity minibatchEntity)
 
 Adds a minibatch
 
@@ -357,12 +365,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var minibatchEntity = new MinibatchEntity(); // MinibatchEntity | The minibatch entity to add
 
             try
             {
                 // Adds a minibatch
-                MinibatchEntity result = apiInstance.AddMinibatch(minibatchEntity);
+                MinibatchEntity result = apiInstance.AddMinibatch(modelHistoryServerId, minibatchEntity);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -378,6 +387,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **minibatchEntity** | [**MinibatchEntity**](MinibatchEntity.md)| The minibatch entity to add | 
 
 ### Return type
@@ -397,7 +407,7 @@ Name | Type | Description  | Notes
 
 <a name="addmodelfeedback"></a>
 # **AddModelFeedback**
-> ModelFeedBackRequest AddModelFeedback (ModelFeedBackRequest modelFeedBackRequest)
+> ModelFeedBackRequest AddModelFeedback (string modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest)
 
 Adds an evaluation feedback to the model against a given minibatch id.
 
@@ -421,12 +431,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var modelFeedBackRequest = new ModelFeedBackRequest(); // ModelFeedBackRequest | The model feedback request object
 
             try
             {
                 // Adds an evaluation feedback to the model against a given minibatch id.
-                ModelFeedBackRequest result = apiInstance.AddModelFeedback(modelFeedBackRequest);
+                ModelFeedBackRequest result = apiInstance.AddModelFeedback(modelHistoryServerId, modelFeedBackRequest);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -442,6 +453,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **modelFeedBackRequest** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
 
 ### Return type
@@ -461,7 +473,7 @@ Name | Type | Description  | Notes
 
 <a name="addmodelhistory"></a>
 # **AddModelHistory**
-> ModelHistoryEntity AddModelHistory (AddModelHistoryRequest addModelHistoryRequest)
+> ModelHistoryEntity AddModelHistory (string modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest)
 
 Add a model history / workspace
 
@@ -485,12 +497,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var addModelHistoryRequest = new AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
 
             try
             {
                 // Add a model history / workspace
-                ModelHistoryEntity result = apiInstance.AddModelHistory(addModelHistoryRequest);
+                ModelHistoryEntity result = apiInstance.AddModelHistory(modelHistoryServerId, addModelHistoryRequest);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -506,6 +519,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **addModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
 ### Return type
@@ -525,7 +539,7 @@ Name | Type | Description  | Notes
 
 <a name="addmodelinstance"></a>
 # **AddModelInstance**
-> ModelInstanceEntity AddModelInstance (ModelInstanceEntity modelInstanceEntity)
+> ModelInstanceEntity AddModelInstance (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity)
 
 Adds a model
 
@@ -549,12 +563,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var modelInstanceEntity = new ModelInstanceEntity(); // ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
 
             try
             {
                 // Adds a model
-                ModelInstanceEntity result = apiInstance.AddModelInstance(modelInstanceEntity);
+                ModelInstanceEntity result = apiInstance.AddModelInstance(modelHistoryServerId, modelInstanceEntity);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -570,6 +585,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **modelInstanceEntity** | [**ModelInstanceEntity**](ModelInstanceEntity.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -589,7 +605,7 @@ Name | Type | Description  | Notes
 
 <a name="aggregatemodelresults"></a>
 # **AggregateModelResults**
-> EvaluationResultsEntity AggregateModelResults (AggregatePrediction aggregatePrediction)
+> EvaluationResultsEntity AggregateModelResults (string modelHistoryServerId, AggregatePrediction aggregatePrediction)
 
 Aggregates the evaluaition results of a model instance, based on the evaluation type
 
@@ -613,12 +629,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var aggregatePrediction = new AggregatePrediction(); // AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
 
             try
             {
                 // Aggregates the evaluaition results of a model instance, based on the evaluation type
-                EvaluationResultsEntity result = apiInstance.AggregateModelResults(aggregatePrediction);
+                EvaluationResultsEntity result = apiInstance.AggregateModelResults(modelHistoryServerId, aggregatePrediction);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -634,6 +651,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **aggregatePrediction** | [**AggregatePrediction**](AggregatePrediction.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -653,7 +671,7 @@ Name | Type | Description  | Notes
 
 <a name="classify"></a>
 # **Classify**
-> ClassificationResult Classify (Prediction body, string deploymentName, string modelName)
+> ClassificationResult Classify (Prediction body, string deploymentName, string versionName, string modelName)
 
 Use the deployed model to classify the input
 
@@ -679,12 +697,13 @@ namespace Example
             var apiInstance = new DefaultApi();
             var body = new Prediction(); // Prediction | The input NDArray
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Use the deployed model to classify the input
-                ClassificationResult result = apiInstance.Classify(body, deploymentName, modelName);
+                ClassificationResult result = apiInstance.Classify(body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -702,6 +721,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -721,7 +741,7 @@ Name | Type | Description  | Notes
 
 <a name="classifyarray"></a>
 # **Classifyarray**
-> Base64NDArrayBody Classifyarray (Prediction body, string deploymentName, string modelName)
+> Base64NDArrayBody Classifyarray (Prediction body, string deploymentName, string versionName, string modelName)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
@@ -747,12 +767,13 @@ namespace Example
             var apiInstance = new DefaultApi();
             var body = new Prediction(); // Prediction | The input NDArray
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Same as /classify but returns the output as Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.Classifyarray(body, deploymentName, modelName);
+                Base64NDArrayBody result = apiInstance.Classifyarray(body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -770,6 +791,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -789,7 +811,7 @@ Name | Type | Description  | Notes
 
 <a name="classifyimage"></a>
 # **Classifyimage**
-> ClassificationResult Classifyimage (string deploymentName, string modelName, System.IO.Stream image = null)
+> ClassificationResult Classifyimage (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
 
 Use the deployed model to classify the input, using input image file from multipart form data.
 
@@ -814,13 +836,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
             var image = new System.IO.Stream(); // System.IO.Stream | The file to upload. (optional) 
 
             try
             {
                 // Use the deployed model to classify the input, using input image file from multipart form data.
-                ClassificationResult result = apiInstance.Classifyimage(deploymentName, modelName, image);
+                ClassificationResult result = apiInstance.Classifyimage(deploymentName, versionName, modelName, image);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -837,6 +860,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
  **image** | **System.IO.Stream**| The file to upload. | [optional] 
 
@@ -857,7 +881,7 @@ Name | Type | Description  | Notes
 
 <a name="createmodelhistory"></a>
 # **CreateModelHistory**
-> ModelHistoryEntity CreateModelHistory (ModelHistoryEntity modelHistoryEntity)
+> ModelHistoryEntity CreateModelHistory (string modelHistoryServerId, ModelHistoryEntity modelHistoryEntity)
 
 Creates model History
 
@@ -881,12 +905,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var modelHistoryEntity = new ModelHistoryEntity(); // ModelHistoryEntity | The model history entity
 
             try
             {
                 // Creates model History
-                ModelHistoryEntity result = apiInstance.CreateModelHistory(modelHistoryEntity);
+                ModelHistoryEntity result = apiInstance.CreateModelHistory(modelHistoryServerId, modelHistoryEntity);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -902,6 +927,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **modelHistoryEntity** | [**ModelHistoryEntity**](ModelHistoryEntity.md)| The model history entity | 
 
 ### Return type
@@ -921,7 +947,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteexperiment"></a>
 # **DeleteExperiment**
-> InlineResponse200 DeleteExperiment (string experimentID)
+> InlineResponse200 DeleteExperiment (string modelHistoryServerId, string experimentID)
 
 Deletes an experiment, given an experiment entity
 
@@ -945,12 +971,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var experimentID = experimentID_example;  // string | the GUID of the experiment to delete
 
             try
             {
                 // Deletes an experiment, given an experiment entity
-                InlineResponse200 result = apiInstance.DeleteExperiment(experimentID);
+                InlineResponse200 result = apiInstance.DeleteExperiment(modelHistoryServerId, experimentID);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -966,6 +993,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **experimentID** | **string**| the GUID of the experiment to delete | 
 
 ### Return type
@@ -1051,7 +1079,7 @@ Name | Type | Description  | Notes
 
 <a name="deletemodelhistory"></a>
 # **DeleteModelHistory**
-> InlineResponse200 DeleteModelHistory (string modelHistoryID)
+> InlineResponse200 DeleteModelHistory (string modelHistoryServerId, string modelHistoryID)
 
 Deletes a model history / workspace, given its ID
 
@@ -1075,12 +1103,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var modelHistoryID = modelHistoryID_example;  // string | the GUID of the model history / workspace to delete
 
             try
             {
                 // Deletes a model history / workspace, given its ID
-                InlineResponse200 result = apiInstance.DeleteModelHistory(modelHistoryID);
+                InlineResponse200 result = apiInstance.DeleteModelHistory(modelHistoryServerId, modelHistoryID);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1096,6 +1125,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **modelHistoryID** | **string**| the GUID of the model history / workspace to delete | 
 
 ### Return type
@@ -1115,7 +1145,7 @@ Name | Type | Description  | Notes
 
 <a name="deletemodelinstance"></a>
 # **DeleteModelInstance**
-> void DeleteModelInstance (string modelInstanceID)
+> void DeleteModelInstance (string modelHistoryServerId, string modelInstanceID)
 
 Deletes a model instance, given its ID
 
@@ -1139,12 +1169,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var modelInstanceID = modelInstanceID_example;  // string | GUID of the model instance to delete.
 
             try
             {
                 // Deletes a model instance, given its ID
-                apiInstance.DeleteModelInstance(modelInstanceID);
+                apiInstance.DeleteModelInstance(modelHistoryServerId, modelInstanceID);
             }
             catch (Exception e)
             {
@@ -1159,6 +1190,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **modelInstanceID** | **string**| GUID of the model instance to delete. | 
 
 ### Return type
@@ -1496,7 +1528,7 @@ This endpoint does not need any parameter.
 
 <a name="detectobjects"></a>
 # **Detectobjects**
-> DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName)
+> DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName)
 
 Detect the objects, given a (input) prediction request
 
@@ -1525,12 +1557,13 @@ namespace Example
             var threshold = 3.4;  // float? | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
             var imageFile = new System.IO.Stream(); // System.IO.Stream | the image file to detect objects from
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Detect the objects, given a (input) prediction request
-                DetectionResult result = apiInstance.Detectobjects(id, needsPreprocessing, threshold, imageFile, deploymentName, modelName);
+                DetectionResult result = apiInstance.Detectobjects(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1551,6 +1584,7 @@ Name | Type | Description  | Notes
  **threshold** | **float?**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
  **imageFile** | **System.IO.Stream**| the image file to detect objects from | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1570,7 +1604,7 @@ Name | Type | Description  | Notes
 
 <a name="getbestmodelamongmodelids"></a>
 # **GetBestModelAmongModelIds**
-> ModelInstanceEntity GetBestModelAmongModelIds (BestModel bestModel)
+> ModelInstanceEntity GetBestModelAmongModelIds (string modelHistoryServerId, BestModel bestModel)
 
 Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 
@@ -1594,12 +1628,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var bestModel = new BestModel(); // BestModel | Object encapsulating the model ids, eval type and column metric name
 
             try
             {
                 // Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-                ModelInstanceEntity result = apiInstance.GetBestModelAmongModelIds(bestModel);
+                ModelInstanceEntity result = apiInstance.GetBestModelAmongModelIds(modelHistoryServerId, bestModel);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1615,6 +1650,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **bestModel** | [**BestModel**](BestModel.md)| Object encapsulating the model ids, eval type and column metric name | 
 
 ### Return type
@@ -1634,7 +1670,7 @@ Name | Type | Description  | Notes
 
 <a name="getevaluationformodelid"></a>
 # **GetEvaluationForModelID**
-> List<EvaluationResultsEntity> GetEvaluationForModelID (string modelInstanceID)
+> List<EvaluationResultsEntity> GetEvaluationForModelID (string modelHistoryServerId, string modelInstanceID)
 
 Gets the list of evaluation results entity, given a model instance ID
 
@@ -1658,12 +1694,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var modelInstanceID = modelInstanceID_example;  // string | GUID of the model instance to get evaluation results for.
 
             try
             {
                 // Gets the list of evaluation results entity, given a model instance ID
-                List&lt;EvaluationResultsEntity&gt; result = apiInstance.GetEvaluationForModelID(modelInstanceID);
+                List&lt;EvaluationResultsEntity&gt; result = apiInstance.GetEvaluationForModelID(modelHistoryServerId, modelInstanceID);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1679,6 +1716,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **modelInstanceID** | **string**| GUID of the model instance to get evaluation results for. | 
 
 ### Return type
@@ -1698,7 +1736,7 @@ Name | Type | Description  | Notes
 
 <a name="getexamplesforminibatch"></a>
 # **GetExamplesForMinibatch**
-> List<ExampleEntity> GetExamplesForMinibatch (string minibatchId)
+> List<ExampleEntity> GetExamplesForMinibatch (string modelHistoryServerId, string minibatchId)
 
 Gets all the examples for a minibatch ID
 
@@ -1722,12 +1760,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var minibatchId = minibatchId_example;  // string | The GUID of the minibatch
 
             try
             {
                 // Gets all the examples for a minibatch ID
-                List&lt;ExampleEntity&gt; result = apiInstance.GetExamplesForMinibatch(minibatchId);
+                List&lt;ExampleEntity&gt; result = apiInstance.GetExamplesForMinibatch(modelHistoryServerId, minibatchId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1743,6 +1782,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **minibatchId** | **string**| The GUID of the minibatch | 
 
 ### Return type
@@ -1762,7 +1802,7 @@ Name | Type | Description  | Notes
 
 <a name="getexperiment"></a>
 # **GetExperiment**
-> ExperimentEntity GetExperiment (string experimentID)
+> ExperimentEntity GetExperiment (string modelHistoryServerId, string experimentID)
 
 Obtain an experiment's details, given its ID
 
@@ -1786,12 +1826,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var experimentID = experimentID_example;  // string | the GUID of the experiment to obtain
 
             try
             {
                 // Obtain an experiment's details, given its ID
-                ExperimentEntity result = apiInstance.GetExperiment(experimentID);
+                ExperimentEntity result = apiInstance.GetExperiment(modelHistoryServerId, experimentID);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1807,6 +1848,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **experimentID** | **string**| the GUID of the experiment to obtain | 
 
 ### Return type
@@ -1826,7 +1868,7 @@ Name | Type | Description  | Notes
 
 <a name="getexperimentsformodelhistory"></a>
 # **GetExperimentsForModelHistory**
-> ExperimentEntity GetExperimentsForModelHistory (string modelHistoryID)
+> ExperimentEntity GetExperimentsForModelHistory (string modelHistoryServerId, string modelHistoryID)
 
 Obtain all experiments for a model history / workspace
 
@@ -1850,12 +1892,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var modelHistoryID = modelHistoryID_example;  // string | the GUID of the model history / workspace
 
             try
             {
                 // Obtain all experiments for a model history / workspace
-                ExperimentEntity result = apiInstance.GetExperimentsForModelHistory(modelHistoryID);
+                ExperimentEntity result = apiInstance.GetExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1871,6 +1914,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **modelHistoryID** | **string**| the GUID of the model history / workspace | 
 
 ### Return type
@@ -1890,7 +1934,7 @@ Name | Type | Description  | Notes
 
 <a name="getminibatch"></a>
 # **GetMinibatch**
-> MinibatchEntity GetMinibatch (string minibatchId)
+> MinibatchEntity GetMinibatch (string modelHistoryServerId, string minibatchId)
 
 Gets a minibatch for the model
 
@@ -1914,12 +1958,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var minibatchId = minibatchId_example;  // string | The GUID of the minibatch
 
             try
             {
                 // Gets a minibatch for the model
-                MinibatchEntity result = apiInstance.GetMinibatch(minibatchId);
+                MinibatchEntity result = apiInstance.GetMinibatch(modelHistoryServerId, minibatchId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1935,6 +1980,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **minibatchId** | **string**| The GUID of the minibatch | 
 
 ### Return type
@@ -1954,7 +2000,7 @@ Name | Type | Description  | Notes
 
 <a name="getmodelhistory"></a>
 # **GetModelHistory**
-> ModelHistoryEntity GetModelHistory (string modelHistoryID)
+> ModelHistoryEntity GetModelHistory (string modelHistoryServerId, string modelHistoryID)
 
 Gets a model history, given its ID
 
@@ -1978,12 +2024,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var modelHistoryID = modelHistoryID_example;  // string | GUID of the model history to get information of.
 
             try
             {
                 // Gets a model history, given its ID
-                ModelHistoryEntity result = apiInstance.GetModelHistory(modelHistoryID);
+                ModelHistoryEntity result = apiInstance.GetModelHistory(modelHistoryServerId, modelHistoryID);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1999,6 +2046,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **modelHistoryID** | **string**| GUID of the model history to get information of. | 
 
 ### Return type
@@ -2018,7 +2066,7 @@ Name | Type | Description  | Notes
 
 <a name="getmodelinstance"></a>
 # **GetModelInstance**
-> ModelInstanceEntity GetModelInstance (string modelInstanceID)
+> ModelInstanceEntity GetModelInstance (string modelHistoryServerId, string modelInstanceID)
 
 Gets a model instance, given its ID
 
@@ -2042,12 +2090,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var modelInstanceID = modelInstanceID_example;  // string | GUID of the model instance to get information of.
 
             try
             {
                 // Gets a model instance, given its ID
-                ModelInstanceEntity result = apiInstance.GetModelInstance(modelInstanceID);
+                ModelInstanceEntity result = apiInstance.GetModelInstance(modelHistoryServerId, modelInstanceID);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2063,6 +2112,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **modelInstanceID** | **string**| GUID of the model instance to get information of. | 
 
 ### Return type
@@ -2082,7 +2132,7 @@ Name | Type | Description  | Notes
 
 <a name="getmodelsforexperiment"></a>
 # **GetModelsForExperiment**
-> List<ModelInstanceEntity> GetModelsForExperiment (string experimentID)
+> List<ModelInstanceEntity> GetModelsForExperiment (string modelHistoryServerId, string experimentID)
 
 Obtain a list of all the models for an experiment
 
@@ -2106,12 +2156,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var experimentID = experimentID_example;  // string | the GUID of the experiment
 
             try
             {
                 // Obtain a list of all the models for an experiment
-                List&lt;ModelInstanceEntity&gt; result = apiInstance.GetModelsForExperiment(experimentID);
+                List&lt;ModelInstanceEntity&gt; result = apiInstance.GetModelsForExperiment(modelHistoryServerId, experimentID);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2127,6 +2178,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **experimentID** | **string**| the GUID of the experiment | 
 
 ### Return type
@@ -2146,7 +2198,7 @@ Name | Type | Description  | Notes
 
 <a name="imagetransformprocessget"></a>
 # **ImagetransformprocessGet**
-> ImageTransformProcess ImagetransformprocessGet (string deploymentName, string imageTransformName)
+> ImageTransformProcess ImagetransformprocessGet (string deploymentName, string versionName, string imageTransformName)
 
 Retrieves the image transform process JSON string
 
@@ -2171,12 +2223,13 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
 
             try
             {
                 // Retrieves the image transform process JSON string
-                ImageTransformProcess result = apiInstance.ImagetransformprocessGet(deploymentName, imageTransformName);
+                ImageTransformProcess result = apiInstance.ImagetransformprocessGet(deploymentName, versionName, imageTransformName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2193,6 +2246,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **imageTransformName** | **string**| ID or name of the deployed image transform | 
 
 ### Return type
@@ -2212,7 +2266,7 @@ Name | Type | Description  | Notes
 
 <a name="imagetransformprocesspost"></a>
 # **ImagetransformprocessPost**
-> ImageTransformProcess ImagetransformprocessPost (string deploymentName, string imageTransformName, ImageTransformProcess body)
+> ImageTransformProcess ImagetransformprocessPost (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body)
 
 Sets the image transform process through the provided JSON string
 
@@ -2237,13 +2291,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
             var body = new ImageTransformProcess(); // ImageTransformProcess | The image transform process JSON
 
             try
             {
                 // Sets the image transform process through the provided JSON string
-                ImageTransformProcess result = apiInstance.ImagetransformprocessPost(deploymentName, imageTransformName, body);
+                ImageTransformProcess result = apiInstance.ImagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2260,6 +2315,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **imageTransformName** | **string**| ID or name of the deployed image transform | 
  **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
 
@@ -2280,7 +2336,7 @@ Name | Type | Description  | Notes
 
 <a name="jsonarray"></a>
 # **Jsonarray**
-> JsonArrayResponse Jsonarray (Prediction body, string deploymentName, string modelName)
+> JsonArrayResponse Jsonarray (Prediction body, string deploymentName, string versionName, string modelName)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
@@ -2306,12 +2362,13 @@ namespace Example
             var apiInstance = new DefaultApi();
             var body = new Prediction(); // Prediction | The input NDArray
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Run inference on the input and returns it as a JsonArrayResponse
-                JsonArrayResponse result = apiInstance.Jsonarray(body, deploymentName, modelName);
+                JsonArrayResponse result = apiInstance.Jsonarray(body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2329,6 +2386,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -2348,7 +2406,7 @@ Name | Type | Description  | Notes
 
 <a name="knn"></a>
 # **Knn**
-> NearestNeighborsResults Knn (string deploymentName, string knnName, NearestNeighborRequest body)
+> NearestNeighborsResults Knn (string deploymentName, string versionName, string knnName, NearestNeighborRequest body)
 
 Runs knn on the given index with the given k
 
@@ -2375,13 +2433,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var knnName = knnName_example;  // string | ID or name of the deployed knn
             var body = new NearestNeighborRequest(); // NearestNeighborRequest | 
 
             try
             {
                 // Runs knn on the given index with the given k
-                NearestNeighborsResults result = apiInstance.Knn(deploymentName, knnName, body);
+                NearestNeighborsResults result = apiInstance.Knn(deploymentName, versionName, knnName, body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2398,6 +2457,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **knnName** | **string**| ID or name of the deployed knn | 
  **body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  | 
 
@@ -2418,7 +2478,7 @@ Name | Type | Description  | Notes
 
 <a name="knnnew"></a>
 # **Knnnew**
-> NearestNeighborsResults Knnnew (string deploymentName, string knnName, Base64NDArrayBodyKNN body)
+> NearestNeighborsResults Knnnew (string deploymentName, string versionName, string knnName, Base64NDArrayBodyKNN body)
 
 Run a k nearest neighbors search on a NEW data point
 
@@ -2443,13 +2503,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var knnName = knnName_example;  // string | ID or name of the deployed knn
             var body = new Base64NDArrayBodyKNN(); // Base64NDArrayBodyKNN | The input NDArray
 
             try
             {
                 // Run a k nearest neighbors search on a NEW data point
-                NearestNeighborsResults result = apiInstance.Knnnew(deploymentName, knnName, body);
+                NearestNeighborsResults result = apiInstance.Knnnew(deploymentName, versionName, knnName, body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2466,6 +2527,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **knnName** | **string**| ID or name of the deployed knn | 
  **body** | [**Base64NDArrayBodyKNN**](Base64NDArrayBodyKNN.md)| The input NDArray | 
 
@@ -2546,7 +2608,7 @@ This endpoint does not need any parameter.
 
 <a name="logfilepath"></a>
 # **Logfilepath**
-> string Logfilepath (string deploymentName, string modelName)
+> string Logfilepath (string deploymentName, string versionName, string modelName)
 
 Get logs file path
 
@@ -2571,12 +2633,13 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Get logs file path
-                string result = apiInstance.Logfilepath(deploymentName, modelName);
+                string result = apiInstance.Logfilepath(deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2593,6 +2656,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -2676,7 +2740,7 @@ Name | Type | Description  | Notes
 
 <a name="logs"></a>
 # **Logs**
-> LogBatch Logs (LogRequest body, string deploymentName, string modelName)
+> LogBatch Logs (LogRequest body, string deploymentName, string versionName, string modelName)
 
 Get logs
 
@@ -2702,12 +2766,13 @@ namespace Example
             var apiInstance = new DefaultApi();
             var body = new LogRequest(); // LogRequest | the the log request
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Get logs
-                LogBatch result = apiInstance.Logs(body, deploymentName, modelName);
+                LogBatch result = apiInstance.Logs(body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2725,6 +2790,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**LogRequest**](LogRequest.md)| the the log request | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -2744,7 +2810,7 @@ Name | Type | Description  | Notes
 
 <a name="metaget"></a>
 # **MetaGet**
-> MetaData MetaGet (string deploymentName, string modelName)
+> MetaData MetaGet (string deploymentName, string versionName, string modelName)
 
 this method can be used to get the meta data for the current model which set to the server
 
@@ -2769,12 +2835,13 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // this method can be used to get the meta data for the current model which set to the server
-                MetaData result = apiInstance.MetaGet(deploymentName, modelName);
+                MetaData result = apiInstance.MetaGet(deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2791,6 +2858,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -2810,7 +2878,7 @@ Name | Type | Description  | Notes
 
 <a name="metapost"></a>
 # **MetaPost**
-> MetaData MetaPost (MetaData body, string deploymentName, string modelName)
+> MetaData MetaPost (MetaData body, string deploymentName, string versionName, string modelName)
 
 This method can be used to set meta data for the current model which is set to the server
 
@@ -2836,12 +2904,13 @@ namespace Example
             var apiInstance = new DefaultApi();
             var body = new MetaData(); // MetaData | the meta data object
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // This method can be used to set meta data for the current model which is set to the server
-                MetaData result = apiInstance.MetaPost(body, deploymentName, modelName);
+                MetaData result = apiInstance.MetaPost(body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2859,6 +2928,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MetaData**](MetaData.md)| the meta data object | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -3010,7 +3080,7 @@ Name | Type | Description  | Notes
 
 <a name="modelset"></a>
 # **Modelset**
-> ModelStatus Modelset (string deploymentName, string modelName, System.IO.Stream file = null)
+> ModelStatus Modelset (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
 
 Set the model to be served
 
@@ -3035,13 +3105,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
             var file = new System.IO.Stream(); // System.IO.Stream | The model file to upload (.pb file) (optional) 
 
             try
             {
                 // Set the model to be served
-                ModelStatus result = apiInstance.Modelset(deploymentName, modelName, file);
+                ModelStatus result = apiInstance.Modelset(deploymentName, versionName, modelName, file);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3058,6 +3129,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
  **file** | **System.IO.Stream**| The model file to upload (.pb file) | [optional] 
 
@@ -3078,7 +3150,7 @@ Name | Type | Description  | Notes
 
 <a name="modelupdate"></a>
 # **Modelupdate**
-> ModelStatus Modelupdate (string deploymentName, string modelName, System.IO.Stream file = null)
+> ModelStatus Modelupdate (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
 
 Update the model to be served
 
@@ -3103,13 +3175,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
             var file = new System.IO.Stream(); // System.IO.Stream | The model file to update with (.pb file) (optional) 
 
             try
             {
                 // Update the model to be served
-                ModelStatus result = apiInstance.Modelupdate(deploymentName, modelName, file);
+                ModelStatus result = apiInstance.Modelupdate(deploymentName, versionName, modelName, file);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3126,6 +3199,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
  **file** | **System.IO.Stream**| The model file to update with (.pb file) | [optional] 
 
@@ -3146,7 +3220,7 @@ Name | Type | Description  | Notes
 
 <a name="multiclassify"></a>
 # **Multiclassify**
-> MultiClassClassificationResult Multiclassify (Prediction body, string deploymentName, string modelName)
+> MultiClassClassificationResult Multiclassify (Prediction body, string deploymentName, string versionName, string modelName)
 
 Represents all of the labels for a given classification
 
@@ -3172,12 +3246,13 @@ namespace Example
             var apiInstance = new DefaultApi();
             var body = new Prediction(); // Prediction | The input NDArray
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Represents all of the labels for a given classification
-                MultiClassClassificationResult result = apiInstance.Multiclassify(body, deploymentName, modelName);
+                MultiClassClassificationResult result = apiInstance.Multiclassify(body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3195,6 +3270,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -3214,7 +3290,7 @@ Name | Type | Description  | Notes
 
 <a name="multipredict"></a>
 # **Multipredict**
-> MultiPredictResponse Multipredict (MultiPredictRequest body, string deploymentName, string modelName)
+> MultiPredictResponse Multipredict (MultiPredictRequest body, string deploymentName, string versionName, string modelName)
 
 Get the output from the network, based on the given INDArray[] input
 
@@ -3242,12 +3318,13 @@ namespace Example
             var apiInstance = new DefaultApi();
             var body = new MultiPredictRequest(); // MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Get the output from the network, based on the given INDArray[] input
-                MultiPredictResponse result = apiInstance.Multipredict(body, deploymentName, modelName);
+                MultiPredictResponse result = apiInstance.Multipredict(body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3265,6 +3342,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -3284,7 +3362,7 @@ Name | Type | Description  | Notes
 
 <a name="multipredictimage"></a>
 # **Multipredictimage**
-> MultiPredictResponse Multipredictimage (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName)
+> MultiPredictResponse Multipredictimage (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName)
 
 Get the output from the network using the given image file using the /multipredict endpoint's method
 
@@ -3314,12 +3392,13 @@ namespace Example
             var id = id_example;  // string | The id of the request (could be self generated)
             var needsPreprocessing = true;  // bool? | Whether or not the preprocessing is required (either 'true' or 'false')
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Get the output from the network using the given image file using the /multipredict endpoint's method
-                MultiPredictResponse result = apiInstance.Multipredictimage(file, id, needsPreprocessing, deploymentName, modelName);
+                MultiPredictResponse result = apiInstance.Multipredictimage(file, id, needsPreprocessing, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3339,6 +3418,7 @@ Name | Type | Description  | Notes
  **id** | **string**| The id of the request (could be self generated) | 
  **needsPreprocessing** | **bool?**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -3358,7 +3438,7 @@ Name | Type | Description  | Notes
 
 <a name="predict"></a>
 # **Predict**
-> Prediction Predict (Prediction body, string deploymentName, string modelName)
+> Prediction Predict (Prediction body, string deploymentName, string versionName, string modelName)
 
 Run inference on the input array.
 
@@ -3384,12 +3464,13 @@ namespace Example
             var apiInstance = new DefaultApi();
             var body = new Prediction(); // Prediction | The input NDArray
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Run inference on the input array.
-                Prediction result = apiInstance.Predict(body, deploymentName, modelName);
+                Prediction result = apiInstance.Predict(body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3407,6 +3488,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -3426,7 +3508,7 @@ Name | Type | Description  | Notes
 
 <a name="predictimage"></a>
 # **Predictimage**
-> Prediction Predictimage (string deploymentName, string modelName, System.IO.Stream image = null)
+> Prediction Predictimage (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
 
 Run inference on the input array, using input image file from multipart form data.
 
@@ -3451,13 +3533,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
             var image = new System.IO.Stream(); // System.IO.Stream | The file to upload. (optional) 
 
             try
             {
                 // Run inference on the input array, using input image file from multipart form data.
-                Prediction result = apiInstance.Predictimage(deploymentName, modelName, image);
+                Prediction result = apiInstance.Predictimage(deploymentName, versionName, modelName, image);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3474,6 +3557,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
  **image** | **System.IO.Stream**| The file to upload. | [optional] 
 
@@ -3494,7 +3578,7 @@ Name | Type | Description  | Notes
 
 <a name="predictwithpreprocess"></a>
 # **Predictwithpreprocess**
-> Prediction Predictwithpreprocess (List<string> body, string deploymentName, string modelName)
+> Prediction Predictwithpreprocess (List<string> body, string deploymentName, string versionName, string modelName)
 
 Preprocesses the input and run inference on it
 
@@ -3520,12 +3604,13 @@ namespace Example
             var apiInstance = new DefaultApi();
             var body = ;  // List<string> | The input array
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Preprocesses the input and run inference on it
-                Prediction result = apiInstance.Predictwithpreprocess(body, deploymentName, modelName);
+                Prediction result = apiInstance.Predictwithpreprocess(body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3543,6 +3628,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **List&lt;string&gt;**| The input array | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -3562,7 +3648,7 @@ Name | Type | Description  | Notes
 
 <a name="predictwithpreprocessjson"></a>
 # **Predictwithpreprocessjson**
-> JsonArrayResponse Predictwithpreprocessjson (List<string> body, string deploymentName, string modelName)
+> JsonArrayResponse Predictwithpreprocessjson (List<string> body, string deploymentName, string versionName, string modelName)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
@@ -3588,12 +3674,13 @@ namespace Example
             var apiInstance = new DefaultApi();
             var body = ;  // List<string> | The input array
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-                JsonArrayResponse result = apiInstance.Predictwithpreprocessjson(body, deploymentName, modelName);
+                JsonArrayResponse result = apiInstance.Predictwithpreprocessjson(body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3611,6 +3698,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **List&lt;string&gt;**| The input array | 
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -3698,7 +3786,7 @@ Name | Type | Description  | Notes
 
 <a name="transformcsv"></a>
 # **TransformCsv**
-> BatchCSVRecord TransformCsv (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+> BatchCSVRecord TransformCsv (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
 
 Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 
@@ -3725,13 +3813,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
             var batchCSVRecord = new BatchCSVRecord(); // BatchCSVRecord | The input batch of record arrays (optional) 
 
             try
             {
                 // Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-                BatchCSVRecord result = apiInstance.TransformCsv(deploymentName, transformName, batchCSVRecord);
+                BatchCSVRecord result = apiInstance.TransformCsv(deploymentName, versionName, transformName, batchCSVRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3748,6 +3837,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
  **batchCSVRecord** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
 
@@ -3768,7 +3858,7 @@ Name | Type | Description  | Notes
 
 <a name="transformarraycsv"></a>
 # **TransformarrayCsv**
-> Base64NDArrayBody TransformarrayCsv (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+> Base64NDArrayBody TransformarrayCsv (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
 
 Takes a batch input arrays and transforms it
 
@@ -3795,13 +3885,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
             var batchCSVRecord = new BatchCSVRecord(); // BatchCSVRecord | The input batch of record arrays (optional) 
 
             try
             {
                 // Takes a batch input arrays and transforms it
-                Base64NDArrayBody result = apiInstance.TransformarrayCsv(deploymentName, transformName, batchCSVRecord);
+                Base64NDArrayBody result = apiInstance.TransformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3818,6 +3909,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
  **batchCSVRecord** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
 
@@ -3838,7 +3930,7 @@ Name | Type | Description  | Notes
 
 <a name="transformarrayimage"></a>
 # **TransformarrayImage**
-> Base64NDArrayBody TransformarrayImage (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord)
+> Base64NDArrayBody TransformarrayImage (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord)
 
 Takes a batch of images uri and transforms it and returns Base64NDArrayBody
 
@@ -3865,13 +3957,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
             var batchImageRecord = new BatchImageRecord(); // BatchImageRecord | The input batch of record arrays
 
             try
             {
                 // Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.TransformarrayImage(deploymentName, imageTransformName, batchImageRecord);
+                Base64NDArrayBody result = apiInstance.TransformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3888,6 +3981,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **imageTransformName** | **string**| ID or name of the deployed image transform | 
  **batchImageRecord** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
 
@@ -3908,7 +4002,7 @@ Name | Type | Description  | Notes
 
 <a name="transformimage"></a>
 # **Transformimage**
-> Base64NDArrayBody Transformimage (string deploymentName, string imageTransformName, List<byte[]> files)
+> Base64NDArrayBody Transformimage (string deploymentName, string versionName, string imageTransformName, List<byte[]> files)
 
 Takes multiple multipart image file to transform and returns Base64NDArrayBody
 
@@ -3935,13 +4029,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
             var files = new List<byte[]>(); // List<byte[]> | The image files to upload
 
             try
             {
                 // Takes multiple multipart image file to transform and returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.Transformimage(deploymentName, imageTransformName, files);
+                Base64NDArrayBody result = apiInstance.Transformimage(deploymentName, versionName, imageTransformName, files);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3958,6 +4053,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **imageTransformName** | **string**| ID or name of the deployed image transform | 
  **files** | [**List&lt;byte[]&gt;**](byte[].md)| The image files to upload | 
 
@@ -3978,7 +4074,7 @@ Name | Type | Description  | Notes
 
 <a name="transformincrementalcsv"></a>
 # **TransformincrementalCsv**
-> SingleCSVRecord TransformincrementalCsv (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+> SingleCSVRecord TransformincrementalCsv (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
 
 Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
 
@@ -4005,13 +4101,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
             var singleCSVRecord = new SingleCSVRecord(); // SingleCSVRecord | The input record array (optional) 
 
             try
             {
                 // Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-                SingleCSVRecord result = apiInstance.TransformincrementalCsv(deploymentName, transformName, singleCSVRecord);
+                SingleCSVRecord result = apiInstance.TransformincrementalCsv(deploymentName, versionName, transformName, singleCSVRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4028,6 +4125,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
  **singleCSVRecord** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
 
@@ -4048,7 +4146,7 @@ Name | Type | Description  | Notes
 
 <a name="transformincrementalarraycsv"></a>
 # **TransformincrementalarrayCsv**
-> Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+> Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
 
 Same as /transformincremental but returns Base64NDArrayBody
 
@@ -4075,13 +4173,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
             var singleCSVRecord = new SingleCSVRecord(); // SingleCSVRecord | The input record array (optional) 
 
             try
             {
                 // Same as /transformincremental but returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.TransformincrementalarrayCsv(deploymentName, transformName, singleCSVRecord);
+                Base64NDArrayBody result = apiInstance.TransformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4098,6 +4197,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
  **singleCSVRecord** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
 
@@ -4118,7 +4218,7 @@ Name | Type | Description  | Notes
 
 <a name="transformincrementalarrayimage"></a>
 # **TransformincrementalarrayImage**
-> Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord)
+> Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord)
 
 Takes SingleImageRecord to transform and returns Base64NDArrayBody
 
@@ -4145,13 +4245,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
             var singleImageRecord = new SingleImageRecord(); // SingleImageRecord | The input record array
 
             try
             {
                 // Takes SingleImageRecord to transform and returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.TransformincrementalarrayImage(deploymentName, imageTransformName, singleImageRecord);
+                Base64NDArrayBody result = apiInstance.TransformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4168,6 +4269,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **imageTransformName** | **string**| ID or name of the deployed image transform | 
  **singleImageRecord** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
 
@@ -4188,7 +4290,7 @@ Name | Type | Description  | Notes
 
 <a name="transformincrementalimage"></a>
 # **Transformincrementalimage**
-> Base64NDArrayBody Transformincrementalimage (string deploymentName, string imageTransformName, System.IO.Stream file)
+> Base64NDArrayBody Transformincrementalimage (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file)
 
 Takes a single multipart image file to transform and returns Base64NDArrayBody
 
@@ -4215,13 +4317,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
             var file = new System.IO.Stream(); // System.IO.Stream | The image file to upload
 
             try
             {
                 // Takes a single multipart image file to transform and returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.Transformincrementalimage(deploymentName, imageTransformName, file);
+                Base64NDArrayBody result = apiInstance.Transformincrementalimage(deploymentName, versionName, imageTransformName, file);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4238,6 +4341,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **imageTransformName** | **string**| ID or name of the deployed image transform | 
  **file** | **System.IO.Stream**| The image file to upload | 
 
@@ -4258,7 +4362,7 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessget"></a>
 # **TransformprocessGet**
-> TransformProcess TransformprocessGet (string deploymentName, string transformName)
+> TransformProcess TransformprocessGet (string deploymentName, string versionName, string transformName)
 
 Gets the JSON string of the deployed transform process
 
@@ -4285,12 +4389,13 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
 
             try
             {
                 // Gets the JSON string of the deployed transform process
-                TransformProcess result = apiInstance.TransformprocessGet(deploymentName, transformName);
+                TransformProcess result = apiInstance.TransformprocessGet(deploymentName, versionName, transformName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4307,6 +4412,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
 
 ### Return type
@@ -4326,7 +4432,7 @@ Name | Type | Description  | Notes
 
 <a name="transformprocesspost"></a>
 # **TransformprocessPost**
-> void TransformprocessPost (string deploymentName, string transformName, TransformProcess transformProcess = null)
+> void TransformprocessPost (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null)
 
 Sets the deployed transform process through the provided JSON string
 
@@ -4353,13 +4459,14 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
             var transformProcess = new TransformProcess(); // TransformProcess | The transform process to set (optional) 
 
             try
             {
                 // Sets the deployed transform process through the provided JSON string
-                apiInstance.TransformprocessPost(deploymentName, transformName, transformProcess);
+                apiInstance.TransformprocessPost(deploymentName, versionName, transformName, transformProcess);
             }
             catch (Exception e)
             {
@@ -4375,6 +4482,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
  **transformProcess** | [**TransformProcess**](TransformProcess.md)| The transform process to set | [optional] 
 
@@ -4395,7 +4503,7 @@ void (empty response body)
 
 <a name="updatebestmodelforexperiment"></a>
 # **UpdateBestModelForExperiment**
-> ExperimentEntity UpdateBestModelForExperiment (UpdateBestModel updateBestModel)
+> ExperimentEntity UpdateBestModelForExperiment (string modelHistoryServerId, UpdateBestModel updateBestModel)
 
 Updates the best model for an experiment
 
@@ -4419,12 +4527,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var updateBestModel = new UpdateBestModel(); // UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
 
             try
             {
                 // Updates the best model for an experiment
-                ExperimentEntity result = apiInstance.UpdateBestModelForExperiment(updateBestModel);
+                ExperimentEntity result = apiInstance.UpdateBestModelForExperiment(modelHistoryServerId, updateBestModel);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4440,6 +4549,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **updateBestModel** | [**UpdateBestModel**](UpdateBestModel.md)| Model encapsulating the experiment id to update and the best model id. | 
 
 ### Return type
@@ -4459,7 +4569,7 @@ Name | Type | Description  | Notes
 
 <a name="updateexperiment"></a>
 # **UpdateExperiment**
-> ExperimentEntity UpdateExperiment (string experimentID, ExperimentEntity experimentEntity)
+> ExperimentEntity UpdateExperiment (string modelHistoryServerId, string experimentID, ExperimentEntity experimentEntity)
 
 Updates an experiment, given an experiment entity
 
@@ -4483,13 +4593,14 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var experimentID = experimentID_example;  // string | the GUID of the experiment to update
             var experimentEntity = new ExperimentEntity(); // ExperimentEntity | The experiment entity to update with
 
             try
             {
                 // Updates an experiment, given an experiment entity
-                ExperimentEntity result = apiInstance.UpdateExperiment(experimentID, experimentEntity);
+                ExperimentEntity result = apiInstance.UpdateExperiment(modelHistoryServerId, experimentID, experimentEntity);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4505,6 +4616,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **experimentID** | **string**| the GUID of the experiment to update | 
  **experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to update with | 
 
@@ -4525,7 +4637,7 @@ Name | Type | Description  | Notes
 
 <a name="updatemodelhistory"></a>
 # **UpdateModelHistory**
-> ModelHistoryEntity UpdateModelHistory (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
+> ModelHistoryEntity UpdateModelHistory (string modelHistoryServerId, string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
 
 Update a model history / workspace
 
@@ -4549,13 +4661,14 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
             var modelHistoryID = modelHistoryID_example;  // string | the GUID of the model history / workspace to update
             var updateModelHistoryRequest = new AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
 
             try
             {
                 // Update a model history / workspace
-                ModelHistoryEntity result = apiInstance.UpdateModelHistory(modelHistoryID, updateModelHistoryRequest);
+                ModelHistoryEntity result = apiInstance.UpdateModelHistory(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4571,6 +4684,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **modelHistoryID** | **string**| the GUID of the model history / workspace to update | 
  **updateModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 

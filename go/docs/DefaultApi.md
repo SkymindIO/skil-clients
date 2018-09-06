@@ -4,79 +4,79 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddEvaluationResult**](DefaultApi.md#AddEvaluationResult) | **Post** /model/revisions/evaluations/ | Adds an evaluation result
-[**AddExampleForBatch**](DefaultApi.md#AddExampleForBatch) | **Post** /model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
-[**AddExampleToMinibatch**](DefaultApi.md#AddExampleToMinibatch) | **Post** /model/example | Adds an example to a minibatch
-[**AddExperiment**](DefaultApi.md#AddExperiment) | **Post** /experiment | Add an experiment, given an experiment entity
-[**AddMinibatch**](DefaultApi.md#AddMinibatch) | **Post** /model/minibatch | Adds a minibatch
-[**AddModelFeedback**](DefaultApi.md#AddModelFeedback) | **Post** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
-[**AddModelHistory**](DefaultApi.md#AddModelHistory) | **Post** /modelhistory | Add a model history / workspace
-[**AddModelInstance**](DefaultApi.md#AddModelInstance) | **Post** /model | Adds a model
-[**AggregateModelResults**](DefaultApi.md#AggregateModelResults) | **Post** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
-[**Classify**](DefaultApi.md#Classify) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/classify | Use the deployed model to classify the input
-[**Classifyarray**](DefaultApi.md#Classifyarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**Classifyimage**](DefaultApi.md#Classifyimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-[**CreateModelHistory**](DefaultApi.md#CreateModelHistory) | **Post** /model/revisions | Creates model History
-[**DeleteExperiment**](DefaultApi.md#DeleteExperiment) | **Delete** /experiment/{experimentID} | Deletes an experiment, given an experiment entity
+[**AddEvaluationResult**](DefaultApi.md#AddEvaluationResult) | **Post** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
+[**AddExampleForBatch**](DefaultApi.md#AddExampleForBatch) | **Post** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
+[**AddExampleToMinibatch**](DefaultApi.md#AddExampleToMinibatch) | **Post** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
+[**AddExperiment**](DefaultApi.md#AddExperiment) | **Post** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+[**AddMinibatch**](DefaultApi.md#AddMinibatch) | **Post** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
+[**AddModelFeedback**](DefaultApi.md#AddModelFeedback) | **Post** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
+[**AddModelHistory**](DefaultApi.md#AddModelHistory) | **Post** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
+[**AddModelInstance**](DefaultApi.md#AddModelInstance) | **Post** /rpc/{modelHistoryServerId}/model | Adds a model
+[**AggregateModelResults**](DefaultApi.md#AggregateModelResults) | **Post** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
+[**Classify**](DefaultApi.md#Classify) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
+[**Classifyarray**](DefaultApi.md#Classifyarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**Classifyimage**](DefaultApi.md#Classifyimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**CreateModelHistory**](DefaultApi.md#CreateModelHistory) | **Post** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
+[**DeleteExperiment**](DefaultApi.md#DeleteExperiment) | **Delete** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
 [**DeleteModel**](DefaultApi.md#DeleteModel) | **Delete** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
-[**DeleteModelHistory**](DefaultApi.md#DeleteModelHistory) | **Delete** /modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
-[**DeleteModelInstance**](DefaultApi.md#DeleteModelInstance) | **Delete** /model/{modelInstanceID} | Deletes a model instance, given its ID
+[**DeleteModelHistory**](DefaultApi.md#DeleteModelHistory) | **Delete** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
+[**DeleteModelInstance**](DefaultApi.md#DeleteModelInstance) | **Delete** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
 [**DeployModel**](DefaultApi.md#DeployModel) | **Post** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**DeploymentCreate**](DefaultApi.md#DeploymentCreate) | **Post** /deployment | Create a new deployment group.
 [**DeploymentDelete**](DefaultApi.md#DeploymentDelete) | **Delete** /deployment/{deploymentId} | Delete a deployment by id
 [**DeploymentGet**](DefaultApi.md#DeploymentGet) | **Get** /deployment/{deploymentId} | Get a deployment details by id
 [**Deployments**](DefaultApi.md#Deployments) | **Get** /deployments | Get a list of deployments
-[**Detectobjects**](DefaultApi.md#Detectobjects) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/detectobjects | Detect the objects, given a (input) prediction request
-[**GetBestModelAmongModelIds**](DefaultApi.md#GetBestModelAmongModelIds) | **Post** /model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-[**GetEvaluationForModelID**](DefaultApi.md#GetEvaluationForModelID) | **Get** /model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
-[**GetExamplesForMinibatch**](DefaultApi.md#GetExamplesForMinibatch) | **Get** /model/example/{minibatchId} | Gets all the examples for a minibatch ID
-[**GetExperiment**](DefaultApi.md#GetExperiment) | **Get** /experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
-[**GetExperimentsForModelHistory**](DefaultApi.md#GetExperimentsForModelHistory) | **Get** /experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-[**GetMinibatch**](DefaultApi.md#GetMinibatch) | **Get** /model/minibatch/{minibatchId} | Gets a minibatch for the model
-[**GetModelHistory**](DefaultApi.md#GetModelHistory) | **Get** /model/revision/{modelHistoryID} | Gets a model history, given its ID
-[**GetModelInstance**](DefaultApi.md#GetModelInstance) | **Get** /model/{modelInstanceID} | Gets a model instance, given its ID
-[**GetModelsForExperiment**](DefaultApi.md#GetModelsForExperiment) | **Get** /experiment/{experimentID}/models | Obtain a list of all the models for an experiment
-[**ImagetransformprocessGet**](DefaultApi.md#ImagetransformprocessGet) | **Get** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess | Retrieves the image transform process JSON string
-[**ImagetransformprocessPost**](DefaultApi.md#ImagetransformprocessPost) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess | Sets the image transform process through the provided JSON string
-[**Jsonarray**](DefaultApi.md#Jsonarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
-[**Knn**](DefaultApi.md#Knn) | **Post** /endpoints/{deploymentName}/knn/{knnName}/default/knn | Runs knn on the given index with the given k
-[**Knnnew**](DefaultApi.md#Knnnew) | **Post** /endpoints/{deploymentName}/knn/{knnName}/default/knnnew | Run a k nearest neighbors search on a NEW data point
-[**ListAllExperiments**](DefaultApi.md#ListAllExperiments) | **Get** /experiments | List all of the experiments in every model history / workspace
-[**Logfilepath**](DefaultApi.md#Logfilepath) | **Get** /endpoints/{deploymentName}/model/{modelName}/default/logfilepath | Get logs file path
+[**Detectobjects**](DefaultApi.md#Detectobjects) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
+[**GetBestModelAmongModelIds**](DefaultApi.md#GetBestModelAmongModelIds) | **Post** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+[**GetEvaluationForModelID**](DefaultApi.md#GetEvaluationForModelID) | **Get** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
+[**GetExamplesForMinibatch**](DefaultApi.md#GetExamplesForMinibatch) | **Get** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
+[**GetExperiment**](DefaultApi.md#GetExperiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
+[**GetExperimentsForModelHistory**](DefaultApi.md#GetExperimentsForModelHistory) | **Get** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
+[**GetMinibatch**](DefaultApi.md#GetMinibatch) | **Get** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+[**GetModelHistory**](DefaultApi.md#GetModelHistory) | **Get** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
+[**GetModelInstance**](DefaultApi.md#GetModelInstance) | **Get** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
+[**GetModelsForExperiment**](DefaultApi.md#GetModelsForExperiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+[**ImagetransformprocessGet**](DefaultApi.md#ImagetransformprocessGet) | **Get** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
+[**ImagetransformprocessPost**](DefaultApi.md#ImagetransformprocessPost) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
+[**Jsonarray**](DefaultApi.md#Jsonarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**Knn**](DefaultApi.md#Knn) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
+[**Knnnew**](DefaultApi.md#Knnnew) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
+[**ListAllExperiments**](DefaultApi.md#ListAllExperiments) | **Get** /rpc/{modelHistoryServerId}/experiments | List all of the experiments in every model history / workspace
+[**Logfilepath**](DefaultApi.md#Logfilepath) | **Get** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath | Get logs file path
 [**Login**](DefaultApi.md#Login) | **Post** /login | Post JSON credentials and obtain a JWT authorization token.
-[**Logs**](DefaultApi.md#Logs) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/logs | Get logs
-[**MetaGet**](DefaultApi.md#MetaGet) | **Get** /endpoints/{deploymentName}/model/{modelName}/default/meta | this method can be used to get the meta data for the current model which set to the server
-[**MetaPost**](DefaultApi.md#MetaPost) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/meta | This method can be used to set meta data for the current model which is set to the server
+[**Logs**](DefaultApi.md#Logs) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs | Get logs
+[**MetaGet**](DefaultApi.md#MetaGet) | **Get** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | this method can be used to get the meta data for the current model which set to the server
+[**MetaPost**](DefaultApi.md#MetaPost) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | This method can be used to set meta data for the current model which is set to the server
 [**ModelStateChange**](DefaultApi.md#ModelStateChange) | **Post** /deployment/{deploymentId}/model/{modelId}/state | Modify the state (start/stop) of a deployed model
 [**Models**](DefaultApi.md#Models) | **Get** /deployment/{deploymentId}/models | Retrieve a list of all the deployed models given a deployment id
-[**Modelset**](DefaultApi.md#Modelset) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/modelset | Set the model to be served
-[**Modelupdate**](DefaultApi.md#Modelupdate) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
-[**Multiclassify**](DefaultApi.md#Multiclassify) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
-[**Multipredict**](DefaultApi.md#Multipredict) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/multipredict | Get the output from the network, based on the given INDArray[] input
-[**Multipredictimage**](DefaultApi.md#Multipredictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
-[**Predict**](DefaultApi.md#Predict) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
-[**Predictimage**](DefaultApi.md#Predictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**Predictwithpreprocess**](DefaultApi.md#Predictwithpreprocess) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
-[**Predictwithpreprocessjson**](DefaultApi.md#Predictwithpreprocessjson) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**Modelset**](DefaultApi.md#Modelset) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset | Set the model to be served
+[**Modelupdate**](DefaultApi.md#Modelupdate) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate | Update the model to be served
+[**Multiclassify**](DefaultApi.md#Multiclassify) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
+[**Multipredict**](DefaultApi.md#Multipredict) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
+[**Multipredictimage**](DefaultApi.md#Multipredictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+[**Predict**](DefaultApi.md#Predict) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+[**Predictimage**](DefaultApi.md#Predictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**Predictwithpreprocess**](DefaultApi.md#Predictwithpreprocess) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
+[**Predictwithpreprocessjson**](DefaultApi.md#Predictwithpreprocessjson) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**ReimportModel**](DefaultApi.md#ReimportModel) | **Post** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
-[**TransformCsv**](DefaultApi.md#TransformCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/default/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**TransformarrayCsv**](DefaultApi.md#TransformarrayCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/default/transformarray | Takes a batch input arrays and transforms it
-[**TransformarrayImage**](DefaultApi.md#TransformarrayImage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-[**Transformimage**](DefaultApi.md#Transformimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
-[**TransformincrementalCsv**](DefaultApi.md#TransformincrementalCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**TransformincrementalarrayCsv**](DefaultApi.md#TransformincrementalarrayCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**TransformincrementalarrayImage**](DefaultApi.md#TransformincrementalarrayImage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
-[**Transformincrementalimage**](DefaultApi.md#Transformincrementalimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**TransformprocessGet**](DefaultApi.md#TransformprocessGet) | **Get** /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess | Gets the JSON string of the deployed transform process
-[**TransformprocessPost**](DefaultApi.md#TransformprocessPost) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess | Sets the deployed transform process through the provided JSON string
-[**UpdateBestModelForExperiment**](DefaultApi.md#UpdateBestModelForExperiment) | **Post** /experiment/best | Updates the best model for an experiment
-[**UpdateExperiment**](DefaultApi.md#UpdateExperiment) | **Put** /experiment/{experimentID} | Updates an experiment, given an experiment entity
-[**UpdateModelHistory**](DefaultApi.md#UpdateModelHistory) | **Post** /modelhistory/{modelHistoryID} | Update a model history / workspace
+[**TransformCsv**](DefaultApi.md#TransformCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+[**TransformarrayCsv**](DefaultApi.md#TransformarrayCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
+[**TransformarrayImage**](DefaultApi.md#TransformarrayImage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**Transformimage**](DefaultApi.md#Transformimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
+[**TransformincrementalCsv**](DefaultApi.md#TransformincrementalCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+[**TransformincrementalarrayCsv**](DefaultApi.md#TransformincrementalarrayCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
+[**TransformincrementalarrayImage**](DefaultApi.md#TransformincrementalarrayImage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**Transformincrementalimage**](DefaultApi.md#Transformincrementalimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
+[**TransformprocessGet**](DefaultApi.md#TransformprocessGet) | **Get** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
+[**TransformprocessPost**](DefaultApi.md#TransformprocessPost) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**UpdateBestModelForExperiment**](DefaultApi.md#UpdateBestModelForExperiment) | **Post** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
+[**UpdateExperiment**](DefaultApi.md#UpdateExperiment) | **Put** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
+[**UpdateModelHistory**](DefaultApi.md#UpdateModelHistory) | **Post** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**Upload**](DefaultApi.md#Upload) | **Post** /api/upload/model | Upload a model file to SKIL for import.
 
 
 # **AddEvaluationResult**
-> EvaluationResultsEntity AddEvaluationResult(ctx, evaluationResultsEntity)
+> EvaluationResultsEntity AddEvaluationResult(ctx, modelHistoryServerId, evaluationResultsEntity)
 Adds an evaluation result
 
 ### Required Parameters
@@ -84,6 +84,7 @@ Adds an evaluation result
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **evaluationResultsEntity** | [**EvaluationResultsEntity**](EvaluationResultsEntity.md)| The evaluation result entity | 
 
 ### Return type
@@ -102,7 +103,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AddExampleForBatch**
-> AddExampleRequest AddExampleForBatch(ctx, addExampleRequest)
+> AddExampleRequest AddExampleForBatch(ctx, modelHistoryServerId, addExampleRequest)
 Adds a number of examples to a minibatch ID given an AddExampleRequest.
 
 ### Required Parameters
@@ -110,6 +111,7 @@ Adds a number of examples to a minibatch ID given an AddExampleRequest.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **addExampleRequest** | [**AddExampleRequest**](AddExampleRequest.md)| The add example request, encapsulating minibatch details and examples batch size | 
 
 ### Return type
@@ -128,7 +130,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AddExampleToMinibatch**
-> ExampleEntity AddExampleToMinibatch(ctx, exampleEntity)
+> ExampleEntity AddExampleToMinibatch(ctx, modelHistoryServerId, exampleEntity)
 Adds an example to a minibatch
 
 ### Required Parameters
@@ -136,6 +138,7 @@ Adds an example to a minibatch
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **exampleEntity** | [**ExampleEntity**](ExampleEntity.md)| The example to add to the minibatch | 
 
 ### Return type
@@ -154,7 +157,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AddExperiment**
-> ExperimentEntity AddExperiment(ctx, experimentEntity)
+> ExperimentEntity AddExperiment(ctx, modelHistoryServerId, experimentEntity)
 Add an experiment, given an experiment entity
 
 ### Required Parameters
@@ -162,6 +165,7 @@ Add an experiment, given an experiment entity
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to add | 
 
 ### Return type
@@ -180,7 +184,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AddMinibatch**
-> MinibatchEntity AddMinibatch(ctx, minibatchEntity)
+> MinibatchEntity AddMinibatch(ctx, modelHistoryServerId, minibatchEntity)
 Adds a minibatch
 
 ### Required Parameters
@@ -188,6 +192,7 @@ Adds a minibatch
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **minibatchEntity** | [**MinibatchEntity**](MinibatchEntity.md)| The minibatch entity to add | 
 
 ### Return type
@@ -206,7 +211,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AddModelFeedback**
-> ModelFeedBackRequest AddModelFeedback(ctx, modelFeedBackRequest)
+> ModelFeedBackRequest AddModelFeedback(ctx, modelHistoryServerId, modelFeedBackRequest)
 Adds an evaluation feedback to the model against a given minibatch id.
 
 ### Required Parameters
@@ -214,6 +219,7 @@ Adds an evaluation feedback to the model against a given minibatch id.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **modelFeedBackRequest** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
 
 ### Return type
@@ -232,7 +238,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AddModelHistory**
-> ModelHistoryEntity AddModelHistory(ctx, addModelHistoryRequest)
+> ModelHistoryEntity AddModelHistory(ctx, modelHistoryServerId, addModelHistoryRequest)
 Add a model history / workspace
 
 ### Required Parameters
@@ -240,6 +246,7 @@ Add a model history / workspace
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **addModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
 ### Return type
@@ -258,7 +265,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AddModelInstance**
-> ModelInstanceEntity AddModelInstance(ctx, modelInstanceEntity)
+> ModelInstanceEntity AddModelInstance(ctx, modelHistoryServerId, modelInstanceEntity)
 Adds a model
 
 ### Required Parameters
@@ -266,6 +273,7 @@ Adds a model
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **modelInstanceEntity** | [**ModelInstanceEntity**](ModelInstanceEntity.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -284,7 +292,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AggregateModelResults**
-> EvaluationResultsEntity AggregateModelResults(ctx, aggregatePrediction)
+> EvaluationResultsEntity AggregateModelResults(ctx, modelHistoryServerId, aggregatePrediction)
 Aggregates the evaluaition results of a model instance, based on the evaluation type
 
 ### Required Parameters
@@ -292,6 +300,7 @@ Aggregates the evaluaition results of a model instance, based on the evaluation 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **aggregatePrediction** | [**AggregatePrediction**](AggregatePrediction.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -310,7 +319,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Classify**
-> ClassificationResult Classify(ctx, body, deploymentName, modelName)
+> ClassificationResult Classify(ctx, body, deploymentName, versionName, modelName)
 Use the deployed model to classify the input
 
 ### Required Parameters
@@ -320,6 +329,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -338,7 +348,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Classifyarray**
-> Base64NdArrayBody Classifyarray(ctx, body, deploymentName, modelName)
+> Base64NdArrayBody Classifyarray(ctx, body, deploymentName, versionName, modelName)
 Same as /classify but returns the output as Base64NDArrayBody
 
 ### Required Parameters
@@ -348,6 +358,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -366,7 +377,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Classifyimage**
-> ClassificationResult Classifyimage(ctx, deploymentName, modelName, optional)
+> ClassificationResult Classifyimage(ctx, deploymentName, versionName, modelName, optional)
 Use the deployed model to classify the input, using input image file from multipart form data.
 
 ### Required Parameters
@@ -375,6 +386,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
  **optional** | ***ClassifyimageOpts** | optional parameters | nil if no parameters
 
@@ -383,6 +395,7 @@ Optional parameters are passed through a pointer to a ClassifyimageOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
  **image** | **optional.Interface of *os.File**| The file to upload. | 
@@ -403,7 +416,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateModelHistory**
-> ModelHistoryEntity CreateModelHistory(ctx, modelHistoryEntity)
+> ModelHistoryEntity CreateModelHistory(ctx, modelHistoryServerId, modelHistoryEntity)
 Creates model History
 
 ### Required Parameters
@@ -411,6 +424,7 @@ Creates model History
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **modelHistoryEntity** | [**ModelHistoryEntity**](ModelHistoryEntity.md)| The model history entity | 
 
 ### Return type
@@ -429,7 +443,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteExperiment**
-> InlineResponse200 DeleteExperiment(ctx, experimentID)
+> InlineResponse200 DeleteExperiment(ctx, modelHistoryServerId, experimentID)
 Deletes an experiment, given an experiment entity
 
 ### Required Parameters
@@ -437,6 +451,7 @@ Deletes an experiment, given an experiment entity
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **experimentID** | **string**| the GUID of the experiment to delete | 
 
 ### Return type
@@ -482,7 +497,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteModelHistory**
-> InlineResponse200 DeleteModelHistory(ctx, modelHistoryID)
+> InlineResponse200 DeleteModelHistory(ctx, modelHistoryServerId, modelHistoryID)
 Deletes a model history / workspace, given its ID
 
 ### Required Parameters
@@ -490,6 +505,7 @@ Deletes a model history / workspace, given its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **modelHistoryID** | **string**| the GUID of the model history / workspace to delete | 
 
 ### Return type
@@ -508,7 +524,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteModelInstance**
-> DeleteModelInstance(ctx, modelInstanceID)
+> DeleteModelInstance(ctx, modelHistoryServerId, modelInstanceID)
 Deletes a model instance, given its ID
 
 ### Required Parameters
@@ -516,6 +532,7 @@ Deletes a model instance, given its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **modelInstanceID** | **string**| GUID of the model instance to delete. | 
 
 ### Return type
@@ -661,7 +678,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Detectobjects**
-> DetectionResult Detectobjects(ctx, id, needsPreprocessing, threshold, imageFile, deploymentName, modelName)
+> DetectionResult Detectobjects(ctx, id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName)
 Detect the objects, given a (input) prediction request
 
 ### Required Parameters
@@ -674,6 +691,7 @@ Name | Type | Description  | Notes
   **threshold** | **float32**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
   **imageFile** | ***os.File**| the image file to detect objects from | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -692,7 +710,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetBestModelAmongModelIds**
-> ModelInstanceEntity GetBestModelAmongModelIds(ctx, bestModel)
+> ModelInstanceEntity GetBestModelAmongModelIds(ctx, modelHistoryServerId, bestModel)
 Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 
 ### Required Parameters
@@ -700,6 +718,7 @@ Gets the best model among the given model instance IDs, based on the evaluation 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **bestModel** | [**BestModel**](BestModel.md)| Object encapsulating the model ids, eval type and column metric name | 
 
 ### Return type
@@ -718,7 +737,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetEvaluationForModelID**
-> []EvaluationResultsEntity GetEvaluationForModelID(ctx, modelInstanceID)
+> []EvaluationResultsEntity GetEvaluationForModelID(ctx, modelHistoryServerId, modelInstanceID)
 Gets the list of evaluation results entity, given a model instance ID
 
 ### Required Parameters
@@ -726,6 +745,7 @@ Gets the list of evaluation results entity, given a model instance ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **modelInstanceID** | **string**| GUID of the model instance to get evaluation results for. | 
 
 ### Return type
@@ -744,7 +764,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetExamplesForMinibatch**
-> []ExampleEntity GetExamplesForMinibatch(ctx, minibatchId)
+> []ExampleEntity GetExamplesForMinibatch(ctx, modelHistoryServerId, minibatchId)
 Gets all the examples for a minibatch ID
 
 ### Required Parameters
@@ -752,6 +772,7 @@ Gets all the examples for a minibatch ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **minibatchId** | **string**| The GUID of the minibatch | 
 
 ### Return type
@@ -770,7 +791,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetExperiment**
-> ExperimentEntity GetExperiment(ctx, experimentID)
+> ExperimentEntity GetExperiment(ctx, modelHistoryServerId, experimentID)
 Obtain an experiment's details, given its ID
 
 ### Required Parameters
@@ -778,6 +799,7 @@ Obtain an experiment's details, given its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **experimentID** | **string**| the GUID of the experiment to obtain | 
 
 ### Return type
@@ -796,7 +818,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetExperimentsForModelHistory**
-> ExperimentEntity GetExperimentsForModelHistory(ctx, modelHistoryID)
+> ExperimentEntity GetExperimentsForModelHistory(ctx, modelHistoryServerId, modelHistoryID)
 Obtain all experiments for a model history / workspace
 
 ### Required Parameters
@@ -804,6 +826,7 @@ Obtain all experiments for a model history / workspace
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **modelHistoryID** | **string**| the GUID of the model history / workspace | 
 
 ### Return type
@@ -822,7 +845,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetMinibatch**
-> MinibatchEntity GetMinibatch(ctx, minibatchId)
+> MinibatchEntity GetMinibatch(ctx, modelHistoryServerId, minibatchId)
 Gets a minibatch for the model
 
 ### Required Parameters
@@ -830,6 +853,7 @@ Gets a minibatch for the model
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **minibatchId** | **string**| The GUID of the minibatch | 
 
 ### Return type
@@ -848,7 +872,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetModelHistory**
-> ModelHistoryEntity GetModelHistory(ctx, modelHistoryID)
+> ModelHistoryEntity GetModelHistory(ctx, modelHistoryServerId, modelHistoryID)
 Gets a model history, given its ID
 
 ### Required Parameters
@@ -856,6 +880,7 @@ Gets a model history, given its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **modelHistoryID** | **string**| GUID of the model history to get information of. | 
 
 ### Return type
@@ -874,7 +899,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetModelInstance**
-> ModelInstanceEntity GetModelInstance(ctx, modelInstanceID)
+> ModelInstanceEntity GetModelInstance(ctx, modelHistoryServerId, modelInstanceID)
 Gets a model instance, given its ID
 
 ### Required Parameters
@@ -882,6 +907,7 @@ Gets a model instance, given its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **modelInstanceID** | **string**| GUID of the model instance to get information of. | 
 
 ### Return type
@@ -900,7 +926,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetModelsForExperiment**
-> []ModelInstanceEntity GetModelsForExperiment(ctx, experimentID)
+> []ModelInstanceEntity GetModelsForExperiment(ctx, modelHistoryServerId, experimentID)
 Obtain a list of all the models for an experiment
 
 ### Required Parameters
@@ -908,6 +934,7 @@ Obtain a list of all the models for an experiment
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **experimentID** | **string**| the GUID of the experiment | 
 
 ### Return type
@@ -926,7 +953,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ImagetransformprocessGet**
-> ImageTransformProcess ImagetransformprocessGet(ctx, deploymentName, imageTransformName)
+> ImageTransformProcess ImagetransformprocessGet(ctx, deploymentName, versionName, imageTransformName)
 Retrieves the image transform process JSON string
 
 ### Required Parameters
@@ -935,6 +962,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
 
 ### Return type
@@ -953,7 +981,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ImagetransformprocessPost**
-> ImageTransformProcess ImagetransformprocessPost(ctx, deploymentName, imageTransformName, body)
+> ImageTransformProcess ImagetransformprocessPost(ctx, deploymentName, versionName, imageTransformName, body)
 Sets the image transform process through the provided JSON string
 
 ### Required Parameters
@@ -962,6 +990,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
   **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
 
@@ -981,7 +1010,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Jsonarray**
-> JsonArrayResponse Jsonarray(ctx, body, deploymentName, modelName)
+> JsonArrayResponse Jsonarray(ctx, body, deploymentName, versionName, modelName)
 Run inference on the input and returns it as a JsonArrayResponse
 
 ### Required Parameters
@@ -991,6 +1020,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1009,7 +1039,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Knn**
-> NearestNeighborsResults Knn(ctx, deploymentName, knnName, body)
+> NearestNeighborsResults Knn(ctx, deploymentName, versionName, knnName, body)
 Runs knn on the given index with the given k
 
 Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
@@ -1020,6 +1050,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **knnName** | **string**| ID or name of the deployed knn | 
   **body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  | 
 
@@ -1039,7 +1070,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Knnnew**
-> NearestNeighborsResults Knnnew(ctx, deploymentName, knnName, body)
+> NearestNeighborsResults Knnnew(ctx, deploymentName, versionName, knnName, body)
 Run a k nearest neighbors search on a NEW data point
 
 ### Required Parameters
@@ -1048,6 +1079,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **knnName** | **string**| ID or name of the deployed knn | 
   **body** | [**Base64NdArrayBodyKnn**](Base64NdArrayBodyKnn.md)| The input NDArray | 
 
@@ -1089,7 +1121,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Logfilepath**
-> string Logfilepath(ctx, deploymentName, modelName)
+> string Logfilepath(ctx, deploymentName, versionName, modelName)
 Get logs file path
 
 ### Required Parameters
@@ -1098,6 +1130,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1142,7 +1175,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Logs**
-> LogBatch Logs(ctx, body, deploymentName, modelName)
+> LogBatch Logs(ctx, body, deploymentName, versionName, modelName)
 Get logs
 
 ### Required Parameters
@@ -1152,6 +1185,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**LogRequest**](LogRequest.md)| the the log request | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1170,7 +1204,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **MetaGet**
-> MetaData MetaGet(ctx, deploymentName, modelName)
+> MetaData MetaGet(ctx, deploymentName, versionName, modelName)
 this method can be used to get the meta data for the current model which set to the server
 
 ### Required Parameters
@@ -1179,6 +1213,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1197,7 +1232,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **MetaPost**
-> MetaData MetaPost(ctx, body, deploymentName, modelName)
+> MetaData MetaPost(ctx, body, deploymentName, versionName, modelName)
 This method can be used to set meta data for the current model which is set to the server
 
 ### Required Parameters
@@ -1207,6 +1242,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**MetaData**](MetaData.md)| the meta data object | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1279,7 +1315,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Modelset**
-> ModelStatus Modelset(ctx, deploymentName, modelName, optional)
+> ModelStatus Modelset(ctx, deploymentName, versionName, modelName, optional)
 Set the model to be served
 
 ### Required Parameters
@@ -1288,6 +1324,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
  **optional** | ***ModelsetOpts** | optional parameters | nil if no parameters
 
@@ -1296,6 +1333,7 @@ Optional parameters are passed through a pointer to a ModelsetOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
  **file** | **optional.Interface of *os.File**| The model file to upload (.pb file) | 
@@ -1316,7 +1354,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Modelupdate**
-> ModelStatus Modelupdate(ctx, deploymentName, modelName, optional)
+> ModelStatus Modelupdate(ctx, deploymentName, versionName, modelName, optional)
 Update the model to be served
 
 ### Required Parameters
@@ -1325,6 +1363,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
  **optional** | ***ModelupdateOpts** | optional parameters | nil if no parameters
 
@@ -1333,6 +1372,7 @@ Optional parameters are passed through a pointer to a ModelupdateOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
  **file** | **optional.Interface of *os.File**| The model file to update with (.pb file) | 
@@ -1353,7 +1393,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Multiclassify**
-> MultiClassClassificationResult Multiclassify(ctx, body, deploymentName, modelName)
+> MultiClassClassificationResult Multiclassify(ctx, body, deploymentName, versionName, modelName)
 Represents all of the labels for a given classification
 
 ### Required Parameters
@@ -1363,6 +1403,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1381,7 +1422,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Multipredict**
-> MultiPredictResponse Multipredict(ctx, body, deploymentName, modelName)
+> MultiPredictResponse Multipredict(ctx, body, deploymentName, versionName, modelName)
 Get the output from the network, based on the given INDArray[] input
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
@@ -1393,6 +1434,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1411,7 +1453,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Multipredictimage**
-> MultiPredictResponse Multipredictimage(ctx, file, id, needsPreprocessing, deploymentName, modelName)
+> MultiPredictResponse Multipredictimage(ctx, file, id, needsPreprocessing, deploymentName, versionName, modelName)
 Get the output from the network using the given image file using the /multipredict endpoint's method
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
@@ -1425,6 +1467,7 @@ Name | Type | Description  | Notes
   **id** | **string**| The id of the request (could be self generated) | 
   **needsPreprocessing** | **bool**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1443,7 +1486,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Predict**
-> Prediction Predict(ctx, body, deploymentName, modelName)
+> Prediction Predict(ctx, body, deploymentName, versionName, modelName)
 Run inference on the input array.
 
 ### Required Parameters
@@ -1453,6 +1496,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1471,7 +1515,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Predictimage**
-> Prediction Predictimage(ctx, deploymentName, modelName, optional)
+> Prediction Predictimage(ctx, deploymentName, versionName, modelName, optional)
 Run inference on the input array, using input image file from multipart form data.
 
 ### Required Parameters
@@ -1480,6 +1524,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
  **optional** | ***PredictimageOpts** | optional parameters | nil if no parameters
 
@@ -1488,6 +1533,7 @@ Optional parameters are passed through a pointer to a PredictimageOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
  **image** | **optional.Interface of *os.File**| The file to upload. | 
@@ -1508,7 +1554,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Predictwithpreprocess**
-> Prediction Predictwithpreprocess(ctx, body, deploymentName, modelName)
+> Prediction Predictwithpreprocess(ctx, body, deploymentName, versionName, modelName)
 Preprocesses the input and run inference on it
 
 ### Required Parameters
@@ -1518,6 +1564,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | **[]string**| The input array | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1536,7 +1583,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Predictwithpreprocessjson**
-> JsonArrayResponse Predictwithpreprocessjson(ctx, body, deploymentName, modelName)
+> JsonArrayResponse Predictwithpreprocessjson(ctx, body, deploymentName, versionName, modelName)
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
 ### Required Parameters
@@ -1546,6 +1593,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | **[]string**| The input array | 
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -1592,7 +1640,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformCsv**
-> BatchCsvRecord TransformCsv(ctx, deploymentName, transformName, optional)
+> BatchCsvRecord TransformCsv(ctx, deploymentName, versionName, transformName, optional)
 Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 
 Takes a batch of SingleCSVRecord object and transforms it into the desired format
@@ -1603,6 +1651,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transformName** | **string**| ID or name of the deployed transform | 
  **optional** | ***TransformCsvOpts** | optional parameters | nil if no parameters
 
@@ -1611,6 +1660,7 @@ Optional parameters are passed through a pointer to a TransformCsvOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
  **batchCSVRecord** | [**optional.Interface of BatchCsvRecord**](BatchCsvRecord.md)| The input batch of record arrays | 
@@ -1631,7 +1681,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformarrayCsv**
-> Base64NdArrayBody TransformarrayCsv(ctx, deploymentName, transformName, optional)
+> Base64NdArrayBody TransformarrayCsv(ctx, deploymentName, versionName, transformName, optional)
 Takes a batch input arrays and transforms it
 
 Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1642,6 +1692,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transformName** | **string**| ID or name of the deployed transform | 
  **optional** | ***TransformarrayCsvOpts** | optional parameters | nil if no parameters
 
@@ -1650,6 +1701,7 @@ Optional parameters are passed through a pointer to a TransformarrayCsvOpts stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
  **batchCSVRecord** | [**optional.Interface of BatchCsvRecord**](BatchCsvRecord.md)| The input batch of record arrays | 
@@ -1670,7 +1722,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformarrayImage**
-> Base64NdArrayBody TransformarrayImage(ctx, deploymentName, imageTransformName, batchImageRecord)
+> Base64NdArrayBody TransformarrayImage(ctx, deploymentName, versionName, imageTransformName, batchImageRecord)
 Takes a batch of images uri and transforms it and returns Base64NDArrayBody
 
 Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1681,6 +1733,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
   **batchImageRecord** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
 
@@ -1700,7 +1753,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Transformimage**
-> Base64NdArrayBody Transformimage(ctx, deploymentName, imageTransformName, files)
+> Base64NdArrayBody Transformimage(ctx, deploymentName, versionName, imageTransformName, files)
 Takes multiple multipart image file to transform and returns Base64NDArrayBody
 
 Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1711,6 +1764,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
   **files** | [**[]string**](string.md)| The image files to upload | 
 
@@ -1730,7 +1784,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformincrementalCsv**
-> SingleCsvRecord TransformincrementalCsv(ctx, deploymentName, transformName, optional)
+> SingleCsvRecord TransformincrementalCsv(ctx, deploymentName, versionName, transformName, optional)
 Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
 
 Takes a SingleCSVRecord object and transforms it into the desired format
@@ -1741,6 +1795,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transformName** | **string**| ID or name of the deployed transform | 
  **optional** | ***TransformincrementalCsvOpts** | optional parameters | nil if no parameters
 
@@ -1749,6 +1804,7 @@ Optional parameters are passed through a pointer to a TransformincrementalCsvOpt
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
  **singleCSVRecord** | [**optional.Interface of SingleCsvRecord**](SingleCsvRecord.md)| The input record array | 
@@ -1769,7 +1825,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformincrementalarrayCsv**
-> Base64NdArrayBody TransformincrementalarrayCsv(ctx, deploymentName, transformName, optional)
+> Base64NdArrayBody TransformincrementalarrayCsv(ctx, deploymentName, versionName, transformName, optional)
 Same as /transformincremental but returns Base64NDArrayBody
 
 Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1780,6 +1836,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transformName** | **string**| ID or name of the deployed transform | 
  **optional** | ***TransformincrementalarrayCsvOpts** | optional parameters | nil if no parameters
 
@@ -1788,6 +1845,7 @@ Optional parameters are passed through a pointer to a TransformincrementalarrayC
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
  **singleCSVRecord** | [**optional.Interface of SingleCsvRecord**](SingleCsvRecord.md)| The input record array | 
@@ -1808,7 +1866,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformincrementalarrayImage**
-> Base64NdArrayBody TransformincrementalarrayImage(ctx, deploymentName, imageTransformName, singleImageRecord)
+> Base64NdArrayBody TransformincrementalarrayImage(ctx, deploymentName, versionName, imageTransformName, singleImageRecord)
 Takes SingleImageRecord to transform and returns Base64NDArrayBody
 
 Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1819,6 +1877,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
   **singleImageRecord** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
 
@@ -1838,7 +1897,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Transformincrementalimage**
-> Base64NdArrayBody Transformincrementalimage(ctx, deploymentName, imageTransformName, file)
+> Base64NdArrayBody Transformincrementalimage(ctx, deploymentName, versionName, imageTransformName, file)
 Takes a single multipart image file to transform and returns Base64NDArrayBody
 
 Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1849,6 +1908,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **imageTransformName** | **string**| ID or name of the deployed image transform | 
   **file** | ***os.File**| The image file to upload | 
 
@@ -1868,7 +1928,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformprocessGet**
-> TransformProcess TransformprocessGet(ctx, deploymentName, transformName)
+> TransformProcess TransformprocessGet(ctx, deploymentName, versionName, transformName)
 Gets the JSON string of the deployed transform process
 
 Retrieves the JSON string of the deployed transform process 
@@ -1879,6 +1939,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transformName** | **string**| ID or name of the deployed transform | 
 
 ### Return type
@@ -1897,7 +1958,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformprocessPost**
-> TransformprocessPost(ctx, deploymentName, transformName, optional)
+> TransformprocessPost(ctx, deploymentName, versionName, transformName, optional)
 Sets the deployed transform process through the provided JSON string
 
 Sets the transform process with the provided JSON string
@@ -1908,6 +1969,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **deploymentName** | **string**| Name of the deployment group | 
+  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transformName** | **string**| ID or name of the deployed transform | 
  **optional** | ***TransformprocessPostOpts** | optional parameters | nil if no parameters
 
@@ -1916,6 +1978,7 @@ Optional parameters are passed through a pointer to a TransformprocessPostOpts s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
  **transformProcess** | [**optional.Interface of TransformProcess**](TransformProcess.md)| The transform process to set | 
@@ -1936,7 +1999,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateBestModelForExperiment**
-> ExperimentEntity UpdateBestModelForExperiment(ctx, updateBestModel)
+> ExperimentEntity UpdateBestModelForExperiment(ctx, modelHistoryServerId, updateBestModel)
 Updates the best model for an experiment
 
 ### Required Parameters
@@ -1944,6 +2007,7 @@ Updates the best model for an experiment
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **updateBestModel** | [**UpdateBestModel**](UpdateBestModel.md)| Model encapsulating the experiment id to update and the best model id. | 
 
 ### Return type
@@ -1962,7 +2026,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateExperiment**
-> ExperimentEntity UpdateExperiment(ctx, experimentID, experimentEntity)
+> ExperimentEntity UpdateExperiment(ctx, modelHistoryServerId, experimentID, experimentEntity)
 Updates an experiment, given an experiment entity
 
 ### Required Parameters
@@ -1970,6 +2034,7 @@ Updates an experiment, given an experiment entity
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **experimentID** | **string**| the GUID of the experiment to update | 
   **experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to update with | 
 
@@ -1989,7 +2054,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateModelHistory**
-> ModelHistoryEntity UpdateModelHistory(ctx, modelHistoryID, updateModelHistoryRequest)
+> ModelHistoryEntity UpdateModelHistory(ctx, modelHistoryServerId, modelHistoryID, updateModelHistoryRequest)
 Update a model history / workspace
 
 ### Required Parameters
@@ -1997,6 +2062,7 @@ Update a model history / workspace
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
   **modelHistoryID** | **string**| the GUID of the model history / workspace to update | 
   **updateModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 

@@ -33,15 +33,16 @@ class DefaultApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def add_evaluation_result(self, evaluation_results_entity, **kwargs):  # noqa: E501
+    def add_evaluation_result(self, model_history_server_id, evaluation_results_entity, **kwargs):  # noqa: E501
         """Adds an evaluation result  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_evaluation_result(evaluation_results_entity, async=True)
+        >>> thread = api.add_evaluation_result(model_history_server_id, evaluation_results_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param EvaluationResultsEntity evaluation_results_entity: The evaluation result entity (required)
         :return: EvaluationResultsEntity
                  If the method is called asynchronously,
@@ -49,27 +50,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.add_evaluation_result_with_http_info(evaluation_results_entity, **kwargs)  # noqa: E501
+            return self.add_evaluation_result_with_http_info(model_history_server_id, evaluation_results_entity, **kwargs)  # noqa: E501
         else:
-            (data) = self.add_evaluation_result_with_http_info(evaluation_results_entity, **kwargs)  # noqa: E501
+            (data) = self.add_evaluation_result_with_http_info(model_history_server_id, evaluation_results_entity, **kwargs)  # noqa: E501
             return data
 
-    def add_evaluation_result_with_http_info(self, evaluation_results_entity, **kwargs):  # noqa: E501
+    def add_evaluation_result_with_http_info(self, model_history_server_id, evaluation_results_entity, **kwargs):  # noqa: E501
         """Adds an evaluation result  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_evaluation_result_with_http_info(evaluation_results_entity, async=True)
+        >>> thread = api.add_evaluation_result_with_http_info(model_history_server_id, evaluation_results_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param EvaluationResultsEntity evaluation_results_entity: The evaluation result entity (required)
         :return: EvaluationResultsEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['evaluation_results_entity']  # noqa: E501
+        all_params = ['model_history_server_id', 'evaluation_results_entity']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -84,6 +86,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `add_evaluation_result`")  # noqa: E501
         # verify the required parameter 'evaluation_results_entity' is set
         if ('evaluation_results_entity' not in params or
                 params['evaluation_results_entity'] is None):
@@ -92,6 +98,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -115,7 +123,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/revisions/evaluations/', 'POST',
+            '/rpc/{modelHistoryServerId}/model/revisions/evaluations/', 'POST',
             path_params,
             query_params,
             header_params,
@@ -130,15 +138,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def add_example_for_batch(self, add_example_request, **kwargs):  # noqa: E501
+    def add_example_for_batch(self, model_history_server_id, add_example_request, **kwargs):  # noqa: E501
         """Adds a number of examples to a minibatch ID given an AddExampleRequest.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_example_for_batch(add_example_request, async=True)
+        >>> thread = api.add_example_for_batch(model_history_server_id, add_example_request, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param AddExampleRequest add_example_request: The add example request, encapsulating minibatch details and examples batch size (required)
         :return: AddExampleRequest
                  If the method is called asynchronously,
@@ -146,27 +155,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.add_example_for_batch_with_http_info(add_example_request, **kwargs)  # noqa: E501
+            return self.add_example_for_batch_with_http_info(model_history_server_id, add_example_request, **kwargs)  # noqa: E501
         else:
-            (data) = self.add_example_for_batch_with_http_info(add_example_request, **kwargs)  # noqa: E501
+            (data) = self.add_example_for_batch_with_http_info(model_history_server_id, add_example_request, **kwargs)  # noqa: E501
             return data
 
-    def add_example_for_batch_with_http_info(self, add_example_request, **kwargs):  # noqa: E501
+    def add_example_for_batch_with_http_info(self, model_history_server_id, add_example_request, **kwargs):  # noqa: E501
         """Adds a number of examples to a minibatch ID given an AddExampleRequest.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_example_for_batch_with_http_info(add_example_request, async=True)
+        >>> thread = api.add_example_for_batch_with_http_info(model_history_server_id, add_example_request, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param AddExampleRequest add_example_request: The add example request, encapsulating minibatch details and examples batch size (required)
         :return: AddExampleRequest
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['add_example_request']  # noqa: E501
+        all_params = ['model_history_server_id', 'add_example_request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -181,6 +191,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `add_example_for_batch`")  # noqa: E501
         # verify the required parameter 'add_example_request' is set
         if ('add_example_request' not in params or
                 params['add_example_request'] is None):
@@ -189,6 +203,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -212,7 +228,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/exampleForBatch', 'POST',
+            '/rpc/{modelHistoryServerId}/model/exampleForBatch', 'POST',
             path_params,
             query_params,
             header_params,
@@ -227,15 +243,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def add_example_to_minibatch(self, example_entity, **kwargs):  # noqa: E501
+    def add_example_to_minibatch(self, model_history_server_id, example_entity, **kwargs):  # noqa: E501
         """Adds an example to a minibatch  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_example_to_minibatch(example_entity, async=True)
+        >>> thread = api.add_example_to_minibatch(model_history_server_id, example_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param ExampleEntity example_entity: The example to add to the minibatch (required)
         :return: ExampleEntity
                  If the method is called asynchronously,
@@ -243,27 +260,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.add_example_to_minibatch_with_http_info(example_entity, **kwargs)  # noqa: E501
+            return self.add_example_to_minibatch_with_http_info(model_history_server_id, example_entity, **kwargs)  # noqa: E501
         else:
-            (data) = self.add_example_to_minibatch_with_http_info(example_entity, **kwargs)  # noqa: E501
+            (data) = self.add_example_to_minibatch_with_http_info(model_history_server_id, example_entity, **kwargs)  # noqa: E501
             return data
 
-    def add_example_to_minibatch_with_http_info(self, example_entity, **kwargs):  # noqa: E501
+    def add_example_to_minibatch_with_http_info(self, model_history_server_id, example_entity, **kwargs):  # noqa: E501
         """Adds an example to a minibatch  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_example_to_minibatch_with_http_info(example_entity, async=True)
+        >>> thread = api.add_example_to_minibatch_with_http_info(model_history_server_id, example_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param ExampleEntity example_entity: The example to add to the minibatch (required)
         :return: ExampleEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['example_entity']  # noqa: E501
+        all_params = ['model_history_server_id', 'example_entity']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -278,6 +296,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `add_example_to_minibatch`")  # noqa: E501
         # verify the required parameter 'example_entity' is set
         if ('example_entity' not in params or
                 params['example_entity'] is None):
@@ -286,6 +308,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -309,7 +333,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/example', 'POST',
+            '/rpc/{modelHistoryServerId}/model/example', 'POST',
             path_params,
             query_params,
             header_params,
@@ -324,15 +348,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def add_experiment(self, experiment_entity, **kwargs):  # noqa: E501
+    def add_experiment(self, model_history_server_id, experiment_entity, **kwargs):  # noqa: E501
         """Add an experiment, given an experiment entity  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_experiment(experiment_entity, async=True)
+        >>> thread = api.add_experiment(model_history_server_id, experiment_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param ExperimentEntity experiment_entity: The experiment entity to add (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -340,27 +365,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.add_experiment_with_http_info(experiment_entity, **kwargs)  # noqa: E501
+            return self.add_experiment_with_http_info(model_history_server_id, experiment_entity, **kwargs)  # noqa: E501
         else:
-            (data) = self.add_experiment_with_http_info(experiment_entity, **kwargs)  # noqa: E501
+            (data) = self.add_experiment_with_http_info(model_history_server_id, experiment_entity, **kwargs)  # noqa: E501
             return data
 
-    def add_experiment_with_http_info(self, experiment_entity, **kwargs):  # noqa: E501
+    def add_experiment_with_http_info(self, model_history_server_id, experiment_entity, **kwargs):  # noqa: E501
         """Add an experiment, given an experiment entity  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_experiment_with_http_info(experiment_entity, async=True)
+        >>> thread = api.add_experiment_with_http_info(model_history_server_id, experiment_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param ExperimentEntity experiment_entity: The experiment entity to add (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['experiment_entity']  # noqa: E501
+        all_params = ['model_history_server_id', 'experiment_entity']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -375,6 +401,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `add_experiment`")  # noqa: E501
         # verify the required parameter 'experiment_entity' is set
         if ('experiment_entity' not in params or
                 params['experiment_entity'] is None):
@@ -383,6 +413,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -406,7 +438,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/experiment', 'POST',
+            '/rpc/{modelHistoryServerId}/experiment', 'POST',
             path_params,
             query_params,
             header_params,
@@ -421,15 +453,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def add_minibatch(self, minibatch_entity, **kwargs):  # noqa: E501
+    def add_minibatch(self, model_history_server_id, minibatch_entity, **kwargs):  # noqa: E501
         """Adds a minibatch  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_minibatch(minibatch_entity, async=True)
+        >>> thread = api.add_minibatch(model_history_server_id, minibatch_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param MinibatchEntity minibatch_entity: The minibatch entity to add (required)
         :return: MinibatchEntity
                  If the method is called asynchronously,
@@ -437,27 +470,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.add_minibatch_with_http_info(minibatch_entity, **kwargs)  # noqa: E501
+            return self.add_minibatch_with_http_info(model_history_server_id, minibatch_entity, **kwargs)  # noqa: E501
         else:
-            (data) = self.add_minibatch_with_http_info(minibatch_entity, **kwargs)  # noqa: E501
+            (data) = self.add_minibatch_with_http_info(model_history_server_id, minibatch_entity, **kwargs)  # noqa: E501
             return data
 
-    def add_minibatch_with_http_info(self, minibatch_entity, **kwargs):  # noqa: E501
+    def add_minibatch_with_http_info(self, model_history_server_id, minibatch_entity, **kwargs):  # noqa: E501
         """Adds a minibatch  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_minibatch_with_http_info(minibatch_entity, async=True)
+        >>> thread = api.add_minibatch_with_http_info(model_history_server_id, minibatch_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param MinibatchEntity minibatch_entity: The minibatch entity to add (required)
         :return: MinibatchEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['minibatch_entity']  # noqa: E501
+        all_params = ['model_history_server_id', 'minibatch_entity']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -472,6 +506,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `add_minibatch`")  # noqa: E501
         # verify the required parameter 'minibatch_entity' is set
         if ('minibatch_entity' not in params or
                 params['minibatch_entity'] is None):
@@ -480,6 +518,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -503,7 +543,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/minibatch', 'POST',
+            '/rpc/{modelHistoryServerId}/model/minibatch', 'POST',
             path_params,
             query_params,
             header_params,
@@ -518,15 +558,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def add_model_feedback(self, model_feed_back_request, **kwargs):  # noqa: E501
+    def add_model_feedback(self, model_history_server_id, model_feed_back_request, **kwargs):  # noqa: E501
         """Adds an evaluation feedback to the model against a given minibatch id.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_model_feedback(model_feed_back_request, async=True)
+        >>> thread = api.add_model_feedback(model_history_server_id, model_feed_back_request, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param ModelFeedBackRequest model_feed_back_request: The model feedback request object (required)
         :return: ModelFeedBackRequest
                  If the method is called asynchronously,
@@ -534,27 +575,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.add_model_feedback_with_http_info(model_feed_back_request, **kwargs)  # noqa: E501
+            return self.add_model_feedback_with_http_info(model_history_server_id, model_feed_back_request, **kwargs)  # noqa: E501
         else:
-            (data) = self.add_model_feedback_with_http_info(model_feed_back_request, **kwargs)  # noqa: E501
+            (data) = self.add_model_feedback_with_http_info(model_history_server_id, model_feed_back_request, **kwargs)  # noqa: E501
             return data
 
-    def add_model_feedback_with_http_info(self, model_feed_back_request, **kwargs):  # noqa: E501
+    def add_model_feedback_with_http_info(self, model_history_server_id, model_feed_back_request, **kwargs):  # noqa: E501
         """Adds an evaluation feedback to the model against a given minibatch id.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_model_feedback_with_http_info(model_feed_back_request, async=True)
+        >>> thread = api.add_model_feedback_with_http_info(model_history_server_id, model_feed_back_request, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param ModelFeedBackRequest model_feed_back_request: The model feedback request object (required)
         :return: ModelFeedBackRequest
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['model_feed_back_request']  # noqa: E501
+        all_params = ['model_history_server_id', 'model_feed_back_request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -569,6 +611,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `add_model_feedback`")  # noqa: E501
         # verify the required parameter 'model_feed_back_request' is set
         if ('model_feed_back_request' not in params or
                 params['model_feed_back_request'] is None):
@@ -577,6 +623,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -600,7 +648,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/feedback', 'POST',
+            '/rpc/{modelHistoryServerId}/model/feedback', 'POST',
             path_params,
             query_params,
             header_params,
@@ -615,15 +663,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def add_model_history(self, add_model_history_request, **kwargs):  # noqa: E501
+    def add_model_history(self, model_history_server_id, add_model_history_request, **kwargs):  # noqa: E501
         """Add a model history / workspace  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_model_history(add_model_history_request, async=True)
+        >>> thread = api.add_model_history(model_history_server_id, add_model_history_request, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param AddModelHistoryRequest add_model_history_request: The model history request object (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
@@ -631,27 +680,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.add_model_history_with_http_info(add_model_history_request, **kwargs)  # noqa: E501
+            return self.add_model_history_with_http_info(model_history_server_id, add_model_history_request, **kwargs)  # noqa: E501
         else:
-            (data) = self.add_model_history_with_http_info(add_model_history_request, **kwargs)  # noqa: E501
+            (data) = self.add_model_history_with_http_info(model_history_server_id, add_model_history_request, **kwargs)  # noqa: E501
             return data
 
-    def add_model_history_with_http_info(self, add_model_history_request, **kwargs):  # noqa: E501
+    def add_model_history_with_http_info(self, model_history_server_id, add_model_history_request, **kwargs):  # noqa: E501
         """Add a model history / workspace  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_model_history_with_http_info(add_model_history_request, async=True)
+        >>> thread = api.add_model_history_with_http_info(model_history_server_id, add_model_history_request, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param AddModelHistoryRequest add_model_history_request: The model history request object (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['add_model_history_request']  # noqa: E501
+        all_params = ['model_history_server_id', 'add_model_history_request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -666,6 +716,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `add_model_history`")  # noqa: E501
         # verify the required parameter 'add_model_history_request' is set
         if ('add_model_history_request' not in params or
                 params['add_model_history_request'] is None):
@@ -674,6 +728,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -697,7 +753,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/modelhistory', 'POST',
+            '/rpc/{modelHistoryServerId}/modelhistory', 'POST',
             path_params,
             query_params,
             header_params,
@@ -712,15 +768,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def add_model_instance(self, model_instance_entity, **kwargs):  # noqa: E501
+    def add_model_instance(self, model_history_server_id, model_instance_entity, **kwargs):  # noqa: E501
         """Adds a model  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_model_instance(model_instance_entity, async=True)
+        >>> thread = api.add_model_instance(model_history_server_id, model_instance_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param ModelInstanceEntity model_instance_entity: The object encapsulating the model instance id and evaluation type to aggregate (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
@@ -728,27 +785,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.add_model_instance_with_http_info(model_instance_entity, **kwargs)  # noqa: E501
+            return self.add_model_instance_with_http_info(model_history_server_id, model_instance_entity, **kwargs)  # noqa: E501
         else:
-            (data) = self.add_model_instance_with_http_info(model_instance_entity, **kwargs)  # noqa: E501
+            (data) = self.add_model_instance_with_http_info(model_history_server_id, model_instance_entity, **kwargs)  # noqa: E501
             return data
 
-    def add_model_instance_with_http_info(self, model_instance_entity, **kwargs):  # noqa: E501
+    def add_model_instance_with_http_info(self, model_history_server_id, model_instance_entity, **kwargs):  # noqa: E501
         """Adds a model  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.add_model_instance_with_http_info(model_instance_entity, async=True)
+        >>> thread = api.add_model_instance_with_http_info(model_history_server_id, model_instance_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param ModelInstanceEntity model_instance_entity: The object encapsulating the model instance id and evaluation type to aggregate (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['model_instance_entity']  # noqa: E501
+        all_params = ['model_history_server_id', 'model_instance_entity']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -763,6 +821,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `add_model_instance`")  # noqa: E501
         # verify the required parameter 'model_instance_entity' is set
         if ('model_instance_entity' not in params or
                 params['model_instance_entity'] is None):
@@ -771,6 +833,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -794,7 +858,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model', 'POST',
+            '/rpc/{modelHistoryServerId}/model', 'POST',
             path_params,
             query_params,
             header_params,
@@ -809,15 +873,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def aggregate_model_results(self, aggregate_prediction, **kwargs):  # noqa: E501
+    def aggregate_model_results(self, model_history_server_id, aggregate_prediction, **kwargs):  # noqa: E501
         """Aggregates the evaluaition results of a model instance, based on the evaluation type  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.aggregate_model_results(aggregate_prediction, async=True)
+        >>> thread = api.aggregate_model_results(model_history_server_id, aggregate_prediction, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param AggregatePrediction aggregate_prediction: The object encapsulating the model instance id and evaluation type to aggregate (required)
         :return: EvaluationResultsEntity
                  If the method is called asynchronously,
@@ -825,27 +890,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.aggregate_model_results_with_http_info(aggregate_prediction, **kwargs)  # noqa: E501
+            return self.aggregate_model_results_with_http_info(model_history_server_id, aggregate_prediction, **kwargs)  # noqa: E501
         else:
-            (data) = self.aggregate_model_results_with_http_info(aggregate_prediction, **kwargs)  # noqa: E501
+            (data) = self.aggregate_model_results_with_http_info(model_history_server_id, aggregate_prediction, **kwargs)  # noqa: E501
             return data
 
-    def aggregate_model_results_with_http_info(self, aggregate_prediction, **kwargs):  # noqa: E501
+    def aggregate_model_results_with_http_info(self, model_history_server_id, aggregate_prediction, **kwargs):  # noqa: E501
         """Aggregates the evaluaition results of a model instance, based on the evaluation type  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.aggregate_model_results_with_http_info(aggregate_prediction, async=True)
+        >>> thread = api.aggregate_model_results_with_http_info(model_history_server_id, aggregate_prediction, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param AggregatePrediction aggregate_prediction: The object encapsulating the model instance id and evaluation type to aggregate (required)
         :return: EvaluationResultsEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['aggregate_prediction']  # noqa: E501
+        all_params = ['model_history_server_id', 'aggregate_prediction']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -860,6 +926,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `aggregate_model_results`")  # noqa: E501
         # verify the required parameter 'aggregate_prediction' is set
         if ('aggregate_prediction' not in params or
                 params['aggregate_prediction'] is None):
@@ -868,6 +938,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -891,7 +963,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/aggregateresults', 'POST',
+            '/rpc/{modelHistoryServerId}/model/aggregateresults', 'POST',
             path_params,
             query_params,
             header_params,
@@ -906,17 +978,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def classify(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classify(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Use the deployed model to classify the input  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classify(body, deployment_name, model_name, async=True)
+        >>> thread = api.classify(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: ClassificationResult
                  If the method is called asynchronously,
@@ -924,29 +997,30 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.classify_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.classify_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.classify_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.classify_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def classify_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classify_with_http_info(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Use the deployed model to classify the input  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classify_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.classify_with_http_info(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: ClassificationResult
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -969,6 +1043,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `classify`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `classify`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -979,6 +1057,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -1004,7 +1084,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/classify', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1019,17 +1099,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def classifyarray(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classifyarray(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Same as /classify but returns the output as Base64NDArrayBody  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classifyarray(body, deployment_name, model_name, async=True)
+        >>> thread = api.classifyarray(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
@@ -1037,29 +1118,30 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.classifyarray_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.classifyarray_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.classifyarray_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.classifyarray_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def classifyarray_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classifyarray_with_http_info(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Same as /classify but returns the output as Base64NDArrayBody  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classifyarray_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.classifyarray_with_http_info(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1082,6 +1164,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `classifyarray`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `classifyarray`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -1092,6 +1178,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -1117,7 +1205,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/classifyarray', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1132,16 +1220,17 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def classifyimage(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classifyimage(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Use the deployed model to classify the input, using input image file from multipart form data.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classifyimage(deployment_name, model_name, async=True)
+        >>> thread = api.classifyimage(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :param file image: The file to upload.
         :return: ClassificationResult
@@ -1150,21 +1239,22 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.classifyimage_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.classifyimage_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.classifyimage_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.classifyimage_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def classifyimage_with_http_info(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def classifyimage_with_http_info(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Use the deployed model to classify the input, using input image file from multipart form data.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.classifyimage_with_http_info(deployment_name, model_name, async=True)
+        >>> thread = api.classifyimage_with_http_info(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :param file image: The file to upload.
         :return: ClassificationResult
@@ -1172,7 +1262,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'model_name', 'image']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'model_name', 'image']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1191,6 +1281,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `classifyimage`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `classifyimage`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -1201,6 +1295,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -1226,7 +1322,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/classifyimage', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1241,15 +1337,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_model_history(self, model_history_entity, **kwargs):  # noqa: E501
+    def create_model_history(self, model_history_server_id, model_history_entity, **kwargs):  # noqa: E501
         """Creates model History  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_model_history(model_history_entity, async=True)
+        >>> thread = api.create_model_history(model_history_server_id, model_history_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param ModelHistoryEntity model_history_entity: The model history entity (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
@@ -1257,27 +1354,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.create_model_history_with_http_info(model_history_entity, **kwargs)  # noqa: E501
+            return self.create_model_history_with_http_info(model_history_server_id, model_history_entity, **kwargs)  # noqa: E501
         else:
-            (data) = self.create_model_history_with_http_info(model_history_entity, **kwargs)  # noqa: E501
+            (data) = self.create_model_history_with_http_info(model_history_server_id, model_history_entity, **kwargs)  # noqa: E501
             return data
 
-    def create_model_history_with_http_info(self, model_history_entity, **kwargs):  # noqa: E501
+    def create_model_history_with_http_info(self, model_history_server_id, model_history_entity, **kwargs):  # noqa: E501
         """Creates model History  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_model_history_with_http_info(model_history_entity, async=True)
+        >>> thread = api.create_model_history_with_http_info(model_history_server_id, model_history_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param ModelHistoryEntity model_history_entity: The model history entity (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['model_history_entity']  # noqa: E501
+        all_params = ['model_history_server_id', 'model_history_entity']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1292,6 +1390,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `create_model_history`")  # noqa: E501
         # verify the required parameter 'model_history_entity' is set
         if ('model_history_entity' not in params or
                 params['model_history_entity'] is None):
@@ -1300,6 +1402,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -1323,7 +1427,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/revisions', 'POST',
+            '/rpc/{modelHistoryServerId}/model/revisions', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1338,15 +1442,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def delete_experiment(self, experiment_id, **kwargs):  # noqa: E501
+    def delete_experiment(self, model_history_server_id, experiment_id, **kwargs):  # noqa: E501
         """Deletes an experiment, given an experiment entity  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_experiment(experiment_id, async=True)
+        >>> thread = api.delete_experiment(model_history_server_id, experiment_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to delete (required)
         :return: InlineResponse200
                  If the method is called asynchronously,
@@ -1354,27 +1459,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.delete_experiment_with_http_info(experiment_id, **kwargs)  # noqa: E501
+            return self.delete_experiment_with_http_info(model_history_server_id, experiment_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.delete_experiment_with_http_info(experiment_id, **kwargs)  # noqa: E501
+            (data) = self.delete_experiment_with_http_info(model_history_server_id, experiment_id, **kwargs)  # noqa: E501
             return data
 
-    def delete_experiment_with_http_info(self, experiment_id, **kwargs):  # noqa: E501
+    def delete_experiment_with_http_info(self, model_history_server_id, experiment_id, **kwargs):  # noqa: E501
         """Deletes an experiment, given an experiment entity  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_experiment_with_http_info(experiment_id, async=True)
+        >>> thread = api.delete_experiment_with_http_info(model_history_server_id, experiment_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to delete (required)
         :return: InlineResponse200
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['experiment_id']  # noqa: E501
+        all_params = ['model_history_server_id', 'experiment_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1389,6 +1495,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `delete_experiment`")  # noqa: E501
         # verify the required parameter 'experiment_id' is set
         if ('experiment_id' not in params or
                 params['experiment_id'] is None):
@@ -1397,6 +1507,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'experiment_id' in params:
             path_params['experimentID'] = params['experiment_id']  # noqa: E501
 
@@ -1416,7 +1528,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/experiment/{experimentID}', 'DELETE',
+            '/rpc/{modelHistoryServerId}/experiment/{experimentID}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -1532,15 +1644,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def delete_model_history(self, model_history_id, **kwargs):  # noqa: E501
+    def delete_model_history(self, model_history_server_id, model_history_id, **kwargs):  # noqa: E501
         """Deletes a model history / workspace, given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_model_history(model_history_id, async=True)
+        >>> thread = api.delete_model_history(model_history_server_id, model_history_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace to delete (required)
         :return: InlineResponse200
                  If the method is called asynchronously,
@@ -1548,27 +1661,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.delete_model_history_with_http_info(model_history_id, **kwargs)  # noqa: E501
+            return self.delete_model_history_with_http_info(model_history_server_id, model_history_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.delete_model_history_with_http_info(model_history_id, **kwargs)  # noqa: E501
+            (data) = self.delete_model_history_with_http_info(model_history_server_id, model_history_id, **kwargs)  # noqa: E501
             return data
 
-    def delete_model_history_with_http_info(self, model_history_id, **kwargs):  # noqa: E501
+    def delete_model_history_with_http_info(self, model_history_server_id, model_history_id, **kwargs):  # noqa: E501
         """Deletes a model history / workspace, given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_model_history_with_http_info(model_history_id, async=True)
+        >>> thread = api.delete_model_history_with_http_info(model_history_server_id, model_history_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace to delete (required)
         :return: InlineResponse200
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['model_history_id']  # noqa: E501
+        all_params = ['model_history_server_id', 'model_history_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1583,6 +1697,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `delete_model_history`")  # noqa: E501
         # verify the required parameter 'model_history_id' is set
         if ('model_history_id' not in params or
                 params['model_history_id'] is None):
@@ -1591,6 +1709,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'model_history_id' in params:
             path_params['modelHistoryID'] = params['model_history_id']  # noqa: E501
 
@@ -1610,7 +1730,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/modelhistory/{modelHistoryID}', 'DELETE',
+            '/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -1625,15 +1745,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def delete_model_instance(self, model_instance_id, **kwargs):  # noqa: E501
+    def delete_model_instance(self, model_history_server_id, model_instance_id, **kwargs):  # noqa: E501
         """Deletes a model instance, given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_model_instance(model_instance_id, async=True)
+        >>> thread = api.delete_model_instance(model_history_server_id, model_instance_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to delete. (required)
         :return: None
                  If the method is called asynchronously,
@@ -1641,27 +1762,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.delete_model_instance_with_http_info(model_instance_id, **kwargs)  # noqa: E501
+            return self.delete_model_instance_with_http_info(model_history_server_id, model_instance_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.delete_model_instance_with_http_info(model_instance_id, **kwargs)  # noqa: E501
+            (data) = self.delete_model_instance_with_http_info(model_history_server_id, model_instance_id, **kwargs)  # noqa: E501
             return data
 
-    def delete_model_instance_with_http_info(self, model_instance_id, **kwargs):  # noqa: E501
+    def delete_model_instance_with_http_info(self, model_history_server_id, model_instance_id, **kwargs):  # noqa: E501
         """Deletes a model instance, given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_model_instance_with_http_info(model_instance_id, async=True)
+        >>> thread = api.delete_model_instance_with_http_info(model_history_server_id, model_instance_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to delete. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['model_instance_id']  # noqa: E501
+        all_params = ['model_history_server_id', 'model_instance_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1676,6 +1798,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `delete_model_instance`")  # noqa: E501
         # verify the required parameter 'model_instance_id' is set
         if ('model_instance_id' not in params or
                 params['model_instance_id'] is None):
@@ -1684,6 +1810,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'model_instance_id' in params:
             path_params['modelInstanceID'] = params['model_instance_id']  # noqa: E501
 
@@ -1703,7 +1831,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/{modelInstanceID}', 'DELETE',
+            '/rpc/{modelHistoryServerId}/model/{modelInstanceID}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -2191,12 +2319,12 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def detectobjects(self, id, needs_preprocessing, threshold, image_file, deployment_name, model_name, **kwargs):  # noqa: E501
+    def detectobjects(self, id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Detect the objects, given a (input) prediction request  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, model_name, async=True)
+        >>> thread = api.detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -2205,6 +2333,7 @@ class DefaultApi(object):
         :param float threshold: A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. (required)
         :param file image_file: the image file to detect objects from (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: DetectionResult
                  If the method is called asynchronously,
@@ -2212,17 +2341,17 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def detectobjects_with_http_info(self, id, needs_preprocessing, threshold, image_file, deployment_name, model_name, **kwargs):  # noqa: E501
+    def detectobjects_with_http_info(self, id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Detect the objects, given a (input) prediction request  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, model_name, async=True)
+        >>> thread = api.detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -2231,13 +2360,14 @@ class DefaultApi(object):
         :param float threshold: A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. (required)
         :param file image_file: the image file to detect objects from (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: DetectionResult
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'needs_preprocessing', 'threshold', 'image_file', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['id', 'needs_preprocessing', 'threshold', 'image_file', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2272,6 +2402,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `detectobjects`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `detectobjects`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -2282,6 +2416,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -2313,7 +2449,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/detectobjects', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects', 'POST',
             path_params,
             query_params,
             header_params,
@@ -2328,15 +2464,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_best_model_among_model_ids(self, best_model, **kwargs):  # noqa: E501
+    def get_best_model_among_model_ids(self, model_history_server_id, best_model, **kwargs):  # noqa: E501
         """Gets the best model among the given model instance IDs, based on the evaluation type and column metric  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_best_model_among_model_ids(best_model, async=True)
+        >>> thread = api.get_best_model_among_model_ids(model_history_server_id, best_model, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param BestModel best_model: Object encapsulating the model ids, eval type and column metric name (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
@@ -2344,27 +2481,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_best_model_among_model_ids_with_http_info(best_model, **kwargs)  # noqa: E501
+            return self.get_best_model_among_model_ids_with_http_info(model_history_server_id, best_model, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_best_model_among_model_ids_with_http_info(best_model, **kwargs)  # noqa: E501
+            (data) = self.get_best_model_among_model_ids_with_http_info(model_history_server_id, best_model, **kwargs)  # noqa: E501
             return data
 
-    def get_best_model_among_model_ids_with_http_info(self, best_model, **kwargs):  # noqa: E501
+    def get_best_model_among_model_ids_with_http_info(self, model_history_server_id, best_model, **kwargs):  # noqa: E501
         """Gets the best model among the given model instance IDs, based on the evaluation type and column metric  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_best_model_among_model_ids_with_http_info(best_model, async=True)
+        >>> thread = api.get_best_model_among_model_ids_with_http_info(model_history_server_id, best_model, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param BestModel best_model: Object encapsulating the model ids, eval type and column metric name (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['best_model']  # noqa: E501
+        all_params = ['model_history_server_id', 'best_model']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2379,6 +2517,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `get_best_model_among_model_ids`")  # noqa: E501
         # verify the required parameter 'best_model' is set
         if ('best_model' not in params or
                 params['best_model'] is None):
@@ -2387,6 +2529,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -2410,7 +2554,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/best', 'POST',
+            '/rpc/{modelHistoryServerId}/model/best', 'POST',
             path_params,
             query_params,
             header_params,
@@ -2425,15 +2569,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_evaluation_for_model_id(self, model_instance_id, **kwargs):  # noqa: E501
+    def get_evaluation_for_model_id(self, model_history_server_id, model_instance_id, **kwargs):  # noqa: E501
         """Gets the list of evaluation results entity, given a model instance ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_evaluation_for_model_id(model_instance_id, async=True)
+        >>> thread = api.get_evaluation_for_model_id(model_history_server_id, model_instance_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to get evaluation results for. (required)
         :return: list[EvaluationResultsEntity]
                  If the method is called asynchronously,
@@ -2441,27 +2586,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_evaluation_for_model_id_with_http_info(model_instance_id, **kwargs)  # noqa: E501
+            return self.get_evaluation_for_model_id_with_http_info(model_history_server_id, model_instance_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_evaluation_for_model_id_with_http_info(model_instance_id, **kwargs)  # noqa: E501
+            (data) = self.get_evaluation_for_model_id_with_http_info(model_history_server_id, model_instance_id, **kwargs)  # noqa: E501
             return data
 
-    def get_evaluation_for_model_id_with_http_info(self, model_instance_id, **kwargs):  # noqa: E501
+    def get_evaluation_for_model_id_with_http_info(self, model_history_server_id, model_instance_id, **kwargs):  # noqa: E501
         """Gets the list of evaluation results entity, given a model instance ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_evaluation_for_model_id_with_http_info(model_instance_id, async=True)
+        >>> thread = api.get_evaluation_for_model_id_with_http_info(model_history_server_id, model_instance_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to get evaluation results for. (required)
         :return: list[EvaluationResultsEntity]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['model_instance_id']  # noqa: E501
+        all_params = ['model_history_server_id', 'model_instance_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2476,6 +2622,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `get_evaluation_for_model_id`")  # noqa: E501
         # verify the required parameter 'model_instance_id' is set
         if ('model_instance_id' not in params or
                 params['model_instance_id'] is None):
@@ -2484,6 +2634,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'model_instance_id' in params:
             path_params['modelInstanceID'] = params['model_instance_id']  # noqa: E501
 
@@ -2503,7 +2655,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/revisions/evaluations/{modelInstanceID}', 'GET',
+            '/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2518,15 +2670,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_examples_for_minibatch(self, minibatch_id, **kwargs):  # noqa: E501
+    def get_examples_for_minibatch(self, model_history_server_id, minibatch_id, **kwargs):  # noqa: E501
         """Gets all the examples for a minibatch ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_examples_for_minibatch(minibatch_id, async=True)
+        >>> thread = api.get_examples_for_minibatch(model_history_server_id, minibatch_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str minibatch_id: The GUID of the minibatch (required)
         :return: list[ExampleEntity]
                  If the method is called asynchronously,
@@ -2534,27 +2687,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_examples_for_minibatch_with_http_info(minibatch_id, **kwargs)  # noqa: E501
+            return self.get_examples_for_minibatch_with_http_info(model_history_server_id, minibatch_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_examples_for_minibatch_with_http_info(minibatch_id, **kwargs)  # noqa: E501
+            (data) = self.get_examples_for_minibatch_with_http_info(model_history_server_id, minibatch_id, **kwargs)  # noqa: E501
             return data
 
-    def get_examples_for_minibatch_with_http_info(self, minibatch_id, **kwargs):  # noqa: E501
+    def get_examples_for_minibatch_with_http_info(self, model_history_server_id, minibatch_id, **kwargs):  # noqa: E501
         """Gets all the examples for a minibatch ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_examples_for_minibatch_with_http_info(minibatch_id, async=True)
+        >>> thread = api.get_examples_for_minibatch_with_http_info(model_history_server_id, minibatch_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str minibatch_id: The GUID of the minibatch (required)
         :return: list[ExampleEntity]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['minibatch_id']  # noqa: E501
+        all_params = ['model_history_server_id', 'minibatch_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2569,6 +2723,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `get_examples_for_minibatch`")  # noqa: E501
         # verify the required parameter 'minibatch_id' is set
         if ('minibatch_id' not in params or
                 params['minibatch_id'] is None):
@@ -2577,6 +2735,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'minibatch_id' in params:
             path_params['minibatchId'] = params['minibatch_id']  # noqa: E501
 
@@ -2596,7 +2756,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/example/{minibatchId}', 'GET',
+            '/rpc/{modelHistoryServerId}/model/example/{minibatchId}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2611,15 +2771,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_experiment(self, experiment_id, **kwargs):  # noqa: E501
+    def get_experiment(self, model_history_server_id, experiment_id, **kwargs):  # noqa: E501
         """Obtain an experiment&#39;s details, given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_experiment(experiment_id, async=True)
+        >>> thread = api.get_experiment(model_history_server_id, experiment_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to obtain (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -2627,27 +2788,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_experiment_with_http_info(experiment_id, **kwargs)  # noqa: E501
+            return self.get_experiment_with_http_info(model_history_server_id, experiment_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_experiment_with_http_info(experiment_id, **kwargs)  # noqa: E501
+            (data) = self.get_experiment_with_http_info(model_history_server_id, experiment_id, **kwargs)  # noqa: E501
             return data
 
-    def get_experiment_with_http_info(self, experiment_id, **kwargs):  # noqa: E501
+    def get_experiment_with_http_info(self, model_history_server_id, experiment_id, **kwargs):  # noqa: E501
         """Obtain an experiment&#39;s details, given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_experiment_with_http_info(experiment_id, async=True)
+        >>> thread = api.get_experiment_with_http_info(model_history_server_id, experiment_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to obtain (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['experiment_id']  # noqa: E501
+        all_params = ['model_history_server_id', 'experiment_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2662,6 +2824,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `get_experiment`")  # noqa: E501
         # verify the required parameter 'experiment_id' is set
         if ('experiment_id' not in params or
                 params['experiment_id'] is None):
@@ -2670,6 +2836,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'experiment_id' in params:
             path_params['experimentID'] = params['experiment_id']  # noqa: E501
 
@@ -2689,7 +2857,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/experiment/{experimentID}', 'GET',
+            '/rpc/{modelHistoryServerId}/experiment/{experimentID}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2704,15 +2872,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_experiments_for_model_history(self, model_history_id, **kwargs):  # noqa: E501
+    def get_experiments_for_model_history(self, model_history_server_id, model_history_id, **kwargs):  # noqa: E501
         """Obtain all experiments for a model history / workspace  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_experiments_for_model_history(model_history_id, async=True)
+        >>> thread = api.get_experiments_for_model_history(model_history_server_id, model_history_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -2720,27 +2889,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_experiments_for_model_history_with_http_info(model_history_id, **kwargs)  # noqa: E501
+            return self.get_experiments_for_model_history_with_http_info(model_history_server_id, model_history_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_experiments_for_model_history_with_http_info(model_history_id, **kwargs)  # noqa: E501
+            (data) = self.get_experiments_for_model_history_with_http_info(model_history_server_id, model_history_id, **kwargs)  # noqa: E501
             return data
 
-    def get_experiments_for_model_history_with_http_info(self, model_history_id, **kwargs):  # noqa: E501
+    def get_experiments_for_model_history_with_http_info(self, model_history_server_id, model_history_id, **kwargs):  # noqa: E501
         """Obtain all experiments for a model history / workspace  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_experiments_for_model_history_with_http_info(model_history_id, async=True)
+        >>> thread = api.get_experiments_for_model_history_with_http_info(model_history_server_id, model_history_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['model_history_id']  # noqa: E501
+        all_params = ['model_history_server_id', 'model_history_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2755,6 +2925,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `get_experiments_for_model_history`")  # noqa: E501
         # verify the required parameter 'model_history_id' is set
         if ('model_history_id' not in params or
                 params['model_history_id'] is None):
@@ -2763,6 +2937,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'model_history_id' in params:
             path_params['modelHistoryID'] = params['model_history_id']  # noqa: E501
 
@@ -2782,7 +2958,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/experiments/{modelHistoryID}', 'GET',
+            '/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2797,15 +2973,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_minibatch(self, minibatch_id, **kwargs):  # noqa: E501
+    def get_minibatch(self, model_history_server_id, minibatch_id, **kwargs):  # noqa: E501
         """Gets a minibatch for the model  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_minibatch(minibatch_id, async=True)
+        >>> thread = api.get_minibatch(model_history_server_id, minibatch_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str minibatch_id: The GUID of the minibatch (required)
         :return: MinibatchEntity
                  If the method is called asynchronously,
@@ -2813,27 +2990,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_minibatch_with_http_info(minibatch_id, **kwargs)  # noqa: E501
+            return self.get_minibatch_with_http_info(model_history_server_id, minibatch_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_minibatch_with_http_info(minibatch_id, **kwargs)  # noqa: E501
+            (data) = self.get_minibatch_with_http_info(model_history_server_id, minibatch_id, **kwargs)  # noqa: E501
             return data
 
-    def get_minibatch_with_http_info(self, minibatch_id, **kwargs):  # noqa: E501
+    def get_minibatch_with_http_info(self, model_history_server_id, minibatch_id, **kwargs):  # noqa: E501
         """Gets a minibatch for the model  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_minibatch_with_http_info(minibatch_id, async=True)
+        >>> thread = api.get_minibatch_with_http_info(model_history_server_id, minibatch_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str minibatch_id: The GUID of the minibatch (required)
         :return: MinibatchEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['minibatch_id']  # noqa: E501
+        all_params = ['model_history_server_id', 'minibatch_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2848,6 +3026,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `get_minibatch`")  # noqa: E501
         # verify the required parameter 'minibatch_id' is set
         if ('minibatch_id' not in params or
                 params['minibatch_id'] is None):
@@ -2856,6 +3038,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'minibatch_id' in params:
             path_params['minibatchId'] = params['minibatch_id']  # noqa: E501
 
@@ -2875,7 +3059,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/minibatch/{minibatchId}', 'GET',
+            '/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2890,15 +3074,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_model_history(self, model_history_id, **kwargs):  # noqa: E501
+    def get_model_history(self, model_history_server_id, model_history_id, **kwargs):  # noqa: E501
         """Gets a model history, given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_model_history(model_history_id, async=True)
+        >>> thread = api.get_model_history(model_history_server_id, model_history_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_history_id: GUID of the model history to get information of. (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
@@ -2906,27 +3091,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_model_history_with_http_info(model_history_id, **kwargs)  # noqa: E501
+            return self.get_model_history_with_http_info(model_history_server_id, model_history_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_model_history_with_http_info(model_history_id, **kwargs)  # noqa: E501
+            (data) = self.get_model_history_with_http_info(model_history_server_id, model_history_id, **kwargs)  # noqa: E501
             return data
 
-    def get_model_history_with_http_info(self, model_history_id, **kwargs):  # noqa: E501
+    def get_model_history_with_http_info(self, model_history_server_id, model_history_id, **kwargs):  # noqa: E501
         """Gets a model history, given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_model_history_with_http_info(model_history_id, async=True)
+        >>> thread = api.get_model_history_with_http_info(model_history_server_id, model_history_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_history_id: GUID of the model history to get information of. (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['model_history_id']  # noqa: E501
+        all_params = ['model_history_server_id', 'model_history_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2941,6 +3127,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `get_model_history`")  # noqa: E501
         # verify the required parameter 'model_history_id' is set
         if ('model_history_id' not in params or
                 params['model_history_id'] is None):
@@ -2949,6 +3139,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'model_history_id' in params:
             path_params['modelHistoryID'] = params['model_history_id']  # noqa: E501
 
@@ -2968,7 +3160,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/revision/{modelHistoryID}', 'GET',
+            '/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2983,15 +3175,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_model_instance(self, model_instance_id, **kwargs):  # noqa: E501
+    def get_model_instance(self, model_history_server_id, model_instance_id, **kwargs):  # noqa: E501
         """Gets a model instance, given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_model_instance(model_instance_id, async=True)
+        >>> thread = api.get_model_instance(model_history_server_id, model_instance_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to get information of. (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
@@ -2999,27 +3192,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_model_instance_with_http_info(model_instance_id, **kwargs)  # noqa: E501
+            return self.get_model_instance_with_http_info(model_history_server_id, model_instance_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_model_instance_with_http_info(model_instance_id, **kwargs)  # noqa: E501
+            (data) = self.get_model_instance_with_http_info(model_history_server_id, model_instance_id, **kwargs)  # noqa: E501
             return data
 
-    def get_model_instance_with_http_info(self, model_instance_id, **kwargs):  # noqa: E501
+    def get_model_instance_with_http_info(self, model_history_server_id, model_instance_id, **kwargs):  # noqa: E501
         """Gets a model instance, given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_model_instance_with_http_info(model_instance_id, async=True)
+        >>> thread = api.get_model_instance_with_http_info(model_history_server_id, model_instance_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to get information of. (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['model_instance_id']  # noqa: E501
+        all_params = ['model_history_server_id', 'model_instance_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3034,6 +3228,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `get_model_instance`")  # noqa: E501
         # verify the required parameter 'model_instance_id' is set
         if ('model_instance_id' not in params or
                 params['model_instance_id'] is None):
@@ -3042,6 +3240,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'model_instance_id' in params:
             path_params['modelInstanceID'] = params['model_instance_id']  # noqa: E501
 
@@ -3061,7 +3261,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/model/{modelInstanceID}', 'GET',
+            '/rpc/{modelHistoryServerId}/model/{modelInstanceID}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -3076,15 +3276,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_models_for_experiment(self, experiment_id, **kwargs):  # noqa: E501
+    def get_models_for_experiment(self, model_history_server_id, experiment_id, **kwargs):  # noqa: E501
         """Obtain a list of all the models for an experiment  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_models_for_experiment(experiment_id, async=True)
+        >>> thread = api.get_models_for_experiment(model_history_server_id, experiment_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment (required)
         :return: list[ModelInstanceEntity]
                  If the method is called asynchronously,
@@ -3092,27 +3293,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_models_for_experiment_with_http_info(experiment_id, **kwargs)  # noqa: E501
+            return self.get_models_for_experiment_with_http_info(model_history_server_id, experiment_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_models_for_experiment_with_http_info(experiment_id, **kwargs)  # noqa: E501
+            (data) = self.get_models_for_experiment_with_http_info(model_history_server_id, experiment_id, **kwargs)  # noqa: E501
             return data
 
-    def get_models_for_experiment_with_http_info(self, experiment_id, **kwargs):  # noqa: E501
+    def get_models_for_experiment_with_http_info(self, model_history_server_id, experiment_id, **kwargs):  # noqa: E501
         """Obtain a list of all the models for an experiment  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_models_for_experiment_with_http_info(experiment_id, async=True)
+        >>> thread = api.get_models_for_experiment_with_http_info(model_history_server_id, experiment_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment (required)
         :return: list[ModelInstanceEntity]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['experiment_id']  # noqa: E501
+        all_params = ['model_history_server_id', 'experiment_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3127,6 +3329,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `get_models_for_experiment`")  # noqa: E501
         # verify the required parameter 'experiment_id' is set
         if ('experiment_id' not in params or
                 params['experiment_id'] is None):
@@ -3135,6 +3341,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'experiment_id' in params:
             path_params['experimentID'] = params['experiment_id']  # noqa: E501
 
@@ -3154,7 +3362,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/experiment/{experimentID}/models', 'GET',
+            '/rpc/{modelHistoryServerId}/experiment/{experimentID}/models', 'GET',
             path_params,
             query_params,
             header_params,
@@ -3169,16 +3377,17 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def imagetransformprocess_get(self, deployment_name, image_transform_name, **kwargs):  # noqa: E501
+    def imagetransformprocess_get(self, deployment_name, version_name, image_transform_name, **kwargs):  # noqa: E501
         """Retrieves the image transform process JSON string  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.imagetransformprocess_get(deployment_name, image_transform_name, async=True)
+        >>> thread = api.imagetransformprocess_get(deployment_name, version_name, image_transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :return: ImageTransformProcess
                  If the method is called asynchronously,
@@ -3186,28 +3395,29 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.imagetransformprocess_get_with_http_info(deployment_name, image_transform_name, **kwargs)  # noqa: E501
+            return self.imagetransformprocess_get_with_http_info(deployment_name, version_name, image_transform_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.imagetransformprocess_get_with_http_info(deployment_name, image_transform_name, **kwargs)  # noqa: E501
+            (data) = self.imagetransformprocess_get_with_http_info(deployment_name, version_name, image_transform_name, **kwargs)  # noqa: E501
             return data
 
-    def imagetransformprocess_get_with_http_info(self, deployment_name, image_transform_name, **kwargs):  # noqa: E501
+    def imagetransformprocess_get_with_http_info(self, deployment_name, version_name, image_transform_name, **kwargs):  # noqa: E501
         """Retrieves the image transform process JSON string  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.imagetransformprocess_get_with_http_info(deployment_name, image_transform_name, async=True)
+        >>> thread = api.imagetransformprocess_get_with_http_info(deployment_name, version_name, image_transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :return: ImageTransformProcess
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'image_transform_name']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'image_transform_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3226,6 +3436,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `imagetransformprocess_get`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `imagetransformprocess_get`")  # noqa: E501
         # verify the required parameter 'image_transform_name' is set
         if ('image_transform_name' not in params or
                 params['image_transform_name'] is None):
@@ -3236,6 +3450,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'image_transform_name' in params:
             path_params['imageTransformName'] = params['image_transform_name']  # noqa: E501
 
@@ -3259,7 +3475,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess', 'GET',
+            '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess', 'GET',
             path_params,
             query_params,
             header_params,
@@ -3274,16 +3490,17 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def imagetransformprocess_post(self, deployment_name, image_transform_name, body, **kwargs):  # noqa: E501
+    def imagetransformprocess_post(self, deployment_name, version_name, image_transform_name, body, **kwargs):  # noqa: E501
         """Sets the image transform process through the provided JSON string  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.imagetransformprocess_post(deployment_name, image_transform_name, body, async=True)
+        >>> thread = api.imagetransformprocess_post(deployment_name, version_name, image_transform_name, body, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :param ImageTransformProcess body: The image transform process JSON (required)
         :return: ImageTransformProcess
@@ -3292,21 +3509,22 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.imagetransformprocess_post_with_http_info(deployment_name, image_transform_name, body, **kwargs)  # noqa: E501
+            return self.imagetransformprocess_post_with_http_info(deployment_name, version_name, image_transform_name, body, **kwargs)  # noqa: E501
         else:
-            (data) = self.imagetransformprocess_post_with_http_info(deployment_name, image_transform_name, body, **kwargs)  # noqa: E501
+            (data) = self.imagetransformprocess_post_with_http_info(deployment_name, version_name, image_transform_name, body, **kwargs)  # noqa: E501
             return data
 
-    def imagetransformprocess_post_with_http_info(self, deployment_name, image_transform_name, body, **kwargs):  # noqa: E501
+    def imagetransformprocess_post_with_http_info(self, deployment_name, version_name, image_transform_name, body, **kwargs):  # noqa: E501
         """Sets the image transform process through the provided JSON string  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.imagetransformprocess_post_with_http_info(deployment_name, image_transform_name, body, async=True)
+        >>> thread = api.imagetransformprocess_post_with_http_info(deployment_name, version_name, image_transform_name, body, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :param ImageTransformProcess body: The image transform process JSON (required)
         :return: ImageTransformProcess
@@ -3314,7 +3532,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'image_transform_name', 'body']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'image_transform_name', 'body']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3333,6 +3551,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `imagetransformprocess_post`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `imagetransformprocess_post`")  # noqa: E501
         # verify the required parameter 'image_transform_name' is set
         if ('image_transform_name' not in params or
                 params['image_transform_name'] is None):
@@ -3347,6 +3569,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'image_transform_name' in params:
             path_params['imageTransformName'] = params['image_transform_name']  # noqa: E501
 
@@ -3372,7 +3596,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess', 'POST',
+            '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess', 'POST',
             path_params,
             query_params,
             header_params,
@@ -3387,17 +3611,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def jsonarray(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def jsonarray(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Run inference on the input and returns it as a JsonArrayResponse  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.jsonarray(body, deployment_name, model_name, async=True)
+        >>> thread = api.jsonarray(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: JsonArrayResponse
                  If the method is called asynchronously,
@@ -3405,29 +3630,30 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.jsonarray_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.jsonarray_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.jsonarray_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.jsonarray_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def jsonarray_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def jsonarray_with_http_info(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Run inference on the input and returns it as a JsonArrayResponse  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.jsonarray_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.jsonarray_with_http_info(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: JsonArrayResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3450,6 +3676,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `jsonarray`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `jsonarray`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -3460,6 +3690,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -3485,7 +3717,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/jsonarray', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -3500,17 +3732,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def knn(self, deployment_name, knn_name, body, **kwargs):  # noqa: E501
+    def knn(self, deployment_name, version_name, knn_name, body, **kwargs):  # noqa: E501
         """Runs knn on the given index with the given k  # noqa: E501
 
         Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.knn(deployment_name, knn_name, body, async=True)
+        >>> thread = api.knn(deployment_name, version_name, knn_name, body, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str knn_name: ID or name of the deployed knn (required)
         :param NearestNeighborRequest body: (required)
         :return: NearestNeighborsResults
@@ -3519,22 +3752,23 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.knn_with_http_info(deployment_name, knn_name, body, **kwargs)  # noqa: E501
+            return self.knn_with_http_info(deployment_name, version_name, knn_name, body, **kwargs)  # noqa: E501
         else:
-            (data) = self.knn_with_http_info(deployment_name, knn_name, body, **kwargs)  # noqa: E501
+            (data) = self.knn_with_http_info(deployment_name, version_name, knn_name, body, **kwargs)  # noqa: E501
             return data
 
-    def knn_with_http_info(self, deployment_name, knn_name, body, **kwargs):  # noqa: E501
+    def knn_with_http_info(self, deployment_name, version_name, knn_name, body, **kwargs):  # noqa: E501
         """Runs knn on the given index with the given k  # noqa: E501
 
         Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.knn_with_http_info(deployment_name, knn_name, body, async=True)
+        >>> thread = api.knn_with_http_info(deployment_name, version_name, knn_name, body, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str knn_name: ID or name of the deployed knn (required)
         :param NearestNeighborRequest body: (required)
         :return: NearestNeighborsResults
@@ -3542,7 +3776,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'knn_name', 'body']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'knn_name', 'body']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3561,6 +3795,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `knn`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `knn`")  # noqa: E501
         # verify the required parameter 'knn_name' is set
         if ('knn_name' not in params or
                 params['knn_name'] is None):
@@ -3575,6 +3813,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'knn_name' in params:
             path_params['knnName'] = params['knn_name']  # noqa: E501
 
@@ -3600,7 +3840,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/knn/{knnName}/default/knn', 'POST',
+            '/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn', 'POST',
             path_params,
             query_params,
             header_params,
@@ -3615,16 +3855,17 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def knnnew(self, deployment_name, knn_name, body, **kwargs):  # noqa: E501
+    def knnnew(self, deployment_name, version_name, knn_name, body, **kwargs):  # noqa: E501
         """Run a k nearest neighbors search on a NEW data point  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.knnnew(deployment_name, knn_name, body, async=True)
+        >>> thread = api.knnnew(deployment_name, version_name, knn_name, body, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str knn_name: ID or name of the deployed knn (required)
         :param Base64NDArrayBodyKNN body: The input NDArray (required)
         :return: NearestNeighborsResults
@@ -3633,21 +3874,22 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.knnnew_with_http_info(deployment_name, knn_name, body, **kwargs)  # noqa: E501
+            return self.knnnew_with_http_info(deployment_name, version_name, knn_name, body, **kwargs)  # noqa: E501
         else:
-            (data) = self.knnnew_with_http_info(deployment_name, knn_name, body, **kwargs)  # noqa: E501
+            (data) = self.knnnew_with_http_info(deployment_name, version_name, knn_name, body, **kwargs)  # noqa: E501
             return data
 
-    def knnnew_with_http_info(self, deployment_name, knn_name, body, **kwargs):  # noqa: E501
+    def knnnew_with_http_info(self, deployment_name, version_name, knn_name, body, **kwargs):  # noqa: E501
         """Run a k nearest neighbors search on a NEW data point  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.knnnew_with_http_info(deployment_name, knn_name, body, async=True)
+        >>> thread = api.knnnew_with_http_info(deployment_name, version_name, knn_name, body, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str knn_name: ID or name of the deployed knn (required)
         :param Base64NDArrayBodyKNN body: The input NDArray (required)
         :return: NearestNeighborsResults
@@ -3655,7 +3897,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'knn_name', 'body']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'knn_name', 'body']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3674,6 +3916,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `knnnew`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `knnnew`")  # noqa: E501
         # verify the required parameter 'knn_name' is set
         if ('knn_name' not in params or
                 params['knn_name'] is None):
@@ -3688,6 +3934,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'knn_name' in params:
             path_params['knnName'] = params['knn_name']  # noqa: E501
 
@@ -3713,7 +3961,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/knn/{knnName}/default/knnnew', 'POST',
+            '/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew', 'POST',
             path_params,
             query_params,
             header_params,
@@ -3798,7 +4046,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/experiments', 'GET',
+            '/rpc/{modelHistoryServerId}/experiments', 'GET',
             path_params,
             query_params,
             header_params,
@@ -3813,16 +4061,17 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def logfilepath(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def logfilepath(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Get logs file path  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.logfilepath(deployment_name, model_name, async=True)
+        >>> thread = api.logfilepath(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: str
                  If the method is called asynchronously,
@@ -3830,28 +4079,29 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.logfilepath_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.logfilepath_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.logfilepath_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.logfilepath_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def logfilepath_with_http_info(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def logfilepath_with_http_info(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Get logs file path  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.logfilepath_with_http_info(deployment_name, model_name, async=True)
+        >>> thread = api.logfilepath_with_http_info(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'model_name']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3870,6 +4120,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `logfilepath`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `logfilepath`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -3880,6 +4134,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -3899,7 +4155,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/logfilepath', 'GET',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath', 'GET',
             path_params,
             query_params,
             header_params,
@@ -4011,17 +4267,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def logs(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def logs(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Get logs  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.logs(body, deployment_name, model_name, async=True)
+        >>> thread = api.logs(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param LogRequest body: the the log request (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: LogBatch
                  If the method is called asynchronously,
@@ -4029,29 +4286,30 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.logs_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.logs_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.logs_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.logs_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def logs_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def logs_with_http_info(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Get logs  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.logs_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.logs_with_http_info(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param LogRequest body: the the log request (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: LogBatch
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4074,6 +4332,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `logs`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `logs`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -4084,6 +4346,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -4109,7 +4373,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/logs', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs', 'POST',
             path_params,
             query_params,
             header_params,
@@ -4124,16 +4388,17 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def meta_get(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def meta_get(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """this method can be used to get the meta data for the current model which set to the server  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.meta_get(deployment_name, model_name, async=True)
+        >>> thread = api.meta_get(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: MetaData
                  If the method is called asynchronously,
@@ -4141,28 +4406,29 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.meta_get_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.meta_get_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.meta_get_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.meta_get_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def meta_get_with_http_info(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def meta_get_with_http_info(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """this method can be used to get the meta data for the current model which set to the server  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.meta_get_with_http_info(deployment_name, model_name, async=True)
+        >>> thread = api.meta_get_with_http_info(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: MetaData
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'model_name']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4181,6 +4447,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `meta_get`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `meta_get`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -4191,6 +4461,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -4214,7 +4486,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/meta', 'GET',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta', 'GET',
             path_params,
             query_params,
             header_params,
@@ -4229,17 +4501,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def meta_post(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def meta_post(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """This method can be used to set meta data for the current model which is set to the server  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.meta_post(body, deployment_name, model_name, async=True)
+        >>> thread = api.meta_post(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param MetaData body: the meta data object (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: MetaData
                  If the method is called asynchronously,
@@ -4247,29 +4520,30 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.meta_post_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.meta_post_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.meta_post_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.meta_post_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def meta_post_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def meta_post_with_http_info(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """This method can be used to set meta data for the current model which is set to the server  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.meta_post_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.meta_post_with_http_info(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param MetaData body: the meta data object (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: MetaData
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4292,6 +4566,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `meta_post`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `meta_post`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -4302,6 +4580,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -4327,7 +4607,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/meta', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta', 'POST',
             path_params,
             query_params,
             header_params,
@@ -4548,16 +4828,17 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def modelset(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def modelset(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Set the model to be served  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.modelset(deployment_name, model_name, async=True)
+        >>> thread = api.modelset(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :param file file: The model file to upload (.pb file)
         :return: ModelStatus
@@ -4566,21 +4847,22 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.modelset_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.modelset_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.modelset_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.modelset_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def modelset_with_http_info(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def modelset_with_http_info(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Set the model to be served  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.modelset_with_http_info(deployment_name, model_name, async=True)
+        >>> thread = api.modelset_with_http_info(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :param file file: The model file to upload (.pb file)
         :return: ModelStatus
@@ -4588,7 +4870,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'model_name', 'file']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'model_name', 'file']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4607,6 +4889,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `modelset`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `modelset`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -4617,6 +4903,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -4642,7 +4930,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/modelset', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset', 'POST',
             path_params,
             query_params,
             header_params,
@@ -4657,16 +4945,17 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def modelupdate(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def modelupdate(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Update the model to be served  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.modelupdate(deployment_name, model_name, async=True)
+        >>> thread = api.modelupdate(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :param file file: The model file to update with (.pb file)
         :return: ModelStatus
@@ -4675,21 +4964,22 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.modelupdate_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.modelupdate_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.modelupdate_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.modelupdate_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def modelupdate_with_http_info(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def modelupdate_with_http_info(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Update the model to be served  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.modelupdate_with_http_info(deployment_name, model_name, async=True)
+        >>> thread = api.modelupdate_with_http_info(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :param file file: The model file to update with (.pb file)
         :return: ModelStatus
@@ -4697,7 +4987,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'model_name', 'file']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'model_name', 'file']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4716,6 +5006,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `modelupdate`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `modelupdate`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -4726,6 +5020,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -4751,7 +5047,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/modelupdate', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate', 'POST',
             path_params,
             query_params,
             header_params,
@@ -4766,17 +5062,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def multiclassify(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def multiclassify(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Represents all of the labels for a given classification  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.multiclassify(body, deployment_name, model_name, async=True)
+        >>> thread = api.multiclassify(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: MultiClassClassificationResult
                  If the method is called asynchronously,
@@ -4784,29 +5081,30 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.multiclassify_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.multiclassify_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.multiclassify_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.multiclassify_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def multiclassify_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def multiclassify_with_http_info(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Represents all of the labels for a given classification  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.multiclassify_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.multiclassify_with_http_info(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: MultiClassClassificationResult
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4829,6 +5127,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `multiclassify`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `multiclassify`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -4839,6 +5141,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -4864,7 +5168,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/multiclassify', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify', 'POST',
             path_params,
             query_params,
             header_params,
@@ -4879,18 +5183,19 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def multipredict(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def multipredict(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Get the output from the network, based on the given INDArray[] input  # noqa: E501
 
         Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.multipredict(body, deployment_name, model_name, async=True)
+        >>> thread = api.multipredict(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param MultiPredictRequest body: The multiple input arrays with mask inputs to run inferences on (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: MultiPredictResponse
                  If the method is called asynchronously,
@@ -4898,30 +5203,31 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.multipredict_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.multipredict_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.multipredict_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.multipredict_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def multipredict_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def multipredict_with_http_info(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Get the output from the network, based on the given INDArray[] input  # noqa: E501
 
         Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.multipredict_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.multipredict_with_http_info(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param MultiPredictRequest body: The multiple input arrays with mask inputs to run inferences on (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: MultiPredictResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4944,6 +5250,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `multipredict`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `multipredict`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -4954,6 +5264,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -4979,7 +5291,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/multipredict', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict', 'POST',
             path_params,
             query_params,
             header_params,
@@ -4994,13 +5306,13 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def multipredictimage(self, file, id, needs_preprocessing, deployment_name, model_name, **kwargs):  # noqa: E501
+    def multipredictimage(self, file, id, needs_preprocessing, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Get the output from the network using the given image file using the /multipredict endpoint&#39;s method  # noqa: E501
 
         Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.multipredictimage(file, id, needs_preprocessing, deployment_name, model_name, async=True)
+        >>> thread = api.multipredictimage(file, id, needs_preprocessing, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -5008,6 +5320,7 @@ class DefaultApi(object):
         :param str id: The id of the request (could be self generated) (required)
         :param bool needs_preprocessing: Whether or not the preprocessing is required (either 'true' or 'false') (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: MultiPredictResponse
                  If the method is called asynchronously,
@@ -5015,18 +5328,18 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def multipredictimage_with_http_info(self, file, id, needs_preprocessing, deployment_name, model_name, **kwargs):  # noqa: E501
+    def multipredictimage_with_http_info(self, file, id, needs_preprocessing, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Get the output from the network using the given image file using the /multipredict endpoint&#39;s method  # noqa: E501
 
         Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, model_name, async=True)
+        >>> thread = api.multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
@@ -5034,13 +5347,14 @@ class DefaultApi(object):
         :param str id: The id of the request (could be self generated) (required)
         :param bool needs_preprocessing: Whether or not the preprocessing is required (either 'true' or 'false') (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: MultiPredictResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['file', 'id', 'needs_preprocessing', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['file', 'id', 'needs_preprocessing', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5071,6 +5385,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `multipredictimage`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `multipredictimage`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -5081,6 +5399,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -5110,7 +5430,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage', 'POST',
             path_params,
             query_params,
             header_params,
@@ -5125,17 +5445,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def predict(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predict(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Run inference on the input array.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predict(body, deployment_name, model_name, async=True)
+        >>> thread = api.predict(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: Prediction
                  If the method is called asynchronously,
@@ -5143,29 +5464,30 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.predict_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.predict_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.predict_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.predict_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def predict_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predict_with_http_info(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Run inference on the input array.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predict_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.predict_with_http_info(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param Prediction body: The input NDArray (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: Prediction
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5188,6 +5510,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `predict`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `predict`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -5198,6 +5524,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -5223,7 +5551,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/predict', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict', 'POST',
             path_params,
             query_params,
             header_params,
@@ -5238,16 +5566,17 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def predictimage(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictimage(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Run inference on the input array, using input image file from multipart form data.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictimage(deployment_name, model_name, async=True)
+        >>> thread = api.predictimage(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :param file image: The file to upload.
         :return: Prediction
@@ -5256,21 +5585,22 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.predictimage_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.predictimage_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.predictimage_with_http_info(deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.predictimage_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def predictimage_with_http_info(self, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictimage_with_http_info(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Run inference on the input array, using input image file from multipart form data.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictimage_with_http_info(deployment_name, model_name, async=True)
+        >>> thread = api.predictimage_with_http_info(deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :param file image: The file to upload.
         :return: Prediction
@@ -5278,7 +5608,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'model_name', 'image']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'model_name', 'image']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5297,6 +5627,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `predictimage`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `predictimage`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -5307,6 +5641,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -5332,7 +5668,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/predictimage', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage', 'POST',
             path_params,
             query_params,
             header_params,
@@ -5347,17 +5683,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def predictwithpreprocess(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictwithpreprocess(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Preprocesses the input and run inference on it  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictwithpreprocess(body, deployment_name, model_name, async=True)
+        >>> thread = api.predictwithpreprocess(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param list[str] body: The input array (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: Prediction
                  If the method is called asynchronously,
@@ -5365,29 +5702,30 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.predictwithpreprocess_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.predictwithpreprocess_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.predictwithpreprocess_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.predictwithpreprocess_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def predictwithpreprocess_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictwithpreprocess_with_http_info(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Preprocesses the input and run inference on it  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictwithpreprocess_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.predictwithpreprocess_with_http_info(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param list[str] body: The input array (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: Prediction
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5410,6 +5748,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `predictwithpreprocess`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `predictwithpreprocess`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -5420,6 +5762,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -5445,7 +5789,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess', 'POST',
             path_params,
             query_params,
             header_params,
@@ -5460,17 +5804,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def predictwithpreprocessjson(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictwithpreprocessjson(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Preprocesses the input and run inference on it and returns it as a JsonArrayResponse  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictwithpreprocessjson(body, deployment_name, model_name, async=True)
+        >>> thread = api.predictwithpreprocessjson(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param list[str] body: The input array (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: JsonArrayResponse
                  If the method is called asynchronously,
@@ -5478,29 +5823,30 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.predictwithpreprocessjson_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            return self.predictwithpreprocessjson_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.predictwithpreprocessjson_with_http_info(body, deployment_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.predictwithpreprocessjson_with_http_info(body, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def predictwithpreprocessjson_with_http_info(self, body, deployment_name, model_name, **kwargs):  # noqa: E501
+    def predictwithpreprocessjson_with_http_info(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Preprocesses the input and run inference on it and returns it as a JsonArrayResponse  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.predictwithpreprocessjson_with_http_info(body, deployment_name, model_name, async=True)
+        >>> thread = api.predictwithpreprocessjson_with_http_info(body, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param list[str] body: The input array (required)
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
         :return: JsonArrayResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'deployment_name', 'model_name']  # noqa: E501
+        all_params = ['body', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5523,6 +5869,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `predictwithpreprocessjson`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `predictwithpreprocessjson`")  # noqa: E501
         # verify the required parameter 'model_name' is set
         if ('model_name' not in params or
                 params['model_name'] is None):
@@ -5533,6 +5883,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'model_name' in params:
             path_params['modelName'] = params['model_name']  # noqa: E501
 
@@ -5558,7 +5910,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson', 'POST',
+            '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson', 'POST',
             path_params,
             query_params,
             header_params,
@@ -5686,17 +6038,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transform_csv(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transform_csv(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord  # noqa: E501
 
         Takes a batch of SingleCSVRecord object and transforms it into the desired format  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transform_csv(deployment_name, transform_name, async=True)
+        >>> thread = api.transform_csv(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :param BatchCSVRecord batch_csv_record: The input batch of record arrays
         :return: BatchCSVRecord
@@ -5705,22 +6058,23 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transform_csv_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            return self.transform_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.transform_csv_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            (data) = self.transform_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
             return data
 
-    def transform_csv_with_http_info(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transform_csv_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord  # noqa: E501
 
         Takes a batch of SingleCSVRecord object and transforms it into the desired format  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transform_csv_with_http_info(deployment_name, transform_name, async=True)
+        >>> thread = api.transform_csv_with_http_info(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :param BatchCSVRecord batch_csv_record: The input batch of record arrays
         :return: BatchCSVRecord
@@ -5728,7 +6082,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'transform_name', 'batch_csv_record']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'transform_name', 'batch_csv_record']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5747,6 +6101,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `transform_csv`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `transform_csv`")  # noqa: E501
         # verify the required parameter 'transform_name' is set
         if ('transform_name' not in params or
                 params['transform_name'] is None):
@@ -5757,6 +6115,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'transform_name' in params:
             path_params['transformName'] = params['transform_name']  # noqa: E501
 
@@ -5782,7 +6142,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{transformName}/default/transform', 'POST',
+            '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform', 'POST',
             path_params,
             query_params,
             header_params,
@@ -5797,17 +6157,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transformarray_csv(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transformarray_csv(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Takes a batch input arrays and transforms it  # noqa: E501
 
         Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformarray_csv(deployment_name, transform_name, async=True)
+        >>> thread = api.transformarray_csv(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :param BatchCSVRecord batch_csv_record: The input batch of record arrays
         :return: Base64NDArrayBody
@@ -5816,22 +6177,23 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transformarray_csv_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            return self.transformarray_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.transformarray_csv_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            (data) = self.transformarray_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
             return data
 
-    def transformarray_csv_with_http_info(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transformarray_csv_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Takes a batch input arrays and transforms it  # noqa: E501
 
         Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformarray_csv_with_http_info(deployment_name, transform_name, async=True)
+        >>> thread = api.transformarray_csv_with_http_info(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :param BatchCSVRecord batch_csv_record: The input batch of record arrays
         :return: Base64NDArrayBody
@@ -5839,7 +6201,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'transform_name', 'batch_csv_record']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'transform_name', 'batch_csv_record']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5858,6 +6220,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `transformarray_csv`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `transformarray_csv`")  # noqa: E501
         # verify the required parameter 'transform_name' is set
         if ('transform_name' not in params or
                 params['transform_name'] is None):
@@ -5868,6 +6234,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'transform_name' in params:
             path_params['transformName'] = params['transform_name']  # noqa: E501
 
@@ -5893,7 +6261,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray', 'POST',
+            '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -5908,17 +6276,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transformarray_image(self, deployment_name, image_transform_name, batch_image_record, **kwargs):  # noqa: E501
+    def transformarray_image(self, deployment_name, version_name, image_transform_name, batch_image_record, **kwargs):  # noqa: E501
         """Takes a batch of images uri and transforms it and returns Base64NDArrayBody  # noqa: E501
 
         Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformarray_image(deployment_name, image_transform_name, batch_image_record, async=True)
+        >>> thread = api.transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :param BatchImageRecord batch_image_record: The input batch of record arrays (required)
         :return: Base64NDArrayBody
@@ -5927,22 +6296,23 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transformarray_image_with_http_info(deployment_name, image_transform_name, batch_image_record, **kwargs)  # noqa: E501
+            return self.transformarray_image_with_http_info(deployment_name, version_name, image_transform_name, batch_image_record, **kwargs)  # noqa: E501
         else:
-            (data) = self.transformarray_image_with_http_info(deployment_name, image_transform_name, batch_image_record, **kwargs)  # noqa: E501
+            (data) = self.transformarray_image_with_http_info(deployment_name, version_name, image_transform_name, batch_image_record, **kwargs)  # noqa: E501
             return data
 
-    def transformarray_image_with_http_info(self, deployment_name, image_transform_name, batch_image_record, **kwargs):  # noqa: E501
+    def transformarray_image_with_http_info(self, deployment_name, version_name, image_transform_name, batch_image_record, **kwargs):  # noqa: E501
         """Takes a batch of images uri and transforms it and returns Base64NDArrayBody  # noqa: E501
 
         Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformarray_image_with_http_info(deployment_name, image_transform_name, batch_image_record, async=True)
+        >>> thread = api.transformarray_image_with_http_info(deployment_name, version_name, image_transform_name, batch_image_record, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :param BatchImageRecord batch_image_record: The input batch of record arrays (required)
         :return: Base64NDArrayBody
@@ -5950,7 +6320,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'image_transform_name', 'batch_image_record']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'image_transform_name', 'batch_image_record']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5969,6 +6339,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `transformarray_image`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `transformarray_image`")  # noqa: E501
         # verify the required parameter 'image_transform_name' is set
         if ('image_transform_name' not in params or
                 params['image_transform_name'] is None):
@@ -5983,6 +6357,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'image_transform_name' in params:
             path_params['imageTransformName'] = params['image_transform_name']  # noqa: E501
 
@@ -6008,7 +6384,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray', 'POST',
+            '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -6023,17 +6399,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transformimage(self, deployment_name, image_transform_name, files, **kwargs):  # noqa: E501
+    def transformimage(self, deployment_name, version_name, image_transform_name, files, **kwargs):  # noqa: E501
         """Takes multiple multipart image file to transform and returns Base64NDArrayBody  # noqa: E501
 
         Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformimage(deployment_name, image_transform_name, files, async=True)
+        >>> thread = api.transformimage(deployment_name, version_name, image_transform_name, files, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :param list[str] files: The image files to upload (required)
         :return: Base64NDArrayBody
@@ -6042,22 +6419,23 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transformimage_with_http_info(deployment_name, image_transform_name, files, **kwargs)  # noqa: E501
+            return self.transformimage_with_http_info(deployment_name, version_name, image_transform_name, files, **kwargs)  # noqa: E501
         else:
-            (data) = self.transformimage_with_http_info(deployment_name, image_transform_name, files, **kwargs)  # noqa: E501
+            (data) = self.transformimage_with_http_info(deployment_name, version_name, image_transform_name, files, **kwargs)  # noqa: E501
             return data
 
-    def transformimage_with_http_info(self, deployment_name, image_transform_name, files, **kwargs):  # noqa: E501
+    def transformimage_with_http_info(self, deployment_name, version_name, image_transform_name, files, **kwargs):  # noqa: E501
         """Takes multiple multipart image file to transform and returns Base64NDArrayBody  # noqa: E501
 
         Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformimage_with_http_info(deployment_name, image_transform_name, files, async=True)
+        >>> thread = api.transformimage_with_http_info(deployment_name, version_name, image_transform_name, files, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :param list[str] files: The image files to upload (required)
         :return: Base64NDArrayBody
@@ -6065,7 +6443,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'image_transform_name', 'files']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'image_transform_name', 'files']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6084,6 +6462,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `transformimage`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `transformimage`")  # noqa: E501
         # verify the required parameter 'image_transform_name' is set
         if ('image_transform_name' not in params or
                 params['image_transform_name'] is None):
@@ -6098,6 +6480,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'image_transform_name' in params:
             path_params['imageTransformName'] = params['image_transform_name']  # noqa: E501
 
@@ -6124,7 +6508,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage', 'POST',
+            '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage', 'POST',
             path_params,
             query_params,
             header_params,
@@ -6139,17 +6523,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transformincremental_csv(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transformincremental_csv(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord  # noqa: E501
 
         Takes a SingleCSVRecord object and transforms it into the desired format  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincremental_csv(deployment_name, transform_name, async=True)
+        >>> thread = api.transformincremental_csv(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :param SingleCSVRecord single_csv_record: The input record array
         :return: SingleCSVRecord
@@ -6158,22 +6543,23 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transformincremental_csv_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            return self.transformincremental_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.transformincremental_csv_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            (data) = self.transformincremental_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
             return data
 
-    def transformincremental_csv_with_http_info(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transformincremental_csv_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord  # noqa: E501
 
         Takes a SingleCSVRecord object and transforms it into the desired format  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincremental_csv_with_http_info(deployment_name, transform_name, async=True)
+        >>> thread = api.transformincremental_csv_with_http_info(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :param SingleCSVRecord single_csv_record: The input record array
         :return: SingleCSVRecord
@@ -6181,7 +6567,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'transform_name', 'single_csv_record']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'transform_name', 'single_csv_record']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6200,6 +6586,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `transformincremental_csv`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `transformincremental_csv`")  # noqa: E501
         # verify the required parameter 'transform_name' is set
         if ('transform_name' not in params or
                 params['transform_name'] is None):
@@ -6210,6 +6600,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'transform_name' in params:
             path_params['transformName'] = params['transform_name']  # noqa: E501
 
@@ -6235,7 +6627,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental', 'POST',
+            '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental', 'POST',
             path_params,
             query_params,
             header_params,
@@ -6250,17 +6642,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transformincrementalarray_csv(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transformincrementalarray_csv(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Same as /transformincremental but returns Base64NDArrayBody  # noqa: E501
 
         Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincrementalarray_csv(deployment_name, transform_name, async=True)
+        >>> thread = api.transformincrementalarray_csv(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :param SingleCSVRecord single_csv_record: The input record array
         :return: Base64NDArrayBody
@@ -6269,22 +6662,23 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transformincrementalarray_csv_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            return self.transformincrementalarray_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.transformincrementalarray_csv_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            (data) = self.transformincrementalarray_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
             return data
 
-    def transformincrementalarray_csv_with_http_info(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transformincrementalarray_csv_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Same as /transformincremental but returns Base64NDArrayBody  # noqa: E501
 
         Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincrementalarray_csv_with_http_info(deployment_name, transform_name, async=True)
+        >>> thread = api.transformincrementalarray_csv_with_http_info(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :param SingleCSVRecord single_csv_record: The input record array
         :return: Base64NDArrayBody
@@ -6292,7 +6686,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'transform_name', 'single_csv_record']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'transform_name', 'single_csv_record']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6311,6 +6705,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `transformincrementalarray_csv`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `transformincrementalarray_csv`")  # noqa: E501
         # verify the required parameter 'transform_name' is set
         if ('transform_name' not in params or
                 params['transform_name'] is None):
@@ -6321,6 +6719,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'transform_name' in params:
             path_params['transformName'] = params['transform_name']  # noqa: E501
 
@@ -6346,7 +6746,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray', 'POST',
+            '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -6361,17 +6761,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transformincrementalarray_image(self, deployment_name, image_transform_name, single_image_record, **kwargs):  # noqa: E501
+    def transformincrementalarray_image(self, deployment_name, version_name, image_transform_name, single_image_record, **kwargs):  # noqa: E501
         """Takes SingleImageRecord to transform and returns Base64NDArrayBody  # noqa: E501
 
         Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincrementalarray_image(deployment_name, image_transform_name, single_image_record, async=True)
+        >>> thread = api.transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :param SingleImageRecord single_image_record: The input record array (required)
         :return: Base64NDArrayBody
@@ -6380,22 +6781,23 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transformincrementalarray_image_with_http_info(deployment_name, image_transform_name, single_image_record, **kwargs)  # noqa: E501
+            return self.transformincrementalarray_image_with_http_info(deployment_name, version_name, image_transform_name, single_image_record, **kwargs)  # noqa: E501
         else:
-            (data) = self.transformincrementalarray_image_with_http_info(deployment_name, image_transform_name, single_image_record, **kwargs)  # noqa: E501
+            (data) = self.transformincrementalarray_image_with_http_info(deployment_name, version_name, image_transform_name, single_image_record, **kwargs)  # noqa: E501
             return data
 
-    def transformincrementalarray_image_with_http_info(self, deployment_name, image_transform_name, single_image_record, **kwargs):  # noqa: E501
+    def transformincrementalarray_image_with_http_info(self, deployment_name, version_name, image_transform_name, single_image_record, **kwargs):  # noqa: E501
         """Takes SingleImageRecord to transform and returns Base64NDArrayBody  # noqa: E501
 
         Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincrementalarray_image_with_http_info(deployment_name, image_transform_name, single_image_record, async=True)
+        >>> thread = api.transformincrementalarray_image_with_http_info(deployment_name, version_name, image_transform_name, single_image_record, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :param SingleImageRecord single_image_record: The input record array (required)
         :return: Base64NDArrayBody
@@ -6403,7 +6805,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'image_transform_name', 'single_image_record']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'image_transform_name', 'single_image_record']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6422,6 +6824,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `transformincrementalarray_image`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `transformincrementalarray_image`")  # noqa: E501
         # verify the required parameter 'image_transform_name' is set
         if ('image_transform_name' not in params or
                 params['image_transform_name'] is None):
@@ -6436,6 +6842,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'image_transform_name' in params:
             path_params['imageTransformName'] = params['image_transform_name']  # noqa: E501
 
@@ -6461,7 +6869,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray', 'POST',
+            '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -6476,17 +6884,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transformincrementalimage(self, deployment_name, image_transform_name, file, **kwargs):  # noqa: E501
+    def transformincrementalimage(self, deployment_name, version_name, image_transform_name, file, **kwargs):  # noqa: E501
         """Takes a single multipart image file to transform and returns Base64NDArrayBody  # noqa: E501
 
         Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincrementalimage(deployment_name, image_transform_name, file, async=True)
+        >>> thread = api.transformincrementalimage(deployment_name, version_name, image_transform_name, file, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :param file file: The image file to upload (required)
         :return: Base64NDArrayBody
@@ -6495,22 +6904,23 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transformincrementalimage_with_http_info(deployment_name, image_transform_name, file, **kwargs)  # noqa: E501
+            return self.transformincrementalimage_with_http_info(deployment_name, version_name, image_transform_name, file, **kwargs)  # noqa: E501
         else:
-            (data) = self.transformincrementalimage_with_http_info(deployment_name, image_transform_name, file, **kwargs)  # noqa: E501
+            (data) = self.transformincrementalimage_with_http_info(deployment_name, version_name, image_transform_name, file, **kwargs)  # noqa: E501
             return data
 
-    def transformincrementalimage_with_http_info(self, deployment_name, image_transform_name, file, **kwargs):  # noqa: E501
+    def transformincrementalimage_with_http_info(self, deployment_name, version_name, image_transform_name, file, **kwargs):  # noqa: E501
         """Takes a single multipart image file to transform and returns Base64NDArrayBody  # noqa: E501
 
         Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincrementalimage_with_http_info(deployment_name, image_transform_name, file, async=True)
+        >>> thread = api.transformincrementalimage_with_http_info(deployment_name, version_name, image_transform_name, file, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str image_transform_name: ID or name of the deployed image transform (required)
         :param file file: The image file to upload (required)
         :return: Base64NDArrayBody
@@ -6518,7 +6928,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'image_transform_name', 'file']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'image_transform_name', 'file']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6537,6 +6947,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `transformincrementalimage`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `transformincrementalimage`")  # noqa: E501
         # verify the required parameter 'image_transform_name' is set
         if ('image_transform_name' not in params or
                 params['image_transform_name'] is None):
@@ -6551,6 +6965,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'image_transform_name' in params:
             path_params['imageTransformName'] = params['image_transform_name']  # noqa: E501
 
@@ -6576,7 +6992,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage', 'POST',
+            '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage', 'POST',
             path_params,
             query_params,
             header_params,
@@ -6591,17 +7007,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transformprocess_get(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transformprocess_get(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Gets the JSON string of the deployed transform process  # noqa: E501
 
         Retrieves the JSON string of the deployed transform process   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformprocess_get(deployment_name, transform_name, async=True)
+        >>> thread = api.transformprocess_get(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :return: TransformProcess
                  If the method is called asynchronously,
@@ -6609,29 +7026,30 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transformprocess_get_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            return self.transformprocess_get_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.transformprocess_get_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            (data) = self.transformprocess_get_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
             return data
 
-    def transformprocess_get_with_http_info(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transformprocess_get_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Gets the JSON string of the deployed transform process  # noqa: E501
 
         Retrieves the JSON string of the deployed transform process   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformprocess_get_with_http_info(deployment_name, transform_name, async=True)
+        >>> thread = api.transformprocess_get_with_http_info(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :return: TransformProcess
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'transform_name']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'transform_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6650,6 +7068,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `transformprocess_get`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `transformprocess_get`")  # noqa: E501
         # verify the required parameter 'transform_name' is set
         if ('transform_name' not in params or
                 params['transform_name'] is None):
@@ -6660,6 +7082,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'transform_name' in params:
             path_params['transformName'] = params['transform_name']  # noqa: E501
 
@@ -6679,7 +7103,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess', 'GET',
+            '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess', 'GET',
             path_params,
             query_params,
             header_params,
@@ -6694,17 +7118,18 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transformprocess_post(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transformprocess_post(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Sets the deployed transform process through the provided JSON string  # noqa: E501
 
         Sets the transform process with the provided JSON string  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformprocess_post(deployment_name, transform_name, async=True)
+        >>> thread = api.transformprocess_post(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :param TransformProcess transform_process: The transform process to set
         :return: None
@@ -6713,22 +7138,23 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transformprocess_post_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            return self.transformprocess_post_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.transformprocess_post_with_http_info(deployment_name, transform_name, **kwargs)  # noqa: E501
+            (data) = self.transformprocess_post_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
             return data
 
-    def transformprocess_post_with_http_info(self, deployment_name, transform_name, **kwargs):  # noqa: E501
+    def transformprocess_post_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Sets the deployed transform process through the provided JSON string  # noqa: E501
 
         Sets the transform process with the provided JSON string  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformprocess_post_with_http_info(deployment_name, transform_name, async=True)
+        >>> thread = api.transformprocess_post_with_http_info(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
+        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
         :param TransformProcess transform_process: The transform process to set
         :return: None
@@ -6736,7 +7162,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'transform_name', 'transform_process']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'transform_name', 'transform_process']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6755,6 +7181,10 @@ class DefaultApi(object):
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
             raise ValueError("Missing the required parameter `deployment_name` when calling `transformprocess_post`")  # noqa: E501
+        # verify the required parameter 'version_name' is set
+        if ('version_name' not in params or
+                params['version_name'] is None):
+            raise ValueError("Missing the required parameter `version_name` when calling `transformprocess_post`")  # noqa: E501
         # verify the required parameter 'transform_name' is set
         if ('transform_name' not in params or
                 params['transform_name'] is None):
@@ -6765,6 +7195,8 @@ class DefaultApi(object):
         path_params = {}
         if 'deployment_name' in params:
             path_params['deploymentName'] = params['deployment_name']  # noqa: E501
+        if 'version_name' in params:
+            path_params['versionName'] = params['version_name']  # noqa: E501
         if 'transform_name' in params:
             path_params['transformName'] = params['transform_name']  # noqa: E501
 
@@ -6790,7 +7222,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess', 'POST',
+            '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess', 'POST',
             path_params,
             query_params,
             header_params,
@@ -6805,15 +7237,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_best_model_for_experiment(self, update_best_model, **kwargs):  # noqa: E501
+    def update_best_model_for_experiment(self, model_history_server_id, update_best_model, **kwargs):  # noqa: E501
         """Updates the best model for an experiment  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_best_model_for_experiment(update_best_model, async=True)
+        >>> thread = api.update_best_model_for_experiment(model_history_server_id, update_best_model, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param UpdateBestModel update_best_model: Model encapsulating the experiment id to update and the best model id. (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -6821,27 +7254,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.update_best_model_for_experiment_with_http_info(update_best_model, **kwargs)  # noqa: E501
+            return self.update_best_model_for_experiment_with_http_info(model_history_server_id, update_best_model, **kwargs)  # noqa: E501
         else:
-            (data) = self.update_best_model_for_experiment_with_http_info(update_best_model, **kwargs)  # noqa: E501
+            (data) = self.update_best_model_for_experiment_with_http_info(model_history_server_id, update_best_model, **kwargs)  # noqa: E501
             return data
 
-    def update_best_model_for_experiment_with_http_info(self, update_best_model, **kwargs):  # noqa: E501
+    def update_best_model_for_experiment_with_http_info(self, model_history_server_id, update_best_model, **kwargs):  # noqa: E501
         """Updates the best model for an experiment  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_best_model_for_experiment_with_http_info(update_best_model, async=True)
+        >>> thread = api.update_best_model_for_experiment_with_http_info(model_history_server_id, update_best_model, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param UpdateBestModel update_best_model: Model encapsulating the experiment id to update and the best model id. (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['update_best_model']  # noqa: E501
+        all_params = ['model_history_server_id', 'update_best_model']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6856,6 +7290,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `update_best_model_for_experiment`")  # noqa: E501
         # verify the required parameter 'update_best_model' is set
         if ('update_best_model' not in params or
                 params['update_best_model'] is None):
@@ -6864,6 +7302,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -6887,7 +7327,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/experiment/best', 'POST',
+            '/rpc/{modelHistoryServerId}/experiment/best', 'POST',
             path_params,
             query_params,
             header_params,
@@ -6902,15 +7342,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_experiment(self, experiment_id, experiment_entity, **kwargs):  # noqa: E501
+    def update_experiment(self, model_history_server_id, experiment_id, experiment_entity, **kwargs):  # noqa: E501
         """Updates an experiment, given an experiment entity  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_experiment(experiment_id, experiment_entity, async=True)
+        >>> thread = api.update_experiment(model_history_server_id, experiment_id, experiment_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to update (required)
         :param ExperimentEntity experiment_entity: The experiment entity to update with (required)
         :return: ExperimentEntity
@@ -6919,20 +7360,21 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.update_experiment_with_http_info(experiment_id, experiment_entity, **kwargs)  # noqa: E501
+            return self.update_experiment_with_http_info(model_history_server_id, experiment_id, experiment_entity, **kwargs)  # noqa: E501
         else:
-            (data) = self.update_experiment_with_http_info(experiment_id, experiment_entity, **kwargs)  # noqa: E501
+            (data) = self.update_experiment_with_http_info(model_history_server_id, experiment_id, experiment_entity, **kwargs)  # noqa: E501
             return data
 
-    def update_experiment_with_http_info(self, experiment_id, experiment_entity, **kwargs):  # noqa: E501
+    def update_experiment_with_http_info(self, model_history_server_id, experiment_id, experiment_entity, **kwargs):  # noqa: E501
         """Updates an experiment, given an experiment entity  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_experiment_with_http_info(experiment_id, experiment_entity, async=True)
+        >>> thread = api.update_experiment_with_http_info(model_history_server_id, experiment_id, experiment_entity, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to update (required)
         :param ExperimentEntity experiment_entity: The experiment entity to update with (required)
         :return: ExperimentEntity
@@ -6940,7 +7382,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['experiment_id', 'experiment_entity']  # noqa: E501
+        all_params = ['model_history_server_id', 'experiment_id', 'experiment_entity']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6955,6 +7397,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `update_experiment`")  # noqa: E501
         # verify the required parameter 'experiment_id' is set
         if ('experiment_id' not in params or
                 params['experiment_id'] is None):
@@ -6967,6 +7413,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'experiment_id' in params:
             path_params['experimentID'] = params['experiment_id']  # noqa: E501
 
@@ -6992,7 +7440,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/experiment/{experimentID}', 'PUT',
+            '/rpc/{modelHistoryServerId}/experiment/{experimentID}', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -7007,15 +7455,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_model_history(self, model_history_id, update_model_history_request, **kwargs):  # noqa: E501
+    def update_model_history(self, model_history_server_id, model_history_id, update_model_history_request, **kwargs):  # noqa: E501
         """Update a model history / workspace  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_model_history(model_history_id, update_model_history_request, async=True)
+        >>> thread = api.update_model_history(model_history_server_id, model_history_id, update_model_history_request, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace to update (required)
         :param AddModelHistoryRequest update_model_history_request: The model history request object (required)
         :return: ModelHistoryEntity
@@ -7024,20 +7473,21 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.update_model_history_with_http_info(model_history_id, update_model_history_request, **kwargs)  # noqa: E501
+            return self.update_model_history_with_http_info(model_history_server_id, model_history_id, update_model_history_request, **kwargs)  # noqa: E501
         else:
-            (data) = self.update_model_history_with_http_info(model_history_id, update_model_history_request, **kwargs)  # noqa: E501
+            (data) = self.update_model_history_with_http_info(model_history_server_id, model_history_id, update_model_history_request, **kwargs)  # noqa: E501
             return data
 
-    def update_model_history_with_http_info(self, model_history_id, update_model_history_request, **kwargs):  # noqa: E501
+    def update_model_history_with_http_info(self, model_history_server_id, model_history_id, update_model_history_request, **kwargs):  # noqa: E501
         """Update a model history / workspace  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_model_history_with_http_info(model_history_id, update_model_history_request, async=True)
+        >>> thread = api.update_model_history_with_http_info(model_history_server_id, model_history_id, update_model_history_request, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace to update (required)
         :param AddModelHistoryRequest update_model_history_request: The model history request object (required)
         :return: ModelHistoryEntity
@@ -7045,7 +7495,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['model_history_id', 'update_model_history_request']  # noqa: E501
+        all_params = ['model_history_server_id', 'model_history_id', 'update_model_history_request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7060,6 +7510,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `update_model_history`")  # noqa: E501
         # verify the required parameter 'model_history_id' is set
         if ('model_history_id' not in params or
                 params['model_history_id'] is None):
@@ -7072,6 +7526,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
         if 'model_history_id' in params:
             path_params['modelHistoryID'] = params['model_history_id']  # noqa: E501
 
@@ -7097,7 +7553,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/modelhistory/{modelHistoryID}', 'POST',
+            '/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}', 'POST',
             path_params,
             query_params,
             header_params,

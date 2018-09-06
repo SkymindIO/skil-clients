@@ -57,12 +57,18 @@
 
     /**
      * Adds an evaluation result
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/EvaluationResultsEntity} evaluationResultsEntity The evaluation result entity
      * @param {module:ai/skymind/skil/DefaultApi~addEvaluationResultCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/EvaluationResultsEntity}
      */
-    this.addEvaluationResult = function(evaluationResultsEntity, callback) {
+    this.addEvaluationResult = function(modelHistoryServerId, evaluationResultsEntity, callback) {
       var postBody = evaluationResultsEntity;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling addEvaluationResult");
+      }
 
       // verify the required parameter 'evaluationResultsEntity' is set
       if (evaluationResultsEntity === undefined || evaluationResultsEntity === null) {
@@ -71,6 +77,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -87,7 +94,7 @@
       var returnType = EvaluationResultsEntity;
 
       return this.apiClient.callApi(
-        '/model/revisions/evaluations/', 'POST',
+        '/rpc/{modelHistoryServerId}/model/revisions/evaluations/', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -103,12 +110,18 @@
 
     /**
      * Adds a number of examples to a minibatch ID given an AddExampleRequest.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/AddExampleRequest} addExampleRequest The add example request, encapsulating minibatch details and examples batch size
      * @param {module:ai/skymind/skil/DefaultApi~addExampleForBatchCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/AddExampleRequest}
      */
-    this.addExampleForBatch = function(addExampleRequest, callback) {
+    this.addExampleForBatch = function(modelHistoryServerId, addExampleRequest, callback) {
       var postBody = addExampleRequest;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling addExampleForBatch");
+      }
 
       // verify the required parameter 'addExampleRequest' is set
       if (addExampleRequest === undefined || addExampleRequest === null) {
@@ -117,6 +130,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -133,7 +147,7 @@
       var returnType = AddExampleRequest;
 
       return this.apiClient.callApi(
-        '/model/exampleForBatch', 'POST',
+        '/rpc/{modelHistoryServerId}/model/exampleForBatch', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -149,12 +163,18 @@
 
     /**
      * Adds an example to a minibatch
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/ExampleEntity} exampleEntity The example to add to the minibatch
      * @param {module:ai/skymind/skil/DefaultApi~addExampleToMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ExampleEntity}
      */
-    this.addExampleToMinibatch = function(exampleEntity, callback) {
+    this.addExampleToMinibatch = function(modelHistoryServerId, exampleEntity, callback) {
       var postBody = exampleEntity;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling addExampleToMinibatch");
+      }
 
       // verify the required parameter 'exampleEntity' is set
       if (exampleEntity === undefined || exampleEntity === null) {
@@ -163,6 +183,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -179,7 +200,7 @@
       var returnType = ExampleEntity;
 
       return this.apiClient.callApi(
-        '/model/example', 'POST',
+        '/rpc/{modelHistoryServerId}/model/example', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -195,12 +216,18 @@
 
     /**
      * Add an experiment, given an experiment entity
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/ExperimentEntity} experimentEntity The experiment entity to add
      * @param {module:ai/skymind/skil/DefaultApi~addExperimentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
      */
-    this.addExperiment = function(experimentEntity, callback) {
+    this.addExperiment = function(modelHistoryServerId, experimentEntity, callback) {
       var postBody = experimentEntity;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling addExperiment");
+      }
 
       // verify the required parameter 'experimentEntity' is set
       if (experimentEntity === undefined || experimentEntity === null) {
@@ -209,6 +236,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -225,7 +253,7 @@
       var returnType = ExperimentEntity;
 
       return this.apiClient.callApi(
-        '/experiment', 'POST',
+        '/rpc/{modelHistoryServerId}/experiment', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -241,12 +269,18 @@
 
     /**
      * Adds a minibatch
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/MinibatchEntity} minibatchEntity The minibatch entity to add
      * @param {module:ai/skymind/skil/DefaultApi~addMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/MinibatchEntity}
      */
-    this.addMinibatch = function(minibatchEntity, callback) {
+    this.addMinibatch = function(modelHistoryServerId, minibatchEntity, callback) {
       var postBody = minibatchEntity;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling addMinibatch");
+      }
 
       // verify the required parameter 'minibatchEntity' is set
       if (minibatchEntity === undefined || minibatchEntity === null) {
@@ -255,6 +289,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -271,7 +306,7 @@
       var returnType = MinibatchEntity;
 
       return this.apiClient.callApi(
-        '/model/minibatch', 'POST',
+        '/rpc/{modelHistoryServerId}/model/minibatch', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -287,12 +322,18 @@
 
     /**
      * Adds an evaluation feedback to the model against a given minibatch id.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/ModelFeedBackRequest} modelFeedBackRequest The model feedback request object
      * @param {module:ai/skymind/skil/DefaultApi~addModelFeedbackCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelFeedBackRequest}
      */
-    this.addModelFeedback = function(modelFeedBackRequest, callback) {
+    this.addModelFeedback = function(modelHistoryServerId, modelFeedBackRequest, callback) {
       var postBody = modelFeedBackRequest;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling addModelFeedback");
+      }
 
       // verify the required parameter 'modelFeedBackRequest' is set
       if (modelFeedBackRequest === undefined || modelFeedBackRequest === null) {
@@ -301,6 +342,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -317,7 +359,7 @@
       var returnType = ModelFeedBackRequest;
 
       return this.apiClient.callApi(
-        '/model/feedback', 'POST',
+        '/rpc/{modelHistoryServerId}/model/feedback', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -333,12 +375,18 @@
 
     /**
      * Add a model history / workspace
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/AddModelHistoryRequest} addModelHistoryRequest The model history request object
      * @param {module:ai/skymind/skil/DefaultApi~addModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelHistoryEntity}
      */
-    this.addModelHistory = function(addModelHistoryRequest, callback) {
+    this.addModelHistory = function(modelHistoryServerId, addModelHistoryRequest, callback) {
       var postBody = addModelHistoryRequest;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling addModelHistory");
+      }
 
       // verify the required parameter 'addModelHistoryRequest' is set
       if (addModelHistoryRequest === undefined || addModelHistoryRequest === null) {
@@ -347,6 +395,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -363,7 +412,7 @@
       var returnType = ModelHistoryEntity;
 
       return this.apiClient.callApi(
-        '/modelhistory', 'POST',
+        '/rpc/{modelHistoryServerId}/modelhistory', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -379,12 +428,18 @@
 
     /**
      * Adds a model
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/ModelInstanceEntity} modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate
      * @param {module:ai/skymind/skil/DefaultApi~addModelInstanceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelInstanceEntity}
      */
-    this.addModelInstance = function(modelInstanceEntity, callback) {
+    this.addModelInstance = function(modelHistoryServerId, modelInstanceEntity, callback) {
       var postBody = modelInstanceEntity;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling addModelInstance");
+      }
 
       // verify the required parameter 'modelInstanceEntity' is set
       if (modelInstanceEntity === undefined || modelInstanceEntity === null) {
@@ -393,6 +448,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -409,7 +465,7 @@
       var returnType = ModelInstanceEntity;
 
       return this.apiClient.callApi(
-        '/model', 'POST',
+        '/rpc/{modelHistoryServerId}/model', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -425,12 +481,18 @@
 
     /**
      * Aggregates the evaluaition results of a model instance, based on the evaluation type
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/AggregatePrediction} aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate
      * @param {module:ai/skymind/skil/DefaultApi~aggregateModelResultsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/EvaluationResultsEntity}
      */
-    this.aggregateModelResults = function(aggregatePrediction, callback) {
+    this.aggregateModelResults = function(modelHistoryServerId, aggregatePrediction, callback) {
       var postBody = aggregatePrediction;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling aggregateModelResults");
+      }
 
       // verify the required parameter 'aggregatePrediction' is set
       if (aggregatePrediction === undefined || aggregatePrediction === null) {
@@ -439,6 +501,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -455,7 +518,7 @@
       var returnType = EvaluationResultsEntity;
 
       return this.apiClient.callApi(
-        '/model/aggregateresults', 'POST',
+        '/rpc/{modelHistoryServerId}/model/aggregateresults', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -473,11 +536,12 @@
      * Use the deployed model to classify the input
      * @param {module:ai/skymind/skil/model/Prediction} body The input NDArray
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~classifyCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ClassificationResult}
      */
-    this.classify = function(body, deploymentName, modelName, callback) {
+    this.classify = function(body, deploymentName, versionName, modelName, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -490,6 +554,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling classify");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling classify");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling classify");
@@ -498,6 +567,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -515,7 +585,7 @@
       var returnType = ClassificationResult;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/classify', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -533,11 +603,12 @@
      * Same as /classify but returns the output as Base64NDArrayBody
      * @param {module:ai/skymind/skil/model/Prediction} body The input NDArray
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~classifyarrayCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
-    this.classifyarray = function(body, deploymentName, modelName, callback) {
+    this.classifyarray = function(body, deploymentName, versionName, modelName, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -550,6 +621,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling classifyarray");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling classifyarray");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling classifyarray");
@@ -558,6 +634,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -575,7 +652,7 @@
       var returnType = Base64NDArrayBody;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/classifyarray', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -592,19 +669,25 @@
     /**
      * Use the deployed model to classify the input, using input image file from multipart form data.
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {Object} opts Optional parameters
      * @param {File} opts.image The file to upload.
      * @param {module:ai/skymind/skil/DefaultApi~classifyimageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ClassificationResult}
      */
-    this.classifyimage = function(deploymentName, modelName, opts, callback) {
+    this.classifyimage = function(deploymentName, versionName, modelName, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling classifyimage");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling classifyimage");
       }
 
       // verify the required parameter 'modelName' is set
@@ -615,6 +698,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -633,7 +717,7 @@
       var returnType = ClassificationResult;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/classifyimage', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -649,12 +733,18 @@
 
     /**
      * Creates model History
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/ModelHistoryEntity} modelHistoryEntity The model history entity
      * @param {module:ai/skymind/skil/DefaultApi~createModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelHistoryEntity}
      */
-    this.createModelHistory = function(modelHistoryEntity, callback) {
+    this.createModelHistory = function(modelHistoryServerId, modelHistoryEntity, callback) {
       var postBody = modelHistoryEntity;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling createModelHistory");
+      }
 
       // verify the required parameter 'modelHistoryEntity' is set
       if (modelHistoryEntity === undefined || modelHistoryEntity === null) {
@@ -663,6 +753,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -679,7 +770,7 @@
       var returnType = ModelHistoryEntity;
 
       return this.apiClient.callApi(
-        '/model/revisions', 'POST',
+        '/rpc/{modelHistoryServerId}/model/revisions', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -695,12 +786,18 @@
 
     /**
      * Deletes an experiment, given an experiment entity
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} experimentID the GUID of the experiment to delete
      * @param {module:ai/skymind/skil/DefaultApi~deleteExperimentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/InlineResponse200}
      */
-    this.deleteExperiment = function(experimentID, callback) {
+    this.deleteExperiment = function(modelHistoryServerId, experimentID, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling deleteExperiment");
+      }
 
       // verify the required parameter 'experimentID' is set
       if (experimentID === undefined || experimentID === null) {
@@ -709,6 +806,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'experimentID': experimentID
       };
       var queryParams = {
@@ -726,7 +824,7 @@
       var returnType = InlineResponse200;
 
       return this.apiClient.callApi(
-        '/experiment/{experimentID}', 'DELETE',
+        '/rpc/{modelHistoryServerId}/experiment/{experimentID}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -796,12 +894,18 @@
 
     /**
      * Deletes a model history / workspace, given its ID
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} modelHistoryID the GUID of the model history / workspace to delete
      * @param {module:ai/skymind/skil/DefaultApi~deleteModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/InlineResponse200}
      */
-    this.deleteModelHistory = function(modelHistoryID, callback) {
+    this.deleteModelHistory = function(modelHistoryServerId, modelHistoryID, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling deleteModelHistory");
+      }
 
       // verify the required parameter 'modelHistoryID' is set
       if (modelHistoryID === undefined || modelHistoryID === null) {
@@ -810,6 +914,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'modelHistoryID': modelHistoryID
       };
       var queryParams = {
@@ -827,7 +932,7 @@
       var returnType = InlineResponse200;
 
       return this.apiClient.callApi(
-        '/modelhistory/{modelHistoryID}', 'DELETE',
+        '/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -843,11 +948,17 @@
 
     /**
      * Deletes a model instance, given its ID
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} modelInstanceID GUID of the model instance to delete.
      * @param {module:ai/skymind/skil/DefaultApi~deleteModelInstanceCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteModelInstance = function(modelInstanceID, callback) {
+    this.deleteModelInstance = function(modelHistoryServerId, modelInstanceID, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling deleteModelInstance");
+      }
 
       // verify the required parameter 'modelInstanceID' is set
       if (modelInstanceID === undefined || modelInstanceID === null) {
@@ -856,6 +967,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'modelInstanceID': modelInstanceID
       };
       var queryParams = {
@@ -873,7 +985,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/model/{modelInstanceID}', 'DELETE',
+        '/rpc/{modelHistoryServerId}/model/{modelInstanceID}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1127,11 +1239,12 @@
      * @param {Number} threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
      * @param {File} imageFile the image file to detect objects from
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~detectobjectsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/DetectionResult}
      */
-    this.detectobjects = function(id, needsPreprocessing, threshold, imageFile, deploymentName, modelName, callback) {
+    this.detectobjects = function(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -1159,6 +1272,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling detectobjects");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling detectobjects");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling detectobjects");
@@ -1167,6 +1285,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -1188,7 +1307,7 @@
       var returnType = DetectionResult;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/detectobjects', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1204,12 +1323,18 @@
 
     /**
      * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/BestModel} bestModel Object encapsulating the model ids, eval type and column metric name
      * @param {module:ai/skymind/skil/DefaultApi~getBestModelAmongModelIdsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelInstanceEntity}
      */
-    this.getBestModelAmongModelIds = function(bestModel, callback) {
+    this.getBestModelAmongModelIds = function(modelHistoryServerId, bestModel, callback) {
       var postBody = bestModel;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling getBestModelAmongModelIds");
+      }
 
       // verify the required parameter 'bestModel' is set
       if (bestModel === undefined || bestModel === null) {
@@ -1218,6 +1343,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -1234,7 +1360,7 @@
       var returnType = ModelInstanceEntity;
 
       return this.apiClient.callApi(
-        '/model/best', 'POST',
+        '/rpc/{modelHistoryServerId}/model/best', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1250,12 +1376,18 @@
 
     /**
      * Gets the list of evaluation results entity, given a model instance ID
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} modelInstanceID GUID of the model instance to get evaluation results for.
      * @param {module:ai/skymind/skil/DefaultApi~getEvaluationForModelIDCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:ai/skymind/skil/model/EvaluationResultsEntity>}
      */
-    this.getEvaluationForModelID = function(modelInstanceID, callback) {
+    this.getEvaluationForModelID = function(modelHistoryServerId, modelInstanceID, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling getEvaluationForModelID");
+      }
 
       // verify the required parameter 'modelInstanceID' is set
       if (modelInstanceID === undefined || modelInstanceID === null) {
@@ -1264,6 +1396,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'modelInstanceID': modelInstanceID
       };
       var queryParams = {
@@ -1281,7 +1414,7 @@
       var returnType = [EvaluationResultsEntity];
 
       return this.apiClient.callApi(
-        '/model/revisions/evaluations/{modelInstanceID}', 'GET',
+        '/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1297,12 +1430,18 @@
 
     /**
      * Gets all the examples for a minibatch ID
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} minibatchId The GUID of the minibatch
      * @param {module:ai/skymind/skil/DefaultApi~getExamplesForMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:ai/skymind/skil/model/ExampleEntity>}
      */
-    this.getExamplesForMinibatch = function(minibatchId, callback) {
+    this.getExamplesForMinibatch = function(modelHistoryServerId, minibatchId, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling getExamplesForMinibatch");
+      }
 
       // verify the required parameter 'minibatchId' is set
       if (minibatchId === undefined || minibatchId === null) {
@@ -1311,6 +1450,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'minibatchId': minibatchId
       };
       var queryParams = {
@@ -1328,7 +1468,7 @@
       var returnType = [ExampleEntity];
 
       return this.apiClient.callApi(
-        '/model/example/{minibatchId}', 'GET',
+        '/rpc/{modelHistoryServerId}/model/example/{minibatchId}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1344,12 +1484,18 @@
 
     /**
      * Obtain an experiment&#39;s details, given its ID
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} experimentID the GUID of the experiment to obtain
      * @param {module:ai/skymind/skil/DefaultApi~getExperimentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
      */
-    this.getExperiment = function(experimentID, callback) {
+    this.getExperiment = function(modelHistoryServerId, experimentID, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling getExperiment");
+      }
 
       // verify the required parameter 'experimentID' is set
       if (experimentID === undefined || experimentID === null) {
@@ -1358,6 +1504,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'experimentID': experimentID
       };
       var queryParams = {
@@ -1375,7 +1522,7 @@
       var returnType = ExperimentEntity;
 
       return this.apiClient.callApi(
-        '/experiment/{experimentID}', 'GET',
+        '/rpc/{modelHistoryServerId}/experiment/{experimentID}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1391,12 +1538,18 @@
 
     /**
      * Obtain all experiments for a model history / workspace
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} modelHistoryID the GUID of the model history / workspace
      * @param {module:ai/skymind/skil/DefaultApi~getExperimentsForModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
      */
-    this.getExperimentsForModelHistory = function(modelHistoryID, callback) {
+    this.getExperimentsForModelHistory = function(modelHistoryServerId, modelHistoryID, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling getExperimentsForModelHistory");
+      }
 
       // verify the required parameter 'modelHistoryID' is set
       if (modelHistoryID === undefined || modelHistoryID === null) {
@@ -1405,6 +1558,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'modelHistoryID': modelHistoryID
       };
       var queryParams = {
@@ -1422,7 +1576,7 @@
       var returnType = ExperimentEntity;
 
       return this.apiClient.callApi(
-        '/experiments/{modelHistoryID}', 'GET',
+        '/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1438,12 +1592,18 @@
 
     /**
      * Gets a minibatch for the model
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} minibatchId The GUID of the minibatch
      * @param {module:ai/skymind/skil/DefaultApi~getMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/MinibatchEntity}
      */
-    this.getMinibatch = function(minibatchId, callback) {
+    this.getMinibatch = function(modelHistoryServerId, minibatchId, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling getMinibatch");
+      }
 
       // verify the required parameter 'minibatchId' is set
       if (minibatchId === undefined || minibatchId === null) {
@@ -1452,6 +1612,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'minibatchId': minibatchId
       };
       var queryParams = {
@@ -1469,7 +1630,7 @@
       var returnType = MinibatchEntity;
 
       return this.apiClient.callApi(
-        '/model/minibatch/{minibatchId}', 'GET',
+        '/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1485,12 +1646,18 @@
 
     /**
      * Gets a model history, given its ID
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} modelHistoryID GUID of the model history to get information of.
      * @param {module:ai/skymind/skil/DefaultApi~getModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelHistoryEntity}
      */
-    this.getModelHistory = function(modelHistoryID, callback) {
+    this.getModelHistory = function(modelHistoryServerId, modelHistoryID, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling getModelHistory");
+      }
 
       // verify the required parameter 'modelHistoryID' is set
       if (modelHistoryID === undefined || modelHistoryID === null) {
@@ -1499,6 +1666,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'modelHistoryID': modelHistoryID
       };
       var queryParams = {
@@ -1516,7 +1684,7 @@
       var returnType = ModelHistoryEntity;
 
       return this.apiClient.callApi(
-        '/model/revision/{modelHistoryID}', 'GET',
+        '/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1532,12 +1700,18 @@
 
     /**
      * Gets a model instance, given its ID
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} modelInstanceID GUID of the model instance to get information of.
      * @param {module:ai/skymind/skil/DefaultApi~getModelInstanceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelInstanceEntity}
      */
-    this.getModelInstance = function(modelInstanceID, callback) {
+    this.getModelInstance = function(modelHistoryServerId, modelInstanceID, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling getModelInstance");
+      }
 
       // verify the required parameter 'modelInstanceID' is set
       if (modelInstanceID === undefined || modelInstanceID === null) {
@@ -1546,6 +1720,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'modelInstanceID': modelInstanceID
       };
       var queryParams = {
@@ -1563,7 +1738,7 @@
       var returnType = ModelInstanceEntity;
 
       return this.apiClient.callApi(
-        '/model/{modelInstanceID}', 'GET',
+        '/rpc/{modelHistoryServerId}/model/{modelInstanceID}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1579,12 +1754,18 @@
 
     /**
      * Obtain a list of all the models for an experiment
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} experimentID the GUID of the experiment
      * @param {module:ai/skymind/skil/DefaultApi~getModelsForExperimentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:ai/skymind/skil/model/ModelInstanceEntity>}
      */
-    this.getModelsForExperiment = function(experimentID, callback) {
+    this.getModelsForExperiment = function(modelHistoryServerId, experimentID, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling getModelsForExperiment");
+      }
 
       // verify the required parameter 'experimentID' is set
       if (experimentID === undefined || experimentID === null) {
@@ -1593,6 +1774,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'experimentID': experimentID
       };
       var queryParams = {
@@ -1610,7 +1792,7 @@
       var returnType = [ModelInstanceEntity];
 
       return this.apiClient.callApi(
-        '/experiment/{experimentID}/models', 'GET',
+        '/rpc/{modelHistoryServerId}/experiment/{experimentID}/models', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1627,16 +1809,22 @@
     /**
      * Retrieves the image transform process JSON string
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} imageTransformName ID or name of the deployed image transform
      * @param {module:ai/skymind/skil/DefaultApi~imagetransformprocessGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ImageTransformProcess}
      */
-    this.imagetransformprocessGet = function(deploymentName, imageTransformName, callback) {
+    this.imagetransformprocessGet = function(deploymentName, versionName, imageTransformName, callback) {
       var postBody = null;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling imagetransformprocessGet");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling imagetransformprocessGet");
       }
 
       // verify the required parameter 'imageTransformName' is set
@@ -1647,6 +1835,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'imageTransformName': imageTransformName
       };
       var queryParams = {
@@ -1664,7 +1853,7 @@
       var returnType = ImageTransformProcess;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess', 'GET',
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1681,17 +1870,23 @@
     /**
      * Sets the image transform process through the provided JSON string
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} imageTransformName ID or name of the deployed image transform
      * @param {module:ai/skymind/skil/model/ImageTransformProcess} body The image transform process JSON
      * @param {module:ai/skymind/skil/DefaultApi~imagetransformprocessPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ImageTransformProcess}
      */
-    this.imagetransformprocessPost = function(deploymentName, imageTransformName, body, callback) {
+    this.imagetransformprocessPost = function(deploymentName, versionName, imageTransformName, body, callback) {
       var postBody = body;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling imagetransformprocessPost");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling imagetransformprocessPost");
       }
 
       // verify the required parameter 'imageTransformName' is set
@@ -1707,6 +1902,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'imageTransformName': imageTransformName
       };
       var queryParams = {
@@ -1724,7 +1920,7 @@
       var returnType = ImageTransformProcess;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess', 'POST',
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1742,11 +1938,12 @@
      * Run inference on the input and returns it as a JsonArrayResponse
      * @param {module:ai/skymind/skil/model/Prediction} body The input NDArray
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~jsonarrayCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/JsonArrayResponse}
      */
-    this.jsonarray = function(body, deploymentName, modelName, callback) {
+    this.jsonarray = function(body, deploymentName, versionName, modelName, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -1759,6 +1956,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling jsonarray");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling jsonarray");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling jsonarray");
@@ -1767,6 +1969,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -1784,7 +1987,7 @@
       var returnType = JsonArrayResponse;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/jsonarray', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1802,17 +2005,23 @@
      * Runs knn on the given index with the given k
      * Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} knnName ID or name of the deployed knn
      * @param {module:ai/skymind/skil/model/NearestNeighborRequest} body 
      * @param {module:ai/skymind/skil/DefaultApi~knnCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/NearestNeighborsResults}
      */
-    this.knn = function(deploymentName, knnName, body, callback) {
+    this.knn = function(deploymentName, versionName, knnName, body, callback) {
       var postBody = body;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling knn");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling knn");
       }
 
       // verify the required parameter 'knnName' is set
@@ -1828,6 +2037,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'knnName': knnName
       };
       var queryParams = {
@@ -1845,7 +2055,7 @@
       var returnType = NearestNeighborsResults;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/knn/{knnName}/default/knn', 'POST',
+        '/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1862,17 +2072,23 @@
     /**
      * Run a k nearest neighbors search on a NEW data point
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} knnName ID or name of the deployed knn
      * @param {module:ai/skymind/skil/model/Base64NDArrayBodyKNN} body The input NDArray
      * @param {module:ai/skymind/skil/DefaultApi~knnnewCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/NearestNeighborsResults}
      */
-    this.knnnew = function(deploymentName, knnName, body, callback) {
+    this.knnnew = function(deploymentName, versionName, knnName, body, callback) {
       var postBody = body;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling knnnew");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling knnnew");
       }
 
       // verify the required parameter 'knnName' is set
@@ -1888,6 +2104,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'knnName': knnName
       };
       var queryParams = {
@@ -1905,7 +2122,7 @@
       var returnType = NearestNeighborsResults;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/knn/{knnName}/default/knnnew', 'POST',
+        '/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1945,7 +2162,7 @@
       var returnType = [ExperimentEntity];
 
       return this.apiClient.callApi(
-        '/experiments', 'GET',
+        '/rpc/{modelHistoryServerId}/experiments', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1962,16 +2179,22 @@
     /**
      * Get logs file path
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~logfilepathCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link 'String'}
      */
-    this.logfilepath = function(deploymentName, modelName, callback) {
+    this.logfilepath = function(deploymentName, versionName, modelName, callback) {
       var postBody = null;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling logfilepath");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling logfilepath");
       }
 
       // verify the required parameter 'modelName' is set
@@ -1982,6 +2205,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -1999,7 +2223,7 @@
       var returnType = 'String';
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/logfilepath', 'GET',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2063,11 +2287,12 @@
      * Get logs
      * @param {module:ai/skymind/skil/model/LogRequest} body the the log request
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~logsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/LogBatch}
      */
-    this.logs = function(body, deploymentName, modelName, callback) {
+    this.logs = function(body, deploymentName, versionName, modelName, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -2080,6 +2305,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling logs");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling logs");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling logs");
@@ -2088,6 +2318,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2105,7 +2336,7 @@
       var returnType = LogBatch;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/logs', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2122,16 +2353,22 @@
     /**
      * this method can be used to get the meta data for the current model which set to the server
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~metaGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/MetaData}
      */
-    this.metaGet = function(deploymentName, modelName, callback) {
+    this.metaGet = function(deploymentName, versionName, modelName, callback) {
       var postBody = null;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling metaGet");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling metaGet");
       }
 
       // verify the required parameter 'modelName' is set
@@ -2142,6 +2379,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2159,7 +2397,7 @@
       var returnType = MetaData;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/meta', 'GET',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2177,11 +2415,12 @@
      * This method can be used to set meta data for the current model which is set to the server
      * @param {module:ai/skymind/skil/model/MetaData} body the meta data object
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~metaPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/MetaData}
      */
-    this.metaPost = function(body, deploymentName, modelName, callback) {
+    this.metaPost = function(body, deploymentName, versionName, modelName, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -2194,6 +2433,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling metaPost");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling metaPost");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling metaPost");
@@ -2202,6 +2446,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2219,7 +2464,7 @@
       var returnType = MetaData;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/meta', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2343,19 +2588,25 @@
     /**
      * Set the model to be served
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {Object} opts Optional parameters
      * @param {File} opts.file The model file to upload (.pb file)
      * @param {module:ai/skymind/skil/DefaultApi~modelsetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelStatus}
      */
-    this.modelset = function(deploymentName, modelName, opts, callback) {
+    this.modelset = function(deploymentName, versionName, modelName, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling modelset");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling modelset");
       }
 
       // verify the required parameter 'modelName' is set
@@ -2366,6 +2617,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2384,7 +2636,7 @@
       var returnType = ModelStatus;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/modelset', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2401,19 +2653,25 @@
     /**
      * Update the model to be served
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {Object} opts Optional parameters
      * @param {File} opts.file The model file to update with (.pb file)
      * @param {module:ai/skymind/skil/DefaultApi~modelupdateCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelStatus}
      */
-    this.modelupdate = function(deploymentName, modelName, opts, callback) {
+    this.modelupdate = function(deploymentName, versionName, modelName, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling modelupdate");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling modelupdate");
       }
 
       // verify the required parameter 'modelName' is set
@@ -2424,6 +2682,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2442,7 +2701,7 @@
       var returnType = ModelStatus;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/modelupdate', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2460,11 +2719,12 @@
      * Represents all of the labels for a given classification
      * @param {module:ai/skymind/skil/model/Prediction} body The input NDArray
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~multiclassifyCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/MultiClassClassificationResult}
      */
-    this.multiclassify = function(body, deploymentName, modelName, callback) {
+    this.multiclassify = function(body, deploymentName, versionName, modelName, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -2477,6 +2737,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling multiclassify");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling multiclassify");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling multiclassify");
@@ -2485,6 +2750,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2502,7 +2768,7 @@
       var returnType = MultiClassClassificationResult;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/multiclassify', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2521,11 +2787,12 @@
      * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
      * @param {module:ai/skymind/skil/model/MultiPredictRequest} body The multiple input arrays with mask inputs to run inferences on
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~multipredictCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/MultiPredictResponse}
      */
-    this.multipredict = function(body, deploymentName, modelName, callback) {
+    this.multipredict = function(body, deploymentName, versionName, modelName, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -2538,6 +2805,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling multipredict");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling multipredict");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling multipredict");
@@ -2546,6 +2818,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2563,7 +2836,7 @@
       var returnType = MultiPredictResponse;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/multipredict', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2584,11 +2857,12 @@
      * @param {String} id The id of the request (could be self generated)
      * @param {Boolean} needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~multipredictimageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/MultiPredictResponse}
      */
-    this.multipredictimage = function(file, id, needsPreprocessing, deploymentName, modelName, callback) {
+    this.multipredictimage = function(file, id, needsPreprocessing, deploymentName, versionName, modelName, callback) {
       var postBody = null;
 
       // verify the required parameter 'file' is set
@@ -2611,6 +2885,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling multipredictimage");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling multipredictimage");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling multipredictimage");
@@ -2619,6 +2898,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2639,7 +2919,7 @@
       var returnType = MultiPredictResponse;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2657,11 +2937,12 @@
      * Run inference on the input array.
      * @param {module:ai/skymind/skil/model/Prediction} body The input NDArray
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~predictCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Prediction}
      */
-    this.predict = function(body, deploymentName, modelName, callback) {
+    this.predict = function(body, deploymentName, versionName, modelName, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -2674,6 +2955,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling predict");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling predict");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling predict");
@@ -2682,6 +2968,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2699,7 +2986,7 @@
       var returnType = Prediction;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/predict', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2716,19 +3003,25 @@
     /**
      * Run inference on the input array, using input image file from multipart form data.
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {Object} opts Optional parameters
      * @param {File} opts.image The file to upload.
      * @param {module:ai/skymind/skil/DefaultApi~predictimageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Prediction}
      */
-    this.predictimage = function(deploymentName, modelName, opts, callback) {
+    this.predictimage = function(deploymentName, versionName, modelName, opts, callback) {
       opts = opts || {};
       var postBody = null;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling predictimage");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling predictimage");
       }
 
       // verify the required parameter 'modelName' is set
@@ -2739,6 +3032,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2757,7 +3051,7 @@
       var returnType = Prediction;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/predictimage', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2775,11 +3069,12 @@
      * Preprocesses the input and run inference on it
      * @param {Array.<module:ai/skymind/skil/model/String>} body The input array
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~predictwithpreprocessCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Prediction}
      */
-    this.predictwithpreprocess = function(body, deploymentName, modelName, callback) {
+    this.predictwithpreprocess = function(body, deploymentName, versionName, modelName, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -2792,6 +3087,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling predictwithpreprocess");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling predictwithpreprocess");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling predictwithpreprocess");
@@ -2800,6 +3100,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2817,7 +3118,7 @@
       var returnType = Prediction;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2835,11 +3136,12 @@
      * Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
      * @param {Array.<module:ai/skymind/skil/model/String>} body The input array
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~predictwithpreprocessjsonCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/JsonArrayResponse}
      */
-    this.predictwithpreprocessjson = function(body, deploymentName, modelName, callback) {
+    this.predictwithpreprocessjson = function(body, deploymentName, versionName, modelName, callback) {
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -2852,6 +3154,11 @@
         throw new Error("Missing the required parameter 'deploymentName' when calling predictwithpreprocessjson");
       }
 
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling predictwithpreprocessjson");
+      }
+
       // verify the required parameter 'modelName' is set
       if (modelName === undefined || modelName === null) {
         throw new Error("Missing the required parameter 'modelName' when calling predictwithpreprocessjson");
@@ -2860,6 +3167,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'modelName': modelName
       };
       var queryParams = {
@@ -2877,7 +3185,7 @@
       var returnType = JsonArrayResponse;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson', 'POST',
+        '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2955,19 +3263,25 @@
      * Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
      * Takes a batch of SingleCSVRecord object and transforms it into the desired format
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {Object} opts Optional parameters
      * @param {module:ai/skymind/skil/model/BatchCSVRecord} opts.batchCSVRecord The input batch of record arrays
      * @param {module:ai/skymind/skil/DefaultApi~transformCsvCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/BatchCSVRecord}
      */
-    this.transformCsv = function(deploymentName, transformName, opts, callback) {
+    this.transformCsv = function(deploymentName, versionName, transformName, opts, callback) {
       opts = opts || {};
       var postBody = opts['batchCSVRecord'];
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling transformCsv");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling transformCsv");
       }
 
       // verify the required parameter 'transformName' is set
@@ -2978,6 +3292,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'transformName': transformName
       };
       var queryParams = {
@@ -2995,7 +3310,7 @@
       var returnType = BatchCSVRecord;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{transformName}/default/transform', 'POST',
+        '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3013,19 +3328,25 @@
      * Takes a batch input arrays and transforms it
      * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {Object} opts Optional parameters
      * @param {module:ai/skymind/skil/model/BatchCSVRecord} opts.batchCSVRecord The input batch of record arrays
      * @param {module:ai/skymind/skil/DefaultApi~transformarrayCsvCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
-    this.transformarrayCsv = function(deploymentName, transformName, opts, callback) {
+    this.transformarrayCsv = function(deploymentName, versionName, transformName, opts, callback) {
       opts = opts || {};
       var postBody = opts['batchCSVRecord'];
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling transformarrayCsv");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling transformarrayCsv");
       }
 
       // verify the required parameter 'transformName' is set
@@ -3036,6 +3357,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'transformName': transformName
       };
       var queryParams = {
@@ -3053,7 +3375,7 @@
       var returnType = Base64NDArrayBody;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray', 'POST',
+        '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3071,17 +3393,23 @@
      * Takes a batch of images uri and transforms it and returns Base64NDArrayBody
      * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} imageTransformName ID or name of the deployed image transform
      * @param {module:ai/skymind/skil/model/BatchImageRecord} batchImageRecord The input batch of record arrays
      * @param {module:ai/skymind/skil/DefaultApi~transformarrayImageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
-    this.transformarrayImage = function(deploymentName, imageTransformName, batchImageRecord, callback) {
+    this.transformarrayImage = function(deploymentName, versionName, imageTransformName, batchImageRecord, callback) {
       var postBody = batchImageRecord;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling transformarrayImage");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling transformarrayImage");
       }
 
       // verify the required parameter 'imageTransformName' is set
@@ -3097,6 +3425,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'imageTransformName': imageTransformName
       };
       var queryParams = {
@@ -3114,7 +3443,7 @@
       var returnType = Base64NDArrayBody;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray', 'POST',
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3132,17 +3461,23 @@
      * Takes multiple multipart image file to transform and returns Base64NDArrayBody
      * Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} imageTransformName ID or name of the deployed image transform
      * @param {Array.<Blob>} files The image files to upload
      * @param {module:ai/skymind/skil/DefaultApi~transformimageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
-    this.transformimage = function(deploymentName, imageTransformName, files, callback) {
+    this.transformimage = function(deploymentName, versionName, imageTransformName, files, callback) {
       var postBody = null;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling transformimage");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling transformimage");
       }
 
       // verify the required parameter 'imageTransformName' is set
@@ -3158,6 +3493,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'imageTransformName': imageTransformName
       };
       var queryParams = {
@@ -3176,7 +3512,7 @@
       var returnType = Base64NDArrayBody;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage', 'POST',
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3194,19 +3530,25 @@
      * Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
      * Takes a SingleCSVRecord object and transforms it into the desired format
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {Object} opts Optional parameters
      * @param {module:ai/skymind/skil/model/SingleCSVRecord} opts.singleCSVRecord The input record array
      * @param {module:ai/skymind/skil/DefaultApi~transformincrementalCsvCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/SingleCSVRecord}
      */
-    this.transformincrementalCsv = function(deploymentName, transformName, opts, callback) {
+    this.transformincrementalCsv = function(deploymentName, versionName, transformName, opts, callback) {
       opts = opts || {};
       var postBody = opts['singleCSVRecord'];
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling transformincrementalCsv");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling transformincrementalCsv");
       }
 
       // verify the required parameter 'transformName' is set
@@ -3217,6 +3559,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'transformName': transformName
       };
       var queryParams = {
@@ -3234,7 +3577,7 @@
       var returnType = SingleCSVRecord;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental', 'POST',
+        '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3252,19 +3595,25 @@
      * Same as /transformincremental but returns Base64NDArrayBody
      * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {Object} opts Optional parameters
      * @param {module:ai/skymind/skil/model/SingleCSVRecord} opts.singleCSVRecord The input record array
      * @param {module:ai/skymind/skil/DefaultApi~transformincrementalarrayCsvCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
-    this.transformincrementalarrayCsv = function(deploymentName, transformName, opts, callback) {
+    this.transformincrementalarrayCsv = function(deploymentName, versionName, transformName, opts, callback) {
       opts = opts || {};
       var postBody = opts['singleCSVRecord'];
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling transformincrementalarrayCsv");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling transformincrementalarrayCsv");
       }
 
       // verify the required parameter 'transformName' is set
@@ -3275,6 +3624,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'transformName': transformName
       };
       var queryParams = {
@@ -3292,7 +3642,7 @@
       var returnType = Base64NDArrayBody;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray', 'POST',
+        '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3310,17 +3660,23 @@
      * Takes SingleImageRecord to transform and returns Base64NDArrayBody
      * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} imageTransformName ID or name of the deployed image transform
      * @param {module:ai/skymind/skil/model/SingleImageRecord} singleImageRecord The input record array
      * @param {module:ai/skymind/skil/DefaultApi~transformincrementalarrayImageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
-    this.transformincrementalarrayImage = function(deploymentName, imageTransformName, singleImageRecord, callback) {
+    this.transformincrementalarrayImage = function(deploymentName, versionName, imageTransformName, singleImageRecord, callback) {
       var postBody = singleImageRecord;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling transformincrementalarrayImage");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling transformincrementalarrayImage");
       }
 
       // verify the required parameter 'imageTransformName' is set
@@ -3336,6 +3692,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'imageTransformName': imageTransformName
       };
       var queryParams = {
@@ -3353,7 +3710,7 @@
       var returnType = Base64NDArrayBody;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray', 'POST',
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3371,17 +3728,23 @@
      * Takes a single multipart image file to transform and returns Base64NDArrayBody
      * Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} imageTransformName ID or name of the deployed image transform
      * @param {File} file The image file to upload
      * @param {module:ai/skymind/skil/DefaultApi~transformincrementalimageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
-    this.transformincrementalimage = function(deploymentName, imageTransformName, file, callback) {
+    this.transformincrementalimage = function(deploymentName, versionName, imageTransformName, file, callback) {
       var postBody = null;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling transformincrementalimage");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling transformincrementalimage");
       }
 
       // verify the required parameter 'imageTransformName' is set
@@ -3397,6 +3760,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'imageTransformName': imageTransformName
       };
       var queryParams = {
@@ -3415,7 +3779,7 @@
       var returnType = Base64NDArrayBody;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage', 'POST',
+        '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3433,16 +3797,22 @@
      * Gets the JSON string of the deployed transform process
      * Retrieves the JSON string of the deployed transform process 
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {module:ai/skymind/skil/DefaultApi~transformprocessGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/TransformProcess}
      */
-    this.transformprocessGet = function(deploymentName, transformName, callback) {
+    this.transformprocessGet = function(deploymentName, versionName, transformName, callback) {
       var postBody = null;
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling transformprocessGet");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling transformprocessGet");
       }
 
       // verify the required parameter 'transformName' is set
@@ -3453,6 +3823,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'transformName': transformName
       };
       var queryParams = {
@@ -3470,7 +3841,7 @@
       var returnType = TransformProcess;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess', 'GET',
+        '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3488,18 +3859,24 @@
      * Sets the deployed transform process through the provided JSON string
      * Sets the transform process with the provided JSON string
      * @param {String} deploymentName Name of the deployment group
+     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {Object} opts Optional parameters
      * @param {module:ai/skymind/skil/model/TransformProcess} opts.transformProcess The transform process to set
      * @param {module:ai/skymind/skil/DefaultApi~transformprocessPostCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.transformprocessPost = function(deploymentName, transformName, opts, callback) {
+    this.transformprocessPost = function(deploymentName, versionName, transformName, opts, callback) {
       opts = opts || {};
       var postBody = opts['transformProcess'];
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
         throw new Error("Missing the required parameter 'deploymentName' when calling transformprocessPost");
+      }
+
+      // verify the required parameter 'versionName' is set
+      if (versionName === undefined || versionName === null) {
+        throw new Error("Missing the required parameter 'versionName' when calling transformprocessPost");
       }
 
       // verify the required parameter 'transformName' is set
@@ -3510,6 +3887,7 @@
 
       var pathParams = {
         'deploymentName': deploymentName,
+        'versionName': versionName,
         'transformName': transformName
       };
       var queryParams = {
@@ -3527,7 +3905,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess', 'POST',
+        '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3543,12 +3921,18 @@
 
     /**
      * Updates the best model for an experiment
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/UpdateBestModel} updateBestModel Model encapsulating the experiment id to update and the best model id.
      * @param {module:ai/skymind/skil/DefaultApi~updateBestModelForExperimentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
      */
-    this.updateBestModelForExperiment = function(updateBestModel, callback) {
+    this.updateBestModelForExperiment = function(modelHistoryServerId, updateBestModel, callback) {
       var postBody = updateBestModel;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling updateBestModelForExperiment");
+      }
 
       // verify the required parameter 'updateBestModel' is set
       if (updateBestModel === undefined || updateBestModel === null) {
@@ -3557,6 +3941,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -3573,7 +3958,7 @@
       var returnType = ExperimentEntity;
 
       return this.apiClient.callApi(
-        '/experiment/best', 'POST',
+        '/rpc/{modelHistoryServerId}/experiment/best', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3589,13 +3974,19 @@
 
     /**
      * Updates an experiment, given an experiment entity
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} experimentID the GUID of the experiment to update
      * @param {module:ai/skymind/skil/model/ExperimentEntity} experimentEntity The experiment entity to update with
      * @param {module:ai/skymind/skil/DefaultApi~updateExperimentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
      */
-    this.updateExperiment = function(experimentID, experimentEntity, callback) {
+    this.updateExperiment = function(modelHistoryServerId, experimentID, experimentEntity, callback) {
       var postBody = experimentEntity;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling updateExperiment");
+      }
 
       // verify the required parameter 'experimentID' is set
       if (experimentID === undefined || experimentID === null) {
@@ -3609,6 +4000,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'experimentID': experimentID
       };
       var queryParams = {
@@ -3626,7 +4018,7 @@
       var returnType = ExperimentEntity;
 
       return this.apiClient.callApi(
-        '/experiment/{experimentID}', 'PUT',
+        '/rpc/{modelHistoryServerId}/experiment/{experimentID}', 'PUT',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -3642,13 +4034,19 @@
 
     /**
      * Update a model history / workspace
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
      * @param {String} modelHistoryID the GUID of the model history / workspace to update
      * @param {module:ai/skymind/skil/model/AddModelHistoryRequest} updateModelHistoryRequest The model history request object
      * @param {module:ai/skymind/skil/DefaultApi~updateModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelHistoryEntity}
      */
-    this.updateModelHistory = function(modelHistoryID, updateModelHistoryRequest, callback) {
+    this.updateModelHistory = function(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest, callback) {
       var postBody = updateModelHistoryRequest;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling updateModelHistory");
+      }
 
       // verify the required parameter 'modelHistoryID' is set
       if (modelHistoryID === undefined || modelHistoryID === null) {
@@ -3662,6 +4060,7 @@
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId,
         'modelHistoryID': modelHistoryID
       };
       var queryParams = {
@@ -3679,7 +4078,7 @@
       var returnType = ModelHistoryEntity;
 
       return this.apiClient.callApi(
-        '/modelhistory/{modelHistoryID}', 'POST',
+        '/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

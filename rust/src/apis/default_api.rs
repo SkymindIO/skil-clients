@@ -35,80 +35,80 @@ impl<C: hyper::client::Connect> DefaultApiClient<C> {
 }
 
 pub trait DefaultApi {
-    fn add_evaluation_result(&self, evaluation_results_entity: ::models::EvaluationResultsEntity) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>>;
-    fn add_example_for_batch(&self, add_example_request: ::models::AddExampleRequest) -> Box<Future<Item = ::models::AddExampleRequest, Error = Error<serde_json::Value>>>;
-    fn add_example_to_minibatch(&self, example_entity: ::models::ExampleEntity) -> Box<Future<Item = ::models::ExampleEntity, Error = Error<serde_json::Value>>>;
-    fn add_experiment(&self, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
-    fn add_minibatch(&self, minibatch_entity: ::models::MinibatchEntity) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>>;
-    fn add_model_feedback(&self, model_feed_back_request: ::models::ModelFeedBackRequest) -> Box<Future<Item = ::models::ModelFeedBackRequest, Error = Error<serde_json::Value>>>;
-    fn add_model_history(&self, add_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
-    fn add_model_instance(&self, model_instance_entity: ::models::ModelInstanceEntity) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>>;
-    fn aggregate_model_results(&self, aggregate_prediction: ::models::AggregatePrediction) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>>;
-    fn classify(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>>;
-    fn classifyarray(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
-    fn classifyimage(&self, deployment_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>>;
-    fn create_model_history(&self, model_history_entity: ::models::ModelHistoryEntity) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
-    fn delete_experiment(&self, experiment_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
+    fn add_evaluation_result(&self, model_history_server_id: &str, evaluation_results_entity: ::models::EvaluationResultsEntity) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>>;
+    fn add_example_for_batch(&self, model_history_server_id: &str, add_example_request: ::models::AddExampleRequest) -> Box<Future<Item = ::models::AddExampleRequest, Error = Error<serde_json::Value>>>;
+    fn add_example_to_minibatch(&self, model_history_server_id: &str, example_entity: ::models::ExampleEntity) -> Box<Future<Item = ::models::ExampleEntity, Error = Error<serde_json::Value>>>;
+    fn add_experiment(&self, model_history_server_id: &str, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
+    fn add_minibatch(&self, model_history_server_id: &str, minibatch_entity: ::models::MinibatchEntity) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>>;
+    fn add_model_feedback(&self, model_history_server_id: &str, model_feed_back_request: ::models::ModelFeedBackRequest) -> Box<Future<Item = ::models::ModelFeedBackRequest, Error = Error<serde_json::Value>>>;
+    fn add_model_history(&self, model_history_server_id: &str, add_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
+    fn add_model_instance(&self, model_history_server_id: &str, model_instance_entity: ::models::ModelInstanceEntity) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>>;
+    fn aggregate_model_results(&self, model_history_server_id: &str, aggregate_prediction: ::models::AggregatePrediction) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>>;
+    fn classify(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>>;
+    fn classifyarray(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
+    fn classifyimage(&self, deployment_name: &str, version_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>>;
+    fn create_model_history(&self, model_history_server_id: &str, model_history_entity: ::models::ModelHistoryEntity) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
+    fn delete_experiment(&self, model_history_server_id: &str, experiment_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
     fn delete_model(&self, deployment_id: &str, model_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
-    fn delete_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
-    fn delete_model_instance(&self, model_instance_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn delete_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
+    fn delete_model_instance(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn deploy_model(&self, deployment_id: &str, body: ::models::ImportModelRequest) -> Box<Future<Item = ::models::ModelEntity, Error = Error<serde_json::Value>>>;
     fn deployment_create(&self, body: ::models::CreateDeploymentRequest) -> Box<Future<Item = ::models::DeploymentResponse, Error = Error<serde_json::Value>>>;
     fn deployment_delete(&self, deployment_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
     fn deployment_get(&self, deployment_id: &str) -> Box<Future<Item = ::models::DeploymentResponse, Error = Error<serde_json::Value>>>;
     fn deployments(&self, ) -> Box<Future<Item = Vec<::models::DeploymentResponse>, Error = Error<serde_json::Value>>>;
-    fn detectobjects(&self, id: &str, needs_preprocessing: bool, threshold: f32, image_file: ::models::File, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::DetectionResult, Error = Error<serde_json::Value>>>;
-    fn get_best_model_among_model_ids(&self, best_model: ::models::BestModel) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>>;
-    fn get_evaluation_for_model_id(&self, model_instance_id: &str) -> Box<Future<Item = Vec<::models::EvaluationResultsEntity>, Error = Error<serde_json::Value>>>;
-    fn get_examples_for_minibatch(&self, minibatch_id: &str) -> Box<Future<Item = Vec<::models::ExampleEntity>, Error = Error<serde_json::Value>>>;
-    fn get_experiment(&self, experiment_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
-    fn get_experiments_for_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
-    fn get_minibatch(&self, minibatch_id: &str) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>>;
-    fn get_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
-    fn get_model_instance(&self, model_instance_id: &str) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>>;
-    fn get_models_for_experiment(&self, experiment_id: &str) -> Box<Future<Item = Vec<::models::ModelInstanceEntity>, Error = Error<serde_json::Value>>>;
-    fn imagetransformprocess_get(&self, deployment_name: &str, image_transform_name: &str) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>>;
-    fn imagetransformprocess_post(&self, deployment_name: &str, image_transform_name: &str, body: ::models::ImageTransformProcess) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>>;
-    fn jsonarray(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>>;
-    fn knn(&self, deployment_name: &str, knn_name: &str, body: ::models::NearestNeighborRequest) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>>;
-    fn knnnew(&self, deployment_name: &str, knn_name: &str, body: ::models::Base64NdArrayBodyKnn) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>>;
+    fn detectobjects(&self, id: &str, needs_preprocessing: bool, threshold: f32, image_file: ::models::File, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::DetectionResult, Error = Error<serde_json::Value>>>;
+    fn get_best_model_among_model_ids(&self, model_history_server_id: &str, best_model: ::models::BestModel) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>>;
+    fn get_evaluation_for_model_id(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = Vec<::models::EvaluationResultsEntity>, Error = Error<serde_json::Value>>>;
+    fn get_examples_for_minibatch(&self, model_history_server_id: &str, minibatch_id: &str) -> Box<Future<Item = Vec<::models::ExampleEntity>, Error = Error<serde_json::Value>>>;
+    fn get_experiment(&self, model_history_server_id: &str, experiment_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
+    fn get_experiments_for_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
+    fn get_minibatch(&self, model_history_server_id: &str, minibatch_id: &str) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>>;
+    fn get_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
+    fn get_model_instance(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>>;
+    fn get_models_for_experiment(&self, model_history_server_id: &str, experiment_id: &str) -> Box<Future<Item = Vec<::models::ModelInstanceEntity>, Error = Error<serde_json::Value>>>;
+    fn imagetransformprocess_get(&self, deployment_name: &str, version_name: &str, image_transform_name: &str) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>>;
+    fn imagetransformprocess_post(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, body: ::models::ImageTransformProcess) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>>;
+    fn jsonarray(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>>;
+    fn knn(&self, deployment_name: &str, version_name: &str, knn_name: &str, body: ::models::NearestNeighborRequest) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>>;
+    fn knnnew(&self, deployment_name: &str, version_name: &str, knn_name: &str, body: ::models::Base64NdArrayBodyKnn) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>>;
     fn list_all_experiments(&self, ) -> Box<Future<Item = Vec<::models::ExperimentEntity>, Error = Error<serde_json::Value>>>;
-    fn logfilepath(&self, deployment_name: &str, model_name: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn logfilepath(&self, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn login(&self, credentials: ::models::Credentials) -> Box<Future<Item = ::models::Token, Error = Error<serde_json::Value>>>;
-    fn logs(&self, body: ::models::LogRequest, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::LogBatch, Error = Error<serde_json::Value>>>;
-    fn meta_get(&self, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error<serde_json::Value>>>;
-    fn meta_post(&self, body: ::models::MetaData, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error<serde_json::Value>>>;
+    fn logs(&self, body: ::models::LogRequest, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::LogBatch, Error = Error<serde_json::Value>>>;
+    fn meta_get(&self, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error<serde_json::Value>>>;
+    fn meta_post(&self, body: ::models::MetaData, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error<serde_json::Value>>>;
     fn model_state_change(&self, deployment_id: &str, model_id: &str, body: ::models::SetState) -> Box<Future<Item = ::models::ModelEntity, Error = Error<serde_json::Value>>>;
     fn models(&self, deployment_id: &str) -> Box<Future<Item = Vec<::models::ModelEntity>, Error = Error<serde_json::Value>>>;
-    fn modelset(&self, deployment_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>>;
-    fn modelupdate(&self, deployment_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>>;
-    fn multiclassify(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiClassClassificationResult, Error = Error<serde_json::Value>>>;
-    fn multipredict(&self, body: ::models::MultiPredictRequest, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error<serde_json::Value>>>;
-    fn multipredictimage(&self, file: ::models::File, id: &str, needs_preprocessing: bool, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error<serde_json::Value>>>;
-    fn predict(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>>;
-    fn predictimage(&self, deployment_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>>;
-    fn predictwithpreprocess(&self, body: Vec<String>, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>>;
-    fn predictwithpreprocessjson(&self, body: Vec<String>, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>>;
+    fn modelset(&self, deployment_name: &str, version_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>>;
+    fn modelupdate(&self, deployment_name: &str, version_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>>;
+    fn multiclassify(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiClassClassificationResult, Error = Error<serde_json::Value>>>;
+    fn multipredict(&self, body: ::models::MultiPredictRequest, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error<serde_json::Value>>>;
+    fn multipredictimage(&self, file: ::models::File, id: &str, needs_preprocessing: bool, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error<serde_json::Value>>>;
+    fn predict(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>>;
+    fn predictimage(&self, deployment_name: &str, version_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>>;
+    fn predictwithpreprocess(&self, body: Vec<String>, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>>;
+    fn predictwithpreprocessjson(&self, body: Vec<String>, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>>;
     fn reimport_model(&self, deployment_id: &str, model_id: &str, body: ::models::ImportModelRequest) -> Box<Future<Item = ::models::ModelEntity, Error = Error<serde_json::Value>>>;
-    fn transform_csv(&self, deployment_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::BatchCsvRecord, Error = Error<serde_json::Value>>>;
-    fn transformarray_csv(&self, deployment_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
-    fn transformarray_image(&self, deployment_name: &str, image_transform_name: &str, batch_image_record: ::models::BatchImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
-    fn transformimage(&self, deployment_name: &str, image_transform_name: &str, files: Vec<Vec<u8>>) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
-    fn transformincremental_csv(&self, deployment_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::SingleCsvRecord, Error = Error<serde_json::Value>>>;
-    fn transformincrementalarray_csv(&self, deployment_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
-    fn transformincrementalarray_image(&self, deployment_name: &str, image_transform_name: &str, single_image_record: ::models::SingleImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
-    fn transformincrementalimage(&self, deployment_name: &str, image_transform_name: &str, file: ::models::File) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
-    fn transformprocess_get(&self, deployment_name: &str, transform_name: &str) -> Box<Future<Item = ::models::TransformProcess, Error = Error<serde_json::Value>>>;
-    fn transformprocess_post(&self, deployment_name: &str, transform_name: &str, transform_process: ::models::TransformProcess) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn update_best_model_for_experiment(&self, update_best_model: ::models::UpdateBestModel) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
-    fn update_experiment(&self, experiment_id: &str, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
-    fn update_model_history(&self, model_history_id: &str, update_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
+    fn transform_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::BatchCsvRecord, Error = Error<serde_json::Value>>>;
+    fn transformarray_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
+    fn transformarray_image(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, batch_image_record: ::models::BatchImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
+    fn transformimage(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, files: Vec<Vec<u8>>) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
+    fn transformincremental_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::SingleCsvRecord, Error = Error<serde_json::Value>>>;
+    fn transformincrementalarray_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
+    fn transformincrementalarray_image(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, single_image_record: ::models::SingleImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
+    fn transformincrementalimage(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, file: ::models::File) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
+    fn transformprocess_get(&self, deployment_name: &str, version_name: &str, transform_name: &str) -> Box<Future<Item = ::models::TransformProcess, Error = Error<serde_json::Value>>>;
+    fn transformprocess_post(&self, deployment_name: &str, version_name: &str, transform_name: &str, transform_process: ::models::TransformProcess) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn update_best_model_for_experiment(&self, model_history_server_id: &str, update_best_model: ::models::UpdateBestModel) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
+    fn update_experiment(&self, model_history_server_id: &str, experiment_id: &str, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
+    fn update_model_history(&self, model_history_server_id: &str, model_history_id: &str, update_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
     fn upload(&self, file: ::models::File) -> Box<Future<Item = ::models::FileUploadList, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
-    fn add_evaluation_result(&self, evaluation_results_entity: ::models::EvaluationResultsEntity) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>> {
+    fn add_evaluation_result(&self, model_history_server_id: &str, evaluation_results_entity: ::models::EvaluationResultsEntity) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -130,7 +130,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/revisions/evaluations/?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/revisions/evaluations/?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -178,7 +178,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn add_example_for_batch(&self, add_example_request: ::models::AddExampleRequest) -> Box<Future<Item = ::models::AddExampleRequest, Error = Error<serde_json::Value>>> {
+    fn add_example_for_batch(&self, model_history_server_id: &str, add_example_request: ::models::AddExampleRequest) -> Box<Future<Item = ::models::AddExampleRequest, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -200,7 +200,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/exampleForBatch?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/exampleForBatch?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -248,7 +248,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn add_example_to_minibatch(&self, example_entity: ::models::ExampleEntity) -> Box<Future<Item = ::models::ExampleEntity, Error = Error<serde_json::Value>>> {
+    fn add_example_to_minibatch(&self, model_history_server_id: &str, example_entity: ::models::ExampleEntity) -> Box<Future<Item = ::models::ExampleEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -270,7 +270,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/example?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/example?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -318,7 +318,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn add_experiment(&self, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>> {
+    fn add_experiment(&self, model_history_server_id: &str, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -340,7 +340,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/experiment?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/experiment?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -388,7 +388,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn add_minibatch(&self, minibatch_entity: ::models::MinibatchEntity) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>> {
+    fn add_minibatch(&self, model_history_server_id: &str, minibatch_entity: ::models::MinibatchEntity) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -410,7 +410,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/minibatch?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/minibatch?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -458,7 +458,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn add_model_feedback(&self, model_feed_back_request: ::models::ModelFeedBackRequest) -> Box<Future<Item = ::models::ModelFeedBackRequest, Error = Error<serde_json::Value>>> {
+    fn add_model_feedback(&self, model_history_server_id: &str, model_feed_back_request: ::models::ModelFeedBackRequest) -> Box<Future<Item = ::models::ModelFeedBackRequest, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -480,7 +480,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/feedback?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/feedback?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -528,7 +528,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn add_model_history(&self, add_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>> {
+    fn add_model_history(&self, model_history_server_id: &str, add_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -550,7 +550,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/modelhistory?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/modelhistory?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -598,7 +598,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn add_model_instance(&self, model_instance_entity: ::models::ModelInstanceEntity) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>> {
+    fn add_model_instance(&self, model_history_server_id: &str, model_instance_entity: ::models::ModelInstanceEntity) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -620,7 +620,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -668,7 +668,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn aggregate_model_results(&self, aggregate_prediction: ::models::AggregatePrediction) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>> {
+    fn aggregate_model_results(&self, model_history_server_id: &str, aggregate_prediction: ::models::AggregatePrediction) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -690,7 +690,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/aggregateresults?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/aggregateresults?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -738,7 +738,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn classify(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>> {
+    fn classify(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -760,7 +760,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/classify?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -808,7 +808,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn classifyarray(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
+    fn classifyarray(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -830,7 +830,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/classifyarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -878,7 +878,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn classifyimage(&self, deployment_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>> {
+    fn classifyimage(&self, deployment_name: &str, version_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -900,7 +900,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/classifyimage?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -944,7 +944,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn create_model_history(&self, model_history_entity: ::models::ModelHistoryEntity) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>> {
+    fn create_model_history(&self, model_history_server_id: &str, model_history_entity: ::models::ModelHistoryEntity) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -966,7 +966,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/revisions?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/revisions?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -1014,7 +1014,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn delete_experiment(&self, experiment_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>> {
+    fn delete_experiment(&self, model_history_server_id: &str, experiment_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1036,7 +1036,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/experiment/{experimentID}?{}", configuration.base_path, query_string, experimentID=experiment_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/experiment/{experimentID}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, experimentID=experiment_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -1146,7 +1146,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn delete_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>> {
+    fn delete_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1168,7 +1168,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/modelhistory/{modelHistoryID}?{}", configuration.base_path, query_string, modelHistoryID=model_history_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, modelHistoryID=model_history_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -1212,7 +1212,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn delete_model_instance(&self, model_instance_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn delete_model_instance(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1234,7 +1234,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/{modelInstanceID}?{}", configuration.base_path, query_string, modelInstanceID=model_instance_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/{modelInstanceID}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, modelInstanceID=model_instance_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -1613,7 +1613,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn detectobjects(&self, id: &str, needs_preprocessing: bool, threshold: f32, image_file: ::models::File, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::DetectionResult, Error = Error<serde_json::Value>>> {
+    fn detectobjects(&self, id: &str, needs_preprocessing: bool, threshold: f32, image_file: ::models::File, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::DetectionResult, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1635,7 +1635,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/detectobjects?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -1679,7 +1679,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_best_model_among_model_ids(&self, best_model: ::models::BestModel) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>> {
+    fn get_best_model_among_model_ids(&self, model_history_server_id: &str, best_model: ::models::BestModel) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1701,7 +1701,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/best?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/best?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -1749,7 +1749,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_evaluation_for_model_id(&self, model_instance_id: &str) -> Box<Future<Item = Vec<::models::EvaluationResultsEntity>, Error = Error<serde_json::Value>>> {
+    fn get_evaluation_for_model_id(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = Vec<::models::EvaluationResultsEntity>, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1771,7 +1771,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/revisions/evaluations/{modelInstanceID}?{}", configuration.base_path, query_string, modelInstanceID=model_instance_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, modelInstanceID=model_instance_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -1815,7 +1815,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_examples_for_minibatch(&self, minibatch_id: &str) -> Box<Future<Item = Vec<::models::ExampleEntity>, Error = Error<serde_json::Value>>> {
+    fn get_examples_for_minibatch(&self, model_history_server_id: &str, minibatch_id: &str) -> Box<Future<Item = Vec<::models::ExampleEntity>, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1837,7 +1837,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/example/{minibatchId}?{}", configuration.base_path, query_string, minibatchId=minibatch_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/example/{minibatchId}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, minibatchId=minibatch_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -1881,7 +1881,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_experiment(&self, experiment_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>> {
+    fn get_experiment(&self, model_history_server_id: &str, experiment_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1903,7 +1903,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/experiment/{experimentID}?{}", configuration.base_path, query_string, experimentID=experiment_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/experiment/{experimentID}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, experimentID=experiment_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -1947,7 +1947,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_experiments_for_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>> {
+    fn get_experiments_for_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1969,7 +1969,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/experiments/{modelHistoryID}?{}", configuration.base_path, query_string, modelHistoryID=model_history_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, modelHistoryID=model_history_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2013,7 +2013,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_minibatch(&self, minibatch_id: &str) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>> {
+    fn get_minibatch(&self, model_history_server_id: &str, minibatch_id: &str) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2035,7 +2035,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/minibatch/{minibatchId}?{}", configuration.base_path, query_string, minibatchId=minibatch_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, minibatchId=minibatch_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2079,7 +2079,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_model_history(&self, model_history_id: &str) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>> {
+    fn get_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2101,7 +2101,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/revision/{modelHistoryID}?{}", configuration.base_path, query_string, modelHistoryID=model_history_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, modelHistoryID=model_history_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2145,7 +2145,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_model_instance(&self, model_instance_id: &str) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>> {
+    fn get_model_instance(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2167,7 +2167,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/model/{modelInstanceID}?{}", configuration.base_path, query_string, modelInstanceID=model_instance_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/model/{modelInstanceID}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, modelInstanceID=model_instance_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2211,7 +2211,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_models_for_experiment(&self, experiment_id: &str) -> Box<Future<Item = Vec<::models::ModelInstanceEntity>, Error = Error<serde_json::Value>>> {
+    fn get_models_for_experiment(&self, model_history_server_id: &str, experiment_id: &str) -> Box<Future<Item = Vec<::models::ModelInstanceEntity>, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2233,7 +2233,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/experiment/{experimentID}/models?{}", configuration.base_path, query_string, experimentID=experiment_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/experiment/{experimentID}/models?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, experimentID=experiment_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2277,7 +2277,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn imagetransformprocess_get(&self, deployment_name: &str, image_transform_name: &str) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>> {
+    fn imagetransformprocess_get(&self, deployment_name: &str, version_name: &str, image_transform_name: &str) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2299,7 +2299,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, imageTransformName=image_transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, imageTransformName=image_transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2343,7 +2343,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn imagetransformprocess_post(&self, deployment_name: &str, image_transform_name: &str, body: ::models::ImageTransformProcess) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>> {
+    fn imagetransformprocess_post(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, body: ::models::ImageTransformProcess) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2365,7 +2365,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, imageTransformName=image_transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, imageTransformName=image_transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2413,7 +2413,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn jsonarray(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>> {
+    fn jsonarray(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2435,7 +2435,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/jsonarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2483,7 +2483,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn knn(&self, deployment_name: &str, knn_name: &str, body: ::models::NearestNeighborRequest) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>> {
+    fn knn(&self, deployment_name: &str, version_name: &str, knn_name: &str, body: ::models::NearestNeighborRequest) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2505,7 +2505,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/knn/{knnName}/default/knn?{}", configuration.base_path, query_string, deploymentName=deployment_name, knnName=knn_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, knnName=knn_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2553,7 +2553,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn knnnew(&self, deployment_name: &str, knn_name: &str, body: ::models::Base64NdArrayBodyKnn) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>> {
+    fn knnnew(&self, deployment_name: &str, version_name: &str, knn_name: &str, body: ::models::Base64NdArrayBodyKnn) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2575,7 +2575,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/knn/{knnName}/default/knnnew?{}", configuration.base_path, query_string, deploymentName=deployment_name, knnName=knn_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, knnName=knn_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2645,7 +2645,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/experiments?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/experiments?{}", configuration.base_path, query_string);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2689,7 +2689,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn logfilepath(&self, deployment_name: &str, model_name: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
+    fn logfilepath(&self, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2711,7 +2711,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/logfilepath?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2825,7 +2825,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn logs(&self, body: ::models::LogRequest, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::LogBatch, Error = Error<serde_json::Value>>> {
+    fn logs(&self, body: ::models::LogRequest, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::LogBatch, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2847,7 +2847,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/logs?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2895,7 +2895,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn meta_get(&self, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error<serde_json::Value>>> {
+    fn meta_get(&self, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2917,7 +2917,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/meta?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2961,7 +2961,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn meta_post(&self, body: ::models::MetaData, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error<serde_json::Value>>> {
+    fn meta_post(&self, body: ::models::MetaData, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MetaData, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2983,7 +2983,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/meta?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3167,7 +3167,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn modelset(&self, deployment_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>> {
+    fn modelset(&self, deployment_name: &str, version_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3189,7 +3189,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/modelset?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3233,7 +3233,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn modelupdate(&self, deployment_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>> {
+    fn modelupdate(&self, deployment_name: &str, version_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3255,7 +3255,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/modelupdate?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3299,7 +3299,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn multiclassify(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiClassClassificationResult, Error = Error<serde_json::Value>>> {
+    fn multiclassify(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiClassClassificationResult, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3321,7 +3321,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/multiclassify?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3369,7 +3369,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn multipredict(&self, body: ::models::MultiPredictRequest, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error<serde_json::Value>>> {
+    fn multipredict(&self, body: ::models::MultiPredictRequest, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3391,7 +3391,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/multipredict?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3439,7 +3439,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn multipredictimage(&self, file: ::models::File, id: &str, needs_preprocessing: bool, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error<serde_json::Value>>> {
+    fn multipredictimage(&self, file: ::models::File, id: &str, needs_preprocessing: bool, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3461,7 +3461,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3505,7 +3505,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn predict(&self, body: ::models::Prediction, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>> {
+    fn predict(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3527,7 +3527,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/predict?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3575,7 +3575,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn predictimage(&self, deployment_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>> {
+    fn predictimage(&self, deployment_name: &str, version_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3597,7 +3597,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/predictimage?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3641,7 +3641,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn predictwithpreprocess(&self, body: Vec<String>, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>> {
+    fn predictwithpreprocess(&self, body: Vec<String>, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3663,7 +3663,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3711,7 +3711,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn predictwithpreprocessjson(&self, body: Vec<String>, deployment_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>> {
+    fn predictwithpreprocessjson(&self, body: Vec<String>, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3733,7 +3733,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson?{}", configuration.base_path, query_string, deploymentName=deployment_name, modelName=model_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, modelName=model_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3851,7 +3851,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transform_csv(&self, deployment_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::BatchCsvRecord, Error = Error<serde_json::Value>>> {
+    fn transform_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::BatchCsvRecord, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3873,7 +3873,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transform?{}", configuration.base_path, query_string, deploymentName=deployment_name, transformName=transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, transformName=transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3921,7 +3921,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformarray_csv(&self, deployment_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
+    fn transformarray_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3943,7 +3943,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, transformName=transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, transformName=transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3991,7 +3991,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformarray_image(&self, deployment_name: &str, image_transform_name: &str, batch_image_record: ::models::BatchImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
+    fn transformarray_image(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, batch_image_record: ::models::BatchImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4013,7 +4013,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, imageTransformName=image_transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, imageTransformName=image_transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -4061,7 +4061,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformimage(&self, deployment_name: &str, image_transform_name: &str, files: Vec<Vec<u8>>) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
+    fn transformimage(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, files: Vec<Vec<u8>>) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4083,7 +4083,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage?{}", configuration.base_path, query_string, deploymentName=deployment_name, imageTransformName=image_transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, imageTransformName=image_transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -4127,7 +4127,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformincremental_csv(&self, deployment_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::SingleCsvRecord, Error = Error<serde_json::Value>>> {
+    fn transformincremental_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::SingleCsvRecord, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4149,7 +4149,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental?{}", configuration.base_path, query_string, deploymentName=deployment_name, transformName=transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, transformName=transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -4197,7 +4197,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformincrementalarray_csv(&self, deployment_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
+    fn transformincrementalarray_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4219,7 +4219,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, transformName=transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, transformName=transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -4267,7 +4267,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformincrementalarray_image(&self, deployment_name: &str, image_transform_name: &str, single_image_record: ::models::SingleImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
+    fn transformincrementalarray_image(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, single_image_record: ::models::SingleImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4289,7 +4289,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, imageTransformName=image_transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, imageTransformName=image_transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -4337,7 +4337,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformincrementalimage(&self, deployment_name: &str, image_transform_name: &str, file: ::models::File) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
+    fn transformincrementalimage(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, file: ::models::File) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4359,7 +4359,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage?{}", configuration.base_path, query_string, deploymentName=deployment_name, imageTransformName=image_transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, imageTransformName=image_transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -4403,7 +4403,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformprocess_get(&self, deployment_name: &str, transform_name: &str) -> Box<Future<Item = ::models::TransformProcess, Error = Error<serde_json::Value>>> {
+    fn transformprocess_get(&self, deployment_name: &str, version_name: &str, transform_name: &str) -> Box<Future<Item = ::models::TransformProcess, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4425,7 +4425,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, transformName=transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, transformName=transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -4469,7 +4469,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformprocess_post(&self, deployment_name: &str, transform_name: &str, transform_process: ::models::TransformProcess) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn transformprocess_post(&self, deployment_name: &str, version_name: &str, transform_name: &str, transform_process: ::models::TransformProcess) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4491,7 +4491,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, transformName=transform_name);
+        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, transformName=transform_name);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -4536,7 +4536,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn update_best_model_for_experiment(&self, update_best_model: ::models::UpdateBestModel) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>> {
+    fn update_best_model_for_experiment(&self, model_history_server_id: &str, update_best_model: ::models::UpdateBestModel) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4558,7 +4558,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/experiment/best?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/experiment/best?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -4606,7 +4606,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn update_experiment(&self, experiment_id: &str, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>> {
+    fn update_experiment(&self, model_history_server_id: &str, experiment_id: &str, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4628,7 +4628,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/experiment/{experimentID}?{}", configuration.base_path, query_string, experimentID=experiment_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/experiment/{experimentID}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, experimentID=experiment_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -4676,7 +4676,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn update_model_history(&self, model_history_id: &str, update_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>> {
+    fn update_model_history(&self, model_history_server_id: &str, model_history_id: &str, update_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4698,7 +4698,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/modelhistory/{modelHistoryID}?{}", configuration.base_path, query_string, modelHistoryID=model_history_id);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id, modelHistoryID=model_history_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {

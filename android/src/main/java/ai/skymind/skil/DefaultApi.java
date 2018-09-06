@@ -101,11 +101,17 @@ public class DefaultApi {
   /**
   * Adds an evaluation result
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param evaluationResultsEntity The evaluation result entity
    * @return EvaluationResultsEntity
   */
-  public EvaluationResultsEntity addEvaluationResult (EvaluationResultsEntity evaluationResultsEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public EvaluationResultsEntity addEvaluationResult (String modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = evaluationResultsEntity;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addEvaluationResult",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addEvaluationResult"));
+    }
     // verify the required parameter 'evaluationResultsEntity' is set
     if (evaluationResultsEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'evaluationResultsEntity' when calling addEvaluationResult",
@@ -113,7 +119,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/revisions/evaluations/";
+    String path = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -164,11 +170,16 @@ public class DefaultApi {
       /**
    * Adds an evaluation result
    * 
-   * @param evaluationResultsEntity The evaluation result entity
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param evaluationResultsEntity The evaluation result entity
   */
-  public void addEvaluationResult (EvaluationResultsEntity evaluationResultsEntity, final Response.Listener<EvaluationResultsEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void addEvaluationResult (String modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity, final Response.Listener<EvaluationResultsEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = evaluationResultsEntity;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addEvaluationResult",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addEvaluationResult"));
+    }
     // verify the required parameter 'evaluationResultsEntity' is set
     if (evaluationResultsEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'evaluationResultsEntity' when calling addEvaluationResult",
@@ -176,7 +187,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/revisions/evaluations/".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -229,11 +240,17 @@ public class DefaultApi {
   /**
   * Adds a number of examples to a minibatch ID given an AddExampleRequest.
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size
    * @return AddExampleRequest
   */
-  public AddExampleRequest addExampleForBatch (AddExampleRequest addExampleRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public AddExampleRequest addExampleForBatch (String modelHistoryServerId, AddExampleRequest addExampleRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = addExampleRequest;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addExampleForBatch",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addExampleForBatch"));
+    }
     // verify the required parameter 'addExampleRequest' is set
     if (addExampleRequest == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'addExampleRequest' when calling addExampleForBatch",
@@ -241,7 +258,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/exampleForBatch";
+    String path = "/rpc/{modelHistoryServerId}/model/exampleForBatch".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -292,11 +309,16 @@ public class DefaultApi {
       /**
    * Adds a number of examples to a minibatch ID given an AddExampleRequest.
    * 
-   * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size
   */
-  public void addExampleForBatch (AddExampleRequest addExampleRequest, final Response.Listener<AddExampleRequest> responseListener, final Response.ErrorListener errorListener) {
+  public void addExampleForBatch (String modelHistoryServerId, AddExampleRequest addExampleRequest, final Response.Listener<AddExampleRequest> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = addExampleRequest;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addExampleForBatch",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addExampleForBatch"));
+    }
     // verify the required parameter 'addExampleRequest' is set
     if (addExampleRequest == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'addExampleRequest' when calling addExampleForBatch",
@@ -304,7 +326,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/exampleForBatch".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/model/exampleForBatch".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -357,11 +379,17 @@ public class DefaultApi {
   /**
   * Adds an example to a minibatch
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param exampleEntity The example to add to the minibatch
    * @return ExampleEntity
   */
-  public ExampleEntity addExampleToMinibatch (ExampleEntity exampleEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ExampleEntity addExampleToMinibatch (String modelHistoryServerId, ExampleEntity exampleEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = exampleEntity;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addExampleToMinibatch",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addExampleToMinibatch"));
+    }
     // verify the required parameter 'exampleEntity' is set
     if (exampleEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'exampleEntity' when calling addExampleToMinibatch",
@@ -369,7 +397,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/example";
+    String path = "/rpc/{modelHistoryServerId}/model/example".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -420,11 +448,16 @@ public class DefaultApi {
       /**
    * Adds an example to a minibatch
    * 
-   * @param exampleEntity The example to add to the minibatch
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param exampleEntity The example to add to the minibatch
   */
-  public void addExampleToMinibatch (ExampleEntity exampleEntity, final Response.Listener<ExampleEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void addExampleToMinibatch (String modelHistoryServerId, ExampleEntity exampleEntity, final Response.Listener<ExampleEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = exampleEntity;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addExampleToMinibatch",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addExampleToMinibatch"));
+    }
     // verify the required parameter 'exampleEntity' is set
     if (exampleEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'exampleEntity' when calling addExampleToMinibatch",
@@ -432,7 +465,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/example".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/model/example".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -485,11 +518,17 @@ public class DefaultApi {
   /**
   * Add an experiment, given an experiment entity
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param experimentEntity The experiment entity to add
    * @return ExperimentEntity
   */
-  public ExperimentEntity addExperiment (ExperimentEntity experimentEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ExperimentEntity addExperiment (String modelHistoryServerId, ExperimentEntity experimentEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = experimentEntity;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addExperiment"));
+    }
     // verify the required parameter 'experimentEntity' is set
     if (experimentEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'experimentEntity' when calling addExperiment",
@@ -497,7 +536,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/experiment";
+    String path = "/rpc/{modelHistoryServerId}/experiment".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -548,11 +587,16 @@ public class DefaultApi {
       /**
    * Add an experiment, given an experiment entity
    * 
-   * @param experimentEntity The experiment entity to add
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param experimentEntity The experiment entity to add
   */
-  public void addExperiment (ExperimentEntity experimentEntity, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void addExperiment (String modelHistoryServerId, ExperimentEntity experimentEntity, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = experimentEntity;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addExperiment"));
+    }
     // verify the required parameter 'experimentEntity' is set
     if (experimentEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'experimentEntity' when calling addExperiment",
@@ -560,7 +604,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/experiment".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/experiment".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -613,11 +657,17 @@ public class DefaultApi {
   /**
   * Adds a minibatch
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param minibatchEntity The minibatch entity to add
    * @return MinibatchEntity
   */
-  public MinibatchEntity addMinibatch (MinibatchEntity minibatchEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public MinibatchEntity addMinibatch (String modelHistoryServerId, MinibatchEntity minibatchEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = minibatchEntity;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addMinibatch",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addMinibatch"));
+    }
     // verify the required parameter 'minibatchEntity' is set
     if (minibatchEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'minibatchEntity' when calling addMinibatch",
@@ -625,7 +675,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/minibatch";
+    String path = "/rpc/{modelHistoryServerId}/model/minibatch".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -676,11 +726,16 @@ public class DefaultApi {
       /**
    * Adds a minibatch
    * 
-   * @param minibatchEntity The minibatch entity to add
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param minibatchEntity The minibatch entity to add
   */
-  public void addMinibatch (MinibatchEntity minibatchEntity, final Response.Listener<MinibatchEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void addMinibatch (String modelHistoryServerId, MinibatchEntity minibatchEntity, final Response.Listener<MinibatchEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = minibatchEntity;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addMinibatch",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addMinibatch"));
+    }
     // verify the required parameter 'minibatchEntity' is set
     if (minibatchEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'minibatchEntity' when calling addMinibatch",
@@ -688,7 +743,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/minibatch".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/model/minibatch".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -741,11 +796,17 @@ public class DefaultApi {
   /**
   * Adds an evaluation feedback to the model against a given minibatch id.
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param modelFeedBackRequest The model feedback request object
    * @return ModelFeedBackRequest
   */
-  public ModelFeedBackRequest addModelFeedback (ModelFeedBackRequest modelFeedBackRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ModelFeedBackRequest addModelFeedback (String modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = modelFeedBackRequest;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addModelFeedback",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addModelFeedback"));
+    }
     // verify the required parameter 'modelFeedBackRequest' is set
     if (modelFeedBackRequest == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelFeedBackRequest' when calling addModelFeedback",
@@ -753,7 +814,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/feedback";
+    String path = "/rpc/{modelHistoryServerId}/model/feedback".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -804,11 +865,16 @@ public class DefaultApi {
       /**
    * Adds an evaluation feedback to the model against a given minibatch id.
    * 
-   * @param modelFeedBackRequest The model feedback request object
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelFeedBackRequest The model feedback request object
   */
-  public void addModelFeedback (ModelFeedBackRequest modelFeedBackRequest, final Response.Listener<ModelFeedBackRequest> responseListener, final Response.ErrorListener errorListener) {
+  public void addModelFeedback (String modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest, final Response.Listener<ModelFeedBackRequest> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = modelFeedBackRequest;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addModelFeedback",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addModelFeedback"));
+    }
     // verify the required parameter 'modelFeedBackRequest' is set
     if (modelFeedBackRequest == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelFeedBackRequest' when calling addModelFeedback",
@@ -816,7 +882,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/feedback".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/model/feedback".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -869,11 +935,17 @@ public class DefaultApi {
   /**
   * Add a model history / workspace
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param addModelHistoryRequest The model history request object
    * @return ModelHistoryEntity
   */
-  public ModelHistoryEntity addModelHistory (AddModelHistoryRequest addModelHistoryRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ModelHistoryEntity addModelHistory (String modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = addModelHistoryRequest;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addModelHistory"));
+    }
     // verify the required parameter 'addModelHistoryRequest' is set
     if (addModelHistoryRequest == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'addModelHistoryRequest' when calling addModelHistory",
@@ -881,7 +953,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/modelhistory";
+    String path = "/rpc/{modelHistoryServerId}/modelhistory".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -932,11 +1004,16 @@ public class DefaultApi {
       /**
    * Add a model history / workspace
    * 
-   * @param addModelHistoryRequest The model history request object
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param addModelHistoryRequest The model history request object
   */
-  public void addModelHistory (AddModelHistoryRequest addModelHistoryRequest, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void addModelHistory (String modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = addModelHistoryRequest;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addModelHistory"));
+    }
     // verify the required parameter 'addModelHistoryRequest' is set
     if (addModelHistoryRequest == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'addModelHistoryRequest' when calling addModelHistory",
@@ -944,7 +1021,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/modelhistory".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/modelhistory".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -997,11 +1074,17 @@ public class DefaultApi {
   /**
   * Adds a model
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate
    * @return ModelInstanceEntity
   */
-  public ModelInstanceEntity addModelInstance (ModelInstanceEntity modelInstanceEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ModelInstanceEntity addModelInstance (String modelHistoryServerId, ModelInstanceEntity modelInstanceEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = modelInstanceEntity;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addModelInstance",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addModelInstance"));
+    }
     // verify the required parameter 'modelInstanceEntity' is set
     if (modelInstanceEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelInstanceEntity' when calling addModelInstance",
@@ -1009,7 +1092,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model";
+    String path = "/rpc/{modelHistoryServerId}/model".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1060,11 +1143,16 @@ public class DefaultApi {
       /**
    * Adds a model
    * 
-   * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate
   */
-  public void addModelInstance (ModelInstanceEntity modelInstanceEntity, final Response.Listener<ModelInstanceEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void addModelInstance (String modelHistoryServerId, ModelInstanceEntity modelInstanceEntity, final Response.Listener<ModelInstanceEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = modelInstanceEntity;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling addModelInstance",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling addModelInstance"));
+    }
     // verify the required parameter 'modelInstanceEntity' is set
     if (modelInstanceEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelInstanceEntity' when calling addModelInstance",
@@ -1072,7 +1160,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/model".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1125,11 +1213,17 @@ public class DefaultApi {
   /**
   * Aggregates the evaluaition results of a model instance, based on the evaluation type
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate
    * @return EvaluationResultsEntity
   */
-  public EvaluationResultsEntity aggregateModelResults (AggregatePrediction aggregatePrediction) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public EvaluationResultsEntity aggregateModelResults (String modelHistoryServerId, AggregatePrediction aggregatePrediction) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = aggregatePrediction;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling aggregateModelResults",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling aggregateModelResults"));
+    }
     // verify the required parameter 'aggregatePrediction' is set
     if (aggregatePrediction == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'aggregatePrediction' when calling aggregateModelResults",
@@ -1137,7 +1231,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/aggregateresults";
+    String path = "/rpc/{modelHistoryServerId}/model/aggregateresults".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1188,11 +1282,16 @@ public class DefaultApi {
       /**
    * Aggregates the evaluaition results of a model instance, based on the evaluation type
    * 
-   * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate
   */
-  public void aggregateModelResults (AggregatePrediction aggregatePrediction, final Response.Listener<EvaluationResultsEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void aggregateModelResults (String modelHistoryServerId, AggregatePrediction aggregatePrediction, final Response.Listener<EvaluationResultsEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = aggregatePrediction;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling aggregateModelResults",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling aggregateModelResults"));
+    }
     // verify the required parameter 'aggregatePrediction' is set
     if (aggregatePrediction == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'aggregatePrediction' when calling aggregateModelResults",
@@ -1200,7 +1299,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/aggregateresults".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/model/aggregateresults".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1255,10 +1354,11 @@ public class DefaultApi {
   * 
    * @param body The input NDArray
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return ClassificationResult
   */
-  public ClassificationResult classify (Prediction body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ClassificationResult classify (Prediction body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -1270,6 +1370,11 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classify",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling classify"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling classify",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling classify"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling classify",
@@ -1277,7 +1382,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classify".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1328,9 +1433,9 @@ public class DefaultApi {
       /**
    * Use the deployed model to classify the input
    * 
-   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void classify (Prediction body, String deploymentName, String modelName, final Response.Listener<ClassificationResult> responseListener, final Response.ErrorListener errorListener) {
+  public void classify (Prediction body, String deploymentName, String versionName, String modelName, final Response.Listener<ClassificationResult> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -1343,6 +1448,11 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classify",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling classify"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling classify",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling classify"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling classify",
@@ -1350,7 +1460,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1405,10 +1515,11 @@ public class DefaultApi {
   * 
    * @param body The input NDArray
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody classifyarray (Prediction body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody classifyarray (Prediction body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -1420,6 +1531,11 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classifyarray",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling classifyarray"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling classifyarray",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling classifyarray"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling classifyarray",
@@ -1427,7 +1543,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1478,9 +1594,9 @@ public class DefaultApi {
       /**
    * Same as /classify but returns the output as Base64NDArrayBody
    * 
-   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void classifyarray (Prediction body, String deploymentName, String modelName, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void classifyarray (Prediction body, String deploymentName, String versionName, String modelName, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -1493,6 +1609,11 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classifyarray",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling classifyarray"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling classifyarray",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling classifyarray"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling classifyarray",
@@ -1500,7 +1621,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1554,16 +1675,22 @@ public class DefaultApi {
   * Use the deployed model to classify the input, using input image file from multipart form data.
   * 
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @param image The file to upload.
    * @return ClassificationResult
   */
-  public ClassificationResult classifyimage (String deploymentName, String modelName, File image) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ClassificationResult classifyimage (String deploymentName, String versionName, String modelName, File image) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classifyimage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling classifyimage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling classifyimage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling classifyimage"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -1572,7 +1699,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1626,15 +1753,20 @@ public class DefaultApi {
       /**
    * Use the deployed model to classify the input, using input image file from multipart form data.
    * 
-   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model   * @param image The file to upload.
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model   * @param image The file to upload.
   */
-  public void classifyimage (String deploymentName, String modelName, File image, final Response.Listener<ClassificationResult> responseListener, final Response.ErrorListener errorListener) {
+  public void classifyimage (String deploymentName, String versionName, String modelName, File image, final Response.Listener<ClassificationResult> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling classifyimage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling classifyimage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling classifyimage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling classifyimage"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -1643,7 +1775,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1701,11 +1833,17 @@ public class DefaultApi {
   /**
   * Creates model History
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param modelHistoryEntity The model history entity
    * @return ModelHistoryEntity
   */
-  public ModelHistoryEntity createModelHistory (ModelHistoryEntity modelHistoryEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ModelHistoryEntity createModelHistory (String modelHistoryServerId, ModelHistoryEntity modelHistoryEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = modelHistoryEntity;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling createModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling createModelHistory"));
+    }
     // verify the required parameter 'modelHistoryEntity' is set
     if (modelHistoryEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryEntity' when calling createModelHistory",
@@ -1713,7 +1851,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/revisions";
+    String path = "/rpc/{modelHistoryServerId}/model/revisions".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1764,11 +1902,16 @@ public class DefaultApi {
       /**
    * Creates model History
    * 
-   * @param modelHistoryEntity The model history entity
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelHistoryEntity The model history entity
   */
-  public void createModelHistory (ModelHistoryEntity modelHistoryEntity, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void createModelHistory (String modelHistoryServerId, ModelHistoryEntity modelHistoryEntity, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = modelHistoryEntity;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling createModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling createModelHistory"));
+    }
     // verify the required parameter 'modelHistoryEntity' is set
     if (modelHistoryEntity == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryEntity' when calling createModelHistory",
@@ -1776,7 +1919,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/revisions".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/model/revisions".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1829,11 +1972,17 @@ public class DefaultApi {
   /**
   * Deletes an experiment, given an experiment entity
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param experimentID the GUID of the experiment to delete
    * @return InlineResponse200
   */
-  public InlineResponse200 deleteExperiment (String experimentID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public InlineResponse200 deleteExperiment (String modelHistoryServerId, String experimentID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling deleteExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling deleteExperiment"));
+    }
     // verify the required parameter 'experimentID' is set
     if (experimentID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'experimentID' when calling deleteExperiment",
@@ -1841,7 +1990,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/experiment/{experimentID}".replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1891,11 +2040,16 @@ public class DefaultApi {
       /**
    * Deletes an experiment, given an experiment entity
    * 
-   * @param experimentID the GUID of the experiment to delete
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment to delete
   */
-  public void deleteExperiment (String experimentID, final Response.Listener<InlineResponse200> responseListener, final Response.ErrorListener errorListener) {
+  public void deleteExperiment (String modelHistoryServerId, String experimentID, final Response.Listener<InlineResponse200> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling deleteExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling deleteExperiment"));
+    }
     // verify the required parameter 'experimentID' is set
     if (experimentID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'experimentID' when calling deleteExperiment",
@@ -1903,7 +2057,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/experiment/{experimentID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2094,11 +2248,17 @@ public class DefaultApi {
   /**
   * Deletes a model history / workspace, given its ID
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param modelHistoryID the GUID of the model history / workspace to delete
    * @return InlineResponse200
   */
-  public InlineResponse200 deleteModelHistory (String modelHistoryID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public InlineResponse200 deleteModelHistory (String modelHistoryServerId, String modelHistoryID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling deleteModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling deleteModelHistory"));
+    }
     // verify the required parameter 'modelHistoryID' is set
     if (modelHistoryID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryID' when calling deleteModelHistory",
@@ -2106,7 +2266,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/modelhistory/{modelHistoryID}".replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2156,11 +2316,16 @@ public class DefaultApi {
       /**
    * Deletes a model history / workspace, given its ID
    * 
-   * @param modelHistoryID the GUID of the model history / workspace to delete
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID the GUID of the model history / workspace to delete
   */
-  public void deleteModelHistory (String modelHistoryID, final Response.Listener<InlineResponse200> responseListener, final Response.ErrorListener errorListener) {
+  public void deleteModelHistory (String modelHistoryServerId, String modelHistoryID, final Response.Listener<InlineResponse200> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling deleteModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling deleteModelHistory"));
+    }
     // verify the required parameter 'modelHistoryID' is set
     if (modelHistoryID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryID' when calling deleteModelHistory",
@@ -2168,7 +2333,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/modelhistory/{modelHistoryID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2221,11 +2386,17 @@ public class DefaultApi {
   /**
   * Deletes a model instance, given its ID
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param modelInstanceID GUID of the model instance to delete.
    * @return void
   */
-  public void deleteModelInstance (String modelInstanceID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void deleteModelInstance (String modelHistoryServerId, String modelInstanceID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling deleteModelInstance",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling deleteModelInstance"));
+    }
     // verify the required parameter 'modelInstanceID' is set
     if (modelInstanceID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelInstanceID' when calling deleteModelInstance",
@@ -2233,7 +2404,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/{modelInstanceID}".replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2283,11 +2454,16 @@ public class DefaultApi {
       /**
    * Deletes a model instance, given its ID
    * 
-   * @param modelInstanceID GUID of the model instance to delete.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelInstanceID GUID of the model instance to delete.
   */
-  public void deleteModelInstance (String modelInstanceID, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void deleteModelInstance (String modelHistoryServerId, String modelInstanceID, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling deleteModelInstance",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling deleteModelInstance"));
+    }
     // verify the required parameter 'modelInstanceID' is set
     if (modelInstanceID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelInstanceID' when calling deleteModelInstance",
@@ -2295,7 +2471,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/model/{modelInstanceID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2986,10 +3162,11 @@ public class DefaultApi {
    * @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
    * @param imageFile the image file to detect objects from
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return DetectionResult
   */
-  public DetectionResult detectobjects (String id, Boolean needsPreprocessing, Float threshold, File imageFile, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public DetectionResult detectobjects (String id, Boolean needsPreprocessing, Float threshold, File imageFile, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'id' is set
     if (id == null) {
@@ -3016,6 +3193,11 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling detectobjects",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling detectobjects"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling detectobjects",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling detectobjects"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling detectobjects",
@@ -3023,7 +3205,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3089,9 +3271,9 @@ public class DefaultApi {
       /**
    * Detect the objects, given a (input) prediction request
    * 
-   * @param id the GUID for mapping the results in the detections   * @param needsPreprocessing (true) if the image needs preprocessing   * @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.   * @param imageFile the image file to detect objects from   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param id the GUID for mapping the results in the detections   * @param needsPreprocessing (true) if the image needs preprocessing   * @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.   * @param imageFile the image file to detect objects from   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void detectobjects (String id, Boolean needsPreprocessing, Float threshold, File imageFile, String deploymentName, String modelName, final Response.Listener<DetectionResult> responseListener, final Response.ErrorListener errorListener) {
+  public void detectobjects (String id, Boolean needsPreprocessing, Float threshold, File imageFile, String deploymentName, String versionName, String modelName, final Response.Listener<DetectionResult> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'id' is set
@@ -3119,6 +3301,11 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling detectobjects",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling detectobjects"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling detectobjects",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling detectobjects"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling detectobjects",
@@ -3126,7 +3313,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3199,11 +3386,17 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param bestModel Object encapsulating the model ids, eval type and column metric name
    * @return ModelInstanceEntity
   */
-  public ModelInstanceEntity getBestModelAmongModelIds (BestModel bestModel) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ModelInstanceEntity getBestModelAmongModelIds (String modelHistoryServerId, BestModel bestModel) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = bestModel;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getBestModelAmongModelIds",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getBestModelAmongModelIds"));
+    }
     // verify the required parameter 'bestModel' is set
     if (bestModel == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'bestModel' when calling getBestModelAmongModelIds",
@@ -3211,7 +3404,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/best";
+    String path = "/rpc/{modelHistoryServerId}/model/best".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3262,11 +3455,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
    * 
-   * @param bestModel Object encapsulating the model ids, eval type and column metric name
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param bestModel Object encapsulating the model ids, eval type and column metric name
   */
-  public void getBestModelAmongModelIds (BestModel bestModel, final Response.Listener<ModelInstanceEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void getBestModelAmongModelIds (String modelHistoryServerId, BestModel bestModel, final Response.Listener<ModelInstanceEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = bestModel;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getBestModelAmongModelIds",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getBestModelAmongModelIds"));
+    }
     // verify the required parameter 'bestModel' is set
     if (bestModel == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'bestModel' when calling getBestModelAmongModelIds",
@@ -3274,7 +3472,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/best".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/model/best".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3327,11 +3525,17 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets the list of evaluation results entity, given a model instance ID
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param modelInstanceID GUID of the model instance to get evaluation results for.
    * @return List<EvaluationResultsEntity>
   */
-  public List<EvaluationResultsEntity> getEvaluationForModelID (String modelInstanceID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public List<EvaluationResultsEntity> getEvaluationForModelID (String modelHistoryServerId, String modelInstanceID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getEvaluationForModelID",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getEvaluationForModelID"));
+    }
     // verify the required parameter 'modelInstanceID' is set
     if (modelInstanceID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelInstanceID' when calling getEvaluationForModelID",
@@ -3339,7 +3543,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/revisions/evaluations/{modelInstanceID}".replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3389,11 +3593,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets the list of evaluation results entity, given a model instance ID
    * 
-   * @param modelInstanceID GUID of the model instance to get evaluation results for.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelInstanceID GUID of the model instance to get evaluation results for.
   */
-  public void getEvaluationForModelID (String modelInstanceID, final Response.Listener<List<EvaluationResultsEntity>> responseListener, final Response.ErrorListener errorListener) {
+  public void getEvaluationForModelID (String modelHistoryServerId, String modelInstanceID, final Response.Listener<List<EvaluationResultsEntity>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getEvaluationForModelID",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getEvaluationForModelID"));
+    }
     // verify the required parameter 'modelInstanceID' is set
     if (modelInstanceID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelInstanceID' when calling getEvaluationForModelID",
@@ -3401,7 +3610,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/revisions/evaluations/{modelInstanceID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3454,11 +3663,17 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets all the examples for a minibatch ID
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param minibatchId The GUID of the minibatch
    * @return List<ExampleEntity>
   */
-  public List<ExampleEntity> getExamplesForMinibatch (String minibatchId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public List<ExampleEntity> getExamplesForMinibatch (String modelHistoryServerId, String minibatchId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getExamplesForMinibatch",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getExamplesForMinibatch"));
+    }
     // verify the required parameter 'minibatchId' is set
     if (minibatchId == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'minibatchId' when calling getExamplesForMinibatch",
@@ -3466,7 +3681,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/example/{minibatchId}".replaceAll("\\{" + "minibatchId" + "\\}", apiInvoker.escapeString(minibatchId.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/example/{minibatchId}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "minibatchId" + "\\}", apiInvoker.escapeString(minibatchId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3516,11 +3731,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets all the examples for a minibatch ID
    * 
-   * @param minibatchId The GUID of the minibatch
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param minibatchId The GUID of the minibatch
   */
-  public void getExamplesForMinibatch (String minibatchId, final Response.Listener<List<ExampleEntity>> responseListener, final Response.ErrorListener errorListener) {
+  public void getExamplesForMinibatch (String modelHistoryServerId, String minibatchId, final Response.Listener<List<ExampleEntity>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getExamplesForMinibatch",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getExamplesForMinibatch"));
+    }
     // verify the required parameter 'minibatchId' is set
     if (minibatchId == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'minibatchId' when calling getExamplesForMinibatch",
@@ -3528,7 +3748,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/example/{minibatchId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "minibatchId" + "\\}", apiInvoker.escapeString(minibatchId.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/example/{minibatchId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "minibatchId" + "\\}", apiInvoker.escapeString(minibatchId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3581,11 +3801,17 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Obtain an experiment&#39;s details, given its ID
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param experimentID the GUID of the experiment to obtain
    * @return ExperimentEntity
   */
-  public ExperimentEntity getExperiment (String experimentID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ExperimentEntity getExperiment (String modelHistoryServerId, String experimentID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getExperiment"));
+    }
     // verify the required parameter 'experimentID' is set
     if (experimentID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'experimentID' when calling getExperiment",
@@ -3593,7 +3819,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/experiment/{experimentID}".replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3643,11 +3869,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Obtain an experiment&#39;s details, given its ID
    * 
-   * @param experimentID the GUID of the experiment to obtain
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment to obtain
   */
-  public void getExperiment (String experimentID, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void getExperiment (String modelHistoryServerId, String experimentID, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getExperiment"));
+    }
     // verify the required parameter 'experimentID' is set
     if (experimentID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'experimentID' when calling getExperiment",
@@ -3655,7 +3886,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/experiment/{experimentID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3708,11 +3939,17 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Obtain all experiments for a model history / workspace
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param modelHistoryID the GUID of the model history / workspace
    * @return ExperimentEntity
   */
-  public ExperimentEntity getExperimentsForModelHistory (String modelHistoryID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ExperimentEntity getExperimentsForModelHistory (String modelHistoryServerId, String modelHistoryID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getExperimentsForModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getExperimentsForModelHistory"));
+    }
     // verify the required parameter 'modelHistoryID' is set
     if (modelHistoryID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryID' when calling getExperimentsForModelHistory",
@@ -3720,7 +3957,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/experiments/{modelHistoryID}".replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3770,11 +4007,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Obtain all experiments for a model history / workspace
    * 
-   * @param modelHistoryID the GUID of the model history / workspace
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID the GUID of the model history / workspace
   */
-  public void getExperimentsForModelHistory (String modelHistoryID, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void getExperimentsForModelHistory (String modelHistoryServerId, String modelHistoryID, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getExperimentsForModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getExperimentsForModelHistory"));
+    }
     // verify the required parameter 'modelHistoryID' is set
     if (modelHistoryID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryID' when calling getExperimentsForModelHistory",
@@ -3782,7 +4024,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/experiments/{modelHistoryID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3835,11 +4077,17 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets a minibatch for the model
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param minibatchId The GUID of the minibatch
    * @return MinibatchEntity
   */
-  public MinibatchEntity getMinibatch (String minibatchId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public MinibatchEntity getMinibatch (String modelHistoryServerId, String minibatchId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getMinibatch",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getMinibatch"));
+    }
     // verify the required parameter 'minibatchId' is set
     if (minibatchId == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'minibatchId' when calling getMinibatch",
@@ -3847,7 +4095,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/minibatch/{minibatchId}".replaceAll("\\{" + "minibatchId" + "\\}", apiInvoker.escapeString(minibatchId.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "minibatchId" + "\\}", apiInvoker.escapeString(minibatchId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3897,11 +4145,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets a minibatch for the model
    * 
-   * @param minibatchId The GUID of the minibatch
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param minibatchId The GUID of the minibatch
   */
-  public void getMinibatch (String minibatchId, final Response.Listener<MinibatchEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void getMinibatch (String modelHistoryServerId, String minibatchId, final Response.Listener<MinibatchEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getMinibatch",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getMinibatch"));
+    }
     // verify the required parameter 'minibatchId' is set
     if (minibatchId == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'minibatchId' when calling getMinibatch",
@@ -3909,7 +4162,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/minibatch/{minibatchId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "minibatchId" + "\\}", apiInvoker.escapeString(minibatchId.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "minibatchId" + "\\}", apiInvoker.escapeString(minibatchId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -3962,11 +4215,17 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets a model history, given its ID
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param modelHistoryID GUID of the model history to get information of.
    * @return ModelHistoryEntity
   */
-  public ModelHistoryEntity getModelHistory (String modelHistoryID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ModelHistoryEntity getModelHistory (String modelHistoryServerId, String modelHistoryID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getModelHistory"));
+    }
     // verify the required parameter 'modelHistoryID' is set
     if (modelHistoryID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryID' when calling getModelHistory",
@@ -3974,7 +4233,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/revision/{modelHistoryID}".replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4024,11 +4283,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets a model history, given its ID
    * 
-   * @param modelHistoryID GUID of the model history to get information of.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID GUID of the model history to get information of.
   */
-  public void getModelHistory (String modelHistoryID, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void getModelHistory (String modelHistoryServerId, String modelHistoryID, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getModelHistory"));
+    }
     // verify the required parameter 'modelHistoryID' is set
     if (modelHistoryID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryID' when calling getModelHistory",
@@ -4036,7 +4300,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/revision/{modelHistoryID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4089,11 +4353,17 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets a model instance, given its ID
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param modelInstanceID GUID of the model instance to get information of.
    * @return ModelInstanceEntity
   */
-  public ModelInstanceEntity getModelInstance (String modelInstanceID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ModelInstanceEntity getModelInstance (String modelHistoryServerId, String modelInstanceID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getModelInstance",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getModelInstance"));
+    }
     // verify the required parameter 'modelInstanceID' is set
     if (modelInstanceID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelInstanceID' when calling getModelInstance",
@@ -4101,7 +4371,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/{modelInstanceID}".replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4151,11 +4421,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets a model instance, given its ID
    * 
-   * @param modelInstanceID GUID of the model instance to get information of.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelInstanceID GUID of the model instance to get information of.
   */
-  public void getModelInstance (String modelInstanceID, final Response.Listener<ModelInstanceEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void getModelInstance (String modelHistoryServerId, String modelInstanceID, final Response.Listener<ModelInstanceEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getModelInstance",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getModelInstance"));
+    }
     // verify the required parameter 'modelInstanceID' is set
     if (modelInstanceID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelInstanceID' when calling getModelInstance",
@@ -4163,7 +4438,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/model/{modelInstanceID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelInstanceID" + "\\}", apiInvoker.escapeString(modelInstanceID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4216,11 +4491,17 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Obtain a list of all the models for an experiment
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param experimentID the GUID of the experiment
    * @return List<ModelInstanceEntity>
   */
-  public List<ModelInstanceEntity> getModelsForExperiment (String experimentID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public List<ModelInstanceEntity> getModelsForExperiment (String modelHistoryServerId, String experimentID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getModelsForExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getModelsForExperiment"));
+    }
     // verify the required parameter 'experimentID' is set
     if (experimentID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'experimentID' when calling getModelsForExperiment",
@@ -4228,7 +4509,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/experiment/{experimentID}/models".replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}/models".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4278,11 +4559,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Obtain a list of all the models for an experiment
    * 
-   * @param experimentID the GUID of the experiment
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment
   */
-  public void getModelsForExperiment (String experimentID, final Response.Listener<List<ModelInstanceEntity>> responseListener, final Response.ErrorListener errorListener) {
+  public void getModelsForExperiment (String modelHistoryServerId, String experimentID, final Response.Listener<List<ModelInstanceEntity>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling getModelsForExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling getModelsForExperiment"));
+    }
     // verify the required parameter 'experimentID' is set
     if (experimentID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'experimentID' when calling getModelsForExperiment",
@@ -4290,7 +4576,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/experiment/{experimentID}/models".replaceAll("\\{format\\}","json").replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}/models".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4344,15 +4630,21 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * Retrieves the image transform process JSON string
   * 
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param imageTransformName ID or name of the deployed image transform
    * @return ImageTransformProcess
   */
-  public ImageTransformProcess imagetransformprocessGet (String deploymentName, String imageTransformName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ImageTransformProcess imagetransformprocessGet (String deploymentName, String versionName, String imageTransformName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling imagetransformprocessGet",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling imagetransformprocessGet"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling imagetransformprocessGet",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling imagetransformprocessGet"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -4361,7 +4653,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4412,15 +4704,20 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Retrieves the image transform process JSON string
    * 
-   * @param deploymentName Name of the deployment group   * @param imageTransformName ID or name of the deployed image transform
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param imageTransformName ID or name of the deployed image transform
   */
-  public void imagetransformprocessGet (String deploymentName, String imageTransformName, final Response.Listener<ImageTransformProcess> responseListener, final Response.ErrorListener errorListener) {
+  public void imagetransformprocessGet (String deploymentName, String versionName, String imageTransformName, final Response.Listener<ImageTransformProcess> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling imagetransformprocessGet",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling imagetransformprocessGet"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling imagetransformprocessGet",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling imagetransformprocessGet"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -4429,7 +4726,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4483,16 +4780,22 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * Sets the image transform process through the provided JSON string
   * 
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param imageTransformName ID or name of the deployed image transform
    * @param body The image transform process JSON
    * @return ImageTransformProcess
   */
-  public ImageTransformProcess imagetransformprocessPost (String deploymentName, String imageTransformName, ImageTransformProcess body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ImageTransformProcess imagetransformprocessPost (String deploymentName, String versionName, String imageTransformName, ImageTransformProcess body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling imagetransformprocessPost",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling imagetransformprocessPost"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling imagetransformprocessPost",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling imagetransformprocessPost"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -4506,7 +4809,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4557,15 +4860,20 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Sets the image transform process through the provided JSON string
    * 
-   * @param deploymentName Name of the deployment group   * @param imageTransformName ID or name of the deployed image transform   * @param body The image transform process JSON
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param imageTransformName ID or name of the deployed image transform   * @param body The image transform process JSON
   */
-  public void imagetransformprocessPost (String deploymentName, String imageTransformName, ImageTransformProcess body, final Response.Listener<ImageTransformProcess> responseListener, final Response.ErrorListener errorListener) {
+  public void imagetransformprocessPost (String deploymentName, String versionName, String imageTransformName, ImageTransformProcess body, final Response.Listener<ImageTransformProcess> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling imagetransformprocessPost",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling imagetransformprocessPost"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling imagetransformprocessPost",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling imagetransformprocessPost"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -4579,7 +4887,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4634,10 +4942,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * 
    * @param body The input NDArray
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return JsonArrayResponse
   */
-  public JsonArrayResponse jsonarray (Prediction body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public JsonArrayResponse jsonarray (Prediction body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -4649,6 +4958,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling jsonarray",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling jsonarray"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling jsonarray",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling jsonarray"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling jsonarray",
@@ -4656,7 +4970,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4707,9 +5021,9 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Run inference on the input and returns it as a JsonArrayResponse
    * 
-   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void jsonarray (Prediction body, String deploymentName, String modelName, final Response.Listener<JsonArrayResponse> responseListener, final Response.ErrorListener errorListener) {
+  public void jsonarray (Prediction body, String deploymentName, String versionName, String modelName, final Response.Listener<JsonArrayResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -4722,6 +5036,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling jsonarray",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling jsonarray"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling jsonarray",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling jsonarray"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling jsonarray",
@@ -4729,7 +5048,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4783,16 +5102,22 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * Runs knn on the given index with the given k
   * Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param knnName ID or name of the deployed knn
    * @param body 
    * @return NearestNeighborsResults
   */
-  public NearestNeighborsResults knn (String deploymentName, String knnName, NearestNeighborRequest body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public NearestNeighborsResults knn (String deploymentName, String versionName, String knnName, NearestNeighborRequest body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling knn",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling knn"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling knn",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling knn"));
     }
     // verify the required parameter 'knnName' is set
     if (knnName == null) {
@@ -4806,7 +5131,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/knn/{knnName}/default/knn".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "knnName" + "\\}", apiInvoker.escapeString(knnName.toString()));
+    String path = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "knnName" + "\\}", apiInvoker.escapeString(knnName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4857,15 +5182,20 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Runs knn on the given index with the given k
    * Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
-   * @param deploymentName Name of the deployment group   * @param knnName ID or name of the deployed knn   * @param body 
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param knnName ID or name of the deployed knn   * @param body 
   */
-  public void knn (String deploymentName, String knnName, NearestNeighborRequest body, final Response.Listener<NearestNeighborsResults> responseListener, final Response.ErrorListener errorListener) {
+  public void knn (String deploymentName, String versionName, String knnName, NearestNeighborRequest body, final Response.Listener<NearestNeighborsResults> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling knn",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling knn"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling knn",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling knn"));
     }
     // verify the required parameter 'knnName' is set
     if (knnName == null) {
@@ -4879,7 +5209,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/knn/{knnName}/default/knn".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "knnName" + "\\}", apiInvoker.escapeString(knnName.toString()));
+    String path = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "knnName" + "\\}", apiInvoker.escapeString(knnName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -4933,16 +5263,22 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * Run a k nearest neighbors search on a NEW data point
   * 
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param knnName ID or name of the deployed knn
    * @param body The input NDArray
    * @return NearestNeighborsResults
   */
-  public NearestNeighborsResults knnnew (String deploymentName, String knnName, Base64NDArrayBodyKNN body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public NearestNeighborsResults knnnew (String deploymentName, String versionName, String knnName, Base64NDArrayBodyKNN body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling knnnew",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling knnnew"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling knnnew",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling knnnew"));
     }
     // verify the required parameter 'knnName' is set
     if (knnName == null) {
@@ -4956,7 +5292,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "knnName" + "\\}", apiInvoker.escapeString(knnName.toString()));
+    String path = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "knnName" + "\\}", apiInvoker.escapeString(knnName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5007,15 +5343,20 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Run a k nearest neighbors search on a NEW data point
    * 
-   * @param deploymentName Name of the deployment group   * @param knnName ID or name of the deployed knn   * @param body The input NDArray
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param knnName ID or name of the deployed knn   * @param body The input NDArray
   */
-  public void knnnew (String deploymentName, String knnName, Base64NDArrayBodyKNN body, final Response.Listener<NearestNeighborsResults> responseListener, final Response.ErrorListener errorListener) {
+  public void knnnew (String deploymentName, String versionName, String knnName, Base64NDArrayBodyKNN body, final Response.Listener<NearestNeighborsResults> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling knnnew",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling knnnew"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling knnnew",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling knnnew"));
     }
     // verify the required parameter 'knnName' is set
     if (knnName == null) {
@@ -5029,7 +5370,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "knnName" + "\\}", apiInvoker.escapeString(knnName.toString()));
+    String path = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "knnName" + "\\}", apiInvoker.escapeString(knnName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5088,7 +5429,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     Object postBody = null;
 
     // create path and map variables
-    String path = "/experiments";
+    String path = "/rpc/{modelHistoryServerId}/experiments";
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5145,7 +5486,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
 
 
     // create path and map variables
-    String path = "/experiments".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/experiments".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5199,15 +5540,21 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * Get logs file path
   * 
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return String
   */
-  public String logfilepath (String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String logfilepath (String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling logfilepath",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling logfilepath"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling logfilepath",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling logfilepath"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -5216,7 +5563,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5266,15 +5613,20 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Get logs file path
    * 
-   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void logfilepath (String deploymentName, String modelName, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void logfilepath (String deploymentName, String versionName, String modelName, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling logfilepath",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling logfilepath"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling logfilepath",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling logfilepath"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -5283,7 +5635,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5466,10 +5818,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * 
    * @param body the the log request
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return LogBatch
   */
-  public LogBatch logs (LogRequest body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public LogBatch logs (LogRequest body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -5481,6 +5834,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling logs",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling logs"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling logs",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling logs"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling logs",
@@ -5488,7 +5846,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/logs".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5539,9 +5897,9 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Get logs
    * 
-   * @param body the the log request   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body the the log request   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void logs (LogRequest body, String deploymentName, String modelName, final Response.Listener<LogBatch> responseListener, final Response.ErrorListener errorListener) {
+  public void logs (LogRequest body, String deploymentName, String versionName, String modelName, final Response.Listener<LogBatch> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -5554,6 +5912,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling logs",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling logs"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling logs",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling logs"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling logs",
@@ -5561,7 +5924,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/logs".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5615,15 +5978,21 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * this method can be used to get the meta data for the current model which set to the server
   * 
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return MetaData
   */
-  public MetaData metaGet (String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public MetaData metaGet (String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling metaGet",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling metaGet"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling metaGet",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling metaGet"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -5632,7 +6001,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/meta".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5683,15 +6052,20 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * this method can be used to get the meta data for the current model which set to the server
    * 
-   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void metaGet (String deploymentName, String modelName, final Response.Listener<MetaData> responseListener, final Response.ErrorListener errorListener) {
+  public void metaGet (String deploymentName, String versionName, String modelName, final Response.Listener<MetaData> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling metaGet",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling metaGet"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling metaGet",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling metaGet"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -5700,7 +6074,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/meta".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5755,10 +6129,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * 
    * @param body the meta data object
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return MetaData
   */
-  public MetaData metaPost (MetaData body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public MetaData metaPost (MetaData body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -5770,6 +6145,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling metaPost",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling metaPost"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling metaPost",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling metaPost"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling metaPost",
@@ -5777,7 +6157,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/meta".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5828,9 +6208,9 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * This method can be used to set meta data for the current model which is set to the server
    * 
-   * @param body the meta data object   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body the meta data object   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void metaPost (MetaData body, String deploymentName, String modelName, final Response.Listener<MetaData> responseListener, final Response.ErrorListener errorListener) {
+  public void metaPost (MetaData body, String deploymentName, String versionName, String modelName, final Response.Listener<MetaData> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -5843,6 +6223,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling metaPost",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling metaPost"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling metaPost",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling metaPost"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling metaPost",
@@ -5850,7 +6235,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/meta".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6181,16 +6566,22 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * Set the model to be served
   * 
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @param file The model file to upload (.pb file)
    * @return ModelStatus
   */
-  public ModelStatus modelset (String deploymentName, String modelName, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ModelStatus modelset (String deploymentName, String versionName, String modelName, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling modelset",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling modelset"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling modelset",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling modelset"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -6199,7 +6590,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/modelset".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6253,15 +6644,20 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Set the model to be served
    * 
-   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model   * @param file The model file to upload (.pb file)
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model   * @param file The model file to upload (.pb file)
   */
-  public void modelset (String deploymentName, String modelName, File file, final Response.Listener<ModelStatus> responseListener, final Response.ErrorListener errorListener) {
+  public void modelset (String deploymentName, String versionName, String modelName, File file, final Response.Listener<ModelStatus> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling modelset",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling modelset"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling modelset",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling modelset"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -6270,7 +6666,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/modelset".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6329,16 +6725,22 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * Update the model to be served
   * 
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @param file The model file to update with (.pb file)
    * @return ModelStatus
   */
-  public ModelStatus modelupdate (String deploymentName, String modelName, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ModelStatus modelupdate (String deploymentName, String versionName, String modelName, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling modelupdate",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling modelupdate"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling modelupdate",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling modelupdate"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -6347,7 +6749,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6401,15 +6803,20 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Update the model to be served
    * 
-   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model   * @param file The model file to update with (.pb file)
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model   * @param file The model file to update with (.pb file)
   */
-  public void modelupdate (String deploymentName, String modelName, File file, final Response.Listener<ModelStatus> responseListener, final Response.ErrorListener errorListener) {
+  public void modelupdate (String deploymentName, String versionName, String modelName, File file, final Response.Listener<ModelStatus> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling modelupdate",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling modelupdate"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling modelupdate",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling modelupdate"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -6418,7 +6825,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6478,10 +6885,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * 
    * @param body The input NDArray
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return MultiClassClassificationResult
   */
-  public MultiClassClassificationResult multiclassify (Prediction body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public MultiClassClassificationResult multiclassify (Prediction body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -6493,6 +6901,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling multiclassify",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling multiclassify"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling multiclassify",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling multiclassify"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling multiclassify",
@@ -6500,7 +6913,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6551,9 +6964,9 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Represents all of the labels for a given classification
    * 
-   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void multiclassify (Prediction body, String deploymentName, String modelName, final Response.Listener<MultiClassClassificationResult> responseListener, final Response.ErrorListener errorListener) {
+  public void multiclassify (Prediction body, String deploymentName, String versionName, String modelName, final Response.Listener<MultiClassClassificationResult> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -6566,6 +6979,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling multiclassify",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling multiclassify"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling multiclassify",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling multiclassify"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling multiclassify",
@@ -6573,7 +6991,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6628,10 +7046,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
    * @param body The multiple input arrays with mask inputs to run inferences on
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return MultiPredictResponse
   */
-  public MultiPredictResponse multipredict (MultiPredictRequest body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public MultiPredictResponse multipredict (MultiPredictRequest body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -6643,6 +7062,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling multipredict",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling multipredict"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling multipredict",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling multipredict"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling multipredict",
@@ -6650,7 +7074,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6701,9 +7125,9 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Get the output from the network, based on the given INDArray[] input
    * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
-   * @param body The multiple input arrays with mask inputs to run inferences on   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The multiple input arrays with mask inputs to run inferences on   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void multipredict (MultiPredictRequest body, String deploymentName, String modelName, final Response.Listener<MultiPredictResponse> responseListener, final Response.ErrorListener errorListener) {
+  public void multipredict (MultiPredictRequest body, String deploymentName, String versionName, String modelName, final Response.Listener<MultiPredictResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -6716,6 +7140,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling multipredict",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling multipredict"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling multipredict",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling multipredict"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling multipredict",
@@ -6723,7 +7152,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6780,10 +7209,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
    * @param id The id of the request (could be self generated)
    * @param needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return MultiPredictResponse
   */
-  public MultiPredictResponse multipredictimage (File file, String id, Boolean needsPreprocessing, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public MultiPredictResponse multipredictimage (File file, String id, Boolean needsPreprocessing, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'file' is set
     if (file == null) {
@@ -6805,6 +7235,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling multipredictimage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling multipredictimage"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling multipredictimage"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling multipredictimage",
@@ -6812,7 +7247,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6874,9 +7309,9 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
    * Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
-   * @param file The image file to run the prediction on   * @param id The id of the request (could be self generated)   * @param needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param file The image file to run the prediction on   * @param id The id of the request (could be self generated)   * @param needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void multipredictimage (File file, String id, Boolean needsPreprocessing, String deploymentName, String modelName, final Response.Listener<MultiPredictResponse> responseListener, final Response.ErrorListener errorListener) {
+  public void multipredictimage (File file, String id, Boolean needsPreprocessing, String deploymentName, String versionName, String modelName, final Response.Listener<MultiPredictResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'file' is set
@@ -6899,6 +7334,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling multipredictimage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling multipredictimage"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling multipredictimage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling multipredictimage"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling multipredictimage",
@@ -6906,7 +7346,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6976,10 +7416,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * 
    * @param body The input NDArray
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return Prediction
   */
-  public Prediction predict (Prediction body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Prediction predict (Prediction body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -6991,6 +7432,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predict",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling predict"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling predict",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling predict"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predict",
@@ -6998,7 +7444,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predict".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7049,9 +7495,9 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Run inference on the input array.
    * 
-   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input NDArray   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void predict (Prediction body, String deploymentName, String modelName, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
+  public void predict (Prediction body, String deploymentName, String versionName, String modelName, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -7064,6 +7510,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predict",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling predict"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling predict",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling predict"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predict",
@@ -7071,7 +7522,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predict".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7125,16 +7576,22 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * Run inference on the input array, using input image file from multipart form data.
   * 
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @param image The file to upload.
    * @return Prediction
   */
-  public Prediction predictimage (String deploymentName, String modelName, File image) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Prediction predictimage (String deploymentName, String versionName, String modelName, File image) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictimage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictimage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling predictimage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling predictimage"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -7143,7 +7600,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7197,15 +7654,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Run inference on the input array, using input image file from multipart form data.
    * 
-   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model   * @param image The file to upload.
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model   * @param image The file to upload.
   */
-  public void predictimage (String deploymentName, String modelName, File image, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
+  public void predictimage (String deploymentName, String versionName, String modelName, File image, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictimage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictimage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling predictimage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling predictimage"));
     }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
@@ -7214,7 +7676,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7274,10 +7736,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * 
    * @param body The input array
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return Prediction
   */
-  public Prediction predictwithpreprocess (List<String> body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Prediction predictwithpreprocess (List<String> body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -7289,6 +7752,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictwithpreprocess",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictwithpreprocess"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling predictwithpreprocess",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling predictwithpreprocess"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predictwithpreprocess",
@@ -7296,7 +7764,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7347,9 +7815,9 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Preprocesses the input and run inference on it
    * 
-   * @param body The input array   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input array   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void predictwithpreprocess (List<String> body, String deploymentName, String modelName, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
+  public void predictwithpreprocess (List<String> body, String deploymentName, String versionName, String modelName, final Response.Listener<Prediction> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -7362,6 +7830,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictwithpreprocess",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictwithpreprocess"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling predictwithpreprocess",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling predictwithpreprocess"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predictwithpreprocess",
@@ -7369,7 +7842,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7424,10 +7897,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * 
    * @param body The input array
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return JsonArrayResponse
   */
-  public JsonArrayResponse predictwithpreprocessjson (List<String> body, String deploymentName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public JsonArrayResponse predictwithpreprocessjson (List<String> body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -7439,6 +7913,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictwithpreprocessjson",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictwithpreprocessjson"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling predictwithpreprocessjson",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling predictwithpreprocessjson"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predictwithpreprocessjson",
@@ -7446,7 +7925,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7497,9 +7976,9 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
    * 
-   * @param body The input array   * @param deploymentName Name of the deployment group   * @param modelName ID or name of the deployed model
+   * @param body The input array   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void predictwithpreprocessjson (List<String> body, String deploymentName, String modelName, final Response.Listener<JsonArrayResponse> responseListener, final Response.ErrorListener errorListener) {
+  public void predictwithpreprocessjson (List<String> body, String deploymentName, String versionName, String modelName, final Response.Listener<JsonArrayResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -7512,6 +7991,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling predictwithpreprocessjson",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling predictwithpreprocessjson"));
     }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling predictwithpreprocessjson",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling predictwithpreprocessjson"));
+    }
     // verify the required parameter 'modelName' is set
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling predictwithpreprocessjson",
@@ -7519,7 +8003,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
+    String path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "modelName" + "\\}", apiInvoker.escapeString(modelName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7723,16 +8207,22 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
   * Takes a batch of SingleCSVRecord object and transforms it into the desired format
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
    * @param batchCSVRecord The input batch of record arrays
    * @return BatchCSVRecord
   */
-  public BatchCSVRecord transformCsv (String deploymentName, String transformName, BatchCSVRecord batchCSVRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public BatchCSVRecord transformCsv (String deploymentName, String versionName, String transformName, BatchCSVRecord batchCSVRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = batchCSVRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformCsv",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformCsv"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformCsv",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformCsv"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -7741,7 +8231,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7792,15 +8282,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
    * Takes a batch of SingleCSVRecord object and transforms it into the desired format
-   * @param deploymentName Name of the deployment group   * @param transformName ID or name of the deployed transform   * @param batchCSVRecord The input batch of record arrays
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param batchCSVRecord The input batch of record arrays
   */
-  public void transformCsv (String deploymentName, String transformName, BatchCSVRecord batchCSVRecord, final Response.Listener<BatchCSVRecord> responseListener, final Response.ErrorListener errorListener) {
+  public void transformCsv (String deploymentName, String versionName, String transformName, BatchCSVRecord batchCSVRecord, final Response.Listener<BatchCSVRecord> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = batchCSVRecord;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformCsv",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformCsv"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformCsv",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformCsv"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -7809,7 +8304,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7863,16 +8358,22 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * Takes a batch input arrays and transforms it
   * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
    * @param batchCSVRecord The input batch of record arrays
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformarrayCsv (String deploymentName, String transformName, BatchCSVRecord batchCSVRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody transformarrayCsv (String deploymentName, String versionName, String transformName, BatchCSVRecord batchCSVRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = batchCSVRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformarrayCsv",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformarrayCsv"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformarrayCsv",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformarrayCsv"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -7881,7 +8382,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7932,15 +8433,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Takes a batch input arrays and transforms it
    * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group   * @param transformName ID or name of the deployed transform   * @param batchCSVRecord The input batch of record arrays
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param batchCSVRecord The input batch of record arrays
   */
-  public void transformarrayCsv (String deploymentName, String transformName, BatchCSVRecord batchCSVRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void transformarrayCsv (String deploymentName, String versionName, String transformName, BatchCSVRecord batchCSVRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = batchCSVRecord;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformarrayCsv",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformarrayCsv"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformarrayCsv",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformarrayCsv"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -7949,7 +8455,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8003,16 +8509,22 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * Takes a batch of images uri and transforms it and returns Base64NDArrayBody
   * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param imageTransformName ID or name of the deployed image transform
    * @param batchImageRecord The input batch of record arrays
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformarrayImage (String deploymentName, String imageTransformName, BatchImageRecord batchImageRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody transformarrayImage (String deploymentName, String versionName, String imageTransformName, BatchImageRecord batchImageRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = batchImageRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformarrayImage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformarrayImage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformarrayImage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformarrayImage"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -8026,7 +8538,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8077,15 +8589,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Takes a batch of images uri and transforms it and returns Base64NDArrayBody
    * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group   * @param imageTransformName ID or name of the deployed image transform   * @param batchImageRecord The input batch of record arrays
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param imageTransformName ID or name of the deployed image transform   * @param batchImageRecord The input batch of record arrays
   */
-  public void transformarrayImage (String deploymentName, String imageTransformName, BatchImageRecord batchImageRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void transformarrayImage (String deploymentName, String versionName, String imageTransformName, BatchImageRecord batchImageRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = batchImageRecord;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformarrayImage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformarrayImage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformarrayImage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformarrayImage"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -8099,7 +8616,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8153,16 +8670,22 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * Takes multiple multipart image file to transform and returns Base64NDArrayBody
   * Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param imageTransformName ID or name of the deployed image transform
    * @param files The image files to upload
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformimage (String deploymentName, String imageTransformName, List<byte[]> files) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody transformimage (String deploymentName, String versionName, String imageTransformName, List<byte[]> files) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformimage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformimage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformimage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformimage"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -8176,7 +8699,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8231,15 +8754,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Takes multiple multipart image file to transform and returns Base64NDArrayBody
    * Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group   * @param imageTransformName ID or name of the deployed image transform   * @param files The image files to upload
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param imageTransformName ID or name of the deployed image transform   * @param files The image files to upload
   */
-  public void transformimage (String deploymentName, String imageTransformName, List<byte[]> files, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void transformimage (String deploymentName, String versionName, String imageTransformName, List<byte[]> files, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformimage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformimage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformimage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformimage"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -8253,7 +8781,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8312,16 +8840,22 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
   * Takes a SingleCSVRecord object and transforms it into the desired format
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
    * @param singleCSVRecord The input record array
    * @return SingleCSVRecord
   */
-  public SingleCSVRecord transformincrementalCsv (String deploymentName, String transformName, SingleCSVRecord singleCSVRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public SingleCSVRecord transformincrementalCsv (String deploymentName, String versionName, String transformName, SingleCSVRecord singleCSVRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = singleCSVRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalCsv",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalCsv"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalCsv",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalCsv"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -8330,7 +8864,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8381,15 +8915,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
    * Takes a SingleCSVRecord object and transforms it into the desired format
-   * @param deploymentName Name of the deployment group   * @param transformName ID or name of the deployed transform   * @param singleCSVRecord The input record array
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param singleCSVRecord The input record array
   */
-  public void transformincrementalCsv (String deploymentName, String transformName, SingleCSVRecord singleCSVRecord, final Response.Listener<SingleCSVRecord> responseListener, final Response.ErrorListener errorListener) {
+  public void transformincrementalCsv (String deploymentName, String versionName, String transformName, SingleCSVRecord singleCSVRecord, final Response.Listener<SingleCSVRecord> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = singleCSVRecord;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalCsv",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalCsv"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalCsv",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalCsv"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -8398,7 +8937,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8452,16 +8991,22 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * Same as /transformincremental but returns Base64NDArrayBody
   * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
    * @param singleCSVRecord The input record array
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformincrementalarrayCsv (String deploymentName, String transformName, SingleCSVRecord singleCSVRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody transformincrementalarrayCsv (String deploymentName, String versionName, String transformName, SingleCSVRecord singleCSVRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = singleCSVRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalarrayCsv",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalarrayCsv"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalarrayCsv",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalarrayCsv"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -8470,7 +9015,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8521,15 +9066,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Same as /transformincremental but returns Base64NDArrayBody
    * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group   * @param transformName ID or name of the deployed transform   * @param singleCSVRecord The input record array
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param singleCSVRecord The input record array
   */
-  public void transformincrementalarrayCsv (String deploymentName, String transformName, SingleCSVRecord singleCSVRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void transformincrementalarrayCsv (String deploymentName, String versionName, String transformName, SingleCSVRecord singleCSVRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = singleCSVRecord;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalarrayCsv",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalarrayCsv"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalarrayCsv",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalarrayCsv"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -8538,7 +9088,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8592,16 +9142,22 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * Takes SingleImageRecord to transform and returns Base64NDArrayBody
   * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param imageTransformName ID or name of the deployed image transform
    * @param singleImageRecord The input record array
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformincrementalarrayImage (String deploymentName, String imageTransformName, SingleImageRecord singleImageRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody transformincrementalarrayImage (String deploymentName, String versionName, String imageTransformName, SingleImageRecord singleImageRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = singleImageRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalarrayImage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalarrayImage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalarrayImage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalarrayImage"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -8615,7 +9171,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8666,15 +9222,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Takes SingleImageRecord to transform and returns Base64NDArrayBody
    * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group   * @param imageTransformName ID or name of the deployed image transform   * @param singleImageRecord The input record array
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param imageTransformName ID or name of the deployed image transform   * @param singleImageRecord The input record array
   */
-  public void transformincrementalarrayImage (String deploymentName, String imageTransformName, SingleImageRecord singleImageRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void transformincrementalarrayImage (String deploymentName, String versionName, String imageTransformName, SingleImageRecord singleImageRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = singleImageRecord;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalarrayImage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalarrayImage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalarrayImage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalarrayImage"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -8688,7 +9249,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8742,16 +9303,22 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * Takes a single multipart image file to transform and returns Base64NDArrayBody
   * Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param imageTransformName ID or name of the deployed image transform
    * @param file The image file to upload
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformincrementalimage (String deploymentName, String imageTransformName, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody transformincrementalimage (String deploymentName, String versionName, String imageTransformName, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalimage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalimage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalimage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalimage"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -8765,7 +9332,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8819,15 +9386,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Takes a single multipart image file to transform and returns Base64NDArrayBody
    * Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group   * @param imageTransformName ID or name of the deployed image transform   * @param file The image file to upload
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param imageTransformName ID or name of the deployed image transform   * @param file The image file to upload
   */
-  public void transformincrementalimage (String deploymentName, String imageTransformName, File file, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void transformincrementalimage (String deploymentName, String versionName, String imageTransformName, File file, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalimage",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalimage"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalimage",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalimage"));
     }
     // verify the required parameter 'imageTransformName' is set
     if (imageTransformName == null) {
@@ -8841,7 +9413,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8900,15 +9472,21 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * Gets the JSON string of the deployed transform process
   * Retrieves the JSON string of the deployed transform process 
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
    * @return TransformProcess
   */
-  public TransformProcess transformprocessGet (String deploymentName, String transformName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public TransformProcess transformprocessGet (String deploymentName, String versionName, String transformName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformprocessGet",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformprocessGet"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformprocessGet",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformprocessGet"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -8917,7 +9495,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -8967,15 +9545,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Gets the JSON string of the deployed transform process
    * Retrieves the JSON string of the deployed transform process 
-   * @param deploymentName Name of the deployment group   * @param transformName ID or name of the deployed transform
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform
   */
-  public void transformprocessGet (String deploymentName, String transformName, final Response.Listener<TransformProcess> responseListener, final Response.ErrorListener errorListener) {
+  public void transformprocessGet (String deploymentName, String versionName, String transformName, final Response.Listener<TransformProcess> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformprocessGet",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformprocessGet"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformprocessGet",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformprocessGet"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -8984,7 +9567,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -9038,16 +9621,22 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   * Sets the deployed transform process through the provided JSON string
   * Sets the transform process with the provided JSON string
    * @param deploymentName Name of the deployment group
+   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
    * @param transformProcess The transform process to set
    * @return void
   */
-  public void transformprocessPost (String deploymentName, String transformName, TransformProcess transformProcess) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void transformprocessPost (String deploymentName, String versionName, String transformName, TransformProcess transformProcess) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = transformProcess;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformprocessPost",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformprocessPost"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformprocessPost",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformprocessPost"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -9056,7 +9645,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -9107,15 +9696,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Sets the deployed transform process through the provided JSON string
    * Sets the transform process with the provided JSON string
-   * @param deploymentName Name of the deployment group   * @param transformName ID or name of the deployed transform   * @param transformProcess The transform process to set
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param transformProcess The transform process to set
   */
-  public void transformprocessPost (String deploymentName, String transformName, TransformProcess transformProcess, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void transformprocessPost (String deploymentName, String versionName, String transformName, TransformProcess transformProcess, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = transformProcess;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformprocessPost",
         new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformprocessPost"));
+    }
+    // verify the required parameter 'versionName' is set
+    if (versionName == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformprocessPost",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformprocessPost"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
@@ -9124,7 +9718,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
+    String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -9173,11 +9767,17 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   /**
   * Updates the best model for an experiment
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param updateBestModel Model encapsulating the experiment id to update and the best model id.
    * @return ExperimentEntity
   */
-  public ExperimentEntity updateBestModelForExperiment (UpdateBestModel updateBestModel) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ExperimentEntity updateBestModelForExperiment (String modelHistoryServerId, UpdateBestModel updateBestModel) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = updateBestModel;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling updateBestModelForExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling updateBestModelForExperiment"));
+    }
     // verify the required parameter 'updateBestModel' is set
     if (updateBestModel == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'updateBestModel' when calling updateBestModelForExperiment",
@@ -9185,7 +9785,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/experiment/best";
+    String path = "/rpc/{modelHistoryServerId}/experiment/best".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -9236,11 +9836,16 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Updates the best model for an experiment
    * 
-   * @param updateBestModel Model encapsulating the experiment id to update and the best model id.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param updateBestModel Model encapsulating the experiment id to update and the best model id.
   */
-  public void updateBestModelForExperiment (UpdateBestModel updateBestModel, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void updateBestModelForExperiment (String modelHistoryServerId, UpdateBestModel updateBestModel, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = updateBestModel;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling updateBestModelForExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling updateBestModelForExperiment"));
+    }
     // verify the required parameter 'updateBestModel' is set
     if (updateBestModel == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'updateBestModel' when calling updateBestModelForExperiment",
@@ -9248,7 +9853,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/experiment/best".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/experiment/best".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -9301,12 +9906,18 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   /**
   * Updates an experiment, given an experiment entity
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param experimentID the GUID of the experiment to update
    * @param experimentEntity The experiment entity to update with
    * @return ExperimentEntity
   */
-  public ExperimentEntity updateExperiment (String experimentID, ExperimentEntity experimentEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ExperimentEntity updateExperiment (String modelHistoryServerId, String experimentID, ExperimentEntity experimentEntity) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = experimentEntity;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling updateExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling updateExperiment"));
+    }
     // verify the required parameter 'experimentID' is set
     if (experimentID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'experimentID' when calling updateExperiment",
@@ -9319,7 +9930,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/experiment/{experimentID}".replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -9370,11 +9981,16 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Updates an experiment, given an experiment entity
    * 
-   * @param experimentID the GUID of the experiment to update   * @param experimentEntity The experiment entity to update with
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment to update   * @param experimentEntity The experiment entity to update with
   */
-  public void updateExperiment (String experimentID, ExperimentEntity experimentEntity, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void updateExperiment (String modelHistoryServerId, String experimentID, ExperimentEntity experimentEntity, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = experimentEntity;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling updateExperiment",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling updateExperiment"));
+    }
     // verify the required parameter 'experimentID' is set
     if (experimentID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'experimentID' when calling updateExperiment",
@@ -9387,7 +10003,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/experiment/{experimentID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "experimentID" + "\\}", apiInvoker.escapeString(experimentID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -9440,12 +10056,18 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   /**
   * Update a model history / workspace
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
    * @param modelHistoryID the GUID of the model history / workspace to update
    * @param updateModelHistoryRequest The model history request object
    * @return ModelHistoryEntity
   */
-  public ModelHistoryEntity updateModelHistory (String modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ModelHistoryEntity updateModelHistory (String modelHistoryServerId, String modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = updateModelHistoryRequest;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling updateModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling updateModelHistory"));
+    }
     // verify the required parameter 'modelHistoryID' is set
     if (modelHistoryID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryID' when calling updateModelHistory",
@@ -9458,7 +10080,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/modelhistory/{modelHistoryID}".replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -9509,11 +10131,16 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Update a model history / workspace
    * 
-   * @param modelHistoryID the GUID of the model history / workspace to update   * @param updateModelHistoryRequest The model history request object
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID the GUID of the model history / workspace to update   * @param updateModelHistoryRequest The model history request object
   */
-  public void updateModelHistory (String modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void updateModelHistory (String modelHistoryServerId, String modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = updateModelHistoryRequest;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling updateModelHistory",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling updateModelHistory"));
+    }
     // verify the required parameter 'modelHistoryID' is set
     if (modelHistoryID == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryID' when calling updateModelHistory",
@@ -9526,7 +10153,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
 
     // create path and map variables
-    String path = "/modelhistory/{modelHistoryID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
+    String path = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString())).replaceAll("\\{" + "modelHistoryID" + "\\}", apiInvoker.escapeString(modelHistoryID.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();

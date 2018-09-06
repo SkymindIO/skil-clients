@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * INDArray
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-18T22:27:09.789+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-06T20:00:52.936+05:00")
 public class INDArray {
   @SerializedName("array")
   private String array = null;

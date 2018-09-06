@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * BatchCSVRecord
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-18T22:27:09.789+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-06T20:00:52.936+05:00")
 public class BatchCSVRecord {
   @SerializedName("records")
   private List<SingleCSVRecord> records = new ArrayList<SingleCSVRecord>();

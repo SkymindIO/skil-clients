@@ -139,16 +139,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns EvaluationResultsEntity 
      */
-    public function add_evaluation_result (evaluationResultsEntity: EvaluationResultsEntity): String {
+    public function add_evaluation_result (modelHistoryServerId: String, evaluationResultsEntity: EvaluationResultsEntity): String {
         // create path and map variables
-        var path: String = "/model/revisions/evaluations/".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -169,16 +173,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns AddExampleRequest 
      */
-    public function add_example_for_batch (addExampleRequest: AddExampleRequest): String {
+    public function add_example_for_batch (modelHistoryServerId: String, addExampleRequest: AddExampleRequest): String {
         // create path and map variables
-        var path: String = "/model/exampleForBatch".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/model/exampleForBatch".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -199,16 +207,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ExampleEntity 
      */
-    public function add_example_to_minibatch (exampleEntity: ExampleEntity): String {
+    public function add_example_to_minibatch (modelHistoryServerId: String, exampleEntity: ExampleEntity): String {
         // create path and map variables
-        var path: String = "/model/example".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/model/example".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -229,16 +241,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ExperimentEntity 
      */
-    public function add_experiment (experimentEntity: ExperimentEntity): String {
+    public function add_experiment (modelHistoryServerId: String, experimentEntity: ExperimentEntity): String {
         // create path and map variables
-        var path: String = "/experiment".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/experiment".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -259,16 +275,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns MinibatchEntity 
      */
-    public function add_minibatch (minibatchEntity: MinibatchEntity): String {
+    public function add_minibatch (modelHistoryServerId: String, minibatchEntity: MinibatchEntity): String {
         // create path and map variables
-        var path: String = "/model/minibatch".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/model/minibatch".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -289,16 +309,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ModelFeedBackRequest 
      */
-    public function add_model_feedback (modelFeedBackRequest: ModelFeedBackRequest): String {
+    public function add_model_feedback (modelHistoryServerId: String, modelFeedBackRequest: ModelFeedBackRequest): String {
         // create path and map variables
-        var path: String = "/model/feedback".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/model/feedback".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -319,16 +343,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ModelHistoryEntity 
      */
-    public function add_model_history (addModelHistoryRequest: AddModelHistoryRequest): String {
+    public function add_model_history (modelHistoryServerId: String, addModelHistoryRequest: AddModelHistoryRequest): String {
         // create path and map variables
-        var path: String = "/modelhistory".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/modelhistory".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -349,16 +377,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ModelInstanceEntity 
      */
-    public function add_model_instance (modelInstanceEntity: ModelInstanceEntity): String {
+    public function add_model_instance (modelHistoryServerId: String, modelInstanceEntity: ModelInstanceEntity): String {
         // create path and map variables
-        var path: String = "/model".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/model".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -379,16 +411,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns EvaluationResultsEntity 
      */
-    public function aggregate_model_results (aggregatePrediction: AggregatePrediction): String {
+    public function aggregate_model_results (modelHistoryServerId: String, aggregatePrediction: AggregatePrediction): String {
         // create path and map variables
-        var path: String = "/model/aggregateresults".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/model/aggregateresults".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -409,9 +445,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ClassificationResult 
      */
-    public function classify (body: Prediction, deploymentName: String, modelName: String): String {
+    public function classify (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/classify".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -420,7 +456,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -447,9 +487,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function classifyarray (body: Prediction, deploymentName: String, modelName: String): String {
+    public function classifyarray (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -458,7 +498,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -485,9 +529,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ClassificationResult 
      */
-    public function classifyimage (deploymentName: String, modelName: String, image: File): String {
+    public function classifyimage (deploymentName: String, versionName: String, modelName: String, image: File): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -496,7 +540,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -523,16 +571,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ModelHistoryEntity 
      */
-    public function create_model_history (modelHistoryEntity: ModelHistoryEntity): String {
+    public function create_model_history (modelHistoryServerId: String, modelHistoryEntity: ModelHistoryEntity): String {
         // create path and map variables
-        var path: String = "/model/revisions".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/model/revisions".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -553,16 +605,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns InlineResponse200 
      */
-    public function delete_experiment (experimentID: String): String {
+    public function delete_experiment (modelHistoryServerId: String, experimentID: String): String {
         // create path and map variables
-        var path: String = "/experiment/{experimentID}".replace(/{format}/g,"xml").replace("{" + "experimentID" + "}", getApiInvoker().escapeString(experimentID));
+        var path: String = "/rpc/{modelHistoryServerId}/experiment/{experimentID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "experimentID" + "}", getApiInvoker().escapeString(experimentID));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -617,16 +673,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns InlineResponse200 
      */
-    public function delete_model_history (modelHistoryID: String): String {
+    public function delete_model_history (modelHistoryServerId: String, modelHistoryID: String): String {
         // create path and map variables
-        var path: String = "/modelhistory/{modelHistoryID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryID" + "}", getApiInvoker().escapeString(modelHistoryID));
+        var path: String = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "modelHistoryID" + "}", getApiInvoker().escapeString(modelHistoryID));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -647,16 +707,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns void 
      */
-    public function delete_model_instance (modelInstanceID: String): String {
+    public function delete_model_instance (modelHistoryServerId: String, modelInstanceID: String): String {
         // create path and map variables
-        var path: String = "/model/{modelInstanceID}".replace(/{format}/g,"xml").replace("{" + "modelInstanceID" + "}", getApiInvoker().escapeString(modelInstanceID));
+        var path: String = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "modelInstanceID" + "}", getApiInvoker().escapeString(modelInstanceID));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -827,9 +891,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns DetectionResult 
      */
-    public function detectobjects (id: String, needsPreprocessing: Boolean, threshold: Number, imageFile: File, deploymentName: String, modelName: String): String {
+    public function detectobjects (id: String, needsPreprocessing: Boolean, threshold: Number, imageFile: File, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -841,7 +905,11 @@ public class DefaultApi extends SwaggerApi {
         if(        // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -877,16 +945,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ModelInstanceEntity 
      */
-    public function get_best_model_among_model_ids (bestModel: BestModel): String {
+    public function get_best_model_among_model_ids (modelHistoryServerId: String, bestModel: BestModel): String {
         // create path and map variables
-        var path: String = "/model/best".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/model/best".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -907,16 +979,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Array 
      */
-    public function get_evaluation_for_model_id (modelInstanceID: String): String {
+    public function get_evaluation_for_model_id (modelHistoryServerId: String, modelInstanceID: String): String {
         // create path and map variables
-        var path: String = "/model/revisions/evaluations/{modelInstanceID}".replace(/{format}/g,"xml").replace("{" + "modelInstanceID" + "}", getApiInvoker().escapeString(modelInstanceID));
+        var path: String = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "modelInstanceID" + "}", getApiInvoker().escapeString(modelInstanceID));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -937,16 +1013,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Array 
      */
-    public function get_examples_for_minibatch (minibatchId: String): String {
+    public function get_examples_for_minibatch (modelHistoryServerId: String, minibatchId: String): String {
         // create path and map variables
-        var path: String = "/model/example/{minibatchId}".replace(/{format}/g,"xml").replace("{" + "minibatchId" + "}", getApiInvoker().escapeString(minibatchId));
+        var path: String = "/rpc/{modelHistoryServerId}/model/example/{minibatchId}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "minibatchId" + "}", getApiInvoker().escapeString(minibatchId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -967,16 +1047,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ExperimentEntity 
      */
-    public function get_experiment (experimentID: String): String {
+    public function get_experiment (modelHistoryServerId: String, experimentID: String): String {
         // create path and map variables
-        var path: String = "/experiment/{experimentID}".replace(/{format}/g,"xml").replace("{" + "experimentID" + "}", getApiInvoker().escapeString(experimentID));
+        var path: String = "/rpc/{modelHistoryServerId}/experiment/{experimentID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "experimentID" + "}", getApiInvoker().escapeString(experimentID));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -997,16 +1081,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ExperimentEntity 
      */
-    public function get_experiments_for_model_history (modelHistoryID: String): String {
+    public function get_experiments_for_model_history (modelHistoryServerId: String, modelHistoryID: String): String {
         // create path and map variables
-        var path: String = "/experiments/{modelHistoryID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryID" + "}", getApiInvoker().escapeString(modelHistoryID));
+        var path: String = "/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "modelHistoryID" + "}", getApiInvoker().escapeString(modelHistoryID));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -1027,16 +1115,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns MinibatchEntity 
      */
-    public function get_minibatch (minibatchId: String): String {
+    public function get_minibatch (modelHistoryServerId: String, minibatchId: String): String {
         // create path and map variables
-        var path: String = "/model/minibatch/{minibatchId}".replace(/{format}/g,"xml").replace("{" + "minibatchId" + "}", getApiInvoker().escapeString(minibatchId));
+        var path: String = "/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "minibatchId" + "}", getApiInvoker().escapeString(minibatchId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -1057,16 +1149,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ModelHistoryEntity 
      */
-    public function get_model_history (modelHistoryID: String): String {
+    public function get_model_history (modelHistoryServerId: String, modelHistoryID: String): String {
         // create path and map variables
-        var path: String = "/model/revision/{modelHistoryID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryID" + "}", getApiInvoker().escapeString(modelHistoryID));
+        var path: String = "/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "modelHistoryID" + "}", getApiInvoker().escapeString(modelHistoryID));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -1087,16 +1183,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ModelInstanceEntity 
      */
-    public function get_model_instance (modelInstanceID: String): String {
+    public function get_model_instance (modelHistoryServerId: String, modelInstanceID: String): String {
         // create path and map variables
-        var path: String = "/model/{modelInstanceID}".replace(/{format}/g,"xml").replace("{" + "modelInstanceID" + "}", getApiInvoker().escapeString(modelInstanceID));
+        var path: String = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "modelInstanceID" + "}", getApiInvoker().escapeString(modelInstanceID));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -1117,16 +1217,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Array 
      */
-    public function get_models_for_experiment (experimentID: String): String {
+    public function get_models_for_experiment (modelHistoryServerId: String, experimentID: String): String {
         // create path and map variables
-        var path: String = "/experiment/{experimentID}/models".replace(/{format}/g,"xml").replace("{" + "experimentID" + "}", getApiInvoker().escapeString(experimentID));
+        var path: String = "/rpc/{modelHistoryServerId}/experiment/{experimentID}/models".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "experimentID" + "}", getApiInvoker().escapeString(experimentID));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -1147,9 +1251,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ImageTransformProcess 
      */
-    public function imagetransformprocess_get (deploymentName: String, imageTransformName: String): String {
+    public function imagetransformprocess_get (deploymentName: String, versionName: String, imageTransformName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1157,7 +1261,11 @@ public class DefaultApi extends SwaggerApi {
 
         // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1181,9 +1289,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ImageTransformProcess 
      */
-    public function imagetransformprocess_post (deploymentName: String, imageTransformName: String, body: ImageTransformProcess): String {
+    public function imagetransformprocess_post (deploymentName: String, versionName: String, imageTransformName: String, body: ImageTransformProcess): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1192,7 +1300,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1219,9 +1331,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns JsonArrayResponse 
      */
-    public function jsonarray (body: Prediction, deploymentName: String, modelName: String): String {
+    public function jsonarray (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1230,7 +1342,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1257,9 +1373,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns NearestNeighborsResults 
      */
-    public function knn (deploymentName: String, knnName: String, body: NearestNeighborRequest): String {
+    public function knn (deploymentName: String, versionName: String, knnName: String, body: NearestNeighborRequest): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/knn/{knnName}/default/knn".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "knnName" + "}", getApiInvoker().escapeString(knnName));
+        var path: String = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "knnName" + "}", getApiInvoker().escapeString(knnName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1268,7 +1384,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1295,9 +1415,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns NearestNeighborsResults 
      */
-    public function knnnew (deploymentName: String, knnName: String, body: Base64NDArrayBodyKNN): String {
+    public function knnnew (deploymentName: String, versionName: String, knnName: String, body: Base64NDArrayBodyKNN): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "knnName" + "}", getApiInvoker().escapeString(knnName));
+        var path: String = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "knnName" + "}", getApiInvoker().escapeString(knnName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1306,7 +1426,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1335,7 +1459,7 @@ public class DefaultApi extends SwaggerApi {
      */
     public function list_all_experiments (): String {
         // create path and map variables
-        var path: String = "/experiments".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/experiments".replace(/{format}/g,"xml");
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1359,9 +1483,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns String 
      */
-    public function logfilepath (deploymentName: String, modelName: String): String {
+    public function logfilepath (deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1369,7 +1493,11 @@ public class DefaultApi extends SwaggerApi {
 
         // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1423,9 +1551,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns LogBatch 
      */
-    public function logs (body: LogRequest, deploymentName: String, modelName: String): String {
+    public function logs (body: LogRequest, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/logs".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1434,7 +1562,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1461,9 +1593,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns MetaData 
      */
-    public function meta_get (deploymentName: String, modelName: String): String {
+    public function meta_get (deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/meta".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1471,7 +1603,11 @@ public class DefaultApi extends SwaggerApi {
 
         // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1495,9 +1631,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns MetaData 
      */
-    public function meta_post (body: MetaData, deploymentName: String, modelName: String): String {
+    public function meta_post (body: MetaData, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/meta".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1506,7 +1642,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1601,9 +1741,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ModelStatus 
      */
-    public function modelset (deploymentName: String, modelName: String, file: File): String {
+    public function modelset (deploymentName: String, versionName: String, modelName: String, file: File): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/modelset".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1612,7 +1752,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1639,9 +1783,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ModelStatus 
      */
-    public function modelupdate (deploymentName: String, modelName: String, file: File): String {
+    public function modelupdate (deploymentName: String, versionName: String, modelName: String, file: File): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1650,7 +1794,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1677,9 +1825,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns MultiClassClassificationResult 
      */
-    public function multiclassify (body: Prediction, deploymentName: String, modelName: String): String {
+    public function multiclassify (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1688,7 +1836,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1715,9 +1867,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns MultiPredictResponse 
      */
-    public function multipredict (body: MultiPredictRequest, deploymentName: String, modelName: String): String {
+    public function multipredict (body: MultiPredictRequest, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1726,7 +1878,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1753,9 +1909,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns MultiPredictResponse 
      */
-    public function multipredictimage (file: File, id: String, needsPreprocessing: Boolean, deploymentName: String, modelName: String): String {
+    public function multipredictimage (file: File, id: String, needsPreprocessing: Boolean, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1766,7 +1922,11 @@ public class DefaultApi extends SwaggerApi {
         if(        // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1799,9 +1959,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Prediction 
      */
-    public function predict (body: Prediction, deploymentName: String, modelName: String): String {
+    public function predict (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/predict".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1810,7 +1970,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1837,9 +2001,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Prediction 
      */
-    public function predictimage (deploymentName: String, modelName: String, image: File): String {
+    public function predictimage (deploymentName: String, versionName: String, modelName: String, image: File): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1848,7 +2012,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1875,9 +2043,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Prediction 
      */
-    public function predictwithpreprocess (body: Array, deploymentName: String, modelName: String): String {
+    public function predictwithpreprocess (body: Array, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1886,7 +2054,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1913,9 +2085,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns JsonArrayResponse 
      */
-    public function predictwithpreprocessjson (body: Array, deploymentName: String, modelName: String): String {
+    public function predictwithpreprocessjson (body: Array, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
+        var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1924,7 +2096,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1989,9 +2165,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns BatchCSVRecord 
      */
-    public function transform_csv (deploymentName: String, transformName: String, batchCSVRecord: BatchCSVRecord): String {
+    public function transform_csv (deploymentName: String, versionName: String, transformName: String, batchCSVRecord: BatchCSVRecord): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2000,7 +2176,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -2027,9 +2207,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformarray_csv (deploymentName: String, transformName: String, batchCSVRecord: BatchCSVRecord): String {
+    public function transformarray_csv (deploymentName: String, versionName: String, transformName: String, batchCSVRecord: BatchCSVRecord): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2038,7 +2218,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -2065,9 +2249,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformarray_image (deploymentName: String, imageTransformName: String, batchImageRecord: BatchImageRecord): String {
+    public function transformarray_image (deploymentName: String, versionName: String, imageTransformName: String, batchImageRecord: BatchImageRecord): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2076,7 +2260,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -2103,9 +2291,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformimage (deploymentName: String, imageTransformName: String, files: Array): String {
+    public function transformimage (deploymentName: String, versionName: String, imageTransformName: String, files: Array): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2114,7 +2302,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -2141,9 +2333,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns SingleCSVRecord 
      */
-    public function transformincremental_csv (deploymentName: String, transformName: String, singleCSVRecord: SingleCSVRecord): String {
+    public function transformincremental_csv (deploymentName: String, versionName: String, transformName: String, singleCSVRecord: SingleCSVRecord): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2152,7 +2344,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -2179,9 +2375,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformincrementalarray_csv (deploymentName: String, transformName: String, singleCSVRecord: SingleCSVRecord): String {
+    public function transformincrementalarray_csv (deploymentName: String, versionName: String, transformName: String, singleCSVRecord: SingleCSVRecord): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2190,7 +2386,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -2217,9 +2417,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformincrementalarray_image (deploymentName: String, imageTransformName: String, singleImageRecord: SingleImageRecord): String {
+    public function transformincrementalarray_image (deploymentName: String, versionName: String, imageTransformName: String, singleImageRecord: SingleImageRecord): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2228,7 +2428,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -2255,9 +2459,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformincrementalimage (deploymentName: String, imageTransformName: String, file: File): String {
+    public function transformincrementalimage (deploymentName: String, versionName: String, imageTransformName: String, file: File): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2266,7 +2470,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -2293,9 +2501,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns TransformProcess 
      */
-    public function transformprocess_get (deploymentName: String, transformName: String): String {
+    public function transformprocess_get (deploymentName: String, versionName: String, transformName: String): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2303,7 +2511,11 @@ public class DefaultApi extends SwaggerApi {
 
         // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -2327,9 +2539,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns void 
      */
-    public function transformprocess_post (deploymentName: String, transformName: String, transformProcess: TransformProcess): String {
+    public function transformprocess_post (deploymentName: String, versionName: String, transformName: String, transformProcess: TransformProcess): String {
         // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
+        var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2338,7 +2550,11 @@ public class DefaultApi extends SwaggerApi {
         // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -2365,16 +2581,20 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ExperimentEntity 
      */
-    public function update_best_model_for_experiment (updateBestModel: UpdateBestModel): String {
+    public function update_best_model_for_experiment (modelHistoryServerId: String, updateBestModel: UpdateBestModel): String {
         // create path and map variables
-        var path: String = "/experiment/best".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/experiment/best".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
@@ -2395,9 +2615,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ExperimentEntity 
      */
-    public function update_experiment (experimentID: String, experimentEntity: ExperimentEntity): String {
+    public function update_experiment (modelHistoryServerId: String, experimentID: String, experimentEntity: ExperimentEntity): String {
         // create path and map variables
-        var path: String = "/experiment/{experimentID}".replace(/{format}/g,"xml").replace("{" + "experimentID" + "}", getApiInvoker().escapeString(experimentID));
+        var path: String = "/rpc/{modelHistoryServerId}/experiment/{experimentID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "experimentID" + "}", getApiInvoker().escapeString(experimentID));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2405,7 +2625,11 @@ public class DefaultApi extends SwaggerApi {
 
         // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -2429,9 +2653,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ModelHistoryEntity 
      */
-    public function update_model_history (modelHistoryID: String, updateModelHistoryRequest: AddModelHistoryRequest): String {
+    public function update_model_history (modelHistoryServerId: String, modelHistoryID: String, updateModelHistoryRequest: AddModelHistoryRequest): String {
         // create path and map variables
-        var path: String = "/modelhistory/{modelHistoryID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryID" + "}", getApiInvoker().escapeString(modelHistoryID));
+        var path: String = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId)).replace("{" + "modelHistoryID" + "}", getApiInvoker().escapeString(modelHistoryID));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -2439,7 +2663,11 @@ public class DefaultApi extends SwaggerApi {
 
         // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {

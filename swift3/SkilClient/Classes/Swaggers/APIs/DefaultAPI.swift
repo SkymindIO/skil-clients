@@ -12,11 +12,12 @@ import Alamofire
 open class DefaultAPI: APIBase {
     /**
      Adds an evaluation result
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter evaluationResultsEntity: (body) The evaluation result entity 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addEvaluationResult(evaluationResultsEntity: EvaluationResultsEntity, completion: @escaping ((_ data: EvaluationResultsEntity?, _ error: ErrorResponse?) -> Void)) {
-        addEvaluationResultWithRequestBuilder(evaluationResultsEntity: evaluationResultsEntity).execute { (response, error) -> Void in
+    open class func addEvaluationResult(modelHistoryServerId: String, evaluationResultsEntity: EvaluationResultsEntity, completion: @escaping ((_ data: EvaluationResultsEntity?, _ error: ErrorResponse?) -> Void)) {
+        addEvaluationResultWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, evaluationResultsEntity: evaluationResultsEntity).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -24,7 +25,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds an evaluation result
-     - POST /model/revisions/evaluations/
+     - POST /rpc/{modelHistoryServerId}/model/revisions/evaluations/
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -47,11 +48,15 @@ open class DefaultAPI: APIBase {
   "rmse" : 2.3021358869347655,
   "binaryThreshold" : 7.386281948385884
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter evaluationResultsEntity: (body) The evaluation result entity 
      - returns: RequestBuilder<EvaluationResultsEntity> 
      */
-    open class func addEvaluationResultWithRequestBuilder(evaluationResultsEntity: EvaluationResultsEntity) -> RequestBuilder<EvaluationResultsEntity> {
-        let path = "/model/revisions/evaluations/"
+    open class func addEvaluationResultWithRequestBuilder(modelHistoryServerId: String, evaluationResultsEntity: EvaluationResultsEntity) -> RequestBuilder<EvaluationResultsEntity> {
+        var path = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = evaluationResultsEntity.encodeToJSON()
 
@@ -64,11 +69,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds a number of examples to a minibatch ID given an AddExampleRequest.
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter addExampleRequest: (body) The add example request, encapsulating minibatch details and examples batch size 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addExampleForBatch(addExampleRequest: AddExampleRequest, completion: @escaping ((_ data: AddExampleRequest?, _ error: ErrorResponse?) -> Void)) {
-        addExampleForBatchWithRequestBuilder(addExampleRequest: addExampleRequest).execute { (response, error) -> Void in
+    open class func addExampleForBatch(modelHistoryServerId: String, addExampleRequest: AddExampleRequest, completion: @escaping ((_ data: AddExampleRequest?, _ error: ErrorResponse?) -> Void)) {
+        addExampleForBatchWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, addExampleRequest: addExampleRequest).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -76,16 +82,20 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds a number of examples to a minibatch ID given an AddExampleRequest.
-     - POST /model/exampleForBatch
+     - POST /rpc/{modelHistoryServerId}/model/exampleForBatch
      - API Key:
        - type: apiKey authorization 
        - name: api_key
      - examples: [{contentType=application/json, example=""}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter addExampleRequest: (body) The add example request, encapsulating minibatch details and examples batch size 
      - returns: RequestBuilder<AddExampleRequest> 
      */
-    open class func addExampleForBatchWithRequestBuilder(addExampleRequest: AddExampleRequest) -> RequestBuilder<AddExampleRequest> {
-        let path = "/model/exampleForBatch"
+    open class func addExampleForBatchWithRequestBuilder(modelHistoryServerId: String, addExampleRequest: AddExampleRequest) -> RequestBuilder<AddExampleRequest> {
+        var path = "/rpc/{modelHistoryServerId}/model/exampleForBatch"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = addExampleRequest.encodeToJSON()
 
@@ -98,11 +108,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds an example to a minibatch
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter exampleEntity: (body) The example to add to the minibatch 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addExampleToMinibatch(exampleEntity: ExampleEntity, completion: @escaping ((_ data: ExampleEntity?, _ error: ErrorResponse?) -> Void)) {
-        addExampleToMinibatchWithRequestBuilder(exampleEntity: exampleEntity).execute { (response, error) -> Void in
+    open class func addExampleToMinibatch(modelHistoryServerId: String, exampleEntity: ExampleEntity, completion: @escaping ((_ data: ExampleEntity?, _ error: ErrorResponse?) -> Void)) {
+        addExampleToMinibatchWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, exampleEntity: exampleEntity).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -110,7 +121,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds an example to a minibatch
-     - POST /model/example
+     - POST /rpc/{modelHistoryServerId}/model/example
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -122,11 +133,15 @@ open class DefaultAPI: APIBase {
   "miniBatchVersion" : 5,
   "exampleVersion" : 0
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter exampleEntity: (body) The example to add to the minibatch 
      - returns: RequestBuilder<ExampleEntity> 
      */
-    open class func addExampleToMinibatchWithRequestBuilder(exampleEntity: ExampleEntity) -> RequestBuilder<ExampleEntity> {
-        let path = "/model/example"
+    open class func addExampleToMinibatchWithRequestBuilder(modelHistoryServerId: String, exampleEntity: ExampleEntity) -> RequestBuilder<ExampleEntity> {
+        var path = "/rpc/{modelHistoryServerId}/model/example"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = exampleEntity.encodeToJSON()
 
@@ -139,11 +154,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Add an experiment, given an experiment entity
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter experimentEntity: (body) The experiment entity to add 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addExperiment(experimentEntity: ExperimentEntity, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
-        addExperimentWithRequestBuilder(experimentEntity: experimentEntity).execute { (response, error) -> Void in
+    open class func addExperiment(modelHistoryServerId: String, experimentEntity: ExperimentEntity, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
+        addExperimentWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, experimentEntity: experimentEntity).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -151,7 +167,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Add an experiment, given an experiment entity
-     - POST /experiment
+     - POST /rpc/{modelHistoryServerId}/experiment
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -167,11 +183,15 @@ open class DefaultAPI: APIBase {
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter experimentEntity: (body) The experiment entity to add 
      - returns: RequestBuilder<ExperimentEntity> 
      */
-    open class func addExperimentWithRequestBuilder(experimentEntity: ExperimentEntity) -> RequestBuilder<ExperimentEntity> {
-        let path = "/experiment"
+    open class func addExperimentWithRequestBuilder(modelHistoryServerId: String, experimentEntity: ExperimentEntity) -> RequestBuilder<ExperimentEntity> {
+        var path = "/rpc/{modelHistoryServerId}/experiment"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = experimentEntity.encodeToJSON()
 
@@ -184,11 +204,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds a minibatch
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchEntity: (body) The minibatch entity to add 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addMinibatch(minibatchEntity: MinibatchEntity, completion: @escaping ((_ data: MinibatchEntity?, _ error: ErrorResponse?) -> Void)) {
-        addMinibatchWithRequestBuilder(minibatchEntity: minibatchEntity).execute { (response, error) -> Void in
+    open class func addMinibatch(modelHistoryServerId: String, minibatchEntity: MinibatchEntity, completion: @escaping ((_ data: MinibatchEntity?, _ error: ErrorResponse?) -> Void)) {
+        addMinibatchWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, minibatchEntity: minibatchEntity).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -196,7 +217,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds a minibatch
-     - POST /model/minibatch
+     - POST /rpc/{modelHistoryServerId}/model/minibatch
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -206,11 +227,15 @@ open class DefaultAPI: APIBase {
   "evalVersion" : 0,
   "miniBatchId" : "miniBatchId"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchEntity: (body) The minibatch entity to add 
      - returns: RequestBuilder<MinibatchEntity> 
      */
-    open class func addMinibatchWithRequestBuilder(minibatchEntity: MinibatchEntity) -> RequestBuilder<MinibatchEntity> {
-        let path = "/model/minibatch"
+    open class func addMinibatchWithRequestBuilder(modelHistoryServerId: String, minibatchEntity: MinibatchEntity) -> RequestBuilder<MinibatchEntity> {
+        var path = "/rpc/{modelHistoryServerId}/model/minibatch"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = minibatchEntity.encodeToJSON()
 
@@ -223,11 +248,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds an evaluation feedback to the model against a given minibatch id.
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelFeedBackRequest: (body) The model feedback request object 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addModelFeedback(modelFeedBackRequest: ModelFeedBackRequest, completion: @escaping ((_ data: ModelFeedBackRequest?, _ error: ErrorResponse?) -> Void)) {
-        addModelFeedbackWithRequestBuilder(modelFeedBackRequest: modelFeedBackRequest).execute { (response, error) -> Void in
+    open class func addModelFeedback(modelHistoryServerId: String, modelFeedBackRequest: ModelFeedBackRequest, completion: @escaping ((_ data: ModelFeedBackRequest?, _ error: ErrorResponse?) -> Void)) {
+        addModelFeedbackWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, modelFeedBackRequest: modelFeedBackRequest).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -235,7 +261,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds an evaluation feedback to the model against a given minibatch id.
-     - POST /model/feedback
+     - POST /rpc/{modelHistoryServerId}/model/feedback
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -244,11 +270,15 @@ open class DefaultAPI: APIBase {
   "guesses" : "[\"0\", \"1\", \"2\"]",
   "batchId" : "batchId"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelFeedBackRequest: (body) The model feedback request object 
      - returns: RequestBuilder<ModelFeedBackRequest> 
      */
-    open class func addModelFeedbackWithRequestBuilder(modelFeedBackRequest: ModelFeedBackRequest) -> RequestBuilder<ModelFeedBackRequest> {
-        let path = "/model/feedback"
+    open class func addModelFeedbackWithRequestBuilder(modelHistoryServerId: String, modelFeedBackRequest: ModelFeedBackRequest) -> RequestBuilder<ModelFeedBackRequest> {
+        var path = "/rpc/{modelHistoryServerId}/model/feedback"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = modelFeedBackRequest.encodeToJSON()
 
@@ -261,11 +291,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Add a model history / workspace
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter addModelHistoryRequest: (body) The model history request object 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addModelHistory(addModelHistoryRequest: AddModelHistoryRequest, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
-        addModelHistoryWithRequestBuilder(addModelHistoryRequest: addModelHistoryRequest).execute { (response, error) -> Void in
+    open class func addModelHistory(modelHistoryServerId: String, addModelHistoryRequest: AddModelHistoryRequest, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
+        addModelHistoryWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, addModelHistoryRequest: addModelHistoryRequest).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -273,7 +304,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Add a model history / workspace
-     - POST /modelhistory
+     - POST /rpc/{modelHistoryServerId}/modelhistory
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -283,11 +314,15 @@ open class DefaultAPI: APIBase {
   "created" : 0,
   "modelLabels" : "modelLabels"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter addModelHistoryRequest: (body) The model history request object 
      - returns: RequestBuilder<ModelHistoryEntity> 
      */
-    open class func addModelHistoryWithRequestBuilder(addModelHistoryRequest: AddModelHistoryRequest) -> RequestBuilder<ModelHistoryEntity> {
-        let path = "/modelhistory"
+    open class func addModelHistoryWithRequestBuilder(modelHistoryServerId: String, addModelHistoryRequest: AddModelHistoryRequest) -> RequestBuilder<ModelHistoryEntity> {
+        var path = "/rpc/{modelHistoryServerId}/modelhistory"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = addModelHistoryRequest.encodeToJSON()
 
@@ -300,11 +335,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds a model
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceEntity: (body) The object encapsulating the model instance id and evaluation type to aggregate 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addModelInstance(modelInstanceEntity: ModelInstanceEntity, completion: @escaping ((_ data: ModelInstanceEntity?, _ error: ErrorResponse?) -> Void)) {
-        addModelInstanceWithRequestBuilder(modelInstanceEntity: modelInstanceEntity).execute { (response, error) -> Void in
+    open class func addModelInstance(modelHistoryServerId: String, modelInstanceEntity: ModelInstanceEntity, completion: @escaping ((_ data: ModelInstanceEntity?, _ error: ErrorResponse?) -> Void)) {
+        addModelInstanceWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, modelInstanceEntity: modelInstanceEntity).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -312,7 +348,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds a model
-     - POST /model
+     - POST /rpc/{modelHistoryServerId}/model
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -330,11 +366,15 @@ open class DefaultAPI: APIBase {
   "uri" : "http://example.com/aeiou",
   "notebookJson" : "notebookJson"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceEntity: (body) The object encapsulating the model instance id and evaluation type to aggregate 
      - returns: RequestBuilder<ModelInstanceEntity> 
      */
-    open class func addModelInstanceWithRequestBuilder(modelInstanceEntity: ModelInstanceEntity) -> RequestBuilder<ModelInstanceEntity> {
-        let path = "/model"
+    open class func addModelInstanceWithRequestBuilder(modelHistoryServerId: String, modelInstanceEntity: ModelInstanceEntity) -> RequestBuilder<ModelInstanceEntity> {
+        var path = "/rpc/{modelHistoryServerId}/model"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = modelInstanceEntity.encodeToJSON()
 
@@ -347,11 +387,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Aggregates the evaluaition results of a model instance, based on the evaluation type
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter aggregatePrediction: (body) The object encapsulating the model instance id and evaluation type to aggregate 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func aggregateModelResults(aggregatePrediction: AggregatePrediction, completion: @escaping ((_ data: EvaluationResultsEntity?, _ error: ErrorResponse?) -> Void)) {
-        aggregateModelResultsWithRequestBuilder(aggregatePrediction: aggregatePrediction).execute { (response, error) -> Void in
+    open class func aggregateModelResults(modelHistoryServerId: String, aggregatePrediction: AggregatePrediction, completion: @escaping ((_ data: EvaluationResultsEntity?, _ error: ErrorResponse?) -> Void)) {
+        aggregateModelResultsWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, aggregatePrediction: aggregatePrediction).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -359,7 +400,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Aggregates the evaluaition results of a model instance, based on the evaluation type
-     - POST /model/aggregateresults
+     - POST /rpc/{modelHistoryServerId}/model/aggregateresults
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -382,11 +423,15 @@ open class DefaultAPI: APIBase {
   "rmse" : 2.3021358869347655,
   "binaryThreshold" : 7.386281948385884
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter aggregatePrediction: (body) The object encapsulating the model instance id and evaluation type to aggregate 
      - returns: RequestBuilder<EvaluationResultsEntity> 
      */
-    open class func aggregateModelResultsWithRequestBuilder(aggregatePrediction: AggregatePrediction) -> RequestBuilder<EvaluationResultsEntity> {
-        let path = "/model/aggregateresults"
+    open class func aggregateModelResultsWithRequestBuilder(modelHistoryServerId: String, aggregatePrediction: AggregatePrediction) -> RequestBuilder<EvaluationResultsEntity> {
+        var path = "/rpc/{modelHistoryServerId}/model/aggregateresults"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = aggregatePrediction.encodeToJSON()
 
@@ -401,11 +446,12 @@ open class DefaultAPI: APIBase {
      Use the deployed model to classify the input
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func classify(body: Prediction, deploymentName: String, modelName: String, completion: @escaping ((_ data: ClassificationResult?, _ error: ErrorResponse?) -> Void)) {
-        classifyWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func classify(body: Prediction, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: ClassificationResult?, _ error: ErrorResponse?) -> Void)) {
+        classifyWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -413,7 +459,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Use the deployed model to classify the input
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/classify
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -424,14 +470,18 @@ open class DefaultAPI: APIBase {
 }}]
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<ClassificationResult> 
      */
-    open class func classifyWithRequestBuilder(body: Prediction, deploymentName: String, modelName: String) -> RequestBuilder<ClassificationResult> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/classify"
+    open class func classifyWithRequestBuilder(body: Prediction, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<ClassificationResult> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -449,11 +499,12 @@ open class DefaultAPI: APIBase {
      Same as /classify but returns the output as Base64NDArrayBody
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func classifyarray(body: Prediction, deploymentName: String, modelName: String, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        classifyarrayWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func classifyarray(body: Prediction, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        classifyarrayWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -461,7 +512,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Same as /classify but returns the output as Base64NDArrayBody
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/classifyarray
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -470,14 +521,18 @@ open class DefaultAPI: APIBase {
 }}]
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func classifyarrayWithRequestBuilder(body: Prediction, deploymentName: String, modelName: String) -> RequestBuilder<Base64NDArrayBody> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray"
+    open class func classifyarrayWithRequestBuilder(body: Prediction, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -494,12 +549,13 @@ open class DefaultAPI: APIBase {
     /**
      Use the deployed model to classify the input, using input image file from multipart form data.
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter image: (form) The file to upload. (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func classifyimage(deploymentName: String, modelName: String, image: URL? = nil, completion: @escaping ((_ data: ClassificationResult?, _ error: ErrorResponse?) -> Void)) {
-        classifyimageWithRequestBuilder(deploymentName: deploymentName, modelName: modelName, image: image).execute { (response, error) -> Void in
+    open class func classifyimage(deploymentName: String, versionName: String, modelName: String, image: URL? = nil, completion: @escaping ((_ data: ClassificationResult?, _ error: ErrorResponse?) -> Void)) {
+        classifyimageWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, modelName: modelName, image: image).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -507,7 +563,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Use the deployed model to classify the input, using input image file from multipart form data.
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/classifyimage
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -517,15 +573,19 @@ open class DefaultAPI: APIBase {
   "probabilities" : [ 0.452, 0.452 ]
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter image: (form) The file to upload. (optional)
      - returns: RequestBuilder<ClassificationResult> 
      */
-    open class func classifyimageWithRequestBuilder(deploymentName: String, modelName: String, image: URL? = nil) -> RequestBuilder<ClassificationResult> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage"
+    open class func classifyimageWithRequestBuilder(deploymentName: String, versionName: String, modelName: String, image: URL? = nil) -> RequestBuilder<ClassificationResult> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -546,11 +606,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Creates model History
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryEntity: (body) The model history entity 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func createModelHistory(modelHistoryEntity: ModelHistoryEntity, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
-        createModelHistoryWithRequestBuilder(modelHistoryEntity: modelHistoryEntity).execute { (response, error) -> Void in
+    open class func createModelHistory(modelHistoryServerId: String, modelHistoryEntity: ModelHistoryEntity, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
+        createModelHistoryWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, modelHistoryEntity: modelHistoryEntity).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -558,7 +619,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Creates model History
-     - POST /model/revisions
+     - POST /rpc/{modelHistoryServerId}/model/revisions
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -568,11 +629,15 @@ open class DefaultAPI: APIBase {
   "created" : 0,
   "modelLabels" : "modelLabels"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryEntity: (body) The model history entity 
      - returns: RequestBuilder<ModelHistoryEntity> 
      */
-    open class func createModelHistoryWithRequestBuilder(modelHistoryEntity: ModelHistoryEntity) -> RequestBuilder<ModelHistoryEntity> {
-        let path = "/model/revisions"
+    open class func createModelHistoryWithRequestBuilder(modelHistoryServerId: String, modelHistoryEntity: ModelHistoryEntity) -> RequestBuilder<ModelHistoryEntity> {
+        var path = "/rpc/{modelHistoryServerId}/model/revisions"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = modelHistoryEntity.encodeToJSON()
 
@@ -585,11 +650,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Deletes an experiment, given an experiment entity
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to delete 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deleteExperiment(experimentID: String, completion: @escaping ((_ data: InlineResponse200?, _ error: ErrorResponse?) -> Void)) {
-        deleteExperimentWithRequestBuilder(experimentID: experimentID).execute { (response, error) -> Void in
+    open class func deleteExperiment(modelHistoryServerId: String, experimentID: String, completion: @escaping ((_ data: InlineResponse200?, _ error: ErrorResponse?) -> Void)) {
+        deleteExperimentWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, experimentID: experimentID).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -597,18 +663,22 @@ open class DefaultAPI: APIBase {
 
     /**
      Deletes an experiment, given an experiment entity
-     - DELETE /experiment/{experimentID}
+     - DELETE /rpc/{modelHistoryServerId}/experiment/{experimentID}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
      - examples: [{contentType=application/json, example={
   "status" : "status"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to delete 
      - returns: RequestBuilder<InlineResponse200> 
      */
-    open class func deleteExperimentWithRequestBuilder(experimentID: String) -> RequestBuilder<InlineResponse200> {
-        var path = "/experiment/{experimentID}"
+    open class func deleteExperimentWithRequestBuilder(modelHistoryServerId: String, experimentID: String) -> RequestBuilder<InlineResponse200> {
+        var path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let experimentIDPreEscape = "\(experimentID)"
         let experimentIDPostEscape = experimentIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{experimentID}", with: experimentIDPostEscape, options: .literal, range: nil)
@@ -668,11 +738,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Deletes a model history / workspace, given its ID
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace to delete 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deleteModelHistory(modelHistoryID: String, completion: @escaping ((_ data: InlineResponse200?, _ error: ErrorResponse?) -> Void)) {
-        deleteModelHistoryWithRequestBuilder(modelHistoryID: modelHistoryID).execute { (response, error) -> Void in
+    open class func deleteModelHistory(modelHistoryServerId: String, modelHistoryID: String, completion: @escaping ((_ data: InlineResponse200?, _ error: ErrorResponse?) -> Void)) {
+        deleteModelHistoryWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, modelHistoryID: modelHistoryID).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -680,18 +751,22 @@ open class DefaultAPI: APIBase {
 
     /**
      Deletes a model history / workspace, given its ID
-     - DELETE /modelhistory/{modelHistoryID}
+     - DELETE /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
      - examples: [{contentType=application/json, example={
   "status" : "status"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace to delete 
      - returns: RequestBuilder<InlineResponse200> 
      */
-    open class func deleteModelHistoryWithRequestBuilder(modelHistoryID: String) -> RequestBuilder<InlineResponse200> {
-        var path = "/modelhistory/{modelHistoryID}"
+    open class func deleteModelHistoryWithRequestBuilder(modelHistoryServerId: String, modelHistoryID: String) -> RequestBuilder<InlineResponse200> {
+        var path = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let modelHistoryIDPreEscape = "\(modelHistoryID)"
         let modelHistoryIDPostEscape = modelHistoryIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelHistoryID}", with: modelHistoryIDPostEscape, options: .literal, range: nil)
@@ -707,11 +782,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Deletes a model instance, given its ID
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to delete. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deleteModelInstance(modelInstanceID: String, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
-        deleteModelInstanceWithRequestBuilder(modelInstanceID: modelInstanceID).execute { (response, error) -> Void in
+    open class func deleteModelInstance(modelHistoryServerId: String, modelInstanceID: String, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        deleteModelInstanceWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, modelInstanceID: modelInstanceID).execute { (response, error) -> Void in
             completion(error)
         }
     }
@@ -719,15 +795,19 @@ open class DefaultAPI: APIBase {
 
     /**
      Deletes a model instance, given its ID
-     - DELETE /model/{modelInstanceID}
+     - DELETE /rpc/{modelHistoryServerId}/model/{modelInstanceID}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to delete. 
      - returns: RequestBuilder<Void> 
      */
-    open class func deleteModelInstanceWithRequestBuilder(modelInstanceID: String) -> RequestBuilder<Void> {
-        var path = "/model/{modelInstanceID}"
+    open class func deleteModelInstanceWithRequestBuilder(modelHistoryServerId: String, modelInstanceID: String) -> RequestBuilder<Void> {
+        var path = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let modelInstanceIDPreEscape = "\(modelInstanceID)"
         let modelInstanceIDPostEscape = modelInstanceIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelInstanceID}", with: modelInstanceIDPostEscape, options: .literal, range: nil)
@@ -1129,11 +1209,12 @@ open class DefaultAPI: APIBase {
      - parameter threshold: (form) A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
      - parameter imageFile: (form) the image file to detect objects from 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func detectobjects(id: String, needsPreprocessing: Bool, threshold: Float, imageFile: URL, deploymentName: String, modelName: String, completion: @escaping ((_ data: DetectionResult?, _ error: ErrorResponse?) -> Void)) {
-        detectobjectsWithRequestBuilder(id: id, needsPreprocessing: needsPreprocessing, threshold: threshold, imageFile: imageFile, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func detectobjects(id: String, needsPreprocessing: Bool, threshold: Float, imageFile: URL, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: DetectionResult?, _ error: ErrorResponse?) -> Void)) {
+        detectobjectsWithRequestBuilder(id: id, needsPreprocessing: needsPreprocessing, threshold: threshold, imageFile: imageFile, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1141,7 +1222,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Detect the objects, given a (input) prediction request
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/detectobjects
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1168,14 +1249,18 @@ open class DefaultAPI: APIBase {
      - parameter threshold: (form) A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
      - parameter imageFile: (form) the image file to detect objects from 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<DetectionResult> 
      */
-    open class func detectobjectsWithRequestBuilder(id: String, needsPreprocessing: Bool, threshold: Float, imageFile: URL, deploymentName: String, modelName: String) -> RequestBuilder<DetectionResult> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects"
+    open class func detectobjectsWithRequestBuilder(id: String, needsPreprocessing: Bool, threshold: Float, imageFile: URL, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<DetectionResult> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -1199,11 +1284,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter bestModel: (body) Object encapsulating the model ids, eval type and column metric name 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getBestModelAmongModelIds(bestModel: BestModel, completion: @escaping ((_ data: ModelInstanceEntity?, _ error: ErrorResponse?) -> Void)) {
-        getBestModelAmongModelIdsWithRequestBuilder(bestModel: bestModel).execute { (response, error) -> Void in
+    open class func getBestModelAmongModelIds(modelHistoryServerId: String, bestModel: BestModel, completion: @escaping ((_ data: ModelInstanceEntity?, _ error: ErrorResponse?) -> Void)) {
+        getBestModelAmongModelIdsWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, bestModel: bestModel).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1211,7 +1297,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-     - POST /model/best
+     - POST /rpc/{modelHistoryServerId}/model/best
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1229,11 +1315,15 @@ open class DefaultAPI: APIBase {
   "uri" : "http://example.com/aeiou",
   "notebookJson" : "notebookJson"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter bestModel: (body) Object encapsulating the model ids, eval type and column metric name 
      - returns: RequestBuilder<ModelInstanceEntity> 
      */
-    open class func getBestModelAmongModelIdsWithRequestBuilder(bestModel: BestModel) -> RequestBuilder<ModelInstanceEntity> {
-        let path = "/model/best"
+    open class func getBestModelAmongModelIdsWithRequestBuilder(modelHistoryServerId: String, bestModel: BestModel) -> RequestBuilder<ModelInstanceEntity> {
+        var path = "/rpc/{modelHistoryServerId}/model/best"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = bestModel.encodeToJSON()
 
@@ -1246,11 +1336,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets the list of evaluation results entity, given a model instance ID
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to get evaluation results for. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getEvaluationForModelID(modelInstanceID: String, completion: @escaping ((_ data: [EvaluationResultsEntity]?, _ error: ErrorResponse?) -> Void)) {
-        getEvaluationForModelIDWithRequestBuilder(modelInstanceID: modelInstanceID).execute { (response, error) -> Void in
+    open class func getEvaluationForModelID(modelHistoryServerId: String, modelInstanceID: String, completion: @escaping ((_ data: [EvaluationResultsEntity]?, _ error: ErrorResponse?) -> Void)) {
+        getEvaluationForModelIDWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, modelInstanceID: modelInstanceID).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1258,7 +1349,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets the list of evaluation results entity, given a model instance ID
-     - GET /model/revisions/evaluations/{modelInstanceID}
+     - GET /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1299,11 +1390,15 @@ open class DefaultAPI: APIBase {
   "rmse" : 2.3021358869347655,
   "binaryThreshold" : 7.386281948385884
 } ]}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to get evaluation results for. 
      - returns: RequestBuilder<[EvaluationResultsEntity]> 
      */
-    open class func getEvaluationForModelIDWithRequestBuilder(modelInstanceID: String) -> RequestBuilder<[EvaluationResultsEntity]> {
-        var path = "/model/revisions/evaluations/{modelInstanceID}"
+    open class func getEvaluationForModelIDWithRequestBuilder(modelHistoryServerId: String, modelInstanceID: String) -> RequestBuilder<[EvaluationResultsEntity]> {
+        var path = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let modelInstanceIDPreEscape = "\(modelInstanceID)"
         let modelInstanceIDPostEscape = modelInstanceIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelInstanceID}", with: modelInstanceIDPostEscape, options: .literal, range: nil)
@@ -1319,11 +1414,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets all the examples for a minibatch ID
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchId: (path) The GUID of the minibatch 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getExamplesForMinibatch(minibatchId: String, completion: @escaping ((_ data: [ExampleEntity]?, _ error: ErrorResponse?) -> Void)) {
-        getExamplesForMinibatchWithRequestBuilder(minibatchId: minibatchId).execute { (response, error) -> Void in
+    open class func getExamplesForMinibatch(modelHistoryServerId: String, minibatchId: String, completion: @escaping ((_ data: [ExampleEntity]?, _ error: ErrorResponse?) -> Void)) {
+        getExamplesForMinibatchWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, minibatchId: minibatchId).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1331,7 +1427,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets all the examples for a minibatch ID
-     - GET /model/example/{minibatchId}
+     - GET /rpc/{modelHistoryServerId}/model/example/{minibatchId}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1350,11 +1446,15 @@ open class DefaultAPI: APIBase {
   "miniBatchVersion" : 5,
   "exampleVersion" : 0
 } ]}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchId: (path) The GUID of the minibatch 
      - returns: RequestBuilder<[ExampleEntity]> 
      */
-    open class func getExamplesForMinibatchWithRequestBuilder(minibatchId: String) -> RequestBuilder<[ExampleEntity]> {
-        var path = "/model/example/{minibatchId}"
+    open class func getExamplesForMinibatchWithRequestBuilder(modelHistoryServerId: String, minibatchId: String) -> RequestBuilder<[ExampleEntity]> {
+        var path = "/rpc/{modelHistoryServerId}/model/example/{minibatchId}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let minibatchIdPreEscape = "\(minibatchId)"
         let minibatchIdPostEscape = minibatchIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{minibatchId}", with: minibatchIdPostEscape, options: .literal, range: nil)
@@ -1370,11 +1470,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Obtain an experiment's details, given its ID
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to obtain 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getExperiment(experimentID: String, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
-        getExperimentWithRequestBuilder(experimentID: experimentID).execute { (response, error) -> Void in
+    open class func getExperiment(modelHistoryServerId: String, experimentID: String, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
+        getExperimentWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, experimentID: experimentID).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1382,7 +1483,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Obtain an experiment's details, given its ID
-     - GET /experiment/{experimentID}
+     - GET /rpc/{modelHistoryServerId}/experiment/{experimentID}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1398,11 +1499,15 @@ open class DefaultAPI: APIBase {
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to obtain 
      - returns: RequestBuilder<ExperimentEntity> 
      */
-    open class func getExperimentWithRequestBuilder(experimentID: String) -> RequestBuilder<ExperimentEntity> {
-        var path = "/experiment/{experimentID}"
+    open class func getExperimentWithRequestBuilder(modelHistoryServerId: String, experimentID: String) -> RequestBuilder<ExperimentEntity> {
+        var path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let experimentIDPreEscape = "\(experimentID)"
         let experimentIDPostEscape = experimentIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{experimentID}", with: experimentIDPostEscape, options: .literal, range: nil)
@@ -1418,11 +1523,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Obtain all experiments for a model history / workspace
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getExperimentsForModelHistory(modelHistoryID: String, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
-        getExperimentsForModelHistoryWithRequestBuilder(modelHistoryID: modelHistoryID).execute { (response, error) -> Void in
+    open class func getExperimentsForModelHistory(modelHistoryServerId: String, modelHistoryID: String, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
+        getExperimentsForModelHistoryWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, modelHistoryID: modelHistoryID).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1430,7 +1536,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Obtain all experiments for a model history / workspace
-     - GET /experiments/{modelHistoryID}
+     - GET /rpc/{modelHistoryServerId}/experiments/{modelHistoryID}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1446,11 +1552,15 @@ open class DefaultAPI: APIBase {
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace 
      - returns: RequestBuilder<ExperimentEntity> 
      */
-    open class func getExperimentsForModelHistoryWithRequestBuilder(modelHistoryID: String) -> RequestBuilder<ExperimentEntity> {
-        var path = "/experiments/{modelHistoryID}"
+    open class func getExperimentsForModelHistoryWithRequestBuilder(modelHistoryServerId: String, modelHistoryID: String) -> RequestBuilder<ExperimentEntity> {
+        var path = "/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let modelHistoryIDPreEscape = "\(modelHistoryID)"
         let modelHistoryIDPostEscape = modelHistoryIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelHistoryID}", with: modelHistoryIDPostEscape, options: .literal, range: nil)
@@ -1466,11 +1576,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets a minibatch for the model
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchId: (path) The GUID of the minibatch 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getMinibatch(minibatchId: String, completion: @escaping ((_ data: MinibatchEntity?, _ error: ErrorResponse?) -> Void)) {
-        getMinibatchWithRequestBuilder(minibatchId: minibatchId).execute { (response, error) -> Void in
+    open class func getMinibatch(modelHistoryServerId: String, minibatchId: String, completion: @escaping ((_ data: MinibatchEntity?, _ error: ErrorResponse?) -> Void)) {
+        getMinibatchWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, minibatchId: minibatchId).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1478,7 +1589,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets a minibatch for the model
-     - GET /model/minibatch/{minibatchId}
+     - GET /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1488,11 +1599,15 @@ open class DefaultAPI: APIBase {
   "evalVersion" : 0,
   "miniBatchId" : "miniBatchId"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchId: (path) The GUID of the minibatch 
      - returns: RequestBuilder<MinibatchEntity> 
      */
-    open class func getMinibatchWithRequestBuilder(minibatchId: String) -> RequestBuilder<MinibatchEntity> {
-        var path = "/model/minibatch/{minibatchId}"
+    open class func getMinibatchWithRequestBuilder(modelHistoryServerId: String, minibatchId: String) -> RequestBuilder<MinibatchEntity> {
+        var path = "/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let minibatchIdPreEscape = "\(minibatchId)"
         let minibatchIdPostEscape = minibatchIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{minibatchId}", with: minibatchIdPostEscape, options: .literal, range: nil)
@@ -1508,11 +1623,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets a model history, given its ID
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) GUID of the model history to get information of. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getModelHistory(modelHistoryID: String, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
-        getModelHistoryWithRequestBuilder(modelHistoryID: modelHistoryID).execute { (response, error) -> Void in
+    open class func getModelHistory(modelHistoryServerId: String, modelHistoryID: String, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
+        getModelHistoryWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, modelHistoryID: modelHistoryID).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1520,7 +1636,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets a model history, given its ID
-     - GET /model/revision/{modelHistoryID}
+     - GET /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1530,11 +1646,15 @@ open class DefaultAPI: APIBase {
   "created" : 0,
   "modelLabels" : "modelLabels"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) GUID of the model history to get information of. 
      - returns: RequestBuilder<ModelHistoryEntity> 
      */
-    open class func getModelHistoryWithRequestBuilder(modelHistoryID: String) -> RequestBuilder<ModelHistoryEntity> {
-        var path = "/model/revision/{modelHistoryID}"
+    open class func getModelHistoryWithRequestBuilder(modelHistoryServerId: String, modelHistoryID: String) -> RequestBuilder<ModelHistoryEntity> {
+        var path = "/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let modelHistoryIDPreEscape = "\(modelHistoryID)"
         let modelHistoryIDPostEscape = modelHistoryIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelHistoryID}", with: modelHistoryIDPostEscape, options: .literal, range: nil)
@@ -1550,11 +1670,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets a model instance, given its ID
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to get information of. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getModelInstance(modelInstanceID: String, completion: @escaping ((_ data: ModelInstanceEntity?, _ error: ErrorResponse?) -> Void)) {
-        getModelInstanceWithRequestBuilder(modelInstanceID: modelInstanceID).execute { (response, error) -> Void in
+    open class func getModelInstance(modelHistoryServerId: String, modelInstanceID: String, completion: @escaping ((_ data: ModelInstanceEntity?, _ error: ErrorResponse?) -> Void)) {
+        getModelInstanceWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, modelInstanceID: modelInstanceID).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1562,7 +1683,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets a model instance, given its ID
-     - GET /model/{modelInstanceID}
+     - GET /rpc/{modelHistoryServerId}/model/{modelInstanceID}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1580,11 +1701,15 @@ open class DefaultAPI: APIBase {
   "uri" : "http://example.com/aeiou",
   "notebookJson" : "notebookJson"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to get information of. 
      - returns: RequestBuilder<ModelInstanceEntity> 
      */
-    open class func getModelInstanceWithRequestBuilder(modelInstanceID: String) -> RequestBuilder<ModelInstanceEntity> {
-        var path = "/model/{modelInstanceID}"
+    open class func getModelInstanceWithRequestBuilder(modelHistoryServerId: String, modelInstanceID: String) -> RequestBuilder<ModelInstanceEntity> {
+        var path = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let modelInstanceIDPreEscape = "\(modelInstanceID)"
         let modelInstanceIDPostEscape = modelInstanceIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelInstanceID}", with: modelInstanceIDPostEscape, options: .literal, range: nil)
@@ -1600,11 +1725,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Obtain a list of all the models for an experiment
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getModelsForExperiment(experimentID: String, completion: @escaping ((_ data: [ModelInstanceEntity]?, _ error: ErrorResponse?) -> Void)) {
-        getModelsForExperimentWithRequestBuilder(experimentID: experimentID).execute { (response, error) -> Void in
+    open class func getModelsForExperiment(modelHistoryServerId: String, experimentID: String, completion: @escaping ((_ data: [ModelInstanceEntity]?, _ error: ErrorResponse?) -> Void)) {
+        getModelsForExperimentWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, experimentID: experimentID).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1612,7 +1738,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Obtain a list of all the models for an experiment
-     - GET /experiment/{experimentID}/models
+     - GET /rpc/{modelHistoryServerId}/experiment/{experimentID}/models
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1643,11 +1769,15 @@ open class DefaultAPI: APIBase {
   "uri" : "http://example.com/aeiou",
   "notebookJson" : "notebookJson"
 } ]}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment 
      - returns: RequestBuilder<[ModelInstanceEntity]> 
      */
-    open class func getModelsForExperimentWithRequestBuilder(experimentID: String) -> RequestBuilder<[ModelInstanceEntity]> {
-        var path = "/experiment/{experimentID}/models"
+    open class func getModelsForExperimentWithRequestBuilder(modelHistoryServerId: String, experimentID: String) -> RequestBuilder<[ModelInstanceEntity]> {
+        var path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}/models"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let experimentIDPreEscape = "\(experimentID)"
         let experimentIDPostEscape = experimentIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{experimentID}", with: experimentIDPostEscape, options: .literal, range: nil)
@@ -1664,11 +1794,12 @@ open class DefaultAPI: APIBase {
     /**
      Retrieves the image transform process JSON string
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func imagetransformprocessGet(deploymentName: String, imageTransformName: String, completion: @escaping ((_ data: ImageTransformProcess?, _ error: ErrorResponse?) -> Void)) {
-        imagetransformprocessGetWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName).execute { (response, error) -> Void in
+    open class func imagetransformprocessGet(deploymentName: String, versionName: String, imageTransformName: String, completion: @escaping ((_ data: ImageTransformProcess?, _ error: ErrorResponse?) -> Void)) {
+        imagetransformprocessGetWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, imageTransformName: imageTransformName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1676,20 +1807,24 @@ open class DefaultAPI: APIBase {
 
     /**
      Retrieves the image transform process JSON string
-     - GET /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess
+     - GET /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess
      - API Key:
        - type: apiKey authorization 
        - name: api_key
      - examples: [{contentType=application/json, example={ }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - returns: RequestBuilder<ImageTransformProcess> 
      */
-    open class func imagetransformprocessGetWithRequestBuilder(deploymentName: String, imageTransformName: String) -> RequestBuilder<ImageTransformProcess> {
-        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess"
+    open class func imagetransformprocessGetWithRequestBuilder(deploymentName: String, versionName: String, imageTransformName: String) -> RequestBuilder<ImageTransformProcess> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let imageTransformNamePreEscape = "\(imageTransformName)"
         let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
@@ -1706,12 +1841,13 @@ open class DefaultAPI: APIBase {
     /**
      Sets the image transform process through the provided JSON string
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - parameter body: (body) The image transform process JSON 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func imagetransformprocessPost(deploymentName: String, imageTransformName: String, body: ImageTransformProcess, completion: @escaping ((_ data: ImageTransformProcess?, _ error: ErrorResponse?) -> Void)) {
-        imagetransformprocessPostWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName, body: body).execute { (response, error) -> Void in
+    open class func imagetransformprocessPost(deploymentName: String, versionName: String, imageTransformName: String, body: ImageTransformProcess, completion: @escaping ((_ data: ImageTransformProcess?, _ error: ErrorResponse?) -> Void)) {
+        imagetransformprocessPostWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, imageTransformName: imageTransformName, body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1719,21 +1855,25 @@ open class DefaultAPI: APIBase {
 
     /**
      Sets the image transform process through the provided JSON string
-     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess
+     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess
      - API Key:
        - type: apiKey authorization 
        - name: api_key
      - examples: [{contentType=application/json, example={ }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - parameter body: (body) The image transform process JSON 
      - returns: RequestBuilder<ImageTransformProcess> 
      */
-    open class func imagetransformprocessPostWithRequestBuilder(deploymentName: String, imageTransformName: String, body: ImageTransformProcess) -> RequestBuilder<ImageTransformProcess> {
-        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess"
+    open class func imagetransformprocessPostWithRequestBuilder(deploymentName: String, versionName: String, imageTransformName: String, body: ImageTransformProcess) -> RequestBuilder<ImageTransformProcess> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let imageTransformNamePreEscape = "\(imageTransformName)"
         let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
@@ -1751,11 +1891,12 @@ open class DefaultAPI: APIBase {
      Run inference on the input and returns it as a JsonArrayResponse
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func jsonarray(body: Prediction, deploymentName: String, modelName: String, completion: @escaping ((_ data: JsonArrayResponse?, _ error: ErrorResponse?) -> Void)) {
-        jsonarrayWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func jsonarray(body: Prediction, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: JsonArrayResponse?, _ error: ErrorResponse?) -> Void)) {
+        jsonarrayWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1763,7 +1904,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Run inference on the input and returns it as a JsonArrayResponse
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/jsonarray
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1774,14 +1915,18 @@ open class DefaultAPI: APIBase {
 }}]
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<JsonArrayResponse> 
      */
-    open class func jsonarrayWithRequestBuilder(body: Prediction, deploymentName: String, modelName: String) -> RequestBuilder<JsonArrayResponse> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray"
+    open class func jsonarrayWithRequestBuilder(body: Prediction, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<JsonArrayResponse> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -1798,12 +1943,13 @@ open class DefaultAPI: APIBase {
     /**
      Runs knn on the given index with the given k
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter knnName: (path) ID or name of the deployed knn 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func knn(deploymentName: String, knnName: String, body: NearestNeighborRequest, completion: @escaping ((_ data: NearestNeighborsResults?, _ error: ErrorResponse?) -> Void)) {
-        knnWithRequestBuilder(deploymentName: deploymentName, knnName: knnName, body: body).execute { (response, error) -> Void in
+    open class func knn(deploymentName: String, versionName: String, knnName: String, body: NearestNeighborRequest, completion: @escaping ((_ data: NearestNeighborsResults?, _ error: ErrorResponse?) -> Void)) {
+        knnWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, knnName: knnName, body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1811,7 +1957,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Runs knn on the given index with the given k
-     - POST /endpoints/{deploymentName}/knn/{knnName}/default/knn
+     - POST /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn
      - Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
      - API Key:
        - type: apiKey authorization 
@@ -1828,15 +1974,19 @@ open class DefaultAPI: APIBase {
   } ]
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter knnName: (path) ID or name of the deployed knn 
      - parameter body: (body)  
      - returns: RequestBuilder<NearestNeighborsResults> 
      */
-    open class func knnWithRequestBuilder(deploymentName: String, knnName: String, body: NearestNeighborRequest) -> RequestBuilder<NearestNeighborsResults> {
-        var path = "/endpoints/{deploymentName}/knn/{knnName}/default/knn"
+    open class func knnWithRequestBuilder(deploymentName: String, versionName: String, knnName: String, body: NearestNeighborRequest) -> RequestBuilder<NearestNeighborsResults> {
+        var path = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let knnNamePreEscape = "\(knnName)"
         let knnNamePostEscape = knnNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{knnName}", with: knnNamePostEscape, options: .literal, range: nil)
@@ -1853,12 +2003,13 @@ open class DefaultAPI: APIBase {
     /**
      Run a k nearest neighbors search on a NEW data point
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter knnName: (path) ID or name of the deployed knn 
      - parameter body: (body) The input NDArray 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func knnnew(deploymentName: String, knnName: String, body: Base64NDArrayBodyKNN, completion: @escaping ((_ data: NearestNeighborsResults?, _ error: ErrorResponse?) -> Void)) {
-        knnnewWithRequestBuilder(deploymentName: deploymentName, knnName: knnName, body: body).execute { (response, error) -> Void in
+    open class func knnnew(deploymentName: String, versionName: String, knnName: String, body: Base64NDArrayBodyKNN, completion: @escaping ((_ data: NearestNeighborsResults?, _ error: ErrorResponse?) -> Void)) {
+        knnnewWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, knnName: knnName, body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1866,7 +2017,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Run a k nearest neighbors search on a NEW data point
-     - POST /endpoints/{deploymentName}/knn/{knnName}/default/knnnew
+     - POST /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1882,15 +2033,19 @@ open class DefaultAPI: APIBase {
   } ]
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter knnName: (path) ID or name of the deployed knn 
      - parameter body: (body) The input NDArray 
      - returns: RequestBuilder<NearestNeighborsResults> 
      */
-    open class func knnnewWithRequestBuilder(deploymentName: String, knnName: String, body: Base64NDArrayBodyKNN) -> RequestBuilder<NearestNeighborsResults> {
-        var path = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew"
+    open class func knnnewWithRequestBuilder(deploymentName: String, versionName: String, knnName: String, body: Base64NDArrayBodyKNN) -> RequestBuilder<NearestNeighborsResults> {
+        var path = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let knnNamePreEscape = "\(knnName)"
         let knnNamePostEscape = knnNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{knnName}", with: knnNamePostEscape, options: .literal, range: nil)
@@ -1917,7 +2072,7 @@ open class DefaultAPI: APIBase {
 
     /**
      List all of the experiments in every model history / workspace
-     - GET /experiments
+     - GET /rpc/{modelHistoryServerId}/experiments
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -1947,7 +2102,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<[ExperimentEntity]> 
      */
     open class func listAllExperimentsWithRequestBuilder() -> RequestBuilder<[ExperimentEntity]> {
-        let path = "/experiments"
+        let path = "/rpc/{modelHistoryServerId}/experiments"
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -1961,11 +2116,12 @@ open class DefaultAPI: APIBase {
     /**
      Get logs file path
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func logfilepath(deploymentName: String, modelName: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        logfilepathWithRequestBuilder(deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func logfilepath(deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        logfilepathWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1973,20 +2129,24 @@ open class DefaultAPI: APIBase {
 
     /**
      Get logs file path
-     - GET /endpoints/{deploymentName}/model/{modelName}/default/logfilepath
+     - GET /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath
      - API Key:
        - type: apiKey authorization 
        - name: api_key
      - examples: [{output=none}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<String> 
      */
-    open class func logfilepathWithRequestBuilder(deploymentName: String, modelName: String) -> RequestBuilder<String> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath"
+    open class func logfilepathWithRequestBuilder(deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<String> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2040,11 +2200,12 @@ open class DefaultAPI: APIBase {
      Get logs
      - parameter body: (body) the the log request 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func logs(body: LogRequest, deploymentName: String, modelName: String, completion: @escaping ((_ data: LogBatch?, _ error: ErrorResponse?) -> Void)) {
-        logsWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func logs(body: LogRequest, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: LogBatch?, _ error: ErrorResponse?) -> Void)) {
+        logsWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2052,7 +2213,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Get logs
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/logs
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -2063,14 +2224,18 @@ open class DefaultAPI: APIBase {
 }}]
      - parameter body: (body) the the log request 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<LogBatch> 
      */
-    open class func logsWithRequestBuilder(body: LogRequest, deploymentName: String, modelName: String) -> RequestBuilder<LogBatch> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/logs"
+    open class func logsWithRequestBuilder(body: LogRequest, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<LogBatch> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2087,11 +2252,12 @@ open class DefaultAPI: APIBase {
     /**
      this method can be used to get the meta data for the current model which set to the server
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func metaGet(deploymentName: String, modelName: String, completion: @escaping ((_ data: MetaData?, _ error: ErrorResponse?) -> Void)) {
-        metaGetWithRequestBuilder(deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func metaGet(deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: MetaData?, _ error: ErrorResponse?) -> Void)) {
+        metaGetWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2099,20 +2265,24 @@ open class DefaultAPI: APIBase {
 
     /**
      this method can be used to get the meta data for the current model which set to the server
-     - GET /endpoints/{deploymentName}/model/{modelName}/default/meta
+     - GET /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta
      - API Key:
        - type: apiKey authorization 
        - name: api_key
      - examples: [{contentType=application/json, example={ }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<MetaData> 
      */
-    open class func metaGetWithRequestBuilder(deploymentName: String, modelName: String) -> RequestBuilder<MetaData> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/meta"
+    open class func metaGetWithRequestBuilder(deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<MetaData> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2130,11 +2300,12 @@ open class DefaultAPI: APIBase {
      This method can be used to set meta data for the current model which is set to the server
      - parameter body: (body) the meta data object 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func metaPost(body: MetaData, deploymentName: String, modelName: String, completion: @escaping ((_ data: MetaData?, _ error: ErrorResponse?) -> Void)) {
-        metaPostWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func metaPost(body: MetaData, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: MetaData?, _ error: ErrorResponse?) -> Void)) {
+        metaPostWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2142,21 +2313,25 @@ open class DefaultAPI: APIBase {
 
     /**
      This method can be used to set meta data for the current model which is set to the server
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/meta
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta
      - API Key:
        - type: apiKey authorization 
        - name: api_key
      - examples: [{contentType=application/json, example={ }}]
      - parameter body: (body) the meta data object 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<MetaData> 
      */
-    open class func metaPostWithRequestBuilder(body: MetaData, deploymentName: String, modelName: String) -> RequestBuilder<MetaData> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/meta"
+    open class func metaPostWithRequestBuilder(body: MetaData, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<MetaData> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2302,12 +2477,13 @@ open class DefaultAPI: APIBase {
     /**
      Set the model to be served
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter file: (form) The model file to upload (.pb file) (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func modelset(deploymentName: String, modelName: String, file: URL? = nil, completion: @escaping ((_ data: ModelStatus?, _ error: ErrorResponse?) -> Void)) {
-        modelsetWithRequestBuilder(deploymentName: deploymentName, modelName: modelName, file: file).execute { (response, error) -> Void in
+    open class func modelset(deploymentName: String, versionName: String, modelName: String, file: URL? = nil, completion: @escaping ((_ data: ModelStatus?, _ error: ErrorResponse?) -> Void)) {
+        modelsetWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, modelName: modelName, file: file).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2315,7 +2491,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Set the model to be served
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/modelset
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -2323,15 +2499,19 @@ open class DefaultAPI: APIBase {
   "status" : 100
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter file: (form) The model file to upload (.pb file) (optional)
      - returns: RequestBuilder<ModelStatus> 
      */
-    open class func modelsetWithRequestBuilder(deploymentName: String, modelName: String, file: URL? = nil) -> RequestBuilder<ModelStatus> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/modelset"
+    open class func modelsetWithRequestBuilder(deploymentName: String, versionName: String, modelName: String, file: URL? = nil) -> RequestBuilder<ModelStatus> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2353,12 +2533,13 @@ open class DefaultAPI: APIBase {
     /**
      Update the model to be served
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter file: (form) The model file to update with (.pb file) (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func modelupdate(deploymentName: String, modelName: String, file: URL? = nil, completion: @escaping ((_ data: ModelStatus?, _ error: ErrorResponse?) -> Void)) {
-        modelupdateWithRequestBuilder(deploymentName: deploymentName, modelName: modelName, file: file).execute { (response, error) -> Void in
+    open class func modelupdate(deploymentName: String, versionName: String, modelName: String, file: URL? = nil, completion: @escaping ((_ data: ModelStatus?, _ error: ErrorResponse?) -> Void)) {
+        modelupdateWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, modelName: modelName, file: file).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2366,7 +2547,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Update the model to be served
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/modelupdate
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -2374,15 +2555,19 @@ open class DefaultAPI: APIBase {
   "status" : 100
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter file: (form) The model file to update with (.pb file) (optional)
      - returns: RequestBuilder<ModelStatus> 
      */
-    open class func modelupdateWithRequestBuilder(deploymentName: String, modelName: String, file: URL? = nil) -> RequestBuilder<ModelStatus> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate"
+    open class func modelupdateWithRequestBuilder(deploymentName: String, versionName: String, modelName: String, file: URL? = nil) -> RequestBuilder<ModelStatus> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2405,11 +2590,12 @@ open class DefaultAPI: APIBase {
      Represents all of the labels for a given classification
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func multiclassify(body: Prediction, deploymentName: String, modelName: String, completion: @escaping ((_ data: MultiClassClassificationResult?, _ error: ErrorResponse?) -> Void)) {
-        multiclassifyWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func multiclassify(body: Prediction, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: MultiClassClassificationResult?, _ error: ErrorResponse?) -> Void)) {
+        multiclassifyWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2417,7 +2603,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Represents all of the labels for a given classification
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/multiclassify
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -2428,14 +2614,18 @@ open class DefaultAPI: APIBase {
 }}]
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<MultiClassClassificationResult> 
      */
-    open class func multiclassifyWithRequestBuilder(body: Prediction, deploymentName: String, modelName: String) -> RequestBuilder<MultiClassClassificationResult> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify"
+    open class func multiclassifyWithRequestBuilder(body: Prediction, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<MultiClassClassificationResult> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2453,11 +2643,12 @@ open class DefaultAPI: APIBase {
      Get the output from the network, based on the given INDArray[] input
      - parameter body: (body) The multiple input arrays with mask inputs to run inferences on 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func multipredict(body: MultiPredictRequest, deploymentName: String, modelName: String, completion: @escaping ((_ data: MultiPredictResponse?, _ error: ErrorResponse?) -> Void)) {
-        multipredictWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func multipredict(body: MultiPredictRequest, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: MultiPredictResponse?, _ error: ErrorResponse?) -> Void)) {
+        multipredictWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2465,7 +2656,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Get the output from the network, based on the given INDArray[] input
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/multipredict
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict
      - Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
      - API Key:
        - type: apiKey authorization 
@@ -2489,14 +2680,18 @@ open class DefaultAPI: APIBase {
 }}]
      - parameter body: (body) The multiple input arrays with mask inputs to run inferences on 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<MultiPredictResponse> 
      */
-    open class func multipredictWithRequestBuilder(body: MultiPredictRequest, deploymentName: String, modelName: String) -> RequestBuilder<MultiPredictResponse> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict"
+    open class func multipredictWithRequestBuilder(body: MultiPredictRequest, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<MultiPredictResponse> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2516,11 +2711,12 @@ open class DefaultAPI: APIBase {
      - parameter id: (form) The id of the request (could be self generated) 
      - parameter needsPreprocessing: (form) Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func multipredictimage(file: URL, id: String, needsPreprocessing: Bool, deploymentName: String, modelName: String, completion: @escaping ((_ data: MultiPredictResponse?, _ error: ErrorResponse?) -> Void)) {
-        multipredictimageWithRequestBuilder(file: file, id: id, needsPreprocessing: needsPreprocessing, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func multipredictimage(file: URL, id: String, needsPreprocessing: Bool, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: MultiPredictResponse?, _ error: ErrorResponse?) -> Void)) {
+        multipredictimageWithRequestBuilder(file: file, id: id, needsPreprocessing: needsPreprocessing, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2528,7 +2724,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Get the output from the network using the given image file using the /multipredict endpoint's method
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage
      - Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
      - API Key:
        - type: apiKey authorization 
@@ -2554,14 +2750,18 @@ open class DefaultAPI: APIBase {
      - parameter id: (form) The id of the request (could be self generated) 
      - parameter needsPreprocessing: (form) Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<MultiPredictResponse> 
      */
-    open class func multipredictimageWithRequestBuilder(file: URL, id: String, needsPreprocessing: Bool, deploymentName: String, modelName: String) -> RequestBuilder<MultiPredictResponse> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage"
+    open class func multipredictimageWithRequestBuilder(file: URL, id: String, needsPreprocessing: Bool, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<MultiPredictResponse> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2586,11 +2786,12 @@ open class DefaultAPI: APIBase {
      Run inference on the input array.
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func predict(body: Prediction, deploymentName: String, modelName: String, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
-        predictWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func predict(body: Prediction, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
+        predictWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2598,7 +2799,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Run inference on the input array.
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/predict
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -2611,14 +2812,18 @@ open class DefaultAPI: APIBase {
 }}]
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<Prediction> 
      */
-    open class func predictWithRequestBuilder(body: Prediction, deploymentName: String, modelName: String) -> RequestBuilder<Prediction> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/predict"
+    open class func predictWithRequestBuilder(body: Prediction, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<Prediction> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2635,12 +2840,13 @@ open class DefaultAPI: APIBase {
     /**
      Run inference on the input array, using input image file from multipart form data.
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter image: (form) The file to upload. (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func predictimage(deploymentName: String, modelName: String, image: URL? = nil, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
-        predictimageWithRequestBuilder(deploymentName: deploymentName, modelName: modelName, image: image).execute { (response, error) -> Void in
+    open class func predictimage(deploymentName: String, versionName: String, modelName: String, image: URL? = nil, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
+        predictimageWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, modelName: modelName, image: image).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2648,7 +2854,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Run inference on the input array, using input image file from multipart form data.
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/predictimage
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -2660,15 +2866,19 @@ open class DefaultAPI: APIBase {
   "id" : "id"
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter image: (form) The file to upload. (optional)
      - returns: RequestBuilder<Prediction> 
      */
-    open class func predictimageWithRequestBuilder(deploymentName: String, modelName: String, image: URL? = nil) -> RequestBuilder<Prediction> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage"
+    open class func predictimageWithRequestBuilder(deploymentName: String, versionName: String, modelName: String, image: URL? = nil) -> RequestBuilder<Prediction> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2691,11 +2901,12 @@ open class DefaultAPI: APIBase {
      Preprocesses the input and run inference on it
      - parameter body: (body) The input array 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func predictwithpreprocess(body: [String], deploymentName: String, modelName: String, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
-        predictwithpreprocessWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func predictwithpreprocess(body: [String], deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: Prediction?, _ error: ErrorResponse?) -> Void)) {
+        predictwithpreprocessWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2703,7 +2914,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Preprocesses the input and run inference on it
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -2716,14 +2927,18 @@ open class DefaultAPI: APIBase {
 }}]
      - parameter body: (body) The input array 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<Prediction> 
      */
-    open class func predictwithpreprocessWithRequestBuilder(body: [String], deploymentName: String, modelName: String) -> RequestBuilder<Prediction> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess"
+    open class func predictwithpreprocessWithRequestBuilder(body: [String], deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<Prediction> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2741,11 +2956,12 @@ open class DefaultAPI: APIBase {
      Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
      - parameter body: (body) The input array 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func predictwithpreprocessjson(body: [String], deploymentName: String, modelName: String, completion: @escaping ((_ data: JsonArrayResponse?, _ error: ErrorResponse?) -> Void)) {
-        predictwithpreprocessjsonWithRequestBuilder(body: body, deploymentName: deploymentName, modelName: modelName).execute { (response, error) -> Void in
+    open class func predictwithpreprocessjson(body: [String], deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: JsonArrayResponse?, _ error: ErrorResponse?) -> Void)) {
+        predictwithpreprocessjsonWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2753,7 +2969,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-     - POST /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson
+     - POST /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -2764,14 +2980,18 @@ open class DefaultAPI: APIBase {
 }}]
      - parameter body: (body) The input array 
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<JsonArrayResponse> 
      */
-    open class func predictwithpreprocessjsonWithRequestBuilder(body: [String], deploymentName: String, modelName: String) -> RequestBuilder<JsonArrayResponse> {
-        var path = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson"
+    open class func predictwithpreprocessjsonWithRequestBuilder(body: [String], deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<JsonArrayResponse> {
+        var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let modelNamePreEscape = "\(modelName)"
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
@@ -2848,12 +3068,13 @@ open class DefaultAPI: APIBase {
     /**
      Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter batchCSVRecord: (body) The input batch of record arrays (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformCsv(deploymentName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil, completion: @escaping ((_ data: BatchCSVRecord?, _ error: ErrorResponse?) -> Void)) {
-        transformCsvWithRequestBuilder(deploymentName: deploymentName, transformName: transformName, batchCSVRecord: batchCSVRecord).execute { (response, error) -> Void in
+    open class func transformCsv(deploymentName: String, versionName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil, completion: @escaping ((_ data: BatchCSVRecord?, _ error: ErrorResponse?) -> Void)) {
+        transformCsvWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, batchCSVRecord: batchCSVRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2861,7 +3082,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-     - POST /endpoints/{deploymentName}/datavec/{transformName}/default/transform
+     - POST /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform
      - Takes a batch of SingleCSVRecord object and transforms it into the desired format
      - API Key:
        - type: apiKey authorization 
@@ -2874,15 +3095,19 @@ open class DefaultAPI: APIBase {
   } ]
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter batchCSVRecord: (body) The input batch of record arrays (optional)
      - returns: RequestBuilder<BatchCSVRecord> 
      */
-    open class func transformCsvWithRequestBuilder(deploymentName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil) -> RequestBuilder<BatchCSVRecord> {
-        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform"
+    open class func transformCsvWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil) -> RequestBuilder<BatchCSVRecord> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let transformNamePreEscape = "\(transformName)"
         let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
@@ -2899,12 +3124,13 @@ open class DefaultAPI: APIBase {
     /**
      Takes a batch input arrays and transforms it
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter batchCSVRecord: (body) The input batch of record arrays (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformarrayCsv(deploymentName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        transformarrayCsvWithRequestBuilder(deploymentName: deploymentName, transformName: transformName, batchCSVRecord: batchCSVRecord).execute { (response, error) -> Void in
+    open class func transformarrayCsv(deploymentName: String, versionName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformarrayCsvWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, batchCSVRecord: batchCSVRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2912,7 +3138,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Takes a batch input arrays and transforms it
-     - POST /endpoints/{deploymentName}/datavec/{transformName}/default/transformarray
+     - POST /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray
      - Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      - API Key:
        - type: apiKey authorization 
@@ -2921,15 +3147,19 @@ open class DefaultAPI: APIBase {
   "ndarray" : "ndarray"
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter batchCSVRecord: (body) The input batch of record arrays (optional)
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformarrayCsvWithRequestBuilder(deploymentName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil) -> RequestBuilder<Base64NDArrayBody> {
-        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray"
+    open class func transformarrayCsvWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let transformNamePreEscape = "\(transformName)"
         let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
@@ -2946,12 +3176,13 @@ open class DefaultAPI: APIBase {
     /**
      Takes a batch of images uri and transforms it and returns Base64NDArrayBody
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - parameter batchImageRecord: (body) The input batch of record arrays 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformarrayImage(deploymentName: String, imageTransformName: String, batchImageRecord: BatchImageRecord, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        transformarrayImageWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName, batchImageRecord: batchImageRecord).execute { (response, error) -> Void in
+    open class func transformarrayImage(deploymentName: String, versionName: String, imageTransformName: String, batchImageRecord: BatchImageRecord, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformarrayImageWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, imageTransformName: imageTransformName, batchImageRecord: batchImageRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2959,7 +3190,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray
+     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray
      - Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      - API Key:
        - type: apiKey authorization 
@@ -2968,15 +3199,19 @@ open class DefaultAPI: APIBase {
   "ndarray" : "ndarray"
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - parameter batchImageRecord: (body) The input batch of record arrays 
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformarrayImageWithRequestBuilder(deploymentName: String, imageTransformName: String, batchImageRecord: BatchImageRecord) -> RequestBuilder<Base64NDArrayBody> {
-        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray"
+    open class func transformarrayImageWithRequestBuilder(deploymentName: String, versionName: String, imageTransformName: String, batchImageRecord: BatchImageRecord) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let imageTransformNamePreEscape = "\(imageTransformName)"
         let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
@@ -2993,12 +3228,13 @@ open class DefaultAPI: APIBase {
     /**
      Takes multiple multipart image file to transform and returns Base64NDArrayBody
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - parameter files: (form) The image files to upload 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformimage(deploymentName: String, imageTransformName: String, files: [Data], completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        transformimageWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName, files: files).execute { (response, error) -> Void in
+    open class func transformimage(deploymentName: String, versionName: String, imageTransformName: String, files: [Data], completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformimageWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, imageTransformName: imageTransformName, files: files).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3006,7 +3242,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Takes multiple multipart image file to transform and returns Base64NDArrayBody
-     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage
+     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage
      - Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      - API Key:
        - type: apiKey authorization 
@@ -3015,15 +3251,19 @@ open class DefaultAPI: APIBase {
   "ndarray" : "ndarray"
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - parameter files: (form) The image files to upload 
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformimageWithRequestBuilder(deploymentName: String, imageTransformName: String, files: [Data]) -> RequestBuilder<Base64NDArrayBody> {
-        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage"
+    open class func transformimageWithRequestBuilder(deploymentName: String, versionName: String, imageTransformName: String, files: [Data]) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let imageTransformNamePreEscape = "\(imageTransformName)"
         let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
@@ -3045,12 +3285,13 @@ open class DefaultAPI: APIBase {
     /**
      Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter singleCSVRecord: (body) The input record array (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformincrementalCsv(deploymentName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil, completion: @escaping ((_ data: SingleCSVRecord?, _ error: ErrorResponse?) -> Void)) {
-        transformincrementalCsvWithRequestBuilder(deploymentName: deploymentName, transformName: transformName, singleCSVRecord: singleCSVRecord).execute { (response, error) -> Void in
+    open class func transformincrementalCsv(deploymentName: String, versionName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil, completion: @escaping ((_ data: SingleCSVRecord?, _ error: ErrorResponse?) -> Void)) {
+        transformincrementalCsvWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, singleCSVRecord: singleCSVRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3058,7 +3299,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-     - POST /endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental
+     - POST /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental
      - Takes a SingleCSVRecord object and transforms it into the desired format
      - API Key:
        - type: apiKey authorization 
@@ -3067,15 +3308,19 @@ open class DefaultAPI: APIBase {
   "values" : [ "values", "values" ]
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter singleCSVRecord: (body) The input record array (optional)
      - returns: RequestBuilder<SingleCSVRecord> 
      */
-    open class func transformincrementalCsvWithRequestBuilder(deploymentName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil) -> RequestBuilder<SingleCSVRecord> {
-        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental"
+    open class func transformincrementalCsvWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil) -> RequestBuilder<SingleCSVRecord> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let transformNamePreEscape = "\(transformName)"
         let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
@@ -3092,12 +3337,13 @@ open class DefaultAPI: APIBase {
     /**
      Same as /transformincremental but returns Base64NDArrayBody
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter singleCSVRecord: (body) The input record array (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformincrementalarrayCsv(deploymentName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        transformincrementalarrayCsvWithRequestBuilder(deploymentName: deploymentName, transformName: transformName, singleCSVRecord: singleCSVRecord).execute { (response, error) -> Void in
+    open class func transformincrementalarrayCsv(deploymentName: String, versionName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformincrementalarrayCsvWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, singleCSVRecord: singleCSVRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3105,7 +3351,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Same as /transformincremental but returns Base64NDArrayBody
-     - POST /endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray
+     - POST /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray
      - Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      - API Key:
        - type: apiKey authorization 
@@ -3114,15 +3360,19 @@ open class DefaultAPI: APIBase {
   "ndarray" : "ndarray"
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter singleCSVRecord: (body) The input record array (optional)
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformincrementalarrayCsvWithRequestBuilder(deploymentName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil) -> RequestBuilder<Base64NDArrayBody> {
-        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray"
+    open class func transformincrementalarrayCsvWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let transformNamePreEscape = "\(transformName)"
         let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
@@ -3139,12 +3389,13 @@ open class DefaultAPI: APIBase {
     /**
      Takes SingleImageRecord to transform and returns Base64NDArrayBody
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - parameter singleImageRecord: (body) The input record array 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformincrementalarrayImage(deploymentName: String, imageTransformName: String, singleImageRecord: SingleImageRecord, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        transformincrementalarrayImageWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName, singleImageRecord: singleImageRecord).execute { (response, error) -> Void in
+    open class func transformincrementalarrayImage(deploymentName: String, versionName: String, imageTransformName: String, singleImageRecord: SingleImageRecord, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformincrementalarrayImageWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, imageTransformName: imageTransformName, singleImageRecord: singleImageRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3152,7 +3403,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Takes SingleImageRecord to transform and returns Base64NDArrayBody
-     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray
+     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray
      - Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      - API Key:
        - type: apiKey authorization 
@@ -3161,15 +3412,19 @@ open class DefaultAPI: APIBase {
   "ndarray" : "ndarray"
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - parameter singleImageRecord: (body) The input record array 
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformincrementalarrayImageWithRequestBuilder(deploymentName: String, imageTransformName: String, singleImageRecord: SingleImageRecord) -> RequestBuilder<Base64NDArrayBody> {
-        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray"
+    open class func transformincrementalarrayImageWithRequestBuilder(deploymentName: String, versionName: String, imageTransformName: String, singleImageRecord: SingleImageRecord) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let imageTransformNamePreEscape = "\(imageTransformName)"
         let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
@@ -3186,12 +3441,13 @@ open class DefaultAPI: APIBase {
     /**
      Takes a single multipart image file to transform and returns Base64NDArrayBody
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - parameter file: (form) The image file to upload 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformincrementalimage(deploymentName: String, imageTransformName: String, file: URL, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        transformincrementalimageWithRequestBuilder(deploymentName: deploymentName, imageTransformName: imageTransformName, file: file).execute { (response, error) -> Void in
+    open class func transformincrementalimage(deploymentName: String, versionName: String, imageTransformName: String, file: URL, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformincrementalimageWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, imageTransformName: imageTransformName, file: file).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3199,7 +3455,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Takes a single multipart image file to transform and returns Base64NDArrayBody
-     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage
+     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage
      - Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      - API Key:
        - type: apiKey authorization 
@@ -3208,15 +3464,19 @@ open class DefaultAPI: APIBase {
   "ndarray" : "ndarray"
 }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter imageTransformName: (path) ID or name of the deployed image transform 
      - parameter file: (form) The image file to upload 
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformincrementalimageWithRequestBuilder(deploymentName: String, imageTransformName: String, file: URL) -> RequestBuilder<Base64NDArrayBody> {
-        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage"
+    open class func transformincrementalimageWithRequestBuilder(deploymentName: String, versionName: String, imageTransformName: String, file: URL) -> RequestBuilder<Base64NDArrayBody> {
+        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let imageTransformNamePreEscape = "\(imageTransformName)"
         let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
@@ -3238,11 +3498,12 @@ open class DefaultAPI: APIBase {
     /**
      Gets the JSON string of the deployed transform process
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformprocessGet(deploymentName: String, transformName: String, completion: @escaping ((_ data: TransformProcess?, _ error: ErrorResponse?) -> Void)) {
-        transformprocessGetWithRequestBuilder(deploymentName: deploymentName, transformName: transformName).execute { (response, error) -> Void in
+    open class func transformprocessGet(deploymentName: String, versionName: String, transformName: String, completion: @escaping ((_ data: TransformProcess?, _ error: ErrorResponse?) -> Void)) {
+        transformprocessGetWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3250,21 +3511,25 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets the JSON string of the deployed transform process
-     - GET /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess
+     - GET /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess
      - Retrieves the JSON string of the deployed transform process 
      - API Key:
        - type: apiKey authorization 
        - name: api_key
      - examples: [{contentType=application/json, example={ }}]
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - returns: RequestBuilder<TransformProcess> 
      */
-    open class func transformprocessGetWithRequestBuilder(deploymentName: String, transformName: String) -> RequestBuilder<TransformProcess> {
-        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess"
+    open class func transformprocessGetWithRequestBuilder(deploymentName: String, versionName: String, transformName: String) -> RequestBuilder<TransformProcess> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let transformNamePreEscape = "\(transformName)"
         let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
@@ -3281,12 +3546,13 @@ open class DefaultAPI: APIBase {
     /**
      Sets the deployed transform process through the provided JSON string
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter transformProcess: (body) The transform process to set (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformprocessPost(deploymentName: String, transformName: String, transformProcess: TransformProcess? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
-        transformprocessPostWithRequestBuilder(deploymentName: deploymentName, transformName: transformName, transformProcess: transformProcess).execute { (response, error) -> Void in
+    open class func transformprocessPost(deploymentName: String, versionName: String, transformName: String, transformProcess: TransformProcess? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        transformprocessPostWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, transformProcess: transformProcess).execute { (response, error) -> Void in
             completion(error)
         }
     }
@@ -3294,21 +3560,25 @@ open class DefaultAPI: APIBase {
 
     /**
      Sets the deployed transform process through the provided JSON string
-     - POST /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess
+     - POST /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess
      - Sets the transform process with the provided JSON string
      - API Key:
        - type: apiKey authorization 
        - name: api_key
      - parameter deploymentName: (path) Name of the deployment group 
+     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter transformProcess: (body) The transform process to set (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func transformprocessPostWithRequestBuilder(deploymentName: String, transformName: String, transformProcess: TransformProcess? = nil) -> RequestBuilder<Void> {
-        var path = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess"
+    open class func transformprocessPostWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, transformProcess: TransformProcess? = nil) -> RequestBuilder<Void> {
+        var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
+        let versionNamePreEscape = "\(versionName)"
+        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
         let transformNamePreEscape = "\(transformName)"
         let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
@@ -3324,11 +3594,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Updates the best model for an experiment
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter updateBestModel: (body) Model encapsulating the experiment id to update and the best model id. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateBestModelForExperiment(updateBestModel: UpdateBestModel, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
-        updateBestModelForExperimentWithRequestBuilder(updateBestModel: updateBestModel).execute { (response, error) -> Void in
+    open class func updateBestModelForExperiment(modelHistoryServerId: String, updateBestModel: UpdateBestModel, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
+        updateBestModelForExperimentWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, updateBestModel: updateBestModel).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3336,7 +3607,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Updates the best model for an experiment
-     - POST /experiment/best
+     - POST /rpc/{modelHistoryServerId}/experiment/best
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -3352,11 +3623,15 @@ open class DefaultAPI: APIBase {
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter updateBestModel: (body) Model encapsulating the experiment id to update and the best model id. 
      - returns: RequestBuilder<ExperimentEntity> 
      */
-    open class func updateBestModelForExperimentWithRequestBuilder(updateBestModel: UpdateBestModel) -> RequestBuilder<ExperimentEntity> {
-        let path = "/experiment/best"
+    open class func updateBestModelForExperimentWithRequestBuilder(modelHistoryServerId: String, updateBestModel: UpdateBestModel) -> RequestBuilder<ExperimentEntity> {
+        var path = "/rpc/{modelHistoryServerId}/experiment/best"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = updateBestModel.encodeToJSON()
 
@@ -3369,12 +3644,13 @@ open class DefaultAPI: APIBase {
 
     /**
      Updates an experiment, given an experiment entity
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to update 
      - parameter experimentEntity: (body) The experiment entity to update with 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateExperiment(experimentID: String, experimentEntity: ExperimentEntity, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
-        updateExperimentWithRequestBuilder(experimentID: experimentID, experimentEntity: experimentEntity).execute { (response, error) -> Void in
+    open class func updateExperiment(modelHistoryServerId: String, experimentID: String, experimentEntity: ExperimentEntity, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
+        updateExperimentWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, experimentID: experimentID, experimentEntity: experimentEntity).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3382,7 +3658,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Updates an experiment, given an experiment entity
-     - PUT /experiment/{experimentID}
+     - PUT /rpc/{modelHistoryServerId}/experiment/{experimentID}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -3398,12 +3674,16 @@ open class DefaultAPI: APIBase {
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to update 
      - parameter experimentEntity: (body) The experiment entity to update with 
      - returns: RequestBuilder<ExperimentEntity> 
      */
-    open class func updateExperimentWithRequestBuilder(experimentID: String, experimentEntity: ExperimentEntity) -> RequestBuilder<ExperimentEntity> {
-        var path = "/experiment/{experimentID}"
+    open class func updateExperimentWithRequestBuilder(modelHistoryServerId: String, experimentID: String, experimentEntity: ExperimentEntity) -> RequestBuilder<ExperimentEntity> {
+        var path = "/rpc/{modelHistoryServerId}/experiment/{experimentID}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let experimentIDPreEscape = "\(experimentID)"
         let experimentIDPostEscape = experimentIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{experimentID}", with: experimentIDPostEscape, options: .literal, range: nil)
@@ -3419,12 +3699,13 @@ open class DefaultAPI: APIBase {
 
     /**
      Update a model history / workspace
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace to update 
      - parameter updateModelHistoryRequest: (body) The model history request object 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateModelHistory(modelHistoryID: String, updateModelHistoryRequest: AddModelHistoryRequest, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
-        updateModelHistoryWithRequestBuilder(modelHistoryID: modelHistoryID, updateModelHistoryRequest: updateModelHistoryRequest).execute { (response, error) -> Void in
+    open class func updateModelHistory(modelHistoryServerId: String, modelHistoryID: String, updateModelHistoryRequest: AddModelHistoryRequest, completion: @escaping ((_ data: ModelHistoryEntity?, _ error: ErrorResponse?) -> Void)) {
+        updateModelHistoryWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, modelHistoryID: modelHistoryID, updateModelHistoryRequest: updateModelHistoryRequest).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3432,7 +3713,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Update a model history / workspace
-     - POST /modelhistory/{modelHistoryID}
+     - POST /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -3442,12 +3723,16 @@ open class DefaultAPI: APIBase {
   "created" : 0,
   "modelLabels" : "modelLabels"
 }}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace to update 
      - parameter updateModelHistoryRequest: (body) The model history request object 
      - returns: RequestBuilder<ModelHistoryEntity> 
      */
-    open class func updateModelHistoryWithRequestBuilder(modelHistoryID: String, updateModelHistoryRequest: AddModelHistoryRequest) -> RequestBuilder<ModelHistoryEntity> {
-        var path = "/modelhistory/{modelHistoryID}"
+    open class func updateModelHistoryWithRequestBuilder(modelHistoryServerId: String, modelHistoryID: String, updateModelHistoryRequest: AddModelHistoryRequest) -> RequestBuilder<ModelHistoryEntity> {
+        var path = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let modelHistoryIDPreEscape = "\(modelHistoryID)"
         let modelHistoryIDPostEscape = modelHistoryIDPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelHistoryID}", with: modelHistoryIDPostEscape, options: .literal, range: nil)

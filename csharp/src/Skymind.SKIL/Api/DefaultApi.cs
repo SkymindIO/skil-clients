@@ -31,9 +31,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="evaluationResultsEntity">The evaluation result entity</param>
         /// <returns>EvaluationResultsEntity</returns>
-        EvaluationResultsEntity AddEvaluationResult (EvaluationResultsEntity evaluationResultsEntity);
+        EvaluationResultsEntity AddEvaluationResult (string modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity);
 
         /// <summary>
         /// Adds an evaluation result
@@ -42,9 +43,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="evaluationResultsEntity">The evaluation result entity</param>
         /// <returns>ApiResponse of EvaluationResultsEntity</returns>
-        ApiResponse<EvaluationResultsEntity> AddEvaluationResultWithHttpInfo (EvaluationResultsEntity evaluationResultsEntity);
+        ApiResponse<EvaluationResultsEntity> AddEvaluationResultWithHttpInfo (string modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity);
         /// <summary>
         /// Adds a number of examples to a minibatch ID given an AddExampleRequest.
         /// </summary>
@@ -52,9 +54,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
         /// <returns>AddExampleRequest</returns>
-        AddExampleRequest AddExampleForBatch (AddExampleRequest addExampleRequest);
+        AddExampleRequest AddExampleForBatch (string modelHistoryServerId, AddExampleRequest addExampleRequest);
 
         /// <summary>
         /// Adds a number of examples to a minibatch ID given an AddExampleRequest.
@@ -63,9 +66,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
         /// <returns>ApiResponse of AddExampleRequest</returns>
-        ApiResponse<AddExampleRequest> AddExampleForBatchWithHttpInfo (AddExampleRequest addExampleRequest);
+        ApiResponse<AddExampleRequest> AddExampleForBatchWithHttpInfo (string modelHistoryServerId, AddExampleRequest addExampleRequest);
         /// <summary>
         /// Adds an example to a minibatch
         /// </summary>
@@ -73,9 +77,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="exampleEntity">The example to add to the minibatch</param>
         /// <returns>ExampleEntity</returns>
-        ExampleEntity AddExampleToMinibatch (ExampleEntity exampleEntity);
+        ExampleEntity AddExampleToMinibatch (string modelHistoryServerId, ExampleEntity exampleEntity);
 
         /// <summary>
         /// Adds an example to a minibatch
@@ -84,9 +89,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="exampleEntity">The example to add to the minibatch</param>
         /// <returns>ApiResponse of ExampleEntity</returns>
-        ApiResponse<ExampleEntity> AddExampleToMinibatchWithHttpInfo (ExampleEntity exampleEntity);
+        ApiResponse<ExampleEntity> AddExampleToMinibatchWithHttpInfo (string modelHistoryServerId, ExampleEntity exampleEntity);
         /// <summary>
         /// Add an experiment, given an experiment entity
         /// </summary>
@@ -94,9 +100,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentEntity">The experiment entity to add</param>
         /// <returns>ExperimentEntity</returns>
-        ExperimentEntity AddExperiment (ExperimentEntity experimentEntity);
+        ExperimentEntity AddExperiment (string modelHistoryServerId, ExperimentEntity experimentEntity);
 
         /// <summary>
         /// Add an experiment, given an experiment entity
@@ -105,9 +112,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentEntity">The experiment entity to add</param>
         /// <returns>ApiResponse of ExperimentEntity</returns>
-        ApiResponse<ExperimentEntity> AddExperimentWithHttpInfo (ExperimentEntity experimentEntity);
+        ApiResponse<ExperimentEntity> AddExperimentWithHttpInfo (string modelHistoryServerId, ExperimentEntity experimentEntity);
         /// <summary>
         /// Adds a minibatch
         /// </summary>
@@ -115,9 +123,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchEntity">The minibatch entity to add</param>
         /// <returns>MinibatchEntity</returns>
-        MinibatchEntity AddMinibatch (MinibatchEntity minibatchEntity);
+        MinibatchEntity AddMinibatch (string modelHistoryServerId, MinibatchEntity minibatchEntity);
 
         /// <summary>
         /// Adds a minibatch
@@ -126,9 +135,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchEntity">The minibatch entity to add</param>
         /// <returns>ApiResponse of MinibatchEntity</returns>
-        ApiResponse<MinibatchEntity> AddMinibatchWithHttpInfo (MinibatchEntity minibatchEntity);
+        ApiResponse<MinibatchEntity> AddMinibatchWithHttpInfo (string modelHistoryServerId, MinibatchEntity minibatchEntity);
         /// <summary>
         /// Adds an evaluation feedback to the model against a given minibatch id.
         /// </summary>
@@ -136,9 +146,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelFeedBackRequest">The model feedback request object</param>
         /// <returns>ModelFeedBackRequest</returns>
-        ModelFeedBackRequest AddModelFeedback (ModelFeedBackRequest modelFeedBackRequest);
+        ModelFeedBackRequest AddModelFeedback (string modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest);
 
         /// <summary>
         /// Adds an evaluation feedback to the model against a given minibatch id.
@@ -147,9 +158,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelFeedBackRequest">The model feedback request object</param>
         /// <returns>ApiResponse of ModelFeedBackRequest</returns>
-        ApiResponse<ModelFeedBackRequest> AddModelFeedbackWithHttpInfo (ModelFeedBackRequest modelFeedBackRequest);
+        ApiResponse<ModelFeedBackRequest> AddModelFeedbackWithHttpInfo (string modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest);
         /// <summary>
         /// Add a model history / workspace
         /// </summary>
@@ -157,9 +169,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addModelHistoryRequest">The model history request object</param>
         /// <returns>ModelHistoryEntity</returns>
-        ModelHistoryEntity AddModelHistory (AddModelHistoryRequest addModelHistoryRequest);
+        ModelHistoryEntity AddModelHistory (string modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest);
 
         /// <summary>
         /// Add a model history / workspace
@@ -168,9 +181,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addModelHistoryRequest">The model history request object</param>
         /// <returns>ApiResponse of ModelHistoryEntity</returns>
-        ApiResponse<ModelHistoryEntity> AddModelHistoryWithHttpInfo (AddModelHistoryRequest addModelHistoryRequest);
+        ApiResponse<ModelHistoryEntity> AddModelHistoryWithHttpInfo (string modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest);
         /// <summary>
         /// Adds a model
         /// </summary>
@@ -178,9 +192,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>ModelInstanceEntity</returns>
-        ModelInstanceEntity AddModelInstance (ModelInstanceEntity modelInstanceEntity);
+        ModelInstanceEntity AddModelInstance (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity);
 
         /// <summary>
         /// Adds a model
@@ -189,9 +204,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>ApiResponse of ModelInstanceEntity</returns>
-        ApiResponse<ModelInstanceEntity> AddModelInstanceWithHttpInfo (ModelInstanceEntity modelInstanceEntity);
+        ApiResponse<ModelInstanceEntity> AddModelInstanceWithHttpInfo (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity);
         /// <summary>
         /// Aggregates the evaluaition results of a model instance, based on the evaluation type
         /// </summary>
@@ -199,9 +215,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>EvaluationResultsEntity</returns>
-        EvaluationResultsEntity AggregateModelResults (AggregatePrediction aggregatePrediction);
+        EvaluationResultsEntity AggregateModelResults (string modelHistoryServerId, AggregatePrediction aggregatePrediction);
 
         /// <summary>
         /// Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -210,9 +227,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>ApiResponse of EvaluationResultsEntity</returns>
-        ApiResponse<EvaluationResultsEntity> AggregateModelResultsWithHttpInfo (AggregatePrediction aggregatePrediction);
+        ApiResponse<EvaluationResultsEntity> AggregateModelResultsWithHttpInfo (string modelHistoryServerId, AggregatePrediction aggregatePrediction);
         /// <summary>
         /// Use the deployed model to classify the input
         /// </summary>
@@ -222,9 +240,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ClassificationResult</returns>
-        ClassificationResult Classify (Prediction body, string deploymentName, string modelName);
+        ClassificationResult Classify (Prediction body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Use the deployed model to classify the input
@@ -235,9 +254,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of ClassificationResult</returns>
-        ApiResponse<ClassificationResult> ClassifyWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        ApiResponse<ClassificationResult> ClassifyWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Same as /classify but returns the output as Base64NDArrayBody
         /// </summary>
@@ -247,9 +267,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody Classifyarray (Prediction body, string deploymentName, string modelName);
+        Base64NDArrayBody Classifyarray (Prediction body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Same as /classify but returns the output as Base64NDArrayBody
@@ -260,9 +281,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> ClassifyarrayWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        ApiResponse<Base64NDArrayBody> ClassifyarrayWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Use the deployed model to classify the input, using input image file from multipart form data.
         /// </summary>
@@ -271,10 +293,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ClassificationResult</returns>
-        ClassificationResult Classifyimage (string deploymentName, string modelName, System.IO.Stream image = null);
+        ClassificationResult Classifyimage (string deploymentName, string versionName, string modelName, System.IO.Stream image = null);
 
         /// <summary>
         /// Use the deployed model to classify the input, using input image file from multipart form data.
@@ -284,10 +307,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ApiResponse of ClassificationResult</returns>
-        ApiResponse<ClassificationResult> ClassifyimageWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null);
+        ApiResponse<ClassificationResult> ClassifyimageWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream image = null);
         /// <summary>
         /// Creates model History
         /// </summary>
@@ -295,9 +319,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryEntity">The model history entity</param>
         /// <returns>ModelHistoryEntity</returns>
-        ModelHistoryEntity CreateModelHistory (ModelHistoryEntity modelHistoryEntity);
+        ModelHistoryEntity CreateModelHistory (string modelHistoryServerId, ModelHistoryEntity modelHistoryEntity);
 
         /// <summary>
         /// Creates model History
@@ -306,9 +331,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryEntity">The model history entity</param>
         /// <returns>ApiResponse of ModelHistoryEntity</returns>
-        ApiResponse<ModelHistoryEntity> CreateModelHistoryWithHttpInfo (ModelHistoryEntity modelHistoryEntity);
+        ApiResponse<ModelHistoryEntity> CreateModelHistoryWithHttpInfo (string modelHistoryServerId, ModelHistoryEntity modelHistoryEntity);
         /// <summary>
         /// Deletes an experiment, given an experiment entity
         /// </summary>
@@ -316,9 +342,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to delete</param>
         /// <returns>InlineResponse200</returns>
-        InlineResponse200 DeleteExperiment (string experimentID);
+        InlineResponse200 DeleteExperiment (string modelHistoryServerId, string experimentID);
 
         /// <summary>
         /// Deletes an experiment, given an experiment entity
@@ -327,9 +354,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to delete</param>
         /// <returns>ApiResponse of InlineResponse200</returns>
-        ApiResponse<InlineResponse200> DeleteExperimentWithHttpInfo (string experimentID);
+        ApiResponse<InlineResponse200> DeleteExperimentWithHttpInfo (string modelHistoryServerId, string experimentID);
         /// <summary>
         /// Delete a model by deployment and model id
         /// </summary>
@@ -360,9 +388,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
         /// <returns>InlineResponse200</returns>
-        InlineResponse200 DeleteModelHistory (string modelHistoryID);
+        InlineResponse200 DeleteModelHistory (string modelHistoryServerId, string modelHistoryID);
 
         /// <summary>
         /// Deletes a model history / workspace, given its ID
@@ -371,9 +400,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
         /// <returns>ApiResponse of InlineResponse200</returns>
-        ApiResponse<InlineResponse200> DeleteModelHistoryWithHttpInfo (string modelHistoryID);
+        ApiResponse<InlineResponse200> DeleteModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID);
         /// <summary>
         /// Deletes a model instance, given its ID
         /// </summary>
@@ -381,9 +411,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
         /// <returns></returns>
-        void DeleteModelInstance (string modelInstanceID);
+        void DeleteModelInstance (string modelHistoryServerId, string modelInstanceID);
 
         /// <summary>
         /// Deletes a model instance, given its ID
@@ -392,9 +423,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteModelInstanceWithHttpInfo (string modelInstanceID);
+        ApiResponse<Object> DeleteModelInstanceWithHttpInfo (string modelHistoryServerId, string modelInstanceID);
         /// <summary>
         /// Deploy a model in a deployment group.
         /// </summary>
@@ -512,9 +544,10 @@ namespace Skymind.SKIL.Api
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
         /// <param name="imageFile">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>DetectionResult</returns>
-        DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName);
+        DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Detect the objects, given a (input) prediction request
@@ -528,9 +561,10 @@ namespace Skymind.SKIL.Api
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
         /// <param name="imageFile">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of DetectionResult</returns>
-        ApiResponse<DetectionResult> DetectobjectsWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName);
+        ApiResponse<DetectionResult> DetectobjectsWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric
         /// </summary>
@@ -538,9 +572,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
         /// <returns>ModelInstanceEntity</returns>
-        ModelInstanceEntity GetBestModelAmongModelIds (BestModel bestModel);
+        ModelInstanceEntity GetBestModelAmongModelIds (string modelHistoryServerId, BestModel bestModel);
 
         /// <summary>
         /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric
@@ -549,9 +584,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
         /// <returns>ApiResponse of ModelInstanceEntity</returns>
-        ApiResponse<ModelInstanceEntity> GetBestModelAmongModelIdsWithHttpInfo (BestModel bestModel);
+        ApiResponse<ModelInstanceEntity> GetBestModelAmongModelIdsWithHttpInfo (string modelHistoryServerId, BestModel bestModel);
         /// <summary>
         /// Gets the list of evaluation results entity, given a model instance ID
         /// </summary>
@@ -559,9 +595,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
         /// <returns>List&lt;EvaluationResultsEntity&gt;</returns>
-        List<EvaluationResultsEntity> GetEvaluationForModelID (string modelInstanceID);
+        List<EvaluationResultsEntity> GetEvaluationForModelID (string modelHistoryServerId, string modelInstanceID);
 
         /// <summary>
         /// Gets the list of evaluation results entity, given a model instance ID
@@ -570,9 +607,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
         /// <returns>ApiResponse of List&lt;EvaluationResultsEntity&gt;</returns>
-        ApiResponse<List<EvaluationResultsEntity>> GetEvaluationForModelIDWithHttpInfo (string modelInstanceID);
+        ApiResponse<List<EvaluationResultsEntity>> GetEvaluationForModelIDWithHttpInfo (string modelHistoryServerId, string modelInstanceID);
         /// <summary>
         /// Gets all the examples for a minibatch ID
         /// </summary>
@@ -580,9 +618,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>List&lt;ExampleEntity&gt;</returns>
-        List<ExampleEntity> GetExamplesForMinibatch (string minibatchId);
+        List<ExampleEntity> GetExamplesForMinibatch (string modelHistoryServerId, string minibatchId);
 
         /// <summary>
         /// Gets all the examples for a minibatch ID
@@ -591,9 +630,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>ApiResponse of List&lt;ExampleEntity&gt;</returns>
-        ApiResponse<List<ExampleEntity>> GetExamplesForMinibatchWithHttpInfo (string minibatchId);
+        ApiResponse<List<ExampleEntity>> GetExamplesForMinibatchWithHttpInfo (string modelHistoryServerId, string minibatchId);
         /// <summary>
         /// Obtain an experiment&#39;s details, given its ID
         /// </summary>
@@ -601,9 +641,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to obtain</param>
         /// <returns>ExperimentEntity</returns>
-        ExperimentEntity GetExperiment (string experimentID);
+        ExperimentEntity GetExperiment (string modelHistoryServerId, string experimentID);
 
         /// <summary>
         /// Obtain an experiment&#39;s details, given its ID
@@ -612,9 +653,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to obtain</param>
         /// <returns>ApiResponse of ExperimentEntity</returns>
-        ApiResponse<ExperimentEntity> GetExperimentWithHttpInfo (string experimentID);
+        ApiResponse<ExperimentEntity> GetExperimentWithHttpInfo (string modelHistoryServerId, string experimentID);
         /// <summary>
         /// Obtain all experiments for a model history / workspace
         /// </summary>
@@ -622,9 +664,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
         /// <returns>ExperimentEntity</returns>
-        ExperimentEntity GetExperimentsForModelHistory (string modelHistoryID);
+        ExperimentEntity GetExperimentsForModelHistory (string modelHistoryServerId, string modelHistoryID);
 
         /// <summary>
         /// Obtain all experiments for a model history / workspace
@@ -633,9 +676,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
         /// <returns>ApiResponse of ExperimentEntity</returns>
-        ApiResponse<ExperimentEntity> GetExperimentsForModelHistoryWithHttpInfo (string modelHistoryID);
+        ApiResponse<ExperimentEntity> GetExperimentsForModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID);
         /// <summary>
         /// Gets a minibatch for the model
         /// </summary>
@@ -643,9 +687,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>MinibatchEntity</returns>
-        MinibatchEntity GetMinibatch (string minibatchId);
+        MinibatchEntity GetMinibatch (string modelHistoryServerId, string minibatchId);
 
         /// <summary>
         /// Gets a minibatch for the model
@@ -654,9 +699,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>ApiResponse of MinibatchEntity</returns>
-        ApiResponse<MinibatchEntity> GetMinibatchWithHttpInfo (string minibatchId);
+        ApiResponse<MinibatchEntity> GetMinibatchWithHttpInfo (string modelHistoryServerId, string minibatchId);
         /// <summary>
         /// Gets a model history, given its ID
         /// </summary>
@@ -664,9 +710,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
         /// <returns>ModelHistoryEntity</returns>
-        ModelHistoryEntity GetModelHistory (string modelHistoryID);
+        ModelHistoryEntity GetModelHistory (string modelHistoryServerId, string modelHistoryID);
 
         /// <summary>
         /// Gets a model history, given its ID
@@ -675,9 +722,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
         /// <returns>ApiResponse of ModelHistoryEntity</returns>
-        ApiResponse<ModelHistoryEntity> GetModelHistoryWithHttpInfo (string modelHistoryID);
+        ApiResponse<ModelHistoryEntity> GetModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID);
         /// <summary>
         /// Gets a model instance, given its ID
         /// </summary>
@@ -685,9 +733,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
         /// <returns>ModelInstanceEntity</returns>
-        ModelInstanceEntity GetModelInstance (string modelInstanceID);
+        ModelInstanceEntity GetModelInstance (string modelHistoryServerId, string modelInstanceID);
 
         /// <summary>
         /// Gets a model instance, given its ID
@@ -696,9 +745,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
         /// <returns>ApiResponse of ModelInstanceEntity</returns>
-        ApiResponse<ModelInstanceEntity> GetModelInstanceWithHttpInfo (string modelInstanceID);
+        ApiResponse<ModelInstanceEntity> GetModelInstanceWithHttpInfo (string modelHistoryServerId, string modelInstanceID);
         /// <summary>
         /// Obtain a list of all the models for an experiment
         /// </summary>
@@ -706,9 +756,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment</param>
         /// <returns>List&lt;ModelInstanceEntity&gt;</returns>
-        List<ModelInstanceEntity> GetModelsForExperiment (string experimentID);
+        List<ModelInstanceEntity> GetModelsForExperiment (string modelHistoryServerId, string experimentID);
 
         /// <summary>
         /// Obtain a list of all the models for an experiment
@@ -717,9 +768,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment</param>
         /// <returns>ApiResponse of List&lt;ModelInstanceEntity&gt;</returns>
-        ApiResponse<List<ModelInstanceEntity>> GetModelsForExperimentWithHttpInfo (string experimentID);
+        ApiResponse<List<ModelInstanceEntity>> GetModelsForExperimentWithHttpInfo (string modelHistoryServerId, string experimentID);
         /// <summary>
         /// Retrieves the image transform process JSON string
         /// </summary>
@@ -728,9 +780,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <returns>ImageTransformProcess</returns>
-        ImageTransformProcess ImagetransformprocessGet (string deploymentName, string imageTransformName);
+        ImageTransformProcess ImagetransformprocessGet (string deploymentName, string versionName, string imageTransformName);
 
         /// <summary>
         /// Retrieves the image transform process JSON string
@@ -740,9 +793,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <returns>ApiResponse of ImageTransformProcess</returns>
-        ApiResponse<ImageTransformProcess> ImagetransformprocessGetWithHttpInfo (string deploymentName, string imageTransformName);
+        ApiResponse<ImageTransformProcess> ImagetransformprocessGetWithHttpInfo (string deploymentName, string versionName, string imageTransformName);
         /// <summary>
         /// Sets the image transform process through the provided JSON string
         /// </summary>
@@ -751,10 +805,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="body">The image transform process JSON</param>
         /// <returns>ImageTransformProcess</returns>
-        ImageTransformProcess ImagetransformprocessPost (string deploymentName, string imageTransformName, ImageTransformProcess body);
+        ImageTransformProcess ImagetransformprocessPost (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body);
 
         /// <summary>
         /// Sets the image transform process through the provided JSON string
@@ -764,10 +819,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="body">The image transform process JSON</param>
         /// <returns>ApiResponse of ImageTransformProcess</returns>
-        ApiResponse<ImageTransformProcess> ImagetransformprocessPostWithHttpInfo (string deploymentName, string imageTransformName, ImageTransformProcess body);
+        ApiResponse<ImageTransformProcess> ImagetransformprocessPostWithHttpInfo (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body);
         /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
         /// </summary>
@@ -777,9 +833,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>JsonArrayResponse</returns>
-        JsonArrayResponse Jsonarray (Prediction body, string deploymentName, string modelName);
+        JsonArrayResponse Jsonarray (Prediction body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
@@ -790,9 +847,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of JsonArrayResponse</returns>
-        ApiResponse<JsonArrayResponse> JsonarrayWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        ApiResponse<JsonArrayResponse> JsonarrayWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Runs knn on the given index with the given k
         /// </summary>
@@ -801,10 +859,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body"></param>
         /// <returns>NearestNeighborsResults</returns>
-        NearestNeighborsResults Knn (string deploymentName, string knnName, NearestNeighborRequest body);
+        NearestNeighborsResults Knn (string deploymentName, string versionName, string knnName, NearestNeighborRequest body);
 
         /// <summary>
         /// Runs knn on the given index with the given k
@@ -814,10 +873,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body"></param>
         /// <returns>ApiResponse of NearestNeighborsResults</returns>
-        ApiResponse<NearestNeighborsResults> KnnWithHttpInfo (string deploymentName, string knnName, NearestNeighborRequest body);
+        ApiResponse<NearestNeighborsResults> KnnWithHttpInfo (string deploymentName, string versionName, string knnName, NearestNeighborRequest body);
         /// <summary>
         /// Run a k nearest neighbors search on a NEW data point
         /// </summary>
@@ -826,10 +886,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body">The input NDArray</param>
         /// <returns>NearestNeighborsResults</returns>
-        NearestNeighborsResults Knnnew (string deploymentName, string knnName, Base64NDArrayBodyKNN body);
+        NearestNeighborsResults Knnnew (string deploymentName, string versionName, string knnName, Base64NDArrayBodyKNN body);
 
         /// <summary>
         /// Run a k nearest neighbors search on a NEW data point
@@ -839,10 +900,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body">The input NDArray</param>
         /// <returns>ApiResponse of NearestNeighborsResults</returns>
-        ApiResponse<NearestNeighborsResults> KnnnewWithHttpInfo (string deploymentName, string knnName, Base64NDArrayBodyKNN body);
+        ApiResponse<NearestNeighborsResults> KnnnewWithHttpInfo (string deploymentName, string versionName, string knnName, Base64NDArrayBodyKNN body);
         /// <summary>
         /// List all of the experiments in every model history / workspace
         /// </summary>
@@ -870,9 +932,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>string</returns>
-        string Logfilepath (string deploymentName, string modelName);
+        string Logfilepath (string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Get logs file path
@@ -882,9 +945,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> LogfilepathWithHttpInfo (string deploymentName, string modelName);
+        ApiResponse<string> LogfilepathWithHttpInfo (string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Post JSON credentials and obtain a JWT authorization token.
         /// </summary>
@@ -915,9 +979,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>LogBatch</returns>
-        LogBatch Logs (LogRequest body, string deploymentName, string modelName);
+        LogBatch Logs (LogRequest body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Get logs
@@ -928,9 +993,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of LogBatch</returns>
-        ApiResponse<LogBatch> LogsWithHttpInfo (LogRequest body, string deploymentName, string modelName);
+        ApiResponse<LogBatch> LogsWithHttpInfo (LogRequest body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// this method can be used to get the meta data for the current model which set to the server
         /// </summary>
@@ -939,9 +1005,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MetaData</returns>
-        MetaData MetaGet (string deploymentName, string modelName);
+        MetaData MetaGet (string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// this method can be used to get the meta data for the current model which set to the server
@@ -951,9 +1018,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MetaData</returns>
-        ApiResponse<MetaData> MetaGetWithHttpInfo (string deploymentName, string modelName);
+        ApiResponse<MetaData> MetaGetWithHttpInfo (string deploymentName, string versionName, string modelName);
         /// <summary>
         /// This method can be used to set meta data for the current model which is set to the server
         /// </summary>
@@ -963,9 +1031,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MetaData</returns>
-        MetaData MetaPost (MetaData body, string deploymentName, string modelName);
+        MetaData MetaPost (MetaData body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// This method can be used to set meta data for the current model which is set to the server
@@ -976,9 +1045,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MetaData</returns>
-        ApiResponse<MetaData> MetaPostWithHttpInfo (MetaData body, string deploymentName, string modelName);
+        ApiResponse<MetaData> MetaPostWithHttpInfo (MetaData body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Modify the state (start/stop) of a deployed model
         /// </summary>
@@ -1033,10 +1103,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to upload (.pb file) (optional)</param>
         /// <returns>ModelStatus</returns>
-        ModelStatus Modelset (string deploymentName, string modelName, System.IO.Stream file = null);
+        ModelStatus Modelset (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
 
         /// <summary>
         /// Set the model to be served
@@ -1046,10 +1117,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to upload (.pb file) (optional)</param>
         /// <returns>ApiResponse of ModelStatus</returns>
-        ApiResponse<ModelStatus> ModelsetWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null);
+        ApiResponse<ModelStatus> ModelsetWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
         /// <summary>
         /// Update the model to be served
         /// </summary>
@@ -1058,10 +1130,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>ModelStatus</returns>
-        ModelStatus Modelupdate (string deploymentName, string modelName, System.IO.Stream file = null);
+        ModelStatus Modelupdate (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
 
         /// <summary>
         /// Update the model to be served
@@ -1071,10 +1144,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>ApiResponse of ModelStatus</returns>
-        ApiResponse<ModelStatus> ModelupdateWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null);
+        ApiResponse<ModelStatus> ModelupdateWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
         /// <summary>
         /// Represents all of the labels for a given classification
         /// </summary>
@@ -1084,9 +1158,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MultiClassClassificationResult</returns>
-        MultiClassClassificationResult Multiclassify (Prediction body, string deploymentName, string modelName);
+        MultiClassClassificationResult Multiclassify (Prediction body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Represents all of the labels for a given classification
@@ -1097,9 +1172,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MultiClassClassificationResult</returns>
-        ApiResponse<MultiClassClassificationResult> MulticlassifyWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        ApiResponse<MultiClassClassificationResult> MulticlassifyWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Get the output from the network, based on the given INDArray[] input
         /// </summary>
@@ -1109,9 +1185,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MultiPredictResponse</returns>
-        MultiPredictResponse Multipredict (MultiPredictRequest body, string deploymentName, string modelName);
+        MultiPredictResponse Multipredict (MultiPredictRequest body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Get the output from the network, based on the given INDArray[] input
@@ -1122,9 +1199,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MultiPredictResponse</returns>
-        ApiResponse<MultiPredictResponse> MultipredictWithHttpInfo (MultiPredictRequest body, string deploymentName, string modelName);
+        ApiResponse<MultiPredictResponse> MultipredictWithHttpInfo (MultiPredictRequest body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
         /// </summary>
@@ -1136,9 +1214,10 @@ namespace Skymind.SKIL.Api
         /// <param name="id">The id of the request (could be self generated)</param>
         /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MultiPredictResponse</returns>
-        MultiPredictResponse Multipredictimage (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName);
+        MultiPredictResponse Multipredictimage (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
@@ -1151,9 +1230,10 @@ namespace Skymind.SKIL.Api
         /// <param name="id">The id of the request (could be self generated)</param>
         /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MultiPredictResponse</returns>
-        ApiResponse<MultiPredictResponse> MultipredictimageWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName);
+        ApiResponse<MultiPredictResponse> MultipredictimageWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Run inference on the input array.
         /// </summary>
@@ -1163,9 +1243,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Prediction</returns>
-        Prediction Predict (Prediction body, string deploymentName, string modelName);
+        Prediction Predict (Prediction body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Run inference on the input array.
@@ -1176,9 +1257,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of Prediction</returns>
-        ApiResponse<Prediction> PredictWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        ApiResponse<Prediction> PredictWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
         /// </summary>
@@ -1187,10 +1269,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Prediction</returns>
-        Prediction Predictimage (string deploymentName, string modelName, System.IO.Stream image = null);
+        Prediction Predictimage (string deploymentName, string versionName, string modelName, System.IO.Stream image = null);
 
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
@@ -1200,10 +1283,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ApiResponse of Prediction</returns>
-        ApiResponse<Prediction> PredictimageWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null);
+        ApiResponse<Prediction> PredictimageWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream image = null);
         /// <summary>
         /// Preprocesses the input and run inference on it
         /// </summary>
@@ -1213,9 +1297,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Prediction</returns>
-        Prediction Predictwithpreprocess (List<string> body, string deploymentName, string modelName);
+        Prediction Predictwithpreprocess (List<string> body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Preprocesses the input and run inference on it
@@ -1226,9 +1311,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of Prediction</returns>
-        ApiResponse<Prediction> PredictwithpreprocessWithHttpInfo (List<string> body, string deploymentName, string modelName);
+        ApiResponse<Prediction> PredictwithpreprocessWithHttpInfo (List<string> body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
         /// </summary>
@@ -1238,9 +1324,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>JsonArrayResponse</returns>
-        JsonArrayResponse Predictwithpreprocessjson (List<string> body, string deploymentName, string modelName);
+        JsonArrayResponse Predictwithpreprocessjson (List<string> body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -1251,9 +1338,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of JsonArrayResponse</returns>
-        ApiResponse<JsonArrayResponse> PredictwithpreprocessjsonWithHttpInfo (List<string> body, string deploymentName, string modelName);
+        ApiResponse<JsonArrayResponse> PredictwithpreprocessjsonWithHttpInfo (List<string> body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Reimport a model to a previous deployed model in a deployment
         /// </summary>
@@ -1287,10 +1375,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>BatchCSVRecord</returns>
-        BatchCSVRecord TransformCsv (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        BatchCSVRecord TransformCsv (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
 
         /// <summary>
         /// Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
@@ -1300,10 +1389,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>ApiResponse of BatchCSVRecord</returns>
-        ApiResponse<BatchCSVRecord> TransformCsvWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        ApiResponse<BatchCSVRecord> TransformCsvWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
         /// <summary>
         /// Takes a batch input arrays and transforms it
         /// </summary>
@@ -1312,10 +1402,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody TransformarrayCsv (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        Base64NDArrayBody TransformarrayCsv (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
 
         /// <summary>
         /// Takes a batch input arrays and transforms it
@@ -1325,10 +1416,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformarrayCsvWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        ApiResponse<Base64NDArrayBody> TransformarrayCsvWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
         /// <summary>
         /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
         /// </summary>
@@ -1337,10 +1429,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="batchImageRecord">The input batch of record arrays</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody TransformarrayImage (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord);
+        Base64NDArrayBody TransformarrayImage (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord);
 
         /// <summary>
         /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
@@ -1350,10 +1443,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="batchImageRecord">The input batch of record arrays</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformarrayImageWithHttpInfo (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord);
+        ApiResponse<Base64NDArrayBody> TransformarrayImageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord);
         /// <summary>
         /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -1362,10 +1456,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="files">The image files to upload</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody Transformimage (string deploymentName, string imageTransformName, List<byte[]> files);
+        Base64NDArrayBody Transformimage (string deploymentName, string versionName, string imageTransformName, List<byte[]> files);
 
         /// <summary>
         /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
@@ -1375,10 +1470,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="files">The image files to upload</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformimageWithHttpInfo (string deploymentName, string imageTransformName, List<byte[]> files);
+        ApiResponse<Base64NDArrayBody> TransformimageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, List<byte[]> files);
         /// <summary>
         /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
         /// </summary>
@@ -1387,10 +1483,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>SingleCSVRecord</returns>
-        SingleCSVRecord TransformincrementalCsv (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        SingleCSVRecord TransformincrementalCsv (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
 
         /// <summary>
         /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
@@ -1400,10 +1497,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>ApiResponse of SingleCSVRecord</returns>
-        ApiResponse<SingleCSVRecord> TransformincrementalCsvWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        ApiResponse<SingleCSVRecord> TransformincrementalCsvWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
         /// <summary>
         /// Same as /transformincremental but returns Base64NDArrayBody
         /// </summary>
@@ -1412,10 +1510,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
 
         /// <summary>
         /// Same as /transformincremental but returns Base64NDArrayBody
@@ -1425,10 +1524,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformincrementalarrayCsvWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        ApiResponse<Base64NDArrayBody> TransformincrementalarrayCsvWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
         /// <summary>
         /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
         /// </summary>
@@ -1437,10 +1537,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="singleImageRecord">The input record array</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord);
+        Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord);
 
         /// <summary>
         /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
@@ -1450,10 +1551,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="singleImageRecord">The input record array</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformincrementalarrayImageWithHttpInfo (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord);
+        ApiResponse<Base64NDArrayBody> TransformincrementalarrayImageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord);
         /// <summary>
         /// Takes a single multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -1462,10 +1564,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="file">The image file to upload</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody Transformincrementalimage (string deploymentName, string imageTransformName, System.IO.Stream file);
+        Base64NDArrayBody Transformincrementalimage (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file);
 
         /// <summary>
         /// Takes a single multipart image file to transform and returns Base64NDArrayBody
@@ -1475,10 +1578,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="file">The image file to upload</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformincrementalimageWithHttpInfo (string deploymentName, string imageTransformName, System.IO.Stream file);
+        ApiResponse<Base64NDArrayBody> TransformincrementalimageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file);
         /// <summary>
         /// Gets the JSON string of the deployed transform process
         /// </summary>
@@ -1487,9 +1591,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <returns>TransformProcess</returns>
-        TransformProcess TransformprocessGet (string deploymentName, string transformName);
+        TransformProcess TransformprocessGet (string deploymentName, string versionName, string transformName);
 
         /// <summary>
         /// Gets the JSON string of the deployed transform process
@@ -1499,9 +1604,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <returns>ApiResponse of TransformProcess</returns>
-        ApiResponse<TransformProcess> TransformprocessGetWithHttpInfo (string deploymentName, string transformName);
+        ApiResponse<TransformProcess> TransformprocessGetWithHttpInfo (string deploymentName, string versionName, string transformName);
         /// <summary>
         /// Sets the deployed transform process through the provided JSON string
         /// </summary>
@@ -1510,10 +1616,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns></returns>
-        void TransformprocessPost (string deploymentName, string transformName, TransformProcess transformProcess = null);
+        void TransformprocessPost (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null);
 
         /// <summary>
         /// Sets the deployed transform process through the provided JSON string
@@ -1523,10 +1630,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string transformName, TransformProcess transformProcess = null);
+        ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null);
         /// <summary>
         /// Updates the best model for an experiment
         /// </summary>
@@ -1534,9 +1642,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
         /// <returns>ExperimentEntity</returns>
-        ExperimentEntity UpdateBestModelForExperiment (UpdateBestModel updateBestModel);
+        ExperimentEntity UpdateBestModelForExperiment (string modelHistoryServerId, UpdateBestModel updateBestModel);
 
         /// <summary>
         /// Updates the best model for an experiment
@@ -1545,9 +1654,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
         /// <returns>ApiResponse of ExperimentEntity</returns>
-        ApiResponse<ExperimentEntity> UpdateBestModelForExperimentWithHttpInfo (UpdateBestModel updateBestModel);
+        ApiResponse<ExperimentEntity> UpdateBestModelForExperimentWithHttpInfo (string modelHistoryServerId, UpdateBestModel updateBestModel);
         /// <summary>
         /// Updates an experiment, given an experiment entity
         /// </summary>
@@ -1555,10 +1665,11 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to update</param>
         /// <param name="experimentEntity">The experiment entity to update with</param>
         /// <returns>ExperimentEntity</returns>
-        ExperimentEntity UpdateExperiment (string experimentID, ExperimentEntity experimentEntity);
+        ExperimentEntity UpdateExperiment (string modelHistoryServerId, string experimentID, ExperimentEntity experimentEntity);
 
         /// <summary>
         /// Updates an experiment, given an experiment entity
@@ -1567,10 +1678,11 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to update</param>
         /// <param name="experimentEntity">The experiment entity to update with</param>
         /// <returns>ApiResponse of ExperimentEntity</returns>
-        ApiResponse<ExperimentEntity> UpdateExperimentWithHttpInfo (string experimentID, ExperimentEntity experimentEntity);
+        ApiResponse<ExperimentEntity> UpdateExperimentWithHttpInfo (string modelHistoryServerId, string experimentID, ExperimentEntity experimentEntity);
         /// <summary>
         /// Update a model history / workspace
         /// </summary>
@@ -1578,10 +1690,11 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
         /// <param name="updateModelHistoryRequest">The model history request object</param>
         /// <returns>ModelHistoryEntity</returns>
-        ModelHistoryEntity UpdateModelHistory (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
+        ModelHistoryEntity UpdateModelHistory (string modelHistoryServerId, string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
 
         /// <summary>
         /// Update a model history / workspace
@@ -1590,10 +1703,11 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
         /// <param name="updateModelHistoryRequest">The model history request object</param>
         /// <returns>ApiResponse of ModelHistoryEntity</returns>
-        ApiResponse<ModelHistoryEntity> UpdateModelHistoryWithHttpInfo (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
+        ApiResponse<ModelHistoryEntity> UpdateModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
         /// <summary>
         /// Upload a model file to SKIL for import.
         /// </summary>
@@ -1624,9 +1738,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="evaluationResultsEntity">The evaluation result entity</param>
         /// <returns>Task of EvaluationResultsEntity</returns>
-        System.Threading.Tasks.Task<EvaluationResultsEntity> AddEvaluationResultAsync (EvaluationResultsEntity evaluationResultsEntity);
+        System.Threading.Tasks.Task<EvaluationResultsEntity> AddEvaluationResultAsync (string modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity);
 
         /// <summary>
         /// Adds an evaluation result
@@ -1635,9 +1750,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="evaluationResultsEntity">The evaluation result entity</param>
         /// <returns>Task of ApiResponse (EvaluationResultsEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AddEvaluationResultAsyncWithHttpInfo (EvaluationResultsEntity evaluationResultsEntity);
+        System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AddEvaluationResultAsyncWithHttpInfo (string modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity);
         /// <summary>
         /// Adds a number of examples to a minibatch ID given an AddExampleRequest.
         /// </summary>
@@ -1645,9 +1761,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
         /// <returns>Task of AddExampleRequest</returns>
-        System.Threading.Tasks.Task<AddExampleRequest> AddExampleForBatchAsync (AddExampleRequest addExampleRequest);
+        System.Threading.Tasks.Task<AddExampleRequest> AddExampleForBatchAsync (string modelHistoryServerId, AddExampleRequest addExampleRequest);
 
         /// <summary>
         /// Adds a number of examples to a minibatch ID given an AddExampleRequest.
@@ -1656,9 +1773,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
         /// <returns>Task of ApiResponse (AddExampleRequest)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AddExampleRequest>> AddExampleForBatchAsyncWithHttpInfo (AddExampleRequest addExampleRequest);
+        System.Threading.Tasks.Task<ApiResponse<AddExampleRequest>> AddExampleForBatchAsyncWithHttpInfo (string modelHistoryServerId, AddExampleRequest addExampleRequest);
         /// <summary>
         /// Adds an example to a minibatch
         /// </summary>
@@ -1666,9 +1784,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="exampleEntity">The example to add to the minibatch</param>
         /// <returns>Task of ExampleEntity</returns>
-        System.Threading.Tasks.Task<ExampleEntity> AddExampleToMinibatchAsync (ExampleEntity exampleEntity);
+        System.Threading.Tasks.Task<ExampleEntity> AddExampleToMinibatchAsync (string modelHistoryServerId, ExampleEntity exampleEntity);
 
         /// <summary>
         /// Adds an example to a minibatch
@@ -1677,9 +1796,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="exampleEntity">The example to add to the minibatch</param>
         /// <returns>Task of ApiResponse (ExampleEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExampleEntity>> AddExampleToMinibatchAsyncWithHttpInfo (ExampleEntity exampleEntity);
+        System.Threading.Tasks.Task<ApiResponse<ExampleEntity>> AddExampleToMinibatchAsyncWithHttpInfo (string modelHistoryServerId, ExampleEntity exampleEntity);
         /// <summary>
         /// Add an experiment, given an experiment entity
         /// </summary>
@@ -1687,9 +1807,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentEntity">The experiment entity to add</param>
         /// <returns>Task of ExperimentEntity</returns>
-        System.Threading.Tasks.Task<ExperimentEntity> AddExperimentAsync (ExperimentEntity experimentEntity);
+        System.Threading.Tasks.Task<ExperimentEntity> AddExperimentAsync (string modelHistoryServerId, ExperimentEntity experimentEntity);
 
         /// <summary>
         /// Add an experiment, given an experiment entity
@@ -1698,9 +1819,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentEntity">The experiment entity to add</param>
         /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> AddExperimentAsyncWithHttpInfo (ExperimentEntity experimentEntity);
+        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> AddExperimentAsyncWithHttpInfo (string modelHistoryServerId, ExperimentEntity experimentEntity);
         /// <summary>
         /// Adds a minibatch
         /// </summary>
@@ -1708,9 +1830,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchEntity">The minibatch entity to add</param>
         /// <returns>Task of MinibatchEntity</returns>
-        System.Threading.Tasks.Task<MinibatchEntity> AddMinibatchAsync (MinibatchEntity minibatchEntity);
+        System.Threading.Tasks.Task<MinibatchEntity> AddMinibatchAsync (string modelHistoryServerId, MinibatchEntity minibatchEntity);
 
         /// <summary>
         /// Adds a minibatch
@@ -1719,9 +1842,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchEntity">The minibatch entity to add</param>
         /// <returns>Task of ApiResponse (MinibatchEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> AddMinibatchAsyncWithHttpInfo (MinibatchEntity minibatchEntity);
+        System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> AddMinibatchAsyncWithHttpInfo (string modelHistoryServerId, MinibatchEntity minibatchEntity);
         /// <summary>
         /// Adds an evaluation feedback to the model against a given minibatch id.
         /// </summary>
@@ -1729,9 +1853,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelFeedBackRequest">The model feedback request object</param>
         /// <returns>Task of ModelFeedBackRequest</returns>
-        System.Threading.Tasks.Task<ModelFeedBackRequest> AddModelFeedbackAsync (ModelFeedBackRequest modelFeedBackRequest);
+        System.Threading.Tasks.Task<ModelFeedBackRequest> AddModelFeedbackAsync (string modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest);
 
         /// <summary>
         /// Adds an evaluation feedback to the model against a given minibatch id.
@@ -1740,9 +1865,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelFeedBackRequest">The model feedback request object</param>
         /// <returns>Task of ApiResponse (ModelFeedBackRequest)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelFeedBackRequest>> AddModelFeedbackAsyncWithHttpInfo (ModelFeedBackRequest modelFeedBackRequest);
+        System.Threading.Tasks.Task<ApiResponse<ModelFeedBackRequest>> AddModelFeedbackAsyncWithHttpInfo (string modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest);
         /// <summary>
         /// Add a model history / workspace
         /// </summary>
@@ -1750,9 +1876,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addModelHistoryRequest">The model history request object</param>
         /// <returns>Task of ModelHistoryEntity</returns>
-        System.Threading.Tasks.Task<ModelHistoryEntity> AddModelHistoryAsync (AddModelHistoryRequest addModelHistoryRequest);
+        System.Threading.Tasks.Task<ModelHistoryEntity> AddModelHistoryAsync (string modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest);
 
         /// <summary>
         /// Add a model history / workspace
@@ -1761,9 +1888,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addModelHistoryRequest">The model history request object</param>
         /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> AddModelHistoryAsyncWithHttpInfo (AddModelHistoryRequest addModelHistoryRequest);
+        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> AddModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest);
         /// <summary>
         /// Adds a model
         /// </summary>
@@ -1771,9 +1899,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>Task of ModelInstanceEntity</returns>
-        System.Threading.Tasks.Task<ModelInstanceEntity> AddModelInstanceAsync (ModelInstanceEntity modelInstanceEntity);
+        System.Threading.Tasks.Task<ModelInstanceEntity> AddModelInstanceAsync (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity);
 
         /// <summary>
         /// Adds a model
@@ -1782,9 +1911,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> AddModelInstanceAsyncWithHttpInfo (ModelInstanceEntity modelInstanceEntity);
+        System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> AddModelInstanceAsyncWithHttpInfo (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity);
         /// <summary>
         /// Aggregates the evaluaition results of a model instance, based on the evaluation type
         /// </summary>
@@ -1792,9 +1922,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>Task of EvaluationResultsEntity</returns>
-        System.Threading.Tasks.Task<EvaluationResultsEntity> AggregateModelResultsAsync (AggregatePrediction aggregatePrediction);
+        System.Threading.Tasks.Task<EvaluationResultsEntity> AggregateModelResultsAsync (string modelHistoryServerId, AggregatePrediction aggregatePrediction);
 
         /// <summary>
         /// Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -1803,9 +1934,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>Task of ApiResponse (EvaluationResultsEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AggregateModelResultsAsyncWithHttpInfo (AggregatePrediction aggregatePrediction);
+        System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AggregateModelResultsAsyncWithHttpInfo (string modelHistoryServerId, AggregatePrediction aggregatePrediction);
         /// <summary>
         /// Use the deployed model to classify the input
         /// </summary>
@@ -1815,9 +1947,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ClassificationResult</returns>
-        System.Threading.Tasks.Task<ClassificationResult> ClassifyAsync (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ClassificationResult> ClassifyAsync (Prediction body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Use the deployed model to classify the input
@@ -1828,9 +1961,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (ClassificationResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Same as /classify but returns the output as Base64NDArrayBody
         /// </summary>
@@ -1840,9 +1974,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> ClassifyarrayAsync (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<Base64NDArrayBody> ClassifyarrayAsync (Prediction body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Same as /classify but returns the output as Base64NDArrayBody
@@ -1853,9 +1988,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> ClassifyarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> ClassifyarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Use the deployed model to classify the input, using input image file from multipart form data.
         /// </summary>
@@ -1864,10 +2000,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ClassificationResult</returns>
-        System.Threading.Tasks.Task<ClassificationResult> ClassifyimageAsync (string deploymentName, string modelName, System.IO.Stream image = null);
+        System.Threading.Tasks.Task<ClassificationResult> ClassifyimageAsync (string deploymentName, string versionName, string modelName, System.IO.Stream image = null);
 
         /// <summary>
         /// Use the deployed model to classify the input, using input image file from multipart form data.
@@ -1877,10 +2014,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ApiResponse (ClassificationResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyimageAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null);
+        System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyimageAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream image = null);
         /// <summary>
         /// Creates model History
         /// </summary>
@@ -1888,9 +2026,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryEntity">The model history entity</param>
         /// <returns>Task of ModelHistoryEntity</returns>
-        System.Threading.Tasks.Task<ModelHistoryEntity> CreateModelHistoryAsync (ModelHistoryEntity modelHistoryEntity);
+        System.Threading.Tasks.Task<ModelHistoryEntity> CreateModelHistoryAsync (string modelHistoryServerId, ModelHistoryEntity modelHistoryEntity);
 
         /// <summary>
         /// Creates model History
@@ -1899,9 +2038,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryEntity">The model history entity</param>
         /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> CreateModelHistoryAsyncWithHttpInfo (ModelHistoryEntity modelHistoryEntity);
+        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> CreateModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, ModelHistoryEntity modelHistoryEntity);
         /// <summary>
         /// Deletes an experiment, given an experiment entity
         /// </summary>
@@ -1909,9 +2049,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to delete</param>
         /// <returns>Task of InlineResponse200</returns>
-        System.Threading.Tasks.Task<InlineResponse200> DeleteExperimentAsync (string experimentID);
+        System.Threading.Tasks.Task<InlineResponse200> DeleteExperimentAsync (string modelHistoryServerId, string experimentID);
 
         /// <summary>
         /// Deletes an experiment, given an experiment entity
@@ -1920,9 +2061,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to delete</param>
         /// <returns>Task of ApiResponse (InlineResponse200)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteExperimentAsyncWithHttpInfo (string experimentID);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteExperimentAsyncWithHttpInfo (string modelHistoryServerId, string experimentID);
         /// <summary>
         /// Delete a model by deployment and model id
         /// </summary>
@@ -1953,9 +2095,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
         /// <returns>Task of InlineResponse200</returns>
-        System.Threading.Tasks.Task<InlineResponse200> DeleteModelHistoryAsync (string modelHistoryID);
+        System.Threading.Tasks.Task<InlineResponse200> DeleteModelHistoryAsync (string modelHistoryServerId, string modelHistoryID);
 
         /// <summary>
         /// Deletes a model history / workspace, given its ID
@@ -1964,9 +2107,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
         /// <returns>Task of ApiResponse (InlineResponse200)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteModelHistoryAsyncWithHttpInfo (string modelHistoryID);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID);
         /// <summary>
         /// Deletes a model instance, given its ID
         /// </summary>
@@ -1974,9 +2118,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteModelInstanceAsync (string modelInstanceID);
+        System.Threading.Tasks.Task DeleteModelInstanceAsync (string modelHistoryServerId, string modelInstanceID);
 
         /// <summary>
         /// Deletes a model instance, given its ID
@@ -1985,9 +2130,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteModelInstanceAsyncWithHttpInfo (string modelInstanceID);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteModelInstanceAsyncWithHttpInfo (string modelHistoryServerId, string modelInstanceID);
         /// <summary>
         /// Deploy a model in a deployment group.
         /// </summary>
@@ -2105,9 +2251,10 @@ namespace Skymind.SKIL.Api
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
         /// <param name="imageFile">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of DetectionResult</returns>
-        System.Threading.Tasks.Task<DetectionResult> DetectobjectsAsync (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<DetectionResult> DetectobjectsAsync (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Detect the objects, given a (input) prediction request
@@ -2121,9 +2268,10 @@ namespace Skymind.SKIL.Api
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
         /// <param name="imageFile">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (DetectionResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DetectionResult>> DetectobjectsAsyncWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<DetectionResult>> DetectobjectsAsyncWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric
         /// </summary>
@@ -2131,9 +2279,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
         /// <returns>Task of ModelInstanceEntity</returns>
-        System.Threading.Tasks.Task<ModelInstanceEntity> GetBestModelAmongModelIdsAsync (BestModel bestModel);
+        System.Threading.Tasks.Task<ModelInstanceEntity> GetBestModelAmongModelIdsAsync (string modelHistoryServerId, BestModel bestModel);
 
         /// <summary>
         /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric
@@ -2142,9 +2291,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
         /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetBestModelAmongModelIdsAsyncWithHttpInfo (BestModel bestModel);
+        System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetBestModelAmongModelIdsAsyncWithHttpInfo (string modelHistoryServerId, BestModel bestModel);
         /// <summary>
         /// Gets the list of evaluation results entity, given a model instance ID
         /// </summary>
@@ -2152,9 +2302,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
         /// <returns>Task of List&lt;EvaluationResultsEntity&gt;</returns>
-        System.Threading.Tasks.Task<List<EvaluationResultsEntity>> GetEvaluationForModelIDAsync (string modelInstanceID);
+        System.Threading.Tasks.Task<List<EvaluationResultsEntity>> GetEvaluationForModelIDAsync (string modelHistoryServerId, string modelInstanceID);
 
         /// <summary>
         /// Gets the list of evaluation results entity, given a model instance ID
@@ -2163,9 +2314,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
         /// <returns>Task of ApiResponse (List&lt;EvaluationResultsEntity&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<EvaluationResultsEntity>>> GetEvaluationForModelIDAsyncWithHttpInfo (string modelInstanceID);
+        System.Threading.Tasks.Task<ApiResponse<List<EvaluationResultsEntity>>> GetEvaluationForModelIDAsyncWithHttpInfo (string modelHistoryServerId, string modelInstanceID);
         /// <summary>
         /// Gets all the examples for a minibatch ID
         /// </summary>
@@ -2173,9 +2325,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>Task of List&lt;ExampleEntity&gt;</returns>
-        System.Threading.Tasks.Task<List<ExampleEntity>> GetExamplesForMinibatchAsync (string minibatchId);
+        System.Threading.Tasks.Task<List<ExampleEntity>> GetExamplesForMinibatchAsync (string modelHistoryServerId, string minibatchId);
 
         /// <summary>
         /// Gets all the examples for a minibatch ID
@@ -2184,9 +2337,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>Task of ApiResponse (List&lt;ExampleEntity&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ExampleEntity>>> GetExamplesForMinibatchAsyncWithHttpInfo (string minibatchId);
+        System.Threading.Tasks.Task<ApiResponse<List<ExampleEntity>>> GetExamplesForMinibatchAsyncWithHttpInfo (string modelHistoryServerId, string minibatchId);
         /// <summary>
         /// Obtain an experiment&#39;s details, given its ID
         /// </summary>
@@ -2194,9 +2348,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to obtain</param>
         /// <returns>Task of ExperimentEntity</returns>
-        System.Threading.Tasks.Task<ExperimentEntity> GetExperimentAsync (string experimentID);
+        System.Threading.Tasks.Task<ExperimentEntity> GetExperimentAsync (string modelHistoryServerId, string experimentID);
 
         /// <summary>
         /// Obtain an experiment&#39;s details, given its ID
@@ -2205,9 +2360,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to obtain</param>
         /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentAsyncWithHttpInfo (string experimentID);
+        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentAsyncWithHttpInfo (string modelHistoryServerId, string experimentID);
         /// <summary>
         /// Obtain all experiments for a model history / workspace
         /// </summary>
@@ -2215,9 +2371,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
         /// <returns>Task of ExperimentEntity</returns>
-        System.Threading.Tasks.Task<ExperimentEntity> GetExperimentsForModelHistoryAsync (string modelHistoryID);
+        System.Threading.Tasks.Task<ExperimentEntity> GetExperimentsForModelHistoryAsync (string modelHistoryServerId, string modelHistoryID);
 
         /// <summary>
         /// Obtain all experiments for a model history / workspace
@@ -2226,9 +2383,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
         /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentsForModelHistoryAsyncWithHttpInfo (string modelHistoryID);
+        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentsForModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID);
         /// <summary>
         /// Gets a minibatch for the model
         /// </summary>
@@ -2236,9 +2394,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>Task of MinibatchEntity</returns>
-        System.Threading.Tasks.Task<MinibatchEntity> GetMinibatchAsync (string minibatchId);
+        System.Threading.Tasks.Task<MinibatchEntity> GetMinibatchAsync (string modelHistoryServerId, string minibatchId);
 
         /// <summary>
         /// Gets a minibatch for the model
@@ -2247,9 +2406,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>Task of ApiResponse (MinibatchEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> GetMinibatchAsyncWithHttpInfo (string minibatchId);
+        System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> GetMinibatchAsyncWithHttpInfo (string modelHistoryServerId, string minibatchId);
         /// <summary>
         /// Gets a model history, given its ID
         /// </summary>
@@ -2257,9 +2417,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
         /// <returns>Task of ModelHistoryEntity</returns>
-        System.Threading.Tasks.Task<ModelHistoryEntity> GetModelHistoryAsync (string modelHistoryID);
+        System.Threading.Tasks.Task<ModelHistoryEntity> GetModelHistoryAsync (string modelHistoryServerId, string modelHistoryID);
 
         /// <summary>
         /// Gets a model history, given its ID
@@ -2268,9 +2429,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
         /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> GetModelHistoryAsyncWithHttpInfo (string modelHistoryID);
+        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> GetModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID);
         /// <summary>
         /// Gets a model instance, given its ID
         /// </summary>
@@ -2278,9 +2440,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
         /// <returns>Task of ModelInstanceEntity</returns>
-        System.Threading.Tasks.Task<ModelInstanceEntity> GetModelInstanceAsync (string modelInstanceID);
+        System.Threading.Tasks.Task<ModelInstanceEntity> GetModelInstanceAsync (string modelHistoryServerId, string modelInstanceID);
 
         /// <summary>
         /// Gets a model instance, given its ID
@@ -2289,9 +2452,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
         /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetModelInstanceAsyncWithHttpInfo (string modelInstanceID);
+        System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetModelInstanceAsyncWithHttpInfo (string modelHistoryServerId, string modelInstanceID);
         /// <summary>
         /// Obtain a list of all the models for an experiment
         /// </summary>
@@ -2299,9 +2463,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment</param>
         /// <returns>Task of List&lt;ModelInstanceEntity&gt;</returns>
-        System.Threading.Tasks.Task<List<ModelInstanceEntity>> GetModelsForExperimentAsync (string experimentID);
+        System.Threading.Tasks.Task<List<ModelInstanceEntity>> GetModelsForExperimentAsync (string modelHistoryServerId, string experimentID);
 
         /// <summary>
         /// Obtain a list of all the models for an experiment
@@ -2310,9 +2475,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment</param>
         /// <returns>Task of ApiResponse (List&lt;ModelInstanceEntity&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ModelInstanceEntity>>> GetModelsForExperimentAsyncWithHttpInfo (string experimentID);
+        System.Threading.Tasks.Task<ApiResponse<List<ModelInstanceEntity>>> GetModelsForExperimentAsyncWithHttpInfo (string modelHistoryServerId, string experimentID);
         /// <summary>
         /// Retrieves the image transform process JSON string
         /// </summary>
@@ -2321,9 +2487,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <returns>Task of ImageTransformProcess</returns>
-        System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessGetAsync (string deploymentName, string imageTransformName);
+        System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessGetAsync (string deploymentName, string versionName, string imageTransformName);
 
         /// <summary>
         /// Retrieves the image transform process JSON string
@@ -2333,9 +2500,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessGetAsyncWithHttpInfo (string deploymentName, string imageTransformName);
+        System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName);
         /// <summary>
         /// Sets the image transform process through the provided JSON string
         /// </summary>
@@ -2344,10 +2512,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="body">The image transform process JSON</param>
         /// <returns>Task of ImageTransformProcess</returns>
-        System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessPostAsync (string deploymentName, string imageTransformName, ImageTransformProcess body);
+        System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessPostAsync (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body);
 
         /// <summary>
         /// Sets the image transform process through the provided JSON string
@@ -2357,10 +2526,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="body">The image transform process JSON</param>
         /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessPostAsyncWithHttpInfo (string deploymentName, string imageTransformName, ImageTransformProcess body);
+        System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body);
         /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
         /// </summary>
@@ -2370,9 +2540,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of JsonArrayResponse</returns>
-        System.Threading.Tasks.Task<JsonArrayResponse> JsonarrayAsync (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<JsonArrayResponse> JsonarrayAsync (Prediction body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
@@ -2383,9 +2554,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> JsonarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> JsonarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Runs knn on the given index with the given k
         /// </summary>
@@ -2394,10 +2566,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body"></param>
         /// <returns>Task of NearestNeighborsResults</returns>
-        System.Threading.Tasks.Task<NearestNeighborsResults> KnnAsync (string deploymentName, string knnName, NearestNeighborRequest body);
+        System.Threading.Tasks.Task<NearestNeighborsResults> KnnAsync (string deploymentName, string versionName, string knnName, NearestNeighborRequest body);
 
         /// <summary>
         /// Runs knn on the given index with the given k
@@ -2407,10 +2580,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (NearestNeighborsResults)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnAsyncWithHttpInfo (string deploymentName, string knnName, NearestNeighborRequest body);
+        System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnAsyncWithHttpInfo (string deploymentName, string versionName, string knnName, NearestNeighborRequest body);
         /// <summary>
         /// Run a k nearest neighbors search on a NEW data point
         /// </summary>
@@ -2419,10 +2593,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body">The input NDArray</param>
         /// <returns>Task of NearestNeighborsResults</returns>
-        System.Threading.Tasks.Task<NearestNeighborsResults> KnnnewAsync (string deploymentName, string knnName, Base64NDArrayBodyKNN body);
+        System.Threading.Tasks.Task<NearestNeighborsResults> KnnnewAsync (string deploymentName, string versionName, string knnName, Base64NDArrayBodyKNN body);
 
         /// <summary>
         /// Run a k nearest neighbors search on a NEW data point
@@ -2432,10 +2607,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body">The input NDArray</param>
         /// <returns>Task of ApiResponse (NearestNeighborsResults)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnnewAsyncWithHttpInfo (string deploymentName, string knnName, Base64NDArrayBodyKNN body);
+        System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnnewAsyncWithHttpInfo (string deploymentName, string versionName, string knnName, Base64NDArrayBodyKNN body);
         /// <summary>
         /// List all of the experiments in every model history / workspace
         /// </summary>
@@ -2463,9 +2639,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> LogfilepathAsync (string deploymentName, string modelName);
+        System.Threading.Tasks.Task<string> LogfilepathAsync (string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Get logs file path
@@ -2475,9 +2652,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> LogfilepathAsyncWithHttpInfo (string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<string>> LogfilepathAsyncWithHttpInfo (string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Post JSON credentials and obtain a JWT authorization token.
         /// </summary>
@@ -2508,9 +2686,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of LogBatch</returns>
-        System.Threading.Tasks.Task<LogBatch> LogsAsync (LogRequest body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<LogBatch> LogsAsync (LogRequest body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Get logs
@@ -2521,9 +2700,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (LogBatch)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LogBatch>> LogsAsyncWithHttpInfo (LogRequest body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<LogBatch>> LogsAsyncWithHttpInfo (LogRequest body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// this method can be used to get the meta data for the current model which set to the server
         /// </summary>
@@ -2532,9 +2712,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MetaData</returns>
-        System.Threading.Tasks.Task<MetaData> MetaGetAsync (string deploymentName, string modelName);
+        System.Threading.Tasks.Task<MetaData> MetaGetAsync (string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// this method can be used to get the meta data for the current model which set to the server
@@ -2544,9 +2725,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MetaData)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaGetAsyncWithHttpInfo (string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaGetAsyncWithHttpInfo (string deploymentName, string versionName, string modelName);
         /// <summary>
         /// This method can be used to set meta data for the current model which is set to the server
         /// </summary>
@@ -2556,9 +2738,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MetaData</returns>
-        System.Threading.Tasks.Task<MetaData> MetaPostAsync (MetaData body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<MetaData> MetaPostAsync (MetaData body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// This method can be used to set meta data for the current model which is set to the server
@@ -2569,9 +2752,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MetaData)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaPostAsyncWithHttpInfo (MetaData body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaPostAsyncWithHttpInfo (MetaData body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Modify the state (start/stop) of a deployed model
         /// </summary>
@@ -2626,10 +2810,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to upload (.pb file) (optional)</param>
         /// <returns>Task of ModelStatus</returns>
-        System.Threading.Tasks.Task<ModelStatus> ModelsetAsync (string deploymentName, string modelName, System.IO.Stream file = null);
+        System.Threading.Tasks.Task<ModelStatus> ModelsetAsync (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
 
         /// <summary>
         /// Set the model to be served
@@ -2639,10 +2824,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to upload (.pb file) (optional)</param>
         /// <returns>Task of ApiResponse (ModelStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelsetAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null);
+        System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelsetAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
         /// <summary>
         /// Update the model to be served
         /// </summary>
@@ -2651,10 +2837,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>Task of ModelStatus</returns>
-        System.Threading.Tasks.Task<ModelStatus> ModelupdateAsync (string deploymentName, string modelName, System.IO.Stream file = null);
+        System.Threading.Tasks.Task<ModelStatus> ModelupdateAsync (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
 
         /// <summary>
         /// Update the model to be served
@@ -2664,10 +2851,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>Task of ApiResponse (ModelStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelupdateAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null);
+        System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelupdateAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
         /// <summary>
         /// Represents all of the labels for a given classification
         /// </summary>
@@ -2677,9 +2865,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MultiClassClassificationResult</returns>
-        System.Threading.Tasks.Task<MultiClassClassificationResult> MulticlassifyAsync (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<MultiClassClassificationResult> MulticlassifyAsync (Prediction body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Represents all of the labels for a given classification
@@ -2690,9 +2879,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MultiClassClassificationResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MultiClassClassificationResult>> MulticlassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<MultiClassClassificationResult>> MulticlassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Get the output from the network, based on the given INDArray[] input
         /// </summary>
@@ -2702,9 +2892,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MultiPredictResponse</returns>
-        System.Threading.Tasks.Task<MultiPredictResponse> MultipredictAsync (MultiPredictRequest body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<MultiPredictResponse> MultipredictAsync (MultiPredictRequest body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Get the output from the network, based on the given INDArray[] input
@@ -2715,9 +2906,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MultiPredictResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictAsyncWithHttpInfo (MultiPredictRequest body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictAsyncWithHttpInfo (MultiPredictRequest body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
         /// </summary>
@@ -2729,9 +2921,10 @@ namespace Skymind.SKIL.Api
         /// <param name="id">The id of the request (could be self generated)</param>
         /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MultiPredictResponse</returns>
-        System.Threading.Tasks.Task<MultiPredictResponse> MultipredictimageAsync (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<MultiPredictResponse> MultipredictimageAsync (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
@@ -2744,9 +2937,10 @@ namespace Skymind.SKIL.Api
         /// <param name="id">The id of the request (could be self generated)</param>
         /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MultiPredictResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictimageAsyncWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictimageAsyncWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Run inference on the input array.
         /// </summary>
@@ -2756,9 +2950,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of Prediction</returns>
-        System.Threading.Tasks.Task<Prediction> PredictAsync (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<Prediction> PredictAsync (Prediction body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Run inference on the input array.
@@ -2769,9 +2964,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictAsyncWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
         /// </summary>
@@ -2780,10 +2976,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of Prediction</returns>
-        System.Threading.Tasks.Task<Prediction> PredictimageAsync (string deploymentName, string modelName, System.IO.Stream image = null);
+        System.Threading.Tasks.Task<Prediction> PredictimageAsync (string deploymentName, string versionName, string modelName, System.IO.Stream image = null);
 
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
@@ -2793,10 +2990,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictimageAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null);
+        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictimageAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream image = null);
         /// <summary>
         /// Preprocesses the input and run inference on it
         /// </summary>
@@ -2806,9 +3004,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of Prediction</returns>
-        System.Threading.Tasks.Task<Prediction> PredictwithpreprocessAsync (List<string> body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<Prediction> PredictwithpreprocessAsync (List<string> body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Preprocesses the input and run inference on it
@@ -2819,9 +3018,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictwithpreprocessAsyncWithHttpInfo (List<string> body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictwithpreprocessAsyncWithHttpInfo (List<string> body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
         /// </summary>
@@ -2831,9 +3031,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of JsonArrayResponse</returns>
-        System.Threading.Tasks.Task<JsonArrayResponse> PredictwithpreprocessjsonAsync (List<string> body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<JsonArrayResponse> PredictwithpreprocessjsonAsync (List<string> body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -2844,9 +3045,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> PredictwithpreprocessjsonAsyncWithHttpInfo (List<string> body, string deploymentName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> PredictwithpreprocessjsonAsyncWithHttpInfo (List<string> body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Reimport a model to a previous deployed model in a deployment
         /// </summary>
@@ -2880,10 +3082,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of BatchCSVRecord</returns>
-        System.Threading.Tasks.Task<BatchCSVRecord> TransformCsvAsync (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        System.Threading.Tasks.Task<BatchCSVRecord> TransformCsvAsync (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
 
         /// <summary>
         /// Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
@@ -2893,10 +3096,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of ApiResponse (BatchCSVRecord)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BatchCSVRecord>> TransformCsvAsyncWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        System.Threading.Tasks.Task<ApiResponse<BatchCSVRecord>> TransformCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
         /// <summary>
         /// Takes a batch input arrays and transforms it
         /// </summary>
@@ -2905,10 +3109,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayCsvAsync (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayCsvAsync (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
 
         /// <summary>
         /// Takes a batch input arrays and transforms it
@@ -2918,10 +3123,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayCsvAsyncWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
         /// <summary>
         /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
         /// </summary>
@@ -2930,10 +3136,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="batchImageRecord">The input batch of record arrays</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayImageAsync (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayImageAsync (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord);
 
         /// <summary>
         /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
@@ -2943,10 +3150,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="batchImageRecord">The input batch of record arrays</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayImageAsyncWithHttpInfo (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayImageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord);
         /// <summary>
         /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -2955,10 +3163,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="files">The image files to upload</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformimageAsync (string deploymentName, string imageTransformName, List<byte[]> files);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformimageAsync (string deploymentName, string versionName, string imageTransformName, List<byte[]> files);
 
         /// <summary>
         /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
@@ -2968,10 +3177,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="files">The image files to upload</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformimageAsyncWithHttpInfo (string deploymentName, string imageTransformName, List<byte[]> files);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformimageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, List<byte[]> files);
         /// <summary>
         /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
         /// </summary>
@@ -2980,10 +3190,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>Task of SingleCSVRecord</returns>
-        System.Threading.Tasks.Task<SingleCSVRecord> TransformincrementalCsvAsync (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        System.Threading.Tasks.Task<SingleCSVRecord> TransformincrementalCsvAsync (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
 
         /// <summary>
         /// Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
@@ -2993,10 +3204,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>Task of ApiResponse (SingleCSVRecord)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleCSVRecord>> TransformincrementalCsvAsyncWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        System.Threading.Tasks.Task<ApiResponse<SingleCSVRecord>> TransformincrementalCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
         /// <summary>
         /// Same as /transformincremental but returns Base64NDArrayBody
         /// </summary>
@@ -3005,10 +3217,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayCsvAsync (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayCsvAsync (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
 
         /// <summary>
         /// Same as /transformincremental but returns Base64NDArrayBody
@@ -3018,10 +3231,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayCsvAsyncWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
         /// <summary>
         /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
         /// </summary>
@@ -3030,10 +3244,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="singleImageRecord">The input record array</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayImageAsync (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayImageAsync (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord);
 
         /// <summary>
         /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
@@ -3043,10 +3258,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="singleImageRecord">The input record array</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayImageAsyncWithHttpInfo (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayImageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord);
         /// <summary>
         /// Takes a single multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -3055,10 +3271,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="file">The image file to upload</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalimageAsync (string deploymentName, string imageTransformName, System.IO.Stream file);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalimageAsync (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file);
 
         /// <summary>
         /// Takes a single multipart image file to transform and returns Base64NDArrayBody
@@ -3068,10 +3285,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="file">The image file to upload</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalimageAsyncWithHttpInfo (string deploymentName, string imageTransformName, System.IO.Stream file);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalimageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file);
         /// <summary>
         /// Gets the JSON string of the deployed transform process
         /// </summary>
@@ -3080,9 +3298,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <returns>Task of TransformProcess</returns>
-        System.Threading.Tasks.Task<TransformProcess> TransformprocessGetAsync (string deploymentName, string transformName);
+        System.Threading.Tasks.Task<TransformProcess> TransformprocessGetAsync (string deploymentName, string versionName, string transformName);
 
         /// <summary>
         /// Gets the JSON string of the deployed transform process
@@ -3092,9 +3311,10 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <returns>Task of ApiResponse (TransformProcess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TransformProcess>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string transformName);
+        System.Threading.Tasks.Task<ApiResponse<TransformProcess>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string transformName);
         /// <summary>
         /// Sets the deployed transform process through the provided JSON string
         /// </summary>
@@ -3103,10 +3323,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string transformName, TransformProcess transformProcess = null);
+        System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null);
 
         /// <summary>
         /// Sets the deployed transform process through the provided JSON string
@@ -3116,10 +3337,11 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string transformName, TransformProcess transformProcess = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null);
         /// <summary>
         /// Updates the best model for an experiment
         /// </summary>
@@ -3127,9 +3349,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
         /// <returns>Task of ExperimentEntity</returns>
-        System.Threading.Tasks.Task<ExperimentEntity> UpdateBestModelForExperimentAsync (UpdateBestModel updateBestModel);
+        System.Threading.Tasks.Task<ExperimentEntity> UpdateBestModelForExperimentAsync (string modelHistoryServerId, UpdateBestModel updateBestModel);
 
         /// <summary>
         /// Updates the best model for an experiment
@@ -3138,9 +3361,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
         /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateBestModelForExperimentAsyncWithHttpInfo (UpdateBestModel updateBestModel);
+        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateBestModelForExperimentAsyncWithHttpInfo (string modelHistoryServerId, UpdateBestModel updateBestModel);
         /// <summary>
         /// Updates an experiment, given an experiment entity
         /// </summary>
@@ -3148,10 +3372,11 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to update</param>
         /// <param name="experimentEntity">The experiment entity to update with</param>
         /// <returns>Task of ExperimentEntity</returns>
-        System.Threading.Tasks.Task<ExperimentEntity> UpdateExperimentAsync (string experimentID, ExperimentEntity experimentEntity);
+        System.Threading.Tasks.Task<ExperimentEntity> UpdateExperimentAsync (string modelHistoryServerId, string experimentID, ExperimentEntity experimentEntity);
 
         /// <summary>
         /// Updates an experiment, given an experiment entity
@@ -3160,10 +3385,11 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to update</param>
         /// <param name="experimentEntity">The experiment entity to update with</param>
         /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateExperimentAsyncWithHttpInfo (string experimentID, ExperimentEntity experimentEntity);
+        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateExperimentAsyncWithHttpInfo (string modelHistoryServerId, string experimentID, ExperimentEntity experimentEntity);
         /// <summary>
         /// Update a model history / workspace
         /// </summary>
@@ -3171,10 +3397,11 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
         /// <param name="updateModelHistoryRequest">The model history request object</param>
         /// <returns>Task of ModelHistoryEntity</returns>
-        System.Threading.Tasks.Task<ModelHistoryEntity> UpdateModelHistoryAsync (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
+        System.Threading.Tasks.Task<ModelHistoryEntity> UpdateModelHistoryAsync (string modelHistoryServerId, string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
 
         /// <summary>
         /// Update a model history / workspace
@@ -3183,10 +3410,11 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
         /// <param name="updateModelHistoryRequest">The model history request object</param>
         /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> UpdateModelHistoryAsyncWithHttpInfo (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
+        System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> UpdateModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest);
         /// <summary>
         /// Upload a model file to SKIL for import.
         /// </summary>
@@ -3312,11 +3540,12 @@ namespace Skymind.SKIL.Api
         /// Adds an evaluation result 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="evaluationResultsEntity">The evaluation result entity</param>
         /// <returns>EvaluationResultsEntity</returns>
-        public EvaluationResultsEntity AddEvaluationResult (EvaluationResultsEntity evaluationResultsEntity)
+        public EvaluationResultsEntity AddEvaluationResult (string modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity)
         {
-             ApiResponse<EvaluationResultsEntity> localVarResponse = AddEvaluationResultWithHttpInfo(evaluationResultsEntity);
+             ApiResponse<EvaluationResultsEntity> localVarResponse = AddEvaluationResultWithHttpInfo(modelHistoryServerId, evaluationResultsEntity);
              return localVarResponse.Data;
         }
 
@@ -3324,15 +3553,19 @@ namespace Skymind.SKIL.Api
         /// Adds an evaluation result 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="evaluationResultsEntity">The evaluation result entity</param>
         /// <returns>ApiResponse of EvaluationResultsEntity</returns>
-        public ApiResponse< EvaluationResultsEntity > AddEvaluationResultWithHttpInfo (EvaluationResultsEntity evaluationResultsEntity)
+        public ApiResponse< EvaluationResultsEntity > AddEvaluationResultWithHttpInfo (string modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddEvaluationResult");
             // verify the required parameter 'evaluationResultsEntity' is set
             if (evaluationResultsEntity == null)
                 throw new ApiException(400, "Missing required parameter 'evaluationResultsEntity' when calling DefaultApi->AddEvaluationResult");
 
-            var localVarPath = "/model/revisions/evaluations/";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3354,6 +3587,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (evaluationResultsEntity != null && evaluationResultsEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(evaluationResultsEntity); // http body (model) parameter
@@ -3391,11 +3625,12 @@ namespace Skymind.SKIL.Api
         /// Adds an evaluation result 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="evaluationResultsEntity">The evaluation result entity</param>
         /// <returns>Task of EvaluationResultsEntity</returns>
-        public async System.Threading.Tasks.Task<EvaluationResultsEntity> AddEvaluationResultAsync (EvaluationResultsEntity evaluationResultsEntity)
+        public async System.Threading.Tasks.Task<EvaluationResultsEntity> AddEvaluationResultAsync (string modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity)
         {
-             ApiResponse<EvaluationResultsEntity> localVarResponse = await AddEvaluationResultAsyncWithHttpInfo(evaluationResultsEntity);
+             ApiResponse<EvaluationResultsEntity> localVarResponse = await AddEvaluationResultAsyncWithHttpInfo(modelHistoryServerId, evaluationResultsEntity);
              return localVarResponse.Data;
 
         }
@@ -3404,15 +3639,19 @@ namespace Skymind.SKIL.Api
         /// Adds an evaluation result 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="evaluationResultsEntity">The evaluation result entity</param>
         /// <returns>Task of ApiResponse (EvaluationResultsEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AddEvaluationResultAsyncWithHttpInfo (EvaluationResultsEntity evaluationResultsEntity)
+        public async System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AddEvaluationResultAsyncWithHttpInfo (string modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddEvaluationResult");
             // verify the required parameter 'evaluationResultsEntity' is set
             if (evaluationResultsEntity == null)
                 throw new ApiException(400, "Missing required parameter 'evaluationResultsEntity' when calling DefaultApi->AddEvaluationResult");
 
-            var localVarPath = "/model/revisions/evaluations/";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3434,6 +3673,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (evaluationResultsEntity != null && evaluationResultsEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(evaluationResultsEntity); // http body (model) parameter
@@ -3471,11 +3711,12 @@ namespace Skymind.SKIL.Api
         /// Adds a number of examples to a minibatch ID given an AddExampleRequest. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
         /// <returns>AddExampleRequest</returns>
-        public AddExampleRequest AddExampleForBatch (AddExampleRequest addExampleRequest)
+        public AddExampleRequest AddExampleForBatch (string modelHistoryServerId, AddExampleRequest addExampleRequest)
         {
-             ApiResponse<AddExampleRequest> localVarResponse = AddExampleForBatchWithHttpInfo(addExampleRequest);
+             ApiResponse<AddExampleRequest> localVarResponse = AddExampleForBatchWithHttpInfo(modelHistoryServerId, addExampleRequest);
              return localVarResponse.Data;
         }
 
@@ -3483,15 +3724,19 @@ namespace Skymind.SKIL.Api
         /// Adds a number of examples to a minibatch ID given an AddExampleRequest. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
         /// <returns>ApiResponse of AddExampleRequest</returns>
-        public ApiResponse< AddExampleRequest > AddExampleForBatchWithHttpInfo (AddExampleRequest addExampleRequest)
+        public ApiResponse< AddExampleRequest > AddExampleForBatchWithHttpInfo (string modelHistoryServerId, AddExampleRequest addExampleRequest)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddExampleForBatch");
             // verify the required parameter 'addExampleRequest' is set
             if (addExampleRequest == null)
                 throw new ApiException(400, "Missing required parameter 'addExampleRequest' when calling DefaultApi->AddExampleForBatch");
 
-            var localVarPath = "/model/exampleForBatch";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/exampleForBatch";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3513,6 +3758,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (addExampleRequest != null && addExampleRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(addExampleRequest); // http body (model) parameter
@@ -3550,11 +3796,12 @@ namespace Skymind.SKIL.Api
         /// Adds a number of examples to a minibatch ID given an AddExampleRequest. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
         /// <returns>Task of AddExampleRequest</returns>
-        public async System.Threading.Tasks.Task<AddExampleRequest> AddExampleForBatchAsync (AddExampleRequest addExampleRequest)
+        public async System.Threading.Tasks.Task<AddExampleRequest> AddExampleForBatchAsync (string modelHistoryServerId, AddExampleRequest addExampleRequest)
         {
-             ApiResponse<AddExampleRequest> localVarResponse = await AddExampleForBatchAsyncWithHttpInfo(addExampleRequest);
+             ApiResponse<AddExampleRequest> localVarResponse = await AddExampleForBatchAsyncWithHttpInfo(modelHistoryServerId, addExampleRequest);
              return localVarResponse.Data;
 
         }
@@ -3563,15 +3810,19 @@ namespace Skymind.SKIL.Api
         /// Adds a number of examples to a minibatch ID given an AddExampleRequest. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addExampleRequest">The add example request, encapsulating minibatch details and examples batch size</param>
         /// <returns>Task of ApiResponse (AddExampleRequest)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<AddExampleRequest>> AddExampleForBatchAsyncWithHttpInfo (AddExampleRequest addExampleRequest)
+        public async System.Threading.Tasks.Task<ApiResponse<AddExampleRequest>> AddExampleForBatchAsyncWithHttpInfo (string modelHistoryServerId, AddExampleRequest addExampleRequest)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddExampleForBatch");
             // verify the required parameter 'addExampleRequest' is set
             if (addExampleRequest == null)
                 throw new ApiException(400, "Missing required parameter 'addExampleRequest' when calling DefaultApi->AddExampleForBatch");
 
-            var localVarPath = "/model/exampleForBatch";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/exampleForBatch";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3593,6 +3844,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (addExampleRequest != null && addExampleRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(addExampleRequest); // http body (model) parameter
@@ -3630,11 +3882,12 @@ namespace Skymind.SKIL.Api
         /// Adds an example to a minibatch 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="exampleEntity">The example to add to the minibatch</param>
         /// <returns>ExampleEntity</returns>
-        public ExampleEntity AddExampleToMinibatch (ExampleEntity exampleEntity)
+        public ExampleEntity AddExampleToMinibatch (string modelHistoryServerId, ExampleEntity exampleEntity)
         {
-             ApiResponse<ExampleEntity> localVarResponse = AddExampleToMinibatchWithHttpInfo(exampleEntity);
+             ApiResponse<ExampleEntity> localVarResponse = AddExampleToMinibatchWithHttpInfo(modelHistoryServerId, exampleEntity);
              return localVarResponse.Data;
         }
 
@@ -3642,15 +3895,19 @@ namespace Skymind.SKIL.Api
         /// Adds an example to a minibatch 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="exampleEntity">The example to add to the minibatch</param>
         /// <returns>ApiResponse of ExampleEntity</returns>
-        public ApiResponse< ExampleEntity > AddExampleToMinibatchWithHttpInfo (ExampleEntity exampleEntity)
+        public ApiResponse< ExampleEntity > AddExampleToMinibatchWithHttpInfo (string modelHistoryServerId, ExampleEntity exampleEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddExampleToMinibatch");
             // verify the required parameter 'exampleEntity' is set
             if (exampleEntity == null)
                 throw new ApiException(400, "Missing required parameter 'exampleEntity' when calling DefaultApi->AddExampleToMinibatch");
 
-            var localVarPath = "/model/example";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/example";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3672,6 +3929,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (exampleEntity != null && exampleEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(exampleEntity); // http body (model) parameter
@@ -3709,11 +3967,12 @@ namespace Skymind.SKIL.Api
         /// Adds an example to a minibatch 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="exampleEntity">The example to add to the minibatch</param>
         /// <returns>Task of ExampleEntity</returns>
-        public async System.Threading.Tasks.Task<ExampleEntity> AddExampleToMinibatchAsync (ExampleEntity exampleEntity)
+        public async System.Threading.Tasks.Task<ExampleEntity> AddExampleToMinibatchAsync (string modelHistoryServerId, ExampleEntity exampleEntity)
         {
-             ApiResponse<ExampleEntity> localVarResponse = await AddExampleToMinibatchAsyncWithHttpInfo(exampleEntity);
+             ApiResponse<ExampleEntity> localVarResponse = await AddExampleToMinibatchAsyncWithHttpInfo(modelHistoryServerId, exampleEntity);
              return localVarResponse.Data;
 
         }
@@ -3722,15 +3981,19 @@ namespace Skymind.SKIL.Api
         /// Adds an example to a minibatch 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="exampleEntity">The example to add to the minibatch</param>
         /// <returns>Task of ApiResponse (ExampleEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ExampleEntity>> AddExampleToMinibatchAsyncWithHttpInfo (ExampleEntity exampleEntity)
+        public async System.Threading.Tasks.Task<ApiResponse<ExampleEntity>> AddExampleToMinibatchAsyncWithHttpInfo (string modelHistoryServerId, ExampleEntity exampleEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddExampleToMinibatch");
             // verify the required parameter 'exampleEntity' is set
             if (exampleEntity == null)
                 throw new ApiException(400, "Missing required parameter 'exampleEntity' when calling DefaultApi->AddExampleToMinibatch");
 
-            var localVarPath = "/model/example";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/example";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3752,6 +4015,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (exampleEntity != null && exampleEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(exampleEntity); // http body (model) parameter
@@ -3789,11 +4053,12 @@ namespace Skymind.SKIL.Api
         /// Add an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentEntity">The experiment entity to add</param>
         /// <returns>ExperimentEntity</returns>
-        public ExperimentEntity AddExperiment (ExperimentEntity experimentEntity)
+        public ExperimentEntity AddExperiment (string modelHistoryServerId, ExperimentEntity experimentEntity)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = AddExperimentWithHttpInfo(experimentEntity);
+             ApiResponse<ExperimentEntity> localVarResponse = AddExperimentWithHttpInfo(modelHistoryServerId, experimentEntity);
              return localVarResponse.Data;
         }
 
@@ -3801,15 +4066,19 @@ namespace Skymind.SKIL.Api
         /// Add an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentEntity">The experiment entity to add</param>
         /// <returns>ApiResponse of ExperimentEntity</returns>
-        public ApiResponse< ExperimentEntity > AddExperimentWithHttpInfo (ExperimentEntity experimentEntity)
+        public ApiResponse< ExperimentEntity > AddExperimentWithHttpInfo (string modelHistoryServerId, ExperimentEntity experimentEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddExperiment");
             // verify the required parameter 'experimentEntity' is set
             if (experimentEntity == null)
                 throw new ApiException(400, "Missing required parameter 'experimentEntity' when calling DefaultApi->AddExperiment");
 
-            var localVarPath = "/experiment";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3831,6 +4100,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
@@ -3868,11 +4138,12 @@ namespace Skymind.SKIL.Api
         /// Add an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentEntity">The experiment entity to add</param>
         /// <returns>Task of ExperimentEntity</returns>
-        public async System.Threading.Tasks.Task<ExperimentEntity> AddExperimentAsync (ExperimentEntity experimentEntity)
+        public async System.Threading.Tasks.Task<ExperimentEntity> AddExperimentAsync (string modelHistoryServerId, ExperimentEntity experimentEntity)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = await AddExperimentAsyncWithHttpInfo(experimentEntity);
+             ApiResponse<ExperimentEntity> localVarResponse = await AddExperimentAsyncWithHttpInfo(modelHistoryServerId, experimentEntity);
              return localVarResponse.Data;
 
         }
@@ -3881,15 +4152,19 @@ namespace Skymind.SKIL.Api
         /// Add an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentEntity">The experiment entity to add</param>
         /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> AddExperimentAsyncWithHttpInfo (ExperimentEntity experimentEntity)
+        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> AddExperimentAsyncWithHttpInfo (string modelHistoryServerId, ExperimentEntity experimentEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddExperiment");
             // verify the required parameter 'experimentEntity' is set
             if (experimentEntity == null)
                 throw new ApiException(400, "Missing required parameter 'experimentEntity' when calling DefaultApi->AddExperiment");
 
-            var localVarPath = "/experiment";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3911,6 +4186,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(experimentEntity); // http body (model) parameter
@@ -3948,11 +4224,12 @@ namespace Skymind.SKIL.Api
         /// Adds a minibatch 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchEntity">The minibatch entity to add</param>
         /// <returns>MinibatchEntity</returns>
-        public MinibatchEntity AddMinibatch (MinibatchEntity minibatchEntity)
+        public MinibatchEntity AddMinibatch (string modelHistoryServerId, MinibatchEntity minibatchEntity)
         {
-             ApiResponse<MinibatchEntity> localVarResponse = AddMinibatchWithHttpInfo(minibatchEntity);
+             ApiResponse<MinibatchEntity> localVarResponse = AddMinibatchWithHttpInfo(modelHistoryServerId, minibatchEntity);
              return localVarResponse.Data;
         }
 
@@ -3960,15 +4237,19 @@ namespace Skymind.SKIL.Api
         /// Adds a minibatch 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchEntity">The minibatch entity to add</param>
         /// <returns>ApiResponse of MinibatchEntity</returns>
-        public ApiResponse< MinibatchEntity > AddMinibatchWithHttpInfo (MinibatchEntity minibatchEntity)
+        public ApiResponse< MinibatchEntity > AddMinibatchWithHttpInfo (string modelHistoryServerId, MinibatchEntity minibatchEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddMinibatch");
             // verify the required parameter 'minibatchEntity' is set
             if (minibatchEntity == null)
                 throw new ApiException(400, "Missing required parameter 'minibatchEntity' when calling DefaultApi->AddMinibatch");
 
-            var localVarPath = "/model/minibatch";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/minibatch";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3990,6 +4271,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (minibatchEntity != null && minibatchEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(minibatchEntity); // http body (model) parameter
@@ -4027,11 +4309,12 @@ namespace Skymind.SKIL.Api
         /// Adds a minibatch 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchEntity">The minibatch entity to add</param>
         /// <returns>Task of MinibatchEntity</returns>
-        public async System.Threading.Tasks.Task<MinibatchEntity> AddMinibatchAsync (MinibatchEntity minibatchEntity)
+        public async System.Threading.Tasks.Task<MinibatchEntity> AddMinibatchAsync (string modelHistoryServerId, MinibatchEntity minibatchEntity)
         {
-             ApiResponse<MinibatchEntity> localVarResponse = await AddMinibatchAsyncWithHttpInfo(minibatchEntity);
+             ApiResponse<MinibatchEntity> localVarResponse = await AddMinibatchAsyncWithHttpInfo(modelHistoryServerId, minibatchEntity);
              return localVarResponse.Data;
 
         }
@@ -4040,15 +4323,19 @@ namespace Skymind.SKIL.Api
         /// Adds a minibatch 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchEntity">The minibatch entity to add</param>
         /// <returns>Task of ApiResponse (MinibatchEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> AddMinibatchAsyncWithHttpInfo (MinibatchEntity minibatchEntity)
+        public async System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> AddMinibatchAsyncWithHttpInfo (string modelHistoryServerId, MinibatchEntity minibatchEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddMinibatch");
             // verify the required parameter 'minibatchEntity' is set
             if (minibatchEntity == null)
                 throw new ApiException(400, "Missing required parameter 'minibatchEntity' when calling DefaultApi->AddMinibatch");
 
-            var localVarPath = "/model/minibatch";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/minibatch";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4070,6 +4357,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (minibatchEntity != null && minibatchEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(minibatchEntity); // http body (model) parameter
@@ -4107,11 +4395,12 @@ namespace Skymind.SKIL.Api
         /// Adds an evaluation feedback to the model against a given minibatch id. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelFeedBackRequest">The model feedback request object</param>
         /// <returns>ModelFeedBackRequest</returns>
-        public ModelFeedBackRequest AddModelFeedback (ModelFeedBackRequest modelFeedBackRequest)
+        public ModelFeedBackRequest AddModelFeedback (string modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest)
         {
-             ApiResponse<ModelFeedBackRequest> localVarResponse = AddModelFeedbackWithHttpInfo(modelFeedBackRequest);
+             ApiResponse<ModelFeedBackRequest> localVarResponse = AddModelFeedbackWithHttpInfo(modelHistoryServerId, modelFeedBackRequest);
              return localVarResponse.Data;
         }
 
@@ -4119,15 +4408,19 @@ namespace Skymind.SKIL.Api
         /// Adds an evaluation feedback to the model against a given minibatch id. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelFeedBackRequest">The model feedback request object</param>
         /// <returns>ApiResponse of ModelFeedBackRequest</returns>
-        public ApiResponse< ModelFeedBackRequest > AddModelFeedbackWithHttpInfo (ModelFeedBackRequest modelFeedBackRequest)
+        public ApiResponse< ModelFeedBackRequest > AddModelFeedbackWithHttpInfo (string modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddModelFeedback");
             // verify the required parameter 'modelFeedBackRequest' is set
             if (modelFeedBackRequest == null)
                 throw new ApiException(400, "Missing required parameter 'modelFeedBackRequest' when calling DefaultApi->AddModelFeedback");
 
-            var localVarPath = "/model/feedback";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/feedback";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4149,6 +4442,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelFeedBackRequest != null && modelFeedBackRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(modelFeedBackRequest); // http body (model) parameter
@@ -4186,11 +4480,12 @@ namespace Skymind.SKIL.Api
         /// Adds an evaluation feedback to the model against a given minibatch id. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelFeedBackRequest">The model feedback request object</param>
         /// <returns>Task of ModelFeedBackRequest</returns>
-        public async System.Threading.Tasks.Task<ModelFeedBackRequest> AddModelFeedbackAsync (ModelFeedBackRequest modelFeedBackRequest)
+        public async System.Threading.Tasks.Task<ModelFeedBackRequest> AddModelFeedbackAsync (string modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest)
         {
-             ApiResponse<ModelFeedBackRequest> localVarResponse = await AddModelFeedbackAsyncWithHttpInfo(modelFeedBackRequest);
+             ApiResponse<ModelFeedBackRequest> localVarResponse = await AddModelFeedbackAsyncWithHttpInfo(modelHistoryServerId, modelFeedBackRequest);
              return localVarResponse.Data;
 
         }
@@ -4199,15 +4494,19 @@ namespace Skymind.SKIL.Api
         /// Adds an evaluation feedback to the model against a given minibatch id. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelFeedBackRequest">The model feedback request object</param>
         /// <returns>Task of ApiResponse (ModelFeedBackRequest)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelFeedBackRequest>> AddModelFeedbackAsyncWithHttpInfo (ModelFeedBackRequest modelFeedBackRequest)
+        public async System.Threading.Tasks.Task<ApiResponse<ModelFeedBackRequest>> AddModelFeedbackAsyncWithHttpInfo (string modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddModelFeedback");
             // verify the required parameter 'modelFeedBackRequest' is set
             if (modelFeedBackRequest == null)
                 throw new ApiException(400, "Missing required parameter 'modelFeedBackRequest' when calling DefaultApi->AddModelFeedback");
 
-            var localVarPath = "/model/feedback";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/feedback";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4229,6 +4528,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelFeedBackRequest != null && modelFeedBackRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(modelFeedBackRequest); // http body (model) parameter
@@ -4266,11 +4566,12 @@ namespace Skymind.SKIL.Api
         /// Add a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addModelHistoryRequest">The model history request object</param>
         /// <returns>ModelHistoryEntity</returns>
-        public ModelHistoryEntity AddModelHistory (AddModelHistoryRequest addModelHistoryRequest)
+        public ModelHistoryEntity AddModelHistory (string modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest)
         {
-             ApiResponse<ModelHistoryEntity> localVarResponse = AddModelHistoryWithHttpInfo(addModelHistoryRequest);
+             ApiResponse<ModelHistoryEntity> localVarResponse = AddModelHistoryWithHttpInfo(modelHistoryServerId, addModelHistoryRequest);
              return localVarResponse.Data;
         }
 
@@ -4278,15 +4579,19 @@ namespace Skymind.SKIL.Api
         /// Add a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addModelHistoryRequest">The model history request object</param>
         /// <returns>ApiResponse of ModelHistoryEntity</returns>
-        public ApiResponse< ModelHistoryEntity > AddModelHistoryWithHttpInfo (AddModelHistoryRequest addModelHistoryRequest)
+        public ApiResponse< ModelHistoryEntity > AddModelHistoryWithHttpInfo (string modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddModelHistory");
             // verify the required parameter 'addModelHistoryRequest' is set
             if (addModelHistoryRequest == null)
                 throw new ApiException(400, "Missing required parameter 'addModelHistoryRequest' when calling DefaultApi->AddModelHistory");
 
-            var localVarPath = "/modelhistory";
+            var localVarPath = "/rpc/{modelHistoryServerId}/modelhistory";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4308,6 +4613,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (addModelHistoryRequest != null && addModelHistoryRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(addModelHistoryRequest); // http body (model) parameter
@@ -4345,11 +4651,12 @@ namespace Skymind.SKIL.Api
         /// Add a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addModelHistoryRequest">The model history request object</param>
         /// <returns>Task of ModelHistoryEntity</returns>
-        public async System.Threading.Tasks.Task<ModelHistoryEntity> AddModelHistoryAsync (AddModelHistoryRequest addModelHistoryRequest)
+        public async System.Threading.Tasks.Task<ModelHistoryEntity> AddModelHistoryAsync (string modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest)
         {
-             ApiResponse<ModelHistoryEntity> localVarResponse = await AddModelHistoryAsyncWithHttpInfo(addModelHistoryRequest);
+             ApiResponse<ModelHistoryEntity> localVarResponse = await AddModelHistoryAsyncWithHttpInfo(modelHistoryServerId, addModelHistoryRequest);
              return localVarResponse.Data;
 
         }
@@ -4358,15 +4665,19 @@ namespace Skymind.SKIL.Api
         /// Add a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="addModelHistoryRequest">The model history request object</param>
         /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> AddModelHistoryAsyncWithHttpInfo (AddModelHistoryRequest addModelHistoryRequest)
+        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> AddModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddModelHistory");
             // verify the required parameter 'addModelHistoryRequest' is set
             if (addModelHistoryRequest == null)
                 throw new ApiException(400, "Missing required parameter 'addModelHistoryRequest' when calling DefaultApi->AddModelHistory");
 
-            var localVarPath = "/modelhistory";
+            var localVarPath = "/rpc/{modelHistoryServerId}/modelhistory";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4388,6 +4699,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (addModelHistoryRequest != null && addModelHistoryRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(addModelHistoryRequest); // http body (model) parameter
@@ -4425,11 +4737,12 @@ namespace Skymind.SKIL.Api
         /// Adds a model 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>ModelInstanceEntity</returns>
-        public ModelInstanceEntity AddModelInstance (ModelInstanceEntity modelInstanceEntity)
+        public ModelInstanceEntity AddModelInstance (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity)
         {
-             ApiResponse<ModelInstanceEntity> localVarResponse = AddModelInstanceWithHttpInfo(modelInstanceEntity);
+             ApiResponse<ModelInstanceEntity> localVarResponse = AddModelInstanceWithHttpInfo(modelHistoryServerId, modelInstanceEntity);
              return localVarResponse.Data;
         }
 
@@ -4437,15 +4750,19 @@ namespace Skymind.SKIL.Api
         /// Adds a model 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>ApiResponse of ModelInstanceEntity</returns>
-        public ApiResponse< ModelInstanceEntity > AddModelInstanceWithHttpInfo (ModelInstanceEntity modelInstanceEntity)
+        public ApiResponse< ModelInstanceEntity > AddModelInstanceWithHttpInfo (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddModelInstance");
             // verify the required parameter 'modelInstanceEntity' is set
             if (modelInstanceEntity == null)
                 throw new ApiException(400, "Missing required parameter 'modelInstanceEntity' when calling DefaultApi->AddModelInstance");
 
-            var localVarPath = "/model";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4467,6 +4784,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelInstanceEntity != null && modelInstanceEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(modelInstanceEntity); // http body (model) parameter
@@ -4504,11 +4822,12 @@ namespace Skymind.SKIL.Api
         /// Adds a model 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>Task of ModelInstanceEntity</returns>
-        public async System.Threading.Tasks.Task<ModelInstanceEntity> AddModelInstanceAsync (ModelInstanceEntity modelInstanceEntity)
+        public async System.Threading.Tasks.Task<ModelInstanceEntity> AddModelInstanceAsync (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity)
         {
-             ApiResponse<ModelInstanceEntity> localVarResponse = await AddModelInstanceAsyncWithHttpInfo(modelInstanceEntity);
+             ApiResponse<ModelInstanceEntity> localVarResponse = await AddModelInstanceAsyncWithHttpInfo(modelHistoryServerId, modelInstanceEntity);
              return localVarResponse.Data;
 
         }
@@ -4517,15 +4836,19 @@ namespace Skymind.SKIL.Api
         /// Adds a model 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceEntity">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> AddModelInstanceAsyncWithHttpInfo (ModelInstanceEntity modelInstanceEntity)
+        public async System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> AddModelInstanceAsyncWithHttpInfo (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AddModelInstance");
             // verify the required parameter 'modelInstanceEntity' is set
             if (modelInstanceEntity == null)
                 throw new ApiException(400, "Missing required parameter 'modelInstanceEntity' when calling DefaultApi->AddModelInstance");
 
-            var localVarPath = "/model";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4547,6 +4870,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelInstanceEntity != null && modelInstanceEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(modelInstanceEntity); // http body (model) parameter
@@ -4584,11 +4908,12 @@ namespace Skymind.SKIL.Api
         /// Aggregates the evaluaition results of a model instance, based on the evaluation type 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>EvaluationResultsEntity</returns>
-        public EvaluationResultsEntity AggregateModelResults (AggregatePrediction aggregatePrediction)
+        public EvaluationResultsEntity AggregateModelResults (string modelHistoryServerId, AggregatePrediction aggregatePrediction)
         {
-             ApiResponse<EvaluationResultsEntity> localVarResponse = AggregateModelResultsWithHttpInfo(aggregatePrediction);
+             ApiResponse<EvaluationResultsEntity> localVarResponse = AggregateModelResultsWithHttpInfo(modelHistoryServerId, aggregatePrediction);
              return localVarResponse.Data;
         }
 
@@ -4596,15 +4921,19 @@ namespace Skymind.SKIL.Api
         /// Aggregates the evaluaition results of a model instance, based on the evaluation type 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>ApiResponse of EvaluationResultsEntity</returns>
-        public ApiResponse< EvaluationResultsEntity > AggregateModelResultsWithHttpInfo (AggregatePrediction aggregatePrediction)
+        public ApiResponse< EvaluationResultsEntity > AggregateModelResultsWithHttpInfo (string modelHistoryServerId, AggregatePrediction aggregatePrediction)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AggregateModelResults");
             // verify the required parameter 'aggregatePrediction' is set
             if (aggregatePrediction == null)
                 throw new ApiException(400, "Missing required parameter 'aggregatePrediction' when calling DefaultApi->AggregateModelResults");
 
-            var localVarPath = "/model/aggregateresults";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/aggregateresults";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4626,6 +4955,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (aggregatePrediction != null && aggregatePrediction.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(aggregatePrediction); // http body (model) parameter
@@ -4663,11 +4993,12 @@ namespace Skymind.SKIL.Api
         /// Aggregates the evaluaition results of a model instance, based on the evaluation type 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>Task of EvaluationResultsEntity</returns>
-        public async System.Threading.Tasks.Task<EvaluationResultsEntity> AggregateModelResultsAsync (AggregatePrediction aggregatePrediction)
+        public async System.Threading.Tasks.Task<EvaluationResultsEntity> AggregateModelResultsAsync (string modelHistoryServerId, AggregatePrediction aggregatePrediction)
         {
-             ApiResponse<EvaluationResultsEntity> localVarResponse = await AggregateModelResultsAsyncWithHttpInfo(aggregatePrediction);
+             ApiResponse<EvaluationResultsEntity> localVarResponse = await AggregateModelResultsAsyncWithHttpInfo(modelHistoryServerId, aggregatePrediction);
              return localVarResponse.Data;
 
         }
@@ -4676,15 +5007,19 @@ namespace Skymind.SKIL.Api
         /// Aggregates the evaluaition results of a model instance, based on the evaluation type 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="aggregatePrediction">The object encapsulating the model instance id and evaluation type to aggregate</param>
         /// <returns>Task of ApiResponse (EvaluationResultsEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AggregateModelResultsAsyncWithHttpInfo (AggregatePrediction aggregatePrediction)
+        public async System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> AggregateModelResultsAsyncWithHttpInfo (string modelHistoryServerId, AggregatePrediction aggregatePrediction)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->AggregateModelResults");
             // verify the required parameter 'aggregatePrediction' is set
             if (aggregatePrediction == null)
                 throw new ApiException(400, "Missing required parameter 'aggregatePrediction' when calling DefaultApi->AggregateModelResults");
 
-            var localVarPath = "/model/aggregateresults";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/aggregateresults";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4706,6 +5041,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (aggregatePrediction != null && aggregatePrediction.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(aggregatePrediction); // http body (model) parameter
@@ -4745,11 +5081,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ClassificationResult</returns>
-        public ClassificationResult Classify (Prediction body, string deploymentName, string modelName)
+        public ClassificationResult Classify (Prediction body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<ClassificationResult> localVarResponse = ClassifyWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<ClassificationResult> localVarResponse = ClassifyWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -4759,9 +5096,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of ClassificationResult</returns>
-        public ApiResponse< ClassificationResult > ClassifyWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public ApiResponse< ClassificationResult > ClassifyWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -4769,11 +5107,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classify");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Classify");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classify");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classify";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4796,6 +5137,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -4836,11 +5178,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ClassificationResult</returns>
-        public async System.Threading.Tasks.Task<ClassificationResult> ClassifyAsync (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ClassificationResult> ClassifyAsync (Prediction body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<ClassificationResult> localVarResponse = await ClassifyAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<ClassificationResult> localVarResponse = await ClassifyAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -4851,9 +5194,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (ClassificationResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -4861,11 +5205,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classify");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Classify");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classify");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classify";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4888,6 +5235,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -4928,11 +5276,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody Classifyarray (Prediction body, string deploymentName, string modelName)
+        public Base64NDArrayBody Classifyarray (Prediction body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = ClassifyarrayWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Base64NDArrayBody> localVarResponse = ClassifyarrayWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -4942,9 +5291,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > ClassifyarrayWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public ApiResponse< Base64NDArrayBody > ClassifyarrayWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -4952,11 +5302,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classifyarray");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Classifyarray");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classifyarray");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -4979,6 +5332,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -5019,11 +5373,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> ClassifyarrayAsync (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> ClassifyarrayAsync (Prediction body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await ClassifyarrayAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Base64NDArrayBody> localVarResponse = await ClassifyarrayAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -5034,9 +5389,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> ClassifyarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> ClassifyarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -5044,11 +5400,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classifyarray");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Classifyarray");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classifyarray");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5071,6 +5430,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -5110,12 +5470,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ClassificationResult</returns>
-        public ClassificationResult Classifyimage (string deploymentName, string modelName, System.IO.Stream image = null)
+        public ClassificationResult Classifyimage (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
         {
-             ApiResponse<ClassificationResult> localVarResponse = ClassifyimageWithHttpInfo(deploymentName, modelName, image);
+             ApiResponse<ClassificationResult> localVarResponse = ClassifyimageWithHttpInfo(deploymentName, versionName, modelName, image);
              return localVarResponse.Data;
         }
 
@@ -5124,19 +5485,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ApiResponse of ClassificationResult</returns>
-        public ApiResponse< ClassificationResult > ClassifyimageWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null)
+        public ApiResponse< ClassificationResult > ClassifyimageWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classifyimage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Classifyimage");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classifyimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5159,6 +5524,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (image != null) localVarFileParams.Add("image", this.Configuration.ApiClient.ParameterToFile("image", image));
 
@@ -5191,12 +5557,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ClassificationResult</returns>
-        public async System.Threading.Tasks.Task<ClassificationResult> ClassifyimageAsync (string deploymentName, string modelName, System.IO.Stream image = null)
+        public async System.Threading.Tasks.Task<ClassificationResult> ClassifyimageAsync (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
         {
-             ApiResponse<ClassificationResult> localVarResponse = await ClassifyimageAsyncWithHttpInfo(deploymentName, modelName, image);
+             ApiResponse<ClassificationResult> localVarResponse = await ClassifyimageAsyncWithHttpInfo(deploymentName, versionName, modelName, image);
              return localVarResponse.Data;
 
         }
@@ -5206,19 +5573,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ApiResponse (ClassificationResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyimageAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyimageAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Classifyimage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Classifyimage");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Classifyimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5241,6 +5612,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (image != null) localVarFileParams.Add("image", this.Configuration.ApiClient.ParameterToFile("image", image));
 
@@ -5272,11 +5644,12 @@ namespace Skymind.SKIL.Api
         /// Creates model History 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryEntity">The model history entity</param>
         /// <returns>ModelHistoryEntity</returns>
-        public ModelHistoryEntity CreateModelHistory (ModelHistoryEntity modelHistoryEntity)
+        public ModelHistoryEntity CreateModelHistory (string modelHistoryServerId, ModelHistoryEntity modelHistoryEntity)
         {
-             ApiResponse<ModelHistoryEntity> localVarResponse = CreateModelHistoryWithHttpInfo(modelHistoryEntity);
+             ApiResponse<ModelHistoryEntity> localVarResponse = CreateModelHistoryWithHttpInfo(modelHistoryServerId, modelHistoryEntity);
              return localVarResponse.Data;
         }
 
@@ -5284,15 +5657,19 @@ namespace Skymind.SKIL.Api
         /// Creates model History 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryEntity">The model history entity</param>
         /// <returns>ApiResponse of ModelHistoryEntity</returns>
-        public ApiResponse< ModelHistoryEntity > CreateModelHistoryWithHttpInfo (ModelHistoryEntity modelHistoryEntity)
+        public ApiResponse< ModelHistoryEntity > CreateModelHistoryWithHttpInfo (string modelHistoryServerId, ModelHistoryEntity modelHistoryEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->CreateModelHistory");
             // verify the required parameter 'modelHistoryEntity' is set
             if (modelHistoryEntity == null)
                 throw new ApiException(400, "Missing required parameter 'modelHistoryEntity' when calling DefaultApi->CreateModelHistory");
 
-            var localVarPath = "/model/revisions";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/revisions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5314,6 +5691,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelHistoryEntity != null && modelHistoryEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(modelHistoryEntity); // http body (model) parameter
@@ -5351,11 +5729,12 @@ namespace Skymind.SKIL.Api
         /// Creates model History 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryEntity">The model history entity</param>
         /// <returns>Task of ModelHistoryEntity</returns>
-        public async System.Threading.Tasks.Task<ModelHistoryEntity> CreateModelHistoryAsync (ModelHistoryEntity modelHistoryEntity)
+        public async System.Threading.Tasks.Task<ModelHistoryEntity> CreateModelHistoryAsync (string modelHistoryServerId, ModelHistoryEntity modelHistoryEntity)
         {
-             ApiResponse<ModelHistoryEntity> localVarResponse = await CreateModelHistoryAsyncWithHttpInfo(modelHistoryEntity);
+             ApiResponse<ModelHistoryEntity> localVarResponse = await CreateModelHistoryAsyncWithHttpInfo(modelHistoryServerId, modelHistoryEntity);
              return localVarResponse.Data;
 
         }
@@ -5364,15 +5743,19 @@ namespace Skymind.SKIL.Api
         /// Creates model History 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryEntity">The model history entity</param>
         /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> CreateModelHistoryAsyncWithHttpInfo (ModelHistoryEntity modelHistoryEntity)
+        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> CreateModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, ModelHistoryEntity modelHistoryEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->CreateModelHistory");
             // verify the required parameter 'modelHistoryEntity' is set
             if (modelHistoryEntity == null)
                 throw new ApiException(400, "Missing required parameter 'modelHistoryEntity' when calling DefaultApi->CreateModelHistory");
 
-            var localVarPath = "/model/revisions";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/revisions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5394,6 +5777,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelHistoryEntity != null && modelHistoryEntity.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(modelHistoryEntity); // http body (model) parameter
@@ -5431,11 +5815,12 @@ namespace Skymind.SKIL.Api
         /// Deletes an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to delete</param>
         /// <returns>InlineResponse200</returns>
-        public InlineResponse200 DeleteExperiment (string experimentID)
+        public InlineResponse200 DeleteExperiment (string modelHistoryServerId, string experimentID)
         {
-             ApiResponse<InlineResponse200> localVarResponse = DeleteExperimentWithHttpInfo(experimentID);
+             ApiResponse<InlineResponse200> localVarResponse = DeleteExperimentWithHttpInfo(modelHistoryServerId, experimentID);
              return localVarResponse.Data;
         }
 
@@ -5443,15 +5828,19 @@ namespace Skymind.SKIL.Api
         /// Deletes an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to delete</param>
         /// <returns>ApiResponse of InlineResponse200</returns>
-        public ApiResponse< InlineResponse200 > DeleteExperimentWithHttpInfo (string experimentID)
+        public ApiResponse< InlineResponse200 > DeleteExperimentWithHttpInfo (string modelHistoryServerId, string experimentID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->DeleteExperiment");
             // verify the required parameter 'experimentID' is set
             if (experimentID == null)
                 throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->DeleteExperiment");
 
-            var localVarPath = "/experiment/{experimentID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5472,6 +5861,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
@@ -5502,11 +5892,12 @@ namespace Skymind.SKIL.Api
         /// Deletes an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to delete</param>
         /// <returns>Task of InlineResponse200</returns>
-        public async System.Threading.Tasks.Task<InlineResponse200> DeleteExperimentAsync (string experimentID)
+        public async System.Threading.Tasks.Task<InlineResponse200> DeleteExperimentAsync (string modelHistoryServerId, string experimentID)
         {
-             ApiResponse<InlineResponse200> localVarResponse = await DeleteExperimentAsyncWithHttpInfo(experimentID);
+             ApiResponse<InlineResponse200> localVarResponse = await DeleteExperimentAsyncWithHttpInfo(modelHistoryServerId, experimentID);
              return localVarResponse.Data;
 
         }
@@ -5515,15 +5906,19 @@ namespace Skymind.SKIL.Api
         /// Deletes an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to delete</param>
         /// <returns>Task of ApiResponse (InlineResponse200)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteExperimentAsyncWithHttpInfo (string experimentID)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteExperimentAsyncWithHttpInfo (string modelHistoryServerId, string experimentID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->DeleteExperiment");
             // verify the required parameter 'experimentID' is set
             if (experimentID == null)
                 throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->DeleteExperiment");
 
-            var localVarPath = "/experiment/{experimentID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5544,6 +5939,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
@@ -5729,11 +6125,12 @@ namespace Skymind.SKIL.Api
         /// Deletes a model history / workspace, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
         /// <returns>InlineResponse200</returns>
-        public InlineResponse200 DeleteModelHistory (string modelHistoryID)
+        public InlineResponse200 DeleteModelHistory (string modelHistoryServerId, string modelHistoryID)
         {
-             ApiResponse<InlineResponse200> localVarResponse = DeleteModelHistoryWithHttpInfo(modelHistoryID);
+             ApiResponse<InlineResponse200> localVarResponse = DeleteModelHistoryWithHttpInfo(modelHistoryServerId, modelHistoryID);
              return localVarResponse.Data;
         }
 
@@ -5741,15 +6138,19 @@ namespace Skymind.SKIL.Api
         /// Deletes a model history / workspace, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
         /// <returns>ApiResponse of InlineResponse200</returns>
-        public ApiResponse< InlineResponse200 > DeleteModelHistoryWithHttpInfo (string modelHistoryID)
+        public ApiResponse< InlineResponse200 > DeleteModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->DeleteModelHistory");
             // verify the required parameter 'modelHistoryID' is set
             if (modelHistoryID == null)
                 throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->DeleteModelHistory");
 
-            var localVarPath = "/modelhistory/{modelHistoryID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5770,6 +6171,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
@@ -5800,11 +6202,12 @@ namespace Skymind.SKIL.Api
         /// Deletes a model history / workspace, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
         /// <returns>Task of InlineResponse200</returns>
-        public async System.Threading.Tasks.Task<InlineResponse200> DeleteModelHistoryAsync (string modelHistoryID)
+        public async System.Threading.Tasks.Task<InlineResponse200> DeleteModelHistoryAsync (string modelHistoryServerId, string modelHistoryID)
         {
-             ApiResponse<InlineResponse200> localVarResponse = await DeleteModelHistoryAsyncWithHttpInfo(modelHistoryID);
+             ApiResponse<InlineResponse200> localVarResponse = await DeleteModelHistoryAsyncWithHttpInfo(modelHistoryServerId, modelHistoryID);
              return localVarResponse.Data;
 
         }
@@ -5813,15 +6216,19 @@ namespace Skymind.SKIL.Api
         /// Deletes a model history / workspace, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to delete</param>
         /// <returns>Task of ApiResponse (InlineResponse200)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteModelHistoryAsyncWithHttpInfo (string modelHistoryID)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> DeleteModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->DeleteModelHistory");
             // verify the required parameter 'modelHistoryID' is set
             if (modelHistoryID == null)
                 throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->DeleteModelHistory");
 
-            var localVarPath = "/modelhistory/{modelHistoryID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5842,6 +6249,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
@@ -5872,26 +6280,31 @@ namespace Skymind.SKIL.Api
         /// Deletes a model instance, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
         /// <returns></returns>
-        public void DeleteModelInstance (string modelInstanceID)
+        public void DeleteModelInstance (string modelHistoryServerId, string modelInstanceID)
         {
-             DeleteModelInstanceWithHttpInfo(modelInstanceID);
+             DeleteModelInstanceWithHttpInfo(modelHistoryServerId, modelInstanceID);
         }
 
         /// <summary>
         /// Deletes a model instance, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteModelInstanceWithHttpInfo (string modelInstanceID)
+        public ApiResponse<Object> DeleteModelInstanceWithHttpInfo (string modelHistoryServerId, string modelInstanceID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->DeleteModelInstance");
             // verify the required parameter 'modelInstanceID' is set
             if (modelInstanceID == null)
                 throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->DeleteModelInstance");
 
-            var localVarPath = "/model/{modelInstanceID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5912,6 +6325,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
@@ -5942,11 +6356,12 @@ namespace Skymind.SKIL.Api
         /// Deletes a model instance, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteModelInstanceAsync (string modelInstanceID)
+        public async System.Threading.Tasks.Task DeleteModelInstanceAsync (string modelHistoryServerId, string modelInstanceID)
         {
-             await DeleteModelInstanceAsyncWithHttpInfo(modelInstanceID);
+             await DeleteModelInstanceAsyncWithHttpInfo(modelHistoryServerId, modelInstanceID);
 
         }
 
@@ -5954,15 +6369,19 @@ namespace Skymind.SKIL.Api
         /// Deletes a model instance, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to delete.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteModelInstanceAsyncWithHttpInfo (string modelInstanceID)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteModelInstanceAsyncWithHttpInfo (string modelHistoryServerId, string modelInstanceID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->DeleteModelInstance");
             // verify the required parameter 'modelInstanceID' is set
             if (modelInstanceID == null)
                 throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->DeleteModelInstance");
 
-            var localVarPath = "/model/{modelInstanceID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -5983,6 +6402,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
@@ -6765,11 +7185,12 @@ namespace Skymind.SKIL.Api
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
         /// <param name="imageFile">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>DetectionResult</returns>
-        public DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName)
+        public DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<DetectionResult> localVarResponse = DetectobjectsWithHttpInfo(id, needsPreprocessing, threshold, imageFile, deploymentName, modelName);
+             ApiResponse<DetectionResult> localVarResponse = DetectobjectsWithHttpInfo(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -6782,9 +7203,10 @@ namespace Skymind.SKIL.Api
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
         /// <param name="imageFile">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of DetectionResult</returns>
-        public ApiResponse< DetectionResult > DetectobjectsWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName)
+        public ApiResponse< DetectionResult > DetectobjectsWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -6801,11 +7223,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Detectobjects");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Detectobjects");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -6828,6 +7253,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (id != null) localVarFormParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // form parameter
             if (needsPreprocessing != null) localVarFormParams.Add("needsPreprocessing", this.Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
@@ -6867,11 +7293,12 @@ namespace Skymind.SKIL.Api
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
         /// <param name="imageFile">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of DetectionResult</returns>
-        public async System.Threading.Tasks.Task<DetectionResult> DetectobjectsAsync (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<DetectionResult> DetectobjectsAsync (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<DetectionResult> localVarResponse = await DetectobjectsAsyncWithHttpInfo(id, needsPreprocessing, threshold, imageFile, deploymentName, modelName);
+             ApiResponse<DetectionResult> localVarResponse = await DetectobjectsAsyncWithHttpInfo(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -6885,9 +7312,10 @@ namespace Skymind.SKIL.Api
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
         /// <param name="imageFile">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (DetectionResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DetectionResult>> DetectobjectsAsyncWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<DetectionResult>> DetectobjectsAsyncWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -6904,11 +7332,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Detectobjects");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Detectobjects");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -6931,6 +7362,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (id != null) localVarFormParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // form parameter
             if (needsPreprocessing != null) localVarFormParams.Add("needsPreprocessing", this.Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
@@ -6965,11 +7397,12 @@ namespace Skymind.SKIL.Api
         /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
         /// <returns>ModelInstanceEntity</returns>
-        public ModelInstanceEntity GetBestModelAmongModelIds (BestModel bestModel)
+        public ModelInstanceEntity GetBestModelAmongModelIds (string modelHistoryServerId, BestModel bestModel)
         {
-             ApiResponse<ModelInstanceEntity> localVarResponse = GetBestModelAmongModelIdsWithHttpInfo(bestModel);
+             ApiResponse<ModelInstanceEntity> localVarResponse = GetBestModelAmongModelIdsWithHttpInfo(modelHistoryServerId, bestModel);
              return localVarResponse.Data;
         }
 
@@ -6977,15 +7410,19 @@ namespace Skymind.SKIL.Api
         /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
         /// <returns>ApiResponse of ModelInstanceEntity</returns>
-        public ApiResponse< ModelInstanceEntity > GetBestModelAmongModelIdsWithHttpInfo (BestModel bestModel)
+        public ApiResponse< ModelInstanceEntity > GetBestModelAmongModelIdsWithHttpInfo (string modelHistoryServerId, BestModel bestModel)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetBestModelAmongModelIds");
             // verify the required parameter 'bestModel' is set
             if (bestModel == null)
                 throw new ApiException(400, "Missing required parameter 'bestModel' when calling DefaultApi->GetBestModelAmongModelIds");
 
-            var localVarPath = "/model/best";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/best";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7007,6 +7444,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (bestModel != null && bestModel.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(bestModel); // http body (model) parameter
@@ -7044,11 +7482,12 @@ namespace Skymind.SKIL.Api
         /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
         /// <returns>Task of ModelInstanceEntity</returns>
-        public async System.Threading.Tasks.Task<ModelInstanceEntity> GetBestModelAmongModelIdsAsync (BestModel bestModel)
+        public async System.Threading.Tasks.Task<ModelInstanceEntity> GetBestModelAmongModelIdsAsync (string modelHistoryServerId, BestModel bestModel)
         {
-             ApiResponse<ModelInstanceEntity> localVarResponse = await GetBestModelAmongModelIdsAsyncWithHttpInfo(bestModel);
+             ApiResponse<ModelInstanceEntity> localVarResponse = await GetBestModelAmongModelIdsAsyncWithHttpInfo(modelHistoryServerId, bestModel);
              return localVarResponse.Data;
 
         }
@@ -7057,15 +7496,19 @@ namespace Skymind.SKIL.Api
         /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="bestModel">Object encapsulating the model ids, eval type and column metric name</param>
         /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetBestModelAmongModelIdsAsyncWithHttpInfo (BestModel bestModel)
+        public async System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetBestModelAmongModelIdsAsyncWithHttpInfo (string modelHistoryServerId, BestModel bestModel)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetBestModelAmongModelIds");
             // verify the required parameter 'bestModel' is set
             if (bestModel == null)
                 throw new ApiException(400, "Missing required parameter 'bestModel' when calling DefaultApi->GetBestModelAmongModelIds");
 
-            var localVarPath = "/model/best";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/best";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7087,6 +7530,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (bestModel != null && bestModel.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(bestModel); // http body (model) parameter
@@ -7124,11 +7568,12 @@ namespace Skymind.SKIL.Api
         /// Gets the list of evaluation results entity, given a model instance ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
         /// <returns>List&lt;EvaluationResultsEntity&gt;</returns>
-        public List<EvaluationResultsEntity> GetEvaluationForModelID (string modelInstanceID)
+        public List<EvaluationResultsEntity> GetEvaluationForModelID (string modelHistoryServerId, string modelInstanceID)
         {
-             ApiResponse<List<EvaluationResultsEntity>> localVarResponse = GetEvaluationForModelIDWithHttpInfo(modelInstanceID);
+             ApiResponse<List<EvaluationResultsEntity>> localVarResponse = GetEvaluationForModelIDWithHttpInfo(modelHistoryServerId, modelInstanceID);
              return localVarResponse.Data;
         }
 
@@ -7136,15 +7581,19 @@ namespace Skymind.SKIL.Api
         /// Gets the list of evaluation results entity, given a model instance ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
         /// <returns>ApiResponse of List&lt;EvaluationResultsEntity&gt;</returns>
-        public ApiResponse< List<EvaluationResultsEntity> > GetEvaluationForModelIDWithHttpInfo (string modelInstanceID)
+        public ApiResponse< List<EvaluationResultsEntity> > GetEvaluationForModelIDWithHttpInfo (string modelHistoryServerId, string modelInstanceID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetEvaluationForModelID");
             // verify the required parameter 'modelInstanceID' is set
             if (modelInstanceID == null)
                 throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->GetEvaluationForModelID");
 
-            var localVarPath = "/model/revisions/evaluations/{modelInstanceID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7165,6 +7614,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
@@ -7195,11 +7645,12 @@ namespace Skymind.SKIL.Api
         /// Gets the list of evaluation results entity, given a model instance ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
         /// <returns>Task of List&lt;EvaluationResultsEntity&gt;</returns>
-        public async System.Threading.Tasks.Task<List<EvaluationResultsEntity>> GetEvaluationForModelIDAsync (string modelInstanceID)
+        public async System.Threading.Tasks.Task<List<EvaluationResultsEntity>> GetEvaluationForModelIDAsync (string modelHistoryServerId, string modelInstanceID)
         {
-             ApiResponse<List<EvaluationResultsEntity>> localVarResponse = await GetEvaluationForModelIDAsyncWithHttpInfo(modelInstanceID);
+             ApiResponse<List<EvaluationResultsEntity>> localVarResponse = await GetEvaluationForModelIDAsyncWithHttpInfo(modelHistoryServerId, modelInstanceID);
              return localVarResponse.Data;
 
         }
@@ -7208,15 +7659,19 @@ namespace Skymind.SKIL.Api
         /// Gets the list of evaluation results entity, given a model instance ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get evaluation results for.</param>
         /// <returns>Task of ApiResponse (List&lt;EvaluationResultsEntity&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<EvaluationResultsEntity>>> GetEvaluationForModelIDAsyncWithHttpInfo (string modelInstanceID)
+        public async System.Threading.Tasks.Task<ApiResponse<List<EvaluationResultsEntity>>> GetEvaluationForModelIDAsyncWithHttpInfo (string modelHistoryServerId, string modelInstanceID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetEvaluationForModelID");
             // verify the required parameter 'modelInstanceID' is set
             if (modelInstanceID == null)
                 throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->GetEvaluationForModelID");
 
-            var localVarPath = "/model/revisions/evaluations/{modelInstanceID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7237,6 +7692,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
@@ -7267,11 +7723,12 @@ namespace Skymind.SKIL.Api
         /// Gets all the examples for a minibatch ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>List&lt;ExampleEntity&gt;</returns>
-        public List<ExampleEntity> GetExamplesForMinibatch (string minibatchId)
+        public List<ExampleEntity> GetExamplesForMinibatch (string modelHistoryServerId, string minibatchId)
         {
-             ApiResponse<List<ExampleEntity>> localVarResponse = GetExamplesForMinibatchWithHttpInfo(minibatchId);
+             ApiResponse<List<ExampleEntity>> localVarResponse = GetExamplesForMinibatchWithHttpInfo(modelHistoryServerId, minibatchId);
              return localVarResponse.Data;
         }
 
@@ -7279,15 +7736,19 @@ namespace Skymind.SKIL.Api
         /// Gets all the examples for a minibatch ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>ApiResponse of List&lt;ExampleEntity&gt;</returns>
-        public ApiResponse< List<ExampleEntity> > GetExamplesForMinibatchWithHttpInfo (string minibatchId)
+        public ApiResponse< List<ExampleEntity> > GetExamplesForMinibatchWithHttpInfo (string modelHistoryServerId, string minibatchId)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetExamplesForMinibatch");
             // verify the required parameter 'minibatchId' is set
             if (minibatchId == null)
                 throw new ApiException(400, "Missing required parameter 'minibatchId' when calling DefaultApi->GetExamplesForMinibatch");
 
-            var localVarPath = "/model/example/{minibatchId}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/example/{minibatchId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7308,6 +7769,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (minibatchId != null) localVarPathParams.Add("minibatchId", this.Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
 
             // authentication (api_key) required
@@ -7338,11 +7800,12 @@ namespace Skymind.SKIL.Api
         /// Gets all the examples for a minibatch ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>Task of List&lt;ExampleEntity&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ExampleEntity>> GetExamplesForMinibatchAsync (string minibatchId)
+        public async System.Threading.Tasks.Task<List<ExampleEntity>> GetExamplesForMinibatchAsync (string modelHistoryServerId, string minibatchId)
         {
-             ApiResponse<List<ExampleEntity>> localVarResponse = await GetExamplesForMinibatchAsyncWithHttpInfo(minibatchId);
+             ApiResponse<List<ExampleEntity>> localVarResponse = await GetExamplesForMinibatchAsyncWithHttpInfo(modelHistoryServerId, minibatchId);
              return localVarResponse.Data;
 
         }
@@ -7351,15 +7814,19 @@ namespace Skymind.SKIL.Api
         /// Gets all the examples for a minibatch ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>Task of ApiResponse (List&lt;ExampleEntity&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ExampleEntity>>> GetExamplesForMinibatchAsyncWithHttpInfo (string minibatchId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ExampleEntity>>> GetExamplesForMinibatchAsyncWithHttpInfo (string modelHistoryServerId, string minibatchId)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetExamplesForMinibatch");
             // verify the required parameter 'minibatchId' is set
             if (minibatchId == null)
                 throw new ApiException(400, "Missing required parameter 'minibatchId' when calling DefaultApi->GetExamplesForMinibatch");
 
-            var localVarPath = "/model/example/{minibatchId}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/example/{minibatchId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7380,6 +7847,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (minibatchId != null) localVarPathParams.Add("minibatchId", this.Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
 
             // authentication (api_key) required
@@ -7410,11 +7878,12 @@ namespace Skymind.SKIL.Api
         /// Obtain an experiment&#39;s details, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to obtain</param>
         /// <returns>ExperimentEntity</returns>
-        public ExperimentEntity GetExperiment (string experimentID)
+        public ExperimentEntity GetExperiment (string modelHistoryServerId, string experimentID)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = GetExperimentWithHttpInfo(experimentID);
+             ApiResponse<ExperimentEntity> localVarResponse = GetExperimentWithHttpInfo(modelHistoryServerId, experimentID);
              return localVarResponse.Data;
         }
 
@@ -7422,15 +7891,19 @@ namespace Skymind.SKIL.Api
         /// Obtain an experiment&#39;s details, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to obtain</param>
         /// <returns>ApiResponse of ExperimentEntity</returns>
-        public ApiResponse< ExperimentEntity > GetExperimentWithHttpInfo (string experimentID)
+        public ApiResponse< ExperimentEntity > GetExperimentWithHttpInfo (string modelHistoryServerId, string experimentID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetExperiment");
             // verify the required parameter 'experimentID' is set
             if (experimentID == null)
                 throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->GetExperiment");
 
-            var localVarPath = "/experiment/{experimentID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7451,6 +7924,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
@@ -7481,11 +7955,12 @@ namespace Skymind.SKIL.Api
         /// Obtain an experiment&#39;s details, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to obtain</param>
         /// <returns>Task of ExperimentEntity</returns>
-        public async System.Threading.Tasks.Task<ExperimentEntity> GetExperimentAsync (string experimentID)
+        public async System.Threading.Tasks.Task<ExperimentEntity> GetExperimentAsync (string modelHistoryServerId, string experimentID)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = await GetExperimentAsyncWithHttpInfo(experimentID);
+             ApiResponse<ExperimentEntity> localVarResponse = await GetExperimentAsyncWithHttpInfo(modelHistoryServerId, experimentID);
              return localVarResponse.Data;
 
         }
@@ -7494,15 +7969,19 @@ namespace Skymind.SKIL.Api
         /// Obtain an experiment&#39;s details, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to obtain</param>
         /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentAsyncWithHttpInfo (string experimentID)
+        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentAsyncWithHttpInfo (string modelHistoryServerId, string experimentID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetExperiment");
             // verify the required parameter 'experimentID' is set
             if (experimentID == null)
                 throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->GetExperiment");
 
-            var localVarPath = "/experiment/{experimentID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7523,6 +8002,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
@@ -7553,11 +8033,12 @@ namespace Skymind.SKIL.Api
         /// Obtain all experiments for a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
         /// <returns>ExperimentEntity</returns>
-        public ExperimentEntity GetExperimentsForModelHistory (string modelHistoryID)
+        public ExperimentEntity GetExperimentsForModelHistory (string modelHistoryServerId, string modelHistoryID)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = GetExperimentsForModelHistoryWithHttpInfo(modelHistoryID);
+             ApiResponse<ExperimentEntity> localVarResponse = GetExperimentsForModelHistoryWithHttpInfo(modelHistoryServerId, modelHistoryID);
              return localVarResponse.Data;
         }
 
@@ -7565,15 +8046,19 @@ namespace Skymind.SKIL.Api
         /// Obtain all experiments for a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
         /// <returns>ApiResponse of ExperimentEntity</returns>
-        public ApiResponse< ExperimentEntity > GetExperimentsForModelHistoryWithHttpInfo (string modelHistoryID)
+        public ApiResponse< ExperimentEntity > GetExperimentsForModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetExperimentsForModelHistory");
             // verify the required parameter 'modelHistoryID' is set
             if (modelHistoryID == null)
                 throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->GetExperimentsForModelHistory");
 
-            var localVarPath = "/experiments/{modelHistoryID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7594,6 +8079,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
@@ -7624,11 +8110,12 @@ namespace Skymind.SKIL.Api
         /// Obtain all experiments for a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
         /// <returns>Task of ExperimentEntity</returns>
-        public async System.Threading.Tasks.Task<ExperimentEntity> GetExperimentsForModelHistoryAsync (string modelHistoryID)
+        public async System.Threading.Tasks.Task<ExperimentEntity> GetExperimentsForModelHistoryAsync (string modelHistoryServerId, string modelHistoryID)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = await GetExperimentsForModelHistoryAsyncWithHttpInfo(modelHistoryID);
+             ApiResponse<ExperimentEntity> localVarResponse = await GetExperimentsForModelHistoryAsyncWithHttpInfo(modelHistoryServerId, modelHistoryID);
              return localVarResponse.Data;
 
         }
@@ -7637,15 +8124,19 @@ namespace Skymind.SKIL.Api
         /// Obtain all experiments for a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
         /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentsForModelHistoryAsyncWithHttpInfo (string modelHistoryID)
+        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentsForModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetExperimentsForModelHistory");
             // verify the required parameter 'modelHistoryID' is set
             if (modelHistoryID == null)
                 throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->GetExperimentsForModelHistory");
 
-            var localVarPath = "/experiments/{modelHistoryID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7666,6 +8157,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
@@ -7696,11 +8188,12 @@ namespace Skymind.SKIL.Api
         /// Gets a minibatch for the model 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>MinibatchEntity</returns>
-        public MinibatchEntity GetMinibatch (string minibatchId)
+        public MinibatchEntity GetMinibatch (string modelHistoryServerId, string minibatchId)
         {
-             ApiResponse<MinibatchEntity> localVarResponse = GetMinibatchWithHttpInfo(minibatchId);
+             ApiResponse<MinibatchEntity> localVarResponse = GetMinibatchWithHttpInfo(modelHistoryServerId, minibatchId);
              return localVarResponse.Data;
         }
 
@@ -7708,15 +8201,19 @@ namespace Skymind.SKIL.Api
         /// Gets a minibatch for the model 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>ApiResponse of MinibatchEntity</returns>
-        public ApiResponse< MinibatchEntity > GetMinibatchWithHttpInfo (string minibatchId)
+        public ApiResponse< MinibatchEntity > GetMinibatchWithHttpInfo (string modelHistoryServerId, string minibatchId)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetMinibatch");
             // verify the required parameter 'minibatchId' is set
             if (minibatchId == null)
                 throw new ApiException(400, "Missing required parameter 'minibatchId' when calling DefaultApi->GetMinibatch");
 
-            var localVarPath = "/model/minibatch/{minibatchId}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7737,6 +8234,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (minibatchId != null) localVarPathParams.Add("minibatchId", this.Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
 
             // authentication (api_key) required
@@ -7767,11 +8265,12 @@ namespace Skymind.SKIL.Api
         /// Gets a minibatch for the model 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>Task of MinibatchEntity</returns>
-        public async System.Threading.Tasks.Task<MinibatchEntity> GetMinibatchAsync (string minibatchId)
+        public async System.Threading.Tasks.Task<MinibatchEntity> GetMinibatchAsync (string modelHistoryServerId, string minibatchId)
         {
-             ApiResponse<MinibatchEntity> localVarResponse = await GetMinibatchAsyncWithHttpInfo(minibatchId);
+             ApiResponse<MinibatchEntity> localVarResponse = await GetMinibatchAsyncWithHttpInfo(modelHistoryServerId, minibatchId);
              return localVarResponse.Data;
 
         }
@@ -7780,15 +8279,19 @@ namespace Skymind.SKIL.Api
         /// Gets a minibatch for the model 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="minibatchId">The GUID of the minibatch</param>
         /// <returns>Task of ApiResponse (MinibatchEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> GetMinibatchAsyncWithHttpInfo (string minibatchId)
+        public async System.Threading.Tasks.Task<ApiResponse<MinibatchEntity>> GetMinibatchAsyncWithHttpInfo (string modelHistoryServerId, string minibatchId)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetMinibatch");
             // verify the required parameter 'minibatchId' is set
             if (minibatchId == null)
                 throw new ApiException(400, "Missing required parameter 'minibatchId' when calling DefaultApi->GetMinibatch");
 
-            var localVarPath = "/model/minibatch/{minibatchId}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7809,6 +8312,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (minibatchId != null) localVarPathParams.Add("minibatchId", this.Configuration.ApiClient.ParameterToString(minibatchId)); // path parameter
 
             // authentication (api_key) required
@@ -7839,11 +8343,12 @@ namespace Skymind.SKIL.Api
         /// Gets a model history, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
         /// <returns>ModelHistoryEntity</returns>
-        public ModelHistoryEntity GetModelHistory (string modelHistoryID)
+        public ModelHistoryEntity GetModelHistory (string modelHistoryServerId, string modelHistoryID)
         {
-             ApiResponse<ModelHistoryEntity> localVarResponse = GetModelHistoryWithHttpInfo(modelHistoryID);
+             ApiResponse<ModelHistoryEntity> localVarResponse = GetModelHistoryWithHttpInfo(modelHistoryServerId, modelHistoryID);
              return localVarResponse.Data;
         }
 
@@ -7851,15 +8356,19 @@ namespace Skymind.SKIL.Api
         /// Gets a model history, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
         /// <returns>ApiResponse of ModelHistoryEntity</returns>
-        public ApiResponse< ModelHistoryEntity > GetModelHistoryWithHttpInfo (string modelHistoryID)
+        public ApiResponse< ModelHistoryEntity > GetModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetModelHistory");
             // verify the required parameter 'modelHistoryID' is set
             if (modelHistoryID == null)
                 throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->GetModelHistory");
 
-            var localVarPath = "/model/revision/{modelHistoryID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7880,6 +8389,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
@@ -7910,11 +8420,12 @@ namespace Skymind.SKIL.Api
         /// Gets a model history, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
         /// <returns>Task of ModelHistoryEntity</returns>
-        public async System.Threading.Tasks.Task<ModelHistoryEntity> GetModelHistoryAsync (string modelHistoryID)
+        public async System.Threading.Tasks.Task<ModelHistoryEntity> GetModelHistoryAsync (string modelHistoryServerId, string modelHistoryID)
         {
-             ApiResponse<ModelHistoryEntity> localVarResponse = await GetModelHistoryAsyncWithHttpInfo(modelHistoryID);
+             ApiResponse<ModelHistoryEntity> localVarResponse = await GetModelHistoryAsyncWithHttpInfo(modelHistoryServerId, modelHistoryID);
              return localVarResponse.Data;
 
         }
@@ -7923,15 +8434,19 @@ namespace Skymind.SKIL.Api
         /// Gets a model history, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">GUID of the model history to get information of.</param>
         /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> GetModelHistoryAsyncWithHttpInfo (string modelHistoryID)
+        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> GetModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetModelHistory");
             // verify the required parameter 'modelHistoryID' is set
             if (modelHistoryID == null)
                 throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->GetModelHistory");
 
-            var localVarPath = "/model/revision/{modelHistoryID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7952,6 +8467,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
 
             // authentication (api_key) required
@@ -7982,11 +8498,12 @@ namespace Skymind.SKIL.Api
         /// Gets a model instance, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
         /// <returns>ModelInstanceEntity</returns>
-        public ModelInstanceEntity GetModelInstance (string modelInstanceID)
+        public ModelInstanceEntity GetModelInstance (string modelHistoryServerId, string modelInstanceID)
         {
-             ApiResponse<ModelInstanceEntity> localVarResponse = GetModelInstanceWithHttpInfo(modelInstanceID);
+             ApiResponse<ModelInstanceEntity> localVarResponse = GetModelInstanceWithHttpInfo(modelHistoryServerId, modelInstanceID);
              return localVarResponse.Data;
         }
 
@@ -7994,15 +8511,19 @@ namespace Skymind.SKIL.Api
         /// Gets a model instance, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
         /// <returns>ApiResponse of ModelInstanceEntity</returns>
-        public ApiResponse< ModelInstanceEntity > GetModelInstanceWithHttpInfo (string modelInstanceID)
+        public ApiResponse< ModelInstanceEntity > GetModelInstanceWithHttpInfo (string modelHistoryServerId, string modelInstanceID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetModelInstance");
             // verify the required parameter 'modelInstanceID' is set
             if (modelInstanceID == null)
                 throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->GetModelInstance");
 
-            var localVarPath = "/model/{modelInstanceID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8023,6 +8544,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
@@ -8053,11 +8575,12 @@ namespace Skymind.SKIL.Api
         /// Gets a model instance, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
         /// <returns>Task of ModelInstanceEntity</returns>
-        public async System.Threading.Tasks.Task<ModelInstanceEntity> GetModelInstanceAsync (string modelInstanceID)
+        public async System.Threading.Tasks.Task<ModelInstanceEntity> GetModelInstanceAsync (string modelHistoryServerId, string modelInstanceID)
         {
-             ApiResponse<ModelInstanceEntity> localVarResponse = await GetModelInstanceAsyncWithHttpInfo(modelInstanceID);
+             ApiResponse<ModelInstanceEntity> localVarResponse = await GetModelInstanceAsyncWithHttpInfo(modelHistoryServerId, modelInstanceID);
              return localVarResponse.Data;
 
         }
@@ -8066,15 +8589,19 @@ namespace Skymind.SKIL.Api
         /// Gets a model instance, given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelInstanceID">GUID of the model instance to get information of.</param>
         /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetModelInstanceAsyncWithHttpInfo (string modelInstanceID)
+        public async System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> GetModelInstanceAsyncWithHttpInfo (string modelHistoryServerId, string modelInstanceID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetModelInstance");
             // verify the required parameter 'modelInstanceID' is set
             if (modelInstanceID == null)
                 throw new ApiException(400, "Missing required parameter 'modelInstanceID' when calling DefaultApi->GetModelInstance");
 
-            var localVarPath = "/model/{modelInstanceID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/model/{modelInstanceID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8095,6 +8622,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelInstanceID != null) localVarPathParams.Add("modelInstanceID", this.Configuration.ApiClient.ParameterToString(modelInstanceID)); // path parameter
 
             // authentication (api_key) required
@@ -8125,11 +8653,12 @@ namespace Skymind.SKIL.Api
         /// Obtain a list of all the models for an experiment 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment</param>
         /// <returns>List&lt;ModelInstanceEntity&gt;</returns>
-        public List<ModelInstanceEntity> GetModelsForExperiment (string experimentID)
+        public List<ModelInstanceEntity> GetModelsForExperiment (string modelHistoryServerId, string experimentID)
         {
-             ApiResponse<List<ModelInstanceEntity>> localVarResponse = GetModelsForExperimentWithHttpInfo(experimentID);
+             ApiResponse<List<ModelInstanceEntity>> localVarResponse = GetModelsForExperimentWithHttpInfo(modelHistoryServerId, experimentID);
              return localVarResponse.Data;
         }
 
@@ -8137,15 +8666,19 @@ namespace Skymind.SKIL.Api
         /// Obtain a list of all the models for an experiment 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment</param>
         /// <returns>ApiResponse of List&lt;ModelInstanceEntity&gt;</returns>
-        public ApiResponse< List<ModelInstanceEntity> > GetModelsForExperimentWithHttpInfo (string experimentID)
+        public ApiResponse< List<ModelInstanceEntity> > GetModelsForExperimentWithHttpInfo (string modelHistoryServerId, string experimentID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetModelsForExperiment");
             // verify the required parameter 'experimentID' is set
             if (experimentID == null)
                 throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->GetModelsForExperiment");
 
-            var localVarPath = "/experiment/{experimentID}/models";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment/{experimentID}/models";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8166,6 +8699,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
@@ -8196,11 +8730,12 @@ namespace Skymind.SKIL.Api
         /// Obtain a list of all the models for an experiment 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment</param>
         /// <returns>Task of List&lt;ModelInstanceEntity&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ModelInstanceEntity>> GetModelsForExperimentAsync (string experimentID)
+        public async System.Threading.Tasks.Task<List<ModelInstanceEntity>> GetModelsForExperimentAsync (string modelHistoryServerId, string experimentID)
         {
-             ApiResponse<List<ModelInstanceEntity>> localVarResponse = await GetModelsForExperimentAsyncWithHttpInfo(experimentID);
+             ApiResponse<List<ModelInstanceEntity>> localVarResponse = await GetModelsForExperimentAsyncWithHttpInfo(modelHistoryServerId, experimentID);
              return localVarResponse.Data;
 
         }
@@ -8209,15 +8744,19 @@ namespace Skymind.SKIL.Api
         /// Obtain a list of all the models for an experiment 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment</param>
         /// <returns>Task of ApiResponse (List&lt;ModelInstanceEntity&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ModelInstanceEntity>>> GetModelsForExperimentAsyncWithHttpInfo (string experimentID)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ModelInstanceEntity>>> GetModelsForExperimentAsyncWithHttpInfo (string modelHistoryServerId, string experimentID)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->GetModelsForExperiment");
             // verify the required parameter 'experimentID' is set
             if (experimentID == null)
                 throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->GetModelsForExperiment");
 
-            var localVarPath = "/experiment/{experimentID}/models";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment/{experimentID}/models";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8238,6 +8777,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
 
             // authentication (api_key) required
@@ -8269,11 +8809,12 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <returns>ImageTransformProcess</returns>
-        public ImageTransformProcess ImagetransformprocessGet (string deploymentName, string imageTransformName)
+        public ImageTransformProcess ImagetransformprocessGet (string deploymentName, string versionName, string imageTransformName)
         {
-             ApiResponse<ImageTransformProcess> localVarResponse = ImagetransformprocessGetWithHttpInfo(deploymentName, imageTransformName);
+             ApiResponse<ImageTransformProcess> localVarResponse = ImagetransformprocessGetWithHttpInfo(deploymentName, versionName, imageTransformName);
              return localVarResponse.Data;
         }
 
@@ -8282,18 +8823,22 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <returns>ApiResponse of ImageTransformProcess</returns>
-        public ApiResponse< ImageTransformProcess > ImagetransformprocessGetWithHttpInfo (string deploymentName, string imageTransformName)
+        public ApiResponse< ImageTransformProcess > ImagetransformprocessGetWithHttpInfo (string deploymentName, string versionName, string imageTransformName)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessGet");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->ImagetransformprocessGet");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessGet");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8316,6 +8861,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
 
             // authentication (api_key) required
@@ -8347,11 +8893,12 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <returns>Task of ImageTransformProcess</returns>
-        public async System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessGetAsync (string deploymentName, string imageTransformName)
+        public async System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessGetAsync (string deploymentName, string versionName, string imageTransformName)
         {
-             ApiResponse<ImageTransformProcess> localVarResponse = await ImagetransformprocessGetAsyncWithHttpInfo(deploymentName, imageTransformName);
+             ApiResponse<ImageTransformProcess> localVarResponse = await ImagetransformprocessGetAsyncWithHttpInfo(deploymentName, versionName, imageTransformName);
              return localVarResponse.Data;
 
         }
@@ -8361,18 +8908,22 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessGetAsyncWithHttpInfo (string deploymentName, string imageTransformName)
+        public async System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessGet");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->ImagetransformprocessGet");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessGet");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8395,6 +8946,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
 
             // authentication (api_key) required
@@ -8426,12 +8978,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="body">The image transform process JSON</param>
         /// <returns>ImageTransformProcess</returns>
-        public ImageTransformProcess ImagetransformprocessPost (string deploymentName, string imageTransformName, ImageTransformProcess body)
+        public ImageTransformProcess ImagetransformprocessPost (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body)
         {
-             ApiResponse<ImageTransformProcess> localVarResponse = ImagetransformprocessPostWithHttpInfo(deploymentName, imageTransformName, body);
+             ApiResponse<ImageTransformProcess> localVarResponse = ImagetransformprocessPostWithHttpInfo(deploymentName, versionName, imageTransformName, body);
              return localVarResponse.Data;
         }
 
@@ -8440,14 +8993,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="body">The image transform process JSON</param>
         /// <returns>ApiResponse of ImageTransformProcess</returns>
-        public ApiResponse< ImageTransformProcess > ImagetransformprocessPostWithHttpInfo (string deploymentName, string imageTransformName, ImageTransformProcess body)
+        public ApiResponse< ImageTransformProcess > ImagetransformprocessPostWithHttpInfo (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessPost");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->ImagetransformprocessPost");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessPost");
@@ -8455,7 +9012,7 @@ namespace Skymind.SKIL.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->ImagetransformprocessPost");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8478,6 +9035,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -8517,12 +9075,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="body">The image transform process JSON</param>
         /// <returns>Task of ImageTransformProcess</returns>
-        public async System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessPostAsync (string deploymentName, string imageTransformName, ImageTransformProcess body)
+        public async System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessPostAsync (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body)
         {
-             ApiResponse<ImageTransformProcess> localVarResponse = await ImagetransformprocessPostAsyncWithHttpInfo(deploymentName, imageTransformName, body);
+             ApiResponse<ImageTransformProcess> localVarResponse = await ImagetransformprocessPostAsyncWithHttpInfo(deploymentName, versionName, imageTransformName, body);
              return localVarResponse.Data;
 
         }
@@ -8532,14 +9091,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="body">The image transform process JSON</param>
         /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessPostAsyncWithHttpInfo (string deploymentName, string imageTransformName, ImageTransformProcess body)
+        public async System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessPost");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->ImagetransformprocessPost");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessPost");
@@ -8547,7 +9110,7 @@ namespace Skymind.SKIL.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->ImagetransformprocessPost");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8570,6 +9133,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -8610,11 +9174,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>JsonArrayResponse</returns>
-        public JsonArrayResponse Jsonarray (Prediction body, string deploymentName, string modelName)
+        public JsonArrayResponse Jsonarray (Prediction body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<JsonArrayResponse> localVarResponse = JsonarrayWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<JsonArrayResponse> localVarResponse = JsonarrayWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -8624,9 +9189,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of JsonArrayResponse</returns>
-        public ApiResponse< JsonArrayResponse > JsonarrayWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public ApiResponse< JsonArrayResponse > JsonarrayWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -8634,11 +9200,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Jsonarray");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Jsonarray");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Jsonarray");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8661,6 +9230,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -8701,11 +9271,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of JsonArrayResponse</returns>
-        public async System.Threading.Tasks.Task<JsonArrayResponse> JsonarrayAsync (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<JsonArrayResponse> JsonarrayAsync (Prediction body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<JsonArrayResponse> localVarResponse = await JsonarrayAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<JsonArrayResponse> localVarResponse = await JsonarrayAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -8716,9 +9287,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> JsonarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> JsonarrayAsyncWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -8726,11 +9298,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Jsonarray");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Jsonarray");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Jsonarray");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8753,6 +9328,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -8792,12 +9368,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body"></param>
         /// <returns>NearestNeighborsResults</returns>
-        public NearestNeighborsResults Knn (string deploymentName, string knnName, NearestNeighborRequest body)
+        public NearestNeighborsResults Knn (string deploymentName, string versionName, string knnName, NearestNeighborRequest body)
         {
-             ApiResponse<NearestNeighborsResults> localVarResponse = KnnWithHttpInfo(deploymentName, knnName, body);
+             ApiResponse<NearestNeighborsResults> localVarResponse = KnnWithHttpInfo(deploymentName, versionName, knnName, body);
              return localVarResponse.Data;
         }
 
@@ -8806,14 +9383,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body"></param>
         /// <returns>ApiResponse of NearestNeighborsResults</returns>
-        public ApiResponse< NearestNeighborsResults > KnnWithHttpInfo (string deploymentName, string knnName, NearestNeighborRequest body)
+        public ApiResponse< NearestNeighborsResults > KnnWithHttpInfo (string deploymentName, string versionName, string knnName, NearestNeighborRequest body)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Knn");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Knn");
             // verify the required parameter 'knnName' is set
             if (knnName == null)
                 throw new ApiException(400, "Missing required parameter 'knnName' when calling DefaultApi->Knn");
@@ -8821,7 +9402,7 @@ namespace Skymind.SKIL.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Knn");
 
-            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knn";
+            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8844,6 +9425,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (knnName != null) localVarPathParams.Add("knnName", this.Configuration.ApiClient.ParameterToString(knnName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -8883,12 +9465,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body"></param>
         /// <returns>Task of NearestNeighborsResults</returns>
-        public async System.Threading.Tasks.Task<NearestNeighborsResults> KnnAsync (string deploymentName, string knnName, NearestNeighborRequest body)
+        public async System.Threading.Tasks.Task<NearestNeighborsResults> KnnAsync (string deploymentName, string versionName, string knnName, NearestNeighborRequest body)
         {
-             ApiResponse<NearestNeighborsResults> localVarResponse = await KnnAsyncWithHttpInfo(deploymentName, knnName, body);
+             ApiResponse<NearestNeighborsResults> localVarResponse = await KnnAsyncWithHttpInfo(deploymentName, versionName, knnName, body);
              return localVarResponse.Data;
 
         }
@@ -8898,14 +9481,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body"></param>
         /// <returns>Task of ApiResponse (NearestNeighborsResults)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnAsyncWithHttpInfo (string deploymentName, string knnName, NearestNeighborRequest body)
+        public async System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnAsyncWithHttpInfo (string deploymentName, string versionName, string knnName, NearestNeighborRequest body)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Knn");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Knn");
             // verify the required parameter 'knnName' is set
             if (knnName == null)
                 throw new ApiException(400, "Missing required parameter 'knnName' when calling DefaultApi->Knn");
@@ -8913,7 +9500,7 @@ namespace Skymind.SKIL.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Knn");
 
-            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knn";
+            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8936,6 +9523,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (knnName != null) localVarPathParams.Add("knnName", this.Configuration.ApiClient.ParameterToString(knnName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -8975,12 +9563,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body">The input NDArray</param>
         /// <returns>NearestNeighborsResults</returns>
-        public NearestNeighborsResults Knnnew (string deploymentName, string knnName, Base64NDArrayBodyKNN body)
+        public NearestNeighborsResults Knnnew (string deploymentName, string versionName, string knnName, Base64NDArrayBodyKNN body)
         {
-             ApiResponse<NearestNeighborsResults> localVarResponse = KnnnewWithHttpInfo(deploymentName, knnName, body);
+             ApiResponse<NearestNeighborsResults> localVarResponse = KnnnewWithHttpInfo(deploymentName, versionName, knnName, body);
              return localVarResponse.Data;
         }
 
@@ -8989,14 +9578,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body">The input NDArray</param>
         /// <returns>ApiResponse of NearestNeighborsResults</returns>
-        public ApiResponse< NearestNeighborsResults > KnnnewWithHttpInfo (string deploymentName, string knnName, Base64NDArrayBodyKNN body)
+        public ApiResponse< NearestNeighborsResults > KnnnewWithHttpInfo (string deploymentName, string versionName, string knnName, Base64NDArrayBodyKNN body)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Knnnew");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Knnnew");
             // verify the required parameter 'knnName' is set
             if (knnName == null)
                 throw new ApiException(400, "Missing required parameter 'knnName' when calling DefaultApi->Knnnew");
@@ -9004,7 +9597,7 @@ namespace Skymind.SKIL.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Knnnew");
 
-            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew";
+            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -9027,6 +9620,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (knnName != null) localVarPathParams.Add("knnName", this.Configuration.ApiClient.ParameterToString(knnName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -9066,12 +9660,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body">The input NDArray</param>
         /// <returns>Task of NearestNeighborsResults</returns>
-        public async System.Threading.Tasks.Task<NearestNeighborsResults> KnnnewAsync (string deploymentName, string knnName, Base64NDArrayBodyKNN body)
+        public async System.Threading.Tasks.Task<NearestNeighborsResults> KnnnewAsync (string deploymentName, string versionName, string knnName, Base64NDArrayBodyKNN body)
         {
-             ApiResponse<NearestNeighborsResults> localVarResponse = await KnnnewAsyncWithHttpInfo(deploymentName, knnName, body);
+             ApiResponse<NearestNeighborsResults> localVarResponse = await KnnnewAsyncWithHttpInfo(deploymentName, versionName, knnName, body);
              return localVarResponse.Data;
 
         }
@@ -9081,14 +9676,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="knnName">ID or name of the deployed knn</param>
         /// <param name="body">The input NDArray</param>
         /// <returns>Task of ApiResponse (NearestNeighborsResults)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnnewAsyncWithHttpInfo (string deploymentName, string knnName, Base64NDArrayBodyKNN body)
+        public async System.Threading.Tasks.Task<ApiResponse<NearestNeighborsResults>> KnnnewAsyncWithHttpInfo (string deploymentName, string versionName, string knnName, Base64NDArrayBodyKNN body)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Knnnew");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Knnnew");
             // verify the required parameter 'knnName' is set
             if (knnName == null)
                 throw new ApiException(400, "Missing required parameter 'knnName' when calling DefaultApi->Knnnew");
@@ -9096,7 +9695,7 @@ namespace Skymind.SKIL.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Knnnew");
 
-            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew";
+            var localVarPath = "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -9119,6 +9718,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (knnName != null) localVarPathParams.Add("knnName", this.Configuration.ApiClient.ParameterToString(knnName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -9172,7 +9772,7 @@ namespace Skymind.SKIL.Api
         public ApiResponse< List<ExperimentEntity> > ListAllExperimentsWithHttpInfo ()
         {
 
-            var localVarPath = "/experiments";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiments";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -9238,7 +9838,7 @@ namespace Skymind.SKIL.Api
         public async System.Threading.Tasks.Task<ApiResponse<List<ExperimentEntity>>> ListAllExperimentsAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/experiments";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiments";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -9289,11 +9889,12 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>string</returns>
-        public string Logfilepath (string deploymentName, string modelName)
+        public string Logfilepath (string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<string> localVarResponse = LogfilepathWithHttpInfo(deploymentName, modelName);
+             ApiResponse<string> localVarResponse = LogfilepathWithHttpInfo(deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -9302,18 +9903,22 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > LogfilepathWithHttpInfo (string deploymentName, string modelName)
+        public ApiResponse< string > LogfilepathWithHttpInfo (string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Logfilepath");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Logfilepath");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Logfilepath");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -9335,6 +9940,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
 
             // authentication (api_key) required
@@ -9366,11 +9972,12 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> LogfilepathAsync (string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<string> LogfilepathAsync (string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<string> localVarResponse = await LogfilepathAsyncWithHttpInfo(deploymentName, modelName);
+             ApiResponse<string> localVarResponse = await LogfilepathAsyncWithHttpInfo(deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -9380,18 +9987,22 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> LogfilepathAsyncWithHttpInfo (string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> LogfilepathAsyncWithHttpInfo (string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Logfilepath");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Logfilepath");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Logfilepath");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -9413,6 +10024,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
 
             // authentication (api_key) required
@@ -9604,11 +10216,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>LogBatch</returns>
-        public LogBatch Logs (LogRequest body, string deploymentName, string modelName)
+        public LogBatch Logs (LogRequest body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<LogBatch> localVarResponse = LogsWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<LogBatch> localVarResponse = LogsWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -9618,9 +10231,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of LogBatch</returns>
-        public ApiResponse< LogBatch > LogsWithHttpInfo (LogRequest body, string deploymentName, string modelName)
+        public ApiResponse< LogBatch > LogsWithHttpInfo (LogRequest body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -9628,11 +10242,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Logs");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Logs");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Logs");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logs";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -9655,6 +10272,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -9695,11 +10313,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of LogBatch</returns>
-        public async System.Threading.Tasks.Task<LogBatch> LogsAsync (LogRequest body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<LogBatch> LogsAsync (LogRequest body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<LogBatch> localVarResponse = await LogsAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<LogBatch> localVarResponse = await LogsAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -9710,9 +10329,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (LogBatch)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<LogBatch>> LogsAsyncWithHttpInfo (LogRequest body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<LogBatch>> LogsAsyncWithHttpInfo (LogRequest body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -9720,11 +10340,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Logs");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Logs");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Logs");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/logs";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -9747,6 +10370,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -9786,11 +10410,12 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MetaData</returns>
-        public MetaData MetaGet (string deploymentName, string modelName)
+        public MetaData MetaGet (string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MetaData> localVarResponse = MetaGetWithHttpInfo(deploymentName, modelName);
+             ApiResponse<MetaData> localVarResponse = MetaGetWithHttpInfo(deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -9799,18 +10424,22 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MetaData</returns>
-        public ApiResponse< MetaData > MetaGetWithHttpInfo (string deploymentName, string modelName)
+        public ApiResponse< MetaData > MetaGetWithHttpInfo (string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->MetaGet");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->MetaGet");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->MetaGet");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -9833,6 +10462,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
 
             // authentication (api_key) required
@@ -9864,11 +10494,12 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MetaData</returns>
-        public async System.Threading.Tasks.Task<MetaData> MetaGetAsync (string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<MetaData> MetaGetAsync (string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MetaData> localVarResponse = await MetaGetAsyncWithHttpInfo(deploymentName, modelName);
+             ApiResponse<MetaData> localVarResponse = await MetaGetAsyncWithHttpInfo(deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -9878,18 +10509,22 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MetaData)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaGetAsyncWithHttpInfo (string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaGetAsyncWithHttpInfo (string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->MetaGet");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->MetaGet");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->MetaGet");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -9912,6 +10547,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
 
             // authentication (api_key) required
@@ -9944,11 +10580,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MetaData</returns>
-        public MetaData MetaPost (MetaData body, string deploymentName, string modelName)
+        public MetaData MetaPost (MetaData body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MetaData> localVarResponse = MetaPostWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<MetaData> localVarResponse = MetaPostWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -9958,9 +10595,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MetaData</returns>
-        public ApiResponse< MetaData > MetaPostWithHttpInfo (MetaData body, string deploymentName, string modelName)
+        public ApiResponse< MetaData > MetaPostWithHttpInfo (MetaData body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -9968,11 +10606,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->MetaPost");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->MetaPost");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->MetaPost");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -9995,6 +10636,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -10035,11 +10677,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MetaData</returns>
-        public async System.Threading.Tasks.Task<MetaData> MetaPostAsync (MetaData body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<MetaData> MetaPostAsync (MetaData body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MetaData> localVarResponse = await MetaPostAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<MetaData> localVarResponse = await MetaPostAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -10050,9 +10693,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MetaData)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaPostAsyncWithHttpInfo (MetaData body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaPostAsyncWithHttpInfo (MetaData body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -10060,11 +10704,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->MetaPost");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->MetaPost");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->MetaPost");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/meta";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -10087,6 +10734,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -10452,12 +11100,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to upload (.pb file) (optional)</param>
         /// <returns>ModelStatus</returns>
-        public ModelStatus Modelset (string deploymentName, string modelName, System.IO.Stream file = null)
+        public ModelStatus Modelset (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
         {
-             ApiResponse<ModelStatus> localVarResponse = ModelsetWithHttpInfo(deploymentName, modelName, file);
+             ApiResponse<ModelStatus> localVarResponse = ModelsetWithHttpInfo(deploymentName, versionName, modelName, file);
              return localVarResponse.Data;
         }
 
@@ -10466,19 +11115,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to upload (.pb file) (optional)</param>
         /// <returns>ApiResponse of ModelStatus</returns>
-        public ApiResponse< ModelStatus > ModelsetWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null)
+        public ApiResponse< ModelStatus > ModelsetWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Modelset");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Modelset");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Modelset");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelset";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -10501,6 +11154,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
@@ -10533,12 +11187,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to upload (.pb file) (optional)</param>
         /// <returns>Task of ModelStatus</returns>
-        public async System.Threading.Tasks.Task<ModelStatus> ModelsetAsync (string deploymentName, string modelName, System.IO.Stream file = null)
+        public async System.Threading.Tasks.Task<ModelStatus> ModelsetAsync (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
         {
-             ApiResponse<ModelStatus> localVarResponse = await ModelsetAsyncWithHttpInfo(deploymentName, modelName, file);
+             ApiResponse<ModelStatus> localVarResponse = await ModelsetAsyncWithHttpInfo(deploymentName, versionName, modelName, file);
              return localVarResponse.Data;
 
         }
@@ -10548,19 +11203,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to upload (.pb file) (optional)</param>
         /// <returns>Task of ApiResponse (ModelStatus)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelsetAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelsetAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Modelset");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Modelset");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Modelset");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelset";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -10583,6 +11242,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
@@ -10615,12 +11275,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>ModelStatus</returns>
-        public ModelStatus Modelupdate (string deploymentName, string modelName, System.IO.Stream file = null)
+        public ModelStatus Modelupdate (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
         {
-             ApiResponse<ModelStatus> localVarResponse = ModelupdateWithHttpInfo(deploymentName, modelName, file);
+             ApiResponse<ModelStatus> localVarResponse = ModelupdateWithHttpInfo(deploymentName, versionName, modelName, file);
              return localVarResponse.Data;
         }
 
@@ -10629,19 +11290,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>ApiResponse of ModelStatus</returns>
-        public ApiResponse< ModelStatus > ModelupdateWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null)
+        public ApiResponse< ModelStatus > ModelupdateWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Modelupdate");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Modelupdate");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Modelupdate");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -10664,6 +11329,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
@@ -10696,12 +11362,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>Task of ModelStatus</returns>
-        public async System.Threading.Tasks.Task<ModelStatus> ModelupdateAsync (string deploymentName, string modelName, System.IO.Stream file = null)
+        public async System.Threading.Tasks.Task<ModelStatus> ModelupdateAsync (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
         {
-             ApiResponse<ModelStatus> localVarResponse = await ModelupdateAsyncWithHttpInfo(deploymentName, modelName, file);
+             ApiResponse<ModelStatus> localVarResponse = await ModelupdateAsyncWithHttpInfo(deploymentName, versionName, modelName, file);
              return localVarResponse.Data;
 
         }
@@ -10711,19 +11378,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>Task of ApiResponse (ModelStatus)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelupdateAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream file = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelupdateAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Modelupdate");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Modelupdate");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Modelupdate");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -10746,6 +11417,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
@@ -10779,11 +11451,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MultiClassClassificationResult</returns>
-        public MultiClassClassificationResult Multiclassify (Prediction body, string deploymentName, string modelName)
+        public MultiClassClassificationResult Multiclassify (Prediction body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MultiClassClassificationResult> localVarResponse = MulticlassifyWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<MultiClassClassificationResult> localVarResponse = MulticlassifyWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -10793,9 +11466,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MultiClassClassificationResult</returns>
-        public ApiResponse< MultiClassClassificationResult > MulticlassifyWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public ApiResponse< MultiClassClassificationResult > MulticlassifyWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -10803,11 +11477,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multiclassify");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Multiclassify");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multiclassify");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -10830,6 +11507,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -10870,11 +11548,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MultiClassClassificationResult</returns>
-        public async System.Threading.Tasks.Task<MultiClassClassificationResult> MulticlassifyAsync (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<MultiClassClassificationResult> MulticlassifyAsync (Prediction body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MultiClassClassificationResult> localVarResponse = await MulticlassifyAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<MultiClassClassificationResult> localVarResponse = await MulticlassifyAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -10885,9 +11564,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MultiClassClassificationResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MultiClassClassificationResult>> MulticlassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<MultiClassClassificationResult>> MulticlassifyAsyncWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -10895,11 +11575,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multiclassify");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Multiclassify");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multiclassify");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -10922,6 +11605,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -10962,11 +11646,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MultiPredictResponse</returns>
-        public MultiPredictResponse Multipredict (MultiPredictRequest body, string deploymentName, string modelName)
+        public MultiPredictResponse Multipredict (MultiPredictRequest body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MultiPredictResponse> localVarResponse = MultipredictWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<MultiPredictResponse> localVarResponse = MultipredictWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -10976,9 +11661,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MultiPredictResponse</returns>
-        public ApiResponse< MultiPredictResponse > MultipredictWithHttpInfo (MultiPredictRequest body, string deploymentName, string modelName)
+        public ApiResponse< MultiPredictResponse > MultipredictWithHttpInfo (MultiPredictRequest body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -10986,11 +11672,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multipredict");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Multipredict");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multipredict");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11013,6 +11702,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -11053,11 +11743,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MultiPredictResponse</returns>
-        public async System.Threading.Tasks.Task<MultiPredictResponse> MultipredictAsync (MultiPredictRequest body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<MultiPredictResponse> MultipredictAsync (MultiPredictRequest body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MultiPredictResponse> localVarResponse = await MultipredictAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<MultiPredictResponse> localVarResponse = await MultipredictAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -11068,9 +11759,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The multiple input arrays with mask inputs to run inferences on</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MultiPredictResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictAsyncWithHttpInfo (MultiPredictRequest body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictAsyncWithHttpInfo (MultiPredictRequest body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -11078,11 +11770,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multipredict");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Multipredict");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multipredict");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multipredict";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11105,6 +11800,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -11147,11 +11843,12 @@ namespace Skymind.SKIL.Api
         /// <param name="id">The id of the request (could be self generated)</param>
         /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MultiPredictResponse</returns>
-        public MultiPredictResponse Multipredictimage (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName)
+        public MultiPredictResponse Multipredictimage (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MultiPredictResponse> localVarResponse = MultipredictimageWithHttpInfo(file, id, needsPreprocessing, deploymentName, modelName);
+             ApiResponse<MultiPredictResponse> localVarResponse = MultipredictimageWithHttpInfo(file, id, needsPreprocessing, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -11163,9 +11860,10 @@ namespace Skymind.SKIL.Api
         /// <param name="id">The id of the request (could be self generated)</param>
         /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MultiPredictResponse</returns>
-        public ApiResponse< MultiPredictResponse > MultipredictimageWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName)
+        public ApiResponse< MultiPredictResponse > MultipredictimageWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'file' is set
             if (file == null)
@@ -11179,11 +11877,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multipredictimage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Multipredictimage");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multipredictimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11206,6 +11907,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
             if (id != null) localVarFormParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // form parameter
@@ -11243,11 +11945,12 @@ namespace Skymind.SKIL.Api
         /// <param name="id">The id of the request (could be self generated)</param>
         /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MultiPredictResponse</returns>
-        public async System.Threading.Tasks.Task<MultiPredictResponse> MultipredictimageAsync (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<MultiPredictResponse> MultipredictimageAsync (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MultiPredictResponse> localVarResponse = await MultipredictimageAsyncWithHttpInfo(file, id, needsPreprocessing, deploymentName, modelName);
+             ApiResponse<MultiPredictResponse> localVarResponse = await MultipredictimageAsyncWithHttpInfo(file, id, needsPreprocessing, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -11260,9 +11963,10 @@ namespace Skymind.SKIL.Api
         /// <param name="id">The id of the request (could be self generated)</param>
         /// <param name="needsPreprocessing">Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MultiPredictResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictimageAsyncWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictimageAsyncWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'file' is set
             if (file == null)
@@ -11276,11 +11980,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Multipredictimage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Multipredictimage");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Multipredictimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11303,6 +12010,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
             if (id != null) localVarFormParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // form parameter
@@ -11338,11 +12046,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Prediction</returns>
-        public Prediction Predict (Prediction body, string deploymentName, string modelName)
+        public Prediction Predict (Prediction body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<Prediction> localVarResponse = PredictWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Prediction> localVarResponse = PredictWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -11352,9 +12061,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of Prediction</returns>
-        public ApiResponse< Prediction > PredictWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public ApiResponse< Prediction > PredictWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -11362,11 +12072,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predict");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Predict");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predict");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predict";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11389,6 +12102,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -11429,11 +12143,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of Prediction</returns>
-        public async System.Threading.Tasks.Task<Prediction> PredictAsync (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<Prediction> PredictAsync (Prediction body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<Prediction> localVarResponse = await PredictAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Prediction> localVarResponse = await PredictAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -11444,9 +12159,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input NDArray</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictAsyncWithHttpInfo (Prediction body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictAsyncWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -11454,11 +12170,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predict");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Predict");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predict");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predict";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11481,6 +12200,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -11520,12 +12240,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Prediction</returns>
-        public Prediction Predictimage (string deploymentName, string modelName, System.IO.Stream image = null)
+        public Prediction Predictimage (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
         {
-             ApiResponse<Prediction> localVarResponse = PredictimageWithHttpInfo(deploymentName, modelName, image);
+             ApiResponse<Prediction> localVarResponse = PredictimageWithHttpInfo(deploymentName, versionName, modelName, image);
              return localVarResponse.Data;
         }
 
@@ -11534,19 +12255,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ApiResponse of Prediction</returns>
-        public ApiResponse< Prediction > PredictimageWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null)
+        public ApiResponse< Prediction > PredictimageWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictimage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Predictimage");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11569,6 +12294,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (image != null) localVarFileParams.Add("image", this.Configuration.ApiClient.ParameterToFile("image", image));
 
@@ -11601,12 +12327,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of Prediction</returns>
-        public async System.Threading.Tasks.Task<Prediction> PredictimageAsync (string deploymentName, string modelName, System.IO.Stream image = null)
+        public async System.Threading.Tasks.Task<Prediction> PredictimageAsync (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
         {
-             ApiResponse<Prediction> localVarResponse = await PredictimageAsyncWithHttpInfo(deploymentName, modelName, image);
+             ApiResponse<Prediction> localVarResponse = await PredictimageAsyncWithHttpInfo(deploymentName, versionName, modelName, image);
              return localVarResponse.Data;
 
         }
@@ -11616,19 +12343,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictimageAsyncWithHttpInfo (string deploymentName, string modelName, System.IO.Stream image = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictimageAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictimage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Predictimage");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictimage";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11651,6 +12382,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (image != null) localVarFileParams.Add("image", this.Configuration.ApiClient.ParameterToFile("image", image));
 
@@ -11684,11 +12416,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Prediction</returns>
-        public Prediction Predictwithpreprocess (List<string> body, string deploymentName, string modelName)
+        public Prediction Predictwithpreprocess (List<string> body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<Prediction> localVarResponse = PredictwithpreprocessWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Prediction> localVarResponse = PredictwithpreprocessWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -11698,9 +12431,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of Prediction</returns>
-        public ApiResponse< Prediction > PredictwithpreprocessWithHttpInfo (List<string> body, string deploymentName, string modelName)
+        public ApiResponse< Prediction > PredictwithpreprocessWithHttpInfo (List<string> body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -11708,11 +12442,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictwithpreprocess");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Predictwithpreprocess");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictwithpreprocess");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11735,6 +12472,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -11775,11 +12513,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of Prediction</returns>
-        public async System.Threading.Tasks.Task<Prediction> PredictwithpreprocessAsync (List<string> body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<Prediction> PredictwithpreprocessAsync (List<string> body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<Prediction> localVarResponse = await PredictwithpreprocessAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<Prediction> localVarResponse = await PredictwithpreprocessAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -11790,9 +12529,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictwithpreprocessAsyncWithHttpInfo (List<string> body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictwithpreprocessAsyncWithHttpInfo (List<string> body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -11800,11 +12540,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictwithpreprocess");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Predictwithpreprocess");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictwithpreprocess");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11827,6 +12570,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -11867,11 +12611,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>JsonArrayResponse</returns>
-        public JsonArrayResponse Predictwithpreprocessjson (List<string> body, string deploymentName, string modelName)
+        public JsonArrayResponse Predictwithpreprocessjson (List<string> body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<JsonArrayResponse> localVarResponse = PredictwithpreprocessjsonWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<JsonArrayResponse> localVarResponse = PredictwithpreprocessjsonWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -11881,9 +12626,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of JsonArrayResponse</returns>
-        public ApiResponse< JsonArrayResponse > PredictwithpreprocessjsonWithHttpInfo (List<string> body, string deploymentName, string modelName)
+        public ApiResponse< JsonArrayResponse > PredictwithpreprocessjsonWithHttpInfo (List<string> body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -11891,11 +12637,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictwithpreprocessjson");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Predictwithpreprocessjson");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictwithpreprocessjson");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11918,6 +12667,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -11958,11 +12708,12 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of JsonArrayResponse</returns>
-        public async System.Threading.Tasks.Task<JsonArrayResponse> PredictwithpreprocessjsonAsync (List<string> body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<JsonArrayResponse> PredictwithpreprocessjsonAsync (List<string> body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<JsonArrayResponse> localVarResponse = await PredictwithpreprocessjsonAsyncWithHttpInfo(body, deploymentName, modelName);
+             ApiResponse<JsonArrayResponse> localVarResponse = await PredictwithpreprocessjsonAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -11973,9 +12724,10 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The input array</param>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> PredictwithpreprocessjsonAsyncWithHttpInfo (List<string> body, string deploymentName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> PredictwithpreprocessjsonAsyncWithHttpInfo (List<string> body, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -11983,11 +12735,14 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Predictwithpreprocessjson");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Predictwithpreprocessjson");
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Predictwithpreprocessjson");
 
-            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson";
+            var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -12010,6 +12765,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -12232,12 +12988,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>BatchCSVRecord</returns>
-        public BatchCSVRecord TransformCsv (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public BatchCSVRecord TransformCsv (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
         {
-             ApiResponse<BatchCSVRecord> localVarResponse = TransformCsvWithHttpInfo(deploymentName, transformName, batchCSVRecord);
+             ApiResponse<BatchCSVRecord> localVarResponse = TransformCsvWithHttpInfo(deploymentName, versionName, transformName, batchCSVRecord);
              return localVarResponse.Data;
         }
 
@@ -12246,19 +13003,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>ApiResponse of BatchCSVRecord</returns>
-        public ApiResponse< BatchCSVRecord > TransformCsvWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public ApiResponse< BatchCSVRecord > TransformCsvWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformCsv");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformCsv");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformCsv");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -12281,6 +13042,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
             {
@@ -12320,12 +13082,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of BatchCSVRecord</returns>
-        public async System.Threading.Tasks.Task<BatchCSVRecord> TransformCsvAsync (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public async System.Threading.Tasks.Task<BatchCSVRecord> TransformCsvAsync (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
         {
-             ApiResponse<BatchCSVRecord> localVarResponse = await TransformCsvAsyncWithHttpInfo(deploymentName, transformName, batchCSVRecord);
+             ApiResponse<BatchCSVRecord> localVarResponse = await TransformCsvAsyncWithHttpInfo(deploymentName, versionName, transformName, batchCSVRecord);
              return localVarResponse.Data;
 
         }
@@ -12335,19 +13098,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of ApiResponse (BatchCSVRecord)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<BatchCSVRecord>> TransformCsvAsyncWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public async System.Threading.Tasks.Task<ApiResponse<BatchCSVRecord>> TransformCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformCsv");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformCsv");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformCsv");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transform";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -12370,6 +13137,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
             {
@@ -12409,12 +13177,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody TransformarrayCsv (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public Base64NDArrayBody TransformarrayCsv (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = TransformarrayCsvWithHttpInfo(deploymentName, transformName, batchCSVRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformarrayCsvWithHttpInfo(deploymentName, versionName, transformName, batchCSVRecord);
              return localVarResponse.Data;
         }
 
@@ -12423,19 +13192,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformarrayCsvWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public ApiResponse< Base64NDArrayBody > TransformarrayCsvWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayCsv");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformarrayCsv");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformarrayCsv");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -12458,6 +13231,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
             {
@@ -12497,12 +13271,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayCsvAsync (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayCsvAsync (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformarrayCsvAsyncWithHttpInfo(deploymentName, transformName, batchCSVRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformarrayCsvAsyncWithHttpInfo(deploymentName, versionName, transformName, batchCSVRecord);
              return localVarResponse.Data;
 
         }
@@ -12512,19 +13287,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayCsvAsyncWithHttpInfo (string deploymentName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayCsv");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformarrayCsv");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformarrayCsv");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -12547,6 +13326,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
             {
@@ -12586,12 +13366,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="batchImageRecord">The input batch of record arrays</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody TransformarrayImage (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord)
+        public Base64NDArrayBody TransformarrayImage (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = TransformarrayImageWithHttpInfo(deploymentName, imageTransformName, batchImageRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformarrayImageWithHttpInfo(deploymentName, versionName, imageTransformName, batchImageRecord);
              return localVarResponse.Data;
         }
 
@@ -12600,14 +13381,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="batchImageRecord">The input batch of record arrays</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformarrayImageWithHttpInfo (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord)
+        public ApiResponse< Base64NDArrayBody > TransformarrayImageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayImage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformarrayImage");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformarrayImage");
@@ -12615,7 +13400,7 @@ namespace Skymind.SKIL.Api
             if (batchImageRecord == null)
                 throw new ApiException(400, "Missing required parameter 'batchImageRecord' when calling DefaultApi->TransformarrayImage");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -12638,6 +13423,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (batchImageRecord != null && batchImageRecord.GetType() != typeof(byte[]))
             {
@@ -12677,12 +13463,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="batchImageRecord">The input batch of record arrays</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayImageAsync (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayImageAsync (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformarrayImageAsyncWithHttpInfo(deploymentName, imageTransformName, batchImageRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformarrayImageAsyncWithHttpInfo(deploymentName, versionName, imageTransformName, batchImageRecord);
              return localVarResponse.Data;
 
         }
@@ -12692,14 +13479,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="batchImageRecord">The input batch of record arrays</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayImageAsyncWithHttpInfo (string deploymentName, string imageTransformName, BatchImageRecord batchImageRecord)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayImageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayImage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformarrayImage");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformarrayImage");
@@ -12707,7 +13498,7 @@ namespace Skymind.SKIL.Api
             if (batchImageRecord == null)
                 throw new ApiException(400, "Missing required parameter 'batchImageRecord' when calling DefaultApi->TransformarrayImage");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -12730,6 +13521,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (batchImageRecord != null && batchImageRecord.GetType() != typeof(byte[]))
             {
@@ -12769,12 +13561,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="files">The image files to upload</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody Transformimage (string deploymentName, string imageTransformName, List<byte[]> files)
+        public Base64NDArrayBody Transformimage (string deploymentName, string versionName, string imageTransformName, List<byte[]> files)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = TransformimageWithHttpInfo(deploymentName, imageTransformName, files);
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformimageWithHttpInfo(deploymentName, versionName, imageTransformName, files);
              return localVarResponse.Data;
         }
 
@@ -12783,14 +13576,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="files">The image files to upload</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformimageWithHttpInfo (string deploymentName, string imageTransformName, List<byte[]> files)
+        public ApiResponse< Base64NDArrayBody > TransformimageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, List<byte[]> files)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformimage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Transformimage");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->Transformimage");
@@ -12798,7 +13595,7 @@ namespace Skymind.SKIL.Api
             if (files == null)
                 throw new ApiException(400, "Missing required parameter 'files' when calling DefaultApi->Transformimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -12821,6 +13618,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (files != null) localVarFormParams.Add("files", this.Configuration.ApiClient.ParameterToString(files)); // form parameter
 
@@ -12853,12 +13651,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="files">The image files to upload</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformimageAsync (string deploymentName, string imageTransformName, List<byte[]> files)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformimageAsync (string deploymentName, string versionName, string imageTransformName, List<byte[]> files)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformimageAsyncWithHttpInfo(deploymentName, imageTransformName, files);
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformimageAsyncWithHttpInfo(deploymentName, versionName, imageTransformName, files);
              return localVarResponse.Data;
 
         }
@@ -12868,14 +13667,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="files">The image files to upload</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformimageAsyncWithHttpInfo (string deploymentName, string imageTransformName, List<byte[]> files)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformimageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, List<byte[]> files)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformimage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Transformimage");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->Transformimage");
@@ -12883,7 +13686,7 @@ namespace Skymind.SKIL.Api
             if (files == null)
                 throw new ApiException(400, "Missing required parameter 'files' when calling DefaultApi->Transformimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -12906,6 +13709,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (files != null) localVarFormParams.Add("files", this.Configuration.ApiClient.ParameterToString(files)); // form parameter
 
@@ -12938,12 +13742,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>SingleCSVRecord</returns>
-        public SingleCSVRecord TransformincrementalCsv (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public SingleCSVRecord TransformincrementalCsv (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
         {
-             ApiResponse<SingleCSVRecord> localVarResponse = TransformincrementalCsvWithHttpInfo(deploymentName, transformName, singleCSVRecord);
+             ApiResponse<SingleCSVRecord> localVarResponse = TransformincrementalCsvWithHttpInfo(deploymentName, versionName, transformName, singleCSVRecord);
              return localVarResponse.Data;
         }
 
@@ -12952,19 +13757,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>ApiResponse of SingleCSVRecord</returns>
-        public ApiResponse< SingleCSVRecord > TransformincrementalCsvWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public ApiResponse< SingleCSVRecord > TransformincrementalCsvWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalCsv");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformincrementalCsv");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformincrementalCsv");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -12987,6 +13796,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
             {
@@ -13026,12 +13836,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>Task of SingleCSVRecord</returns>
-        public async System.Threading.Tasks.Task<SingleCSVRecord> TransformincrementalCsvAsync (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public async System.Threading.Tasks.Task<SingleCSVRecord> TransformincrementalCsvAsync (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
         {
-             ApiResponse<SingleCSVRecord> localVarResponse = await TransformincrementalCsvAsyncWithHttpInfo(deploymentName, transformName, singleCSVRecord);
+             ApiResponse<SingleCSVRecord> localVarResponse = await TransformincrementalCsvAsyncWithHttpInfo(deploymentName, versionName, transformName, singleCSVRecord);
              return localVarResponse.Data;
 
         }
@@ -13041,19 +13852,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>Task of ApiResponse (SingleCSVRecord)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleCSVRecord>> TransformincrementalCsvAsyncWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SingleCSVRecord>> TransformincrementalCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalCsv");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformincrementalCsv");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformincrementalCsv");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13076,6 +13891,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
             {
@@ -13115,12 +13931,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalarrayCsvWithHttpInfo(deploymentName, transformName, singleCSVRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalarrayCsvWithHttpInfo(deploymentName, versionName, transformName, singleCSVRecord);
              return localVarResponse.Data;
         }
 
@@ -13129,19 +13946,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayCsvWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayCsvWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayCsv");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformincrementalarrayCsv");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformincrementalarrayCsv");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13164,6 +13985,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
             {
@@ -13203,12 +14025,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayCsvAsync (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayCsvAsync (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalarrayCsvAsyncWithHttpInfo(deploymentName, transformName, singleCSVRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalarrayCsvAsyncWithHttpInfo(deploymentName, versionName, transformName, singleCSVRecord);
              return localVarResponse.Data;
 
         }
@@ -13218,19 +14041,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleCSVRecord">The input record array (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayCsvAsyncWithHttpInfo (string deploymentName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayCsv");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformincrementalarrayCsv");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformincrementalarrayCsv");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13253,6 +14080,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
             {
@@ -13292,12 +14120,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="singleImageRecord">The input record array</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord)
+        public Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalarrayImageWithHttpInfo(deploymentName, imageTransformName, singleImageRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalarrayImageWithHttpInfo(deploymentName, versionName, imageTransformName, singleImageRecord);
              return localVarResponse.Data;
         }
 
@@ -13306,14 +14135,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="singleImageRecord">The input record array</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayImageWithHttpInfo (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord)
+        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayImageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayImage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformincrementalarrayImage");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformincrementalarrayImage");
@@ -13321,7 +14154,7 @@ namespace Skymind.SKIL.Api
             if (singleImageRecord == null)
                 throw new ApiException(400, "Missing required parameter 'singleImageRecord' when calling DefaultApi->TransformincrementalarrayImage");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13344,6 +14177,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (singleImageRecord != null && singleImageRecord.GetType() != typeof(byte[]))
             {
@@ -13383,12 +14217,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="singleImageRecord">The input record array</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayImageAsync (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayImageAsync (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalarrayImageAsyncWithHttpInfo(deploymentName, imageTransformName, singleImageRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalarrayImageAsyncWithHttpInfo(deploymentName, versionName, imageTransformName, singleImageRecord);
              return localVarResponse.Data;
 
         }
@@ -13398,14 +14233,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="singleImageRecord">The input record array</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayImageAsyncWithHttpInfo (string deploymentName, string imageTransformName, SingleImageRecord singleImageRecord)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayImageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayImage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformincrementalarrayImage");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformincrementalarrayImage");
@@ -13413,7 +14252,7 @@ namespace Skymind.SKIL.Api
             if (singleImageRecord == null)
                 throw new ApiException(400, "Missing required parameter 'singleImageRecord' when calling DefaultApi->TransformincrementalarrayImage");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13436,6 +14275,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (singleImageRecord != null && singleImageRecord.GetType() != typeof(byte[]))
             {
@@ -13475,12 +14315,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="file">The image file to upload</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody Transformincrementalimage (string deploymentName, string imageTransformName, System.IO.Stream file)
+        public Base64NDArrayBody Transformincrementalimage (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalimageWithHttpInfo(deploymentName, imageTransformName, file);
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalimageWithHttpInfo(deploymentName, versionName, imageTransformName, file);
              return localVarResponse.Data;
         }
 
@@ -13489,14 +14330,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="file">The image file to upload</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformincrementalimageWithHttpInfo (string deploymentName, string imageTransformName, System.IO.Stream file)
+        public ApiResponse< Base64NDArrayBody > TransformincrementalimageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformincrementalimage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Transformincrementalimage");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->Transformincrementalimage");
@@ -13504,7 +14349,7 @@ namespace Skymind.SKIL.Api
             if (file == null)
                 throw new ApiException(400, "Missing required parameter 'file' when calling DefaultApi->Transformincrementalimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13527,6 +14372,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
@@ -13559,12 +14405,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="file">The image file to upload</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalimageAsync (string deploymentName, string imageTransformName, System.IO.Stream file)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalimageAsync (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalimageAsyncWithHttpInfo(deploymentName, imageTransformName, file);
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalimageAsyncWithHttpInfo(deploymentName, versionName, imageTransformName, file);
              return localVarResponse.Data;
 
         }
@@ -13574,14 +14421,18 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="imageTransformName">ID or name of the deployed image transform</param>
         /// <param name="file">The image file to upload</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalimageAsyncWithHttpInfo (string deploymentName, string imageTransformName, System.IO.Stream file)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalimageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformincrementalimage");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Transformincrementalimage");
             // verify the required parameter 'imageTransformName' is set
             if (imageTransformName == null)
                 throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->Transformincrementalimage");
@@ -13589,7 +14440,7 @@ namespace Skymind.SKIL.Api
             if (file == null)
                 throw new ApiException(400, "Missing required parameter 'file' when calling DefaultApi->Transformincrementalimage");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13612,6 +14463,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
             if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
@@ -13644,11 +14496,12 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <returns>TransformProcess</returns>
-        public TransformProcess TransformprocessGet (string deploymentName, string transformName)
+        public TransformProcess TransformprocessGet (string deploymentName, string versionName, string transformName)
         {
-             ApiResponse<TransformProcess> localVarResponse = TransformprocessGetWithHttpInfo(deploymentName, transformName);
+             ApiResponse<TransformProcess> localVarResponse = TransformprocessGetWithHttpInfo(deploymentName, versionName, transformName);
              return localVarResponse.Data;
         }
 
@@ -13657,18 +14510,22 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <returns>ApiResponse of TransformProcess</returns>
-        public ApiResponse< TransformProcess > TransformprocessGetWithHttpInfo (string deploymentName, string transformName)
+        public ApiResponse< TransformProcess > TransformprocessGetWithHttpInfo (string deploymentName, string versionName, string transformName)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformprocessGet");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformprocessGet");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformprocessGet");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13690,6 +14547,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
 
             // authentication (api_key) required
@@ -13721,11 +14579,12 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <returns>Task of TransformProcess</returns>
-        public async System.Threading.Tasks.Task<TransformProcess> TransformprocessGetAsync (string deploymentName, string transformName)
+        public async System.Threading.Tasks.Task<TransformProcess> TransformprocessGetAsync (string deploymentName, string versionName, string transformName)
         {
-             ApiResponse<TransformProcess> localVarResponse = await TransformprocessGetAsyncWithHttpInfo(deploymentName, transformName);
+             ApiResponse<TransformProcess> localVarResponse = await TransformprocessGetAsyncWithHttpInfo(deploymentName, versionName, transformName);
              return localVarResponse.Data;
 
         }
@@ -13735,18 +14594,22 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <returns>Task of ApiResponse (TransformProcess)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TransformProcess>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string transformName)
+        public async System.Threading.Tasks.Task<ApiResponse<TransformProcess>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string transformName)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformprocessGet");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformprocessGet");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformprocessGet");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13768,6 +14631,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
 
             // authentication (api_key) required
@@ -13799,12 +14663,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns></returns>
-        public void TransformprocessPost (string deploymentName, string transformName, TransformProcess transformProcess = null)
+        public void TransformprocessPost (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null)
         {
-             TransformprocessPostWithHttpInfo(deploymentName, transformName, transformProcess);
+             TransformprocessPostWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
         }
 
         /// <summary>
@@ -13812,19 +14677,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string transformName, TransformProcess transformProcess = null)
+        public ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformprocessPost");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformprocessPost");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformprocessPost");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13847,6 +14716,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (transformProcess != null && transformProcess.GetType() != typeof(byte[]))
             {
@@ -13886,12 +14756,13 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string transformName, TransformProcess transformProcess = null)
+        public async System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null)
         {
-             await TransformprocessPostAsyncWithHttpInfo(deploymentName, transformName, transformProcess);
+             await TransformprocessPostAsyncWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
 
         }
 
@@ -13900,19 +14771,23 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
+        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string transformName, TransformProcess transformProcess = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformprocessPost");
+            // verify the required parameter 'versionName' is set
+            if (versionName == null)
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformprocessPost");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
                 throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformprocessPost");
 
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess";
+            var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13935,6 +14810,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
+            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
             if (transformProcess != null && transformProcess.GetType() != typeof(byte[]))
             {
@@ -13973,11 +14849,12 @@ namespace Skymind.SKIL.Api
         /// Updates the best model for an experiment 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
         /// <returns>ExperimentEntity</returns>
-        public ExperimentEntity UpdateBestModelForExperiment (UpdateBestModel updateBestModel)
+        public ExperimentEntity UpdateBestModelForExperiment (string modelHistoryServerId, UpdateBestModel updateBestModel)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = UpdateBestModelForExperimentWithHttpInfo(updateBestModel);
+             ApiResponse<ExperimentEntity> localVarResponse = UpdateBestModelForExperimentWithHttpInfo(modelHistoryServerId, updateBestModel);
              return localVarResponse.Data;
         }
 
@@ -13985,15 +14862,19 @@ namespace Skymind.SKIL.Api
         /// Updates the best model for an experiment 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
         /// <returns>ApiResponse of ExperimentEntity</returns>
-        public ApiResponse< ExperimentEntity > UpdateBestModelForExperimentWithHttpInfo (UpdateBestModel updateBestModel)
+        public ApiResponse< ExperimentEntity > UpdateBestModelForExperimentWithHttpInfo (string modelHistoryServerId, UpdateBestModel updateBestModel)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->UpdateBestModelForExperiment");
             // verify the required parameter 'updateBestModel' is set
             if (updateBestModel == null)
                 throw new ApiException(400, "Missing required parameter 'updateBestModel' when calling DefaultApi->UpdateBestModelForExperiment");
 
-            var localVarPath = "/experiment/best";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment/best";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -14015,6 +14896,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (updateBestModel != null && updateBestModel.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(updateBestModel); // http body (model) parameter
@@ -14052,11 +14934,12 @@ namespace Skymind.SKIL.Api
         /// Updates the best model for an experiment 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
         /// <returns>Task of ExperimentEntity</returns>
-        public async System.Threading.Tasks.Task<ExperimentEntity> UpdateBestModelForExperimentAsync (UpdateBestModel updateBestModel)
+        public async System.Threading.Tasks.Task<ExperimentEntity> UpdateBestModelForExperimentAsync (string modelHistoryServerId, UpdateBestModel updateBestModel)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = await UpdateBestModelForExperimentAsyncWithHttpInfo(updateBestModel);
+             ApiResponse<ExperimentEntity> localVarResponse = await UpdateBestModelForExperimentAsyncWithHttpInfo(modelHistoryServerId, updateBestModel);
              return localVarResponse.Data;
 
         }
@@ -14065,15 +14948,19 @@ namespace Skymind.SKIL.Api
         /// Updates the best model for an experiment 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="updateBestModel">Model encapsulating the experiment id to update and the best model id.</param>
         /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateBestModelForExperimentAsyncWithHttpInfo (UpdateBestModel updateBestModel)
+        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateBestModelForExperimentAsyncWithHttpInfo (string modelHistoryServerId, UpdateBestModel updateBestModel)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->UpdateBestModelForExperiment");
             // verify the required parameter 'updateBestModel' is set
             if (updateBestModel == null)
                 throw new ApiException(400, "Missing required parameter 'updateBestModel' when calling DefaultApi->UpdateBestModelForExperiment");
 
-            var localVarPath = "/experiment/best";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment/best";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -14095,6 +14982,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (updateBestModel != null && updateBestModel.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(updateBestModel); // http body (model) parameter
@@ -14132,12 +15020,13 @@ namespace Skymind.SKIL.Api
         /// Updates an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to update</param>
         /// <param name="experimentEntity">The experiment entity to update with</param>
         /// <returns>ExperimentEntity</returns>
-        public ExperimentEntity UpdateExperiment (string experimentID, ExperimentEntity experimentEntity)
+        public ExperimentEntity UpdateExperiment (string modelHistoryServerId, string experimentID, ExperimentEntity experimentEntity)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = UpdateExperimentWithHttpInfo(experimentID, experimentEntity);
+             ApiResponse<ExperimentEntity> localVarResponse = UpdateExperimentWithHttpInfo(modelHistoryServerId, experimentID, experimentEntity);
              return localVarResponse.Data;
         }
 
@@ -14145,11 +15034,15 @@ namespace Skymind.SKIL.Api
         /// Updates an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to update</param>
         /// <param name="experimentEntity">The experiment entity to update with</param>
         /// <returns>ApiResponse of ExperimentEntity</returns>
-        public ApiResponse< ExperimentEntity > UpdateExperimentWithHttpInfo (string experimentID, ExperimentEntity experimentEntity)
+        public ApiResponse< ExperimentEntity > UpdateExperimentWithHttpInfo (string modelHistoryServerId, string experimentID, ExperimentEntity experimentEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->UpdateExperiment");
             // verify the required parameter 'experimentID' is set
             if (experimentID == null)
                 throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->UpdateExperiment");
@@ -14157,7 +15050,7 @@ namespace Skymind.SKIL.Api
             if (experimentEntity == null)
                 throw new ApiException(400, "Missing required parameter 'experimentEntity' when calling DefaultApi->UpdateExperiment");
 
-            var localVarPath = "/experiment/{experimentID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -14179,6 +15072,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
             if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
             {
@@ -14217,12 +15111,13 @@ namespace Skymind.SKIL.Api
         /// Updates an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to update</param>
         /// <param name="experimentEntity">The experiment entity to update with</param>
         /// <returns>Task of ExperimentEntity</returns>
-        public async System.Threading.Tasks.Task<ExperimentEntity> UpdateExperimentAsync (string experimentID, ExperimentEntity experimentEntity)
+        public async System.Threading.Tasks.Task<ExperimentEntity> UpdateExperimentAsync (string modelHistoryServerId, string experimentID, ExperimentEntity experimentEntity)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = await UpdateExperimentAsyncWithHttpInfo(experimentID, experimentEntity);
+             ApiResponse<ExperimentEntity> localVarResponse = await UpdateExperimentAsyncWithHttpInfo(modelHistoryServerId, experimentID, experimentEntity);
              return localVarResponse.Data;
 
         }
@@ -14231,11 +15126,15 @@ namespace Skymind.SKIL.Api
         /// Updates an experiment, given an experiment entity 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="experimentID">the GUID of the experiment to update</param>
         /// <param name="experimentEntity">The experiment entity to update with</param>
         /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateExperimentAsyncWithHttpInfo (string experimentID, ExperimentEntity experimentEntity)
+        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> UpdateExperimentAsyncWithHttpInfo (string modelHistoryServerId, string experimentID, ExperimentEntity experimentEntity)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->UpdateExperiment");
             // verify the required parameter 'experimentID' is set
             if (experimentID == null)
                 throw new ApiException(400, "Missing required parameter 'experimentID' when calling DefaultApi->UpdateExperiment");
@@ -14243,7 +15142,7 @@ namespace Skymind.SKIL.Api
             if (experimentEntity == null)
                 throw new ApiException(400, "Missing required parameter 'experimentEntity' when calling DefaultApi->UpdateExperiment");
 
-            var localVarPath = "/experiment/{experimentID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/experiment/{experimentID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -14265,6 +15164,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (experimentID != null) localVarPathParams.Add("experimentID", this.Configuration.ApiClient.ParameterToString(experimentID)); // path parameter
             if (experimentEntity != null && experimentEntity.GetType() != typeof(byte[]))
             {
@@ -14303,12 +15203,13 @@ namespace Skymind.SKIL.Api
         /// Update a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
         /// <param name="updateModelHistoryRequest">The model history request object</param>
         /// <returns>ModelHistoryEntity</returns>
-        public ModelHistoryEntity UpdateModelHistory (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
+        public ModelHistoryEntity UpdateModelHistory (string modelHistoryServerId, string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
         {
-             ApiResponse<ModelHistoryEntity> localVarResponse = UpdateModelHistoryWithHttpInfo(modelHistoryID, updateModelHistoryRequest);
+             ApiResponse<ModelHistoryEntity> localVarResponse = UpdateModelHistoryWithHttpInfo(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest);
              return localVarResponse.Data;
         }
 
@@ -14316,11 +15217,15 @@ namespace Skymind.SKIL.Api
         /// Update a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
         /// <param name="updateModelHistoryRequest">The model history request object</param>
         /// <returns>ApiResponse of ModelHistoryEntity</returns>
-        public ApiResponse< ModelHistoryEntity > UpdateModelHistoryWithHttpInfo (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
+        public ApiResponse< ModelHistoryEntity > UpdateModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->UpdateModelHistory");
             // verify the required parameter 'modelHistoryID' is set
             if (modelHistoryID == null)
                 throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->UpdateModelHistory");
@@ -14328,7 +15233,7 @@ namespace Skymind.SKIL.Api
             if (updateModelHistoryRequest == null)
                 throw new ApiException(400, "Missing required parameter 'updateModelHistoryRequest' when calling DefaultApi->UpdateModelHistory");
 
-            var localVarPath = "/modelhistory/{modelHistoryID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -14350,6 +15255,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
             if (updateModelHistoryRequest != null && updateModelHistoryRequest.GetType() != typeof(byte[]))
             {
@@ -14388,12 +15294,13 @@ namespace Skymind.SKIL.Api
         /// Update a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
         /// <param name="updateModelHistoryRequest">The model history request object</param>
         /// <returns>Task of ModelHistoryEntity</returns>
-        public async System.Threading.Tasks.Task<ModelHistoryEntity> UpdateModelHistoryAsync (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
+        public async System.Threading.Tasks.Task<ModelHistoryEntity> UpdateModelHistoryAsync (string modelHistoryServerId, string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
         {
-             ApiResponse<ModelHistoryEntity> localVarResponse = await UpdateModelHistoryAsyncWithHttpInfo(modelHistoryID, updateModelHistoryRequest);
+             ApiResponse<ModelHistoryEntity> localVarResponse = await UpdateModelHistoryAsyncWithHttpInfo(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest);
              return localVarResponse.Data;
 
         }
@@ -14402,11 +15309,15 @@ namespace Skymind.SKIL.Api
         /// Update a model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace to update</param>
         /// <param name="updateModelHistoryRequest">The model history request object</param>
         /// <returns>Task of ApiResponse (ModelHistoryEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> UpdateModelHistoryAsyncWithHttpInfo (string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
+        public async System.Threading.Tasks.Task<ApiResponse<ModelHistoryEntity>> UpdateModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->UpdateModelHistory");
             // verify the required parameter 'modelHistoryID' is set
             if (modelHistoryID == null)
                 throw new ApiException(400, "Missing required parameter 'modelHistoryID' when calling DefaultApi->UpdateModelHistory");
@@ -14414,7 +15325,7 @@ namespace Skymind.SKIL.Api
             if (updateModelHistoryRequest == null)
                 throw new ApiException(400, "Missing required parameter 'updateModelHistoryRequest' when calling DefaultApi->UpdateModelHistory");
 
-            var localVarPath = "/modelhistory/{modelHistoryID}";
+            var localVarPath = "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -14436,6 +15347,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
             if (modelHistoryID != null) localVarPathParams.Add("modelHistoryID", this.Configuration.ApiClient.ParameterToString(modelHistoryID)); // path parameter
             if (updateModelHistoryRequest != null && updateModelHistoryRequest.GetType() != typeof(byte[]))
             {

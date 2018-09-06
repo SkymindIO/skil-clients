@@ -29,11 +29,12 @@ type DefaultApiService service
 /* 
 DefaultApiService Adds an evaluation result
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param evaluationResultsEntity The evaluation result entity
 
 @return EvaluationResultsEntity
 */
-func (a *DefaultApiService) AddEvaluationResult(ctx context.Context, evaluationResultsEntity EvaluationResultsEntity) (EvaluationResultsEntity, *http.Response, error) {
+func (a *DefaultApiService) AddEvaluationResult(ctx context.Context, modelHistoryServerId string, evaluationResultsEntity EvaluationResultsEntity) (EvaluationResultsEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -43,7 +44,8 @@ func (a *DefaultApiService) AddEvaluationResult(ctx context.Context, evaluationR
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/revisions/evaluations/"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/revisions/evaluations/"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -131,11 +133,12 @@ func (a *DefaultApiService) AddEvaluationResult(ctx context.Context, evaluationR
 /* 
 DefaultApiService Adds a number of examples to a minibatch ID given an AddExampleRequest.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size
 
 @return AddExampleRequest
 */
-func (a *DefaultApiService) AddExampleForBatch(ctx context.Context, addExampleRequest AddExampleRequest) (AddExampleRequest, *http.Response, error) {
+func (a *DefaultApiService) AddExampleForBatch(ctx context.Context, modelHistoryServerId string, addExampleRequest AddExampleRequest) (AddExampleRequest, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -145,7 +148,8 @@ func (a *DefaultApiService) AddExampleForBatch(ctx context.Context, addExampleRe
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/exampleForBatch"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/exampleForBatch"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -233,11 +237,12 @@ func (a *DefaultApiService) AddExampleForBatch(ctx context.Context, addExampleRe
 /* 
 DefaultApiService Adds an example to a minibatch
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param exampleEntity The example to add to the minibatch
 
 @return ExampleEntity
 */
-func (a *DefaultApiService) AddExampleToMinibatch(ctx context.Context, exampleEntity ExampleEntity) (ExampleEntity, *http.Response, error) {
+func (a *DefaultApiService) AddExampleToMinibatch(ctx context.Context, modelHistoryServerId string, exampleEntity ExampleEntity) (ExampleEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -247,7 +252,8 @@ func (a *DefaultApiService) AddExampleToMinibatch(ctx context.Context, exampleEn
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/example"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/example"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -335,11 +341,12 @@ func (a *DefaultApiService) AddExampleToMinibatch(ctx context.Context, exampleEn
 /* 
 DefaultApiService Add an experiment, given an experiment entity
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param experimentEntity The experiment entity to add
 
 @return ExperimentEntity
 */
-func (a *DefaultApiService) AddExperiment(ctx context.Context, experimentEntity ExperimentEntity) (ExperimentEntity, *http.Response, error) {
+func (a *DefaultApiService) AddExperiment(ctx context.Context, modelHistoryServerId string, experimentEntity ExperimentEntity) (ExperimentEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -349,7 +356,8 @@ func (a *DefaultApiService) AddExperiment(ctx context.Context, experimentEntity 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experiment"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/experiment"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -437,11 +445,12 @@ func (a *DefaultApiService) AddExperiment(ctx context.Context, experimentEntity 
 /* 
 DefaultApiService Adds a minibatch
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param minibatchEntity The minibatch entity to add
 
 @return MinibatchEntity
 */
-func (a *DefaultApiService) AddMinibatch(ctx context.Context, minibatchEntity MinibatchEntity) (MinibatchEntity, *http.Response, error) {
+func (a *DefaultApiService) AddMinibatch(ctx context.Context, modelHistoryServerId string, minibatchEntity MinibatchEntity) (MinibatchEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -451,7 +460,8 @@ func (a *DefaultApiService) AddMinibatch(ctx context.Context, minibatchEntity Mi
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/minibatch"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/minibatch"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -539,11 +549,12 @@ func (a *DefaultApiService) AddMinibatch(ctx context.Context, minibatchEntity Mi
 /* 
 DefaultApiService Adds an evaluation feedback to the model against a given minibatch id.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param modelFeedBackRequest The model feedback request object
 
 @return ModelFeedBackRequest
 */
-func (a *DefaultApiService) AddModelFeedback(ctx context.Context, modelFeedBackRequest ModelFeedBackRequest) (ModelFeedBackRequest, *http.Response, error) {
+func (a *DefaultApiService) AddModelFeedback(ctx context.Context, modelHistoryServerId string, modelFeedBackRequest ModelFeedBackRequest) (ModelFeedBackRequest, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -553,7 +564,8 @@ func (a *DefaultApiService) AddModelFeedback(ctx context.Context, modelFeedBackR
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/feedback"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/feedback"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -641,11 +653,12 @@ func (a *DefaultApiService) AddModelFeedback(ctx context.Context, modelFeedBackR
 /* 
 DefaultApiService Add a model history / workspace
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param addModelHistoryRequest The model history request object
 
 @return ModelHistoryEntity
 */
-func (a *DefaultApiService) AddModelHistory(ctx context.Context, addModelHistoryRequest AddModelHistoryRequest) (ModelHistoryEntity, *http.Response, error) {
+func (a *DefaultApiService) AddModelHistory(ctx context.Context, modelHistoryServerId string, addModelHistoryRequest AddModelHistoryRequest) (ModelHistoryEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -655,7 +668,8 @@ func (a *DefaultApiService) AddModelHistory(ctx context.Context, addModelHistory
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/modelhistory"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/modelhistory"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -743,11 +757,12 @@ func (a *DefaultApiService) AddModelHistory(ctx context.Context, addModelHistory
 /* 
 DefaultApiService Adds a model
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate
 
 @return ModelInstanceEntity
 */
-func (a *DefaultApiService) AddModelInstance(ctx context.Context, modelInstanceEntity ModelInstanceEntity) (ModelInstanceEntity, *http.Response, error) {
+func (a *DefaultApiService) AddModelInstance(ctx context.Context, modelHistoryServerId string, modelInstanceEntity ModelInstanceEntity) (ModelInstanceEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -757,7 +772,8 @@ func (a *DefaultApiService) AddModelInstance(ctx context.Context, modelInstanceE
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -845,11 +861,12 @@ func (a *DefaultApiService) AddModelInstance(ctx context.Context, modelInstanceE
 /* 
 DefaultApiService Aggregates the evaluaition results of a model instance, based on the evaluation type
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate
 
 @return EvaluationResultsEntity
 */
-func (a *DefaultApiService) AggregateModelResults(ctx context.Context, aggregatePrediction AggregatePrediction) (EvaluationResultsEntity, *http.Response, error) {
+func (a *DefaultApiService) AggregateModelResults(ctx context.Context, modelHistoryServerId string, aggregatePrediction AggregatePrediction) (EvaluationResultsEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -859,7 +876,8 @@ func (a *DefaultApiService) AggregateModelResults(ctx context.Context, aggregate
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/aggregateresults"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/aggregateresults"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -949,11 +967,12 @@ DefaultApiService Use the deployed model to classify the input
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The input NDArray
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return ClassificationResult
 */
-func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, deploymentName string, modelName string) (ClassificationResult, *http.Response, error) {
+func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, deploymentName string, versionName string, modelName string) (ClassificationResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -963,8 +982,9 @@ func (a *DefaultApiService) Classify(ctx context.Context, body Prediction, deplo
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/classify"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1055,11 +1075,12 @@ DefaultApiService Same as /classify but returns the output as Base64NDArrayBody
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The input NDArray
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return Base64NdArrayBody
 */
-func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, deploymentName string, modelName string) (Base64NdArrayBody, *http.Response, error) {
+func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, deploymentName string, versionName string, modelName string) (Base64NdArrayBody, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -1069,8 +1090,9 @@ func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/classifyarray"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1160,6 +1182,7 @@ func (a *DefaultApiService) Classifyarray(ctx context.Context, body Prediction, 
 DefaultApiService Use the deployed model to classify the input, using input image file from multipart form data.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
  * @param optional nil or *ClassifyimageOpts - Optional Parameters:
      * @param "Image" (optional.Interface of *os.File) -  The file to upload.
@@ -1171,7 +1194,7 @@ type ClassifyimageOpts struct {
 	Image optional.Interface
 }
 
-func (a *DefaultApiService) Classifyimage(ctx context.Context, deploymentName string, modelName string, localVarOptionals *ClassifyimageOpts) (ClassificationResult, *http.Response, error) {
+func (a *DefaultApiService) Classifyimage(ctx context.Context, deploymentName string, versionName string, modelName string, localVarOptionals *ClassifyimageOpts) (ClassificationResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -1181,8 +1204,9 @@ func (a *DefaultApiService) Classifyimage(ctx context.Context, deploymentName st
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/classifyimage"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1283,11 +1307,12 @@ func (a *DefaultApiService) Classifyimage(ctx context.Context, deploymentName st
 /* 
 DefaultApiService Creates model History
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param modelHistoryEntity The model history entity
 
 @return ModelHistoryEntity
 */
-func (a *DefaultApiService) CreateModelHistory(ctx context.Context, modelHistoryEntity ModelHistoryEntity) (ModelHistoryEntity, *http.Response, error) {
+func (a *DefaultApiService) CreateModelHistory(ctx context.Context, modelHistoryServerId string, modelHistoryEntity ModelHistoryEntity) (ModelHistoryEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -1297,7 +1322,8 @@ func (a *DefaultApiService) CreateModelHistory(ctx context.Context, modelHistory
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/revisions"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/revisions"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1385,11 +1411,12 @@ func (a *DefaultApiService) CreateModelHistory(ctx context.Context, modelHistory
 /* 
 DefaultApiService Deletes an experiment, given an experiment entity
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param experimentID the GUID of the experiment to delete
 
 @return InlineResponse200
 */
-func (a *DefaultApiService) DeleteExperiment(ctx context.Context, experimentID string) (InlineResponse200, *http.Response, error) {
+func (a *DefaultApiService) DeleteExperiment(ctx context.Context, modelHistoryServerId string, experimentID string) (InlineResponse200, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -1399,7 +1426,8 @@ func (a *DefaultApiService) DeleteExperiment(ctx context.Context, experimentID s
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experiment/{experimentID}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/experiment/{experimentID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"experimentID"+"}", fmt.Sprintf("%v", experimentID), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1600,11 +1628,12 @@ func (a *DefaultApiService) DeleteModel(ctx context.Context, deploymentId string
 /* 
 DefaultApiService Deletes a model history / workspace, given its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param modelHistoryID the GUID of the model history / workspace to delete
 
 @return InlineResponse200
 */
-func (a *DefaultApiService) DeleteModelHistory(ctx context.Context, modelHistoryID string) (InlineResponse200, *http.Response, error) {
+func (a *DefaultApiService) DeleteModelHistory(ctx context.Context, modelHistoryServerId string, modelHistoryID string) (InlineResponse200, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -1614,7 +1643,8 @@ func (a *DefaultApiService) DeleteModelHistory(ctx context.Context, modelHistory
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/modelhistory/{modelHistoryID}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryID"+"}", fmt.Sprintf("%v", modelHistoryID), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1712,11 +1742,12 @@ func (a *DefaultApiService) DeleteModelHistory(ctx context.Context, modelHistory
 /* 
 DefaultApiService Deletes a model instance, given its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param modelInstanceID GUID of the model instance to delete.
 
 
 */
-func (a *DefaultApiService) DeleteModelInstance(ctx context.Context, modelInstanceID string) (*http.Response, error) {
+func (a *DefaultApiService) DeleteModelInstance(ctx context.Context, modelHistoryServerId string, modelInstanceID string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -1726,7 +1757,8 @@ func (a *DefaultApiService) DeleteModelInstance(ctx context.Context, modelInstan
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/{modelInstanceID}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/{modelInstanceID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelInstanceID"+"}", fmt.Sprintf("%v", modelInstanceID), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2307,11 +2339,12 @@ DefaultApiService Detect the objects, given a (input) prediction request
  * @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
  * @param imageFile the image file to detect objects from
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return DetectionResult
 */
-func (a *DefaultApiService) Detectobjects(ctx context.Context, id string, needsPreprocessing bool, threshold float32, imageFile *os.File, deploymentName string, modelName string) (DetectionResult, *http.Response, error) {
+func (a *DefaultApiService) Detectobjects(ctx context.Context, id string, needsPreprocessing bool, threshold float32, imageFile *os.File, deploymentName string, versionName string, modelName string) (DetectionResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -2321,8 +2354,9 @@ func (a *DefaultApiService) Detectobjects(ctx context.Context, id string, needsP
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/detectobjects"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2418,11 +2452,12 @@ func (a *DefaultApiService) Detectobjects(ctx context.Context, id string, needsP
 /* 
 DefaultApiService Gets the best model among the given model instance IDs, based on the evaluation type and column metric
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param bestModel Object encapsulating the model ids, eval type and column metric name
 
 @return ModelInstanceEntity
 */
-func (a *DefaultApiService) GetBestModelAmongModelIds(ctx context.Context, bestModel BestModel) (ModelInstanceEntity, *http.Response, error) {
+func (a *DefaultApiService) GetBestModelAmongModelIds(ctx context.Context, modelHistoryServerId string, bestModel BestModel) (ModelInstanceEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -2432,7 +2467,8 @@ func (a *DefaultApiService) GetBestModelAmongModelIds(ctx context.Context, bestM
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/best"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/best"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2520,11 +2556,12 @@ func (a *DefaultApiService) GetBestModelAmongModelIds(ctx context.Context, bestM
 /* 
 DefaultApiService Gets the list of evaluation results entity, given a model instance ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param modelInstanceID GUID of the model instance to get evaluation results for.
 
 @return []EvaluationResultsEntity
 */
-func (a *DefaultApiService) GetEvaluationForModelID(ctx context.Context, modelInstanceID string) ([]EvaluationResultsEntity, *http.Response, error) {
+func (a *DefaultApiService) GetEvaluationForModelID(ctx context.Context, modelHistoryServerId string, modelInstanceID string) ([]EvaluationResultsEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2534,7 +2571,8 @@ func (a *DefaultApiService) GetEvaluationForModelID(ctx context.Context, modelIn
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/revisions/evaluations/{modelInstanceID}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelInstanceID"+"}", fmt.Sprintf("%v", modelInstanceID), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2621,11 +2659,12 @@ func (a *DefaultApiService) GetEvaluationForModelID(ctx context.Context, modelIn
 /* 
 DefaultApiService Gets all the examples for a minibatch ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param minibatchId The GUID of the minibatch
 
 @return []ExampleEntity
 */
-func (a *DefaultApiService) GetExamplesForMinibatch(ctx context.Context, minibatchId string) ([]ExampleEntity, *http.Response, error) {
+func (a *DefaultApiService) GetExamplesForMinibatch(ctx context.Context, modelHistoryServerId string, minibatchId string) ([]ExampleEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2635,7 +2674,8 @@ func (a *DefaultApiService) GetExamplesForMinibatch(ctx context.Context, minibat
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/example/{minibatchId}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/example/{minibatchId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"minibatchId"+"}", fmt.Sprintf("%v", minibatchId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2722,11 +2762,12 @@ func (a *DefaultApiService) GetExamplesForMinibatch(ctx context.Context, minibat
 /* 
 DefaultApiService Obtain an experiment&#39;s details, given its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param experimentID the GUID of the experiment to obtain
 
 @return ExperimentEntity
 */
-func (a *DefaultApiService) GetExperiment(ctx context.Context, experimentID string) (ExperimentEntity, *http.Response, error) {
+func (a *DefaultApiService) GetExperiment(ctx context.Context, modelHistoryServerId string, experimentID string) (ExperimentEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2736,7 +2777,8 @@ func (a *DefaultApiService) GetExperiment(ctx context.Context, experimentID stri
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experiment/{experimentID}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/experiment/{experimentID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"experimentID"+"}", fmt.Sprintf("%v", experimentID), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2823,11 +2865,12 @@ func (a *DefaultApiService) GetExperiment(ctx context.Context, experimentID stri
 /* 
 DefaultApiService Obtain all experiments for a model history / workspace
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param modelHistoryID the GUID of the model history / workspace
 
 @return ExperimentEntity
 */
-func (a *DefaultApiService) GetExperimentsForModelHistory(ctx context.Context, modelHistoryID string) (ExperimentEntity, *http.Response, error) {
+func (a *DefaultApiService) GetExperimentsForModelHistory(ctx context.Context, modelHistoryServerId string, modelHistoryID string) (ExperimentEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2837,7 +2880,8 @@ func (a *DefaultApiService) GetExperimentsForModelHistory(ctx context.Context, m
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experiments/{modelHistoryID}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryID"+"}", fmt.Sprintf("%v", modelHistoryID), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2924,11 +2968,12 @@ func (a *DefaultApiService) GetExperimentsForModelHistory(ctx context.Context, m
 /* 
 DefaultApiService Gets a minibatch for the model
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param minibatchId The GUID of the minibatch
 
 @return MinibatchEntity
 */
-func (a *DefaultApiService) GetMinibatch(ctx context.Context, minibatchId string) (MinibatchEntity, *http.Response, error) {
+func (a *DefaultApiService) GetMinibatch(ctx context.Context, modelHistoryServerId string, minibatchId string) (MinibatchEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -2938,7 +2983,8 @@ func (a *DefaultApiService) GetMinibatch(ctx context.Context, minibatchId string
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/minibatch/{minibatchId}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"minibatchId"+"}", fmt.Sprintf("%v", minibatchId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3025,11 +3071,12 @@ func (a *DefaultApiService) GetMinibatch(ctx context.Context, minibatchId string
 /* 
 DefaultApiService Gets a model history, given its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param modelHistoryID GUID of the model history to get information of.
 
 @return ModelHistoryEntity
 */
-func (a *DefaultApiService) GetModelHistory(ctx context.Context, modelHistoryID string) (ModelHistoryEntity, *http.Response, error) {
+func (a *DefaultApiService) GetModelHistory(ctx context.Context, modelHistoryServerId string, modelHistoryID string) (ModelHistoryEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -3039,7 +3086,8 @@ func (a *DefaultApiService) GetModelHistory(ctx context.Context, modelHistoryID 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/revision/{modelHistoryID}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryID"+"}", fmt.Sprintf("%v", modelHistoryID), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3126,11 +3174,12 @@ func (a *DefaultApiService) GetModelHistory(ctx context.Context, modelHistoryID 
 /* 
 DefaultApiService Gets a model instance, given its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param modelInstanceID GUID of the model instance to get information of.
 
 @return ModelInstanceEntity
 */
-func (a *DefaultApiService) GetModelInstance(ctx context.Context, modelInstanceID string) (ModelInstanceEntity, *http.Response, error) {
+func (a *DefaultApiService) GetModelInstance(ctx context.Context, modelHistoryServerId string, modelInstanceID string) (ModelInstanceEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -3140,7 +3189,8 @@ func (a *DefaultApiService) GetModelInstance(ctx context.Context, modelInstanceI
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/model/{modelInstanceID}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/model/{modelInstanceID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelInstanceID"+"}", fmt.Sprintf("%v", modelInstanceID), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3227,11 +3277,12 @@ func (a *DefaultApiService) GetModelInstance(ctx context.Context, modelInstanceI
 /* 
 DefaultApiService Obtain a list of all the models for an experiment
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param experimentID the GUID of the experiment
 
 @return []ModelInstanceEntity
 */
-func (a *DefaultApiService) GetModelsForExperiment(ctx context.Context, experimentID string) ([]ModelInstanceEntity, *http.Response, error) {
+func (a *DefaultApiService) GetModelsForExperiment(ctx context.Context, modelHistoryServerId string, experimentID string) ([]ModelInstanceEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -3241,7 +3292,8 @@ func (a *DefaultApiService) GetModelsForExperiment(ctx context.Context, experime
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experiment/{experimentID}/models"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/experiment/{experimentID}/models"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"experimentID"+"}", fmt.Sprintf("%v", experimentID), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3329,11 +3381,12 @@ func (a *DefaultApiService) GetModelsForExperiment(ctx context.Context, experime
 DefaultApiService Retrieves the image transform process JSON string
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param imageTransformName ID or name of the deployed image transform
 
 @return ImageTransformProcess
 */
-func (a *DefaultApiService) ImagetransformprocessGet(ctx context.Context, deploymentName string, imageTransformName string) (ImageTransformProcess, *http.Response, error) {
+func (a *DefaultApiService) ImagetransformprocessGet(ctx context.Context, deploymentName string, versionName string, imageTransformName string) (ImageTransformProcess, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -3343,8 +3396,9 @@ func (a *DefaultApiService) ImagetransformprocessGet(ctx context.Context, deploy
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"imageTransformName"+"}", fmt.Sprintf("%v", imageTransformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3432,12 +3486,13 @@ func (a *DefaultApiService) ImagetransformprocessGet(ctx context.Context, deploy
 DefaultApiService Sets the image transform process through the provided JSON string
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param imageTransformName ID or name of the deployed image transform
  * @param body The image transform process JSON
 
 @return ImageTransformProcess
 */
-func (a *DefaultApiService) ImagetransformprocessPost(ctx context.Context, deploymentName string, imageTransformName string, body ImageTransformProcess) (ImageTransformProcess, *http.Response, error) {
+func (a *DefaultApiService) ImagetransformprocessPost(ctx context.Context, deploymentName string, versionName string, imageTransformName string, body ImageTransformProcess) (ImageTransformProcess, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -3447,8 +3502,9 @@ func (a *DefaultApiService) ImagetransformprocessPost(ctx context.Context, deplo
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"imageTransformName"+"}", fmt.Sprintf("%v", imageTransformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3539,11 +3595,12 @@ DefaultApiService Run inference on the input and returns it as a JsonArrayRespon
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The input NDArray
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return JsonArrayResponse
 */
-func (a *DefaultApiService) Jsonarray(ctx context.Context, body Prediction, deploymentName string, modelName string) (JsonArrayResponse, *http.Response, error) {
+func (a *DefaultApiService) Jsonarray(ctx context.Context, body Prediction, deploymentName string, versionName string, modelName string) (JsonArrayResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -3553,8 +3610,9 @@ func (a *DefaultApiService) Jsonarray(ctx context.Context, body Prediction, depl
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/jsonarray"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3645,12 +3703,13 @@ DefaultApiService Runs knn on the given index with the given k
 Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param knnName ID or name of the deployed knn
  * @param body
 
 @return NearestNeighborsResults
 */
-func (a *DefaultApiService) Knn(ctx context.Context, deploymentName string, knnName string, body NearestNeighborRequest) (NearestNeighborsResults, *http.Response, error) {
+func (a *DefaultApiService) Knn(ctx context.Context, deploymentName string, versionName string, knnName string, body NearestNeighborRequest) (NearestNeighborsResults, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -3660,8 +3719,9 @@ func (a *DefaultApiService) Knn(ctx context.Context, deploymentName string, knnN
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/knn/{knnName}/default/knn"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"knnName"+"}", fmt.Sprintf("%v", knnName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3751,12 +3811,13 @@ func (a *DefaultApiService) Knn(ctx context.Context, deploymentName string, knnN
 DefaultApiService Run a k nearest neighbors search on a NEW data point
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param knnName ID or name of the deployed knn
  * @param body The input NDArray
 
 @return NearestNeighborsResults
 */
-func (a *DefaultApiService) Knnnew(ctx context.Context, deploymentName string, knnName string, body Base64NdArrayBodyKnn) (NearestNeighborsResults, *http.Response, error) {
+func (a *DefaultApiService) Knnnew(ctx context.Context, deploymentName string, versionName string, knnName string, body Base64NdArrayBodyKnn) (NearestNeighborsResults, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -3766,8 +3827,9 @@ func (a *DefaultApiService) Knnnew(ctx context.Context, deploymentName string, k
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/knn/{knnName}/default/knnnew"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"knnName"+"}", fmt.Sprintf("%v", knnName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3869,7 +3931,7 @@ func (a *DefaultApiService) ListAllExperiments(ctx context.Context) ([]Experimen
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experiments"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/experiments"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3956,11 +4018,12 @@ func (a *DefaultApiService) ListAllExperiments(ctx context.Context) ([]Experimen
 DefaultApiService Get logs file path
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return string
 */
-func (a *DefaultApiService) Logfilepath(ctx context.Context, deploymentName string, modelName string) (string, *http.Response, error) {
+func (a *DefaultApiService) Logfilepath(ctx context.Context, deploymentName string, versionName string, modelName string) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -3970,8 +4033,9 @@ func (a *DefaultApiService) Logfilepath(ctx context.Context, deploymentName stri
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/logfilepath"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4162,11 +4226,12 @@ DefaultApiService Get logs
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body the the log request
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return LogBatch
 */
-func (a *DefaultApiService) Logs(ctx context.Context, body LogRequest, deploymentName string, modelName string) (LogBatch, *http.Response, error) {
+func (a *DefaultApiService) Logs(ctx context.Context, body LogRequest, deploymentName string, versionName string, modelName string) (LogBatch, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -4176,8 +4241,9 @@ func (a *DefaultApiService) Logs(ctx context.Context, body LogRequest, deploymen
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/logs"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4267,11 +4333,12 @@ func (a *DefaultApiService) Logs(ctx context.Context, body LogRequest, deploymen
 DefaultApiService this method can be used to get the meta data for the current model which set to the server
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return MetaData
 */
-func (a *DefaultApiService) MetaGet(ctx context.Context, deploymentName string, modelName string) (MetaData, *http.Response, error) {
+func (a *DefaultApiService) MetaGet(ctx context.Context, deploymentName string, versionName string, modelName string) (MetaData, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -4281,8 +4348,9 @@ func (a *DefaultApiService) MetaGet(ctx context.Context, deploymentName string, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/meta"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4371,11 +4439,12 @@ DefaultApiService This method can be used to set meta data for the current model
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body the meta data object
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return MetaData
 */
-func (a *DefaultApiService) MetaPost(ctx context.Context, body MetaData, deploymentName string, modelName string) (MetaData, *http.Response, error) {
+func (a *DefaultApiService) MetaPost(ctx context.Context, body MetaData, deploymentName string, versionName string, modelName string) (MetaData, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -4385,8 +4454,9 @@ func (a *DefaultApiService) MetaPost(ctx context.Context, body MetaData, deploym
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/meta"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4683,6 +4753,7 @@ func (a *DefaultApiService) Models(ctx context.Context, deploymentId string) ([]
 DefaultApiService Set the model to be served
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
  * @param optional nil or *ModelsetOpts - Optional Parameters:
      * @param "File" (optional.Interface of *os.File) -  The model file to upload (.pb file)
@@ -4694,7 +4765,7 @@ type ModelsetOpts struct {
 	File optional.Interface
 }
 
-func (a *DefaultApiService) Modelset(ctx context.Context, deploymentName string, modelName string, localVarOptionals *ModelsetOpts) (ModelStatus, *http.Response, error) {
+func (a *DefaultApiService) Modelset(ctx context.Context, deploymentName string, versionName string, modelName string, localVarOptionals *ModelsetOpts) (ModelStatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -4704,8 +4775,9 @@ func (a *DefaultApiService) Modelset(ctx context.Context, deploymentName string,
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/modelset"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4807,6 +4879,7 @@ func (a *DefaultApiService) Modelset(ctx context.Context, deploymentName string,
 DefaultApiService Update the model to be served
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
  * @param optional nil or *ModelupdateOpts - Optional Parameters:
      * @param "File" (optional.Interface of *os.File) -  The model file to update with (.pb file)
@@ -4818,7 +4891,7 @@ type ModelupdateOpts struct {
 	File optional.Interface
 }
 
-func (a *DefaultApiService) Modelupdate(ctx context.Context, deploymentName string, modelName string, localVarOptionals *ModelupdateOpts) (ModelStatus, *http.Response, error) {
+func (a *DefaultApiService) Modelupdate(ctx context.Context, deploymentName string, versionName string, modelName string, localVarOptionals *ModelupdateOpts) (ModelStatus, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -4828,8 +4901,9 @@ func (a *DefaultApiService) Modelupdate(ctx context.Context, deploymentName stri
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/modelupdate"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4932,11 +5006,12 @@ DefaultApiService Represents all of the labels for a given classification
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The input NDArray
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return MultiClassClassificationResult
 */
-func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, deploymentName string, modelName string) (MultiClassClassificationResult, *http.Response, error) {
+func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, deploymentName string, versionName string, modelName string) (MultiClassClassificationResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -4946,8 +5021,9 @@ func (a *DefaultApiService) Multiclassify(ctx context.Context, body Prediction, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/multiclassify"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5039,11 +5115,12 @@ Networks with multiple input/output are supported via this method. A Normalizer 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The multiple input arrays with mask inputs to run inferences on
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return MultiPredictResponse
 */
-func (a *DefaultApiService) Multipredict(ctx context.Context, body MultiPredictRequest, deploymentName string, modelName string) (MultiPredictResponse, *http.Response, error) {
+func (a *DefaultApiService) Multipredict(ctx context.Context, body MultiPredictRequest, deploymentName string, versionName string, modelName string) (MultiPredictResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -5053,8 +5130,9 @@ func (a *DefaultApiService) Multipredict(ctx context.Context, body MultiPredictR
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/multipredict"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5148,11 +5226,12 @@ Networks with multiple input/output are supported via this method. A Normalizer 
  * @param id The id of the request (could be self generated)
  * @param needsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return MultiPredictResponse
 */
-func (a *DefaultApiService) Multipredictimage(ctx context.Context, file *os.File, id string, needsPreprocessing bool, deploymentName string, modelName string) (MultiPredictResponse, *http.Response, error) {
+func (a *DefaultApiService) Multipredictimage(ctx context.Context, file *os.File, id string, needsPreprocessing bool, deploymentName string, versionName string, modelName string) (MultiPredictResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -5162,8 +5241,9 @@ func (a *DefaultApiService) Multipredictimage(ctx context.Context, file *os.File
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5260,11 +5340,12 @@ DefaultApiService Run inference on the input array.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The input NDArray
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return Prediction
 */
-func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, deploymentName string, modelName string) (Prediction, *http.Response, error) {
+func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, deploymentName string, versionName string, modelName string) (Prediction, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -5274,8 +5355,9 @@ func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, deploy
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/predict"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5365,6 +5447,7 @@ func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, deploy
 DefaultApiService Run inference on the input array, using input image file from multipart form data.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
  * @param optional nil or *PredictimageOpts - Optional Parameters:
      * @param "Image" (optional.Interface of *os.File) -  The file to upload.
@@ -5376,7 +5459,7 @@ type PredictimageOpts struct {
 	Image optional.Interface
 }
 
-func (a *DefaultApiService) Predictimage(ctx context.Context, deploymentName string, modelName string, localVarOptionals *PredictimageOpts) (Prediction, *http.Response, error) {
+func (a *DefaultApiService) Predictimage(ctx context.Context, deploymentName string, versionName string, modelName string, localVarOptionals *PredictimageOpts) (Prediction, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -5386,8 +5469,9 @@ func (a *DefaultApiService) Predictimage(ctx context.Context, deploymentName str
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/predictimage"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5490,11 +5574,12 @@ DefaultApiService Preprocesses the input and run inference on it
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The input array
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return Prediction
 */
-func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []string, deploymentName string, modelName string) (Prediction, *http.Response, error) {
+func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []string, deploymentName string, versionName string, modelName string) (Prediction, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -5504,8 +5589,9 @@ func (a *DefaultApiService) Predictwithpreprocess(ctx context.Context, body []st
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5596,11 +5682,12 @@ DefaultApiService Preprocesses the input and run inference on it and returns it 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The input array
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
 
 @return JsonArrayResponse
 */
-func (a *DefaultApiService) Predictwithpreprocessjson(ctx context.Context, body []string, deploymentName string, modelName string) (JsonArrayResponse, *http.Response, error) {
+func (a *DefaultApiService) Predictwithpreprocessjson(ctx context.Context, body []string, deploymentName string, versionName string, modelName string) (JsonArrayResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -5610,8 +5697,9 @@ func (a *DefaultApiService) Predictwithpreprocessjson(ctx context.Context, body 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelName"+"}", fmt.Sprintf("%v", modelName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5808,6 +5896,7 @@ DefaultApiService Takes a BatchCSVRecord and returns the transformed array as Ba
 Takes a batch of SingleCSVRecord object and transforms it into the desired format
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformCsvOpts - Optional Parameters:
      * @param "BatchCSVRecord" (optional.Interface of BatchCsvRecord) -  The input batch of record arrays
@@ -5819,7 +5908,7 @@ type TransformCsvOpts struct {
 	BatchCSVRecord optional.Interface
 }
 
-func (a *DefaultApiService) TransformCsv(ctx context.Context, deploymentName string, transformName string, localVarOptionals *TransformCsvOpts) (BatchCsvRecord, *http.Response, error) {
+func (a *DefaultApiService) TransformCsv(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformCsvOpts) (BatchCsvRecord, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -5829,8 +5918,9 @@ func (a *DefaultApiService) TransformCsv(ctx context.Context, deploymentName str
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/default/transform"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"transformName"+"}", fmt.Sprintf("%v", transformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5928,6 +6018,7 @@ DefaultApiService Takes a batch input arrays and transforms it
 Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformarrayCsvOpts - Optional Parameters:
      * @param "BatchCSVRecord" (optional.Interface of BatchCsvRecord) -  The input batch of record arrays
@@ -5939,7 +6030,7 @@ type TransformarrayCsvOpts struct {
 	BatchCSVRecord optional.Interface
 }
 
-func (a *DefaultApiService) TransformarrayCsv(ctx context.Context, deploymentName string, transformName string, localVarOptionals *TransformarrayCsvOpts) (Base64NdArrayBody, *http.Response, error) {
+func (a *DefaultApiService) TransformarrayCsv(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformarrayCsvOpts) (Base64NdArrayBody, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -5949,8 +6040,9 @@ func (a *DefaultApiService) TransformarrayCsv(ctx context.Context, deploymentNam
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"transformName"+"}", fmt.Sprintf("%v", transformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6048,12 +6140,13 @@ DefaultApiService Takes a batch of images uri and transforms it and returns Base
 Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param imageTransformName ID or name of the deployed image transform
  * @param batchImageRecord The input batch of record arrays
 
 @return Base64NdArrayBody
 */
-func (a *DefaultApiService) TransformarrayImage(ctx context.Context, deploymentName string, imageTransformName string, batchImageRecord BatchImageRecord) (Base64NdArrayBody, *http.Response, error) {
+func (a *DefaultApiService) TransformarrayImage(ctx context.Context, deploymentName string, versionName string, imageTransformName string, batchImageRecord BatchImageRecord) (Base64NdArrayBody, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -6063,8 +6156,9 @@ func (a *DefaultApiService) TransformarrayImage(ctx context.Context, deploymentN
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"imageTransformName"+"}", fmt.Sprintf("%v", imageTransformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6155,12 +6249,13 @@ DefaultApiService Takes multiple multipart image file to transform and returns B
 Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param imageTransformName ID or name of the deployed image transform
  * @param files The image files to upload
 
 @return Base64NdArrayBody
 */
-func (a *DefaultApiService) Transformimage(ctx context.Context, deploymentName string, imageTransformName string, files []string) (Base64NdArrayBody, *http.Response, error) {
+func (a *DefaultApiService) Transformimage(ctx context.Context, deploymentName string, versionName string, imageTransformName string, files []string) (Base64NdArrayBody, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -6170,8 +6265,9 @@ func (a *DefaultApiService) Transformimage(ctx context.Context, deploymentName s
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"imageTransformName"+"}", fmt.Sprintf("%v", imageTransformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6261,6 +6357,7 @@ DefaultApiService Takes SingleCSVRecord as input and returns the transformed arr
 Takes a SingleCSVRecord object and transforms it into the desired format
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformincrementalCsvOpts - Optional Parameters:
      * @param "SingleCSVRecord" (optional.Interface of SingleCsvRecord) -  The input record array
@@ -6272,7 +6369,7 @@ type TransformincrementalCsvOpts struct {
 	SingleCSVRecord optional.Interface
 }
 
-func (a *DefaultApiService) TransformincrementalCsv(ctx context.Context, deploymentName string, transformName string, localVarOptionals *TransformincrementalCsvOpts) (SingleCsvRecord, *http.Response, error) {
+func (a *DefaultApiService) TransformincrementalCsv(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformincrementalCsvOpts) (SingleCsvRecord, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -6282,8 +6379,9 @@ func (a *DefaultApiService) TransformincrementalCsv(ctx context.Context, deploym
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"transformName"+"}", fmt.Sprintf("%v", transformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6381,6 +6479,7 @@ DefaultApiService Same as /transformincremental but returns Base64NDArrayBody
 Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformincrementalarrayCsvOpts - Optional Parameters:
      * @param "SingleCSVRecord" (optional.Interface of SingleCsvRecord) -  The input record array
@@ -6392,7 +6491,7 @@ type TransformincrementalarrayCsvOpts struct {
 	SingleCSVRecord optional.Interface
 }
 
-func (a *DefaultApiService) TransformincrementalarrayCsv(ctx context.Context, deploymentName string, transformName string, localVarOptionals *TransformincrementalarrayCsvOpts) (Base64NdArrayBody, *http.Response, error) {
+func (a *DefaultApiService) TransformincrementalarrayCsv(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformincrementalarrayCsvOpts) (Base64NdArrayBody, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -6402,8 +6501,9 @@ func (a *DefaultApiService) TransformincrementalarrayCsv(ctx context.Context, de
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"transformName"+"}", fmt.Sprintf("%v", transformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6501,12 +6601,13 @@ DefaultApiService Takes SingleImageRecord to transform and returns Base64NDArray
 Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param imageTransformName ID or name of the deployed image transform
  * @param singleImageRecord The input record array
 
 @return Base64NdArrayBody
 */
-func (a *DefaultApiService) TransformincrementalarrayImage(ctx context.Context, deploymentName string, imageTransformName string, singleImageRecord SingleImageRecord) (Base64NdArrayBody, *http.Response, error) {
+func (a *DefaultApiService) TransformincrementalarrayImage(ctx context.Context, deploymentName string, versionName string, imageTransformName string, singleImageRecord SingleImageRecord) (Base64NdArrayBody, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -6516,8 +6617,9 @@ func (a *DefaultApiService) TransformincrementalarrayImage(ctx context.Context, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"imageTransformName"+"}", fmt.Sprintf("%v", imageTransformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6608,12 +6710,13 @@ DefaultApiService Takes a single multipart image file to transform and returns B
 Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param imageTransformName ID or name of the deployed image transform
  * @param file The image file to upload
 
 @return Base64NdArrayBody
 */
-func (a *DefaultApiService) Transformincrementalimage(ctx context.Context, deploymentName string, imageTransformName string, file *os.File) (Base64NdArrayBody, *http.Response, error) {
+func (a *DefaultApiService) Transformincrementalimage(ctx context.Context, deploymentName string, versionName string, imageTransformName string, file *os.File) (Base64NdArrayBody, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -6623,8 +6726,9 @@ func (a *DefaultApiService) Transformincrementalimage(ctx context.Context, deplo
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"imageTransformName"+"}", fmt.Sprintf("%v", imageTransformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6719,11 +6823,12 @@ DefaultApiService Gets the JSON string of the deployed transform process
 Retrieves the JSON string of the deployed transform process 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
 
 @return TransformProcess
 */
-func (a *DefaultApiService) TransformprocessGet(ctx context.Context, deploymentName string, transformName string) (TransformProcess, *http.Response, error) {
+func (a *DefaultApiService) TransformprocessGet(ctx context.Context, deploymentName string, versionName string, transformName string) (TransformProcess, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -6733,8 +6838,9 @@ func (a *DefaultApiService) TransformprocessGet(ctx context.Context, deploymentN
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"transformName"+"}", fmt.Sprintf("%v", transformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6823,6 +6929,7 @@ DefaultApiService Sets the deployed transform process through the provided JSON 
 Sets the transform process with the provided JSON string
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
+ * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformprocessPostOpts - Optional Parameters:
      * @param "TransformProcess" (optional.Interface of TransformProcess) -  The transform process to set
@@ -6834,7 +6941,7 @@ type TransformprocessPostOpts struct {
 	TransformProcess optional.Interface
 }
 
-func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deploymentName string, transformName string, localVarOptionals *TransformprocessPostOpts) (*http.Response, error) {
+func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformprocessPostOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -6844,8 +6951,9 @@ func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deployment
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess"
+	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"transformName"+"}", fmt.Sprintf("%v", transformName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6923,11 +7031,12 @@ func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deployment
 /* 
 DefaultApiService Updates the best model for an experiment
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param updateBestModel Model encapsulating the experiment id to update and the best model id.
 
 @return ExperimentEntity
 */
-func (a *DefaultApiService) UpdateBestModelForExperiment(ctx context.Context, updateBestModel UpdateBestModel) (ExperimentEntity, *http.Response, error) {
+func (a *DefaultApiService) UpdateBestModelForExperiment(ctx context.Context, modelHistoryServerId string, updateBestModel UpdateBestModel) (ExperimentEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -6937,7 +7046,8 @@ func (a *DefaultApiService) UpdateBestModelForExperiment(ctx context.Context, up
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experiment/best"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/experiment/best"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7025,12 +7135,13 @@ func (a *DefaultApiService) UpdateBestModelForExperiment(ctx context.Context, up
 /* 
 DefaultApiService Updates an experiment, given an experiment entity
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param experimentID the GUID of the experiment to update
  * @param experimentEntity The experiment entity to update with
 
 @return ExperimentEntity
 */
-func (a *DefaultApiService) UpdateExperiment(ctx context.Context, experimentID string, experimentEntity ExperimentEntity) (ExperimentEntity, *http.Response, error) {
+func (a *DefaultApiService) UpdateExperiment(ctx context.Context, modelHistoryServerId string, experimentID string, experimentEntity ExperimentEntity) (ExperimentEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
@@ -7040,7 +7151,8 @@ func (a *DefaultApiService) UpdateExperiment(ctx context.Context, experimentID s
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experiment/{experimentID}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/experiment/{experimentID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"experimentID"+"}", fmt.Sprintf("%v", experimentID), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -7129,12 +7241,13 @@ func (a *DefaultApiService) UpdateExperiment(ctx context.Context, experimentID s
 /* 
 DefaultApiService Update a model history / workspace
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
  * @param modelHistoryID the GUID of the model history / workspace to update
  * @param updateModelHistoryRequest The model history request object
 
 @return ModelHistoryEntity
 */
-func (a *DefaultApiService) UpdateModelHistory(ctx context.Context, modelHistoryID string, updateModelHistoryRequest AddModelHistoryRequest) (ModelHistoryEntity, *http.Response, error) {
+func (a *DefaultApiService) UpdateModelHistory(ctx context.Context, modelHistoryServerId string, modelHistoryID string, updateModelHistoryRequest AddModelHistoryRequest) (ModelHistoryEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -7144,7 +7257,8 @@ func (a *DefaultApiService) UpdateModelHistory(ctx context.Context, modelHistory
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/modelhistory/{modelHistoryID}"
+	localVarPath := a.client.cfg.BasePath + "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryServerId"+"}", fmt.Sprintf("%v", modelHistoryServerId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"modelHistoryID"+"}", fmt.Sprintf("%v", modelHistoryID), -1)
 
 	localVarHeaderParams := make(map[string]string)

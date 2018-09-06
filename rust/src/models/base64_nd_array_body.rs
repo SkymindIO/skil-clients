@@ -15,32 +15,29 @@ use serde_json::Value;
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Base64NdArrayBody {
   #[serde(rename = "ndarray")]
-  ndarray: Option<String>
+  ndarray: String
 }
 
 impl Base64NdArrayBody {
-  pub fn new() -> Base64NdArrayBody {
+  pub fn new(ndarray: String) -> Base64NdArrayBody {
     Base64NdArrayBody {
-      ndarray: None
+      ndarray: ndarray
     }
   }
 
   pub fn set_ndarray(&mut self, ndarray: String) {
-    self.ndarray = Some(ndarray);
+    self.ndarray = ndarray;
   }
 
   pub fn with_ndarray(mut self, ndarray: String) -> Base64NdArrayBody {
-    self.ndarray = Some(ndarray);
+    self.ndarray = ndarray;
     self
   }
 
-  pub fn ndarray(&self) -> Option<&String> {
-    self.ndarray.as_ref()
+  pub fn ndarray(&self) -> &String {
+    &self.ndarray
   }
 
-  pub fn reset_ndarray(&mut self) {
-    self.ndarray = None;
-  }
 
 }
 

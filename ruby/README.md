@@ -64,12 +64,14 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+
 evaluation_results_entity = SkilCient::EvaluationResultsEntity.new # EvaluationResultsEntity | The evaluation result entity
 
 
 begin
   #Adds an evaluation result
-  result = api_instance.add_evaluation_result(evaluation_results_entity)
+  result = api_instance.add_evaluation_result(model_history_server_id, evaluation_results_entity)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->add_evaluation_result: #{e}"
@@ -83,74 +85,74 @@ All URIs are relative to *http://localhost:9008*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SkilCient::DefaultApi* | [**add_evaluation_result**](docs/DefaultApi.md#add_evaluation_result) | **POST** /model/revisions/evaluations/ | Adds an evaluation result
-*SkilCient::DefaultApi* | [**add_example_for_batch**](docs/DefaultApi.md#add_example_for_batch) | **POST** /model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
-*SkilCient::DefaultApi* | [**add_example_to_minibatch**](docs/DefaultApi.md#add_example_to_minibatch) | **POST** /model/example | Adds an example to a minibatch
-*SkilCient::DefaultApi* | [**add_experiment**](docs/DefaultApi.md#add_experiment) | **POST** /experiment | Add an experiment, given an experiment entity
-*SkilCient::DefaultApi* | [**add_minibatch**](docs/DefaultApi.md#add_minibatch) | **POST** /model/minibatch | Adds a minibatch
-*SkilCient::DefaultApi* | [**add_model_feedback**](docs/DefaultApi.md#add_model_feedback) | **POST** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
-*SkilCient::DefaultApi* | [**add_model_history**](docs/DefaultApi.md#add_model_history) | **POST** /modelhistory | Add a model history / workspace
-*SkilCient::DefaultApi* | [**add_model_instance**](docs/DefaultApi.md#add_model_instance) | **POST** /model | Adds a model
-*SkilCient::DefaultApi* | [**aggregate_model_results**](docs/DefaultApi.md#aggregate_model_results) | **POST** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
-*SkilCient::DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classify | Use the deployed model to classify the input
-*SkilCient::DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-*SkilCient::DefaultApi* | [**classifyimage**](docs/DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-*SkilCient::DefaultApi* | [**create_model_history**](docs/DefaultApi.md#create_model_history) | **POST** /model/revisions | Creates model History
-*SkilCient::DefaultApi* | [**delete_experiment**](docs/DefaultApi.md#delete_experiment) | **DELETE** /experiment/{experimentID} | Deletes an experiment, given an experiment entity
+*SkilCient::DefaultApi* | [**add_evaluation_result**](docs/DefaultApi.md#add_evaluation_result) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
+*SkilCient::DefaultApi* | [**add_example_for_batch**](docs/DefaultApi.md#add_example_for_batch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
+*SkilCient::DefaultApi* | [**add_example_to_minibatch**](docs/DefaultApi.md#add_example_to_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
+*SkilCient::DefaultApi* | [**add_experiment**](docs/DefaultApi.md#add_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+*SkilCient::DefaultApi* | [**add_minibatch**](docs/DefaultApi.md#add_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
+*SkilCient::DefaultApi* | [**add_model_feedback**](docs/DefaultApi.md#add_model_feedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
+*SkilCient::DefaultApi* | [**add_model_history**](docs/DefaultApi.md#add_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
+*SkilCient::DefaultApi* | [**add_model_instance**](docs/DefaultApi.md#add_model_instance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+*SkilCient::DefaultApi* | [**aggregate_model_results**](docs/DefaultApi.md#aggregate_model_results) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
+*SkilCient::DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
+*SkilCient::DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+*SkilCient::DefaultApi* | [**classifyimage**](docs/DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+*SkilCient::DefaultApi* | [**create_model_history**](docs/DefaultApi.md#create_model_history) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
+*SkilCient::DefaultApi* | [**delete_experiment**](docs/DefaultApi.md#delete_experiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
 *SkilCient::DefaultApi* | [**delete_model**](docs/DefaultApi.md#delete_model) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
-*SkilCient::DefaultApi* | [**delete_model_history**](docs/DefaultApi.md#delete_model_history) | **DELETE** /modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
-*SkilCient::DefaultApi* | [**delete_model_instance**](docs/DefaultApi.md#delete_model_instance) | **DELETE** /model/{modelInstanceID} | Deletes a model instance, given its ID
+*SkilCient::DefaultApi* | [**delete_model_history**](docs/DefaultApi.md#delete_model_history) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
+*SkilCient::DefaultApi* | [**delete_model_instance**](docs/DefaultApi.md#delete_model_instance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
 *SkilCient::DefaultApi* | [**deploy_model**](docs/DefaultApi.md#deploy_model) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 *SkilCient::DefaultApi* | [**deployment_create**](docs/DefaultApi.md#deployment_create) | **POST** /deployment | Create a new deployment group.
 *SkilCient::DefaultApi* | [**deployment_delete**](docs/DefaultApi.md#deployment_delete) | **DELETE** /deployment/{deploymentId} | Delete a deployment by id
 *SkilCient::DefaultApi* | [**deployment_get**](docs/DefaultApi.md#deployment_get) | **GET** /deployment/{deploymentId} | Get a deployment details by id
 *SkilCient::DefaultApi* | [**deployments**](docs/DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
-*SkilCient::DefaultApi* | [**detectobjects**](docs/DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/detectobjects | Detect the objects, given a (input) prediction request
-*SkilCient::DefaultApi* | [**get_best_model_among_model_ids**](docs/DefaultApi.md#get_best_model_among_model_ids) | **POST** /model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-*SkilCient::DefaultApi* | [**get_evaluation_for_model_id**](docs/DefaultApi.md#get_evaluation_for_model_id) | **GET** /model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
-*SkilCient::DefaultApi* | [**get_examples_for_minibatch**](docs/DefaultApi.md#get_examples_for_minibatch) | **GET** /model/example/{minibatchId} | Gets all the examples for a minibatch ID
-*SkilCient::DefaultApi* | [**get_experiment**](docs/DefaultApi.md#get_experiment) | **GET** /experiment/{experimentID} | Obtain an experiment's details, given its ID
-*SkilCient::DefaultApi* | [**get_experiments_for_model_history**](docs/DefaultApi.md#get_experiments_for_model_history) | **GET** /experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-*SkilCient::DefaultApi* | [**get_minibatch**](docs/DefaultApi.md#get_minibatch) | **GET** /model/minibatch/{minibatchId} | Gets a minibatch for the model
-*SkilCient::DefaultApi* | [**get_model_history**](docs/DefaultApi.md#get_model_history) | **GET** /model/revision/{modelHistoryID} | Gets a model history, given its ID
-*SkilCient::DefaultApi* | [**get_model_instance**](docs/DefaultApi.md#get_model_instance) | **GET** /model/{modelInstanceID} | Gets a model instance, given its ID
-*SkilCient::DefaultApi* | [**get_models_for_experiment**](docs/DefaultApi.md#get_models_for_experiment) | **GET** /experiment/{experimentID}/models | Obtain a list of all the models for an experiment
-*SkilCient::DefaultApi* | [**imagetransformprocess_get**](docs/DefaultApi.md#imagetransformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess | Retrieves the image transform process JSON string
-*SkilCient::DefaultApi* | [**imagetransformprocess_post**](docs/DefaultApi.md#imagetransformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess | Sets the image transform process through the provided JSON string
-*SkilCient::DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
-*SkilCient::DefaultApi* | [**knn**](docs/DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/default/knn | Runs knn on the given index with the given k
-*SkilCient::DefaultApi* | [**knnnew**](docs/DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/default/knnnew | Run a k nearest neighbors search on a NEW data point
-*SkilCient::DefaultApi* | [**list_all_experiments**](docs/DefaultApi.md#list_all_experiments) | **GET** /experiments | List all of the experiments in every model history / workspace
-*SkilCient::DefaultApi* | [**logfilepath**](docs/DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/default/logfilepath | Get logs file path
+*SkilCient::DefaultApi* | [**detectobjects**](docs/DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
+*SkilCient::DefaultApi* | [**get_best_model_among_model_ids**](docs/DefaultApi.md#get_best_model_among_model_ids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+*SkilCient::DefaultApi* | [**get_evaluation_for_model_id**](docs/DefaultApi.md#get_evaluation_for_model_id) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
+*SkilCient::DefaultApi* | [**get_examples_for_minibatch**](docs/DefaultApi.md#get_examples_for_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
+*SkilCient::DefaultApi* | [**get_experiment**](docs/DefaultApi.md#get_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment's details, given its ID
+*SkilCient::DefaultApi* | [**get_experiments_for_model_history**](docs/DefaultApi.md#get_experiments_for_model_history) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
+*SkilCient::DefaultApi* | [**get_minibatch**](docs/DefaultApi.md#get_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+*SkilCient::DefaultApi* | [**get_model_history**](docs/DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
+*SkilCient::DefaultApi* | [**get_model_instance**](docs/DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
+*SkilCient::DefaultApi* | [**get_models_for_experiment**](docs/DefaultApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+*SkilCient::DefaultApi* | [**imagetransformprocess_get**](docs/DefaultApi.md#imagetransformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
+*SkilCient::DefaultApi* | [**imagetransformprocess_post**](docs/DefaultApi.md#imagetransformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
+*SkilCient::DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+*SkilCient::DefaultApi* | [**knn**](docs/DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
+*SkilCient::DefaultApi* | [**knnnew**](docs/DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
+*SkilCient::DefaultApi* | [**list_all_experiments**](docs/DefaultApi.md#list_all_experiments) | **GET** /rpc/{modelHistoryServerId}/experiments | List all of the experiments in every model history / workspace
+*SkilCient::DefaultApi* | [**logfilepath**](docs/DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath | Get logs file path
 *SkilCient::DefaultApi* | [**login**](docs/DefaultApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
-*SkilCient::DefaultApi* | [**logs**](docs/DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/logs | Get logs
-*SkilCient::DefaultApi* | [**meta_get**](docs/DefaultApi.md#meta_get) | **GET** /endpoints/{deploymentName}/model/{modelName}/default/meta | this method can be used to get the meta data for the current model which set to the server
-*SkilCient::DefaultApi* | [**meta_post**](docs/DefaultApi.md#meta_post) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/meta | This method can be used to set meta data for the current model which is set to the server
+*SkilCient::DefaultApi* | [**logs**](docs/DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs | Get logs
+*SkilCient::DefaultApi* | [**meta_get**](docs/DefaultApi.md#meta_get) | **GET** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | this method can be used to get the meta data for the current model which set to the server
+*SkilCient::DefaultApi* | [**meta_post**](docs/DefaultApi.md#meta_post) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | This method can be used to set meta data for the current model which is set to the server
 *SkilCient::DefaultApi* | [**model_state_change**](docs/DefaultApi.md#model_state_change) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Modify the state (start/stop) of a deployed model
 *SkilCient::DefaultApi* | [**models**](docs/DefaultApi.md#models) | **GET** /deployment/{deploymentId}/models | Retrieve a list of all the deployed models given a deployment id
-*SkilCient::DefaultApi* | [**modelset**](docs/DefaultApi.md#modelset) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelset | Set the model to be served
-*SkilCient::DefaultApi* | [**modelupdate**](docs/DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
-*SkilCient::DefaultApi* | [**multiclassify**](docs/DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
-*SkilCient::DefaultApi* | [**multipredict**](docs/DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredict | Get the output from the network, based on the given INDArray[] input
-*SkilCient::DefaultApi* | [**multipredictimage**](docs/DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint's method
-*SkilCient::DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
-*SkilCient::DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
-*SkilCient::DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
-*SkilCient::DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+*SkilCient::DefaultApi* | [**modelset**](docs/DefaultApi.md#modelset) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset | Set the model to be served
+*SkilCient::DefaultApi* | [**modelupdate**](docs/DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate | Update the model to be served
+*SkilCient::DefaultApi* | [**multiclassify**](docs/DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
+*SkilCient::DefaultApi* | [**multipredict**](docs/DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
+*SkilCient::DefaultApi* | [**multipredictimage**](docs/DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint's method
+*SkilCient::DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+*SkilCient::DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
+*SkilCient::DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
+*SkilCient::DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 *SkilCient::DefaultApi* | [**reimport_model**](docs/DefaultApi.md#reimport_model) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
-*SkilCient::DefaultApi* | [**transform_csv**](docs/DefaultApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-*SkilCient::DefaultApi* | [**transformarray_csv**](docs/DefaultApi.md#transformarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformarray | Takes a batch input arrays and transforms it
-*SkilCient::DefaultApi* | [**transformarray_image**](docs/DefaultApi.md#transformarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-*SkilCient::DefaultApi* | [**transformimage**](docs/DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
-*SkilCient::DefaultApi* | [**transformincremental_csv**](docs/DefaultApi.md#transformincremental_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-*SkilCient::DefaultApi* | [**transformincrementalarray_csv**](docs/DefaultApi.md#transformincrementalarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-*SkilCient::DefaultApi* | [**transformincrementalarray_image**](docs/DefaultApi.md#transformincrementalarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
-*SkilCient::DefaultApi* | [**transformincrementalimage**](docs/DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-*SkilCient::DefaultApi* | [**transformprocess_get**](docs/DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess | Gets the JSON string of the deployed transform process
-*SkilCient::DefaultApi* | [**transformprocess_post**](docs/DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess | Sets the deployed transform process through the provided JSON string
-*SkilCient::DefaultApi* | [**update_best_model_for_experiment**](docs/DefaultApi.md#update_best_model_for_experiment) | **POST** /experiment/best | Updates the best model for an experiment
-*SkilCient::DefaultApi* | [**update_experiment**](docs/DefaultApi.md#update_experiment) | **PUT** /experiment/{experimentID} | Updates an experiment, given an experiment entity
-*SkilCient::DefaultApi* | [**update_model_history**](docs/DefaultApi.md#update_model_history) | **POST** /modelhistory/{modelHistoryID} | Update a model history / workspace
+*SkilCient::DefaultApi* | [**transform_csv**](docs/DefaultApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+*SkilCient::DefaultApi* | [**transformarray_csv**](docs/DefaultApi.md#transformarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
+*SkilCient::DefaultApi* | [**transformarray_image**](docs/DefaultApi.md#transformarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+*SkilCient::DefaultApi* | [**transformimage**](docs/DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
+*SkilCient::DefaultApi* | [**transformincremental_csv**](docs/DefaultApi.md#transformincremental_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+*SkilCient::DefaultApi* | [**transformincrementalarray_csv**](docs/DefaultApi.md#transformincrementalarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
+*SkilCient::DefaultApi* | [**transformincrementalarray_image**](docs/DefaultApi.md#transformincrementalarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+*SkilCient::DefaultApi* | [**transformincrementalimage**](docs/DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
+*SkilCient::DefaultApi* | [**transformprocess_get**](docs/DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
+*SkilCient::DefaultApi* | [**transformprocess_post**](docs/DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+*SkilCient::DefaultApi* | [**update_best_model_for_experiment**](docs/DefaultApi.md#update_best_model_for_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
+*SkilCient::DefaultApi* | [**update_experiment**](docs/DefaultApi.md#update_experiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
+*SkilCient::DefaultApi* | [**update_model_history**](docs/DefaultApi.md#update_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 *SkilCient::DefaultApi* | [**upload**](docs/DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 

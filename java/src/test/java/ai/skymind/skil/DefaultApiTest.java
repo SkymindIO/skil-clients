@@ -84,8 +84,9 @@ public class DefaultApiTest {
      */
     @Test
     public void addEvaluationResultTest() throws ApiException {
+        String modelHistoryServerId = null;
         EvaluationResultsEntity evaluationResultsEntity = null;
-        EvaluationResultsEntity response = api.addEvaluationResult(evaluationResultsEntity);
+        EvaluationResultsEntity response = api.addEvaluationResult(modelHistoryServerId, evaluationResultsEntity);
 
         // TODO: test validations
     }
@@ -100,8 +101,9 @@ public class DefaultApiTest {
      */
     @Test
     public void addExampleForBatchTest() throws ApiException {
+        String modelHistoryServerId = null;
         AddExampleRequest addExampleRequest = null;
-        AddExampleRequest response = api.addExampleForBatch(addExampleRequest);
+        AddExampleRequest response = api.addExampleForBatch(modelHistoryServerId, addExampleRequest);
 
         // TODO: test validations
     }
@@ -116,8 +118,9 @@ public class DefaultApiTest {
      */
     @Test
     public void addExampleToMinibatchTest() throws ApiException {
+        String modelHistoryServerId = null;
         ExampleEntity exampleEntity = null;
-        ExampleEntity response = api.addExampleToMinibatch(exampleEntity);
+        ExampleEntity response = api.addExampleToMinibatch(modelHistoryServerId, exampleEntity);
 
         // TODO: test validations
     }
@@ -132,8 +135,9 @@ public class DefaultApiTest {
      */
     @Test
     public void addExperimentTest() throws ApiException {
+        String modelHistoryServerId = null;
         ExperimentEntity experimentEntity = null;
-        ExperimentEntity response = api.addExperiment(experimentEntity);
+        ExperimentEntity response = api.addExperiment(modelHistoryServerId, experimentEntity);
 
         // TODO: test validations
     }
@@ -148,8 +152,9 @@ public class DefaultApiTest {
      */
     @Test
     public void addMinibatchTest() throws ApiException {
+        String modelHistoryServerId = null;
         MinibatchEntity minibatchEntity = null;
-        MinibatchEntity response = api.addMinibatch(minibatchEntity);
+        MinibatchEntity response = api.addMinibatch(modelHistoryServerId, minibatchEntity);
 
         // TODO: test validations
     }
@@ -164,8 +169,9 @@ public class DefaultApiTest {
      */
     @Test
     public void addModelFeedbackTest() throws ApiException {
+        String modelHistoryServerId = null;
         ModelFeedBackRequest modelFeedBackRequest = null;
-        ModelFeedBackRequest response = api.addModelFeedback(modelFeedBackRequest);
+        ModelFeedBackRequest response = api.addModelFeedback(modelHistoryServerId, modelFeedBackRequest);
 
         // TODO: test validations
     }
@@ -180,8 +186,9 @@ public class DefaultApiTest {
      */
     @Test
     public void addModelHistoryTest() throws ApiException {
+        String modelHistoryServerId = null;
         AddModelHistoryRequest addModelHistoryRequest = null;
-        ModelHistoryEntity response = api.addModelHistory(addModelHistoryRequest);
+        ModelHistoryEntity response = api.addModelHistory(modelHistoryServerId, addModelHistoryRequest);
 
         // TODO: test validations
     }
@@ -196,8 +203,9 @@ public class DefaultApiTest {
      */
     @Test
     public void addModelInstanceTest() throws ApiException {
+        String modelHistoryServerId = null;
         ModelInstanceEntity modelInstanceEntity = null;
-        ModelInstanceEntity response = api.addModelInstance(modelInstanceEntity);
+        ModelInstanceEntity response = api.addModelInstance(modelHistoryServerId, modelInstanceEntity);
 
         // TODO: test validations
     }
@@ -212,8 +220,9 @@ public class DefaultApiTest {
      */
     @Test
     public void aggregateModelResultsTest() throws ApiException {
+        String modelHistoryServerId = null;
         AggregatePrediction aggregatePrediction = null;
-        EvaluationResultsEntity response = api.aggregateModelResults(aggregatePrediction);
+        EvaluationResultsEntity response = api.aggregateModelResults(modelHistoryServerId, aggregatePrediction);
 
         // TODO: test validations
     }
@@ -230,8 +239,9 @@ public class DefaultApiTest {
     public void classifyTest() throws ApiException {
         Prediction body = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        ClassificationResult response = api.classify(body, deploymentName, modelName);
+        ClassificationResult response = api.classify(body, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -248,8 +258,9 @@ public class DefaultApiTest {
     public void classifyarrayTest() throws ApiException {
         Prediction body = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        Base64NDArrayBody response = api.classifyarray(body, deploymentName, modelName);
+        Base64NDArrayBody response = api.classifyarray(body, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -265,9 +276,10 @@ public class DefaultApiTest {
     @Test
     public void classifyimageTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
         File image = null;
-        ClassificationResult response = api.classifyimage(deploymentName, modelName, image);
+        ClassificationResult response = api.classifyimage(deploymentName, versionName, modelName, image);
 
         // TODO: test validations
     }
@@ -282,8 +294,9 @@ public class DefaultApiTest {
      */
     @Test
     public void createModelHistoryTest() throws ApiException {
+        String modelHistoryServerId = null;
         ModelHistoryEntity modelHistoryEntity = null;
-        ModelHistoryEntity response = api.createModelHistory(modelHistoryEntity);
+        ModelHistoryEntity response = api.createModelHistory(modelHistoryServerId, modelHistoryEntity);
 
         // TODO: test validations
     }
@@ -298,8 +311,9 @@ public class DefaultApiTest {
      */
     @Test
     public void deleteExperimentTest() throws ApiException {
+        String modelHistoryServerId = null;
         String experimentID = null;
-        InlineResponse200 response = api.deleteExperiment(experimentID);
+        InlineResponse200 response = api.deleteExperiment(modelHistoryServerId, experimentID);
 
         // TODO: test validations
     }
@@ -331,8 +345,9 @@ public class DefaultApiTest {
      */
     @Test
     public void deleteModelHistoryTest() throws ApiException {
+        String modelHistoryServerId = null;
         String modelHistoryID = null;
-        InlineResponse200 response = api.deleteModelHistory(modelHistoryID);
+        InlineResponse200 response = api.deleteModelHistory(modelHistoryServerId, modelHistoryID);
 
         // TODO: test validations
     }
@@ -347,8 +362,9 @@ public class DefaultApiTest {
      */
     @Test
     public void deleteModelInstanceTest() throws ApiException {
+        String modelHistoryServerId = null;
         String modelInstanceID = null;
-        api.deleteModelInstance(modelInstanceID);
+        api.deleteModelInstance(modelHistoryServerId, modelInstanceID);
 
         // TODO: test validations
     }
@@ -448,8 +464,9 @@ public class DefaultApiTest {
         Float threshold = null;
         File imageFile = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        DetectionResult response = api.detectobjects(id, needsPreprocessing, threshold, imageFile, deploymentName, modelName);
+        DetectionResult response = api.detectobjects(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -464,8 +481,9 @@ public class DefaultApiTest {
      */
     @Test
     public void getBestModelAmongModelIdsTest() throws ApiException {
+        String modelHistoryServerId = null;
         BestModel bestModel = null;
-        ModelInstanceEntity response = api.getBestModelAmongModelIds(bestModel);
+        ModelInstanceEntity response = api.getBestModelAmongModelIds(modelHistoryServerId, bestModel);
 
         // TODO: test validations
     }
@@ -480,8 +498,9 @@ public class DefaultApiTest {
      */
     @Test
     public void getEvaluationForModelIDTest() throws ApiException {
+        String modelHistoryServerId = null;
         String modelInstanceID = null;
-        List<EvaluationResultsEntity> response = api.getEvaluationForModelID(modelInstanceID);
+        List<EvaluationResultsEntity> response = api.getEvaluationForModelID(modelHistoryServerId, modelInstanceID);
 
         // TODO: test validations
     }
@@ -496,8 +515,9 @@ public class DefaultApiTest {
      */
     @Test
     public void getExamplesForMinibatchTest() throws ApiException {
+        String modelHistoryServerId = null;
         String minibatchId = null;
-        List<ExampleEntity> response = api.getExamplesForMinibatch(minibatchId);
+        List<ExampleEntity> response = api.getExamplesForMinibatch(modelHistoryServerId, minibatchId);
 
         // TODO: test validations
     }
@@ -512,8 +532,9 @@ public class DefaultApiTest {
      */
     @Test
     public void getExperimentTest() throws ApiException {
+        String modelHistoryServerId = null;
         String experimentID = null;
-        ExperimentEntity response = api.getExperiment(experimentID);
+        ExperimentEntity response = api.getExperiment(modelHistoryServerId, experimentID);
 
         // TODO: test validations
     }
@@ -528,8 +549,9 @@ public class DefaultApiTest {
      */
     @Test
     public void getExperimentsForModelHistoryTest() throws ApiException {
+        String modelHistoryServerId = null;
         String modelHistoryID = null;
-        ExperimentEntity response = api.getExperimentsForModelHistory(modelHistoryID);
+        ExperimentEntity response = api.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
 
         // TODO: test validations
     }
@@ -544,8 +566,9 @@ public class DefaultApiTest {
      */
     @Test
     public void getMinibatchTest() throws ApiException {
+        String modelHistoryServerId = null;
         String minibatchId = null;
-        MinibatchEntity response = api.getMinibatch(minibatchId);
+        MinibatchEntity response = api.getMinibatch(modelHistoryServerId, minibatchId);
 
         // TODO: test validations
     }
@@ -560,8 +583,9 @@ public class DefaultApiTest {
      */
     @Test
     public void getModelHistoryTest() throws ApiException {
+        String modelHistoryServerId = null;
         String modelHistoryID = null;
-        ModelHistoryEntity response = api.getModelHistory(modelHistoryID);
+        ModelHistoryEntity response = api.getModelHistory(modelHistoryServerId, modelHistoryID);
 
         // TODO: test validations
     }
@@ -576,8 +600,9 @@ public class DefaultApiTest {
      */
     @Test
     public void getModelInstanceTest() throws ApiException {
+        String modelHistoryServerId = null;
         String modelInstanceID = null;
-        ModelInstanceEntity response = api.getModelInstance(modelInstanceID);
+        ModelInstanceEntity response = api.getModelInstance(modelHistoryServerId, modelInstanceID);
 
         // TODO: test validations
     }
@@ -592,8 +617,9 @@ public class DefaultApiTest {
      */
     @Test
     public void getModelsForExperimentTest() throws ApiException {
+        String modelHistoryServerId = null;
         String experimentID = null;
-        List<ModelInstanceEntity> response = api.getModelsForExperiment(experimentID);
+        List<ModelInstanceEntity> response = api.getModelsForExperiment(modelHistoryServerId, experimentID);
 
         // TODO: test validations
     }
@@ -609,8 +635,9 @@ public class DefaultApiTest {
     @Test
     public void imagetransformprocessGetTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String imageTransformName = null;
-        ImageTransformProcess response = api.imagetransformprocessGet(deploymentName, imageTransformName);
+        ImageTransformProcess response = api.imagetransformprocessGet(deploymentName, versionName, imageTransformName);
 
         // TODO: test validations
     }
@@ -626,9 +653,10 @@ public class DefaultApiTest {
     @Test
     public void imagetransformprocessPostTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String imageTransformName = null;
         ImageTransformProcess body = null;
-        ImageTransformProcess response = api.imagetransformprocessPost(deploymentName, imageTransformName, body);
+        ImageTransformProcess response = api.imagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
 
         // TODO: test validations
     }
@@ -645,8 +673,9 @@ public class DefaultApiTest {
     public void jsonarrayTest() throws ApiException {
         Prediction body = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        JsonArrayResponse response = api.jsonarray(body, deploymentName, modelName);
+        JsonArrayResponse response = api.jsonarray(body, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -662,9 +691,10 @@ public class DefaultApiTest {
     @Test
     public void knnTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String knnName = null;
         NearestNeighborRequest body = null;
-        NearestNeighborsResults response = api.knn(deploymentName, knnName, body);
+        NearestNeighborsResults response = api.knn(deploymentName, versionName, knnName, body);
 
         // TODO: test validations
     }
@@ -680,9 +710,10 @@ public class DefaultApiTest {
     @Test
     public void knnnewTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String knnName = null;
         Base64NDArrayBodyKNN body = null;
-        NearestNeighborsResults response = api.knnnew(deploymentName, knnName, body);
+        NearestNeighborsResults response = api.knnnew(deploymentName, versionName, knnName, body);
 
         // TODO: test validations
     }
@@ -713,8 +744,9 @@ public class DefaultApiTest {
     @Test
     public void logfilepathTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        String response = api.logfilepath(deploymentName, modelName);
+        String response = api.logfilepath(deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -747,8 +779,9 @@ public class DefaultApiTest {
     public void logsTest() throws ApiException {
         LogRequest body = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        LogBatch response = api.logs(body, deploymentName, modelName);
+        LogBatch response = api.logs(body, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -764,8 +797,9 @@ public class DefaultApiTest {
     @Test
     public void metaGetTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        MetaData response = api.metaGet(deploymentName, modelName);
+        MetaData response = api.metaGet(deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -782,8 +816,9 @@ public class DefaultApiTest {
     public void metaPostTest() throws ApiException {
         MetaData body = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        MetaData response = api.metaPost(body, deploymentName, modelName);
+        MetaData response = api.metaPost(body, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -833,9 +868,10 @@ public class DefaultApiTest {
     @Test
     public void modelsetTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
         File file = null;
-        ModelStatus response = api.modelset(deploymentName, modelName, file);
+        ModelStatus response = api.modelset(deploymentName, versionName, modelName, file);
 
         // TODO: test validations
     }
@@ -851,9 +887,10 @@ public class DefaultApiTest {
     @Test
     public void modelupdateTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
         File file = null;
-        ModelStatus response = api.modelupdate(deploymentName, modelName, file);
+        ModelStatus response = api.modelupdate(deploymentName, versionName, modelName, file);
 
         // TODO: test validations
     }
@@ -870,8 +907,9 @@ public class DefaultApiTest {
     public void multiclassifyTest() throws ApiException {
         Prediction body = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        MultiClassClassificationResult response = api.multiclassify(body, deploymentName, modelName);
+        MultiClassClassificationResult response = api.multiclassify(body, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -888,8 +926,9 @@ public class DefaultApiTest {
     public void multipredictTest() throws ApiException {
         MultiPredictRequest body = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        MultiPredictResponse response = api.multipredict(body, deploymentName, modelName);
+        MultiPredictResponse response = api.multipredict(body, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -908,8 +947,9 @@ public class DefaultApiTest {
         String id = null;
         Boolean needsPreprocessing = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        MultiPredictResponse response = api.multipredictimage(file, id, needsPreprocessing, deploymentName, modelName);
+        MultiPredictResponse response = api.multipredictimage(file, id, needsPreprocessing, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -926,8 +966,9 @@ public class DefaultApiTest {
     public void predictTest() throws ApiException {
         Prediction body = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        Prediction response = api.predict(body, deploymentName, modelName);
+        Prediction response = api.predict(body, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -943,9 +984,10 @@ public class DefaultApiTest {
     @Test
     public void predictimageTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
         File image = null;
-        Prediction response = api.predictimage(deploymentName, modelName, image);
+        Prediction response = api.predictimage(deploymentName, versionName, modelName, image);
 
         // TODO: test validations
     }
@@ -962,8 +1004,9 @@ public class DefaultApiTest {
     public void predictwithpreprocessTest() throws ApiException {
         List<String> body = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        Prediction response = api.predictwithpreprocess(body, deploymentName, modelName);
+        Prediction response = api.predictwithpreprocess(body, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -980,8 +1023,9 @@ public class DefaultApiTest {
     public void predictwithpreprocessjsonTest() throws ApiException {
         List<String> body = null;
         String deploymentName = null;
+        String versionName = null;
         String modelName = null;
-        JsonArrayResponse response = api.predictwithpreprocessjson(body, deploymentName, modelName);
+        JsonArrayResponse response = api.predictwithpreprocessjson(body, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -1015,9 +1059,10 @@ public class DefaultApiTest {
     @Test
     public void transformCsvTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String transformName = null;
         BatchCSVRecord batchCSVRecord = null;
-        BatchCSVRecord response = api.transformCsv(deploymentName, transformName, batchCSVRecord);
+        BatchCSVRecord response = api.transformCsv(deploymentName, versionName, transformName, batchCSVRecord);
 
         // TODO: test validations
     }
@@ -1033,9 +1078,10 @@ public class DefaultApiTest {
     @Test
     public void transformarrayCsvTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String transformName = null;
         BatchCSVRecord batchCSVRecord = null;
-        Base64NDArrayBody response = api.transformarrayCsv(deploymentName, transformName, batchCSVRecord);
+        Base64NDArrayBody response = api.transformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
 
         // TODO: test validations
     }
@@ -1051,9 +1097,10 @@ public class DefaultApiTest {
     @Test
     public void transformarrayImageTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String imageTransformName = null;
         BatchImageRecord batchImageRecord = null;
-        Base64NDArrayBody response = api.transformarrayImage(deploymentName, imageTransformName, batchImageRecord);
+        Base64NDArrayBody response = api.transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
 
         // TODO: test validations
     }
@@ -1069,9 +1116,10 @@ public class DefaultApiTest {
     @Test
     public void transformimageTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String imageTransformName = null;
         List<byte[]> files = null;
-        Base64NDArrayBody response = api.transformimage(deploymentName, imageTransformName, files);
+        Base64NDArrayBody response = api.transformimage(deploymentName, versionName, imageTransformName, files);
 
         // TODO: test validations
     }
@@ -1087,9 +1135,10 @@ public class DefaultApiTest {
     @Test
     public void transformincrementalCsvTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String transformName = null;
         SingleCSVRecord singleCSVRecord = null;
-        SingleCSVRecord response = api.transformincrementalCsv(deploymentName, transformName, singleCSVRecord);
+        SingleCSVRecord response = api.transformincrementalCsv(deploymentName, versionName, transformName, singleCSVRecord);
 
         // TODO: test validations
     }
@@ -1105,9 +1154,10 @@ public class DefaultApiTest {
     @Test
     public void transformincrementalarrayCsvTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String transformName = null;
         SingleCSVRecord singleCSVRecord = null;
-        Base64NDArrayBody response = api.transformincrementalarrayCsv(deploymentName, transformName, singleCSVRecord);
+        Base64NDArrayBody response = api.transformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
 
         // TODO: test validations
     }
@@ -1123,9 +1173,10 @@ public class DefaultApiTest {
     @Test
     public void transformincrementalarrayImageTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String imageTransformName = null;
         SingleImageRecord singleImageRecord = null;
-        Base64NDArrayBody response = api.transformincrementalarrayImage(deploymentName, imageTransformName, singleImageRecord);
+        Base64NDArrayBody response = api.transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
 
         // TODO: test validations
     }
@@ -1141,9 +1192,10 @@ public class DefaultApiTest {
     @Test
     public void transformincrementalimageTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String imageTransformName = null;
         File file = null;
-        Base64NDArrayBody response = api.transformincrementalimage(deploymentName, imageTransformName, file);
+        Base64NDArrayBody response = api.transformincrementalimage(deploymentName, versionName, imageTransformName, file);
 
         // TODO: test validations
     }
@@ -1159,8 +1211,9 @@ public class DefaultApiTest {
     @Test
     public void transformprocessGetTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String transformName = null;
-        TransformProcess response = api.transformprocessGet(deploymentName, transformName);
+        TransformProcess response = api.transformprocessGet(deploymentName, versionName, transformName);
 
         // TODO: test validations
     }
@@ -1176,9 +1229,10 @@ public class DefaultApiTest {
     @Test
     public void transformprocessPostTest() throws ApiException {
         String deploymentName = null;
+        String versionName = null;
         String transformName = null;
         TransformProcess transformProcess = null;
-        api.transformprocessPost(deploymentName, transformName, transformProcess);
+        api.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
 
         // TODO: test validations
     }
@@ -1193,8 +1247,9 @@ public class DefaultApiTest {
      */
     @Test
     public void updateBestModelForExperimentTest() throws ApiException {
+        String modelHistoryServerId = null;
         UpdateBestModel updateBestModel = null;
-        ExperimentEntity response = api.updateBestModelForExperiment(updateBestModel);
+        ExperimentEntity response = api.updateBestModelForExperiment(modelHistoryServerId, updateBestModel);
 
         // TODO: test validations
     }
@@ -1209,9 +1264,10 @@ public class DefaultApiTest {
      */
     @Test
     public void updateExperimentTest() throws ApiException {
+        String modelHistoryServerId = null;
         String experimentID = null;
         ExperimentEntity experimentEntity = null;
-        ExperimentEntity response = api.updateExperiment(experimentID, experimentEntity);
+        ExperimentEntity response = api.updateExperiment(modelHistoryServerId, experimentID, experimentEntity);
 
         // TODO: test validations
     }
@@ -1226,9 +1282,10 @@ public class DefaultApiTest {
      */
     @Test
     public void updateModelHistoryTest() throws ApiException {
+        String modelHistoryServerId = null;
         String modelHistoryID = null;
         AddModelHistoryRequest updateModelHistoryRequest = null;
-        ModelHistoryEntity response = api.updateModelHistory(modelHistoryID, updateModelHistoryRequest);
+        ModelHistoryEntity response = api.updateModelHistory(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest);
 
         // TODO: test validations
     }

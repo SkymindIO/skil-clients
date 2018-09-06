@@ -71,8 +71,9 @@ namespace Skymind.SKIL.Test
         public void AddEvaluationResultTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //EvaluationResultsEntity evaluationResultsEntity = null;
-            //var response = instance.AddEvaluationResult(evaluationResultsEntity);
+            //var response = instance.AddEvaluationResult(modelHistoryServerId, evaluationResultsEntity);
             //Assert.IsInstanceOf<EvaluationResultsEntity> (response, "response is EvaluationResultsEntity");
         }
         
@@ -83,8 +84,9 @@ namespace Skymind.SKIL.Test
         public void AddExampleForBatchTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //AddExampleRequest addExampleRequest = null;
-            //var response = instance.AddExampleForBatch(addExampleRequest);
+            //var response = instance.AddExampleForBatch(modelHistoryServerId, addExampleRequest);
             //Assert.IsInstanceOf<AddExampleRequest> (response, "response is AddExampleRequest");
         }
         
@@ -95,8 +97,9 @@ namespace Skymind.SKIL.Test
         public void AddExampleToMinibatchTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //ExampleEntity exampleEntity = null;
-            //var response = instance.AddExampleToMinibatch(exampleEntity);
+            //var response = instance.AddExampleToMinibatch(modelHistoryServerId, exampleEntity);
             //Assert.IsInstanceOf<ExampleEntity> (response, "response is ExampleEntity");
         }
         
@@ -107,8 +110,9 @@ namespace Skymind.SKIL.Test
         public void AddExperimentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //ExperimentEntity experimentEntity = null;
-            //var response = instance.AddExperiment(experimentEntity);
+            //var response = instance.AddExperiment(modelHistoryServerId, experimentEntity);
             //Assert.IsInstanceOf<ExperimentEntity> (response, "response is ExperimentEntity");
         }
         
@@ -119,8 +123,9 @@ namespace Skymind.SKIL.Test
         public void AddMinibatchTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //MinibatchEntity minibatchEntity = null;
-            //var response = instance.AddMinibatch(minibatchEntity);
+            //var response = instance.AddMinibatch(modelHistoryServerId, minibatchEntity);
             //Assert.IsInstanceOf<MinibatchEntity> (response, "response is MinibatchEntity");
         }
         
@@ -131,8 +136,9 @@ namespace Skymind.SKIL.Test
         public void AddModelFeedbackTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //ModelFeedBackRequest modelFeedBackRequest = null;
-            //var response = instance.AddModelFeedback(modelFeedBackRequest);
+            //var response = instance.AddModelFeedback(modelHistoryServerId, modelFeedBackRequest);
             //Assert.IsInstanceOf<ModelFeedBackRequest> (response, "response is ModelFeedBackRequest");
         }
         
@@ -143,8 +149,9 @@ namespace Skymind.SKIL.Test
         public void AddModelHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //AddModelHistoryRequest addModelHistoryRequest = null;
-            //var response = instance.AddModelHistory(addModelHistoryRequest);
+            //var response = instance.AddModelHistory(modelHistoryServerId, addModelHistoryRequest);
             //Assert.IsInstanceOf<ModelHistoryEntity> (response, "response is ModelHistoryEntity");
         }
         
@@ -155,8 +162,9 @@ namespace Skymind.SKIL.Test
         public void AddModelInstanceTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //ModelInstanceEntity modelInstanceEntity = null;
-            //var response = instance.AddModelInstance(modelInstanceEntity);
+            //var response = instance.AddModelInstance(modelHistoryServerId, modelInstanceEntity);
             //Assert.IsInstanceOf<ModelInstanceEntity> (response, "response is ModelInstanceEntity");
         }
         
@@ -167,8 +175,9 @@ namespace Skymind.SKIL.Test
         public void AggregateModelResultsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //AggregatePrediction aggregatePrediction = null;
-            //var response = instance.AggregateModelResults(aggregatePrediction);
+            //var response = instance.AggregateModelResults(modelHistoryServerId, aggregatePrediction);
             //Assert.IsInstanceOf<EvaluationResultsEntity> (response, "response is EvaluationResultsEntity");
         }
         
@@ -181,8 +190,9 @@ namespace Skymind.SKIL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //Prediction body = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Classify(body, deploymentName, modelName);
+            //var response = instance.Classify(body, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<ClassificationResult> (response, "response is ClassificationResult");
         }
         
@@ -195,8 +205,9 @@ namespace Skymind.SKIL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //Prediction body = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Classifyarray(body, deploymentName, modelName);
+            //var response = instance.Classifyarray(body, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
         }
         
@@ -208,9 +219,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
             //System.IO.Stream image = null;
-            //var response = instance.Classifyimage(deploymentName, modelName, image);
+            //var response = instance.Classifyimage(deploymentName, versionName, modelName, image);
             //Assert.IsInstanceOf<ClassificationResult> (response, "response is ClassificationResult");
         }
         
@@ -221,8 +233,9 @@ namespace Skymind.SKIL.Test
         public void CreateModelHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //ModelHistoryEntity modelHistoryEntity = null;
-            //var response = instance.CreateModelHistory(modelHistoryEntity);
+            //var response = instance.CreateModelHistory(modelHistoryServerId, modelHistoryEntity);
             //Assert.IsInstanceOf<ModelHistoryEntity> (response, "response is ModelHistoryEntity");
         }
         
@@ -233,8 +246,9 @@ namespace Skymind.SKIL.Test
         public void DeleteExperimentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string experimentID = null;
-            //var response = instance.DeleteExperiment(experimentID);
+            //var response = instance.DeleteExperiment(modelHistoryServerId, experimentID);
             //Assert.IsInstanceOf<InlineResponse200> (response, "response is InlineResponse200");
         }
         
@@ -258,8 +272,9 @@ namespace Skymind.SKIL.Test
         public void DeleteModelHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string modelHistoryID = null;
-            //var response = instance.DeleteModelHistory(modelHistoryID);
+            //var response = instance.DeleteModelHistory(modelHistoryServerId, modelHistoryID);
             //Assert.IsInstanceOf<InlineResponse200> (response, "response is InlineResponse200");
         }
         
@@ -270,8 +285,9 @@ namespace Skymind.SKIL.Test
         public void DeleteModelInstanceTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string modelInstanceID = null;
-            //instance.DeleteModelInstance(modelInstanceID);
+            //instance.DeleteModelInstance(modelHistoryServerId, modelInstanceID);
             
         }
         
@@ -347,8 +363,9 @@ namespace Skymind.SKIL.Test
             //float? threshold = null;
             //System.IO.Stream imageFile = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Detectobjects(id, needsPreprocessing, threshold, imageFile, deploymentName, modelName);
+            //var response = instance.Detectobjects(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<DetectionResult> (response, "response is DetectionResult");
         }
         
@@ -359,8 +376,9 @@ namespace Skymind.SKIL.Test
         public void GetBestModelAmongModelIdsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //BestModel bestModel = null;
-            //var response = instance.GetBestModelAmongModelIds(bestModel);
+            //var response = instance.GetBestModelAmongModelIds(modelHistoryServerId, bestModel);
             //Assert.IsInstanceOf<ModelInstanceEntity> (response, "response is ModelInstanceEntity");
         }
         
@@ -371,8 +389,9 @@ namespace Skymind.SKIL.Test
         public void GetEvaluationForModelIDTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string modelInstanceID = null;
-            //var response = instance.GetEvaluationForModelID(modelInstanceID);
+            //var response = instance.GetEvaluationForModelID(modelHistoryServerId, modelInstanceID);
             //Assert.IsInstanceOf<List<EvaluationResultsEntity>> (response, "response is List<EvaluationResultsEntity>");
         }
         
@@ -383,8 +402,9 @@ namespace Skymind.SKIL.Test
         public void GetExamplesForMinibatchTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string minibatchId = null;
-            //var response = instance.GetExamplesForMinibatch(minibatchId);
+            //var response = instance.GetExamplesForMinibatch(modelHistoryServerId, minibatchId);
             //Assert.IsInstanceOf<List<ExampleEntity>> (response, "response is List<ExampleEntity>");
         }
         
@@ -395,8 +415,9 @@ namespace Skymind.SKIL.Test
         public void GetExperimentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string experimentID = null;
-            //var response = instance.GetExperiment(experimentID);
+            //var response = instance.GetExperiment(modelHistoryServerId, experimentID);
             //Assert.IsInstanceOf<ExperimentEntity> (response, "response is ExperimentEntity");
         }
         
@@ -407,8 +428,9 @@ namespace Skymind.SKIL.Test
         public void GetExperimentsForModelHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string modelHistoryID = null;
-            //var response = instance.GetExperimentsForModelHistory(modelHistoryID);
+            //var response = instance.GetExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
             //Assert.IsInstanceOf<ExperimentEntity> (response, "response is ExperimentEntity");
         }
         
@@ -419,8 +441,9 @@ namespace Skymind.SKIL.Test
         public void GetMinibatchTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string minibatchId = null;
-            //var response = instance.GetMinibatch(minibatchId);
+            //var response = instance.GetMinibatch(modelHistoryServerId, minibatchId);
             //Assert.IsInstanceOf<MinibatchEntity> (response, "response is MinibatchEntity");
         }
         
@@ -431,8 +454,9 @@ namespace Skymind.SKIL.Test
         public void GetModelHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string modelHistoryID = null;
-            //var response = instance.GetModelHistory(modelHistoryID);
+            //var response = instance.GetModelHistory(modelHistoryServerId, modelHistoryID);
             //Assert.IsInstanceOf<ModelHistoryEntity> (response, "response is ModelHistoryEntity");
         }
         
@@ -443,8 +467,9 @@ namespace Skymind.SKIL.Test
         public void GetModelInstanceTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string modelInstanceID = null;
-            //var response = instance.GetModelInstance(modelInstanceID);
+            //var response = instance.GetModelInstance(modelHistoryServerId, modelInstanceID);
             //Assert.IsInstanceOf<ModelInstanceEntity> (response, "response is ModelInstanceEntity");
         }
         
@@ -455,8 +480,9 @@ namespace Skymind.SKIL.Test
         public void GetModelsForExperimentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string experimentID = null;
-            //var response = instance.GetModelsForExperiment(experimentID);
+            //var response = instance.GetModelsForExperiment(modelHistoryServerId, experimentID);
             //Assert.IsInstanceOf<List<ModelInstanceEntity>> (response, "response is List<ModelInstanceEntity>");
         }
         
@@ -468,8 +494,9 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string imageTransformName = null;
-            //var response = instance.ImagetransformprocessGet(deploymentName, imageTransformName);
+            //var response = instance.ImagetransformprocessGet(deploymentName, versionName, imageTransformName);
             //Assert.IsInstanceOf<ImageTransformProcess> (response, "response is ImageTransformProcess");
         }
         
@@ -481,9 +508,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string imageTransformName = null;
             //ImageTransformProcess body = null;
-            //var response = instance.ImagetransformprocessPost(deploymentName, imageTransformName, body);
+            //var response = instance.ImagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
             //Assert.IsInstanceOf<ImageTransformProcess> (response, "response is ImageTransformProcess");
         }
         
@@ -496,8 +524,9 @@ namespace Skymind.SKIL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //Prediction body = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Jsonarray(body, deploymentName, modelName);
+            //var response = instance.Jsonarray(body, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<JsonArrayResponse> (response, "response is JsonArrayResponse");
         }
         
@@ -509,9 +538,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string knnName = null;
             //NearestNeighborRequest body = null;
-            //var response = instance.Knn(deploymentName, knnName, body);
+            //var response = instance.Knn(deploymentName, versionName, knnName, body);
             //Assert.IsInstanceOf<NearestNeighborsResults> (response, "response is NearestNeighborsResults");
         }
         
@@ -523,9 +553,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string knnName = null;
             //Base64NDArrayBodyKNN body = null;
-            //var response = instance.Knnnew(deploymentName, knnName, body);
+            //var response = instance.Knnnew(deploymentName, versionName, knnName, body);
             //Assert.IsInstanceOf<NearestNeighborsResults> (response, "response is NearestNeighborsResults");
         }
         
@@ -548,8 +579,9 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Logfilepath(deploymentName, modelName);
+            //var response = instance.Logfilepath(deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
@@ -574,8 +606,9 @@ namespace Skymind.SKIL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //LogRequest body = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Logs(body, deploymentName, modelName);
+            //var response = instance.Logs(body, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<LogBatch> (response, "response is LogBatch");
         }
         
@@ -587,8 +620,9 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.MetaGet(deploymentName, modelName);
+            //var response = instance.MetaGet(deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<MetaData> (response, "response is MetaData");
         }
         
@@ -601,8 +635,9 @@ namespace Skymind.SKIL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //MetaData body = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.MetaPost(body, deploymentName, modelName);
+            //var response = instance.MetaPost(body, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<MetaData> (response, "response is MetaData");
         }
         
@@ -640,9 +675,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
             //System.IO.Stream file = null;
-            //var response = instance.Modelset(deploymentName, modelName, file);
+            //var response = instance.Modelset(deploymentName, versionName, modelName, file);
             //Assert.IsInstanceOf<ModelStatus> (response, "response is ModelStatus");
         }
         
@@ -654,9 +690,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
             //System.IO.Stream file = null;
-            //var response = instance.Modelupdate(deploymentName, modelName, file);
+            //var response = instance.Modelupdate(deploymentName, versionName, modelName, file);
             //Assert.IsInstanceOf<ModelStatus> (response, "response is ModelStatus");
         }
         
@@ -669,8 +706,9 @@ namespace Skymind.SKIL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //Prediction body = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Multiclassify(body, deploymentName, modelName);
+            //var response = instance.Multiclassify(body, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<MultiClassClassificationResult> (response, "response is MultiClassClassificationResult");
         }
         
@@ -683,8 +721,9 @@ namespace Skymind.SKIL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //MultiPredictRequest body = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Multipredict(body, deploymentName, modelName);
+            //var response = instance.Multipredict(body, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<MultiPredictResponse> (response, "response is MultiPredictResponse");
         }
         
@@ -699,8 +738,9 @@ namespace Skymind.SKIL.Test
             //string id = null;
             //bool? needsPreprocessing = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Multipredictimage(file, id, needsPreprocessing, deploymentName, modelName);
+            //var response = instance.Multipredictimage(file, id, needsPreprocessing, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<MultiPredictResponse> (response, "response is MultiPredictResponse");
         }
         
@@ -713,8 +753,9 @@ namespace Skymind.SKIL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //Prediction body = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Predict(body, deploymentName, modelName);
+            //var response = instance.Predict(body, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<Prediction> (response, "response is Prediction");
         }
         
@@ -726,9 +767,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
             //System.IO.Stream image = null;
-            //var response = instance.Predictimage(deploymentName, modelName, image);
+            //var response = instance.Predictimage(deploymentName, versionName, modelName, image);
             //Assert.IsInstanceOf<Prediction> (response, "response is Prediction");
         }
         
@@ -741,8 +783,9 @@ namespace Skymind.SKIL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //List<string> body = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Predictwithpreprocess(body, deploymentName, modelName);
+            //var response = instance.Predictwithpreprocess(body, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<Prediction> (response, "response is Prediction");
         }
         
@@ -755,8 +798,9 @@ namespace Skymind.SKIL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //List<string> body = null;
             //string deploymentName = null;
+            //string versionName = null;
             //string modelName = null;
-            //var response = instance.Predictwithpreprocessjson(body, deploymentName, modelName);
+            //var response = instance.Predictwithpreprocessjson(body, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<JsonArrayResponse> (response, "response is JsonArrayResponse");
         }
         
@@ -782,9 +826,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string transformName = null;
             //BatchCSVRecord batchCSVRecord = null;
-            //var response = instance.TransformCsv(deploymentName, transformName, batchCSVRecord);
+            //var response = instance.TransformCsv(deploymentName, versionName, transformName, batchCSVRecord);
             //Assert.IsInstanceOf<BatchCSVRecord> (response, "response is BatchCSVRecord");
         }
         
@@ -796,9 +841,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string transformName = null;
             //BatchCSVRecord batchCSVRecord = null;
-            //var response = instance.TransformarrayCsv(deploymentName, transformName, batchCSVRecord);
+            //var response = instance.TransformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
             //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
         }
         
@@ -810,9 +856,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string imageTransformName = null;
             //BatchImageRecord batchImageRecord = null;
-            //var response = instance.TransformarrayImage(deploymentName, imageTransformName, batchImageRecord);
+            //var response = instance.TransformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
             //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
         }
         
@@ -824,9 +871,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string imageTransformName = null;
             //List<byte[]> files = null;
-            //var response = instance.Transformimage(deploymentName, imageTransformName, files);
+            //var response = instance.Transformimage(deploymentName, versionName, imageTransformName, files);
             //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
         }
         
@@ -838,9 +886,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string transformName = null;
             //SingleCSVRecord singleCSVRecord = null;
-            //var response = instance.TransformincrementalCsv(deploymentName, transformName, singleCSVRecord);
+            //var response = instance.TransformincrementalCsv(deploymentName, versionName, transformName, singleCSVRecord);
             //Assert.IsInstanceOf<SingleCSVRecord> (response, "response is SingleCSVRecord");
         }
         
@@ -852,9 +901,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string transformName = null;
             //SingleCSVRecord singleCSVRecord = null;
-            //var response = instance.TransformincrementalarrayCsv(deploymentName, transformName, singleCSVRecord);
+            //var response = instance.TransformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
             //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
         }
         
@@ -866,9 +916,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string imageTransformName = null;
             //SingleImageRecord singleImageRecord = null;
-            //var response = instance.TransformincrementalarrayImage(deploymentName, imageTransformName, singleImageRecord);
+            //var response = instance.TransformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
             //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
         }
         
@@ -880,9 +931,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string imageTransformName = null;
             //System.IO.Stream file = null;
-            //var response = instance.Transformincrementalimage(deploymentName, imageTransformName, file);
+            //var response = instance.Transformincrementalimage(deploymentName, versionName, imageTransformName, file);
             //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
         }
         
@@ -894,8 +946,9 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string transformName = null;
-            //var response = instance.TransformprocessGet(deploymentName, transformName);
+            //var response = instance.TransformprocessGet(deploymentName, versionName, transformName);
             //Assert.IsInstanceOf<TransformProcess> (response, "response is TransformProcess");
         }
         
@@ -907,9 +960,10 @@ namespace Skymind.SKIL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
+            //string versionName = null;
             //string transformName = null;
             //TransformProcess transformProcess = null;
-            //instance.TransformprocessPost(deploymentName, transformName, transformProcess);
+            //instance.TransformprocessPost(deploymentName, versionName, transformName, transformProcess);
             
         }
         
@@ -920,8 +974,9 @@ namespace Skymind.SKIL.Test
         public void UpdateBestModelForExperimentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //UpdateBestModel updateBestModel = null;
-            //var response = instance.UpdateBestModelForExperiment(updateBestModel);
+            //var response = instance.UpdateBestModelForExperiment(modelHistoryServerId, updateBestModel);
             //Assert.IsInstanceOf<ExperimentEntity> (response, "response is ExperimentEntity");
         }
         
@@ -932,9 +987,10 @@ namespace Skymind.SKIL.Test
         public void UpdateExperimentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string experimentID = null;
             //ExperimentEntity experimentEntity = null;
-            //var response = instance.UpdateExperiment(experimentID, experimentEntity);
+            //var response = instance.UpdateExperiment(modelHistoryServerId, experimentID, experimentEntity);
             //Assert.IsInstanceOf<ExperimentEntity> (response, "response is ExperimentEntity");
         }
         
@@ -945,9 +1001,10 @@ namespace Skymind.SKIL.Test
         public void UpdateModelHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string modelHistoryServerId = null;
             //string modelHistoryID = null;
             //AddModelHistoryRequest updateModelHistoryRequest = null;
-            //var response = instance.UpdateModelHistory(modelHistoryID, updateModelHistoryRequest);
+            //var response = instance.UpdateModelHistory(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest);
             //Assert.IsInstanceOf<ModelHistoryEntity> (response, "response is ModelHistoryEntity");
         }
         

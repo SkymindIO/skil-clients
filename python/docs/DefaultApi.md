@@ -4,79 +4,79 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_evaluation_result**](DefaultApi.md#add_evaluation_result) | **POST** /model/revisions/evaluations/ | Adds an evaluation result
-[**add_example_for_batch**](DefaultApi.md#add_example_for_batch) | **POST** /model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
-[**add_example_to_minibatch**](DefaultApi.md#add_example_to_minibatch) | **POST** /model/example | Adds an example to a minibatch
-[**add_experiment**](DefaultApi.md#add_experiment) | **POST** /experiment | Add an experiment, given an experiment entity
-[**add_minibatch**](DefaultApi.md#add_minibatch) | **POST** /model/minibatch | Adds a minibatch
-[**add_model_feedback**](DefaultApi.md#add_model_feedback) | **POST** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
-[**add_model_history**](DefaultApi.md#add_model_history) | **POST** /modelhistory | Add a model history / workspace
-[**add_model_instance**](DefaultApi.md#add_model_instance) | **POST** /model | Adds a model
-[**aggregate_model_results**](DefaultApi.md#aggregate_model_results) | **POST** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
-[**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classify | Use the deployed model to classify the input
-[**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-[**create_model_history**](DefaultApi.md#create_model_history) | **POST** /model/revisions | Creates model History
-[**delete_experiment**](DefaultApi.md#delete_experiment) | **DELETE** /experiment/{experimentID} | Deletes an experiment, given an experiment entity
+[**add_evaluation_result**](DefaultApi.md#add_evaluation_result) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
+[**add_example_for_batch**](DefaultApi.md#add_example_for_batch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
+[**add_example_to_minibatch**](DefaultApi.md#add_example_to_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
+[**add_experiment**](DefaultApi.md#add_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+[**add_minibatch**](DefaultApi.md#add_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
+[**add_model_feedback**](DefaultApi.md#add_model_feedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
+[**add_model_history**](DefaultApi.md#add_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
+[**add_model_instance**](DefaultApi.md#add_model_instance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+[**aggregate_model_results**](DefaultApi.md#aggregate_model_results) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
+[**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
+[**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**create_model_history**](DefaultApi.md#create_model_history) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
+[**delete_experiment**](DefaultApi.md#delete_experiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
 [**delete_model**](DefaultApi.md#delete_model) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
-[**delete_model_history**](DefaultApi.md#delete_model_history) | **DELETE** /modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
-[**delete_model_instance**](DefaultApi.md#delete_model_instance) | **DELETE** /model/{modelInstanceID} | Deletes a model instance, given its ID
+[**delete_model_history**](DefaultApi.md#delete_model_history) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
+[**delete_model_instance**](DefaultApi.md#delete_model_instance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
 [**deploy_model**](DefaultApi.md#deploy_model) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**deployment_create**](DefaultApi.md#deployment_create) | **POST** /deployment | Create a new deployment group.
 [**deployment_delete**](DefaultApi.md#deployment_delete) | **DELETE** /deployment/{deploymentId} | Delete a deployment by id
 [**deployment_get**](DefaultApi.md#deployment_get) | **GET** /deployment/{deploymentId} | Get a deployment details by id
 [**deployments**](DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
-[**detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/detectobjects | Detect the objects, given a (input) prediction request
-[**get_best_model_among_model_ids**](DefaultApi.md#get_best_model_among_model_ids) | **POST** /model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-[**get_evaluation_for_model_id**](DefaultApi.md#get_evaluation_for_model_id) | **GET** /model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
-[**get_examples_for_minibatch**](DefaultApi.md#get_examples_for_minibatch) | **GET** /model/example/{minibatchId} | Gets all the examples for a minibatch ID
-[**get_experiment**](DefaultApi.md#get_experiment) | **GET** /experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
-[**get_experiments_for_model_history**](DefaultApi.md#get_experiments_for_model_history) | **GET** /experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-[**get_minibatch**](DefaultApi.md#get_minibatch) | **GET** /model/minibatch/{minibatchId} | Gets a minibatch for the model
-[**get_model_history**](DefaultApi.md#get_model_history) | **GET** /model/revision/{modelHistoryID} | Gets a model history, given its ID
-[**get_model_instance**](DefaultApi.md#get_model_instance) | **GET** /model/{modelInstanceID} | Gets a model instance, given its ID
-[**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **GET** /experiment/{experimentID}/models | Obtain a list of all the models for an experiment
-[**imagetransformprocess_get**](DefaultApi.md#imagetransformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess | Retrieves the image transform process JSON string
-[**imagetransformprocess_post**](DefaultApi.md#imagetransformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess | Sets the image transform process through the provided JSON string
-[**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
-[**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/default/knn | Runs knn on the given index with the given k
-[**knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/default/knnnew | Run a k nearest neighbors search on a NEW data point
-[**list_all_experiments**](DefaultApi.md#list_all_experiments) | **GET** /experiments | List all of the experiments in every model history / workspace
-[**logfilepath**](DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/default/logfilepath | Get logs file path
+[**detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
+[**get_best_model_among_model_ids**](DefaultApi.md#get_best_model_among_model_ids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+[**get_evaluation_for_model_id**](DefaultApi.md#get_evaluation_for_model_id) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
+[**get_examples_for_minibatch**](DefaultApi.md#get_examples_for_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
+[**get_experiment**](DefaultApi.md#get_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
+[**get_experiments_for_model_history**](DefaultApi.md#get_experiments_for_model_history) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
+[**get_minibatch**](DefaultApi.md#get_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+[**get_model_history**](DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
+[**get_model_instance**](DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
+[**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+[**imagetransformprocess_get**](DefaultApi.md#imagetransformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
+[**imagetransformprocess_post**](DefaultApi.md#imagetransformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
+[**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
+[**knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
+[**list_all_experiments**](DefaultApi.md#list_all_experiments) | **GET** /rpc/{modelHistoryServerId}/experiments | List all of the experiments in every model history / workspace
+[**logfilepath**](DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath | Get logs file path
 [**login**](DefaultApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
-[**logs**](DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/logs | Get logs
-[**meta_get**](DefaultApi.md#meta_get) | **GET** /endpoints/{deploymentName}/model/{modelName}/default/meta | this method can be used to get the meta data for the current model which set to the server
-[**meta_post**](DefaultApi.md#meta_post) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/meta | This method can be used to set meta data for the current model which is set to the server
+[**logs**](DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs | Get logs
+[**meta_get**](DefaultApi.md#meta_get) | **GET** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | this method can be used to get the meta data for the current model which set to the server
+[**meta_post**](DefaultApi.md#meta_post) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | This method can be used to set meta data for the current model which is set to the server
 [**model_state_change**](DefaultApi.md#model_state_change) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Modify the state (start/stop) of a deployed model
 [**models**](DefaultApi.md#models) | **GET** /deployment/{deploymentId}/models | Retrieve a list of all the deployed models given a deployment id
-[**modelset**](DefaultApi.md#modelset) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelset | Set the model to be served
-[**modelupdate**](DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
-[**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
-[**multipredict**](DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredict | Get the output from the network, based on the given INDArray[] input
-[**multipredictimage**](DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
-[**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
-[**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
-[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**modelset**](DefaultApi.md#modelset) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset | Set the model to be served
+[**modelupdate**](DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate | Update the model to be served
+[**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
+[**multipredict**](DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
+[**multipredictimage**](DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+[**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+[**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
+[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**reimport_model**](DefaultApi.md#reimport_model) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
-[**transform_csv**](DefaultApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**transformarray_csv**](DefaultApi.md#transformarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformarray | Takes a batch input arrays and transforms it
-[**transformarray_image**](DefaultApi.md#transformarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-[**transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
-[**transformincremental_csv**](DefaultApi.md#transformincremental_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**transformincrementalarray_csv**](DefaultApi.md#transformincrementalarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**transformincrementalarray_image**](DefaultApi.md#transformincrementalarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
-[**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**transformprocess_get**](DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess | Gets the JSON string of the deployed transform process
-[**transformprocess_post**](DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess | Sets the deployed transform process through the provided JSON string
-[**update_best_model_for_experiment**](DefaultApi.md#update_best_model_for_experiment) | **POST** /experiment/best | Updates the best model for an experiment
-[**update_experiment**](DefaultApi.md#update_experiment) | **PUT** /experiment/{experimentID} | Updates an experiment, given an experiment entity
-[**update_model_history**](DefaultApi.md#update_model_history) | **POST** /modelhistory/{modelHistoryID} | Update a model history / workspace
+[**transform_csv**](DefaultApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+[**transformarray_csv**](DefaultApi.md#transformarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
+[**transformarray_image**](DefaultApi.md#transformarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
+[**transformincremental_csv**](DefaultApi.md#transformincremental_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+[**transformincrementalarray_csv**](DefaultApi.md#transformincrementalarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
+[**transformincrementalarray_image**](DefaultApi.md#transformincrementalarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
+[**transformprocess_get**](DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
+[**transformprocess_post**](DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**update_best_model_for_experiment**](DefaultApi.md#update_best_model_for_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
+[**update_experiment**](DefaultApi.md#update_experiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
+[**update_model_history**](DefaultApi.md#update_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
 # **add_evaluation_result**
-> EvaluationResultsEntity add_evaluation_result(evaluation_results_entity)
+> EvaluationResultsEntity add_evaluation_result(model_history_server_id, evaluation_results_entity)
 
 Adds an evaluation result
 
@@ -96,11 +96,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 evaluation_results_entity = skil_client.EvaluationResultsEntity() # EvaluationResultsEntity | The evaluation result entity
 
 try:
     # Adds an evaluation result
-    api_response = api_instance.add_evaluation_result(evaluation_results_entity)
+    api_response = api_instance.add_evaluation_result(model_history_server_id, evaluation_results_entity)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->add_evaluation_result: %s\n" % e)
@@ -110,6 +111,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **evaluation_results_entity** | [**EvaluationResultsEntity**](EvaluationResultsEntity.md)| The evaluation result entity | 
 
 ### Return type
@@ -128,7 +130,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_example_for_batch**
-> AddExampleRequest add_example_for_batch(add_example_request)
+> AddExampleRequest add_example_for_batch(model_history_server_id, add_example_request)
 
 Adds a number of examples to a minibatch ID given an AddExampleRequest.
 
@@ -148,11 +150,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 add_example_request = skil_client.AddExampleRequest() # AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
 
 try:
     # Adds a number of examples to a minibatch ID given an AddExampleRequest.
-    api_response = api_instance.add_example_for_batch(add_example_request)
+    api_response = api_instance.add_example_for_batch(model_history_server_id, add_example_request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->add_example_for_batch: %s\n" % e)
@@ -162,6 +165,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **add_example_request** | [**AddExampleRequest**](AddExampleRequest.md)| The add example request, encapsulating minibatch details and examples batch size | 
 
 ### Return type
@@ -180,7 +184,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_example_to_minibatch**
-> ExampleEntity add_example_to_minibatch(example_entity)
+> ExampleEntity add_example_to_minibatch(model_history_server_id, example_entity)
 
 Adds an example to a minibatch
 
@@ -200,11 +204,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 example_entity = skil_client.ExampleEntity() # ExampleEntity | The example to add to the minibatch
 
 try:
     # Adds an example to a minibatch
-    api_response = api_instance.add_example_to_minibatch(example_entity)
+    api_response = api_instance.add_example_to_minibatch(model_history_server_id, example_entity)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->add_example_to_minibatch: %s\n" % e)
@@ -214,6 +219,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **example_entity** | [**ExampleEntity**](ExampleEntity.md)| The example to add to the minibatch | 
 
 ### Return type
@@ -232,7 +238,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_experiment**
-> ExperimentEntity add_experiment(experiment_entity)
+> ExperimentEntity add_experiment(model_history_server_id, experiment_entity)
 
 Add an experiment, given an experiment entity
 
@@ -252,11 +258,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 experiment_entity = skil_client.ExperimentEntity() # ExperimentEntity | The experiment entity to add
 
 try:
     # Add an experiment, given an experiment entity
-    api_response = api_instance.add_experiment(experiment_entity)
+    api_response = api_instance.add_experiment(model_history_server_id, experiment_entity)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->add_experiment: %s\n" % e)
@@ -266,6 +273,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **experiment_entity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to add | 
 
 ### Return type
@@ -284,7 +292,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_minibatch**
-> MinibatchEntity add_minibatch(minibatch_entity)
+> MinibatchEntity add_minibatch(model_history_server_id, minibatch_entity)
 
 Adds a minibatch
 
@@ -304,11 +312,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 minibatch_entity = skil_client.MinibatchEntity() # MinibatchEntity | The minibatch entity to add
 
 try:
     # Adds a minibatch
-    api_response = api_instance.add_minibatch(minibatch_entity)
+    api_response = api_instance.add_minibatch(model_history_server_id, minibatch_entity)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->add_minibatch: %s\n" % e)
@@ -318,6 +327,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **minibatch_entity** | [**MinibatchEntity**](MinibatchEntity.md)| The minibatch entity to add | 
 
 ### Return type
@@ -336,7 +346,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_model_feedback**
-> ModelFeedBackRequest add_model_feedback(model_feed_back_request)
+> ModelFeedBackRequest add_model_feedback(model_history_server_id, model_feed_back_request)
 
 Adds an evaluation feedback to the model against a given minibatch id.
 
@@ -356,11 +366,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 model_feed_back_request = skil_client.ModelFeedBackRequest() # ModelFeedBackRequest | The model feedback request object
 
 try:
     # Adds an evaluation feedback to the model against a given minibatch id.
-    api_response = api_instance.add_model_feedback(model_feed_back_request)
+    api_response = api_instance.add_model_feedback(model_history_server_id, model_feed_back_request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->add_model_feedback: %s\n" % e)
@@ -370,6 +381,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **model_feed_back_request** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
 
 ### Return type
@@ -388,7 +400,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_model_history**
-> ModelHistoryEntity add_model_history(add_model_history_request)
+> ModelHistoryEntity add_model_history(model_history_server_id, add_model_history_request)
 
 Add a model history / workspace
 
@@ -408,11 +420,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 add_model_history_request = skil_client.AddModelHistoryRequest() # AddModelHistoryRequest | The model history request object
 
 try:
     # Add a model history / workspace
-    api_response = api_instance.add_model_history(add_model_history_request)
+    api_response = api_instance.add_model_history(model_history_server_id, add_model_history_request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->add_model_history: %s\n" % e)
@@ -422,6 +435,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **add_model_history_request** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
 ### Return type
@@ -440,7 +454,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_model_instance**
-> ModelInstanceEntity add_model_instance(model_instance_entity)
+> ModelInstanceEntity add_model_instance(model_history_server_id, model_instance_entity)
 
 Adds a model
 
@@ -460,11 +474,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 model_instance_entity = skil_client.ModelInstanceEntity() # ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
 
 try:
     # Adds a model
-    api_response = api_instance.add_model_instance(model_instance_entity)
+    api_response = api_instance.add_model_instance(model_history_server_id, model_instance_entity)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->add_model_instance: %s\n" % e)
@@ -474,6 +489,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **model_instance_entity** | [**ModelInstanceEntity**](ModelInstanceEntity.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -492,7 +508,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **aggregate_model_results**
-> EvaluationResultsEntity aggregate_model_results(aggregate_prediction)
+> EvaluationResultsEntity aggregate_model_results(model_history_server_id, aggregate_prediction)
 
 Aggregates the evaluaition results of a model instance, based on the evaluation type
 
@@ -512,11 +528,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 aggregate_prediction = skil_client.AggregatePrediction() # AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
 
 try:
     # Aggregates the evaluaition results of a model instance, based on the evaluation type
-    api_response = api_instance.aggregate_model_results(aggregate_prediction)
+    api_response = api_instance.aggregate_model_results(model_history_server_id, aggregate_prediction)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->aggregate_model_results: %s\n" % e)
@@ -526,6 +543,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **aggregate_prediction** | [**AggregatePrediction**](AggregatePrediction.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -544,7 +562,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classify**
-> ClassificationResult classify(body, deployment_name, model_name)
+> ClassificationResult classify(body, deployment_name, version_name, model_name)
 
 Use the deployed model to classify the input
 
@@ -566,11 +584,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.Prediction() # Prediction | The input NDArray
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Use the deployed model to classify the input
-    api_response = api_instance.classify(body, deployment_name, model_name)
+    api_response = api_instance.classify(body, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->classify: %s\n" % e)
@@ -582,6 +601,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -600,7 +620,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classifyarray**
-> Base64NDArrayBody classifyarray(body, deployment_name, model_name)
+> Base64NDArrayBody classifyarray(body, deployment_name, version_name, model_name)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
@@ -622,11 +642,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.Prediction() # Prediction | The input NDArray
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Same as /classify but returns the output as Base64NDArrayBody
-    api_response = api_instance.classifyarray(body, deployment_name, model_name)
+    api_response = api_instance.classifyarray(body, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->classifyarray: %s\n" % e)
@@ -638,6 +659,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -656,7 +678,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classifyimage**
-> ClassificationResult classifyimage(deployment_name, model_name, image=image)
+> ClassificationResult classifyimage(deployment_name, version_name, model_name, image=image)
 
 Use the deployed model to classify the input, using input image file from multipart form data.
 
@@ -677,12 +699,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 image = '/path/to/file.txt' # file | The file to upload. (optional)
 
 try:
     # Use the deployed model to classify the input, using input image file from multipart form data.
-    api_response = api_instance.classifyimage(deployment_name, model_name, image=image)
+    api_response = api_instance.classifyimage(deployment_name, version_name, model_name, image=image)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->classifyimage: %s\n" % e)
@@ -693,6 +716,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
  **image** | **file**| The file to upload. | [optional] 
 
@@ -712,7 +736,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_model_history**
-> ModelHistoryEntity create_model_history(model_history_entity)
+> ModelHistoryEntity create_model_history(model_history_server_id, model_history_entity)
 
 Creates model History
 
@@ -732,11 +756,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 model_history_entity = skil_client.ModelHistoryEntity() # ModelHistoryEntity | The model history entity
 
 try:
     # Creates model History
-    api_response = api_instance.create_model_history(model_history_entity)
+    api_response = api_instance.create_model_history(model_history_server_id, model_history_entity)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->create_model_history: %s\n" % e)
@@ -746,6 +771,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **model_history_entity** | [**ModelHistoryEntity**](ModelHistoryEntity.md)| The model history entity | 
 
 ### Return type
@@ -764,7 +790,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_experiment**
-> InlineResponse200 delete_experiment(experiment_id)
+> InlineResponse200 delete_experiment(model_history_server_id, experiment_id)
 
 Deletes an experiment, given an experiment entity
 
@@ -784,11 +810,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 experiment_id = 'experiment_id_example' # str | the GUID of the experiment to delete
 
 try:
     # Deletes an experiment, given an experiment entity
-    api_response = api_instance.delete_experiment(experiment_id)
+    api_response = api_instance.delete_experiment(model_history_server_id, experiment_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->delete_experiment: %s\n" % e)
@@ -798,6 +825,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **str**| the GUID of the experiment to delete | 
 
 ### Return type
@@ -870,7 +898,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_model_history**
-> InlineResponse200 delete_model_history(model_history_id)
+> InlineResponse200 delete_model_history(model_history_server_id, model_history_id)
 
 Deletes a model history / workspace, given its ID
 
@@ -890,11 +918,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 model_history_id = 'model_history_id_example' # str | the GUID of the model history / workspace to delete
 
 try:
     # Deletes a model history / workspace, given its ID
-    api_response = api_instance.delete_model_history(model_history_id)
+    api_response = api_instance.delete_model_history(model_history_server_id, model_history_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->delete_model_history: %s\n" % e)
@@ -904,6 +933,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **str**| the GUID of the model history / workspace to delete | 
 
 ### Return type
@@ -922,7 +952,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_model_instance**
-> delete_model_instance(model_instance_id)
+> delete_model_instance(model_history_server_id, model_instance_id)
 
 Deletes a model instance, given its ID
 
@@ -942,11 +972,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 model_instance_id = 'model_instance_id_example' # str | GUID of the model instance to delete.
 
 try:
     # Deletes a model instance, given its ID
-    api_instance.delete_model_instance(model_instance_id)
+    api_instance.delete_model_instance(model_history_server_id, model_instance_id)
 except ApiException as e:
     print("Exception when calling DefaultApi->delete_model_instance: %s\n" % e)
 ```
@@ -955,6 +986,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **model_instance_id** | **str**| GUID of the model instance to delete. | 
 
 ### Return type
@@ -1231,7 +1263,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **detectobjects**
-> DetectionResult detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, model_name)
+> DetectionResult detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name)
 
 Detect the objects, given a (input) prediction request
 
@@ -1256,11 +1288,12 @@ needs_preprocessing = true # bool | (true) if the image needs preprocessing
 threshold = 3.4 # float | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
 image_file = '/path/to/file.txt' # file | the image file to detect objects from
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Detect the objects, given a (input) prediction request
-    api_response = api_instance.detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, model_name)
+    api_response = api_instance.detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->detectobjects: %s\n" % e)
@@ -1275,6 +1308,7 @@ Name | Type | Description  | Notes
  **threshold** | **float**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
  **image_file** | **file**| the image file to detect objects from | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -1293,7 +1327,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_best_model_among_model_ids**
-> ModelInstanceEntity get_best_model_among_model_ids(best_model)
+> ModelInstanceEntity get_best_model_among_model_ids(model_history_server_id, best_model)
 
 Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 
@@ -1313,11 +1347,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 best_model = skil_client.BestModel() # BestModel | Object encapsulating the model ids, eval type and column metric name
 
 try:
     # Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-    api_response = api_instance.get_best_model_among_model_ids(best_model)
+    api_response = api_instance.get_best_model_among_model_ids(model_history_server_id, best_model)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_best_model_among_model_ids: %s\n" % e)
@@ -1327,6 +1362,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **best_model** | [**BestModel**](BestModel.md)| Object encapsulating the model ids, eval type and column metric name | 
 
 ### Return type
@@ -1345,7 +1381,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_evaluation_for_model_id**
-> list[EvaluationResultsEntity] get_evaluation_for_model_id(model_instance_id)
+> list[EvaluationResultsEntity] get_evaluation_for_model_id(model_history_server_id, model_instance_id)
 
 Gets the list of evaluation results entity, given a model instance ID
 
@@ -1365,11 +1401,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 model_instance_id = 'model_instance_id_example' # str | GUID of the model instance to get evaluation results for.
 
 try:
     # Gets the list of evaluation results entity, given a model instance ID
-    api_response = api_instance.get_evaluation_for_model_id(model_instance_id)
+    api_response = api_instance.get_evaluation_for_model_id(model_history_server_id, model_instance_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_evaluation_for_model_id: %s\n" % e)
@@ -1379,6 +1416,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **model_instance_id** | **str**| GUID of the model instance to get evaluation results for. | 
 
 ### Return type
@@ -1397,7 +1435,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_examples_for_minibatch**
-> list[ExampleEntity] get_examples_for_minibatch(minibatch_id)
+> list[ExampleEntity] get_examples_for_minibatch(model_history_server_id, minibatch_id)
 
 Gets all the examples for a minibatch ID
 
@@ -1417,11 +1455,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 minibatch_id = 'minibatch_id_example' # str | The GUID of the minibatch
 
 try:
     # Gets all the examples for a minibatch ID
-    api_response = api_instance.get_examples_for_minibatch(minibatch_id)
+    api_response = api_instance.get_examples_for_minibatch(model_history_server_id, minibatch_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_examples_for_minibatch: %s\n" % e)
@@ -1431,6 +1470,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **minibatch_id** | **str**| The GUID of the minibatch | 
 
 ### Return type
@@ -1449,7 +1489,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_experiment**
-> ExperimentEntity get_experiment(experiment_id)
+> ExperimentEntity get_experiment(model_history_server_id, experiment_id)
 
 Obtain an experiment's details, given its ID
 
@@ -1469,11 +1509,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 experiment_id = 'experiment_id_example' # str | the GUID of the experiment to obtain
 
 try:
     # Obtain an experiment's details, given its ID
-    api_response = api_instance.get_experiment(experiment_id)
+    api_response = api_instance.get_experiment(model_history_server_id, experiment_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_experiment: %s\n" % e)
@@ -1483,6 +1524,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **str**| the GUID of the experiment to obtain | 
 
 ### Return type
@@ -1501,7 +1543,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_experiments_for_model_history**
-> ExperimentEntity get_experiments_for_model_history(model_history_id)
+> ExperimentEntity get_experiments_for_model_history(model_history_server_id, model_history_id)
 
 Obtain all experiments for a model history / workspace
 
@@ -1521,11 +1563,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 model_history_id = 'model_history_id_example' # str | the GUID of the model history / workspace
 
 try:
     # Obtain all experiments for a model history / workspace
-    api_response = api_instance.get_experiments_for_model_history(model_history_id)
+    api_response = api_instance.get_experiments_for_model_history(model_history_server_id, model_history_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_experiments_for_model_history: %s\n" % e)
@@ -1535,6 +1578,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **str**| the GUID of the model history / workspace | 
 
 ### Return type
@@ -1553,7 +1597,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_minibatch**
-> MinibatchEntity get_minibatch(minibatch_id)
+> MinibatchEntity get_minibatch(model_history_server_id, minibatch_id)
 
 Gets a minibatch for the model
 
@@ -1573,11 +1617,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 minibatch_id = 'minibatch_id_example' # str | The GUID of the minibatch
 
 try:
     # Gets a minibatch for the model
-    api_response = api_instance.get_minibatch(minibatch_id)
+    api_response = api_instance.get_minibatch(model_history_server_id, minibatch_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_minibatch: %s\n" % e)
@@ -1587,6 +1632,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **minibatch_id** | **str**| The GUID of the minibatch | 
 
 ### Return type
@@ -1605,7 +1651,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_model_history**
-> ModelHistoryEntity get_model_history(model_history_id)
+> ModelHistoryEntity get_model_history(model_history_server_id, model_history_id)
 
 Gets a model history, given its ID
 
@@ -1625,11 +1671,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 model_history_id = 'model_history_id_example' # str | GUID of the model history to get information of.
 
 try:
     # Gets a model history, given its ID
-    api_response = api_instance.get_model_history(model_history_id)
+    api_response = api_instance.get_model_history(model_history_server_id, model_history_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_model_history: %s\n" % e)
@@ -1639,6 +1686,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **str**| GUID of the model history to get information of. | 
 
 ### Return type
@@ -1657,7 +1705,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_model_instance**
-> ModelInstanceEntity get_model_instance(model_instance_id)
+> ModelInstanceEntity get_model_instance(model_history_server_id, model_instance_id)
 
 Gets a model instance, given its ID
 
@@ -1677,11 +1725,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 model_instance_id = 'model_instance_id_example' # str | GUID of the model instance to get information of.
 
 try:
     # Gets a model instance, given its ID
-    api_response = api_instance.get_model_instance(model_instance_id)
+    api_response = api_instance.get_model_instance(model_history_server_id, model_instance_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_model_instance: %s\n" % e)
@@ -1691,6 +1740,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **model_instance_id** | **str**| GUID of the model instance to get information of. | 
 
 ### Return type
@@ -1709,7 +1759,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_models_for_experiment**
-> list[ModelInstanceEntity] get_models_for_experiment(experiment_id)
+> list[ModelInstanceEntity] get_models_for_experiment(model_history_server_id, experiment_id)
 
 Obtain a list of all the models for an experiment
 
@@ -1729,11 +1779,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 experiment_id = 'experiment_id_example' # str | the GUID of the experiment
 
 try:
     # Obtain a list of all the models for an experiment
-    api_response = api_instance.get_models_for_experiment(experiment_id)
+    api_response = api_instance.get_models_for_experiment(model_history_server_id, experiment_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_models_for_experiment: %s\n" % e)
@@ -1743,6 +1794,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **str**| the GUID of the experiment | 
 
 ### Return type
@@ -1761,7 +1813,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **imagetransformprocess_get**
-> ImageTransformProcess imagetransformprocess_get(deployment_name, image_transform_name)
+> ImageTransformProcess imagetransformprocess_get(deployment_name, version_name, image_transform_name)
 
 Retrieves the image transform process JSON string
 
@@ -1782,11 +1834,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
 
 try:
     # Retrieves the image transform process JSON string
-    api_response = api_instance.imagetransformprocess_get(deployment_name, image_transform_name)
+    api_response = api_instance.imagetransformprocess_get(deployment_name, version_name, image_transform_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->imagetransformprocess_get: %s\n" % e)
@@ -1797,6 +1850,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **image_transform_name** | **str**| ID or name of the deployed image transform | 
 
 ### Return type
@@ -1815,7 +1869,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **imagetransformprocess_post**
-> ImageTransformProcess imagetransformprocess_post(deployment_name, image_transform_name, body)
+> ImageTransformProcess imagetransformprocess_post(deployment_name, version_name, image_transform_name, body)
 
 Sets the image transform process through the provided JSON string
 
@@ -1836,12 +1890,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
 body = skil_client.ImageTransformProcess() # ImageTransformProcess | The image transform process JSON
 
 try:
     # Sets the image transform process through the provided JSON string
-    api_response = api_instance.imagetransformprocess_post(deployment_name, image_transform_name, body)
+    api_response = api_instance.imagetransformprocess_post(deployment_name, version_name, image_transform_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->imagetransformprocess_post: %s\n" % e)
@@ -1852,6 +1907,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **image_transform_name** | **str**| ID or name of the deployed image transform | 
  **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
 
@@ -1871,7 +1927,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **jsonarray**
-> JsonArrayResponse jsonarray(body, deployment_name, model_name)
+> JsonArrayResponse jsonarray(body, deployment_name, version_name, model_name)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
@@ -1893,11 +1949,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.Prediction() # Prediction | The input NDArray
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Run inference on the input and returns it as a JsonArrayResponse
-    api_response = api_instance.jsonarray(body, deployment_name, model_name)
+    api_response = api_instance.jsonarray(body, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->jsonarray: %s\n" % e)
@@ -1909,6 +1966,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -1927,7 +1985,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **knn**
-> NearestNeighborsResults knn(deployment_name, knn_name, body)
+> NearestNeighborsResults knn(deployment_name, version_name, knn_name, body)
 
 Runs knn on the given index with the given k
 
@@ -1950,12 +2008,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 knn_name = 'knn_name_example' # str | ID or name of the deployed knn
 body = skil_client.NearestNeighborRequest() # NearestNeighborRequest | 
 
 try:
     # Runs knn on the given index with the given k
-    api_response = api_instance.knn(deployment_name, knn_name, body)
+    api_response = api_instance.knn(deployment_name, version_name, knn_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->knn: %s\n" % e)
@@ -1966,6 +2025,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **knn_name** | **str**| ID or name of the deployed knn | 
  **body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  | 
 
@@ -1985,7 +2045,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **knnnew**
-> NearestNeighborsResults knnnew(deployment_name, knn_name, body)
+> NearestNeighborsResults knnnew(deployment_name, version_name, knn_name, body)
 
 Run a k nearest neighbors search on a NEW data point
 
@@ -2006,12 +2066,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 knn_name = 'knn_name_example' # str | ID or name of the deployed knn
 body = skil_client.Base64NDArrayBodyKNN() # Base64NDArrayBodyKNN | The input NDArray
 
 try:
     # Run a k nearest neighbors search on a NEW data point
-    api_response = api_instance.knnnew(deployment_name, knn_name, body)
+    api_response = api_instance.knnnew(deployment_name, version_name, knn_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->knnnew: %s\n" % e)
@@ -2022,6 +2083,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **knn_name** | **str**| ID or name of the deployed knn | 
  **body** | [**Base64NDArrayBodyKNN**](Base64NDArrayBodyKNN.md)| The input NDArray | 
 
@@ -2089,7 +2151,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **logfilepath**
-> str logfilepath(deployment_name, model_name)
+> str logfilepath(deployment_name, version_name, model_name)
 
 Get logs file path
 
@@ -2110,11 +2172,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Get logs file path
-    api_response = api_instance.logfilepath(deployment_name, model_name)
+    api_response = api_instance.logfilepath(deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->logfilepath: %s\n" % e)
@@ -2125,6 +2188,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -2195,7 +2259,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **logs**
-> LogBatch logs(body, deployment_name, model_name)
+> LogBatch logs(body, deployment_name, version_name, model_name)
 
 Get logs
 
@@ -2217,11 +2281,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.LogRequest() # LogRequest | the the log request
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Get logs
-    api_response = api_instance.logs(body, deployment_name, model_name)
+    api_response = api_instance.logs(body, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->logs: %s\n" % e)
@@ -2233,6 +2298,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**LogRequest**](LogRequest.md)| the the log request | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -2251,7 +2317,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **meta_get**
-> MetaData meta_get(deployment_name, model_name)
+> MetaData meta_get(deployment_name, version_name, model_name)
 
 this method can be used to get the meta data for the current model which set to the server
 
@@ -2272,11 +2338,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # this method can be used to get the meta data for the current model which set to the server
-    api_response = api_instance.meta_get(deployment_name, model_name)
+    api_response = api_instance.meta_get(deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->meta_get: %s\n" % e)
@@ -2287,6 +2354,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -2305,7 +2373,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **meta_post**
-> MetaData meta_post(body, deployment_name, model_name)
+> MetaData meta_post(body, deployment_name, version_name, model_name)
 
 This method can be used to set meta data for the current model which is set to the server
 
@@ -2327,11 +2395,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.MetaData() # MetaData | the meta data object
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # This method can be used to set meta data for the current model which is set to the server
-    api_response = api_instance.meta_post(body, deployment_name, model_name)
+    api_response = api_instance.meta_post(body, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->meta_post: %s\n" % e)
@@ -2343,6 +2412,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MetaData**](MetaData.md)| the meta data object | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -2469,7 +2539,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **modelset**
-> ModelStatus modelset(deployment_name, model_name, file=file)
+> ModelStatus modelset(deployment_name, version_name, model_name, file=file)
 
 Set the model to be served
 
@@ -2490,12 +2560,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 file = '/path/to/file.txt' # file | The model file to upload (.pb file) (optional)
 
 try:
     # Set the model to be served
-    api_response = api_instance.modelset(deployment_name, model_name, file=file)
+    api_response = api_instance.modelset(deployment_name, version_name, model_name, file=file)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->modelset: %s\n" % e)
@@ -2506,6 +2577,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
  **file** | **file**| The model file to upload (.pb file) | [optional] 
 
@@ -2525,7 +2597,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **modelupdate**
-> ModelStatus modelupdate(deployment_name, model_name, file=file)
+> ModelStatus modelupdate(deployment_name, version_name, model_name, file=file)
 
 Update the model to be served
 
@@ -2546,12 +2618,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 file = '/path/to/file.txt' # file | The model file to update with (.pb file) (optional)
 
 try:
     # Update the model to be served
-    api_response = api_instance.modelupdate(deployment_name, model_name, file=file)
+    api_response = api_instance.modelupdate(deployment_name, version_name, model_name, file=file)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->modelupdate: %s\n" % e)
@@ -2562,6 +2635,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
  **file** | **file**| The model file to update with (.pb file) | [optional] 
 
@@ -2581,7 +2655,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **multiclassify**
-> MultiClassClassificationResult multiclassify(body, deployment_name, model_name)
+> MultiClassClassificationResult multiclassify(body, deployment_name, version_name, model_name)
 
 Represents all of the labels for a given classification
 
@@ -2603,11 +2677,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.Prediction() # Prediction | The input NDArray
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Represents all of the labels for a given classification
-    api_response = api_instance.multiclassify(body, deployment_name, model_name)
+    api_response = api_instance.multiclassify(body, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->multiclassify: %s\n" % e)
@@ -2619,6 +2694,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -2637,7 +2713,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **multipredict**
-> MultiPredictResponse multipredict(body, deployment_name, model_name)
+> MultiPredictResponse multipredict(body, deployment_name, version_name, model_name)
 
 Get the output from the network, based on the given INDArray[] input
 
@@ -2661,11 +2737,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.MultiPredictRequest() # MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Get the output from the network, based on the given INDArray[] input
-    api_response = api_instance.multipredict(body, deployment_name, model_name)
+    api_response = api_instance.multipredict(body, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->multipredict: %s\n" % e)
@@ -2677,6 +2754,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -2695,7 +2773,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **multipredictimage**
-> MultiPredictResponse multipredictimage(file, id, needs_preprocessing, deployment_name, model_name)
+> MultiPredictResponse multipredictimage(file, id, needs_preprocessing, deployment_name, version_name, model_name)
 
 Get the output from the network using the given image file using the /multipredict endpoint's method
 
@@ -2721,11 +2799,12 @@ file = '/path/to/file.txt' # file | The image file to run the prediction on
 id = 'id_example' # str | The id of the request (could be self generated)
 needs_preprocessing = true # bool | Whether or not the preprocessing is required (either 'true' or 'false')
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Get the output from the network using the given image file using the /multipredict endpoint's method
-    api_response = api_instance.multipredictimage(file, id, needs_preprocessing, deployment_name, model_name)
+    api_response = api_instance.multipredictimage(file, id, needs_preprocessing, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->multipredictimage: %s\n" % e)
@@ -2739,6 +2818,7 @@ Name | Type | Description  | Notes
  **id** | **str**| The id of the request (could be self generated) | 
  **needs_preprocessing** | **bool**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -2757,7 +2837,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predict**
-> Prediction predict(body, deployment_name, model_name)
+> Prediction predict(body, deployment_name, version_name, model_name)
 
 Run inference on the input array.
 
@@ -2779,11 +2859,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = skil_client.Prediction() # Prediction | The input NDArray
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Run inference on the input array.
-    api_response = api_instance.predict(body, deployment_name, model_name)
+    api_response = api_instance.predict(body, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->predict: %s\n" % e)
@@ -2795,6 +2876,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -2813,7 +2895,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictimage**
-> Prediction predictimage(deployment_name, model_name, image=image)
+> Prediction predictimage(deployment_name, version_name, model_name, image=image)
 
 Run inference on the input array, using input image file from multipart form data.
 
@@ -2834,12 +2916,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 image = '/path/to/file.txt' # file | The file to upload. (optional)
 
 try:
     # Run inference on the input array, using input image file from multipart form data.
-    api_response = api_instance.predictimage(deployment_name, model_name, image=image)
+    api_response = api_instance.predictimage(deployment_name, version_name, model_name, image=image)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->predictimage: %s\n" % e)
@@ -2850,6 +2933,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
  **image** | **file**| The file to upload. | [optional] 
 
@@ -2869,7 +2953,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictwithpreprocess**
-> Prediction predictwithpreprocess(body, deployment_name, model_name)
+> Prediction predictwithpreprocess(body, deployment_name, version_name, model_name)
 
 Preprocesses the input and run inference on it
 
@@ -2891,11 +2975,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = [skil_client.list[str]()] # list[str] | The input array
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Preprocesses the input and run inference on it
-    api_response = api_instance.predictwithpreprocess(body, deployment_name, model_name)
+    api_response = api_instance.predictwithpreprocess(body, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->predictwithpreprocess: %s\n" % e)
@@ -2907,6 +2992,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **list[str]**| The input array | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -2925,7 +3011,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictwithpreprocessjson**
-> JsonArrayResponse predictwithpreprocessjson(body, deployment_name, model_name)
+> JsonArrayResponse predictwithpreprocessjson(body, deployment_name, version_name, model_name)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
@@ -2947,11 +3033,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 body = [skil_client.list[str]()] # list[str] | The input array
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-    api_response = api_instance.predictwithpreprocessjson(body, deployment_name, model_name)
+    api_response = api_instance.predictwithpreprocessjson(body, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->predictwithpreprocessjson: %s\n" % e)
@@ -2963,6 +3050,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **list[str]**| The input array | 
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -3037,7 +3125,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transform_csv**
-> BatchCSVRecord transform_csv(deployment_name, transform_name, batch_csv_record=batch_csv_record)
+> BatchCSVRecord transform_csv(deployment_name, version_name, transform_name, batch_csv_record=batch_csv_record)
 
 Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 
@@ -3060,12 +3148,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 batch_csv_record = skil_client.BatchCSVRecord() # BatchCSVRecord | The input batch of record arrays (optional)
 
 try:
     # Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-    api_response = api_instance.transform_csv(deployment_name, transform_name, batch_csv_record=batch_csv_record)
+    api_response = api_instance.transform_csv(deployment_name, version_name, transform_name, batch_csv_record=batch_csv_record)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transform_csv: %s\n" % e)
@@ -3076,6 +3165,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
  **batch_csv_record** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
 
@@ -3095,7 +3185,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformarray_csv**
-> Base64NDArrayBody transformarray_csv(deployment_name, transform_name, batch_csv_record=batch_csv_record)
+> Base64NDArrayBody transformarray_csv(deployment_name, version_name, transform_name, batch_csv_record=batch_csv_record)
 
 Takes a batch input arrays and transforms it
 
@@ -3118,12 +3208,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 batch_csv_record = skil_client.BatchCSVRecord() # BatchCSVRecord | The input batch of record arrays (optional)
 
 try:
     # Takes a batch input arrays and transforms it
-    api_response = api_instance.transformarray_csv(deployment_name, transform_name, batch_csv_record=batch_csv_record)
+    api_response = api_instance.transformarray_csv(deployment_name, version_name, transform_name, batch_csv_record=batch_csv_record)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformarray_csv: %s\n" % e)
@@ -3134,6 +3225,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
  **batch_csv_record** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
 
@@ -3153,7 +3245,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformarray_image**
-> Base64NDArrayBody transformarray_image(deployment_name, image_transform_name, batch_image_record)
+> Base64NDArrayBody transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record)
 
 Takes a batch of images uri and transforms it and returns Base64NDArrayBody
 
@@ -3176,12 +3268,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
 batch_image_record = skil_client.BatchImageRecord() # BatchImageRecord | The input batch of record arrays
 
 try:
     # Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-    api_response = api_instance.transformarray_image(deployment_name, image_transform_name, batch_image_record)
+    api_response = api_instance.transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformarray_image: %s\n" % e)
@@ -3192,6 +3285,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **image_transform_name** | **str**| ID or name of the deployed image transform | 
  **batch_image_record** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
 
@@ -3211,7 +3305,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformimage**
-> Base64NDArrayBody transformimage(deployment_name, image_transform_name, files)
+> Base64NDArrayBody transformimage(deployment_name, version_name, image_transform_name, files)
 
 Takes multiple multipart image file to transform and returns Base64NDArrayBody
 
@@ -3234,12 +3328,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
 files = ['files_example'] # list[str] | The image files to upload
 
 try:
     # Takes multiple multipart image file to transform and returns Base64NDArrayBody
-    api_response = api_instance.transformimage(deployment_name, image_transform_name, files)
+    api_response = api_instance.transformimage(deployment_name, version_name, image_transform_name, files)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformimage: %s\n" % e)
@@ -3250,6 +3345,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **image_transform_name** | **str**| ID or name of the deployed image transform | 
  **files** | [**list[str]**](str.md)| The image files to upload | 
 
@@ -3269,7 +3365,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformincremental_csv**
-> SingleCSVRecord transformincremental_csv(deployment_name, transform_name, single_csv_record=single_csv_record)
+> SingleCSVRecord transformincremental_csv(deployment_name, version_name, transform_name, single_csv_record=single_csv_record)
 
 Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
 
@@ -3292,12 +3388,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 single_csv_record = skil_client.SingleCSVRecord() # SingleCSVRecord | The input record array (optional)
 
 try:
     # Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-    api_response = api_instance.transformincremental_csv(deployment_name, transform_name, single_csv_record=single_csv_record)
+    api_response = api_instance.transformincremental_csv(deployment_name, version_name, transform_name, single_csv_record=single_csv_record)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformincremental_csv: %s\n" % e)
@@ -3308,6 +3405,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
  **single_csv_record** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
 
@@ -3327,7 +3425,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformincrementalarray_csv**
-> Base64NDArrayBody transformincrementalarray_csv(deployment_name, transform_name, single_csv_record=single_csv_record)
+> Base64NDArrayBody transformincrementalarray_csv(deployment_name, version_name, transform_name, single_csv_record=single_csv_record)
 
 Same as /transformincremental but returns Base64NDArrayBody
 
@@ -3350,12 +3448,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 single_csv_record = skil_client.SingleCSVRecord() # SingleCSVRecord | The input record array (optional)
 
 try:
     # Same as /transformincremental but returns Base64NDArrayBody
-    api_response = api_instance.transformincrementalarray_csv(deployment_name, transform_name, single_csv_record=single_csv_record)
+    api_response = api_instance.transformincrementalarray_csv(deployment_name, version_name, transform_name, single_csv_record=single_csv_record)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformincrementalarray_csv: %s\n" % e)
@@ -3366,6 +3465,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
  **single_csv_record** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
 
@@ -3385,7 +3485,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformincrementalarray_image**
-> Base64NDArrayBody transformincrementalarray_image(deployment_name, image_transform_name, single_image_record)
+> Base64NDArrayBody transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record)
 
 Takes SingleImageRecord to transform and returns Base64NDArrayBody
 
@@ -3408,12 +3508,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
 single_image_record = skil_client.SingleImageRecord() # SingleImageRecord | The input record array
 
 try:
     # Takes SingleImageRecord to transform and returns Base64NDArrayBody
-    api_response = api_instance.transformincrementalarray_image(deployment_name, image_transform_name, single_image_record)
+    api_response = api_instance.transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformincrementalarray_image: %s\n" % e)
@@ -3424,6 +3525,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **image_transform_name** | **str**| ID or name of the deployed image transform | 
  **single_image_record** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
 
@@ -3443,7 +3545,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformincrementalimage**
-> Base64NDArrayBody transformincrementalimage(deployment_name, image_transform_name, file)
+> Base64NDArrayBody transformincrementalimage(deployment_name, version_name, image_transform_name, file)
 
 Takes a single multipart image file to transform and returns Base64NDArrayBody
 
@@ -3466,12 +3568,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
 file = '/path/to/file.txt' # file | The image file to upload
 
 try:
     # Takes a single multipart image file to transform and returns Base64NDArrayBody
-    api_response = api_instance.transformincrementalimage(deployment_name, image_transform_name, file)
+    api_response = api_instance.transformincrementalimage(deployment_name, version_name, image_transform_name, file)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformincrementalimage: %s\n" % e)
@@ -3482,6 +3585,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **image_transform_name** | **str**| ID or name of the deployed image transform | 
  **file** | **file**| The image file to upload | 
 
@@ -3501,7 +3605,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_get**
-> TransformProcess transformprocess_get(deployment_name, transform_name)
+> TransformProcess transformprocess_get(deployment_name, version_name, transform_name)
 
 Gets the JSON string of the deployed transform process
 
@@ -3524,11 +3628,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 
 try:
     # Gets the JSON string of the deployed transform process
-    api_response = api_instance.transformprocess_get(deployment_name, transform_name)
+    api_response = api_instance.transformprocess_get(deployment_name, version_name, transform_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformprocess_get: %s\n" % e)
@@ -3539,6 +3644,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
 
 ### Return type
@@ -3557,7 +3663,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_post**
-> transformprocess_post(deployment_name, transform_name, transform_process=transform_process)
+> transformprocess_post(deployment_name, version_name, transform_name, transform_process=transform_process)
 
 Sets the deployed transform process through the provided JSON string
 
@@ -3580,12 +3686,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 transform_process = skil_client.TransformProcess() # TransformProcess | The transform process to set (optional)
 
 try:
     # Sets the deployed transform process through the provided JSON string
-    api_instance.transformprocess_post(deployment_name, transform_name, transform_process=transform_process)
+    api_instance.transformprocess_post(deployment_name, version_name, transform_name, transform_process=transform_process)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformprocess_post: %s\n" % e)
 ```
@@ -3595,6 +3702,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
  **transform_process** | [**TransformProcess**](TransformProcess.md)| The transform process to set | [optional] 
 
@@ -3614,7 +3722,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_best_model_for_experiment**
-> ExperimentEntity update_best_model_for_experiment(update_best_model)
+> ExperimentEntity update_best_model_for_experiment(model_history_server_id, update_best_model)
 
 Updates the best model for an experiment
 
@@ -3634,11 +3742,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 update_best_model = skil_client.UpdateBestModel() # UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
 
 try:
     # Updates the best model for an experiment
-    api_response = api_instance.update_best_model_for_experiment(update_best_model)
+    api_response = api_instance.update_best_model_for_experiment(model_history_server_id, update_best_model)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->update_best_model_for_experiment: %s\n" % e)
@@ -3648,6 +3757,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **update_best_model** | [**UpdateBestModel**](UpdateBestModel.md)| Model encapsulating the experiment id to update and the best model id. | 
 
 ### Return type
@@ -3666,7 +3776,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_experiment**
-> ExperimentEntity update_experiment(experiment_id, experiment_entity)
+> ExperimentEntity update_experiment(model_history_server_id, experiment_id, experiment_entity)
 
 Updates an experiment, given an experiment entity
 
@@ -3686,12 +3796,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 experiment_id = 'experiment_id_example' # str | the GUID of the experiment to update
 experiment_entity = skil_client.ExperimentEntity() # ExperimentEntity | The experiment entity to update with
 
 try:
     # Updates an experiment, given an experiment entity
-    api_response = api_instance.update_experiment(experiment_id, experiment_entity)
+    api_response = api_instance.update_experiment(model_history_server_id, experiment_id, experiment_entity)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->update_experiment: %s\n" % e)
@@ -3701,6 +3812,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **str**| the GUID of the experiment to update | 
  **experiment_entity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to update with | 
 
@@ -3720,7 +3832,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_model_history**
-> ModelHistoryEntity update_model_history(model_history_id, update_model_history_request)
+> ModelHistoryEntity update_model_history(model_history_server_id, model_history_id, update_model_history_request)
 
 Update a model history / workspace
 
@@ -3740,12 +3852,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
 model_history_id = 'model_history_id_example' # str | the GUID of the model history / workspace to update
 update_model_history_request = skil_client.AddModelHistoryRequest() # AddModelHistoryRequest | The model history request object
 
 try:
     # Update a model history / workspace
-    api_response = api_instance.update_model_history(model_history_id, update_model_history_request)
+    api_response = api_instance.update_model_history(model_history_server_id, model_history_id, update_model_history_request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->update_model_history: %s\n" % e)
@@ -3755,6 +3868,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **str**| the GUID of the model history / workspace to update | 
  **update_model_history_request** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 

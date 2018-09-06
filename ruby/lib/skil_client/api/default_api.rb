@@ -20,28 +20,34 @@ module SkilCient
       @api_client = api_client
     end
     # Adds an evaluation result
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param evaluation_results_entity The evaluation result entity
     # @param [Hash] opts the optional parameters
     # @return [EvaluationResultsEntity]
-    def add_evaluation_result(evaluation_results_entity, opts = {})
-      data, _status_code, _headers = add_evaluation_result_with_http_info(evaluation_results_entity, opts)
+    def add_evaluation_result(model_history_server_id, evaluation_results_entity, opts = {})
+      data, _status_code, _headers = add_evaluation_result_with_http_info(model_history_server_id, evaluation_results_entity, opts)
       data
     end
 
     # Adds an evaluation result
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param evaluation_results_entity The evaluation result entity
     # @param [Hash] opts the optional parameters
     # @return [Array<(EvaluationResultsEntity, Fixnum, Hash)>] EvaluationResultsEntity data, response status code and response headers
-    def add_evaluation_result_with_http_info(evaluation_results_entity, opts = {})
+    def add_evaluation_result_with_http_info(model_history_server_id, evaluation_results_entity, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.add_evaluation_result ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.add_evaluation_result"
       end
       # verify the required parameter 'evaluation_results_entity' is set
       if @api_client.config.client_side_validation && evaluation_results_entity.nil?
         fail ArgumentError, "Missing the required parameter 'evaluation_results_entity' when calling DefaultApi.add_evaluation_result"
       end
       # resource path
-      local_var_path = '/model/revisions/evaluations/'
+      local_var_path = '/rpc/{modelHistoryServerId}/model/revisions/evaluations/'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -72,28 +78,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Adds a number of examples to a minibatch ID given an AddExampleRequest.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param add_example_request The add example request, encapsulating minibatch details and examples batch size
     # @param [Hash] opts the optional parameters
     # @return [AddExampleRequest]
-    def add_example_for_batch(add_example_request, opts = {})
-      data, _status_code, _headers = add_example_for_batch_with_http_info(add_example_request, opts)
+    def add_example_for_batch(model_history_server_id, add_example_request, opts = {})
+      data, _status_code, _headers = add_example_for_batch_with_http_info(model_history_server_id, add_example_request, opts)
       data
     end
 
     # Adds a number of examples to a minibatch ID given an AddExampleRequest.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param add_example_request The add example request, encapsulating minibatch details and examples batch size
     # @param [Hash] opts the optional parameters
     # @return [Array<(AddExampleRequest, Fixnum, Hash)>] AddExampleRequest data, response status code and response headers
-    def add_example_for_batch_with_http_info(add_example_request, opts = {})
+    def add_example_for_batch_with_http_info(model_history_server_id, add_example_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.add_example_for_batch ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.add_example_for_batch"
       end
       # verify the required parameter 'add_example_request' is set
       if @api_client.config.client_side_validation && add_example_request.nil?
         fail ArgumentError, "Missing the required parameter 'add_example_request' when calling DefaultApi.add_example_for_batch"
       end
       # resource path
-      local_var_path = '/model/exampleForBatch'
+      local_var_path = '/rpc/{modelHistoryServerId}/model/exampleForBatch'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -124,28 +136,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Adds an example to a minibatch
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param example_entity The example to add to the minibatch
     # @param [Hash] opts the optional parameters
     # @return [ExampleEntity]
-    def add_example_to_minibatch(example_entity, opts = {})
-      data, _status_code, _headers = add_example_to_minibatch_with_http_info(example_entity, opts)
+    def add_example_to_minibatch(model_history_server_id, example_entity, opts = {})
+      data, _status_code, _headers = add_example_to_minibatch_with_http_info(model_history_server_id, example_entity, opts)
       data
     end
 
     # Adds an example to a minibatch
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param example_entity The example to add to the minibatch
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExampleEntity, Fixnum, Hash)>] ExampleEntity data, response status code and response headers
-    def add_example_to_minibatch_with_http_info(example_entity, opts = {})
+    def add_example_to_minibatch_with_http_info(model_history_server_id, example_entity, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.add_example_to_minibatch ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.add_example_to_minibatch"
       end
       # verify the required parameter 'example_entity' is set
       if @api_client.config.client_side_validation && example_entity.nil?
         fail ArgumentError, "Missing the required parameter 'example_entity' when calling DefaultApi.add_example_to_minibatch"
       end
       # resource path
-      local_var_path = '/model/example'
+      local_var_path = '/rpc/{modelHistoryServerId}/model/example'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -176,28 +194,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Add an experiment, given an experiment entity
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param experiment_entity The experiment entity to add
     # @param [Hash] opts the optional parameters
     # @return [ExperimentEntity]
-    def add_experiment(experiment_entity, opts = {})
-      data, _status_code, _headers = add_experiment_with_http_info(experiment_entity, opts)
+    def add_experiment(model_history_server_id, experiment_entity, opts = {})
+      data, _status_code, _headers = add_experiment_with_http_info(model_history_server_id, experiment_entity, opts)
       data
     end
 
     # Add an experiment, given an experiment entity
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param experiment_entity The experiment entity to add
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
-    def add_experiment_with_http_info(experiment_entity, opts = {})
+    def add_experiment_with_http_info(model_history_server_id, experiment_entity, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.add_experiment ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.add_experiment"
       end
       # verify the required parameter 'experiment_entity' is set
       if @api_client.config.client_side_validation && experiment_entity.nil?
         fail ArgumentError, "Missing the required parameter 'experiment_entity' when calling DefaultApi.add_experiment"
       end
       # resource path
-      local_var_path = '/experiment'
+      local_var_path = '/rpc/{modelHistoryServerId}/experiment'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -228,28 +252,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Adds a minibatch
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param minibatch_entity The minibatch entity to add
     # @param [Hash] opts the optional parameters
     # @return [MinibatchEntity]
-    def add_minibatch(minibatch_entity, opts = {})
-      data, _status_code, _headers = add_minibatch_with_http_info(minibatch_entity, opts)
+    def add_minibatch(model_history_server_id, minibatch_entity, opts = {})
+      data, _status_code, _headers = add_minibatch_with_http_info(model_history_server_id, minibatch_entity, opts)
       data
     end
 
     # Adds a minibatch
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param minibatch_entity The minibatch entity to add
     # @param [Hash] opts the optional parameters
     # @return [Array<(MinibatchEntity, Fixnum, Hash)>] MinibatchEntity data, response status code and response headers
-    def add_minibatch_with_http_info(minibatch_entity, opts = {})
+    def add_minibatch_with_http_info(model_history_server_id, minibatch_entity, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.add_minibatch ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.add_minibatch"
       end
       # verify the required parameter 'minibatch_entity' is set
       if @api_client.config.client_side_validation && minibatch_entity.nil?
         fail ArgumentError, "Missing the required parameter 'minibatch_entity' when calling DefaultApi.add_minibatch"
       end
       # resource path
-      local_var_path = '/model/minibatch'
+      local_var_path = '/rpc/{modelHistoryServerId}/model/minibatch'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -280,28 +310,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Adds an evaluation feedback to the model against a given minibatch id.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_feed_back_request The model feedback request object
     # @param [Hash] opts the optional parameters
     # @return [ModelFeedBackRequest]
-    def add_model_feedback(model_feed_back_request, opts = {})
-      data, _status_code, _headers = add_model_feedback_with_http_info(model_feed_back_request, opts)
+    def add_model_feedback(model_history_server_id, model_feed_back_request, opts = {})
+      data, _status_code, _headers = add_model_feedback_with_http_info(model_history_server_id, model_feed_back_request, opts)
       data
     end
 
     # Adds an evaluation feedback to the model against a given minibatch id.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_feed_back_request The model feedback request object
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelFeedBackRequest, Fixnum, Hash)>] ModelFeedBackRequest data, response status code and response headers
-    def add_model_feedback_with_http_info(model_feed_back_request, opts = {})
+    def add_model_feedback_with_http_info(model_history_server_id, model_feed_back_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.add_model_feedback ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.add_model_feedback"
       end
       # verify the required parameter 'model_feed_back_request' is set
       if @api_client.config.client_side_validation && model_feed_back_request.nil?
         fail ArgumentError, "Missing the required parameter 'model_feed_back_request' when calling DefaultApi.add_model_feedback"
       end
       # resource path
-      local_var_path = '/model/feedback'
+      local_var_path = '/rpc/{modelHistoryServerId}/model/feedback'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -332,28 +368,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Add a model history / workspace
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param add_model_history_request The model history request object
     # @param [Hash] opts the optional parameters
     # @return [ModelHistoryEntity]
-    def add_model_history(add_model_history_request, opts = {})
-      data, _status_code, _headers = add_model_history_with_http_info(add_model_history_request, opts)
+    def add_model_history(model_history_server_id, add_model_history_request, opts = {})
+      data, _status_code, _headers = add_model_history_with_http_info(model_history_server_id, add_model_history_request, opts)
       data
     end
 
     # Add a model history / workspace
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param add_model_history_request The model history request object
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelHistoryEntity, Fixnum, Hash)>] ModelHistoryEntity data, response status code and response headers
-    def add_model_history_with_http_info(add_model_history_request, opts = {})
+    def add_model_history_with_http_info(model_history_server_id, add_model_history_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.add_model_history ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.add_model_history"
       end
       # verify the required parameter 'add_model_history_request' is set
       if @api_client.config.client_side_validation && add_model_history_request.nil?
         fail ArgumentError, "Missing the required parameter 'add_model_history_request' when calling DefaultApi.add_model_history"
       end
       # resource path
-      local_var_path = '/modelhistory'
+      local_var_path = '/rpc/{modelHistoryServerId}/modelhistory'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -384,28 +426,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Adds a model
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_instance_entity The object encapsulating the model instance id and evaluation type to aggregate
     # @param [Hash] opts the optional parameters
     # @return [ModelInstanceEntity]
-    def add_model_instance(model_instance_entity, opts = {})
-      data, _status_code, _headers = add_model_instance_with_http_info(model_instance_entity, opts)
+    def add_model_instance(model_history_server_id, model_instance_entity, opts = {})
+      data, _status_code, _headers = add_model_instance_with_http_info(model_history_server_id, model_instance_entity, opts)
       data
     end
 
     # Adds a model
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_instance_entity The object encapsulating the model instance id and evaluation type to aggregate
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelInstanceEntity, Fixnum, Hash)>] ModelInstanceEntity data, response status code and response headers
-    def add_model_instance_with_http_info(model_instance_entity, opts = {})
+    def add_model_instance_with_http_info(model_history_server_id, model_instance_entity, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.add_model_instance ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.add_model_instance"
       end
       # verify the required parameter 'model_instance_entity' is set
       if @api_client.config.client_side_validation && model_instance_entity.nil?
         fail ArgumentError, "Missing the required parameter 'model_instance_entity' when calling DefaultApi.add_model_instance"
       end
       # resource path
-      local_var_path = '/model'
+      local_var_path = '/rpc/{modelHistoryServerId}/model'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -436,28 +484,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Aggregates the evaluaition results of a model instance, based on the evaluation type
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param aggregate_prediction The object encapsulating the model instance id and evaluation type to aggregate
     # @param [Hash] opts the optional parameters
     # @return [EvaluationResultsEntity]
-    def aggregate_model_results(aggregate_prediction, opts = {})
-      data, _status_code, _headers = aggregate_model_results_with_http_info(aggregate_prediction, opts)
+    def aggregate_model_results(model_history_server_id, aggregate_prediction, opts = {})
+      data, _status_code, _headers = aggregate_model_results_with_http_info(model_history_server_id, aggregate_prediction, opts)
       data
     end
 
     # Aggregates the evaluaition results of a model instance, based on the evaluation type
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param aggregate_prediction The object encapsulating the model instance id and evaluation type to aggregate
     # @param [Hash] opts the optional parameters
     # @return [Array<(EvaluationResultsEntity, Fixnum, Hash)>] EvaluationResultsEntity data, response status code and response headers
-    def aggregate_model_results_with_http_info(aggregate_prediction, opts = {})
+    def aggregate_model_results_with_http_info(model_history_server_id, aggregate_prediction, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.aggregate_model_results ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.aggregate_model_results"
       end
       # verify the required parameter 'aggregate_prediction' is set
       if @api_client.config.client_side_validation && aggregate_prediction.nil?
         fail ArgumentError, "Missing the required parameter 'aggregate_prediction' when calling DefaultApi.aggregate_model_results"
       end
       # resource path
-      local_var_path = '/model/aggregateresults'
+      local_var_path = '/rpc/{modelHistoryServerId}/model/aggregateresults'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -490,21 +544,23 @@ module SkilCient
     # Use the deployed model to classify the input
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [ClassificationResult]
-    def classify(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = classify_with_http_info(body, deployment_name, model_name, opts)
+    def classify(body, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = classify_with_http_info(body, deployment_name, version_name, model_name, opts)
       data
     end
 
     # Use the deployed model to classify the input
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(ClassificationResult, Fixnum, Hash)>] ClassificationResult data, response status code and response headers
-    def classify_with_http_info(body, deployment_name, model_name, opts = {})
+    def classify_with_http_info(body, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.classify ...'
       end
@@ -516,12 +572,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.classify"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.classify"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.classify"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/classify'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -554,21 +614,23 @@ module SkilCient
     # Same as /classify but returns the output as Base64NDArrayBody
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Base64NDArrayBody]
-    def classifyarray(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = classifyarray_with_http_info(body, deployment_name, model_name, opts)
+    def classifyarray(body, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = classifyarray_with_http_info(body, deployment_name, version_name, model_name, opts)
       data
     end
 
     # Same as /classify but returns the output as Base64NDArrayBody
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def classifyarray_with_http_info(body, deployment_name, model_name, opts = {})
+    def classifyarray_with_http_info(body, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.classifyarray ...'
       end
@@ -580,12 +642,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.classifyarray"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.classifyarray"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.classifyarray"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/classifyarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -617,22 +683,24 @@ module SkilCient
     end
     # Use the deployed model to classify the input, using input image file from multipart form data.
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :image The file to upload.
     # @return [ClassificationResult]
-    def classifyimage(deployment_name, model_name, opts = {})
-      data, _status_code, _headers = classifyimage_with_http_info(deployment_name, model_name, opts)
+    def classifyimage(deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = classifyimage_with_http_info(deployment_name, version_name, model_name, opts)
       data
     end
 
     # Use the deployed model to classify the input, using input image file from multipart form data.
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :image The file to upload.
     # @return [Array<(ClassificationResult, Fixnum, Hash)>] ClassificationResult data, response status code and response headers
-    def classifyimage_with_http_info(deployment_name, model_name, opts = {})
+    def classifyimage_with_http_info(deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.classifyimage ...'
       end
@@ -640,12 +708,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.classifyimage"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.classifyimage"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.classifyimage"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/classifyimage'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -677,28 +749,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Creates model History
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_history_entity The model history entity
     # @param [Hash] opts the optional parameters
     # @return [ModelHistoryEntity]
-    def create_model_history(model_history_entity, opts = {})
-      data, _status_code, _headers = create_model_history_with_http_info(model_history_entity, opts)
+    def create_model_history(model_history_server_id, model_history_entity, opts = {})
+      data, _status_code, _headers = create_model_history_with_http_info(model_history_server_id, model_history_entity, opts)
       data
     end
 
     # Creates model History
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_history_entity The model history entity
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelHistoryEntity, Fixnum, Hash)>] ModelHistoryEntity data, response status code and response headers
-    def create_model_history_with_http_info(model_history_entity, opts = {})
+    def create_model_history_with_http_info(model_history_server_id, model_history_entity, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.create_model_history ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.create_model_history"
       end
       # verify the required parameter 'model_history_entity' is set
       if @api_client.config.client_side_validation && model_history_entity.nil?
         fail ArgumentError, "Missing the required parameter 'model_history_entity' when calling DefaultApi.create_model_history"
       end
       # resource path
-      local_var_path = '/model/revisions'
+      local_var_path = '/rpc/{modelHistoryServerId}/model/revisions'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -729,28 +807,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Deletes an experiment, given an experiment entity
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to delete
     # @param [Hash] opts the optional parameters
     # @return [InlineResponse200]
-    def delete_experiment(experiment_id, opts = {})
-      data, _status_code, _headers = delete_experiment_with_http_info(experiment_id, opts)
+    def delete_experiment(model_history_server_id, experiment_id, opts = {})
+      data, _status_code, _headers = delete_experiment_with_http_info(model_history_server_id, experiment_id, opts)
       data
     end
 
     # Deletes an experiment, given an experiment entity
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to delete
     # @param [Hash] opts the optional parameters
     # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
-    def delete_experiment_with_http_info(experiment_id, opts = {})
+    def delete_experiment_with_http_info(model_history_server_id, experiment_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_experiment ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.delete_experiment"
       end
       # verify the required parameter 'experiment_id' is set
       if @api_client.config.client_side_validation && experiment_id.nil?
         fail ArgumentError, "Missing the required parameter 'experiment_id' when calling DefaultApi.delete_experiment"
       end
       # resource path
-      local_var_path = '/experiment/{experimentID}'.sub('{' + 'experimentID' + '}', experiment_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/experiment/{experimentID}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'experimentID' + '}', experiment_id.to_s)
 
       # query parameters
       query_params = {}
@@ -835,28 +919,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Deletes a model history / workspace, given its ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace to delete
     # @param [Hash] opts the optional parameters
     # @return [InlineResponse200]
-    def delete_model_history(model_history_id, opts = {})
-      data, _status_code, _headers = delete_model_history_with_http_info(model_history_id, opts)
+    def delete_model_history(model_history_server_id, model_history_id, opts = {})
+      data, _status_code, _headers = delete_model_history_with_http_info(model_history_server_id, model_history_id, opts)
       data
     end
 
     # Deletes a model history / workspace, given its ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace to delete
     # @param [Hash] opts the optional parameters
     # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
-    def delete_model_history_with_http_info(model_history_id, opts = {})
+    def delete_model_history_with_http_info(model_history_server_id, model_history_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_model_history ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.delete_model_history"
       end
       # verify the required parameter 'model_history_id' is set
       if @api_client.config.client_side_validation && model_history_id.nil?
         fail ArgumentError, "Missing the required parameter 'model_history_id' when calling DefaultApi.delete_model_history"
       end
       # resource path
-      local_var_path = '/modelhistory/{modelHistoryID}'.sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
 
       # query parameters
       query_params = {}
@@ -885,28 +975,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Deletes a model instance, given its ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to delete.
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def delete_model_instance(model_instance_id, opts = {})
-      delete_model_instance_with_http_info(model_instance_id, opts)
+    def delete_model_instance(model_history_server_id, model_instance_id, opts = {})
+      delete_model_instance_with_http_info(model_history_server_id, model_instance_id, opts)
       nil
     end
 
     # Deletes a model instance, given its ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to delete.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def delete_model_instance_with_http_info(model_instance_id, opts = {})
+    def delete_model_instance_with_http_info(model_history_server_id, model_instance_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_model_instance ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.delete_model_instance"
       end
       # verify the required parameter 'model_instance_id' is set
       if @api_client.config.client_side_validation && model_instance_id.nil?
         fail ArgumentError, "Missing the required parameter 'model_instance_id' when calling DefaultApi.delete_model_instance"
       end
       # resource path
-      local_var_path = '/model/{modelInstanceID}'.sub('{' + 'modelInstanceID' + '}', model_instance_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/model/{modelInstanceID}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'modelInstanceID' + '}', model_instance_id.to_s)
 
       # query parameters
       query_params = {}
@@ -1193,11 +1289,12 @@ module SkilCient
     # @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
     # @param image_file the image file to detect objects from
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [DetectionResult]
-    def detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, model_name, opts)
+    def detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, opts)
       data
     end
 
@@ -1207,10 +1304,11 @@ module SkilCient
     # @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
     # @param image_file the image file to detect objects from
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(DetectionResult, Fixnum, Hash)>] DetectionResult data, response status code and response headers
-    def detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, model_name, opts = {})
+    def detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.detectobjects ...'
       end
@@ -1234,12 +1332,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.detectobjects"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.detectobjects"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.detectobjects"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/detectobjects'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -1274,28 +1376,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param best_model Object encapsulating the model ids, eval type and column metric name
     # @param [Hash] opts the optional parameters
     # @return [ModelInstanceEntity]
-    def get_best_model_among_model_ids(best_model, opts = {})
-      data, _status_code, _headers = get_best_model_among_model_ids_with_http_info(best_model, opts)
+    def get_best_model_among_model_ids(model_history_server_id, best_model, opts = {})
+      data, _status_code, _headers = get_best_model_among_model_ids_with_http_info(model_history_server_id, best_model, opts)
       data
     end
 
     # Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param best_model Object encapsulating the model ids, eval type and column metric name
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelInstanceEntity, Fixnum, Hash)>] ModelInstanceEntity data, response status code and response headers
-    def get_best_model_among_model_ids_with_http_info(best_model, opts = {})
+    def get_best_model_among_model_ids_with_http_info(model_history_server_id, best_model, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_best_model_among_model_ids ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.get_best_model_among_model_ids"
       end
       # verify the required parameter 'best_model' is set
       if @api_client.config.client_side_validation && best_model.nil?
         fail ArgumentError, "Missing the required parameter 'best_model' when calling DefaultApi.get_best_model_among_model_ids"
       end
       # resource path
-      local_var_path = '/model/best'
+      local_var_path = '/rpc/{modelHistoryServerId}/model/best'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -1326,28 +1434,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets the list of evaluation results entity, given a model instance ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to get evaluation results for.
     # @param [Hash] opts the optional parameters
     # @return [Array<EvaluationResultsEntity>]
-    def get_evaluation_for_model_id(model_instance_id, opts = {})
-      data, _status_code, _headers = get_evaluation_for_model_id_with_http_info(model_instance_id, opts)
+    def get_evaluation_for_model_id(model_history_server_id, model_instance_id, opts = {})
+      data, _status_code, _headers = get_evaluation_for_model_id_with_http_info(model_history_server_id, model_instance_id, opts)
       data
     end
 
     # Gets the list of evaluation results entity, given a model instance ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to get evaluation results for.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<EvaluationResultsEntity>, Fixnum, Hash)>] Array<EvaluationResultsEntity> data, response status code and response headers
-    def get_evaluation_for_model_id_with_http_info(model_instance_id, opts = {})
+    def get_evaluation_for_model_id_with_http_info(model_history_server_id, model_instance_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_evaluation_for_model_id ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.get_evaluation_for_model_id"
       end
       # verify the required parameter 'model_instance_id' is set
       if @api_client.config.client_side_validation && model_instance_id.nil?
         fail ArgumentError, "Missing the required parameter 'model_instance_id' when calling DefaultApi.get_evaluation_for_model_id"
       end
       # resource path
-      local_var_path = '/model/revisions/evaluations/{modelInstanceID}'.sub('{' + 'modelInstanceID' + '}', model_instance_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'modelInstanceID' + '}', model_instance_id.to_s)
 
       # query parameters
       query_params = {}
@@ -1376,28 +1490,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets all the examples for a minibatch ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param minibatch_id The GUID of the minibatch
     # @param [Hash] opts the optional parameters
     # @return [Array<ExampleEntity>]
-    def get_examples_for_minibatch(minibatch_id, opts = {})
-      data, _status_code, _headers = get_examples_for_minibatch_with_http_info(minibatch_id, opts)
+    def get_examples_for_minibatch(model_history_server_id, minibatch_id, opts = {})
+      data, _status_code, _headers = get_examples_for_minibatch_with_http_info(model_history_server_id, minibatch_id, opts)
       data
     end
 
     # Gets all the examples for a minibatch ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param minibatch_id The GUID of the minibatch
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<ExampleEntity>, Fixnum, Hash)>] Array<ExampleEntity> data, response status code and response headers
-    def get_examples_for_minibatch_with_http_info(minibatch_id, opts = {})
+    def get_examples_for_minibatch_with_http_info(model_history_server_id, minibatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_examples_for_minibatch ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.get_examples_for_minibatch"
       end
       # verify the required parameter 'minibatch_id' is set
       if @api_client.config.client_side_validation && minibatch_id.nil?
         fail ArgumentError, "Missing the required parameter 'minibatch_id' when calling DefaultApi.get_examples_for_minibatch"
       end
       # resource path
-      local_var_path = '/model/example/{minibatchId}'.sub('{' + 'minibatchId' + '}', minibatch_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/model/example/{minibatchId}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'minibatchId' + '}', minibatch_id.to_s)
 
       # query parameters
       query_params = {}
@@ -1426,28 +1546,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Obtain an experiment's details, given its ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to obtain
     # @param [Hash] opts the optional parameters
     # @return [ExperimentEntity]
-    def get_experiment(experiment_id, opts = {})
-      data, _status_code, _headers = get_experiment_with_http_info(experiment_id, opts)
+    def get_experiment(model_history_server_id, experiment_id, opts = {})
+      data, _status_code, _headers = get_experiment_with_http_info(model_history_server_id, experiment_id, opts)
       data
     end
 
     # Obtain an experiment&#39;s details, given its ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to obtain
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
-    def get_experiment_with_http_info(experiment_id, opts = {})
+    def get_experiment_with_http_info(model_history_server_id, experiment_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_experiment ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.get_experiment"
       end
       # verify the required parameter 'experiment_id' is set
       if @api_client.config.client_side_validation && experiment_id.nil?
         fail ArgumentError, "Missing the required parameter 'experiment_id' when calling DefaultApi.get_experiment"
       end
       # resource path
-      local_var_path = '/experiment/{experimentID}'.sub('{' + 'experimentID' + '}', experiment_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/experiment/{experimentID}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'experimentID' + '}', experiment_id.to_s)
 
       # query parameters
       query_params = {}
@@ -1476,28 +1602,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Obtain all experiments for a model history / workspace
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace
     # @param [Hash] opts the optional parameters
     # @return [ExperimentEntity]
-    def get_experiments_for_model_history(model_history_id, opts = {})
-      data, _status_code, _headers = get_experiments_for_model_history_with_http_info(model_history_id, opts)
+    def get_experiments_for_model_history(model_history_server_id, model_history_id, opts = {})
+      data, _status_code, _headers = get_experiments_for_model_history_with_http_info(model_history_server_id, model_history_id, opts)
       data
     end
 
     # Obtain all experiments for a model history / workspace
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
-    def get_experiments_for_model_history_with_http_info(model_history_id, opts = {})
+    def get_experiments_for_model_history_with_http_info(model_history_server_id, model_history_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_experiments_for_model_history ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.get_experiments_for_model_history"
       end
       # verify the required parameter 'model_history_id' is set
       if @api_client.config.client_side_validation && model_history_id.nil?
         fail ArgumentError, "Missing the required parameter 'model_history_id' when calling DefaultApi.get_experiments_for_model_history"
       end
       # resource path
-      local_var_path = '/experiments/{modelHistoryID}'.sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
 
       # query parameters
       query_params = {}
@@ -1526,28 +1658,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets a minibatch for the model
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param minibatch_id The GUID of the minibatch
     # @param [Hash] opts the optional parameters
     # @return [MinibatchEntity]
-    def get_minibatch(minibatch_id, opts = {})
-      data, _status_code, _headers = get_minibatch_with_http_info(minibatch_id, opts)
+    def get_minibatch(model_history_server_id, minibatch_id, opts = {})
+      data, _status_code, _headers = get_minibatch_with_http_info(model_history_server_id, minibatch_id, opts)
       data
     end
 
     # Gets a minibatch for the model
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param minibatch_id The GUID of the minibatch
     # @param [Hash] opts the optional parameters
     # @return [Array<(MinibatchEntity, Fixnum, Hash)>] MinibatchEntity data, response status code and response headers
-    def get_minibatch_with_http_info(minibatch_id, opts = {})
+    def get_minibatch_with_http_info(model_history_server_id, minibatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_minibatch ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.get_minibatch"
       end
       # verify the required parameter 'minibatch_id' is set
       if @api_client.config.client_side_validation && minibatch_id.nil?
         fail ArgumentError, "Missing the required parameter 'minibatch_id' when calling DefaultApi.get_minibatch"
       end
       # resource path
-      local_var_path = '/model/minibatch/{minibatchId}'.sub('{' + 'minibatchId' + '}', minibatch_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'minibatchId' + '}', minibatch_id.to_s)
 
       # query parameters
       query_params = {}
@@ -1576,28 +1714,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets a model history, given its ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_history_id GUID of the model history to get information of.
     # @param [Hash] opts the optional parameters
     # @return [ModelHistoryEntity]
-    def get_model_history(model_history_id, opts = {})
-      data, _status_code, _headers = get_model_history_with_http_info(model_history_id, opts)
+    def get_model_history(model_history_server_id, model_history_id, opts = {})
+      data, _status_code, _headers = get_model_history_with_http_info(model_history_server_id, model_history_id, opts)
       data
     end
 
     # Gets a model history, given its ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_history_id GUID of the model history to get information of.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelHistoryEntity, Fixnum, Hash)>] ModelHistoryEntity data, response status code and response headers
-    def get_model_history_with_http_info(model_history_id, opts = {})
+    def get_model_history_with_http_info(model_history_server_id, model_history_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_model_history ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.get_model_history"
       end
       # verify the required parameter 'model_history_id' is set
       if @api_client.config.client_side_validation && model_history_id.nil?
         fail ArgumentError, "Missing the required parameter 'model_history_id' when calling DefaultApi.get_model_history"
       end
       # resource path
-      local_var_path = '/model/revision/{modelHistoryID}'.sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
 
       # query parameters
       query_params = {}
@@ -1626,28 +1770,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets a model instance, given its ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to get information of.
     # @param [Hash] opts the optional parameters
     # @return [ModelInstanceEntity]
-    def get_model_instance(model_instance_id, opts = {})
-      data, _status_code, _headers = get_model_instance_with_http_info(model_instance_id, opts)
+    def get_model_instance(model_history_server_id, model_instance_id, opts = {})
+      data, _status_code, _headers = get_model_instance_with_http_info(model_history_server_id, model_instance_id, opts)
       data
     end
 
     # Gets a model instance, given its ID
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to get information of.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelInstanceEntity, Fixnum, Hash)>] ModelInstanceEntity data, response status code and response headers
-    def get_model_instance_with_http_info(model_instance_id, opts = {})
+    def get_model_instance_with_http_info(model_history_server_id, model_instance_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_model_instance ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.get_model_instance"
       end
       # verify the required parameter 'model_instance_id' is set
       if @api_client.config.client_side_validation && model_instance_id.nil?
         fail ArgumentError, "Missing the required parameter 'model_instance_id' when calling DefaultApi.get_model_instance"
       end
       # resource path
-      local_var_path = '/model/{modelInstanceID}'.sub('{' + 'modelInstanceID' + '}', model_instance_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/model/{modelInstanceID}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'modelInstanceID' + '}', model_instance_id.to_s)
 
       # query parameters
       query_params = {}
@@ -1676,28 +1826,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Obtain a list of all the models for an experiment
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment
     # @param [Hash] opts the optional parameters
     # @return [Array<ModelInstanceEntity>]
-    def get_models_for_experiment(experiment_id, opts = {})
-      data, _status_code, _headers = get_models_for_experiment_with_http_info(experiment_id, opts)
+    def get_models_for_experiment(model_history_server_id, experiment_id, opts = {})
+      data, _status_code, _headers = get_models_for_experiment_with_http_info(model_history_server_id, experiment_id, opts)
       data
     end
 
     # Obtain a list of all the models for an experiment
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<ModelInstanceEntity>, Fixnum, Hash)>] Array<ModelInstanceEntity> data, response status code and response headers
-    def get_models_for_experiment_with_http_info(experiment_id, opts = {})
+    def get_models_for_experiment_with_http_info(model_history_server_id, experiment_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_models_for_experiment ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.get_models_for_experiment"
       end
       # verify the required parameter 'experiment_id' is set
       if @api_client.config.client_side_validation && experiment_id.nil?
         fail ArgumentError, "Missing the required parameter 'experiment_id' when calling DefaultApi.get_models_for_experiment"
       end
       # resource path
-      local_var_path = '/experiment/{experimentID}/models'.sub('{' + 'experimentID' + '}', experiment_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/experiment/{experimentID}/models'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'experimentID' + '}', experiment_id.to_s)
 
       # query parameters
       query_params = {}
@@ -1727,20 +1883,22 @@ module SkilCient
     end
     # Retrieves the image transform process JSON string
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param [Hash] opts the optional parameters
     # @return [ImageTransformProcess]
-    def imagetransformprocess_get(deployment_name, image_transform_name, opts = {})
-      data, _status_code, _headers = imagetransformprocess_get_with_http_info(deployment_name, image_transform_name, opts)
+    def imagetransformprocess_get(deployment_name, version_name, image_transform_name, opts = {})
+      data, _status_code, _headers = imagetransformprocess_get_with_http_info(deployment_name, version_name, image_transform_name, opts)
       data
     end
 
     # Retrieves the image transform process JSON string
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param [Hash] opts the optional parameters
     # @return [Array<(ImageTransformProcess, Fixnum, Hash)>] ImageTransformProcess data, response status code and response headers
-    def imagetransformprocess_get_with_http_info(deployment_name, image_transform_name, opts = {})
+    def imagetransformprocess_get_with_http_info(deployment_name, version_name, image_transform_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.imagetransformprocess_get ...'
       end
@@ -1748,12 +1906,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.imagetransformprocess_get"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.imagetransformprocess_get"
+      end
       # verify the required parameter 'image_transform_name' is set
       if @api_client.config.client_side_validation && image_transform_name.nil?
         fail ArgumentError, "Missing the required parameter 'image_transform_name' when calling DefaultApi.imagetransformprocess_get"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -1785,28 +1947,34 @@ module SkilCient
     end
     # Sets the image transform process through the provided JSON string
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param body The image transform process JSON
     # @param [Hash] opts the optional parameters
     # @return [ImageTransformProcess]
-    def imagetransformprocess_post(deployment_name, image_transform_name, body, opts = {})
-      data, _status_code, _headers = imagetransformprocess_post_with_http_info(deployment_name, image_transform_name, body, opts)
+    def imagetransformprocess_post(deployment_name, version_name, image_transform_name, body, opts = {})
+      data, _status_code, _headers = imagetransformprocess_post_with_http_info(deployment_name, version_name, image_transform_name, body, opts)
       data
     end
 
     # Sets the image transform process through the provided JSON string
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param body The image transform process JSON
     # @param [Hash] opts the optional parameters
     # @return [Array<(ImageTransformProcess, Fixnum, Hash)>] ImageTransformProcess data, response status code and response headers
-    def imagetransformprocess_post_with_http_info(deployment_name, image_transform_name, body, opts = {})
+    def imagetransformprocess_post_with_http_info(deployment_name, version_name, image_transform_name, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.imagetransformprocess_post ...'
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.imagetransformprocess_post"
+      end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.imagetransformprocess_post"
       end
       # verify the required parameter 'image_transform_name' is set
       if @api_client.config.client_side_validation && image_transform_name.nil?
@@ -1817,7 +1985,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.imagetransformprocess_post"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -1850,21 +2018,23 @@ module SkilCient
     # Run inference on the input and returns it as a JsonArrayResponse
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [JsonArrayResponse]
-    def jsonarray(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = jsonarray_with_http_info(body, deployment_name, model_name, opts)
+    def jsonarray(body, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = jsonarray_with_http_info(body, deployment_name, version_name, model_name, opts)
       data
     end
 
     # Run inference on the input and returns it as a JsonArrayResponse
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(JsonArrayResponse, Fixnum, Hash)>] JsonArrayResponse data, response status code and response headers
-    def jsonarray_with_http_info(body, deployment_name, model_name, opts = {})
+    def jsonarray_with_http_info(body, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.jsonarray ...'
       end
@@ -1876,12 +2046,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.jsonarray"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.jsonarray"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.jsonarray"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/jsonarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -1914,29 +2088,35 @@ module SkilCient
     # Runs knn on the given index with the given k
     # Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param knn_name ID or name of the deployed knn
     # @param body 
     # @param [Hash] opts the optional parameters
     # @return [NearestNeighborsResults]
-    def knn(deployment_name, knn_name, body, opts = {})
-      data, _status_code, _headers = knn_with_http_info(deployment_name, knn_name, body, opts)
+    def knn(deployment_name, version_name, knn_name, body, opts = {})
+      data, _status_code, _headers = knn_with_http_info(deployment_name, version_name, knn_name, body, opts)
       data
     end
 
     # Runs knn on the given index with the given k
     # Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param knn_name ID or name of the deployed knn
     # @param body 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NearestNeighborsResults, Fixnum, Hash)>] NearestNeighborsResults data, response status code and response headers
-    def knn_with_http_info(deployment_name, knn_name, body, opts = {})
+    def knn_with_http_info(deployment_name, version_name, knn_name, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.knn ...'
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.knn"
+      end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.knn"
       end
       # verify the required parameter 'knn_name' is set
       if @api_client.config.client_side_validation && knn_name.nil?
@@ -1947,7 +2127,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.knn"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/knn/{knnName}/default/knn'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'knnName' + '}', knn_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'knnName' + '}', knn_name.to_s)
 
       # query parameters
       query_params = {}
@@ -1979,28 +2159,34 @@ module SkilCient
     end
     # Run a k nearest neighbors search on a NEW data point
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param knn_name ID or name of the deployed knn
     # @param body The input NDArray
     # @param [Hash] opts the optional parameters
     # @return [NearestNeighborsResults]
-    def knnnew(deployment_name, knn_name, body, opts = {})
-      data, _status_code, _headers = knnnew_with_http_info(deployment_name, knn_name, body, opts)
+    def knnnew(deployment_name, version_name, knn_name, body, opts = {})
+      data, _status_code, _headers = knnnew_with_http_info(deployment_name, version_name, knn_name, body, opts)
       data
     end
 
     # Run a k nearest neighbors search on a NEW data point
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param knn_name ID or name of the deployed knn
     # @param body The input NDArray
     # @param [Hash] opts the optional parameters
     # @return [Array<(NearestNeighborsResults, Fixnum, Hash)>] NearestNeighborsResults data, response status code and response headers
-    def knnnew_with_http_info(deployment_name, knn_name, body, opts = {})
+    def knnnew_with_http_info(deployment_name, version_name, knn_name, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.knnnew ...'
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.knnnew"
+      end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.knnnew"
       end
       # verify the required parameter 'knn_name' is set
       if @api_client.config.client_side_validation && knn_name.nil?
@@ -2011,7 +2197,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.knnnew"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/knn/{knnName}/default/knnnew'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'knnName' + '}', knn_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'knnName' + '}', knn_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2057,7 +2243,7 @@ module SkilCient
         @api_client.config.logger.debug 'Calling API: DefaultApi.list_all_experiments ...'
       end
       # resource path
-      local_var_path = '/experiments'
+      local_var_path = '/rpc/{modelHistoryServerId}/experiments'
 
       # query parameters
       query_params = {}
@@ -2087,20 +2273,22 @@ module SkilCient
     end
     # Get logs file path
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [String]
-    def logfilepath(deployment_name, model_name, opts = {})
-      data, _status_code, _headers = logfilepath_with_http_info(deployment_name, model_name, opts)
+    def logfilepath(deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = logfilepath_with_http_info(deployment_name, version_name, model_name, opts)
       data
     end
 
     # Get logs file path
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
-    def logfilepath_with_http_info(deployment_name, model_name, opts = {})
+    def logfilepath_with_http_info(deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.logfilepath ...'
       end
@@ -2108,12 +2296,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.logfilepath"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.logfilepath"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.logfilepath"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/logfilepath'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2196,21 +2388,23 @@ module SkilCient
     # Get logs
     # @param body the the log request
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [LogBatch]
-    def logs(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = logs_with_http_info(body, deployment_name, model_name, opts)
+    def logs(body, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = logs_with_http_info(body, deployment_name, version_name, model_name, opts)
       data
     end
 
     # Get logs
     # @param body the the log request
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(LogBatch, Fixnum, Hash)>] LogBatch data, response status code and response headers
-    def logs_with_http_info(body, deployment_name, model_name, opts = {})
+    def logs_with_http_info(body, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.logs ...'
       end
@@ -2222,12 +2416,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.logs"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.logs"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.logs"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/logs'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2259,20 +2457,22 @@ module SkilCient
     end
     # this method can be used to get the meta data for the current model which set to the server
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [MetaData]
-    def meta_get(deployment_name, model_name, opts = {})
-      data, _status_code, _headers = meta_get_with_http_info(deployment_name, model_name, opts)
+    def meta_get(deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = meta_get_with_http_info(deployment_name, version_name, model_name, opts)
       data
     end
 
     # this method can be used to get the meta data for the current model which set to the server
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(MetaData, Fixnum, Hash)>] MetaData data, response status code and response headers
-    def meta_get_with_http_info(deployment_name, model_name, opts = {})
+    def meta_get_with_http_info(deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.meta_get ...'
       end
@@ -2280,12 +2480,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.meta_get"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.meta_get"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.meta_get"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/meta'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2318,21 +2522,23 @@ module SkilCient
     # This method can be used to set meta data for the current model which is set to the server
     # @param body the meta data object
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [MetaData]
-    def meta_post(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = meta_post_with_http_info(body, deployment_name, model_name, opts)
+    def meta_post(body, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = meta_post_with_http_info(body, deployment_name, version_name, model_name, opts)
       data
     end
 
     # This method can be used to set meta data for the current model which is set to the server
     # @param body the meta data object
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(MetaData, Fixnum, Hash)>] MetaData data, response status code and response headers
-    def meta_post_with_http_info(body, deployment_name, model_name, opts = {})
+    def meta_post_with_http_info(body, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.meta_post ...'
       end
@@ -2344,12 +2550,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.meta_post"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.meta_post"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.meta_post"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/meta'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2495,22 +2705,24 @@ module SkilCient
     end
     # Set the model to be served
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :file The model file to upload (.pb file)
     # @return [ModelStatus]
-    def modelset(deployment_name, model_name, opts = {})
-      data, _status_code, _headers = modelset_with_http_info(deployment_name, model_name, opts)
+    def modelset(deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = modelset_with_http_info(deployment_name, version_name, model_name, opts)
       data
     end
 
     # Set the model to be served
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :file The model file to upload (.pb file)
     # @return [Array<(ModelStatus, Fixnum, Hash)>] ModelStatus data, response status code and response headers
-    def modelset_with_http_info(deployment_name, model_name, opts = {})
+    def modelset_with_http_info(deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.modelset ...'
       end
@@ -2518,12 +2730,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.modelset"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.modelset"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.modelset"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/modelset'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2556,22 +2772,24 @@ module SkilCient
     end
     # Update the model to be served
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :file The model file to update with (.pb file)
     # @return [ModelStatus]
-    def modelupdate(deployment_name, model_name, opts = {})
-      data, _status_code, _headers = modelupdate_with_http_info(deployment_name, model_name, opts)
+    def modelupdate(deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = modelupdate_with_http_info(deployment_name, version_name, model_name, opts)
       data
     end
 
     # Update the model to be served
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :file The model file to update with (.pb file)
     # @return [Array<(ModelStatus, Fixnum, Hash)>] ModelStatus data, response status code and response headers
-    def modelupdate_with_http_info(deployment_name, model_name, opts = {})
+    def modelupdate_with_http_info(deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.modelupdate ...'
       end
@@ -2579,12 +2797,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.modelupdate"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.modelupdate"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.modelupdate"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/modelupdate'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2618,21 +2840,23 @@ module SkilCient
     # Represents all of the labels for a given classification
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [MultiClassClassificationResult]
-    def multiclassify(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = multiclassify_with_http_info(body, deployment_name, model_name, opts)
+    def multiclassify(body, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = multiclassify_with_http_info(body, deployment_name, version_name, model_name, opts)
       data
     end
 
     # Represents all of the labels for a given classification
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(MultiClassClassificationResult, Fixnum, Hash)>] MultiClassClassificationResult data, response status code and response headers
-    def multiclassify_with_http_info(body, deployment_name, model_name, opts = {})
+    def multiclassify_with_http_info(body, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.multiclassify ...'
       end
@@ -2644,12 +2868,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.multiclassify"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.multiclassify"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.multiclassify"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/multiclassify'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2683,11 +2911,12 @@ module SkilCient
     # Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
     # @param body The multiple input arrays with mask inputs to run inferences on
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [MultiPredictResponse]
-    def multipredict(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = multipredict_with_http_info(body, deployment_name, model_name, opts)
+    def multipredict(body, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = multipredict_with_http_info(body, deployment_name, version_name, model_name, opts)
       data
     end
 
@@ -2695,10 +2924,11 @@ module SkilCient
     # Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
     # @param body The multiple input arrays with mask inputs to run inferences on
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(MultiPredictResponse, Fixnum, Hash)>] MultiPredictResponse data, response status code and response headers
-    def multipredict_with_http_info(body, deployment_name, model_name, opts = {})
+    def multipredict_with_http_info(body, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.multipredict ...'
       end
@@ -2710,12 +2940,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.multipredict"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.multipredict"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.multipredict"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/multipredict'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2751,11 +2985,12 @@ module SkilCient
     # @param id The id of the request (could be self generated)
     # @param needs_preprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [MultiPredictResponse]
-    def multipredictimage(file, id, needs_preprocessing, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, model_name, opts)
+    def multipredictimage(file, id, needs_preprocessing, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, version_name, model_name, opts)
       data
     end
 
@@ -2765,10 +3000,11 @@ module SkilCient
     # @param id The id of the request (could be self generated)
     # @param needs_preprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;)
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(MultiPredictResponse, Fixnum, Hash)>] MultiPredictResponse data, response status code and response headers
-    def multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, model_name, opts = {})
+    def multipredictimage_with_http_info(file, id, needs_preprocessing, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.multipredictimage ...'
       end
@@ -2788,12 +3024,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.multipredictimage"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.multipredictimage"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.multipredictimage"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2829,21 +3069,23 @@ module SkilCient
     # Run inference on the input array.
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Prediction]
-    def predict(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = predict_with_http_info(body, deployment_name, model_name, opts)
+    def predict(body, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = predict_with_http_info(body, deployment_name, version_name, model_name, opts)
       data
     end
 
     # Run inference on the input array.
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(Prediction, Fixnum, Hash)>] Prediction data, response status code and response headers
-    def predict_with_http_info(body, deployment_name, model_name, opts = {})
+    def predict_with_http_info(body, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.predict ...'
       end
@@ -2855,12 +3097,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.predict"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.predict"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.predict"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/predict'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2892,22 +3138,24 @@ module SkilCient
     end
     # Run inference on the input array, using input image file from multipart form data.
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :image The file to upload.
     # @return [Prediction]
-    def predictimage(deployment_name, model_name, opts = {})
-      data, _status_code, _headers = predictimage_with_http_info(deployment_name, model_name, opts)
+    def predictimage(deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = predictimage_with_http_info(deployment_name, version_name, model_name, opts)
       data
     end
 
     # Run inference on the input array, using input image file from multipart form data.
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @option opts [File] :image The file to upload.
     # @return [Array<(Prediction, Fixnum, Hash)>] Prediction data, response status code and response headers
-    def predictimage_with_http_info(deployment_name, model_name, opts = {})
+    def predictimage_with_http_info(deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.predictimage ...'
       end
@@ -2915,12 +3163,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.predictimage"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.predictimage"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.predictimage"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/predictimage'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -2954,21 +3206,23 @@ module SkilCient
     # Preprocesses the input and run inference on it
     # @param body The input array
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Prediction]
-    def predictwithpreprocess(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = predictwithpreprocess_with_http_info(body, deployment_name, model_name, opts)
+    def predictwithpreprocess(body, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = predictwithpreprocess_with_http_info(body, deployment_name, version_name, model_name, opts)
       data
     end
 
     # Preprocesses the input and run inference on it
     # @param body The input array
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(Prediction, Fixnum, Hash)>] Prediction data, response status code and response headers
-    def predictwithpreprocess_with_http_info(body, deployment_name, model_name, opts = {})
+    def predictwithpreprocess_with_http_info(body, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.predictwithpreprocess ...'
       end
@@ -2980,12 +3234,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.predictwithpreprocess"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.predictwithpreprocess"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.predictwithpreprocess"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3018,21 +3276,23 @@ module SkilCient
     # Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
     # @param body The input array
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [JsonArrayResponse]
-    def predictwithpreprocessjson(body, deployment_name, model_name, opts = {})
-      data, _status_code, _headers = predictwithpreprocessjson_with_http_info(body, deployment_name, model_name, opts)
+    def predictwithpreprocessjson(body, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = predictwithpreprocessjson_with_http_info(body, deployment_name, version_name, model_name, opts)
       data
     end
 
     # Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
     # @param body The input array
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(JsonArrayResponse, Fixnum, Hash)>] JsonArrayResponse data, response status code and response headers
-    def predictwithpreprocessjson_with_http_info(body, deployment_name, model_name, opts = {})
+    def predictwithpreprocessjson_with_http_info(body, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.predictwithpreprocessjson ...'
       end
@@ -3044,12 +3304,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.predictwithpreprocessjson"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.predictwithpreprocessjson"
+      end
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.predictwithpreprocessjson"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3146,23 +3410,25 @@ module SkilCient
     # Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
     # Takes a batch of SingleCSVRecord object and transforms it into the desired format
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @option opts [BatchCSVRecord] :batch_csv_record The input batch of record arrays
     # @return [BatchCSVRecord]
-    def transform_csv(deployment_name, transform_name, opts = {})
-      data, _status_code, _headers = transform_csv_with_http_info(deployment_name, transform_name, opts)
+    def transform_csv(deployment_name, version_name, transform_name, opts = {})
+      data, _status_code, _headers = transform_csv_with_http_info(deployment_name, version_name, transform_name, opts)
       data
     end
 
     # Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
     # Takes a batch of SingleCSVRecord object and transforms it into the desired format
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @option opts [BatchCSVRecord] :batch_csv_record The input batch of record arrays
     # @return [Array<(BatchCSVRecord, Fixnum, Hash)>] BatchCSVRecord data, response status code and response headers
-    def transform_csv_with_http_info(deployment_name, transform_name, opts = {})
+    def transform_csv_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transform_csv ...'
       end
@@ -3170,12 +3436,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transform_csv"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transform_csv"
+      end
       # verify the required parameter 'transform_name' is set
       if @api_client.config.client_side_validation && transform_name.nil?
         fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transform_csv"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/default/transform'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3208,23 +3478,25 @@ module SkilCient
     # Takes a batch input arrays and transforms it
     # Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @option opts [BatchCSVRecord] :batch_csv_record The input batch of record arrays
     # @return [Base64NDArrayBody]
-    def transformarray_csv(deployment_name, transform_name, opts = {})
-      data, _status_code, _headers = transformarray_csv_with_http_info(deployment_name, transform_name, opts)
+    def transformarray_csv(deployment_name, version_name, transform_name, opts = {})
+      data, _status_code, _headers = transformarray_csv_with_http_info(deployment_name, version_name, transform_name, opts)
       data
     end
 
     # Takes a batch input arrays and transforms it
     # Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @option opts [BatchCSVRecord] :batch_csv_record The input batch of record arrays
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def transformarray_csv_with_http_info(deployment_name, transform_name, opts = {})
+    def transformarray_csv_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformarray_csv ...'
       end
@@ -3232,12 +3504,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformarray_csv"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformarray_csv"
+      end
       # verify the required parameter 'transform_name' is set
       if @api_client.config.client_side_validation && transform_name.nil?
         fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformarray_csv"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3270,29 +3546,35 @@ module SkilCient
     # Takes a batch of images uri and transforms it and returns Base64NDArrayBody
     # Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param batch_image_record The input batch of record arrays
     # @param [Hash] opts the optional parameters
     # @return [Base64NDArrayBody]
-    def transformarray_image(deployment_name, image_transform_name, batch_image_record, opts = {})
-      data, _status_code, _headers = transformarray_image_with_http_info(deployment_name, image_transform_name, batch_image_record, opts)
+    def transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record, opts = {})
+      data, _status_code, _headers = transformarray_image_with_http_info(deployment_name, version_name, image_transform_name, batch_image_record, opts)
       data
     end
 
     # Takes a batch of images uri and transforms it and returns Base64NDArrayBody
     # Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param batch_image_record The input batch of record arrays
     # @param [Hash] opts the optional parameters
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def transformarray_image_with_http_info(deployment_name, image_transform_name, batch_image_record, opts = {})
+    def transformarray_image_with_http_info(deployment_name, version_name, image_transform_name, batch_image_record, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformarray_image ...'
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformarray_image"
+      end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformarray_image"
       end
       # verify the required parameter 'image_transform_name' is set
       if @api_client.config.client_side_validation && image_transform_name.nil?
@@ -3303,7 +3585,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'batch_image_record' when calling DefaultApi.transformarray_image"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3336,29 +3618,35 @@ module SkilCient
     # Takes multiple multipart image file to transform and returns Base64NDArrayBody
     # Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param files The image files to upload
     # @param [Hash] opts the optional parameters
     # @return [Base64NDArrayBody]
-    def transformimage(deployment_name, image_transform_name, files, opts = {})
-      data, _status_code, _headers = transformimage_with_http_info(deployment_name, image_transform_name, files, opts)
+    def transformimage(deployment_name, version_name, image_transform_name, files, opts = {})
+      data, _status_code, _headers = transformimage_with_http_info(deployment_name, version_name, image_transform_name, files, opts)
       data
     end
 
     # Takes multiple multipart image file to transform and returns Base64NDArrayBody
     # Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param files The image files to upload
     # @param [Hash] opts the optional parameters
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def transformimage_with_http_info(deployment_name, image_transform_name, files, opts = {})
+    def transformimage_with_http_info(deployment_name, version_name, image_transform_name, files, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformimage ...'
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformimage"
+      end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformimage"
       end
       # verify the required parameter 'image_transform_name' is set
       if @api_client.config.client_side_validation && image_transform_name.nil?
@@ -3369,7 +3657,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'files' when calling DefaultApi.transformimage"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3403,23 +3691,25 @@ module SkilCient
     # Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
     # Takes a SingleCSVRecord object and transforms it into the desired format
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @option opts [SingleCSVRecord] :single_csv_record The input record array
     # @return [SingleCSVRecord]
-    def transformincremental_csv(deployment_name, transform_name, opts = {})
-      data, _status_code, _headers = transformincremental_csv_with_http_info(deployment_name, transform_name, opts)
+    def transformincremental_csv(deployment_name, version_name, transform_name, opts = {})
+      data, _status_code, _headers = transformincremental_csv_with_http_info(deployment_name, version_name, transform_name, opts)
       data
     end
 
     # Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
     # Takes a SingleCSVRecord object and transforms it into the desired format
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @option opts [SingleCSVRecord] :single_csv_record The input record array
     # @return [Array<(SingleCSVRecord, Fixnum, Hash)>] SingleCSVRecord data, response status code and response headers
-    def transformincremental_csv_with_http_info(deployment_name, transform_name, opts = {})
+    def transformincremental_csv_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformincremental_csv ...'
       end
@@ -3427,12 +3717,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformincremental_csv"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformincremental_csv"
+      end
       # verify the required parameter 'transform_name' is set
       if @api_client.config.client_side_validation && transform_name.nil?
         fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformincremental_csv"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3465,23 +3759,25 @@ module SkilCient
     # Same as /transformincremental but returns Base64NDArrayBody
     # Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @option opts [SingleCSVRecord] :single_csv_record The input record array
     # @return [Base64NDArrayBody]
-    def transformincrementalarray_csv(deployment_name, transform_name, opts = {})
-      data, _status_code, _headers = transformincrementalarray_csv_with_http_info(deployment_name, transform_name, opts)
+    def transformincrementalarray_csv(deployment_name, version_name, transform_name, opts = {})
+      data, _status_code, _headers = transformincrementalarray_csv_with_http_info(deployment_name, version_name, transform_name, opts)
       data
     end
 
     # Same as /transformincremental but returns Base64NDArrayBody
     # Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @option opts [SingleCSVRecord] :single_csv_record The input record array
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def transformincrementalarray_csv_with_http_info(deployment_name, transform_name, opts = {})
+    def transformincrementalarray_csv_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformincrementalarray_csv ...'
       end
@@ -3489,12 +3785,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformincrementalarray_csv"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformincrementalarray_csv"
+      end
       # verify the required parameter 'transform_name' is set
       if @api_client.config.client_side_validation && transform_name.nil?
         fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformincrementalarray_csv"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3527,29 +3827,35 @@ module SkilCient
     # Takes SingleImageRecord to transform and returns Base64NDArrayBody
     # Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param single_image_record The input record array
     # @param [Hash] opts the optional parameters
     # @return [Base64NDArrayBody]
-    def transformincrementalarray_image(deployment_name, image_transform_name, single_image_record, opts = {})
-      data, _status_code, _headers = transformincrementalarray_image_with_http_info(deployment_name, image_transform_name, single_image_record, opts)
+    def transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record, opts = {})
+      data, _status_code, _headers = transformincrementalarray_image_with_http_info(deployment_name, version_name, image_transform_name, single_image_record, opts)
       data
     end
 
     # Takes SingleImageRecord to transform and returns Base64NDArrayBody
     # Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param single_image_record The input record array
     # @param [Hash] opts the optional parameters
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def transformincrementalarray_image_with_http_info(deployment_name, image_transform_name, single_image_record, opts = {})
+    def transformincrementalarray_image_with_http_info(deployment_name, version_name, image_transform_name, single_image_record, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformincrementalarray_image ...'
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformincrementalarray_image"
+      end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformincrementalarray_image"
       end
       # verify the required parameter 'image_transform_name' is set
       if @api_client.config.client_side_validation && image_transform_name.nil?
@@ -3560,7 +3866,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'single_image_record' when calling DefaultApi.transformincrementalarray_image"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3593,29 +3899,35 @@ module SkilCient
     # Takes a single multipart image file to transform and returns Base64NDArrayBody
     # Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param file The image file to upload
     # @param [Hash] opts the optional parameters
     # @return [Base64NDArrayBody]
-    def transformincrementalimage(deployment_name, image_transform_name, file, opts = {})
-      data, _status_code, _headers = transformincrementalimage_with_http_info(deployment_name, image_transform_name, file, opts)
+    def transformincrementalimage(deployment_name, version_name, image_transform_name, file, opts = {})
+      data, _status_code, _headers = transformincrementalimage_with_http_info(deployment_name, version_name, image_transform_name, file, opts)
       data
     end
 
     # Takes a single multipart image file to transform and returns Base64NDArrayBody
     # Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param image_transform_name ID or name of the deployed image transform
     # @param file The image file to upload
     # @param [Hash] opts the optional parameters
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def transformincrementalimage_with_http_info(deployment_name, image_transform_name, file, opts = {})
+    def transformincrementalimage_with_http_info(deployment_name, version_name, image_transform_name, file, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformincrementalimage ...'
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformincrementalimage"
+      end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformincrementalimage"
       end
       # verify the required parameter 'image_transform_name' is set
       if @api_client.config.client_side_validation && image_transform_name.nil?
@@ -3626,7 +3938,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'file' when calling DefaultApi.transformincrementalimage"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3660,21 +3972,23 @@ module SkilCient
     # Gets the JSON string of the deployed transform process
     # Retrieves the JSON string of the deployed transform process 
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @return [TransformProcess]
-    def transformprocess_get(deployment_name, transform_name, opts = {})
-      data, _status_code, _headers = transformprocess_get_with_http_info(deployment_name, transform_name, opts)
+    def transformprocess_get(deployment_name, version_name, transform_name, opts = {})
+      data, _status_code, _headers = transformprocess_get_with_http_info(deployment_name, version_name, transform_name, opts)
       data
     end
 
     # Gets the JSON string of the deployed transform process
     # Retrieves the JSON string of the deployed transform process 
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @return [Array<(TransformProcess, Fixnum, Hash)>] TransformProcess data, response status code and response headers
-    def transformprocess_get_with_http_info(deployment_name, transform_name, opts = {})
+    def transformprocess_get_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformprocess_get ...'
       end
@@ -3682,12 +3996,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformprocess_get"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformprocess_get"
+      end
       # verify the required parameter 'transform_name' is set
       if @api_client.config.client_side_validation && transform_name.nil?
         fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformprocess_get"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3718,23 +4036,25 @@ module SkilCient
     # Sets the deployed transform process through the provided JSON string
     # Sets the transform process with the provided JSON string
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @option opts [TransformProcess] :transform_process The transform process to set
     # @return [nil]
-    def transformprocess_post(deployment_name, transform_name, opts = {})
-      transformprocess_post_with_http_info(deployment_name, transform_name, opts)
+    def transformprocess_post(deployment_name, version_name, transform_name, opts = {})
+      transformprocess_post_with_http_info(deployment_name, version_name, transform_name, opts)
       nil
     end
 
     # Sets the deployed transform process through the provided JSON string
     # Sets the transform process with the provided JSON string
     # @param deployment_name Name of the deployment group
+    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
     # @option opts [TransformProcess] :transform_process The transform process to set
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def transformprocess_post_with_http_info(deployment_name, transform_name, opts = {})
+    def transformprocess_post_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformprocess_post ...'
       end
@@ -3742,12 +4062,16 @@ module SkilCient
       if @api_client.config.client_side_validation && deployment_name.nil?
         fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformprocess_post"
       end
+      # verify the required parameter 'version_name' is set
+      if @api_client.config.client_side_validation && version_name.nil?
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformprocess_post"
+      end
       # verify the required parameter 'transform_name' is set
       if @api_client.config.client_side_validation && transform_name.nil?
         fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformprocess_post"
       end
       # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
+      local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
 
       # query parameters
       query_params = {}
@@ -3777,28 +4101,34 @@ module SkilCient
       return data, status_code, headers
     end
     # Updates the best model for an experiment
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param update_best_model Model encapsulating the experiment id to update and the best model id.
     # @param [Hash] opts the optional parameters
     # @return [ExperimentEntity]
-    def update_best_model_for_experiment(update_best_model, opts = {})
-      data, _status_code, _headers = update_best_model_for_experiment_with_http_info(update_best_model, opts)
+    def update_best_model_for_experiment(model_history_server_id, update_best_model, opts = {})
+      data, _status_code, _headers = update_best_model_for_experiment_with_http_info(model_history_server_id, update_best_model, opts)
       data
     end
 
     # Updates the best model for an experiment
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param update_best_model Model encapsulating the experiment id to update and the best model id.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
-    def update_best_model_for_experiment_with_http_info(update_best_model, opts = {})
+    def update_best_model_for_experiment_with_http_info(model_history_server_id, update_best_model, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.update_best_model_for_experiment ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.update_best_model_for_experiment"
       end
       # verify the required parameter 'update_best_model' is set
       if @api_client.config.client_side_validation && update_best_model.nil?
         fail ArgumentError, "Missing the required parameter 'update_best_model' when calling DefaultApi.update_best_model_for_experiment"
       end
       # resource path
-      local_var_path = '/experiment/best'
+      local_var_path = '/rpc/{modelHistoryServerId}/experiment/best'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -3829,23 +4159,29 @@ module SkilCient
       return data, status_code, headers
     end
     # Updates an experiment, given an experiment entity
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to update
     # @param experiment_entity The experiment entity to update with
     # @param [Hash] opts the optional parameters
     # @return [ExperimentEntity]
-    def update_experiment(experiment_id, experiment_entity, opts = {})
-      data, _status_code, _headers = update_experiment_with_http_info(experiment_id, experiment_entity, opts)
+    def update_experiment(model_history_server_id, experiment_id, experiment_entity, opts = {})
+      data, _status_code, _headers = update_experiment_with_http_info(model_history_server_id, experiment_id, experiment_entity, opts)
       data
     end
 
     # Updates an experiment, given an experiment entity
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to update
     # @param experiment_entity The experiment entity to update with
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
-    def update_experiment_with_http_info(experiment_id, experiment_entity, opts = {})
+    def update_experiment_with_http_info(model_history_server_id, experiment_id, experiment_entity, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.update_experiment ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.update_experiment"
       end
       # verify the required parameter 'experiment_id' is set
       if @api_client.config.client_side_validation && experiment_id.nil?
@@ -3856,7 +4192,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'experiment_entity' when calling DefaultApi.update_experiment"
       end
       # resource path
-      local_var_path = '/experiment/{experimentID}'.sub('{' + 'experimentID' + '}', experiment_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/experiment/{experimentID}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'experimentID' + '}', experiment_id.to_s)
 
       # query parameters
       query_params = {}
@@ -3887,23 +4223,29 @@ module SkilCient
       return data, status_code, headers
     end
     # Update a model history / workspace
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace to update
     # @param update_model_history_request The model history request object
     # @param [Hash] opts the optional parameters
     # @return [ModelHistoryEntity]
-    def update_model_history(model_history_id, update_model_history_request, opts = {})
-      data, _status_code, _headers = update_model_history_with_http_info(model_history_id, update_model_history_request, opts)
+    def update_model_history(model_history_server_id, model_history_id, update_model_history_request, opts = {})
+      data, _status_code, _headers = update_model_history_with_http_info(model_history_server_id, model_history_id, update_model_history_request, opts)
       data
     end
 
     # Update a model history / workspace
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace to update
     # @param update_model_history_request The model history request object
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelHistoryEntity, Fixnum, Hash)>] ModelHistoryEntity data, response status code and response headers
-    def update_model_history_with_http_info(model_history_id, update_model_history_request, opts = {})
+    def update_model_history_with_http_info(model_history_server_id, model_history_id, update_model_history_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.update_model_history ...'
+      end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.update_model_history"
       end
       # verify the required parameter 'model_history_id' is set
       if @api_client.config.client_side_validation && model_history_id.nil?
@@ -3914,7 +4256,7 @@ module SkilCient
         fail ArgumentError, "Missing the required parameter 'update_model_history_request' when calling DefaultApi.update_model_history"
       end
       # resource path
-      local_var_path = '/modelhistory/{modelHistoryID}'.sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
+      local_var_path = '/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s).sub('{' + 'modelHistoryID' + '}', model_history_id.to_s)
 
       # query parameters
       query_params = {}
