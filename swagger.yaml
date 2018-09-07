@@ -1518,7 +1518,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1543,7 +1543,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1570,7 +1570,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1600,7 +1600,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1647,7 +1647,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1671,7 +1671,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1696,7 +1696,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1726,7 +1726,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1762,7 +1762,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1789,7 +1789,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1814,7 +1814,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1840,7 +1840,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1862,7 +1862,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1885,7 +1885,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1912,7 +1912,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1939,7 +1939,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1966,7 +1966,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -1991,7 +1991,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -2018,7 +2018,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -2043,7 +2043,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -2068,7 +2068,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -2093,7 +2093,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -2120,7 +2120,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -2147,7 +2147,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
@@ -2174,7 +2174,7 @@ paths:
       parameters:
       - name: modelHistoryServerId
         in: path
-        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
         format: guid
