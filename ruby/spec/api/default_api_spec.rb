@@ -34,7 +34,7 @@ describe 'DefaultApi' do
 
   # unit tests for add_evaluation_result
   # Adds an evaluation result
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param evaluation_results_entity The evaluation result entity
   # @param [Hash] opts the optional parameters
   # @return [EvaluationResultsEntity]
@@ -46,7 +46,7 @@ describe 'DefaultApi' do
 
   # unit tests for add_example_for_batch
   # Adds a number of examples to a minibatch ID given an AddExampleRequest.
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param add_example_request The add example request, encapsulating minibatch details and examples batch size
   # @param [Hash] opts the optional parameters
   # @return [AddExampleRequest]
@@ -58,7 +58,7 @@ describe 'DefaultApi' do
 
   # unit tests for add_example_to_minibatch
   # Adds an example to a minibatch
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param example_entity The example to add to the minibatch
   # @param [Hash] opts the optional parameters
   # @return [ExampleEntity]
@@ -70,7 +70,7 @@ describe 'DefaultApi' do
 
   # unit tests for add_experiment
   # Add an experiment, given an experiment entity
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param experiment_entity The experiment entity to add
   # @param [Hash] opts the optional parameters
   # @return [ExperimentEntity]
@@ -82,7 +82,7 @@ describe 'DefaultApi' do
 
   # unit tests for add_minibatch
   # Adds a minibatch
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param minibatch_entity The minibatch entity to add
   # @param [Hash] opts the optional parameters
   # @return [MinibatchEntity]
@@ -94,7 +94,7 @@ describe 'DefaultApi' do
 
   # unit tests for add_model_feedback
   # Adds an evaluation feedback to the model against a given minibatch id.
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param model_feed_back_request The model feedback request object
   # @param [Hash] opts the optional parameters
   # @return [ModelFeedBackRequest]
@@ -106,7 +106,7 @@ describe 'DefaultApi' do
 
   # unit tests for add_model_history
   # Add a model history / workspace
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param add_model_history_request The model history request object
   # @param [Hash] opts the optional parameters
   # @return [ModelHistoryEntity]
@@ -118,7 +118,7 @@ describe 'DefaultApi' do
 
   # unit tests for add_model_instance
   # Adds a model
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param model_instance_entity The object encapsulating the model instance id and evaluation type to aggregate
   # @param [Hash] opts the optional parameters
   # @return [ModelInstanceEntity]
@@ -130,7 +130,7 @@ describe 'DefaultApi' do
 
   # unit tests for aggregate_model_results
   # Aggregates the evaluaition results of a model instance, based on the evaluation type
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param aggregate_prediction The object encapsulating the model instance id and evaluation type to aggregate
   # @param [Hash] opts the optional parameters
   # @return [EvaluationResultsEntity]
@@ -184,7 +184,7 @@ describe 'DefaultApi' do
 
   # unit tests for create_model_history
   # Creates model History
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param model_history_entity The model history entity
   # @param [Hash] opts the optional parameters
   # @return [ModelHistoryEntity]
@@ -196,7 +196,7 @@ describe 'DefaultApi' do
 
   # unit tests for delete_experiment
   # Deletes an experiment, given an experiment entity
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param experiment_id the GUID of the experiment to delete
   # @param [Hash] opts the optional parameters
   # @return [InlineResponse200]
@@ -220,7 +220,7 @@ describe 'DefaultApi' do
 
   # unit tests for delete_model_history
   # Deletes a model history / workspace, given its ID
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param model_history_id the GUID of the model history / workspace to delete
   # @param [Hash] opts the optional parameters
   # @return [InlineResponse200]
@@ -232,7 +232,7 @@ describe 'DefaultApi' do
 
   # unit tests for delete_model_instance
   # Deletes a model instance, given its ID
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param model_instance_id GUID of the model instance to delete.
   # @param [Hash] opts the optional parameters
   # @return [nil]
@@ -316,7 +316,7 @@ describe 'DefaultApi' do
 
   # unit tests for get_best_model_among_model_ids
   # Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param best_model Object encapsulating the model ids, eval type and column metric name
   # @param [Hash] opts the optional parameters
   # @return [ModelInstanceEntity]
@@ -328,7 +328,7 @@ describe 'DefaultApi' do
 
   # unit tests for get_evaluation_for_model_id
   # Gets the list of evaluation results entity, given a model instance ID
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param model_instance_id GUID of the model instance to get evaluation results for.
   # @param [Hash] opts the optional parameters
   # @return [Array<EvaluationResultsEntity>]
@@ -340,7 +340,7 @@ describe 'DefaultApi' do
 
   # unit tests for get_examples_for_minibatch
   # Gets all the examples for a minibatch ID
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param minibatch_id The GUID of the minibatch
   # @param [Hash] opts the optional parameters
   # @return [Array<ExampleEntity>]
@@ -352,7 +352,7 @@ describe 'DefaultApi' do
 
   # unit tests for get_experiment
   # Obtain an experiment&#39;s details, given its ID
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param experiment_id the GUID of the experiment to obtain
   # @param [Hash] opts the optional parameters
   # @return [ExperimentEntity]
@@ -364,7 +364,7 @@ describe 'DefaultApi' do
 
   # unit tests for get_experiments_for_model_history
   # Obtain all experiments for a model history / workspace
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param model_history_id the GUID of the model history / workspace
   # @param [Hash] opts the optional parameters
   # @return [ExperimentEntity]
@@ -376,7 +376,7 @@ describe 'DefaultApi' do
 
   # unit tests for get_minibatch
   # Gets a minibatch for the model
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param minibatch_id The GUID of the minibatch
   # @param [Hash] opts the optional parameters
   # @return [MinibatchEntity]
@@ -388,7 +388,7 @@ describe 'DefaultApi' do
 
   # unit tests for get_model_history
   # Gets a model history, given its ID
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param model_history_id GUID of the model history to get information of.
   # @param [Hash] opts the optional parameters
   # @return [ModelHistoryEntity]
@@ -400,7 +400,7 @@ describe 'DefaultApi' do
 
   # unit tests for get_model_instance
   # Gets a model instance, given its ID
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param model_instance_id GUID of the model instance to get information of.
   # @param [Hash] opts the optional parameters
   # @return [ModelInstanceEntity]
@@ -412,7 +412,7 @@ describe 'DefaultApi' do
 
   # unit tests for get_models_for_experiment
   # Obtain a list of all the models for an experiment
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param experiment_id the GUID of the experiment
   # @param [Hash] opts the optional parameters
   # @return [Array<ModelInstanceEntity>]
@@ -885,7 +885,7 @@ describe 'DefaultApi' do
 
   # unit tests for update_best_model_for_experiment
   # Updates the best model for an experiment
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param update_best_model Model encapsulating the experiment id to update and the best model id.
   # @param [Hash] opts the optional parameters
   # @return [ExperimentEntity]
@@ -897,7 +897,7 @@ describe 'DefaultApi' do
 
   # unit tests for update_experiment
   # Updates an experiment, given an experiment entity
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param experiment_id the GUID of the experiment to update
   # @param experiment_entity The experiment entity to update with
   # @param [Hash] opts the optional parameters
@@ -910,7 +910,7 @@ describe 'DefaultApi' do
 
   # unit tests for update_model_history
   # Update a model history / workspace
-  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param model_history_id the GUID of the model history / workspace to update
   # @param update_model_history_request The model history request object
   # @param [Hash] opts the optional parameters

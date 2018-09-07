@@ -64,7 +64,7 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
-        String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+        String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         EvaluationResultsEntity evaluationResultsEntity = new EvaluationResultsEntity(); // EvaluationResultsEntity | The evaluation result entity
         try {
             EvaluationResultsEntity result = apiInstance.addEvaluationResult(modelHistoryServerId, evaluationResultsEntity);

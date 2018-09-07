@@ -126,7 +126,7 @@ class DefaultApi(
    * Adds an evaluation result
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param EvaluationResultsEntity The evaluation result entity 
    * @return EvaluationResultsEntity
    */
@@ -142,7 +142,7 @@ class DefaultApi(
    * Adds an evaluation result asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param EvaluationResultsEntity The evaluation result entity 
    * @return Future(EvaluationResultsEntity)
    */
@@ -154,7 +154,7 @@ class DefaultApi(
    * Adds a number of examples to a minibatch ID given an AddExampleRequest.
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AddExampleRequest The add example request, encapsulating minibatch details and examples batch size 
    * @return AddExampleRequest
    */
@@ -170,7 +170,7 @@ class DefaultApi(
    * Adds a number of examples to a minibatch ID given an AddExampleRequest. asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AddExampleRequest The add example request, encapsulating minibatch details and examples batch size 
    * @return Future(AddExampleRequest)
    */
@@ -182,7 +182,7 @@ class DefaultApi(
    * Adds an example to a minibatch
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExampleEntity The example to add to the minibatch 
    * @return ExampleEntity
    */
@@ -198,7 +198,7 @@ class DefaultApi(
    * Adds an example to a minibatch asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExampleEntity The example to add to the minibatch 
    * @return Future(ExampleEntity)
    */
@@ -210,7 +210,7 @@ class DefaultApi(
    * Add an experiment, given an experiment entity
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentEntity The experiment entity to add 
    * @return ExperimentEntity
    */
@@ -226,7 +226,7 @@ class DefaultApi(
    * Add an experiment, given an experiment entity asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentEntity The experiment entity to add 
    * @return Future(ExperimentEntity)
    */
@@ -238,7 +238,7 @@ class DefaultApi(
    * Adds a minibatch
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchEntity The minibatch entity to add 
    * @return MinibatchEntity
    */
@@ -254,7 +254,7 @@ class DefaultApi(
    * Adds a minibatch asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchEntity The minibatch entity to add 
    * @return Future(MinibatchEntity)
    */
@@ -266,7 +266,7 @@ class DefaultApi(
    * Adds an evaluation feedback to the model against a given minibatch id.
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelFeedBackRequest The model feedback request object 
    * @return ModelFeedBackRequest
    */
@@ -282,7 +282,7 @@ class DefaultApi(
    * Adds an evaluation feedback to the model against a given minibatch id. asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelFeedBackRequest The model feedback request object 
    * @return Future(ModelFeedBackRequest)
    */
@@ -294,7 +294,7 @@ class DefaultApi(
    * Add a model history / workspace
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AddModelHistoryRequest The model history request object 
    * @return ModelHistoryEntity
    */
@@ -310,7 +310,7 @@ class DefaultApi(
    * Add a model history / workspace asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AddModelHistoryRequest The model history request object 
    * @return Future(ModelHistoryEntity)
    */
@@ -322,7 +322,7 @@ class DefaultApi(
    * Adds a model
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate 
    * @return ModelInstanceEntity
    */
@@ -338,7 +338,7 @@ class DefaultApi(
    * Adds a model asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate 
    * @return Future(ModelInstanceEntity)
    */
@@ -350,7 +350,7 @@ class DefaultApi(
    * Aggregates the evaluaition results of a model instance, based on the evaluation type
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate 
    * @return EvaluationResultsEntity
    */
@@ -366,7 +366,7 @@ class DefaultApi(
    * Aggregates the evaluaition results of a model instance, based on the evaluation type asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate 
    * @return Future(EvaluationResultsEntity)
    */
@@ -474,7 +474,7 @@ class DefaultApi(
    * Creates model History
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryEntity The model history entity 
    * @return ModelHistoryEntity
    */
@@ -490,7 +490,7 @@ class DefaultApi(
    * Creates model History asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryEntity The model history entity 
    * @return Future(ModelHistoryEntity)
    */
@@ -502,7 +502,7 @@ class DefaultApi(
    * Deletes an experiment, given an experiment entity
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to delete 
    * @return InlineResponse200
    */
@@ -518,7 +518,7 @@ class DefaultApi(
    * Deletes an experiment, given an experiment entity asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to delete 
    * @return Future(InlineResponse200)
    */
@@ -558,7 +558,7 @@ class DefaultApi(
    * Deletes a model history / workspace, given its ID
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace to delete 
    * @return InlineResponse200
    */
@@ -574,7 +574,7 @@ class DefaultApi(
    * Deletes a model history / workspace, given its ID asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace to delete 
    * @return Future(InlineResponse200)
    */
@@ -586,7 +586,7 @@ class DefaultApi(
    * Deletes a model instance, given its ID
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to delete. 
    * @return void
    */
@@ -602,7 +602,7 @@ class DefaultApi(
    * Deletes a model instance, given its ID asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to delete. 
    * @return Future(void)
    */
@@ -782,7 +782,7 @@ class DefaultApi(
    * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param BestModel Object encapsulating the model ids, eval type and column metric name 
    * @return ModelInstanceEntity
    */
@@ -798,7 +798,7 @@ class DefaultApi(
    * Gets the best model among the given model instance IDs, based on the evaluation type and column metric asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param BestModel Object encapsulating the model ids, eval type and column metric name 
    * @return Future(ModelInstanceEntity)
    */
@@ -810,7 +810,7 @@ class DefaultApi(
    * Gets the list of evaluation results entity, given a model instance ID
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to get evaluation results for. 
    * @return List[EvaluationResultsEntity]
    */
@@ -826,7 +826,7 @@ class DefaultApi(
    * Gets the list of evaluation results entity, given a model instance ID asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to get evaluation results for. 
    * @return Future(List[EvaluationResultsEntity])
    */
@@ -838,7 +838,7 @@ class DefaultApi(
    * Gets all the examples for a minibatch ID
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchId The GUID of the minibatch 
    * @return List[ExampleEntity]
    */
@@ -854,7 +854,7 @@ class DefaultApi(
    * Gets all the examples for a minibatch ID asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchId The GUID of the minibatch 
    * @return Future(List[ExampleEntity])
    */
@@ -866,7 +866,7 @@ class DefaultApi(
    * Obtain an experiment&#39;s details, given its ID
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to obtain 
    * @return ExperimentEntity
    */
@@ -882,7 +882,7 @@ class DefaultApi(
    * Obtain an experiment&#39;s details, given its ID asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to obtain 
    * @return Future(ExperimentEntity)
    */
@@ -894,7 +894,7 @@ class DefaultApi(
    * Obtain all experiments for a model history / workspace
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace 
    * @return ExperimentEntity
    */
@@ -910,7 +910,7 @@ class DefaultApi(
    * Obtain all experiments for a model history / workspace asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace 
    * @return Future(ExperimentEntity)
    */
@@ -922,7 +922,7 @@ class DefaultApi(
    * Gets a minibatch for the model
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchId The GUID of the minibatch 
    * @return MinibatchEntity
    */
@@ -938,7 +938,7 @@ class DefaultApi(
    * Gets a minibatch for the model asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchId The GUID of the minibatch 
    * @return Future(MinibatchEntity)
    */
@@ -950,7 +950,7 @@ class DefaultApi(
    * Gets a model history, given its ID
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID GUID of the model history to get information of. 
    * @return ModelHistoryEntity
    */
@@ -966,7 +966,7 @@ class DefaultApi(
    * Gets a model history, given its ID asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID GUID of the model history to get information of. 
    * @return Future(ModelHistoryEntity)
    */
@@ -978,7 +978,7 @@ class DefaultApi(
    * Gets a model instance, given its ID
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to get information of. 
    * @return ModelInstanceEntity
    */
@@ -994,7 +994,7 @@ class DefaultApi(
    * Gets a model instance, given its ID asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to get information of. 
    * @return Future(ModelInstanceEntity)
    */
@@ -1006,7 +1006,7 @@ class DefaultApi(
    * Obtain a list of all the models for an experiment
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment 
    * @return List[ModelInstanceEntity]
    */
@@ -1022,7 +1022,7 @@ class DefaultApi(
    * Obtain a list of all the models for an experiment asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment 
    * @return Future(List[ModelInstanceEntity])
    */
@@ -2062,7 +2062,7 @@ class DefaultApi(
    * Updates the best model for an experiment
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param UpdateBestModel Model encapsulating the experiment id to update and the best model id. 
    * @return ExperimentEntity
    */
@@ -2078,7 +2078,7 @@ class DefaultApi(
    * Updates the best model for an experiment asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param UpdateBestModel Model encapsulating the experiment id to update and the best model id. 
    * @return Future(ExperimentEntity)
    */
@@ -2090,7 +2090,7 @@ class DefaultApi(
    * Updates an experiment, given an experiment entity
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to update 
    * @param ExperimentEntity The experiment entity to update with 
    * @return ExperimentEntity
@@ -2107,7 +2107,7 @@ class DefaultApi(
    * Updates an experiment, given an experiment entity asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to update 
    * @param ExperimentEntity The experiment entity to update with 
    * @return Future(ExperimentEntity)
@@ -2120,7 +2120,7 @@ class DefaultApi(
    * Update a model history / workspace
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace to update 
    * @param UpdateModelHistoryRequest The model history request object 
    * @return ModelHistoryEntity
@@ -2137,7 +2137,7 @@ class DefaultApi(
    * Update a model history / workspace asynchronously
    * 
    *
-   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace to update 
    * @param UpdateModelHistoryRequest The model history request object 
    * @return Future(ModelHistoryEntity)

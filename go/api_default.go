@@ -29,7 +29,7 @@ type DefaultApiService service
 /* 
 DefaultApiService Adds an evaluation result
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param evaluationResultsEntity The evaluation result entity
 
 @return EvaluationResultsEntity
@@ -133,7 +133,7 @@ func (a *DefaultApiService) AddEvaluationResult(ctx context.Context, modelHistor
 /* 
 DefaultApiService Adds a number of examples to a minibatch ID given an AddExampleRequest.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size
 
 @return AddExampleRequest
@@ -237,7 +237,7 @@ func (a *DefaultApiService) AddExampleForBatch(ctx context.Context, modelHistory
 /* 
 DefaultApiService Adds an example to a minibatch
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param exampleEntity The example to add to the minibatch
 
 @return ExampleEntity
@@ -341,7 +341,7 @@ func (a *DefaultApiService) AddExampleToMinibatch(ctx context.Context, modelHist
 /* 
 DefaultApiService Add an experiment, given an experiment entity
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param experimentEntity The experiment entity to add
 
 @return ExperimentEntity
@@ -445,7 +445,7 @@ func (a *DefaultApiService) AddExperiment(ctx context.Context, modelHistoryServe
 /* 
 DefaultApiService Adds a minibatch
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param minibatchEntity The minibatch entity to add
 
 @return MinibatchEntity
@@ -549,7 +549,7 @@ func (a *DefaultApiService) AddMinibatch(ctx context.Context, modelHistoryServer
 /* 
 DefaultApiService Adds an evaluation feedback to the model against a given minibatch id.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param modelFeedBackRequest The model feedback request object
 
 @return ModelFeedBackRequest
@@ -653,7 +653,7 @@ func (a *DefaultApiService) AddModelFeedback(ctx context.Context, modelHistorySe
 /* 
 DefaultApiService Add a model history / workspace
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param addModelHistoryRequest The model history request object
 
 @return ModelHistoryEntity
@@ -757,7 +757,7 @@ func (a *DefaultApiService) AddModelHistory(ctx context.Context, modelHistorySer
 /* 
 DefaultApiService Adds a model
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate
 
 @return ModelInstanceEntity
@@ -861,7 +861,7 @@ func (a *DefaultApiService) AddModelInstance(ctx context.Context, modelHistorySe
 /* 
 DefaultApiService Aggregates the evaluaition results of a model instance, based on the evaluation type
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate
 
 @return EvaluationResultsEntity
@@ -1307,7 +1307,7 @@ func (a *DefaultApiService) Classifyimage(ctx context.Context, deploymentName st
 /* 
 DefaultApiService Creates model History
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param modelHistoryEntity The model history entity
 
 @return ModelHistoryEntity
@@ -1411,7 +1411,7 @@ func (a *DefaultApiService) CreateModelHistory(ctx context.Context, modelHistory
 /* 
 DefaultApiService Deletes an experiment, given an experiment entity
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param experimentID the GUID of the experiment to delete
 
 @return InlineResponse200
@@ -1628,7 +1628,7 @@ func (a *DefaultApiService) DeleteModel(ctx context.Context, deploymentId string
 /* 
 DefaultApiService Deletes a model history / workspace, given its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param modelHistoryID the GUID of the model history / workspace to delete
 
 @return InlineResponse200
@@ -1742,7 +1742,7 @@ func (a *DefaultApiService) DeleteModelHistory(ctx context.Context, modelHistory
 /* 
 DefaultApiService Deletes a model instance, given its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param modelInstanceID GUID of the model instance to delete.
 
 
@@ -2452,7 +2452,7 @@ func (a *DefaultApiService) Detectobjects(ctx context.Context, id string, needsP
 /* 
 DefaultApiService Gets the best model among the given model instance IDs, based on the evaluation type and column metric
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param bestModel Object encapsulating the model ids, eval type and column metric name
 
 @return ModelInstanceEntity
@@ -2556,7 +2556,7 @@ func (a *DefaultApiService) GetBestModelAmongModelIds(ctx context.Context, model
 /* 
 DefaultApiService Gets the list of evaluation results entity, given a model instance ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param modelInstanceID GUID of the model instance to get evaluation results for.
 
 @return []EvaluationResultsEntity
@@ -2659,7 +2659,7 @@ func (a *DefaultApiService) GetEvaluationForModelID(ctx context.Context, modelHi
 /* 
 DefaultApiService Gets all the examples for a minibatch ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param minibatchId The GUID of the minibatch
 
 @return []ExampleEntity
@@ -2762,7 +2762,7 @@ func (a *DefaultApiService) GetExamplesForMinibatch(ctx context.Context, modelHi
 /* 
 DefaultApiService Obtain an experiment&#39;s details, given its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param experimentID the GUID of the experiment to obtain
 
 @return ExperimentEntity
@@ -2865,7 +2865,7 @@ func (a *DefaultApiService) GetExperiment(ctx context.Context, modelHistoryServe
 /* 
 DefaultApiService Obtain all experiments for a model history / workspace
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param modelHistoryID the GUID of the model history / workspace
 
 @return ExperimentEntity
@@ -2968,7 +2968,7 @@ func (a *DefaultApiService) GetExperimentsForModelHistory(ctx context.Context, m
 /* 
 DefaultApiService Gets a minibatch for the model
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param minibatchId The GUID of the minibatch
 
 @return MinibatchEntity
@@ -3071,7 +3071,7 @@ func (a *DefaultApiService) GetMinibatch(ctx context.Context, modelHistoryServer
 /* 
 DefaultApiService Gets a model history, given its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param modelHistoryID GUID of the model history to get information of.
 
 @return ModelHistoryEntity
@@ -3174,7 +3174,7 @@ func (a *DefaultApiService) GetModelHistory(ctx context.Context, modelHistorySer
 /* 
 DefaultApiService Gets a model instance, given its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param modelInstanceID GUID of the model instance to get information of.
 
 @return ModelInstanceEntity
@@ -3277,7 +3277,7 @@ func (a *DefaultApiService) GetModelInstance(ctx context.Context, modelHistorySe
 /* 
 DefaultApiService Obtain a list of all the models for an experiment
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param experimentID the GUID of the experiment
 
 @return []ModelInstanceEntity
@@ -7031,7 +7031,7 @@ func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deployment
 /* 
 DefaultApiService Updates the best model for an experiment
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param updateBestModel Model encapsulating the experiment id to update and the best model id.
 
 @return ExperimentEntity
@@ -7135,7 +7135,7 @@ func (a *DefaultApiService) UpdateBestModelForExperiment(ctx context.Context, mo
 /* 
 DefaultApiService Updates an experiment, given an experiment entity
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param experimentID the GUID of the experiment to update
  * @param experimentEntity The experiment entity to update with
 
@@ -7241,7 +7241,7 @@ func (a *DefaultApiService) UpdateExperiment(ctx context.Context, modelHistorySe
 /* 
 DefaultApiService Update a model history / workspace
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+ * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param modelHistoryID the GUID of the model history / workspace to update
  * @param updateModelHistoryRequest The model history request object
 

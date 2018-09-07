@@ -12,7 +12,7 @@ import Alamofire
 open class DefaultAPI: APIBase {
     /**
      Adds an evaluation result
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter evaluationResultsEntity: (body) The evaluation result entity 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -48,7 +48,7 @@ open class DefaultAPI: APIBase {
   "rmse" : 2.3021358869347655,
   "binaryThreshold" : 7.386281948385884
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter evaluationResultsEntity: (body) The evaluation result entity 
      - returns: RequestBuilder<EvaluationResultsEntity> 
      */
@@ -69,7 +69,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds a number of examples to a minibatch ID given an AddExampleRequest.
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter addExampleRequest: (body) The add example request, encapsulating minibatch details and examples batch size 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -87,7 +87,7 @@ open class DefaultAPI: APIBase {
        - type: apiKey authorization 
        - name: api_key
      - examples: [{contentType=application/json, example=""}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter addExampleRequest: (body) The add example request, encapsulating minibatch details and examples batch size 
      - returns: RequestBuilder<AddExampleRequest> 
      */
@@ -108,7 +108,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds an example to a minibatch
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter exampleEntity: (body) The example to add to the minibatch 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -133,7 +133,7 @@ open class DefaultAPI: APIBase {
   "miniBatchVersion" : 5,
   "exampleVersion" : 0
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter exampleEntity: (body) The example to add to the minibatch 
      - returns: RequestBuilder<ExampleEntity> 
      */
@@ -154,7 +154,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Add an experiment, given an experiment entity
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter experimentEntity: (body) The experiment entity to add 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -183,7 +183,7 @@ open class DefaultAPI: APIBase {
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter experimentEntity: (body) The experiment entity to add 
      - returns: RequestBuilder<ExperimentEntity> 
      */
@@ -204,7 +204,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds a minibatch
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchEntity: (body) The minibatch entity to add 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -227,7 +227,7 @@ open class DefaultAPI: APIBase {
   "evalVersion" : 0,
   "miniBatchId" : "miniBatchId"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchEntity: (body) The minibatch entity to add 
      - returns: RequestBuilder<MinibatchEntity> 
      */
@@ -248,7 +248,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds an evaluation feedback to the model against a given minibatch id.
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelFeedBackRequest: (body) The model feedback request object 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -270,7 +270,7 @@ open class DefaultAPI: APIBase {
   "guesses" : "[\"0\", \"1\", \"2\"]",
   "batchId" : "batchId"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelFeedBackRequest: (body) The model feedback request object 
      - returns: RequestBuilder<ModelFeedBackRequest> 
      */
@@ -291,7 +291,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Add a model history / workspace
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter addModelHistoryRequest: (body) The model history request object 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -314,7 +314,7 @@ open class DefaultAPI: APIBase {
   "created" : 0,
   "modelLabels" : "modelLabels"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter addModelHistoryRequest: (body) The model history request object 
      - returns: RequestBuilder<ModelHistoryEntity> 
      */
@@ -335,7 +335,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Adds a model
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceEntity: (body) The object encapsulating the model instance id and evaluation type to aggregate 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -366,7 +366,7 @@ open class DefaultAPI: APIBase {
   "uri" : "http://example.com/aeiou",
   "notebookJson" : "notebookJson"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceEntity: (body) The object encapsulating the model instance id and evaluation type to aggregate 
      - returns: RequestBuilder<ModelInstanceEntity> 
      */
@@ -387,7 +387,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Aggregates the evaluaition results of a model instance, based on the evaluation type
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter aggregatePrediction: (body) The object encapsulating the model instance id and evaluation type to aggregate 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -423,7 +423,7 @@ open class DefaultAPI: APIBase {
   "rmse" : 2.3021358869347655,
   "binaryThreshold" : 7.386281948385884
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter aggregatePrediction: (body) The object encapsulating the model instance id and evaluation type to aggregate 
      - returns: RequestBuilder<EvaluationResultsEntity> 
      */
@@ -606,7 +606,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Creates model History
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryEntity: (body) The model history entity 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -629,7 +629,7 @@ open class DefaultAPI: APIBase {
   "created" : 0,
   "modelLabels" : "modelLabels"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryEntity: (body) The model history entity 
      - returns: RequestBuilder<ModelHistoryEntity> 
      */
@@ -650,7 +650,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Deletes an experiment, given an experiment entity
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to delete 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -670,7 +670,7 @@ open class DefaultAPI: APIBase {
      - examples: [{contentType=application/json, example={
   "status" : "status"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to delete 
      - returns: RequestBuilder<InlineResponse200> 
      */
@@ -738,7 +738,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Deletes a model history / workspace, given its ID
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace to delete 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -758,7 +758,7 @@ open class DefaultAPI: APIBase {
      - examples: [{contentType=application/json, example={
   "status" : "status"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace to delete 
      - returns: RequestBuilder<InlineResponse200> 
      */
@@ -782,7 +782,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Deletes a model instance, given its ID
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to delete. 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -799,7 +799,7 @@ open class DefaultAPI: APIBase {
      - API Key:
        - type: apiKey authorization 
        - name: api_key
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to delete. 
      - returns: RequestBuilder<Void> 
      */
@@ -1284,7 +1284,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter bestModel: (body) Object encapsulating the model ids, eval type and column metric name 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1315,7 +1315,7 @@ open class DefaultAPI: APIBase {
   "uri" : "http://example.com/aeiou",
   "notebookJson" : "notebookJson"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter bestModel: (body) Object encapsulating the model ids, eval type and column metric name 
      - returns: RequestBuilder<ModelInstanceEntity> 
      */
@@ -1336,7 +1336,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets the list of evaluation results entity, given a model instance ID
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to get evaluation results for. 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1390,7 +1390,7 @@ open class DefaultAPI: APIBase {
   "rmse" : 2.3021358869347655,
   "binaryThreshold" : 7.386281948385884
 } ]}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to get evaluation results for. 
      - returns: RequestBuilder<[EvaluationResultsEntity]> 
      */
@@ -1414,7 +1414,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets all the examples for a minibatch ID
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchId: (path) The GUID of the minibatch 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1446,7 +1446,7 @@ open class DefaultAPI: APIBase {
   "miniBatchVersion" : 5,
   "exampleVersion" : 0
 } ]}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchId: (path) The GUID of the minibatch 
      - returns: RequestBuilder<[ExampleEntity]> 
      */
@@ -1470,7 +1470,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Obtain an experiment's details, given its ID
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to obtain 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1499,7 +1499,7 @@ open class DefaultAPI: APIBase {
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to obtain 
      - returns: RequestBuilder<ExperimentEntity> 
      */
@@ -1523,7 +1523,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Obtain all experiments for a model history / workspace
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1552,7 +1552,7 @@ open class DefaultAPI: APIBase {
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace 
      - returns: RequestBuilder<ExperimentEntity> 
      */
@@ -1576,7 +1576,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets a minibatch for the model
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchId: (path) The GUID of the minibatch 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1599,7 +1599,7 @@ open class DefaultAPI: APIBase {
   "evalVersion" : 0,
   "miniBatchId" : "miniBatchId"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchId: (path) The GUID of the minibatch 
      - returns: RequestBuilder<MinibatchEntity> 
      */
@@ -1623,7 +1623,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets a model history, given its ID
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) GUID of the model history to get information of. 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1646,7 +1646,7 @@ open class DefaultAPI: APIBase {
   "created" : 0,
   "modelLabels" : "modelLabels"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) GUID of the model history to get information of. 
      - returns: RequestBuilder<ModelHistoryEntity> 
      */
@@ -1670,7 +1670,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Gets a model instance, given its ID
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to get information of. 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1701,7 +1701,7 @@ open class DefaultAPI: APIBase {
   "uri" : "http://example.com/aeiou",
   "notebookJson" : "notebookJson"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelInstanceID: (path) GUID of the model instance to get information of. 
      - returns: RequestBuilder<ModelInstanceEntity> 
      */
@@ -1725,7 +1725,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Obtain a list of all the models for an experiment
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1769,7 +1769,7 @@ open class DefaultAPI: APIBase {
   "uri" : "http://example.com/aeiou",
   "notebookJson" : "notebookJson"
 } ]}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment 
      - returns: RequestBuilder<[ModelInstanceEntity]> 
      */
@@ -3594,7 +3594,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Updates the best model for an experiment
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter updateBestModel: (body) Model encapsulating the experiment id to update and the best model id. 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -3623,7 +3623,7 @@ open class DefaultAPI: APIBase {
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter updateBestModel: (body) Model encapsulating the experiment id to update and the best model id. 
      - returns: RequestBuilder<ExperimentEntity> 
      */
@@ -3644,7 +3644,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Updates an experiment, given an experiment entity
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to update 
      - parameter experimentEntity: (body) The experiment entity to update with 
      - parameter completion: completion handler to receive the data and the error objects
@@ -3674,7 +3674,7 @@ open class DefaultAPI: APIBase {
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter experimentID: (path) the GUID of the experiment to update 
      - parameter experimentEntity: (body) The experiment entity to update with 
      - returns: RequestBuilder<ExperimentEntity> 
@@ -3699,7 +3699,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Update a model history / workspace
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace to update 
      - parameter updateModelHistoryRequest: (body) The model history request object 
      - parameter completion: completion handler to receive the data and the error objects
@@ -3723,7 +3723,7 @@ open class DefaultAPI: APIBase {
   "created" : 0,
   "modelLabels" : "modelLabels"
 }}]
-     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. 
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace to update 
      - parameter updateModelHistoryRequest: (body) The model history request object 
      - returns: RequestBuilder<ModelHistoryEntity> 

@@ -76,7 +76,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var evaluationResultsEntity = new EvaluationResultsEntity(); // EvaluationResultsEntity | The evaluation result entity
 
             try

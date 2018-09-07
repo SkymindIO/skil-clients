@@ -96,7 +96,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 evaluation_results_entity = skil_client.EvaluationResultsEntity() # EvaluationResultsEntity | The evaluation result entity
 
 try:
@@ -111,7 +111,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **evaluation_results_entity** | [**EvaluationResultsEntity**](EvaluationResultsEntity.md)| The evaluation result entity | 
 
 ### Return type
@@ -150,7 +150,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 add_example_request = skil_client.AddExampleRequest() # AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
 
 try:
@@ -165,7 +165,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **add_example_request** | [**AddExampleRequest**](AddExampleRequest.md)| The add example request, encapsulating minibatch details and examples batch size | 
 
 ### Return type
@@ -204,7 +204,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 example_entity = skil_client.ExampleEntity() # ExampleEntity | The example to add to the minibatch
 
 try:
@@ -219,7 +219,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **example_entity** | [**ExampleEntity**](ExampleEntity.md)| The example to add to the minibatch | 
 
 ### Return type
@@ -258,7 +258,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 experiment_entity = skil_client.ExperimentEntity() # ExperimentEntity | The experiment entity to add
 
 try:
@@ -273,7 +273,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experiment_entity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to add | 
 
 ### Return type
@@ -312,7 +312,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 minibatch_entity = skil_client.MinibatchEntity() # MinibatchEntity | The minibatch entity to add
 
 try:
@@ -327,7 +327,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **minibatch_entity** | [**MinibatchEntity**](MinibatchEntity.md)| The minibatch entity to add | 
 
 ### Return type
@@ -366,7 +366,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 model_feed_back_request = skil_client.ModelFeedBackRequest() # ModelFeedBackRequest | The model feedback request object
 
 try:
@@ -381,7 +381,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_feed_back_request** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
 
 ### Return type
@@ -420,7 +420,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 add_model_history_request = skil_client.AddModelHistoryRequest() # AddModelHistoryRequest | The model history request object
 
 try:
@@ -435,7 +435,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **add_model_history_request** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
 ### Return type
@@ -474,7 +474,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 model_instance_entity = skil_client.ModelInstanceEntity() # ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
 
 try:
@@ -489,7 +489,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_instance_entity** | [**ModelInstanceEntity**](ModelInstanceEntity.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -528,7 +528,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 aggregate_prediction = skil_client.AggregatePrediction() # AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
 
 try:
@@ -543,7 +543,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **aggregate_prediction** | [**AggregatePrediction**](AggregatePrediction.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -756,7 +756,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 model_history_entity = skil_client.ModelHistoryEntity() # ModelHistoryEntity | The model history entity
 
 try:
@@ -771,7 +771,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_history_entity** | [**ModelHistoryEntity**](ModelHistoryEntity.md)| The model history entity | 
 
 ### Return type
@@ -810,7 +810,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 experiment_id = 'experiment_id_example' # str | the GUID of the experiment to delete
 
 try:
@@ -825,7 +825,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **str**| the GUID of the experiment to delete | 
 
 ### Return type
@@ -918,7 +918,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 model_history_id = 'model_history_id_example' # str | the GUID of the model history / workspace to delete
 
 try:
@@ -933,7 +933,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **str**| the GUID of the model history / workspace to delete | 
 
 ### Return type
@@ -972,7 +972,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 model_instance_id = 'model_instance_id_example' # str | GUID of the model instance to delete.
 
 try:
@@ -986,7 +986,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_instance_id** | **str**| GUID of the model instance to delete. | 
 
 ### Return type
@@ -1347,7 +1347,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 best_model = skil_client.BestModel() # BestModel | Object encapsulating the model ids, eval type and column metric name
 
 try:
@@ -1362,7 +1362,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **best_model** | [**BestModel**](BestModel.md)| Object encapsulating the model ids, eval type and column metric name | 
 
 ### Return type
@@ -1401,7 +1401,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 model_instance_id = 'model_instance_id_example' # str | GUID of the model instance to get evaluation results for.
 
 try:
@@ -1416,7 +1416,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_instance_id** | **str**| GUID of the model instance to get evaluation results for. | 
 
 ### Return type
@@ -1455,7 +1455,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 minibatch_id = 'minibatch_id_example' # str | The GUID of the minibatch
 
 try:
@@ -1470,7 +1470,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **minibatch_id** | **str**| The GUID of the minibatch | 
 
 ### Return type
@@ -1509,7 +1509,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 experiment_id = 'experiment_id_example' # str | the GUID of the experiment to obtain
 
 try:
@@ -1524,7 +1524,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **str**| the GUID of the experiment to obtain | 
 
 ### Return type
@@ -1563,7 +1563,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 model_history_id = 'model_history_id_example' # str | the GUID of the model history / workspace
 
 try:
@@ -1578,7 +1578,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **str**| the GUID of the model history / workspace | 
 
 ### Return type
@@ -1617,7 +1617,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 minibatch_id = 'minibatch_id_example' # str | The GUID of the minibatch
 
 try:
@@ -1632,7 +1632,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **minibatch_id** | **str**| The GUID of the minibatch | 
 
 ### Return type
@@ -1671,7 +1671,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 model_history_id = 'model_history_id_example' # str | GUID of the model history to get information of.
 
 try:
@@ -1686,7 +1686,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **str**| GUID of the model history to get information of. | 
 
 ### Return type
@@ -1725,7 +1725,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 model_instance_id = 'model_instance_id_example' # str | GUID of the model instance to get information of.
 
 try:
@@ -1740,7 +1740,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_instance_id** | **str**| GUID of the model instance to get information of. | 
 
 ### Return type
@@ -1779,7 +1779,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 experiment_id = 'experiment_id_example' # str | the GUID of the experiment
 
 try:
@@ -1794,7 +1794,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **str**| the GUID of the experiment | 
 
 ### Return type
@@ -3742,7 +3742,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 update_best_model = skil_client.UpdateBestModel() # UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
 
 try:
@@ -3757,7 +3757,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **update_best_model** | [**UpdateBestModel**](UpdateBestModel.md)| Model encapsulating the experiment id to update and the best model id. | 
 
 ### Return type
@@ -3796,7 +3796,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 experiment_id = 'experiment_id_example' # str | the GUID of the experiment to update
 experiment_entity = skil_client.ExperimentEntity() # ExperimentEntity | The experiment entity to update with
 
@@ -3812,7 +3812,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **str**| the GUID of the experiment to update | 
  **experiment_entity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to update with | 
 
@@ -3852,7 +3852,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 model_history_id = 'model_history_id_example' # str | the GUID of the model history / workspace to update
 update_model_history_request = skil_client.AddModelHistoryRequest() # AddModelHistoryRequest | The model history request object
 
@@ -3868,7 +3868,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **str**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **str**| the GUID of the model history / workspace to update | 
  **update_model_history_request** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 

@@ -59,7 +59,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 evaluation_results_entity = skil_client.EvaluationResultsEntity() # EvaluationResultsEntity | The evaluation result entity
 
 try:

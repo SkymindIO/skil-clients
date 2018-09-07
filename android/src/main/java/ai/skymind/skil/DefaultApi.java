@@ -101,7 +101,7 @@ public class DefaultApi {
   /**
   * Adds an evaluation result
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param evaluationResultsEntity The evaluation result entity
    * @return EvaluationResultsEntity
   */
@@ -170,7 +170,7 @@ public class DefaultApi {
       /**
    * Adds an evaluation result
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param evaluationResultsEntity The evaluation result entity
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param evaluationResultsEntity The evaluation result entity
   */
   public void addEvaluationResult (String modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity, final Response.Listener<EvaluationResultsEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = evaluationResultsEntity;
@@ -240,7 +240,7 @@ public class DefaultApi {
   /**
   * Adds a number of examples to a minibatch ID given an AddExampleRequest.
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size
    * @return AddExampleRequest
   */
@@ -309,7 +309,7 @@ public class DefaultApi {
       /**
    * Adds a number of examples to a minibatch ID given an AddExampleRequest.
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size
   */
   public void addExampleForBatch (String modelHistoryServerId, AddExampleRequest addExampleRequest, final Response.Listener<AddExampleRequest> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = addExampleRequest;
@@ -379,7 +379,7 @@ public class DefaultApi {
   /**
   * Adds an example to a minibatch
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param exampleEntity The example to add to the minibatch
    * @return ExampleEntity
   */
@@ -448,7 +448,7 @@ public class DefaultApi {
       /**
    * Adds an example to a minibatch
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param exampleEntity The example to add to the minibatch
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param exampleEntity The example to add to the minibatch
   */
   public void addExampleToMinibatch (String modelHistoryServerId, ExampleEntity exampleEntity, final Response.Listener<ExampleEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = exampleEntity;
@@ -518,7 +518,7 @@ public class DefaultApi {
   /**
   * Add an experiment, given an experiment entity
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param experimentEntity The experiment entity to add
    * @return ExperimentEntity
   */
@@ -587,7 +587,7 @@ public class DefaultApi {
       /**
    * Add an experiment, given an experiment entity
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param experimentEntity The experiment entity to add
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param experimentEntity The experiment entity to add
   */
   public void addExperiment (String modelHistoryServerId, ExperimentEntity experimentEntity, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = experimentEntity;
@@ -657,7 +657,7 @@ public class DefaultApi {
   /**
   * Adds a minibatch
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param minibatchEntity The minibatch entity to add
    * @return MinibatchEntity
   */
@@ -726,7 +726,7 @@ public class DefaultApi {
       /**
    * Adds a minibatch
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param minibatchEntity The minibatch entity to add
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param minibatchEntity The minibatch entity to add
   */
   public void addMinibatch (String modelHistoryServerId, MinibatchEntity minibatchEntity, final Response.Listener<MinibatchEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = minibatchEntity;
@@ -796,7 +796,7 @@ public class DefaultApi {
   /**
   * Adds an evaluation feedback to the model against a given minibatch id.
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param modelFeedBackRequest The model feedback request object
    * @return ModelFeedBackRequest
   */
@@ -865,7 +865,7 @@ public class DefaultApi {
       /**
    * Adds an evaluation feedback to the model against a given minibatch id.
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelFeedBackRequest The model feedback request object
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param modelFeedBackRequest The model feedback request object
   */
   public void addModelFeedback (String modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest, final Response.Listener<ModelFeedBackRequest> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = modelFeedBackRequest;
@@ -935,7 +935,7 @@ public class DefaultApi {
   /**
   * Add a model history / workspace
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param addModelHistoryRequest The model history request object
    * @return ModelHistoryEntity
   */
@@ -1004,7 +1004,7 @@ public class DefaultApi {
       /**
    * Add a model history / workspace
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param addModelHistoryRequest The model history request object
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param addModelHistoryRequest The model history request object
   */
   public void addModelHistory (String modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = addModelHistoryRequest;
@@ -1074,7 +1074,7 @@ public class DefaultApi {
   /**
   * Adds a model
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate
    * @return ModelInstanceEntity
   */
@@ -1143,7 +1143,7 @@ public class DefaultApi {
       /**
    * Adds a model
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate
   */
   public void addModelInstance (String modelHistoryServerId, ModelInstanceEntity modelInstanceEntity, final Response.Listener<ModelInstanceEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = modelInstanceEntity;
@@ -1213,7 +1213,7 @@ public class DefaultApi {
   /**
   * Aggregates the evaluaition results of a model instance, based on the evaluation type
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate
    * @return EvaluationResultsEntity
   */
@@ -1282,7 +1282,7 @@ public class DefaultApi {
       /**
    * Aggregates the evaluaition results of a model instance, based on the evaluation type
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate
   */
   public void aggregateModelResults (String modelHistoryServerId, AggregatePrediction aggregatePrediction, final Response.Listener<EvaluationResultsEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = aggregatePrediction;
@@ -1833,7 +1833,7 @@ public class DefaultApi {
   /**
   * Creates model History
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param modelHistoryEntity The model history entity
    * @return ModelHistoryEntity
   */
@@ -1902,7 +1902,7 @@ public class DefaultApi {
       /**
    * Creates model History
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelHistoryEntity The model history entity
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param modelHistoryEntity The model history entity
   */
   public void createModelHistory (String modelHistoryServerId, ModelHistoryEntity modelHistoryEntity, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = modelHistoryEntity;
@@ -1972,7 +1972,7 @@ public class DefaultApi {
   /**
   * Deletes an experiment, given an experiment entity
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param experimentID the GUID of the experiment to delete
    * @return InlineResponse200
   */
@@ -2040,7 +2040,7 @@ public class DefaultApi {
       /**
    * Deletes an experiment, given an experiment entity
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment to delete
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment to delete
   */
   public void deleteExperiment (String modelHistoryServerId, String experimentID, final Response.Listener<InlineResponse200> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -2248,7 +2248,7 @@ public class DefaultApi {
   /**
   * Deletes a model history / workspace, given its ID
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param modelHistoryID the GUID of the model history / workspace to delete
    * @return InlineResponse200
   */
@@ -2316,7 +2316,7 @@ public class DefaultApi {
       /**
    * Deletes a model history / workspace, given its ID
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID the GUID of the model history / workspace to delete
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID the GUID of the model history / workspace to delete
   */
   public void deleteModelHistory (String modelHistoryServerId, String modelHistoryID, final Response.Listener<InlineResponse200> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -2386,7 +2386,7 @@ public class DefaultApi {
   /**
   * Deletes a model instance, given its ID
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param modelInstanceID GUID of the model instance to delete.
    * @return void
   */
@@ -2454,7 +2454,7 @@ public class DefaultApi {
       /**
    * Deletes a model instance, given its ID
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelInstanceID GUID of the model instance to delete.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param modelInstanceID GUID of the model instance to delete.
   */
   public void deleteModelInstance (String modelHistoryServerId, String modelInstanceID, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -3386,7 +3386,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param bestModel Object encapsulating the model ids, eval type and column metric name
    * @return ModelInstanceEntity
   */
@@ -3455,7 +3455,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param bestModel Object encapsulating the model ids, eval type and column metric name
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param bestModel Object encapsulating the model ids, eval type and column metric name
   */
   public void getBestModelAmongModelIds (String modelHistoryServerId, BestModel bestModel, final Response.Listener<ModelInstanceEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = bestModel;
@@ -3525,7 +3525,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets the list of evaluation results entity, given a model instance ID
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param modelInstanceID GUID of the model instance to get evaluation results for.
    * @return List<EvaluationResultsEntity>
   */
@@ -3593,7 +3593,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets the list of evaluation results entity, given a model instance ID
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelInstanceID GUID of the model instance to get evaluation results for.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param modelInstanceID GUID of the model instance to get evaluation results for.
   */
   public void getEvaluationForModelID (String modelHistoryServerId, String modelInstanceID, final Response.Listener<List<EvaluationResultsEntity>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -3663,7 +3663,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets all the examples for a minibatch ID
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param minibatchId The GUID of the minibatch
    * @return List<ExampleEntity>
   */
@@ -3731,7 +3731,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets all the examples for a minibatch ID
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param minibatchId The GUID of the minibatch
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param minibatchId The GUID of the minibatch
   */
   public void getExamplesForMinibatch (String modelHistoryServerId, String minibatchId, final Response.Listener<List<ExampleEntity>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -3801,7 +3801,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Obtain an experiment&#39;s details, given its ID
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param experimentID the GUID of the experiment to obtain
    * @return ExperimentEntity
   */
@@ -3869,7 +3869,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Obtain an experiment&#39;s details, given its ID
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment to obtain
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment to obtain
   */
   public void getExperiment (String modelHistoryServerId, String experimentID, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -3939,7 +3939,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Obtain all experiments for a model history / workspace
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param modelHistoryID the GUID of the model history / workspace
    * @return ExperimentEntity
   */
@@ -4007,7 +4007,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Obtain all experiments for a model history / workspace
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID the GUID of the model history / workspace
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID the GUID of the model history / workspace
   */
   public void getExperimentsForModelHistory (String modelHistoryServerId, String modelHistoryID, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -4077,7 +4077,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets a minibatch for the model
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param minibatchId The GUID of the minibatch
    * @return MinibatchEntity
   */
@@ -4145,7 +4145,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets a minibatch for the model
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param minibatchId The GUID of the minibatch
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param minibatchId The GUID of the minibatch
   */
   public void getMinibatch (String modelHistoryServerId, String minibatchId, final Response.Listener<MinibatchEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -4215,7 +4215,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets a model history, given its ID
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param modelHistoryID GUID of the model history to get information of.
    * @return ModelHistoryEntity
   */
@@ -4283,7 +4283,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets a model history, given its ID
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID GUID of the model history to get information of.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID GUID of the model history to get information of.
   */
   public void getModelHistory (String modelHistoryServerId, String modelHistoryID, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -4353,7 +4353,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Gets a model instance, given its ID
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param modelInstanceID GUID of the model instance to get information of.
    * @return ModelInstanceEntity
   */
@@ -4421,7 +4421,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Gets a model instance, given its ID
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelInstanceID GUID of the model instance to get information of.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param modelInstanceID GUID of the model instance to get information of.
   */
   public void getModelInstance (String modelHistoryServerId, String modelInstanceID, final Response.Listener<ModelInstanceEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -4491,7 +4491,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Obtain a list of all the models for an experiment
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param experimentID the GUID of the experiment
    * @return List<ModelInstanceEntity>
   */
@@ -4559,7 +4559,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Obtain a list of all the models for an experiment
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment
   */
   public void getModelsForExperiment (String modelHistoryServerId, String experimentID, final Response.Listener<List<ModelInstanceEntity>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -9767,7 +9767,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   /**
   * Updates the best model for an experiment
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param updateBestModel Model encapsulating the experiment id to update and the best model id.
    * @return ExperimentEntity
   */
@@ -9836,7 +9836,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Updates the best model for an experiment
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param updateBestModel Model encapsulating the experiment id to update and the best model id.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param updateBestModel Model encapsulating the experiment id to update and the best model id.
   */
   public void updateBestModelForExperiment (String modelHistoryServerId, UpdateBestModel updateBestModel, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = updateBestModel;
@@ -9906,7 +9906,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   /**
   * Updates an experiment, given an experiment entity
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param experimentID the GUID of the experiment to update
    * @param experimentEntity The experiment entity to update with
    * @return ExperimentEntity
@@ -9981,7 +9981,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Updates an experiment, given an experiment entity
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment to update   * @param experimentEntity The experiment entity to update with
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param experimentID the GUID of the experiment to update   * @param experimentEntity The experiment entity to update with
   */
   public void updateExperiment (String modelHistoryServerId, String experimentID, ExperimentEntity experimentEntity, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = experimentEntity;
@@ -10056,7 +10056,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   /**
   * Update a model history / workspace
   * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param modelHistoryID the GUID of the model history / workspace to update
    * @param updateModelHistoryRequest The model history request object
    * @return ModelHistoryEntity
@@ -10131,7 +10131,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Update a model history / workspace
    * 
-   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID the GUID of the model history / workspace to update   * @param updateModelHistoryRequest The model history request object
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID the GUID of the model history / workspace to update   * @param updateModelHistoryRequest The model history request object
   */
   public void updateModelHistory (String modelHistoryServerId, String modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest, final Response.Listener<ModelHistoryEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = updateModelHistoryRequest;

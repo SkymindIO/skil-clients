@@ -94,7 +94,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 evaluation_results_entity = SkilCient::EvaluationResultsEntity.new # EvaluationResultsEntity | The evaluation result entity
 
@@ -112,7 +112,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **evaluation_results_entity** | [**EvaluationResultsEntity**](EvaluationResultsEntity.md)| The evaluation result entity | 
 
 ### Return type
@@ -149,7 +149,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 add_example_request = SkilCient::AddExampleRequest.new # AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
 
@@ -167,7 +167,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **add_example_request** | [**AddExampleRequest**](AddExampleRequest.md)| The add example request, encapsulating minibatch details and examples batch size | 
 
 ### Return type
@@ -204,7 +204,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 example_entity = SkilCient::ExampleEntity.new # ExampleEntity | The example to add to the minibatch
 
@@ -222,7 +222,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **example_entity** | [**ExampleEntity**](ExampleEntity.md)| The example to add to the minibatch | 
 
 ### Return type
@@ -259,7 +259,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 experiment_entity = SkilCient::ExperimentEntity.new # ExperimentEntity | The experiment entity to add
 
@@ -277,7 +277,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experiment_entity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to add | 
 
 ### Return type
@@ -314,7 +314,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 minibatch_entity = SkilCient::MinibatchEntity.new # MinibatchEntity | The minibatch entity to add
 
@@ -332,7 +332,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **minibatch_entity** | [**MinibatchEntity**](MinibatchEntity.md)| The minibatch entity to add | 
 
 ### Return type
@@ -369,7 +369,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 model_feed_back_request = SkilCient::ModelFeedBackRequest.new # ModelFeedBackRequest | The model feedback request object
 
@@ -387,7 +387,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_feed_back_request** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
 
 ### Return type
@@ -424,7 +424,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 add_model_history_request = SkilCient::AddModelHistoryRequest.new # AddModelHistoryRequest | The model history request object
 
@@ -442,7 +442,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **add_model_history_request** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
 ### Return type
@@ -479,7 +479,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 model_instance_entity = SkilCient::ModelInstanceEntity.new # ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
 
@@ -497,7 +497,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_instance_entity** | [**ModelInstanceEntity**](ModelInstanceEntity.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -534,7 +534,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 aggregate_prediction = SkilCient::AggregatePrediction.new # AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
 
@@ -552,7 +552,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **aggregate_prediction** | [**AggregatePrediction**](AggregatePrediction.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -773,7 +773,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 model_history_entity = SkilCient::ModelHistoryEntity.new # ModelHistoryEntity | The model history entity
 
@@ -791,7 +791,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_history_entity** | [**ModelHistoryEntity**](ModelHistoryEntity.md)| The model history entity | 
 
 ### Return type
@@ -828,7 +828,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 experiment_id = 'experiment_id_example' # String | the GUID of the experiment to delete
 
@@ -846,7 +846,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **String**| the GUID of the experiment to delete | 
 
 ### Return type
@@ -938,7 +938,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 model_history_id = 'model_history_id_example' # String | the GUID of the model history / workspace to delete
 
@@ -956,7 +956,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **String**| the GUID of the model history / workspace to delete | 
 
 ### Return type
@@ -993,7 +993,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 model_instance_id = 'model_instance_id_example' # String | GUID of the model instance to delete.
 
@@ -1010,7 +1010,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_instance_id** | **String**| GUID of the model instance to delete. | 
 
 ### Return type
@@ -1374,7 +1374,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 best_model = SkilCient::BestModel.new # BestModel | Object encapsulating the model ids, eval type and column metric name
 
@@ -1392,7 +1392,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **best_model** | [**BestModel**](BestModel.md)| Object encapsulating the model ids, eval type and column metric name | 
 
 ### Return type
@@ -1429,7 +1429,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 model_instance_id = 'model_instance_id_example' # String | GUID of the model instance to get evaluation results for.
 
@@ -1447,7 +1447,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_instance_id** | **String**| GUID of the model instance to get evaluation results for. | 
 
 ### Return type
@@ -1484,7 +1484,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 minibatch_id = 'minibatch_id_example' # String | The GUID of the minibatch
 
@@ -1502,7 +1502,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **minibatch_id** | **String**| The GUID of the minibatch | 
 
 ### Return type
@@ -1539,7 +1539,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 experiment_id = 'experiment_id_example' # String | the GUID of the experiment to obtain
 
@@ -1557,7 +1557,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **String**| the GUID of the experiment to obtain | 
 
 ### Return type
@@ -1594,7 +1594,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 model_history_id = 'model_history_id_example' # String | the GUID of the model history / workspace
 
@@ -1612,7 +1612,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **String**| the GUID of the model history / workspace | 
 
 ### Return type
@@ -1649,7 +1649,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 minibatch_id = 'minibatch_id_example' # String | The GUID of the minibatch
 
@@ -1667,7 +1667,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **minibatch_id** | **String**| The GUID of the minibatch | 
 
 ### Return type
@@ -1704,7 +1704,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 model_history_id = 'model_history_id_example' # String | GUID of the model history to get information of.
 
@@ -1722,7 +1722,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **String**| GUID of the model history to get information of. | 
 
 ### Return type
@@ -1759,7 +1759,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 model_instance_id = 'model_instance_id_example' # String | GUID of the model instance to get information of.
 
@@ -1777,7 +1777,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_instance_id** | **String**| GUID of the model instance to get information of. | 
 
 ### Return type
@@ -1814,7 +1814,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 experiment_id = 'experiment_id_example' # String | the GUID of the experiment
 
@@ -1832,7 +1832,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **String**| the GUID of the experiment | 
 
 ### Return type
@@ -3870,7 +3870,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 update_best_model = SkilCient::UpdateBestModel.new # UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
 
@@ -3888,7 +3888,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **update_best_model** | [**UpdateBestModel**](UpdateBestModel.md)| Model encapsulating the experiment id to update and the best model id. | 
 
 ### Return type
@@ -3925,7 +3925,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 experiment_id = 'experiment_id_example' # String | the GUID of the experiment to update
 
@@ -3945,7 +3945,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experiment_id** | **String**| the GUID of the experiment to update | 
  **experiment_entity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to update with | 
 
@@ -3983,7 +3983,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 model_history_id = 'model_history_id_example' # String | the GUID of the model history / workspace to update
 
@@ -4003,7 +4003,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **model_history_id** | **String**| the GUID of the model history / workspace to update | 
  **update_model_history_request** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 

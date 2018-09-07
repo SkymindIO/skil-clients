@@ -105,7 +105,7 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new SkilClient.DefaultApi()
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // {String} Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // {String} Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var evaluationResultsEntity = new SkilClient.EvaluationResultsEntity(); // {EvaluationResultsEntity} The evaluation result entity
 

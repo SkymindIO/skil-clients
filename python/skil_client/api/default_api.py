@@ -42,7 +42,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param EvaluationResultsEntity evaluation_results_entity: The evaluation result entity (required)
         :return: EvaluationResultsEntity
                  If the method is called asynchronously,
@@ -64,7 +64,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param EvaluationResultsEntity evaluation_results_entity: The evaluation result entity (required)
         :return: EvaluationResultsEntity
                  If the method is called asynchronously,
@@ -147,7 +147,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param AddExampleRequest add_example_request: The add example request, encapsulating minibatch details and examples batch size (required)
         :return: AddExampleRequest
                  If the method is called asynchronously,
@@ -169,7 +169,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param AddExampleRequest add_example_request: The add example request, encapsulating minibatch details and examples batch size (required)
         :return: AddExampleRequest
                  If the method is called asynchronously,
@@ -252,7 +252,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param ExampleEntity example_entity: The example to add to the minibatch (required)
         :return: ExampleEntity
                  If the method is called asynchronously,
@@ -274,7 +274,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param ExampleEntity example_entity: The example to add to the minibatch (required)
         :return: ExampleEntity
                  If the method is called asynchronously,
@@ -357,7 +357,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param ExperimentEntity experiment_entity: The experiment entity to add (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -379,7 +379,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param ExperimentEntity experiment_entity: The experiment entity to add (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -462,7 +462,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param MinibatchEntity minibatch_entity: The minibatch entity to add (required)
         :return: MinibatchEntity
                  If the method is called asynchronously,
@@ -484,7 +484,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param MinibatchEntity minibatch_entity: The minibatch entity to add (required)
         :return: MinibatchEntity
                  If the method is called asynchronously,
@@ -567,7 +567,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param ModelFeedBackRequest model_feed_back_request: The model feedback request object (required)
         :return: ModelFeedBackRequest
                  If the method is called asynchronously,
@@ -589,7 +589,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param ModelFeedBackRequest model_feed_back_request: The model feedback request object (required)
         :return: ModelFeedBackRequest
                  If the method is called asynchronously,
@@ -672,7 +672,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param AddModelHistoryRequest add_model_history_request: The model history request object (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
@@ -694,7 +694,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param AddModelHistoryRequest add_model_history_request: The model history request object (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
@@ -777,7 +777,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param ModelInstanceEntity model_instance_entity: The object encapsulating the model instance id and evaluation type to aggregate (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
@@ -799,7 +799,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param ModelInstanceEntity model_instance_entity: The object encapsulating the model instance id and evaluation type to aggregate (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
@@ -882,7 +882,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param AggregatePrediction aggregate_prediction: The object encapsulating the model instance id and evaluation type to aggregate (required)
         :return: EvaluationResultsEntity
                  If the method is called asynchronously,
@@ -904,7 +904,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param AggregatePrediction aggregate_prediction: The object encapsulating the model instance id and evaluation type to aggregate (required)
         :return: EvaluationResultsEntity
                  If the method is called asynchronously,
@@ -1346,7 +1346,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param ModelHistoryEntity model_history_entity: The model history entity (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
@@ -1368,7 +1368,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param ModelHistoryEntity model_history_entity: The model history entity (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
@@ -1451,7 +1451,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to delete (required)
         :return: InlineResponse200
                  If the method is called asynchronously,
@@ -1473,7 +1473,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to delete (required)
         :return: InlineResponse200
                  If the method is called asynchronously,
@@ -1653,7 +1653,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace to delete (required)
         :return: InlineResponse200
                  If the method is called asynchronously,
@@ -1675,7 +1675,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace to delete (required)
         :return: InlineResponse200
                  If the method is called asynchronously,
@@ -1754,7 +1754,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to delete. (required)
         :return: None
                  If the method is called asynchronously,
@@ -1776,7 +1776,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to delete. (required)
         :return: None
                  If the method is called asynchronously,
@@ -2473,7 +2473,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param BestModel best_model: Object encapsulating the model ids, eval type and column metric name (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
@@ -2495,7 +2495,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param BestModel best_model: Object encapsulating the model ids, eval type and column metric name (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
@@ -2578,7 +2578,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to get evaluation results for. (required)
         :return: list[EvaluationResultsEntity]
                  If the method is called asynchronously,
@@ -2600,7 +2600,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to get evaluation results for. (required)
         :return: list[EvaluationResultsEntity]
                  If the method is called asynchronously,
@@ -2679,7 +2679,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str minibatch_id: The GUID of the minibatch (required)
         :return: list[ExampleEntity]
                  If the method is called asynchronously,
@@ -2701,7 +2701,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str minibatch_id: The GUID of the minibatch (required)
         :return: list[ExampleEntity]
                  If the method is called asynchronously,
@@ -2780,7 +2780,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to obtain (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -2802,7 +2802,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to obtain (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -2881,7 +2881,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -2903,7 +2903,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -2982,7 +2982,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str minibatch_id: The GUID of the minibatch (required)
         :return: MinibatchEntity
                  If the method is called asynchronously,
@@ -3004,7 +3004,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str minibatch_id: The GUID of the minibatch (required)
         :return: MinibatchEntity
                  If the method is called asynchronously,
@@ -3083,7 +3083,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_history_id: GUID of the model history to get information of. (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
@@ -3105,7 +3105,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_history_id: GUID of the model history to get information of. (required)
         :return: ModelHistoryEntity
                  If the method is called asynchronously,
@@ -3184,7 +3184,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to get information of. (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
@@ -3206,7 +3206,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_instance_id: GUID of the model instance to get information of. (required)
         :return: ModelInstanceEntity
                  If the method is called asynchronously,
@@ -3285,7 +3285,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment (required)
         :return: list[ModelInstanceEntity]
                  If the method is called asynchronously,
@@ -3307,7 +3307,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment (required)
         :return: list[ModelInstanceEntity]
                  If the method is called asynchronously,
@@ -7246,7 +7246,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param UpdateBestModel update_best_model: Model encapsulating the experiment id to update and the best model id. (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -7268,7 +7268,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param UpdateBestModel update_best_model: Model encapsulating the experiment id to update and the best model id. (required)
         :return: ExperimentEntity
                  If the method is called asynchronously,
@@ -7351,7 +7351,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to update (required)
         :param ExperimentEntity experiment_entity: The experiment entity to update with (required)
         :return: ExperimentEntity
@@ -7374,7 +7374,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str experiment_id: the GUID of the experiment to update (required)
         :param ExperimentEntity experiment_entity: The experiment entity to update with (required)
         :return: ExperimentEntity
@@ -7464,7 +7464,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace to update (required)
         :param AddModelHistoryRequest update_model_history_request: The model history request object (required)
         :return: ModelHistoryEntity
@@ -7487,7 +7487,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID. (required)
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :param str model_history_id: the GUID of the model history / workspace to update (required)
         :param AddModelHistoryRequest update_model_history_request: The model history request object (required)
         :return: ModelHistoryEntity

@@ -64,7 +64,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 evaluation_results_entity = SkilCient::EvaluationResultsEntity.new # EvaluationResultsEntity | The evaluation result entity
 

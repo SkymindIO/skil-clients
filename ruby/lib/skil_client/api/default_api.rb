@@ -20,7 +20,7 @@ module SkilCient
       @api_client = api_client
     end
     # Adds an evaluation result
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param evaluation_results_entity The evaluation result entity
     # @param [Hash] opts the optional parameters
     # @return [EvaluationResultsEntity]
@@ -30,7 +30,7 @@ module SkilCient
     end
 
     # Adds an evaluation result
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param evaluation_results_entity The evaluation result entity
     # @param [Hash] opts the optional parameters
     # @return [Array<(EvaluationResultsEntity, Fixnum, Hash)>] EvaluationResultsEntity data, response status code and response headers
@@ -78,7 +78,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Adds a number of examples to a minibatch ID given an AddExampleRequest.
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param add_example_request The add example request, encapsulating minibatch details and examples batch size
     # @param [Hash] opts the optional parameters
     # @return [AddExampleRequest]
@@ -88,7 +88,7 @@ module SkilCient
     end
 
     # Adds a number of examples to a minibatch ID given an AddExampleRequest.
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param add_example_request The add example request, encapsulating minibatch details and examples batch size
     # @param [Hash] opts the optional parameters
     # @return [Array<(AddExampleRequest, Fixnum, Hash)>] AddExampleRequest data, response status code and response headers
@@ -136,7 +136,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Adds an example to a minibatch
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param example_entity The example to add to the minibatch
     # @param [Hash] opts the optional parameters
     # @return [ExampleEntity]
@@ -146,7 +146,7 @@ module SkilCient
     end
 
     # Adds an example to a minibatch
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param example_entity The example to add to the minibatch
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExampleEntity, Fixnum, Hash)>] ExampleEntity data, response status code and response headers
@@ -194,7 +194,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Add an experiment, given an experiment entity
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param experiment_entity The experiment entity to add
     # @param [Hash] opts the optional parameters
     # @return [ExperimentEntity]
@@ -204,7 +204,7 @@ module SkilCient
     end
 
     # Add an experiment, given an experiment entity
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param experiment_entity The experiment entity to add
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
@@ -252,7 +252,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Adds a minibatch
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param minibatch_entity The minibatch entity to add
     # @param [Hash] opts the optional parameters
     # @return [MinibatchEntity]
@@ -262,7 +262,7 @@ module SkilCient
     end
 
     # Adds a minibatch
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param minibatch_entity The minibatch entity to add
     # @param [Hash] opts the optional parameters
     # @return [Array<(MinibatchEntity, Fixnum, Hash)>] MinibatchEntity data, response status code and response headers
@@ -310,7 +310,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Adds an evaluation feedback to the model against a given minibatch id.
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_feed_back_request The model feedback request object
     # @param [Hash] opts the optional parameters
     # @return [ModelFeedBackRequest]
@@ -320,7 +320,7 @@ module SkilCient
     end
 
     # Adds an evaluation feedback to the model against a given minibatch id.
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_feed_back_request The model feedback request object
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelFeedBackRequest, Fixnum, Hash)>] ModelFeedBackRequest data, response status code and response headers
@@ -368,7 +368,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Add a model history / workspace
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param add_model_history_request The model history request object
     # @param [Hash] opts the optional parameters
     # @return [ModelHistoryEntity]
@@ -378,7 +378,7 @@ module SkilCient
     end
 
     # Add a model history / workspace
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param add_model_history_request The model history request object
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelHistoryEntity, Fixnum, Hash)>] ModelHistoryEntity data, response status code and response headers
@@ -426,7 +426,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Adds a model
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_instance_entity The object encapsulating the model instance id and evaluation type to aggregate
     # @param [Hash] opts the optional parameters
     # @return [ModelInstanceEntity]
@@ -436,7 +436,7 @@ module SkilCient
     end
 
     # Adds a model
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_instance_entity The object encapsulating the model instance id and evaluation type to aggregate
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelInstanceEntity, Fixnum, Hash)>] ModelInstanceEntity data, response status code and response headers
@@ -484,7 +484,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Aggregates the evaluaition results of a model instance, based on the evaluation type
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param aggregate_prediction The object encapsulating the model instance id and evaluation type to aggregate
     # @param [Hash] opts the optional parameters
     # @return [EvaluationResultsEntity]
@@ -494,7 +494,7 @@ module SkilCient
     end
 
     # Aggregates the evaluaition results of a model instance, based on the evaluation type
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param aggregate_prediction The object encapsulating the model instance id and evaluation type to aggregate
     # @param [Hash] opts the optional parameters
     # @return [Array<(EvaluationResultsEntity, Fixnum, Hash)>] EvaluationResultsEntity data, response status code and response headers
@@ -749,7 +749,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Creates model History
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_entity The model history entity
     # @param [Hash] opts the optional parameters
     # @return [ModelHistoryEntity]
@@ -759,7 +759,7 @@ module SkilCient
     end
 
     # Creates model History
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_entity The model history entity
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelHistoryEntity, Fixnum, Hash)>] ModelHistoryEntity data, response status code and response headers
@@ -807,7 +807,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Deletes an experiment, given an experiment entity
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to delete
     # @param [Hash] opts the optional parameters
     # @return [InlineResponse200]
@@ -817,7 +817,7 @@ module SkilCient
     end
 
     # Deletes an experiment, given an experiment entity
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to delete
     # @param [Hash] opts the optional parameters
     # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
@@ -919,7 +919,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Deletes a model history / workspace, given its ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace to delete
     # @param [Hash] opts the optional parameters
     # @return [InlineResponse200]
@@ -929,7 +929,7 @@ module SkilCient
     end
 
     # Deletes a model history / workspace, given its ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace to delete
     # @param [Hash] opts the optional parameters
     # @return [Array<(InlineResponse200, Fixnum, Hash)>] InlineResponse200 data, response status code and response headers
@@ -975,7 +975,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Deletes a model instance, given its ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to delete.
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -985,7 +985,7 @@ module SkilCient
     end
 
     # Deletes a model instance, given its ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to delete.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -1376,7 +1376,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param best_model Object encapsulating the model ids, eval type and column metric name
     # @param [Hash] opts the optional parameters
     # @return [ModelInstanceEntity]
@@ -1386,7 +1386,7 @@ module SkilCient
     end
 
     # Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param best_model Object encapsulating the model ids, eval type and column metric name
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelInstanceEntity, Fixnum, Hash)>] ModelInstanceEntity data, response status code and response headers
@@ -1434,7 +1434,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets the list of evaluation results entity, given a model instance ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to get evaluation results for.
     # @param [Hash] opts the optional parameters
     # @return [Array<EvaluationResultsEntity>]
@@ -1444,7 +1444,7 @@ module SkilCient
     end
 
     # Gets the list of evaluation results entity, given a model instance ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to get evaluation results for.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<EvaluationResultsEntity>, Fixnum, Hash)>] Array<EvaluationResultsEntity> data, response status code and response headers
@@ -1490,7 +1490,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets all the examples for a minibatch ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param minibatch_id The GUID of the minibatch
     # @param [Hash] opts the optional parameters
     # @return [Array<ExampleEntity>]
@@ -1500,7 +1500,7 @@ module SkilCient
     end
 
     # Gets all the examples for a minibatch ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param minibatch_id The GUID of the minibatch
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<ExampleEntity>, Fixnum, Hash)>] Array<ExampleEntity> data, response status code and response headers
@@ -1546,7 +1546,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Obtain an experiment's details, given its ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to obtain
     # @param [Hash] opts the optional parameters
     # @return [ExperimentEntity]
@@ -1556,7 +1556,7 @@ module SkilCient
     end
 
     # Obtain an experiment&#39;s details, given its ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to obtain
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
@@ -1602,7 +1602,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Obtain all experiments for a model history / workspace
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace
     # @param [Hash] opts the optional parameters
     # @return [ExperimentEntity]
@@ -1612,7 +1612,7 @@ module SkilCient
     end
 
     # Obtain all experiments for a model history / workspace
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
@@ -1658,7 +1658,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets a minibatch for the model
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param minibatch_id The GUID of the minibatch
     # @param [Hash] opts the optional parameters
     # @return [MinibatchEntity]
@@ -1668,7 +1668,7 @@ module SkilCient
     end
 
     # Gets a minibatch for the model
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param minibatch_id The GUID of the minibatch
     # @param [Hash] opts the optional parameters
     # @return [Array<(MinibatchEntity, Fixnum, Hash)>] MinibatchEntity data, response status code and response headers
@@ -1714,7 +1714,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets a model history, given its ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_id GUID of the model history to get information of.
     # @param [Hash] opts the optional parameters
     # @return [ModelHistoryEntity]
@@ -1724,7 +1724,7 @@ module SkilCient
     end
 
     # Gets a model history, given its ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_id GUID of the model history to get information of.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelHistoryEntity, Fixnum, Hash)>] ModelHistoryEntity data, response status code and response headers
@@ -1770,7 +1770,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Gets a model instance, given its ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to get information of.
     # @param [Hash] opts the optional parameters
     # @return [ModelInstanceEntity]
@@ -1780,7 +1780,7 @@ module SkilCient
     end
 
     # Gets a model instance, given its ID
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_instance_id GUID of the model instance to get information of.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ModelInstanceEntity, Fixnum, Hash)>] ModelInstanceEntity data, response status code and response headers
@@ -1826,7 +1826,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Obtain a list of all the models for an experiment
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment
     # @param [Hash] opts the optional parameters
     # @return [Array<ModelInstanceEntity>]
@@ -1836,7 +1836,7 @@ module SkilCient
     end
 
     # Obtain a list of all the models for an experiment
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<ModelInstanceEntity>, Fixnum, Hash)>] Array<ModelInstanceEntity> data, response status code and response headers
@@ -4101,7 +4101,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Updates the best model for an experiment
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param update_best_model Model encapsulating the experiment id to update and the best model id.
     # @param [Hash] opts the optional parameters
     # @return [ExperimentEntity]
@@ -4111,7 +4111,7 @@ module SkilCient
     end
 
     # Updates the best model for an experiment
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param update_best_model Model encapsulating the experiment id to update and the best model id.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
@@ -4159,7 +4159,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Updates an experiment, given an experiment entity
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to update
     # @param experiment_entity The experiment entity to update with
     # @param [Hash] opts the optional parameters
@@ -4170,7 +4170,7 @@ module SkilCient
     end
 
     # Updates an experiment, given an experiment entity
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param experiment_id the GUID of the experiment to update
     # @param experiment_entity The experiment entity to update with
     # @param [Hash] opts the optional parameters
@@ -4223,7 +4223,7 @@ module SkilCient
       return data, status_code, headers
     end
     # Update a model history / workspace
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace to update
     # @param update_model_history_request The model history request object
     # @param [Hash] opts the optional parameters
@@ -4234,7 +4234,7 @@ module SkilCient
     end
 
     # Update a model history / workspace
-    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace to update
     # @param update_model_history_request The model history request object
     # @param [Hash] opts the optional parameters

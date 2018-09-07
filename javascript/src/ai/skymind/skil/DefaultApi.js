@@ -57,7 +57,7 @@
 
     /**
      * Adds an evaluation result
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/EvaluationResultsEntity} evaluationResultsEntity The evaluation result entity
      * @param {module:ai/skymind/skil/DefaultApi~addEvaluationResultCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/EvaluationResultsEntity}
@@ -110,7 +110,7 @@
 
     /**
      * Adds a number of examples to a minibatch ID given an AddExampleRequest.
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/AddExampleRequest} addExampleRequest The add example request, encapsulating minibatch details and examples batch size
      * @param {module:ai/skymind/skil/DefaultApi~addExampleForBatchCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/AddExampleRequest}
@@ -163,7 +163,7 @@
 
     /**
      * Adds an example to a minibatch
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/ExampleEntity} exampleEntity The example to add to the minibatch
      * @param {module:ai/skymind/skil/DefaultApi~addExampleToMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ExampleEntity}
@@ -216,7 +216,7 @@
 
     /**
      * Add an experiment, given an experiment entity
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/ExperimentEntity} experimentEntity The experiment entity to add
      * @param {module:ai/skymind/skil/DefaultApi~addExperimentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
@@ -269,7 +269,7 @@
 
     /**
      * Adds a minibatch
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/MinibatchEntity} minibatchEntity The minibatch entity to add
      * @param {module:ai/skymind/skil/DefaultApi~addMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/MinibatchEntity}
@@ -322,7 +322,7 @@
 
     /**
      * Adds an evaluation feedback to the model against a given minibatch id.
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/ModelFeedBackRequest} modelFeedBackRequest The model feedback request object
      * @param {module:ai/skymind/skil/DefaultApi~addModelFeedbackCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelFeedBackRequest}
@@ -375,7 +375,7 @@
 
     /**
      * Add a model history / workspace
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/AddModelHistoryRequest} addModelHistoryRequest The model history request object
      * @param {module:ai/skymind/skil/DefaultApi~addModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelHistoryEntity}
@@ -428,7 +428,7 @@
 
     /**
      * Adds a model
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/ModelInstanceEntity} modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate
      * @param {module:ai/skymind/skil/DefaultApi~addModelInstanceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelInstanceEntity}
@@ -481,7 +481,7 @@
 
     /**
      * Aggregates the evaluaition results of a model instance, based on the evaluation type
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/AggregatePrediction} aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate
      * @param {module:ai/skymind/skil/DefaultApi~aggregateModelResultsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/EvaluationResultsEntity}
@@ -733,7 +733,7 @@
 
     /**
      * Creates model History
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/ModelHistoryEntity} modelHistoryEntity The model history entity
      * @param {module:ai/skymind/skil/DefaultApi~createModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelHistoryEntity}
@@ -786,7 +786,7 @@
 
     /**
      * Deletes an experiment, given an experiment entity
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} experimentID the GUID of the experiment to delete
      * @param {module:ai/skymind/skil/DefaultApi~deleteExperimentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/InlineResponse200}
@@ -894,7 +894,7 @@
 
     /**
      * Deletes a model history / workspace, given its ID
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} modelHistoryID the GUID of the model history / workspace to delete
      * @param {module:ai/skymind/skil/DefaultApi~deleteModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/InlineResponse200}
@@ -948,7 +948,7 @@
 
     /**
      * Deletes a model instance, given its ID
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} modelInstanceID GUID of the model instance to delete.
      * @param {module:ai/skymind/skil/DefaultApi~deleteModelInstanceCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -1323,7 +1323,7 @@
 
     /**
      * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/BestModel} bestModel Object encapsulating the model ids, eval type and column metric name
      * @param {module:ai/skymind/skil/DefaultApi~getBestModelAmongModelIdsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelInstanceEntity}
@@ -1376,7 +1376,7 @@
 
     /**
      * Gets the list of evaluation results entity, given a model instance ID
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} modelInstanceID GUID of the model instance to get evaluation results for.
      * @param {module:ai/skymind/skil/DefaultApi~getEvaluationForModelIDCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:ai/skymind/skil/model/EvaluationResultsEntity>}
@@ -1430,7 +1430,7 @@
 
     /**
      * Gets all the examples for a minibatch ID
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} minibatchId The GUID of the minibatch
      * @param {module:ai/skymind/skil/DefaultApi~getExamplesForMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:ai/skymind/skil/model/ExampleEntity>}
@@ -1484,7 +1484,7 @@
 
     /**
      * Obtain an experiment&#39;s details, given its ID
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} experimentID the GUID of the experiment to obtain
      * @param {module:ai/skymind/skil/DefaultApi~getExperimentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
@@ -1538,7 +1538,7 @@
 
     /**
      * Obtain all experiments for a model history / workspace
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} modelHistoryID the GUID of the model history / workspace
      * @param {module:ai/skymind/skil/DefaultApi~getExperimentsForModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
@@ -1592,7 +1592,7 @@
 
     /**
      * Gets a minibatch for the model
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} minibatchId The GUID of the minibatch
      * @param {module:ai/skymind/skil/DefaultApi~getMinibatchCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/MinibatchEntity}
@@ -1646,7 +1646,7 @@
 
     /**
      * Gets a model history, given its ID
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} modelHistoryID GUID of the model history to get information of.
      * @param {module:ai/skymind/skil/DefaultApi~getModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelHistoryEntity}
@@ -1700,7 +1700,7 @@
 
     /**
      * Gets a model instance, given its ID
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} modelInstanceID GUID of the model instance to get information of.
      * @param {module:ai/skymind/skil/DefaultApi~getModelInstanceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelInstanceEntity}
@@ -1754,7 +1754,7 @@
 
     /**
      * Obtain a list of all the models for an experiment
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} experimentID the GUID of the experiment
      * @param {module:ai/skymind/skil/DefaultApi~getModelsForExperimentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:ai/skymind/skil/model/ModelInstanceEntity>}
@@ -3921,7 +3921,7 @@
 
     /**
      * Updates the best model for an experiment
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/model/UpdateBestModel} updateBestModel Model encapsulating the experiment id to update and the best model id.
      * @param {module:ai/skymind/skil/DefaultApi~updateBestModelForExperimentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
@@ -3974,7 +3974,7 @@
 
     /**
      * Updates an experiment, given an experiment entity
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} experimentID the GUID of the experiment to update
      * @param {module:ai/skymind/skil/model/ExperimentEntity} experimentEntity The experiment entity to update with
      * @param {module:ai/skymind/skil/DefaultApi~updateExperimentCallback} callback The callback function, accepting three arguments: error, data, response
@@ -4034,7 +4034,7 @@
 
     /**
      * Update a model history / workspace
-     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID.
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} modelHistoryID the GUID of the model history / workspace to update
      * @param {module:ai/skymind/skil/model/AddModelHistoryRequest} updateModelHistoryRequest The model history request object
      * @param {module:ai/skymind/skil/DefaultApi~updateModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response

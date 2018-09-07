@@ -98,7 +98,7 @@ public class DefaultApi {
 
     /**
      * Build call for addEvaluationResult
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param evaluationResultsEntity The evaluation result entity (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -169,7 +169,7 @@ public class DefaultApi {
     /**
      * Adds an evaluation result
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param evaluationResultsEntity The evaluation result entity (required)
      * @return EvaluationResultsEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -182,7 +182,7 @@ public class DefaultApi {
     /**
      * Adds an evaluation result
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param evaluationResultsEntity The evaluation result entity (required)
      * @return ApiResponse&lt;EvaluationResultsEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -196,7 +196,7 @@ public class DefaultApi {
     /**
      * Adds an evaluation result (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param evaluationResultsEntity The evaluation result entity (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -230,7 +230,7 @@ public class DefaultApi {
     }
     /**
      * Build call for addExampleForBatch
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -301,7 +301,7 @@ public class DefaultApi {
     /**
      * Adds a number of examples to a minibatch ID given an AddExampleRequest.
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size (required)
      * @return AddExampleRequest
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -314,7 +314,7 @@ public class DefaultApi {
     /**
      * Adds a number of examples to a minibatch ID given an AddExampleRequest.
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size (required)
      * @return ApiResponse&lt;AddExampleRequest&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -328,7 +328,7 @@ public class DefaultApi {
     /**
      * Adds a number of examples to a minibatch ID given an AddExampleRequest. (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param addExampleRequest The add example request, encapsulating minibatch details and examples batch size (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -362,7 +362,7 @@ public class DefaultApi {
     }
     /**
      * Build call for addExampleToMinibatch
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param exampleEntity The example to add to the minibatch (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -433,7 +433,7 @@ public class DefaultApi {
     /**
      * Adds an example to a minibatch
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param exampleEntity The example to add to the minibatch (required)
      * @return ExampleEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -446,7 +446,7 @@ public class DefaultApi {
     /**
      * Adds an example to a minibatch
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param exampleEntity The example to add to the minibatch (required)
      * @return ApiResponse&lt;ExampleEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -460,7 +460,7 @@ public class DefaultApi {
     /**
      * Adds an example to a minibatch (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param exampleEntity The example to add to the minibatch (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -494,7 +494,7 @@ public class DefaultApi {
     }
     /**
      * Build call for addExperiment
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentEntity The experiment entity to add (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -565,7 +565,7 @@ public class DefaultApi {
     /**
      * Add an experiment, given an experiment entity
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentEntity The experiment entity to add (required)
      * @return ExperimentEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -578,7 +578,7 @@ public class DefaultApi {
     /**
      * Add an experiment, given an experiment entity
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentEntity The experiment entity to add (required)
      * @return ApiResponse&lt;ExperimentEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -592,7 +592,7 @@ public class DefaultApi {
     /**
      * Add an experiment, given an experiment entity (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentEntity The experiment entity to add (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -626,7 +626,7 @@ public class DefaultApi {
     }
     /**
      * Build call for addMinibatch
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchEntity The minibatch entity to add (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -697,7 +697,7 @@ public class DefaultApi {
     /**
      * Adds a minibatch
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchEntity The minibatch entity to add (required)
      * @return MinibatchEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -710,7 +710,7 @@ public class DefaultApi {
     /**
      * Adds a minibatch
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchEntity The minibatch entity to add (required)
      * @return ApiResponse&lt;MinibatchEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -724,7 +724,7 @@ public class DefaultApi {
     /**
      * Adds a minibatch (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchEntity The minibatch entity to add (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -758,7 +758,7 @@ public class DefaultApi {
     }
     /**
      * Build call for addModelFeedback
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelFeedBackRequest The model feedback request object (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -829,7 +829,7 @@ public class DefaultApi {
     /**
      * Adds an evaluation feedback to the model against a given minibatch id.
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelFeedBackRequest The model feedback request object (required)
      * @return ModelFeedBackRequest
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -842,7 +842,7 @@ public class DefaultApi {
     /**
      * Adds an evaluation feedback to the model against a given minibatch id.
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelFeedBackRequest The model feedback request object (required)
      * @return ApiResponse&lt;ModelFeedBackRequest&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -856,7 +856,7 @@ public class DefaultApi {
     /**
      * Adds an evaluation feedback to the model against a given minibatch id. (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelFeedBackRequest The model feedback request object (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -890,7 +890,7 @@ public class DefaultApi {
     }
     /**
      * Build call for addModelHistory
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param addModelHistoryRequest The model history request object (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -961,7 +961,7 @@ public class DefaultApi {
     /**
      * Add a model history / workspace
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param addModelHistoryRequest The model history request object (required)
      * @return ModelHistoryEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -974,7 +974,7 @@ public class DefaultApi {
     /**
      * Add a model history / workspace
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param addModelHistoryRequest The model history request object (required)
      * @return ApiResponse&lt;ModelHistoryEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -988,7 +988,7 @@ public class DefaultApi {
     /**
      * Add a model history / workspace (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param addModelHistoryRequest The model history request object (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1022,7 +1022,7 @@ public class DefaultApi {
     }
     /**
      * Build call for addModelInstance
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -1093,7 +1093,7 @@ public class DefaultApi {
     /**
      * Adds a model
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate (required)
      * @return ModelInstanceEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1106,7 +1106,7 @@ public class DefaultApi {
     /**
      * Adds a model
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate (required)
      * @return ApiResponse&lt;ModelInstanceEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1120,7 +1120,7 @@ public class DefaultApi {
     /**
      * Adds a model (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1154,7 +1154,7 @@ public class DefaultApi {
     }
     /**
      * Build call for aggregateModelResults
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -1225,7 +1225,7 @@ public class DefaultApi {
     /**
      * Aggregates the evaluaition results of a model instance, based on the evaluation type
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate (required)
      * @return EvaluationResultsEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1238,7 +1238,7 @@ public class DefaultApi {
     /**
      * Aggregates the evaluaition results of a model instance, based on the evaluation type
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate (required)
      * @return ApiResponse&lt;EvaluationResultsEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1252,7 +1252,7 @@ public class DefaultApi {
     /**
      * Aggregates the evaluaition results of a model instance, based on the evaluation type (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param aggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1739,7 +1739,7 @@ public class DefaultApi {
     }
     /**
      * Build call for createModelHistory
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryEntity The model history entity (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -1810,7 +1810,7 @@ public class DefaultApi {
     /**
      * Creates model History
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryEntity The model history entity (required)
      * @return ModelHistoryEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1823,7 +1823,7 @@ public class DefaultApi {
     /**
      * Creates model History
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryEntity The model history entity (required)
      * @return ApiResponse&lt;ModelHistoryEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1837,7 +1837,7 @@ public class DefaultApi {
     /**
      * Creates model History (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryEntity The model history entity (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1871,7 +1871,7 @@ public class DefaultApi {
     }
     /**
      * Build call for deleteExperiment
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to delete (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -1943,7 +1943,7 @@ public class DefaultApi {
     /**
      * Deletes an experiment, given an experiment entity
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to delete (required)
      * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1956,7 +1956,7 @@ public class DefaultApi {
     /**
      * Deletes an experiment, given an experiment entity
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to delete (required)
      * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1970,7 +1970,7 @@ public class DefaultApi {
     /**
      * Deletes an experiment, given an experiment entity (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to delete (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2137,7 +2137,7 @@ public class DefaultApi {
     }
     /**
      * Build call for deleteModelHistory
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace to delete (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -2209,7 +2209,7 @@ public class DefaultApi {
     /**
      * Deletes a model history / workspace, given its ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace to delete (required)
      * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2222,7 +2222,7 @@ public class DefaultApi {
     /**
      * Deletes a model history / workspace, given its ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace to delete (required)
      * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2236,7 +2236,7 @@ public class DefaultApi {
     /**
      * Deletes a model history / workspace, given its ID (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace to delete (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2270,7 +2270,7 @@ public class DefaultApi {
     }
     /**
      * Build call for deleteModelInstance
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to delete. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -2342,7 +2342,7 @@ public class DefaultApi {
     /**
      * Deletes a model instance, given its ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to delete. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -2353,7 +2353,7 @@ public class DefaultApi {
     /**
      * Deletes a model instance, given its ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to delete. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2366,7 +2366,7 @@ public class DefaultApi {
     /**
      * Deletes a model instance, given its ID (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to delete. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3199,7 +3199,7 @@ public class DefaultApi {
     }
     /**
      * Build call for getBestModelAmongModelIds
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param bestModel Object encapsulating the model ids, eval type and column metric name (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -3270,7 +3270,7 @@ public class DefaultApi {
     /**
      * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param bestModel Object encapsulating the model ids, eval type and column metric name (required)
      * @return ModelInstanceEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3283,7 +3283,7 @@ public class DefaultApi {
     /**
      * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param bestModel Object encapsulating the model ids, eval type and column metric name (required)
      * @return ApiResponse&lt;ModelInstanceEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3297,7 +3297,7 @@ public class DefaultApi {
     /**
      * Gets the best model among the given model instance IDs, based on the evaluation type and column metric (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param bestModel Object encapsulating the model ids, eval type and column metric name (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3331,7 +3331,7 @@ public class DefaultApi {
     }
     /**
      * Build call for getEvaluationForModelID
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to get evaluation results for. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -3403,7 +3403,7 @@ public class DefaultApi {
     /**
      * Gets the list of evaluation results entity, given a model instance ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to get evaluation results for. (required)
      * @return List&lt;EvaluationResultsEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3416,7 +3416,7 @@ public class DefaultApi {
     /**
      * Gets the list of evaluation results entity, given a model instance ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to get evaluation results for. (required)
      * @return ApiResponse&lt;List&lt;EvaluationResultsEntity&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3430,7 +3430,7 @@ public class DefaultApi {
     /**
      * Gets the list of evaluation results entity, given a model instance ID (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to get evaluation results for. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3464,7 +3464,7 @@ public class DefaultApi {
     }
     /**
      * Build call for getExamplesForMinibatch
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchId The GUID of the minibatch (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -3536,7 +3536,7 @@ public class DefaultApi {
     /**
      * Gets all the examples for a minibatch ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchId The GUID of the minibatch (required)
      * @return List&lt;ExampleEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3549,7 +3549,7 @@ public class DefaultApi {
     /**
      * Gets all the examples for a minibatch ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchId The GUID of the minibatch (required)
      * @return ApiResponse&lt;List&lt;ExampleEntity&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3563,7 +3563,7 @@ public class DefaultApi {
     /**
      * Gets all the examples for a minibatch ID (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchId The GUID of the minibatch (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3597,7 +3597,7 @@ public class DefaultApi {
     }
     /**
      * Build call for getExperiment
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to obtain (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -3669,7 +3669,7 @@ public class DefaultApi {
     /**
      * Obtain an experiment&#39;s details, given its ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to obtain (required)
      * @return ExperimentEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3682,7 +3682,7 @@ public class DefaultApi {
     /**
      * Obtain an experiment&#39;s details, given its ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to obtain (required)
      * @return ApiResponse&lt;ExperimentEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3696,7 +3696,7 @@ public class DefaultApi {
     /**
      * Obtain an experiment&#39;s details, given its ID (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to obtain (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3730,7 +3730,7 @@ public class DefaultApi {
     }
     /**
      * Build call for getExperimentsForModelHistory
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -3802,7 +3802,7 @@ public class DefaultApi {
     /**
      * Obtain all experiments for a model history / workspace
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace (required)
      * @return ExperimentEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3815,7 +3815,7 @@ public class DefaultApi {
     /**
      * Obtain all experiments for a model history / workspace
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace (required)
      * @return ApiResponse&lt;ExperimentEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3829,7 +3829,7 @@ public class DefaultApi {
     /**
      * Obtain all experiments for a model history / workspace (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3863,7 +3863,7 @@ public class DefaultApi {
     }
     /**
      * Build call for getMinibatch
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchId The GUID of the minibatch (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -3935,7 +3935,7 @@ public class DefaultApi {
     /**
      * Gets a minibatch for the model
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchId The GUID of the minibatch (required)
      * @return MinibatchEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3948,7 +3948,7 @@ public class DefaultApi {
     /**
      * Gets a minibatch for the model
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchId The GUID of the minibatch (required)
      * @return ApiResponse&lt;MinibatchEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3962,7 +3962,7 @@ public class DefaultApi {
     /**
      * Gets a minibatch for the model (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param minibatchId The GUID of the minibatch (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3996,7 +3996,7 @@ public class DefaultApi {
     }
     /**
      * Build call for getModelHistory
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID GUID of the model history to get information of. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -4068,7 +4068,7 @@ public class DefaultApi {
     /**
      * Gets a model history, given its ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID GUID of the model history to get information of. (required)
      * @return ModelHistoryEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4081,7 +4081,7 @@ public class DefaultApi {
     /**
      * Gets a model history, given its ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID GUID of the model history to get information of. (required)
      * @return ApiResponse&lt;ModelHistoryEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4095,7 +4095,7 @@ public class DefaultApi {
     /**
      * Gets a model history, given its ID (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID GUID of the model history to get information of. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4129,7 +4129,7 @@ public class DefaultApi {
     }
     /**
      * Build call for getModelInstance
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to get information of. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -4201,7 +4201,7 @@ public class DefaultApi {
     /**
      * Gets a model instance, given its ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to get information of. (required)
      * @return ModelInstanceEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4214,7 +4214,7 @@ public class DefaultApi {
     /**
      * Gets a model instance, given its ID
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to get information of. (required)
      * @return ApiResponse&lt;ModelInstanceEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4228,7 +4228,7 @@ public class DefaultApi {
     /**
      * Gets a model instance, given its ID (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelInstanceID GUID of the model instance to get information of. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4262,7 +4262,7 @@ public class DefaultApi {
     }
     /**
      * Build call for getModelsForExperiment
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -4334,7 +4334,7 @@ public class DefaultApi {
     /**
      * Obtain a list of all the models for an experiment
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment (required)
      * @return List&lt;ModelInstanceEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4347,7 +4347,7 @@ public class DefaultApi {
     /**
      * Obtain a list of all the models for an experiment
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment (required)
      * @return ApiResponse&lt;List&lt;ModelInstanceEntity&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4361,7 +4361,7 @@ public class DefaultApi {
     /**
      * Obtain a list of all the models for an experiment (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -9247,7 +9247,7 @@ public class DefaultApi {
     }
     /**
      * Build call for updateBestModelForExperiment
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param updateBestModel Model encapsulating the experiment id to update and the best model id. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -9318,7 +9318,7 @@ public class DefaultApi {
     /**
      * Updates the best model for an experiment
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param updateBestModel Model encapsulating the experiment id to update and the best model id. (required)
      * @return ExperimentEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -9331,7 +9331,7 @@ public class DefaultApi {
     /**
      * Updates the best model for an experiment
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param updateBestModel Model encapsulating the experiment id to update and the best model id. (required)
      * @return ApiResponse&lt;ExperimentEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -9345,7 +9345,7 @@ public class DefaultApi {
     /**
      * Updates the best model for an experiment (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param updateBestModel Model encapsulating the experiment id to update and the best model id. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -9379,7 +9379,7 @@ public class DefaultApi {
     }
     /**
      * Build call for updateExperiment
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to update (required)
      * @param experimentEntity The experiment entity to update with (required)
      * @param progressListener Progress listener
@@ -9457,7 +9457,7 @@ public class DefaultApi {
     /**
      * Updates an experiment, given an experiment entity
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to update (required)
      * @param experimentEntity The experiment entity to update with (required)
      * @return ExperimentEntity
@@ -9471,7 +9471,7 @@ public class DefaultApi {
     /**
      * Updates an experiment, given an experiment entity
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to update (required)
      * @param experimentEntity The experiment entity to update with (required)
      * @return ApiResponse&lt;ExperimentEntity&gt;
@@ -9486,7 +9486,7 @@ public class DefaultApi {
     /**
      * Updates an experiment, given an experiment entity (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param experimentID the GUID of the experiment to update (required)
      * @param experimentEntity The experiment entity to update with (required)
      * @param callback The callback to be executed when the API call finishes
@@ -9521,7 +9521,7 @@ public class DefaultApi {
     }
     /**
      * Build call for updateModelHistory
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace to update (required)
      * @param updateModelHistoryRequest The model history request object (required)
      * @param progressListener Progress listener
@@ -9599,7 +9599,7 @@ public class DefaultApi {
     /**
      * Update a model history / workspace
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace to update (required)
      * @param updateModelHistoryRequest The model history request object (required)
      * @return ModelHistoryEntity
@@ -9613,7 +9613,7 @@ public class DefaultApi {
     /**
      * Update a model history / workspace
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace to update (required)
      * @param updateModelHistoryRequest The model history request object (required)
      * @return ApiResponse&lt;ModelHistoryEntity&gt;
@@ -9628,7 +9628,7 @@ public class DefaultApi {
     /**
      * Update a model history / workspace (asynchronously)
      * 
-     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. (required)
+     * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace to update (required)
      * @param updateModelHistoryRequest The model history request object (required)
      * @param callback The callback to be executed when the API call finishes

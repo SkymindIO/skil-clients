@@ -94,7 +94,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var evaluationResultsEntity = new SkilClient.EvaluationResultsEntity(); // EvaluationResultsEntity | The evaluation result entity
 
@@ -113,7 +113,7 @@ apiInstance.addEvaluationResult(modelHistoryServerId, evaluationResultsEntity, c
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **evaluationResultsEntity** | [**EvaluationResultsEntity**](EvaluationResultsEntity.md)| The evaluation result entity | 
 
 ### Return type
@@ -148,7 +148,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var addExampleRequest = new SkilClient.AddExampleRequest(); // AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
 
@@ -167,7 +167,7 @@ apiInstance.addExampleForBatch(modelHistoryServerId, addExampleRequest, callback
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **addExampleRequest** | [**AddExampleRequest**](AddExampleRequest.md)| The add example request, encapsulating minibatch details and examples batch size | 
 
 ### Return type
@@ -202,7 +202,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var exampleEntity = new SkilClient.ExampleEntity(); // ExampleEntity | The example to add to the minibatch
 
@@ -221,7 +221,7 @@ apiInstance.addExampleToMinibatch(modelHistoryServerId, exampleEntity, callback)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **exampleEntity** | [**ExampleEntity**](ExampleEntity.md)| The example to add to the minibatch | 
 
 ### Return type
@@ -256,7 +256,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var experimentEntity = new SkilClient.ExperimentEntity(); // ExperimentEntity | The experiment entity to add
 
@@ -275,7 +275,7 @@ apiInstance.addExperiment(modelHistoryServerId, experimentEntity, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to add | 
 
 ### Return type
@@ -310,7 +310,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var minibatchEntity = new SkilClient.MinibatchEntity(); // MinibatchEntity | The minibatch entity to add
 
@@ -329,7 +329,7 @@ apiInstance.addMinibatch(modelHistoryServerId, minibatchEntity, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **minibatchEntity** | [**MinibatchEntity**](MinibatchEntity.md)| The minibatch entity to add | 
 
 ### Return type
@@ -364,7 +364,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var modelFeedBackRequest = new SkilClient.ModelFeedBackRequest(); // ModelFeedBackRequest | The model feedback request object
 
@@ -383,7 +383,7 @@ apiInstance.addModelFeedback(modelHistoryServerId, modelFeedBackRequest, callbac
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **modelFeedBackRequest** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
 
 ### Return type
@@ -418,7 +418,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var addModelHistoryRequest = new SkilClient.AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
 
@@ -437,7 +437,7 @@ apiInstance.addModelHistory(modelHistoryServerId, addModelHistoryRequest, callba
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **addModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
 ### Return type
@@ -472,7 +472,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var modelInstanceEntity = new SkilClient.ModelInstanceEntity(); // ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
 
@@ -491,7 +491,7 @@ apiInstance.addModelInstance(modelHistoryServerId, modelInstanceEntity, callback
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **modelInstanceEntity** | [**ModelInstanceEntity**](ModelInstanceEntity.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -526,7 +526,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var aggregatePrediction = new SkilClient.AggregatePrediction(); // AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
 
@@ -545,7 +545,7 @@ apiInstance.aggregateModelResults(modelHistoryServerId, aggregatePrediction, cal
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **aggregatePrediction** | [**AggregatePrediction**](AggregatePrediction.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -761,7 +761,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var modelHistoryEntity = new SkilClient.ModelHistoryEntity(); // ModelHistoryEntity | The model history entity
 
@@ -780,7 +780,7 @@ apiInstance.createModelHistory(modelHistoryServerId, modelHistoryEntity, callbac
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **modelHistoryEntity** | [**ModelHistoryEntity**](ModelHistoryEntity.md)| The model history entity | 
 
 ### Return type
@@ -815,7 +815,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var experimentID = "experimentID_example"; // String | the GUID of the experiment to delete
 
@@ -834,7 +834,7 @@ apiInstance.deleteExperiment(modelHistoryServerId, experimentID, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experimentID** | **String**| the GUID of the experiment to delete | 
 
 ### Return type
@@ -923,7 +923,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace to delete
 
@@ -942,7 +942,7 @@ apiInstance.deleteModelHistory(modelHistoryServerId, modelHistoryID, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **modelHistoryID** | **String**| the GUID of the model history / workspace to delete | 
 
 ### Return type
@@ -977,7 +977,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to delete.
 
@@ -996,7 +996,7 @@ apiInstance.deleteModelInstance(modelHistoryServerId, modelInstanceID, callback)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **modelInstanceID** | **String**| GUID of the model instance to delete. | 
 
 ### Return type
@@ -1352,7 +1352,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var bestModel = new SkilClient.BestModel(); // BestModel | Object encapsulating the model ids, eval type and column metric name
 
@@ -1371,7 +1371,7 @@ apiInstance.getBestModelAmongModelIds(modelHistoryServerId, bestModel, callback)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **bestModel** | [**BestModel**](BestModel.md)| Object encapsulating the model ids, eval type and column metric name | 
 
 ### Return type
@@ -1406,7 +1406,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to get evaluation results for.
 
@@ -1425,7 +1425,7 @@ apiInstance.getEvaluationForModelID(modelHistoryServerId, modelInstanceID, callb
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **modelInstanceID** | **String**| GUID of the model instance to get evaluation results for. | 
 
 ### Return type
@@ -1460,7 +1460,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var minibatchId = "minibatchId_example"; // String | The GUID of the minibatch
 
@@ -1479,7 +1479,7 @@ apiInstance.getExamplesForMinibatch(modelHistoryServerId, minibatchId, callback)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **minibatchId** | **String**| The GUID of the minibatch | 
 
 ### Return type
@@ -1514,7 +1514,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var experimentID = "experimentID_example"; // String | the GUID of the experiment to obtain
 
@@ -1533,7 +1533,7 @@ apiInstance.getExperiment(modelHistoryServerId, experimentID, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experimentID** | **String**| the GUID of the experiment to obtain | 
 
 ### Return type
@@ -1568,7 +1568,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace
 
@@ -1587,7 +1587,7 @@ apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **modelHistoryID** | **String**| the GUID of the model history / workspace | 
 
 ### Return type
@@ -1622,7 +1622,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var minibatchId = "minibatchId_example"; // String | The GUID of the minibatch
 
@@ -1641,7 +1641,7 @@ apiInstance.getMinibatch(modelHistoryServerId, minibatchId, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **minibatchId** | **String**| The GUID of the minibatch | 
 
 ### Return type
@@ -1676,7 +1676,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var modelHistoryID = "modelHistoryID_example"; // String | GUID of the model history to get information of.
 
@@ -1695,7 +1695,7 @@ apiInstance.getModelHistory(modelHistoryServerId, modelHistoryID, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **modelHistoryID** | **String**| GUID of the model history to get information of. | 
 
 ### Return type
@@ -1730,7 +1730,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to get information of.
 
@@ -1749,7 +1749,7 @@ apiInstance.getModelInstance(modelHistoryServerId, modelInstanceID, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **modelInstanceID** | **String**| GUID of the model instance to get information of. | 
 
 ### Return type
@@ -1784,7 +1784,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var experimentID = "experimentID_example"; // String | the GUID of the experiment
 
@@ -1803,7 +1803,7 @@ apiInstance.getModelsForExperiment(modelHistoryServerId, experimentID, callback)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experimentID** | **String**| the GUID of the experiment | 
 
 ### Return type
@@ -3807,7 +3807,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var updateBestModel = new SkilClient.UpdateBestModel(); // UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
 
@@ -3826,7 +3826,7 @@ apiInstance.updateBestModelForExperiment(modelHistoryServerId, updateBestModel, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **updateBestModel** | [**UpdateBestModel**](UpdateBestModel.md)| Model encapsulating the experiment id to update and the best model id. | 
 
 ### Return type
@@ -3861,7 +3861,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var experimentID = "experimentID_example"; // String | the GUID of the experiment to update
 
@@ -3882,7 +3882,7 @@ apiInstance.updateExperiment(modelHistoryServerId, experimentID, experimentEntit
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **experimentID** | **String**| the GUID of the experiment to update | 
  **experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to update with | 
 
@@ -3918,7 +3918,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil processes` in a console to find out the model history server GUID.
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
 var modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace to update
 
@@ -3939,7 +3939,7 @@ apiInstance.updateModelHistory(modelHistoryServerId, modelHistoryID, updateModel
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil processes&#x60; in a console to find out the model history server GUID. | 
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
  **modelHistoryID** | **String**| the GUID of the model history / workspace to update | 
  **updateModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 

@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * JsonArrayResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-06T20:00:52.936+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-07T17:05:04.781+05:00")
 public class JsonArrayResponse {
   @SerializedName("array")
   private INDArray array = null;
