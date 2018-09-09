@@ -43,11 +43,12 @@
    * Constructs a new <code>Base64NDArrayBody</code>.
    * @alias module:ai/skymind/skil/model/Base64NDArrayBody
    * @class
+   * @param ndarray {String} 
    */
-  var exports = function() {
+  var exports = function(ndarray) {
     var _this = this;
 
-
+    _this['ndarray'] = ndarray;
   };
 
   /**

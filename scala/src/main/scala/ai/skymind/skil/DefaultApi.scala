@@ -126,11 +126,12 @@ class DefaultApi(
    * Adds an evaluation result
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param EvaluationResultsEntity The evaluation result entity 
    * @return EvaluationResultsEntity
    */
-  def addEvaluationResult(EvaluationResultsEntity: EvaluationResultsEntity): Option[EvaluationResultsEntity] = {
-    val await = Try(Await.result(addEvaluationResultAsync(EvaluationResultsEntity), Duration.Inf))
+  def addEvaluationResult(ModelHistoryServerId: String, EvaluationResultsEntity: EvaluationResultsEntity): Option[EvaluationResultsEntity] = {
+    val await = Try(Await.result(addEvaluationResultAsync(ModelHistoryServerId, EvaluationResultsEntity), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -141,22 +142,24 @@ class DefaultApi(
    * Adds an evaluation result asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param EvaluationResultsEntity The evaluation result entity 
    * @return Future(EvaluationResultsEntity)
    */
-  def addEvaluationResultAsync(EvaluationResultsEntity: EvaluationResultsEntity): Future[EvaluationResultsEntity] = {
-      helper.addEvaluationResult(EvaluationResultsEntity)
+  def addEvaluationResultAsync(ModelHistoryServerId: String, EvaluationResultsEntity: EvaluationResultsEntity): Future[EvaluationResultsEntity] = {
+      helper.addEvaluationResult(ModelHistoryServerId, EvaluationResultsEntity)
   }
 
   /**
    * Adds a number of examples to a minibatch ID given an AddExampleRequest.
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AddExampleRequest The add example request, encapsulating minibatch details and examples batch size 
    * @return AddExampleRequest
    */
-  def addExampleForBatch(AddExampleRequest: AddExampleRequest): Option[AddExampleRequest] = {
-    val await = Try(Await.result(addExampleForBatchAsync(AddExampleRequest), Duration.Inf))
+  def addExampleForBatch(ModelHistoryServerId: String, AddExampleRequest: AddExampleRequest): Option[AddExampleRequest] = {
+    val await = Try(Await.result(addExampleForBatchAsync(ModelHistoryServerId, AddExampleRequest), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -167,22 +170,24 @@ class DefaultApi(
    * Adds a number of examples to a minibatch ID given an AddExampleRequest. asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AddExampleRequest The add example request, encapsulating minibatch details and examples batch size 
    * @return Future(AddExampleRequest)
    */
-  def addExampleForBatchAsync(AddExampleRequest: AddExampleRequest): Future[AddExampleRequest] = {
-      helper.addExampleForBatch(AddExampleRequest)
+  def addExampleForBatchAsync(ModelHistoryServerId: String, AddExampleRequest: AddExampleRequest): Future[AddExampleRequest] = {
+      helper.addExampleForBatch(ModelHistoryServerId, AddExampleRequest)
   }
 
   /**
    * Adds an example to a minibatch
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExampleEntity The example to add to the minibatch 
    * @return ExampleEntity
    */
-  def addExampleToMinibatch(ExampleEntity: ExampleEntity): Option[ExampleEntity] = {
-    val await = Try(Await.result(addExampleToMinibatchAsync(ExampleEntity), Duration.Inf))
+  def addExampleToMinibatch(ModelHistoryServerId: String, ExampleEntity: ExampleEntity): Option[ExampleEntity] = {
+    val await = Try(Await.result(addExampleToMinibatchAsync(ModelHistoryServerId, ExampleEntity), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -193,22 +198,24 @@ class DefaultApi(
    * Adds an example to a minibatch asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExampleEntity The example to add to the minibatch 
    * @return Future(ExampleEntity)
    */
-  def addExampleToMinibatchAsync(ExampleEntity: ExampleEntity): Future[ExampleEntity] = {
-      helper.addExampleToMinibatch(ExampleEntity)
+  def addExampleToMinibatchAsync(ModelHistoryServerId: String, ExampleEntity: ExampleEntity): Future[ExampleEntity] = {
+      helper.addExampleToMinibatch(ModelHistoryServerId, ExampleEntity)
   }
 
   /**
    * Add an experiment, given an experiment entity
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentEntity The experiment entity to add 
    * @return ExperimentEntity
    */
-  def addExperiment(ExperimentEntity: ExperimentEntity): Option[ExperimentEntity] = {
-    val await = Try(Await.result(addExperimentAsync(ExperimentEntity), Duration.Inf))
+  def addExperiment(ModelHistoryServerId: String, ExperimentEntity: ExperimentEntity): Option[ExperimentEntity] = {
+    val await = Try(Await.result(addExperimentAsync(ModelHistoryServerId, ExperimentEntity), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -219,22 +226,24 @@ class DefaultApi(
    * Add an experiment, given an experiment entity asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentEntity The experiment entity to add 
    * @return Future(ExperimentEntity)
    */
-  def addExperimentAsync(ExperimentEntity: ExperimentEntity): Future[ExperimentEntity] = {
-      helper.addExperiment(ExperimentEntity)
+  def addExperimentAsync(ModelHistoryServerId: String, ExperimentEntity: ExperimentEntity): Future[ExperimentEntity] = {
+      helper.addExperiment(ModelHistoryServerId, ExperimentEntity)
   }
 
   /**
    * Adds a minibatch
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchEntity The minibatch entity to add 
    * @return MinibatchEntity
    */
-  def addMinibatch(MinibatchEntity: MinibatchEntity): Option[MinibatchEntity] = {
-    val await = Try(Await.result(addMinibatchAsync(MinibatchEntity), Duration.Inf))
+  def addMinibatch(ModelHistoryServerId: String, MinibatchEntity: MinibatchEntity): Option[MinibatchEntity] = {
+    val await = Try(Await.result(addMinibatchAsync(ModelHistoryServerId, MinibatchEntity), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -245,22 +254,24 @@ class DefaultApi(
    * Adds a minibatch asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchEntity The minibatch entity to add 
    * @return Future(MinibatchEntity)
    */
-  def addMinibatchAsync(MinibatchEntity: MinibatchEntity): Future[MinibatchEntity] = {
-      helper.addMinibatch(MinibatchEntity)
+  def addMinibatchAsync(ModelHistoryServerId: String, MinibatchEntity: MinibatchEntity): Future[MinibatchEntity] = {
+      helper.addMinibatch(ModelHistoryServerId, MinibatchEntity)
   }
 
   /**
    * Adds an evaluation feedback to the model against a given minibatch id.
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelFeedBackRequest The model feedback request object 
    * @return ModelFeedBackRequest
    */
-  def addModelFeedback(ModelFeedBackRequest: ModelFeedBackRequest): Option[ModelFeedBackRequest] = {
-    val await = Try(Await.result(addModelFeedbackAsync(ModelFeedBackRequest), Duration.Inf))
+  def addModelFeedback(ModelHistoryServerId: String, ModelFeedBackRequest: ModelFeedBackRequest): Option[ModelFeedBackRequest] = {
+    val await = Try(Await.result(addModelFeedbackAsync(ModelHistoryServerId, ModelFeedBackRequest), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -271,22 +282,24 @@ class DefaultApi(
    * Adds an evaluation feedback to the model against a given minibatch id. asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelFeedBackRequest The model feedback request object 
    * @return Future(ModelFeedBackRequest)
    */
-  def addModelFeedbackAsync(ModelFeedBackRequest: ModelFeedBackRequest): Future[ModelFeedBackRequest] = {
-      helper.addModelFeedback(ModelFeedBackRequest)
+  def addModelFeedbackAsync(ModelHistoryServerId: String, ModelFeedBackRequest: ModelFeedBackRequest): Future[ModelFeedBackRequest] = {
+      helper.addModelFeedback(ModelHistoryServerId, ModelFeedBackRequest)
   }
 
   /**
    * Add a model history / workspace
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AddModelHistoryRequest The model history request object 
    * @return ModelHistoryEntity
    */
-  def addModelHistory(AddModelHistoryRequest: AddModelHistoryRequest): Option[ModelHistoryEntity] = {
-    val await = Try(Await.result(addModelHistoryAsync(AddModelHistoryRequest), Duration.Inf))
+  def addModelHistory(ModelHistoryServerId: String, AddModelHistoryRequest: AddModelHistoryRequest): Option[ModelHistoryEntity] = {
+    val await = Try(Await.result(addModelHistoryAsync(ModelHistoryServerId, AddModelHistoryRequest), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -297,22 +310,24 @@ class DefaultApi(
    * Add a model history / workspace asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AddModelHistoryRequest The model history request object 
    * @return Future(ModelHistoryEntity)
    */
-  def addModelHistoryAsync(AddModelHistoryRequest: AddModelHistoryRequest): Future[ModelHistoryEntity] = {
-      helper.addModelHistory(AddModelHistoryRequest)
+  def addModelHistoryAsync(ModelHistoryServerId: String, AddModelHistoryRequest: AddModelHistoryRequest): Future[ModelHistoryEntity] = {
+      helper.addModelHistory(ModelHistoryServerId, AddModelHistoryRequest)
   }
 
   /**
    * Adds a model
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate 
    * @return ModelInstanceEntity
    */
-  def addModelInstance(ModelInstanceEntity: ModelInstanceEntity): Option[ModelInstanceEntity] = {
-    val await = Try(Await.result(addModelInstanceAsync(ModelInstanceEntity), Duration.Inf))
+  def addModelInstance(ModelHistoryServerId: String, ModelInstanceEntity: ModelInstanceEntity): Option[ModelInstanceEntity] = {
+    val await = Try(Await.result(addModelInstanceAsync(ModelHistoryServerId, ModelInstanceEntity), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -323,22 +338,24 @@ class DefaultApi(
    * Adds a model asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceEntity The object encapsulating the model instance id and evaluation type to aggregate 
    * @return Future(ModelInstanceEntity)
    */
-  def addModelInstanceAsync(ModelInstanceEntity: ModelInstanceEntity): Future[ModelInstanceEntity] = {
-      helper.addModelInstance(ModelInstanceEntity)
+  def addModelInstanceAsync(ModelHistoryServerId: String, ModelInstanceEntity: ModelInstanceEntity): Future[ModelInstanceEntity] = {
+      helper.addModelInstance(ModelHistoryServerId, ModelInstanceEntity)
   }
 
   /**
    * Aggregates the evaluaition results of a model instance, based on the evaluation type
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate 
    * @return EvaluationResultsEntity
    */
-  def aggregateModelResults(AggregatePrediction: AggregatePrediction): Option[EvaluationResultsEntity] = {
-    val await = Try(Await.result(aggregateModelResultsAsync(AggregatePrediction), Duration.Inf))
+  def aggregateModelResults(ModelHistoryServerId: String, AggregatePrediction: AggregatePrediction): Option[EvaluationResultsEntity] = {
+    val await = Try(Await.result(aggregateModelResultsAsync(ModelHistoryServerId, AggregatePrediction), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -349,11 +366,12 @@ class DefaultApi(
    * Aggregates the evaluaition results of a model instance, based on the evaluation type asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param AggregatePrediction The object encapsulating the model instance id and evaluation type to aggregate 
    * @return Future(EvaluationResultsEntity)
    */
-  def aggregateModelResultsAsync(AggregatePrediction: AggregatePrediction): Future[EvaluationResultsEntity] = {
-      helper.aggregateModelResults(AggregatePrediction)
+  def aggregateModelResultsAsync(ModelHistoryServerId: String, AggregatePrediction: AggregatePrediction): Future[EvaluationResultsEntity] = {
+      helper.aggregateModelResults(ModelHistoryServerId, AggregatePrediction)
   }
 
   /**
@@ -362,11 +380,12 @@ class DefaultApi(
    *
    * @param Body The input NDArray 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return ClassificationResult
    */
-  def classify(Body: Prediction, DeploymentName: String, ModelName: String): Option[ClassificationResult] = {
-    val await = Try(Await.result(classifyAsync(Body, DeploymentName, ModelName), Duration.Inf))
+  def classify(Body: Prediction, DeploymentName: String, VersionName: String, ModelName: String): Option[ClassificationResult] = {
+    val await = Try(Await.result(classifyAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -379,11 +398,12 @@ class DefaultApi(
    *
    * @param Body The input NDArray 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(ClassificationResult)
    */
-  def classifyAsync(Body: Prediction, DeploymentName: String, ModelName: String): Future[ClassificationResult] = {
-      helper.classify(Body, DeploymentName, ModelName)
+  def classifyAsync(Body: Prediction, DeploymentName: String, VersionName: String, ModelName: String): Future[ClassificationResult] = {
+      helper.classify(Body, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -392,11 +412,12 @@ class DefaultApi(
    *
    * @param Body The input NDArray 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Base64NDArrayBody
    */
-  def classifyarray(Body: Prediction, DeploymentName: String, ModelName: String): Option[Base64NDArrayBody] = {
-    val await = Try(Await.result(classifyarrayAsync(Body, DeploymentName, ModelName), Duration.Inf))
+  def classifyarray(Body: Prediction, DeploymentName: String, VersionName: String, ModelName: String): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(classifyarrayAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -409,11 +430,12 @@ class DefaultApi(
    *
    * @param Body The input NDArray 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(Base64NDArrayBody)
    */
-  def classifyarrayAsync(Body: Prediction, DeploymentName: String, ModelName: String): Future[Base64NDArrayBody] = {
-      helper.classifyarray(Body, DeploymentName, ModelName)
+  def classifyarrayAsync(Body: Prediction, DeploymentName: String, VersionName: String, ModelName: String): Future[Base64NDArrayBody] = {
+      helper.classifyarray(Body, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -421,12 +443,13 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @param Image The file to upload. (optional)
    * @return ClassificationResult
    */
-  def classifyimage(DeploymentName: String, ModelName: String, Image: Option[File] = None): Option[ClassificationResult] = {
-    val await = Try(Await.result(classifyimageAsync(DeploymentName, ModelName, Image), Duration.Inf))
+  def classifyimage(DeploymentName: String, VersionName: String, ModelName: String, Image: Option[File] = None): Option[ClassificationResult] = {
+    val await = Try(Await.result(classifyimageAsync(DeploymentName, VersionName, ModelName, Image), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -438,23 +461,25 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @param Image The file to upload. (optional)
    * @return Future(ClassificationResult)
    */
-  def classifyimageAsync(DeploymentName: String, ModelName: String, Image: Option[File] = None): Future[ClassificationResult] = {
-      helper.classifyimage(DeploymentName, ModelName, Image)
+  def classifyimageAsync(DeploymentName: String, VersionName: String, ModelName: String, Image: Option[File] = None): Future[ClassificationResult] = {
+      helper.classifyimage(DeploymentName, VersionName, ModelName, Image)
   }
 
   /**
    * Creates model History
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryEntity The model history entity 
    * @return ModelHistoryEntity
    */
-  def createModelHistory(ModelHistoryEntity: ModelHistoryEntity): Option[ModelHistoryEntity] = {
-    val await = Try(Await.result(createModelHistoryAsync(ModelHistoryEntity), Duration.Inf))
+  def createModelHistory(ModelHistoryServerId: String, ModelHistoryEntity: ModelHistoryEntity): Option[ModelHistoryEntity] = {
+    val await = Try(Await.result(createModelHistoryAsync(ModelHistoryServerId, ModelHistoryEntity), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -465,22 +490,24 @@ class DefaultApi(
    * Creates model History asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryEntity The model history entity 
    * @return Future(ModelHistoryEntity)
    */
-  def createModelHistoryAsync(ModelHistoryEntity: ModelHistoryEntity): Future[ModelHistoryEntity] = {
-      helper.createModelHistory(ModelHistoryEntity)
+  def createModelHistoryAsync(ModelHistoryServerId: String, ModelHistoryEntity: ModelHistoryEntity): Future[ModelHistoryEntity] = {
+      helper.createModelHistory(ModelHistoryServerId, ModelHistoryEntity)
   }
 
   /**
    * Deletes an experiment, given an experiment entity
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to delete 
    * @return InlineResponse200
    */
-  def deleteExperiment(ExperimentID: String): Option[InlineResponse200] = {
-    val await = Try(Await.result(deleteExperimentAsync(ExperimentID), Duration.Inf))
+  def deleteExperiment(ModelHistoryServerId: String, ExperimentID: String): Option[InlineResponse200] = {
+    val await = Try(Await.result(deleteExperimentAsync(ModelHistoryServerId, ExperimentID), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -491,11 +518,12 @@ class DefaultApi(
    * Deletes an experiment, given an experiment entity asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to delete 
    * @return Future(InlineResponse200)
    */
-  def deleteExperimentAsync(ExperimentID: String): Future[InlineResponse200] = {
-      helper.deleteExperiment(ExperimentID)
+  def deleteExperimentAsync(ModelHistoryServerId: String, ExperimentID: String): Future[InlineResponse200] = {
+      helper.deleteExperiment(ModelHistoryServerId, ExperimentID)
   }
 
   /**
@@ -530,11 +558,12 @@ class DefaultApi(
    * Deletes a model history / workspace, given its ID
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace to delete 
    * @return InlineResponse200
    */
-  def deleteModelHistory(ModelHistoryID: String): Option[InlineResponse200] = {
-    val await = Try(Await.result(deleteModelHistoryAsync(ModelHistoryID), Duration.Inf))
+  def deleteModelHistory(ModelHistoryServerId: String, ModelHistoryID: String): Option[InlineResponse200] = {
+    val await = Try(Await.result(deleteModelHistoryAsync(ModelHistoryServerId, ModelHistoryID), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -545,22 +574,24 @@ class DefaultApi(
    * Deletes a model history / workspace, given its ID asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace to delete 
    * @return Future(InlineResponse200)
    */
-  def deleteModelHistoryAsync(ModelHistoryID: String): Future[InlineResponse200] = {
-      helper.deleteModelHistory(ModelHistoryID)
+  def deleteModelHistoryAsync(ModelHistoryServerId: String, ModelHistoryID: String): Future[InlineResponse200] = {
+      helper.deleteModelHistory(ModelHistoryServerId, ModelHistoryID)
   }
 
   /**
    * Deletes a model instance, given its ID
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to delete. 
    * @return void
    */
-  def deleteModelInstance(ModelInstanceID: String) = {
-    val await = Try(Await.result(deleteModelInstanceAsync(ModelInstanceID), Duration.Inf))
+  def deleteModelInstance(ModelHistoryServerId: String, ModelInstanceID: String) = {
+    val await = Try(Await.result(deleteModelInstanceAsync(ModelHistoryServerId, ModelInstanceID), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -571,11 +602,12 @@ class DefaultApi(
    * Deletes a model instance, given its ID asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to delete. 
    * @return Future(void)
    */
-  def deleteModelInstanceAsync(ModelInstanceID: String) = {
-      helper.deleteModelInstance(ModelInstanceID)
+  def deleteModelInstanceAsync(ModelHistoryServerId: String, ModelInstanceID: String) = {
+      helper.deleteModelInstance(ModelHistoryServerId, ModelInstanceID)
   }
 
   /**
@@ -717,11 +749,12 @@ class DefaultApi(
    * @param Threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
    * @param ImageFile the image file to detect objects from 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return DetectionResult
    */
-  def detectobjects(Id: String, NeedsPreprocessing: Boolean, Threshold: Float, ImageFile: File, DeploymentName: String, ModelName: String): Option[DetectionResult] = {
-    val await = Try(Await.result(detectobjectsAsync(Id, NeedsPreprocessing, Threshold, ImageFile, DeploymentName, ModelName), Duration.Inf))
+  def detectobjects(Id: String, NeedsPreprocessing: Boolean, Threshold: Float, ImageFile: File, DeploymentName: String, VersionName: String, ModelName: String): Option[DetectionResult] = {
+    val await = Try(Await.result(detectobjectsAsync(Id, NeedsPreprocessing, Threshold, ImageFile, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -737,22 +770,24 @@ class DefaultApi(
    * @param Threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
    * @param ImageFile the image file to detect objects from 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(DetectionResult)
    */
-  def detectobjectsAsync(Id: String, NeedsPreprocessing: Boolean, Threshold: Float, ImageFile: File, DeploymentName: String, ModelName: String): Future[DetectionResult] = {
-      helper.detectobjects(Id, NeedsPreprocessing, Threshold, ImageFile, DeploymentName, ModelName)
+  def detectobjectsAsync(Id: String, NeedsPreprocessing: Boolean, Threshold: Float, ImageFile: File, DeploymentName: String, VersionName: String, ModelName: String): Future[DetectionResult] = {
+      helper.detectobjects(Id, NeedsPreprocessing, Threshold, ImageFile, DeploymentName, VersionName, ModelName)
   }
 
   /**
    * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param BestModel Object encapsulating the model ids, eval type and column metric name 
    * @return ModelInstanceEntity
    */
-  def getBestModelAmongModelIds(BestModel: BestModel): Option[ModelInstanceEntity] = {
-    val await = Try(Await.result(getBestModelAmongModelIdsAsync(BestModel), Duration.Inf))
+  def getBestModelAmongModelIds(ModelHistoryServerId: String, BestModel: BestModel): Option[ModelInstanceEntity] = {
+    val await = Try(Await.result(getBestModelAmongModelIdsAsync(ModelHistoryServerId, BestModel), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -763,22 +798,24 @@ class DefaultApi(
    * Gets the best model among the given model instance IDs, based on the evaluation type and column metric asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param BestModel Object encapsulating the model ids, eval type and column metric name 
    * @return Future(ModelInstanceEntity)
    */
-  def getBestModelAmongModelIdsAsync(BestModel: BestModel): Future[ModelInstanceEntity] = {
-      helper.getBestModelAmongModelIds(BestModel)
+  def getBestModelAmongModelIdsAsync(ModelHistoryServerId: String, BestModel: BestModel): Future[ModelInstanceEntity] = {
+      helper.getBestModelAmongModelIds(ModelHistoryServerId, BestModel)
   }
 
   /**
    * Gets the list of evaluation results entity, given a model instance ID
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to get evaluation results for. 
    * @return List[EvaluationResultsEntity]
    */
-  def getEvaluationForModelID(ModelInstanceID: String): Option[List[EvaluationResultsEntity]] = {
-    val await = Try(Await.result(getEvaluationForModelIDAsync(ModelInstanceID), Duration.Inf))
+  def getEvaluationForModelID(ModelHistoryServerId: String, ModelInstanceID: String): Option[List[EvaluationResultsEntity]] = {
+    val await = Try(Await.result(getEvaluationForModelIDAsync(ModelHistoryServerId, ModelInstanceID), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -789,22 +826,24 @@ class DefaultApi(
    * Gets the list of evaluation results entity, given a model instance ID asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to get evaluation results for. 
    * @return Future(List[EvaluationResultsEntity])
    */
-  def getEvaluationForModelIDAsync(ModelInstanceID: String): Future[List[EvaluationResultsEntity]] = {
-      helper.getEvaluationForModelID(ModelInstanceID)
+  def getEvaluationForModelIDAsync(ModelHistoryServerId: String, ModelInstanceID: String): Future[List[EvaluationResultsEntity]] = {
+      helper.getEvaluationForModelID(ModelHistoryServerId, ModelInstanceID)
   }
 
   /**
    * Gets all the examples for a minibatch ID
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchId The GUID of the minibatch 
    * @return List[ExampleEntity]
    */
-  def getExamplesForMinibatch(MinibatchId: String): Option[List[ExampleEntity]] = {
-    val await = Try(Await.result(getExamplesForMinibatchAsync(MinibatchId), Duration.Inf))
+  def getExamplesForMinibatch(ModelHistoryServerId: String, MinibatchId: String): Option[List[ExampleEntity]] = {
+    val await = Try(Await.result(getExamplesForMinibatchAsync(ModelHistoryServerId, MinibatchId), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -815,22 +854,24 @@ class DefaultApi(
    * Gets all the examples for a minibatch ID asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchId The GUID of the minibatch 
    * @return Future(List[ExampleEntity])
    */
-  def getExamplesForMinibatchAsync(MinibatchId: String): Future[List[ExampleEntity]] = {
-      helper.getExamplesForMinibatch(MinibatchId)
+  def getExamplesForMinibatchAsync(ModelHistoryServerId: String, MinibatchId: String): Future[List[ExampleEntity]] = {
+      helper.getExamplesForMinibatch(ModelHistoryServerId, MinibatchId)
   }
 
   /**
    * Obtain an experiment&#39;s details, given its ID
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to obtain 
    * @return ExperimentEntity
    */
-  def getExperiment(ExperimentID: String): Option[ExperimentEntity] = {
-    val await = Try(Await.result(getExperimentAsync(ExperimentID), Duration.Inf))
+  def getExperiment(ModelHistoryServerId: String, ExperimentID: String): Option[ExperimentEntity] = {
+    val await = Try(Await.result(getExperimentAsync(ModelHistoryServerId, ExperimentID), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -841,22 +882,24 @@ class DefaultApi(
    * Obtain an experiment&#39;s details, given its ID asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to obtain 
    * @return Future(ExperimentEntity)
    */
-  def getExperimentAsync(ExperimentID: String): Future[ExperimentEntity] = {
-      helper.getExperiment(ExperimentID)
+  def getExperimentAsync(ModelHistoryServerId: String, ExperimentID: String): Future[ExperimentEntity] = {
+      helper.getExperiment(ModelHistoryServerId, ExperimentID)
   }
 
   /**
    * Obtain all experiments for a model history / workspace
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace 
    * @return ExperimentEntity
    */
-  def getExperimentsForModelHistory(ModelHistoryID: String): Option[ExperimentEntity] = {
-    val await = Try(Await.result(getExperimentsForModelHistoryAsync(ModelHistoryID), Duration.Inf))
+  def getExperimentsForModelHistory(ModelHistoryServerId: String, ModelHistoryID: String): Option[ExperimentEntity] = {
+    val await = Try(Await.result(getExperimentsForModelHistoryAsync(ModelHistoryServerId, ModelHistoryID), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -867,22 +910,24 @@ class DefaultApi(
    * Obtain all experiments for a model history / workspace asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace 
    * @return Future(ExperimentEntity)
    */
-  def getExperimentsForModelHistoryAsync(ModelHistoryID: String): Future[ExperimentEntity] = {
-      helper.getExperimentsForModelHistory(ModelHistoryID)
+  def getExperimentsForModelHistoryAsync(ModelHistoryServerId: String, ModelHistoryID: String): Future[ExperimentEntity] = {
+      helper.getExperimentsForModelHistory(ModelHistoryServerId, ModelHistoryID)
   }
 
   /**
    * Gets a minibatch for the model
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchId The GUID of the minibatch 
    * @return MinibatchEntity
    */
-  def getMinibatch(MinibatchId: String): Option[MinibatchEntity] = {
-    val await = Try(Await.result(getMinibatchAsync(MinibatchId), Duration.Inf))
+  def getMinibatch(ModelHistoryServerId: String, MinibatchId: String): Option[MinibatchEntity] = {
+    val await = Try(Await.result(getMinibatchAsync(ModelHistoryServerId, MinibatchId), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -893,22 +938,24 @@ class DefaultApi(
    * Gets a minibatch for the model asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param MinibatchId The GUID of the minibatch 
    * @return Future(MinibatchEntity)
    */
-  def getMinibatchAsync(MinibatchId: String): Future[MinibatchEntity] = {
-      helper.getMinibatch(MinibatchId)
+  def getMinibatchAsync(ModelHistoryServerId: String, MinibatchId: String): Future[MinibatchEntity] = {
+      helper.getMinibatch(ModelHistoryServerId, MinibatchId)
   }
 
   /**
    * Gets a model history, given its ID
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID GUID of the model history to get information of. 
    * @return ModelHistoryEntity
    */
-  def getModelHistory(ModelHistoryID: String): Option[ModelHistoryEntity] = {
-    val await = Try(Await.result(getModelHistoryAsync(ModelHistoryID), Duration.Inf))
+  def getModelHistory(ModelHistoryServerId: String, ModelHistoryID: String): Option[ModelHistoryEntity] = {
+    val await = Try(Await.result(getModelHistoryAsync(ModelHistoryServerId, ModelHistoryID), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -919,22 +966,24 @@ class DefaultApi(
    * Gets a model history, given its ID asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID GUID of the model history to get information of. 
    * @return Future(ModelHistoryEntity)
    */
-  def getModelHistoryAsync(ModelHistoryID: String): Future[ModelHistoryEntity] = {
-      helper.getModelHistory(ModelHistoryID)
+  def getModelHistoryAsync(ModelHistoryServerId: String, ModelHistoryID: String): Future[ModelHistoryEntity] = {
+      helper.getModelHistory(ModelHistoryServerId, ModelHistoryID)
   }
 
   /**
    * Gets a model instance, given its ID
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to get information of. 
    * @return ModelInstanceEntity
    */
-  def getModelInstance(ModelInstanceID: String): Option[ModelInstanceEntity] = {
-    val await = Try(Await.result(getModelInstanceAsync(ModelInstanceID), Duration.Inf))
+  def getModelInstance(ModelHistoryServerId: String, ModelInstanceID: String): Option[ModelInstanceEntity] = {
+    val await = Try(Await.result(getModelInstanceAsync(ModelHistoryServerId, ModelInstanceID), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -945,22 +994,24 @@ class DefaultApi(
    * Gets a model instance, given its ID asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelInstanceID GUID of the model instance to get information of. 
    * @return Future(ModelInstanceEntity)
    */
-  def getModelInstanceAsync(ModelInstanceID: String): Future[ModelInstanceEntity] = {
-      helper.getModelInstance(ModelInstanceID)
+  def getModelInstanceAsync(ModelHistoryServerId: String, ModelInstanceID: String): Future[ModelInstanceEntity] = {
+      helper.getModelInstance(ModelHistoryServerId, ModelInstanceID)
   }
 
   /**
    * Obtain a list of all the models for an experiment
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment 
    * @return List[ModelInstanceEntity]
    */
-  def getModelsForExperiment(ExperimentID: String): Option[List[ModelInstanceEntity]] = {
-    val await = Try(Await.result(getModelsForExperimentAsync(ExperimentID), Duration.Inf))
+  def getModelsForExperiment(ModelHistoryServerId: String, ExperimentID: String): Option[List[ModelInstanceEntity]] = {
+    val await = Try(Await.result(getModelsForExperimentAsync(ModelHistoryServerId, ExperimentID), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -971,11 +1022,12 @@ class DefaultApi(
    * Obtain a list of all the models for an experiment asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment 
    * @return Future(List[ModelInstanceEntity])
    */
-  def getModelsForExperimentAsync(ExperimentID: String): Future[List[ModelInstanceEntity]] = {
-      helper.getModelsForExperiment(ExperimentID)
+  def getModelsForExperimentAsync(ModelHistoryServerId: String, ExperimentID: String): Future[List[ModelInstanceEntity]] = {
+      helper.getModelsForExperiment(ModelHistoryServerId, ExperimentID)
   }
 
   /**
@@ -983,11 +1035,12 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @return ImageTransformProcess
    */
-  def imagetransformprocessGet(DeploymentName: String, ImageTransformName: String): Option[ImageTransformProcess] = {
-    val await = Try(Await.result(imagetransformprocessGetAsync(DeploymentName, ImageTransformName), Duration.Inf))
+  def imagetransformprocessGet(DeploymentName: String, VersionName: String, ImageTransformName: String): Option[ImageTransformProcess] = {
+    val await = Try(Await.result(imagetransformprocessGetAsync(DeploymentName, VersionName, ImageTransformName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -999,11 +1052,12 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @return Future(ImageTransformProcess)
    */
-  def imagetransformprocessGetAsync(DeploymentName: String, ImageTransformName: String): Future[ImageTransformProcess] = {
-      helper.imagetransformprocessGet(DeploymentName, ImageTransformName)
+  def imagetransformprocessGetAsync(DeploymentName: String, VersionName: String, ImageTransformName: String): Future[ImageTransformProcess] = {
+      helper.imagetransformprocessGet(DeploymentName, VersionName, ImageTransformName)
   }
 
   /**
@@ -1011,12 +1065,13 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @param Body The image transform process JSON 
    * @return ImageTransformProcess
    */
-  def imagetransformprocessPost(DeploymentName: String, ImageTransformName: String, Body: ImageTransformProcess): Option[ImageTransformProcess] = {
-    val await = Try(Await.result(imagetransformprocessPostAsync(DeploymentName, ImageTransformName, Body), Duration.Inf))
+  def imagetransformprocessPost(DeploymentName: String, VersionName: String, ImageTransformName: String, Body: ImageTransformProcess): Option[ImageTransformProcess] = {
+    val await = Try(Await.result(imagetransformprocessPostAsync(DeploymentName, VersionName, ImageTransformName, Body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1028,12 +1083,13 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @param Body The image transform process JSON 
    * @return Future(ImageTransformProcess)
    */
-  def imagetransformprocessPostAsync(DeploymentName: String, ImageTransformName: String, Body: ImageTransformProcess): Future[ImageTransformProcess] = {
-      helper.imagetransformprocessPost(DeploymentName, ImageTransformName, Body)
+  def imagetransformprocessPostAsync(DeploymentName: String, VersionName: String, ImageTransformName: String, Body: ImageTransformProcess): Future[ImageTransformProcess] = {
+      helper.imagetransformprocessPost(DeploymentName, VersionName, ImageTransformName, Body)
   }
 
   /**
@@ -1042,11 +1098,12 @@ class DefaultApi(
    *
    * @param Body The input NDArray 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return JsonArrayResponse
    */
-  def jsonarray(Body: Prediction, DeploymentName: String, ModelName: String): Option[JsonArrayResponse] = {
-    val await = Try(Await.result(jsonarrayAsync(Body, DeploymentName, ModelName), Duration.Inf))
+  def jsonarray(Body: Prediction, DeploymentName: String, VersionName: String, ModelName: String): Option[JsonArrayResponse] = {
+    val await = Try(Await.result(jsonarrayAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1059,11 +1116,12 @@ class DefaultApi(
    *
    * @param Body The input NDArray 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(JsonArrayResponse)
    */
-  def jsonarrayAsync(Body: Prediction, DeploymentName: String, ModelName: String): Future[JsonArrayResponse] = {
-      helper.jsonarray(Body, DeploymentName, ModelName)
+  def jsonarrayAsync(Body: Prediction, DeploymentName: String, VersionName: String, ModelName: String): Future[JsonArrayResponse] = {
+      helper.jsonarray(Body, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1071,12 +1129,13 @@ class DefaultApi(
    * Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param KnnName ID or name of the deployed knn 
    * @param Body  
    * @return NearestNeighborsResults
    */
-  def knn(DeploymentName: String, KnnName: String, Body: NearestNeighborRequest): Option[NearestNeighborsResults] = {
-    val await = Try(Await.result(knnAsync(DeploymentName, KnnName, Body), Duration.Inf))
+  def knn(DeploymentName: String, VersionName: String, KnnName: String, Body: NearestNeighborRequest): Option[NearestNeighborsResults] = {
+    val await = Try(Await.result(knnAsync(DeploymentName, VersionName, KnnName, Body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1088,12 +1147,13 @@ class DefaultApi(
    * Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param KnnName ID or name of the deployed knn 
    * @param Body  
    * @return Future(NearestNeighborsResults)
    */
-  def knnAsync(DeploymentName: String, KnnName: String, Body: NearestNeighborRequest): Future[NearestNeighborsResults] = {
-      helper.knn(DeploymentName, KnnName, Body)
+  def knnAsync(DeploymentName: String, VersionName: String, KnnName: String, Body: NearestNeighborRequest): Future[NearestNeighborsResults] = {
+      helper.knn(DeploymentName, VersionName, KnnName, Body)
   }
 
   /**
@@ -1101,12 +1161,13 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param KnnName ID or name of the deployed knn 
    * @param Body The input NDArray 
    * @return NearestNeighborsResults
    */
-  def knnnew(DeploymentName: String, KnnName: String, Body: Base64NDArrayBodyKNN): Option[NearestNeighborsResults] = {
-    val await = Try(Await.result(knnnewAsync(DeploymentName, KnnName, Body), Duration.Inf))
+  def knnnew(DeploymentName: String, VersionName: String, KnnName: String, Body: Base64NDArrayBodyKNN): Option[NearestNeighborsResults] = {
+    val await = Try(Await.result(knnnewAsync(DeploymentName, VersionName, KnnName, Body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1118,12 +1179,13 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param KnnName ID or name of the deployed knn 
    * @param Body The input NDArray 
    * @return Future(NearestNeighborsResults)
    */
-  def knnnewAsync(DeploymentName: String, KnnName: String, Body: Base64NDArrayBodyKNN): Future[NearestNeighborsResults] = {
-      helper.knnnew(DeploymentName, KnnName, Body)
+  def knnnewAsync(DeploymentName: String, VersionName: String, KnnName: String, Body: Base64NDArrayBodyKNN): Future[NearestNeighborsResults] = {
+      helper.knnnew(DeploymentName, VersionName, KnnName, Body)
   }
 
   /**
@@ -1155,11 +1217,12 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return String
    */
-  def logfilepath(DeploymentName: String, ModelName: String): Option[String] = {
-    val await = Try(Await.result(logfilepathAsync(DeploymentName, ModelName), Duration.Inf))
+  def logfilepath(DeploymentName: String, VersionName: String, ModelName: String): Option[String] = {
+    val await = Try(Await.result(logfilepathAsync(DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1171,11 +1234,12 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(String)
    */
-  def logfilepathAsync(DeploymentName: String, ModelName: String): Future[String] = {
-      helper.logfilepath(DeploymentName, ModelName)
+  def logfilepathAsync(DeploymentName: String, VersionName: String, ModelName: String): Future[String] = {
+      helper.logfilepath(DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1210,11 +1274,12 @@ class DefaultApi(
    *
    * @param Body the the log request 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return LogBatch
    */
-  def logs(Body: LogRequest, DeploymentName: String, ModelName: String): Option[LogBatch] = {
-    val await = Try(Await.result(logsAsync(Body, DeploymentName, ModelName), Duration.Inf))
+  def logs(Body: LogRequest, DeploymentName: String, VersionName: String, ModelName: String): Option[LogBatch] = {
+    val await = Try(Await.result(logsAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1227,11 +1292,12 @@ class DefaultApi(
    *
    * @param Body the the log request 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(LogBatch)
    */
-  def logsAsync(Body: LogRequest, DeploymentName: String, ModelName: String): Future[LogBatch] = {
-      helper.logs(Body, DeploymentName, ModelName)
+  def logsAsync(Body: LogRequest, DeploymentName: String, VersionName: String, ModelName: String): Future[LogBatch] = {
+      helper.logs(Body, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1239,11 +1305,12 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return MetaData
    */
-  def metaGet(DeploymentName: String, ModelName: String): Option[MetaData] = {
-    val await = Try(Await.result(metaGetAsync(DeploymentName, ModelName), Duration.Inf))
+  def metaGet(DeploymentName: String, VersionName: String, ModelName: String): Option[MetaData] = {
+    val await = Try(Await.result(metaGetAsync(DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1255,11 +1322,12 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(MetaData)
    */
-  def metaGetAsync(DeploymentName: String, ModelName: String): Future[MetaData] = {
-      helper.metaGet(DeploymentName, ModelName)
+  def metaGetAsync(DeploymentName: String, VersionName: String, ModelName: String): Future[MetaData] = {
+      helper.metaGet(DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1268,11 +1336,12 @@ class DefaultApi(
    *
    * @param Body the meta data object 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return MetaData
    */
-  def metaPost(Body: MetaData, DeploymentName: String, ModelName: String): Option[MetaData] = {
-    val await = Try(Await.result(metaPostAsync(Body, DeploymentName, ModelName), Duration.Inf))
+  def metaPost(Body: MetaData, DeploymentName: String, VersionName: String, ModelName: String): Option[MetaData] = {
+    val await = Try(Await.result(metaPostAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1285,11 +1354,12 @@ class DefaultApi(
    *
    * @param Body the meta data object 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(MetaData)
    */
-  def metaPostAsync(Body: MetaData, DeploymentName: String, ModelName: String): Future[MetaData] = {
-      helper.metaPost(Body, DeploymentName, ModelName)
+  def metaPostAsync(Body: MetaData, DeploymentName: String, VersionName: String, ModelName: String): Future[MetaData] = {
+      helper.metaPost(Body, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1353,12 +1423,13 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @param File The model file to upload (.pb file) (optional)
    * @return ModelStatus
    */
-  def modelset(DeploymentName: String, ModelName: String, File: Option[File] = None): Option[ModelStatus] = {
-    val await = Try(Await.result(modelsetAsync(DeploymentName, ModelName, File), Duration.Inf))
+  def modelset(DeploymentName: String, VersionName: String, ModelName: String, File: Option[File] = None): Option[ModelStatus] = {
+    val await = Try(Await.result(modelsetAsync(DeploymentName, VersionName, ModelName, File), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1370,12 +1441,13 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @param File The model file to upload (.pb file) (optional)
    * @return Future(ModelStatus)
    */
-  def modelsetAsync(DeploymentName: String, ModelName: String, File: Option[File] = None): Future[ModelStatus] = {
-      helper.modelset(DeploymentName, ModelName, File)
+  def modelsetAsync(DeploymentName: String, VersionName: String, ModelName: String, File: Option[File] = None): Future[ModelStatus] = {
+      helper.modelset(DeploymentName, VersionName, ModelName, File)
   }
 
   /**
@@ -1383,12 +1455,13 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @param File The model file to update with (.pb file) (optional)
    * @return ModelStatus
    */
-  def modelupdate(DeploymentName: String, ModelName: String, File: Option[File] = None): Option[ModelStatus] = {
-    val await = Try(Await.result(modelupdateAsync(DeploymentName, ModelName, File), Duration.Inf))
+  def modelupdate(DeploymentName: String, VersionName: String, ModelName: String, File: Option[File] = None): Option[ModelStatus] = {
+    val await = Try(Await.result(modelupdateAsync(DeploymentName, VersionName, ModelName, File), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1400,12 +1473,13 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @param File The model file to update with (.pb file) (optional)
    * @return Future(ModelStatus)
    */
-  def modelupdateAsync(DeploymentName: String, ModelName: String, File: Option[File] = None): Future[ModelStatus] = {
-      helper.modelupdate(DeploymentName, ModelName, File)
+  def modelupdateAsync(DeploymentName: String, VersionName: String, ModelName: String, File: Option[File] = None): Future[ModelStatus] = {
+      helper.modelupdate(DeploymentName, VersionName, ModelName, File)
   }
 
   /**
@@ -1414,11 +1488,12 @@ class DefaultApi(
    *
    * @param Body The input NDArray 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return MultiClassClassificationResult
    */
-  def multiclassify(Body: Prediction, DeploymentName: String, ModelName: String): Option[MultiClassClassificationResult] = {
-    val await = Try(Await.result(multiclassifyAsync(Body, DeploymentName, ModelName), Duration.Inf))
+  def multiclassify(Body: Prediction, DeploymentName: String, VersionName: String, ModelName: String): Option[MultiClassClassificationResult] = {
+    val await = Try(Await.result(multiclassifyAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1431,11 +1506,12 @@ class DefaultApi(
    *
    * @param Body The input NDArray 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(MultiClassClassificationResult)
    */
-  def multiclassifyAsync(Body: Prediction, DeploymentName: String, ModelName: String): Future[MultiClassClassificationResult] = {
-      helper.multiclassify(Body, DeploymentName, ModelName)
+  def multiclassifyAsync(Body: Prediction, DeploymentName: String, VersionName: String, ModelName: String): Future[MultiClassClassificationResult] = {
+      helper.multiclassify(Body, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1444,11 +1520,12 @@ class DefaultApi(
    *
    * @param Body The multiple input arrays with mask inputs to run inferences on 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return MultiPredictResponse
    */
-  def multipredict(Body: MultiPredictRequest, DeploymentName: String, ModelName: String): Option[MultiPredictResponse] = {
-    val await = Try(Await.result(multipredictAsync(Body, DeploymentName, ModelName), Duration.Inf))
+  def multipredict(Body: MultiPredictRequest, DeploymentName: String, VersionName: String, ModelName: String): Option[MultiPredictResponse] = {
+    val await = Try(Await.result(multipredictAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1461,11 +1538,12 @@ class DefaultApi(
    *
    * @param Body The multiple input arrays with mask inputs to run inferences on 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(MultiPredictResponse)
    */
-  def multipredictAsync(Body: MultiPredictRequest, DeploymentName: String, ModelName: String): Future[MultiPredictResponse] = {
-      helper.multipredict(Body, DeploymentName, ModelName)
+  def multipredictAsync(Body: MultiPredictRequest, DeploymentName: String, VersionName: String, ModelName: String): Future[MultiPredictResponse] = {
+      helper.multipredict(Body, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1476,11 +1554,12 @@ class DefaultApi(
    * @param Id The id of the request (could be self generated) 
    * @param NeedsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return MultiPredictResponse
    */
-  def multipredictimage(File: File, Id: String, NeedsPreprocessing: Boolean, DeploymentName: String, ModelName: String): Option[MultiPredictResponse] = {
-    val await = Try(Await.result(multipredictimageAsync(File, Id, NeedsPreprocessing, DeploymentName, ModelName), Duration.Inf))
+  def multipredictimage(File: File, Id: String, NeedsPreprocessing: Boolean, DeploymentName: String, VersionName: String, ModelName: String): Option[MultiPredictResponse] = {
+    val await = Try(Await.result(multipredictimageAsync(File, Id, NeedsPreprocessing, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1495,11 +1574,12 @@ class DefaultApi(
    * @param Id The id of the request (could be self generated) 
    * @param NeedsPreprocessing Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(MultiPredictResponse)
    */
-  def multipredictimageAsync(File: File, Id: String, NeedsPreprocessing: Boolean, DeploymentName: String, ModelName: String): Future[MultiPredictResponse] = {
-      helper.multipredictimage(File, Id, NeedsPreprocessing, DeploymentName, ModelName)
+  def multipredictimageAsync(File: File, Id: String, NeedsPreprocessing: Boolean, DeploymentName: String, VersionName: String, ModelName: String): Future[MultiPredictResponse] = {
+      helper.multipredictimage(File, Id, NeedsPreprocessing, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1508,11 +1588,12 @@ class DefaultApi(
    *
    * @param Body The input NDArray 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Prediction
    */
-  def predict(Body: Prediction, DeploymentName: String, ModelName: String): Option[Prediction] = {
-    val await = Try(Await.result(predictAsync(Body, DeploymentName, ModelName), Duration.Inf))
+  def predict(Body: Prediction, DeploymentName: String, VersionName: String, ModelName: String): Option[Prediction] = {
+    val await = Try(Await.result(predictAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1525,11 +1606,12 @@ class DefaultApi(
    *
    * @param Body The input NDArray 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(Prediction)
    */
-  def predictAsync(Body: Prediction, DeploymentName: String, ModelName: String): Future[Prediction] = {
-      helper.predict(Body, DeploymentName, ModelName)
+  def predictAsync(Body: Prediction, DeploymentName: String, VersionName: String, ModelName: String): Future[Prediction] = {
+      helper.predict(Body, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1537,12 +1619,13 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @param Image The file to upload. (optional)
    * @return Prediction
    */
-  def predictimage(DeploymentName: String, ModelName: String, Image: Option[File] = None): Option[Prediction] = {
-    val await = Try(Await.result(predictimageAsync(DeploymentName, ModelName, Image), Duration.Inf))
+  def predictimage(DeploymentName: String, VersionName: String, ModelName: String, Image: Option[File] = None): Option[Prediction] = {
+    val await = Try(Await.result(predictimageAsync(DeploymentName, VersionName, ModelName, Image), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1554,12 +1637,13 @@ class DefaultApi(
    * 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @param Image The file to upload. (optional)
    * @return Future(Prediction)
    */
-  def predictimageAsync(DeploymentName: String, ModelName: String, Image: Option[File] = None): Future[Prediction] = {
-      helper.predictimage(DeploymentName, ModelName, Image)
+  def predictimageAsync(DeploymentName: String, VersionName: String, ModelName: String, Image: Option[File] = None): Future[Prediction] = {
+      helper.predictimage(DeploymentName, VersionName, ModelName, Image)
   }
 
   /**
@@ -1568,11 +1652,12 @@ class DefaultApi(
    *
    * @param Body The input array 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Prediction
    */
-  def predictwithpreprocess(Body: List[String], DeploymentName: String, ModelName: String): Option[Prediction] = {
-    val await = Try(Await.result(predictwithpreprocessAsync(Body, DeploymentName, ModelName), Duration.Inf))
+  def predictwithpreprocess(Body: List[String], DeploymentName: String, VersionName: String, ModelName: String): Option[Prediction] = {
+    val await = Try(Await.result(predictwithpreprocessAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1585,11 +1670,12 @@ class DefaultApi(
    *
    * @param Body The input array 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(Prediction)
    */
-  def predictwithpreprocessAsync(Body: List[String], DeploymentName: String, ModelName: String): Future[Prediction] = {
-      helper.predictwithpreprocess(Body, DeploymentName, ModelName)
+  def predictwithpreprocessAsync(Body: List[String], DeploymentName: String, VersionName: String, ModelName: String): Future[Prediction] = {
+      helper.predictwithpreprocess(Body, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1598,11 +1684,12 @@ class DefaultApi(
    *
    * @param Body The input array 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return JsonArrayResponse
    */
-  def predictwithpreprocessjson(Body: List[String], DeploymentName: String, ModelName: String): Option[JsonArrayResponse] = {
-    val await = Try(Await.result(predictwithpreprocessjsonAsync(Body, DeploymentName, ModelName), Duration.Inf))
+  def predictwithpreprocessjson(Body: List[String], DeploymentName: String, VersionName: String, ModelName: String): Option[JsonArrayResponse] = {
+    val await = Try(Await.result(predictwithpreprocessjsonAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1615,11 +1702,12 @@ class DefaultApi(
    *
    * @param Body The input array 
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(JsonArrayResponse)
    */
-  def predictwithpreprocessjsonAsync(Body: List[String], DeploymentName: String, ModelName: String): Future[JsonArrayResponse] = {
-      helper.predictwithpreprocessjson(Body, DeploymentName, ModelName)
+  def predictwithpreprocessjsonAsync(Body: List[String], DeploymentName: String, VersionName: String, ModelName: String): Future[JsonArrayResponse] = {
+      helper.predictwithpreprocessjson(Body, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1657,12 +1745,13 @@ class DefaultApi(
    * Takes a batch of SingleCSVRecord object and transforms it into the desired format
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param BatchCSVRecord The input batch of record arrays (optional)
    * @return BatchCSVRecord
    */
-  def transformCsv(DeploymentName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Option[BatchCSVRecord] = {
-    val await = Try(Await.result(transformCsvAsync(DeploymentName, TransformName, BatchCSVRecord), Duration.Inf))
+  def transformCsv(DeploymentName: String, VersionName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Option[BatchCSVRecord] = {
+    val await = Try(Await.result(transformCsvAsync(DeploymentName, VersionName, TransformName, BatchCSVRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1674,12 +1763,13 @@ class DefaultApi(
    * Takes a batch of SingleCSVRecord object and transforms it into the desired format
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param BatchCSVRecord The input batch of record arrays (optional)
    * @return Future(BatchCSVRecord)
    */
-  def transformCsvAsync(DeploymentName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Future[BatchCSVRecord] = {
-      helper.transformCsv(DeploymentName, TransformName, BatchCSVRecord)
+  def transformCsvAsync(DeploymentName: String, VersionName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Future[BatchCSVRecord] = {
+      helper.transformCsv(DeploymentName, VersionName, TransformName, BatchCSVRecord)
   }
 
   /**
@@ -1687,12 +1777,13 @@ class DefaultApi(
    * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param BatchCSVRecord The input batch of record arrays (optional)
    * @return Base64NDArrayBody
    */
-  def transformarrayCsv(DeploymentName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Option[Base64NDArrayBody] = {
-    val await = Try(Await.result(transformarrayCsvAsync(DeploymentName, TransformName, BatchCSVRecord), Duration.Inf))
+  def transformarrayCsv(DeploymentName: String, VersionName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformarrayCsvAsync(DeploymentName, VersionName, TransformName, BatchCSVRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1704,12 +1795,13 @@ class DefaultApi(
    * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param BatchCSVRecord The input batch of record arrays (optional)
    * @return Future(Base64NDArrayBody)
    */
-  def transformarrayCsvAsync(DeploymentName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Future[Base64NDArrayBody] = {
-      helper.transformarrayCsv(DeploymentName, TransformName, BatchCSVRecord)
+  def transformarrayCsvAsync(DeploymentName: String, VersionName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Future[Base64NDArrayBody] = {
+      helper.transformarrayCsv(DeploymentName, VersionName, TransformName, BatchCSVRecord)
   }
 
   /**
@@ -1717,12 +1809,13 @@ class DefaultApi(
    * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @param BatchImageRecord The input batch of record arrays 
    * @return Base64NDArrayBody
    */
-  def transformarrayImage(DeploymentName: String, ImageTransformName: String, BatchImageRecord: BatchImageRecord): Option[Base64NDArrayBody] = {
-    val await = Try(Await.result(transformarrayImageAsync(DeploymentName, ImageTransformName, BatchImageRecord), Duration.Inf))
+  def transformarrayImage(DeploymentName: String, VersionName: String, ImageTransformName: String, BatchImageRecord: BatchImageRecord): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformarrayImageAsync(DeploymentName, VersionName, ImageTransformName, BatchImageRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1734,12 +1827,13 @@ class DefaultApi(
    * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @param BatchImageRecord The input batch of record arrays 
    * @return Future(Base64NDArrayBody)
    */
-  def transformarrayImageAsync(DeploymentName: String, ImageTransformName: String, BatchImageRecord: BatchImageRecord): Future[Base64NDArrayBody] = {
-      helper.transformarrayImage(DeploymentName, ImageTransformName, BatchImageRecord)
+  def transformarrayImageAsync(DeploymentName: String, VersionName: String, ImageTransformName: String, BatchImageRecord: BatchImageRecord): Future[Base64NDArrayBody] = {
+      helper.transformarrayImage(DeploymentName, VersionName, ImageTransformName, BatchImageRecord)
   }
 
   /**
@@ -1747,12 +1841,13 @@ class DefaultApi(
    * Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @param Files The image files to upload 
    * @return Base64NDArrayBody
    */
-  def transformimage(DeploymentName: String, ImageTransformName: String, Files: List[Array[Byte]]): Option[Base64NDArrayBody] = {
-    val await = Try(Await.result(transformimageAsync(DeploymentName, ImageTransformName, Files), Duration.Inf))
+  def transformimage(DeploymentName: String, VersionName: String, ImageTransformName: String, Files: List[Array[Byte]]): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformimageAsync(DeploymentName, VersionName, ImageTransformName, Files), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1764,12 +1859,13 @@ class DefaultApi(
    * Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @param Files The image files to upload 
    * @return Future(Base64NDArrayBody)
    */
-  def transformimageAsync(DeploymentName: String, ImageTransformName: String, Files: List[Array[Byte]]): Future[Base64NDArrayBody] = {
-      helper.transformimage(DeploymentName, ImageTransformName, Files)
+  def transformimageAsync(DeploymentName: String, VersionName: String, ImageTransformName: String, Files: List[Array[Byte]]): Future[Base64NDArrayBody] = {
+      helper.transformimage(DeploymentName, VersionName, ImageTransformName, Files)
   }
 
   /**
@@ -1777,12 +1873,13 @@ class DefaultApi(
    * Takes a SingleCSVRecord object and transforms it into the desired format
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param SingleCSVRecord The input record array (optional)
    * @return SingleCSVRecord
    */
-  def transformincrementalCsv(DeploymentName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Option[SingleCSVRecord] = {
-    val await = Try(Await.result(transformincrementalCsvAsync(DeploymentName, TransformName, SingleCSVRecord), Duration.Inf))
+  def transformincrementalCsv(DeploymentName: String, VersionName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Option[SingleCSVRecord] = {
+    val await = Try(Await.result(transformincrementalCsvAsync(DeploymentName, VersionName, TransformName, SingleCSVRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1794,12 +1891,13 @@ class DefaultApi(
    * Takes a SingleCSVRecord object and transforms it into the desired format
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param SingleCSVRecord The input record array (optional)
    * @return Future(SingleCSVRecord)
    */
-  def transformincrementalCsvAsync(DeploymentName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Future[SingleCSVRecord] = {
-      helper.transformincrementalCsv(DeploymentName, TransformName, SingleCSVRecord)
+  def transformincrementalCsvAsync(DeploymentName: String, VersionName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Future[SingleCSVRecord] = {
+      helper.transformincrementalCsv(DeploymentName, VersionName, TransformName, SingleCSVRecord)
   }
 
   /**
@@ -1807,12 +1905,13 @@ class DefaultApi(
    * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param SingleCSVRecord The input record array (optional)
    * @return Base64NDArrayBody
    */
-  def transformincrementalarrayCsv(DeploymentName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Option[Base64NDArrayBody] = {
-    val await = Try(Await.result(transformincrementalarrayCsvAsync(DeploymentName, TransformName, SingleCSVRecord), Duration.Inf))
+  def transformincrementalarrayCsv(DeploymentName: String, VersionName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformincrementalarrayCsvAsync(DeploymentName, VersionName, TransformName, SingleCSVRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1824,12 +1923,13 @@ class DefaultApi(
    * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param SingleCSVRecord The input record array (optional)
    * @return Future(Base64NDArrayBody)
    */
-  def transformincrementalarrayCsvAsync(DeploymentName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Future[Base64NDArrayBody] = {
-      helper.transformincrementalarrayCsv(DeploymentName, TransformName, SingleCSVRecord)
+  def transformincrementalarrayCsvAsync(DeploymentName: String, VersionName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Future[Base64NDArrayBody] = {
+      helper.transformincrementalarrayCsv(DeploymentName, VersionName, TransformName, SingleCSVRecord)
   }
 
   /**
@@ -1837,12 +1937,13 @@ class DefaultApi(
    * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @param SingleImageRecord The input record array 
    * @return Base64NDArrayBody
    */
-  def transformincrementalarrayImage(DeploymentName: String, ImageTransformName: String, SingleImageRecord: SingleImageRecord): Option[Base64NDArrayBody] = {
-    val await = Try(Await.result(transformincrementalarrayImageAsync(DeploymentName, ImageTransformName, SingleImageRecord), Duration.Inf))
+  def transformincrementalarrayImage(DeploymentName: String, VersionName: String, ImageTransformName: String, SingleImageRecord: SingleImageRecord): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformincrementalarrayImageAsync(DeploymentName, VersionName, ImageTransformName, SingleImageRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1854,12 +1955,13 @@ class DefaultApi(
    * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @param SingleImageRecord The input record array 
    * @return Future(Base64NDArrayBody)
    */
-  def transformincrementalarrayImageAsync(DeploymentName: String, ImageTransformName: String, SingleImageRecord: SingleImageRecord): Future[Base64NDArrayBody] = {
-      helper.transformincrementalarrayImage(DeploymentName, ImageTransformName, SingleImageRecord)
+  def transformincrementalarrayImageAsync(DeploymentName: String, VersionName: String, ImageTransformName: String, SingleImageRecord: SingleImageRecord): Future[Base64NDArrayBody] = {
+      helper.transformincrementalarrayImage(DeploymentName, VersionName, ImageTransformName, SingleImageRecord)
   }
 
   /**
@@ -1867,12 +1969,13 @@ class DefaultApi(
    * Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @param File The image file to upload 
    * @return Base64NDArrayBody
    */
-  def transformincrementalimage(DeploymentName: String, ImageTransformName: String, File: File): Option[Base64NDArrayBody] = {
-    val await = Try(Await.result(transformincrementalimageAsync(DeploymentName, ImageTransformName, File), Duration.Inf))
+  def transformincrementalimage(DeploymentName: String, VersionName: String, ImageTransformName: String, File: File): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformincrementalimageAsync(DeploymentName, VersionName, ImageTransformName, File), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1884,12 +1987,13 @@ class DefaultApi(
    * Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ImageTransformName ID or name of the deployed image transform 
    * @param File The image file to upload 
    * @return Future(Base64NDArrayBody)
    */
-  def transformincrementalimageAsync(DeploymentName: String, ImageTransformName: String, File: File): Future[Base64NDArrayBody] = {
-      helper.transformincrementalimage(DeploymentName, ImageTransformName, File)
+  def transformincrementalimageAsync(DeploymentName: String, VersionName: String, ImageTransformName: String, File: File): Future[Base64NDArrayBody] = {
+      helper.transformincrementalimage(DeploymentName, VersionName, ImageTransformName, File)
   }
 
   /**
@@ -1897,11 +2001,12 @@ class DefaultApi(
    * Retrieves the JSON string of the deployed transform process 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @return TransformProcess
    */
-  def transformprocessGet(DeploymentName: String, TransformName: String): Option[TransformProcess] = {
-    val await = Try(Await.result(transformprocessGetAsync(DeploymentName, TransformName), Duration.Inf))
+  def transformprocessGet(DeploymentName: String, VersionName: String, TransformName: String): Option[TransformProcess] = {
+    val await = Try(Await.result(transformprocessGetAsync(DeploymentName, VersionName, TransformName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1913,11 +2018,12 @@ class DefaultApi(
    * Retrieves the JSON string of the deployed transform process 
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @return Future(TransformProcess)
    */
-  def transformprocessGetAsync(DeploymentName: String, TransformName: String): Future[TransformProcess] = {
-      helper.transformprocessGet(DeploymentName, TransformName)
+  def transformprocessGetAsync(DeploymentName: String, VersionName: String, TransformName: String): Future[TransformProcess] = {
+      helper.transformprocessGet(DeploymentName, VersionName, TransformName)
   }
 
   /**
@@ -1925,12 +2031,13 @@ class DefaultApi(
    * Sets the transform process with the provided JSON string
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param TransformProcess The transform process to set (optional)
    * @return void
    */
-  def transformprocessPost(DeploymentName: String, TransformName: String, TransformProcess: Option[TransformProcess] = None) = {
-    val await = Try(Await.result(transformprocessPostAsync(DeploymentName, TransformName, TransformProcess), Duration.Inf))
+  def transformprocessPost(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[TransformProcess] = None) = {
+    val await = Try(Await.result(transformprocessPostAsync(DeploymentName, VersionName, TransformName, TransformProcess), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1942,23 +2049,25 @@ class DefaultApi(
    * Sets the transform process with the provided JSON string
    *
    * @param DeploymentName Name of the deployment group 
+   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param TransformProcess The transform process to set (optional)
    * @return Future(void)
    */
-  def transformprocessPostAsync(DeploymentName: String, TransformName: String, TransformProcess: Option[TransformProcess] = None) = {
-      helper.transformprocessPost(DeploymentName, TransformName, TransformProcess)
+  def transformprocessPostAsync(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[TransformProcess] = None) = {
+      helper.transformprocessPost(DeploymentName, VersionName, TransformName, TransformProcess)
   }
 
   /**
    * Updates the best model for an experiment
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param UpdateBestModel Model encapsulating the experiment id to update and the best model id. 
    * @return ExperimentEntity
    */
-  def updateBestModelForExperiment(UpdateBestModel: UpdateBestModel): Option[ExperimentEntity] = {
-    val await = Try(Await.result(updateBestModelForExperimentAsync(UpdateBestModel), Duration.Inf))
+  def updateBestModelForExperiment(ModelHistoryServerId: String, UpdateBestModel: UpdateBestModel): Option[ExperimentEntity] = {
+    val await = Try(Await.result(updateBestModelForExperimentAsync(ModelHistoryServerId, UpdateBestModel), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1969,23 +2078,25 @@ class DefaultApi(
    * Updates the best model for an experiment asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param UpdateBestModel Model encapsulating the experiment id to update and the best model id. 
    * @return Future(ExperimentEntity)
    */
-  def updateBestModelForExperimentAsync(UpdateBestModel: UpdateBestModel): Future[ExperimentEntity] = {
-      helper.updateBestModelForExperiment(UpdateBestModel)
+  def updateBestModelForExperimentAsync(ModelHistoryServerId: String, UpdateBestModel: UpdateBestModel): Future[ExperimentEntity] = {
+      helper.updateBestModelForExperiment(ModelHistoryServerId, UpdateBestModel)
   }
 
   /**
    * Updates an experiment, given an experiment entity
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to update 
    * @param ExperimentEntity The experiment entity to update with 
    * @return ExperimentEntity
    */
-  def updateExperiment(ExperimentID: String, ExperimentEntity: ExperimentEntity): Option[ExperimentEntity] = {
-    val await = Try(Await.result(updateExperimentAsync(ExperimentID, ExperimentEntity), Duration.Inf))
+  def updateExperiment(ModelHistoryServerId: String, ExperimentID: String, ExperimentEntity: ExperimentEntity): Option[ExperimentEntity] = {
+    val await = Try(Await.result(updateExperimentAsync(ModelHistoryServerId, ExperimentID, ExperimentEntity), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1996,24 +2107,26 @@ class DefaultApi(
    * Updates an experiment, given an experiment entity asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ExperimentID the GUID of the experiment to update 
    * @param ExperimentEntity The experiment entity to update with 
    * @return Future(ExperimentEntity)
    */
-  def updateExperimentAsync(ExperimentID: String, ExperimentEntity: ExperimentEntity): Future[ExperimentEntity] = {
-      helper.updateExperiment(ExperimentID, ExperimentEntity)
+  def updateExperimentAsync(ModelHistoryServerId: String, ExperimentID: String, ExperimentEntity: ExperimentEntity): Future[ExperimentEntity] = {
+      helper.updateExperiment(ModelHistoryServerId, ExperimentID, ExperimentEntity)
   }
 
   /**
    * Update a model history / workspace
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace to update 
    * @param UpdateModelHistoryRequest The model history request object 
    * @return ModelHistoryEntity
    */
-  def updateModelHistory(ModelHistoryID: String, UpdateModelHistoryRequest: AddModelHistoryRequest): Option[ModelHistoryEntity] = {
-    val await = Try(Await.result(updateModelHistoryAsync(ModelHistoryID, UpdateModelHistoryRequest), Duration.Inf))
+  def updateModelHistory(ModelHistoryServerId: String, ModelHistoryID: String, UpdateModelHistoryRequest: AddModelHistoryRequest): Option[ModelHistoryEntity] = {
+    val await = Try(Await.result(updateModelHistoryAsync(ModelHistoryServerId, ModelHistoryID, UpdateModelHistoryRequest), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -2024,12 +2137,13 @@ class DefaultApi(
    * Update a model history / workspace asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace to update 
    * @param UpdateModelHistoryRequest The model history request object 
    * @return Future(ModelHistoryEntity)
    */
-  def updateModelHistoryAsync(ModelHistoryID: String, UpdateModelHistoryRequest: AddModelHistoryRequest): Future[ModelHistoryEntity] = {
-      helper.updateModelHistory(ModelHistoryID, UpdateModelHistoryRequest)
+  def updateModelHistoryAsync(ModelHistoryServerId: String, ModelHistoryID: String, UpdateModelHistoryRequest: AddModelHistoryRequest): Future[ModelHistoryEntity] = {
+      helper.updateModelHistory(ModelHistoryServerId, ModelHistoryID, UpdateModelHistoryRequest)
   }
 
   /**
@@ -2062,13 +2176,17 @@ class DefaultApi(
 
 class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def addEvaluationResult(EvaluationResultsEntity: EvaluationResultsEntity)(implicit reader: ClientResponseReader[EvaluationResultsEntity], writer: RequestWriter[EvaluationResultsEntity]): Future[EvaluationResultsEntity] = {
+  def addEvaluationResult(ModelHistoryServerId: String,
+    EvaluationResultsEntity: EvaluationResultsEntity)(implicit reader: ClientResponseReader[EvaluationResultsEntity], writer: RequestWriter[EvaluationResultsEntity]): Future[EvaluationResultsEntity] = {
     // create path and map variables
-    val path = (addFmt("/model/revisions/evaluations/"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/revisions/evaluations/")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->addEvaluationResult")
 
     if (EvaluationResultsEntity == null) throw new Exception("Missing required parameter 'EvaluationResultsEntity' when calling DefaultApi->addEvaluationResult")
 
@@ -2078,13 +2196,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def addExampleForBatch(AddExampleRequest: AddExampleRequest)(implicit reader: ClientResponseReader[AddExampleRequest], writer: RequestWriter[AddExampleRequest]): Future[AddExampleRequest] = {
+  def addExampleForBatch(ModelHistoryServerId: String,
+    AddExampleRequest: AddExampleRequest)(implicit reader: ClientResponseReader[AddExampleRequest], writer: RequestWriter[AddExampleRequest]): Future[AddExampleRequest] = {
     // create path and map variables
-    val path = (addFmt("/model/exampleForBatch"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/exampleForBatch")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->addExampleForBatch")
 
     if (AddExampleRequest == null) throw new Exception("Missing required parameter 'AddExampleRequest' when calling DefaultApi->addExampleForBatch")
 
@@ -2094,13 +2216,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def addExampleToMinibatch(ExampleEntity: ExampleEntity)(implicit reader: ClientResponseReader[ExampleEntity], writer: RequestWriter[ExampleEntity]): Future[ExampleEntity] = {
+  def addExampleToMinibatch(ModelHistoryServerId: String,
+    ExampleEntity: ExampleEntity)(implicit reader: ClientResponseReader[ExampleEntity], writer: RequestWriter[ExampleEntity]): Future[ExampleEntity] = {
     // create path and map variables
-    val path = (addFmt("/model/example"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/example")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->addExampleToMinibatch")
 
     if (ExampleEntity == null) throw new Exception("Missing required parameter 'ExampleEntity' when calling DefaultApi->addExampleToMinibatch")
 
@@ -2110,13 +2236,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def addExperiment(ExperimentEntity: ExperimentEntity)(implicit reader: ClientResponseReader[ExperimentEntity], writer: RequestWriter[ExperimentEntity]): Future[ExperimentEntity] = {
+  def addExperiment(ModelHistoryServerId: String,
+    ExperimentEntity: ExperimentEntity)(implicit reader: ClientResponseReader[ExperimentEntity], writer: RequestWriter[ExperimentEntity]): Future[ExperimentEntity] = {
     // create path and map variables
-    val path = (addFmt("/experiment"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/experiment")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->addExperiment")
 
     if (ExperimentEntity == null) throw new Exception("Missing required parameter 'ExperimentEntity' when calling DefaultApi->addExperiment")
 
@@ -2126,13 +2256,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def addMinibatch(MinibatchEntity: MinibatchEntity)(implicit reader: ClientResponseReader[MinibatchEntity], writer: RequestWriter[MinibatchEntity]): Future[MinibatchEntity] = {
+  def addMinibatch(ModelHistoryServerId: String,
+    MinibatchEntity: MinibatchEntity)(implicit reader: ClientResponseReader[MinibatchEntity], writer: RequestWriter[MinibatchEntity]): Future[MinibatchEntity] = {
     // create path and map variables
-    val path = (addFmt("/model/minibatch"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/minibatch")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->addMinibatch")
 
     if (MinibatchEntity == null) throw new Exception("Missing required parameter 'MinibatchEntity' when calling DefaultApi->addMinibatch")
 
@@ -2142,13 +2276,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def addModelFeedback(ModelFeedBackRequest: ModelFeedBackRequest)(implicit reader: ClientResponseReader[ModelFeedBackRequest], writer: RequestWriter[ModelFeedBackRequest]): Future[ModelFeedBackRequest] = {
+  def addModelFeedback(ModelHistoryServerId: String,
+    ModelFeedBackRequest: ModelFeedBackRequest)(implicit reader: ClientResponseReader[ModelFeedBackRequest], writer: RequestWriter[ModelFeedBackRequest]): Future[ModelFeedBackRequest] = {
     // create path and map variables
-    val path = (addFmt("/model/feedback"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/feedback")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->addModelFeedback")
 
     if (ModelFeedBackRequest == null) throw new Exception("Missing required parameter 'ModelFeedBackRequest' when calling DefaultApi->addModelFeedback")
 
@@ -2158,13 +2296,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def addModelHistory(AddModelHistoryRequest: AddModelHistoryRequest)(implicit reader: ClientResponseReader[ModelHistoryEntity], writer: RequestWriter[AddModelHistoryRequest]): Future[ModelHistoryEntity] = {
+  def addModelHistory(ModelHistoryServerId: String,
+    AddModelHistoryRequest: AddModelHistoryRequest)(implicit reader: ClientResponseReader[ModelHistoryEntity], writer: RequestWriter[AddModelHistoryRequest]): Future[ModelHistoryEntity] = {
     // create path and map variables
-    val path = (addFmt("/modelhistory"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/modelhistory")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->addModelHistory")
 
     if (AddModelHistoryRequest == null) throw new Exception("Missing required parameter 'AddModelHistoryRequest' when calling DefaultApi->addModelHistory")
 
@@ -2174,13 +2316,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def addModelInstance(ModelInstanceEntity: ModelInstanceEntity)(implicit reader: ClientResponseReader[ModelInstanceEntity], writer: RequestWriter[ModelInstanceEntity]): Future[ModelInstanceEntity] = {
+  def addModelInstance(ModelHistoryServerId: String,
+    ModelInstanceEntity: ModelInstanceEntity)(implicit reader: ClientResponseReader[ModelInstanceEntity], writer: RequestWriter[ModelInstanceEntity]): Future[ModelInstanceEntity] = {
     // create path and map variables
-    val path = (addFmt("/model"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->addModelInstance")
 
     if (ModelInstanceEntity == null) throw new Exception("Missing required parameter 'ModelInstanceEntity' when calling DefaultApi->addModelInstance")
 
@@ -2190,13 +2336,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def aggregateModelResults(AggregatePrediction: AggregatePrediction)(implicit reader: ClientResponseReader[EvaluationResultsEntity], writer: RequestWriter[AggregatePrediction]): Future[EvaluationResultsEntity] = {
+  def aggregateModelResults(ModelHistoryServerId: String,
+    AggregatePrediction: AggregatePrediction)(implicit reader: ClientResponseReader[EvaluationResultsEntity], writer: RequestWriter[AggregatePrediction]): Future[EvaluationResultsEntity] = {
     // create path and map variables
-    val path = (addFmt("/model/aggregateresults"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/aggregateresults")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->aggregateModelResults")
 
     if (AggregatePrediction == null) throw new Exception("Missing required parameter 'AggregatePrediction' when calling DefaultApi->aggregateModelResults")
 
@@ -2208,10 +2358,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def classify(Body: Prediction,
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[ClassificationResult], writer: RequestWriter[Prediction]): Future[ClassificationResult] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/classify")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2220,6 +2372,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->classify")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->classify")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->classify")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->classify")
 
@@ -2232,10 +2386,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def classifyarray(Body: Prediction,
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Prediction]): Future[Base64NDArrayBody] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/classifyarray")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2244,6 +2400,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->classifyarray")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->classifyarray")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->classifyarray")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->classifyarray")
 
@@ -2255,12 +2413,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def classifyimage(DeploymentName: String,
+    VersionName: String,
     ModelName: String,
     Image: Option[File] = None
     )(implicit reader: ClientResponseReader[ClassificationResult]): Future[ClassificationResult] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/classifyimage")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2268,6 +2428,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->classifyimage")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->classifyimage")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->classifyimage")
 
@@ -2278,13 +2440,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def createModelHistory(ModelHistoryEntity: ModelHistoryEntity)(implicit reader: ClientResponseReader[ModelHistoryEntity], writer: RequestWriter[ModelHistoryEntity]): Future[ModelHistoryEntity] = {
+  def createModelHistory(ModelHistoryServerId: String,
+    ModelHistoryEntity: ModelHistoryEntity)(implicit reader: ClientResponseReader[ModelHistoryEntity], writer: RequestWriter[ModelHistoryEntity]): Future[ModelHistoryEntity] = {
     // create path and map variables
-    val path = (addFmt("/model/revisions"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/revisions")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->createModelHistory")
 
     if (ModelHistoryEntity == null) throw new Exception("Missing required parameter 'ModelHistoryEntity' when calling DefaultApi->createModelHistory")
 
@@ -2294,14 +2460,18 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def deleteExperiment(ExperimentID: String)(implicit reader: ClientResponseReader[InlineResponse200]): Future[InlineResponse200] = {
+  def deleteExperiment(ModelHistoryServerId: String,
+    ExperimentID: String)(implicit reader: ClientResponseReader[InlineResponse200]): Future[InlineResponse200] = {
     // create path and map variables
-    val path = (addFmt("/experiment/{experimentID}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/experiment/{experimentID}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "experimentID" + "\\}", ExperimentID.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->deleteExperiment")
 
     if (ExperimentID == null) throw new Exception("Missing required parameter 'ExperimentID' when calling DefaultApi->deleteExperiment")
 
@@ -2334,14 +2504,18 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def deleteModelHistory(ModelHistoryID: String)(implicit reader: ClientResponseReader[InlineResponse200]): Future[InlineResponse200] = {
+  def deleteModelHistory(ModelHistoryServerId: String,
+    ModelHistoryID: String)(implicit reader: ClientResponseReader[InlineResponse200]): Future[InlineResponse200] = {
     // create path and map variables
-    val path = (addFmt("/modelhistory/{modelHistoryID}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "modelHistoryID" + "\\}", ModelHistoryID.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->deleteModelHistory")
 
     if (ModelHistoryID == null) throw new Exception("Missing required parameter 'ModelHistoryID' when calling DefaultApi->deleteModelHistory")
 
@@ -2352,14 +2526,18 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def deleteModelInstance(ModelInstanceID: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def deleteModelInstance(ModelHistoryServerId: String,
+    ModelInstanceID: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
     // create path and map variables
-    val path = (addFmt("/model/{modelInstanceID}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/{modelInstanceID}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "modelInstanceID" + "\\}", ModelInstanceID.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->deleteModelInstance")
 
     if (ModelInstanceID == null) throw new Exception("Missing required parameter 'ModelInstanceID' when calling DefaultApi->deleteModelInstance")
 
@@ -2462,10 +2640,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     Threshold: Float,
     ImageFile: File,
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[DetectionResult]): Future[DetectionResult] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/detectobjects")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2477,6 +2657,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     if (ImageFile == null) throw new Exception("Missing required parameter 'ImageFile' when calling DefaultApi->detectobjects")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->detectobjects")
 
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->detectobjects")
+
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->detectobjects")
 
 
@@ -2486,13 +2668,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getBestModelAmongModelIds(BestModel: BestModel)(implicit reader: ClientResponseReader[ModelInstanceEntity], writer: RequestWriter[BestModel]): Future[ModelInstanceEntity] = {
+  def getBestModelAmongModelIds(ModelHistoryServerId: String,
+    BestModel: BestModel)(implicit reader: ClientResponseReader[ModelInstanceEntity], writer: RequestWriter[BestModel]): Future[ModelInstanceEntity] = {
     // create path and map variables
-    val path = (addFmt("/model/best"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/best")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->getBestModelAmongModelIds")
 
     if (BestModel == null) throw new Exception("Missing required parameter 'BestModel' when calling DefaultApi->getBestModelAmongModelIds")
 
@@ -2502,14 +2688,18 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getEvaluationForModelID(ModelInstanceID: String)(implicit reader: ClientResponseReader[List[EvaluationResultsEntity]]): Future[List[EvaluationResultsEntity]] = {
+  def getEvaluationForModelID(ModelHistoryServerId: String,
+    ModelInstanceID: String)(implicit reader: ClientResponseReader[List[EvaluationResultsEntity]]): Future[List[EvaluationResultsEntity]] = {
     // create path and map variables
-    val path = (addFmt("/model/revisions/evaluations/{modelInstanceID}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "modelInstanceID" + "\\}", ModelInstanceID.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->getEvaluationForModelID")
 
     if (ModelInstanceID == null) throw new Exception("Missing required parameter 'ModelInstanceID' when calling DefaultApi->getEvaluationForModelID")
 
@@ -2520,14 +2710,18 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getExamplesForMinibatch(MinibatchId: String)(implicit reader: ClientResponseReader[List[ExampleEntity]]): Future[List[ExampleEntity]] = {
+  def getExamplesForMinibatch(ModelHistoryServerId: String,
+    MinibatchId: String)(implicit reader: ClientResponseReader[List[ExampleEntity]]): Future[List[ExampleEntity]] = {
     // create path and map variables
-    val path = (addFmt("/model/example/{minibatchId}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/example/{minibatchId}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "minibatchId" + "\\}", MinibatchId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->getExamplesForMinibatch")
 
     if (MinibatchId == null) throw new Exception("Missing required parameter 'MinibatchId' when calling DefaultApi->getExamplesForMinibatch")
 
@@ -2538,14 +2732,18 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getExperiment(ExperimentID: String)(implicit reader: ClientResponseReader[ExperimentEntity]): Future[ExperimentEntity] = {
+  def getExperiment(ModelHistoryServerId: String,
+    ExperimentID: String)(implicit reader: ClientResponseReader[ExperimentEntity]): Future[ExperimentEntity] = {
     // create path and map variables
-    val path = (addFmt("/experiment/{experimentID}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/experiment/{experimentID}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "experimentID" + "\\}", ExperimentID.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->getExperiment")
 
     if (ExperimentID == null) throw new Exception("Missing required parameter 'ExperimentID' when calling DefaultApi->getExperiment")
 
@@ -2556,14 +2754,18 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getExperimentsForModelHistory(ModelHistoryID: String)(implicit reader: ClientResponseReader[ExperimentEntity]): Future[ExperimentEntity] = {
+  def getExperimentsForModelHistory(ModelHistoryServerId: String,
+    ModelHistoryID: String)(implicit reader: ClientResponseReader[ExperimentEntity]): Future[ExperimentEntity] = {
     // create path and map variables
-    val path = (addFmt("/experiments/{modelHistoryID}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "modelHistoryID" + "\\}", ModelHistoryID.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->getExperimentsForModelHistory")
 
     if (ModelHistoryID == null) throw new Exception("Missing required parameter 'ModelHistoryID' when calling DefaultApi->getExperimentsForModelHistory")
 
@@ -2574,14 +2776,18 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getMinibatch(MinibatchId: String)(implicit reader: ClientResponseReader[MinibatchEntity]): Future[MinibatchEntity] = {
+  def getMinibatch(ModelHistoryServerId: String,
+    MinibatchId: String)(implicit reader: ClientResponseReader[MinibatchEntity]): Future[MinibatchEntity] = {
     // create path and map variables
-    val path = (addFmt("/model/minibatch/{minibatchId}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "minibatchId" + "\\}", MinibatchId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->getMinibatch")
 
     if (MinibatchId == null) throw new Exception("Missing required parameter 'MinibatchId' when calling DefaultApi->getMinibatch")
 
@@ -2592,14 +2798,18 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getModelHistory(ModelHistoryID: String)(implicit reader: ClientResponseReader[ModelHistoryEntity]): Future[ModelHistoryEntity] = {
+  def getModelHistory(ModelHistoryServerId: String,
+    ModelHistoryID: String)(implicit reader: ClientResponseReader[ModelHistoryEntity]): Future[ModelHistoryEntity] = {
     // create path and map variables
-    val path = (addFmt("/model/revision/{modelHistoryID}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "modelHistoryID" + "\\}", ModelHistoryID.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->getModelHistory")
 
     if (ModelHistoryID == null) throw new Exception("Missing required parameter 'ModelHistoryID' when calling DefaultApi->getModelHistory")
 
@@ -2610,14 +2820,18 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getModelInstance(ModelInstanceID: String)(implicit reader: ClientResponseReader[ModelInstanceEntity]): Future[ModelInstanceEntity] = {
+  def getModelInstance(ModelHistoryServerId: String,
+    ModelInstanceID: String)(implicit reader: ClientResponseReader[ModelInstanceEntity]): Future[ModelInstanceEntity] = {
     // create path and map variables
-    val path = (addFmt("/model/{modelInstanceID}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/model/{modelInstanceID}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "modelInstanceID" + "\\}", ModelInstanceID.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->getModelInstance")
 
     if (ModelInstanceID == null) throw new Exception("Missing required parameter 'ModelInstanceID' when calling DefaultApi->getModelInstance")
 
@@ -2628,14 +2842,18 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getModelsForExperiment(ExperimentID: String)(implicit reader: ClientResponseReader[List[ModelInstanceEntity]]): Future[List[ModelInstanceEntity]] = {
+  def getModelsForExperiment(ModelHistoryServerId: String,
+    ExperimentID: String)(implicit reader: ClientResponseReader[List[ModelInstanceEntity]]): Future[List[ModelInstanceEntity]] = {
     // create path and map variables
-    val path = (addFmt("/experiment/{experimentID}/models")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/experiment/{experimentID}/models")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "experimentID" + "\\}", ExperimentID.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->getModelsForExperiment")
 
     if (ExperimentID == null) throw new Exception("Missing required parameter 'ExperimentID' when calling DefaultApi->getModelsForExperiment")
 
@@ -2647,10 +2865,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def imagetransformprocessGet(DeploymentName: String,
+    VersionName: String,
     ImageTransformName: String)(implicit reader: ClientResponseReader[ImageTransformProcess]): Future[ImageTransformProcess] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
 
     // query params
@@ -2658,6 +2878,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->imagetransformprocessGet")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->imagetransformprocessGet")
 
     if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->imagetransformprocessGet")
 
@@ -2669,11 +2891,13 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def imagetransformprocessPost(DeploymentName: String,
+    VersionName: String,
     ImageTransformName: String,
     Body: ImageTransformProcess)(implicit reader: ClientResponseReader[ImageTransformProcess], writer: RequestWriter[ImageTransformProcess]): Future[ImageTransformProcess] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
 
     // query params
@@ -2681,6 +2905,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->imagetransformprocessPost")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->imagetransformprocessPost")
 
     if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->imagetransformprocessPost")
 
@@ -2694,10 +2920,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def jsonarray(Body: Prediction,
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[JsonArrayResponse], writer: RequestWriter[Prediction]): Future[JsonArrayResponse] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/jsonarray")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2706,6 +2934,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->jsonarray")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->jsonarray")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->jsonarray")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->jsonarray")
 
@@ -2717,11 +2947,13 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def knn(DeploymentName: String,
+    VersionName: String,
     KnnName: String,
     Body: NearestNeighborRequest)(implicit reader: ClientResponseReader[NearestNeighborsResults], writer: RequestWriter[NearestNeighborRequest]): Future[NearestNeighborsResults] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/knn/{knnName}/default/knn")
+    val path = (addFmt("/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "knnName" + "\\}", KnnName.toString))
 
     // query params
@@ -2729,6 +2961,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->knn")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->knn")
 
     if (KnnName == null) throw new Exception("Missing required parameter 'KnnName' when calling DefaultApi->knn")
 
@@ -2741,11 +2975,13 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def knnnew(DeploymentName: String,
+    VersionName: String,
     KnnName: String,
     Body: Base64NDArrayBodyKNN)(implicit reader: ClientResponseReader[NearestNeighborsResults], writer: RequestWriter[Base64NDArrayBodyKNN]): Future[NearestNeighborsResults] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/knn/{knnName}/default/knnnew")
+    val path = (addFmt("/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "knnName" + "\\}", KnnName.toString))
 
     // query params
@@ -2753,6 +2989,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->knnnew")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->knnnew")
 
     if (KnnName == null) throw new Exception("Missing required parameter 'KnnName' when calling DefaultApi->knnnew")
 
@@ -2766,7 +3004,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def listAllExperiments()(implicit reader: ClientResponseReader[List[ExperimentEntity]]): Future[List[ExperimentEntity]] = {
     // create path and map variables
-    val path = (addFmt("/experiments"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/experiments"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -2780,10 +3018,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def logfilepath(DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/logfilepath")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2791,6 +3031,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->logfilepath")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->logfilepath")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->logfilepath")
 
@@ -2819,10 +3061,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def logs(Body: LogRequest,
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[LogBatch], writer: RequestWriter[LogRequest]): Future[LogBatch] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/logs")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2831,6 +3075,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->logs")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->logs")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->logs")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->logs")
 
@@ -2842,10 +3088,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def metaGet(DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[MetaData]): Future[MetaData] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/meta")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2853,6 +3101,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->metaGet")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->metaGet")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->metaGet")
 
@@ -2865,10 +3115,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def metaPost(Body: MetaData,
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[MetaData], writer: RequestWriter[MetaData]): Future[MetaData] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/meta")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2877,6 +3129,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->metaPost")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->metaPost")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->metaPost")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->metaPost")
 
@@ -2930,12 +3184,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def modelset(DeploymentName: String,
+    VersionName: String,
     ModelName: String,
     File: Option[File] = None
     )(implicit reader: ClientResponseReader[ModelStatus]): Future[ModelStatus] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/modelset")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2943,6 +3199,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->modelset")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->modelset")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->modelset")
 
@@ -2954,12 +3212,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def modelupdate(DeploymentName: String,
+    VersionName: String,
     ModelName: String,
     File: Option[File] = None
     )(implicit reader: ClientResponseReader[ModelStatus]): Future[ModelStatus] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/modelupdate")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2967,6 +3227,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->modelupdate")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->modelupdate")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->modelupdate")
 
@@ -2979,10 +3241,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def multiclassify(Body: Prediction,
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[MultiClassClassificationResult], writer: RequestWriter[Prediction]): Future[MultiClassClassificationResult] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/multiclassify")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -2991,6 +3255,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->multiclassify")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->multiclassify")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->multiclassify")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->multiclassify")
 
@@ -3003,10 +3269,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def multipredict(Body: MultiPredictRequest,
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[MultiPredictResponse], writer: RequestWriter[MultiPredictRequest]): Future[MultiPredictResponse] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/multipredict")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -3015,6 +3283,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->multipredict")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->multipredict")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->multipredict")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->multipredict")
 
@@ -3029,10 +3299,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     Id: String,
     NeedsPreprocessing: Boolean,
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[MultiPredictResponse]): Future[MultiPredictResponse] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/multipredictimage")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -3043,6 +3315,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     if (Id == null) throw new Exception("Missing required parameter 'Id' when calling DefaultApi->multipredictimage")
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->multipredictimage")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->multipredictimage")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->multipredictimage")
 
@@ -3055,10 +3329,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def predict(Body: Prediction,
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[Prediction], writer: RequestWriter[Prediction]): Future[Prediction] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/predict")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -3067,6 +3343,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->predict")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->predict")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->predict")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->predict")
 
@@ -3078,12 +3356,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def predictimage(DeploymentName: String,
+    VersionName: String,
     ModelName: String,
     Image: Option[File] = None
     )(implicit reader: ClientResponseReader[Prediction]): Future[Prediction] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/predictimage")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -3091,6 +3371,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->predictimage")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->predictimage")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->predictimage")
 
@@ -3103,10 +3385,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def predictwithpreprocess(Body: List[String],
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[Prediction], writer: RequestWriter[List[String]]): Future[Prediction] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -3114,6 +3398,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->predictwithpreprocess")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->predictwithpreprocess")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->predictwithpreprocess")
 
@@ -3126,10 +3412,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def predictwithpreprocessjson(Body: List[String],
     DeploymentName: String,
+    VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[JsonArrayResponse], writer: RequestWriter[List[String]]): Future[JsonArrayResponse] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson")
+    val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "modelName" + "\\}", ModelName.toString))
 
     // query params
@@ -3137,6 +3425,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->predictwithpreprocessjson")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->predictwithpreprocessjson")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->predictwithpreprocessjson")
 
@@ -3172,12 +3462,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def transformCsv(DeploymentName: String,
+    VersionName: String,
     TransformName: String,
     BatchCSVRecord: Option[BatchCSVRecord] = None
     )(implicit reader: ClientResponseReader[BatchCSVRecord], writer: RequestWriter[Option[BatchCSVRecord]]): Future[BatchCSVRecord] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transform")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
 
     // query params
@@ -3185,6 +3477,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformCsv")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformCsv")
 
     if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformCsv")
 
@@ -3196,12 +3490,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def transformarrayCsv(DeploymentName: String,
+    VersionName: String,
     TransformName: String,
     BatchCSVRecord: Option[BatchCSVRecord] = None
     )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[BatchCSVRecord]]): Future[Base64NDArrayBody] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transformarray")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
 
     // query params
@@ -3209,6 +3505,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformarrayCsv")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformarrayCsv")
 
     if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformarrayCsv")
 
@@ -3220,11 +3518,13 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def transformarrayImage(DeploymentName: String,
+    VersionName: String,
     ImageTransformName: String,
     BatchImageRecord: BatchImageRecord)(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[BatchImageRecord]): Future[Base64NDArrayBody] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
 
     // query params
@@ -3232,6 +3532,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformarrayImage")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformarrayImage")
 
     if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->transformarrayImage")
 
@@ -3244,11 +3546,13 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def transformimage(DeploymentName: String,
+    VersionName: String,
     ImageTransformName: String,
     Files: List[Array[Byte]])(implicit reader: ClientResponseReader[Base64NDArrayBody]): Future[Base64NDArrayBody] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
 
     // query params
@@ -3256,6 +3560,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformimage")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformimage")
 
     if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->transformimage")
 
@@ -3268,12 +3574,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def transformincrementalCsv(DeploymentName: String,
+    VersionName: String,
     TransformName: String,
     SingleCSVRecord: Option[SingleCSVRecord] = None
     )(implicit reader: ClientResponseReader[SingleCSVRecord], writer: RequestWriter[Option[SingleCSVRecord]]): Future[SingleCSVRecord] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
 
     // query params
@@ -3281,6 +3589,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformincrementalCsv")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformincrementalCsv")
 
     if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformincrementalCsv")
 
@@ -3292,12 +3602,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def transformincrementalarrayCsv(DeploymentName: String,
+    VersionName: String,
     TransformName: String,
     SingleCSVRecord: Option[SingleCSVRecord] = None
     )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[SingleCSVRecord]]): Future[Base64NDArrayBody] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
 
     // query params
@@ -3305,6 +3617,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformincrementalarrayCsv")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformincrementalarrayCsv")
 
     if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformincrementalarrayCsv")
 
@@ -3316,11 +3630,13 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def transformincrementalarrayImage(DeploymentName: String,
+    VersionName: String,
     ImageTransformName: String,
     SingleImageRecord: SingleImageRecord)(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[SingleImageRecord]): Future[Base64NDArrayBody] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
 
     // query params
@@ -3328,6 +3644,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformincrementalarrayImage")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformincrementalarrayImage")
 
     if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->transformincrementalarrayImage")
 
@@ -3340,11 +3658,13 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def transformincrementalimage(DeploymentName: String,
+    VersionName: String,
     ImageTransformName: String,
     File: File)(implicit reader: ClientResponseReader[Base64NDArrayBody]): Future[Base64NDArrayBody] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
 
     // query params
@@ -3352,6 +3672,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformincrementalimage")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformincrementalimage")
 
     if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->transformincrementalimage")
 
@@ -3364,10 +3686,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def transformprocessGet(DeploymentName: String,
+    VersionName: String,
     TransformName: String)(implicit reader: ClientResponseReader[TransformProcess]): Future[TransformProcess] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
 
     // query params
@@ -3375,6 +3699,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformprocessGet")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformprocessGet")
 
     if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformprocessGet")
 
@@ -3386,12 +3712,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def transformprocessPost(DeploymentName: String,
+    VersionName: String,
     TransformName: String,
     TransformProcess: Option[TransformProcess] = None
     )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[Option[TransformProcess]]): Future[Unit] = {
     // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess")
+    val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
+      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
       replaceAll("\\{" + "transformName" + "\\}", TransformName.toString))
 
     // query params
@@ -3399,6 +3727,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformprocessPost")
+
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformprocessPost")
 
     if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformprocessPost")
 
@@ -3409,13 +3739,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def updateBestModelForExperiment(UpdateBestModel: UpdateBestModel)(implicit reader: ClientResponseReader[ExperimentEntity], writer: RequestWriter[UpdateBestModel]): Future[ExperimentEntity] = {
+  def updateBestModelForExperiment(ModelHistoryServerId: String,
+    UpdateBestModel: UpdateBestModel)(implicit reader: ClientResponseReader[ExperimentEntity], writer: RequestWriter[UpdateBestModel]): Future[ExperimentEntity] = {
     // create path and map variables
-    val path = (addFmt("/experiment/best"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/experiment/best")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->updateBestModelForExperiment")
 
     if (UpdateBestModel == null) throw new Exception("Missing required parameter 'UpdateBestModel' when calling DefaultApi->updateBestModelForExperiment")
 
@@ -3425,15 +3759,19 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def updateExperiment(ExperimentID: String,
+  def updateExperiment(ModelHistoryServerId: String,
+    ExperimentID: String,
     ExperimentEntity: ExperimentEntity)(implicit reader: ClientResponseReader[ExperimentEntity], writer: RequestWriter[ExperimentEntity]): Future[ExperimentEntity] = {
     // create path and map variables
-    val path = (addFmt("/experiment/{experimentID}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/experiment/{experimentID}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "experimentID" + "\\}", ExperimentID.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->updateExperiment")
 
     if (ExperimentID == null) throw new Exception("Missing required parameter 'ExperimentID' when calling DefaultApi->updateExperiment")
 
@@ -3445,15 +3783,19 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def updateModelHistory(ModelHistoryID: String,
+  def updateModelHistory(ModelHistoryServerId: String,
+    ModelHistoryID: String,
     UpdateModelHistoryRequest: AddModelHistoryRequest)(implicit reader: ClientResponseReader[ModelHistoryEntity], writer: RequestWriter[AddModelHistoryRequest]): Future[ModelHistoryEntity] = {
     // create path and map variables
-    val path = (addFmt("/modelhistory/{modelHistoryID}")
+    val path = (addFmt("/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)
       replaceAll("\\{" + "modelHistoryID" + "\\}", ModelHistoryID.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->updateModelHistory")
 
     if (ModelHistoryID == null) throw new Exception("Missing required parameter 'ModelHistoryID' when calling DefaultApi->updateModelHistory")
 

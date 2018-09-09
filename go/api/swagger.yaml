@@ -53,7 +53,7 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/FileUploadList"
-  /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess:
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess:
     get:
       summary: "Gets the JSON string of the deployed transform process"
       description: "Retrieves the JSON string of the deployed transform process\n"
@@ -67,6 +67,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "transformName"
         in: "path"
         description: "ID or name of the deployed transform"
@@ -97,6 +104,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "transformName"
         in: "path"
         description: "ID or name of the deployed transform"
@@ -115,7 +129,7 @@ paths:
           description: "transform process set successfully"
         500:
           description: "internal server error"
-  /endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental:
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental:
     post:
       summary: "Takes SingleCSVRecord as input and returns the transformed array as\
         \ SingleCSVRecord"
@@ -133,6 +147,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "transformName"
         in: "path"
         description: "ID or name of the deployed transform"
@@ -153,7 +174,7 @@ paths:
             $ref: "#/definitions/SingleCSVRecord"
         500:
           description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/datavec/{transformName}/default/transform:
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform:
     post:
       summary: "Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord"
       description: "Takes a batch of SingleCSVRecord object and transforms it into\
@@ -170,6 +191,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "transformName"
         in: "path"
         description: "ID or name of the deployed transform"
@@ -190,7 +218,7 @@ paths:
             $ref: "#/definitions/BatchCSVRecord"
         500:
           description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray:
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray:
     post:
       summary: "Same as /transformincremental but returns Base64NDArrayBody"
       description: "Takes a SingleCSVRecord object and transforms it into the desired\
@@ -207,6 +235,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "transformName"
         in: "path"
         description: "ID or name of the deployed transform"
@@ -227,7 +262,7 @@ paths:
             $ref: "#/definitions/Base64NDArrayBody"
         500:
           description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/datavec/{transformName}/default/transformarray:
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray:
     post:
       summary: "Takes a batch input arrays and transforms it"
       description: "Takes a batch of SingleCSVRecord object and transforms it into\
@@ -244,6 +279,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "transformName"
         in: "path"
         description: "ID or name of the deployed transform"
@@ -264,7 +306,7 @@ paths:
             $ref: "#/definitions/Base64NDArrayBody"
         500:
           description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess:
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess:
     get:
       summary: "Retrieves the image transform process JSON string"
       operationId: "imagetransformprocess_get"
@@ -279,6 +321,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "imageTransformName"
         in: "path"
         description: "ID or name of the deployed image transform"
@@ -304,6 +353,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "imageTransformName"
         in: "path"
         description: "ID or name of the deployed image transform"
@@ -322,7 +378,7 @@ paths:
           description: "Image transform process JSON successfully set"
           schema:
             $ref: "#/definitions/ImageTransformProcess"
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray:
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray:
     post:
       summary: "Takes SingleImageRecord to transform and returns Base64NDArrayBody"
       description: "Takes a SingleImageRecord object and transforms it into the desired\
@@ -339,6 +395,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "imageTransformName"
         in: "path"
         description: "ID or name of the deployed image transform"
@@ -359,7 +422,7 @@ paths:
             $ref: "#/definitions/Base64NDArrayBody"
         500:
           description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage:
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage:
     post:
       summary: "Takes a single multipart image file to transform and returns Base64NDArrayBody"
       description: "Takes a single multipart image file and transforms it into the\
@@ -376,6 +439,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "imageTransformName"
         in: "path"
         description: "ID or name of the deployed image transform"
@@ -397,7 +467,7 @@ paths:
           description: "No uploaded file found or the file couldn't be loaded"
         500:
           description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray:
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray:
     post:
       summary: "Takes a batch of images uri and transforms it and returns Base64NDArrayBody"
       description: "Takes a batch of SingleImageRecord object and transforms it into\
@@ -414,6 +484,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "imageTransformName"
         in: "path"
         description: "ID or name of the deployed image transform"
@@ -434,7 +511,7 @@ paths:
             $ref: "#/definitions/Base64NDArrayBody"
         500:
           description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage:
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage:
     post:
       summary: "Takes multiple multipart image file to transform and returns Base64NDArrayBody"
       description: "Takes multiple multipart image file and transforms it into the\
@@ -451,6 +528,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "imageTransformName"
         in: "path"
         description: "ID or name of the deployed image transform"
@@ -475,7 +559,7 @@ paths:
           description: "No uploaded files found"
         500:
           description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/knn/{knnName}/default/knn:
+  /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn:
     post:
       summary: "Runs knn on the given index with the given k"
       description: "Runs knn on the given index with the given k (note that this is\
@@ -492,6 +576,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "knnName"
         in: "path"
         description: "ID or name of the deployed knn"
@@ -513,7 +604,7 @@ paths:
           description: "Invalid input"
         500:
           description: "Internal server error"
-  /endpoints/{deploymentName}/knn/{knnName}/default/knnnew:
+  /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew:
     post:
       summary: "Run a k nearest neighbors search on a NEW data point"
       operationId: "knnnew"
@@ -528,6 +619,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "knnName"
         in: "path"
         description: "ID or name of the deployed knn"
@@ -550,7 +648,7 @@ paths:
           description: "Invalid input"
         500:
           description: "Internal server error"
-  /endpoints/{deploymentName}/model/{modelName}/default/predict:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict:
     post:
       summary: "Run inference on the input array."
       operationId: "predict"
@@ -572,6 +670,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -587,7 +692,7 @@ paths:
           description: "Invalid input"
         500:
           description: "Invalid deployment or model name"
-  /endpoints/{deploymentName}/model/{modelName}/default/predictimage:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage:
     post:
       summary: "Run inference on the input array, using input image file from multipart\
         \ form data."
@@ -609,6 +714,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -622,7 +734,7 @@ paths:
             $ref: "#/definitions/Prediction"
         500:
           description: "Error generating prediction"
-  /endpoints/{deploymentName}/model/{modelName}/default/multipredict:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict:
     post:
       summary: "Get the output from the network, based on the given INDArray[] input"
       description: "Networks with multiple input/output are supported via this method.\
@@ -650,6 +762,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -663,7 +782,7 @@ paths:
             $ref: "#/definitions/MultiPredictResponse"
         500:
           description: "Error generating prediction"
-  /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage:
     post:
       summary: "Get the output from the network using the given image file using the\
         \ /multipredict endpoint's method"
@@ -703,6 +822,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -716,7 +842,7 @@ paths:
             $ref: "#/definitions/MultiPredictResponse"
         500:
           description: "Error generating prediction"
-  /endpoints/{deploymentName}/model/{modelName}/default/classify:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify:
     post:
       summary: "Use the deployed model to classify the input"
       operationId: "classify"
@@ -738,6 +864,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -753,7 +886,7 @@ paths:
           description: "Invalid input"
         500:
           description: "Invalid deployment or model name"
-  /endpoints/{deploymentName}/model/{modelName}/default/classifyimage:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage:
     post:
       summary: "Use the deployed model to classify the input, using input image file\
         \ from multipart form data."
@@ -775,6 +908,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -788,7 +928,7 @@ paths:
             $ref: "#/definitions/ClassificationResult"
         500:
           description: "Error generating classification"
-  /endpoints/{deploymentName}/model/{modelName}/default/classifyarray:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray:
     post:
       summary: "Same as /classify but returns the output as Base64NDArrayBody"
       operationId: "classifyarray"
@@ -810,6 +950,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -825,7 +972,7 @@ paths:
           description: "Invalid input"
         500:
           description: "Invalid deployment or model name"
-  /endpoints/{deploymentName}/model/{modelName}/default/multiclassify:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify:
     post:
       summary: "Represents all of the labels for a given classification"
       operationId: "multiclassify"
@@ -847,6 +994,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -862,7 +1016,7 @@ paths:
           description: "Invalid input"
         500:
           description: "Invalid deployment or model name"
-  /endpoints/{deploymentName}/model/{modelName}/default/modelset:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset:
     post:
       summary: "Set the model to be served"
       operationId: "modelset"
@@ -883,6 +1037,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -896,7 +1057,7 @@ paths:
             $ref: "#/definitions/ModelStatus"
         500:
           description: "Error setting model"
-  /endpoints/{deploymentName}/model/{modelName}/default/modelupdate:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate:
     post:
       summary: "Update the model to be served"
       operationId: "modelupdate"
@@ -917,6 +1078,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -930,7 +1098,7 @@ paths:
             $ref: "#/definitions/ModelStatus"
         500:
           description: "Error updating model"
-  /endpoints/{deploymentName}/model/{modelName}/default/jsonarray:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray:
     post:
       summary: "Run inference on the input and returns it as a JsonArrayResponse"
       operationId: "jsonarray"
@@ -952,6 +1120,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -965,7 +1140,7 @@ paths:
             $ref: "#/definitions/JsonArrayResponse"
         500:
           description: "Error generating array prediction"
-  /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess:
     post:
       summary: "Preprocesses the input and run inference on it"
       operationId: "predictwithpreprocess"
@@ -989,6 +1164,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -1002,7 +1184,7 @@ paths:
             $ref: "#/definitions/Prediction"
         500:
           description: "Error executing predictPreProcess"
-  /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson:
     post:
       summary: "Preprocesses the input and run inference on it and returns it as a\
         \ JsonArrayResponse"
@@ -1027,6 +1209,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -1040,7 +1229,7 @@ paths:
             $ref: "#/definitions/JsonArrayResponse"
         500:
           description: "Error executing predictPreProcessJson"
-  /endpoints/{deploymentName}/model/{modelName}/default/logs:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs:
     post:
       summary: "Get logs"
       operationId: "logs"
@@ -1062,6 +1251,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -1075,7 +1271,7 @@ paths:
             $ref: "#/definitions/LogBatch"
         500:
           description: "Error retrieving logs"
-  /endpoints/{deploymentName}/model/{modelName}/default/logfilepath:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath:
     get:
       summary: "Get logs file path"
       operationId: "logfilepath"
@@ -1088,6 +1284,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -1102,7 +1305,7 @@ paths:
             example: "log_file_path"
         500:
           description: "Error retrieving log file path"
-  /endpoints/{deploymentName}/model/{modelName}/default/meta:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta:
     get:
       summary: "this method can be used to get the meta data for the current model\
         \ which set to the server"
@@ -1118,6 +1321,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -1150,6 +1360,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -1161,7 +1378,7 @@ paths:
           description: "the meta data object that was set"
           schema:
             $ref: "#/definitions/MetaData"
-  /endpoints/{deploymentName}/model/{modelName}/default/detectobjects:
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects:
     post:
       summary: "Detect the objects, given a (input) prediction request"
       operationId: "detectobjects"
@@ -1203,6 +1420,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
       - name: "modelName"
         in: "path"
         description: "ID or name of the deployed model"
@@ -1422,13 +1646,21 @@ paths:
           description: "the model entity with its state changed"
           schema:
             $ref: "#/definitions/ModelEntity"
-  /model/revision/{modelHistoryID}:
+  /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}:
     get:
       summary: "Gets a model history, given its ID"
       operationId: "getModelHistory"
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "modelHistoryID"
         in: "path"
         description: "GUID of the model history to get information of."
@@ -1440,7 +1672,7 @@ paths:
           description: "Model history entity"
           schema:
             $ref: "#/definitions/ModelHistoryEntity"
-  /modelhistory:
+  /rpc/{modelHistoryServerId}/modelhistory:
     post:
       summary: "Add a model history / workspace"
       operationId: "addModelHistory"
@@ -1449,6 +1681,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "addModelHistoryRequest"
         description: "The model history request object"
@@ -1461,7 +1701,7 @@ paths:
           description: "The added model history entity"
           schema:
             $ref: "#/definitions/ModelHistoryEntity"
-  /modelhistory/{modelHistoryID}:
+  /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}:
     post:
       summary: "Update a model history / workspace"
       operationId: "updateModelHistory"
@@ -1470,6 +1710,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "modelHistoryID"
         in: "path"
         description: "the GUID of the model history / workspace to update"
@@ -1495,6 +1743,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "modelHistoryID"
         in: "path"
         description: "the GUID of the model history / workspace to delete"
@@ -1511,7 +1767,7 @@ paths:
           description: "The specified Workspace no longer exists"
           schema:
             $ref: "#/definitions/inline_response_200"
-  /experiments:
+  /rpc/{modelHistoryServerId}/experiments:
     get:
       summary: "List all of the experiments in every model history / workspace"
       operationId: "listAllExperiments"
@@ -1525,13 +1781,21 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/ExperimentEntity"
-  /experiments/{modelHistoryID}:
+  /rpc/{modelHistoryServerId}/experiments/{modelHistoryID}:
     get:
       summary: "Obtain all experiments for a model history / workspace"
       operationId: "getExperimentsForModelHistory"
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "modelHistoryID"
         in: "path"
         description: "the GUID of the model history / workspace"
@@ -1544,13 +1808,21 @@ paths:
           description: "List of all the experiment entities in a model history"
           schema:
             $ref: "#/definitions/ExperimentEntity"
-  /experiment/{experimentID}:
+  /rpc/{modelHistoryServerId}/experiment/{experimentID}:
     get:
       summary: "Obtain an experiment's details, given its ID"
       operationId: "getExperiment"
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "experimentID"
         in: "path"
         description: "the GUID of the experiment to obtain"
@@ -1571,6 +1843,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "experimentID"
         in: "path"
         description: "the GUID of the experiment to update"
@@ -1596,6 +1876,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "experimentID"
         in: "path"
         description: "the GUID of the experiment to delete"
@@ -1612,7 +1900,7 @@ paths:
           description: "Experiment no longer exists"
           schema:
             $ref: "#/definitions/inline_response_200"
-  /experiment:
+  /rpc/{modelHistoryServerId}/experiment:
     post:
       summary: "Add an experiment, given an experiment entity"
       operationId: "addExperiment"
@@ -1621,6 +1909,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "experimentEntity"
         description: "The experiment entity to add"
@@ -1633,7 +1929,7 @@ paths:
           description: "The added experiment entity."
           schema:
             $ref: "#/definitions/ExperimentEntity"
-  /experiment/best:
+  /rpc/{modelHistoryServerId}/experiment/best:
     post:
       summary: "Updates the best model for an experiment"
       operationId: "updateBestModelForExperiment"
@@ -1642,6 +1938,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "updateBestModel"
         description: "Model encapsulating the experiment id to update and the best\
@@ -1655,13 +1959,21 @@ paths:
           description: "The updated experiment entity."
           schema:
             $ref: "#/definitions/ExperimentEntity"
-  /experiment/{experimentID}/models:
+  /rpc/{modelHistoryServerId}/experiment/{experimentID}/models:
     get:
       summary: "Obtain a list of all the models for an experiment"
       operationId: "getModelsForExperiment"
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "experimentID"
         in: "path"
         description: "the GUID of the experiment"
@@ -1676,13 +1988,21 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/ModelInstanceEntity"
-  /model/{modelInstanceID}:
+  /rpc/{modelHistoryServerId}/model/{modelInstanceID}:
     get:
       summary: "Gets a model instance, given its ID"
       operationId: "getModelInstance"
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "modelInstanceID"
         in: "path"
         description: "GUID of the model instance to get information of."
@@ -1700,6 +2020,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "modelInstanceID"
         in: "path"
         description: "GUID of the model instance to delete."
@@ -1709,7 +2037,7 @@ paths:
       responses:
         200:
           description: "Empty content"
-  /model:
+  /rpc/{modelHistoryServerId}/model:
     post:
       summary: "Adds a model"
       operationId: "addModelInstance"
@@ -1718,6 +2046,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "modelInstanceEntity"
         description: "The object encapsulating the model instance id and evaluation\
@@ -1731,7 +2067,7 @@ paths:
           description: "The added model instance entity"
           schema:
             $ref: "#/definitions/ModelInstanceEntity"
-  /model/best:
+  /rpc/{modelHistoryServerId}/model/best:
     post:
       summary: "Gets the best model among the given model instance IDs, based on the\
         \ evaluation type and column metric"
@@ -1741,6 +2077,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "bestModel"
         description: "Object encapsulating the model ids, eval type and column metric\
@@ -1754,7 +2098,7 @@ paths:
           description: "The best model instance entity"
           schema:
             $ref: "#/definitions/ModelInstanceEntity"
-  /model/revisions:
+  /rpc/{modelHistoryServerId}/model/revisions:
     post:
       summary: "Creates model History"
       operationId: "createModelHistory"
@@ -1763,6 +2107,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "modelHistoryEntity"
         description: "The model history entity"
@@ -1775,7 +2127,7 @@ paths:
           description: "The created model history"
           schema:
             $ref: "#/definitions/ModelHistoryEntity"
-  /model/revisions/evaluations/:
+  /rpc/{modelHistoryServerId}/model/revisions/evaluations/:
     post:
       summary: "Adds an evaluation result"
       operationId: "addEvaluationResult"
@@ -1784,6 +2136,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "evaluationResultsEntity"
         description: "The evaluation result entity"
@@ -1796,7 +2156,7 @@ paths:
           description: "The added evaluation result entity"
           schema:
             $ref: "#/definitions/EvaluationResultsEntity"
-  /model/revisions/evaluations/{modelInstanceID}:
+  /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}:
     get:
       summary: "Gets the list of evaluation results entity, given a model instance\
         \ ID"
@@ -1804,6 +2164,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "modelInstanceID"
         in: "path"
         description: "GUID of the model instance to get evaluation results for."
@@ -1817,7 +2185,7 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/EvaluationResultsEntity"
-  /model/aggregateresults:
+  /rpc/{modelHistoryServerId}/model/aggregateresults:
     post:
       summary: "Aggregates the evaluaition results of a model instance, based on the\
         \ evaluation type"
@@ -1827,6 +2195,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "aggregatePrediction"
         description: "The object encapsulating the model instance id and evaluation\
@@ -1840,13 +2216,21 @@ paths:
           description: "Evaluation result entity contained the aggregated/merged results"
           schema:
             $ref: "#/definitions/EvaluationResultsEntity"
-  /model/minibatch/{minibatchId}:
+  /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}:
     get:
       summary: "Gets a minibatch for the model"
       operationId: "getMinibatch"
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "minibatchId"
         in: "path"
         description: "The GUID of the minibatch"
@@ -1858,7 +2242,7 @@ paths:
           description: "The minibatch entity"
           schema:
             $ref: "#/definitions/MinibatchEntity"
-  /model/minibatch:
+  /rpc/{modelHistoryServerId}/model/minibatch:
     post:
       summary: "Adds a minibatch"
       operationId: "addMinibatch"
@@ -1867,6 +2251,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "minibatchEntity"
         description: "The minibatch entity to add"
@@ -1879,13 +2271,21 @@ paths:
           description: "The added minibatch entity"
           schema:
             $ref: "#/definitions/MinibatchEntity"
-  /model/example/{minibatchId}:
+  /rpc/{modelHistoryServerId}/model/example/{minibatchId}:
     get:
       summary: "Gets all the examples for a minibatch ID"
       operationId: "getExamplesForMinibatch"
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - name: "minibatchId"
         in: "path"
         description: "The GUID of the minibatch"
@@ -1899,7 +2299,7 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/ExampleEntity"
-  /model/example:
+  /rpc/{modelHistoryServerId}/model/example:
     post:
       summary: "Adds an example to a minibatch"
       operationId: "addExampleToMinibatch"
@@ -1908,6 +2308,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "exampleEntity"
         description: "The example to add to the minibatch"
@@ -1920,7 +2328,7 @@ paths:
           description: "The added example entity"
           schema:
             $ref: "#/definitions/ExampleEntity"
-  /model/exampleForBatch:
+  /rpc/{modelHistoryServerId}/model/exampleForBatch:
     post:
       summary: "Adds a number of examples to a minibatch ID given an AddExampleRequest."
       operationId: "addExampleForBatch"
@@ -1929,6 +2337,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "AddExampleRequest"
         description: "The add example request, encapsulating minibatch details and\
@@ -1942,7 +2358,7 @@ paths:
           description: "The add example request"
           schema:
             $ref: "#/definitions/addExampleRequest"
-  /model/feedback:
+  /rpc/{modelHistoryServerId}/model/feedback:
     post:
       summary: "Adds an evaluation feedback to the model against a given minibatch\
         \ id."
@@ -1952,6 +2368,14 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "ModelFeedBackRequest"
         description: "The model feedback request object"
@@ -2029,6 +2453,8 @@ definitions:
       - uri: "file:/E:/Image/image.jpg"
       - uri: "file:/E:/Image/image.jpg"
   Base64NDArrayBody:
+    required:
+    - "ndarray"
     properties:
       ndarray:
         type: "string"

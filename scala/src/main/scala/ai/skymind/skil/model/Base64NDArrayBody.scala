@@ -14,6 +14,6 @@ package ai.skymind.skil.model
 
 
 case class Base64NDArrayBody (
-  Ndarray: Option[String] = None
+  Ndarray: String
 )
 

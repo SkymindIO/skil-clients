@@ -33,10 +33,23 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Base64NDArrayBody" /> class.
         /// </summary>
-        /// <param name="ndarray">ndarray.</param>
+        [JsonConstructorAttribute]
+        protected Base64NDArrayBody() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Base64NDArrayBody" /> class.
+        /// </summary>
+        /// <param name="ndarray">ndarray (required).</param>
         public Base64NDArrayBody(string ndarray = default(string))
         {
-            this.Ndarray = ndarray;
+            // to ensure "ndarray" is required (not null)
+            if (ndarray == null)
+            {
+                throw new InvalidDataException("ndarray is a required property for Base64NDArrayBody and cannot be null");
+            }
+            else
+            {
+                this.Ndarray = ndarray;
+            }
         }
         
         /// <summary>

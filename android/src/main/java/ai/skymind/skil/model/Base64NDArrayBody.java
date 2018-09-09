@@ -24,7 +24,7 @@ public class Base64NDArrayBody implements Serializable {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public String getNdarray() {
     return ndarray;
   }

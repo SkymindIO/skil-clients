@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * DetectionResult
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-07-18T22:27:09.789+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-07T17:05:04.781+05:00")
 public class DetectionResult {
   @SerializedName("id")
   private String id = null;

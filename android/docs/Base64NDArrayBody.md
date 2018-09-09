@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ndarray** | **String** |  |  [optional]
+**ndarray** | **String** |  | 
 
 
 

@@ -4,79 +4,79 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_evaluation_result**](DefaultApi.md#add_evaluation_result) | **Post** /model/revisions/evaluations/ | Adds an evaluation result
-[**add_example_for_batch**](DefaultApi.md#add_example_for_batch) | **Post** /model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
-[**add_example_to_minibatch**](DefaultApi.md#add_example_to_minibatch) | **Post** /model/example | Adds an example to a minibatch
-[**add_experiment**](DefaultApi.md#add_experiment) | **Post** /experiment | Add an experiment, given an experiment entity
-[**add_minibatch**](DefaultApi.md#add_minibatch) | **Post** /model/minibatch | Adds a minibatch
-[**add_model_feedback**](DefaultApi.md#add_model_feedback) | **Post** /model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
-[**add_model_history**](DefaultApi.md#add_model_history) | **Post** /modelhistory | Add a model history / workspace
-[**add_model_instance**](DefaultApi.md#add_model_instance) | **Post** /model | Adds a model
-[**aggregate_model_results**](DefaultApi.md#aggregate_model_results) | **Post** /model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
-[**classify**](DefaultApi.md#classify) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/classify | Use the deployed model to classify the input
-[**classifyarray**](DefaultApi.md#classifyarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-[**classifyimage**](DefaultApi.md#classifyimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-[**create_model_history**](DefaultApi.md#create_model_history) | **Post** /model/revisions | Creates model History
-[**delete_experiment**](DefaultApi.md#delete_experiment) | **Delete** /experiment/{experimentID} | Deletes an experiment, given an experiment entity
+[**add_evaluation_result**](DefaultApi.md#add_evaluation_result) | **Post** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
+[**add_example_for_batch**](DefaultApi.md#add_example_for_batch) | **Post** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
+[**add_example_to_minibatch**](DefaultApi.md#add_example_to_minibatch) | **Post** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
+[**add_experiment**](DefaultApi.md#add_experiment) | **Post** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+[**add_minibatch**](DefaultApi.md#add_minibatch) | **Post** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
+[**add_model_feedback**](DefaultApi.md#add_model_feedback) | **Post** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
+[**add_model_history**](DefaultApi.md#add_model_history) | **Post** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
+[**add_model_instance**](DefaultApi.md#add_model_instance) | **Post** /rpc/{modelHistoryServerId}/model | Adds a model
+[**aggregate_model_results**](DefaultApi.md#aggregate_model_results) | **Post** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
+[**classify**](DefaultApi.md#classify) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
+[**classifyarray**](DefaultApi.md#classifyarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+[**classifyimage**](DefaultApi.md#classifyimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**create_model_history**](DefaultApi.md#create_model_history) | **Post** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
+[**delete_experiment**](DefaultApi.md#delete_experiment) | **Delete** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
 [**delete_model**](DefaultApi.md#delete_model) | **Delete** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
-[**delete_model_history**](DefaultApi.md#delete_model_history) | **Delete** /modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
-[**delete_model_instance**](DefaultApi.md#delete_model_instance) | **Delete** /model/{modelInstanceID} | Deletes a model instance, given its ID
+[**delete_model_history**](DefaultApi.md#delete_model_history) | **Delete** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
+[**delete_model_instance**](DefaultApi.md#delete_model_instance) | **Delete** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
 [**deploy_model**](DefaultApi.md#deploy_model) | **Post** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**deployment_create**](DefaultApi.md#deployment_create) | **Post** /deployment | Create a new deployment group.
 [**deployment_delete**](DefaultApi.md#deployment_delete) | **Delete** /deployment/{deploymentId} | Delete a deployment by id
 [**deployment_get**](DefaultApi.md#deployment_get) | **Get** /deployment/{deploymentId} | Get a deployment details by id
 [**deployments**](DefaultApi.md#deployments) | **Get** /deployments | Get a list of deployments
-[**detectobjects**](DefaultApi.md#detectobjects) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/detectobjects | Detect the objects, given a (input) prediction request
-[**get_best_model_among_model_ids**](DefaultApi.md#get_best_model_among_model_ids) | **Post** /model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-[**get_evaluation_for_model_id**](DefaultApi.md#get_evaluation_for_model_id) | **Get** /model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
-[**get_examples_for_minibatch**](DefaultApi.md#get_examples_for_minibatch) | **Get** /model/example/{minibatchId} | Gets all the examples for a minibatch ID
-[**get_experiment**](DefaultApi.md#get_experiment) | **Get** /experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
-[**get_experiments_for_model_history**](DefaultApi.md#get_experiments_for_model_history) | **Get** /experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-[**get_minibatch**](DefaultApi.md#get_minibatch) | **Get** /model/minibatch/{minibatchId} | Gets a minibatch for the model
-[**get_model_history**](DefaultApi.md#get_model_history) | **Get** /model/revision/{modelHistoryID} | Gets a model history, given its ID
-[**get_model_instance**](DefaultApi.md#get_model_instance) | **Get** /model/{modelInstanceID} | Gets a model instance, given its ID
-[**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **Get** /experiment/{experimentID}/models | Obtain a list of all the models for an experiment
-[**imagetransformprocess_get**](DefaultApi.md#imagetransformprocess_get) | **Get** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess | Retrieves the image transform process JSON string
-[**imagetransformprocess_post**](DefaultApi.md#imagetransformprocess_post) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformprocess | Sets the image transform process through the provided JSON string
-[**jsonarray**](DefaultApi.md#jsonarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
-[**knn**](DefaultApi.md#knn) | **Post** /endpoints/{deploymentName}/knn/{knnName}/default/knn | Runs knn on the given index with the given k
-[**knnnew**](DefaultApi.md#knnnew) | **Post** /endpoints/{deploymentName}/knn/{knnName}/default/knnnew | Run a k nearest neighbors search on a NEW data point
-[**list_all_experiments**](DefaultApi.md#list_all_experiments) | **Get** /experiments | List all of the experiments in every model history / workspace
-[**logfilepath**](DefaultApi.md#logfilepath) | **Get** /endpoints/{deploymentName}/model/{modelName}/default/logfilepath | Get logs file path
+[**detectobjects**](DefaultApi.md#detectobjects) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
+[**get_best_model_among_model_ids**](DefaultApi.md#get_best_model_among_model_ids) | **Post** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+[**get_evaluation_for_model_id**](DefaultApi.md#get_evaluation_for_model_id) | **Get** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
+[**get_examples_for_minibatch**](DefaultApi.md#get_examples_for_minibatch) | **Get** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
+[**get_experiment**](DefaultApi.md#get_experiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
+[**get_experiments_for_model_history**](DefaultApi.md#get_experiments_for_model_history) | **Get** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
+[**get_minibatch**](DefaultApi.md#get_minibatch) | **Get** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+[**get_model_history**](DefaultApi.md#get_model_history) | **Get** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
+[**get_model_instance**](DefaultApi.md#get_model_instance) | **Get** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
+[**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+[**imagetransformprocess_get**](DefaultApi.md#imagetransformprocess_get) | **Get** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
+[**imagetransformprocess_post**](DefaultApi.md#imagetransformprocess_post) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
+[**jsonarray**](DefaultApi.md#jsonarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+[**knn**](DefaultApi.md#knn) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
+[**knnnew**](DefaultApi.md#knnnew) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
+[**list_all_experiments**](DefaultApi.md#list_all_experiments) | **Get** /rpc/{modelHistoryServerId}/experiments | List all of the experiments in every model history / workspace
+[**logfilepath**](DefaultApi.md#logfilepath) | **Get** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath | Get logs file path
 [**login**](DefaultApi.md#login) | **Post** /login | Post JSON credentials and obtain a JWT authorization token.
-[**logs**](DefaultApi.md#logs) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/logs | Get logs
-[**meta_get**](DefaultApi.md#meta_get) | **Get** /endpoints/{deploymentName}/model/{modelName}/default/meta | this method can be used to get the meta data for the current model which set to the server
-[**meta_post**](DefaultApi.md#meta_post) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/meta | This method can be used to set meta data for the current model which is set to the server
+[**logs**](DefaultApi.md#logs) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs | Get logs
+[**meta_get**](DefaultApi.md#meta_get) | **Get** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | this method can be used to get the meta data for the current model which set to the server
+[**meta_post**](DefaultApi.md#meta_post) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | This method can be used to set meta data for the current model which is set to the server
 [**model_state_change**](DefaultApi.md#model_state_change) | **Post** /deployment/{deploymentId}/model/{modelId}/state | Modify the state (start/stop) of a deployed model
 [**models**](DefaultApi.md#models) | **Get** /deployment/{deploymentId}/models | Retrieve a list of all the deployed models given a deployment id
-[**modelset**](DefaultApi.md#modelset) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/modelset | Set the model to be served
-[**modelupdate**](DefaultApi.md#modelupdate) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/modelupdate | Update the model to be served
-[**multiclassify**](DefaultApi.md#multiclassify) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/multiclassify | Represents all of the labels for a given classification
-[**multipredict**](DefaultApi.md#multipredict) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/multipredict | Get the output from the network, based on the given INDArray[] input
-[**multipredictimage**](DefaultApi.md#multipredictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
-[**predict**](DefaultApi.md#predict) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predict | Run inference on the input array.
-[**predictimage**](DefaultApi.md#predictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predictimage | Run inference on the input array, using input image file from multipart form data.
-[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocess | Preprocesses the input and run inference on it
-[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **Post** /endpoints/{deploymentName}/model/{modelName}/default/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**modelset**](DefaultApi.md#modelset) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset | Set the model to be served
+[**modelupdate**](DefaultApi.md#modelupdate) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate | Update the model to be served
+[**multiclassify**](DefaultApi.md#multiclassify) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
+[**multipredict**](DefaultApi.md#multipredict) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
+[**multipredictimage**](DefaultApi.md#multipredictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+[**predict**](DefaultApi.md#predict) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+[**predictimage**](DefaultApi.md#predictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
+[**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
+[**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**reimport_model**](DefaultApi.md#reimport_model) | **Post** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
-[**transform_csv**](DefaultApi.md#transform_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/default/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**transformarray_csv**](DefaultApi.md#transformarray_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/default/transformarray | Takes a batch input arrays and transforms it
-[**transformarray_image**](DefaultApi.md#transformarray_image) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-[**transformimage**](DefaultApi.md#transformimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
-[**transformincremental_csv**](DefaultApi.md#transformincremental_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/default/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**transformincrementalarray_csv**](DefaultApi.md#transformincrementalarray_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/default/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**transformincrementalarray_image**](DefaultApi.md#transformincrementalarray_image) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
-[**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/default/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**transformprocess_get**](DefaultApi.md#transformprocess_get) | **Get** /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess | Gets the JSON string of the deployed transform process
-[**transformprocess_post**](DefaultApi.md#transformprocess_post) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/default/transformprocess | Sets the deployed transform process through the provided JSON string
-[**update_best_model_for_experiment**](DefaultApi.md#update_best_model_for_experiment) | **Post** /experiment/best | Updates the best model for an experiment
-[**update_experiment**](DefaultApi.md#update_experiment) | **Put** /experiment/{experimentID} | Updates an experiment, given an experiment entity
-[**update_model_history**](DefaultApi.md#update_model_history) | **Post** /modelhistory/{modelHistoryID} | Update a model history / workspace
+[**transform_csv**](DefaultApi.md#transform_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+[**transformarray_csv**](DefaultApi.md#transformarray_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
+[**transformarray_image**](DefaultApi.md#transformarray_image) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**transformimage**](DefaultApi.md#transformimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
+[**transformincremental_csv**](DefaultApi.md#transformincremental_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+[**transformincrementalarray_csv**](DefaultApi.md#transformincrementalarray_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
+[**transformincrementalarray_image**](DefaultApi.md#transformincrementalarray_image) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
+[**transformprocess_get**](DefaultApi.md#transformprocess_get) | **Get** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
+[**transformprocess_post**](DefaultApi.md#transformprocess_post) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**update_best_model_for_experiment**](DefaultApi.md#update_best_model_for_experiment) | **Post** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
+[**update_experiment**](DefaultApi.md#update_experiment) | **Put** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
+[**update_model_history**](DefaultApi.md#update_model_history) | **Post** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**upload**](DefaultApi.md#upload) | **Post** /api/upload/model | Upload a model file to SKIL for import.
 
 
 # **add_evaluation_result**
-> ::models::EvaluationResultsEntity add_evaluation_result(ctx, evaluation_results_entity)
+> ::models::EvaluationResultsEntity add_evaluation_result(ctx, model_history_server_id, evaluation_results_entity)
 Adds an evaluation result
 
 ### Required Parameters
@@ -84,6 +84,7 @@ Adds an evaluation result
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **evaluation_results_entity** | [**EvaluationResultsEntity**](EvaluationResultsEntity.md)| The evaluation result entity | 
 
 ### Return type
@@ -102,7 +103,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_example_for_batch**
-> ::models::AddExampleRequest add_example_for_batch(ctx, add_example_request)
+> ::models::AddExampleRequest add_example_for_batch(ctx, model_history_server_id, add_example_request)
 Adds a number of examples to a minibatch ID given an AddExampleRequest.
 
 ### Required Parameters
@@ -110,6 +111,7 @@ Adds a number of examples to a minibatch ID given an AddExampleRequest.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **add_example_request** | [**AddExampleRequest**](AddExampleRequest.md)| The add example request, encapsulating minibatch details and examples batch size | 
 
 ### Return type
@@ -128,7 +130,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_example_to_minibatch**
-> ::models::ExampleEntity add_example_to_minibatch(ctx, example_entity)
+> ::models::ExampleEntity add_example_to_minibatch(ctx, model_history_server_id, example_entity)
 Adds an example to a minibatch
 
 ### Required Parameters
@@ -136,6 +138,7 @@ Adds an example to a minibatch
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **example_entity** | [**ExampleEntity**](ExampleEntity.md)| The example to add to the minibatch | 
 
 ### Return type
@@ -154,7 +157,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_experiment**
-> ::models::ExperimentEntity add_experiment(ctx, experiment_entity)
+> ::models::ExperimentEntity add_experiment(ctx, model_history_server_id, experiment_entity)
 Add an experiment, given an experiment entity
 
 ### Required Parameters
@@ -162,6 +165,7 @@ Add an experiment, given an experiment entity
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **experiment_entity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to add | 
 
 ### Return type
@@ -180,7 +184,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_minibatch**
-> ::models::MinibatchEntity add_minibatch(ctx, minibatch_entity)
+> ::models::MinibatchEntity add_minibatch(ctx, model_history_server_id, minibatch_entity)
 Adds a minibatch
 
 ### Required Parameters
@@ -188,6 +192,7 @@ Adds a minibatch
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **minibatch_entity** | [**MinibatchEntity**](MinibatchEntity.md)| The minibatch entity to add | 
 
 ### Return type
@@ -206,7 +211,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_model_feedback**
-> ::models::ModelFeedBackRequest add_model_feedback(ctx, model_feed_back_request)
+> ::models::ModelFeedBackRequest add_model_feedback(ctx, model_history_server_id, model_feed_back_request)
 Adds an evaluation feedback to the model against a given minibatch id.
 
 ### Required Parameters
@@ -214,6 +219,7 @@ Adds an evaluation feedback to the model against a given minibatch id.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **model_feed_back_request** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
 
 ### Return type
@@ -232,7 +238,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_model_history**
-> ::models::ModelHistoryEntity add_model_history(ctx, add_model_history_request)
+> ::models::ModelHistoryEntity add_model_history(ctx, model_history_server_id, add_model_history_request)
 Add a model history / workspace
 
 ### Required Parameters
@@ -240,6 +246,7 @@ Add a model history / workspace
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **add_model_history_request** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
 ### Return type
@@ -258,7 +265,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_model_instance**
-> ::models::ModelInstanceEntity add_model_instance(ctx, model_instance_entity)
+> ::models::ModelInstanceEntity add_model_instance(ctx, model_history_server_id, model_instance_entity)
 Adds a model
 
 ### Required Parameters
@@ -266,6 +273,7 @@ Adds a model
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **model_instance_entity** | [**ModelInstanceEntity**](ModelInstanceEntity.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -284,7 +292,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **aggregate_model_results**
-> ::models::EvaluationResultsEntity aggregate_model_results(ctx, aggregate_prediction)
+> ::models::EvaluationResultsEntity aggregate_model_results(ctx, model_history_server_id, aggregate_prediction)
 Aggregates the evaluaition results of a model instance, based on the evaluation type
 
 ### Required Parameters
@@ -292,6 +300,7 @@ Aggregates the evaluaition results of a model instance, based on the evaluation 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **aggregate_prediction** | [**AggregatePrediction**](AggregatePrediction.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
@@ -310,7 +319,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classify**
-> ::models::ClassificationResult classify(ctx, body, deployment_name, model_name)
+> ::models::ClassificationResult classify(ctx, body, deployment_name, version_name, model_name)
 Use the deployed model to classify the input
 
 ### Required Parameters
@@ -320,6 +329,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -338,7 +348,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classifyarray**
-> ::models::Base64NdArrayBody classifyarray(ctx, body, deployment_name, model_name)
+> ::models::Base64NdArrayBody classifyarray(ctx, body, deployment_name, version_name, model_name)
 Same as /classify but returns the output as Base64NDArrayBody
 
 ### Required Parameters
@@ -348,6 +358,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -366,7 +377,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classifyimage**
-> ::models::ClassificationResult classifyimage(ctx, deployment_name, model_name, optional)
+> ::models::ClassificationResult classifyimage(ctx, deployment_name, version_name, model_name, optional)
 Use the deployed model to classify the input, using input image file from multipart form data.
 
 ### Required Parameters
@@ -375,6 +386,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
@@ -384,6 +396,7 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **String**| ID or name of the deployed model | 
  **image** | **File**| The file to upload. | 
 
@@ -403,7 +416,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_model_history**
-> ::models::ModelHistoryEntity create_model_history(ctx, model_history_entity)
+> ::models::ModelHistoryEntity create_model_history(ctx, model_history_server_id, model_history_entity)
 Creates model History
 
 ### Required Parameters
@@ -411,6 +424,7 @@ Creates model History
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **model_history_entity** | [**ModelHistoryEntity**](ModelHistoryEntity.md)| The model history entity | 
 
 ### Return type
@@ -429,7 +443,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_experiment**
-> ::models::InlineResponse200 delete_experiment(ctx, experiment_id)
+> ::models::InlineResponse200 delete_experiment(ctx, model_history_server_id, experiment_id)
 Deletes an experiment, given an experiment entity
 
 ### Required Parameters
@@ -437,6 +451,7 @@ Deletes an experiment, given an experiment entity
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **experiment_id** | **String**| the GUID of the experiment to delete | 
 
 ### Return type
@@ -482,7 +497,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_model_history**
-> ::models::InlineResponse200 delete_model_history(ctx, model_history_id)
+> ::models::InlineResponse200 delete_model_history(ctx, model_history_server_id, model_history_id)
 Deletes a model history / workspace, given its ID
 
 ### Required Parameters
@@ -490,6 +505,7 @@ Deletes a model history / workspace, given its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **model_history_id** | **String**| the GUID of the model history / workspace to delete | 
 
 ### Return type
@@ -508,7 +524,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_model_instance**
-> delete_model_instance(ctx, model_instance_id)
+> delete_model_instance(ctx, model_history_server_id, model_instance_id)
 Deletes a model instance, given its ID
 
 ### Required Parameters
@@ -516,6 +532,7 @@ Deletes a model instance, given its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **model_instance_id** | **String**| GUID of the model instance to delete. | 
 
 ### Return type
@@ -661,7 +678,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **detectobjects**
-> ::models::DetectionResult detectobjects(ctx, id, needs_preprocessing, threshold, image_file, deployment_name, model_name)
+> ::models::DetectionResult detectobjects(ctx, id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name)
 Detect the objects, given a (input) prediction request
 
 ### Required Parameters
@@ -674,6 +691,7 @@ Name | Type | Description  | Notes
   **threshold** | **f32**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
   **image_file** | **File**| the image file to detect objects from | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -692,7 +710,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_best_model_among_model_ids**
-> ::models::ModelInstanceEntity get_best_model_among_model_ids(ctx, best_model)
+> ::models::ModelInstanceEntity get_best_model_among_model_ids(ctx, model_history_server_id, best_model)
 Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 
 ### Required Parameters
@@ -700,6 +718,7 @@ Gets the best model among the given model instance IDs, based on the evaluation 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **best_model** | [**BestModel**](BestModel.md)| Object encapsulating the model ids, eval type and column metric name | 
 
 ### Return type
@@ -718,7 +737,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_evaluation_for_model_id**
-> Vec<::models::EvaluationResultsEntity> get_evaluation_for_model_id(ctx, model_instance_id)
+> Vec<::models::EvaluationResultsEntity> get_evaluation_for_model_id(ctx, model_history_server_id, model_instance_id)
 Gets the list of evaluation results entity, given a model instance ID
 
 ### Required Parameters
@@ -726,6 +745,7 @@ Gets the list of evaluation results entity, given a model instance ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **model_instance_id** | **String**| GUID of the model instance to get evaluation results for. | 
 
 ### Return type
@@ -744,7 +764,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_examples_for_minibatch**
-> Vec<::models::ExampleEntity> get_examples_for_minibatch(ctx, minibatch_id)
+> Vec<::models::ExampleEntity> get_examples_for_minibatch(ctx, model_history_server_id, minibatch_id)
 Gets all the examples for a minibatch ID
 
 ### Required Parameters
@@ -752,6 +772,7 @@ Gets all the examples for a minibatch ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **minibatch_id** | **String**| The GUID of the minibatch | 
 
 ### Return type
@@ -770,7 +791,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_experiment**
-> ::models::ExperimentEntity get_experiment(ctx, experiment_id)
+> ::models::ExperimentEntity get_experiment(ctx, model_history_server_id, experiment_id)
 Obtain an experiment's details, given its ID
 
 ### Required Parameters
@@ -778,6 +799,7 @@ Obtain an experiment's details, given its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **experiment_id** | **String**| the GUID of the experiment to obtain | 
 
 ### Return type
@@ -796,7 +818,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_experiments_for_model_history**
-> ::models::ExperimentEntity get_experiments_for_model_history(ctx, model_history_id)
+> ::models::ExperimentEntity get_experiments_for_model_history(ctx, model_history_server_id, model_history_id)
 Obtain all experiments for a model history / workspace
 
 ### Required Parameters
@@ -804,6 +826,7 @@ Obtain all experiments for a model history / workspace
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **model_history_id** | **String**| the GUID of the model history / workspace | 
 
 ### Return type
@@ -822,7 +845,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_minibatch**
-> ::models::MinibatchEntity get_minibatch(ctx, minibatch_id)
+> ::models::MinibatchEntity get_minibatch(ctx, model_history_server_id, minibatch_id)
 Gets a minibatch for the model
 
 ### Required Parameters
@@ -830,6 +853,7 @@ Gets a minibatch for the model
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **minibatch_id** | **String**| The GUID of the minibatch | 
 
 ### Return type
@@ -848,7 +872,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_model_history**
-> ::models::ModelHistoryEntity get_model_history(ctx, model_history_id)
+> ::models::ModelHistoryEntity get_model_history(ctx, model_history_server_id, model_history_id)
 Gets a model history, given its ID
 
 ### Required Parameters
@@ -856,6 +880,7 @@ Gets a model history, given its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **model_history_id** | **String**| GUID of the model history to get information of. | 
 
 ### Return type
@@ -874,7 +899,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_model_instance**
-> ::models::ModelInstanceEntity get_model_instance(ctx, model_instance_id)
+> ::models::ModelInstanceEntity get_model_instance(ctx, model_history_server_id, model_instance_id)
 Gets a model instance, given its ID
 
 ### Required Parameters
@@ -882,6 +907,7 @@ Gets a model instance, given its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **model_instance_id** | **String**| GUID of the model instance to get information of. | 
 
 ### Return type
@@ -900,7 +926,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_models_for_experiment**
-> Vec<::models::ModelInstanceEntity> get_models_for_experiment(ctx, experiment_id)
+> Vec<::models::ModelInstanceEntity> get_models_for_experiment(ctx, model_history_server_id, experiment_id)
 Obtain a list of all the models for an experiment
 
 ### Required Parameters
@@ -908,6 +934,7 @@ Obtain a list of all the models for an experiment
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **experiment_id** | **String**| the GUID of the experiment | 
 
 ### Return type
@@ -926,7 +953,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **imagetransformprocess_get**
-> ::models::ImageTransformProcess imagetransformprocess_get(ctx, deployment_name, image_transform_name)
+> ::models::ImageTransformProcess imagetransformprocess_get(ctx, deployment_name, version_name, image_transform_name)
 Retrieves the image transform process JSON string
 
 ### Required Parameters
@@ -935,6 +962,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **image_transform_name** | **String**| ID or name of the deployed image transform | 
 
 ### Return type
@@ -953,7 +981,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **imagetransformprocess_post**
-> ::models::ImageTransformProcess imagetransformprocess_post(ctx, deployment_name, image_transform_name, body)
+> ::models::ImageTransformProcess imagetransformprocess_post(ctx, deployment_name, version_name, image_transform_name, body)
 Sets the image transform process through the provided JSON string
 
 ### Required Parameters
@@ -962,6 +990,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **image_transform_name** | **String**| ID or name of the deployed image transform | 
   **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
 
@@ -981,7 +1010,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **jsonarray**
-> ::models::JsonArrayResponse jsonarray(ctx, body, deployment_name, model_name)
+> ::models::JsonArrayResponse jsonarray(ctx, body, deployment_name, version_name, model_name)
 Run inference on the input and returns it as a JsonArrayResponse
 
 ### Required Parameters
@@ -991,6 +1020,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -1009,7 +1039,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **knn**
-> ::models::NearestNeighborsResults knn(ctx, deployment_name, knn_name, body)
+> ::models::NearestNeighborsResults knn(ctx, deployment_name, version_name, knn_name, body)
 Runs knn on the given index with the given k
 
 Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
@@ -1020,6 +1050,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **knn_name** | **String**| ID or name of the deployed knn | 
   **body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  | 
 
@@ -1039,7 +1070,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **knnnew**
-> ::models::NearestNeighborsResults knnnew(ctx, deployment_name, knn_name, body)
+> ::models::NearestNeighborsResults knnnew(ctx, deployment_name, version_name, knn_name, body)
 Run a k nearest neighbors search on a NEW data point
 
 ### Required Parameters
@@ -1048,6 +1079,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **knn_name** | **String**| ID or name of the deployed knn | 
   **body** | [**Base64NdArrayBodyKnn**](Base64NdArrayBodyKnn.md)| The input NDArray | 
 
@@ -1089,7 +1121,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **logfilepath**
-> String logfilepath(ctx, deployment_name, model_name)
+> String logfilepath(ctx, deployment_name, version_name, model_name)
 Get logs file path
 
 ### Required Parameters
@@ -1098,6 +1130,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -1142,7 +1175,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **logs**
-> ::models::LogBatch logs(ctx, body, deployment_name, model_name)
+> ::models::LogBatch logs(ctx, body, deployment_name, version_name, model_name)
 Get logs
 
 ### Required Parameters
@@ -1152,6 +1185,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**LogRequest**](LogRequest.md)| the the log request | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -1170,7 +1204,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **meta_get**
-> ::models::MetaData meta_get(ctx, deployment_name, model_name)
+> ::models::MetaData meta_get(ctx, deployment_name, version_name, model_name)
 this method can be used to get the meta data for the current model which set to the server
 
 ### Required Parameters
@@ -1179,6 +1213,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -1197,7 +1232,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **meta_post**
-> ::models::MetaData meta_post(ctx, body, deployment_name, model_name)
+> ::models::MetaData meta_post(ctx, body, deployment_name, version_name, model_name)
 This method can be used to set meta data for the current model which is set to the server
 
 ### Required Parameters
@@ -1207,6 +1242,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**MetaData**](MetaData.md)| the meta data object | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -1279,7 +1315,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **modelset**
-> ::models::ModelStatus modelset(ctx, deployment_name, model_name, optional)
+> ::models::ModelStatus modelset(ctx, deployment_name, version_name, model_name, optional)
 Set the model to be served
 
 ### Required Parameters
@@ -1288,6 +1324,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
@@ -1297,6 +1334,7 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **String**| ID or name of the deployed model | 
  **file** | **File**| The model file to upload (.pb file) | 
 
@@ -1316,7 +1354,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **modelupdate**
-> ::models::ModelStatus modelupdate(ctx, deployment_name, model_name, optional)
+> ::models::ModelStatus modelupdate(ctx, deployment_name, version_name, model_name, optional)
 Update the model to be served
 
 ### Required Parameters
@@ -1325,6 +1363,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
@@ -1334,6 +1373,7 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **String**| ID or name of the deployed model | 
  **file** | **File**| The model file to update with (.pb file) | 
 
@@ -1353,7 +1393,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **multiclassify**
-> ::models::MultiClassClassificationResult multiclassify(ctx, body, deployment_name, model_name)
+> ::models::MultiClassClassificationResult multiclassify(ctx, body, deployment_name, version_name, model_name)
 Represents all of the labels for a given classification
 
 ### Required Parameters
@@ -1363,6 +1403,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -1381,7 +1422,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **multipredict**
-> ::models::MultiPredictResponse multipredict(ctx, body, deployment_name, model_name)
+> ::models::MultiPredictResponse multipredict(ctx, body, deployment_name, version_name, model_name)
 Get the output from the network, based on the given INDArray[] input
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
@@ -1393,6 +1434,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -1411,7 +1453,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **multipredictimage**
-> ::models::MultiPredictResponse multipredictimage(ctx, file, id, needs_preprocessing, deployment_name, model_name)
+> ::models::MultiPredictResponse multipredictimage(ctx, file, id, needs_preprocessing, deployment_name, version_name, model_name)
 Get the output from the network using the given image file using the /multipredict endpoint's method
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
@@ -1425,6 +1467,7 @@ Name | Type | Description  | Notes
   **id** | **String**| The id of the request (could be self generated) | 
   **needs_preprocessing** | **bool**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -1443,7 +1486,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predict**
-> ::models::Prediction predict(ctx, body, deployment_name, model_name)
+> ::models::Prediction predict(ctx, body, deployment_name, version_name, model_name)
 Run inference on the input array.
 
 ### Required Parameters
@@ -1453,6 +1496,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**Prediction**](Prediction.md)| The input NDArray | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -1471,7 +1515,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictimage**
-> ::models::Prediction predictimage(ctx, deployment_name, model_name, optional)
+> ::models::Prediction predictimage(ctx, deployment_name, version_name, model_name, optional)
 Run inference on the input array, using input image file from multipart form data.
 
 ### Required Parameters
@@ -1480,6 +1524,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
@@ -1489,6 +1534,7 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **String**| ID or name of the deployed model | 
  **image** | **File**| The file to upload. | 
 
@@ -1508,7 +1554,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictwithpreprocess**
-> ::models::Prediction predictwithpreprocess(ctx, body, deployment_name, model_name)
+> ::models::Prediction predictwithpreprocess(ctx, body, deployment_name, version_name, model_name)
 Preprocesses the input and run inference on it
 
 ### Required Parameters
@@ -1518,6 +1564,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | **Vec&lt;String&gt;**| The input array | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -1536,7 +1583,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictwithpreprocessjson**
-> ::models::JsonArrayResponse predictwithpreprocessjson(ctx, body, deployment_name, model_name)
+> ::models::JsonArrayResponse predictwithpreprocessjson(ctx, body, deployment_name, version_name, model_name)
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
 ### Required Parameters
@@ -1546,6 +1593,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | **Vec&lt;String&gt;**| The input array | 
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -1592,7 +1640,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transform_csv**
-> ::models::BatchCsvRecord transform_csv(ctx, deployment_name, transform_name, optional)
+> ::models::BatchCsvRecord transform_csv(ctx, deployment_name, version_name, transform_name, optional)
 Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 
 Takes a batch of SingleCSVRecord object and transforms it into the desired format
@@ -1603,6 +1651,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transform_name** | **String**| ID or name of the deployed transform | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
@@ -1612,6 +1661,7 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
  **batch_csv_record** | [**BatchCsvRecord**](BatchCsvRecord.md)| The input batch of record arrays | 
 
@@ -1631,7 +1681,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformarray_csv**
-> ::models::Base64NdArrayBody transformarray_csv(ctx, deployment_name, transform_name, optional)
+> ::models::Base64NdArrayBody transformarray_csv(ctx, deployment_name, version_name, transform_name, optional)
 Takes a batch input arrays and transforms it
 
 Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1642,6 +1692,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transform_name** | **String**| ID or name of the deployed transform | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
@@ -1651,6 +1702,7 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
  **batch_csv_record** | [**BatchCsvRecord**](BatchCsvRecord.md)| The input batch of record arrays | 
 
@@ -1670,7 +1722,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformarray_image**
-> ::models::Base64NdArrayBody transformarray_image(ctx, deployment_name, image_transform_name, batch_image_record)
+> ::models::Base64NdArrayBody transformarray_image(ctx, deployment_name, version_name, image_transform_name, batch_image_record)
 Takes a batch of images uri and transforms it and returns Base64NDArrayBody
 
 Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1681,6 +1733,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **image_transform_name** | **String**| ID or name of the deployed image transform | 
   **batch_image_record** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
 
@@ -1700,7 +1753,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformimage**
-> ::models::Base64NdArrayBody transformimage(ctx, deployment_name, image_transform_name, files)
+> ::models::Base64NdArrayBody transformimage(ctx, deployment_name, version_name, image_transform_name, files)
 Takes multiple multipart image file to transform and returns Base64NDArrayBody
 
 Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1711,6 +1764,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **image_transform_name** | **String**| ID or name of the deployed image transform | 
   **files** | [**Vec&lt;Vec&lt;u8&gt;&gt;**](Vec&lt;u8&gt;.md)| The image files to upload | 
 
@@ -1730,7 +1784,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformincremental_csv**
-> ::models::SingleCsvRecord transformincremental_csv(ctx, deployment_name, transform_name, optional)
+> ::models::SingleCsvRecord transformincremental_csv(ctx, deployment_name, version_name, transform_name, optional)
 Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
 
 Takes a SingleCSVRecord object and transforms it into the desired format
@@ -1741,6 +1795,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transform_name** | **String**| ID or name of the deployed transform | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
@@ -1750,6 +1805,7 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
  **single_csv_record** | [**SingleCsvRecord**](SingleCsvRecord.md)| The input record array | 
 
@@ -1769,7 +1825,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformincrementalarray_csv**
-> ::models::Base64NdArrayBody transformincrementalarray_csv(ctx, deployment_name, transform_name, optional)
+> ::models::Base64NdArrayBody transformincrementalarray_csv(ctx, deployment_name, version_name, transform_name, optional)
 Same as /transformincremental but returns Base64NDArrayBody
 
 Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1780,6 +1836,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transform_name** | **String**| ID or name of the deployed transform | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
@@ -1789,6 +1846,7 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
  **single_csv_record** | [**SingleCsvRecord**](SingleCsvRecord.md)| The input record array | 
 
@@ -1808,7 +1866,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformincrementalarray_image**
-> ::models::Base64NdArrayBody transformincrementalarray_image(ctx, deployment_name, image_transform_name, single_image_record)
+> ::models::Base64NdArrayBody transformincrementalarray_image(ctx, deployment_name, version_name, image_transform_name, single_image_record)
 Takes SingleImageRecord to transform and returns Base64NDArrayBody
 
 Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1819,6 +1877,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **image_transform_name** | **String**| ID or name of the deployed image transform | 
   **single_image_record** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
 
@@ -1838,7 +1897,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformincrementalimage**
-> ::models::Base64NdArrayBody transformincrementalimage(ctx, deployment_name, image_transform_name, file)
+> ::models::Base64NdArrayBody transformincrementalimage(ctx, deployment_name, version_name, image_transform_name, file)
 Takes a single multipart image file to transform and returns Base64NDArrayBody
 
 Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
@@ -1849,6 +1908,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **image_transform_name** | **String**| ID or name of the deployed image transform | 
   **file** | **File**| The image file to upload | 
 
@@ -1868,7 +1928,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_get**
-> ::models::TransformProcess transformprocess_get(ctx, deployment_name, transform_name)
+> ::models::TransformProcess transformprocess_get(ctx, deployment_name, version_name, transform_name)
 Gets the JSON string of the deployed transform process
 
 Retrieves the JSON string of the deployed transform process 
@@ -1879,6 +1939,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transform_name** | **String**| ID or name of the deployed transform | 
 
 ### Return type
@@ -1897,7 +1958,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_post**
-> transformprocess_post(ctx, deployment_name, transform_name, optional)
+> transformprocess_post(ctx, deployment_name, version_name, transform_name, optional)
 Sets the deployed transform process through the provided JSON string
 
 Sets the transform process with the provided JSON string
@@ -1908,6 +1969,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **deployment_name** | **String**| Name of the deployment group | 
+  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transform_name** | **String**| ID or name of the deployed transform | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
@@ -1917,6 +1979,7 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
  **transform_process** | [**TransformProcess**](TransformProcess.md)| The transform process to set | 
 
@@ -1936,7 +1999,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_best_model_for_experiment**
-> ::models::ExperimentEntity update_best_model_for_experiment(ctx, update_best_model)
+> ::models::ExperimentEntity update_best_model_for_experiment(ctx, model_history_server_id, update_best_model)
 Updates the best model for an experiment
 
 ### Required Parameters
@@ -1944,6 +2007,7 @@ Updates the best model for an experiment
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **update_best_model** | [**UpdateBestModel**](UpdateBestModel.md)| Model encapsulating the experiment id to update and the best model id. | 
 
 ### Return type
@@ -1962,7 +2026,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_experiment**
-> ::models::ExperimentEntity update_experiment(ctx, experiment_id, experiment_entity)
+> ::models::ExperimentEntity update_experiment(ctx, model_history_server_id, experiment_id, experiment_entity)
 Updates an experiment, given an experiment entity
 
 ### Required Parameters
@@ -1970,6 +2034,7 @@ Updates an experiment, given an experiment entity
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **experiment_id** | **String**| the GUID of the experiment to update | 
   **experiment_entity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to update with | 
 
@@ -1989,7 +2054,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_model_history**
-> ::models::ModelHistoryEntity update_model_history(ctx, model_history_id, update_model_history_request)
+> ::models::ModelHistoryEntity update_model_history(ctx, model_history_server_id, model_history_id, update_model_history_request)
 Update a model history / workspace
 
 ### Required Parameters
@@ -1997,6 +2062,7 @@ Update a model history / workspace
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
   **model_history_id** | **String**| the GUID of the model history / workspace to update | 
   **update_model_history_request** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
