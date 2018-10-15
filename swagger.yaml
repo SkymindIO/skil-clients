@@ -2487,7 +2487,7 @@ paths:
               $ref: '#/definitions/Resource'
   /resources/credentials/{credentialId}:
     get:
-      operationId: getCredentialsFromId
+      operationId: getCredentialsById
       summary: Get credentials given an ID
       produces:
         - application/json
@@ -2503,6 +2503,21 @@ paths:
           description: Credentials Object
           schema:
             $ref: '#/definitions/ResourceCredentials'
+    delete:
+      operationId: deleteCredentialsById
+      summary: Delete credentials given an ID
+      produces:
+        - application/json
+      parameters:
+        - name: credentialId
+          in: path
+          type: integer
+          format: int64
+          description: Credentials ID
+          required: true
+      responses:
+        200:
+          description: Credentials successfully deteled
   /resources/credentials:
     post:
       operationId: addCredentials
@@ -2524,7 +2539,6 @@ paths:
           description: The created credentials object
           schema:
             $ref: '#/definitions/ResourceCredentials'
-
 definitions:
   TransformProcess:
     type: object
