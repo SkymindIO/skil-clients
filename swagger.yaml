@@ -2163,7 +2163,7 @@ paths:
         200:
           description: The add example request
           schema:
-            $ref: '#/definitions/addExampleRequest'
+            $ref: '#/definitions/AddExampleRequest'
   /rpc/{modelHistoryServerId}/model/feedback:
     post:
       operationId: addModelFeedback
