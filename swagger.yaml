@@ -2435,11 +2435,11 @@ paths:
           description: ID of the resource group
           required: true
         - name: resourceId
-            in: path
-            type: integer
-            format: int64
-            description: ID of the resource
-            required: true
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource
+          required: true
       responses:
         200:
           description: Successfully added resource to the resource group
@@ -2457,11 +2457,11 @@ paths:
           description: ID of the resource group
           required: true
         - name: resourceId
-            in: path
-            type: integer
-            format: int64
-            description: ID of the resource
-            required: true
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource
+          required: true
       responses:
         200:
           description: Successfully removed resource from the resource group
