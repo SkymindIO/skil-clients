@@ -1,0 +1,4473 @@
+---
+swagger: "2.0"
+info:
+  description: "Endpoints API for different services in SKIL"
+  version: "1.2.0-beta"
+  title: "Endpoints"
+host: "localhost:9008"
+schemes:
+- "http"
+security:
+- api_key: []
+paths:
+  /login:
+    post:
+      summary: "Post JSON credentials and obtain a JWT authorization token."
+      operationId: "login"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "credentials"
+        description: "Login credentials."
+        required: true
+        schema:
+          $ref: "#/definitions/Credentials"
+        x-exportParamName: "Credentials"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Token"
+        401:
+          description: "Invalid credentials"
+      security: []
+  /api/upload/model:
+    post:
+      summary: "Upload a model file to SKIL for import."
+      operationId: "upload"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "file"
+        in: "formData"
+        description: "The file to upload."
+        required: false
+        type: "file"
+        x-exportParamName: "File"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/FileUploadList"
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess:
+    get:
+      summary: "Gets the JSON string of the deployed transform process"
+      description: "Retrieves the JSON string of the deployed transform process\n"
+      operationId: "transformprocess_get"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "transformName"
+        in: "path"
+        description: "ID or name of the deployed transform"
+        required: true
+        type: "string"
+        x-exportParamName: "TransformName"
+      responses:
+        200:
+          description: "the deployed transform process"
+          schema:
+            $ref: "#/definitions/TransformProcess"
+        400:
+          description: "the transform process is probably null"
+        500:
+          description: "internal server error"
+    post:
+      summary: "Sets the deployed transform process through the provided JSON string"
+      description: "Sets the transform process with the provided JSON string"
+      operationId: "transformprocess_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "transformName"
+        in: "path"
+        description: "ID or name of the deployed transform"
+        required: true
+        type: "string"
+        x-exportParamName: "TransformName"
+      - in: "body"
+        name: "TransformProcess"
+        description: "The transform process to set"
+        required: false
+        schema:
+          $ref: "#/definitions/TransformProcess"
+        x-exportParamName: "TransformProcess"
+      responses:
+        200:
+          description: "transform process set successfully"
+        500:
+          description: "internal server error"
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental:
+    post:
+      summary: "Takes SingleCSVRecord as input and returns the transformed array as\
+        \ SingleCSVRecord"
+      description: "Takes a SingleCSVRecord object and transforms it into the desired\
+        \ format"
+      operationId: "transformincremental_csv"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "transformName"
+        in: "path"
+        description: "ID or name of the deployed transform"
+        required: true
+        type: "string"
+        x-exportParamName: "TransformName"
+      - in: "body"
+        name: "SingleCSVRecord"
+        description: "The input record array"
+        required: false
+        schema:
+          $ref: "#/definitions/SingleCSVRecord"
+        x-exportParamName: "SingleCSVRecord"
+      responses:
+        200:
+          description: "array transformed and returned successfully"
+          schema:
+            $ref: "#/definitions/SingleCSVRecord"
+        500:
+          description: "internal server error during transforming the array"
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform:
+    post:
+      summary: "Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord"
+      description: "Takes a batch of SingleCSVRecord object and transforms it into\
+        \ the desired format"
+      operationId: "transform_csv"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "transformName"
+        in: "path"
+        description: "ID or name of the deployed transform"
+        required: true
+        type: "string"
+        x-exportParamName: "TransformName"
+      - in: "body"
+        name: "BatchCSVRecord"
+        description: "The input batch of record arrays"
+        required: false
+        schema:
+          $ref: "#/definitions/BatchCSVRecord"
+        x-exportParamName: "BatchCSVRecord"
+      responses:
+        200:
+          description: "array transformed and returned successfully"
+          schema:
+            $ref: "#/definitions/BatchCSVRecord"
+        500:
+          description: "internal server error during transforming the array"
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray:
+    post:
+      summary: "Same as /transformincremental but returns Base64NDArrayBody"
+      description: "Takes a SingleCSVRecord object and transforms it into the desired\
+        \ format and returns it in the form of Base64NDArrayBody"
+      operationId: "transformincrementalarray_csv"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "transformName"
+        in: "path"
+        description: "ID or name of the deployed transform"
+        required: true
+        type: "string"
+        x-exportParamName: "TransformName"
+      - in: "body"
+        name: "SingleCSVRecord"
+        description: "The input record array"
+        required: false
+        schema:
+          $ref: "#/definitions/SingleCSVRecord"
+        x-exportParamName: "SingleCSVRecord"
+      responses:
+        200:
+          description: "array transformed and returned successfully"
+          schema:
+            $ref: "#/definitions/Base64NDArrayBody"
+        500:
+          description: "internal server error during transforming the array"
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray:
+    post:
+      summary: "Takes a batch input arrays and transforms it"
+      description: "Takes a batch of SingleCSVRecord object and transforms it into\
+        \ the desired format and returns it in the form of Base64NDArrayBody"
+      operationId: "transformarray_csv"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "transformName"
+        in: "path"
+        description: "ID or name of the deployed transform"
+        required: true
+        type: "string"
+        x-exportParamName: "TransformName"
+      - in: "body"
+        name: "BatchCSVRecord"
+        description: "The input batch of record arrays"
+        required: false
+        schema:
+          $ref: "#/definitions/BatchCSVRecord"
+        x-exportParamName: "BatchCSVRecord"
+      responses:
+        200:
+          description: "array transformed and returned successfully"
+          schema:
+            $ref: "#/definitions/Base64NDArrayBody"
+        500:
+          description: "internal server error during transforming the array"
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess:
+    get:
+      summary: "Retrieves the image transform process JSON string"
+      operationId: "imagetransformprocess_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "imageTransformName"
+        in: "path"
+        description: "ID or name of the deployed image transform"
+        required: true
+        type: "string"
+        x-exportParamName: "ImageTransformName"
+      responses:
+        200:
+          description: "Image transform process JSON successfully retrieved"
+          schema:
+            $ref: "#/definitions/ImageTransformProcess"
+    post:
+      summary: "Sets the image transform process through the provided JSON string"
+      operationId: "imagetransformprocess_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "imageTransformName"
+        in: "path"
+        description: "ID or name of the deployed image transform"
+        required: true
+        type: "string"
+        x-exportParamName: "ImageTransformName"
+      - in: "body"
+        name: "body"
+        description: "The image transform process JSON"
+        required: true
+        schema:
+          $ref: "#/definitions/ImageTransformProcess"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "Image transform process JSON successfully set"
+          schema:
+            $ref: "#/definitions/ImageTransformProcess"
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray:
+    post:
+      summary: "Takes SingleImageRecord to transform and returns Base64NDArrayBody"
+      description: "Takes a SingleImageRecord object and transforms it into the desired\
+        \ format and returns it in the form of Base64NDArrayBody"
+      operationId: "transformincrementalarray_image"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "imageTransformName"
+        in: "path"
+        description: "ID or name of the deployed image transform"
+        required: true
+        type: "string"
+        x-exportParamName: "ImageTransformName"
+      - in: "body"
+        name: "SingleImageRecord"
+        description: "The input record array"
+        required: true
+        schema:
+          $ref: "#/definitions/SingleImageRecord"
+        x-exportParamName: "SingleImageRecord"
+      responses:
+        200:
+          description: "array transformed and returned successfully"
+          schema:
+            $ref: "#/definitions/Base64NDArrayBody"
+        500:
+          description: "internal server error during transforming the array"
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage:
+    post:
+      summary: "Takes a single multipart image file to transform and returns Base64NDArrayBody"
+      description: "Takes a single multipart image file and transforms it into the\
+        \ desired format and returns it in the form of Base64NDArrayBody"
+      operationId: "transformincrementalimage"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "imageTransformName"
+        in: "path"
+        description: "ID or name of the deployed image transform"
+        required: true
+        type: "string"
+        x-exportParamName: "ImageTransformName"
+      - name: "file"
+        in: "formData"
+        description: "The image file to upload"
+        required: true
+        type: "file"
+        x-exportParamName: "File"
+      responses:
+        200:
+          description: "array transformed and returned successfully"
+          schema:
+            $ref: "#/definitions/Base64NDArrayBody"
+        400:
+          description: "No uploaded file found or the file couldn't be loaded"
+        500:
+          description: "internal server error during transforming the array"
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray:
+    post:
+      summary: "Takes a batch of images uri and transforms it and returns Base64NDArrayBody"
+      description: "Takes a batch of SingleImageRecord object and transforms it into\
+        \ the desired format and returns it in the form of Base64NDArrayBody"
+      operationId: "transformarray_image"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "imageTransformName"
+        in: "path"
+        description: "ID or name of the deployed image transform"
+        required: true
+        type: "string"
+        x-exportParamName: "ImageTransformName"
+      - in: "body"
+        name: "BatchImageRecord"
+        description: "The input batch of record arrays"
+        required: true
+        schema:
+          $ref: "#/definitions/BatchImageRecord"
+        x-exportParamName: "BatchImageRecord"
+      responses:
+        200:
+          description: "array transformed and returned successfully"
+          schema:
+            $ref: "#/definitions/Base64NDArrayBody"
+        500:
+          description: "internal server error during transforming the array"
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage:
+    post:
+      summary: "Takes multiple multipart image file to transform and returns Base64NDArrayBody"
+      description: "Takes multiple multipart image file and transforms it into the\
+        \ desired format and returns it in the form of Base64NDArrayBody"
+      operationId: "transformimage"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "imageTransformName"
+        in: "path"
+        description: "ID or name of the deployed image transform"
+        required: true
+        type: "string"
+        x-exportParamName: "ImageTransformName"
+      - name: "files"
+        in: "formData"
+        description: "The image files to upload"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+          format: "binary"
+        x-exportParamName: "Files"
+      responses:
+        200:
+          description: "array transformed and returned successfully"
+          schema:
+            $ref: "#/definitions/Base64NDArrayBody"
+        400:
+          description: "No uploaded files found"
+        500:
+          description: "internal server error during transforming the array"
+  /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn:
+    post:
+      summary: "Runs knn on the given index with the given k"
+      description: "Runs knn on the given index with the given k (note that this is\
+        \ for data already within the existing dataset not new data)"
+      operationId: "knn"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "knnName"
+        in: "path"
+        description: "ID or name of the deployed knn"
+        required: true
+        type: "string"
+        x-exportParamName: "KnnName"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/NearestNeighborRequest"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/NearestNeighborsResults"
+        400:
+          description: "Invalid input"
+        500:
+          description: "Internal server error"
+  /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew:
+    post:
+      summary: "Run a k nearest neighbors search on a NEW data point"
+      operationId: "knnnew"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "knnName"
+        in: "path"
+        description: "ID or name of the deployed knn"
+        required: true
+        type: "string"
+        x-exportParamName: "KnnName"
+      - in: "body"
+        name: "body"
+        description: "The input NDArray"
+        required: true
+        schema:
+          $ref: "#/definitions/Base64NDArrayBodyKNN"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/NearestNeighborsResults"
+        400:
+          description: "Invalid input"
+        500:
+          description: "Internal server error"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict:
+    post:
+      summary: "Run inference on the input array."
+      operationId: "predict"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The input NDArray"
+        required: true
+        schema:
+          $ref: "#/definitions/Prediction"
+        x-exportParamName: "Body"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Prediction"
+        400:
+          description: "Invalid input"
+        500:
+          description: "Invalid deployment or model name"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage:
+    post:
+      summary: "Run inference on the input array, using input image file from multipart\
+        \ form data."
+      operationId: "predictimage"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "image"
+        in: "formData"
+        description: "The file to upload."
+        required: false
+        type: "file"
+        x-exportParamName: "Image"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Prediction"
+        500:
+          description: "Error generating prediction"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict:
+    post:
+      summary: "Get the output from the network, based on the given INDArray[] input"
+      description: "Networks with multiple input/output are supported via this method.\
+        \ A Normalizer will be used if needsPreProcessing is set to true. The output/returned\
+        \ array of INDArray will be the raw predictions, and consequently this method\
+        \ can be used for classification or regression networks, with any type of\
+        \ output layer (standard, time series / RnnOutputLayer, etc)."
+      operationId: "multipredict"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The multiple input arrays with mask inputs to run inferences\
+          \ on"
+        required: true
+        schema:
+          $ref: "#/definitions/MultiPredictRequest"
+        x-exportParamName: "Body"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MultiPredictResponse"
+        500:
+          description: "Error generating prediction"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage:
+    post:
+      summary: "Get the output from the network using the given image file using the\
+        \ /multipredict endpoint's method"
+      description: "Networks with multiple input/output are supported via this method.\
+        \ A Normalizer will be used if needsPreProcessing is set to true. The output/returned\
+        \ array of INDArray will be the raw predictions, and consequently this method\
+        \ can be used for classification or regression networks, with any type of\
+        \ output layer (standard, time series / RnnOutputLayer, etc)."
+      operationId: "multipredictimage"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "file"
+        in: "formData"
+        description: "The image file to run the prediction on"
+        required: true
+        type: "file"
+        x-exportParamName: "File"
+      - name: "id"
+        in: "formData"
+        description: "The id of the request (could be self generated)"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "needs_preprocessing"
+        in: "formData"
+        description: "Whether or not the preprocessing is required (either 'true'\
+          \ or 'false')"
+        required: true
+        type: "boolean"
+        x-exportParamName: "NeedsPreprocessing"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MultiPredictResponse"
+        500:
+          description: "Error generating prediction"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify:
+    post:
+      summary: "Use the deployed model to classify the input"
+      operationId: "classify"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The input NDArray"
+        required: true
+        schema:
+          $ref: "#/definitions/Prediction"
+        x-exportParamName: "Body"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ClassificationResult"
+        400:
+          description: "Invalid input"
+        500:
+          description: "Invalid deployment or model name"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage:
+    post:
+      summary: "Use the deployed model to classify the input, using input image file\
+        \ from multipart form data."
+      operationId: "classifyimage"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "image"
+        in: "formData"
+        description: "The file to upload."
+        required: false
+        type: "file"
+        x-exportParamName: "Image"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ClassificationResult"
+        500:
+          description: "Error generating classification"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray:
+    post:
+      summary: "Same as /classify but returns the output as Base64NDArrayBody"
+      operationId: "classifyarray"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The input NDArray"
+        required: true
+        schema:
+          $ref: "#/definitions/Prediction"
+        x-exportParamName: "Body"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Base64NDArrayBody"
+        400:
+          description: "Invalid input"
+        500:
+          description: "Invalid deployment or model name"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify:
+    post:
+      summary: "Represents all of the labels for a given classification"
+      operationId: "multiclassify"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The input NDArray"
+        required: true
+        schema:
+          $ref: "#/definitions/Prediction"
+        x-exportParamName: "Body"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MultiClassClassificationResult"
+        400:
+          description: "Invalid input"
+        500:
+          description: "Invalid deployment or model name"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset:
+    post:
+      summary: "Set the model to be served"
+      operationId: "modelset"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "file"
+        in: "formData"
+        description: "The model file to upload (.pb file)"
+        required: false
+        type: "file"
+        x-exportParamName: "File"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "Model set successfully"
+          schema:
+            $ref: "#/definitions/ModelStatus"
+        500:
+          description: "Error setting model"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate:
+    post:
+      summary: "Update the model to be served"
+      operationId: "modelupdate"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "file"
+        in: "formData"
+        description: "The model file to update with (.pb file)"
+        required: false
+        type: "file"
+        x-exportParamName: "File"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "Model updated successfully or model update failed"
+          schema:
+            $ref: "#/definitions/ModelStatus"
+        500:
+          description: "Error updating model"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray:
+    post:
+      summary: "Run inference on the input and returns it as a JsonArrayResponse"
+      operationId: "jsonarray"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The input NDArray"
+        required: true
+        schema:
+          $ref: "#/definitions/Prediction"
+        x-exportParamName: "Body"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/JsonArrayResponse"
+        500:
+          description: "Error generating array prediction"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess:
+    post:
+      summary: "Preprocesses the input and run inference on it"
+      operationId: "predictwithpreprocess"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The input array"
+        required: true
+        schema:
+          type: "array"
+          items:
+            type: "string"
+        x-exportParamName: "Body"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Prediction"
+        500:
+          description: "Error executing predictPreProcess"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson:
+    post:
+      summary: "Preprocesses the input and run inference on it and returns it as a\
+        \ JsonArrayResponse"
+      operationId: "predictwithpreprocessjson"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The input array"
+        required: true
+        schema:
+          type: "array"
+          items:
+            type: "string"
+        x-exportParamName: "Body"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/JsonArrayResponse"
+        500:
+          description: "Error executing predictPreProcessJson"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs:
+    post:
+      summary: "Get logs"
+      operationId: "logs"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "the the log request"
+        required: true
+        schema:
+          $ref: "#/definitions/LogRequest"
+        x-exportParamName: "Body"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "logs obtained successfully"
+          schema:
+            $ref: "#/definitions/LogBatch"
+        500:
+          description: "Error retrieving logs"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath:
+    get:
+      summary: "Get logs file path"
+      operationId: "logfilepath"
+      produces:
+      - "text"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "the retrieved log file path"
+          schema:
+            type: "string"
+            example: "log_file_path"
+        500:
+          description: "Error retrieving log file path"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta:
+    get:
+      summary: "this method can be used to get the meta data for the current model\
+        \ which set to the server"
+      operationId: "meta_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/MetaData"
+    post:
+      summary: "This method can be used to set meta data for the current model which\
+        \ is set to the server"
+      operationId: "meta_post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "the meta data object"
+        required: true
+        schema:
+          $ref: "#/definitions/MetaData"
+        x-exportParamName: "Body"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "the meta data object that was set"
+          schema:
+            $ref: "#/definitions/MetaData"
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects:
+    post:
+      summary: "Detect the objects, given a (input) prediction request"
+      operationId: "detectobjects"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "formData"
+        description: "the GUID for mapping the results in the detections"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - name: "needsPreprocessing"
+        in: "formData"
+        description: "(true) if the image needs preprocessing"
+        required: true
+        type: "boolean"
+        x-exportParamName: "NeedsPreprocessing"
+      - name: "threshold"
+        in: "formData"
+        description: "A threshold, indicating the required surety for detecting a\
+          \ bounding box. For example, a threshold of 0.1 might give thousand bounding\
+          \ boxes for an image and a threshold of 0.99 might give none."
+        required: true
+        type: "number"
+        format: "float"
+        x-exportParamName: "Threshold"
+      - name: "imageFile"
+        in: "formData"
+        description: "the image file to detect objects from"
+        required: true
+        type: "file"
+        x-exportParamName: "ImageFile"
+      - name: "deploymentName"
+        in: "path"
+        description: "Name of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentName"
+      - name: "versionName"
+        in: "path"
+        description: "Version name of the endpoint. The default value is \"default\""
+        required: false
+        type: "string"
+        default: "default"
+        x-exportParamName: "VersionName"
+      - name: "modelName"
+        in: "path"
+        description: "ID or name of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelName"
+      responses:
+        200:
+          description: "the detected objects in the given input"
+          schema:
+            $ref: "#/definitions/DetectionResult"
+  /deployments:
+    get:
+      summary: "Get a list of deployments"
+      operationId: "deployments"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "List of the deployments retrieved successfully"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/DeploymentResponse"
+  /deployment/{deploymentId}:
+    get:
+      summary: "Get a deployment details by id"
+      operationId: "deployment_get"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentId"
+        in: "path"
+        description: "Id of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentId"
+      responses:
+        200:
+          description: "The deployment details"
+          schema:
+            $ref: "#/definitions/DeploymentResponse"
+    delete:
+      summary: "Delete a deployment by id"
+      operationId: "deployment_delete"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentId"
+        in: "path"
+        description: "Id of the deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentId"
+      responses:
+        200:
+          description: "The status of the removed deployment"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+  /deployment:
+    post:
+      summary: "Create a new deployment group."
+      operationId: "deploymentCreate"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "the deployment request"
+        required: true
+        schema:
+          $ref: "#/definitions/CreateDeploymentRequest"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "the added deployment"
+          schema:
+            $ref: "#/definitions/DeploymentResponse"
+        500:
+          description: "Error creating deployment"
+  /deployment/{deploymentId}/models:
+    get:
+      summary: "Retrieve a list of all the deployed models given a deployment id"
+      operationId: "models"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentId"
+        in: "path"
+        description: "ID deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentId"
+      responses:
+        200:
+          description: "Retrieved model list"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ModelEntity"
+  /deployment/{deploymentId}/model:
+    post:
+      summary: "Deploy a model in a deployment group."
+      operationId: "deployModel"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentId"
+        in: "path"
+        description: "ID deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentId"
+      - in: "body"
+        name: "body"
+        description: "the model import request"
+        required: true
+        schema:
+          $ref: "#/definitions/ImportModelRequest"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "the deployed model"
+          schema:
+            $ref: "#/definitions/ModelEntity"
+  /deployment/{deploymentId}/model/{modelId}:
+    post:
+      summary: "Reimport a model to a previous deployed model in a deployment"
+      operationId: "reimportModel"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentId"
+        in: "path"
+        description: "ID deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentId"
+      - name: "modelId"
+        in: "path"
+        description: "the id of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelId"
+      - in: "body"
+        name: "body"
+        description: "the deployment request"
+        required: true
+        schema:
+          $ref: "#/definitions/ImportModelRequest"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "the reimported model entity"
+          schema:
+            $ref: "#/definitions/ModelEntity"
+    delete:
+      summary: "Delete a model by deployment and model id"
+      operationId: "delete_model"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentId"
+        in: "path"
+        description: "ID deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentId"
+      - name: "modelId"
+        in: "path"
+        description: "the id of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelId"
+      responses:
+        200:
+          description: "the deleted model status"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+  /deployment/{deploymentId}/model/{modelId}/state:
+    post:
+      summary: "Modify the state (start/stop) of a deployed model"
+      operationId: "modelStateChange"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentId"
+        in: "path"
+        description: "ID deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentId"
+      - name: "modelId"
+        in: "path"
+        description: "the id of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelId"
+      - in: "body"
+        name: "body"
+        description: "the model state object"
+        required: true
+        schema:
+          $ref: "#/definitions/SetState"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "the model entity with its state changed"
+          schema:
+            $ref: "#/definitions/ModelEntity"
+  /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}:
+    get:
+      summary: "Gets a model history, given its ID"
+      operationId: "getModelHistory"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "modelHistoryID"
+        in: "path"
+        description: "GUID of the model history to get information of."
+        required: true
+        type: "string"
+        x-exportParamName: "ModelHistoryID"
+      responses:
+        200:
+          description: "Model history entity"
+          schema:
+            $ref: "#/definitions/ModelHistoryEntity"
+  /rpc/{modelHistoryServerId}/modelhistory:
+    post:
+      summary: "Add a model history / workspace"
+      operationId: "addModelHistory"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "addModelHistoryRequest"
+        description: "The model history request object"
+        required: true
+        schema:
+          $ref: "#/definitions/AddModelHistoryRequest"
+        x-exportParamName: "AddModelHistoryRequest"
+      responses:
+        200:
+          description: "The added model history entity"
+          schema:
+            $ref: "#/definitions/ModelHistoryEntity"
+  /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}:
+    post:
+      summary: "Update a model history / workspace"
+      operationId: "updateModelHistory"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "modelHistoryID"
+        in: "path"
+        description: "the GUID of the model history / workspace to update"
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryID"
+      - in: "body"
+        name: "updateModelHistoryRequest"
+        description: "The model history request object"
+        required: true
+        schema:
+          $ref: "#/definitions/AddModelHistoryRequest"
+        x-exportParamName: "UpdateModelHistoryRequest"
+      responses:
+        200:
+          description: "The updated model history entity"
+          schema:
+            $ref: "#/definitions/ModelHistoryEntity"
+    delete:
+      summary: "Deletes a model history / workspace, given its ID"
+      operationId: "deleteModelHistory"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "modelHistoryID"
+        in: "path"
+        description: "the GUID of the model history / workspace to delete"
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryID"
+      responses:
+        200:
+          description: "Workspace deleted"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        400:
+          description: "The specified Workspace no longer exists"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+  /rpc/{modelHistoryServerId}/experiments:
+    get:
+      summary: "List all of the experiments in every model history / workspace"
+      operationId: "listAllExperiments"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "List of all the experiment entities."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ExperimentEntity"
+  /rpc/{modelHistoryServerId}/experiments/{modelHistoryID}:
+    get:
+      summary: "Obtain all experiments for a model history / workspace"
+      operationId: "getExperimentsForModelHistory"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "modelHistoryID"
+        in: "path"
+        description: "the GUID of the model history / workspace"
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryID"
+      responses:
+        200:
+          description: "List of all the experiment entities in a model history"
+          schema:
+            $ref: "#/definitions/ExperimentEntity"
+  /rpc/{modelHistoryServerId}/experiment/{experimentID}:
+    get:
+      summary: "Obtain an experiment's details, given its ID"
+      operationId: "getExperiment"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "experimentID"
+        in: "path"
+        description: "the GUID of the experiment to obtain"
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ExperimentID"
+      responses:
+        200:
+          description: "Experiment Entity"
+          schema:
+            $ref: "#/definitions/ExperimentEntity"
+    put:
+      summary: "Updates an experiment, given an experiment entity"
+      operationId: "updateExperiment"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "experimentID"
+        in: "path"
+        description: "the GUID of the experiment to update"
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ExperimentID"
+      - in: "body"
+        name: "experimentEntity"
+        description: "The experiment entity to update with"
+        required: true
+        schema:
+          $ref: "#/definitions/ExperimentEntity"
+        x-exportParamName: "ExperimentEntity"
+      responses:
+        200:
+          description: "The updated experiment entity."
+          schema:
+            $ref: "#/definitions/ExperimentEntity"
+    delete:
+      summary: "Deletes an experiment, given an experiment entity"
+      operationId: "deleteExperiment"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "experimentID"
+        in: "path"
+        description: "the GUID of the experiment to delete"
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ExperimentID"
+      responses:
+        200:
+          description: "Experiment deleted successfully"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        400:
+          description: "Experiment no longer exists"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+  /rpc/{modelHistoryServerId}/experiment:
+    post:
+      summary: "Add an experiment, given an experiment entity"
+      operationId: "addExperiment"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "experimentEntity"
+        description: "The experiment entity to add"
+        required: true
+        schema:
+          $ref: "#/definitions/ExperimentEntity"
+        x-exportParamName: "ExperimentEntity"
+      responses:
+        200:
+          description: "The added experiment entity."
+          schema:
+            $ref: "#/definitions/ExperimentEntity"
+  /rpc/{modelHistoryServerId}/experiment/best:
+    post:
+      summary: "Updates the best model for an experiment"
+      operationId: "updateBestModelForExperiment"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "updateBestModel"
+        description: "Model encapsulating the experiment id to update and the best\
+          \ model id."
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateBestModel"
+        x-exportParamName: "UpdateBestModel"
+      responses:
+        200:
+          description: "The updated experiment entity."
+          schema:
+            $ref: "#/definitions/ExperimentEntity"
+  /rpc/{modelHistoryServerId}/experiment/{experimentID}/models:
+    get:
+      summary: "Obtain a list of all the models for an experiment"
+      operationId: "getModelsForExperiment"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "experimentID"
+        in: "path"
+        description: "the GUID of the experiment"
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ExperimentID"
+      responses:
+        200:
+          description: "List of all the models for the specified experiment"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ModelInstanceEntity"
+  /rpc/{modelHistoryServerId}/model/{modelInstanceID}:
+    get:
+      summary: "Gets a model instance, given its ID"
+      operationId: "getModelInstance"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "modelInstanceID"
+        in: "path"
+        description: "GUID of the model instance to get information of."
+        required: true
+        type: "string"
+        x-exportParamName: "ModelInstanceID"
+      responses:
+        200:
+          description: "Model instance entity"
+          schema:
+            $ref: "#/definitions/ModelInstanceEntity"
+    delete:
+      summary: "Deletes a model instance, given its ID"
+      operationId: "deleteModelInstance"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "modelInstanceID"
+        in: "path"
+        description: "GUID of the model instance to delete."
+        required: true
+        type: "string"
+        x-exportParamName: "ModelInstanceID"
+      responses:
+        200:
+          description: "Empty content"
+  /rpc/{modelHistoryServerId}/model:
+    post:
+      summary: "Adds a model"
+      operationId: "addModelInstance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "modelInstanceEntity"
+        description: "The object encapsulating the model instance id and evaluation\
+          \ type to aggregate"
+        required: true
+        schema:
+          $ref: "#/definitions/ModelInstanceEntity"
+        x-exportParamName: "ModelInstanceEntity"
+      responses:
+        200:
+          description: "The added model instance entity"
+          schema:
+            $ref: "#/definitions/ModelInstanceEntity"
+  /rpc/{modelHistoryServerId}/model/best:
+    post:
+      summary: "Gets the best model among the given model instance IDs, based on the\
+        \ evaluation type and column metric"
+      operationId: "getBestModelAmongModelIds"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "bestModel"
+        description: "Object encapsulating the model ids, eval type and column metric\
+          \ name"
+        required: true
+        schema:
+          $ref: "#/definitions/BestModel"
+        x-exportParamName: "BestModel"
+      responses:
+        200:
+          description: "The best model instance entity"
+          schema:
+            $ref: "#/definitions/ModelInstanceEntity"
+  /rpc/{modelHistoryServerId}/model/revisions:
+    post:
+      summary: "Creates model History"
+      operationId: "createModelHistory"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "modelHistoryEntity"
+        description: "The model history entity"
+        required: true
+        schema:
+          $ref: "#/definitions/ModelHistoryEntity"
+        x-exportParamName: "ModelHistoryEntity"
+      responses:
+        200:
+          description: "The created model history"
+          schema:
+            $ref: "#/definitions/ModelHistoryEntity"
+  /rpc/{modelHistoryServerId}/model/revisions/evaluations/:
+    post:
+      summary: "Adds an evaluation result"
+      operationId: "addEvaluationResult"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "evaluationResultsEntity"
+        description: "The evaluation result entity"
+        required: true
+        schema:
+          $ref: "#/definitions/EvaluationResultsEntity"
+        x-exportParamName: "EvaluationResultsEntity"
+      responses:
+        200:
+          description: "The added evaluation result entity"
+          schema:
+            $ref: "#/definitions/EvaluationResultsEntity"
+  /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}:
+    get:
+      summary: "Gets the list of evaluation results entity, given a model instance\
+        \ ID"
+      operationId: "getEvaluationForModelID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "modelInstanceID"
+        in: "path"
+        description: "GUID of the model instance to get evaluation results for."
+        required: true
+        type: "string"
+        x-exportParamName: "ModelInstanceID"
+      responses:
+        200:
+          description: "List of evaluation result entities"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/EvaluationResultsEntity"
+  /rpc/{modelHistoryServerId}/model/aggregateresults:
+    post:
+      summary: "Aggregates the evaluaition results of a model instance, based on the\
+        \ evaluation type"
+      operationId: "aggregateModelResults"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "aggregatePrediction"
+        description: "The object encapsulating the model instance id and evaluation\
+          \ type to aggregate"
+        required: true
+        schema:
+          $ref: "#/definitions/AggregatePrediction"
+        x-exportParamName: "AggregatePrediction"
+      responses:
+        200:
+          description: "Evaluation result entity contained the aggregated/merged results"
+          schema:
+            $ref: "#/definitions/EvaluationResultsEntity"
+  /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}:
+    get:
+      summary: "Gets a minibatch for the model"
+      operationId: "getMinibatch"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "minibatchId"
+        in: "path"
+        description: "The GUID of the minibatch"
+        required: true
+        type: "string"
+        x-exportParamName: "MinibatchId"
+      responses:
+        200:
+          description: "The minibatch entity"
+          schema:
+            $ref: "#/definitions/MinibatchEntity"
+  /rpc/{modelHistoryServerId}/model/minibatch:
+    post:
+      summary: "Adds a minibatch"
+      operationId: "addMinibatch"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "minibatchEntity"
+        description: "The minibatch entity to add"
+        required: true
+        schema:
+          $ref: "#/definitions/MinibatchEntity"
+        x-exportParamName: "MinibatchEntity"
+      responses:
+        200:
+          description: "The added minibatch entity"
+          schema:
+            $ref: "#/definitions/MinibatchEntity"
+  /rpc/{modelHistoryServerId}/model/example/{minibatchId}:
+    get:
+      summary: "Gets all the examples for a minibatch ID"
+      operationId: "getExamplesForMinibatch"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - name: "minibatchId"
+        in: "path"
+        description: "The GUID of the minibatch"
+        required: true
+        type: "string"
+        x-exportParamName: "MinibatchId"
+      responses:
+        200:
+          description: "List of the associated examples with the minibatch"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ExampleEntity"
+  /rpc/{modelHistoryServerId}/model/example:
+    post:
+      summary: "Adds an example to a minibatch"
+      operationId: "addExampleToMinibatch"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "exampleEntity"
+        description: "The example to add to the minibatch"
+        required: true
+        schema:
+          $ref: "#/definitions/ExampleEntity"
+        x-exportParamName: "ExampleEntity"
+      responses:
+        200:
+          description: "The added example entity"
+          schema:
+            $ref: "#/definitions/ExampleEntity"
+  /rpc/{modelHistoryServerId}/model/exampleForBatch:
+    post:
+      summary: "Adds a number of examples to a minibatch ID given an AddExampleRequest."
+      operationId: "addExampleForBatch"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "AddExampleRequest"
+        description: "The add example request, encapsulating minibatch details and\
+          \ examples batch size"
+        required: true
+        schema:
+          $ref: "#/definitions/AddExampleRequest"
+        x-exportParamName: "AddExampleRequest"
+      responses:
+        200:
+          description: "The add example request"
+          schema:
+            $ref: "#/definitions/AddExampleRequest"
+  /rpc/{modelHistoryServerId}/model/feedback:
+    post:
+      summary: "Adds an evaluation feedback to the model against a given minibatch\
+        \ id."
+      operationId: "addModelFeedback"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "modelHistoryServerId"
+        in: "path"
+        description: "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil\
+          \ services` in a console to find out the model history server GUID."
+        required: true
+        type: "string"
+        format: "guid"
+        x-exportParamName: "ModelHistoryServerId"
+      - in: "body"
+        name: "ModelFeedBackRequest"
+        description: "The model feedback request object"
+        required: true
+        schema:
+          $ref: "#/definitions/ModelFeedBackRequest"
+        x-exportParamName: "ModelFeedBackRequest"
+      responses:
+        200:
+          description: "The model feedback request object"
+          schema:
+            $ref: "#/definitions/ModelFeedBackRequest"
+  /resources/resource/{resourceId}:
+    get:
+      summary: "Get the resource with the specified resource ID"
+      operationId: "getResourceById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "Resource Object"
+          schema:
+            $ref: "#/definitions/Resource"
+  /resources/details/{resourceId}:
+    get:
+      summary: "Get the resource details with the specified resource ID"
+      description: "Get the details for the resource, for the given ID. Note that\
+        \ a 'ResourceDetails' object contains specific information\nabout the resource\
+        \ (such as region for an AWS resource, or URI for a HDFS resource), where\
+        \ as the 'Resource'\nobject contains only general information (name, id, type,\
+        \ subtype).\n"
+      operationId: "getResourceDetailsById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "One of the resource details object"
+          schema: {}
+  /resources/resources:
+    get:
+      summary: "A list of all known/registered resources, of all types"
+      operationId: "getResources"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "List of Resource Objects"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Resource"
+  /resources/resources/type/{resourceType}:
+    get:
+      summary: "Get all the resources with the specified resource type"
+      operationId: "getResourceByType"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceType"
+        in: "path"
+        description: "Type of the resource"
+        required: true
+        type: "string"
+        enum:
+        - "COMPUTE"
+        - "STORAGE"
+        x-exportParamName: "ResourceType"
+      responses:
+        200:
+          description: "List of Resource Objects by specified type"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Resource"
+  /resources/resources/type/{resourceSubType}:
+    get:
+      summary: "Get all the resources with the specified resource subtype"
+      operationId: "getResourceBySubType"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceSubType"
+        in: "path"
+        description: "Subtype of the resource"
+        required: true
+        type: "string"
+        enum:
+        - "EMR"
+        - "S3"
+        - "GoogleStorage"
+        - "DataProc"
+        - "HDInsight"
+        - "AzureStorage"
+        - "HDFS"
+        - "YARN"
+        x-exportParamName: "ResourceSubType"
+      responses:
+        200:
+          description: "List of Resource Objects by specified subtype"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Resource"
+  /resources/add/resource:
+    post:
+      summary: "Adds a resource"
+      operationId: "addResource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "AddResourceRequest"
+        description: "The Add resource request object"
+        required: true
+        schema:
+          $ref: "#/definitions/AddResourceRequest"
+        x-exportParamName: "AddResourceRequest"
+      responses:
+        200:
+          description: "One of the resource details object"
+          schema:
+            type: "object"
+            properties: {}
+  /resources/remove/resource/{resourceId}:
+    delete:
+      summary: "Delete the resource with the specified resource ID"
+      operationId: "deleteResourceById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "Resource Object"
+          schema:
+            $ref: "#/definitions/Resource"
+  /resources/group/{resourceGroupId}:
+    get:
+      summary: "Get the resource group with the specified resource group ID"
+      operationId: "getResourceGroupById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceGroupId"
+        in: "path"
+        description: "ID of the resource group"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceGroupId"
+      responses:
+        200:
+          description: "Resource Group Object"
+          schema:
+            $ref: "#/definitions/ResourceGroup"
+  /resources/groups:
+    get:
+      summary: "Get a list of all the resource groups"
+      operationId: "getResourceGroups"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Resource Group Object"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ResourceGroup"
+  /resources/add/group:
+    post:
+      summary: "Adds a resource group"
+      operationId: "addResourceGroup"
+      consumes:
+      - "text/plain; charset=utf-8"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "groupName"
+        description: "Name of the resource group"
+        required: true
+        x-exportParamName: "GroupName"
+      responses:
+        200:
+          description: "The created resource group object"
+          schema:
+            $ref: "#/definitions/ResourceGroup"
+  /resources/remove/group/{resourceGroupId}:
+    delete:
+      summary: "Delete the resource group with the specified resource group ID"
+      operationId: "deleteResourceGroupById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceGroupId"
+        in: "path"
+        description: "ID of the resource group"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceGroupId"
+      responses:
+        200:
+          description: "Resource Group Object"
+          schema:
+            $ref: "#/definitions/ResourceGroup"
+  /resources/add/resourcetogroup/{resourceGroupId}/{resourceId}:
+    get:
+      summary: "Adds a resource to a resource group"
+      operationId: "addResourceToGroup"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceGroupId"
+        in: "path"
+        description: "ID of the resource group"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceGroupId"
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "Successfully added resource to the resource group"
+  /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId}:
+    get:
+      summary: "Removes a resource from a resource group"
+      operationId: "deleteResourceFromGroup"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceGroupId"
+        in: "path"
+        description: "ID of the resource group"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceGroupId"
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "Successfully removed resource from the resource group"
+  /resources/group/{resourceGroupId}/resources:
+    get:
+      summary: "Get all resources from a resource group"
+      operationId: "getResourcesFromGroup"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceGroupId"
+        in: "path"
+        description: "ID of the resource group"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceGroupId"
+      responses:
+        200:
+          description: "List of resources from a resource group"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Resource"
+  /resources/credentials/{credentialId}:
+    get:
+      summary: "Get credentials given an ID"
+      operationId: "getCredentialsById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "credentialId"
+        in: "path"
+        description: "Credentials ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "CredentialId"
+      responses:
+        200:
+          description: "Credentials Object"
+          schema:
+            $ref: "#/definitions/ResourceCredentials"
+    delete:
+      summary: "Delete credentials given an ID"
+      operationId: "deleteCredentialsById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "credentialId"
+        in: "path"
+        description: "Credentials ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "CredentialId"
+      responses:
+        200:
+          description: "Credentials successfully deteled"
+  /resources/credentials:
+    post:
+      summary: "Adds credentials"
+      operationId: "addCredentials"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "AddCredentialsRequest"
+        description: "Add credentials request object"
+        required: true
+        schema:
+          $ref: "#/definitions/AddCredentialsRequest"
+        x-exportParamName: "AddCredentialsRequest"
+      responses:
+        200:
+          description: "The created credentials object"
+          schema:
+            $ref: "#/definitions/ResourceCredentials"
+  /jobs/{jobId}:
+    get:
+      summary: "Get a job by its ID"
+      operationId: "getJobById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobId"
+        in: "path"
+        description: "Job ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "JobId"
+      responses:
+        200:
+          description: "Job entity Object"
+          schema:
+            $ref: "#/definitions/JobEntity"
+    delete:
+      summary: "Deletes a job given its ID"
+      operationId: "deleteJobById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobId"
+        in: "path"
+        description: "Job ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "JobId"
+      responses:
+        200:
+          description: "Successfully deleted a job"
+  /jobs/{jobtype}:
+    post:
+      summary: "Create a job"
+      operationId: "createJob"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobtype"
+        in: "path"
+        description: "Job Type"
+        required: true
+        type: "string"
+        enum:
+        - "TRAINING"
+        - "INFERENCE"
+        x-exportParamName: "Jobtype"
+      - in: "body"
+        name: "CreateJobRequest"
+        description: "Create job request object"
+        required: true
+        schema:
+          $ref: "#/definitions/CreateJobRequest"
+        x-exportParamName: "CreateJobRequest"
+      responses:
+        200:
+          description: "The created job entity object"
+          schema:
+            $ref: "#/definitions/JobEntity"
+  /jobs:
+    get:
+      summary: "Get a list of all available jobs"
+      operationId: "getAllJobs"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "List of job entity objects"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/JobEntity"
+  /jobs/{jobId}/run:
+    post:
+      summary: "Start running an (already created) job on the remote resource"
+      operationId: "runAJob"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobId"
+        in: "path"
+        description: "Job ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "JobId"
+      responses:
+        200:
+          description: "The associated job entity object"
+          schema:
+            $ref: "#/definitions/JobEntity"
+  /jobs/{jobId}/refresh:
+    get:
+      summary: "Refresh the remote job status. Can be used for monitoring."
+      operationId: "refreshJobStatus"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobId"
+        in: "path"
+        description: "Job ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "JobId"
+      responses:
+        200:
+          description: "The associated job entity object"
+          schema:
+            $ref: "#/definitions/JobEntity"
+  /jobs/{jobId}/outputfile:
+    post:
+      summary: "Download the output file from the job's execution. This will ONLY\
+        \ work if the job's run status is 'COMPLETE'."
+      operationId: "downloadJobOutputFile"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobId"
+        in: "path"
+        description: "Job ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "JobId"
+      - in: "body"
+        name: "DownloadOutputFileRequest"
+        description: "Download output file request object"
+        required: true
+        schema:
+          $ref: "#/definitions/DownloadOutputFileRequest"
+        x-exportParamName: "DownloadOutputFileRequest"
+      responses:
+        200:
+          description: "The file download has started"
+securityDefinitions:
+  api_key:
+    description: "For accessing the API a valid JWT token must be passed in all the\
+      \ queries in\nthe 'Authorization' header.\n\n\nA valid JWT token is generated\
+      \ by the API and retourned as answer of a call\nto the route /login giving a\
+      \ valid user & password.\n\n\nThe following syntax must be used in the 'Authorization'\
+      \ header :\n\n    Bearer xxxxxx.yyyyyyy.zzzzzz\n"
+    type: "apiKey"
+    name: "authorization"
+    in: "header"
+definitions:
+  TransformProcess:
+    type: "object"
+  SingleCSVRecord:
+    required:
+    - "values"
+    properties:
+      values:
+        type: "array"
+        items:
+          type: "string"
+    example:
+      values:
+      - "values"
+      - "values"
+  BatchCSVRecord:
+    required:
+    - "records"
+    properties:
+      records:
+        type: "array"
+        items:
+          $ref: "#/definitions/SingleCSVRecord"
+    example:
+      records:
+      - values:
+        - "values"
+        - "values"
+      - values:
+        - "values"
+        - "values"
+  ImageTransformProcess:
+    type: "object"
+  SingleImageRecord:
+    required:
+    - "uri"
+    properties:
+      uri:
+        type: "string"
+        example: "file:/E:/Image/image.jpg"
+    example:
+      uri: "file:/E:/Image/image.jpg"
+  BatchImageRecord:
+    required:
+    - "records"
+    properties:
+      records:
+        type: "array"
+        items:
+          $ref: "#/definitions/SingleImageRecord"
+    example:
+      records:
+      - uri: "file:/E:/Image/image.jpg"
+      - uri: "file:/E:/Image/image.jpg"
+  Base64NDArrayBody:
+    required:
+    - "ndarray"
+    properties:
+      ndarray:
+        type: "string"
+    example:
+      ndarray: "ndarray"
+  Base64NDArrayBodyKNN:
+    required:
+    - "k"
+    - "ndarray"
+    properties:
+      ndarray:
+        type: "string"
+        description: "the array to run the search on. Note that this must be a row\
+          \ vector"
+      k:
+        type: "integer"
+        example: 2
+        description: "the number of results to retrieve"
+      forceFillK:
+        type: "boolean"
+        example: false
+        description: "If 'True' it will brute force search for running search relative\
+          \ to a target but forced to fill the result list until the desired k is\
+          \ matched."
+  NearestNeighborRequest:
+    properties:
+      k:
+        type: "integer"
+        example: 2
+        description: "the number of results"
+      inputIndex:
+        type: "integer"
+        example: 3
+        description: "the index of the EXISTING ndarray to run a search on"
+    example:
+      inputIndex: 3
+      k: 2
+  NearestNeighborsResult:
+    properties:
+      index:
+        type: "integer"
+        example: 0
+      distance:
+        type: "number"
+        example: 1.0
+      label:
+        type: "string"
+    example:
+      distance: 1.0
+      index: 0
+      label: "label"
+  NearestNeighborsResults:
+    properties:
+      results:
+        type: "array"
+        items:
+          $ref: "#/definitions/NearestNeighborsResult"
+    example:
+      results:
+      - distance: 1.0
+        index: 0
+        label: "label"
+      - distance: 1.0
+        index: 0
+        label: "label"
+  ImportModelRequest:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      scale:
+        type: "integer"
+      uri:
+        type: "array"
+        items:
+          type: "string"
+      modelType:
+        type: "string"
+      fileLocation:
+        type: "string"
+      jvmArgs:
+        type: "string"
+      subType:
+        type: "string"
+      labelsFileLocation:
+        type: "string"
+      extraArgs:
+        type: "string"
+      etlJson:
+        type: "string"
+      inputNames:
+        type: "array"
+        items:
+          type: "string"
+      outputNames:
+        type: "array"
+        items:
+          type: "string"
+    example:
+      name: "new_model"
+      scale: 1
+      uri: "my_deployment/model/new_model/v1"
+      modelType: "model"
+      fileLocation: "file:///var/skil/storage/models/d8...eb28.zip"
+  DeploymentResponse:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      deploymentSlug:
+        type: "string"
+      status:
+        type: "string"
+      body:
+        $ref: "#/definitions/DeploymentObjects"
+    example:
+      name: "name"
+      id: "id"
+      body:
+        models:
+        - name: "name"
+          scale: 0
+          id: "id"
+          uri:
+          - "uri"
+          - "uri"
+          status: "status"
+        - name: "name"
+          scale: 0
+          id: "id"
+          uri:
+          - "uri"
+          - "uri"
+          status: "status"
+        transforms:
+        - name: "name"
+          scale: 0
+          id: "id"
+          uri:
+          - "uri"
+          - "uri"
+          status: "status"
+        - name: "name"
+          scale: 0
+          id: "id"
+          uri:
+          - "uri"
+          - "uri"
+          status: "status"
+        knn:
+        - name: "name"
+          scale: 0
+          id: "id"
+          uri:
+          - "uri"
+          - "uri"
+          status: "status"
+        - name: "name"
+          scale: 0
+          id: "id"
+          uri:
+          - "uri"
+          - "uri"
+          status: "status"
+      deploymentSlug: "deploymentSlug"
+      status: "status"
+  DeploymentObjects:
+    type: "object"
+    properties:
+      models:
+        type: "array"
+        items:
+          $ref: "#/definitions/ModelResponse"
+      transforms:
+        type: "array"
+        items:
+          $ref: "#/definitions/ModelResponse"
+      knn:
+        type: "array"
+        items:
+          $ref: "#/definitions/ModelResponse"
+    example:
+      models:
+      - name: "name"
+        scale: 0
+        id: "id"
+        uri:
+        - "uri"
+        - "uri"
+        status: "status"
+      - name: "name"
+        scale: 0
+        id: "id"
+        uri:
+        - "uri"
+        - "uri"
+        status: "status"
+      transforms:
+      - name: "name"
+        scale: 0
+        id: "id"
+        uri:
+        - "uri"
+        - "uri"
+        status: "status"
+      - name: "name"
+        scale: 0
+        id: "id"
+        uri:
+        - "uri"
+        - "uri"
+        status: "status"
+      knn:
+      - name: "name"
+        scale: 0
+        id: "id"
+        uri:
+        - "uri"
+        - "uri"
+        status: "status"
+      - name: "name"
+        scale: 0
+        id: "id"
+        uri:
+        - "uri"
+        - "uri"
+        status: "status"
+  CreateDeploymentRequest:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "name of the deployment"
+    example:
+      name: "name"
+  ModelEntity:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      created:
+        type: "integer"
+        format: "int64"
+      updated:
+        type: "integer"
+        format: "int64"
+      modelType:
+        type: "string"
+        enum:
+        - "transform"
+        - "model"
+        - "knn"
+      deploymentId:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      scale:
+        type: "number"
+      fileLocation:
+        type: "string"
+      state:
+        type: "string"
+        enum:
+        - "created"
+        - "starting"
+        - "started"
+        - "stopping"
+        - "stopped"
+        - "unhealthy"
+        - "failed"
+      jvmArgs:
+        type: "string"
+      subType:
+        type: "string"
+      labelsFileLocation:
+        type: "string"
+      extraArgs:
+        type: "string"
+      launchPolicy:
+        type: "object"
+        properties: {}
+      modelState:
+        type: "string"
+        enum:
+        - "CREATED"
+        - "STARTING"
+        - "STARTED"
+        - "STOPPING"
+        - "STOPPED"
+        - "UNHEALTHY"
+        - "FAILED"
+    example:
+      launchPolicy: "{}"
+      created: 6
+      modelState: "CREATED"
+      scale: 5.63737665663332876420099637471139430999755859375
+      modelType: "transform"
+      fileLocation: "fileLocation"
+      jvmArgs: "jvmArgs"
+      labelsFileLocation: "labelsFileLocation"
+      extraArgs: "extraArgs"
+      deploymentId: 5
+      name: "name"
+      subType: "subType"
+      id: 0
+      state: "created"
+      updated: 1
+  SetState:
+    type: "object"
+    properties:
+      state:
+        type: "string"
+        enum:
+        - "start"
+        - "stop"
+    example:
+      state: "start"
+  ModelResponse:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      status:
+        type: "string"
+      scale:
+        type: "integer"
+      uri:
+        type: "array"
+        items:
+          type: "string"
+    example:
+      name: "name"
+      scale: 0
+      id: "id"
+      uri:
+      - "uri"
+      - "uri"
+      status: "status"
+  NewDeployment:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+    example:
+      name: "productiongroup"
+  Credentials:
+    type: "object"
+    properties:
+      userId:
+        type: "string"
+      password:
+        type: "string"
+    example:
+      userId: "admin"
+      password: "admin"
+  Token:
+    type: "object"
+    properties:
+      token:
+        type: "string"
+    example:
+      token: "xxxxxxx.yyyyyyy.zzzzzz"
+  FileUploadList:
+    type: "object"
+    properties:
+      fileUploadResponseList:
+        type: "array"
+        items:
+          $ref: "#/definitions/FileUpload"
+    example:
+      fileUploadResponseList:
+      - path: "path"
+        fileName: "fileName"
+        type: "type"
+        key: "key"
+        fileContent: "fileContent"
+        status: "status"
+      - path: "path"
+        fileName: "fileName"
+        type: "type"
+        key: "key"
+        fileContent: "fileContent"
+        status: "status"
+  FileUpload:
+    type: "object"
+    properties:
+      key:
+        type: "string"
+      fileName:
+        type: "string"
+      status:
+        type: "string"
+      type:
+        type: "string"
+      path:
+        type: "string"
+      fileContent:
+        type: "string"
+    example:
+      path: "path"
+      fileName: "fileName"
+      type: "type"
+      key: "key"
+      fileContent: "fileContent"
+      status: "status"
+  INDArray:
+    type: "object"
+    properties:
+      array:
+        type: "string"
+        format: "guid"
+      shape:
+        type: "array"
+        items:
+          type: "integer"
+      ordering:
+        type: "string"
+        enum:
+        - "f"
+        - "c"
+      data:
+        type: "array"
+        items:
+          type: "number"
+          format: "float"
+      dataType:
+        type: "string"
+        enum:
+        - "INT8"
+        - "UINT8"
+        - "INT16"
+        - "FLOAT16"
+    example:
+      shape:
+      - 0
+      - 0
+      data:
+      - 6.0274563
+      - 6.0274563
+      array: "array"
+      ordering: "f"
+      dataType: "INT8"
+  Prediction:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "guid"
+      needsPreProcessing:
+        type: "boolean"
+      prediction:
+        $ref: "#/definitions/INDArray"
+      inputMask:
+        $ref: "#/definitions/INDArray"
+    example:
+      needsPreProcessing: true
+      prediction:
+        array: "array"
+      id: "id"
+  MultiPredictRequest:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "guid"
+      needsPreProcessing:
+        type: "boolean"
+      inputs:
+        type: "array"
+        items:
+          $ref: "#/definitions/INDArray"
+      inputMasks:
+        type: "array"
+        items:
+          $ref: "#/definitions/INDArray"
+    example:
+      needsPreProcessing: true
+      inputs:
+      - shape:
+        - 0
+        - 0
+        data:
+        - 6.0274563
+        - 6.0274563
+        array: "array"
+        ordering: "f"
+        dataType: "INT8"
+      - shape:
+        - 0
+        - 0
+        data:
+        - 6.0274563
+        - 6.0274563
+        array: "array"
+        ordering: "f"
+        dataType: "INT8"
+      id: "id"
+      inputMasks:
+      - shape:
+        - 0
+        - 0
+        data:
+        - 6.0274563
+        - 6.0274563
+        array: "array"
+        ordering: "f"
+        dataType: "INT8"
+      - shape:
+        - 0
+        - 0
+        data:
+        - 6.0274563
+        - 6.0274563
+        array: "array"
+        ordering: "f"
+        dataType: "INT8"
+  MultiPredictResponse:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "guid"
+      needsPreProcessing:
+        type: "boolean"
+      outputs:
+        type: "array"
+        items:
+          $ref: "#/definitions/INDArray"
+    example:
+      outputs:
+      - shape:
+        - 0
+        - 0
+        data:
+        - 6.0274563
+        - 6.0274563
+        array: "array"
+        ordering: "f"
+        dataType: "INT8"
+      - shape:
+        - 0
+        - 0
+        data:
+        - 6.0274563
+        - 6.0274563
+        array: "array"
+        ordering: "f"
+        dataType: "INT8"
+      needsPreProcessing: true
+      id: "id"
+  ClassificationResult:
+    properties:
+      results:
+        type: "array"
+        description: "index classification results for the minibatch"
+        items:
+          type: "integer"
+      probabilities:
+        type: "array"
+        description: "max probabilities for the batch items"
+        items:
+          type: "number"
+          example: 0.452
+      minibatchId:
+        type: "string"
+        description: "minibatch ID"
+    example:
+      minibatchId: "minibatchId"
+      results:
+      - 0
+      - 0
+      probabilities:
+      - 0.452
+      - 0.452
+  MultiClassClassificationResult:
+    properties:
+      rankedOutcomes:
+        type: "array"
+        items:
+          type: "array"
+          items:
+            type: "string"
+      maxOutcomes:
+        type: "array"
+        items:
+          type: "string"
+      probabilities:
+        type: "array"
+        items:
+          type: "array"
+          items:
+            type: "number"
+            example: 0.4
+    description: "Represents all of the labels for a given classification"
+    example:
+      maxOutcomes:
+      - "maxOutcomes"
+      - "maxOutcomes"
+      rankedOutcomes:
+      - - "rankedOutcomes"
+        - "rankedOutcomes"
+      - - "rankedOutcomes"
+        - "rankedOutcomes"
+      probabilities:
+      - - 0.4
+        - 0.4
+      - - 0.4
+        - 0.4
+  ModelStatus:
+    properties:
+      status:
+        type: "integer"
+        example: 100
+        description: "100 - Model set successfully \n200 - Model Updated Successfully\
+          \ \n201 - Model Update Failed\n"
+    example:
+      status: 100
+  JsonArrayResponse:
+    properties:
+      array:
+        $ref: "#/definitions/INDArray"
+    example:
+      array:
+        array: "array"
+  LogRequest:
+    properties:
+      offset:
+        type: "integer"
+        example: 0
+      rowCount:
+        type: "integer"
+        example: 2
+      head:
+        type: "boolean"
+        example: false
+    example:
+      head: false
+      offset: 0
+      rowCount: 2
+  LogBatch:
+    properties:
+      offset:
+        type: "integer"
+        example: 0
+      rowCount:
+        type: "integer"
+        example: 2
+      logs:
+        type: "string"
+    example:
+      offset: 0
+      rowCount: 2
+      logs: "logs"
+  MetaData:
+    type: "object"
+  DetectedObject:
+    type: "object"
+    properties:
+      centerX:
+        type: "number"
+        format: "float"
+      centerY:
+        type: "number"
+        format: "float"
+      width:
+        type: "number"
+        format: "float"
+      height:
+        type: "number"
+        format: "float"
+      predictedClasses:
+        type: "array"
+        items:
+          type: "string"
+      confidences:
+        type: "array"
+        items:
+          type: "number"
+          format: "float"
+    example:
+      centerY: 6.0274563
+      centerX: 0.8008282
+      predictedClasses:
+      - "predictedClasses"
+      - "predictedClasses"
+      confidences:
+      - 5.637377
+      - 5.637377
+      width: 1.4658129
+      height: 5.962134
+  DetectionResult:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      objects:
+        type: "array"
+        items:
+          $ref: "#/definitions/DetectedObject"
+    example:
+      objects:
+      - centerY: 6.0274563
+        centerX: 0.8008282
+        predictedClasses:
+        - "predictedClasses"
+        - "predictedClasses"
+        confidences:
+        - 5.637377
+        - 5.637377
+        width: 1.4658129
+        height: 5.962134
+      - centerY: 6.0274563
+        centerX: 0.8008282
+        predictedClasses:
+        - "predictedClasses"
+        - "predictedClasses"
+        confidences:
+        - 5.637377
+        - 5.637377
+        width: 1.4658129
+        height: 5.962134
+      id: "id"
+  ModelHistoryEntity:
+    type: "object"
+    properties:
+      created:
+        type: "integer"
+        format: "int64"
+        description: "When the model history / workspace was created"
+      modelHistoryId:
+        type: "string"
+        format: "guid"
+        description: "The GUID of the model history / workspace"
+      modelName:
+        type: "string"
+        description: "Name of the model history / workspace"
+      modelLabels:
+        type: "string"
+        description: "Model history / workspace labels"
+    example:
+      modelName: "modelName"
+      modelHistoryId: "modelHistoryId"
+      created: 0
+      modelLabels: "modelLabels"
+  AddModelHistoryRequest:
+    type: "object"
+    properties:
+      modelName:
+        type: "string"
+        description: "Name of the model history / workspace"
+      modelLabels:
+        type: "string"
+        description: "Model history / workspace labels"
+    example:
+      modelName: "modelName"
+      modelLabels: "modelLabels"
+  ExperimentEntity:
+    type: "object"
+    properties:
+      bestModelId:
+        type: "string"
+        description: "GUID of the best selected model in an experiment"
+      inputDataUri:
+        type: "string"
+        description: "Input data URI"
+      experimentId:
+        type: "string"
+        description: "GUID of the experiment"
+      experimentName:
+        type: "string"
+        description: "Experiment's name"
+      experimentDescription:
+        type: "string"
+        description: "Experiment's description"
+      notebookJson:
+        type: "string"
+        description: "The associated Zeppelin notebook JSON string"
+      notebookUrl:
+        type: "string"
+        description: "URL of the associated Zeppelin notebook"
+      zeppelinId:
+        type: "string"
+        description: "Zeppelin ID"
+      modelHistoryId:
+        type: "string"
+        description: "Id of the model history / workspace"
+      lastUpdated:
+        type: "integer"
+        format: "int64"
+        description: "Indicates the time when experiment was last updated"
+    example:
+      experimentDescription: "experimentDescription"
+      lastUpdated: 0
+      modelHistoryId: "modelHistoryId"
+      notebookUrl: "notebookUrl"
+      bestModelId: "bestModelId"
+      inputDataUri: "inputDataUri"
+      zeppelinId: "zeppelinId"
+      experimentId: "experimentId"
+      experimentName: "experimentName"
+      notebookJson: "notebookJson"
+  UpdateBestModel:
+    type: "object"
+    properties:
+      experimentId:
+        type: "string"
+        format: "guid"
+        description: "GUID of the experiment to update."
+      bestModelId:
+        type: "string"
+        format: "guid"
+        description: "GUID of the model to set as the best model."
+    example:
+      bestModelId: "bestModelId"
+      experimentId: "experimentId"
+  ModelInstanceEntity:
+    type: "object"
+    properties:
+      uri:
+        type: "string"
+        format: "uri"
+        description: "The model URI"
+      etlJson:
+        type: "string"
+        description: "The json string for the ETL (Extract, Transform and Load)"
+      modelId:
+        type: "string"
+        format: "guid"
+        description: "GUID of the model."
+      modelLabels:
+        type: "string"
+        description: "Comma-separated labels string for the model"
+      inputFormats:
+        type: "string"
+        description: "Format for the model input"
+      created:
+        type: "integer"
+        format: "int64"
+        description: "When the model was created"
+      notebookJson:
+        type: "string"
+        description: "JSON string of the associated Zeppelin Notebook"
+      evalId:
+        type: "string"
+        format: "guid"
+        description: "GUID for the model evaluation"
+      modelName:
+        type: "string"
+        description: "Model's name"
+      originalModelId:
+        type: "string"
+        format: "guid"
+        description: "Original GUID of the model (used for maintaining revisions of\
+          \ a particular model)"
+      modelVersion:
+        type: "string"
+        description: "Model version"
+      experimentId:
+        type: "string"
+        format: "guid"
+        description: "GUID of the Experiment which is associated with the model."
+    example:
+      evalId: "evalId"
+      modelName: "modelName"
+      originalModelId: "originalModelId"
+      modelId: "modelId"
+      created: 0
+      modelVersion: "modelVersion"
+      modelLabels: "modelLabels"
+      etlJson: "etlJson"
+      experimentId: "experimentId"
+      inputFormats: "inputFormats"
+      uri: "http://example.com/aeiou"
+      notebookJson: "notebookJson"
+  EvaluationResultsEntity:
+    type: "object"
+    properties:
+      evaluation:
+        type: "string"
+      evalName:
+        type: "string"
+      modelInstanceId:
+        type: "string"
+        format: "guid"
+      created:
+        type: "integer"
+        format: "int64"
+        description: "When the evaluation result was created"
+      f1:
+        type: "number"
+        format: "double"
+      precision:
+        type: "number"
+        format: "double"
+      recall:
+        type: "number"
+        format: "double"
+      accuracy:
+        type: "number"
+        format: "double"
+      rmse:
+        type: "number"
+        format: "double"
+      auc:
+        type: "number"
+        format: "double"
+      meanAbsoluteError:
+        type: "number"
+        format: "double"
+      meanRelativeError:
+        type: "number"
+        format: "double"
+      r2:
+        type: "number"
+        format: "double"
+      evalId:
+        type: "string"
+        format: "guid"
+        description: "GUID of the evaluation"
+      evalVersion:
+        type: "integer"
+      binaryThreshold:
+        type: "number"
+        format: "double"
+      binaryThresholds:
+        type: "string"
+    example:
+      r2: 2.027123023002322
+      binaryThresholds: "binaryThresholds"
+      created: 0
+      precision: 1.4658129805029452
+      accuracy: 5.637376656633329
+      f1: 6.027456183070403
+      meanAbsoluteError: 9.301444243932576
+      auc: 7.061401241503109
+      evaluation: "evaluation"
+      evalId: "evalId"
+      meanRelativeError: 3.616076749251911
+      evalVersion: 4
+      evalName: "evalName"
+      modelInstanceId: "modelInstanceId"
+      recall: 5.962133916683182
+      rmse: 2.3021358869347655
+      binaryThreshold: 7.386281948385884
+  AggregatePrediction:
+    type: "object"
+    properties:
+      modelId:
+        type: "string"
+        format: "guid"
+        description: "GUID of model instance"
+      evalType:
+        type: "string"
+        description: "the evaluation type to aggregate"
+        enum:
+        - "ROC_BINARY"
+        - "ROC"
+        - "EVALUATION_BINARY"
+        - "EVALUATION"
+        - "REGRESSON_EVALUATION"
+        - "ROC_MULTI_CLASS"
+    example:
+      evalType: "ROC_BINARY"
+      modelId: "modelId"
+  MinibatchEntity:
+    type: "object"
+    properties:
+      miniBatchId:
+        type: "string"
+        format: "guid"
+        description: "GUID of mini batch"
+      evalId:
+        type: "string"
+        format: "guid"
+        description: "GUID of the evaluation"
+      evalVersion:
+        type: "integer"
+        description: "Eval version"
+      batchVersion:
+        type: "integer"
+        description: "Batch version"
+    example:
+      evalId: "evalId"
+      batchVersion: 6
+      evalVersion: 0
+      miniBatchId: "miniBatchId"
+  ExampleEntity:
+    properties:
+      exampleId:
+        type: "string"
+        format: "guid"
+        description: "the GUID of the example"
+      exampleVersion:
+        type: "integer"
+        description: "Example version"
+      int rowNumber:
+        type: "integer"
+        description: "Row Number"
+      created:
+        type: "integer"
+        format: "int64"
+        description: "when the example was created"
+      miniBatchId:
+        type: "string"
+        format: "guid"
+        description: "The GUID of the minibatch"
+      miniBatchVersion:
+        type: "integer"
+        description: "minibatch version"
+    example:
+      exampleId: "exampleId"
+      int rowNumber: 6
+      created: 1
+      miniBatchId: "miniBatchId"
+      miniBatchVersion: 5
+      exampleVersion: 0
+  AddExampleRequest:
+    type: "object"
+    properties:
+      minibatch:
+        description: "the minibatch the examples are going to be associated with"
+        $ref: "#/definitions/MinibatchEntity"
+      batchSize:
+        type: "integer"
+        description: "the size of the batch to create"
+    example:
+      minibatch:
+        evalId: "evalId"
+        batchVersion: 6
+        evalVersion: 0
+        miniBatchId: "miniBatchId"
+      batchSize: 0
+  BestModel:
+    type: "object"
+    properties:
+      ids:
+        type: "array"
+        description: "the list of GUIDs for the models to get the best model from"
+        items:
+          type: "string"
+          format: "guid"
+      columnNameMetric:
+        type: "string"
+        description: "Name of the column metric (in an evaluation result) to get the\
+          \ best model from."
+        enum:
+        - "f1"
+        - "precision"
+        - "recall"
+        - "accuracy"
+        - "rmse"
+        - "auc"
+        - "meanAbsoluteError"
+        - "meanRelativeError"
+        - "r2"
+      evalType:
+        type: "string"
+        description: "the evaluation type to aggregate for each model's revisions"
+        enum:
+        - "ROC_BINARY"
+        - "ROC"
+        - "EVALUATION_BINARY"
+        - "EVALUATION"
+        - "REGRESSON_EVALUATION"
+        - "ROC_MULTI_CLASS"
+    example:
+      evalType: "ROC_BINARY"
+      columnNameMetric: "f1"
+      ids:
+      - "ids"
+      - "ids"
+  ModelFeedBackRequest:
+    type: "object"
+    properties:
+      batchId:
+        type: "string"
+        format: "guid"
+        description: "The GUID of the minibatch this feedback corresponds to"
+      guesses:
+        type: "array"
+        example: "[\"0\", \"1\", \"2\"]"
+        description: "The guessed label IDs by the model"
+        items:
+          type: "string"
+      correct:
+        type: "array"
+        example: "[\"0\", \"0\", \"2\"]"
+        description: "The actual label IDs"
+        items:
+          type: "string"
+    example:
+      correct: "[\"0\", \"0\", \"2\"]"
+      guesses: "[\"0\", \"1\", \"2\"]"
+      batchId: "batchId"
+  Resource:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      name:
+        type: "string"
+        description: "Resource nickname"
+      type:
+        type: "string"
+        description: "Resource type (whether COMPUTE or STORAGE)"
+        enum:
+        - "COMPUTE"
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN]\
+          \ | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])"
+        enum:
+        - "EMR"
+        - "S3"
+        - "GoogleStorage"
+        - "DataProc"
+        - "HDInsight"
+        - "AzureStorage"
+        - "HDFS"
+        - "YARN"
+      credentialId:
+        type: "string"
+        format: "guid"
+        description: "Credentials GUID"
+    example:
+      resourceId: 0
+      name: "name"
+      credentialId: "credentialId"
+      subType: "EMR"
+      type: "COMPUTE"
+  EMRResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "EMR"
+      clusterId:
+        type: "string"
+        description: "EMR cluster ID"
+      region:
+        type: "string"
+        description: "Region name where the cluster is deployed"
+  S3ResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "S3"
+      bucket:
+        type: "string"
+        description: "S3 Bucket Name"
+      region:
+        type: "string"
+        description: "Region name where the S3 bucket is present"
+  GoogleStorageResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "GoogleStorage"
+      projectId:
+        type: "string"
+        description: "Project ID"
+      bucketName:
+        type: "string"
+        description: "Name of the storage bucket"
+  DataProcResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "DataProc"
+      projectId:
+        type: "string"
+        description: "Project ID"
+      region:
+        type: "string"
+        description: "DataProc region"
+      sparkClusterName:
+        type: "string"
+        description: "Name of the spark cluster"
+  HDInsightResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "HDInsight"
+      subscriptionId:
+        type: "string"
+        description: "Azure subscription ID"
+      resourceGroupName:
+        type: "string"
+        description: "name of the resource group"
+      clusterName:
+        type: "string"
+        description: "Cluster name"
+  AzureStorageResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "AzureStorage"
+      containerName:
+        type: "string"
+        description: "Storage container name"
+  HDFSResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "HDFS"
+      nameNodeHost:
+        type: "string"
+        description: "Host of the node running the NameNode"
+      nameNodePort:
+        type: "string"
+        description: "Port of the node running the NameNode"
+  YARNResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "YARN"
+      localSparkHome:
+        type: "string"
+        description: "Local Spark Home path"
+  ResourceGroup:
+    type: "object"
+    properties:
+      groupId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource group"
+      groupName:
+        type: "string"
+        description: "Name of the resource group"
+      added:
+        type: "integer"
+        format: "int64"
+        description: "Milliseconds in Long when the resource group was added"
+      updated:
+        type: "integer"
+        format: "int64"
+        description: "Milliseconds in Long when the resource group was updated"
+    example:
+      groupName: "groupName"
+      added: 6
+      groupId: 0
+      updated: 1
+  ResourceCredentials:
+    type: "object"
+    properties:
+      credentialId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the credentials"
+      type:
+        type: "string"
+        description: "Type of the credentials"
+        enum:
+        - "AWS"
+        - "Azure"
+        - "GoogleCloud"
+        - "Hadoop"
+      name:
+        type: "string"
+        description: "Name of the credentials"
+      uri:
+        type: "string"
+        description: "URI of the credentials"
+    example:
+      name: "name"
+      credentialId: 0
+      type: "AWS"
+      uri: "uri"
+  AddResourceRequest:
+    type: "object"
+    properties:
+      resourceName:
+        type: "string"
+        description: "Name of the new resource"
+      resourceDetails:
+        type: "object"
+        description: "One of the resource details object"
+        properties: {}
+      credentialUri:
+        type: "string"
+        description: "URI of the credentials. If this is present, you can leave out\
+          \ the 'credentialId'"
+      type:
+        type: "string"
+        description: "Resource type (whether COMPUTE or STORAGE)"
+        enum:
+        - "COMPUTE"
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN]\
+          \ | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])"
+        enum:
+        - "EMR"
+        - "S3"
+        - "GoogleStorage"
+        - "DataProc"
+        - "HDInsight"
+        - "AzureStorage"
+        - "HDFS"
+        - "YARN"
+      credentialId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the credentials. If this is given then you can leave out\
+          \ the 'credentialsUri'"
+    example:
+      resourceDetails: "{}"
+      credentialId: 0
+      resourceName: "resourceName"
+      subType: "EMR"
+      type: "COMPUTE"
+      credentialUri: "credentialUri"
+  AddCredentialsRequest:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        description: "Type of the credentials"
+        enum:
+        - "AWS"
+        - "Azure"
+        - "GoogleCloud"
+        - "Hadoop"
+      name:
+        type: "string"
+        description: "Name of the credentials"
+      uri:
+        type: "string"
+        description: "URI of the credentials"
+    example:
+      name: "name"
+      type: "AWS"
+      uri: "uri"
+  JobEntity:
+    type: "object"
+    properties:
+      jobId:
+        type: "integer"
+        format: "int64"
+        description: "Job ID"
+      jobType:
+        type: "string"
+        description: "Whether a job is for training or inference"
+        enum:
+        - "TRAINING"
+        - "INFERENCE"
+      computeResourceId:
+        type: "integer"
+        format: "int64"
+        description: "Compute resource ID"
+      storageResourceId:
+        type: "integer"
+        format: "int64"
+        description: "Storage resource ID"
+      skilSparkMainArgs:
+        type: "string"
+        description: "SKILSparkMain class arguments"
+      runId:
+        type: "string"
+        description: "Job run ID"
+      status:
+        type: "string"
+        description: "Job's status"
+        enum:
+        - "PENDING"
+        - "RUNNING"
+        - "CONTINUE"
+        - "COMPLETED"
+        - "CANCELLED"
+        - "FAILED"
+        - "INTERRUPTED"
+      outputFileName:
+        type: "string"
+        description: "Output file name"
+    example:
+      storageResourceId: 1
+      jobId: 0
+      outputFileName: "outputFileName"
+      skilSparkMainArgs: "skilSparkMainArgs"
+      runId: "runId"
+      jobType: "TRAINING"
+      computeResourceId: 6
+      status: "PENDING"
+  CreateJobRequest:
+    type: "object"
+    properties:
+      computeResourceId:
+        type: "integer"
+        format: "int64"
+        description: "Compute resource ID"
+      storageResourceId:
+        type: "integer"
+        format: "int64"
+        description: "Storage resource ID"
+      skilSparkMainArgs:
+        type: "string"
+        description: "SKILSparkMain class arguments"
+      outputFileName:
+        type: "string"
+        description: "Output file name"
+    example:
+      storageResourceId: 6
+      outputFileName: "outputFileName"
+      skilSparkMainArgs: "skilSparkMainArgs"
+      computeResourceId: 0
+  DownloadOutputFileRequest:
+    type: "object"
+    properties:
+      localDownloadPath:
+        type: "string"
+        description: "Local path where the file is to be downloaded"
+    example:
+      localDownloadPath: "localDownloadPath"
+  inline_response_200:
+    properties:
+      status:
+        type: "string"
+    example:
+      status: "status"
