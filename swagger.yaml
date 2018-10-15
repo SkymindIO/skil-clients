@@ -2977,9 +2977,9 @@ definitions:
     type: object
     properties:
       resourceId:
-        type: string
-        format: guid
-        description: Resource GUID
+        type: integer
+        format: int64
+        description: ID of the resource
       name:
         type: string
         description: Resource nickname
@@ -3005,187 +3005,227 @@ definitions:
         type: string
         description: Credentials GUID
         format: guid
-    EMRResourceDetails:
-      type: object
-      properties:
-        resourceId:
+  EMRResourceDetails:
+    type: object
+    properties:
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - COMPUTE
+        subType:
           type: string
-          format: guid
-          description: Resource GUID
-        type:
-          type: string
-          description: Resource type
+          description: Resource subtype
           enum:
-            - COMPUTE
-          subType:
-            type: string
-            description: Resource subtype
-            enum:
-              - EMR                   # AWS Elastic Map Reduce(Compute)
-        clusterId:
+            - EMR                   # AWS Elastic Map Reduce(Compute)
+      clusterId:
+        type: string
+        description: EMR cluster ID
+      region:
+        type: string
+        description: Region name where the cluster is deployed
+  S3ResourceDetails:
+    type: object
+    properties:
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - STORAGE
+        subType:
           type: string
-          description: EMR cluster ID
-        region:
-          type: string
-          description: Region name where the cluster is deployed
-    S3ResourceDetails:
-      type: object
-      properties:
-        resourceId:
-          type: string
-          format: guid
-          description: Resource GUID
-        type:
-          type: string
-          description: Resource type
+          description: Resource subtype
           enum:
-            - STORAGE
-          subType:
-            type: string
-            description: Resource subtype
-            enum:
-              - S3                    # AWS Simple Storage Service
-        bucket:
+            - S3                    # AWS Simple Storage Service
+      bucket:
+        type: string
+        description: S3 Bucket Name
+      region:
+        type: string
+        description: Region name where the S3 bucket is present
+  GoogleStorageResourceDetails:
+    type: object
+    properties:
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - STORAGE
+        subType:
           type: string
-          description: S3 Bucket Name
-        region:
-          type: string
-          description: Region name where the S3 bucket is present
-    GoogleStorageResourceDetails:
-      type: object
-      properties:
-        resourceId:
-          type: string
-          format: guid
-          description: Resource GUID
-        type:
-          type: string
-          description: Resource type
+          description: Resource subtype
           enum:
-            - STORAGE
-          subType:
-            type: string
-            description: Resource subtype
-            enum:
-              - GoogleStorage         # Google Cloud Storage
-        projectId:
+            - GoogleStorage         # Google Cloud Storage
+      projectId:
+        type: string
+        description: Project ID
+      bucketName:
+        type: strong
+        description: Name of the storage bucket
+  DataProcResourceDetails:
+    type: object
+    properties:
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - COMPUTE
+        subType:
           type: string
-          description: Project ID
-        bucketName:
-          type: strong
-          description: Name of the storage bucket
-    DataProcResourceDetails:
-      type: object
-      properties:
-        resourceId:
-          type: string
-          format: guid
-          description: Resource GUID
-        type:
-          type: string
-          description: Resource type
+          description: Resource subtype
           enum:
-            - COMPUTE
-          subType:
-            type: string
-            description: Resource subtype
-            enum:
-              - DataProc              # Google Big Data Compute Engine
-        projectId:
+            - DataProc              # Google Big Data Compute Engine
+      projectId:
+        type: string
+        description: Project ID
+      region:
+        type: string
+        description: DataProc region
+      sparkClusterName:
+        type: string
+        description: Name of the spark cluster
+  HDInsightResourceDetails:
+    type: object
+    properties:
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - COMPUTE
+        subType:
           type: string
-          description: Project ID
-        region:
-          type: string
-          description: DataProc region
-        sparkClusterName:
-          type: string
-          description: Name of the spark cluster
-    HDInsightResourceDetails:
-      type: object
-      properties:
-        resourceId:
-          type: string
-          format: guid
-          description: Resource GUID
-        type:
-          type: string
-          description: Resource type
+          description: Resource subtype
           enum:
-            - COMPUTE
-          subType:
-            type: string
-            description: Resource subtype
-            enum:
-              - HDInsight             # Azure Compute
-        subscriptionId:
+            - HDInsight             # Azure Compute
+      subscriptionId:
+        type: string
+        description: Azure subscription ID
+      resourceGroupName:
+        type: string
+        description: name of the resource group
+      clusterName:
+        type: string
+        description: Cluster name
+  AzureStorageResourceDetails:
+    type: object
+    properties:
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - STORAGE
+        subType:
           type: string
-          description: Azure subscription ID
-        resourceGroupName:
-          type: string
-          description: name of the resource group
-        clusterName:
-          type: string
-          description: Cluster name
-    AzureStorageResourceDetails:
-      type: object
-      properties:
-        resourceId:
-          type: string
-          format: guid
-          description: Resource GUID
-        type:
-          type: string
-          description: Resource type
+          description: Resource subtype
           enum:
-            - STORAGE
-          subType:
-            type: string
-            description: Resource subtype
-            enum:
-              - AzureStorage          # Azure Blob Storage
-        containerName:
+            - AzureStorage          # Azure Blob Storage
+      containerName:
+        type: string
+        description: Storage container name
+  HDFSResourceDetails:
+    type: object
+    properties:
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - STORAGE
+        subType:
           type: string
-          description: Storage container name
-    HDFSResourceDetails:
-      type: object
-      properties:
-        resourceId:
-          type: string
-          format: guid
-          description: Resource GUID
-        type:
-          type: string
-          description: Resource type
+          description: Resource subtype
           enum:
-            - STORAGE
-          subType:
-            type: string
-            description: Resource subtype
-            enum:
-              - HDFS                  # in house Hadoop (Storage)
-        nameNodeHost:
+            - HDFS                  # in house Hadoop (Storage)
+      nameNodeHost:
+        type: string
+        description: Host of the node running the NameNode
+      nameNodePort:
+        type: string
+        description: Port of the node running the NameNode
+  YARNResourceDetails:
+    type: object
+    properties:
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - COMPUTE
+        subType:
           type: string
-          description: Host of the node running the NameNode
-        nameNodePort:
-          type: string
-          description: Port of the node running the NameNode
-    YARNResourceDetails:
-      type: object
-      properties:
-        resourceId:
-          type: string
-          format: guid
-          description: Resource GUID
-        type:
-          type: string
-          description: Resource type
+          description: Resource subtype
           enum:
-            - COMPUTE
-          subType:
-            type: string
-            description: Resource subtype
-            enum:
-              - YARN                  # in house YARN (Compute)
-          localSparkHome:
-            type: string
-            description: Local Spark Home path
+            - YARN                  # in house YARN (Compute)
+        localSparkHome:
+          type: string
+          description: Local Spark Home path
+  ResourceGroup:
+    type: object
+    properties:
+      groupId:
+        type: integer
+        format: int64
+        description: ID of the resource group
+      groupName:
+        type: string
+        description: Name of the resource group
+      added:
+        type: integer
+        format: int64
+        description: Milliseconds in Long when the resource group was added
+      updated:
+        type: integer
+        format: int64
+        description: Milliseconds in Long when the resource group was updated
+  ResourceCredentials:
+    type: object
+    properties:
+      credentialId:
+        type: integer
+        format: int64
+        description: ID of the credentials
+      type:
+        type: string
+        enum:
+          - AWS
+          - Azure
+          - GoogleCloud
+          - Hadoop
+        description: Type of the credentials
+      name:
+        type: string
+        description: Name of the credentials
+      uri:
+        type: string
+        description: URI of the credentials
+
