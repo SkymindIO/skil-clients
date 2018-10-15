@@ -2125,6 +2125,9 @@ margin-bottom: 20px;
                     <li data-group="Default" data-name="deleteModelInstance" class="">
                       <a href="#api-Default-deleteModelInstance">deleteModelInstance</a>
                     </li>
+                    <li data-group="Default" data-name="deleteResourceById" class="">
+                      <a href="#api-Default-deleteResourceById">deleteResourceById</a>
+                    </li>
                     <li data-group="Default" data-name="deployModel" class="">
                       <a href="#api-Default-deployModel">deployModel</a>
                     </li>
@@ -2763,7 +2766,7 @@ public class DefaultApiExample {
         String modelHistoryServerId = modelHistoryServerId_example; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         AddExampleRequest addExampleRequest = ; // AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
         try {
-            addExampleRequest result = apiInstance.addExampleForBatch(modelHistoryServerId, addExampleRequest);
+            AddExampleRequest result = apiInstance.addExampleForBatch(modelHistoryServerId, addExampleRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#addExampleForBatch");
@@ -2783,7 +2786,7 @@ public class DefaultApiExample {
         String modelHistoryServerId = modelHistoryServerId_example; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         AddExampleRequest addExampleRequest = ; // AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
         try {
-            addExampleRequest result = apiInstance.addExampleForBatch(modelHistoryServerId, addExampleRequest);
+            AddExampleRequest result = apiInstance.addExampleForBatch(modelHistoryServerId, addExampleRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#addExampleForBatch");
@@ -2812,7 +2815,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 // Adds a number of examples to a minibatch ID given an AddExampleRequest.
 [apiInstance addExampleForBatchWith:modelHistoryServerId
     addExampleRequest:addExampleRequest
-              completionHandler: ^(addExampleRequest output, NSError* error) {
+              completionHandler: ^(AddExampleRequest output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -2880,7 +2883,7 @@ namespace Example
             try
             {
                 // Adds a number of examples to a minibatch ID given an AddExampleRequest.
-                addExampleRequest result = apiInstance.addExampleForBatch(modelHistoryServerId, addExampleRequest);
+                AddExampleRequest result = apiInstance.addExampleForBatch(modelHistoryServerId, addExampleRequest);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3064,7 +3067,7 @@ $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "The add example request",
   "schema" : {
-    "$ref" : "#/definitions/addExampleRequest"
+    "$ref" : "#/definitions/AddExampleRequest"
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -9438,6 +9441,342 @@ except ApiException as e:
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-deleteResourceById">
+                      <article id="api-Default-deleteResourceById-0" data-group="User" data-name="deleteResourceById" data-version="0">
+                        <div class="pull-left">
+                          <h1>deleteResourceById</h1>
+                          <p>Delete the resource with the specified resource ID</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/resources/remove/resource/{resourceId}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-deleteResourceById-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-deleteResourceById-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-deleteResourceById-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-deleteResourceById-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-deleteResourceById-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-deleteResourceById-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-deleteResourceById-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-deleteResourceById-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-deleteResourceById-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-deleteResourceById-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-deleteResourceById-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-deleteResourceById-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "authorization: [[apiKey]]" "http://localhost:9008/resources/remove/resource/{resourceId}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-deleteResourceById-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure API key authorization: api_key
+        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+        api_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key.setApiKeyPrefix("Token");
+
+        DefaultApi apiInstance = new DefaultApi();
+        Long resourceId = 789; // Long | ID of the resource
+        try {
+            Resource result = apiInstance.deleteResourceById(resourceId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#deleteResourceById");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-deleteResourceById-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        Long resourceId = 789; // Long | ID of the resource
+        try {
+            Resource result = apiInstance.deleteResourceById(resourceId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#deleteResourceById");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-deleteResourceById-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-deleteResourceById-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: api_key)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"authorization"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
+
+Long *resourceId = 789; // ID of the resource
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// Delete the resource with the specified resource ID
+[apiInstance deleteResourceByIdWith:resourceId
+              completionHandler: ^(Resource output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-deleteResourceById-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var Endpoints = require('endpoints');
+var defaultClient = Endpoints.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix['authorization'] = "Token"
+
+var api = new Endpoints.DefaultApi()
+
+var resourceId = 789; // {Long} ID of the resource
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.deleteResourceById(resourceId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-deleteResourceById-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-deleteResourceById-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class deleteResourceByIdExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: api_key
+            Configuration.Default.ApiKey.Add("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceId = 789;  // Long | ID of the resource
+
+            try
+            {
+                // Delete the resource with the specified resource ID
+                Resource result = apiInstance.deleteResourceById(resourceId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.deleteResourceById: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-deleteResourceById-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: api_key
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$resourceId = 789; // Long | ID of the resource
+
+try {
+    $result = $api_instance->deleteResourceById($resourceId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->deleteResourceById: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-deleteResourceById-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+# Configure API key authorization: api_key
+$WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $resourceId = 789; # Long | ID of the resource
+
+eval { 
+    my $result = $api_instance->deleteResourceById(resourceId => $resourceId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->deleteResourceById: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-deleteResourceById-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+resourceId = 789 # Long | ID of the resource
+
+try: 
+    # Delete the resource with the specified resource ID
+    api_response = api_instance.delete_resource_by_id(resourceId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->deleteResourceById: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">resourceId*</td>
+<td>
+
+
+    <div id="d2e199_deleteResourceById_resourceId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description">
+                        ID of the resource
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Resource Object </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-deleteResourceById-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-deleteResourceById-200-schema">
+                                  <div id='responses-deleteResourceById-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Resource Object",
+  "schema" : {
+    "$ref" : "#/definitions/Resource"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-deleteResourceById-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-deleteResourceById-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-deleteResourceById-200-schema-data' type='hidden' value=''></input>
+                                </div>
                             </div>
 
                         </article>

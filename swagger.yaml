@@ -2353,8 +2353,177 @@ paths:
           description: Resource Object
           schema:
             $ref: '#/definitions/Resource'
-
-
+  /resources/group/{resourceGroupId}:
+    get:
+      operationId: getResourceGroupById
+      summary: Get the resource group with the specified resource group ID
+      produces:
+        - application/json
+      parameters:
+        - name: resourceGroupId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource group
+          required: true
+      responses:
+        200:
+          description: Resource Group Object
+          schema:
+            $ref: '#/definitions/ResourceGroup'
+  /resources/groups:
+    get:
+      operationId: getResourceGroups
+      summary: Get a list of all the resource groups
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Resource Group Object
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ResourceGroup'
+  /resources/add/group:
+    post:
+      operationId: addResourceGroup
+      summary: Adds a resource group
+      consumes:
+        - text/plain; charset=utf-8
+      produces:
+        - application/json
+      parameters:
+        - name: groupName
+          in: body
+          type: string
+          required: true
+          description: Name of the resource group
+      responses:
+        200:
+          description: The created resource group object
+          schema:
+            $ref: '#/definitions/ResourceGroup'
+  /resources/remove/group/{resourceGroupId}:
+    delete:
+      operationId: deleteResourceGroupById
+      summary: Delete the resource group with the specified resource group ID
+      produces:
+        - application/json
+      parameters:
+        - name: resourceGroupId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource group
+          required: true
+      responses:
+        200:
+          description: Resource Group Object
+          schema:
+            $ref: '#/definitions/ResourceGroup'
+  /resources/add/resourcetogroup/{resourceGroupId}/{resourceId}:
+    get:
+      operationId: addResourceToGroup
+      summary: Adds a resource to a resource group
+      produces:
+        - application/json
+      parameters:
+        - name: resourceGroupId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource group
+          required: true
+        - name: resourceId
+            in: path
+            type: integer
+            format: int64
+            description: ID of the resource
+            required: true
+      responses:
+        200:
+          description: Successfully added resource to the resource group
+  /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId}:
+    get:
+      operationId: deleteResourceFromGroup
+      summary: Removes a resource from a resource group
+      produces:
+        - application/json
+      parameters:
+        - name: resourceGroupId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource group
+          required: true
+        - name: resourceId
+            in: path
+            type: integer
+            format: int64
+            description: ID of the resource
+            required: true
+      responses:
+        200:
+          description: Successfully removed resource from the resource group
+  /resources/group/{resourceGroupId}/resources:
+    get:
+      operationId: getResourcesFromGroup
+      summary: Get all resources from a resource group
+      produces:
+        - application/json
+      parameters:
+        - name: resourceGroupId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource group
+          required: true
+      responses:
+        200:
+          description: List of resources from a resource group
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Resource'
+  /resources/credentials/{credentialId}:
+    get:
+      operationId: getCredentialsFromId
+      summary: Get credentials given an ID
+      produces:
+        - application/json
+      parameters:
+        - name: credentialId
+          in: path
+          type: integer
+          format: int64
+          description: Credentials ID
+          required: true
+      responses:
+        200:
+          description: Credentials Object
+          schema:
+            $ref: '#/definitions/ResourceCredentials'
+  /resources/credentials:
+    post:
+      operationId: addCredentials
+      summary: Adds credentials
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: AddCredentialsRequest
+          in: body
+          type: object
+          required: true
+          description: Add credentials request object
+          schema:
+            $ref: '#/definitions/AddCredentialsRequest'
+      responses:
+        200:
+          description: The created credentials object
+          schema:
+            $ref: '#/definitions/ResourceCredentials'
 
 definitions:
   TransformProcess:
@@ -3433,3 +3602,20 @@ definitions:
         type: integer
         format: int64
         description: ID of the credentials. If this is given then you can leave out the 'credentialsUri'
+  AddCredentialsRequest:
+    type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - AWS
+          - Azure
+          - GoogleCloud
+          - Hadoop
+        description: Type of the credentials
+      name:
+        type: string
+        description: Name of the credentials
+      uri:
+        type: string
+        description: URI of the credentials
