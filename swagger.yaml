@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Endpoints API for different services in SKIL
-  version: 1.1.0-beta
+  version: 1.2.0-beta
   title: Endpoints
 host: localhost:9008
 schemes:
@@ -2539,6 +2539,147 @@ paths:
           description: The created credentials object
           schema:
             $ref: '#/definitions/ResourceCredentials'
+  # ---------------------------------------------------------------------------------------
+  # Jobs endpoints
+  # ---------------------------------------------------------------------------------------
+  /jobs/{jobId}:
+    get:
+      operationId: getJobById
+      summary: Get a job by its ID
+      produces:
+        - application/json
+      parameters:
+        - name: jobId
+          in: path
+          type: integer
+          format: int64
+          description: Job ID
+          required: true
+      responses:
+        200:
+          description: Job entity Object
+          schema:
+            $ref: '#/definitions/JobEntity'
+    delete:
+      operationId: deleteJobById
+      summary: Deletes a job given its ID
+      produces:
+        - application/json
+      parameters:
+        - name: jobId
+          in: path
+          type: integer
+          format: int64
+          description: Job ID
+          required: true
+      responses:
+        200:
+          description: Successfully deleted a job
+  /jobs/{jobtype}:
+    post:
+      operationId: createJob
+      summary: Create a job
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: jobtype
+          in: path
+          type: string
+          enum:
+            - TRAINING
+            - INFERENCE
+          description: Job Type
+          required: true
+        - name: CreateJobRequest
+          in: body
+          type: object
+          required: true
+          description: Create job request object
+          schema:
+            $ref: '#/definitions/CreateJobRequest'
+      responses:
+        200:
+          description: The created job entity object
+          schema:
+            $ref: '#/definitions/JobEntity'
+  /jobs:
+    get:
+      operationId: getAllJobs
+      summary: Get a list of all available jobs
+      produces:
+        - application/json
+      responses:
+        200:
+          description: List of job entity objects
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/JobEntity'
+  /jobs/{jobId}/run:
+    post:
+      operationId: runAJob
+      summary: Start running an (already created) job on the remote resource
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: jobId
+          in: path
+          type: integer
+          format: int64
+          description: Job ID
+          required: true
+      responses:
+        200:
+          description: The associated job entity object
+          schema:
+            $ref: '#/definitions/JobEntity'
+  /jobs/{jobId}/refresh:
+    get:
+      operationId: refreshJobStatus
+      summary: Refresh the remote job status. Can be used for monitoring.
+      produces:
+        - application/json
+      parameters:
+        - name: jobId
+          in: path
+          type: integer
+          format: int64
+          description: Job ID
+          required: true
+      responses:
+        200:
+          description: The associated job entity object
+          schema:
+            $ref: '#/definitions/JobEntity'
+  /jobs/{jobId}/outputfile:
+    post:
+      operationId: downloadJobOutputFile
+      summary: Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: jobId
+          in: path
+          type: integer
+          format: int64
+          description: Job ID
+          required: true
+        - name: DownloadOutputFileRequest
+          in: body
+          type: object
+          required: true
+          description: Download output file request object
+          schema:
+            $ref: '#/definitions/DownloadOutputFileRequest'
+      responses:
+        200:
+          description: The file download has started
 definitions:
   TransformProcess:
     type: object
@@ -3633,3 +3774,67 @@ definitions:
       uri:
         type: string
         description: URI of the credentials
+  JobEntity:
+    type: object
+    properties:
+      jobId:
+        type: integer
+        format: int64
+        description: Job ID
+      jobType:
+        type: string
+        enum:
+         - TRAINING
+         - INFERENCE
+        description: Whether a job is for training or inference
+      computeResourceId:
+        type: integer
+        format: int64
+        description: Compute resource ID
+      storageResourceId:
+        type: integer
+        format: int64
+        description: Storage resource ID
+      skilSparkMainArgs:
+        type: string
+        description: SKILSparkMain class arguments
+      runId:
+        type: string
+        description: Job run ID
+      status:
+        type: string
+        description: Job's status
+        enum:
+          - PENDING
+          - RUNNING
+          - CONTINUE
+          - COMPLETED
+          - CANCELLED
+          - FAILED
+          - INTERRUPTED
+      outputFileName:
+        type: string
+        description: Output file name
+  CreateJobRequest:
+    type: object
+    properties:
+      computeResourceId:
+        type: integer
+        format: int64
+        description: Compute resource ID
+      storageResourceId:
+        type: integer
+        format: int64
+        description: Storage resource ID
+      skilSparkMainArgs:
+        type: string
+        description: SKILSparkMain class arguments
+      outputFileName:
+        type: string
+        description: Output file name
+  DownloadOutputFileRequest:
+    type: object
+    properties:
+      localDownloadPath:
+        type: string
+        description: Local path where the file is to be downloaded
