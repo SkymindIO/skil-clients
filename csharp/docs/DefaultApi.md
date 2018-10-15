@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**AddModelFeedback**](DefaultApi.md#addmodelfeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**AddModelHistory**](DefaultApi.md#addmodelhistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**AddModelInstance**](DefaultApi.md#addmodelinstance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+[**AddResource**](DefaultApi.md#addresource) | **POST** /resources/add/resource | Adds a resource
 [**AggregateModelResults**](DefaultApi.md#aggregatemodelresults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**Classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**Classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
@@ -36,6 +37,11 @@ Method | HTTP request | Description
 [**GetModelHistory**](DefaultApi.md#getmodelhistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**GetModelInstance**](DefaultApi.md#getmodelinstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**GetModelsForExperiment**](DefaultApi.md#getmodelsforexperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+[**GetResourceById**](DefaultApi.md#getresourcebyid) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**GetResourceBySubType**](DefaultApi.md#getresourcebysubtype) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**GetResourceByType**](DefaultApi.md#getresourcebytype) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**GetResourceDetailsById**](DefaultApi.md#getresourcedetailsbyid) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**GetResources**](DefaultApi.md#getresources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**ImagetransformprocessGet**](DefaultApi.md#imagetransformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
 [**ImagetransformprocessPost**](DefaultApi.md#imagetransformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**Jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
@@ -591,6 +597,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelInstanceEntity**](ModelInstanceEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="addresource"></a>
+# **AddResource**
+> Object AddResource (AddResourceRequest addResourceRequest)
+
+Adds a resource
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class AddResourceExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var addResourceRequest = new AddResourceRequest(); // AddResourceRequest | The Add resource request object
+
+            try
+            {
+                // Adds a resource
+                Object result = apiInstance.AddResource(addResourceRequest);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.AddResource: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addResourceRequest** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
+
+### Return type
+
+**Object**
 
 ### Authorization
 
@@ -2196,6 +2266,323 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getresourcebyid"></a>
+# **GetResourceById**
+> Resource GetResourceById (long? resourceId)
+
+Get the resource with the specified resource ID
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetResourceByIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceId = 789;  // long? | ID of the resource
+
+            try
+            {
+                // Get the resource with the specified resource ID
+                Resource result = apiInstance.GetResourceById(resourceId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetResourceById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **long?**| ID of the resource | 
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getresourcebysubtype"></a>
+# **GetResourceBySubType**
+> List<Resource> GetResourceBySubType (string resourceSubType)
+
+Get all the resources with the specified resource subtype
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetResourceBySubTypeExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceSubType = resourceSubType_example;  // string | Subtype of the resource
+
+            try
+            {
+                // Get all the resources with the specified resource subtype
+                List&lt;Resource&gt; result = apiInstance.GetResourceBySubType(resourceSubType);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetResourceBySubType: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceSubType** | **string**| Subtype of the resource | 
+
+### Return type
+
+[**List<Resource>**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getresourcebytype"></a>
+# **GetResourceByType**
+> List<Resource> GetResourceByType (string resourceType)
+
+Get all the resources with the specified resource type
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetResourceByTypeExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceType = resourceType_example;  // string | Type of the resource
+
+            try
+            {
+                // Get all the resources with the specified resource type
+                List&lt;Resource&gt; result = apiInstance.GetResourceByType(resourceType);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetResourceByType: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceType** | **string**| Type of the resource | 
+
+### Return type
+
+[**List<Resource>**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getresourcedetailsbyid"></a>
+# **GetResourceDetailsById**
+> void GetResourceDetailsById (long? resourceId)
+
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetResourceDetailsByIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceId = 789;  // long? | ID of the resource
+
+            try
+            {
+                // Get the resource details with the specified resource ID
+                apiInstance.GetResourceDetailsById(resourceId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetResourceDetailsById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **long?**| ID of the resource | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getresources"></a>
+# **GetResources**
+> List<Resource> GetResources ()
+
+A list of all known/registered resources, of all types
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetResourcesExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // A list of all known/registered resources, of all types
+                List&lt;Resource&gt; result = apiInstance.GetResources();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetResources: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<Resource>**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="imagetransformprocessget"></a>
 # **ImagetransformprocessGet**
 > ImageTransformProcess ImagetransformprocessGet (string deploymentName, string versionName, string imageTransformName)
@@ -2694,11 +3081,6 @@ namespace Example
     {
         public void main()
         {
-            // Configure API key authorization: api_key
-            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
-
             var apiInstance = new DefaultApi();
             var credentials = new Credentials(); // Credentials | Login credentials.
 
@@ -2729,7 +3111,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 

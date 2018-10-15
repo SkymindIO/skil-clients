@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 *SkilCient::DefaultApi* | [**add_model_feedback**](docs/DefaultApi.md#add_model_feedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 *SkilCient::DefaultApi* | [**add_model_history**](docs/DefaultApi.md#add_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 *SkilCient::DefaultApi* | [**add_model_instance**](docs/DefaultApi.md#add_model_instance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+*SkilCient::DefaultApi* | [**add_resource**](docs/DefaultApi.md#add_resource) | **POST** /resources/add/resource | Adds a resource
 *SkilCient::DefaultApi* | [**aggregate_model_results**](docs/DefaultApi.md#aggregate_model_results) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 *SkilCient::DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 *SkilCient::DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
@@ -117,6 +118,11 @@ Class | Method | HTTP request | Description
 *SkilCient::DefaultApi* | [**get_model_history**](docs/DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 *SkilCient::DefaultApi* | [**get_model_instance**](docs/DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 *SkilCient::DefaultApi* | [**get_models_for_experiment**](docs/DefaultApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+*SkilCient::DefaultApi* | [**get_resource_by_id**](docs/DefaultApi.md#get_resource_by_id) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+*SkilCient::DefaultApi* | [**get_resource_by_sub_type**](docs/DefaultApi.md#get_resource_by_sub_type) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+*SkilCient::DefaultApi* | [**get_resource_by_type**](docs/DefaultApi.md#get_resource_by_type) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+*SkilCient::DefaultApi* | [**get_resource_details_by_id**](docs/DefaultApi.md#get_resource_details_by_id) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+*SkilCient::DefaultApi* | [**get_resources**](docs/DefaultApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 *SkilCient::DefaultApi* | [**imagetransformprocess_get**](docs/DefaultApi.md#imagetransformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
 *SkilCient::DefaultApi* | [**imagetransformprocess_post**](docs/DefaultApi.md#imagetransformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 *SkilCient::DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
@@ -160,7 +166,9 @@ Class | Method | HTTP request | Description
 
  - [SkilCient::AddExampleRequest](docs/AddExampleRequest.md)
  - [SkilCient::AddModelHistoryRequest](docs/AddModelHistoryRequest.md)
+ - [SkilCient::AddResourceRequest](docs/AddResourceRequest.md)
  - [SkilCient::AggregatePrediction](docs/AggregatePrediction.md)
+ - [SkilCient::AzureStorageResourceDetails](docs/AzureStorageResourceDetails.md)
  - [SkilCient::Base64NDArrayBody](docs/Base64NDArrayBody.md)
  - [SkilCient::Base64NDArrayBodyKNN](docs/Base64NDArrayBodyKNN.md)
  - [SkilCient::BatchCSVRecord](docs/BatchCSVRecord.md)
@@ -169,15 +177,20 @@ Class | Method | HTTP request | Description
  - [SkilCient::ClassificationResult](docs/ClassificationResult.md)
  - [SkilCient::CreateDeploymentRequest](docs/CreateDeploymentRequest.md)
  - [SkilCient::Credentials](docs/Credentials.md)
+ - [SkilCient::DataProcResourceDetails](docs/DataProcResourceDetails.md)
  - [SkilCient::DeploymentObjects](docs/DeploymentObjects.md)
  - [SkilCient::DeploymentResponse](docs/DeploymentResponse.md)
  - [SkilCient::DetectedObject](docs/DetectedObject.md)
  - [SkilCient::DetectionResult](docs/DetectionResult.md)
+ - [SkilCient::EMRResourceDetails](docs/EMRResourceDetails.md)
  - [SkilCient::EvaluationResultsEntity](docs/EvaluationResultsEntity.md)
  - [SkilCient::ExampleEntity](docs/ExampleEntity.md)
  - [SkilCient::ExperimentEntity](docs/ExperimentEntity.md)
  - [SkilCient::FileUpload](docs/FileUpload.md)
  - [SkilCient::FileUploadList](docs/FileUploadList.md)
+ - [SkilCient::GoogleStorageResourceDetails](docs/GoogleStorageResourceDetails.md)
+ - [SkilCient::HDFSResourceDetails](docs/HDFSResourceDetails.md)
+ - [SkilCient::HDInsightResourceDetails](docs/HDInsightResourceDetails.md)
  - [SkilCient::INDArray](docs/INDArray.md)
  - [SkilCient::ImageTransformProcess](docs/ImageTransformProcess.md)
  - [SkilCient::ImportModelRequest](docs/ImportModelRequest.md)
@@ -201,12 +214,17 @@ Class | Method | HTTP request | Description
  - [SkilCient::NearestNeighborsResults](docs/NearestNeighborsResults.md)
  - [SkilCient::NewDeployment](docs/NewDeployment.md)
  - [SkilCient::Prediction](docs/Prediction.md)
+ - [SkilCient::Resource](docs/Resource.md)
+ - [SkilCient::ResourceCredentials](docs/ResourceCredentials.md)
+ - [SkilCient::ResourceGroup](docs/ResourceGroup.md)
+ - [SkilCient::S3ResourceDetails](docs/S3ResourceDetails.md)
  - [SkilCient::SetState](docs/SetState.md)
  - [SkilCient::SingleCSVRecord](docs/SingleCSVRecord.md)
  - [SkilCient::SingleImageRecord](docs/SingleImageRecord.md)
  - [SkilCient::Token](docs/Token.md)
  - [SkilCient::TransformProcess](docs/TransformProcess.md)
  - [SkilCient::UpdateBestModel](docs/UpdateBestModel.md)
+ - [SkilCient::YARNResourceDetails](docs/YARNResourceDetails.md)
 
 
 ## Documentation for Authorization

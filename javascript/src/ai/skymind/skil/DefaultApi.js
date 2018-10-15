@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'ai/skymind/skil/model/AddExampleRequest', 'ai/skymind/skil/model/AddModelHistoryRequest', 'ai/skymind/skil/model/AggregatePrediction', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/Base64NDArrayBodyKNN', 'ai/skymind/skil/model/BatchCSVRecord', 'ai/skymind/skil/model/BatchImageRecord', 'ai/skymind/skil/model/BestModel', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/CreateDeploymentRequest', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeploymentResponse', 'ai/skymind/skil/model/DetectionResult', 'ai/skymind/skil/model/EvaluationResultsEntity', 'ai/skymind/skil/model/ExampleEntity', 'ai/skymind/skil/model/ExperimentEntity', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/ImageTransformProcess', 'ai/skymind/skil/model/ImportModelRequest', 'ai/skymind/skil/model/InlineResponse200', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/MetaData', 'ai/skymind/skil/model/MinibatchEntity', 'ai/skymind/skil/model/ModelEntity', 'ai/skymind/skil/model/ModelFeedBackRequest', 'ai/skymind/skil/model/ModelHistoryEntity', 'ai/skymind/skil/model/ModelInstanceEntity', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/MultiPredictRequest', 'ai/skymind/skil/model/MultiPredictResponse', 'ai/skymind/skil/model/NearestNeighborRequest', 'ai/skymind/skil/model/NearestNeighborsResults', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/SetState', 'ai/skymind/skil/model/SingleCSVRecord', 'ai/skymind/skil/model/SingleImageRecord', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/model/TransformProcess', 'ai/skymind/skil/model/UpdateBestModel'], factory);
+    define(['ApiClient', 'ai/skymind/skil/model/AddExampleRequest', 'ai/skymind/skil/model/AddModelHistoryRequest', 'ai/skymind/skil/model/AddResourceRequest', 'ai/skymind/skil/model/AggregatePrediction', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/Base64NDArrayBodyKNN', 'ai/skymind/skil/model/BatchCSVRecord', 'ai/skymind/skil/model/BatchImageRecord', 'ai/skymind/skil/model/BestModel', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/CreateDeploymentRequest', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeploymentResponse', 'ai/skymind/skil/model/DetectionResult', 'ai/skymind/skil/model/ERRORUNKNOWN', 'ai/skymind/skil/model/EvaluationResultsEntity', 'ai/skymind/skil/model/ExampleEntity', 'ai/skymind/skil/model/ExperimentEntity', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/ImageTransformProcess', 'ai/skymind/skil/model/ImportModelRequest', 'ai/skymind/skil/model/InlineResponse200', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/MetaData', 'ai/skymind/skil/model/MinibatchEntity', 'ai/skymind/skil/model/ModelEntity', 'ai/skymind/skil/model/ModelFeedBackRequest', 'ai/skymind/skil/model/ModelHistoryEntity', 'ai/skymind/skil/model/ModelInstanceEntity', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/MultiPredictRequest', 'ai/skymind/skil/model/MultiPredictResponse', 'ai/skymind/skil/model/NearestNeighborRequest', 'ai/skymind/skil/model/NearestNeighborsResults', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Resource', 'ai/skymind/skil/model/SetState', 'ai/skymind/skil/model/SingleCSVRecord', 'ai/skymind/skil/model/SingleImageRecord', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/model/TransformProcess', 'ai/skymind/skil/model/UpdateBestModel'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/AddExampleRequest'), require('../ai/skymind/skil/model/AddModelHistoryRequest'), require('../ai/skymind/skil/model/AggregatePrediction'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/Base64NDArrayBodyKNN'), require('../ai/skymind/skil/model/BatchCSVRecord'), require('../ai/skymind/skil/model/BatchImageRecord'), require('../ai/skymind/skil/model/BestModel'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/CreateDeploymentRequest'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeploymentResponse'), require('../ai/skymind/skil/model/DetectionResult'), require('../ai/skymind/skil/model/EvaluationResultsEntity'), require('../ai/skymind/skil/model/ExampleEntity'), require('../ai/skymind/skil/model/ExperimentEntity'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/ImageTransformProcess'), require('../ai/skymind/skil/model/ImportModelRequest'), require('../ai/skymind/skil/model/InlineResponse200'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/MetaData'), require('../ai/skymind/skil/model/MinibatchEntity'), require('../ai/skymind/skil/model/ModelEntity'), require('../ai/skymind/skil/model/ModelFeedBackRequest'), require('../ai/skymind/skil/model/ModelHistoryEntity'), require('../ai/skymind/skil/model/ModelInstanceEntity'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/MultiPredictRequest'), require('../ai/skymind/skil/model/MultiPredictResponse'), require('../ai/skymind/skil/model/NearestNeighborRequest'), require('../ai/skymind/skil/model/NearestNeighborsResults'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/SetState'), require('../ai/skymind/skil/model/SingleCSVRecord'), require('../ai/skymind/skil/model/SingleImageRecord'), require('../ai/skymind/skil/model/Token'), require('../ai/skymind/skil/model/TransformProcess'), require('../ai/skymind/skil/model/UpdateBestModel'));
+    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/AddExampleRequest'), require('../ai/skymind/skil/model/AddModelHistoryRequest'), require('../ai/skymind/skil/model/AddResourceRequest'), require('../ai/skymind/skil/model/AggregatePrediction'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/Base64NDArrayBodyKNN'), require('../ai/skymind/skil/model/BatchCSVRecord'), require('../ai/skymind/skil/model/BatchImageRecord'), require('../ai/skymind/skil/model/BestModel'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/CreateDeploymentRequest'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeploymentResponse'), require('../ai/skymind/skil/model/DetectionResult'), require('../ai/skymind/skil/model/ERRORUNKNOWN'), require('../ai/skymind/skil/model/EvaluationResultsEntity'), require('../ai/skymind/skil/model/ExampleEntity'), require('../ai/skymind/skil/model/ExperimentEntity'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/ImageTransformProcess'), require('../ai/skymind/skil/model/ImportModelRequest'), require('../ai/skymind/skil/model/InlineResponse200'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/MetaData'), require('../ai/skymind/skil/model/MinibatchEntity'), require('../ai/skymind/skil/model/ModelEntity'), require('../ai/skymind/skil/model/ModelFeedBackRequest'), require('../ai/skymind/skil/model/ModelHistoryEntity'), require('../ai/skymind/skil/model/ModelInstanceEntity'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/MultiPredictRequest'), require('../ai/skymind/skil/model/MultiPredictResponse'), require('../ai/skymind/skil/model/NearestNeighborRequest'), require('../ai/skymind/skil/model/NearestNeighborsResults'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/Resource'), require('../ai/skymind/skil/model/SetState'), require('../ai/skymind/skil/model/SingleCSVRecord'), require('../ai/skymind/skil/model/SingleImageRecord'), require('../ai/skymind/skil/model/Token'), require('../ai/skymind/skil/model/TransformProcess'), require('../ai/skymind/skil/model/UpdateBestModel'));
   } else {
     // Browser globals (root is window)
     if (!root.SkilClient) {
       root.SkilClient = {};
     }
-    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.AddExampleRequest, root.SkilClient.AddModelHistoryRequest, root.SkilClient.AggregatePrediction, root.SkilClient.Base64NDArrayBody, root.SkilClient.Base64NDArrayBodyKNN, root.SkilClient.BatchCSVRecord, root.SkilClient.BatchImageRecord, root.SkilClient.BestModel, root.SkilClient.ClassificationResult, root.SkilClient.CreateDeploymentRequest, root.SkilClient.Credentials, root.SkilClient.DeploymentResponse, root.SkilClient.DetectionResult, root.SkilClient.EvaluationResultsEntity, root.SkilClient.ExampleEntity, root.SkilClient.ExperimentEntity, root.SkilClient.FileUploadList, root.SkilClient.ImageTransformProcess, root.SkilClient.ImportModelRequest, root.SkilClient.InlineResponse200, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.MetaData, root.SkilClient.MinibatchEntity, root.SkilClient.ModelEntity, root.SkilClient.ModelFeedBackRequest, root.SkilClient.ModelHistoryEntity, root.SkilClient.ModelInstanceEntity, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.MultiPredictRequest, root.SkilClient.MultiPredictResponse, root.SkilClient.NearestNeighborRequest, root.SkilClient.NearestNeighborsResults, root.SkilClient.Prediction, root.SkilClient.SetState, root.SkilClient.SingleCSVRecord, root.SkilClient.SingleImageRecord, root.SkilClient.Token, root.SkilClient.TransformProcess, root.SkilClient.UpdateBestModel);
+    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.AddExampleRequest, root.SkilClient.AddModelHistoryRequest, root.SkilClient.AddResourceRequest, root.SkilClient.AggregatePrediction, root.SkilClient.Base64NDArrayBody, root.SkilClient.Base64NDArrayBodyKNN, root.SkilClient.BatchCSVRecord, root.SkilClient.BatchImageRecord, root.SkilClient.BestModel, root.SkilClient.ClassificationResult, root.SkilClient.CreateDeploymentRequest, root.SkilClient.Credentials, root.SkilClient.DeploymentResponse, root.SkilClient.DetectionResult, root.SkilClient.ERRORUNKNOWN, root.SkilClient.EvaluationResultsEntity, root.SkilClient.ExampleEntity, root.SkilClient.ExperimentEntity, root.SkilClient.FileUploadList, root.SkilClient.ImageTransformProcess, root.SkilClient.ImportModelRequest, root.SkilClient.InlineResponse200, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.MetaData, root.SkilClient.MinibatchEntity, root.SkilClient.ModelEntity, root.SkilClient.ModelFeedBackRequest, root.SkilClient.ModelHistoryEntity, root.SkilClient.ModelInstanceEntity, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.MultiPredictRequest, root.SkilClient.MultiPredictResponse, root.SkilClient.NearestNeighborRequest, root.SkilClient.NearestNeighborsResults, root.SkilClient.Prediction, root.SkilClient.Resource, root.SkilClient.SetState, root.SkilClient.SingleCSVRecord, root.SkilClient.SingleImageRecord, root.SkilClient.Token, root.SkilClient.TransformProcess, root.SkilClient.UpdateBestModel);
   }
-}(this, function(ApiClient, AddExampleRequest, AddModelHistoryRequest, AggregatePrediction, Base64NDArrayBody, Base64NDArrayBodyKNN, BatchCSVRecord, BatchImageRecord, BestModel, ClassificationResult, CreateDeploymentRequest, Credentials, DeploymentResponse, DetectionResult, EvaluationResultsEntity, ExampleEntity, ExperimentEntity, FileUploadList, ImageTransformProcess, ImportModelRequest, InlineResponse200, JsonArrayResponse, LogBatch, LogRequest, MetaData, MinibatchEntity, ModelEntity, ModelFeedBackRequest, ModelHistoryEntity, ModelInstanceEntity, ModelStatus, MultiClassClassificationResult, MultiPredictRequest, MultiPredictResponse, NearestNeighborRequest, NearestNeighborsResults, Prediction, SetState, SingleCSVRecord, SingleImageRecord, Token, TransformProcess, UpdateBestModel) {
+}(this, function(ApiClient, AddExampleRequest, AddModelHistoryRequest, AddResourceRequest, AggregatePrediction, Base64NDArrayBody, Base64NDArrayBodyKNN, BatchCSVRecord, BatchImageRecord, BestModel, ClassificationResult, CreateDeploymentRequest, Credentials, DeploymentResponse, DetectionResult, ERRORUNKNOWN, EvaluationResultsEntity, ExampleEntity, ExperimentEntity, FileUploadList, ImageTransformProcess, ImportModelRequest, InlineResponse200, JsonArrayResponse, LogBatch, LogRequest, MetaData, MinibatchEntity, ModelEntity, ModelFeedBackRequest, ModelHistoryEntity, ModelInstanceEntity, ModelStatus, MultiClassClassificationResult, MultiPredictRequest, MultiPredictResponse, NearestNeighborRequest, NearestNeighborsResults, Prediction, Resource, SetState, SingleCSVRecord, SingleImageRecord, Token, TransformProcess, UpdateBestModel) {
   'use strict';
 
   /**
@@ -466,6 +466,52 @@
 
       return this.apiClient.callApi(
         '/rpc/{modelHistoryServerId}/model', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the addResource operation.
+     * @callback module:ai/skymind/skil/DefaultApi~addResourceCallback
+     * @param {String} error Error message, if any.
+     * @param {Object} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Adds a resource
+     * @param {module:ai/skymind/skil/model/AddResourceRequest} addResourceRequest The Add resource request object
+     * @param {module:ai/skymind/skil/DefaultApi~addResourceCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Object}
+     */
+    this.addResource = function(addResourceRequest, callback) {
+      var postBody = addResourceRequest;
+
+      // verify the required parameter 'addResourceRequest' is set
+      if (addResourceRequest === undefined || addResourceRequest === null) {
+        throw new Error("Missing the required parameter 'addResourceRequest' when calling addResource");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = Object;
+
+      return this.apiClient.callApi(
+        '/resources/add/resource', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1799,6 +1845,235 @@
     }
 
     /**
+     * Callback function to receive the result of the getResourceById operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getResourceByIdCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/Resource} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the resource with the specified resource ID
+     * @param {Number} resourceId ID of the resource
+     * @param {module:ai/skymind/skil/DefaultApi~getResourceByIdCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/Resource}
+     */
+    this.getResourceById = function(resourceId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'resourceId' is set
+      if (resourceId === undefined || resourceId === null) {
+        throw new Error("Missing the required parameter 'resourceId' when calling getResourceById");
+      }
+
+
+      var pathParams = {
+        'resourceId': resourceId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Resource;
+
+      return this.apiClient.callApi(
+        '/resources/resource/{resourceId}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getResourceBySubType operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getResourceBySubTypeCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:ai/skymind/skil/model/Resource>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get all the resources with the specified resource subtype
+     * @param {module:ai/skymind/skil/model/String} resourceSubType Subtype of the resource
+     * @param {module:ai/skymind/skil/DefaultApi~getResourceBySubTypeCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:ai/skymind/skil/model/Resource>}
+     */
+    this.getResourceBySubType = function(resourceSubType, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'resourceSubType' is set
+      if (resourceSubType === undefined || resourceSubType === null) {
+        throw new Error("Missing the required parameter 'resourceSubType' when calling getResourceBySubType");
+      }
+
+
+      var pathParams = {
+        'resourceSubType': resourceSubType
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [Resource];
+
+      return this.apiClient.callApi(
+        '/resources/resources/type/{resourceSubType}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getResourceByType operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getResourceByTypeCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:ai/skymind/skil/model/Resource>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get all the resources with the specified resource type
+     * @param {module:ai/skymind/skil/model/String} resourceType Type of the resource
+     * @param {module:ai/skymind/skil/DefaultApi~getResourceByTypeCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:ai/skymind/skil/model/Resource>}
+     */
+    this.getResourceByType = function(resourceType, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'resourceType' is set
+      if (resourceType === undefined || resourceType === null) {
+        throw new Error("Missing the required parameter 'resourceType' when calling getResourceByType");
+      }
+
+
+      var pathParams = {
+        'resourceType': resourceType
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [Resource];
+
+      return this.apiClient.callApi(
+        '/resources/resources/type/{resourceType}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getResourceDetailsById operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getResourceDetailsByIdCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the resource details with the specified resource ID
+     * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+     * @param {Number} resourceId ID of the resource
+     * @param {module:ai/skymind/skil/DefaultApi~getResourceDetailsByIdCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ERRORUNKNOWN}
+     */
+    this.getResourceDetailsById = function(resourceId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'resourceId' is set
+      if (resourceId === undefined || resourceId === null) {
+        throw new Error("Missing the required parameter 'resourceId' when calling getResourceDetailsById");
+      }
+
+
+      var pathParams = {
+        'resourceId': resourceId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ERRORUNKNOWN;
+
+      return this.apiClient.callApi(
+        '/resources/details/{resourceId}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getResources operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getResourcesCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:ai/skymind/skil/model/Resource>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * A list of all known/registered resources, of all types
+     * @param {module:ai/skymind/skil/DefaultApi~getResourcesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:ai/skymind/skil/model/Resource>}
+     */
+    this.getResources = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [Resource];
+
+      return this.apiClient.callApi(
+        '/resources/resources', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the imagetransformprocessGet operation.
      * @callback module:ai/skymind/skil/DefaultApi~imagetransformprocessGetCallback
      * @param {String} error Error message, if any.
@@ -2263,7 +2538,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key'];
+      var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = Token;

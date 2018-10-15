@@ -873,6 +873,103 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def add_resource(self, add_resource_request, **kwargs):  # noqa: E501
+        """Adds a resource  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.add_resource(add_resource_request, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param AddResourceRequest add_resource_request: The Add resource request object (required)
+        :return: object
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.add_resource_with_http_info(add_resource_request, **kwargs)  # noqa: E501
+        else:
+            (data) = self.add_resource_with_http_info(add_resource_request, **kwargs)  # noqa: E501
+            return data
+
+    def add_resource_with_http_info(self, add_resource_request, **kwargs):  # noqa: E501
+        """Adds a resource  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.add_resource_with_http_info(add_resource_request, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param AddResourceRequest add_resource_request: The Add resource request object (required)
+        :return: object
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['add_resource_request']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method add_resource" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'add_resource_request' is set
+        if ('add_resource_request' not in params or
+                params['add_resource_request'] is None):
+            raise ValueError("Missing the required parameter `add_resource_request` when calling `add_resource`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'add_resource_request' in params:
+            body_params = params['add_resource_request']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/resources/add/resource', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='object',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def aggregate_model_results(self, model_history_server_id, aggregate_prediction, **kwargs):  # noqa: E501
         """Aggregates the evaluaition results of a model instance, based on the evaluation type  # noqa: E501
 
@@ -3377,6 +3474,465 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_resource_by_id(self, resource_id, **kwargs):  # noqa: E501
+        """Get the resource with the specified resource ID  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_resource_by_id(resource_id, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param int resource_id: ID of the resource (required)
+        :return: Resource
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.get_resource_by_id_with_http_info(resource_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_resource_by_id_with_http_info(resource_id, **kwargs)  # noqa: E501
+            return data
+
+    def get_resource_by_id_with_http_info(self, resource_id, **kwargs):  # noqa: E501
+        """Get the resource with the specified resource ID  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_resource_by_id_with_http_info(resource_id, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param int resource_id: ID of the resource (required)
+        :return: Resource
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['resource_id']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_resource_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'resource_id' is set
+        if ('resource_id' not in params or
+                params['resource_id'] is None):
+            raise ValueError("Missing the required parameter `resource_id` when calling `get_resource_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'resource_id' in params:
+            path_params['resourceId'] = params['resource_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/resources/resource/{resourceId}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='Resource',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_resource_by_sub_type(self, resource_sub_type, **kwargs):  # noqa: E501
+        """Get all the resources with the specified resource subtype  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_resource_by_sub_type(resource_sub_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str resource_sub_type: Subtype of the resource (required)
+        :return: list[Resource]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.get_resource_by_sub_type_with_http_info(resource_sub_type, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_resource_by_sub_type_with_http_info(resource_sub_type, **kwargs)  # noqa: E501
+            return data
+
+    def get_resource_by_sub_type_with_http_info(self, resource_sub_type, **kwargs):  # noqa: E501
+        """Get all the resources with the specified resource subtype  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_resource_by_sub_type_with_http_info(resource_sub_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str resource_sub_type: Subtype of the resource (required)
+        :return: list[Resource]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['resource_sub_type']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_resource_by_sub_type" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'resource_sub_type' is set
+        if ('resource_sub_type' not in params or
+                params['resource_sub_type'] is None):
+            raise ValueError("Missing the required parameter `resource_sub_type` when calling `get_resource_by_sub_type`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'resource_sub_type' in params:
+            path_params['resourceSubType'] = params['resource_sub_type']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/resources/resources/type/{resourceSubType}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[Resource]',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_resource_by_type(self, resource_type, **kwargs):  # noqa: E501
+        """Get all the resources with the specified resource type  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_resource_by_type(resource_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str resource_type: Type of the resource (required)
+        :return: list[Resource]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.get_resource_by_type_with_http_info(resource_type, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_resource_by_type_with_http_info(resource_type, **kwargs)  # noqa: E501
+            return data
+
+    def get_resource_by_type_with_http_info(self, resource_type, **kwargs):  # noqa: E501
+        """Get all the resources with the specified resource type  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_resource_by_type_with_http_info(resource_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str resource_type: Type of the resource (required)
+        :return: list[Resource]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['resource_type']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_resource_by_type" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'resource_type' is set
+        if ('resource_type' not in params or
+                params['resource_type'] is None):
+            raise ValueError("Missing the required parameter `resource_type` when calling `get_resource_by_type`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'resource_type' in params:
+            path_params['resourceType'] = params['resource_type']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/resources/resources/type/{resourceType}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[Resource]',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_resource_details_by_id(self, resource_id, **kwargs):  # noqa: E501
+        """Get the resource details with the specified resource ID  # noqa: E501
+
+        Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype).   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_resource_details_by_id(resource_id, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param int resource_id: ID of the resource (required)
+        :return: ERRORUNKNOWN
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.get_resource_details_by_id_with_http_info(resource_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_resource_details_by_id_with_http_info(resource_id, **kwargs)  # noqa: E501
+            return data
+
+    def get_resource_details_by_id_with_http_info(self, resource_id, **kwargs):  # noqa: E501
+        """Get the resource details with the specified resource ID  # noqa: E501
+
+        Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype).   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_resource_details_by_id_with_http_info(resource_id, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param int resource_id: ID of the resource (required)
+        :return: ERRORUNKNOWN
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['resource_id']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_resource_details_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'resource_id' is set
+        if ('resource_id' not in params or
+                params['resource_id'] is None):
+            raise ValueError("Missing the required parameter `resource_id` when calling `get_resource_details_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'resource_id' in params:
+            path_params['resourceId'] = params['resource_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/resources/details/{resourceId}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ERRORUNKNOWN',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_resources(self, **kwargs):  # noqa: E501
+        """A list of all known/registered resources, of all types  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_resources(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: list[Resource]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.get_resources_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.get_resources_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def get_resources_with_http_info(self, **kwargs):  # noqa: E501
+        """A list of all known/registered resources, of all types  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_resources_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: list[Resource]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_resources" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/resources/resources', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[Resource]',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def imagetransformprocess_get(self, deployment_name, version_name, image_transform_name, **kwargs):  # noqa: E501
         """Retrieves the image transform process JSON string  # noqa: E501
 
@@ -4249,7 +4805,7 @@ class DefaultApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/login', 'POST',

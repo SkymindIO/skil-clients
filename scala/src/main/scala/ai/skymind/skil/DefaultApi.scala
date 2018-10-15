@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat
 
 import ai.skymind.skil.model.AddExampleRequest
 import ai.skymind.skil.model.AddModelHistoryRequest
+import ai.skymind.skil.model.AddResourceRequest
 import ai.skymind.skil.model.AggregatePrediction
 import ai.skymind.skil.model.ArrayByte
 import ai.skymind.skil.model.Base64NDArrayBody
@@ -45,6 +46,7 @@ import ai.skymind.skil.model.ModelEntity
 import ai.skymind.skil.model.ModelFeedBackRequest
 import ai.skymind.skil.model.ModelHistoryEntity
 import ai.skymind.skil.model.ModelInstanceEntity
+import ai.skymind.skil.model.ModelNull
 import ai.skymind.skil.model.ModelStatus
 import ai.skymind.skil.model.MultiClassClassificationResult
 import ai.skymind.skil.model.MultiPredictRequest
@@ -52,6 +54,7 @@ import ai.skymind.skil.model.MultiPredictResponse
 import ai.skymind.skil.model.NearestNeighborRequest
 import ai.skymind.skil.model.NearestNeighborsResults
 import ai.skymind.skil.model.Prediction
+import ai.skymind.skil.model.Resource
 import ai.skymind.skil.model.SetState
 import ai.skymind.skil.model.SingleCSVRecord
 import ai.skymind.skil.model.SingleImageRecord
@@ -344,6 +347,32 @@ class DefaultApi(
    */
   def addModelInstanceAsync(ModelHistoryServerId: String, ModelInstanceEntity: ModelInstanceEntity): Future[ModelInstanceEntity] = {
       helper.addModelInstance(ModelHistoryServerId, ModelInstanceEntity)
+  }
+
+  /**
+   * Adds a resource
+   * 
+   *
+   * @param AddResourceRequest The Add resource request object 
+   * @return Any
+   */
+  def addResource(AddResourceRequest: AddResourceRequest): Option[Any] = {
+    val await = Try(Await.result(addResourceAsync(AddResourceRequest), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Adds a resource asynchronously
+   * 
+   *
+   * @param AddResourceRequest The Add resource request object 
+   * @return Future(Any)
+   */
+  def addResourceAsync(AddResourceRequest: AddResourceRequest): Future[Any] = {
+      helper.addResource(AddResourceRequest)
   }
 
   /**
@@ -1028,6 +1057,134 @@ class DefaultApi(
    */
   def getModelsForExperimentAsync(ModelHistoryServerId: String, ExperimentID: String): Future[List[ModelInstanceEntity]] = {
       helper.getModelsForExperiment(ModelHistoryServerId, ExperimentID)
+  }
+
+  /**
+   * Get the resource with the specified resource ID
+   * 
+   *
+   * @param ResourceId ID of the resource 
+   * @return Resource
+   */
+  def getResourceById(ResourceId: Long): Option[Resource] = {
+    val await = Try(Await.result(getResourceByIdAsync(ResourceId), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get the resource with the specified resource ID asynchronously
+   * 
+   *
+   * @param ResourceId ID of the resource 
+   * @return Future(Resource)
+   */
+  def getResourceByIdAsync(ResourceId: Long): Future[Resource] = {
+      helper.getResourceById(ResourceId)
+  }
+
+  /**
+   * Get all the resources with the specified resource subtype
+   * 
+   *
+   * @param ResourceSubType Subtype of the resource 
+   * @return List[Resource]
+   */
+  def getResourceBySubType(ResourceSubType: String): Option[List[Resource]] = {
+    val await = Try(Await.result(getResourceBySubTypeAsync(ResourceSubType), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get all the resources with the specified resource subtype asynchronously
+   * 
+   *
+   * @param ResourceSubType Subtype of the resource 
+   * @return Future(List[Resource])
+   */
+  def getResourceBySubTypeAsync(ResourceSubType: String): Future[List[Resource]] = {
+      helper.getResourceBySubType(ResourceSubType)
+  }
+
+  /**
+   * Get all the resources with the specified resource type
+   * 
+   *
+   * @param ResourceType Type of the resource 
+   * @return List[Resource]
+   */
+  def getResourceByType(ResourceType: String): Option[List[Resource]] = {
+    val await = Try(Await.result(getResourceByTypeAsync(ResourceType), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get all the resources with the specified resource type asynchronously
+   * 
+   *
+   * @param ResourceType Type of the resource 
+   * @return Future(List[Resource])
+   */
+  def getResourceByTypeAsync(ResourceType: String): Future[List[Resource]] = {
+      helper.getResourceByType(ResourceType)
+  }
+
+  /**
+   * Get the resource details with the specified resource ID
+   * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+   *
+   * @param ResourceId ID of the resource 
+   * @return ModelNull
+   */
+  def getResourceDetailsById(ResourceId: Long): Option[ModelNull] = {
+    val await = Try(Await.result(getResourceDetailsByIdAsync(ResourceId), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get the resource details with the specified resource ID asynchronously
+   * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+   *
+   * @param ResourceId ID of the resource 
+   * @return Future(ModelNull)
+   */
+  def getResourceDetailsByIdAsync(ResourceId: Long): Future[ModelNull] = {
+      helper.getResourceDetailsById(ResourceId)
+  }
+
+  /**
+   * A list of all known/registered resources, of all types
+   * 
+   *
+   * @return List[Resource]
+   */
+  def getResources(): Option[List[Resource]] = {
+    val await = Try(Await.result(getResourcesAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * A list of all known/registered resources, of all types asynchronously
+   * 
+   *
+   * @return Future(List[Resource])
+   */
+  def getResourcesAsync(): Future[List[Resource]] = {
+      helper.getResources()
   }
 
   /**
@@ -2336,6 +2493,22 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
+  def addResource(AddResourceRequest: AddResourceRequest)(implicit reader: ClientResponseReader[Any], writer: RequestWriter[AddResourceRequest]): Future[Any] = {
+    // create path and map variables
+    val path = (addFmt("/resources/add/resource"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (AddResourceRequest == null) throw new Exception("Missing required parameter 'AddResourceRequest' when calling DefaultApi->addResource")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(AddResourceRequest))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
   def aggregateModelResults(ModelHistoryServerId: String,
     AggregatePrediction: AggregatePrediction)(implicit reader: ClientResponseReader[EvaluationResultsEntity], writer: RequestWriter[AggregatePrediction]): Future[EvaluationResultsEntity] = {
     // create path and map variables
@@ -2856,6 +3029,89 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->getModelsForExperiment")
 
     if (ExperimentID == null) throw new Exception("Missing required parameter 'ExperimentID' when calling DefaultApi->getModelsForExperiment")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getResourceById(ResourceId: Long)(implicit reader: ClientResponseReader[Resource]): Future[Resource] = {
+    // create path and map variables
+    val path = (addFmt("/resources/resource/{resourceId}")
+      replaceAll("\\{" + "resourceId" + "\\}", ResourceId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getResourceBySubType(ResourceSubType: String)(implicit reader: ClientResponseReader[List[Resource]]): Future[List[Resource]] = {
+    // create path and map variables
+    val path = (addFmt("/resources/resources/type/{resourceSubType}")
+      replaceAll("\\{" + "resourceSubType" + "\\}", ResourceSubType.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ResourceSubType == null) throw new Exception("Missing required parameter 'ResourceSubType' when calling DefaultApi->getResourceBySubType")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getResourceByType(ResourceType: String)(implicit reader: ClientResponseReader[List[Resource]]): Future[List[Resource]] = {
+    // create path and map variables
+    val path = (addFmt("/resources/resources/type/{resourceType}")
+      replaceAll("\\{" + "resourceType" + "\\}", ResourceType.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ResourceType == null) throw new Exception("Missing required parameter 'ResourceType' when calling DefaultApi->getResourceByType")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getResourceDetailsById(ResourceId: Long)(implicit reader: ClientResponseReader[ModelNull]): Future[ModelNull] = {
+    // create path and map variables
+    val path = (addFmt("/resources/details/{resourceId}")
+      replaceAll("\\{" + "resourceId" + "\\}", ResourceId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getResources()(implicit reader: ClientResponseReader[List[Resource]]): Future[List[Resource]] = {
+    // create path and map variables
+    val path = (addFmt("/resources/resources"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
 
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")

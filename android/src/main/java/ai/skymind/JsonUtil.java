@@ -65,8 +65,16 @@ public class JsonUtil {
       return new TypeToken<List<AddModelHistoryRequest>>(){}.getType();
     }
     
+    if ("AddResourceRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AddResourceRequest>>(){}.getType();
+    }
+    
     if ("AggregatePrediction".equalsIgnoreCase(className)) {
       return new TypeToken<List<AggregatePrediction>>(){}.getType();
+    }
+    
+    if ("AzureStorageResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AzureStorageResourceDetails>>(){}.getType();
     }
     
     if ("Base64NDArrayBody".equalsIgnoreCase(className)) {
@@ -101,6 +109,10 @@ public class JsonUtil {
       return new TypeToken<List<Credentials>>(){}.getType();
     }
     
+    if ("DataProcResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<List<DataProcResourceDetails>>(){}.getType();
+    }
+    
     if ("DeploymentObjects".equalsIgnoreCase(className)) {
       return new TypeToken<List<DeploymentObjects>>(){}.getType();
     }
@@ -115,6 +127,10 @@ public class JsonUtil {
     
     if ("DetectionResult".equalsIgnoreCase(className)) {
       return new TypeToken<List<DetectionResult>>(){}.getType();
+    }
+    
+    if ("EMRResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<List<EMRResourceDetails>>(){}.getType();
     }
     
     if ("EvaluationResultsEntity".equalsIgnoreCase(className)) {
@@ -135,6 +151,18 @@ public class JsonUtil {
     
     if ("FileUploadList".equalsIgnoreCase(className)) {
       return new TypeToken<List<FileUploadList>>(){}.getType();
+    }
+    
+    if ("GoogleStorageResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<List<GoogleStorageResourceDetails>>(){}.getType();
+    }
+    
+    if ("HDFSResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<List<HDFSResourceDetails>>(){}.getType();
+    }
+    
+    if ("HDInsightResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<List<HDInsightResourceDetails>>(){}.getType();
     }
     
     if ("INDArray".equalsIgnoreCase(className)) {
@@ -229,6 +257,22 @@ public class JsonUtil {
       return new TypeToken<List<Prediction>>(){}.getType();
     }
     
+    if ("Resource".equalsIgnoreCase(className)) {
+      return new TypeToken<List<Resource>>(){}.getType();
+    }
+    
+    if ("ResourceCredentials".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ResourceCredentials>>(){}.getType();
+    }
+    
+    if ("ResourceGroup".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ResourceGroup>>(){}.getType();
+    }
+    
+    if ("S3ResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<List<S3ResourceDetails>>(){}.getType();
+    }
+    
     if ("SetState".equalsIgnoreCase(className)) {
       return new TypeToken<List<SetState>>(){}.getType();
     }
@@ -253,6 +297,10 @@ public class JsonUtil {
       return new TypeToken<List<UpdateBestModel>>(){}.getType();
     }
     
+    if ("YARNResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<List<YARNResourceDetails>>(){}.getType();
+    }
+    
     return new TypeToken<List<Object>>(){}.getType();
   }
 
@@ -267,8 +315,16 @@ public class JsonUtil {
       return new TypeToken<AddModelHistoryRequest>(){}.getType();
     }
     
+    if ("AddResourceRequest".equalsIgnoreCase(className)) {
+      return new TypeToken<AddResourceRequest>(){}.getType();
+    }
+    
     if ("AggregatePrediction".equalsIgnoreCase(className)) {
       return new TypeToken<AggregatePrediction>(){}.getType();
+    }
+    
+    if ("AzureStorageResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<AzureStorageResourceDetails>(){}.getType();
     }
     
     if ("Base64NDArrayBody".equalsIgnoreCase(className)) {
@@ -303,6 +359,10 @@ public class JsonUtil {
       return new TypeToken<Credentials>(){}.getType();
     }
     
+    if ("DataProcResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<DataProcResourceDetails>(){}.getType();
+    }
+    
     if ("DeploymentObjects".equalsIgnoreCase(className)) {
       return new TypeToken<DeploymentObjects>(){}.getType();
     }
@@ -317,6 +377,10 @@ public class JsonUtil {
     
     if ("DetectionResult".equalsIgnoreCase(className)) {
       return new TypeToken<DetectionResult>(){}.getType();
+    }
+    
+    if ("EMRResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<EMRResourceDetails>(){}.getType();
     }
     
     if ("EvaluationResultsEntity".equalsIgnoreCase(className)) {
@@ -337,6 +401,18 @@ public class JsonUtil {
     
     if ("FileUploadList".equalsIgnoreCase(className)) {
       return new TypeToken<FileUploadList>(){}.getType();
+    }
+    
+    if ("GoogleStorageResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<GoogleStorageResourceDetails>(){}.getType();
+    }
+    
+    if ("HDFSResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<HDFSResourceDetails>(){}.getType();
+    }
+    
+    if ("HDInsightResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<HDInsightResourceDetails>(){}.getType();
     }
     
     if ("INDArray".equalsIgnoreCase(className)) {
@@ -431,6 +507,22 @@ public class JsonUtil {
       return new TypeToken<Prediction>(){}.getType();
     }
     
+    if ("Resource".equalsIgnoreCase(className)) {
+      return new TypeToken<Resource>(){}.getType();
+    }
+    
+    if ("ResourceCredentials".equalsIgnoreCase(className)) {
+      return new TypeToken<ResourceCredentials>(){}.getType();
+    }
+    
+    if ("ResourceGroup".equalsIgnoreCase(className)) {
+      return new TypeToken<ResourceGroup>(){}.getType();
+    }
+    
+    if ("S3ResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<S3ResourceDetails>(){}.getType();
+    }
+    
     if ("SetState".equalsIgnoreCase(className)) {
       return new TypeToken<SetState>(){}.getType();
     }
@@ -453,6 +545,10 @@ public class JsonUtil {
     
     if ("UpdateBestModel".equalsIgnoreCase(className)) {
       return new TypeToken<UpdateBestModel>(){}.getType();
+    }
+    
+    if ("YARNResourceDetails".equalsIgnoreCase(className)) {
+      return new TypeToken<YARNResourceDetails>(){}.getType();
     }
     
     return new TypeToken<Object>(){}.getType();

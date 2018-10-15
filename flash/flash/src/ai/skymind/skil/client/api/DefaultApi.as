@@ -8,6 +8,7 @@ import io.swagger.event.Response;
 import io.swagger.common.SwaggerApi;
 import ai.skymind.skil.client.model.AddExampleRequest;
 import ai.skymind.skil.client.model.AddModelHistoryRequest;
+import ai.skymind.skil.client.model.AddResourceRequest;
 import ai.skymind.skil.client.model.AggregatePrediction;
 import ai.skymind.skil.client.model.Base64NDArrayBody;
 import ai.skymind.skil.client.model.Base64NDArrayBodyKNN;
@@ -19,6 +20,7 @@ import ai.skymind.skil.client.model.CreateDeploymentRequest;
 import ai.skymind.skil.client.model.Credentials;
 import ai.skymind.skil.client.model.DeploymentResponse;
 import ai.skymind.skil.client.model.DetectionResult;
+import ai.skymind.skil.client.model.ERRORUNKNOWN;
 import ai.skymind.skil.client.model.EvaluationResultsEntity;
 import ai.skymind.skil.client.model.ExampleEntity;
 import ai.skymind.skil.client.model.ExperimentEntity;
@@ -42,7 +44,9 @@ import ai.skymind.skil.client.model.MultiPredictRequest;
 import ai.skymind.skil.client.model.MultiPredictResponse;
 import ai.skymind.skil.client.model.NearestNeighborRequest;
 import ai.skymind.skil.client.model.NearestNeighborsResults;
+import ai.skymind.skil.client.model.Object;
 import ai.skymind.skil.client.model.Prediction;
+import ai.skymind.skil.client.model.Resource;
 import ai.skymind.skil.client.model.SetState;
 import ai.skymind.skil.client.model.SingleCSVRecord;
 import ai.skymind.skil.client.model.SingleImageRecord;
@@ -73,6 +77,7 @@ public class DefaultApi extends SwaggerApi {
         public static const event_add_model_feedback: String = "add_model_feedback";
         public static const event_add_model_history: String = "add_model_history";
         public static const event_add_model_instance: String = "add_model_instance";
+        public static const event_add_resource: String = "add_resource";
         public static const event_aggregate_model_results: String = "aggregate_model_results";
         public static const event_classify: String = "classify";
         public static const event_classifyarray: String = "classifyarray";
@@ -97,6 +102,11 @@ public class DefaultApi extends SwaggerApi {
         public static const event_get_model_history: String = "get_model_history";
         public static const event_get_model_instance: String = "get_model_instance";
         public static const event_get_models_for_experiment: String = "get_models_for_experiment";
+        public static const event_get_resource_by_id: String = "get_resource_by_id";
+        public static const event_get_resource_by_sub_type: String = "get_resource_by_sub_type";
+        public static const event_get_resource_by_type: String = "get_resource_by_type";
+        public static const event_get_resource_details_by_id: String = "get_resource_details_by_id";
+        public static const event_get_resources: String = "get_resources";
         public static const event_imagetransformprocess_get: String = "imagetransformprocess_get";
         public static const event_imagetransformprocess_post: String = "imagetransformprocess_post";
         public static const event_jsonarray: String = "jsonarray";
@@ -404,6 +414,36 @@ public class DefaultApi extends SwaggerApi {
         token.completionEventType = "add_model_instance";
 
         token.returnType = ModelInstanceEntity;
+        return requestId;
+
+    }
+
+    /*
+     * Returns Object 
+     */
+    public function add_resource (addResourceRequest: AddResourceRequest): String {
+        // create path and map variables
+        var path: String = "/resources/add/resource".replace(/{format}/g,"xml");
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, addResourceRequest, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "add_resource";
+
+        token.returnType = Object;
         return requestId;
 
     }
@@ -1242,6 +1282,152 @@ public class DefaultApi extends SwaggerApi {
 
         token.requestId = requestId;
         token.completionEventType = "get_models_for_experiment";
+
+        token.returnType = Array;
+        return requestId;
+
+    }
+
+    /*
+     * Returns Resource 
+     */
+    public function get_resource_by_id (resourceId: Number): String {
+        // create path and map variables
+        var path: String = "/resources/resource/{resourceId}".replace(/{format}/g,"xml").replace("{" + "resourceId" + "}", getApiInvoker().escapeString(resourceId));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "get_resource_by_id";
+
+        token.returnType = Resource;
+        return requestId;
+
+    }
+
+    /*
+     * Returns Array 
+     */
+    public function get_resource_by_sub_type (resourceSubType: String): String {
+        // create path and map variables
+        var path: String = "/resources/resources/type/{resourceSubType}".replace(/{format}/g,"xml").replace("{" + "resourceSubType" + "}", getApiInvoker().escapeString(resourceSubType));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "get_resource_by_sub_type";
+
+        token.returnType = Array;
+        return requestId;
+
+    }
+
+    /*
+     * Returns Array 
+     */
+    public function get_resource_by_type (resourceType: String): String {
+        // create path and map variables
+        var path: String = "/resources/resources/type/{resourceType}".replace(/{format}/g,"xml").replace("{" + "resourceType" + "}", getApiInvoker().escapeString(resourceType));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "get_resource_by_type";
+
+        token.returnType = Array;
+        return requestId;
+
+    }
+
+    /*
+     * Returns ERRORUNKNOWN 
+     */
+    public function get_resource_details_by_id (resourceId: Number): String {
+        // create path and map variables
+        var path: String = "/resources/details/{resourceId}".replace(/{format}/g,"xml").replace("{" + "resourceId" + "}", getApiInvoker().escapeString(resourceId));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "get_resource_details_by_id";
+
+        token.returnType = ERRORUNKNOWN;
+        return requestId;
+
+    }
+
+    /*
+     * Returns Array 
+     */
+    public function get_resources (): String {
+        // create path and map variables
+        var path: String = "/resources/resources".replace(/{format}/g,"xml");
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "get_resources";
 
         token.returnType = Array;
         return requestId;

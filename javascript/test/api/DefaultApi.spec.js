@@ -130,6 +130,16 @@
         done();
       });
     });
+    describe('addResource', function() {
+      it('should call addResource successfully', function(done) {
+        //uncomment below and update the code to test addResource
+        //instance.addResource(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('aggregateModelResults', function() {
       it('should call aggregateModelResults successfully', function(done) {
         //uncomment below and update the code to test aggregateModelResults
@@ -364,6 +374,56 @@
       it('should call getModelsForExperiment successfully', function(done) {
         //uncomment below and update the code to test getModelsForExperiment
         //instance.getModelsForExperiment(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getResourceById', function() {
+      it('should call getResourceById successfully', function(done) {
+        //uncomment below and update the code to test getResourceById
+        //instance.getResourceById(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getResourceBySubType', function() {
+      it('should call getResourceBySubType successfully', function(done) {
+        //uncomment below and update the code to test getResourceBySubType
+        //instance.getResourceBySubType(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getResourceByType', function() {
+      it('should call getResourceByType successfully', function(done) {
+        //uncomment below and update the code to test getResourceByType
+        //instance.getResourceByType(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getResourceDetailsById', function() {
+      it('should call getResourceDetailsById successfully', function(done) {
+        //uncomment below and update the code to test getResourceDetailsById
+        //instance.getResourceDetailsById(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getResources', function() {
+      it('should call getResources successfully', function(done) {
+        //uncomment below and update the code to test getResources
+        //instance.getResources(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

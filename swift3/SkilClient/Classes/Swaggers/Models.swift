@@ -340,6 +340,56 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "AddModelHistoryRequest", actual: "\(source)"))
             }
         }
+        // Decoder for [AddResourceRequest]
+        Decoders.addDecoder(clazz: [AddResourceRequest].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[AddResourceRequest]> in
+            return Decoders.decode(clazz: [AddResourceRequest].self, source: source)
+        }
+
+        // Decoder for AddResourceRequest
+        Decoders.addDecoder(clazz: AddResourceRequest.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<AddResourceRequest> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? AddResourceRequest() : instance as! AddResourceRequest
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["resourceName"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceName = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: Any.self, source: sourceDictionary["resourceDetails"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceDetails = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["credentialUri"] as AnyObject?) {
+                
+                case let .success(value): _result.credentialUri = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: AddResourceRequest.ModelType.self, source: sourceDictionary["type"] as AnyObject?) {
+                
+                case let .success(value): _result.type = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: AddResourceRequest.SubType.self, source: sourceDictionary["subType"] as AnyObject?) {
+                
+                case let .success(value): _result.subType = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["credentialId"] as AnyObject?) {
+                
+                case let .success(value): _result.credentialId = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "AddResourceRequest", actual: "\(source)"))
+            }
+        }
         // Decoder for [AggregatePrediction]
         Decoders.addDecoder(clazz: [AggregatePrediction].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[AggregatePrediction]> in
             return Decoders.decode(clazz: [AggregatePrediction].self, source: source)
@@ -364,6 +414,44 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "AggregatePrediction", actual: "\(source)"))
+            }
+        }
+        // Decoder for [AzureStorageResourceDetails]
+        Decoders.addDecoder(clazz: [AzureStorageResourceDetails].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[AzureStorageResourceDetails]> in
+            return Decoders.decode(clazz: [AzureStorageResourceDetails].self, source: source)
+        }
+
+        // Decoder for AzureStorageResourceDetails
+        Decoders.addDecoder(clazz: AzureStorageResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<AzureStorageResourceDetails> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? AzureStorageResourceDetails() : instance as! AzureStorageResourceDetails
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: AzureStorageResourceDetails.ModelType.self, source: sourceDictionary["type"] as AnyObject?) {
+                
+                case let .success(value): _result.type = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: AzureStorageResourceDetails.SubType.self, source: sourceDictionary["subType"] as AnyObject?) {
+                
+                case let .success(value): _result.subType = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["containerName"] as AnyObject?) {
+                
+                case let .success(value): _result.containerName = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "AzureStorageResourceDetails", actual: "\(source)"))
             }
         }
         // Decoder for [Base64NDArrayBody]
@@ -568,6 +656,56 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "Credentials", actual: "\(source)"))
             }
         }
+        // Decoder for [DataProcResourceDetails]
+        Decoders.addDecoder(clazz: [DataProcResourceDetails].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[DataProcResourceDetails]> in
+            return Decoders.decode(clazz: [DataProcResourceDetails].self, source: source)
+        }
+
+        // Decoder for DataProcResourceDetails
+        Decoders.addDecoder(clazz: DataProcResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<DataProcResourceDetails> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? DataProcResourceDetails() : instance as! DataProcResourceDetails
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: DataProcResourceDetails.ModelType.self, source: sourceDictionary["type"] as AnyObject?) {
+                
+                case let .success(value): _result.type = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: DataProcResourceDetails.SubType.self, source: sourceDictionary["subType"] as AnyObject?) {
+                
+                case let .success(value): _result.subType = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["projectId"] as AnyObject?) {
+                
+                case let .success(value): _result.projectId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["region"] as AnyObject?) {
+                
+                case let .success(value): _result.region = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["sparkClusterName"] as AnyObject?) {
+                
+                case let .success(value): _result.sparkClusterName = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "DataProcResourceDetails", actual: "\(source)"))
+            }
+        }
         // Decoder for [DeploymentObjects]
         Decoders.addDecoder(clazz: [DeploymentObjects].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[DeploymentObjects]> in
             return Decoders.decode(clazz: [DeploymentObjects].self, source: source)
@@ -718,6 +856,50 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "DetectionResult", actual: "\(source)"))
+            }
+        }
+        // Decoder for [EMRResourceDetails]
+        Decoders.addDecoder(clazz: [EMRResourceDetails].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[EMRResourceDetails]> in
+            return Decoders.decode(clazz: [EMRResourceDetails].self, source: source)
+        }
+
+        // Decoder for EMRResourceDetails
+        Decoders.addDecoder(clazz: EMRResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<EMRResourceDetails> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? EMRResourceDetails() : instance as! EMRResourceDetails
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: EMRResourceDetails.ModelType.self, source: sourceDictionary["type"] as AnyObject?) {
+                
+                case let .success(value): _result.type = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: EMRResourceDetails.SubType.self, source: sourceDictionary["subType"] as AnyObject?) {
+                
+                case let .success(value): _result.subType = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["clusterId"] as AnyObject?) {
+                
+                case let .success(value): _result.clusterId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["region"] as AnyObject?) {
+                
+                case let .success(value): _result.region = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "EMRResourceDetails", actual: "\(source)"))
             }
         }
         // Decoder for [EvaluationResultsEntity]
@@ -1028,6 +1210,144 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "FileUploadList", actual: "\(source)"))
+            }
+        }
+        // Decoder for [GoogleStorageResourceDetails]
+        Decoders.addDecoder(clazz: [GoogleStorageResourceDetails].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[GoogleStorageResourceDetails]> in
+            return Decoders.decode(clazz: [GoogleStorageResourceDetails].self, source: source)
+        }
+
+        // Decoder for GoogleStorageResourceDetails
+        Decoders.addDecoder(clazz: GoogleStorageResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<GoogleStorageResourceDetails> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? GoogleStorageResourceDetails() : instance as! GoogleStorageResourceDetails
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: GoogleStorageResourceDetails.ModelType.self, source: sourceDictionary["type"] as AnyObject?) {
+                
+                case let .success(value): _result.type = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: GoogleStorageResourceDetails.SubType.self, source: sourceDictionary["subType"] as AnyObject?) {
+                
+                case let .success(value): _result.subType = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["projectId"] as AnyObject?) {
+                
+                case let .success(value): _result.projectId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["bucketName"] as AnyObject?) {
+                
+                case let .success(value): _result.bucketName = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "GoogleStorageResourceDetails", actual: "\(source)"))
+            }
+        }
+        // Decoder for [HDFSResourceDetails]
+        Decoders.addDecoder(clazz: [HDFSResourceDetails].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[HDFSResourceDetails]> in
+            return Decoders.decode(clazz: [HDFSResourceDetails].self, source: source)
+        }
+
+        // Decoder for HDFSResourceDetails
+        Decoders.addDecoder(clazz: HDFSResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<HDFSResourceDetails> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? HDFSResourceDetails() : instance as! HDFSResourceDetails
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: HDFSResourceDetails.ModelType.self, source: sourceDictionary["type"] as AnyObject?) {
+                
+                case let .success(value): _result.type = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: HDFSResourceDetails.SubType.self, source: sourceDictionary["subType"] as AnyObject?) {
+                
+                case let .success(value): _result.subType = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["nameNodeHost"] as AnyObject?) {
+                
+                case let .success(value): _result.nameNodeHost = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["nameNodePort"] as AnyObject?) {
+                
+                case let .success(value): _result.nameNodePort = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "HDFSResourceDetails", actual: "\(source)"))
+            }
+        }
+        // Decoder for [HDInsightResourceDetails]
+        Decoders.addDecoder(clazz: [HDInsightResourceDetails].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[HDInsightResourceDetails]> in
+            return Decoders.decode(clazz: [HDInsightResourceDetails].self, source: source)
+        }
+
+        // Decoder for HDInsightResourceDetails
+        Decoders.addDecoder(clazz: HDInsightResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<HDInsightResourceDetails> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? HDInsightResourceDetails() : instance as! HDInsightResourceDetails
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: HDInsightResourceDetails.ModelType.self, source: sourceDictionary["type"] as AnyObject?) {
+                
+                case let .success(value): _result.type = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: HDInsightResourceDetails.SubType.self, source: sourceDictionary["subType"] as AnyObject?) {
+                
+                case let .success(value): _result.subType = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["subscriptionId"] as AnyObject?) {
+                
+                case let .success(value): _result.subscriptionId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["resourceGroupName"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceGroupName = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["clusterName"] as AnyObject?) {
+                
+                case let .success(value): _result.clusterName = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "HDInsightResourceDetails", actual: "\(source)"))
             }
         }
         // Decoder for [INDArray]
@@ -1890,6 +2210,170 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "Prediction", actual: "\(source)"))
             }
         }
+        // Decoder for [Resource]
+        Decoders.addDecoder(clazz: [Resource].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[Resource]> in
+            return Decoders.decode(clazz: [Resource].self, source: source)
+        }
+
+        // Decoder for Resource
+        Decoders.addDecoder(clazz: Resource.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<Resource> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? Resource() : instance as! Resource
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"] as AnyObject?) {
+                
+                case let .success(value): _result.name = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: Resource.ModelType.self, source: sourceDictionary["type"] as AnyObject?) {
+                
+                case let .success(value): _result.type = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: Resource.SubType.self, source: sourceDictionary["subType"] as AnyObject?) {
+                
+                case let .success(value): _result.subType = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["credentialId"] as AnyObject?) {
+                
+                case let .success(value): _result.credentialId = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "Resource", actual: "\(source)"))
+            }
+        }
+        // Decoder for [ResourceCredentials]
+        Decoders.addDecoder(clazz: [ResourceCredentials].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[ResourceCredentials]> in
+            return Decoders.decode(clazz: [ResourceCredentials].self, source: source)
+        }
+
+        // Decoder for ResourceCredentials
+        Decoders.addDecoder(clazz: ResourceCredentials.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<ResourceCredentials> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? ResourceCredentials() : instance as! ResourceCredentials
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["credentialId"] as AnyObject?) {
+                
+                case let .success(value): _result.credentialId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: ResourceCredentials.ModelType.self, source: sourceDictionary["type"] as AnyObject?) {
+                
+                case let .success(value): _result.type = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"] as AnyObject?) {
+                
+                case let .success(value): _result.name = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["uri"] as AnyObject?) {
+                
+                case let .success(value): _result.uri = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "ResourceCredentials", actual: "\(source)"))
+            }
+        }
+        // Decoder for [ResourceGroup]
+        Decoders.addDecoder(clazz: [ResourceGroup].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[ResourceGroup]> in
+            return Decoders.decode(clazz: [ResourceGroup].self, source: source)
+        }
+
+        // Decoder for ResourceGroup
+        Decoders.addDecoder(clazz: ResourceGroup.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<ResourceGroup> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? ResourceGroup() : instance as! ResourceGroup
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["groupId"] as AnyObject?) {
+                
+                case let .success(value): _result.groupId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["groupName"] as AnyObject?) {
+                
+                case let .success(value): _result.groupName = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["added"] as AnyObject?) {
+                
+                case let .success(value): _result.added = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["updated"] as AnyObject?) {
+                
+                case let .success(value): _result.updated = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "ResourceGroup", actual: "\(source)"))
+            }
+        }
+        // Decoder for [S3ResourceDetails]
+        Decoders.addDecoder(clazz: [S3ResourceDetails].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[S3ResourceDetails]> in
+            return Decoders.decode(clazz: [S3ResourceDetails].self, source: source)
+        }
+
+        // Decoder for S3ResourceDetails
+        Decoders.addDecoder(clazz: S3ResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<S3ResourceDetails> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? S3ResourceDetails() : instance as! S3ResourceDetails
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: S3ResourceDetails.ModelType.self, source: sourceDictionary["type"] as AnyObject?) {
+                
+                case let .success(value): _result.type = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: S3ResourceDetails.SubType.self, source: sourceDictionary["subType"] as AnyObject?) {
+                
+                case let .success(value): _result.subType = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["bucket"] as AnyObject?) {
+                
+                case let .success(value): _result.bucket = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["region"] as AnyObject?) {
+                
+                case let .success(value): _result.region = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "S3ResourceDetails", actual: "\(source)"))
+            }
+        }
         // Decoder for [SetState]
         Decoders.addDecoder(clazz: [SetState].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[SetState]> in
             return Decoders.decode(clazz: [SetState].self, source: source)
@@ -2007,6 +2491,44 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "UpdateBestModel", actual: "\(source)"))
+            }
+        }
+        // Decoder for [YARNResourceDetails]
+        Decoders.addDecoder(clazz: [YARNResourceDetails].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[YARNResourceDetails]> in
+            return Decoders.decode(clazz: [YARNResourceDetails].self, source: source)
+        }
+
+        // Decoder for YARNResourceDetails
+        Decoders.addDecoder(clazz: YARNResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<YARNResourceDetails> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? YARNResourceDetails() : instance as! YARNResourceDetails
+                switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
+                
+                case let .success(value): _result.resourceId = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: YARNResourceDetails.ModelType.self, source: sourceDictionary["type"] as AnyObject?) {
+                
+                case let .success(value): _result.type = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: YARNResourceDetails.SubType.self, source: sourceDictionary["subType"] as AnyObject?) {
+                
+                case let .success(value): _result.subType = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["localSparkHome"] as AnyObject?) {
+                
+                case let .success(value): _result.localSparkHome = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "YARNResourceDetails", actual: "\(source)"))
             }
         }
     }()

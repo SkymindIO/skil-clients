@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**addModelFeedback**](DefaultApi.md#addModelFeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**addModelHistory**](DefaultApi.md#addModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**addModelInstance**](DefaultApi.md#addModelInstance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+[**addResource**](DefaultApi.md#addResource) | **POST** /resources/add/resource | Adds a resource
 [**aggregateModelResults**](DefaultApi.md#aggregateModelResults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
@@ -36,6 +37,11 @@ Method | HTTP request | Description
 [**getModelHistory**](DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**getModelInstance**](DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**getModelsForExperiment**](DefaultApi.md#getModelsForExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+[**getResourceById**](DefaultApi.md#getResourceById) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**getResourceBySubType**](DefaultApi.md#getResourceBySubType) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**getResourceByType**](DefaultApi.md#getResourceByType) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**getResourceDetailsById**](DefaultApi.md#getResourceDetailsById) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**getResources**](DefaultApi.md#getResources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**imagetransformprocessGet**](DefaultApi.md#imagetransformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
 [**imagetransformprocessPost**](DefaultApi.md#imagetransformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
@@ -497,6 +503,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelInstanceEntity**](ModelInstanceEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="addResource"></a>
+# **addResource**
+> Object addResource(addResourceRequest)
+
+Adds a resource
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var addResourceRequest = new SkilClient.AddResourceRequest(); // AddResourceRequest | The Add resource request object
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.addResource(addResourceRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addResourceRequest** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
+
+### Return type
+
+**Object**
 
 ### Authorization
 
@@ -1819,6 +1876,257 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getResourceById"></a>
+# **getResourceById**
+> Resource getResourceById(resourceId)
+
+Get the resource with the specified resource ID
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceId = 789; // Number | ID of the resource
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getResourceById(resourceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **Number**| ID of the resource | 
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceBySubType"></a>
+# **getResourceBySubType**
+> [Resource] getResourceBySubType(resourceSubType)
+
+Get all the resources with the specified resource subtype
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceSubType = "resourceSubType_example"; // String | Subtype of the resource
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getResourceBySubType(resourceSubType, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceSubType** | **String**| Subtype of the resource | 
+
+### Return type
+
+[**[Resource]**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceByType"></a>
+# **getResourceByType**
+> [Resource] getResourceByType(resourceType)
+
+Get all the resources with the specified resource type
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceType = "resourceType_example"; // String | Type of the resource
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getResourceByType(resourceType, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceType** | **String**| Type of the resource | 
+
+### Return type
+
+[**[Resource]**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceDetailsById"></a>
+# **getResourceDetailsById**
+> ERRORUNKNOWN getResourceDetailsById(resourceId)
+
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceId = 789; // Number | ID of the resource
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getResourceDetailsById(resourceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **Number**| ID of the resource | 
+
+### Return type
+
+[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResources"></a>
+# **getResources**
+> [Resource] getResources()
+
+A list of all known/registered resources, of all types
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getResources(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[Resource]**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="imagetransformprocessGet"></a>
 # **imagetransformprocessGet**
 > ImageTransformProcess imagetransformprocessGet(deploymentName, versionName, imageTransformName)
@@ -2229,13 +2537,6 @@ Post JSON credentials and obtain a JWT authorization token.
 ### Example
 ```javascript
 var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
 
 var apiInstance = new SkilClient.DefaultApi();
 
@@ -2264,7 +2565,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 

@@ -128,6 +128,17 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for add_resource
+  # Adds a resource
+  # @param add_resource_request The Add resource request object
+  # @param [Hash] opts the optional parameters
+  # @return [Object]
+  describe 'add_resource test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for aggregate_model_results
   # Aggregates the evaluaition results of a model instance, based on the evaluation type
   # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -417,6 +428,61 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<ModelInstanceEntity>]
   describe 'get_models_for_experiment test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_resource_by_id
+  # Get the resource with the specified resource ID
+  # @param resource_id ID of the resource
+  # @param [Hash] opts the optional parameters
+  # @return [Resource]
+  describe 'get_resource_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_resource_by_sub_type
+  # Get all the resources with the specified resource subtype
+  # @param resource_sub_type Subtype of the resource
+  # @param [Hash] opts the optional parameters
+  # @return [Array<Resource>]
+  describe 'get_resource_by_sub_type test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_resource_by_type
+  # Get all the resources with the specified resource type
+  # @param resource_type Type of the resource
+  # @param [Hash] opts the optional parameters
+  # @return [Array<Resource>]
+  describe 'get_resource_by_type test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_resource_details_by_id
+  # Get the resource details with the specified resource ID
+  # Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+  # @param resource_id ID of the resource
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'get_resource_details_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_resources
+  # A list of all known/registered resources, of all types
+  # @param [Hash] opts the optional parameters
+  # @return [Array<Resource>]
+  describe 'get_resources test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

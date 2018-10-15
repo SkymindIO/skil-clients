@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**add_model_feedback**](DefaultApi.md#add_model_feedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**add_model_history**](DefaultApi.md#add_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**add_model_instance**](DefaultApi.md#add_model_instance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+[**add_resource**](DefaultApi.md#add_resource) | **POST** /resources/add/resource | Adds a resource
 [**aggregate_model_results**](DefaultApi.md#aggregate_model_results) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
@@ -36,6 +37,11 @@ Method | HTTP request | Description
 [**get_model_history**](DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**get_model_instance**](DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+[**get_resource_by_id**](DefaultApi.md#get_resource_by_id) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**get_resource_by_sub_type**](DefaultApi.md#get_resource_by_sub_type) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**get_resource_by_type**](DefaultApi.md#get_resource_by_type) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**get_resource_details_by_id**](DefaultApi.md#get_resource_details_by_id) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**get_resources**](DefaultApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**imagetransformprocess_get**](DefaultApi.md#imagetransformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
 [**imagetransformprocess_post**](DefaultApi.md#imagetransformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
@@ -495,6 +501,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelInstanceEntity**](ModelInstanceEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_resource**
+> object add_resource(add_resource_request)
+
+Adds a resource
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+add_resource_request = skil_client.AddResourceRequest() # AddResourceRequest | The Add resource request object
+
+try:
+    # Adds a resource
+    api_response = api_instance.add_resource(add_resource_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_resource: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **add_resource_request** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
+
+### Return type
+
+**object**
 
 ### Authorization
 
@@ -1812,6 +1870,264 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_resource_by_id**
+> Resource get_resource_by_id(resource_id)
+
+Get the resource with the specified resource ID
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_id = 789 # int | ID of the resource
+
+try:
+    # Get the resource with the specified resource ID
+    api_response = api_instance.get_resource_by_id(resource_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resource_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_id** | **int**| ID of the resource | 
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_resource_by_sub_type**
+> list[Resource] get_resource_by_sub_type(resource_sub_type)
+
+Get all the resources with the specified resource subtype
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_sub_type = 'resource_sub_type_example' # str | Subtype of the resource
+
+try:
+    # Get all the resources with the specified resource subtype
+    api_response = api_instance.get_resource_by_sub_type(resource_sub_type)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resource_by_sub_type: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_sub_type** | **str**| Subtype of the resource | 
+
+### Return type
+
+[**list[Resource]**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_resource_by_type**
+> list[Resource] get_resource_by_type(resource_type)
+
+Get all the resources with the specified resource type
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_type = 'resource_type_example' # str | Type of the resource
+
+try:
+    # Get all the resources with the specified resource type
+    api_response = api_instance.get_resource_by_type(resource_type)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resource_by_type: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_type** | **str**| Type of the resource | 
+
+### Return type
+
+[**list[Resource]**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_resource_details_by_id**
+> ERRORUNKNOWN get_resource_details_by_id(resource_id)
+
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_id = 789 # int | ID of the resource
+
+try:
+    # Get the resource details with the specified resource ID
+    api_response = api_instance.get_resource_details_by_id(resource_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resource_details_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_id** | **int**| ID of the resource | 
+
+### Return type
+
+[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_resources**
+> list[Resource] get_resources()
+
+A list of all known/registered resources, of all types
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # A list of all known/registered resources, of all types
+    api_response = api_instance.get_resources()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resources: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**list[Resource]**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **imagetransformprocess_get**
 > ImageTransformProcess imagetransformprocess_get(deployment_name, version_name, image_transform_name)
 
@@ -2219,14 +2535,8 @@ import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: api_key
-configuration = skil_client.Configuration()
-configuration.api_key['authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['authorization'] = 'Bearer'
-
 # create an instance of the API class
-api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+api_instance = skil_client.DefaultApi()
 credentials = skil_client.Credentials() # Credentials | Login credentials.
 
 try:
@@ -2249,7 +2559,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 

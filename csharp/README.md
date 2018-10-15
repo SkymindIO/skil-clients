@@ -110,6 +110,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**AddModelFeedback**](docs/DefaultApi.md#addmodelfeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 *DefaultApi* | [**AddModelHistory**](docs/DefaultApi.md#addmodelhistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 *DefaultApi* | [**AddModelInstance**](docs/DefaultApi.md#addmodelinstance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+*DefaultApi* | [**AddResource**](docs/DefaultApi.md#addresource) | **POST** /resources/add/resource | Adds a resource
 *DefaultApi* | [**AggregateModelResults**](docs/DefaultApi.md#aggregatemodelresults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 *DefaultApi* | [**Classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 *DefaultApi* | [**Classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
@@ -134,6 +135,11 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**GetModelHistory**](docs/DefaultApi.md#getmodelhistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 *DefaultApi* | [**GetModelInstance**](docs/DefaultApi.md#getmodelinstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 *DefaultApi* | [**GetModelsForExperiment**](docs/DefaultApi.md#getmodelsforexperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+*DefaultApi* | [**GetResourceById**](docs/DefaultApi.md#getresourcebyid) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+*DefaultApi* | [**GetResourceBySubType**](docs/DefaultApi.md#getresourcebysubtype) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+*DefaultApi* | [**GetResourceByType**](docs/DefaultApi.md#getresourcebytype) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+*DefaultApi* | [**GetResourceDetailsById**](docs/DefaultApi.md#getresourcedetailsbyid) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+*DefaultApi* | [**GetResources**](docs/DefaultApi.md#getresources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 *DefaultApi* | [**ImagetransformprocessGet**](docs/DefaultApi.md#imagetransformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
 *DefaultApi* | [**ImagetransformprocessPost**](docs/DefaultApi.md#imagetransformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 *DefaultApi* | [**Jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
@@ -178,7 +184,9 @@ Class | Method | HTTP request | Description
 
  - [Model.AddExampleRequest](docs/AddExampleRequest.md)
  - [Model.AddModelHistoryRequest](docs/AddModelHistoryRequest.md)
+ - [Model.AddResourceRequest](docs/AddResourceRequest.md)
  - [Model.AggregatePrediction](docs/AggregatePrediction.md)
+ - [Model.AzureStorageResourceDetails](docs/AzureStorageResourceDetails.md)
  - [Model.Base64NDArrayBody](docs/Base64NDArrayBody.md)
  - [Model.Base64NDArrayBodyKNN](docs/Base64NDArrayBodyKNN.md)
  - [Model.BatchCSVRecord](docs/BatchCSVRecord.md)
@@ -187,15 +195,20 @@ Class | Method | HTTP request | Description
  - [Model.ClassificationResult](docs/ClassificationResult.md)
  - [Model.CreateDeploymentRequest](docs/CreateDeploymentRequest.md)
  - [Model.Credentials](docs/Credentials.md)
+ - [Model.DataProcResourceDetails](docs/DataProcResourceDetails.md)
  - [Model.DeploymentObjects](docs/DeploymentObjects.md)
  - [Model.DeploymentResponse](docs/DeploymentResponse.md)
  - [Model.DetectedObject](docs/DetectedObject.md)
  - [Model.DetectionResult](docs/DetectionResult.md)
+ - [Model.EMRResourceDetails](docs/EMRResourceDetails.md)
  - [Model.EvaluationResultsEntity](docs/EvaluationResultsEntity.md)
  - [Model.ExampleEntity](docs/ExampleEntity.md)
  - [Model.ExperimentEntity](docs/ExperimentEntity.md)
  - [Model.FileUpload](docs/FileUpload.md)
  - [Model.FileUploadList](docs/FileUploadList.md)
+ - [Model.GoogleStorageResourceDetails](docs/GoogleStorageResourceDetails.md)
+ - [Model.HDFSResourceDetails](docs/HDFSResourceDetails.md)
+ - [Model.HDInsightResourceDetails](docs/HDInsightResourceDetails.md)
  - [Model.INDArray](docs/INDArray.md)
  - [Model.ImageTransformProcess](docs/ImageTransformProcess.md)
  - [Model.ImportModelRequest](docs/ImportModelRequest.md)
@@ -219,12 +232,17 @@ Class | Method | HTTP request | Description
  - [Model.NearestNeighborsResults](docs/NearestNeighborsResults.md)
  - [Model.NewDeployment](docs/NewDeployment.md)
  - [Model.Prediction](docs/Prediction.md)
+ - [Model.Resource](docs/Resource.md)
+ - [Model.ResourceCredentials](docs/ResourceCredentials.md)
+ - [Model.ResourceGroup](docs/ResourceGroup.md)
+ - [Model.S3ResourceDetails](docs/S3ResourceDetails.md)
  - [Model.SetState](docs/SetState.md)
  - [Model.SingleCSVRecord](docs/SingleCSVRecord.md)
  - [Model.SingleImageRecord](docs/SingleImageRecord.md)
  - [Model.Token](docs/Token.md)
  - [Model.TransformProcess](docs/TransformProcess.md)
  - [Model.UpdateBestModel](docs/UpdateBestModel.md)
+ - [Model.YARNResourceDetails](docs/YARNResourceDetails.md)
 
 
 <a name="documentation-for-authorization"></a>

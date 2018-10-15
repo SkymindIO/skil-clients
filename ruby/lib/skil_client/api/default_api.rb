@@ -483,6 +483,58 @@ module SkilCient
       end
       return data, status_code, headers
     end
+    # Adds a resource
+    # @param add_resource_request The Add resource request object
+    # @param [Hash] opts the optional parameters
+    # @return [Object]
+    def add_resource(add_resource_request, opts = {})
+      data, _status_code, _headers = add_resource_with_http_info(add_resource_request, opts)
+      data
+    end
+
+    # Adds a resource
+    # @param add_resource_request The Add resource request object
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Object, Fixnum, Hash)>] Object data, response status code and response headers
+    def add_resource_with_http_info(add_resource_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.add_resource ...'
+      end
+      # verify the required parameter 'add_resource_request' is set
+      if @api_client.config.client_side_validation && add_resource_request.nil?
+        fail ArgumentError, "Missing the required parameter 'add_resource_request' when calling DefaultApi.add_resource"
+      end
+      # resource path
+      local_var_path = '/resources/add/resource'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(add_resource_request)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Object')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#add_resource\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Aggregates the evaluaition results of a model instance, based on the evaluation type
     # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param aggregate_prediction The object encapsulating the model instance id and evaluation type to aggregate
@@ -1881,6 +1933,259 @@ module SkilCient
       end
       return data, status_code, headers
     end
+    # Get the resource with the specified resource ID
+    # @param resource_id ID of the resource
+    # @param [Hash] opts the optional parameters
+    # @return [Resource]
+    def get_resource_by_id(resource_id, opts = {})
+      data, _status_code, _headers = get_resource_by_id_with_http_info(resource_id, opts)
+      data
+    end
+
+    # Get the resource with the specified resource ID
+    # @param resource_id ID of the resource
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Resource, Fixnum, Hash)>] Resource data, response status code and response headers
+    def get_resource_by_id_with_http_info(resource_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_resource_by_id ...'
+      end
+      # verify the required parameter 'resource_id' is set
+      if @api_client.config.client_side_validation && resource_id.nil?
+        fail ArgumentError, "Missing the required parameter 'resource_id' when calling DefaultApi.get_resource_by_id"
+      end
+      # resource path
+      local_var_path = '/resources/resource/{resourceId}'.sub('{' + 'resourceId' + '}', resource_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Resource')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_resource_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get all the resources with the specified resource subtype
+    # @param resource_sub_type Subtype of the resource
+    # @param [Hash] opts the optional parameters
+    # @return [Array<Resource>]
+    def get_resource_by_sub_type(resource_sub_type, opts = {})
+      data, _status_code, _headers = get_resource_by_sub_type_with_http_info(resource_sub_type, opts)
+      data
+    end
+
+    # Get all the resources with the specified resource subtype
+    # @param resource_sub_type Subtype of the resource
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<Resource>, Fixnum, Hash)>] Array<Resource> data, response status code and response headers
+    def get_resource_by_sub_type_with_http_info(resource_sub_type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_resource_by_sub_type ...'
+      end
+      # verify the required parameter 'resource_sub_type' is set
+      if @api_client.config.client_side_validation && resource_sub_type.nil?
+        fail ArgumentError, "Missing the required parameter 'resource_sub_type' when calling DefaultApi.get_resource_by_sub_type"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['EMR', 'S3', 'GoogleStorage', 'DataProc', 'HDInsight', 'AzureStorage', 'HDFS', 'YARN'].include?(resource_sub_type)
+        fail ArgumentError, "invalid value for 'resource_sub_type', must be one of EMR, S3, GoogleStorage, DataProc, HDInsight, AzureStorage, HDFS, YARN"
+      end
+      # resource path
+      local_var_path = '/resources/resources/type/{resourceSubType}'.sub('{' + 'resourceSubType' + '}', resource_sub_type.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<Resource>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_resource_by_sub_type\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get all the resources with the specified resource type
+    # @param resource_type Type of the resource
+    # @param [Hash] opts the optional parameters
+    # @return [Array<Resource>]
+    def get_resource_by_type(resource_type, opts = {})
+      data, _status_code, _headers = get_resource_by_type_with_http_info(resource_type, opts)
+      data
+    end
+
+    # Get all the resources with the specified resource type
+    # @param resource_type Type of the resource
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<Resource>, Fixnum, Hash)>] Array<Resource> data, response status code and response headers
+    def get_resource_by_type_with_http_info(resource_type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_resource_by_type ...'
+      end
+      # verify the required parameter 'resource_type' is set
+      if @api_client.config.client_side_validation && resource_type.nil?
+        fail ArgumentError, "Missing the required parameter 'resource_type' when calling DefaultApi.get_resource_by_type"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['COMPUTE', 'STORAGE'].include?(resource_type)
+        fail ArgumentError, "invalid value for 'resource_type', must be one of COMPUTE, STORAGE"
+      end
+      # resource path
+      local_var_path = '/resources/resources/type/{resourceType}'.sub('{' + 'resourceType' + '}', resource_type.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<Resource>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_resource_by_type\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get the resource details with the specified resource ID
+    # Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
+    # @param resource_id ID of the resource
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def get_resource_details_by_id(resource_id, opts = {})
+      get_resource_details_by_id_with_http_info(resource_id, opts)
+      nil
+    end
+
+    # Get the resource details with the specified resource ID
+    # Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+    # @param resource_id ID of the resource
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def get_resource_details_by_id_with_http_info(resource_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_resource_details_by_id ...'
+      end
+      # verify the required parameter 'resource_id' is set
+      if @api_client.config.client_side_validation && resource_id.nil?
+        fail ArgumentError, "Missing the required parameter 'resource_id' when calling DefaultApi.get_resource_details_by_id"
+      end
+      # resource path
+      local_var_path = '/resources/details/{resourceId}'.sub('{' + 'resourceId' + '}', resource_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_resource_details_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # A list of all known/registered resources, of all types
+    # @param [Hash] opts the optional parameters
+    # @return [Array<Resource>]
+    def get_resources(opts = {})
+      data, _status_code, _headers = get_resources_with_http_info(opts)
+      data
+    end
+
+    # A list of all known/registered resources, of all types
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<Resource>, Fixnum, Hash)>] Array<Resource> data, response status code and response headers
+    def get_resources_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_resources ...'
+      end
+      # resource path
+      local_var_path = '/resources/resources'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<Resource>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_resources\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieves the image transform process JSON string
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
@@ -2372,7 +2677,7 @@ module SkilCient
 
       # http body (model)
       post_body = @api_client.object_to_http_body(credentials)
-      auth_names = ['api_key']
+      auth_names = []
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,

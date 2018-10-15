@@ -169,6 +169,18 @@ namespace Skymind.SKIL.Test
         }
         
         /// <summary>
+        /// Test AddResource
+        /// </summary>
+        [Test]
+        public void AddResourceTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //AddResourceRequest addResourceRequest = null;
+            //var response = instance.AddResource(addResourceRequest);
+            //Assert.IsInstanceOf<Object> (response, "response is Object");
+        }
+        
+        /// <summary>
         /// Test AggregateModelResults
         /// </summary>
         [Test]
@@ -484,6 +496,65 @@ namespace Skymind.SKIL.Test
             //string experimentID = null;
             //var response = instance.GetModelsForExperiment(modelHistoryServerId, experimentID);
             //Assert.IsInstanceOf<List<ModelInstanceEntity>> (response, "response is List<ModelInstanceEntity>");
+        }
+        
+        /// <summary>
+        /// Test GetResourceById
+        /// </summary>
+        [Test]
+        public void GetResourceByIdTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //long? resourceId = null;
+            //var response = instance.GetResourceById(resourceId);
+            //Assert.IsInstanceOf<Resource> (response, "response is Resource");
+        }
+        
+        /// <summary>
+        /// Test GetResourceBySubType
+        /// </summary>
+        [Test]
+        public void GetResourceBySubTypeTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string resourceSubType = null;
+            //var response = instance.GetResourceBySubType(resourceSubType);
+            //Assert.IsInstanceOf<List<Resource>> (response, "response is List<Resource>");
+        }
+        
+        /// <summary>
+        /// Test GetResourceByType
+        /// </summary>
+        [Test]
+        public void GetResourceByTypeTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string resourceType = null;
+            //var response = instance.GetResourceByType(resourceType);
+            //Assert.IsInstanceOf<List<Resource>> (response, "response is List<Resource>");
+        }
+        
+        /// <summary>
+        /// Test GetResourceDetailsById
+        /// </summary>
+        [Test]
+        public void GetResourceDetailsByIdTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //long? resourceId = null;
+            //instance.GetResourceDetailsById(resourceId);
+            
+        }
+        
+        /// <summary>
+        /// Test GetResources
+        /// </summary>
+        [Test]
+        public void GetResourcesTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //var response = instance.GetResources();
+            //Assert.IsInstanceOf<List<Resource>> (response, "response is List<Resource>");
         }
         
         /// <summary>

@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**add_model_feedback**](docs/DefaultApi.md#add_model_feedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 *DefaultApi* | [**add_model_history**](docs/DefaultApi.md#add_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 *DefaultApi* | [**add_model_instance**](docs/DefaultApi.md#add_model_instance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+*DefaultApi* | [**add_resource**](docs/DefaultApi.md#add_resource) | **POST** /resources/add/resource | Adds a resource
 *DefaultApi* | [**aggregate_model_results**](docs/DefaultApi.md#aggregate_model_results) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 *DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 *DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
@@ -109,6 +110,11 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_model_history**](docs/DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 *DefaultApi* | [**get_model_instance**](docs/DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 *DefaultApi* | [**get_models_for_experiment**](docs/DefaultApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+*DefaultApi* | [**get_resource_by_id**](docs/DefaultApi.md#get_resource_by_id) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+*DefaultApi* | [**get_resource_by_sub_type**](docs/DefaultApi.md#get_resource_by_sub_type) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+*DefaultApi* | [**get_resource_by_type**](docs/DefaultApi.md#get_resource_by_type) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+*DefaultApi* | [**get_resource_details_by_id**](docs/DefaultApi.md#get_resource_details_by_id) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+*DefaultApi* | [**get_resources**](docs/DefaultApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 *DefaultApi* | [**imagetransformprocess_get**](docs/DefaultApi.md#imagetransformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
 *DefaultApi* | [**imagetransformprocess_post**](docs/DefaultApi.md#imagetransformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 *DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
@@ -152,7 +158,9 @@ Class | Method | HTTP request | Description
 
  - [AddExampleRequest](docs/AddExampleRequest.md)
  - [AddModelHistoryRequest](docs/AddModelHistoryRequest.md)
+ - [AddResourceRequest](docs/AddResourceRequest.md)
  - [AggregatePrediction](docs/AggregatePrediction.md)
+ - [AzureStorageResourceDetails](docs/AzureStorageResourceDetails.md)
  - [Base64NDArrayBody](docs/Base64NDArrayBody.md)
  - [Base64NDArrayBodyKNN](docs/Base64NDArrayBodyKNN.md)
  - [BatchCSVRecord](docs/BatchCSVRecord.md)
@@ -161,15 +169,20 @@ Class | Method | HTTP request | Description
  - [ClassificationResult](docs/ClassificationResult.md)
  - [CreateDeploymentRequest](docs/CreateDeploymentRequest.md)
  - [Credentials](docs/Credentials.md)
+ - [DataProcResourceDetails](docs/DataProcResourceDetails.md)
  - [DeploymentObjects](docs/DeploymentObjects.md)
  - [DeploymentResponse](docs/DeploymentResponse.md)
  - [DetectedObject](docs/DetectedObject.md)
  - [DetectionResult](docs/DetectionResult.md)
+ - [EMRResourceDetails](docs/EMRResourceDetails.md)
  - [EvaluationResultsEntity](docs/EvaluationResultsEntity.md)
  - [ExampleEntity](docs/ExampleEntity.md)
  - [ExperimentEntity](docs/ExperimentEntity.md)
  - [FileUpload](docs/FileUpload.md)
  - [FileUploadList](docs/FileUploadList.md)
+ - [GoogleStorageResourceDetails](docs/GoogleStorageResourceDetails.md)
+ - [HDFSResourceDetails](docs/HDFSResourceDetails.md)
+ - [HDInsightResourceDetails](docs/HDInsightResourceDetails.md)
  - [INDArray](docs/INDArray.md)
  - [ImageTransformProcess](docs/ImageTransformProcess.md)
  - [ImportModelRequest](docs/ImportModelRequest.md)
@@ -193,12 +206,17 @@ Class | Method | HTTP request | Description
  - [NearestNeighborsResults](docs/NearestNeighborsResults.md)
  - [NewDeployment](docs/NewDeployment.md)
  - [Prediction](docs/Prediction.md)
+ - [Resource](docs/Resource.md)
+ - [ResourceCredentials](docs/ResourceCredentials.md)
+ - [ResourceGroup](docs/ResourceGroup.md)
+ - [S3ResourceDetails](docs/S3ResourceDetails.md)
  - [SetState](docs/SetState.md)
  - [SingleCSVRecord](docs/SingleCSVRecord.md)
  - [SingleImageRecord](docs/SingleImageRecord.md)
  - [Token](docs/Token.md)
  - [TransformProcess](docs/TransformProcess.md)
  - [UpdateBestModel](docs/UpdateBestModel.md)
+ - [YARNResourceDetails](docs/YARNResourceDetails.md)
 
 
 ## Documentation For Authorization

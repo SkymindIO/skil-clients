@@ -2314,19 +2314,45 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: ModelFeedBackRequest
+        - name: AddResourceRequest
           in: body
           type: object
           required: true
-          description: The model feedback request object
+          description: The Add resource request object
           schema:
-            $ref: '#/definitions/ModelFeedBackRequest'
+            $ref: '#/definitions/AddResourceRequest'
       responses:
         200:
-          description: The model feedback request object
+          description: One of the resource details object
           schema:
-            $ref: '#/definitions/ModelFeedBackRequest'
-
+            type: object
+            anyOf:
+              - $ref: '#/definitions/EMRResourceDetails'
+              - $ref: '#/definitions/S3ResourceDetails'
+              - $ref: '#/definitions/GoogleStorageResourceDetails'
+              - $ref: '#/definitions/DataProcResourceDetails'
+              - $ref: '#/definitions/HDInsightResourceDetails'
+              - $ref: '#/definitions/AzureStorageResourceDetails'
+              - $ref: '#/definitions/HDFSResourceDetails'
+              - $ref: '#/definitions/YARNResourceDetails'
+  /resources/remove/resource/{resourceId}:
+    delete:
+      operationId: deleteResourceById
+      summary: Delete the resource with the specified resource ID
+      produces:
+        - application/json
+      parameters:
+        - name: resourceId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource
+          required: true
+      responses:
+        200:
+          description: Resource Object
+          schema:
+            $ref: '#/definitions/Resource'
 
 
 
@@ -3153,11 +3179,11 @@ definitions:
         description: Resource type
         enum:
           - COMPUTE
-        subType:
-          type: string
-          description: Resource subtype
-          enum:
-            - EMR                   # AWS Elastic Map Reduce(Compute)
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - EMR                   # AWS Elastic Map Reduce(Compute)
       clusterId:
         type: string
         description: EMR cluster ID
@@ -3176,11 +3202,11 @@ definitions:
         description: Resource type
         enum:
           - STORAGE
-        subType:
-          type: string
-          description: Resource subtype
-          enum:
-            - S3                    # AWS Simple Storage Service
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - S3                    # AWS Simple Storage Service
       bucket:
         type: string
         description: S3 Bucket Name
@@ -3199,16 +3225,16 @@ definitions:
         description: Resource type
         enum:
           - STORAGE
-        subType:
-          type: string
-          description: Resource subtype
-          enum:
-            - GoogleStorage         # Google Cloud Storage
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - GoogleStorage         # Google Cloud Storage
       projectId:
         type: string
         description: Project ID
       bucketName:
-        type: strong
+        type: string
         description: Name of the storage bucket
   DataProcResourceDetails:
     type: object
@@ -3222,11 +3248,11 @@ definitions:
         description: Resource type
         enum:
           - COMPUTE
-        subType:
-          type: string
-          description: Resource subtype
-          enum:
-            - DataProc              # Google Big Data Compute Engine
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - DataProc              # Google Big Data Compute Engine
       projectId:
         type: string
         description: Project ID
@@ -3248,11 +3274,11 @@ definitions:
         description: Resource type
         enum:
           - COMPUTE
-        subType:
-          type: string
-          description: Resource subtype
-          enum:
-            - HDInsight             # Azure Compute
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - HDInsight             # Azure Compute
       subscriptionId:
         type: string
         description: Azure subscription ID
@@ -3274,11 +3300,11 @@ definitions:
         description: Resource type
         enum:
           - STORAGE
-        subType:
-          type: string
-          description: Resource subtype
-          enum:
-            - AzureStorage          # Azure Blob Storage
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - AzureStorage          # Azure Blob Storage
       containerName:
         type: string
         description: Storage container name
@@ -3294,11 +3320,11 @@ definitions:
         description: Resource type
         enum:
           - STORAGE
-        subType:
-          type: string
-          description: Resource subtype
-          enum:
-            - HDFS                  # in house Hadoop (Storage)
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - HDFS                  # in house Hadoop (Storage)
       nameNodeHost:
         type: string
         description: Host of the node running the NameNode
@@ -3317,14 +3343,14 @@ definitions:
         description: Resource type
         enum:
           - COMPUTE
-        subType:
-          type: string
-          description: Resource subtype
-          enum:
-            - YARN                  # in house YARN (Compute)
-        localSparkHome:
-          type: string
-          description: Local Spark Home path
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - YARN                  # in house YARN (Compute)
+      localSparkHome:
+        type: string
+        description: Local Spark Home path
   ResourceGroup:
     type: object
     properties:
@@ -3371,6 +3397,7 @@ definitions:
         type: string
         description: Name of the new resource
       resourceDetails:
+        type: object
         oneOf:
           - $ref: '#/definitions/EMRResourceDetails'
           - $ref: '#/definitions/S3ResourceDetails'

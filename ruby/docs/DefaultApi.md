@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**add_model_feedback**](DefaultApi.md#add_model_feedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**add_model_history**](DefaultApi.md#add_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**add_model_instance**](DefaultApi.md#add_model_instance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+[**add_resource**](DefaultApi.md#add_resource) | **POST** /resources/add/resource | Adds a resource
 [**aggregate_model_results**](DefaultApi.md#aggregate_model_results) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
@@ -36,6 +37,11 @@ Method | HTTP request | Description
 [**get_model_history**](DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**get_model_instance**](DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+[**get_resource_by_id**](DefaultApi.md#get_resource_by_id) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**get_resource_by_sub_type**](DefaultApi.md#get_resource_by_sub_type) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**get_resource_by_type**](DefaultApi.md#get_resource_by_type) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**get_resource_details_by_id**](DefaultApi.md#get_resource_details_by_id) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**get_resources**](DefaultApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**imagetransformprocess_get**](DefaultApi.md#imagetransformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
 [**imagetransformprocess_post**](DefaultApi.md#imagetransformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
@@ -503,6 +509,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelInstanceEntity**](ModelInstanceEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **add_resource**
+> Object add_resource(add_resource_request)
+
+Adds a resource
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+add_resource_request = SkilCient::AddResourceRequest.new # AddResourceRequest | The Add resource request object
+
+
+begin
+  #Adds a resource
+  result = api_instance.add_resource(add_resource_request)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->add_resource: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **add_resource_request** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
+
+### Return type
+
+**Object**
 
 ### Authorization
 
@@ -1850,6 +1908,261 @@ Name | Type | Description  | Notes
 
 
 
+# **get_resource_by_id**
+> Resource get_resource_by_id(resource_id)
+
+Get the resource with the specified resource ID
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_id = 789 # Integer | ID of the resource
+
+
+begin
+  #Get the resource with the specified resource ID
+  result = api_instance.get_resource_by_id(resource_id)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_resource_by_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_id** | **Integer**| ID of the resource | 
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_resource_by_sub_type**
+> Array&lt;Resource&gt; get_resource_by_sub_type(resource_sub_type)
+
+Get all the resources with the specified resource subtype
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_sub_type = 'resource_sub_type_example' # String | Subtype of the resource
+
+
+begin
+  #Get all the resources with the specified resource subtype
+  result = api_instance.get_resource_by_sub_type(resource_sub_type)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_resource_by_sub_type: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_sub_type** | **String**| Subtype of the resource | 
+
+### Return type
+
+[**Array&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_resource_by_type**
+> Array&lt;Resource&gt; get_resource_by_type(resource_type)
+
+Get all the resources with the specified resource type
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_type = 'resource_type_example' # String | Type of the resource
+
+
+begin
+  #Get all the resources with the specified resource type
+  result = api_instance.get_resource_by_type(resource_type)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_resource_by_type: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_type** | **String**| Type of the resource | 
+
+### Return type
+
+[**Array&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_resource_details_by_id**
+> get_resource_details_by_id(resource_id)
+
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_id = 789 # Integer | ID of the resource
+
+
+begin
+  #Get the resource details with the specified resource ID
+  api_instance.get_resource_details_by_id(resource_id)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_resource_details_by_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_id** | **Integer**| ID of the resource | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_resources**
+> Array&lt;Resource&gt; get_resources
+
+A list of all known/registered resources, of all types
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+begin
+  #A list of all known/registered resources, of all types
+  result = api_instance.get_resources
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_resources: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
 # **imagetransformprocess_get**
 > ImageTransformProcess imagetransformprocess_get(deployment_name, version_name, image_transform_name)
 
@@ -2267,13 +2580,6 @@ Post JSON credentials and obtain a JWT authorization token.
 ```ruby
 # load the gem
 require 'skil_client'
-# setup authorization
-SkilCient.configure do |config|
-  # Configure API key authorization: api_key
-  config.api_key['authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['authorization'] = 'Bearer'
-end
 
 api_instance = SkilCient::DefaultApi.new
 
@@ -2301,7 +2607,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 

@@ -16,6 +16,7 @@ package ai.skymind.skil;
 import ai.skymind.ApiException;
 import ai.skymind.skil.model.AddExampleRequest;
 import ai.skymind.skil.model.AddModelHistoryRequest;
+import ai.skymind.skil.model.AddResourceRequest;
 import ai.skymind.skil.model.AggregatePrediction;
 import ai.skymind.skil.model.Base64NDArrayBody;
 import ai.skymind.skil.model.Base64NDArrayBodyKNN;
@@ -27,6 +28,7 @@ import ai.skymind.skil.model.CreateDeploymentRequest;
 import ai.skymind.skil.model.Credentials;
 import ai.skymind.skil.model.DeploymentResponse;
 import ai.skymind.skil.model.DetectionResult;
+import ai.skymind.skil.model.ERRORUNKNOWN;
 import ai.skymind.skil.model.EvaluationResultsEntity;
 import ai.skymind.skil.model.ExampleEntity;
 import ai.skymind.skil.model.ExperimentEntity;
@@ -51,6 +53,7 @@ import ai.skymind.skil.model.MultiPredictResponse;
 import ai.skymind.skil.model.NearestNeighborRequest;
 import ai.skymind.skil.model.NearestNeighborsResults;
 import ai.skymind.skil.model.Prediction;
+import ai.skymind.skil.model.Resource;
 import ai.skymind.skil.model.SetState;
 import ai.skymind.skil.model.SingleCSVRecord;
 import ai.skymind.skil.model.SingleImageRecord;
@@ -206,6 +209,22 @@ public class DefaultApiTest {
         String modelHistoryServerId = null;
         ModelInstanceEntity modelInstanceEntity = null;
         ModelInstanceEntity response = api.addModelInstance(modelHistoryServerId, modelInstanceEntity);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Adds a resource
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void addResourceTest() throws ApiException {
+        AddResourceRequest addResourceRequest = null;
+        Object response = api.addResource(addResourceRequest);
 
         // TODO: test validations
     }
@@ -620,6 +639,85 @@ public class DefaultApiTest {
         String modelHistoryServerId = null;
         String experimentID = null;
         List<ModelInstanceEntity> response = api.getModelsForExperiment(modelHistoryServerId, experimentID);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get the resource with the specified resource ID
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getResourceByIdTest() throws ApiException {
+        Long resourceId = null;
+        Resource response = api.getResourceById(resourceId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get all the resources with the specified resource subtype
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getResourceBySubTypeTest() throws ApiException {
+        String resourceSubType = null;
+        List<Resource> response = api.getResourceBySubType(resourceSubType);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get all the resources with the specified resource type
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getResourceByTypeTest() throws ApiException {
+        String resourceType = null;
+        List<Resource> response = api.getResourceByType(resourceType);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get the resource details with the specified resource ID
+     *
+     * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getResourceDetailsByIdTest() throws ApiException {
+        Long resourceId = null;
+        ERRORUNKNOWN response = api.getResourceDetailsById(resourceId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * A list of all known/registered resources, of all types
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getResourcesTest() throws ApiException {
+        List<Resource> response = api.getResources();
 
         // TODO: test validations
     }

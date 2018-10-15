@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**add_model_feedback**](DefaultApi.md#add_model_feedback) | **Post** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**add_model_history**](DefaultApi.md#add_model_history) | **Post** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**add_model_instance**](DefaultApi.md#add_model_instance) | **Post** /rpc/{modelHistoryServerId}/model | Adds a model
+[**add_resource**](DefaultApi.md#add_resource) | **Post** /resources/add/resource | Adds a resource
 [**aggregate_model_results**](DefaultApi.md#aggregate_model_results) | **Post** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**classify**](DefaultApi.md#classify) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
@@ -36,6 +37,11 @@ Method | HTTP request | Description
 [**get_model_history**](DefaultApi.md#get_model_history) | **Get** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**get_model_instance**](DefaultApi.md#get_model_instance) | **Get** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+[**get_resource_by_id**](DefaultApi.md#get_resource_by_id) | **Get** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**get_resource_by_sub_type**](DefaultApi.md#get_resource_by_sub_type) | **Get** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**get_resource_by_type**](DefaultApi.md#get_resource_by_type) | **Get** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**get_resource_details_by_id**](DefaultApi.md#get_resource_details_by_id) | **Get** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**get_resources**](DefaultApi.md#get_resources) | **Get** /resources/resources | A list of all known/registered resources, of all types
 [**imagetransformprocess_get**](DefaultApi.md#imagetransformprocess_get) | **Get** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
 [**imagetransformprocess_post**](DefaultApi.md#imagetransformprocess_post) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**jsonarray**](DefaultApi.md#jsonarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
@@ -279,6 +285,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**::models::ModelInstanceEntity**](ModelInstanceEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_resource**
+> Value add_resource(ctx, add_resource_request)
+Adds a resource
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **add_resource_request** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
+
+### Return type
+
+[**Value**](Value.md)
 
 ### Authorization
 
@@ -952,6 +984,134 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_resource_by_id**
+> ::models::Resource get_resource_by_id(ctx, resource_id)
+Get the resource with the specified resource ID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **resource_id** | **i64**| ID of the resource | 
+
+### Return type
+
+[**::models::Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_resource_by_sub_type**
+> Vec<::models::Resource> get_resource_by_sub_type(ctx, resource_sub_type)
+Get all the resources with the specified resource subtype
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **resource_sub_type** | **String**| Subtype of the resource | 
+
+### Return type
+
+[**Vec<::models::Resource>**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_resource_by_type**
+> Vec<::models::Resource> get_resource_by_type(ctx, resource_type)
+Get all the resources with the specified resource type
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **resource_type** | **String**| Type of the resource | 
+
+### Return type
+
+[**Vec<::models::Resource>**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_resource_details_by_id**
+> ::models::ErrorUnknown get_resource_details_by_id(ctx, resource_id)
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **resource_id** | **i64**| ID of the resource | 
+
+### Return type
+
+**::models::ErrorUnknown**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_resources**
+> Vec<::models::Resource> get_resources(ctx, )
+A list of all known/registered resources, of all types
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Vec<::models::Resource>**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **imagetransformprocess_get**
 > ::models::ImageTransformProcess imagetransformprocess_get(ctx, deployment_name, version_name, image_transform_name)
 Retrieves the image transform process JSON string
@@ -1149,14 +1309,13 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **login**
-> ::models::Token login(ctx, credentials)
+> ::models::Token login(credentials)
 Post JSON credentials and obtain a JWT authorization token.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **credentials** | [**Credentials**](Credentials.md)| Login credentials. | 
 
 ### Return type
@@ -1165,7 +1324,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 

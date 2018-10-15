@@ -25,6 +25,7 @@ import com.android.volley.VolleyError;
 
 import ai.skymind.skil.model.AddExampleRequest;
 import ai.skymind.skil.model.AddModelHistoryRequest;
+import ai.skymind.skil.model.AddResourceRequest;
 import ai.skymind.skil.model.AggregatePrediction;
 import ai.skymind.skil.model.Base64NDArrayBody;
 import ai.skymind.skil.model.Base64NDArrayBodyKNN;
@@ -36,6 +37,7 @@ import ai.skymind.skil.model.CreateDeploymentRequest;
 import ai.skymind.skil.model.Credentials;
 import ai.skymind.skil.model.DeploymentResponse;
 import ai.skymind.skil.model.DetectionResult;
+import ai.skymind.skil.model.ERRORUNKNOWN;
 import ai.skymind.skil.model.EvaluationResultsEntity;
 import ai.skymind.skil.model.ExampleEntity;
 import ai.skymind.skil.model.ExperimentEntity;
@@ -61,6 +63,7 @@ import ai.skymind.skil.model.MultiPredictResponse;
 import ai.skymind.skil.model.NearestNeighborRequest;
 import ai.skymind.skil.model.NearestNeighborsResults;
 import ai.skymind.skil.model.Prediction;
+import ai.skymind.skil.model.Resource;
 import ai.skymind.skil.model.SetState;
 import ai.skymind.skil.model.SingleCSVRecord;
 import ai.skymind.skil.model.SingleImageRecord;
@@ -1196,6 +1199,134 @@ public class DefaultApi {
           public void onResponse(String localVarResponse) {
             try {
               responseListener.onResponse((ModelInstanceEntity) ApiInvoker.deserialize(localVarResponse,  "", ModelInstanceEntity.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Adds a resource
+  * 
+   * @param addResourceRequest The Add resource request object
+   * @return Object
+  */
+  public Object addResource (AddResourceRequest addResourceRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = addResourceRequest;
+    // verify the required parameter 'addResourceRequest' is set
+    if (addResourceRequest == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'addResourceRequest' when calling addResource",
+        new ApiException(400, "Missing the required parameter 'addResourceRequest' when calling addResource"));
+    }
+
+    // create path and map variables
+    String path = "/resources/add/resource";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (Object) ApiInvoker.deserialize(localVarResponse, "", Object.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Adds a resource
+   * 
+   * @param addResourceRequest The Add resource request object
+  */
+  public void addResource (AddResourceRequest addResourceRequest, final Response.Listener<Object> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = addResourceRequest;
+
+    // verify the required parameter 'addResourceRequest' is set
+    if (addResourceRequest == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'addResourceRequest' when calling addResource",
+        new ApiException(400, "Missing the required parameter 'addResourceRequest' when calling addResource"));
+    }
+
+    // create path and map variables
+    String path = "/resources/add/resource".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((Object) ApiInvoker.deserialize(localVarResponse,  "", Object.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -4627,6 +4758,630 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
   }
   /**
+  * Get the resource with the specified resource ID
+  * 
+   * @param resourceId ID of the resource
+   * @return Resource
+  */
+  public Resource getResourceById (Long resourceId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'resourceId' is set
+    if (resourceId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'resourceId' when calling getResourceById",
+        new ApiException(400, "Missing the required parameter 'resourceId' when calling getResourceById"));
+    }
+
+    // create path and map variables
+    String path = "/resources/resource/{resourceId}".replaceAll("\\{" + "resourceId" + "\\}", apiInvoker.escapeString(resourceId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (Resource) ApiInvoker.deserialize(localVarResponse, "", Resource.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Get the resource with the specified resource ID
+   * 
+   * @param resourceId ID of the resource
+  */
+  public void getResourceById (Long resourceId, final Response.Listener<Resource> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'resourceId' is set
+    if (resourceId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'resourceId' when calling getResourceById",
+        new ApiException(400, "Missing the required parameter 'resourceId' when calling getResourceById"));
+    }
+
+    // create path and map variables
+    String path = "/resources/resource/{resourceId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "resourceId" + "\\}", apiInvoker.escapeString(resourceId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((Resource) ApiInvoker.deserialize(localVarResponse,  "", Resource.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Get all the resources with the specified resource subtype
+  * 
+   * @param resourceSubType Subtype of the resource
+   * @return List<Resource>
+  */
+  public List<Resource> getResourceBySubType (String resourceSubType) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'resourceSubType' is set
+    if (resourceSubType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'resourceSubType' when calling getResourceBySubType",
+        new ApiException(400, "Missing the required parameter 'resourceSubType' when calling getResourceBySubType"));
+    }
+
+    // create path and map variables
+    String path = "/resources/resources/type/{resourceSubType}".replaceAll("\\{" + "resourceSubType" + "\\}", apiInvoker.escapeString(resourceSubType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (List<Resource>) ApiInvoker.deserialize(localVarResponse, "array", Resource.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Get all the resources with the specified resource subtype
+   * 
+   * @param resourceSubType Subtype of the resource
+  */
+  public void getResourceBySubType (String resourceSubType, final Response.Listener<List<Resource>> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'resourceSubType' is set
+    if (resourceSubType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'resourceSubType' when calling getResourceBySubType",
+        new ApiException(400, "Missing the required parameter 'resourceSubType' when calling getResourceBySubType"));
+    }
+
+    // create path and map variables
+    String path = "/resources/resources/type/{resourceSubType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "resourceSubType" + "\\}", apiInvoker.escapeString(resourceSubType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((List<Resource>) ApiInvoker.deserialize(localVarResponse,  "array", Resource.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Get all the resources with the specified resource type
+  * 
+   * @param resourceType Type of the resource
+   * @return List<Resource>
+  */
+  public List<Resource> getResourceByType (String resourceType) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'resourceType' is set
+    if (resourceType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'resourceType' when calling getResourceByType",
+        new ApiException(400, "Missing the required parameter 'resourceType' when calling getResourceByType"));
+    }
+
+    // create path and map variables
+    String path = "/resources/resources/type/{resourceType}".replaceAll("\\{" + "resourceType" + "\\}", apiInvoker.escapeString(resourceType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (List<Resource>) ApiInvoker.deserialize(localVarResponse, "array", Resource.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Get all the resources with the specified resource type
+   * 
+   * @param resourceType Type of the resource
+  */
+  public void getResourceByType (String resourceType, final Response.Listener<List<Resource>> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'resourceType' is set
+    if (resourceType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'resourceType' when calling getResourceByType",
+        new ApiException(400, "Missing the required parameter 'resourceType' when calling getResourceByType"));
+    }
+
+    // create path and map variables
+    String path = "/resources/resources/type/{resourceType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "resourceType" + "\\}", apiInvoker.escapeString(resourceType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((List<Resource>) ApiInvoker.deserialize(localVarResponse,  "array", Resource.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Get the resource details with the specified resource ID
+  * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+   * @param resourceId ID of the resource
+   * @return ERRORUNKNOWN
+  */
+  public ERRORUNKNOWN getResourceDetailsById (Long resourceId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'resourceId' is set
+    if (resourceId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'resourceId' when calling getResourceDetailsById",
+        new ApiException(400, "Missing the required parameter 'resourceId' when calling getResourceDetailsById"));
+    }
+
+    // create path and map variables
+    String path = "/resources/details/{resourceId}".replaceAll("\\{" + "resourceId" + "\\}", apiInvoker.escapeString(resourceId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse, "", ERRORUNKNOWN.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Get the resource details with the specified resource ID
+   * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+   * @param resourceId ID of the resource
+  */
+  public void getResourceDetailsById (Long resourceId, final Response.Listener<ERRORUNKNOWN> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'resourceId' is set
+    if (resourceId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'resourceId' when calling getResourceDetailsById",
+        new ApiException(400, "Missing the required parameter 'resourceId' when calling getResourceDetailsById"));
+    }
+
+    // create path and map variables
+    String path = "/resources/details/{resourceId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "resourceId" + "\\}", apiInvoker.escapeString(resourceId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse,  "", ERRORUNKNOWN.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * A list of all known/registered resources, of all types
+  * 
+   * @return List<Resource>
+  */
+  public List<Resource> getResources () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+
+    // create path and map variables
+    String path = "/resources/resources";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (List<Resource>) ApiInvoker.deserialize(localVarResponse, "array", Resource.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * A list of all known/registered resources, of all types
+   * 
+
+  */
+  public void getResources (final Response.Listener<List<Resource>> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+
+    // create path and map variables
+    String path = "/resources/resources".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((List<Resource>) ApiInvoker.deserialize(localVarResponse,  "array", Resource.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
   * Retrieves the image transform process JSON string
   * 
    * @param deploymentName Name of the deployment group
@@ -5722,7 +6477,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       // normal form params
     }
 
-    String[] authNames = new String[] { "api_key" };
+    String[] authNames = new String[] {  };
 
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
@@ -5790,7 +6545,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       // normal form params
           }
 
-    String[] authNames = new String[] { "api_key" };
+    String[] authNames = new String[] {  };
 
     try {
       apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,

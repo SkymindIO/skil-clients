@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**AddModelFeedback**](DefaultApi.md#AddModelFeedback) | **Post** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**AddModelHistory**](DefaultApi.md#AddModelHistory) | **Post** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**AddModelInstance**](DefaultApi.md#AddModelInstance) | **Post** /rpc/{modelHistoryServerId}/model | Adds a model
+[**AddResource**](DefaultApi.md#AddResource) | **Post** /resources/add/resource | Adds a resource
 [**AggregateModelResults**](DefaultApi.md#AggregateModelResults) | **Post** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**Classify**](DefaultApi.md#Classify) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**Classifyarray**](DefaultApi.md#Classifyarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
@@ -36,6 +37,11 @@ Method | HTTP request | Description
 [**GetModelHistory**](DefaultApi.md#GetModelHistory) | **Get** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**GetModelInstance**](DefaultApi.md#GetModelInstance) | **Get** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**GetModelsForExperiment**](DefaultApi.md#GetModelsForExperiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+[**GetResourceById**](DefaultApi.md#GetResourceById) | **Get** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**GetResourceBySubType**](DefaultApi.md#GetResourceBySubType) | **Get** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**GetResourceByType**](DefaultApi.md#GetResourceByType) | **Get** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**GetResourceDetailsById**](DefaultApi.md#GetResourceDetailsById) | **Get** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**GetResources**](DefaultApi.md#GetResources) | **Get** /resources/resources | A list of all known/registered resources, of all types
 [**ImagetransformprocessGet**](DefaultApi.md#ImagetransformprocessGet) | **Get** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
 [**ImagetransformprocessPost**](DefaultApi.md#ImagetransformprocessPost) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**Jsonarray**](DefaultApi.md#Jsonarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
@@ -279,6 +285,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelInstanceEntity**](ModelInstanceEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AddResource**
+> interface{} AddResource(ctx, addResourceRequest)
+Adds a resource
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **addResourceRequest** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
+
+### Return type
+
+[**interface{}**](interface{}.md)
 
 ### Authorization
 
@@ -952,6 +984,134 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **GetResourceById**
+> Resource GetResourceById(ctx, resourceId)
+Get the resource with the specified resource ID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceId** | **int64**| ID of the resource | 
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetResourceBySubType**
+> []Resource GetResourceBySubType(ctx, resourceSubType)
+Get all the resources with the specified resource subtype
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceSubType** | **string**| Subtype of the resource | 
+
+### Return type
+
+[**[]Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetResourceByType**
+> []Resource GetResourceByType(ctx, resourceType)
+Get all the resources with the specified resource type
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceType** | **string**| Type of the resource | 
+
+### Return type
+
+[**[]Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetResourceDetailsById**
+> ErrorUnknown GetResourceDetailsById(ctx, resourceId)
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceId** | **int64**| ID of the resource | 
+
+### Return type
+
+**ErrorUnknown**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetResources**
+> []Resource GetResources(ctx, )
+A list of all known/registered resources, of all types
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[]Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **ImagetransformprocessGet**
 > ImageTransformProcess ImagetransformprocessGet(ctx, deploymentName, versionName, imageTransformName)
 Retrieves the image transform process JSON string
@@ -1165,7 +1325,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 

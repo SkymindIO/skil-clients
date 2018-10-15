@@ -386,6 +386,40 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     Adds a resource
+     - parameter addResourceRequest: (body) The Add resource request object 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func addResource(addResourceRequest: AddResourceRequest, completion: @escaping ((_ data: Any?, _ error: ErrorResponse?) -> Void)) {
+        addResourceWithRequestBuilder(addResourceRequest: addResourceRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Adds a resource
+     - POST /resources/add/resource
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example="{}"}]
+     - parameter addResourceRequest: (body) The Add resource request object 
+     - returns: RequestBuilder<Any> 
+     */
+    open class func addResourceWithRequestBuilder(addResourceRequest: AddResourceRequest) -> RequestBuilder<Any> {
+        let path = "/resources/add/resource"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = addResourceRequest.encodeToJSON()
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Any>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
      Aggregates the evaluaition results of a model instance, based on the evaluation type
      - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter aggregatePrediction: (body) The object encapsulating the model instance id and evaluation type to aggregate 
@@ -1792,6 +1826,251 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     Get the resource with the specified resource ID
+     - parameter resourceId: (path) ID of the resource 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getResourceById(resourceId: Int64, completion: @escaping ((_ data: Resource?, _ error: ErrorResponse?) -> Void)) {
+        getResourceByIdWithRequestBuilder(resourceId: resourceId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get the resource with the specified resource ID
+     - GET /resources/resource/{resourceId}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "resourceId" : 0,
+  "name" : "name",
+  "credentialId" : "credentialId",
+  "subType" : "EMR",
+  "type" : "COMPUTE"
+}}]
+     - parameter resourceId: (path) ID of the resource 
+     - returns: RequestBuilder<Resource> 
+     */
+    open class func getResourceByIdWithRequestBuilder(resourceId: Int64) -> RequestBuilder<Resource> {
+        var path = "/resources/resource/{resourceId}"
+        let resourceIdPreEscape = "\(resourceId)"
+        let resourceIdPostEscape = resourceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{resourceId}", with: resourceIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Resource>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     * enum for parameter resourceSubType
+     */
+    public enum ResourceSubType_getResourceBySubType: String { 
+        case emr = "EMR"
+        case s3 = "S3"
+        case googleStorage = "GoogleStorage"
+        case dataProc = "DataProc"
+        case hdinsight = "HDInsight"
+        case azureStorage = "AzureStorage"
+        case hdfs = "HDFS"
+        case yarn = "YARN"
+    }
+
+    /**
+     Get all the resources with the specified resource subtype
+     - parameter resourceSubType: (path) Subtype of the resource 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getResourceBySubType(resourceSubType: ResourceSubType_getResourceBySubType, completion: @escaping ((_ data: [Resource]?, _ error: ErrorResponse?) -> Void)) {
+        getResourceBySubTypeWithRequestBuilder(resourceSubType: resourceSubType).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get all the resources with the specified resource subtype
+     - GET /resources/resources/type/{resourceSubType}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example=[ {
+  "resourceId" : 0,
+  "name" : "name",
+  "credentialId" : "credentialId",
+  "subType" : "EMR",
+  "type" : "COMPUTE"
+}, {
+  "resourceId" : 0,
+  "name" : "name",
+  "credentialId" : "credentialId",
+  "subType" : "EMR",
+  "type" : "COMPUTE"
+} ]}]
+     - parameter resourceSubType: (path) Subtype of the resource 
+     - returns: RequestBuilder<[Resource]> 
+     */
+    open class func getResourceBySubTypeWithRequestBuilder(resourceSubType: ResourceSubType_getResourceBySubType) -> RequestBuilder<[Resource]> {
+        var path = "/resources/resources/type/{resourceSubType}"
+        let resourceSubTypePreEscape = "\(resourceSubType.rawValue)"
+        let resourceSubTypePostEscape = resourceSubTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{resourceSubType}", with: resourceSubTypePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[Resource]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     * enum for parameter resourceType
+     */
+    public enum ResourceType_getResourceByType: String { 
+        case compute = "COMPUTE"
+        case storage = "STORAGE"
+    }
+
+    /**
+     Get all the resources with the specified resource type
+     - parameter resourceType: (path) Type of the resource 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getResourceByType(resourceType: ResourceType_getResourceByType, completion: @escaping ((_ data: [Resource]?, _ error: ErrorResponse?) -> Void)) {
+        getResourceByTypeWithRequestBuilder(resourceType: resourceType).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get all the resources with the specified resource type
+     - GET /resources/resources/type/{resourceType}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example=[ {
+  "resourceId" : 0,
+  "name" : "name",
+  "credentialId" : "credentialId",
+  "subType" : "EMR",
+  "type" : "COMPUTE"
+}, {
+  "resourceId" : 0,
+  "name" : "name",
+  "credentialId" : "credentialId",
+  "subType" : "EMR",
+  "type" : "COMPUTE"
+} ]}]
+     - parameter resourceType: (path) Type of the resource 
+     - returns: RequestBuilder<[Resource]> 
+     */
+    open class func getResourceByTypeWithRequestBuilder(resourceType: ResourceType_getResourceByType) -> RequestBuilder<[Resource]> {
+        var path = "/resources/resources/type/{resourceType}"
+        let resourceTypePreEscape = "\(resourceType.rawValue)"
+        let resourceTypePostEscape = resourceTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{resourceType}", with: resourceTypePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[Resource]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Get the resource details with the specified resource ID
+     - parameter resourceId: (path) ID of the resource 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getResourceDetailsById(resourceId: Int64, completion: @escaping ((_ data: ERRORUNKNOWN?, _ error: ErrorResponse?) -> Void)) {
+        getResourceDetailsByIdWithRequestBuilder(resourceId: resourceId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get the resource details with the specified resource ID
+     - GET /resources/details/{resourceId}
+     - Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example=""}]
+     - parameter resourceId: (path) ID of the resource 
+     - returns: RequestBuilder<ERRORUNKNOWN> 
+     */
+    open class func getResourceDetailsByIdWithRequestBuilder(resourceId: Int64) -> RequestBuilder<ERRORUNKNOWN> {
+        var path = "/resources/details/{resourceId}"
+        let resourceIdPreEscape = "\(resourceId)"
+        let resourceIdPostEscape = resourceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{resourceId}", with: resourceIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ERRORUNKNOWN>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     A list of all known/registered resources, of all types
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getResources(completion: @escaping ((_ data: [Resource]?, _ error: ErrorResponse?) -> Void)) {
+        getResourcesWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     A list of all known/registered resources, of all types
+     - GET /resources/resources
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example=[ {
+  "resourceId" : 0,
+  "name" : "name",
+  "credentialId" : "credentialId",
+  "subType" : "EMR",
+  "type" : "COMPUTE"
+}, {
+  "resourceId" : 0,
+  "name" : "name",
+  "credentialId" : "credentialId",
+  "subType" : "EMR",
+  "type" : "COMPUTE"
+} ]}]
+     - returns: RequestBuilder<[Resource]> 
+     */
+    open class func getResourcesWithRequestBuilder() -> RequestBuilder<[Resource]> {
+        let path = "/resources/resources"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[Resource]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Retrieves the image transform process JSON string
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
@@ -2175,9 +2454,7 @@ open class DefaultAPI: APIBase {
     /**
      Post JSON credentials and obtain a JWT authorization token.
      - POST /login
-     - API Key:
-       - type: apiKey authorization 
-       - name: api_key
+
      - examples: [{contentType=application/json, example={
   "token" : "xxxxxxx.yyyyyyy.zzzzzz"
 }}]

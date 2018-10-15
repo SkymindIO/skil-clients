@@ -209,6 +209,27 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of ModelInstanceEntity</returns>
         ApiResponse<ModelInstanceEntity> AddModelInstanceWithHttpInfo (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity);
         /// <summary>
+        /// Adds a resource
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addResourceRequest">The Add resource request object</param>
+        /// <returns>Object</returns>
+        Object AddResource (AddResourceRequest addResourceRequest);
+
+        /// <summary>
+        /// Adds a resource
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addResourceRequest">The Add resource request object</param>
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> AddResourceWithHttpInfo (AddResourceRequest addResourceRequest);
+        /// <summary>
         /// Aggregates the evaluaition results of a model instance, based on the evaluation type
         /// </summary>
         /// <remarks>
@@ -772,6 +793,109 @@ namespace Skymind.SKIL.Api
         /// <param name="experimentID">the GUID of the experiment</param>
         /// <returns>ApiResponse of List&lt;ModelInstanceEntity&gt;</returns>
         ApiResponse<List<ModelInstanceEntity>> GetModelsForExperimentWithHttpInfo (string modelHistoryServerId, string experimentID);
+        /// <summary>
+        /// Get the resource with the specified resource ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>Resource</returns>
+        Resource GetResourceById (long? resourceId);
+
+        /// <summary>
+        /// Get the resource with the specified resource ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>ApiResponse of Resource</returns>
+        ApiResponse<Resource> GetResourceByIdWithHttpInfo (long? resourceId);
+        /// <summary>
+        /// Get all the resources with the specified resource subtype
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceSubType">Subtype of the resource</param>
+        /// <returns>List&lt;Resource&gt;</returns>
+        List<Resource> GetResourceBySubType (string resourceSubType);
+
+        /// <summary>
+        /// Get all the resources with the specified resource subtype
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceSubType">Subtype of the resource</param>
+        /// <returns>ApiResponse of List&lt;Resource&gt;</returns>
+        ApiResponse<List<Resource>> GetResourceBySubTypeWithHttpInfo (string resourceSubType);
+        /// <summary>
+        /// Get all the resources with the specified resource type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceType">Type of the resource</param>
+        /// <returns>List&lt;Resource&gt;</returns>
+        List<Resource> GetResourceByType (string resourceType);
+
+        /// <summary>
+        /// Get all the resources with the specified resource type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceType">Type of the resource</param>
+        /// <returns>ApiResponse of List&lt;Resource&gt;</returns>
+        ApiResponse<List<Resource>> GetResourceByTypeWithHttpInfo (string resourceType);
+        /// <summary>
+        /// Get the resource details with the specified resource ID
+        /// </summary>
+        /// <remarks>
+        /// Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns></returns>
+        void GetResourceDetailsById (long? resourceId);
+
+        /// <summary>
+        /// Get the resource details with the specified resource ID
+        /// </summary>
+        /// <remarks>
+        /// Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> GetResourceDetailsByIdWithHttpInfo (long? resourceId);
+        /// <summary>
+        /// A list of all known/registered resources, of all types
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;Resource&gt;</returns>
+        List<Resource> GetResources ();
+
+        /// <summary>
+        /// A list of all known/registered resources, of all types
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;Resource&gt;</returns>
+        ApiResponse<List<Resource>> GetResourcesWithHttpInfo ();
         /// <summary>
         /// Retrieves the image transform process JSON string
         /// </summary>
@@ -1916,6 +2040,27 @@ namespace Skymind.SKIL.Api
         /// <returns>Task of ApiResponse (ModelInstanceEntity)</returns>
         System.Threading.Tasks.Task<ApiResponse<ModelInstanceEntity>> AddModelInstanceAsyncWithHttpInfo (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity);
         /// <summary>
+        /// Adds a resource
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addResourceRequest">The Add resource request object</param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> AddResourceAsync (AddResourceRequest addResourceRequest);
+
+        /// <summary>
+        /// Adds a resource
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addResourceRequest">The Add resource request object</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> AddResourceAsyncWithHttpInfo (AddResourceRequest addResourceRequest);
+        /// <summary>
         /// Aggregates the evaluaition results of a model instance, based on the evaluation type
         /// </summary>
         /// <remarks>
@@ -2479,6 +2624,109 @@ namespace Skymind.SKIL.Api
         /// <param name="experimentID">the GUID of the experiment</param>
         /// <returns>Task of ApiResponse (List&lt;ModelInstanceEntity&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<ModelInstanceEntity>>> GetModelsForExperimentAsyncWithHttpInfo (string modelHistoryServerId, string experimentID);
+        /// <summary>
+        /// Get the resource with the specified resource ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>Task of Resource</returns>
+        System.Threading.Tasks.Task<Resource> GetResourceByIdAsync (long? resourceId);
+
+        /// <summary>
+        /// Get the resource with the specified resource ID
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>Task of ApiResponse (Resource)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Resource>> GetResourceByIdAsyncWithHttpInfo (long? resourceId);
+        /// <summary>
+        /// Get all the resources with the specified resource subtype
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceSubType">Subtype of the resource</param>
+        /// <returns>Task of List&lt;Resource&gt;</returns>
+        System.Threading.Tasks.Task<List<Resource>> GetResourceBySubTypeAsync (string resourceSubType);
+
+        /// <summary>
+        /// Get all the resources with the specified resource subtype
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceSubType">Subtype of the resource</param>
+        /// <returns>Task of ApiResponse (List&lt;Resource&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<Resource>>> GetResourceBySubTypeAsyncWithHttpInfo (string resourceSubType);
+        /// <summary>
+        /// Get all the resources with the specified resource type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceType">Type of the resource</param>
+        /// <returns>Task of List&lt;Resource&gt;</returns>
+        System.Threading.Tasks.Task<List<Resource>> GetResourceByTypeAsync (string resourceType);
+
+        /// <summary>
+        /// Get all the resources with the specified resource type
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceType">Type of the resource</param>
+        /// <returns>Task of ApiResponse (List&lt;Resource&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<Resource>>> GetResourceByTypeAsyncWithHttpInfo (string resourceType);
+        /// <summary>
+        /// Get the resource details with the specified resource ID
+        /// </summary>
+        /// <remarks>
+        /// Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task GetResourceDetailsByIdAsync (long? resourceId);
+
+        /// <summary>
+        /// Get the resource details with the specified resource ID
+        /// </summary>
+        /// <remarks>
+        /// Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetResourceDetailsByIdAsyncWithHttpInfo (long? resourceId);
+        /// <summary>
+        /// A list of all known/registered resources, of all types
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of List&lt;Resource&gt;</returns>
+        System.Threading.Tasks.Task<List<Resource>> GetResourcesAsync ();
+
+        /// <summary>
+        /// A list of all known/registered resources, of all types
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (List&lt;Resource&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<Resource>>> GetResourcesAsyncWithHttpInfo ();
         /// <summary>
         /// Retrieves the image transform process JSON string
         /// </summary>
@@ -4902,6 +5150,165 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<ModelInstanceEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ModelInstanceEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelInstanceEntity)));
+        }
+
+        /// <summary>
+        /// Adds a resource 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addResourceRequest">The Add resource request object</param>
+        /// <returns>Object</returns>
+        public Object AddResource (AddResourceRequest addResourceRequest)
+        {
+             ApiResponse<Object> localVarResponse = AddResourceWithHttpInfo(addResourceRequest);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Adds a resource 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addResourceRequest">The Add resource request object</param>
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > AddResourceWithHttpInfo (AddResourceRequest addResourceRequest)
+        {
+            // verify the required parameter 'addResourceRequest' is set
+            if (addResourceRequest == null)
+                throw new ApiException(400, "Missing required parameter 'addResourceRequest' when calling DefaultApi->AddResource");
+
+            var localVarPath = "/resources/add/resource";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (addResourceRequest != null && addResourceRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(addResourceRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = addResourceRequest; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddResource", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+        }
+
+        /// <summary>
+        /// Adds a resource 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addResourceRequest">The Add resource request object</param>
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> AddResourceAsync (AddResourceRequest addResourceRequest)
+        {
+             ApiResponse<Object> localVarResponse = await AddResourceAsyncWithHttpInfo(addResourceRequest);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Adds a resource 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addResourceRequest">The Add resource request object</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddResourceAsyncWithHttpInfo (AddResourceRequest addResourceRequest)
+        {
+            // verify the required parameter 'addResourceRequest' is set
+            if (addResourceRequest == null)
+                throw new ApiException(400, "Missing required parameter 'addResourceRequest' when calling DefaultApi->AddResource");
+
+            var localVarPath = "/resources/add/resource";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (addResourceRequest != null && addResourceRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(addResourceRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = addResourceRequest; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddResource", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -8805,6 +9212,707 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
+        /// Get the resource with the specified resource ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>Resource</returns>
+        public Resource GetResourceById (long? resourceId)
+        {
+             ApiResponse<Resource> localVarResponse = GetResourceByIdWithHttpInfo(resourceId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get the resource with the specified resource ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>ApiResponse of Resource</returns>
+        public ApiResponse< Resource > GetResourceByIdWithHttpInfo (long? resourceId)
+        {
+            // verify the required parameter 'resourceId' is set
+            if (resourceId == null)
+                throw new ApiException(400, "Missing required parameter 'resourceId' when calling DefaultApi->GetResourceById");
+
+            var localVarPath = "/resources/resource/{resourceId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (resourceId != null) localVarPathParams.Add("resourceId", this.Configuration.ApiClient.ParameterToString(resourceId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetResourceById", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Resource>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Resource) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Resource)));
+        }
+
+        /// <summary>
+        /// Get the resource with the specified resource ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>Task of Resource</returns>
+        public async System.Threading.Tasks.Task<Resource> GetResourceByIdAsync (long? resourceId)
+        {
+             ApiResponse<Resource> localVarResponse = await GetResourceByIdAsyncWithHttpInfo(resourceId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the resource with the specified resource ID 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>Task of ApiResponse (Resource)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Resource>> GetResourceByIdAsyncWithHttpInfo (long? resourceId)
+        {
+            // verify the required parameter 'resourceId' is set
+            if (resourceId == null)
+                throw new ApiException(400, "Missing required parameter 'resourceId' when calling DefaultApi->GetResourceById");
+
+            var localVarPath = "/resources/resource/{resourceId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (resourceId != null) localVarPathParams.Add("resourceId", this.Configuration.ApiClient.ParameterToString(resourceId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetResourceById", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Resource>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Resource) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Resource)));
+        }
+
+        /// <summary>
+        /// Get all the resources with the specified resource subtype 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceSubType">Subtype of the resource</param>
+        /// <returns>List&lt;Resource&gt;</returns>
+        public List<Resource> GetResourceBySubType (string resourceSubType)
+        {
+             ApiResponse<List<Resource>> localVarResponse = GetResourceBySubTypeWithHttpInfo(resourceSubType);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all the resources with the specified resource subtype 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceSubType">Subtype of the resource</param>
+        /// <returns>ApiResponse of List&lt;Resource&gt;</returns>
+        public ApiResponse< List<Resource> > GetResourceBySubTypeWithHttpInfo (string resourceSubType)
+        {
+            // verify the required parameter 'resourceSubType' is set
+            if (resourceSubType == null)
+                throw new ApiException(400, "Missing required parameter 'resourceSubType' when calling DefaultApi->GetResourceBySubType");
+
+            var localVarPath = "/resources/resources/type/{resourceSubType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (resourceSubType != null) localVarPathParams.Add("resourceSubType", this.Configuration.ApiClient.ParameterToString(resourceSubType)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetResourceBySubType", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Resource>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Resource>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Resource>)));
+        }
+
+        /// <summary>
+        /// Get all the resources with the specified resource subtype 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceSubType">Subtype of the resource</param>
+        /// <returns>Task of List&lt;Resource&gt;</returns>
+        public async System.Threading.Tasks.Task<List<Resource>> GetResourceBySubTypeAsync (string resourceSubType)
+        {
+             ApiResponse<List<Resource>> localVarResponse = await GetResourceBySubTypeAsyncWithHttpInfo(resourceSubType);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get all the resources with the specified resource subtype 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceSubType">Subtype of the resource</param>
+        /// <returns>Task of ApiResponse (List&lt;Resource&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<Resource>>> GetResourceBySubTypeAsyncWithHttpInfo (string resourceSubType)
+        {
+            // verify the required parameter 'resourceSubType' is set
+            if (resourceSubType == null)
+                throw new ApiException(400, "Missing required parameter 'resourceSubType' when calling DefaultApi->GetResourceBySubType");
+
+            var localVarPath = "/resources/resources/type/{resourceSubType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (resourceSubType != null) localVarPathParams.Add("resourceSubType", this.Configuration.ApiClient.ParameterToString(resourceSubType)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetResourceBySubType", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Resource>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Resource>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Resource>)));
+        }
+
+        /// <summary>
+        /// Get all the resources with the specified resource type 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceType">Type of the resource</param>
+        /// <returns>List&lt;Resource&gt;</returns>
+        public List<Resource> GetResourceByType (string resourceType)
+        {
+             ApiResponse<List<Resource>> localVarResponse = GetResourceByTypeWithHttpInfo(resourceType);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all the resources with the specified resource type 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceType">Type of the resource</param>
+        /// <returns>ApiResponse of List&lt;Resource&gt;</returns>
+        public ApiResponse< List<Resource> > GetResourceByTypeWithHttpInfo (string resourceType)
+        {
+            // verify the required parameter 'resourceType' is set
+            if (resourceType == null)
+                throw new ApiException(400, "Missing required parameter 'resourceType' when calling DefaultApi->GetResourceByType");
+
+            var localVarPath = "/resources/resources/type/{resourceType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (resourceType != null) localVarPathParams.Add("resourceType", this.Configuration.ApiClient.ParameterToString(resourceType)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetResourceByType", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Resource>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Resource>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Resource>)));
+        }
+
+        /// <summary>
+        /// Get all the resources with the specified resource type 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceType">Type of the resource</param>
+        /// <returns>Task of List&lt;Resource&gt;</returns>
+        public async System.Threading.Tasks.Task<List<Resource>> GetResourceByTypeAsync (string resourceType)
+        {
+             ApiResponse<List<Resource>> localVarResponse = await GetResourceByTypeAsyncWithHttpInfo(resourceType);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get all the resources with the specified resource type 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceType">Type of the resource</param>
+        /// <returns>Task of ApiResponse (List&lt;Resource&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<Resource>>> GetResourceByTypeAsyncWithHttpInfo (string resourceType)
+        {
+            // verify the required parameter 'resourceType' is set
+            if (resourceType == null)
+                throw new ApiException(400, "Missing required parameter 'resourceType' when calling DefaultApi->GetResourceByType");
+
+            var localVarPath = "/resources/resources/type/{resourceType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (resourceType != null) localVarPathParams.Add("resourceType", this.Configuration.ApiClient.ParameterToString(resourceType)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetResourceByType", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Resource>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Resource>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Resource>)));
+        }
+
+        /// <summary>
+        /// Get the resource details with the specified resource ID Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns></returns>
+        public void GetResourceDetailsById (long? resourceId)
+        {
+             GetResourceDetailsByIdWithHttpInfo(resourceId);
+        }
+
+        /// <summary>
+        /// Get the resource details with the specified resource ID Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> GetResourceDetailsByIdWithHttpInfo (long? resourceId)
+        {
+            // verify the required parameter 'resourceId' is set
+            if (resourceId == null)
+                throw new ApiException(400, "Missing required parameter 'resourceId' when calling DefaultApi->GetResourceDetailsById");
+
+            var localVarPath = "/resources/details/{resourceId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (resourceId != null) localVarPathParams.Add("resourceId", this.Configuration.ApiClient.ParameterToString(resourceId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetResourceDetailsById", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Get the resource details with the specified resource ID Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task GetResourceDetailsByIdAsync (long? resourceId)
+        {
+             await GetResourceDetailsByIdAsyncWithHttpInfo(resourceId);
+
+        }
+
+        /// <summary>
+        /// Get the resource details with the specified resource ID Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resourceId">ID of the resource</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetResourceDetailsByIdAsyncWithHttpInfo (long? resourceId)
+        {
+            // verify the required parameter 'resourceId' is set
+            if (resourceId == null)
+                throw new ApiException(400, "Missing required parameter 'resourceId' when calling DefaultApi->GetResourceDetailsById");
+
+            var localVarPath = "/resources/details/{resourceId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (resourceId != null) localVarPathParams.Add("resourceId", this.Configuration.ApiClient.ParameterToString(resourceId)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetResourceDetailsById", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// A list of all known/registered resources, of all types 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>List&lt;Resource&gt;</returns>
+        public List<Resource> GetResources ()
+        {
+             ApiResponse<List<Resource>> localVarResponse = GetResourcesWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A list of all known/registered resources, of all types 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of List&lt;Resource&gt;</returns>
+        public ApiResponse< List<Resource> > GetResourcesWithHttpInfo ()
+        {
+
+            var localVarPath = "/resources/resources";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetResources", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Resource>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Resource>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Resource>)));
+        }
+
+        /// <summary>
+        /// A list of all known/registered resources, of all types 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of List&lt;Resource&gt;</returns>
+        public async System.Threading.Tasks.Task<List<Resource>> GetResourcesAsync ()
+        {
+             ApiResponse<List<Resource>> localVarResponse = await GetResourcesAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// A list of all known/registered resources, of all types 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (List&lt;Resource&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<Resource>>> GetResourcesAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/resources/resources";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetResources", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Resource>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Resource>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Resource>)));
+        }
+
+        /// <summary>
         /// Retrieves the image transform process JSON string 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
@@ -10106,11 +11214,6 @@ namespace Skymind.SKIL.Api
                 localVarPostBody = credentials; // byte array
             }
 
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
-            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
@@ -10186,11 +11289,6 @@ namespace Skymind.SKIL.Api
                 localVarPostBody = credentials; // byte array
             }
 
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
-            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,

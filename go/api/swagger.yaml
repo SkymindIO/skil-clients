@@ -33,6 +33,7 @@ paths:
             $ref: "#/definitions/Token"
         401:
           description: "Invalid credentials"
+      security: []
   /api/upload/model:
     post:
       summary: "Upload a model file to SKIL for import."
@@ -2388,6 +2389,136 @@ paths:
           description: "The model feedback request object"
           schema:
             $ref: "#/definitions/ModelFeedBackRequest"
+  /resources/resource/{resourceId}:
+    get:
+      summary: "Get the resource with the specified resource ID"
+      operationId: "getResourceById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "Resource Object"
+          schema:
+            $ref: "#/definitions/Resource"
+  /resources/details/{resourceId}:
+    get:
+      summary: "Get the resource details with the specified resource ID"
+      description: "Get the details for the resource, for the given ID. Note that\
+        \ a 'ResourceDetails' object contains specific information\nabout the resource\
+        \ (such as region for an AWS resource, or URI for a HDFS resource), where\
+        \ as the 'Resource'\nobject contains only general information (name, id, type,\
+        \ subtype).\n"
+      operationId: "getResourceDetailsById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "One of the resource details object"
+          schema: {}
+  /resources/resources:
+    get:
+      summary: "A list of all known/registered resources, of all types"
+      operationId: "getResources"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "List of Resource Objects"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Resource"
+  /resources/resources/type/{resourceType}:
+    get:
+      summary: "Get all the resources with the specified resource type"
+      operationId: "getResourceByType"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceType"
+        in: "path"
+        description: "Type of the resource"
+        required: true
+        type: "string"
+        enum:
+        - "COMPUTE"
+        - "STORAGE"
+        x-exportParamName: "ResourceType"
+      responses:
+        200:
+          description: "List of Resource Objects by specified type"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Resource"
+  /resources/resources/type/{resourceSubType}:
+    get:
+      summary: "Get all the resources with the specified resource subtype"
+      operationId: "getResourceBySubType"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceSubType"
+        in: "path"
+        description: "Subtype of the resource"
+        required: true
+        type: "string"
+        enum:
+        - "EMR"
+        - "S3"
+        - "GoogleStorage"
+        - "DataProc"
+        - "HDInsight"
+        - "AzureStorage"
+        - "HDFS"
+        - "YARN"
+        x-exportParamName: "ResourceSubType"
+      responses:
+        200:
+          description: "List of Resource Objects by specified subtype"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Resource"
+  /resources/add/resource:
+    post:
+      summary: "Adds a resource"
+      operationId: "addResource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "AddResourceRequest"
+        description: "The Add resource request object"
+        required: true
+        schema:
+          $ref: "#/definitions/AddResourceRequest"
+        x-exportParamName: "AddResourceRequest"
+      responses:
+        200:
+          description: "One of the resource details object"
+          schema:
+            type: "object"
+            properties: {}
 securityDefinitions:
   api_key:
     description: "For accessing the API a valid JWT token must be passed in all the\
@@ -3555,6 +3686,313 @@ definitions:
       correct: "[\"0\", \"0\", \"2\"]"
       guesses: "[\"0\", \"1\", \"2\"]"
       batchId: "batchId"
+  Resource:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      name:
+        type: "string"
+        description: "Resource nickname"
+      type:
+        type: "string"
+        description: "Resource type (whether COMPUTE or STORAGE)"
+        enum:
+        - "COMPUTE"
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN]\
+          \ | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])"
+        enum:
+        - "EMR"
+        - "S3"
+        - "GoogleStorage"
+        - "DataProc"
+        - "HDInsight"
+        - "AzureStorage"
+        - "HDFS"
+        - "YARN"
+      credentialId:
+        type: "string"
+        format: "guid"
+        description: "Credentials GUID"
+    example:
+      resourceId: 0
+      name: "name"
+      credentialId: "credentialId"
+      subType: "EMR"
+      type: "COMPUTE"
+  EMRResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "EMR"
+      clusterId:
+        type: "string"
+        description: "EMR cluster ID"
+      region:
+        type: "string"
+        description: "Region name where the cluster is deployed"
+  S3ResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "S3"
+      bucket:
+        type: "string"
+        description: "S3 Bucket Name"
+      region:
+        type: "string"
+        description: "Region name where the S3 bucket is present"
+  GoogleStorageResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "GoogleStorage"
+      projectId:
+        type: "string"
+        description: "Project ID"
+      bucketName:
+        type: "string"
+        description: "Name of the storage bucket"
+  DataProcResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "DataProc"
+      projectId:
+        type: "string"
+        description: "Project ID"
+      region:
+        type: "string"
+        description: "DataProc region"
+      sparkClusterName:
+        type: "string"
+        description: "Name of the spark cluster"
+  HDInsightResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "HDInsight"
+      subscriptionId:
+        type: "string"
+        description: "Azure subscription ID"
+      resourceGroupName:
+        type: "string"
+        description: "name of the resource group"
+      clusterName:
+        type: "string"
+        description: "Cluster name"
+  AzureStorageResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "AzureStorage"
+      containerName:
+        type: "string"
+        description: "Storage container name"
+  HDFSResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "HDFS"
+      nameNodeHost:
+        type: "string"
+        description: "Host of the node running the NameNode"
+      nameNodePort:
+        type: "string"
+        description: "Port of the node running the NameNode"
+  YARNResourceDetails:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "YARN"
+      localSparkHome:
+        type: "string"
+        description: "Local Spark Home path"
+  ResourceGroup:
+    type: "object"
+    properties:
+      groupId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource group"
+      groupName:
+        type: "string"
+        description: "Name of the resource group"
+      added:
+        type: "integer"
+        format: "int64"
+        description: "Milliseconds in Long when the resource group was added"
+      updated:
+        type: "integer"
+        format: "int64"
+        description: "Milliseconds in Long when the resource group was updated"
+  ResourceCredentials:
+    type: "object"
+    properties:
+      credentialId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the credentials"
+      type:
+        type: "string"
+        description: "Type of the credentials"
+        enum:
+        - "AWS"
+        - "Azure"
+        - "GoogleCloud"
+        - "Hadoop"
+      name:
+        type: "string"
+        description: "Name of the credentials"
+      uri:
+        type: "string"
+        description: "URI of the credentials"
+  AddResourceRequest:
+    type: "object"
+    properties:
+      resourceName:
+        type: "string"
+        description: "Name of the new resource"
+      resourceDetails:
+        type: "object"
+        description: "One of the resource details object"
+        properties: {}
+      credentialUri:
+        type: "string"
+        description: "URI of the credentials. If this is present, you can leave out\
+          \ the 'credentialId'"
+      type:
+        type: "string"
+        description: "Resource type (whether COMPUTE or STORAGE)"
+        enum:
+        - "COMPUTE"
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN]\
+          \ | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])"
+        enum:
+        - "EMR"
+        - "S3"
+        - "GoogleStorage"
+        - "DataProc"
+        - "HDInsight"
+        - "AzureStorage"
+        - "HDFS"
+        - "YARN"
+      credentialId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the credentials. If this is given then you can leave out\
+          \ the 'credentialsUri'"
+    example:
+      resourceDetails: "{}"
+      credentialId: 0
+      resourceName: "resourceName"
+      subType: "EMR"
+      type: "COMPUTE"
+      credentialUri: "credentialUri"
   inline_response_200:
     properties:
       status:

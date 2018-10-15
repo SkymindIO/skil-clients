@@ -85,6 +85,13 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_add_resource(self):
+        """Test case for add_resource
+
+        Adds a resource  # noqa: E501
+        """
+        pass
+
     def test_aggregate_model_results(self):
         """Test case for aggregate_model_results
 
@@ -250,6 +257,41 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for get_models_for_experiment
 
         Obtain a list of all the models for an experiment  # noqa: E501
+        """
+        pass
+
+    def test_get_resource_by_id(self):
+        """Test case for get_resource_by_id
+
+        Get the resource with the specified resource ID  # noqa: E501
+        """
+        pass
+
+    def test_get_resource_by_sub_type(self):
+        """Test case for get_resource_by_sub_type
+
+        Get all the resources with the specified resource subtype  # noqa: E501
+        """
+        pass
+
+    def test_get_resource_by_type(self):
+        """Test case for get_resource_by_type
+
+        Get all the resources with the specified resource type  # noqa: E501
+        """
+        pass
+
+    def test_get_resource_details_by_id(self):
+        """Test case for get_resource_details_by_id
+
+        Get the resource details with the specified resource ID  # noqa: E501
+        """
+        pass
+
+    def test_get_resources(self):
+        """Test case for get_resources
+
+        A list of all known/registered resources, of all types  # noqa: E501
         """
         pass
 

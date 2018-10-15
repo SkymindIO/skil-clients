@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**addModelFeedback**](DefaultApi.md#addModelFeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**addModelHistory**](DefaultApi.md#addModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**addModelInstance**](DefaultApi.md#addModelInstance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+[**addResource**](DefaultApi.md#addResource) | **POST** /resources/add/resource | Adds a resource
 [**aggregateModelResults**](DefaultApi.md#aggregateModelResults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
@@ -36,6 +37,11 @@ Method | HTTP request | Description
 [**getModelHistory**](DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**getModelInstance**](DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**getModelsForExperiment**](DefaultApi.md#getModelsForExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+[**getResourceById**](DefaultApi.md#getResourceById) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**getResourceBySubType**](DefaultApi.md#getResourceBySubType) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**getResourceByType**](DefaultApi.md#getResourceByType) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**getResourceDetailsById**](DefaultApi.md#getResourceDetailsById) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**getResources**](DefaultApi.md#getResources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**imagetransformprocessGet**](DefaultApi.md#imagetransformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
 [**imagetransformprocessPost**](DefaultApi.md#imagetransformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
@@ -505,6 +511,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelInstanceEntity**](ModelInstanceEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="addResource"></a>
+# **addResource**
+> Object addResource(addResourceRequest)
+
+Adds a resource
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+AddResourceRequest addResourceRequest = new AddResourceRequest(); // AddResourceRequest | The Add resource request object
+try {
+    Object result = apiInstance.addResource(addResourceRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#addResource");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addResourceRequest** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object |
+
+### Return type
+
+**Object**
 
 ### Authorization
 
@@ -1844,6 +1903,269 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getResourceById"></a>
+# **getResourceById**
+> Resource getResourceById(resourceId)
+
+Get the resource with the specified resource ID
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+Long resourceId = 789L; // Long | ID of the resource
+try {
+    Resource result = apiInstance.getResourceById(resourceId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getResourceById");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **Long**| ID of the resource |
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceBySubType"></a>
+# **getResourceBySubType**
+> List&lt;Resource&gt; getResourceBySubType(resourceSubType)
+
+Get all the resources with the specified resource subtype
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String resourceSubType = "resourceSubType_example"; // String | Subtype of the resource
+try {
+    List<Resource> result = apiInstance.getResourceBySubType(resourceSubType);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getResourceBySubType");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceSubType** | **String**| Subtype of the resource | [enum: EMR, S3, GoogleStorage, DataProc, HDInsight, AzureStorage, HDFS, YARN]
+
+### Return type
+
+[**List&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceByType"></a>
+# **getResourceByType**
+> List&lt;Resource&gt; getResourceByType(resourceType)
+
+Get all the resources with the specified resource type
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String resourceType = "resourceType_example"; // String | Type of the resource
+try {
+    List<Resource> result = apiInstance.getResourceByType(resourceType);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getResourceByType");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceType** | **String**| Type of the resource | [enum: COMPUTE, STORAGE]
+
+### Return type
+
+[**List&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceDetailsById"></a>
+# **getResourceDetailsById**
+> ERRORUNKNOWN getResourceDetailsById(resourceId)
+
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+Long resourceId = 789L; // Long | ID of the resource
+try {
+    ERRORUNKNOWN result = apiInstance.getResourceDetailsById(resourceId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getResourceDetailsById");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **Long**| ID of the resource |
+
+### Return type
+
+[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResources"></a>
+# **getResources**
+> List&lt;Resource&gt; getResources()
+
+A list of all known/registered resources, of all types
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+try {
+    List<Resource> result = apiInstance.getResources();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getResources");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="imagetransformprocessGet"></a>
 # **imagetransformprocessGet**
 > ImageTransformProcess imagetransformprocessGet(deploymentName, versionName, imageTransformName)
@@ -2254,19 +2576,9 @@ Post JSON credentials and obtain a JWT authorization token.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
 //import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
 //import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 Credentials credentials = new Credentials(); // Credentials | Login credentials.
@@ -2291,7 +2603,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 

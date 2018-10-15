@@ -18,7 +18,7 @@ import ai.skymind.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-07T17:05:04.781+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-15T15:09:44.645+05:00")
 public class OAuth implements Authentication {
   private String accessToken;
 

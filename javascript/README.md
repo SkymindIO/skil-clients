@@ -135,6 +135,7 @@ Class | Method | HTTP request | Description
 *SkilClient.DefaultApi* | [**addModelFeedback**](docs/DefaultApi.md#addModelFeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 *SkilClient.DefaultApi* | [**addModelHistory**](docs/DefaultApi.md#addModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 *SkilClient.DefaultApi* | [**addModelInstance**](docs/DefaultApi.md#addModelInstance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+*SkilClient.DefaultApi* | [**addResource**](docs/DefaultApi.md#addResource) | **POST** /resources/add/resource | Adds a resource
 *SkilClient.DefaultApi* | [**aggregateModelResults**](docs/DefaultApi.md#aggregateModelResults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 *SkilClient.DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 *SkilClient.DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
@@ -159,6 +160,11 @@ Class | Method | HTTP request | Description
 *SkilClient.DefaultApi* | [**getModelHistory**](docs/DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 *SkilClient.DefaultApi* | [**getModelInstance**](docs/DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 *SkilClient.DefaultApi* | [**getModelsForExperiment**](docs/DefaultApi.md#getModelsForExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+*SkilClient.DefaultApi* | [**getResourceById**](docs/DefaultApi.md#getResourceById) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+*SkilClient.DefaultApi* | [**getResourceBySubType**](docs/DefaultApi.md#getResourceBySubType) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+*SkilClient.DefaultApi* | [**getResourceByType**](docs/DefaultApi.md#getResourceByType) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+*SkilClient.DefaultApi* | [**getResourceDetailsById**](docs/DefaultApi.md#getResourceDetailsById) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+*SkilClient.DefaultApi* | [**getResources**](docs/DefaultApi.md#getResources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 *SkilClient.DefaultApi* | [**imagetransformprocessGet**](docs/DefaultApi.md#imagetransformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
 *SkilClient.DefaultApi* | [**imagetransformprocessPost**](docs/DefaultApi.md#imagetransformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 *SkilClient.DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
@@ -202,7 +208,9 @@ Class | Method | HTTP request | Description
 
  - [SkilClient.AddExampleRequest](docs/AddExampleRequest.md)
  - [SkilClient.AddModelHistoryRequest](docs/AddModelHistoryRequest.md)
+ - [SkilClient.AddResourceRequest](docs/AddResourceRequest.md)
  - [SkilClient.AggregatePrediction](docs/AggregatePrediction.md)
+ - [SkilClient.AzureStorageResourceDetails](docs/AzureStorageResourceDetails.md)
  - [SkilClient.Base64NDArrayBody](docs/Base64NDArrayBody.md)
  - [SkilClient.Base64NDArrayBodyKNN](docs/Base64NDArrayBodyKNN.md)
  - [SkilClient.BatchCSVRecord](docs/BatchCSVRecord.md)
@@ -211,15 +219,20 @@ Class | Method | HTTP request | Description
  - [SkilClient.ClassificationResult](docs/ClassificationResult.md)
  - [SkilClient.CreateDeploymentRequest](docs/CreateDeploymentRequest.md)
  - [SkilClient.Credentials](docs/Credentials.md)
+ - [SkilClient.DataProcResourceDetails](docs/DataProcResourceDetails.md)
  - [SkilClient.DeploymentObjects](docs/DeploymentObjects.md)
  - [SkilClient.DeploymentResponse](docs/DeploymentResponse.md)
  - [SkilClient.DetectedObject](docs/DetectedObject.md)
  - [SkilClient.DetectionResult](docs/DetectionResult.md)
+ - [SkilClient.EMRResourceDetails](docs/EMRResourceDetails.md)
  - [SkilClient.EvaluationResultsEntity](docs/EvaluationResultsEntity.md)
  - [SkilClient.ExampleEntity](docs/ExampleEntity.md)
  - [SkilClient.ExperimentEntity](docs/ExperimentEntity.md)
  - [SkilClient.FileUpload](docs/FileUpload.md)
  - [SkilClient.FileUploadList](docs/FileUploadList.md)
+ - [SkilClient.GoogleStorageResourceDetails](docs/GoogleStorageResourceDetails.md)
+ - [SkilClient.HDFSResourceDetails](docs/HDFSResourceDetails.md)
+ - [SkilClient.HDInsightResourceDetails](docs/HDInsightResourceDetails.md)
  - [SkilClient.INDArray](docs/INDArray.md)
  - [SkilClient.ImageTransformProcess](docs/ImageTransformProcess.md)
  - [SkilClient.ImportModelRequest](docs/ImportModelRequest.md)
@@ -243,12 +256,17 @@ Class | Method | HTTP request | Description
  - [SkilClient.NearestNeighborsResults](docs/NearestNeighborsResults.md)
  - [SkilClient.NewDeployment](docs/NewDeployment.md)
  - [SkilClient.Prediction](docs/Prediction.md)
+ - [SkilClient.Resource](docs/Resource.md)
+ - [SkilClient.ResourceCredentials](docs/ResourceCredentials.md)
+ - [SkilClient.ResourceGroup](docs/ResourceGroup.md)
+ - [SkilClient.S3ResourceDetails](docs/S3ResourceDetails.md)
  - [SkilClient.SetState](docs/SetState.md)
  - [SkilClient.SingleCSVRecord](docs/SingleCSVRecord.md)
  - [SkilClient.SingleImageRecord](docs/SingleImageRecord.md)
  - [SkilClient.Token](docs/Token.md)
  - [SkilClient.TransformProcess](docs/TransformProcess.md)
  - [SkilClient.UpdateBestModel](docs/UpdateBestModel.md)
+ - [SkilClient.YARNResourceDetails](docs/YARNResourceDetails.md)
 
 
 ## Documentation for Authorization
