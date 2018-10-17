@@ -2141,7 +2141,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Resource'
-  /resources/resources/type/{resourceSubType}:
+  /resources/resources/subtype/{resourceSubType}:
     get:
       operationId: getResourceBySubType
       summary: Get all the resources with the specified resource subtype
@@ -2406,14 +2406,14 @@ paths:
   # ---------------------------------------------------------------------------------------
   # Jobs endpoints
   # ---------------------------------------------------------------------------------------
-  /jobs/{jobId}:
+  /jobs/{jobIdOrType}:
     get:
       operationId: getJobById
       summary: Get a job by its ID
       produces:
         - application/json
       parameters:
-        - name: jobId
+        - name: jobIdOrType
           in: path
           type: integer
           format: int64
@@ -2424,22 +2424,6 @@ paths:
           description: Job entity Object
           schema:
             $ref: '#/definitions/JobEntity'
-    delete:
-      operationId: deleteJobById
-      summary: Deletes a job given its ID
-      produces:
-        - application/json
-      parameters:
-        - name: jobId
-          in: path
-          type: integer
-          format: int64
-          description: Job ID
-          required: true
-      responses:
-        200:
-          description: Successfully deleted a job
-  /jobs/{jobtype}:
     post:
       operationId: createJob
       summary: Create a job
@@ -2448,7 +2432,7 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: jobtype
+        - name: jobIdOrType
           in: path
           type: string
           enum:
@@ -2468,6 +2452,21 @@ paths:
           description: The created job entity object
           schema:
             $ref: '#/definitions/JobEntity'
+    delete:
+      operationId: deleteJobById
+      summary: Deletes a job given its ID
+      produces:
+        - application/json
+      parameters:
+        - name: jobIdOrType
+          in: path
+          type: integer
+          format: int64
+          description: Job ID
+          required: true
+      responses:
+        200:
+          description: Successfully deleted a job
   /jobs:
     get:
       operationId: getAllJobs
@@ -3240,7 +3239,7 @@ definitions:
         type: integer
         description: Batch version
   ExampleEntity:
-    type:
+    type: object
     properties:
       exampleId:
         type: string
