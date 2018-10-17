@@ -72,14 +72,12 @@ paths:
           schema:
             $ref: '#/definitions/FileUploadList'
   # ---------------------------------------------------------------------------------------
-  # CSV transform server endpoints
+  # CSV and/or IMAGE transform server endpoints
   # ---------------------------------------------------------------------------------------
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess:
     get:
       operationId: transformprocess_get
-      summary: Gets the JSON string of the deployed transform process
-      description: |
-        Retrieves the JSON string of the deployed transform process
+      summary: Gets the JSON string of the deployed transform process (CSV or Image)
       produces:
       - application/json
       parameters:
@@ -103,15 +101,16 @@ paths:
         200:
           description: the deployed transform process
           schema:
-            $ref: '#/definitions/TransformProcess'
+            oneOf:
+             - $ref: '#/definitions/TransformProcess'
+             - $ref: '#/definitions/ImageTransformProcess'
         400:
           description: the transform process is probably null
         500:
           description: internal server error
     post:
       operationId: transformprocess_post
-      summary: Sets the deployed transform process through the provided JSON string
-      description: Sets the transform process with the provided JSON string
+      summary: Sets the deployed (CSV or Image) transform process through the provided JSON string
       consumes:
       - application/json
       produces:
@@ -137,10 +136,16 @@ paths:
         name: TransformProcess
         description: The transform process to set
         schema:
-          $ref: '#/definitions/TransformProcess'
+          oneOf:
+           - $ref: '#/definitions/TransformProcess'
+           - $ref: '#/definitions/ImageTransformProcess'
       responses:
         200:
           description: transform process set successfully
+          schema:
+            oneOf:
+              - $ref: '#/definitions/TransformProcess'
+              - $ref: '#/definitions/ImageTransformProcess'
         500:
           description: internal server error
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental:
@@ -221,9 +226,8 @@ paths:
           description: internal server error during transforming the array
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray:
     post:
-      operationId: transformincrementalarray_csv
-      summary: Same as /transformincremental but returns Base64NDArrayBody
-      description: Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+      operationId: transformincrementalarray
+      summary: Same as /transformincremental but returns Base64NDArrayBody.
       consumes:
       - application/json
       produces:
@@ -246,10 +250,12 @@ paths:
         required: true
         type: string
       - in: body
-        name: SingleCSVRecord
+        name: SingleRecord
         description: The input record array
         schema:
-          $ref: '#/definitions/SingleCSVRecord'
+          oneOf:
+            - $ref: '#/definitions/SingleCSVRecord'
+            - $ref: '#/definitions/SingleImageRecord'
       responses:
         200:
           description: array transformed and returned successfully
@@ -259,9 +265,8 @@ paths:
           description: internal server error during transforming the array
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray:
     post:
-      operationId: transformarray_csv
+      operationId: transformarray
       summary: Takes a batch input arrays and transforms it
-      description: Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
       consumes:
       - application/json
       produces:
@@ -284,10 +289,12 @@ paths:
         required: true
         type: string
       - in: body
-        name: BatchCSVRecord
+        name: BatchRecord
         description: The input batch of record arrays
         schema:
-          $ref: '#/definitions/BatchCSVRecord'
+          oneOf:
+            - $ref: '#/definitions/BatchCSVRecord'
+            - $ref: '#/definitions/BatchImageRecord'
       responses:
         200:
           description: array transformed and returned successfully
@@ -296,112 +303,8 @@ paths:
         500:
           description: internal server error during transforming the array
   # ---------------------------------------------------------------------------------------
-  # Image transform server endpoint
+  # Image only transform server endpoint
   # ---------------------------------------------------------------------------------------
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess:
-    get:
-      operationId: imagetransformprocess_get
-      summary: Retrieves the image transform process JSON string
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: deploymentName
-        in: path
-        description: Name of the deployment group
-        required: true
-        type: string
-      - name: versionName
-        in: path
-        description: Version name of the endpoint. The default value is "default"
-        required: false
-        default: default
-        type: string
-      - name: imageTransformName
-        in: path
-        description: ID or name of the deployed image transform
-        required: true
-        type: string
-      responses:
-        200:
-          description: Image transform process JSON successfully retrieved
-          schema:
-            $ref: '#/definitions/ImageTransformProcess'
-    post:
-      operationId: imagetransformprocess_post
-      summary: Sets the image transform process through the provided JSON string
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: deploymentName
-        in: path
-        description: Name of the deployment group
-        required: true
-        type: string
-      - name: versionName
-        in: path
-        description: Version name of the endpoint. The default value is "default"
-        required: false
-        default: default
-        type: string
-      - name: imageTransformName
-        in: path
-        description: ID or name of the deployed image transform
-        required: true
-        type: string
-      - name: body
-        in: body
-        description: The image transform process JSON
-        required: true
-        schema:
-          $ref: '#/definitions/ImageTransformProcess'
-      responses:
-        200:
-          description: Image transform process JSON successfully set
-          schema:
-            $ref: '#/definitions/ImageTransformProcess'
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray:
-    post:
-      operationId: transformincrementalarray_image
-      summary: Takes SingleImageRecord to transform and returns Base64NDArrayBody
-      description: Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: deploymentName
-        in: path
-        description: Name of the deployment group
-        required: true
-        type: string
-      - name: versionName
-        in: path
-        description: Version name of the endpoint. The default value is "default"
-        required: false
-        default: default
-        type: string
-      - name: imageTransformName
-        in: path
-        description: ID or name of the deployed image transform
-        required: true
-        type: string
-      - in: body
-        name: SingleImageRecord
-        required: true
-        description: The input record array
-        schema:
-          $ref: '#/definitions/SingleImageRecord'
-      responses:
-        200:
-          description: array transformed and returned successfully
-          schema:
-            $ref: '#/definitions/Base64NDArrayBody'
-        500:
-          description: internal server error during transforming the array
   /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage:
     post:
       operationId: transformincrementalimage
@@ -440,45 +343,6 @@ paths:
             $ref: '#/definitions/Base64NDArrayBody'
         400:
           description: No uploaded file found or the file couldn't be loaded
-        500:
-          description: internal server error during transforming the array
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray:
-    post:
-      operationId: transformarray_image
-      summary: Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-      description: Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: deploymentName
-        in: path
-        description: Name of the deployment group
-        required: true
-        type: string
-      - name: versionName
-        in: path
-        description: Version name of the endpoint. The default value is "default"
-        required: false
-        default: default
-        type: string
-      - name: imageTransformName
-        in: path
-        description: ID or name of the deployed image transform
-        required: true
-        type: string
-      - in: body
-        name: BatchImageRecord
-        required: true
-        description: The input batch of record arrays
-        schema:
-          $ref: '#/definitions/BatchImageRecord'
-      responses:
-        200:
-          description: array transformed and returned successfully
-          schema:
-            $ref: '#/definitions/Base64NDArrayBody'
         500:
           description: internal server error during transforming the array
   /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage:
