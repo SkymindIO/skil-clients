@@ -23,7 +23,6 @@ import ai.skymind.skil.model.ArrayByte
 import ai.skymind.skil.model.Base64NDArrayBody
 import ai.skymind.skil.model.Base64NDArrayBodyKNN
 import ai.skymind.skil.model.BatchCSVRecord
-import ai.skymind.skil.model.BatchImageRecord
 import ai.skymind.skil.model.BestModel
 import ai.skymind.skil.model.ClassificationResult
 import ai.skymind.skil.model.CreateDeploymentRequest
@@ -37,7 +36,6 @@ import ai.skymind.skil.model.ExampleEntity
 import ai.skymind.skil.model.ExperimentEntity
 import java.io.File
 import ai.skymind.skil.model.FileUploadList
-import ai.skymind.skil.model.ImageTransformProcess
 import ai.skymind.skil.model.ImportModelRequest
 import ai.skymind.skil.model.InlineResponse200
 import ai.skymind.skil.model.JobEntity
@@ -63,9 +61,7 @@ import ai.skymind.skil.model.ResourceCredentials
 import ai.skymind.skil.model.ResourceGroup
 import ai.skymind.skil.model.SetState
 import ai.skymind.skil.model.SingleCSVRecord
-import ai.skymind.skil.model.SingleImageRecord
 import ai.skymind.skil.model.Token
-import ai.skymind.skil.model.TransformProcess
 import ai.skymind.skil.model.UpdateBestModel
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -589,12 +585,12 @@ class DefaultApi(
    * Create a job
    * 
    *
-   * @param Jobtype Job Type 
+   * @param JobIdOrType Job Type 
    * @param CreateJobRequest Create job request object 
    * @return JobEntity
    */
-  def createJob(Jobtype: String, CreateJobRequest: CreateJobRequest): Option[JobEntity] = {
-    val await = Try(Await.result(createJobAsync(Jobtype, CreateJobRequest), Duration.Inf))
+  def createJob(JobIdOrType: String, CreateJobRequest: CreateJobRequest): Option[JobEntity] = {
+    val await = Try(Await.result(createJobAsync(JobIdOrType, CreateJobRequest), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -605,12 +601,12 @@ class DefaultApi(
    * Create a job asynchronously
    * 
    *
-   * @param Jobtype Job Type 
+   * @param JobIdOrType Job Type 
    * @param CreateJobRequest Create job request object 
    * @return Future(JobEntity)
    */
-  def createJobAsync(Jobtype: String, CreateJobRequest: CreateJobRequest): Future[JobEntity] = {
-      helper.createJob(Jobtype, CreateJobRequest)
+  def createJobAsync(JobIdOrType: String, CreateJobRequest: CreateJobRequest): Future[JobEntity] = {
+      helper.createJob(JobIdOrType, CreateJobRequest)
   }
 
   /**
@@ -699,11 +695,11 @@ class DefaultApi(
    * Deletes a job given its ID
    * 
    *
-   * @param JobId Job ID 
+   * @param JobIdOrType Job ID 
    * @return void
    */
-  def deleteJobById(JobId: Long) = {
-    val await = Try(Await.result(deleteJobByIdAsync(JobId), Duration.Inf))
+  def deleteJobById(JobIdOrType: Long) = {
+    val await = Try(Await.result(deleteJobByIdAsync(JobIdOrType), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -714,11 +710,11 @@ class DefaultApi(
    * Deletes a job given its ID asynchronously
    * 
    *
-   * @param JobId Job ID 
+   * @param JobIdOrType Job ID 
    * @return Future(void)
    */
-  def deleteJobByIdAsync(JobId: Long) = {
-      helper.deleteJobById(JobId)
+  def deleteJobByIdAsync(JobIdOrType: Long) = {
+      helper.deleteJobById(JobIdOrType)
   }
 
   /**
@@ -1275,11 +1271,11 @@ class DefaultApi(
    * Get a job by its ID
    * 
    *
-   * @param JobId Job ID 
+   * @param JobIdOrType Job ID 
    * @return JobEntity
    */
-  def getJobById(JobId: Long): Option[JobEntity] = {
-    val await = Try(Await.result(getJobByIdAsync(JobId), Duration.Inf))
+  def getJobById(JobIdOrType: Long): Option[JobEntity] = {
+    val await = Try(Await.result(getJobByIdAsync(JobIdOrType), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1290,11 +1286,11 @@ class DefaultApi(
    * Get a job by its ID asynchronously
    * 
    *
-   * @param JobId Job ID 
+   * @param JobIdOrType Job ID 
    * @return Future(JobEntity)
    */
-  def getJobByIdAsync(JobId: Long): Future[JobEntity] = {
-      helper.getJobById(JobId)
+  def getJobByIdAsync(JobIdOrType: Long): Future[JobEntity] = {
+      helper.getJobById(JobIdOrType)
   }
 
   /**
@@ -1611,68 +1607,6 @@ class DefaultApi(
    */
   def getResourcesFromGroupAsync(ResourceGroupId: Long): Future[List[Resource]] = {
       helper.getResourcesFromGroup(ResourceGroupId)
-  }
-
-  /**
-   * Retrieves the image transform process JSON string
-   * 
-   *
-   * @param DeploymentName Name of the deployment group 
-   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
-   * @param ImageTransformName ID or name of the deployed image transform 
-   * @return ImageTransformProcess
-   */
-  def imagetransformprocessGet(DeploymentName: String, VersionName: String, ImageTransformName: String): Option[ImageTransformProcess] = {
-    val await = Try(Await.result(imagetransformprocessGetAsync(DeploymentName, VersionName, ImageTransformName), Duration.Inf))
-    await match {
-      case Success(i) => Some(await.get)
-      case Failure(t) => None
-    }
-  }
-
-  /**
-   * Retrieves the image transform process JSON string asynchronously
-   * 
-   *
-   * @param DeploymentName Name of the deployment group 
-   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
-   * @param ImageTransformName ID or name of the deployed image transform 
-   * @return Future(ImageTransformProcess)
-   */
-  def imagetransformprocessGetAsync(DeploymentName: String, VersionName: String, ImageTransformName: String): Future[ImageTransformProcess] = {
-      helper.imagetransformprocessGet(DeploymentName, VersionName, ImageTransformName)
-  }
-
-  /**
-   * Sets the image transform process through the provided JSON string
-   * 
-   *
-   * @param DeploymentName Name of the deployment group 
-   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
-   * @param ImageTransformName ID or name of the deployed image transform 
-   * @param Body The image transform process JSON 
-   * @return ImageTransformProcess
-   */
-  def imagetransformprocessPost(DeploymentName: String, VersionName: String, ImageTransformName: String, Body: ImageTransformProcess): Option[ImageTransformProcess] = {
-    val await = Try(Await.result(imagetransformprocessPostAsync(DeploymentName, VersionName, ImageTransformName, Body), Duration.Inf))
-    await match {
-      case Success(i) => Some(await.get)
-      case Failure(t) => None
-    }
-  }
-
-  /**
-   * Sets the image transform process through the provided JSON string asynchronously
-   * 
-   *
-   * @param DeploymentName Name of the deployment group 
-   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
-   * @param ImageTransformName ID or name of the deployed image transform 
-   * @param Body The image transform process JSON 
-   * @return Future(ImageTransformProcess)
-   */
-  def imagetransformprocessPostAsync(DeploymentName: String, VersionName: String, ImageTransformName: String, Body: ImageTransformProcess): Future[ImageTransformProcess] = {
-      helper.imagetransformprocessPost(DeploymentName, VersionName, ImageTransformName, Body)
   }
 
   /**
@@ -2409,16 +2343,16 @@ class DefaultApi(
 
   /**
    * Takes a batch input arrays and transforms it
-   * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   * 
    *
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
-   * @param BatchCSVRecord The input batch of record arrays (optional)
+   * @param BatchRecord The input batch of record arrays (optional)
    * @return Base64NDArrayBody
    */
-  def transformarrayCsv(DeploymentName: String, VersionName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Option[Base64NDArrayBody] = {
-    val await = Try(Await.result(transformarrayCsvAsync(DeploymentName, VersionName, TransformName, BatchCSVRecord), Duration.Inf))
+  def transformarray(DeploymentName: String, VersionName: String, TransformName: String, BatchRecord: Option[ModelNull] = None): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformarrayAsync(DeploymentName, VersionName, TransformName, BatchRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -2427,48 +2361,16 @@ class DefaultApi(
 
   /**
    * Takes a batch input arrays and transforms it asynchronously
-   * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   * 
    *
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
-   * @param BatchCSVRecord The input batch of record arrays (optional)
+   * @param BatchRecord The input batch of record arrays (optional)
    * @return Future(Base64NDArrayBody)
    */
-  def transformarrayCsvAsync(DeploymentName: String, VersionName: String, TransformName: String, BatchCSVRecord: Option[BatchCSVRecord] = None): Future[Base64NDArrayBody] = {
-      helper.transformarrayCsv(DeploymentName, VersionName, TransformName, BatchCSVRecord)
-  }
-
-  /**
-   * Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-   * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   *
-   * @param DeploymentName Name of the deployment group 
-   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
-   * @param ImageTransformName ID or name of the deployed image transform 
-   * @param BatchImageRecord The input batch of record arrays 
-   * @return Base64NDArrayBody
-   */
-  def transformarrayImage(DeploymentName: String, VersionName: String, ImageTransformName: String, BatchImageRecord: BatchImageRecord): Option[Base64NDArrayBody] = {
-    val await = Try(Await.result(transformarrayImageAsync(DeploymentName, VersionName, ImageTransformName, BatchImageRecord), Duration.Inf))
-    await match {
-      case Success(i) => Some(await.get)
-      case Failure(t) => None
-    }
-  }
-
-  /**
-   * Takes a batch of images uri and transforms it and returns Base64NDArrayBody asynchronously
-   * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   *
-   * @param DeploymentName Name of the deployment group 
-   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
-   * @param ImageTransformName ID or name of the deployed image transform 
-   * @param BatchImageRecord The input batch of record arrays 
-   * @return Future(Base64NDArrayBody)
-   */
-  def transformarrayImageAsync(DeploymentName: String, VersionName: String, ImageTransformName: String, BatchImageRecord: BatchImageRecord): Future[Base64NDArrayBody] = {
-      helper.transformarrayImage(DeploymentName, VersionName, ImageTransformName, BatchImageRecord)
+  def transformarrayAsync(DeploymentName: String, VersionName: String, TransformName: String, BatchRecord: Option[ModelNull] = None): Future[Base64NDArrayBody] = {
+      helper.transformarray(DeploymentName, VersionName, TransformName, BatchRecord)
   }
 
   /**
@@ -2536,17 +2438,17 @@ class DefaultApi(
   }
 
   /**
-   * Same as /transformincremental but returns Base64NDArrayBody
-   * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   * Same as /transformincremental but returns Base64NDArrayBody.
+   * 
    *
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
-   * @param SingleCSVRecord The input record array (optional)
+   * @param SingleRecord The input record array (optional)
    * @return Base64NDArrayBody
    */
-  def transformincrementalarrayCsv(DeploymentName: String, VersionName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Option[Base64NDArrayBody] = {
-    val await = Try(Await.result(transformincrementalarrayCsvAsync(DeploymentName, VersionName, TransformName, SingleCSVRecord), Duration.Inf))
+  def transformincrementalarray(DeploymentName: String, VersionName: String, TransformName: String, SingleRecord: Option[ModelNull] = None): Option[Base64NDArrayBody] = {
+    val await = Try(Await.result(transformincrementalarrayAsync(DeploymentName, VersionName, TransformName, SingleRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -2554,49 +2456,17 @@ class DefaultApi(
   }
 
   /**
-   * Same as /transformincremental but returns Base64NDArrayBody asynchronously
-   * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+   * Same as /transformincremental but returns Base64NDArrayBody. asynchronously
+   * 
    *
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
-   * @param SingleCSVRecord The input record array (optional)
+   * @param SingleRecord The input record array (optional)
    * @return Future(Base64NDArrayBody)
    */
-  def transformincrementalarrayCsvAsync(DeploymentName: String, VersionName: String, TransformName: String, SingleCSVRecord: Option[SingleCSVRecord] = None): Future[Base64NDArrayBody] = {
-      helper.transformincrementalarrayCsv(DeploymentName, VersionName, TransformName, SingleCSVRecord)
-  }
-
-  /**
-   * Takes SingleImageRecord to transform and returns Base64NDArrayBody
-   * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   *
-   * @param DeploymentName Name of the deployment group 
-   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
-   * @param ImageTransformName ID or name of the deployed image transform 
-   * @param SingleImageRecord The input record array 
-   * @return Base64NDArrayBody
-   */
-  def transformincrementalarrayImage(DeploymentName: String, VersionName: String, ImageTransformName: String, SingleImageRecord: SingleImageRecord): Option[Base64NDArrayBody] = {
-    val await = Try(Await.result(transformincrementalarrayImageAsync(DeploymentName, VersionName, ImageTransformName, SingleImageRecord), Duration.Inf))
-    await match {
-      case Success(i) => Some(await.get)
-      case Failure(t) => None
-    }
-  }
-
-  /**
-   * Takes SingleImageRecord to transform and returns Base64NDArrayBody asynchronously
-   * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   *
-   * @param DeploymentName Name of the deployment group 
-   * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
-   * @param ImageTransformName ID or name of the deployed image transform 
-   * @param SingleImageRecord The input record array 
-   * @return Future(Base64NDArrayBody)
-   */
-  def transformincrementalarrayImageAsync(DeploymentName: String, VersionName: String, ImageTransformName: String, SingleImageRecord: SingleImageRecord): Future[Base64NDArrayBody] = {
-      helper.transformincrementalarrayImage(DeploymentName, VersionName, ImageTransformName, SingleImageRecord)
+  def transformincrementalarrayAsync(DeploymentName: String, VersionName: String, TransformName: String, SingleRecord: Option[ModelNull] = None): Future[Base64NDArrayBody] = {
+      helper.transformincrementalarray(DeploymentName, VersionName, TransformName, SingleRecord)
   }
 
   /**
@@ -2632,15 +2502,15 @@ class DefaultApi(
   }
 
   /**
-   * Gets the JSON string of the deployed transform process
-   * Retrieves the JSON string of the deployed transform process 
+   * Gets the JSON string of the deployed transform process (CSV or Image)
+   * 
    *
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
-   * @return TransformProcess
+   * @return ModelNull
    */
-  def transformprocessGet(DeploymentName: String, VersionName: String, TransformName: String): Option[TransformProcess] = {
+  def transformprocessGet(DeploymentName: String, VersionName: String, TransformName: String): Option[ModelNull] = {
     val await = Try(Await.result(transformprocessGetAsync(DeploymentName, VersionName, TransformName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -2649,29 +2519,29 @@ class DefaultApi(
   }
 
   /**
-   * Gets the JSON string of the deployed transform process asynchronously
-   * Retrieves the JSON string of the deployed transform process 
+   * Gets the JSON string of the deployed transform process (CSV or Image) asynchronously
+   * 
    *
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
-   * @return Future(TransformProcess)
+   * @return Future(ModelNull)
    */
-  def transformprocessGetAsync(DeploymentName: String, VersionName: String, TransformName: String): Future[TransformProcess] = {
+  def transformprocessGetAsync(DeploymentName: String, VersionName: String, TransformName: String): Future[ModelNull] = {
       helper.transformprocessGet(DeploymentName, VersionName, TransformName)
   }
 
   /**
-   * Sets the deployed transform process through the provided JSON string
-   * Sets the transform process with the provided JSON string
+   * Sets the deployed (CSV or Image) transform process through the provided JSON string
+   * 
    *
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param TransformProcess The transform process to set (optional)
-   * @return void
+   * @return ModelNull
    */
-  def transformprocessPost(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[TransformProcess] = None) = {
+  def transformprocessPost(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[ModelNull] = None): Option[ModelNull] = {
     val await = Try(Await.result(transformprocessPostAsync(DeploymentName, VersionName, TransformName, TransformProcess), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -2680,16 +2550,16 @@ class DefaultApi(
   }
 
   /**
-   * Sets the deployed transform process through the provided JSON string asynchronously
-   * Sets the transform process with the provided JSON string
+   * Sets the deployed (CSV or Image) transform process through the provided JSON string asynchronously
+   * 
    *
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param TransformProcess The transform process to set (optional)
-   * @return Future(void)
+   * @return Future(ModelNull)
    */
-  def transformprocessPostAsync(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[TransformProcess] = None) = {
+  def transformprocessPostAsync(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[ModelNull] = None): Future[ModelNull] = {
       helper.transformprocessPost(DeploymentName, VersionName, TransformName, TransformProcess)
   }
 
@@ -3141,17 +3011,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def createJob(Jobtype: String,
+  def createJob(JobIdOrType: String,
     CreateJobRequest: CreateJobRequest)(implicit reader: ClientResponseReader[JobEntity], writer: RequestWriter[CreateJobRequest]): Future[JobEntity] = {
     // create path and map variables
-    val path = (addFmt("/jobs/{jobtype}")
-      replaceAll("\\{" + "jobtype" + "\\}", Jobtype.toString))
+    val path = (addFmt("/jobs/{jobIdOrType}")
+      replaceAll("\\{" + "jobIdOrType" + "\\}", JobIdOrType.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
-    if (Jobtype == null) throw new Exception("Missing required parameter 'Jobtype' when calling DefaultApi->createJob")
+    if (JobIdOrType == null) throw new Exception("Missing required parameter 'JobIdOrType' when calling DefaultApi->createJob")
 
     if (CreateJobRequest == null) throw new Exception("Missing required parameter 'CreateJobRequest' when calling DefaultApi->createJob")
 
@@ -3219,10 +3089,10 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def deleteJobById(JobId: Long)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def deleteJobById(JobIdOrType: Long)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
     // create path and map variables
-    val path = (addFmt("/jobs/{jobId}")
-      replaceAll("\\{" + "jobId" + "\\}", JobId.toString))
+    val path = (addFmt("/jobs/{jobIdOrType}")
+      replaceAll("\\{" + "jobIdOrType" + "\\}", JobIdOrType.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -3628,10 +3498,10 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getJobById(JobId: Long)(implicit reader: ClientResponseReader[JobEntity]): Future[JobEntity] = {
+  def getJobById(JobIdOrType: Long)(implicit reader: ClientResponseReader[JobEntity]): Future[JobEntity] = {
     // create path and map variables
-    val path = (addFmt("/jobs/{jobId}")
-      replaceAll("\\{" + "jobId" + "\\}", JobId.toString))
+    val path = (addFmt("/jobs/{jobIdOrType}")
+      replaceAll("\\{" + "jobIdOrType" + "\\}", JobIdOrType.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -3750,7 +3620,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def getResourceBySubType(ResourceSubType: String)(implicit reader: ClientResponseReader[List[Resource]]): Future[List[Resource]] = {
     // create path and map variables
-    val path = (addFmt("/resources/resources/type/{resourceSubType}")
+    val path = (addFmt("/resources/resources/subtype/{resourceSubType}")
       replaceAll("\\{" + "resourceSubType" + "\\}", ResourceSubType.toString))
 
     // query params
@@ -3857,60 +3727,6 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
-    resFuture flatMap { resp =>
-      process(reader.read(resp))
-    }
-  }
-
-  def imagetransformprocessGet(DeploymentName: String,
-    VersionName: String,
-    ImageTransformName: String)(implicit reader: ClientResponseReader[ImageTransformProcess]): Future[ImageTransformProcess] = {
-    // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess")
-      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
-      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
-      replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
-
-    // query params
-    val queryParams = new mutable.HashMap[String, String]
-    val headerParams = new mutable.HashMap[String, String]
-
-    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->imagetransformprocessGet")
-
-    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->imagetransformprocessGet")
-
-    if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->imagetransformprocessGet")
-
-
-    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
-    resFuture flatMap { resp =>
-      process(reader.read(resp))
-    }
-  }
-
-  def imagetransformprocessPost(DeploymentName: String,
-    VersionName: String,
-    ImageTransformName: String,
-    Body: ImageTransformProcess)(implicit reader: ClientResponseReader[ImageTransformProcess], writer: RequestWriter[ImageTransformProcess]): Future[ImageTransformProcess] = {
-    // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess")
-      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
-      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
-      replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
-
-    // query params
-    val queryParams = new mutable.HashMap[String, String]
-    val headerParams = new mutable.HashMap[String, String]
-
-    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->imagetransformprocessPost")
-
-    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->imagetransformprocessPost")
-
-    if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->imagetransformprocessPost")
-
-    if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->imagetransformprocessPost")
-
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -4519,11 +4335,11 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def transformarrayCsv(DeploymentName: String,
+  def transformarray(DeploymentName: String,
     VersionName: String,
     TransformName: String,
-    BatchCSVRecord: Option[BatchCSVRecord] = None
-    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[BatchCSVRecord]]): Future[Base64NDArrayBody] = {
+    BatchRecord: Option[ModelNull] = None
+    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[ModelNull]]): Future[Base64NDArrayBody] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -4534,42 +4350,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
-    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformarrayCsv")
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformarray")
 
-    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformarrayCsv")
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformarray")
 
-    if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformarrayCsv")
+    if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformarray")
 
 
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(BatchCSVRecord))
-    resFuture flatMap { resp =>
-      process(reader.read(resp))
-    }
-  }
-
-  def transformarrayImage(DeploymentName: String,
-    VersionName: String,
-    ImageTransformName: String,
-    BatchImageRecord: BatchImageRecord)(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[BatchImageRecord]): Future[Base64NDArrayBody] = {
-    // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray")
-      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
-      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
-      replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
-
-    // query params
-    val queryParams = new mutable.HashMap[String, String]
-    val headerParams = new mutable.HashMap[String, String]
-
-    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformarrayImage")
-
-    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformarrayImage")
-
-    if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->transformarrayImage")
-
-    if (BatchImageRecord == null) throw new Exception("Missing required parameter 'BatchImageRecord' when calling DefaultApi->transformarrayImage")
-
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(BatchImageRecord))
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(BatchRecord))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -4631,11 +4419,11 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def transformincrementalarrayCsv(DeploymentName: String,
+  def transformincrementalarray(DeploymentName: String,
     VersionName: String,
     TransformName: String,
-    SingleCSVRecord: Option[SingleCSVRecord] = None
-    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[SingleCSVRecord]]): Future[Base64NDArrayBody] = {
+    SingleRecord: Option[ModelNull] = None
+    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[ModelNull]]): Future[Base64NDArrayBody] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -4646,42 +4434,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
-    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformincrementalarrayCsv")
+    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformincrementalarray")
 
-    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformincrementalarrayCsv")
+    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformincrementalarray")
 
-    if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformincrementalarrayCsv")
+    if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformincrementalarray")
 
 
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(SingleCSVRecord))
-    resFuture flatMap { resp =>
-      process(reader.read(resp))
-    }
-  }
-
-  def transformincrementalarrayImage(DeploymentName: String,
-    VersionName: String,
-    ImageTransformName: String,
-    SingleImageRecord: SingleImageRecord)(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[SingleImageRecord]): Future[Base64NDArrayBody] = {
-    // create path and map variables
-    val path = (addFmt("/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray")
-      replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
-      replaceAll("\\{" + "versionName" + "\\}", VersionName.toString)
-      replaceAll("\\{" + "imageTransformName" + "\\}", ImageTransformName.toString))
-
-    // query params
-    val queryParams = new mutable.HashMap[String, String]
-    val headerParams = new mutable.HashMap[String, String]
-
-    if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformincrementalarrayImage")
-
-    if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformincrementalarrayImage")
-
-    if (ImageTransformName == null) throw new Exception("Missing required parameter 'ImageTransformName' when calling DefaultApi->transformincrementalarrayImage")
-
-    if (SingleImageRecord == null) throw new Exception("Missing required parameter 'SingleImageRecord' when calling DefaultApi->transformincrementalarrayImage")
-
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(SingleImageRecord))
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(SingleRecord))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -4717,7 +4477,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def transformprocessGet(DeploymentName: String,
     VersionName: String,
-    TransformName: String)(implicit reader: ClientResponseReader[TransformProcess]): Future[TransformProcess] = {
+    TransformName: String)(implicit reader: ClientResponseReader[ModelNull]): Future[ModelNull] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -4744,8 +4504,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def transformprocessPost(DeploymentName: String,
     VersionName: String,
     TransformName: String,
-    TransformProcess: Option[TransformProcess] = None
-    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[Option[TransformProcess]]): Future[Unit] = {
+    TransformProcess: Option[ModelNull] = None
+    )(implicit reader: ClientResponseReader[ModelNull], writer: RequestWriter[Option[ModelNull]]): Future[ModelNull] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)

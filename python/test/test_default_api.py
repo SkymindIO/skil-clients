@@ -407,20 +407,6 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_imagetransformprocess_get(self):
-        """Test case for imagetransformprocess_get
-
-        Retrieves the image transform process JSON string  # noqa: E501
-        """
-        pass
-
-    def test_imagetransformprocess_post(self):
-        """Test case for imagetransformprocess_post
-
-        Sets the image transform process through the provided JSON string  # noqa: E501
-        """
-        pass
-
     def test_jsonarray(self):
         """Test case for jsonarray
 
@@ -589,17 +575,10 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_transformarray_csv(self):
-        """Test case for transformarray_csv
+    def test_transformarray(self):
+        """Test case for transformarray
 
         Takes a batch input arrays and transforms it  # noqa: E501
-        """
-        pass
-
-    def test_transformarray_image(self):
-        """Test case for transformarray_image
-
-        Takes a batch of images uri and transforms it and returns Base64NDArrayBody  # noqa: E501
         """
         pass
 
@@ -617,17 +596,10 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_transformincrementalarray_csv(self):
-        """Test case for transformincrementalarray_csv
+    def test_transformincrementalarray(self):
+        """Test case for transformincrementalarray
 
-        Same as /transformincremental but returns Base64NDArrayBody  # noqa: E501
-        """
-        pass
-
-    def test_transformincrementalarray_image(self):
-        """Test case for transformincrementalarray_image
-
-        Takes SingleImageRecord to transform and returns Base64NDArrayBody  # noqa: E501
+        Same as /transformincremental but returns Base64NDArrayBody.  # noqa: E501
         """
         pass
 
@@ -641,14 +613,14 @@ class TestDefaultApi(unittest.TestCase):
     def test_transformprocess_get(self):
         """Test case for transformprocess_get
 
-        Gets the JSON string of the deployed transform process  # noqa: E501
+        Gets the JSON string of the deployed transform process (CSV or Image)  # noqa: E501
         """
         pass
 
     def test_transformprocess_post(self):
         """Test case for transformprocess_post
 
-        Sets the deployed transform process through the provided JSON string  # noqa: E501
+        Sets the deployed (CSV or Image) transform process through the provided JSON string  # noqa: E501
         """
         pass
 

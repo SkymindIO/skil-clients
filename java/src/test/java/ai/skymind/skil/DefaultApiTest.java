@@ -22,7 +22,6 @@ import ai.skymind.skil.model.AggregatePrediction;
 import ai.skymind.skil.model.Base64NDArrayBody;
 import ai.skymind.skil.model.Base64NDArrayBodyKNN;
 import ai.skymind.skil.model.BatchCSVRecord;
-import ai.skymind.skil.model.BatchImageRecord;
 import ai.skymind.skil.model.BestModel;
 import ai.skymind.skil.model.ClassificationResult;
 import ai.skymind.skil.model.CreateDeploymentRequest;
@@ -37,7 +36,6 @@ import ai.skymind.skil.model.ExampleEntity;
 import ai.skymind.skil.model.ExperimentEntity;
 import java.io.File;
 import ai.skymind.skil.model.FileUploadList;
-import ai.skymind.skil.model.ImageTransformProcess;
 import ai.skymind.skil.model.ImportModelRequest;
 import ai.skymind.skil.model.InlineResponse200;
 import ai.skymind.skil.model.JobEntity;
@@ -62,9 +60,7 @@ import ai.skymind.skil.model.ResourceCredentials;
 import ai.skymind.skil.model.ResourceGroup;
 import ai.skymind.skil.model.SetState;
 import ai.skymind.skil.model.SingleCSVRecord;
-import ai.skymind.skil.model.SingleImageRecord;
 import ai.skymind.skil.model.Token;
-import ai.skymind.skil.model.TransformProcess;
 import ai.skymind.skil.model.UpdateBestModel;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -368,9 +364,9 @@ public class DefaultApiTest {
      */
     @Test
     public void createJobTest() throws ApiException {
-        String jobtype = null;
+        String jobIdOrType = null;
         CreateJobRequest createJobRequest = null;
-        JobEntity response = api.createJob(jobtype, createJobRequest);
+        JobEntity response = api.createJob(jobIdOrType, createJobRequest);
 
         // TODO: test validations
     }
@@ -435,8 +431,8 @@ public class DefaultApiTest {
      */
     @Test
     public void deleteJobByIdTest() throws ApiException {
-        Long jobId = null;
-        api.deleteJobById(jobId);
+        Long jobIdOrType = null;
+        api.deleteJobById(jobIdOrType);
 
         // TODO: test validations
     }
@@ -786,8 +782,8 @@ public class DefaultApiTest {
      */
     @Test
     public void getJobByIdTest() throws ApiException {
-        Long jobId = null;
-        JobEntity response = api.getJobById(jobId);
+        Long jobIdOrType = null;
+        JobEntity response = api.getJobById(jobIdOrType);
 
         // TODO: test validations
     }
@@ -982,43 +978,6 @@ public class DefaultApiTest {
     public void getResourcesFromGroupTest() throws ApiException {
         Long resourceGroupId = null;
         List<Resource> response = api.getResourcesFromGroup(resourceGroupId);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Retrieves the image transform process JSON string
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void imagetransformprocessGetTest() throws ApiException {
-        String deploymentName = null;
-        String versionName = null;
-        String imageTransformName = null;
-        ImageTransformProcess response = api.imagetransformprocessGet(deploymentName, versionName, imageTransformName);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Sets the image transform process through the provided JSON string
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void imagetransformprocessPostTest() throws ApiException {
-        String deploymentName = null;
-        String versionName = null;
-        String imageTransformName = null;
-        ImageTransformProcess body = null;
-        ImageTransformProcess response = api.imagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
 
         // TODO: test validations
     }
@@ -1464,37 +1423,18 @@ public class DefaultApiTest {
     /**
      * Takes a batch input arrays and transforms it
      *
-     * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     * 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void transformarrayCsvTest() throws ApiException {
+    public void transformarrayTest() throws ApiException {
         String deploymentName = null;
         String versionName = null;
         String transformName = null;
-        BatchCSVRecord batchCSVRecord = null;
-        Base64NDArrayBody response = api.transformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-     *
-     * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void transformarrayImageTest() throws ApiException {
-        String deploymentName = null;
-        String versionName = null;
-        String imageTransformName = null;
-        BatchImageRecord batchImageRecord = null;
-        Base64NDArrayBody response = api.transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
+        ERRORUNKNOWN batchRecord = null;
+        Base64NDArrayBody response = api.transformarray(deploymentName, versionName, transformName, batchRecord);
 
         // TODO: test validations
     }
@@ -1538,39 +1478,20 @@ public class DefaultApiTest {
     }
     
     /**
-     * Same as /transformincremental but returns Base64NDArrayBody
+     * Same as /transformincremental but returns Base64NDArrayBody.
      *
-     * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     * 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void transformincrementalarrayCsvTest() throws ApiException {
+    public void transformincrementalarrayTest() throws ApiException {
         String deploymentName = null;
         String versionName = null;
         String transformName = null;
-        SingleCSVRecord singleCSVRecord = null;
-        Base64NDArrayBody response = api.transformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Takes SingleImageRecord to transform and returns Base64NDArrayBody
-     *
-     * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void transformincrementalarrayImageTest() throws ApiException {
-        String deploymentName = null;
-        String versionName = null;
-        String imageTransformName = null;
-        SingleImageRecord singleImageRecord = null;
-        Base64NDArrayBody response = api.transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
+        ERRORUNKNOWN singleRecord = null;
+        Base64NDArrayBody response = api.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
 
         // TODO: test validations
     }
@@ -1595,9 +1516,9 @@ public class DefaultApiTest {
     }
     
     /**
-     * Gets the JSON string of the deployed transform process
+     * Gets the JSON string of the deployed transform process (CSV or Image)
      *
-     * Retrieves the JSON string of the deployed transform process 
+     * 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1607,15 +1528,15 @@ public class DefaultApiTest {
         String deploymentName = null;
         String versionName = null;
         String transformName = null;
-        TransformProcess response = api.transformprocessGet(deploymentName, versionName, transformName);
+        ERRORUNKNOWN response = api.transformprocessGet(deploymentName, versionName, transformName);
 
         // TODO: test validations
     }
     
     /**
-     * Sets the deployed transform process through the provided JSON string
+     * Sets the deployed (CSV or Image) transform process through the provided JSON string
      *
-     * Sets the transform process with the provided JSON string
+     * 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1625,8 +1546,8 @@ public class DefaultApiTest {
         String deploymentName = null;
         String versionName = null;
         String transformName = null;
-        TransformProcess transformProcess = null;
-        api.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+        ERRORUNKNOWN transformProcess = null;
+        ERRORUNKNOWN response = api.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
 
         // TODO: test validations
     }

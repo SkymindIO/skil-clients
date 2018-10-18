@@ -215,11 +215,11 @@ font-style: italic;
   <li><a href="#classify"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify</code></a></li>
   <li><a href="#classifyarray"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray</code></a></li>
   <li><a href="#classifyimage"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage</code></a></li>
-  <li><a href="#createJob"><code><span class="http-method">post</span> /jobs/{jobtype}</code></a></li>
+  <li><a href="#createJob"><code><span class="http-method">post</span> /jobs/{jobIdOrType}</code></a></li>
   <li><a href="#createModelHistory"><code><span class="http-method">post</span> /rpc/{modelHistoryServerId}/model/revisions</code></a></li>
   <li><a href="#deleteCredentialsById"><code><span class="http-method">delete</span> /resources/credentials/{credentialId}</code></a></li>
   <li><a href="#deleteExperiment"><code><span class="http-method">delete</span> /rpc/{modelHistoryServerId}/experiment/{experimentID}</code></a></li>
-  <li><a href="#deleteJobById"><code><span class="http-method">delete</span> /jobs/{jobId}</code></a></li>
+  <li><a href="#deleteJobById"><code><span class="http-method">delete</span> /jobs/{jobIdOrType}</code></a></li>
   <li><a href="#deleteModel"><code><span class="http-method">delete</span> /deployment/{deploymentId}/model/{modelId}</code></a></li>
   <li><a href="#deleteModelHistory"><code><span class="http-method">delete</span> /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}</code></a></li>
   <li><a href="#deleteModelInstance"><code><span class="http-method">delete</span> /rpc/{modelHistoryServerId}/model/{modelInstanceID}</code></a></li>
@@ -240,21 +240,19 @@ font-style: italic;
   <li><a href="#getExamplesForMinibatch"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/example/{minibatchId}</code></a></li>
   <li><a href="#getExperiment"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/experiment/{experimentID}</code></a></li>
   <li><a href="#getExperimentsForModelHistory"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/experiments/{modelHistoryID}</code></a></li>
-  <li><a href="#getJobById"><code><span class="http-method">get</span> /jobs/{jobId}</code></a></li>
+  <li><a href="#getJobById"><code><span class="http-method">get</span> /jobs/{jobIdOrType}</code></a></li>
   <li><a href="#getMinibatch"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}</code></a></li>
   <li><a href="#getModelHistory"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}</code></a></li>
   <li><a href="#getModelInstance"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/{modelInstanceID}</code></a></li>
   <li><a href="#getModelsForExperiment"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/experiment/{experimentID}/models</code></a></li>
   <li><a href="#getResourceById"><code><span class="http-method">get</span> /resources/resource/{resourceId}</code></a></li>
-  <li><a href="#getResourceBySubType"><code><span class="http-method">get</span> /resources/resources/type/{resourceSubType}</code></a></li>
+  <li><a href="#getResourceBySubType"><code><span class="http-method">get</span> /resources/resources/subtype/{resourceSubType}</code></a></li>
   <li><a href="#getResourceByType"><code><span class="http-method">get</span> /resources/resources/type/{resourceType}</code></a></li>
   <li><a href="#getResourceDetailsById"><code><span class="http-method">get</span> /resources/details/{resourceId}</code></a></li>
   <li><a href="#getResourceGroupById"><code><span class="http-method">get</span> /resources/group/{resourceGroupId}</code></a></li>
   <li><a href="#getResourceGroups"><code><span class="http-method">get</span> /resources/groups</code></a></li>
   <li><a href="#getResources"><code><span class="http-method">get</span> /resources/resources</code></a></li>
   <li><a href="#getResourcesFromGroup"><code><span class="http-method">get</span> /resources/group/{resourceGroupId}/resources</code></a></li>
-  <li><a href="#imagetransformprocessGet"><code><span class="http-method">get</span> /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess</code></a></li>
-  <li><a href="#imagetransformprocessPost"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess</code></a></li>
   <li><a href="#jsonarray"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray</code></a></li>
   <li><a href="#knn"><code><span class="http-method">post</span> /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn</code></a></li>
   <li><a href="#knnnew"><code><span class="http-method">post</span> /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew</code></a></li>
@@ -279,12 +277,10 @@ font-style: italic;
   <li><a href="#reimportModel"><code><span class="http-method">post</span> /deployment/{deploymentId}/model/{modelId}</code></a></li>
   <li><a href="#runAJob"><code><span class="http-method">post</span> /jobs/{jobId}/run</code></a></li>
   <li><a href="#transformCsv"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform</code></a></li>
-  <li><a href="#transformarrayCsv"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray</code></a></li>
-  <li><a href="#transformarrayImage"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray</code></a></li>
+  <li><a href="#transformarray"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray</code></a></li>
   <li><a href="#transformimage"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage</code></a></li>
   <li><a href="#transformincrementalCsv"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental</code></a></li>
-  <li><a href="#transformincrementalarrayCsv"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray</code></a></li>
-  <li><a href="#transformincrementalarrayImage"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray</code></a></li>
+  <li><a href="#transformincrementalarray"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray</code></a></li>
   <li><a href="#transformincrementalimage"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage</code></a></li>
   <li><a href="#transformprocessGet"><code><span class="http-method">get</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess</code></a></li>
   <li><a href="#transformprocessPost"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess</code></a></li>
@@ -1293,13 +1289,13 @@ font-style: italic;
   <div class="method"><a name="createJob"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /jobs/{jobtype}</code></pre></div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /jobs/{jobIdOrType}</code></pre></div>
     <div class="method-summary">Create a job (<span class="nickname">createJob</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">jobtype (required)</div>
+      <div class="param">jobIdOrType (required)</div>
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job Type </div>
     </div>  <!-- field-items -->
@@ -1506,13 +1502,13 @@ font-style: italic;
   <div class="method"><a name="deleteJobById"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /jobs/{jobId}</code></pre></div>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /jobs/{jobIdOrType}</code></pre></div>
     <div class="method-summary">Deletes a job given its ID (<span class="nickname">deleteJobById</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">jobId (required)</div>
+      <div class="param">jobIdOrType (required)</div>
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID format: int64</div>
     </div>  <!-- field-items -->
@@ -2813,13 +2809,13 @@ font-style: italic;
   <div class="method"><a name="getJobById"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /jobs/{jobId}</code></pre></div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /jobs/{jobIdOrType}</code></pre></div>
     <div class="method-summary">Get a job by its ID (<span class="nickname">getJobById</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">jobId (required)</div>
+      <div class="param">jobIdOrType (required)</div>
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID format: int64</div>
     </div>  <!-- field-items -->
@@ -3149,7 +3145,7 @@ font-style: italic;
   <div class="method"><a name="getResourceBySubType"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /resources/resources/type/{resourceSubType}</code></pre></div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /resources/resources/subtype/{resourceSubType}</code></pre></div>
     <div class="method-summary">Get all the resources with the specified resource subtype (<span class="nickname">getResourceBySubType</span>)</div>
     <div class="method-notes"></div>
 
@@ -3500,119 +3496,6 @@ object contains only general information (name, id, type, subtype).</div>
     <h4 class="field-label">200</h4>
     List of resources from a resource group
         
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="imagetransformprocessGet"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess</code></pre></div>
-    <div class="method-summary">Retrieves the image transform process JSON string (<span class="nickname">imagetransformprocessGet</span>)</div>
-    <div class="method-notes"></div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">deploymentName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">imageTransformName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed image transform </div>
-    </div>  <!-- field-items -->
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#ImageTransformProcess">ImageTransformProcess</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{ }</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Image transform process JSON successfully retrieved
-        <a href="#ImageTransformProcess">ImageTransformProcess</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="imagetransformprocessPost"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess</code></pre></div>
-    <div class="method-summary">Sets the image transform process through the provided JSON string (<span class="nickname">imagetransformprocessPost</span>)</div>
-    <div class="method-notes"></div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">deploymentName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">imageTransformName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed image transform </div>
-    </div>  <!-- field-items -->
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">body <a href="#ImageTransformProcess">ImageTransformProcess</a> (required)</div>
-
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The image transform process JSON </div>
-
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#ImageTransformProcess">ImageTransformProcess</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{ }</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Image transform process JSON successfully set
-        <a href="#ImageTransformProcess">ImageTransformProcess</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="jsonarray"/>
@@ -5219,12 +5102,12 @@ object contains only general information (name, id, type, subtype).</div>
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="transformarrayCsv"/>
+  <div class="method"><a name="transformarray"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray</code></pre></div>
-    <div class="method-summary">Takes a batch input arrays and transforms it (<span class="nickname">transformarrayCsv</span>)</div>
-    <div class="method-notes">Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody</div>
+    <div class="method-summary">Takes a batch input arrays and transforms it (<span class="nickname">transformarray</span>)</div>
+    <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -5245,72 +5128,7 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">BatchCSVRecord <a href="#BatchCSVRecord">BatchCSVRecord</a> (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input batch of record arrays </div>
-
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#Base64NDArrayBody">Base64NDArrayBody</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "ndarray" : "ndarray"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    array transformed and returned successfully
-        <a href="#Base64NDArrayBody">Base64NDArrayBody</a>
-    <h4 class="field-label">500</h4>
-    internal server error during transforming the array
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="transformarrayImage"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray</code></pre></div>
-    <div class="method-summary">Takes a batch of images uri and transforms it and returns Base64NDArrayBody (<span class="nickname">transformarrayImage</span>)</div>
-    <div class="method-notes">Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">deploymentName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">imageTransformName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed image transform </div>
-    </div>  <!-- field-items -->
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">BatchImageRecord <a href="#BatchImageRecord">BatchImageRecord</a> (required)</div>
+      <div class="param">BatchRecord  (optional)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input batch of record arrays </div>
 
@@ -5481,12 +5299,12 @@ object contains only general information (name, id, type, subtype).</div>
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="transformincrementalarrayCsv"/>
+  <div class="method"><a name="transformincrementalarray"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray</code></pre></div>
-    <div class="method-summary">Same as /transformincremental but returns Base64NDArrayBody (<span class="nickname">transformincrementalarrayCsv</span>)</div>
-    <div class="method-notes">Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody</div>
+    <div class="method-summary">Same as /transformincremental but returns Base64NDArrayBody. (<span class="nickname">transformincrementalarray</span>)</div>
+    <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -5507,72 +5325,7 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">SingleCSVRecord <a href="#SingleCSVRecord">SingleCSVRecord</a> (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input record array </div>
-
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#Base64NDArrayBody">Base64NDArrayBody</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "ndarray" : "ndarray"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    array transformed and returned successfully
-        <a href="#Base64NDArrayBody">Base64NDArrayBody</a>
-    <h4 class="field-label">500</h4>
-    internal server error during transforming the array
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="transformincrementalarrayImage"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray</code></pre></div>
-    <div class="method-summary">Takes SingleImageRecord to transform and returns Base64NDArrayBody (<span class="nickname">transformincrementalarrayImage</span>)</div>
-    <div class="method-notes">Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">deploymentName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">imageTransformName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed image transform </div>
-    </div>  <!-- field-items -->
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">SingleImageRecord <a href="#SingleImageRecord">SingleImageRecord</a> (required)</div>
+      <div class="param">SingleRecord  (optional)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input record array </div>
 
@@ -5682,8 +5435,8 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess</code></pre></div>
-    <div class="method-summary">Gets the JSON string of the deployed transform process (<span class="nickname">transformprocessGet</span>)</div>
-    <div class="method-notes">Retrieves the JSON string of the deployed transform process</div>
+    <div class="method-summary">Gets the JSON string of the deployed transform process (CSV or Image) (<span class="nickname">transformprocessGet</span>)</div>
+    <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -5701,17 +5454,12 @@ object contains only general information (name, id, type, subtype).</div>
 
 
 
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#TransformProcess">TransformProcess</a>
-      
-    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{ }</code></pre>
+    <pre class="example"><code>""</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -5723,7 +5471,7 @@ object contains only general information (name, id, type, subtype).</div>
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     the deployed transform process
-        <a href="#TransformProcess">TransformProcess</a>
+        <a href="#"></a>
     <h4 class="field-label">400</h4>
     the transform process is probably null
         <a href="#"></a>
@@ -5736,8 +5484,8 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess</code></pre></div>
-    <div class="method-summary">Sets the deployed transform process through the provided JSON string (<span class="nickname">transformprocessPost</span>)</div>
-    <div class="method-notes">Sets the transform process with the provided JSON string</div>
+    <div class="method-summary">Sets the deployed (CSV or Image) transform process through the provided JSON string (<span class="nickname">transformprocessPost</span>)</div>
+    <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -5758,7 +5506,7 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">TransformProcess <a href="#TransformProcess">TransformProcess</a> (optional)</div>
+      <div class="param">TransformProcess  (optional)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The transform process to set </div>
 
@@ -5770,6 +5518,9 @@ object contains only general information (name, id, type, subtype).</div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;

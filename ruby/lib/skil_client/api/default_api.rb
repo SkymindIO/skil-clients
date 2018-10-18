@@ -960,38 +960,38 @@ module SkilCient
       return data, status_code, headers
     end
     # Create a job
-    # @param jobtype Job Type
+    # @param job_id_or_type Job Type
     # @param create_job_request Create job request object
     # @param [Hash] opts the optional parameters
     # @return [JobEntity]
-    def create_job(jobtype, create_job_request, opts = {})
-      data, _status_code, _headers = create_job_with_http_info(jobtype, create_job_request, opts)
+    def create_job(job_id_or_type, create_job_request, opts = {})
+      data, _status_code, _headers = create_job_with_http_info(job_id_or_type, create_job_request, opts)
       data
     end
 
     # Create a job
-    # @param jobtype Job Type
+    # @param job_id_or_type Job Type
     # @param create_job_request Create job request object
     # @param [Hash] opts the optional parameters
     # @return [Array<(JobEntity, Fixnum, Hash)>] JobEntity data, response status code and response headers
-    def create_job_with_http_info(jobtype, create_job_request, opts = {})
+    def create_job_with_http_info(job_id_or_type, create_job_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.create_job ...'
       end
-      # verify the required parameter 'jobtype' is set
-      if @api_client.config.client_side_validation && jobtype.nil?
-        fail ArgumentError, "Missing the required parameter 'jobtype' when calling DefaultApi.create_job"
+      # verify the required parameter 'job_id_or_type' is set
+      if @api_client.config.client_side_validation && job_id_or_type.nil?
+        fail ArgumentError, "Missing the required parameter 'job_id_or_type' when calling DefaultApi.create_job"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['TRAINING', 'INFERENCE'].include?(jobtype)
-        fail ArgumentError, "invalid value for 'jobtype', must be one of TRAINING, INFERENCE"
+      if @api_client.config.client_side_validation && !['TRAINING', 'INFERENCE'].include?(job_id_or_type)
+        fail ArgumentError, "invalid value for 'job_id_or_type', must be one of TRAINING, INFERENCE"
       end
       # verify the required parameter 'create_job_request' is set
       if @api_client.config.client_side_validation && create_job_request.nil?
         fail ArgumentError, "Missing the required parameter 'create_job_request' when calling DefaultApi.create_job"
       end
       # resource path
-      local_var_path = '/jobs/{jobtype}'.sub('{' + 'jobtype' + '}', jobtype.to_s)
+      local_var_path = '/jobs/{jobIdOrType}'.sub('{' + 'jobIdOrType' + '}', job_id_or_type.to_s)
 
       # query parameters
       query_params = {}
@@ -1185,28 +1185,28 @@ module SkilCient
       return data, status_code, headers
     end
     # Deletes a job given its ID
-    # @param job_id Job ID
+    # @param job_id_or_type Job ID
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def delete_job_by_id(job_id, opts = {})
-      delete_job_by_id_with_http_info(job_id, opts)
+    def delete_job_by_id(job_id_or_type, opts = {})
+      delete_job_by_id_with_http_info(job_id_or_type, opts)
       nil
     end
 
     # Deletes a job given its ID
-    # @param job_id Job ID
+    # @param job_id_or_type Job ID
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def delete_job_by_id_with_http_info(job_id, opts = {})
+    def delete_job_by_id_with_http_info(job_id_or_type, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_job_by_id ...'
       end
-      # verify the required parameter 'job_id' is set
-      if @api_client.config.client_side_validation && job_id.nil?
-        fail ArgumentError, "Missing the required parameter 'job_id' when calling DefaultApi.delete_job_by_id"
+      # verify the required parameter 'job_id_or_type' is set
+      if @api_client.config.client_side_validation && job_id_or_type.nil?
+        fail ArgumentError, "Missing the required parameter 'job_id_or_type' when calling DefaultApi.delete_job_by_id"
       end
       # resource path
-      local_var_path = '/jobs/{jobId}'.sub('{' + 'jobId' + '}', job_id.to_s)
+      local_var_path = '/jobs/{jobIdOrType}'.sub('{' + 'jobIdOrType' + '}', job_id_or_type.to_s)
 
       # query parameters
       query_params = {}
@@ -2335,28 +2335,28 @@ module SkilCient
       return data, status_code, headers
     end
     # Get a job by its ID
-    # @param job_id Job ID
+    # @param job_id_or_type Job ID
     # @param [Hash] opts the optional parameters
     # @return [JobEntity]
-    def get_job_by_id(job_id, opts = {})
-      data, _status_code, _headers = get_job_by_id_with_http_info(job_id, opts)
+    def get_job_by_id(job_id_or_type, opts = {})
+      data, _status_code, _headers = get_job_by_id_with_http_info(job_id_or_type, opts)
       data
     end
 
     # Get a job by its ID
-    # @param job_id Job ID
+    # @param job_id_or_type Job ID
     # @param [Hash] opts the optional parameters
     # @return [Array<(JobEntity, Fixnum, Hash)>] JobEntity data, response status code and response headers
-    def get_job_by_id_with_http_info(job_id, opts = {})
+    def get_job_by_id_with_http_info(job_id_or_type, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_job_by_id ...'
       end
-      # verify the required parameter 'job_id' is set
-      if @api_client.config.client_side_validation && job_id.nil?
-        fail ArgumentError, "Missing the required parameter 'job_id' when calling DefaultApi.get_job_by_id"
+      # verify the required parameter 'job_id_or_type' is set
+      if @api_client.config.client_side_validation && job_id_or_type.nil?
+        fail ArgumentError, "Missing the required parameter 'job_id_or_type' when calling DefaultApi.get_job_by_id"
       end
       # resource path
-      local_var_path = '/jobs/{jobId}'.sub('{' + 'jobId' + '}', job_id.to_s)
+      local_var_path = '/jobs/{jobIdOrType}'.sub('{' + 'jobIdOrType' + '}', job_id_or_type.to_s)
 
       # query parameters
       query_params = {}
@@ -2684,7 +2684,7 @@ module SkilCient
         fail ArgumentError, "invalid value for 'resource_sub_type', must be one of EMR, S3, GoogleStorage, DataProc, HDInsight, AzureStorage, HDFS, YARN"
       end
       # resource path
-      local_var_path = '/resources/resources/type/{resourceSubType}'.sub('{' + 'resourceSubType' + '}', resource_sub_type.to_s)
+      local_var_path = '/resources/resources/subtype/{resourceSubType}'.sub('{' + 'resourceSubType' + '}', resource_sub_type.to_s)
 
       # query parameters
       query_params = {}
@@ -3002,140 +3002,6 @@ module SkilCient
         :return_type => 'Array<Resource>')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_resources_from_group\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-    # Retrieves the image transform process JSON string
-    # @param deployment_name Name of the deployment group
-    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-    # @param image_transform_name ID or name of the deployed image transform
-    # @param [Hash] opts the optional parameters
-    # @return [ImageTransformProcess]
-    def imagetransformprocess_get(deployment_name, version_name, image_transform_name, opts = {})
-      data, _status_code, _headers = imagetransformprocess_get_with_http_info(deployment_name, version_name, image_transform_name, opts)
-      data
-    end
-
-    # Retrieves the image transform process JSON string
-    # @param deployment_name Name of the deployment group
-    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-    # @param image_transform_name ID or name of the deployed image transform
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ImageTransformProcess, Fixnum, Hash)>] ImageTransformProcess data, response status code and response headers
-    def imagetransformprocess_get_with_http_info(deployment_name, version_name, image_transform_name, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.imagetransformprocess_get ...'
-      end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.imagetransformprocess_get"
-      end
-      # verify the required parameter 'version_name' is set
-      if @api_client.config.client_side_validation && version_name.nil?
-        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.imagetransformprocess_get"
-      end
-      # verify the required parameter 'image_transform_name' is set
-      if @api_client.config.client_side_validation && image_transform_name.nil?
-        fail ArgumentError, "Missing the required parameter 'image_transform_name' when calling DefaultApi.imagetransformprocess_get"
-      end
-      # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['api_key']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ImageTransformProcess')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#imagetransformprocess_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-    # Sets the image transform process through the provided JSON string
-    # @param deployment_name Name of the deployment group
-    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-    # @param image_transform_name ID or name of the deployed image transform
-    # @param body The image transform process JSON
-    # @param [Hash] opts the optional parameters
-    # @return [ImageTransformProcess]
-    def imagetransformprocess_post(deployment_name, version_name, image_transform_name, body, opts = {})
-      data, _status_code, _headers = imagetransformprocess_post_with_http_info(deployment_name, version_name, image_transform_name, body, opts)
-      data
-    end
-
-    # Sets the image transform process through the provided JSON string
-    # @param deployment_name Name of the deployment group
-    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-    # @param image_transform_name ID or name of the deployed image transform
-    # @param body The image transform process JSON
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ImageTransformProcess, Fixnum, Hash)>] ImageTransformProcess data, response status code and response headers
-    def imagetransformprocess_post_with_http_info(deployment_name, version_name, image_transform_name, body, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.imagetransformprocess_post ...'
-      end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.imagetransformprocess_post"
-      end
-      # verify the required parameter 'version_name' is set
-      if @api_client.config.client_side_validation && version_name.nil?
-        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.imagetransformprocess_post"
-      end
-      # verify the required parameter 'image_transform_name' is set
-      if @api_client.config.client_side_validation && image_transform_name.nil?
-        fail ArgumentError, "Missing the required parameter 'image_transform_name' when calling DefaultApi.imagetransformprocess_post"
-      end
-      # verify the required parameter 'body' is set
-      if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.imagetransformprocess_post"
-      end
-      # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(body)
-      auth_names = ['api_key']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ImageTransformProcess')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#imagetransformprocess_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4702,41 +4568,39 @@ module SkilCient
       return data, status_code, headers
     end
     # Takes a batch input arrays and transforms it
-    # Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [BatchCSVRecord] :batch_csv_record The input batch of record arrays
+    # @option opts [] :batch_record The input batch of record arrays
     # @return [Base64NDArrayBody]
-    def transformarray_csv(deployment_name, version_name, transform_name, opts = {})
-      data, _status_code, _headers = transformarray_csv_with_http_info(deployment_name, version_name, transform_name, opts)
+    def transformarray(deployment_name, version_name, transform_name, opts = {})
+      data, _status_code, _headers = transformarray_with_http_info(deployment_name, version_name, transform_name, opts)
       data
     end
 
     # Takes a batch input arrays and transforms it
-    # Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [BatchCSVRecord] :batch_csv_record The input batch of record arrays
+    # @option opts [] :batch_record The input batch of record arrays
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def transformarray_csv_with_http_info(deployment_name, version_name, transform_name, opts = {})
+    def transformarray_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.transformarray_csv ...'
+        @api_client.config.logger.debug 'Calling API: DefaultApi.transformarray ...'
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformarray_csv"
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformarray"
       end
       # verify the required parameter 'version_name' is set
       if @api_client.config.client_side_validation && version_name.nil?
-        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformarray_csv"
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformarray"
       end
       # verify the required parameter 'transform_name' is set
       if @api_client.config.client_side_validation && transform_name.nil?
-        fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformarray_csv"
+        fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformarray"
       end
       # resource path
       local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
@@ -4755,7 +4619,7 @@ module SkilCient
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(opts[:'batch_csv_record'])
+      post_body = @api_client.object_to_http_body(opts[:'batch_record'])
       auth_names = ['api_key']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -4765,79 +4629,7 @@ module SkilCient
         :auth_names => auth_names,
         :return_type => 'Base64NDArrayBody')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#transformarray_csv\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-    # Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-    # Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-    # @param deployment_name Name of the deployment group
-    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-    # @param image_transform_name ID or name of the deployed image transform
-    # @param batch_image_record The input batch of record arrays
-    # @param [Hash] opts the optional parameters
-    # @return [Base64NDArrayBody]
-    def transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record, opts = {})
-      data, _status_code, _headers = transformarray_image_with_http_info(deployment_name, version_name, image_transform_name, batch_image_record, opts)
-      data
-    end
-
-    # Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-    # Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-    # @param deployment_name Name of the deployment group
-    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-    # @param image_transform_name ID or name of the deployed image transform
-    # @param batch_image_record The input batch of record arrays
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def transformarray_image_with_http_info(deployment_name, version_name, image_transform_name, batch_image_record, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.transformarray_image ...'
-      end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformarray_image"
-      end
-      # verify the required parameter 'version_name' is set
-      if @api_client.config.client_side_validation && version_name.nil?
-        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformarray_image"
-      end
-      # verify the required parameter 'image_transform_name' is set
-      if @api_client.config.client_side_validation && image_transform_name.nil?
-        fail ArgumentError, "Missing the required parameter 'image_transform_name' when calling DefaultApi.transformarray_image"
-      end
-      # verify the required parameter 'batch_image_record' is set
-      if @api_client.config.client_side_validation && batch_image_record.nil?
-        fail ArgumentError, "Missing the required parameter 'batch_image_record' when calling DefaultApi.transformarray_image"
-      end
-      # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(batch_image_record)
-      auth_names = ['api_key']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Base64NDArrayBody')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#transformarray_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: DefaultApi#transformarray\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4982,42 +4774,40 @@ module SkilCient
       end
       return data, status_code, headers
     end
-    # Same as /transformincremental but returns Base64NDArrayBody
-    # Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # Same as /transformincremental but returns Base64NDArrayBody.
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [SingleCSVRecord] :single_csv_record The input record array
+    # @option opts [] :single_record The input record array
     # @return [Base64NDArrayBody]
-    def transformincrementalarray_csv(deployment_name, version_name, transform_name, opts = {})
-      data, _status_code, _headers = transformincrementalarray_csv_with_http_info(deployment_name, version_name, transform_name, opts)
+    def transformincrementalarray(deployment_name, version_name, transform_name, opts = {})
+      data, _status_code, _headers = transformincrementalarray_with_http_info(deployment_name, version_name, transform_name, opts)
       data
     end
 
-    # Same as /transformincremental but returns Base64NDArrayBody
-    # Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+    # Same as /transformincremental but returns Base64NDArrayBody.
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [SingleCSVRecord] :single_csv_record The input record array
+    # @option opts [] :single_record The input record array
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def transformincrementalarray_csv_with_http_info(deployment_name, version_name, transform_name, opts = {})
+    def transformincrementalarray_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.transformincrementalarray_csv ...'
+        @api_client.config.logger.debug 'Calling API: DefaultApi.transformincrementalarray ...'
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformincrementalarray_csv"
+        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformincrementalarray"
       end
       # verify the required parameter 'version_name' is set
       if @api_client.config.client_side_validation && version_name.nil?
-        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformincrementalarray_csv"
+        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformincrementalarray"
       end
       # verify the required parameter 'transform_name' is set
       if @api_client.config.client_side_validation && transform_name.nil?
-        fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformincrementalarray_csv"
+        fail ArgumentError, "Missing the required parameter 'transform_name' when calling DefaultApi.transformincrementalarray"
       end
       # resource path
       local_var_path = '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'transformName' + '}', transform_name.to_s)
@@ -5036,7 +4826,7 @@ module SkilCient
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(opts[:'single_csv_record'])
+      post_body = @api_client.object_to_http_body(opts[:'single_record'])
       auth_names = ['api_key']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -5046,79 +4836,7 @@ module SkilCient
         :auth_names => auth_names,
         :return_type => 'Base64NDArrayBody')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#transformincrementalarray_csv\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-    # Takes SingleImageRecord to transform and returns Base64NDArrayBody
-    # Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-    # @param deployment_name Name of the deployment group
-    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-    # @param image_transform_name ID or name of the deployed image transform
-    # @param single_image_record The input record array
-    # @param [Hash] opts the optional parameters
-    # @return [Base64NDArrayBody]
-    def transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record, opts = {})
-      data, _status_code, _headers = transformincrementalarray_image_with_http_info(deployment_name, version_name, image_transform_name, single_image_record, opts)
-      data
-    end
-
-    # Takes SingleImageRecord to transform and returns Base64NDArrayBody
-    # Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-    # @param deployment_name Name of the deployment group
-    # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-    # @param image_transform_name ID or name of the deployed image transform
-    # @param single_image_record The input record array
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
-    def transformincrementalarray_image_with_http_info(deployment_name, version_name, image_transform_name, single_image_record, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.transformincrementalarray_image ...'
-      end
-      # verify the required parameter 'deployment_name' is set
-      if @api_client.config.client_side_validation && deployment_name.nil?
-        fail ArgumentError, "Missing the required parameter 'deployment_name' when calling DefaultApi.transformincrementalarray_image"
-      end
-      # verify the required parameter 'version_name' is set
-      if @api_client.config.client_side_validation && version_name.nil?
-        fail ArgumentError, "Missing the required parameter 'version_name' when calling DefaultApi.transformincrementalarray_image"
-      end
-      # verify the required parameter 'image_transform_name' is set
-      if @api_client.config.client_side_validation && image_transform_name.nil?
-        fail ArgumentError, "Missing the required parameter 'image_transform_name' when calling DefaultApi.transformincrementalarray_image"
-      end
-      # verify the required parameter 'single_image_record' is set
-      if @api_client.config.client_side_validation && single_image_record.nil?
-        fail ArgumentError, "Missing the required parameter 'single_image_record' when calling DefaultApi.transformincrementalarray_image"
-      end
-      # resource path
-      local_var_path = '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'imageTransformName' + '}', image_transform_name.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(single_image_record)
-      auth_names = ['api_key']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Base64NDArrayBody')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#transformincrementalarray_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: DefaultApi#transformincrementalarray\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5195,25 +4913,23 @@ module SkilCient
       end
       return data, status_code, headers
     end
-    # Gets the JSON string of the deployed transform process
-    # Retrieves the JSON string of the deployed transform process 
+    # Gets the JSON string of the deployed transform process (CSV or Image)
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @return [TransformProcess]
+    # @return [nil]
     def transformprocess_get(deployment_name, version_name, transform_name, opts = {})
-      data, _status_code, _headers = transformprocess_get_with_http_info(deployment_name, version_name, transform_name, opts)
-      data
+      transformprocess_get_with_http_info(deployment_name, version_name, transform_name, opts)
+      nil
     end
 
-    # Gets the JSON string of the deployed transform process
-    # Retrieves the JSON string of the deployed transform process 
+    # Gets the JSON string of the deployed transform process (CSV or Image)
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @return [Array<(TransformProcess, Fixnum, Hash)>] TransformProcess data, response status code and response headers
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def transformprocess_get_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformprocess_get ...'
@@ -5252,33 +4968,30 @@ module SkilCient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'TransformProcess')
+        :auth_names => auth_names)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#transformprocess_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
-    # Sets the deployed transform process through the provided JSON string
-    # Sets the transform process with the provided JSON string
+    # Sets the deployed (CSV or Image) transform process through the provided JSON string
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [TransformProcess] :transform_process The transform process to set
+    # @option opts [] :transform_process The transform process to set
     # @return [nil]
     def transformprocess_post(deployment_name, version_name, transform_name, opts = {})
       transformprocess_post_with_http_info(deployment_name, version_name, transform_name, opts)
       nil
     end
 
-    # Sets the deployed transform process through the provided JSON string
-    # Sets the transform process with the provided JSON string
+    # Sets the deployed (CSV or Image) transform process through the provided JSON string
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [TransformProcess] :transform_process The transform process to set
+    # @option opts [] :transform_process The transform process to set
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def transformprocess_post_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging

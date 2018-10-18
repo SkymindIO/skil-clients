@@ -14,7 +14,6 @@ import ai.skymind.skil.client.model.AggregatePrediction;
 import ai.skymind.skil.client.model.Base64NDArrayBody;
 import ai.skymind.skil.client.model.Base64NDArrayBodyKNN;
 import ai.skymind.skil.client.model.BatchCSVRecord;
-import ai.skymind.skil.client.model.BatchImageRecord;
 import ai.skymind.skil.client.model.BestModel;
 import ai.skymind.skil.client.model.ClassificationResult;
 import ai.skymind.skil.client.model.CreateDeploymentRequest;
@@ -29,7 +28,6 @@ import ai.skymind.skil.client.model.ExampleEntity;
 import ai.skymind.skil.client.model.ExperimentEntity;
 import flash.filesystem.File;
 import ai.skymind.skil.client.model.FileUploadList;
-import ai.skymind.skil.client.model.ImageTransformProcess;
 import ai.skymind.skil.client.model.ImportModelRequest;
 import ai.skymind.skil.client.model.InlineResponse200;
 import ai.skymind.skil.client.model.JobEntity;
@@ -55,9 +53,7 @@ import ai.skymind.skil.client.model.ResourceCredentials;
 import ai.skymind.skil.client.model.ResourceGroup;
 import ai.skymind.skil.client.model.SetState;
 import ai.skymind.skil.client.model.SingleCSVRecord;
-import ai.skymind.skil.client.model.SingleImageRecord;
 import ai.skymind.skil.client.model.Token;
-import ai.skymind.skil.client.model.TransformProcess;
 import ai.skymind.skil.client.model.UpdateBestModel;
 
 import mx.rpc.AsyncToken;
@@ -129,8 +125,6 @@ public class DefaultApi extends SwaggerApi {
         public static const event_get_resource_groups: String = "get_resource_groups";
         public static const event_get_resources: String = "get_resources";
         public static const event_get_resources_from_group: String = "get_resources_from_group";
-        public static const event_imagetransformprocess_get: String = "imagetransformprocess_get";
-        public static const event_imagetransformprocess_post: String = "imagetransformprocess_post";
         public static const event_jsonarray: String = "jsonarray";
         public static const event_knn: String = "knn";
         public static const event_knnnew: String = "knnnew";
@@ -155,12 +149,10 @@ public class DefaultApi extends SwaggerApi {
         public static const event_reimport_model: String = "reimport_model";
         public static const event_run_a_job: String = "run_a_job";
         public static const event_transform_csv: String = "transform_csv";
-        public static const event_transformarray_csv: String = "transformarray_csv";
-        public static const event_transformarray_image: String = "transformarray_image";
+        public static const event_transformarray: String = "transformarray";
         public static const event_transformimage: String = "transformimage";
         public static const event_transformincremental_csv: String = "transformincremental_csv";
-        public static const event_transformincrementalarray_csv: String = "transformincrementalarray_csv";
-        public static const event_transformincrementalarray_image: String = "transformincrementalarray_image";
+        public static const event_transformincrementalarray: String = "transformincrementalarray";
         public static const event_transformincrementalimage: String = "transformincrementalimage";
         public static const event_transformprocess_get: String = "transformprocess_get";
         public static const event_transformprocess_post: String = "transformprocess_post";
@@ -729,9 +721,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns JobEntity 
      */
-    public function create_job (jobtype: String, createJobRequest: CreateJobRequest): String {
+    public function create_job (jobIdOrType: String, createJobRequest: CreateJobRequest): String {
         // create path and map variables
-        var path: String = "/jobs/{jobtype}".replace(/{format}/g,"xml").replace("{" + "jobtype" + "}", getApiInvoker().escapeString(jobtype));
+        var path: String = "/jobs/{jobIdOrType}".replace(/{format}/g,"xml").replace("{" + "jobIdOrType" + "}", getApiInvoker().escapeString(jobIdOrType));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -861,9 +853,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns void 
      */
-    public function delete_job_by_id (jobId: Number): String {
+    public function delete_job_by_id (jobIdOrType: Number): String {
         // create path and map variables
-        var path: String = "/jobs/{jobId}".replace(/{format}/g,"xml").replace("{" + "jobId" + "}", getApiInvoker().escapeString(jobId));
+        var path: String = "/jobs/{jobIdOrType}".replace(/{format}/g,"xml").replace("{" + "jobIdOrType" + "}", getApiInvoker().escapeString(jobIdOrType));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1551,9 +1543,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns JobEntity 
      */
-    public function get_job_by_id (jobId: Number): String {
+    public function get_job_by_id (jobIdOrType: Number): String {
         // create path and map variables
-        var path: String = "/jobs/{jobId}".replace(/{format}/g,"xml").replace("{" + "jobId" + "}", getApiInvoker().escapeString(jobId));
+        var path: String = "/jobs/{jobIdOrType}".replace(/{format}/g,"xml").replace("{" + "jobIdOrType" + "}", getApiInvoker().escapeString(jobIdOrType));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1749,7 +1741,7 @@ public class DefaultApi extends SwaggerApi {
      */
     public function get_resource_by_sub_type (resourceSubType: String): String {
         // create path and map variables
-        var path: String = "/resources/resources/type/{resourceSubType}".replace(/{format}/g,"xml").replace("{" + "resourceSubType" + "}", getApiInvoker().escapeString(resourceSubType));
+        var path: String = "/resources/resources/subtype/{resourceSubType}".replace(/{format}/g,"xml").replace("{" + "resourceSubType" + "}", getApiInvoker().escapeString(resourceSubType));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -1942,86 +1934,6 @@ public class DefaultApi extends SwaggerApi {
         token.completionEventType = "get_resources_from_group";
 
         token.returnType = Array;
-        return requestId;
-
-    }
-
-    /*
-     * Returns ImageTransformProcess 
-     */
-    public function imagetransformprocess_get (deploymentName: String, versionName: String, imageTransformName: String): String {
-        // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
-
-        // query params
-        var queryParams: Dictionary = new Dictionary();
-        var headerParams: Dictionary = new Dictionary();
-
-        // verify required params are set
-        if(        // verify required params are set
-        if(        // verify required params are set
-        if() {
-            throw new ApiError(400, "missing required params");
-        }
-) {
-            throw new ApiError(400, "missing required params");
-        }
-) {
-            throw new ApiError(400, "missing required params");
-        }
-
-        
-        
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
-
-        var requestId: String = getUniqueId();
-
-        token.requestId = requestId;
-        token.completionEventType = "imagetransformprocess_get";
-
-        token.returnType = ImageTransformProcess;
-        return requestId;
-
-    }
-
-    /*
-     * Returns ImageTransformProcess 
-     */
-    public function imagetransformprocess_post (deploymentName: String, versionName: String, imageTransformName: String, body: ImageTransformProcess): String {
-        // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
-
-        // query params
-        var queryParams: Dictionary = new Dictionary();
-        var headerParams: Dictionary = new Dictionary();
-
-        // verify required params are set
-        if(        // verify required params are set
-        if(        // verify required params are set
-        if(        // verify required params are set
-        if() {
-            throw new ApiError(400, "missing required params");
-        }
-) {
-            throw new ApiError(400, "missing required params");
-        }
-) {
-            throw new ApiError(400, "missing required params");
-        }
-) {
-            throw new ApiError(400, "missing required params");
-        }
-
-        
-        
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, body, headerParams);
-
-        var requestId: String = getUniqueId();
-
-        token.requestId = requestId;
-        token.completionEventType = "imagetransformprocess_post";
-
-        token.returnType = ImageTransformProcess;
         return requestId;
 
     }
@@ -2965,7 +2877,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformarray_csv (deploymentName: String, versionName: String, transformName: String, batchCSVRecord: BatchCSVRecord): String {
+    public function transformarray (deploymentName: String, versionName: String, transformName: String, batchRecord: ERRORUNKNOWN): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
@@ -2992,54 +2904,12 @@ public class DefaultApi extends SwaggerApi {
 
         
         
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, batchCSVRecord, headerParams);
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, batchRecord, headerParams);
 
         var requestId: String = getUniqueId();
 
         token.requestId = requestId;
-        token.completionEventType = "transformarray_csv";
-
-        token.returnType = Base64NDArrayBody;
-        return requestId;
-
-    }
-
-    /*
-     * Returns Base64NDArrayBody 
-     */
-    public function transformarray_image (deploymentName: String, versionName: String, imageTransformName: String, batchImageRecord: BatchImageRecord): String {
-        // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
-
-        // query params
-        var queryParams: Dictionary = new Dictionary();
-        var headerParams: Dictionary = new Dictionary();
-
-        // verify required params are set
-        if(        // verify required params are set
-        if(        // verify required params are set
-        if(        // verify required params are set
-        if() {
-            throw new ApiError(400, "missing required params");
-        }
-) {
-            throw new ApiError(400, "missing required params");
-        }
-) {
-            throw new ApiError(400, "missing required params");
-        }
-) {
-            throw new ApiError(400, "missing required params");
-        }
-
-        
-        
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, batchImageRecord, headerParams);
-
-        var requestId: String = getUniqueId();
-
-        token.requestId = requestId;
-        token.completionEventType = "transformarray_image";
+        token.completionEventType = "transformarray";
 
         token.returnType = Base64NDArrayBody;
         return requestId;
@@ -3133,7 +3003,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformincrementalarray_csv (deploymentName: String, versionName: String, transformName: String, singleCSVRecord: SingleCSVRecord): String {
+    public function transformincrementalarray (deploymentName: String, versionName: String, transformName: String, singleRecord: ERRORUNKNOWN): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
@@ -3160,54 +3030,12 @@ public class DefaultApi extends SwaggerApi {
 
         
         
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, singleCSVRecord, headerParams);
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, singleRecord, headerParams);
 
         var requestId: String = getUniqueId();
 
         token.requestId = requestId;
-        token.completionEventType = "transformincrementalarray_csv";
-
-        token.returnType = Base64NDArrayBody;
-        return requestId;
-
-    }
-
-    /*
-     * Returns Base64NDArrayBody 
-     */
-    public function transformincrementalarray_image (deploymentName: String, versionName: String, imageTransformName: String, singleImageRecord: SingleImageRecord): String {
-        // create path and map variables
-        var path: String = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "imageTransformName" + "}", getApiInvoker().escapeString(imageTransformName));
-
-        // query params
-        var queryParams: Dictionary = new Dictionary();
-        var headerParams: Dictionary = new Dictionary();
-
-        // verify required params are set
-        if(        // verify required params are set
-        if(        // verify required params are set
-        if(        // verify required params are set
-        if() {
-            throw new ApiError(400, "missing required params");
-        }
-) {
-            throw new ApiError(400, "missing required params");
-        }
-) {
-            throw new ApiError(400, "missing required params");
-        }
-) {
-            throw new ApiError(400, "missing required params");
-        }
-
-        
-        
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, singleImageRecord, headerParams);
-
-        var requestId: String = getUniqueId();
-
-        token.requestId = requestId;
-        token.completionEventType = "transformincrementalarray_image";
+        token.completionEventType = "transformincrementalarray";
 
         token.returnType = Base64NDArrayBody;
         return requestId;
@@ -3257,7 +3085,7 @@ public class DefaultApi extends SwaggerApi {
     }
 
     /*
-     * Returns TransformProcess 
+     * Returns ERRORUNKNOWN 
      */
     public function transformprocess_get (deploymentName: String, versionName: String, transformName: String): String {
         // create path and map variables
@@ -3289,15 +3117,15 @@ public class DefaultApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "transformprocess_get";
 
-        token.returnType = TransformProcess;
+        token.returnType = ERRORUNKNOWN;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns ERRORUNKNOWN 
      */
-    public function transformprocess_post (deploymentName: String, versionName: String, transformName: String, transformProcess: TransformProcess): String {
+    public function transformprocess_post (deploymentName: String, versionName: String, transformName: String, transformProcess: ERRORUNKNOWN): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
@@ -3331,7 +3159,7 @@ public class DefaultApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "transformprocess_post";
 
-        token.returnType = null ;
+        token.returnType = ERRORUNKNOWN;
         return requestId;
 
     }

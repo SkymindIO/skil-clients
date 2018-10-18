@@ -1729,16 +1729,16 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_job(self, jobtype, create_job_request, **kwargs):  # noqa: E501
+    def create_job(self, job_id_or_type, create_job_request, **kwargs):  # noqa: E501
         """Create a job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_job(jobtype, create_job_request, async=True)
+        >>> thread = api.create_job(job_id_or_type, create_job_request, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str jobtype: Job Type (required)
+        :param str job_id_or_type: Job Type (required)
         :param CreateJobRequest create_job_request: Create job request object (required)
         :return: JobEntity
                  If the method is called asynchronously,
@@ -1746,28 +1746,28 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.create_job_with_http_info(jobtype, create_job_request, **kwargs)  # noqa: E501
+            return self.create_job_with_http_info(job_id_or_type, create_job_request, **kwargs)  # noqa: E501
         else:
-            (data) = self.create_job_with_http_info(jobtype, create_job_request, **kwargs)  # noqa: E501
+            (data) = self.create_job_with_http_info(job_id_or_type, create_job_request, **kwargs)  # noqa: E501
             return data
 
-    def create_job_with_http_info(self, jobtype, create_job_request, **kwargs):  # noqa: E501
+    def create_job_with_http_info(self, job_id_or_type, create_job_request, **kwargs):  # noqa: E501
         """Create a job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_job_with_http_info(jobtype, create_job_request, async=True)
+        >>> thread = api.create_job_with_http_info(job_id_or_type, create_job_request, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str jobtype: Job Type (required)
+        :param str job_id_or_type: Job Type (required)
         :param CreateJobRequest create_job_request: Create job request object (required)
         :return: JobEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['jobtype', 'create_job_request']  # noqa: E501
+        all_params = ['job_id_or_type', 'create_job_request']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1782,10 +1782,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'jobtype' is set
-        if ('jobtype' not in params or
-                params['jobtype'] is None):
-            raise ValueError("Missing the required parameter `jobtype` when calling `create_job`")  # noqa: E501
+        # verify the required parameter 'job_id_or_type' is set
+        if ('job_id_or_type' not in params or
+                params['job_id_or_type'] is None):
+            raise ValueError("Missing the required parameter `job_id_or_type` when calling `create_job`")  # noqa: E501
         # verify the required parameter 'create_job_request' is set
         if ('create_job_request' not in params or
                 params['create_job_request'] is None):
@@ -1794,8 +1794,8 @@ class DefaultApi(object):
         collection_formats = {}
 
         path_params = {}
-        if 'jobtype' in params:
-            path_params['jobtype'] = params['jobtype']  # noqa: E501
+        if 'job_id_or_type' in params:
+            path_params['jobIdOrType'] = params['job_id_or_type']  # noqa: E501
 
         query_params = []
 
@@ -1819,7 +1819,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/jobs/{jobtype}', 'POST',
+            '/jobs/{jobIdOrType}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -2133,43 +2133,43 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def delete_job_by_id(self, job_id, **kwargs):  # noqa: E501
+    def delete_job_by_id(self, job_id_or_type, **kwargs):  # noqa: E501
         """Deletes a job given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_job_by_id(job_id, async=True)
+        >>> thread = api.delete_job_by_id(job_id_or_type, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param int job_id: Job ID (required)
+        :param int job_id_or_type: Job ID (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.delete_job_by_id_with_http_info(job_id, **kwargs)  # noqa: E501
+            return self.delete_job_by_id_with_http_info(job_id_or_type, **kwargs)  # noqa: E501
         else:
-            (data) = self.delete_job_by_id_with_http_info(job_id, **kwargs)  # noqa: E501
+            (data) = self.delete_job_by_id_with_http_info(job_id_or_type, **kwargs)  # noqa: E501
             return data
 
-    def delete_job_by_id_with_http_info(self, job_id, **kwargs):  # noqa: E501
+    def delete_job_by_id_with_http_info(self, job_id_or_type, **kwargs):  # noqa: E501
         """Deletes a job given its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_job_by_id_with_http_info(job_id, async=True)
+        >>> thread = api.delete_job_by_id_with_http_info(job_id_or_type, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param int job_id: Job ID (required)
+        :param int job_id_or_type: Job ID (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['job_id']  # noqa: E501
+        all_params = ['job_id_or_type']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2184,16 +2184,16 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'job_id' is set
-        if ('job_id' not in params or
-                params['job_id'] is None):
-            raise ValueError("Missing the required parameter `job_id` when calling `delete_job_by_id`")  # noqa: E501
+        # verify the required parameter 'job_id_or_type' is set
+        if ('job_id_or_type' not in params or
+                params['job_id_or_type'] is None):
+            raise ValueError("Missing the required parameter `job_id_or_type` when calling `delete_job_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'job_id' in params:
-            path_params['jobId'] = params['job_id']  # noqa: E501
+        if 'job_id_or_type' in params:
+            path_params['jobIdOrType'] = params['job_id_or_type']  # noqa: E501
 
         query_params = []
 
@@ -2211,7 +2211,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/jobs/{jobId}', 'DELETE',
+            '/jobs/{jobIdOrType}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -4226,43 +4226,43 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_job_by_id(self, job_id, **kwargs):  # noqa: E501
+    def get_job_by_id(self, job_id_or_type, **kwargs):  # noqa: E501
         """Get a job by its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_job_by_id(job_id, async=True)
+        >>> thread = api.get_job_by_id(job_id_or_type, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param int job_id: Job ID (required)
+        :param int job_id_or_type: Job ID (required)
         :return: JobEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_job_by_id_with_http_info(job_id, **kwargs)  # noqa: E501
+            return self.get_job_by_id_with_http_info(job_id_or_type, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_job_by_id_with_http_info(job_id, **kwargs)  # noqa: E501
+            (data) = self.get_job_by_id_with_http_info(job_id_or_type, **kwargs)  # noqa: E501
             return data
 
-    def get_job_by_id_with_http_info(self, job_id, **kwargs):  # noqa: E501
+    def get_job_by_id_with_http_info(self, job_id_or_type, **kwargs):  # noqa: E501
         """Get a job by its ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_job_by_id_with_http_info(job_id, async=True)
+        >>> thread = api.get_job_by_id_with_http_info(job_id_or_type, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param int job_id: Job ID (required)
+        :param int job_id_or_type: Job ID (required)
         :return: JobEntity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['job_id']  # noqa: E501
+        all_params = ['job_id_or_type']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4277,16 +4277,16 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'job_id' is set
-        if ('job_id' not in params or
-                params['job_id'] is None):
-            raise ValueError("Missing the required parameter `job_id` when calling `get_job_by_id`")  # noqa: E501
+        # verify the required parameter 'job_id_or_type' is set
+        if ('job_id_or_type' not in params or
+                params['job_id_or_type'] is None):
+            raise ValueError("Missing the required parameter `job_id_or_type` when calling `get_job_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'job_id' in params:
-            path_params['jobId'] = params['job_id']  # noqa: E501
+        if 'job_id_or_type' in params:
+            path_params['jobIdOrType'] = params['job_id_or_type']  # noqa: E501
 
         query_params = []
 
@@ -4304,7 +4304,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/jobs/{jobId}', 'GET',
+            '/jobs/{jobIdOrType}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -4894,7 +4894,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/resources/resources/type/{resourceSubType}', 'GET',
+            '/resources/resources/subtype/{resourceSubType}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -5446,240 +5446,6 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='list[Resource]',  # noqa: E501
-            auth_settings=auth_settings,
-            async=params.get('async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def imagetransformprocess_get(self, deployment_name, version_name, image_transform_name, **kwargs):  # noqa: E501
-        """Retrieves the image transform process JSON string  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.imagetransformprocess_get(deployment_name, version_name, image_transform_name, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
-        :param str image_transform_name: ID or name of the deployed image transform (required)
-        :return: ImageTransformProcess
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
-            return self.imagetransformprocess_get_with_http_info(deployment_name, version_name, image_transform_name, **kwargs)  # noqa: E501
-        else:
-            (data) = self.imagetransformprocess_get_with_http_info(deployment_name, version_name, image_transform_name, **kwargs)  # noqa: E501
-            return data
-
-    def imagetransformprocess_get_with_http_info(self, deployment_name, version_name, image_transform_name, **kwargs):  # noqa: E501
-        """Retrieves the image transform process JSON string  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.imagetransformprocess_get_with_http_info(deployment_name, version_name, image_transform_name, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
-        :param str image_transform_name: ID or name of the deployed image transform (required)
-        :return: ImageTransformProcess
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['deployment_name', 'version_name', 'image_transform_name']  # noqa: E501
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method imagetransformprocess_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `imagetransformprocess_get`")  # noqa: E501
-        # verify the required parameter 'version_name' is set
-        if ('version_name' not in params or
-                params['version_name'] is None):
-            raise ValueError("Missing the required parameter `version_name` when calling `imagetransformprocess_get`")  # noqa: E501
-        # verify the required parameter 'image_transform_name' is set
-        if ('image_transform_name' not in params or
-                params['image_transform_name'] is None):
-            raise ValueError("Missing the required parameter `image_transform_name` when calling `imagetransformprocess_get`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'version_name' in params:
-            path_params['versionName'] = params['version_name']  # noqa: E501
-        if 'image_transform_name' in params:
-            path_params['imageTransformName'] = params['image_transform_name']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ImageTransformProcess',  # noqa: E501
-            auth_settings=auth_settings,
-            async=params.get('async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def imagetransformprocess_post(self, deployment_name, version_name, image_transform_name, body, **kwargs):  # noqa: E501
-        """Sets the image transform process through the provided JSON string  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.imagetransformprocess_post(deployment_name, version_name, image_transform_name, body, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
-        :param str image_transform_name: ID or name of the deployed image transform (required)
-        :param ImageTransformProcess body: The image transform process JSON (required)
-        :return: ImageTransformProcess
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
-            return self.imagetransformprocess_post_with_http_info(deployment_name, version_name, image_transform_name, body, **kwargs)  # noqa: E501
-        else:
-            (data) = self.imagetransformprocess_post_with_http_info(deployment_name, version_name, image_transform_name, body, **kwargs)  # noqa: E501
-            return data
-
-    def imagetransformprocess_post_with_http_info(self, deployment_name, version_name, image_transform_name, body, **kwargs):  # noqa: E501
-        """Sets the image transform process through the provided JSON string  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.imagetransformprocess_post_with_http_info(deployment_name, version_name, image_transform_name, body, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
-        :param str image_transform_name: ID or name of the deployed image transform (required)
-        :param ImageTransformProcess body: The image transform process JSON (required)
-        :return: ImageTransformProcess
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['deployment_name', 'version_name', 'image_transform_name', 'body']  # noqa: E501
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method imagetransformprocess_post" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `imagetransformprocess_post`")  # noqa: E501
-        # verify the required parameter 'version_name' is set
-        if ('version_name' not in params or
-                params['version_name'] is None):
-            raise ValueError("Missing the required parameter `version_name` when calling `imagetransformprocess_post`")  # noqa: E501
-        # verify the required parameter 'image_transform_name' is set
-        if ('image_transform_name' not in params or
-                params['image_transform_name'] is None):
-            raise ValueError("Missing the required parameter `image_transform_name` when calling `imagetransformprocess_post`")  # noqa: E501
-        # verify the required parameter 'body' is set
-        if ('body' not in params or
-                params['body'] is None):
-            raise ValueError("Missing the required parameter `body` when calling `imagetransformprocess_post`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'version_name' in params:
-            path_params['versionName'] = params['version_name']  # noqa: E501
-        if 'image_transform_name' in params:
-            path_params['imageTransformName'] = params['image_transform_name']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ImageTransformProcess',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -8423,51 +8189,49 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transformarray_csv(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
+    def transformarray(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Takes a batch input arrays and transforms it  # noqa: E501
 
-        Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformarray_csv(deployment_name, version_name, transform_name, async=True)
+        >>> thread = api.transformarray(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param BatchCSVRecord batch_csv_record: The input batch of record arrays
+        :param ERRORUNKNOWN batch_record: The input batch of record arrays
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transformarray_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
+            return self.transformarray_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.transformarray_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
+            (data) = self.transformarray_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
             return data
 
-    def transformarray_csv_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
+    def transformarray_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
         """Takes a batch input arrays and transforms it  # noqa: E501
 
-        Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformarray_csv_with_http_info(deployment_name, version_name, transform_name, async=True)
+        >>> thread = api.transformarray_with_http_info(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param BatchCSVRecord batch_csv_record: The input batch of record arrays
+        :param ERRORUNKNOWN batch_record: The input batch of record arrays
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'version_name', 'transform_name', 'batch_csv_record']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'transform_name', 'batch_record']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8478,22 +8242,22 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method transformarray_csv" % key
+                    " to method transformarray" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'deployment_name' is set
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `transformarray_csv`")  # noqa: E501
+            raise ValueError("Missing the required parameter `deployment_name` when calling `transformarray`")  # noqa: E501
         # verify the required parameter 'version_name' is set
         if ('version_name' not in params or
                 params['version_name'] is None):
-            raise ValueError("Missing the required parameter `version_name` when calling `transformarray_csv`")  # noqa: E501
+            raise ValueError("Missing the required parameter `version_name` when calling `transformarray`")  # noqa: E501
         # verify the required parameter 'transform_name' is set
         if ('transform_name' not in params or
                 params['transform_name'] is None):
-            raise ValueError("Missing the required parameter `transform_name` when calling `transformarray_csv`")  # noqa: E501
+            raise ValueError("Missing the required parameter `transform_name` when calling `transformarray`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8513,8 +8277,8 @@ class DefaultApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'batch_csv_record' in params:
-            body_params = params['batch_csv_record']
+        if 'batch_record' in params:
+            body_params = params['batch_record']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -8528,129 +8292,6 @@ class DefaultApi(object):
 
         return self.api_client.call_api(
             '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Base64NDArrayBody',  # noqa: E501
-            auth_settings=auth_settings,
-            async=params.get('async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def transformarray_image(self, deployment_name, version_name, image_transform_name, batch_image_record, **kwargs):  # noqa: E501
-        """Takes a batch of images uri and transforms it and returns Base64NDArrayBody  # noqa: E501
-
-        Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
-        :param str image_transform_name: ID or name of the deployed image transform (required)
-        :param BatchImageRecord batch_image_record: The input batch of record arrays (required)
-        :return: Base64NDArrayBody
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
-            return self.transformarray_image_with_http_info(deployment_name, version_name, image_transform_name, batch_image_record, **kwargs)  # noqa: E501
-        else:
-            (data) = self.transformarray_image_with_http_info(deployment_name, version_name, image_transform_name, batch_image_record, **kwargs)  # noqa: E501
-            return data
-
-    def transformarray_image_with_http_info(self, deployment_name, version_name, image_transform_name, batch_image_record, **kwargs):  # noqa: E501
-        """Takes a batch of images uri and transforms it and returns Base64NDArrayBody  # noqa: E501
-
-        Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformarray_image_with_http_info(deployment_name, version_name, image_transform_name, batch_image_record, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
-        :param str image_transform_name: ID or name of the deployed image transform (required)
-        :param BatchImageRecord batch_image_record: The input batch of record arrays (required)
-        :return: Base64NDArrayBody
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['deployment_name', 'version_name', 'image_transform_name', 'batch_image_record']  # noqa: E501
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method transformarray_image" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `transformarray_image`")  # noqa: E501
-        # verify the required parameter 'version_name' is set
-        if ('version_name' not in params or
-                params['version_name'] is None):
-            raise ValueError("Missing the required parameter `version_name` when calling `transformarray_image`")  # noqa: E501
-        # verify the required parameter 'image_transform_name' is set
-        if ('image_transform_name' not in params or
-                params['image_transform_name'] is None):
-            raise ValueError("Missing the required parameter `image_transform_name` when calling `transformarray_image`")  # noqa: E501
-        # verify the required parameter 'batch_image_record' is set
-        if ('batch_image_record' not in params or
-                params['batch_image_record'] is None):
-            raise ValueError("Missing the required parameter `batch_image_record` when calling `transformarray_image`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'version_name' in params:
-            path_params['versionName'] = params['version_name']  # noqa: E501
-        if 'image_transform_name' in params:
-            path_params['imageTransformName'] = params['image_transform_name']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'batch_image_record' in params:
-            body_params = params['batch_image_record']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -8908,51 +8549,49 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def transformincrementalarray_csv(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
-        """Same as /transformincremental but returns Base64NDArrayBody  # noqa: E501
+    def transformincrementalarray(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
+        """Same as /transformincremental but returns Base64NDArrayBody.  # noqa: E501
 
-        Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincrementalarray_csv(deployment_name, version_name, transform_name, async=True)
+        >>> thread = api.transformincrementalarray(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param SingleCSVRecord single_csv_record: The input record array
+        :param ERRORUNKNOWN single_record: The input record array
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.transformincrementalarray_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
+            return self.transformincrementalarray_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.transformincrementalarray_csv_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
+            (data) = self.transformincrementalarray_with_http_info(deployment_name, version_name, transform_name, **kwargs)  # noqa: E501
             return data
 
-    def transformincrementalarray_csv_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
-        """Same as /transformincremental but returns Base64NDArrayBody  # noqa: E501
+    def transformincrementalarray_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
+        """Same as /transformincremental but returns Base64NDArrayBody.  # noqa: E501
 
-        Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincrementalarray_csv_with_http_info(deployment_name, version_name, transform_name, async=True)
+        >>> thread = api.transformincrementalarray_with_http_info(deployment_name, version_name, transform_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param SingleCSVRecord single_csv_record: The input record array
+        :param ERRORUNKNOWN single_record: The input record array
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'version_name', 'transform_name', 'single_csv_record']  # noqa: E501
+        all_params = ['deployment_name', 'version_name', 'transform_name', 'single_record']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8963,22 +8602,22 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method transformincrementalarray_csv" % key
+                    " to method transformincrementalarray" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'deployment_name' is set
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `transformincrementalarray_csv`")  # noqa: E501
+            raise ValueError("Missing the required parameter `deployment_name` when calling `transformincrementalarray`")  # noqa: E501
         # verify the required parameter 'version_name' is set
         if ('version_name' not in params or
                 params['version_name'] is None):
-            raise ValueError("Missing the required parameter `version_name` when calling `transformincrementalarray_csv`")  # noqa: E501
+            raise ValueError("Missing the required parameter `version_name` when calling `transformincrementalarray`")  # noqa: E501
         # verify the required parameter 'transform_name' is set
         if ('transform_name' not in params or
                 params['transform_name'] is None):
-            raise ValueError("Missing the required parameter `transform_name` when calling `transformincrementalarray_csv`")  # noqa: E501
+            raise ValueError("Missing the required parameter `transform_name` when calling `transformincrementalarray`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8998,8 +8637,8 @@ class DefaultApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'single_csv_record' in params:
-            body_params = params['single_csv_record']
+        if 'single_record' in params:
+            body_params = params['single_record']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -9013,129 +8652,6 @@ class DefaultApi(object):
 
         return self.api_client.call_api(
             '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Base64NDArrayBody',  # noqa: E501
-            auth_settings=auth_settings,
-            async=params.get('async'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def transformincrementalarray_image(self, deployment_name, version_name, image_transform_name, single_image_record, **kwargs):  # noqa: E501
-        """Takes SingleImageRecord to transform and returns Base64NDArrayBody  # noqa: E501
-
-        Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
-        :param str image_transform_name: ID or name of the deployed image transform (required)
-        :param SingleImageRecord single_image_record: The input record array (required)
-        :return: Base64NDArrayBody
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
-            return self.transformincrementalarray_image_with_http_info(deployment_name, version_name, image_transform_name, single_image_record, **kwargs)  # noqa: E501
-        else:
-            (data) = self.transformincrementalarray_image_with_http_info(deployment_name, version_name, image_transform_name, single_image_record, **kwargs)  # noqa: E501
-            return data
-
-    def transformincrementalarray_image_with_http_info(self, deployment_name, version_name, image_transform_name, single_image_record, **kwargs):  # noqa: E501
-        """Takes SingleImageRecord to transform and returns Base64NDArrayBody  # noqa: E501
-
-        Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.transformincrementalarray_image_with_http_info(deployment_name, version_name, image_transform_name, single_image_record, async=True)
-        >>> result = thread.get()
-
-        :param async bool
-        :param str deployment_name: Name of the deployment group (required)
-        :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
-        :param str image_transform_name: ID or name of the deployed image transform (required)
-        :param SingleImageRecord single_image_record: The input record array (required)
-        :return: Base64NDArrayBody
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['deployment_name', 'version_name', 'image_transform_name', 'single_image_record']  # noqa: E501
-        all_params.append('async')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method transformincrementalarray_image" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'deployment_name' is set
-        if ('deployment_name' not in params or
-                params['deployment_name'] is None):
-            raise ValueError("Missing the required parameter `deployment_name` when calling `transformincrementalarray_image`")  # noqa: E501
-        # verify the required parameter 'version_name' is set
-        if ('version_name' not in params or
-                params['version_name'] is None):
-            raise ValueError("Missing the required parameter `version_name` when calling `transformincrementalarray_image`")  # noqa: E501
-        # verify the required parameter 'image_transform_name' is set
-        if ('image_transform_name' not in params or
-                params['image_transform_name'] is None):
-            raise ValueError("Missing the required parameter `image_transform_name` when calling `transformincrementalarray_image`")  # noqa: E501
-        # verify the required parameter 'single_image_record' is set
-        if ('single_image_record' not in params or
-                params['single_image_record'] is None):
-            raise ValueError("Missing the required parameter `single_image_record` when calling `transformincrementalarray_image`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'deployment_name' in params:
-            path_params['deploymentName'] = params['deployment_name']  # noqa: E501
-        if 'version_name' in params:
-            path_params['versionName'] = params['version_name']  # noqa: E501
-        if 'image_transform_name' in params:
-            path_params['imageTransformName'] = params['image_transform_name']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'single_image_record' in params:
-            body_params = params['single_image_record']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray', 'POST',
             path_params,
             query_params,
             header_params,
@@ -9274,9 +8790,8 @@ class DefaultApi(object):
             collection_formats=collection_formats)
 
     def transformprocess_get(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
-        """Gets the JSON string of the deployed transform process  # noqa: E501
+        """Gets the JSON string of the deployed transform process (CSV or Image)  # noqa: E501
 
-        Retrieves the JSON string of the deployed transform process   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.transformprocess_get(deployment_name, version_name, transform_name, async=True)
@@ -9286,7 +8801,7 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :return: TransformProcess
+        :return: ERRORUNKNOWN
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9298,9 +8813,8 @@ class DefaultApi(object):
             return data
 
     def transformprocess_get_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
-        """Gets the JSON string of the deployed transform process  # noqa: E501
+        """Gets the JSON string of the deployed transform process (CSV or Image)  # noqa: E501
 
-        Retrieves the JSON string of the deployed transform process   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.transformprocess_get_with_http_info(deployment_name, version_name, transform_name, async=True)
@@ -9310,7 +8824,7 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :return: TransformProcess
+        :return: ERRORUNKNOWN
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9376,7 +8890,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TransformProcess',  # noqa: E501
+            response_type='ERRORUNKNOWN',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -9385,9 +8899,8 @@ class DefaultApi(object):
             collection_formats=collection_formats)
 
     def transformprocess_post(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
-        """Sets the deployed transform process through the provided JSON string  # noqa: E501
+        """Sets the deployed (CSV or Image) transform process through the provided JSON string  # noqa: E501
 
-        Sets the transform process with the provided JSON string  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.transformprocess_post(deployment_name, version_name, transform_name, async=True)
@@ -9397,8 +8910,8 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param TransformProcess transform_process: The transform process to set
-        :return: None
+        :param ERRORUNKNOWN transform_process: The transform process to set
+        :return: ERRORUNKNOWN
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9410,9 +8923,8 @@ class DefaultApi(object):
             return data
 
     def transformprocess_post_with_http_info(self, deployment_name, version_name, transform_name, **kwargs):  # noqa: E501
-        """Sets the deployed transform process through the provided JSON string  # noqa: E501
+        """Sets the deployed (CSV or Image) transform process through the provided JSON string  # noqa: E501
 
-        Sets the transform process with the provided JSON string  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.transformprocess_post_with_http_info(deployment_name, version_name, transform_name, async=True)
@@ -9422,8 +8934,8 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param TransformProcess transform_process: The transform process to set
-        :return: None
+        :param ERRORUNKNOWN transform_process: The transform process to set
+        :return: ERRORUNKNOWN
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9495,7 +9007,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='ERRORUNKNOWN',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),

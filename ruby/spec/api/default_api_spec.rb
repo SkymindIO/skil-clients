@@ -229,7 +229,7 @@ describe 'DefaultApi' do
 
   # unit tests for create_job
   # Create a job
-  # @param jobtype Job Type
+  # @param job_id_or_type Job Type
   # @param create_job_request Create job request object
   # @param [Hash] opts the optional parameters
   # @return [JobEntity]
@@ -276,7 +276,7 @@ describe 'DefaultApi' do
 
   # unit tests for delete_job_by_id
   # Deletes a job given its ID
-  # @param job_id Job ID
+  # @param job_id_or_type Job ID
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'delete_job_by_id test' do
@@ -522,7 +522,7 @@ describe 'DefaultApi' do
 
   # unit tests for get_job_by_id
   # Get a job by its ID
-  # @param job_id Job ID
+  # @param job_id_or_type Job ID
   # @param [Hash] opts the optional parameters
   # @return [JobEntity]
   describe 'get_job_by_id test' do
@@ -661,33 +661,6 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<Resource>]
   describe 'get_resources_from_group test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for imagetransformprocess_get
-  # Retrieves the image transform process JSON string
-  # @param deployment_name Name of the deployment group
-  # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-  # @param image_transform_name ID or name of the deployed image transform
-  # @param [Hash] opts the optional parameters
-  # @return [ImageTransformProcess]
-  describe 'imagetransformprocess_get test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for imagetransformprocess_post
-  # Sets the image transform process through the provided JSON string
-  # @param deployment_name Name of the deployment group
-  # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-  # @param image_transform_name ID or name of the deployed image transform
-  # @param body The image transform process JSON
-  # @param [Hash] opts the optional parameters
-  # @return [ImageTransformProcess]
-  describe 'imagetransformprocess_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -1015,31 +988,15 @@ describe 'DefaultApi' do
     end
   end
 
-  # unit tests for transformarray_csv
+  # unit tests for transformarray
   # Takes a batch input arrays and transforms it
-  # Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
   # @param deployment_name Name of the deployment group
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param transform_name ID or name of the deployed transform
   # @param [Hash] opts the optional parameters
-  # @option opts [BatchCSVRecord] :batch_csv_record The input batch of record arrays
+  # @option opts [] :batch_record The input batch of record arrays
   # @return [Base64NDArrayBody]
-  describe 'transformarray_csv test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for transformarray_image
-  # Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-  # Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-  # @param deployment_name Name of the deployment group
-  # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-  # @param image_transform_name ID or name of the deployed image transform
-  # @param batch_image_record The input batch of record arrays
-  # @param [Hash] opts the optional parameters
-  # @return [Base64NDArrayBody]
-  describe 'transformarray_image test' do
+  describe 'transformarray test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -1075,31 +1032,15 @@ describe 'DefaultApi' do
     end
   end
 
-  # unit tests for transformincrementalarray_csv
-  # Same as /transformincremental but returns Base64NDArrayBody
-  # Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+  # unit tests for transformincrementalarray
+  # Same as /transformincremental but returns Base64NDArrayBody.
   # @param deployment_name Name of the deployment group
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param transform_name ID or name of the deployed transform
   # @param [Hash] opts the optional parameters
-  # @option opts [SingleCSVRecord] :single_csv_record The input record array
+  # @option opts [] :single_record The input record array
   # @return [Base64NDArrayBody]
-  describe 'transformincrementalarray_csv test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for transformincrementalarray_image
-  # Takes SingleImageRecord to transform and returns Base64NDArrayBody
-  # Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-  # @param deployment_name Name of the deployment group
-  # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
-  # @param image_transform_name ID or name of the deployed image transform
-  # @param single_image_record The input record array
-  # @param [Hash] opts the optional parameters
-  # @return [Base64NDArrayBody]
-  describe 'transformincrementalarray_image test' do
+  describe 'transformincrementalarray test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -1121,13 +1062,12 @@ describe 'DefaultApi' do
   end
 
   # unit tests for transformprocess_get
-  # Gets the JSON string of the deployed transform process
-  # Retrieves the JSON string of the deployed transform process 
+  # Gets the JSON string of the deployed transform process (CSV or Image)
   # @param deployment_name Name of the deployment group
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param transform_name ID or name of the deployed transform
   # @param [Hash] opts the optional parameters
-  # @return [TransformProcess]
+  # @return [nil]
   describe 'transformprocess_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -1135,13 +1075,12 @@ describe 'DefaultApi' do
   end
 
   # unit tests for transformprocess_post
-  # Sets the deployed transform process through the provided JSON string
-  # Sets the transform process with the provided JSON string
+  # Sets the deployed (CSV or Image) transform process through the provided JSON string
   # @param deployment_name Name of the deployment group
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param transform_name ID or name of the deployed transform
   # @param [Hash] opts the optional parameters
-  # @option opts [TransformProcess] :transform_process The transform process to set
+  # @option opts [] :transform_process The transform process to set
   # @return [nil]
   describe 'transformprocess_post test' do
     it 'should work' do

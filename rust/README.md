@@ -37,11 +37,11 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 *DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 *DefaultApi* | [**classifyimage**](docs/DefaultApi.md#classifyimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-*DefaultApi* | [**create_job**](docs/DefaultApi.md#create_job) | **Post** /jobs/{jobtype} | Create a job
+*DefaultApi* | [**create_job**](docs/DefaultApi.md#create_job) | **Post** /jobs/{jobIdOrType} | Create a job
 *DefaultApi* | [**create_model_history**](docs/DefaultApi.md#create_model_history) | **Post** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 *DefaultApi* | [**delete_credentials_by_id**](docs/DefaultApi.md#delete_credentials_by_id) | **Delete** /resources/credentials/{credentialId} | Delete credentials given an ID
 *DefaultApi* | [**delete_experiment**](docs/DefaultApi.md#delete_experiment) | **Delete** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
-*DefaultApi* | [**delete_job_by_id**](docs/DefaultApi.md#delete_job_by_id) | **Delete** /jobs/{jobId} | Deletes a job given its ID
+*DefaultApi* | [**delete_job_by_id**](docs/DefaultApi.md#delete_job_by_id) | **Delete** /jobs/{jobIdOrType} | Deletes a job given its ID
 *DefaultApi* | [**delete_model**](docs/DefaultApi.md#delete_model) | **Delete** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 *DefaultApi* | [**delete_model_history**](docs/DefaultApi.md#delete_model_history) | **Delete** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 *DefaultApi* | [**delete_model_instance**](docs/DefaultApi.md#delete_model_instance) | **Delete** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
@@ -62,21 +62,19 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_examples_for_minibatch**](docs/DefaultApi.md#get_examples_for_minibatch) | **Get** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 *DefaultApi* | [**get_experiment**](docs/DefaultApi.md#get_experiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 *DefaultApi* | [**get_experiments_for_model_history**](docs/DefaultApi.md#get_experiments_for_model_history) | **Get** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-*DefaultApi* | [**get_job_by_id**](docs/DefaultApi.md#get_job_by_id) | **Get** /jobs/{jobId} | Get a job by its ID
+*DefaultApi* | [**get_job_by_id**](docs/DefaultApi.md#get_job_by_id) | **Get** /jobs/{jobIdOrType} | Get a job by its ID
 *DefaultApi* | [**get_minibatch**](docs/DefaultApi.md#get_minibatch) | **Get** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 *DefaultApi* | [**get_model_history**](docs/DefaultApi.md#get_model_history) | **Get** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 *DefaultApi* | [**get_model_instance**](docs/DefaultApi.md#get_model_instance) | **Get** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 *DefaultApi* | [**get_models_for_experiment**](docs/DefaultApi.md#get_models_for_experiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
 *DefaultApi* | [**get_resource_by_id**](docs/DefaultApi.md#get_resource_by_id) | **Get** /resources/resource/{resourceId} | Get the resource with the specified resource ID
-*DefaultApi* | [**get_resource_by_sub_type**](docs/DefaultApi.md#get_resource_by_sub_type) | **Get** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+*DefaultApi* | [**get_resource_by_sub_type**](docs/DefaultApi.md#get_resource_by_sub_type) | **Get** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
 *DefaultApi* | [**get_resource_by_type**](docs/DefaultApi.md#get_resource_by_type) | **Get** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
 *DefaultApi* | [**get_resource_details_by_id**](docs/DefaultApi.md#get_resource_details_by_id) | **Get** /resources/details/{resourceId} | Get the resource details with the specified resource ID
 *DefaultApi* | [**get_resource_group_by_id**](docs/DefaultApi.md#get_resource_group_by_id) | **Get** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
 *DefaultApi* | [**get_resource_groups**](docs/DefaultApi.md#get_resource_groups) | **Get** /resources/groups | Get a list of all the resource groups
 *DefaultApi* | [**get_resources**](docs/DefaultApi.md#get_resources) | **Get** /resources/resources | A list of all known/registered resources, of all types
 *DefaultApi* | [**get_resources_from_group**](docs/DefaultApi.md#get_resources_from_group) | **Get** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
-*DefaultApi* | [**imagetransformprocess_get**](docs/DefaultApi.md#imagetransformprocess_get) | **Get** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-*DefaultApi* | [**imagetransformprocess_post**](docs/DefaultApi.md#imagetransformprocess_post) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 *DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 *DefaultApi* | [**knn**](docs/DefaultApi.md#knn) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 *DefaultApi* | [**knnnew**](docs/DefaultApi.md#knnnew) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -101,15 +99,13 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**reimport_model**](docs/DefaultApi.md#reimport_model) | **Post** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
 *DefaultApi* | [**run_a_job**](docs/DefaultApi.md#run_a_job) | **Post** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 *DefaultApi* | [**transform_csv**](docs/DefaultApi.md#transform_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-*DefaultApi* | [**transformarray_csv**](docs/DefaultApi.md#transformarray_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-*DefaultApi* | [**transformarray_image**](docs/DefaultApi.md#transformarray_image) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+*DefaultApi* | [**transformarray**](docs/DefaultApi.md#transformarray) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 *DefaultApi* | [**transformimage**](docs/DefaultApi.md#transformimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 *DefaultApi* | [**transformincremental_csv**](docs/DefaultApi.md#transformincremental_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-*DefaultApi* | [**transformincrementalarray_csv**](docs/DefaultApi.md#transformincrementalarray_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-*DefaultApi* | [**transformincrementalarray_image**](docs/DefaultApi.md#transformincrementalarray_image) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+*DefaultApi* | [**transformincrementalarray**](docs/DefaultApi.md#transformincrementalarray) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 *DefaultApi* | [**transformincrementalimage**](docs/DefaultApi.md#transformincrementalimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-*DefaultApi* | [**transformprocess_get**](docs/DefaultApi.md#transformprocess_get) | **Get** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-*DefaultApi* | [**transformprocess_post**](docs/DefaultApi.md#transformprocess_post) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+*DefaultApi* | [**transformprocess_get**](docs/DefaultApi.md#transformprocess_get) | **Get** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+*DefaultApi* | [**transformprocess_post**](docs/DefaultApi.md#transformprocess_post) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 *DefaultApi* | [**update_best_model_for_experiment**](docs/DefaultApi.md#update_best_model_for_experiment) | **Post** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 *DefaultApi* | [**update_experiment**](docs/DefaultApi.md#update_experiment) | **Put** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 *DefaultApi* | [**update_model_history**](docs/DefaultApi.md#update_model_history) | **Post** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace

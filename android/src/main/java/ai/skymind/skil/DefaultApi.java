@@ -31,7 +31,6 @@ import ai.skymind.skil.model.AggregatePrediction;
 import ai.skymind.skil.model.Base64NDArrayBody;
 import ai.skymind.skil.model.Base64NDArrayBodyKNN;
 import ai.skymind.skil.model.BatchCSVRecord;
-import ai.skymind.skil.model.BatchImageRecord;
 import ai.skymind.skil.model.BestModel;
 import ai.skymind.skil.model.ClassificationResult;
 import ai.skymind.skil.model.CreateDeploymentRequest;
@@ -46,7 +45,6 @@ import ai.skymind.skil.model.ExampleEntity;
 import ai.skymind.skil.model.ExperimentEntity;
 import java.io.File;
 import ai.skymind.skil.model.FileUploadList;
-import ai.skymind.skil.model.ImageTransformProcess;
 import ai.skymind.skil.model.ImportModelRequest;
 import ai.skymind.skil.model.InlineResponse200;
 import ai.skymind.skil.model.JobEntity;
@@ -72,9 +70,7 @@ import ai.skymind.skil.model.ResourceCredentials;
 import ai.skymind.skil.model.ResourceGroup;
 import ai.skymind.skil.model.SetState;
 import ai.skymind.skil.model.SingleCSVRecord;
-import ai.skymind.skil.model.SingleImageRecord;
 import ai.skymind.skil.model.Token;
-import ai.skymind.skil.model.TransformProcess;
 import ai.skymind.skil.model.UpdateBestModel;
 
 import org.apache.http.HttpEntity;
@@ -2360,16 +2356,16 @@ public class DefaultApi {
   /**
   * Create a job
   * 
-   * @param jobtype Job Type
+   * @param jobIdOrType Job Type
    * @param createJobRequest Create job request object
    * @return JobEntity
   */
-  public JobEntity createJob (String jobtype, CreateJobRequest createJobRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public JobEntity createJob (String jobIdOrType, CreateJobRequest createJobRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = createJobRequest;
-    // verify the required parameter 'jobtype' is set
-    if (jobtype == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'jobtype' when calling createJob",
-        new ApiException(400, "Missing the required parameter 'jobtype' when calling createJob"));
+    // verify the required parameter 'jobIdOrType' is set
+    if (jobIdOrType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'jobIdOrType' when calling createJob",
+        new ApiException(400, "Missing the required parameter 'jobIdOrType' when calling createJob"));
     }
     // verify the required parameter 'createJobRequest' is set
     if (createJobRequest == null) {
@@ -2378,7 +2374,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/jobs/{jobtype}".replaceAll("\\{" + "jobtype" + "\\}", apiInvoker.escapeString(jobtype.toString()));
+    String path = "/jobs/{jobIdOrType}".replaceAll("\\{" + "jobIdOrType" + "\\}", apiInvoker.escapeString(jobIdOrType.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2429,15 +2425,15 @@ public class DefaultApi {
       /**
    * Create a job
    * 
-   * @param jobtype Job Type   * @param createJobRequest Create job request object
+   * @param jobIdOrType Job Type   * @param createJobRequest Create job request object
   */
-  public void createJob (String jobtype, CreateJobRequest createJobRequest, final Response.Listener<JobEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void createJob (String jobIdOrType, CreateJobRequest createJobRequest, final Response.Listener<JobEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = createJobRequest;
 
-    // verify the required parameter 'jobtype' is set
-    if (jobtype == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'jobtype' when calling createJob",
-        new ApiException(400, "Missing the required parameter 'jobtype' when calling createJob"));
+    // verify the required parameter 'jobIdOrType' is set
+    if (jobIdOrType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'jobIdOrType' when calling createJob",
+        new ApiException(400, "Missing the required parameter 'jobIdOrType' when calling createJob"));
     }
     // verify the required parameter 'createJobRequest' is set
     if (createJobRequest == null) {
@@ -2446,7 +2442,7 @@ public class DefaultApi {
     }
 
     // create path and map variables
-    String path = "/jobs/{jobtype}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "jobtype" + "\\}", apiInvoker.escapeString(jobtype.toString()));
+    String path = "/jobs/{jobIdOrType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "jobIdOrType" + "\\}", apiInvoker.escapeString(jobIdOrType.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2899,19 +2895,19 @@ public class DefaultApi {
   /**
   * Deletes a job given its ID
   * 
-   * @param jobId Job ID
+   * @param jobIdOrType Job ID
    * @return void
   */
-  public void deleteJobById (Long jobId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void deleteJobById (Long jobIdOrType) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
-    // verify the required parameter 'jobId' is set
-    if (jobId == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'jobId' when calling deleteJobById",
-        new ApiException(400, "Missing the required parameter 'jobId' when calling deleteJobById"));
+    // verify the required parameter 'jobIdOrType' is set
+    if (jobIdOrType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'jobIdOrType' when calling deleteJobById",
+        new ApiException(400, "Missing the required parameter 'jobIdOrType' when calling deleteJobById"));
     }
 
     // create path and map variables
-    String path = "/jobs/{jobId}".replaceAll("\\{" + "jobId" + "\\}", apiInvoker.escapeString(jobId.toString()));
+    String path = "/jobs/{jobIdOrType}".replaceAll("\\{" + "jobIdOrType" + "\\}", apiInvoker.escapeString(jobIdOrType.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -2961,19 +2957,19 @@ public class DefaultApi {
       /**
    * Deletes a job given its ID
    * 
-   * @param jobId Job ID
+   * @param jobIdOrType Job ID
   */
-  public void deleteJobById (Long jobId, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void deleteJobById (Long jobIdOrType, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
-    // verify the required parameter 'jobId' is set
-    if (jobId == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'jobId' when calling deleteJobById",
-        new ApiException(400, "Missing the required parameter 'jobId' when calling deleteJobById"));
+    // verify the required parameter 'jobIdOrType' is set
+    if (jobIdOrType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'jobIdOrType' when calling deleteJobById",
+        new ApiException(400, "Missing the required parameter 'jobIdOrType' when calling deleteJobById"));
     }
 
     // create path and map variables
-    String path = "/jobs/{jobId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "jobId" + "\\}", apiInvoker.escapeString(jobId.toString()));
+    String path = "/jobs/{jobIdOrType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "jobIdOrType" + "\\}", apiInvoker.escapeString(jobIdOrType.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5755,19 +5751,19 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Get a job by its ID
   * 
-   * @param jobId Job ID
+   * @param jobIdOrType Job ID
    * @return JobEntity
   */
-  public JobEntity getJobById (Long jobId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public JobEntity getJobById (Long jobIdOrType) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
-    // verify the required parameter 'jobId' is set
-    if (jobId == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'jobId' when calling getJobById",
-        new ApiException(400, "Missing the required parameter 'jobId' when calling getJobById"));
+    // verify the required parameter 'jobIdOrType' is set
+    if (jobIdOrType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'jobIdOrType' when calling getJobById",
+        new ApiException(400, "Missing the required parameter 'jobIdOrType' when calling getJobById"));
     }
 
     // create path and map variables
-    String path = "/jobs/{jobId}".replaceAll("\\{" + "jobId" + "\\}", apiInvoker.escapeString(jobId.toString()));
+    String path = "/jobs/{jobIdOrType}".replaceAll("\\{" + "jobIdOrType" + "\\}", apiInvoker.escapeString(jobIdOrType.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -5817,19 +5813,19 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Get a job by its ID
    * 
-   * @param jobId Job ID
+   * @param jobIdOrType Job ID
   */
-  public void getJobById (Long jobId, final Response.Listener<JobEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void getJobById (Long jobIdOrType, final Response.Listener<JobEntity> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
-    // verify the required parameter 'jobId' is set
-    if (jobId == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'jobId' when calling getJobById",
-        new ApiException(400, "Missing the required parameter 'jobId' when calling getJobById"));
+    // verify the required parameter 'jobIdOrType' is set
+    if (jobIdOrType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'jobIdOrType' when calling getJobById",
+        new ApiException(400, "Missing the required parameter 'jobIdOrType' when calling getJobById"));
     }
 
     // create path and map variables
-    String path = "/jobs/{jobId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "jobId" + "\\}", apiInvoker.escapeString(jobId.toString()));
+    String path = "/jobs/{jobIdOrType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "jobIdOrType" + "\\}", apiInvoker.escapeString(jobIdOrType.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6573,7 +6569,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/resources/resources/type/{resourceSubType}".replaceAll("\\{" + "resourceSubType" + "\\}", apiInvoker.escapeString(resourceSubType.toString()));
+    String path = "/resources/resources/subtype/{resourceSubType}".replaceAll("\\{" + "resourceSubType" + "\\}", apiInvoker.escapeString(resourceSubType.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -6635,7 +6631,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
 
     // create path and map variables
-    String path = "/resources/resources/type/{resourceSubType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "resourceSubType" + "\\}", apiInvoker.escapeString(resourceSubType.toString()));
+    String path = "/resources/resources/subtype/{resourceSubType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "resourceSubType" + "\\}", apiInvoker.escapeString(resourceSubType.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7411,317 +7407,6 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
           public void onResponse(String localVarResponse) {
             try {
               responseListener.onResponse((List<Resource>) ApiInvoker.deserialize(localVarResponse,  "array", Resource.class));
-            } catch (ApiException exception) {
-               errorListener.onErrorResponse(new VolleyError(exception));
-            }
-          }
-      }, new Response.ErrorListener() {
-          @Override
-          public void onErrorResponse(VolleyError error) {
-            errorListener.onErrorResponse(error);
-          }
-      });
-    } catch (ApiException ex) {
-      errorListener.onErrorResponse(new VolleyError(ex));
-    }
-  }
-  /**
-  * Retrieves the image transform process JSON string
-  * 
-   * @param deploymentName Name of the deployment group
-   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
-   * @param imageTransformName ID or name of the deployed image transform
-   * @return ImageTransformProcess
-  */
-  public ImageTransformProcess imagetransformprocessGet (String deploymentName, String versionName, String imageTransformName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = null;
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling imagetransformprocessGet",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling imagetransformprocessGet"));
-    }
-    // verify the required parameter 'versionName' is set
-    if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling imagetransformprocessGet",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling imagetransformprocessGet"));
-    }
-    // verify the required parameter 'imageTransformName' is set
-    if (imageTransformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'imageTransformName' when calling imagetransformprocessGet",
-        new ApiException(400, "Missing the required parameter 'imageTransformName' when calling imagetransformprocessGet"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-    String[] contentTypes = {
-      "application/json"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-    }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
-      if (localVarResponse != null) {
-         return (ImageTransformProcess) ApiInvoker.deserialize(localVarResponse, "", ImageTransformProcess.class);
-      } else {
-         return null;
-      }
-    } catch (ApiException ex) {
-       throw ex;
-    } catch (InterruptedException ex) {
-       throw ex;
-    } catch (ExecutionException ex) {
-      if (ex.getCause() instanceof VolleyError) {
-        VolleyError volleyError = (VolleyError)ex.getCause();
-        if (volleyError.networkResponse != null) {
-          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
-        }
-      }
-      throw ex;
-    } catch (TimeoutException ex) {
-      throw ex;
-    }
-  }
-
-      /**
-   * Retrieves the image transform process JSON string
-   * 
-   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param imageTransformName ID or name of the deployed image transform
-  */
-  public void imagetransformprocessGet (String deploymentName, String versionName, String imageTransformName, final Response.Listener<ImageTransformProcess> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = null;
-
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling imagetransformprocessGet",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling imagetransformprocessGet"));
-    }
-    // verify the required parameter 'versionName' is set
-    if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling imagetransformprocessGet",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling imagetransformprocessGet"));
-    }
-    // verify the required parameter 'imageTransformName' is set
-    if (imageTransformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'imageTransformName' when calling imagetransformprocessGet",
-        new ApiException(400, "Missing the required parameter 'imageTransformName' when calling imagetransformprocessGet"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-
-
-
-    String[] contentTypes = {
-      "application/json"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      
-
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-          }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
-        new Response.Listener<String>() {
-          @Override
-          public void onResponse(String localVarResponse) {
-            try {
-              responseListener.onResponse((ImageTransformProcess) ApiInvoker.deserialize(localVarResponse,  "", ImageTransformProcess.class));
-            } catch (ApiException exception) {
-               errorListener.onErrorResponse(new VolleyError(exception));
-            }
-          }
-      }, new Response.ErrorListener() {
-          @Override
-          public void onErrorResponse(VolleyError error) {
-            errorListener.onErrorResponse(error);
-          }
-      });
-    } catch (ApiException ex) {
-      errorListener.onErrorResponse(new VolleyError(ex));
-    }
-  }
-  /**
-  * Sets the image transform process through the provided JSON string
-  * 
-   * @param deploymentName Name of the deployment group
-   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
-   * @param imageTransformName ID or name of the deployed image transform
-   * @param body The image transform process JSON
-   * @return ImageTransformProcess
-  */
-  public ImageTransformProcess imagetransformprocessPost (String deploymentName, String versionName, String imageTransformName, ImageTransformProcess body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = body;
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling imagetransformprocessPost",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling imagetransformprocessPost"));
-    }
-    // verify the required parameter 'versionName' is set
-    if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling imagetransformprocessPost",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling imagetransformprocessPost"));
-    }
-    // verify the required parameter 'imageTransformName' is set
-    if (imageTransformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'imageTransformName' when calling imagetransformprocessPost",
-        new ApiException(400, "Missing the required parameter 'imageTransformName' when calling imagetransformprocessPost"));
-    }
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling imagetransformprocessPost",
-        new ApiException(400, "Missing the required parameter 'body' when calling imagetransformprocessPost"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-    String[] contentTypes = {
-      "application/json"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-    }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
-      if (localVarResponse != null) {
-         return (ImageTransformProcess) ApiInvoker.deserialize(localVarResponse, "", ImageTransformProcess.class);
-      } else {
-         return null;
-      }
-    } catch (ApiException ex) {
-       throw ex;
-    } catch (InterruptedException ex) {
-       throw ex;
-    } catch (ExecutionException ex) {
-      if (ex.getCause() instanceof VolleyError) {
-        VolleyError volleyError = (VolleyError)ex.getCause();
-        if (volleyError.networkResponse != null) {
-          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
-        }
-      }
-      throw ex;
-    } catch (TimeoutException ex) {
-      throw ex;
-    }
-  }
-
-      /**
-   * Sets the image transform process through the provided JSON string
-   * 
-   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param imageTransformName ID or name of the deployed image transform   * @param body The image transform process JSON
-  */
-  public void imagetransformprocessPost (String deploymentName, String versionName, String imageTransformName, ImageTransformProcess body, final Response.Listener<ImageTransformProcess> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = body;
-
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling imagetransformprocessPost",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling imagetransformprocessPost"));
-    }
-    // verify the required parameter 'versionName' is set
-    if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling imagetransformprocessPost",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling imagetransformprocessPost"));
-    }
-    // verify the required parameter 'imageTransformName' is set
-    if (imageTransformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'imageTransformName' when calling imagetransformprocessPost",
-        new ApiException(400, "Missing the required parameter 'imageTransformName' when calling imagetransformprocessPost"));
-    }
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling imagetransformprocessPost",
-        new ApiException(400, "Missing the required parameter 'body' when calling imagetransformprocessPost"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-
-
-
-    String[] contentTypes = {
-      "application/json"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      
-
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-          }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
-        new Response.Listener<String>() {
-          @Override
-          public void onResponse(String localVarResponse) {
-            try {
-              responseListener.onResponse((ImageTransformProcess) ApiInvoker.deserialize(localVarResponse,  "", ImageTransformProcess.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -11410,29 +11095,29 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   }
   /**
   * Takes a batch input arrays and transforms it
-  * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+  * 
    * @param deploymentName Name of the deployment group
    * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
-   * @param batchCSVRecord The input batch of record arrays
+   * @param batchRecord The input batch of record arrays
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformarrayCsv (String deploymentName, String versionName, String transformName, BatchCSVRecord batchCSVRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = batchCSVRecord;
+  public Base64NDArrayBody transformarray (String deploymentName, String versionName, String transformName, ERRORUNKNOWN batchRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = batchRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformarrayCsv",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformarray",
+        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformarray"));
     }
     // verify the required parameter 'versionName' is set
     if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformarrayCsv",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling transformarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformarray",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformarray"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'transformName' when calling transformarrayCsv",
-        new ApiException(400, "Missing the required parameter 'transformName' when calling transformarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'transformName' when calling transformarray",
+        new ApiException(400, "Missing the required parameter 'transformName' when calling transformarray"));
     }
 
     // create path and map variables
@@ -11486,191 +11171,30 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
 
       /**
    * Takes a batch input arrays and transforms it
-   * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param batchCSVRecord The input batch of record arrays
+   * 
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param batchRecord The input batch of record arrays
   */
-  public void transformarrayCsv (String deploymentName, String versionName, String transformName, BatchCSVRecord batchCSVRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = batchCSVRecord;
+  public void transformarray (String deploymentName, String versionName, String transformName, ERRORUNKNOWN batchRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = batchRecord;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformarrayCsv",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformarray",
+        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformarray"));
     }
     // verify the required parameter 'versionName' is set
     if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformarrayCsv",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling transformarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformarray",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformarray"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'transformName' when calling transformarrayCsv",
-        new ApiException(400, "Missing the required parameter 'transformName' when calling transformarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'transformName' when calling transformarray",
+        new ApiException(400, "Missing the required parameter 'transformName' when calling transformarray"));
     }
 
     // create path and map variables
     String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-
-
-
-    String[] contentTypes = {
-      "application/json"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      
-
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-          }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
-        new Response.Listener<String>() {
-          @Override
-          public void onResponse(String localVarResponse) {
-            try {
-              responseListener.onResponse((Base64NDArrayBody) ApiInvoker.deserialize(localVarResponse,  "", Base64NDArrayBody.class));
-            } catch (ApiException exception) {
-               errorListener.onErrorResponse(new VolleyError(exception));
-            }
-          }
-      }, new Response.ErrorListener() {
-          @Override
-          public void onErrorResponse(VolleyError error) {
-            errorListener.onErrorResponse(error);
-          }
-      });
-    } catch (ApiException ex) {
-      errorListener.onErrorResponse(new VolleyError(ex));
-    }
-  }
-  /**
-  * Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-  * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group
-   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
-   * @param imageTransformName ID or name of the deployed image transform
-   * @param batchImageRecord The input batch of record arrays
-   * @return Base64NDArrayBody
-  */
-  public Base64NDArrayBody transformarrayImage (String deploymentName, String versionName, String imageTransformName, BatchImageRecord batchImageRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = batchImageRecord;
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformarrayImage",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformarrayImage"));
-    }
-    // verify the required parameter 'versionName' is set
-    if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformarrayImage",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling transformarrayImage"));
-    }
-    // verify the required parameter 'imageTransformName' is set
-    if (imageTransformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'imageTransformName' when calling transformarrayImage",
-        new ApiException(400, "Missing the required parameter 'imageTransformName' when calling transformarrayImage"));
-    }
-    // verify the required parameter 'batchImageRecord' is set
-    if (batchImageRecord == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'batchImageRecord' when calling transformarrayImage",
-        new ApiException(400, "Missing the required parameter 'batchImageRecord' when calling transformarrayImage"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-    String[] contentTypes = {
-      "application/json"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-    }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
-      if (localVarResponse != null) {
-         return (Base64NDArrayBody) ApiInvoker.deserialize(localVarResponse, "", Base64NDArrayBody.class);
-      } else {
-         return null;
-      }
-    } catch (ApiException ex) {
-       throw ex;
-    } catch (InterruptedException ex) {
-       throw ex;
-    } catch (ExecutionException ex) {
-      if (ex.getCause() instanceof VolleyError) {
-        VolleyError volleyError = (VolleyError)ex.getCause();
-        if (volleyError.networkResponse != null) {
-          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
-        }
-      }
-      throw ex;
-    } catch (TimeoutException ex) {
-      throw ex;
-    }
-  }
-
-      /**
-   * Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-   * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param imageTransformName ID or name of the deployed image transform   * @param batchImageRecord The input batch of record arrays
-  */
-  public void transformarrayImage (String deploymentName, String versionName, String imageTransformName, BatchImageRecord batchImageRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = batchImageRecord;
-
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformarrayImage",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformarrayImage"));
-    }
-    // verify the required parameter 'versionName' is set
-    if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformarrayImage",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling transformarrayImage"));
-    }
-    // verify the required parameter 'imageTransformName' is set
-    if (imageTransformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'imageTransformName' when calling transformarrayImage",
-        new ApiException(400, "Missing the required parameter 'imageTransformName' when calling transformarrayImage"));
-    }
-    // verify the required parameter 'batchImageRecord' is set
-    if (batchImageRecord == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'batchImageRecord' when calling transformarrayImage",
-        new ApiException(400, "Missing the required parameter 'batchImageRecord' when calling transformarrayImage"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -12042,30 +11566,30 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
   }
   /**
-  * Same as /transformincremental but returns Base64NDArrayBody
-  * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+  * Same as /transformincremental but returns Base64NDArrayBody.
+  * 
    * @param deploymentName Name of the deployment group
    * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
-   * @param singleCSVRecord The input record array
+   * @param singleRecord The input record array
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformincrementalarrayCsv (String deploymentName, String versionName, String transformName, SingleCSVRecord singleCSVRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = singleCSVRecord;
+  public Base64NDArrayBody transformincrementalarray (String deploymentName, String versionName, String transformName, ERRORUNKNOWN singleRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = singleRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalarrayCsv",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalarray",
+        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalarray"));
     }
     // verify the required parameter 'versionName' is set
     if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalarrayCsv",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalarray",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalarray"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'transformName' when calling transformincrementalarrayCsv",
-        new ApiException(400, "Missing the required parameter 'transformName' when calling transformincrementalarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'transformName' when calling transformincrementalarray",
+        new ApiException(400, "Missing the required parameter 'transformName' when calling transformincrementalarray"));
     }
 
     // create path and map variables
@@ -12118,192 +11642,31 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   }
 
       /**
-   * Same as /transformincremental but returns Base64NDArrayBody
-   * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param singleCSVRecord The input record array
+   * Same as /transformincremental but returns Base64NDArrayBody.
+   * 
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param singleRecord The input record array
   */
-  public void transformincrementalarrayCsv (String deploymentName, String versionName, String transformName, SingleCSVRecord singleCSVRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = singleCSVRecord;
+  public void transformincrementalarray (String deploymentName, String versionName, String transformName, ERRORUNKNOWN singleRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = singleRecord;
 
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalarrayCsv",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalarray",
+        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalarray"));
     }
     // verify the required parameter 'versionName' is set
     if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalarrayCsv",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalarray",
+        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalarray"));
     }
     // verify the required parameter 'transformName' is set
     if (transformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'transformName' when calling transformincrementalarrayCsv",
-        new ApiException(400, "Missing the required parameter 'transformName' when calling transformincrementalarrayCsv"));
+      VolleyError error = new VolleyError("Missing the required parameter 'transformName' when calling transformincrementalarray",
+        new ApiException(400, "Missing the required parameter 'transformName' when calling transformincrementalarray"));
     }
 
     // create path and map variables
     String path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "transformName" + "\\}", apiInvoker.escapeString(transformName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-
-
-
-    String[] contentTypes = {
-      "application/json"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      
-
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-          }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
-        new Response.Listener<String>() {
-          @Override
-          public void onResponse(String localVarResponse) {
-            try {
-              responseListener.onResponse((Base64NDArrayBody) ApiInvoker.deserialize(localVarResponse,  "", Base64NDArrayBody.class));
-            } catch (ApiException exception) {
-               errorListener.onErrorResponse(new VolleyError(exception));
-            }
-          }
-      }, new Response.ErrorListener() {
-          @Override
-          public void onErrorResponse(VolleyError error) {
-            errorListener.onErrorResponse(error);
-          }
-      });
-    } catch (ApiException ex) {
-      errorListener.onErrorResponse(new VolleyError(ex));
-    }
-  }
-  /**
-  * Takes SingleImageRecord to transform and returns Base64NDArrayBody
-  * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group
-   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
-   * @param imageTransformName ID or name of the deployed image transform
-   * @param singleImageRecord The input record array
-   * @return Base64NDArrayBody
-  */
-  public Base64NDArrayBody transformincrementalarrayImage (String deploymentName, String versionName, String imageTransformName, SingleImageRecord singleImageRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = singleImageRecord;
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalarrayImage",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalarrayImage"));
-    }
-    // verify the required parameter 'versionName' is set
-    if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalarrayImage",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalarrayImage"));
-    }
-    // verify the required parameter 'imageTransformName' is set
-    if (imageTransformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'imageTransformName' when calling transformincrementalarrayImage",
-        new ApiException(400, "Missing the required parameter 'imageTransformName' when calling transformincrementalarrayImage"));
-    }
-    // verify the required parameter 'singleImageRecord' is set
-    if (singleImageRecord == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'singleImageRecord' when calling transformincrementalarrayImage",
-        new ApiException(400, "Missing the required parameter 'singleImageRecord' when calling transformincrementalarrayImage"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray".replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-    String[] contentTypes = {
-      "application/json"
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-    }
-
-    String[] authNames = new String[] { "api_key" };
-
-    try {
-      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
-      if (localVarResponse != null) {
-         return (Base64NDArrayBody) ApiInvoker.deserialize(localVarResponse, "", Base64NDArrayBody.class);
-      } else {
-         return null;
-      }
-    } catch (ApiException ex) {
-       throw ex;
-    } catch (InterruptedException ex) {
-       throw ex;
-    } catch (ExecutionException ex) {
-      if (ex.getCause() instanceof VolleyError) {
-        VolleyError volleyError = (VolleyError)ex.getCause();
-        if (volleyError.networkResponse != null) {
-          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
-        }
-      }
-      throw ex;
-    } catch (TimeoutException ex) {
-      throw ex;
-    }
-  }
-
-      /**
-   * Takes SingleImageRecord to transform and returns Base64NDArrayBody
-   * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param imageTransformName ID or name of the deployed image transform   * @param singleImageRecord The input record array
-  */
-  public void transformincrementalarrayImage (String deploymentName, String versionName, String imageTransformName, SingleImageRecord singleImageRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = singleImageRecord;
-
-    // verify the required parameter 'deploymentName' is set
-    if (deploymentName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformincrementalarrayImage",
-        new ApiException(400, "Missing the required parameter 'deploymentName' when calling transformincrementalarrayImage"));
-    }
-    // verify the required parameter 'versionName' is set
-    if (versionName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'versionName' when calling transformincrementalarrayImage",
-        new ApiException(400, "Missing the required parameter 'versionName' when calling transformincrementalarrayImage"));
-    }
-    // verify the required parameter 'imageTransformName' is set
-    if (imageTransformName == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'imageTransformName' when calling transformincrementalarrayImage",
-        new ApiException(400, "Missing the required parameter 'imageTransformName' when calling transformincrementalarrayImage"));
-    }
-    // verify the required parameter 'singleImageRecord' is set
-    if (singleImageRecord == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'singleImageRecord' when calling transformincrementalarrayImage",
-        new ApiException(400, "Missing the required parameter 'singleImageRecord' when calling transformincrementalarrayImage"));
-    }
-
-    // create path and map variables
-    String path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentName" + "\\}", apiInvoker.escapeString(deploymentName.toString())).replaceAll("\\{" + "versionName" + "\\}", apiInvoker.escapeString(versionName.toString())).replaceAll("\\{" + "imageTransformName" + "\\}", apiInvoker.escapeString(imageTransformName.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -12523,14 +11886,14 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
   }
   /**
-  * Gets the JSON string of the deployed transform process
-  * Retrieves the JSON string of the deployed transform process 
+  * Gets the JSON string of the deployed transform process (CSV or Image)
+  * 
    * @param deploymentName Name of the deployment group
    * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
-   * @return TransformProcess
+   * @return ERRORUNKNOWN
   */
-  public TransformProcess transformprocessGet (String deploymentName, String versionName, String transformName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ERRORUNKNOWN transformprocessGet (String deploymentName, String versionName, String transformName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
@@ -12575,7 +11938,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (TransformProcess) ApiInvoker.deserialize(localVarResponse, "", TransformProcess.class);
+         return (ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse, "", ERRORUNKNOWN.class);
       } else {
          return null;
       }
@@ -12597,11 +11960,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   }
 
       /**
-   * Gets the JSON string of the deployed transform process
-   * Retrieves the JSON string of the deployed transform process 
+   * Gets the JSON string of the deployed transform process (CSV or Image)
+   * 
    * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform
   */
-  public void transformprocessGet (String deploymentName, String versionName, String transformName, final Response.Listener<TransformProcess> responseListener, final Response.ErrorListener errorListener) {
+  public void transformprocessGet (String deploymentName, String versionName, String transformName, final Response.Listener<ERRORUNKNOWN> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
@@ -12656,7 +12019,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((TransformProcess) ApiInvoker.deserialize(localVarResponse,  "", TransformProcess.class));
+              responseListener.onResponse((ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse,  "", ERRORUNKNOWN.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -12672,15 +12035,15 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
   }
   /**
-  * Sets the deployed transform process through the provided JSON string
-  * Sets the transform process with the provided JSON string
+  * Sets the deployed (CSV or Image) transform process through the provided JSON string
+  * 
    * @param deploymentName Name of the deployment group
    * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
    * @param transformProcess The transform process to set
-   * @return void
+   * @return ERRORUNKNOWN
   */
-  public void transformprocessPost (String deploymentName, String versionName, String transformName, TransformProcess transformProcess) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ERRORUNKNOWN transformprocessPost (String deploymentName, String versionName, String transformName, ERRORUNKNOWN transformProcess) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = transformProcess;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
@@ -12726,9 +12089,9 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse, "", ERRORUNKNOWN.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -12748,11 +12111,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   }
 
       /**
-   * Sets the deployed transform process through the provided JSON string
-   * Sets the transform process with the provided JSON string
+   * Sets the deployed (CSV or Image) transform process through the provided JSON string
+   * 
    * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param transformProcess The transform process to set
   */
-  public void transformprocessPost (String deploymentName, String versionName, String transformName, TransformProcess transformProcess, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void transformprocessPost (String deploymentName, String versionName, String transformName, ERRORUNKNOWN transformProcess, final Response.Listener<ERRORUNKNOWN> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = transformProcess;
 
     // verify the required parameter 'deploymentName' is set
@@ -12806,7 +12169,11 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse,  "", ERRORUNKNOWN.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override

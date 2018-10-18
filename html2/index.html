@@ -1191,6 +1191,7 @@ margin-bottom: 20px;
   }
 };
             defs.ExampleEntity = {
+  "type" : "object",
   "properties" : {
     "exampleId" : {
       "type" : "string",
@@ -2325,12 +2326,6 @@ margin-bottom: 20px;
                     <li data-group="Default" data-name="getResourcesFromGroup" class="">
                       <a href="#api-Default-getResourcesFromGroup">getResourcesFromGroup</a>
                     </li>
-                    <li data-group="Default" data-name="imagetransformprocessGet" class="">
-                      <a href="#api-Default-imagetransformprocessGet">imagetransformprocessGet</a>
-                    </li>
-                    <li data-group="Default" data-name="imagetransformprocessPost" class="">
-                      <a href="#api-Default-imagetransformprocessPost">imagetransformprocessPost</a>
-                    </li>
                     <li data-group="Default" data-name="jsonarray" class="">
                       <a href="#api-Default-jsonarray">jsonarray</a>
                     </li>
@@ -2403,11 +2398,8 @@ margin-bottom: 20px;
                     <li data-group="Default" data-name="transformCsv" class="">
                       <a href="#api-Default-transformCsv">transformCsv</a>
                     </li>
-                    <li data-group="Default" data-name="transformarrayCsv" class="">
-                      <a href="#api-Default-transformarrayCsv">transformarrayCsv</a>
-                    </li>
-                    <li data-group="Default" data-name="transformarrayImage" class="">
-                      <a href="#api-Default-transformarrayImage">transformarrayImage</a>
+                    <li data-group="Default" data-name="transformarray" class="">
+                      <a href="#api-Default-transformarray">transformarray</a>
                     </li>
                     <li data-group="Default" data-name="transformimage" class="">
                       <a href="#api-Default-transformimage">transformimage</a>
@@ -2415,11 +2407,8 @@ margin-bottom: 20px;
                     <li data-group="Default" data-name="transformincrementalCsv" class="">
                       <a href="#api-Default-transformincrementalCsv">transformincrementalCsv</a>
                     </li>
-                    <li data-group="Default" data-name="transformincrementalarrayCsv" class="">
-                      <a href="#api-Default-transformincrementalarrayCsv">transformincrementalarrayCsv</a>
-                    </li>
-                    <li data-group="Default" data-name="transformincrementalarrayImage" class="">
-                      <a href="#api-Default-transformincrementalarrayImage">transformincrementalarrayImage</a>
+                    <li data-group="Default" data-name="transformincrementalarray" class="">
+                      <a href="#api-Default-transformincrementalarray">transformincrementalarray</a>
                     </li>
                     <li data-group="Default" data-name="transformincrementalimage" class="">
                       <a href="#api-Default-transformincrementalimage">transformincrementalimage</a>
@@ -8707,7 +8696,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/jobs/{jobtype}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/jobs/{jobIdOrType}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -8727,7 +8716,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-createJob-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "authorization: [[apiKey]]" "http://localhost:9008/jobs/{jobtype}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "authorization: [[apiKey]]" "http://localhost:9008/jobs/{jobIdOrType}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-createJob-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -8750,10 +8739,10 @@ public class DefaultApiExample {
         //api_key.setApiKeyPrefix("Token");
 
         DefaultApi apiInstance = new DefaultApi();
-        String jobtype = jobtype_example; // String | Job Type
+        String jobIdOrType = jobIdOrType_example; // String | Job Type
         CreateJobRequest createJobRequest = ; // CreateJobRequest | Create job request object
         try {
-            JobEntity result = apiInstance.createJob(jobtype, createJobRequest);
+            JobEntity result = apiInstance.createJob(jobIdOrType, createJobRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#createJob");
@@ -8770,10 +8759,10 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
-        String jobtype = jobtype_example; // String | Job Type
+        String jobIdOrType = jobIdOrType_example; // String | Job Type
         CreateJobRequest createJobRequest = ; // CreateJobRequest | Create job request object
         try {
-            JobEntity result = apiInstance.createJob(jobtype, createJobRequest);
+            JobEntity result = apiInstance.createJob(jobIdOrType, createJobRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#createJob");
@@ -8794,13 +8783,13 @@ public class DefaultApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
 
-String *jobtype = jobtype_example; // Job Type
+String *jobIdOrType = jobIdOrType_example; // Job Type
 CreateJobRequest *createJobRequest = ; // Create job request object
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Create a job
-[apiInstance createJobWith:jobtype
+[apiInstance createJobWith:jobIdOrType
     createJobRequest:createJobRequest
               completionHandler: ^(JobEntity output, NSError* error) {
                             if (output) {
@@ -8825,7 +8814,7 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new Endpoints.DefaultApi()
 
-var jobtype = jobtype_example; // {String} Job Type
+var jobIdOrType = jobIdOrType_example; // {String} Job Type
 
 var createJobRequest = ; // {CreateJobRequest} Create job request object
 
@@ -8837,7 +8826,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.createJob(jobtype, createJobRequest, callback);
+api.createJob(jobIdOrType, createJobRequest, callback);
 </code></pre>
                             </div>
 
@@ -8864,13 +8853,13 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var jobtype = jobtype_example;  // String | Job Type
+            var jobIdOrType = jobIdOrType_example;  // String | Job Type
             var createJobRequest = new CreateJobRequest(); // CreateJobRequest | Create job request object
 
             try
             {
                 // Create a job
-                JobEntity result = apiInstance.createJob(jobtype, createJobRequest);
+                JobEntity result = apiInstance.createJob(jobIdOrType, createJobRequest);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8893,11 +8882,11 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
-$jobtype = jobtype_example; // String | Job Type
+$jobIdOrType = jobIdOrType_example; // String | Job Type
 $createJobRequest = ; // CreateJobRequest | Create job request object
 
 try {
-    $result = $api_instance->createJob($jobtype, $createJobRequest);
+    $result = $api_instance->createJob($jobIdOrType, $createJobRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createJob: ', $e->getMessage(), PHP_EOL;
@@ -8916,11 +8905,11 @@ $WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $jobtype = jobtype_example; # String | Job Type
+my $jobIdOrType = jobIdOrType_example; # String | Job Type
 my $createJobRequest = WWW::SwaggerClient::Object::CreateJobRequest->new(); # CreateJobRequest | Create job request object
 
 eval { 
-    my $result = $api_instance->createJob(jobtype => $jobtype, createJobRequest => $createJobRequest);
+    my $result = $api_instance->createJob(jobIdOrType => $jobIdOrType, createJobRequest => $createJobRequest);
     print Dumper($result);
 };
 if ($@) {
@@ -8942,12 +8931,12 @@ swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
-jobtype = jobtype_example # String | Job Type
+jobIdOrType = jobIdOrType_example # String | Job Type
 createJobRequest =  # CreateJobRequest | Create job request object
 
 try: 
     # Create a job
-    api_response = api_instance.create_job(jobtype, createJobRequest)
+    api_response = api_instance.create_job(jobIdOrType, createJobRequest)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->createJob: %s\n" % e)</code></pre>
@@ -8962,11 +8951,11 @@ except ApiException as e:
                                   <th width="150px">Name</th>
                                   <th>Description</th>
                                 </tr>
-                                  <tr><td style="width:150px;">jobtype*</td>
+                                  <tr><td style="width:150px;">jobIdOrType*</td>
 <td>
 
 
-    <div id="d2e199_createJob_jobtype">
+    <div id="d2e199_createJob_jobIdOrType">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -10187,7 +10176,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/jobs/{jobId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/jobs/{jobIdOrType}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -10207,7 +10196,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-deleteJobById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "authorization: [[apiKey]]" "http://localhost:9008/jobs/{jobId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "authorization: [[apiKey]]" "http://localhost:9008/jobs/{jobIdOrType}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-deleteJobById-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -10230,9 +10219,9 @@ public class DefaultApiExample {
         //api_key.setApiKeyPrefix("Token");
 
         DefaultApi apiInstance = new DefaultApi();
-        Long jobId = 789; // Long | Job ID
+        Long jobIdOrType = 789; // Long | Job ID
         try {
-            apiInstance.deleteJobById(jobId);
+            apiInstance.deleteJobById(jobIdOrType);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#deleteJobById");
             e.printStackTrace();
@@ -10248,9 +10237,9 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
-        Long jobId = 789; // Long | Job ID
+        Long jobIdOrType = 789; // Long | Job ID
         try {
-            apiInstance.deleteJobById(jobId);
+            apiInstance.deleteJobById(jobIdOrType);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#deleteJobById");
             e.printStackTrace();
@@ -10270,12 +10259,12 @@ public class DefaultApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
 
-Long *jobId = 789; // Job ID
+Long *jobIdOrType = 789; // Job ID
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Deletes a job given its ID
-[apiInstance deleteJobByIdWith:jobId
+[apiInstance deleteJobByIdWith:jobIdOrType
               completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
@@ -10296,7 +10285,7 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new Endpoints.DefaultApi()
 
-var jobId = 789; // {Long} Job ID
+var jobIdOrType = 789; // {Long} Job ID
 
 
 var callback = function(error, data, response) {
@@ -10306,7 +10295,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.deleteJobById(jobId, callback);
+api.deleteJobById(jobIdOrType, callback);
 </code></pre>
                             </div>
 
@@ -10333,12 +10322,12 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var jobId = 789;  // Long | Job ID
+            var jobIdOrType = 789;  // Long | Job ID
 
             try
             {
                 // Deletes a job given its ID
-                apiInstance.deleteJobById(jobId);
+                apiInstance.deleteJobById(jobIdOrType);
             }
             catch (Exception e)
             {
@@ -10360,10 +10349,10 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
-$jobId = 789; // Long | Job ID
+$jobIdOrType = 789; // Long | Job ID
 
 try {
-    $api_instance->deleteJobById($jobId);
+    $api_instance->deleteJobById($jobIdOrType);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteJobById: ', $e->getMessage(), PHP_EOL;
 }
@@ -10381,10 +10370,10 @@ $WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $jobId = 789; # Long | Job ID
+my $jobIdOrType = 789; # Long | Job ID
 
 eval { 
-    $api_instance->deleteJobById(jobId => $jobId);
+    $api_instance->deleteJobById(jobIdOrType => $jobIdOrType);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->deleteJobById: $@\n";
@@ -10405,11 +10394,11 @@ swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
-jobId = 789 # Long | Job ID
+jobIdOrType = 789 # Long | Job ID
 
 try: 
     # Deletes a job given its ID
-    api_instance.delete_job_by_id(jobId)
+    api_instance.delete_job_by_id(jobIdOrType)
 except ApiException as e:
     print("Exception when calling DefaultApi->deleteJobById: %s\n" % e)</code></pre>
                             </div>
@@ -10423,11 +10412,11 @@ except ApiException as e:
                                   <th width="150px">Name</th>
                                   <th>Description</th>
                                 </tr>
-                                  <tr><td style="width:150px;">jobId*</td>
+                                  <tr><td style="width:150px;">jobIdOrType*</td>
 <td>
 
 
-    <div id="d2e199_deleteJobById_jobId">
+    <div id="d2e199_deleteJobById_jobIdOrType">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -17678,7 +17667,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/jobs/{jobId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/jobs/{jobIdOrType}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -17698,7 +17687,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-getJobById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "authorization: [[apiKey]]" "http://localhost:9008/jobs/{jobId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "authorization: [[apiKey]]" "http://localhost:9008/jobs/{jobIdOrType}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-getJobById-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -17721,9 +17710,9 @@ public class DefaultApiExample {
         //api_key.setApiKeyPrefix("Token");
 
         DefaultApi apiInstance = new DefaultApi();
-        Long jobId = 789; // Long | Job ID
+        Long jobIdOrType = 789; // Long | Job ID
         try {
-            JobEntity result = apiInstance.getJobById(jobId);
+            JobEntity result = apiInstance.getJobById(jobIdOrType);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getJobById");
@@ -17740,9 +17729,9 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
-        Long jobId = 789; // Long | Job ID
+        Long jobIdOrType = 789; // Long | Job ID
         try {
-            JobEntity result = apiInstance.getJobById(jobId);
+            JobEntity result = apiInstance.getJobById(jobIdOrType);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getJobById");
@@ -17763,12 +17752,12 @@ public class DefaultApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
 
-Long *jobId = 789; // Job ID
+Long *jobIdOrType = 789; // Job ID
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Get a job by its ID
-[apiInstance getJobByIdWith:jobId
+[apiInstance getJobByIdWith:jobIdOrType
               completionHandler: ^(JobEntity output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -17792,7 +17781,7 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new Endpoints.DefaultApi()
 
-var jobId = 789; // {Long} Job ID
+var jobIdOrType = 789; // {Long} Job ID
 
 
 var callback = function(error, data, response) {
@@ -17802,7 +17791,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.getJobById(jobId, callback);
+api.getJobById(jobIdOrType, callback);
 </code></pre>
                             </div>
 
@@ -17829,12 +17818,12 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var jobId = 789;  // Long | Job ID
+            var jobIdOrType = 789;  // Long | Job ID
 
             try
             {
                 // Get a job by its ID
-                JobEntity result = apiInstance.getJobById(jobId);
+                JobEntity result = apiInstance.getJobById(jobIdOrType);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -17857,10 +17846,10 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
-$jobId = 789; // Long | Job ID
+$jobIdOrType = 789; // Long | Job ID
 
 try {
-    $result = $api_instance->getJobById($jobId);
+    $result = $api_instance->getJobById($jobIdOrType);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getJobById: ', $e->getMessage(), PHP_EOL;
@@ -17879,10 +17868,10 @@ $WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $jobId = 789; # Long | Job ID
+my $jobIdOrType = 789; # Long | Job ID
 
 eval { 
-    my $result = $api_instance->getJobById(jobId => $jobId);
+    my $result = $api_instance->getJobById(jobIdOrType => $jobIdOrType);
     print Dumper($result);
 };
 if ($@) {
@@ -17904,11 +17893,11 @@ swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
-jobId = 789 # Long | Job ID
+jobIdOrType = 789 # Long | Job ID
 
 try: 
     # Get a job by its ID
-    api_response = api_instance.get_job_by_id(jobId)
+    api_response = api_instance.get_job_by_id(jobIdOrType)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->getJobById: %s\n" % e)</code></pre>
@@ -17923,11 +17912,11 @@ except ApiException as e:
                                   <th width="150px">Name</th>
                                   <th>Description</th>
                                 </tr>
-                                  <tr><td style="width:150px;">jobId*</td>
+                                  <tr><td style="width:150px;">jobIdOrType*</td>
 <td>
 
 
-    <div id="d2e199_getJobById_jobId">
+    <div id="d2e199_getJobById_jobIdOrType">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -19832,7 +19821,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/resources/resources/type/{resourceSubType}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/resources/resources/subtype/{resourceSubType}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -19852,7 +19841,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-getResourceBySubType-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "authorization: [[apiKey]]" "http://localhost:9008/resources/resources/type/{resourceSubType}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "authorization: [[apiKey]]" "http://localhost:9008/resources/resources/subtype/{resourceSubType}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-getResourceBySubType-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -22081,856 +22070,6 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-getResourcesFromGroup-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Default-imagetransformprocessGet">
-                      <article id="api-Default-imagetransformprocessGet-0" data-group="User" data-name="imagetransformprocessGet" data-version="0">
-                        <div class="pull-left">
-                          <h1>imagetransformprocessGet</h1>
-                          <p>Retrieves the image transform process JSON string</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-imagetransformprocessGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessGet-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-imagetransformprocessGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-imagetransformprocessGet-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessGet-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-imagetransformprocessGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-imagetransformprocessGet-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessGet-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-imagetransformprocessGet-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "authorization: [[apiKey]]" "http://localhost:9008/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-imagetransformprocessGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure API key authorization: api_key
-        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-        api_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //api_key.setApiKeyPrefix("Token");
-
-        DefaultApi apiInstance = new DefaultApi();
-        String deploymentName = deploymentName_example; // String | Name of the deployment group
-        String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-        String imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-        try {
-            ImageTransformProcess result = apiInstance.imagetransformprocessGet(deploymentName, versionName, imageTransformName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#imagetransformprocessGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-imagetransformprocessGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        String deploymentName = deploymentName_example; // String | Name of the deployment group
-        String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-        String imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-        try {
-            ImageTransformProcess result = apiInstance.imagetransformprocessGet(deploymentName, versionName, imageTransformName);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#imagetransformprocessGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-imagetransformprocessGet-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: api_key)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"authorization"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
-
-String *deploymentName = deploymentName_example; // Name of the deployment group
-String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
-String *imageTransformName = imageTransformName_example; // ID or name of the deployed image transform
-
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-
-// Retrieves the image transform process JSON string
-[apiInstance imagetransformprocessGetWith:deploymentName
-    versionName:versionName
-    imageTransformName:imageTransformName
-              completionHandler: ^(ImageTransformProcess output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var Endpoints = require('endpoints');
-var defaultClient = Endpoints.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix['authorization'] = "Token"
-
-var api = new Endpoints.DefaultApi()
-
-var deploymentName = deploymentName_example; // {String} Name of the deployment group
-
-var versionName = versionName_example; // {String} Version name of the endpoint. The default value is "default"
-
-var imageTransformName = imageTransformName_example; // {String} ID or name of the deployed image transform
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.imagetransformprocessGet(deploymentName, versionName, imageTransformName, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-imagetransformprocessGet-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class imagetransformprocessGetExample
-    {
-        public void main()
-        {
-            
-            // Configure API key authorization: api_key
-            Configuration.Default.ApiKey.Add("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // String | Name of the deployment group
-            var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
-            var imageTransformName = imageTransformName_example;  // String | ID or name of the deployed image transform
-
-            try
-            {
-                // Retrieves the image transform process JSON string
-                ImageTransformProcess result = apiInstance.imagetransformprocessGet(deploymentName, versionName, imageTransformName);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.imagetransformprocessGet: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessGet-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: api_key
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
-
-$api_instance = new Swagger\Client\Api\DefaultApi();
-$deploymentName = deploymentName_example; // String | Name of the deployment group
-$versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-$imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-
-try {
-    $result = $api_instance->imagetransformprocessGet($deploymentName, $versionName, $imageTransformName);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->imagetransformprocessGet: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
-
-# Configure API key authorization: api_key
-$WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
-
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $deploymentName = deploymentName_example; # String | Name of the deployment group
-my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
-my $imageTransformName = imageTransformName_example; # String | ID or name of the deployed image transform
-
-eval { 
-    my $result = $api_instance->imagetransformprocessGet(deploymentName => $deploymentName, versionName => $versionName, imageTransformName => $imageTransformName);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->imagetransformprocessGet: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: api_key
-swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-deploymentName = deploymentName_example # String | Name of the deployment group
-versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
-imageTransformName = imageTransformName_example # String | ID or name of the deployed image transform
-
-try: 
-    # Retrieves the image transform process JSON string
-    api_response = api_instance.imagetransformprocess_get(deploymentName, versionName, imageTransformName)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->imagetransformprocessGet: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">deploymentName*</td>
-<td>
-
-
-    <div id="d2e199_imagetransformprocessGet_deploymentName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        Name of the deployment group
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                  <tr><td style="width:150px;">versionName*</td>
-<td>
-
-
-    <div id="d2e199_imagetransformprocessGet_versionName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        Version name of the endpoint. The default value is &quot;default&quot;
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                  <tr><td style="width:150px;">imageTransformName*</td>
-<td>
-
-
-    <div id="d2e199_imagetransformprocessGet_imageTransformName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        ID or name of the deployed image transform
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - Image transform process JSON successfully retrieved </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-imagetransformprocessGet-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-imagetransformprocessGet-200-schema">
-                                  <div id='responses-imagetransformprocessGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Image transform process JSON successfully retrieved",
-  "schema" : {
-    "$ref" : "#/definitions/ImageTransformProcess"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-imagetransformprocessGet-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-imagetransformprocessGet-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-imagetransformprocessGet-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Default-imagetransformprocessPost">
-                      <article id="api-Default-imagetransformprocessPost-0" data-group="User" data-name="imagetransformprocessPost" data-version="0">
-                        <div class="pull-left">
-                          <h1>imagetransformprocessPost</h1>
-                          <p>Sets the image transform process through the provided JSON string</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-imagetransformprocessPost-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessPost-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessPost-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-imagetransformprocessPost-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-imagetransformprocessPost-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessPost-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-imagetransformprocessPost-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-imagetransformprocessPost-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessPost-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessPost-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-imagetransformprocessPost-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-imagetransformprocessPost-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "authorization: [[apiKey]]" "http://localhost:9008/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-imagetransformprocessPost-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure API key authorization: api_key
-        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-        api_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //api_key.setApiKeyPrefix("Token");
-
-        DefaultApi apiInstance = new DefaultApi();
-        String deploymentName = deploymentName_example; // String | Name of the deployment group
-        String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-        String imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-        ImageTransformProcess body = ; // ImageTransformProcess | The image transform process JSON
-        try {
-            ImageTransformProcess result = apiInstance.imagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#imagetransformprocessPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-imagetransformprocessPost-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        String deploymentName = deploymentName_example; // String | Name of the deployment group
-        String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-        String imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-        ImageTransformProcess body = ; // ImageTransformProcess | The image transform process JSON
-        try {
-            ImageTransformProcess result = apiInstance.imagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#imagetransformprocessPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-imagetransformprocessPost-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessPost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: api_key)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"authorization"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
-
-String *deploymentName = deploymentName_example; // Name of the deployment group
-String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
-String *imageTransformName = imageTransformName_example; // ID or name of the deployed image transform
-ImageTransformProcess *body = ; // The image transform process JSON
-
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-
-// Sets the image transform process through the provided JSON string
-[apiInstance imagetransformprocessPostWith:deploymentName
-    versionName:versionName
-    imageTransformName:imageTransformName
-    body:body
-              completionHandler: ^(ImageTransformProcess output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var Endpoints = require('endpoints');
-var defaultClient = Endpoints.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix['authorization'] = "Token"
-
-var api = new Endpoints.DefaultApi()
-
-var deploymentName = deploymentName_example; // {String} Name of the deployment group
-
-var versionName = versionName_example; // {String} Version name of the endpoint. The default value is "default"
-
-var imageTransformName = imageTransformName_example; // {String} ID or name of the deployed image transform
-
-var body = ; // {ImageTransformProcess} The image transform process JSON
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.imagetransformprocessPost(deploymentName, versionName, imageTransformName, body, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-imagetransformprocessPost-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessPost-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class imagetransformprocessPostExample
-    {
-        public void main()
-        {
-            
-            // Configure API key authorization: api_key
-            Configuration.Default.ApiKey.Add("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // String | Name of the deployment group
-            var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
-            var imageTransformName = imageTransformName_example;  // String | ID or name of the deployed image transform
-            var body = new ImageTransformProcess(); // ImageTransformProcess | The image transform process JSON
-
-            try
-            {
-                // Sets the image transform process through the provided JSON string
-                ImageTransformProcess result = apiInstance.imagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.imagetransformprocessPost: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessPost-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: api_key
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
-
-$api_instance = new Swagger\Client\Api\DefaultApi();
-$deploymentName = deploymentName_example; // String | Name of the deployment group
-$versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-$imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-$body = ; // ImageTransformProcess | The image transform process JSON
-
-try {
-    $result = $api_instance->imagetransformprocessPost($deploymentName, $versionName, $imageTransformName, $body);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->imagetransformprocessPost: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessPost-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
-
-# Configure API key authorization: api_key
-$WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
-
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $deploymentName = deploymentName_example; # String | Name of the deployment group
-my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
-my $imageTransformName = imageTransformName_example; # String | ID or name of the deployed image transform
-my $body = WWW::SwaggerClient::Object::ImageTransformProcess->new(); # ImageTransformProcess | The image transform process JSON
-
-eval { 
-    my $result = $api_instance->imagetransformprocessPost(deploymentName => $deploymentName, versionName => $versionName, imageTransformName => $imageTransformName, body => $body);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->imagetransformprocessPost: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-imagetransformprocessPost-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: api_key
-swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-deploymentName = deploymentName_example # String | Name of the deployment group
-versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
-imageTransformName = imageTransformName_example # String | ID or name of the deployed image transform
-body =  # ImageTransformProcess | The image transform process JSON
-
-try: 
-    # Sets the image transform process through the provided JSON string
-    api_response = api_instance.imagetransformprocess_post(deploymentName, versionName, imageTransformName, body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->imagetransformprocessPost: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">deploymentName*</td>
-<td>
-
-
-    <div id="d2e199_imagetransformprocessPost_deploymentName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        Name of the deployment group
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                  <tr><td style="width:150px;">versionName*</td>
-<td>
-
-
-    <div id="d2e199_imagetransformprocessPost_versionName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        Version name of the endpoint. The default value is &quot;default&quot;
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                  <tr><td style="width:150px;">imageTransformName*</td>
-<td>
-
-
-    <div id="d2e199_imagetransformprocessPost_imageTransformName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        ID or name of the deployed image transform
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">body <span style="color:red;">*</span></td>
-<td>
-
-
-<script>
-$(document).ready(function() {
-  var schemaWrapper = {
-  "in" : "body",
-  "name" : "body",
-  "description" : "The image transform process JSON",
-  "required" : true,
-  "schema" : {
-    "$ref" : "#/definitions/ImageTransformProcess"
-  }
-};
-  var schema = schemaWrapper.schema;
-  if (schema.$ref != null) {
-    schema = defsParser.$refs.get(schema.$ref);
-  } else {
-    schemaWrapper.definitions = Object.assign({}, defs);
-    $RefParser.dereference(schemaWrapper).catch(function(err) {
-      console.log(err);
-    });
-  }
-
-  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_imagetransformprocessPost_body');
-  result.empty();
-  result.append(view.render());
-});
-</script>
-<div id="d2e199_imagetransformprocessPost_body"></div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - Image transform process JSON successfully set </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-imagetransformprocessPost-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-imagetransformprocessPost-200-schema">
-                                  <div id='responses-imagetransformprocessPost-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Image transform process JSON successfully set",
-  "schema" : {
-    "$ref" : "#/definitions/ImageTransformProcess"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-imagetransformprocessPost-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-imagetransformprocessPost-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-imagetransformprocessPost-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -33122,16 +32261,16 @@ $(document).ready(function() {
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Default-transformarrayCsv">
-                      <article id="api-Default-transformarrayCsv-0" data-group="User" data-name="transformarrayCsv" data-version="0">
+                    <div id="api-Default-transformarray">
+                      <article id="api-Default-transformarray-0" data-group="User" data-name="transformarray" data-version="0">
                         <div class="pull-left">
-                          <h1>transformarrayCsv</h1>
+                          <h1>transformarray</h1>
                           <p>Takes a batch input arrays and transforms it</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody</p>
+                        <p class="marked"></p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray</span></code></pre>
@@ -33139,24 +32278,24 @@ $(document).ready(function() {
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-transformarrayCsv-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayCsv-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayCsv-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-transformarrayCsv-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-transformarrayCsv-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayCsv-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-transformarrayCsv-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-transformarrayCsv-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayCsv-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayCsv-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayCsv-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Default-transformarray-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-transformarray-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-transformarray-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-transformarray-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-transformarray-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-transformarray-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-transformarray-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-transformarray-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-transformarray-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-transformarray-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-transformarray-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-transformarrayCsv-0-curl">
+                          <div class="tab-pane active" id="examples-Default-transformarray-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "authorization: [[apiKey]]" "http://localhost:9008/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-transformarrayCsv-0-java">
+                          <div class="tab-pane" id="examples-Default-transformarray-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -33180,19 +32319,19 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        BatchCSVRecord batchCSVRecord = ; // BatchCSVRecord | The input batch of record arrays
+         batchRecord = ; //  | The input batch of record arrays
         try {
-            Base64NDArrayBody result = apiInstance.transformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
+            Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#transformarrayCsv");
+            System.err.println("Exception when calling DefaultApi#transformarray");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-transformarrayCsv-0-android">
+                          <div class="tab-pane" id="examples-Default-transformarray-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
 
 public class DefaultApiExample {
@@ -33202,22 +32341,22 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        BatchCSVRecord batchCSVRecord = ; // BatchCSVRecord | The input batch of record arrays
+         batchRecord = ; //  | The input batch of record arrays
         try {
-            Base64NDArrayBody result = apiInstance.transformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
+            Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#transformarrayCsv");
+            System.err.println("Exception when calling DefaultApi#transformarray");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-transformarrayCsv-0-groovy">
+  <div class="tab-pane" id="examples-Default-transformarray-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-transformarrayCsv-0-objc">
+                            <div class="tab-pane" id="examples-Default-transformarray-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: api_key)
@@ -33228,15 +32367,15 @@ public class DefaultApiExample {
 String *deploymentName = deploymentName_example; // Name of the deployment group
 String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
 String *transformName = transformName_example; // ID or name of the deployed transform
-BatchCSVRecord *batchCSVRecord = ; // The input batch of record arrays (optional)
+ *batchRecord = ; // The input batch of record arrays (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Takes a batch input arrays and transforms it
-[apiInstance transformarrayCsvWith:deploymentName
+[apiInstance transformarrayWith:deploymentName
     versionName:versionName
     transformName:transformName
-    batchCSVRecord:batchCSVRecord
+    batchRecord:batchRecord
               completionHandler: ^(Base64NDArrayBody output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -33248,7 +32387,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-transformarrayCsv-0-javascript">
+                            <div class="tab-pane" id="examples-Default-transformarray-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Endpoints = require('endpoints');
 var defaultClient = Endpoints.ApiClient.instance;
 
@@ -33267,7 +32406,7 @@ var versionName = versionName_example; // {String} Version name of the endpoint.
 var transformName = transformName_example; // {String} ID or name of the deployed transform
 
 var opts = { 
-  'batchCSVRecord':  // {BatchCSVRecord} The input batch of record arrays
+  'batchRecord':  // {} The input batch of record arrays
 };
 
 var callback = function(error, data, response) {
@@ -33277,14 +32416,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.transformarrayCsv(deploymentName, versionName, transformName, opts, callback);
+api.transformarray(deploymentName, versionName, transformName, opts, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-transformarrayCsv-0-angular">
+                            <!--<div class="tab-pane" id="examples-Default-transformarray-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-transformarrayCsv-0-csharp">
+                            <div class="tab-pane" id="examples-Default-transformarray-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -33293,7 +32432,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class transformarrayCsvExample
+    public class transformarrayExample
     {
         public void main()
         {
@@ -33307,17 +32446,17 @@ namespace Example
             var deploymentName = deploymentName_example;  // String | Name of the deployment group
             var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
             var transformName = transformName_example;  // String | ID or name of the deployed transform
-            var batchCSVRecord = new BatchCSVRecord(); // BatchCSVRecord | The input batch of record arrays (optional) 
+            var batchRecord = new (); //  | The input batch of record arrays (optional) 
 
             try
             {
                 // Takes a batch input arrays and transforms it
-                Base64NDArrayBody result = apiInstance.transformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
+                Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.transformarrayCsv: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.transformarray: " + e.Message );
             }
         }
     }
@@ -33325,7 +32464,7 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-transformarrayCsv-0-php">
+                            <div class="tab-pane" id="examples-Default-transformarray-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
@@ -33338,18 +32477,18 @@ $api_instance = new Swagger\Client\Api\DefaultApi();
 $deploymentName = deploymentName_example; // String | Name of the deployment group
 $versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
 $transformName = transformName_example; // String | ID or name of the deployed transform
-$batchCSVRecord = ; // BatchCSVRecord | The input batch of record arrays
+$batchRecord = ; //  | The input batch of record arrays
 
 try {
-    $result = $api_instance->transformarrayCsv($deploymentName, $versionName, $transformName, $batchCSVRecord);
+    $result = $api_instance->transformarray($deploymentName, $versionName, $transformName, $batchRecord);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->transformarrayCsv: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->transformarray: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-transformarrayCsv-0-perl">
+                            <div class="tab-pane" id="examples-Default-transformarray-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
@@ -33363,18 +32502,18 @@ my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $deploymentName = deploymentName_example; # String | Name of the deployment group
 my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
 my $transformName = transformName_example; # String | ID or name of the deployed transform
-my $batchCSVRecord = WWW::SwaggerClient::Object::BatchCSVRecord->new(); # BatchCSVRecord | The input batch of record arrays
+my $batchRecord = WWW::SwaggerClient::Object::->new(); #  | The input batch of record arrays
 
 eval { 
-    my $result = $api_instance->transformarrayCsv(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, batchCSVRecord => $batchCSVRecord);
+    my $result = $api_instance->transformarray(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, batchRecord => $batchRecord);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->transformarrayCsv: $@\n";
+    warn "Exception when calling DefaultApi->transformarray: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-transformarrayCsv-0-python">
+                            <div class="tab-pane" id="examples-Default-transformarray-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -33391,14 +32530,14 @@ api_instance = swagger_client.DefaultApi()
 deploymentName = deploymentName_example # String | Name of the deployment group
 versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
 transformName = transformName_example # String | ID or name of the deployed transform
-batchCSVRecord =  # BatchCSVRecord | The input batch of record arrays (optional)
+batchRecord =  #  | The input batch of record arrays (optional)
 
 try: 
     # Takes a batch input arrays and transforms it
-    api_response = api_instance.transformarray_csv(deploymentName, versionName, transformName, batchCSVRecord=batchCSVRecord)
+    api_response = api_instance.transformarray(deploymentName, versionName, transformName, batchRecord=batchRecord)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->transformarrayCsv: %s\n" % e)</code></pre>
+    print("Exception when calling DefaultApi->transformarray: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -33414,7 +32553,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_transformarrayCsv_deploymentName">
+    <div id="d2e199_transformarray_deploymentName">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -33437,7 +32576,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_transformarrayCsv_versionName">
+    <div id="d2e199_transformarray_versionName">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -33460,7 +32599,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_transformarrayCsv_transformName">
+    <div id="d2e199_transformarray_transformName">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -33488,7 +32627,7 @@ except ApiException as e:
                                 <th width="150px">Name</th>
                                 <th>Description</th>
                               </tr>
-                                <tr><td style="width:150px;">batchCSVRecord </td>
+                                <tr><td style="width:150px;">batchRecord </td>
 <td>
 
 
@@ -33496,12 +32635,10 @@ except ApiException as e:
 $(document).ready(function() {
   var schemaWrapper = {
   "in" : "body",
-  "name" : "BatchCSVRecord",
+  "name" : "BatchRecord",
   "description" : "The input batch of record arrays",
   "required" : false,
-  "schema" : {
-    "$ref" : "#/definitions/BatchCSVRecord"
-  }
+  "schema" : { }
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -33514,12 +32651,12 @@ $(document).ready(function() {
   }
 
   var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_transformarrayCsv_batchCSVRecord');
+  var result = $('#d2e199_transformarray_batchRecord');
   result.empty();
   result.append(view.render());
 });
 </script>
-<div id="d2e199_transformarrayCsv_batchCSVRecord"></div>
+<div id="d2e199_transformarray_batchRecord"></div>
 </td>
 </tr>
 
@@ -33532,14 +32669,14 @@ $(document).ready(function() {
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-transformarrayCsv-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-transformarray-200-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-transformarrayCsv-200-schema">
-                                  <div id='responses-transformarrayCsv-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-transformarray-200-schema">
+                                  <div id='responses-transformarray-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -33560,473 +32697,14 @@ $(document).ready(function() {
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-transformarrayCsv-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-transformarrayCsv-200-schema-200');
+                                        $('#responses-transformarray-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-transformarray-200-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-transformarrayCsv-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 500 - internal server error during transforming the array </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Default-transformarrayImage">
-                      <article id="api-Default-transformarrayImage-0" data-group="User" data-name="transformarrayImage" data-version="0">
-                        <div class="pull-left">
-                          <h1>transformarrayImage</h1>
-                          <p>Takes a batch of images uri and transforms it and returns Base64NDArrayBody</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-transformarrayImage-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayImage-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayImage-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-transformarrayImage-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-transformarrayImage-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayImage-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-transformarrayImage-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-transformarrayImage-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayImage-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayImage-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-transformarrayImage-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-transformarrayImage-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "authorization: [[apiKey]]" "http://localhost:9008/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-transformarrayImage-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure API key authorization: api_key
-        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-        api_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //api_key.setApiKeyPrefix("Token");
-
-        DefaultApi apiInstance = new DefaultApi();
-        String deploymentName = deploymentName_example; // String | Name of the deployment group
-        String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-        String imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-        BatchImageRecord batchImageRecord = ; // BatchImageRecord | The input batch of record arrays
-        try {
-            Base64NDArrayBody result = apiInstance.transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#transformarrayImage");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-transformarrayImage-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        String deploymentName = deploymentName_example; // String | Name of the deployment group
-        String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-        String imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-        BatchImageRecord batchImageRecord = ; // BatchImageRecord | The input batch of record arrays
-        try {
-            Base64NDArrayBody result = apiInstance.transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#transformarrayImage");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-transformarrayImage-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-transformarrayImage-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: api_key)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"authorization"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
-
-String *deploymentName = deploymentName_example; // Name of the deployment group
-String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
-String *imageTransformName = imageTransformName_example; // ID or name of the deployed image transform
-BatchImageRecord *batchImageRecord = ; // The input batch of record arrays
-
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-
-// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-[apiInstance transformarrayImageWith:deploymentName
-    versionName:versionName
-    imageTransformName:imageTransformName
-    batchImageRecord:batchImageRecord
-              completionHandler: ^(Base64NDArrayBody output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-transformarrayImage-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var Endpoints = require('endpoints');
-var defaultClient = Endpoints.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix['authorization'] = "Token"
-
-var api = new Endpoints.DefaultApi()
-
-var deploymentName = deploymentName_example; // {String} Name of the deployment group
-
-var versionName = versionName_example; // {String} Version name of the endpoint. The default value is "default"
-
-var imageTransformName = imageTransformName_example; // {String} ID or name of the deployed image transform
-
-var batchImageRecord = ; // {BatchImageRecord} The input batch of record arrays
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-transformarrayImage-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-transformarrayImage-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class transformarrayImageExample
-    {
-        public void main()
-        {
-            
-            // Configure API key authorization: api_key
-            Configuration.Default.ApiKey.Add("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // String | Name of the deployment group
-            var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
-            var imageTransformName = imageTransformName_example;  // String | ID or name of the deployed image transform
-            var batchImageRecord = new BatchImageRecord(); // BatchImageRecord | The input batch of record arrays
-
-            try
-            {
-                // Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.transformarrayImage: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-transformarrayImage-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: api_key
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
-
-$api_instance = new Swagger\Client\Api\DefaultApi();
-$deploymentName = deploymentName_example; // String | Name of the deployment group
-$versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-$imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-$batchImageRecord = ; // BatchImageRecord | The input batch of record arrays
-
-try {
-    $result = $api_instance->transformarrayImage($deploymentName, $versionName, $imageTransformName, $batchImageRecord);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->transformarrayImage: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-transformarrayImage-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
-
-# Configure API key authorization: api_key
-$WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
-
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $deploymentName = deploymentName_example; # String | Name of the deployment group
-my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
-my $imageTransformName = imageTransformName_example; # String | ID or name of the deployed image transform
-my $batchImageRecord = WWW::SwaggerClient::Object::BatchImageRecord->new(); # BatchImageRecord | The input batch of record arrays
-
-eval { 
-    my $result = $api_instance->transformarrayImage(deploymentName => $deploymentName, versionName => $versionName, imageTransformName => $imageTransformName, batchImageRecord => $batchImageRecord);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->transformarrayImage: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-transformarrayImage-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: api_key
-swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-deploymentName = deploymentName_example # String | Name of the deployment group
-versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
-imageTransformName = imageTransformName_example # String | ID or name of the deployed image transform
-batchImageRecord =  # BatchImageRecord | The input batch of record arrays
-
-try: 
-    # Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-    api_response = api_instance.transformarray_image(deploymentName, versionName, imageTransformName, batchImageRecord)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->transformarrayImage: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">deploymentName*</td>
-<td>
-
-
-    <div id="d2e199_transformarrayImage_deploymentName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        Name of the deployment group
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                  <tr><td style="width:150px;">versionName*</td>
-<td>
-
-
-    <div id="d2e199_transformarrayImage_versionName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        Version name of the endpoint. The default value is &quot;default&quot;
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                  <tr><td style="width:150px;">imageTransformName*</td>
-<td>
-
-
-    <div id="d2e199_transformarrayImage_imageTransformName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        ID or name of the deployed image transform
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">batchImageRecord <span style="color:red;">*</span></td>
-<td>
-
-
-<script>
-$(document).ready(function() {
-  var schemaWrapper = {
-  "in" : "body",
-  "name" : "BatchImageRecord",
-  "description" : "The input batch of record arrays",
-  "required" : true,
-  "schema" : {
-    "$ref" : "#/definitions/BatchImageRecord"
-  }
-};
-  var schema = schemaWrapper.schema;
-  if (schema.$ref != null) {
-    schema = defsParser.$refs.get(schema.$ref);
-  } else {
-    schemaWrapper.definitions = Object.assign({}, defs);
-    $RefParser.dereference(schemaWrapper).catch(function(err) {
-      console.log(err);
-    });
-  }
-
-  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_transformarrayImage_batchImageRecord');
-  result.empty();
-  result.append(view.render());
-});
-</script>
-<div id="d2e199_transformarrayImage_batchImageRecord"></div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - array transformed and returned successfully </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-transformarrayImage-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-transformarrayImage-200-schema">
-                                  <div id='responses-transformarrayImage-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "array transformed and returned successfully",
-  "schema" : {
-    "$ref" : "#/definitions/Base64NDArrayBody"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-transformarrayImage-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-transformarrayImage-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-transformarrayImage-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-transformarray-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -34959,16 +33637,16 @@ $(document).ready(function() {
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Default-transformincrementalarrayCsv">
-                      <article id="api-Default-transformincrementalarrayCsv-0" data-group="User" data-name="transformincrementalarrayCsv" data-version="0">
+                    <div id="api-Default-transformincrementalarray">
+                      <article id="api-Default-transformincrementalarray-0" data-group="User" data-name="transformincrementalarray" data-version="0">
                         <div class="pull-left">
-                          <h1>transformincrementalarrayCsv</h1>
-                          <p>Same as /transformincremental but returns Base64NDArrayBody</p>
+                          <h1>transformincrementalarray</h1>
+                          <p>Same as /transformincremental but returns Base64NDArrayBody.</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody</p>
+                        <p class="marked"></p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray</span></code></pre>
@@ -34976,24 +33654,24 @@ $(document).ready(function() {
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-transformincrementalarrayCsv-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayCsv-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayCsv-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-transformincrementalarrayCsv-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-transformincrementalarrayCsv-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayCsv-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-transformincrementalarrayCsv-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-transformincrementalarrayCsv-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayCsv-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayCsv-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayCsv-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Default-transformincrementalarray-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-transformincrementalarray-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-transformincrementalarray-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-transformincrementalarray-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-transformincrementalarray-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-transformincrementalarray-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-transformincrementalarray-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-transformincrementalarray-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-transformincrementalarray-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-transformincrementalarray-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-transformincrementalarray-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-transformincrementalarrayCsv-0-curl">
+                          <div class="tab-pane active" id="examples-Default-transformincrementalarray-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "authorization: [[apiKey]]" "http://localhost:9008/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-transformincrementalarrayCsv-0-java">
+                          <div class="tab-pane" id="examples-Default-transformincrementalarray-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -35017,19 +33695,19 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        SingleCSVRecord singleCSVRecord = ; // SingleCSVRecord | The input record array
+         singleRecord = ; //  | The input record array
         try {
-            Base64NDArrayBody result = apiInstance.transformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
+            Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#transformincrementalarrayCsv");
+            System.err.println("Exception when calling DefaultApi#transformincrementalarray");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-transformincrementalarrayCsv-0-android">
+                          <div class="tab-pane" id="examples-Default-transformincrementalarray-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
 
 public class DefaultApiExample {
@@ -35039,22 +33717,22 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        SingleCSVRecord singleCSVRecord = ; // SingleCSVRecord | The input record array
+         singleRecord = ; //  | The input record array
         try {
-            Base64NDArrayBody result = apiInstance.transformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
+            Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#transformincrementalarrayCsv");
+            System.err.println("Exception when calling DefaultApi#transformincrementalarray");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-transformincrementalarrayCsv-0-groovy">
+  <div class="tab-pane" id="examples-Default-transformincrementalarray-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayCsv-0-objc">
+                            <div class="tab-pane" id="examples-Default-transformincrementalarray-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: api_key)
@@ -35065,15 +33743,15 @@ public class DefaultApiExample {
 String *deploymentName = deploymentName_example; // Name of the deployment group
 String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
 String *transformName = transformName_example; // ID or name of the deployed transform
-SingleCSVRecord *singleCSVRecord = ; // The input record array (optional)
+ *singleRecord = ; // The input record array (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
-// Same as /transformincremental but returns Base64NDArrayBody
-[apiInstance transformincrementalarrayCsvWith:deploymentName
+// Same as /transformincremental but returns Base64NDArrayBody.
+[apiInstance transformincrementalarrayWith:deploymentName
     versionName:versionName
     transformName:transformName
-    singleCSVRecord:singleCSVRecord
+    singleRecord:singleRecord
               completionHandler: ^(Base64NDArrayBody output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -35085,7 +33763,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayCsv-0-javascript">
+                            <div class="tab-pane" id="examples-Default-transformincrementalarray-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Endpoints = require('endpoints');
 var defaultClient = Endpoints.ApiClient.instance;
 
@@ -35104,7 +33782,7 @@ var versionName = versionName_example; // {String} Version name of the endpoint.
 var transformName = transformName_example; // {String} ID or name of the deployed transform
 
 var opts = { 
-  'singleCSVRecord':  // {SingleCSVRecord} The input record array
+  'singleRecord':  // {} The input record array
 };
 
 var callback = function(error, data, response) {
@@ -35114,14 +33792,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.transformincrementalarrayCsv(deploymentName, versionName, transformName, opts, callback);
+api.transformincrementalarray(deploymentName, versionName, transformName, opts, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-transformincrementalarrayCsv-0-angular">
+                            <!--<div class="tab-pane" id="examples-Default-transformincrementalarray-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayCsv-0-csharp">
+                            <div class="tab-pane" id="examples-Default-transformincrementalarray-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -35130,7 +33808,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class transformincrementalarrayCsvExample
+    public class transformincrementalarrayExample
     {
         public void main()
         {
@@ -35144,17 +33822,17 @@ namespace Example
             var deploymentName = deploymentName_example;  // String | Name of the deployment group
             var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
             var transformName = transformName_example;  // String | ID or name of the deployed transform
-            var singleCSVRecord = new SingleCSVRecord(); // SingleCSVRecord | The input record array (optional) 
+            var singleRecord = new (); //  | The input record array (optional) 
 
             try
             {
-                // Same as /transformincremental but returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.transformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
+                // Same as /transformincremental but returns Base64NDArrayBody.
+                Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.transformincrementalarrayCsv: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.transformincrementalarray: " + e.Message );
             }
         }
     }
@@ -35162,7 +33840,7 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayCsv-0-php">
+                            <div class="tab-pane" id="examples-Default-transformincrementalarray-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
@@ -35175,18 +33853,18 @@ $api_instance = new Swagger\Client\Api\DefaultApi();
 $deploymentName = deploymentName_example; // String | Name of the deployment group
 $versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
 $transformName = transformName_example; // String | ID or name of the deployed transform
-$singleCSVRecord = ; // SingleCSVRecord | The input record array
+$singleRecord = ; //  | The input record array
 
 try {
-    $result = $api_instance->transformincrementalarrayCsv($deploymentName, $versionName, $transformName, $singleCSVRecord);
+    $result = $api_instance->transformincrementalarray($deploymentName, $versionName, $transformName, $singleRecord);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->transformincrementalarrayCsv: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->transformincrementalarray: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayCsv-0-perl">
+                            <div class="tab-pane" id="examples-Default-transformincrementalarray-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
@@ -35200,18 +33878,18 @@ my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $deploymentName = deploymentName_example; # String | Name of the deployment group
 my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
 my $transformName = transformName_example; # String | ID or name of the deployed transform
-my $singleCSVRecord = WWW::SwaggerClient::Object::SingleCSVRecord->new(); # SingleCSVRecord | The input record array
+my $singleRecord = WWW::SwaggerClient::Object::->new(); #  | The input record array
 
 eval { 
-    my $result = $api_instance->transformincrementalarrayCsv(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, singleCSVRecord => $singleCSVRecord);
+    my $result = $api_instance->transformincrementalarray(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, singleRecord => $singleRecord);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->transformincrementalarrayCsv: $@\n";
+    warn "Exception when calling DefaultApi->transformincrementalarray: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayCsv-0-python">
+                            <div class="tab-pane" id="examples-Default-transformincrementalarray-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -35228,14 +33906,14 @@ api_instance = swagger_client.DefaultApi()
 deploymentName = deploymentName_example # String | Name of the deployment group
 versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
 transformName = transformName_example # String | ID or name of the deployed transform
-singleCSVRecord =  # SingleCSVRecord | The input record array (optional)
+singleRecord =  #  | The input record array (optional)
 
 try: 
-    # Same as /transformincremental but returns Base64NDArrayBody
-    api_response = api_instance.transformincrementalarray_csv(deploymentName, versionName, transformName, singleCSVRecord=singleCSVRecord)
+    # Same as /transformincremental but returns Base64NDArrayBody.
+    api_response = api_instance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord=singleRecord)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->transformincrementalarrayCsv: %s\n" % e)</code></pre>
+    print("Exception when calling DefaultApi->transformincrementalarray: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -35251,7 +33929,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_transformincrementalarrayCsv_deploymentName">
+    <div id="d2e199_transformincrementalarray_deploymentName">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -35274,7 +33952,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_transformincrementalarrayCsv_versionName">
+    <div id="d2e199_transformincrementalarray_versionName">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -35297,7 +33975,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_transformincrementalarrayCsv_transformName">
+    <div id="d2e199_transformincrementalarray_transformName">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -35325,7 +34003,7 @@ except ApiException as e:
                                 <th width="150px">Name</th>
                                 <th>Description</th>
                               </tr>
-                                <tr><td style="width:150px;">singleCSVRecord </td>
+                                <tr><td style="width:150px;">singleRecord </td>
 <td>
 
 
@@ -35333,12 +34011,10 @@ except ApiException as e:
 $(document).ready(function() {
   var schemaWrapper = {
   "in" : "body",
-  "name" : "SingleCSVRecord",
+  "name" : "SingleRecord",
   "description" : "The input record array",
   "required" : false,
-  "schema" : {
-    "$ref" : "#/definitions/SingleCSVRecord"
-  }
+  "schema" : { }
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -35351,12 +34027,12 @@ $(document).ready(function() {
   }
 
   var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_transformincrementalarrayCsv_singleCSVRecord');
+  var result = $('#d2e199_transformincrementalarray_singleRecord');
   result.empty();
   result.append(view.render());
 });
 </script>
-<div id="d2e199_transformincrementalarrayCsv_singleCSVRecord"></div>
+<div id="d2e199_transformincrementalarray_singleRecord"></div>
 </td>
 </tr>
 
@@ -35369,14 +34045,14 @@ $(document).ready(function() {
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-transformincrementalarrayCsv-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-transformincrementalarray-200-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-transformincrementalarrayCsv-200-schema">
-                                  <div id='responses-transformincrementalarrayCsv-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-transformincrementalarray-200-schema">
+                                  <div id='responses-transformincrementalarray-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -35397,473 +34073,14 @@ $(document).ready(function() {
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-transformincrementalarrayCsv-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-transformincrementalarrayCsv-200-schema-200');
+                                        $('#responses-transformincrementalarray-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-transformincrementalarray-200-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-transformincrementalarrayCsv-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 500 - internal server error during transforming the array </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Default-transformincrementalarrayImage">
-                      <article id="api-Default-transformincrementalarrayImage-0" data-group="User" data-name="transformincrementalarrayImage" data-version="0">
-                        <div class="pull-left">
-                          <h1>transformincrementalarrayImage</h1>
-                          <p>Takes SingleImageRecord to transform and returns Base64NDArrayBody</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-transformincrementalarrayImage-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayImage-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayImage-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-transformincrementalarrayImage-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-transformincrementalarrayImage-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayImage-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-transformincrementalarrayImage-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-transformincrementalarrayImage-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayImage-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayImage-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-transformincrementalarrayImage-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-transformincrementalarrayImage-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "authorization: [[apiKey]]" "http://localhost:9008/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-transformincrementalarrayImage-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure API key authorization: api_key
-        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-        api_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //api_key.setApiKeyPrefix("Token");
-
-        DefaultApi apiInstance = new DefaultApi();
-        String deploymentName = deploymentName_example; // String | Name of the deployment group
-        String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-        String imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-        SingleImageRecord singleImageRecord = ; // SingleImageRecord | The input record array
-        try {
-            Base64NDArrayBody result = apiInstance.transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#transformincrementalarrayImage");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-transformincrementalarrayImage-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        String deploymentName = deploymentName_example; // String | Name of the deployment group
-        String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-        String imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-        SingleImageRecord singleImageRecord = ; // SingleImageRecord | The input record array
-        try {
-            Base64NDArrayBody result = apiInstance.transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#transformincrementalarrayImage");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-transformincrementalarrayImage-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayImage-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: api_key)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"authorization"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
-
-String *deploymentName = deploymentName_example; // Name of the deployment group
-String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
-String *imageTransformName = imageTransformName_example; // ID or name of the deployed image transform
-SingleImageRecord *singleImageRecord = ; // The input record array
-
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-
-// Takes SingleImageRecord to transform and returns Base64NDArrayBody
-[apiInstance transformincrementalarrayImageWith:deploymentName
-    versionName:versionName
-    imageTransformName:imageTransformName
-    singleImageRecord:singleImageRecord
-              completionHandler: ^(Base64NDArrayBody output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayImage-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var Endpoints = require('endpoints');
-var defaultClient = Endpoints.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix['authorization'] = "Token"
-
-var api = new Endpoints.DefaultApi()
-
-var deploymentName = deploymentName_example; // {String} Name of the deployment group
-
-var versionName = versionName_example; // {String} Version name of the endpoint. The default value is "default"
-
-var imageTransformName = imageTransformName_example; // {String} ID or name of the deployed image transform
-
-var singleImageRecord = ; // {SingleImageRecord} The input record array
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-transformincrementalarrayImage-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayImage-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class transformincrementalarrayImageExample
-    {
-        public void main()
-        {
-            
-            // Configure API key authorization: api_key
-            Configuration.Default.ApiKey.Add("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // String | Name of the deployment group
-            var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
-            var imageTransformName = imageTransformName_example;  // String | ID or name of the deployed image transform
-            var singleImageRecord = new SingleImageRecord(); // SingleImageRecord | The input record array
-
-            try
-            {
-                // Takes SingleImageRecord to transform and returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.transformincrementalarrayImage: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayImage-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: api_key
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
-
-$api_instance = new Swagger\Client\Api\DefaultApi();
-$deploymentName = deploymentName_example; // String | Name of the deployment group
-$versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
-$imageTransformName = imageTransformName_example; // String | ID or name of the deployed image transform
-$singleImageRecord = ; // SingleImageRecord | The input record array
-
-try {
-    $result = $api_instance->transformincrementalarrayImage($deploymentName, $versionName, $imageTransformName, $singleImageRecord);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->transformincrementalarrayImage: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayImage-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
-
-# Configure API key authorization: api_key
-$WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
-
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $deploymentName = deploymentName_example; # String | Name of the deployment group
-my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
-my $imageTransformName = imageTransformName_example; # String | ID or name of the deployed image transform
-my $singleImageRecord = WWW::SwaggerClient::Object::SingleImageRecord->new(); # SingleImageRecord | The input record array
-
-eval { 
-    my $result = $api_instance->transformincrementalarrayImage(deploymentName => $deploymentName, versionName => $versionName, imageTransformName => $imageTransformName, singleImageRecord => $singleImageRecord);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->transformincrementalarrayImage: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-transformincrementalarrayImage-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: api_key
-swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-deploymentName = deploymentName_example # String | Name of the deployment group
-versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
-imageTransformName = imageTransformName_example # String | ID or name of the deployed image transform
-singleImageRecord =  # SingleImageRecord | The input record array
-
-try: 
-    # Takes SingleImageRecord to transform and returns Base64NDArrayBody
-    api_response = api_instance.transformincrementalarray_image(deploymentName, versionName, imageTransformName, singleImageRecord)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->transformincrementalarrayImage: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">deploymentName*</td>
-<td>
-
-
-    <div id="d2e199_transformincrementalarrayImage_deploymentName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        Name of the deployment group
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                  <tr><td style="width:150px;">versionName*</td>
-<td>
-
-
-    <div id="d2e199_transformincrementalarrayImage_versionName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        Version name of the endpoint. The default value is &quot;default&quot;
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                  <tr><td style="width:150px;">imageTransformName*</td>
-<td>
-
-
-    <div id="d2e199_transformincrementalarrayImage_imageTransformName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        ID or name of the deployed image transform
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">singleImageRecord <span style="color:red;">*</span></td>
-<td>
-
-
-<script>
-$(document).ready(function() {
-  var schemaWrapper = {
-  "in" : "body",
-  "name" : "SingleImageRecord",
-  "description" : "The input record array",
-  "required" : true,
-  "schema" : {
-    "$ref" : "#/definitions/SingleImageRecord"
-  }
-};
-  var schema = schemaWrapper.schema;
-  if (schema.$ref != null) {
-    schema = defsParser.$refs.get(schema.$ref);
-  } else {
-    schemaWrapper.definitions = Object.assign({}, defs);
-    $RefParser.dereference(schemaWrapper).catch(function(err) {
-      console.log(err);
-    });
-  }
-
-  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_transformincrementalarrayImage_singleImageRecord');
-  result.empty();
-  result.append(view.render());
-});
-</script>
-<div id="d2e199_transformincrementalarrayImage_singleImageRecord"></div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - array transformed and returned successfully </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-transformincrementalarrayImage-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-transformincrementalarrayImage-200-schema">
-                                  <div id='responses-transformincrementalarrayImage-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "array transformed and returned successfully",
-  "schema" : {
-    "$ref" : "#/definitions/Base64NDArrayBody"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-transformincrementalarrayImage-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-transformincrementalarrayImage-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-transformincrementalarrayImage-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-transformincrementalarray-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -36337,13 +34554,12 @@ except ApiException as e:
                       <article id="api-Default-transformprocessGet-0" data-group="User" data-name="transformprocessGet" data-version="0">
                         <div class="pull-left">
                           <h1>transformprocessGet</h1>
-                          <p>Gets the JSON string of the deployed transform process</p>
+                          <p>Gets the JSON string of the deployed transform process (CSV or Image)</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Retrieves the JSON string of the deployed transform process
-</p>
+                        <p class="marked"></p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess</span></code></pre>
@@ -36393,8 +34609,7 @@ public class DefaultApiExample {
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
         try {
-            TransformProcess result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
-            System.out.println(result);
+            apiInstance.transformprocessGet(deploymentName, versionName, transformName);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#transformprocessGet");
             e.printStackTrace();
@@ -36414,8 +34629,7 @@ public class DefaultApiExample {
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
         try {
-            TransformProcess result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
-            System.out.println(result);
+            apiInstance.transformprocessGet(deploymentName, versionName, transformName);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#transformprocessGet");
             e.printStackTrace();
@@ -36441,14 +34655,11 @@ String *transformName = transformName_example; // ID or name of the deployed tra
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
-// Gets the JSON string of the deployed transform process
+// Gets the JSON string of the deployed transform process (CSV or Image)
 [apiInstance transformprocessGetWith:deploymentName
     versionName:versionName
     transformName:transformName
-              completionHandler: ^(TransformProcess output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
+              completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -36479,7 +34690,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 api.transformprocessGet(deploymentName, versionName, transformName, callback);
@@ -36515,9 +34726,8 @@ namespace Example
 
             try
             {
-                // Gets the JSON string of the deployed transform process
-                TransformProcess result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
-                Debug.WriteLine(result);
+                // Gets the JSON string of the deployed transform process (CSV or Image)
+                apiInstance.transformprocessGet(deploymentName, versionName, transformName);
             }
             catch (Exception e)
             {
@@ -36544,8 +34754,7 @@ $versionName = versionName_example; // String | Version name of the endpoint. Th
 $transformName = transformName_example; // String | ID or name of the deployed transform
 
 try {
-    $result = $api_instance->transformprocessGet($deploymentName, $versionName, $transformName);
-    print_r($result);
+    $api_instance->transformprocessGet($deploymentName, $versionName, $transformName);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->transformprocessGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -36568,8 +34777,7 @@ my $versionName = versionName_example; # String | Version name of the endpoint. 
 my $transformName = transformName_example; # String | ID or name of the deployed transform
 
 eval { 
-    my $result = $api_instance->transformprocessGet(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName);
-    print Dumper($result);
+    $api_instance->transformprocessGet(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->transformprocessGet: $@\n";
@@ -36595,9 +34803,8 @@ versionName = versionName_example # String | Version name of the endpoint. The d
 transformName = transformName_example # String | ID or name of the deployed transform
 
 try: 
-    # Gets the JSON string of the deployed transform process
-    api_response = api_instance.transformprocess_get(deploymentName, versionName, transformName)
-    pprint(api_response)
+    # Gets the JSON string of the deployed transform process (CSV or Image)
+    api_instance.transformprocess_get(deploymentName, versionName, transformName)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformprocessGet: %s\n" % e)</code></pre>
                             </div>
@@ -36703,9 +34910,7 @@ except ApiException as e:
                                       $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "the deployed transform process",
-  "schema" : {
-    "$ref" : "#/definitions/TransformProcess"
-  }
+  "schema" : { }
 };
                                         var schema = schemaWrapper.schema;
                                         if (schema.$ref != null) {
@@ -36753,12 +34958,12 @@ except ApiException as e:
                       <article id="api-Default-transformprocessPost-0" data-group="User" data-name="transformprocessPost" data-version="0">
                         <div class="pull-left">
                           <h1>transformprocessPost</h1>
-                          <p>Sets the deployed transform process through the provided JSON string</p>
+                          <p>Sets the deployed (CSV or Image) transform process through the provided JSON string</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Sets the transform process with the provided JSON string</p>
+                        <p class="marked"></p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess</span></code></pre>
@@ -36807,7 +35012,7 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        TransformProcess transformProcess = ; // TransformProcess | The transform process to set
+         transformProcess = ; //  | The transform process to set
         try {
             apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
         } catch (ApiException e) {
@@ -36828,7 +35033,7 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        TransformProcess transformProcess = ; // TransformProcess | The transform process to set
+         transformProcess = ; //  | The transform process to set
         try {
             apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
         } catch (ApiException e) {
@@ -36853,11 +35058,11 @@ public class DefaultApiExample {
 String *deploymentName = deploymentName_example; // Name of the deployment group
 String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
 String *transformName = transformName_example; // ID or name of the deployed transform
-TransformProcess *transformProcess = ; // The transform process to set (optional)
+ *transformProcess = ; // The transform process to set (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
-// Sets the deployed transform process through the provided JSON string
+// Sets the deployed (CSV or Image) transform process through the provided JSON string
 [apiInstance transformprocessPostWith:deploymentName
     versionName:versionName
     transformName:transformName
@@ -36889,7 +35094,7 @@ var versionName = versionName_example; // {String} Version name of the endpoint.
 var transformName = transformName_example; // {String} ID or name of the deployed transform
 
 var opts = { 
-  'transformProcess':  // {TransformProcess} The transform process to set
+  'transformProcess':  // {} The transform process to set
 };
 
 var callback = function(error, data, response) {
@@ -36929,11 +35134,11 @@ namespace Example
             var deploymentName = deploymentName_example;  // String | Name of the deployment group
             var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
             var transformName = transformName_example;  // String | ID or name of the deployed transform
-            var transformProcess = new TransformProcess(); // TransformProcess | The transform process to set (optional) 
+            var transformProcess = new (); //  | The transform process to set (optional) 
 
             try
             {
-                // Sets the deployed transform process through the provided JSON string
+                // Sets the deployed (CSV or Image) transform process through the provided JSON string
                 apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
             }
             catch (Exception e)
@@ -36959,7 +35164,7 @@ $api_instance = new Swagger\Client\Api\DefaultApi();
 $deploymentName = deploymentName_example; // String | Name of the deployment group
 $versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
 $transformName = transformName_example; // String | ID or name of the deployed transform
-$transformProcess = ; // TransformProcess | The transform process to set
+$transformProcess = ; //  | The transform process to set
 
 try {
     $api_instance->transformprocessPost($deploymentName, $versionName, $transformName, $transformProcess);
@@ -36983,7 +35188,7 @@ my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $deploymentName = deploymentName_example; # String | Name of the deployment group
 my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
 my $transformName = transformName_example; # String | ID or name of the deployed transform
-my $transformProcess = WWW::SwaggerClient::Object::TransformProcess->new(); # TransformProcess | The transform process to set
+my $transformProcess = WWW::SwaggerClient::Object::->new(); #  | The transform process to set
 
 eval { 
     $api_instance->transformprocessPost(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, transformProcess => $transformProcess);
@@ -37010,10 +35215,10 @@ api_instance = swagger_client.DefaultApi()
 deploymentName = deploymentName_example # String | Name of the deployment group
 versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
 transformName = transformName_example # String | ID or name of the deployed transform
-transformProcess =  # TransformProcess | The transform process to set (optional)
+transformProcess =  #  | The transform process to set (optional)
 
 try: 
-    # Sets the deployed transform process through the provided JSON string
+    # Sets the deployed (CSV or Image) transform process through the provided JSON string
     api_instance.transformprocess_post(deploymentName, versionName, transformName, transformProcess=transformProcess)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformprocessPost: %s\n" % e)</code></pre>
@@ -37117,9 +35322,7 @@ $(document).ready(function() {
   "name" : "TransformProcess",
   "description" : "The transform process to set",
   "required" : false,
-  "schema" : {
-    "$ref" : "#/definitions/TransformProcess"
-  }
+  "schema" : { }
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -37149,9 +35352,42 @@ $(document).ready(function() {
                             <h3> Status: 200 - transform process set successfully </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-transformprocessPost-200-schema">Schema</a>
+                                </li>
+
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-transformprocessPost-200-schema">
+                                  <div id='responses-transformprocessPost-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "transform process set successfully",
+  "schema" : { }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-transformprocessPost-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-transformprocessPost-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-transformprocessPost-200-schema-data' type='hidden' value=''></input>
+                                </div>
                             </div>
 
                             <h3> Status: 500 - internal server error </h3>

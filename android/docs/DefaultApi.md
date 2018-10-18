@@ -20,11 +20,11 @@ Method | HTTP request | Description
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-[**createJob**](DefaultApi.md#createJob) | **POST** /jobs/{jobtype} | Create a job
+[**createJob**](DefaultApi.md#createJob) | **POST** /jobs/{jobIdOrType} | Create a job
 [**createModelHistory**](DefaultApi.md#createModelHistory) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 [**deleteCredentialsById**](DefaultApi.md#deleteCredentialsById) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
 [**deleteExperiment**](DefaultApi.md#deleteExperiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
-[**deleteJobById**](DefaultApi.md#deleteJobById) | **DELETE** /jobs/{jobId} | Deletes a job given its ID
+[**deleteJobById**](DefaultApi.md#deleteJobById) | **DELETE** /jobs/{jobIdOrType} | Deletes a job given its ID
 [**deleteModel**](DefaultApi.md#deleteModel) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 [**deleteModelHistory**](DefaultApi.md#deleteModelHistory) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 [**deleteModelInstance**](DefaultApi.md#deleteModelInstance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
@@ -45,21 +45,19 @@ Method | HTTP request | Description
 [**getExamplesForMinibatch**](DefaultApi.md#getExamplesForMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**getExperiment**](DefaultApi.md#getExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**getExperimentsForModelHistory**](DefaultApi.md#getExperimentsForModelHistory) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-[**getJobById**](DefaultApi.md#getJobById) | **GET** /jobs/{jobId} | Get a job by its ID
+[**getJobById**](DefaultApi.md#getJobById) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**getMinibatch**](DefaultApi.md#getMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**getModelHistory**](DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**getModelInstance**](DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**getModelsForExperiment**](DefaultApi.md#getModelsForExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
 [**getResourceById**](DefaultApi.md#getResourceById) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
-[**getResourceBySubType**](DefaultApi.md#getResourceBySubType) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**getResourceBySubType**](DefaultApi.md#getResourceBySubType) | **GET** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
 [**getResourceByType**](DefaultApi.md#getResourceByType) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
 [**getResourceDetailsById**](DefaultApi.md#getResourceDetailsById) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
 [**getResourceGroupById**](DefaultApi.md#getResourceGroupById) | **GET** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
 [**getResourceGroups**](DefaultApi.md#getResourceGroups) | **GET** /resources/groups | Get a list of all the resource groups
 [**getResources**](DefaultApi.md#getResources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**getResourcesFromGroup**](DefaultApi.md#getResourcesFromGroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
-[**imagetransformprocessGet**](DefaultApi.md#imagetransformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-[**imagetransformprocessPost**](DefaultApi.md#imagetransformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -84,15 +82,13 @@ Method | HTTP request | Description
 [**reimportModel**](DefaultApi.md#reimportModel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
 [**runAJob**](DefaultApi.md#runAJob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transformCsv**](DefaultApi.md#transformCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**transformarrayCsv**](DefaultApi.md#transformarrayCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-[**transformarrayImage**](DefaultApi.md#transformarrayImage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 [**transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 [**transformincrementalCsv**](DefaultApi.md#transformincrementalCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**transformincrementalarrayCsv**](DefaultApi.md#transformincrementalarrayCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**transformincrementalarrayImage**](DefaultApi.md#transformincrementalarrayImage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**transformincrementalarray**](DefaultApi.md#transformincrementalarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 [**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**transformprocessGet**](DefaultApi.md#transformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-[**transformprocessPost**](DefaultApi.md#transformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**transformprocessGet**](DefaultApi.md#transformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+[**transformprocessPost**](DefaultApi.md#transformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 [**updateBestModelForExperiment**](DefaultApi.md#updateBestModelForExperiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**updateExperiment**](DefaultApi.md#updateExperiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**updateModelHistory**](DefaultApi.md#updateModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
@@ -794,7 +790,7 @@ Name | Type | Description  | Notes
 
 <a name="createJob"></a>
 # **createJob**
-> JobEntity createJob(jobtype, createJobRequest)
+> JobEntity createJob(jobIdOrType, createJobRequest)
 
 Create a job
 
@@ -804,10 +800,10 @@ Create a job
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
-String jobtype = "jobtype_example"; // String | Job Type
+String jobIdOrType = "jobIdOrType_example"; // String | Job Type
 CreateJobRequest createJobRequest = new CreateJobRequest(); // CreateJobRequest | Create job request object
 try {
-    JobEntity result = apiInstance.createJob(jobtype, createJobRequest);
+    JobEntity result = apiInstance.createJob(jobIdOrType, createJobRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#createJob");
@@ -819,7 +815,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobtype** | **String**| Job Type | [enum: TRAINING, INFERENCE]
+ **jobIdOrType** | **String**| Job Type | [enum: TRAINING, INFERENCE]
  **createJobRequest** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object |
 
 ### Return type
@@ -963,7 +959,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteJobById"></a>
 # **deleteJobById**
-> deleteJobById(jobId)
+> deleteJobById(jobIdOrType)
 
 Deletes a job given its ID
 
@@ -973,9 +969,9 @@ Deletes a job given its ID
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
-Long jobId = 789L; // Long | Job ID
+Long jobIdOrType = 789L; // Long | Job ID
 try {
-    apiInstance.deleteJobById(jobId);
+    apiInstance.deleteJobById(jobIdOrType);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#deleteJobById");
     e.printStackTrace();
@@ -986,7 +982,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobId** | **Long**| Job ID |
+ **jobIdOrType** | **Long**| Job ID |
 
 ### Return type
 
@@ -1846,7 +1842,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobById"></a>
 # **getJobById**
-> JobEntity getJobById(jobId)
+> JobEntity getJobById(jobIdOrType)
 
 Get a job by its ID
 
@@ -1856,9 +1852,9 @@ Get a job by its ID
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
-Long jobId = 789L; // Long | Job ID
+Long jobIdOrType = 789L; // Long | Job ID
 try {
-    JobEntity result = apiInstance.getJobById(jobId);
+    JobEntity result = apiInstance.getJobById(jobIdOrType);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#getJobById");
@@ -1870,7 +1866,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobId** | **Long**| Job ID |
+ **jobIdOrType** | **Long**| Job ID |
 
 ### Return type
 
@@ -2377,98 +2373,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="imagetransformprocessGet"></a>
-# **imagetransformprocessGet**
-> ImageTransformProcess imagetransformprocessGet(deploymentName, versionName, imageTransformName)
-
-Retrieves the image transform process JSON string
-
-### Example
-```java
-// Import classes:
-//import ai.skymind.skil.DefaultApi;
-
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-try {
-    ImageTransformProcess result = apiInstance.imagetransformprocessGet(deploymentName, versionName, imageTransformName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#imagetransformprocessGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
- **imageTransformName** | **String**| ID or name of the deployed image transform |
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="imagetransformprocessPost"></a>
-# **imagetransformprocessPost**
-> ImageTransformProcess imagetransformprocessPost(deploymentName, versionName, imageTransformName, body)
-
-Sets the image transform process through the provided JSON string
-
-### Example
-```java
-// Import classes:
-//import ai.skymind.skil.DefaultApi;
-
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-ImageTransformProcess body = new ImageTransformProcess(); // ImageTransformProcess | The image transform process JSON
-try {
-    ImageTransformProcess result = apiInstance.imagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#imagetransformprocessPost");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
- **imageTransformName** | **String**| ID or name of the deployed image transform |
- **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON |
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="jsonarray"></a>
@@ -3569,13 +3473,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="transformarrayCsv"></a>
-# **transformarrayCsv**
-> Base64NDArrayBody transformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord)
+<a name="transformarray"></a>
+# **transformarray**
+> Base64NDArrayBody transformarray(deploymentName, versionName, transformName, batchRecord)
 
 Takes a batch input arrays and transforms it
-
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
 ```java
@@ -3586,12 +3488,12 @@ DefaultApi apiInstance = new DefaultApi();
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-BatchCSVRecord batchCSVRecord = new BatchCSVRecord(); // BatchCSVRecord | The input batch of record arrays
+ERRORUNKNOWN batchRecord = new ERRORUNKNOWN(); // ERRORUNKNOWN | The input batch of record arrays
 try {
-    Base64NDArrayBody result = apiInstance.transformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
+    Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformarrayCsv");
+    System.err.println("Exception when calling DefaultApi#transformarray");
     e.printStackTrace();
 }
 ```
@@ -3603,56 +3505,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **batchCSVRecord** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional]
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="transformarrayImage"></a>
-# **transformarrayImage**
-> Base64NDArrayBody transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord)
-
-Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```java
-// Import classes:
-//import ai.skymind.skil.DefaultApi;
-
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-BatchImageRecord batchImageRecord = new BatchImageRecord(); // BatchImageRecord | The input batch of record arrays
-try {
-    Base64NDArrayBody result = apiInstance.transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformarrayImage");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
- **imageTransformName** | **String**| ID or name of the deployed image transform |
- **batchImageRecord** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays |
+ **batchRecord** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input batch of record arrays | [optional]
 
 ### Return type
 
@@ -3765,13 +3618,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="transformincrementalarrayCsv"></a>
-# **transformincrementalarrayCsv**
-> Base64NDArrayBody transformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord)
+<a name="transformincrementalarray"></a>
+# **transformincrementalarray**
+> Base64NDArrayBody transformincrementalarray(deploymentName, versionName, transformName, singleRecord)
 
-Same as /transformincremental but returns Base64NDArrayBody
-
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
 ```java
@@ -3782,12 +3633,12 @@ DefaultApi apiInstance = new DefaultApi();
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-SingleCSVRecord singleCSVRecord = new SingleCSVRecord(); // SingleCSVRecord | The input record array
+ERRORUNKNOWN singleRecord = new ERRORUNKNOWN(); // ERRORUNKNOWN | The input record array
 try {
-    Base64NDArrayBody result = apiInstance.transformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
+    Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformincrementalarrayCsv");
+    System.err.println("Exception when calling DefaultApi#transformincrementalarray");
     e.printStackTrace();
 }
 ```
@@ -3799,56 +3650,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **singleCSVRecord** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional]
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="transformincrementalarrayImage"></a>
-# **transformincrementalarrayImage**
-> Base64NDArrayBody transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord)
-
-Takes SingleImageRecord to transform and returns Base64NDArrayBody
-
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```java
-// Import classes:
-//import ai.skymind.skil.DefaultApi;
-
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-SingleImageRecord singleImageRecord = new SingleImageRecord(); // SingleImageRecord | The input record array
-try {
-    Base64NDArrayBody result = apiInstance.transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformincrementalarrayImage");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
- **imageTransformName** | **String**| ID or name of the deployed image transform |
- **singleImageRecord** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array |
+ **singleRecord** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input record array | [optional]
 
 ### Return type
 
@@ -3914,11 +3716,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessGet"></a>
 # **transformprocessGet**
-> TransformProcess transformprocessGet(deploymentName, versionName, transformName)
+> ERRORUNKNOWN transformprocessGet(deploymentName, versionName, transformName)
 
-Gets the JSON string of the deployed transform process
-
-Retrieves the JSON string of the deployed transform process 
+Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
 ```java
@@ -3930,7 +3730,7 @@ String deploymentName = "deploymentName_example"; // String | Name of the deploy
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
 try {
-    TransformProcess result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
+    ERRORUNKNOWN result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#transformprocessGet");
@@ -3948,7 +3748,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransformProcess**](TransformProcess.md)
+[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
 
 ### Authorization
 
@@ -3961,11 +3761,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessPost"></a>
 # **transformprocessPost**
-> transformprocessPost(deploymentName, versionName, transformName, transformProcess)
+> ERRORUNKNOWN transformprocessPost(deploymentName, versionName, transformName, transformProcess)
 
-Sets the deployed transform process through the provided JSON string
-
-Sets the transform process with the provided JSON string
+Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
 ```java
@@ -3976,9 +3774,10 @@ DefaultApi apiInstance = new DefaultApi();
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-TransformProcess transformProcess = new TransformProcess(); // TransformProcess | The transform process to set
+ERRORUNKNOWN transformProcess = new ERRORUNKNOWN(); // ERRORUNKNOWN | The transform process to set
 try {
-    apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+    ERRORUNKNOWN result = apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#transformprocessPost");
     e.printStackTrace();
@@ -3992,11 +3791,11 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **transformProcess** | [**TransformProcess**](TransformProcess.md)| The transform process to set | [optional]
+ **transformProcess** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The transform process to set | [optional]
 
 ### Return type
 
-null (empty response body)
+[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
 
 ### Authorization
 

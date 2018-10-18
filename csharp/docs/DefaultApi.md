@@ -20,11 +20,11 @@ Method | HTTP request | Description
 [**Classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**Classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**Classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-[**CreateJob**](DefaultApi.md#createjob) | **POST** /jobs/{jobtype} | Create a job
+[**CreateJob**](DefaultApi.md#createjob) | **POST** /jobs/{jobIdOrType} | Create a job
 [**CreateModelHistory**](DefaultApi.md#createmodelhistory) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 [**DeleteCredentialsById**](DefaultApi.md#deletecredentialsbyid) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
 [**DeleteExperiment**](DefaultApi.md#deleteexperiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
-[**DeleteJobById**](DefaultApi.md#deletejobbyid) | **DELETE** /jobs/{jobId} | Deletes a job given its ID
+[**DeleteJobById**](DefaultApi.md#deletejobbyid) | **DELETE** /jobs/{jobIdOrType} | Deletes a job given its ID
 [**DeleteModel**](DefaultApi.md#deletemodel) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 [**DeleteModelHistory**](DefaultApi.md#deletemodelhistory) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 [**DeleteModelInstance**](DefaultApi.md#deletemodelinstance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
@@ -45,21 +45,19 @@ Method | HTTP request | Description
 [**GetExamplesForMinibatch**](DefaultApi.md#getexamplesforminibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**GetExperiment**](DefaultApi.md#getexperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**GetExperimentsForModelHistory**](DefaultApi.md#getexperimentsformodelhistory) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-[**GetJobById**](DefaultApi.md#getjobbyid) | **GET** /jobs/{jobId} | Get a job by its ID
+[**GetJobById**](DefaultApi.md#getjobbyid) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**GetMinibatch**](DefaultApi.md#getminibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**GetModelHistory**](DefaultApi.md#getmodelhistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**GetModelInstance**](DefaultApi.md#getmodelinstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**GetModelsForExperiment**](DefaultApi.md#getmodelsforexperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
 [**GetResourceById**](DefaultApi.md#getresourcebyid) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
-[**GetResourceBySubType**](DefaultApi.md#getresourcebysubtype) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**GetResourceBySubType**](DefaultApi.md#getresourcebysubtype) | **GET** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
 [**GetResourceByType**](DefaultApi.md#getresourcebytype) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
 [**GetResourceDetailsById**](DefaultApi.md#getresourcedetailsbyid) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
 [**GetResourceGroupById**](DefaultApi.md#getresourcegroupbyid) | **GET** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
 [**GetResourceGroups**](DefaultApi.md#getresourcegroups) | **GET** /resources/groups | Get a list of all the resource groups
 [**GetResources**](DefaultApi.md#getresources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**GetResourcesFromGroup**](DefaultApi.md#getresourcesfromgroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
-[**ImagetransformprocessGet**](DefaultApi.md#imagetransformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-[**ImagetransformprocessPost**](DefaultApi.md#imagetransformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**Jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**Knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**Knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -84,15 +82,13 @@ Method | HTTP request | Description
 [**ReimportModel**](DefaultApi.md#reimportmodel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
 [**RunAJob**](DefaultApi.md#runajob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**TransformCsv**](DefaultApi.md#transformcsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**TransformarrayCsv**](DefaultApi.md#transformarraycsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-[**TransformarrayImage**](DefaultApi.md#transformarrayimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**Transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 [**Transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 [**TransformincrementalCsv**](DefaultApi.md#transformincrementalcsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**TransformincrementalarrayCsv**](DefaultApi.md#transformincrementalarraycsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**TransformincrementalarrayImage**](DefaultApi.md#transformincrementalarrayimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**Transformincrementalarray**](DefaultApi.md#transformincrementalarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 [**Transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**TransformprocessGet**](DefaultApi.md#transformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-[**TransformprocessPost**](DefaultApi.md#transformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**TransformprocessGet**](DefaultApi.md#transformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+[**TransformprocessPost**](DefaultApi.md#transformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 [**UpdateBestModelForExperiment**](DefaultApi.md#updatebestmodelforexperiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**UpdateExperiment**](DefaultApi.md#updateexperiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**UpdateModelHistory**](DefaultApi.md#updatemodelhistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
@@ -1162,7 +1158,7 @@ Name | Type | Description  | Notes
 
 <a name="createjob"></a>
 # **CreateJob**
-> JobEntity CreateJob (string jobtype, CreateJobRequest createJobRequest)
+> JobEntity CreateJob (string jobIdOrType, CreateJobRequest createJobRequest)
 
 Create a job
 
@@ -1186,13 +1182,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var jobtype = jobtype_example;  // string | Job Type
+            var jobIdOrType = jobIdOrType_example;  // string | Job Type
             var createJobRequest = new CreateJobRequest(); // CreateJobRequest | Create job request object
 
             try
             {
                 // Create a job
-                JobEntity result = apiInstance.CreateJob(jobtype, createJobRequest);
+                JobEntity result = apiInstance.CreateJob(jobIdOrType, createJobRequest);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1208,7 +1204,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobtype** | **string**| Job Type | 
+ **jobIdOrType** | **string**| Job Type | 
  **createJobRequest** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object | 
 
 ### Return type
@@ -1423,7 +1419,7 @@ Name | Type | Description  | Notes
 
 <a name="deletejobbyid"></a>
 # **DeleteJobById**
-> void DeleteJobById (long? jobId)
+> void DeleteJobById (long? jobIdOrType)
 
 Deletes a job given its ID
 
@@ -1447,12 +1443,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var jobId = 789;  // long? | Job ID
+            var jobIdOrType = 789;  // long? | Job ID
 
             try
             {
                 // Deletes a job given its ID
-                apiInstance.DeleteJobById(jobId);
+                apiInstance.DeleteJobById(jobIdOrType);
             }
             catch (Exception e)
             {
@@ -1467,7 +1463,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobId** | **long?**| Job ID | 
+ **jobIdOrType** | **long?**| Job ID | 
 
 ### Return type
 
@@ -2789,7 +2785,7 @@ Name | Type | Description  | Notes
 
 <a name="getjobbyid"></a>
 # **GetJobById**
-> JobEntity GetJobById (long? jobId)
+> JobEntity GetJobById (long? jobIdOrType)
 
 Get a job by its ID
 
@@ -2813,12 +2809,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var jobId = 789;  // long? | Job ID
+            var jobIdOrType = 789;  // long? | Job ID
 
             try
             {
                 // Get a job by its ID
-                JobEntity result = apiInstance.GetJobById(jobId);
+                JobEntity result = apiInstance.GetJobById(jobIdOrType);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2834,7 +2830,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobId** | **long?**| Job ID | 
+ **jobIdOrType** | **long?**| Job ID | 
 
 ### Return type
 
@@ -3616,144 +3612,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="imagetransformprocessget"></a>
-# **ImagetransformprocessGet**
-> ImageTransformProcess ImagetransformprocessGet (string deploymentName, string versionName, string imageTransformName)
-
-Retrieves the image transform process JSON string
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
-
-namespace Example
-{
-    public class ImagetransformprocessGetExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: api_key
-            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
-            var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
-
-            try
-            {
-                // Retrieves the image transform process JSON string
-                ImageTransformProcess result = apiInstance.ImagetransformprocessGet(deploymentName, versionName, imageTransformName);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.ImagetransformprocessGet: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **string**| ID or name of the deployed image transform | 
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="imagetransformprocesspost"></a>
-# **ImagetransformprocessPost**
-> ImageTransformProcess ImagetransformprocessPost (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body)
-
-Sets the image transform process through the provided JSON string
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
-
-namespace Example
-{
-    public class ImagetransformprocessPostExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: api_key
-            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
-            var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
-            var body = new ImageTransformProcess(); // ImageTransformProcess | The image transform process JSON
-
-            try
-            {
-                // Sets the image transform process through the provided JSON string
-                ImageTransformProcess result = apiInstance.ImagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.ImagetransformprocessPost: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **string**| ID or name of the deployed image transform | 
- **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5403,13 +5261,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="transformarraycsv"></a>
-# **TransformarrayCsv**
-> Base64NDArrayBody TransformarrayCsv (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
+<a name="transformarray"></a>
+# **Transformarray**
+> Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName,  batchRecord = null)
 
 Takes a batch input arrays and transforms it
-
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
 ```csharp
@@ -5421,7 +5277,7 @@ using Skymind.SKIL.Model;
 
 namespace Example
 {
-    public class TransformarrayCsvExample
+    public class TransformarrayExample
     {
         public void main()
         {
@@ -5434,17 +5290,17 @@ namespace Example
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var batchCSVRecord = new BatchCSVRecord(); // BatchCSVRecord | The input batch of record arrays (optional) 
+            var batchRecord = new (); //  | The input batch of record arrays (optional) 
 
             try
             {
                 // Takes a batch input arrays and transforms it
-                Base64NDArrayBody result = apiInstance.TransformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
+                Base64NDArrayBody result = apiInstance.Transformarray(deploymentName, versionName, transformName, batchRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.TransformarrayCsv: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.Transformarray: " + e.Message );
             }
         }
     }
@@ -5458,79 +5314,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **batchCSVRecord** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="transformarrayimage"></a>
-# **TransformarrayImage**
-> Base64NDArrayBody TransformarrayImage (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord)
-
-Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
-
-namespace Example
-{
-    public class TransformarrayImageExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: api_key
-            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
-            var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
-            var batchImageRecord = new BatchImageRecord(); // BatchImageRecord | The input batch of record arrays
-
-            try
-            {
-                // Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.TransformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.TransformarrayImage: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **string**| ID or name of the deployed image transform | 
- **batchImageRecord** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
+ **batchRecord** | [****](.md)| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -5691,13 +5475,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="transformincrementalarraycsv"></a>
-# **TransformincrementalarrayCsv**
-> Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
+<a name="transformincrementalarray"></a>
+# **Transformincrementalarray**
+> Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName,  singleRecord = null)
 
-Same as /transformincremental but returns Base64NDArrayBody
-
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
 ```csharp
@@ -5709,7 +5491,7 @@ using Skymind.SKIL.Model;
 
 namespace Example
 {
-    public class TransformincrementalarrayCsvExample
+    public class TransformincrementalarrayExample
     {
         public void main()
         {
@@ -5722,17 +5504,17 @@ namespace Example
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var singleCSVRecord = new SingleCSVRecord(); // SingleCSVRecord | The input record array (optional) 
+            var singleRecord = new (); //  | The input record array (optional) 
 
             try
             {
-                // Same as /transformincremental but returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.TransformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
+                // Same as /transformincremental but returns Base64NDArrayBody.
+                Base64NDArrayBody result = apiInstance.Transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.TransformincrementalarrayCsv: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.Transformincrementalarray: " + e.Message );
             }
         }
     }
@@ -5746,79 +5528,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **singleCSVRecord** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="transformincrementalarrayimage"></a>
-# **TransformincrementalarrayImage**
-> Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord)
-
-Takes SingleImageRecord to transform and returns Base64NDArrayBody
-
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
-
-namespace Example
-{
-    public class TransformincrementalarrayImageExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: api_key
-            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
-            var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
-            var singleImageRecord = new SingleImageRecord(); // SingleImageRecord | The input record array
-
-            try
-            {
-                // Takes SingleImageRecord to transform and returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.TransformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.TransformincrementalarrayImage: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **string**| ID or name of the deployed image transform | 
- **singleImageRecord** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
+ **singleRecord** | [****](.md)| The input record array | [optional] 
 
 ### Return type
 
@@ -5909,11 +5619,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessget"></a>
 # **TransformprocessGet**
-> TransformProcess TransformprocessGet (string deploymentName, string versionName, string transformName)
+> void TransformprocessGet (string deploymentName, string versionName, string transformName)
 
-Gets the JSON string of the deployed transform process
-
-Retrieves the JSON string of the deployed transform process 
+Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
 ```csharp
@@ -5941,9 +5649,8 @@ namespace Example
 
             try
             {
-                // Gets the JSON string of the deployed transform process
-                TransformProcess result = apiInstance.TransformprocessGet(deploymentName, versionName, transformName);
-                Debug.WriteLine(result);
+                // Gets the JSON string of the deployed transform process (CSV or Image)
+                apiInstance.TransformprocessGet(deploymentName, versionName, transformName);
             }
             catch (Exception e)
             {
@@ -5964,7 +5671,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransformProcess**](TransformProcess.md)
+void (empty response body)
 
 ### Authorization
 
@@ -5979,11 +5686,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocesspost"></a>
 # **TransformprocessPost**
-> void TransformprocessPost (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null)
+> void TransformprocessPost (string deploymentName, string versionName, string transformName,  transformProcess = null)
 
-Sets the deployed transform process through the provided JSON string
-
-Sets the transform process with the provided JSON string
+Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
 ```csharp
@@ -6008,11 +5713,11 @@ namespace Example
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var transformProcess = new TransformProcess(); // TransformProcess | The transform process to set (optional) 
+            var transformProcess = new (); //  | The transform process to set (optional) 
 
             try
             {
-                // Sets the deployed transform process through the provided JSON string
+                // Sets the deployed (CSV or Image) transform process through the provided JSON string
                 apiInstance.TransformprocessPost(deploymentName, versionName, transformName, transformProcess);
             }
             catch (Exception e)
@@ -6031,7 +5736,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **transformProcess** | [**TransformProcess**](TransformProcess.md)| The transform process to set | [optional] 
+ **transformProcess** | [****](.md)| The transform process to set | [optional] 
 
 ### Return type
 

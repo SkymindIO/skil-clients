@@ -20,11 +20,11 @@ Method | HTTP request | Description
 [**Classify**](DefaultApi.md#Classify) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**Classifyarray**](DefaultApi.md#Classifyarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**Classifyimage**](DefaultApi.md#Classifyimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-[**CreateJob**](DefaultApi.md#CreateJob) | **Post** /jobs/{jobtype} | Create a job
+[**CreateJob**](DefaultApi.md#CreateJob) | **Post** /jobs/{jobIdOrType} | Create a job
 [**CreateModelHistory**](DefaultApi.md#CreateModelHistory) | **Post** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 [**DeleteCredentialsById**](DefaultApi.md#DeleteCredentialsById) | **Delete** /resources/credentials/{credentialId} | Delete credentials given an ID
 [**DeleteExperiment**](DefaultApi.md#DeleteExperiment) | **Delete** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
-[**DeleteJobById**](DefaultApi.md#DeleteJobById) | **Delete** /jobs/{jobId} | Deletes a job given its ID
+[**DeleteJobById**](DefaultApi.md#DeleteJobById) | **Delete** /jobs/{jobIdOrType} | Deletes a job given its ID
 [**DeleteModel**](DefaultApi.md#DeleteModel) | **Delete** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 [**DeleteModelHistory**](DefaultApi.md#DeleteModelHistory) | **Delete** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 [**DeleteModelInstance**](DefaultApi.md#DeleteModelInstance) | **Delete** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
@@ -45,21 +45,19 @@ Method | HTTP request | Description
 [**GetExamplesForMinibatch**](DefaultApi.md#GetExamplesForMinibatch) | **Get** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**GetExperiment**](DefaultApi.md#GetExperiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**GetExperimentsForModelHistory**](DefaultApi.md#GetExperimentsForModelHistory) | **Get** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-[**GetJobById**](DefaultApi.md#GetJobById) | **Get** /jobs/{jobId} | Get a job by its ID
+[**GetJobById**](DefaultApi.md#GetJobById) | **Get** /jobs/{jobIdOrType} | Get a job by its ID
 [**GetMinibatch**](DefaultApi.md#GetMinibatch) | **Get** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**GetModelHistory**](DefaultApi.md#GetModelHistory) | **Get** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**GetModelInstance**](DefaultApi.md#GetModelInstance) | **Get** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**GetModelsForExperiment**](DefaultApi.md#GetModelsForExperiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
 [**GetResourceById**](DefaultApi.md#GetResourceById) | **Get** /resources/resource/{resourceId} | Get the resource with the specified resource ID
-[**GetResourceBySubType**](DefaultApi.md#GetResourceBySubType) | **Get** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**GetResourceBySubType**](DefaultApi.md#GetResourceBySubType) | **Get** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
 [**GetResourceByType**](DefaultApi.md#GetResourceByType) | **Get** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
 [**GetResourceDetailsById**](DefaultApi.md#GetResourceDetailsById) | **Get** /resources/details/{resourceId} | Get the resource details with the specified resource ID
 [**GetResourceGroupById**](DefaultApi.md#GetResourceGroupById) | **Get** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
 [**GetResourceGroups**](DefaultApi.md#GetResourceGroups) | **Get** /resources/groups | Get a list of all the resource groups
 [**GetResources**](DefaultApi.md#GetResources) | **Get** /resources/resources | A list of all known/registered resources, of all types
 [**GetResourcesFromGroup**](DefaultApi.md#GetResourcesFromGroup) | **Get** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
-[**ImagetransformprocessGet**](DefaultApi.md#ImagetransformprocessGet) | **Get** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-[**ImagetransformprocessPost**](DefaultApi.md#ImagetransformprocessPost) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**Jsonarray**](DefaultApi.md#Jsonarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**Knn**](DefaultApi.md#Knn) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**Knnnew**](DefaultApi.md#Knnnew) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -84,15 +82,13 @@ Method | HTTP request | Description
 [**ReimportModel**](DefaultApi.md#ReimportModel) | **Post** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
 [**RunAJob**](DefaultApi.md#RunAJob) | **Post** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**TransformCsv**](DefaultApi.md#TransformCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**TransformarrayCsv**](DefaultApi.md#TransformarrayCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-[**TransformarrayImage**](DefaultApi.md#TransformarrayImage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**Transformarray**](DefaultApi.md#Transformarray) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 [**Transformimage**](DefaultApi.md#Transformimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 [**TransformincrementalCsv**](DefaultApi.md#TransformincrementalCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**TransformincrementalarrayCsv**](DefaultApi.md#TransformincrementalarrayCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**TransformincrementalarrayImage**](DefaultApi.md#TransformincrementalarrayImage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**Transformincrementalarray**](DefaultApi.md#Transformincrementalarray) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 [**Transformincrementalimage**](DefaultApi.md#Transformincrementalimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**TransformprocessGet**](DefaultApi.md#TransformprocessGet) | **Get** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-[**TransformprocessPost**](DefaultApi.md#TransformprocessPost) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**TransformprocessGet**](DefaultApi.md#TransformprocessGet) | **Get** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+[**TransformprocessPost**](DefaultApi.md#TransformprocessPost) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 [**UpdateBestModelForExperiment**](DefaultApi.md#UpdateBestModelForExperiment) | **Post** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**UpdateExperiment**](DefaultApi.md#UpdateExperiment) | **Put** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**UpdateModelHistory**](DefaultApi.md#UpdateModelHistory) | **Post** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
@@ -545,7 +541,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateJob**
-> JobEntity CreateJob(ctx, jobtype, createJobRequest)
+> JobEntity CreateJob(ctx, jobIdOrType, createJobRequest)
 Create a job
 
 ### Required Parameters
@@ -553,7 +549,7 @@ Create a job
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **jobtype** | **string**| Job Type | 
+  **jobIdOrType** | **string**| Job Type | 
   **createJobRequest** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object | 
 
 ### Return type
@@ -652,7 +648,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteJobById**
-> DeleteJobById(ctx, jobId)
+> DeleteJobById(ctx, jobIdOrType)
 Deletes a job given its ID
 
 ### Required Parameters
@@ -660,7 +656,7 @@ Deletes a job given its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **jobId** | **int64**| Job ID | 
+  **jobIdOrType** | **int64**| Job ID | 
 
 ### Return type
 
@@ -1207,7 +1203,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetJobById**
-> JobEntity GetJobById(ctx, jobId)
+> JobEntity GetJobById(ctx, jobIdOrType)
 Get a job by its ID
 
 ### Required Parameters
@@ -1215,7 +1211,7 @@ Get a job by its ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **jobId** | **int64**| Job ID | 
+  **jobIdOrType** | **int64**| Job ID | 
 
 ### Return type
 
@@ -1538,63 +1534,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **ImagetransformprocessGet**
-> ImageTransformProcess ImagetransformprocessGet(ctx, deploymentName, versionName, imageTransformName)
-Retrieves the image transform process JSON string
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **imageTransformName** | **string**| ID or name of the deployed image transform | 
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **ImagetransformprocessPost**
-> ImageTransformProcess ImagetransformprocessPost(ctx, deploymentName, versionName, imageTransformName, body)
-Sets the image transform process through the provided JSON string
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **imageTransformName** | **string**| ID or name of the deployed image transform | 
-  **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2322,11 +2261,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **TransformarrayCsv**
-> Base64NdArrayBody TransformarrayCsv(ctx, deploymentName, versionName, transformName, optional)
+# **Transformarray**
+> Base64NdArrayBody Transformarray(ctx, deploymentName, versionName, transformName, optional)
 Takes a batch input arrays and transforms it
-
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Required Parameters
 
@@ -2336,48 +2273,17 @@ Name | Type | Description  | Notes
   **deploymentName** | **string**| Name of the deployment group | 
   **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transformName** | **string**| ID or name of the deployed transform | 
- **optional** | ***TransformarrayCsvOpts** | optional parameters | nil if no parameters
+ **optional** | ***TransformarrayOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a TransformarrayCsvOpts struct
+Optional parameters are passed through a pointer to a TransformarrayOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
 
- **batchCSVRecord** | [**optional.Interface of BatchCsvRecord**](BatchCsvRecord.md)| The input batch of record arrays | 
-
-### Return type
-
-[**Base64NdArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **TransformarrayImage**
-> Base64NdArrayBody TransformarrayImage(ctx, deploymentName, versionName, imageTransformName, batchImageRecord)
-Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **imageTransformName** | **string**| ID or name of the deployed image transform | 
-  **batchImageRecord** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
+ **batchRecord** | [**optional.Interface of ErrorUnknown**](.md)| The input batch of record arrays | 
 
 ### Return type
 
@@ -2466,11 +2372,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **TransformincrementalarrayCsv**
-> Base64NdArrayBody TransformincrementalarrayCsv(ctx, deploymentName, versionName, transformName, optional)
-Same as /transformincremental but returns Base64NDArrayBody
-
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+# **Transformincrementalarray**
+> Base64NdArrayBody Transformincrementalarray(ctx, deploymentName, versionName, transformName, optional)
+Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Required Parameters
 
@@ -2480,48 +2384,17 @@ Name | Type | Description  | Notes
   **deploymentName** | **string**| Name of the deployment group | 
   **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transformName** | **string**| ID or name of the deployed transform | 
- **optional** | ***TransformincrementalarrayCsvOpts** | optional parameters | nil if no parameters
+ **optional** | ***TransformincrementalarrayOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a TransformincrementalarrayCsvOpts struct
+Optional parameters are passed through a pointer to a TransformincrementalarrayOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
 
- **singleCSVRecord** | [**optional.Interface of SingleCsvRecord**](SingleCsvRecord.md)| The input record array | 
-
-### Return type
-
-[**Base64NdArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **TransformincrementalarrayImage**
-> Base64NdArrayBody TransformincrementalarrayImage(ctx, deploymentName, versionName, imageTransformName, singleImageRecord)
-Takes SingleImageRecord to transform and returns Base64NDArrayBody
-
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **imageTransformName** | **string**| ID or name of the deployed image transform | 
-  **singleImageRecord** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
+ **singleRecord** | [**optional.Interface of ErrorUnknown**](.md)| The input record array | 
 
 ### Return type
 
@@ -2570,10 +2443,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformprocessGet**
-> TransformProcess TransformprocessGet(ctx, deploymentName, versionName, transformName)
-Gets the JSON string of the deployed transform process
-
-Retrieves the JSON string of the deployed transform process 
+> ErrorUnknown TransformprocessGet(ctx, deploymentName, versionName, transformName)
+Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Required Parameters
 
@@ -2586,7 +2457,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransformProcess**](TransformProcess.md)
+**ErrorUnknown**
 
 ### Authorization
 
@@ -2600,10 +2471,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformprocessPost**
-> TransformprocessPost(ctx, deploymentName, versionName, transformName, optional)
-Sets the deployed transform process through the provided JSON string
-
-Sets the transform process with the provided JSON string
+> ErrorUnknown TransformprocessPost(ctx, deploymentName, versionName, transformName, optional)
+Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Required Parameters
 
@@ -2623,11 +2492,11 @@ Name | Type | Description  | Notes
 
 
 
- **transformProcess** | [**optional.Interface of TransformProcess**](TransformProcess.md)| The transform process to set | 
+ **transformProcess** | [**optional.Interface of ErrorUnknown**](.md)| The transform process to set | 
 
 ### Return type
 
- (empty response body)
+**ErrorUnknown**
 
 ### Authorization
 

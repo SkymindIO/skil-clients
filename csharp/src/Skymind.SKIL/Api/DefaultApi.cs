@@ -405,10 +405,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobtype">Job Type</param>
+        /// <param name="jobIdOrType">Job Type</param>
         /// <param name="createJobRequest">Create job request object</param>
         /// <returns>JobEntity</returns>
-        JobEntity CreateJob (string jobtype, CreateJobRequest createJobRequest);
+        JobEntity CreateJob (string jobIdOrType, CreateJobRequest createJobRequest);
 
         /// <summary>
         /// Create a job
@@ -417,10 +417,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobtype">Job Type</param>
+        /// <param name="jobIdOrType">Job Type</param>
         /// <param name="createJobRequest">Create job request object</param>
         /// <returns>ApiResponse of JobEntity</returns>
-        ApiResponse<JobEntity> CreateJobWithHttpInfo (string jobtype, CreateJobRequest createJobRequest);
+        ApiResponse<JobEntity> CreateJobWithHttpInfo (string jobIdOrType, CreateJobRequest createJobRequest);
         /// <summary>
         /// Creates model History
         /// </summary>
@@ -495,9 +495,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns></returns>
-        void DeleteJobById (long? jobId);
+        void DeleteJobById (long? jobIdOrType);
 
         /// <summary>
         /// Deletes a job given its ID
@@ -506,9 +506,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteJobByIdWithHttpInfo (long? jobId);
+        ApiResponse<Object> DeleteJobByIdWithHttpInfo (long? jobIdOrType);
         /// <summary>
         /// Delete a model by deployment and model id
         /// </summary>
@@ -966,9 +966,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>JobEntity</returns>
-        JobEntity GetJobById (long? jobId);
+        JobEntity GetJobById (long? jobIdOrType);
 
         /// <summary>
         /// Get a job by its ID
@@ -977,9 +977,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>ApiResponse of JobEntity</returns>
-        ApiResponse<JobEntity> GetJobByIdWithHttpInfo (long? jobId);
+        ApiResponse<JobEntity> GetJobByIdWithHttpInfo (long? jobIdOrType);
         /// <summary>
         /// Gets a minibatch for the model
         /// </summary>
@@ -1236,58 +1236,6 @@ namespace Skymind.SKIL.Api
         /// <param name="resourceGroupId">ID of the resource group</param>
         /// <returns>ApiResponse of List&lt;Resource&gt;</returns>
         ApiResponse<List<Resource>> GetResourcesFromGroupWithHttpInfo (long? resourceGroupId);
-        /// <summary>
-        /// Retrieves the image transform process JSON string
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <returns>ImageTransformProcess</returns>
-        ImageTransformProcess ImagetransformprocessGet (string deploymentName, string versionName, string imageTransformName);
-
-        /// <summary>
-        /// Retrieves the image transform process JSON string
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <returns>ApiResponse of ImageTransformProcess</returns>
-        ApiResponse<ImageTransformProcess> ImagetransformprocessGetWithHttpInfo (string deploymentName, string versionName, string imageTransformName);
-        /// <summary>
-        /// Sets the image transform process through the provided JSON string
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="body">The image transform process JSON</param>
-        /// <returns>ImageTransformProcess</returns>
-        ImageTransformProcess ImagetransformprocessPost (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body);
-
-        /// <summary>
-        /// Sets the image transform process through the provided JSON string
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="body">The image transform process JSON</param>
-        /// <returns>ApiResponse of ImageTransformProcess</returns>
-        ApiResponse<ImageTransformProcess> ImagetransformprocessPostWithHttpInfo (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body);
         /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
         /// </summary>
@@ -1904,56 +1852,29 @@ namespace Skymind.SKIL.Api
         /// Takes a batch input arrays and transforms it
         /// </summary>
         /// <remarks>
-        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody TransformarrayCsv (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName,  batchRecord = null);
 
         /// <summary>
         /// Takes a batch input arrays and transforms it
         /// </summary>
         /// <remarks>
-        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformarrayCsvWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
-        /// <summary>
-        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-        /// </summary>
-        /// <remarks>
-        /// Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="batchImageRecord">The input batch of record arrays</param>
-        /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody TransformarrayImage (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord);
-
-        /// <summary>
-        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-        /// </summary>
-        /// <remarks>
-        /// Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="batchImageRecord">The input batch of record arrays</param>
-        /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformarrayImageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord);
+        ApiResponse<Base64NDArrayBody> TransformarrayWithHttpInfo (string deploymentName, string versionName, string transformName,  batchRecord = null);
         /// <summary>
         /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -2009,59 +1930,32 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of SingleCSVRecord</returns>
         ApiResponse<SingleCSVRecord> TransformincrementalCsvWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
         /// <summary>
-        /// Same as /transformincremental but returns Base64NDArrayBody
+        /// Same as /transformincremental but returns Base64NDArrayBody.
         /// </summary>
         /// <remarks>
-        /// Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName,  singleRecord = null);
 
         /// <summary>
-        /// Same as /transformincremental but returns Base64NDArrayBody
+        /// Same as /transformincremental but returns Base64NDArrayBody.
         /// </summary>
         /// <remarks>
-        /// Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformincrementalarrayCsvWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
-        /// <summary>
-        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
-        /// </summary>
-        /// <remarks>
-        /// Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="singleImageRecord">The input record array</param>
-        /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord);
-
-        /// <summary>
-        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
-        /// </summary>
-        /// <remarks>
-        /// Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="singleImageRecord">The input record array</param>
-        /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformincrementalarrayImageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord);
+        ApiResponse<Base64NDArrayBody> TransformincrementalarrayWithHttpInfo (string deploymentName, string versionName, string transformName,  singleRecord = null);
         /// <summary>
         /// Takes a single multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -2090,35 +1984,35 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
         ApiResponse<Base64NDArrayBody> TransformincrementalimageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file);
         /// <summary>
-        /// Gets the JSON string of the deployed transform process
+        /// Gets the JSON string of the deployed transform process (CSV or Image)
         /// </summary>
         /// <remarks>
-        /// Retrieves the JSON string of the deployed transform process 
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>TransformProcess</returns>
-        TransformProcess TransformprocessGet (string deploymentName, string versionName, string transformName);
+        /// <returns></returns>
+        void TransformprocessGet (string deploymentName, string versionName, string transformName);
 
         /// <summary>
-        /// Gets the JSON string of the deployed transform process
+        /// Gets the JSON string of the deployed transform process (CSV or Image)
         /// </summary>
         /// <remarks>
-        /// Retrieves the JSON string of the deployed transform process 
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>ApiResponse of TransformProcess</returns>
-        ApiResponse<TransformProcess> TransformprocessGetWithHttpInfo (string deploymentName, string versionName, string transformName);
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> TransformprocessGetWithHttpInfo (string deploymentName, string versionName, string transformName);
         /// <summary>
-        /// Sets the deployed transform process through the provided JSON string
+        /// Sets the deployed (CSV or Image) transform process through the provided JSON string
         /// </summary>
         /// <remarks>
-        /// Sets the transform process with the provided JSON string
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
@@ -2126,13 +2020,13 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns></returns>
-        void TransformprocessPost (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null);
+        void TransformprocessPost (string deploymentName, string versionName, string transformName,  transformProcess = null);
 
         /// <summary>
-        /// Sets the deployed transform process through the provided JSON string
+        /// Sets the deployed (CSV or Image) transform process through the provided JSON string
         /// </summary>
         /// <remarks>
-        /// Sets the transform process with the provided JSON string
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
@@ -2140,7 +2034,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null);
+        ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName,  transformProcess = null);
         /// <summary>
         /// Updates the best model for an experiment
         /// </summary>
@@ -2618,10 +2512,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobtype">Job Type</param>
+        /// <param name="jobIdOrType">Job Type</param>
         /// <param name="createJobRequest">Create job request object</param>
         /// <returns>Task of JobEntity</returns>
-        System.Threading.Tasks.Task<JobEntity> CreateJobAsync (string jobtype, CreateJobRequest createJobRequest);
+        System.Threading.Tasks.Task<JobEntity> CreateJobAsync (string jobIdOrType, CreateJobRequest createJobRequest);
 
         /// <summary>
         /// Create a job
@@ -2630,10 +2524,10 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobtype">Job Type</param>
+        /// <param name="jobIdOrType">Job Type</param>
         /// <param name="createJobRequest">Create job request object</param>
         /// <returns>Task of ApiResponse (JobEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobEntity>> CreateJobAsyncWithHttpInfo (string jobtype, CreateJobRequest createJobRequest);
+        System.Threading.Tasks.Task<ApiResponse<JobEntity>> CreateJobAsyncWithHttpInfo (string jobIdOrType, CreateJobRequest createJobRequest);
         /// <summary>
         /// Creates model History
         /// </summary>
@@ -2708,9 +2602,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteJobByIdAsync (long? jobId);
+        System.Threading.Tasks.Task DeleteJobByIdAsync (long? jobIdOrType);
 
         /// <summary>
         /// Deletes a job given its ID
@@ -2719,9 +2613,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteJobByIdAsyncWithHttpInfo (long? jobId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteJobByIdAsyncWithHttpInfo (long? jobIdOrType);
         /// <summary>
         /// Delete a model by deployment and model id
         /// </summary>
@@ -3179,9 +3073,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>Task of JobEntity</returns>
-        System.Threading.Tasks.Task<JobEntity> GetJobByIdAsync (long? jobId);
+        System.Threading.Tasks.Task<JobEntity> GetJobByIdAsync (long? jobIdOrType);
 
         /// <summary>
         /// Get a job by its ID
@@ -3190,9 +3084,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>Task of ApiResponse (JobEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobEntity>> GetJobByIdAsyncWithHttpInfo (long? jobId);
+        System.Threading.Tasks.Task<ApiResponse<JobEntity>> GetJobByIdAsyncWithHttpInfo (long? jobIdOrType);
         /// <summary>
         /// Gets a minibatch for the model
         /// </summary>
@@ -3449,58 +3343,6 @@ namespace Skymind.SKIL.Api
         /// <param name="resourceGroupId">ID of the resource group</param>
         /// <returns>Task of ApiResponse (List&lt;Resource&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Resource>>> GetResourcesFromGroupAsyncWithHttpInfo (long? resourceGroupId);
-        /// <summary>
-        /// Retrieves the image transform process JSON string
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <returns>Task of ImageTransformProcess</returns>
-        System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessGetAsync (string deploymentName, string versionName, string imageTransformName);
-
-        /// <summary>
-        /// Retrieves the image transform process JSON string
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName);
-        /// <summary>
-        /// Sets the image transform process through the provided JSON string
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="body">The image transform process JSON</param>
-        /// <returns>Task of ImageTransformProcess</returns>
-        System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessPostAsync (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body);
-
-        /// <summary>
-        /// Sets the image transform process through the provided JSON string
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="body">The image transform process JSON</param>
-        /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body);
         /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
         /// </summary>
@@ -4117,56 +3959,29 @@ namespace Skymind.SKIL.Api
         /// Takes a batch input arrays and transforms it
         /// </summary>
         /// <remarks>
-        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayCsvAsync (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayAsync (string deploymentName, string versionName, string transformName,  batchRecord = null);
 
         /// <summary>
         /// Takes a batch input arrays and transforms it
         /// </summary>
         /// <remarks>
-        /// Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null);
-        /// <summary>
-        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-        /// </summary>
-        /// <remarks>
-        /// Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="batchImageRecord">The input batch of record arrays</param>
-        /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayImageAsync (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord);
-
-        /// <summary>
-        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-        /// </summary>
-        /// <remarks>
-        /// Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="batchImageRecord">The input batch of record arrays</param>
-        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayImageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  batchRecord = null);
         /// <summary>
         /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -4222,59 +4037,32 @@ namespace Skymind.SKIL.Api
         /// <returns>Task of ApiResponse (SingleCSVRecord)</returns>
         System.Threading.Tasks.Task<ApiResponse<SingleCSVRecord>> TransformincrementalCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
         /// <summary>
-        /// Same as /transformincremental but returns Base64NDArrayBody
+        /// Same as /transformincremental but returns Base64NDArrayBody.
         /// </summary>
         /// <remarks>
-        /// Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayCsvAsync (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayAsync (string deploymentName, string versionName, string transformName,  singleRecord = null);
 
         /// <summary>
-        /// Same as /transformincremental but returns Base64NDArrayBody
+        /// Same as /transformincremental but returns Base64NDArrayBody.
         /// </summary>
         /// <remarks>
-        /// Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null);
-        /// <summary>
-        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
-        /// </summary>
-        /// <remarks>
-        /// Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="singleImageRecord">The input record array</param>
-        /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayImageAsync (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord);
-
-        /// <summary>
-        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody
-        /// </summary>
-        /// <remarks>
-        /// Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </remarks>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="singleImageRecord">The input record array</param>
-        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayImageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  singleRecord = null);
         /// <summary>
         /// Takes a single multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -4303,35 +4091,35 @@ namespace Skymind.SKIL.Api
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
         System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalimageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file);
         /// <summary>
-        /// Gets the JSON string of the deployed transform process
+        /// Gets the JSON string of the deployed transform process (CSV or Image)
         /// </summary>
         /// <remarks>
-        /// Retrieves the JSON string of the deployed transform process 
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>Task of TransformProcess</returns>
-        System.Threading.Tasks.Task<TransformProcess> TransformprocessGetAsync (string deploymentName, string versionName, string transformName);
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task TransformprocessGetAsync (string deploymentName, string versionName, string transformName);
 
         /// <summary>
-        /// Gets the JSON string of the deployed transform process
+        /// Gets the JSON string of the deployed transform process (CSV or Image)
         /// </summary>
         /// <remarks>
-        /// Retrieves the JSON string of the deployed transform process 
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>Task of ApiResponse (TransformProcess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TransformProcess>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string transformName);
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string transformName);
         /// <summary>
-        /// Sets the deployed transform process through the provided JSON string
+        /// Sets the deployed (CSV or Image) transform process through the provided JSON string
         /// </summary>
         /// <remarks>
-        /// Sets the transform process with the provided JSON string
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
@@ -4339,13 +4127,13 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null);
+        System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string versionName, string transformName,  transformProcess = null);
 
         /// <summary>
-        /// Sets the deployed transform process through the provided JSON string
+        /// Sets the deployed (CSV or Image) transform process through the provided JSON string
         /// </summary>
         /// <remarks>
-        /// Sets the transform process with the provided JSON string
+        /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
@@ -4353,7 +4141,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  transformProcess = null);
         /// <summary>
         /// Updates the best model for an experiment
         /// </summary>
@@ -7286,12 +7074,12 @@ namespace Skymind.SKIL.Api
         /// Create a job 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobtype">Job Type</param>
+        /// <param name="jobIdOrType">Job Type</param>
         /// <param name="createJobRequest">Create job request object</param>
         /// <returns>JobEntity</returns>
-        public JobEntity CreateJob (string jobtype, CreateJobRequest createJobRequest)
+        public JobEntity CreateJob (string jobIdOrType, CreateJobRequest createJobRequest)
         {
-             ApiResponse<JobEntity> localVarResponse = CreateJobWithHttpInfo(jobtype, createJobRequest);
+             ApiResponse<JobEntity> localVarResponse = CreateJobWithHttpInfo(jobIdOrType, createJobRequest);
              return localVarResponse.Data;
         }
 
@@ -7299,19 +7087,19 @@ namespace Skymind.SKIL.Api
         /// Create a job 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobtype">Job Type</param>
+        /// <param name="jobIdOrType">Job Type</param>
         /// <param name="createJobRequest">Create job request object</param>
         /// <returns>ApiResponse of JobEntity</returns>
-        public ApiResponse< JobEntity > CreateJobWithHttpInfo (string jobtype, CreateJobRequest createJobRequest)
+        public ApiResponse< JobEntity > CreateJobWithHttpInfo (string jobIdOrType, CreateJobRequest createJobRequest)
         {
-            // verify the required parameter 'jobtype' is set
-            if (jobtype == null)
-                throw new ApiException(400, "Missing required parameter 'jobtype' when calling DefaultApi->CreateJob");
+            // verify the required parameter 'jobIdOrType' is set
+            if (jobIdOrType == null)
+                throw new ApiException(400, "Missing required parameter 'jobIdOrType' when calling DefaultApi->CreateJob");
             // verify the required parameter 'createJobRequest' is set
             if (createJobRequest == null)
                 throw new ApiException(400, "Missing required parameter 'createJobRequest' when calling DefaultApi->CreateJob");
 
-            var localVarPath = "/jobs/{jobtype}";
+            var localVarPath = "/jobs/{jobIdOrType}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7333,7 +7121,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (jobtype != null) localVarPathParams.Add("jobtype", this.Configuration.ApiClient.ParameterToString(jobtype)); // path parameter
+            if (jobIdOrType != null) localVarPathParams.Add("jobIdOrType", this.Configuration.ApiClient.ParameterToString(jobIdOrType)); // path parameter
             if (createJobRequest != null && createJobRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(createJobRequest); // http body (model) parameter
@@ -7371,12 +7159,12 @@ namespace Skymind.SKIL.Api
         /// Create a job 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobtype">Job Type</param>
+        /// <param name="jobIdOrType">Job Type</param>
         /// <param name="createJobRequest">Create job request object</param>
         /// <returns>Task of JobEntity</returns>
-        public async System.Threading.Tasks.Task<JobEntity> CreateJobAsync (string jobtype, CreateJobRequest createJobRequest)
+        public async System.Threading.Tasks.Task<JobEntity> CreateJobAsync (string jobIdOrType, CreateJobRequest createJobRequest)
         {
-             ApiResponse<JobEntity> localVarResponse = await CreateJobAsyncWithHttpInfo(jobtype, createJobRequest);
+             ApiResponse<JobEntity> localVarResponse = await CreateJobAsyncWithHttpInfo(jobIdOrType, createJobRequest);
              return localVarResponse.Data;
 
         }
@@ -7385,19 +7173,19 @@ namespace Skymind.SKIL.Api
         /// Create a job 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobtype">Job Type</param>
+        /// <param name="jobIdOrType">Job Type</param>
         /// <param name="createJobRequest">Create job request object</param>
         /// <returns>Task of ApiResponse (JobEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobEntity>> CreateJobAsyncWithHttpInfo (string jobtype, CreateJobRequest createJobRequest)
+        public async System.Threading.Tasks.Task<ApiResponse<JobEntity>> CreateJobAsyncWithHttpInfo (string jobIdOrType, CreateJobRequest createJobRequest)
         {
-            // verify the required parameter 'jobtype' is set
-            if (jobtype == null)
-                throw new ApiException(400, "Missing required parameter 'jobtype' when calling DefaultApi->CreateJob");
+            // verify the required parameter 'jobIdOrType' is set
+            if (jobIdOrType == null)
+                throw new ApiException(400, "Missing required parameter 'jobIdOrType' when calling DefaultApi->CreateJob");
             // verify the required parameter 'createJobRequest' is set
             if (createJobRequest == null)
                 throw new ApiException(400, "Missing required parameter 'createJobRequest' when calling DefaultApi->CreateJob");
 
-            var localVarPath = "/jobs/{jobtype}";
+            var localVarPath = "/jobs/{jobIdOrType}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7419,7 +7207,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (jobtype != null) localVarPathParams.Add("jobtype", this.Configuration.ApiClient.ParameterToString(jobtype)); // path parameter
+            if (jobIdOrType != null) localVarPathParams.Add("jobIdOrType", this.Configuration.ApiClient.ParameterToString(jobIdOrType)); // path parameter
             if (createJobRequest != null && createJobRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(createJobRequest); // http body (model) parameter
@@ -7924,26 +7712,26 @@ namespace Skymind.SKIL.Api
         /// Deletes a job given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns></returns>
-        public void DeleteJobById (long? jobId)
+        public void DeleteJobById (long? jobIdOrType)
         {
-             DeleteJobByIdWithHttpInfo(jobId);
+             DeleteJobByIdWithHttpInfo(jobIdOrType);
         }
 
         /// <summary>
         /// Deletes a job given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteJobByIdWithHttpInfo (long? jobId)
+        public ApiResponse<Object> DeleteJobByIdWithHttpInfo (long? jobIdOrType)
         {
-            // verify the required parameter 'jobId' is set
-            if (jobId == null)
-                throw new ApiException(400, "Missing required parameter 'jobId' when calling DefaultApi->DeleteJobById");
+            // verify the required parameter 'jobIdOrType' is set
+            if (jobIdOrType == null)
+                throw new ApiException(400, "Missing required parameter 'jobIdOrType' when calling DefaultApi->DeleteJobById");
 
-            var localVarPath = "/jobs/{jobId}";
+            var localVarPath = "/jobs/{jobIdOrType}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -7964,7 +7752,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (jobId != null) localVarPathParams.Add("jobId", this.Configuration.ApiClient.ParameterToString(jobId)); // path parameter
+            if (jobIdOrType != null) localVarPathParams.Add("jobIdOrType", this.Configuration.ApiClient.ParameterToString(jobIdOrType)); // path parameter
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -7994,11 +7782,11 @@ namespace Skymind.SKIL.Api
         /// Deletes a job given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteJobByIdAsync (long? jobId)
+        public async System.Threading.Tasks.Task DeleteJobByIdAsync (long? jobIdOrType)
         {
-             await DeleteJobByIdAsyncWithHttpInfo(jobId);
+             await DeleteJobByIdAsyncWithHttpInfo(jobIdOrType);
 
         }
 
@@ -8006,15 +7794,15 @@ namespace Skymind.SKIL.Api
         /// Deletes a job given its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteJobByIdAsyncWithHttpInfo (long? jobId)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteJobByIdAsyncWithHttpInfo (long? jobIdOrType)
         {
-            // verify the required parameter 'jobId' is set
-            if (jobId == null)
-                throw new ApiException(400, "Missing required parameter 'jobId' when calling DefaultApi->DeleteJobById");
+            // verify the required parameter 'jobIdOrType' is set
+            if (jobIdOrType == null)
+                throw new ApiException(400, "Missing required parameter 'jobIdOrType' when calling DefaultApi->DeleteJobById");
 
-            var localVarPath = "/jobs/{jobId}";
+            var localVarPath = "/jobs/{jobIdOrType}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -8035,7 +7823,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (jobId != null) localVarPathParams.Add("jobId", this.Configuration.ApiClient.ParameterToString(jobId)); // path parameter
+            if (jobIdOrType != null) localVarPathParams.Add("jobIdOrType", this.Configuration.ApiClient.ParameterToString(jobIdOrType)); // path parameter
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -11165,11 +10953,11 @@ namespace Skymind.SKIL.Api
         /// Get a job by its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>JobEntity</returns>
-        public JobEntity GetJobById (long? jobId)
+        public JobEntity GetJobById (long? jobIdOrType)
         {
-             ApiResponse<JobEntity> localVarResponse = GetJobByIdWithHttpInfo(jobId);
+             ApiResponse<JobEntity> localVarResponse = GetJobByIdWithHttpInfo(jobIdOrType);
              return localVarResponse.Data;
         }
 
@@ -11177,15 +10965,15 @@ namespace Skymind.SKIL.Api
         /// Get a job by its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>ApiResponse of JobEntity</returns>
-        public ApiResponse< JobEntity > GetJobByIdWithHttpInfo (long? jobId)
+        public ApiResponse< JobEntity > GetJobByIdWithHttpInfo (long? jobIdOrType)
         {
-            // verify the required parameter 'jobId' is set
-            if (jobId == null)
-                throw new ApiException(400, "Missing required parameter 'jobId' when calling DefaultApi->GetJobById");
+            // verify the required parameter 'jobIdOrType' is set
+            if (jobIdOrType == null)
+                throw new ApiException(400, "Missing required parameter 'jobIdOrType' when calling DefaultApi->GetJobById");
 
-            var localVarPath = "/jobs/{jobId}";
+            var localVarPath = "/jobs/{jobIdOrType}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11206,7 +10994,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (jobId != null) localVarPathParams.Add("jobId", this.Configuration.ApiClient.ParameterToString(jobId)); // path parameter
+            if (jobIdOrType != null) localVarPathParams.Add("jobIdOrType", this.Configuration.ApiClient.ParameterToString(jobIdOrType)); // path parameter
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -11236,11 +11024,11 @@ namespace Skymind.SKIL.Api
         /// Get a job by its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>Task of JobEntity</returns>
-        public async System.Threading.Tasks.Task<JobEntity> GetJobByIdAsync (long? jobId)
+        public async System.Threading.Tasks.Task<JobEntity> GetJobByIdAsync (long? jobIdOrType)
         {
-             ApiResponse<JobEntity> localVarResponse = await GetJobByIdAsyncWithHttpInfo(jobId);
+             ApiResponse<JobEntity> localVarResponse = await GetJobByIdAsyncWithHttpInfo(jobIdOrType);
              return localVarResponse.Data;
 
         }
@@ -11249,15 +11037,15 @@ namespace Skymind.SKIL.Api
         /// Get a job by its ID 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobIdOrType">Job ID</param>
         /// <returns>Task of ApiResponse (JobEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobEntity>> GetJobByIdAsyncWithHttpInfo (long? jobId)
+        public async System.Threading.Tasks.Task<ApiResponse<JobEntity>> GetJobByIdAsyncWithHttpInfo (long? jobIdOrType)
         {
-            // verify the required parameter 'jobId' is set
-            if (jobId == null)
-                throw new ApiException(400, "Missing required parameter 'jobId' when calling DefaultApi->GetJobById");
+            // verify the required parameter 'jobIdOrType' is set
+            if (jobIdOrType == null)
+                throw new ApiException(400, "Missing required parameter 'jobIdOrType' when calling DefaultApi->GetJobById");
 
-            var localVarPath = "/jobs/{jobId}";
+            var localVarPath = "/jobs/{jobIdOrType}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -11278,7 +11066,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (jobId != null) localVarPathParams.Add("jobId", this.Configuration.ApiClient.ParameterToString(jobId)); // path parameter
+            if (jobIdOrType != null) localVarPathParams.Add("jobIdOrType", this.Configuration.ApiClient.ParameterToString(jobIdOrType)); // path parameter
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -12091,7 +11879,7 @@ namespace Skymind.SKIL.Api
             if (resourceSubType == null)
                 throw new ApiException(400, "Missing required parameter 'resourceSubType' when calling DefaultApi->GetResourceBySubType");
 
-            var localVarPath = "/resources/resources/type/{resourceSubType}";
+            var localVarPath = "/resources/resources/subtype/{resourceSubType}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -12163,7 +11951,7 @@ namespace Skymind.SKIL.Api
             if (resourceSubType == null)
                 throw new ApiException(400, "Missing required parameter 'resourceSubType' when calling DefaultApi->GetResourceBySubType");
 
-            var localVarPath = "/resources/resources/type/{resourceSubType}";
+            var localVarPath = "/resources/resources/subtype/{resourceSubType}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -13040,370 +12828,6 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<List<Resource>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<Resource>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Resource>)));
-        }
-
-        /// <summary>
-        /// Retrieves the image transform process JSON string 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <returns>ImageTransformProcess</returns>
-        public ImageTransformProcess ImagetransformprocessGet (string deploymentName, string versionName, string imageTransformName)
-        {
-             ApiResponse<ImageTransformProcess> localVarResponse = ImagetransformprocessGetWithHttpInfo(deploymentName, versionName, imageTransformName);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieves the image transform process JSON string 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <returns>ApiResponse of ImageTransformProcess</returns>
-        public ApiResponse< ImageTransformProcess > ImagetransformprocessGetWithHttpInfo (string deploymentName, string versionName, string imageTransformName)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessGet");
-            // verify the required parameter 'versionName' is set
-            if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->ImagetransformprocessGet");
-            // verify the required parameter 'imageTransformName' is set
-            if (imageTransformName == null)
-                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessGet");
-
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ImagetransformprocessGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageTransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
-        }
-
-        /// <summary>
-        /// Retrieves the image transform process JSON string 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <returns>Task of ImageTransformProcess</returns>
-        public async System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessGetAsync (string deploymentName, string versionName, string imageTransformName)
-        {
-             ApiResponse<ImageTransformProcess> localVarResponse = await ImagetransformprocessGetAsyncWithHttpInfo(deploymentName, versionName, imageTransformName);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Retrieves the image transform process JSON string 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessGet");
-            // verify the required parameter 'versionName' is set
-            if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->ImagetransformprocessGet");
-            // verify the required parameter 'imageTransformName' is set
-            if (imageTransformName == null)
-                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessGet");
-
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ImagetransformprocessGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageTransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
-        }
-
-        /// <summary>
-        /// Sets the image transform process through the provided JSON string 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="body">The image transform process JSON</param>
-        /// <returns>ImageTransformProcess</returns>
-        public ImageTransformProcess ImagetransformprocessPost (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body)
-        {
-             ApiResponse<ImageTransformProcess> localVarResponse = ImagetransformprocessPostWithHttpInfo(deploymentName, versionName, imageTransformName, body);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Sets the image transform process through the provided JSON string 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="body">The image transform process JSON</param>
-        /// <returns>ApiResponse of ImageTransformProcess</returns>
-        public ApiResponse< ImageTransformProcess > ImagetransformprocessPostWithHttpInfo (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessPost");
-            // verify the required parameter 'versionName' is set
-            if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->ImagetransformprocessPost");
-            // verify the required parameter 'imageTransformName' is set
-            if (imageTransformName == null)
-                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessPost");
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->ImagetransformprocessPost");
-
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ImagetransformprocessPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageTransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
-        }
-
-        /// <summary>
-        /// Sets the image transform process through the provided JSON string 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="body">The image transform process JSON</param>
-        /// <returns>Task of ImageTransformProcess</returns>
-        public async System.Threading.Tasks.Task<ImageTransformProcess> ImagetransformprocessPostAsync (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body)
-        {
-             ApiResponse<ImageTransformProcess> localVarResponse = await ImagetransformprocessPostAsyncWithHttpInfo(deploymentName, versionName, imageTransformName, body);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Sets the image transform process through the provided JSON string 
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="body">The image transform process JSON</param>
-        /// <returns>Task of ApiResponse (ImageTransformProcess)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ImageTransformProcess>> ImagetransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->ImagetransformprocessPost");
-            // verify the required parameter 'versionName' is set
-            if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->ImagetransformprocessPost");
-            // verify the required parameter 'imageTransformName' is set
-            if (imageTransformName == null)
-                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->ImagetransformprocessPost");
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->ImagetransformprocessPost");
-
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ImagetransformprocessPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<ImageTransformProcess>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageTransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageTransformProcess)));
         }
 
         /// <summary>
@@ -17689,40 +17113,40 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
-        /// Takes a batch input arrays and transforms it Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// Takes a batch input arrays and transforms it 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody TransformarrayCsv (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName,  batchRecord = null)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = TransformarrayCsvWithHttpInfo(deploymentName, versionName, transformName, batchCSVRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformarrayWithHttpInfo(deploymentName, versionName, transformName, batchRecord);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Takes a batch input arrays and transforms it Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// Takes a batch input arrays and transforms it 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformarrayCsvWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public ApiResponse< Base64NDArrayBody > TransformarrayWithHttpInfo (string deploymentName, string versionName, string transformName,  batchRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformarray");
             // verify the required parameter 'versionName' is set
             if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Transformarray");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
-                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->Transformarray");
 
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray";
             var localVarPathParams = new Dictionary<String, String>();
@@ -17749,13 +17173,13 @@ namespace Skymind.SKIL.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
-            if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
+            if (batchRecord != null && batchRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(batchRecord); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = batchCSVRecord; // byte array
+                localVarPostBody = batchRecord; // byte array
             }
 
             // authentication (api_key) required
@@ -17773,7 +17197,7 @@ namespace Skymind.SKIL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("TransformarrayCsv", localVarResponse);
+                Exception exception = ExceptionFactory("Transformarray", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -17783,41 +17207,41 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
-        /// Takes a batch input arrays and transforms it Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// Takes a batch input arrays and transforms it 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayCsvAsync (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayAsync (string deploymentName, string versionName, string transformName,  batchRecord = null)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformarrayCsvAsyncWithHttpInfo(deploymentName, versionName, transformName, batchCSVRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformarrayAsyncWithHttpInfo(deploymentName, versionName, transformName, batchRecord);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Takes a batch input arrays and transforms it Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// Takes a batch input arrays and transforms it 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="batchCSVRecord">The input batch of record arrays (optional)</param>
+        /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  batchRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformarray");
             // verify the required parameter 'versionName' is set
             if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Transformarray");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
-                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->Transformarray");
 
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray";
             var localVarPathParams = new Dictionary<String, String>();
@@ -17844,13 +17268,13 @@ namespace Skymind.SKIL.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
-            if (batchCSVRecord != null && batchCSVRecord.GetType() != typeof(byte[]))
+            if (batchRecord != null && batchRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(batchCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(batchRecord); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = batchCSVRecord; // byte array
+                localVarPostBody = batchRecord; // byte array
             }
 
             // authentication (api_key) required
@@ -17868,202 +17292,7 @@ namespace Skymind.SKIL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("TransformarrayCsv", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
-        }
-
-        /// <summary>
-        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="batchImageRecord">The input batch of record arrays</param>
-        /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody TransformarrayImage (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord)
-        {
-             ApiResponse<Base64NDArrayBody> localVarResponse = TransformarrayImageWithHttpInfo(deploymentName, versionName, imageTransformName, batchImageRecord);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="batchImageRecord">The input batch of record arrays</param>
-        /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformarrayImageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayImage");
-            // verify the required parameter 'versionName' is set
-            if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformarrayImage");
-            // verify the required parameter 'imageTransformName' is set
-            if (imageTransformName == null)
-                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformarrayImage");
-            // verify the required parameter 'batchImageRecord' is set
-            if (batchImageRecord == null)
-                throw new ApiException(400, "Missing required parameter 'batchImageRecord' when calling DefaultApi->TransformarrayImage");
-
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (batchImageRecord != null && batchImageRecord.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(batchImageRecord); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = batchImageRecord; // byte array
-            }
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("TransformarrayImage", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
-        }
-
-        /// <summary>
-        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="batchImageRecord">The input batch of record arrays</param>
-        /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayImageAsync (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord)
-        {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformarrayImageAsyncWithHttpInfo(deploymentName, versionName, imageTransformName, batchImageRecord);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Takes a batch of images uri and transforms it and returns Base64NDArrayBody Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="batchImageRecord">The input batch of record arrays</param>
-        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayImageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformarrayImage");
-            // verify the required parameter 'versionName' is set
-            if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformarrayImage");
-            // verify the required parameter 'imageTransformName' is set
-            if (imageTransformName == null)
-                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformarrayImage");
-            // verify the required parameter 'batchImageRecord' is set
-            if (batchImageRecord == null)
-                throw new ApiException(400, "Missing required parameter 'batchImageRecord' when calling DefaultApi->TransformarrayImage");
-
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (batchImageRecord != null && batchImageRecord.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(batchImageRecord); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = batchImageRecord; // byte array
-            }
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("TransformarrayImage", localVarResponse);
+                Exception exception = ExceptionFactory("Transformarray", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -18443,40 +17672,40 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
-        /// Same as /transformincremental but returns Base64NDArrayBody Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// Same as /transformincremental but returns Base64NDArrayBody. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName,  singleRecord = null)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalarrayCsvWithHttpInfo(deploymentName, versionName, transformName, singleCSVRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalarrayWithHttpInfo(deploymentName, versionName, transformName, singleRecord);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Same as /transformincremental but returns Base64NDArrayBody Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// Same as /transformincremental but returns Base64NDArrayBody. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayCsvWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayWithHttpInfo (string deploymentName, string versionName, string transformName,  singleRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformincrementalarray");
             // verify the required parameter 'versionName' is set
             if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformincrementalarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Transformincrementalarray");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
-                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformincrementalarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->Transformincrementalarray");
 
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray";
             var localVarPathParams = new Dictionary<String, String>();
@@ -18503,13 +17732,13 @@ namespace Skymind.SKIL.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
-            if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
+            if (singleRecord != null && singleRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(singleRecord); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = singleCSVRecord; // byte array
+                localVarPostBody = singleRecord; // byte array
             }
 
             // authentication (api_key) required
@@ -18527,7 +17756,7 @@ namespace Skymind.SKIL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("TransformincrementalarrayCsv", localVarResponse);
+                Exception exception = ExceptionFactory("Transformincrementalarray", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -18537,41 +17766,41 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
-        /// Same as /transformincremental but returns Base64NDArrayBody Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// Same as /transformincremental but returns Base64NDArrayBody. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayCsvAsync (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayAsync (string deploymentName, string versionName, string transformName,  singleRecord = null)
         {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalarrayCsvAsyncWithHttpInfo(deploymentName, versionName, transformName, singleCSVRecord);
+             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalarrayAsyncWithHttpInfo(deploymentName, versionName, transformName, singleRecord);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Same as /transformincremental but returns Base64NDArrayBody Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+        /// Same as /transformincremental but returns Base64NDArrayBody. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="singleCSVRecord">The input record array (optional)</param>
+        /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayCsvAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  singleRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Transformincrementalarray");
             // verify the required parameter 'versionName' is set
             if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformincrementalarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->Transformincrementalarray");
             // verify the required parameter 'transformName' is set
             if (transformName == null)
-                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->TransformincrementalarrayCsv");
+                throw new ApiException(400, "Missing required parameter 'transformName' when calling DefaultApi->Transformincrementalarray");
 
             var localVarPath = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray";
             var localVarPathParams = new Dictionary<String, String>();
@@ -18598,13 +17827,13 @@ namespace Skymind.SKIL.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
-            if (singleCSVRecord != null && singleCSVRecord.GetType() != typeof(byte[]))
+            if (singleRecord != null && singleRecord.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(singleCSVRecord); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(singleRecord); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = singleCSVRecord; // byte array
+                localVarPostBody = singleRecord; // byte array
             }
 
             // authentication (api_key) required
@@ -18622,202 +17851,7 @@ namespace Skymind.SKIL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("TransformincrementalarrayCsv", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
-        }
-
-        /// <summary>
-        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="singleImageRecord">The input record array</param>
-        /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord)
-        {
-             ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalarrayImageWithHttpInfo(deploymentName, versionName, imageTransformName, singleImageRecord);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="singleImageRecord">The input record array</param>
-        /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayImageWithHttpInfo (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayImage");
-            // verify the required parameter 'versionName' is set
-            if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformincrementalarrayImage");
-            // verify the required parameter 'imageTransformName' is set
-            if (imageTransformName == null)
-                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformincrementalarrayImage");
-            // verify the required parameter 'singleImageRecord' is set
-            if (singleImageRecord == null)
-                throw new ApiException(400, "Missing required parameter 'singleImageRecord' when calling DefaultApi->TransformincrementalarrayImage");
-
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (singleImageRecord != null && singleImageRecord.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(singleImageRecord); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = singleImageRecord; // byte array
-            }
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("TransformincrementalarrayImage", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Base64NDArrayBody>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Base64NDArrayBody) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Base64NDArrayBody)));
-        }
-
-        /// <summary>
-        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="singleImageRecord">The input record array</param>
-        /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayImageAsync (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord)
-        {
-             ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalarrayImageAsyncWithHttpInfo(deploymentName, versionName, imageTransformName, singleImageRecord);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Takes SingleImageRecord to transform and returns Base64NDArrayBody Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-        /// </summary>
-        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="deploymentName">Name of the deployment group</param>
-        /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
-        /// <param name="imageTransformName">ID or name of the deployed image transform</param>
-        /// <param name="singleImageRecord">The input record array</param>
-        /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayImageAsyncWithHttpInfo (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord)
-        {
-            // verify the required parameter 'deploymentName' is set
-            if (deploymentName == null)
-                throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformincrementalarrayImage");
-            // verify the required parameter 'versionName' is set
-            if (versionName == null)
-                throw new ApiException(400, "Missing required parameter 'versionName' when calling DefaultApi->TransformincrementalarrayImage");
-            // verify the required parameter 'imageTransformName' is set
-            if (imageTransformName == null)
-                throw new ApiException(400, "Missing required parameter 'imageTransformName' when calling DefaultApi->TransformincrementalarrayImage");
-            // verify the required parameter 'singleImageRecord' is set
-            if (singleImageRecord == null)
-                throw new ApiException(400, "Missing required parameter 'singleImageRecord' when calling DefaultApi->TransformincrementalarrayImage");
-
-            var localVarPath = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
-            if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
-            if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (singleImageRecord != null && singleImageRecord.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(singleImageRecord); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = singleImageRecord; // byte array
-            }
-
-            // authentication (api_key) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
-            {
-                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("TransformincrementalarrayImage", localVarResponse);
+                Exception exception = ExceptionFactory("Transformincrementalarray", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -19008,28 +18042,27 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
-        /// Gets the JSON string of the deployed transform process Retrieves the JSON string of the deployed transform process 
+        /// Gets the JSON string of the deployed transform process (CSV or Image) 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>TransformProcess</returns>
-        public TransformProcess TransformprocessGet (string deploymentName, string versionName, string transformName)
+        /// <returns></returns>
+        public void TransformprocessGet (string deploymentName, string versionName, string transformName)
         {
-             ApiResponse<TransformProcess> localVarResponse = TransformprocessGetWithHttpInfo(deploymentName, versionName, transformName);
-             return localVarResponse.Data;
+             TransformprocessGetWithHttpInfo(deploymentName, versionName, transformName);
         }
 
         /// <summary>
-        /// Gets the JSON string of the deployed transform process Retrieves the JSON string of the deployed transform process 
+        /// Gets the JSON string of the deployed transform process (CSV or Image) 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>ApiResponse of TransformProcess</returns>
-        public ApiResponse< TransformProcess > TransformprocessGetWithHttpInfo (string deploymentName, string versionName, string transformName)
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> TransformprocessGetWithHttpInfo (string deploymentName, string versionName, string transformName)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -19085,35 +18118,34 @@ namespace Skymind.SKIL.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TransformProcess>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (TransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransformProcess)));
+                null);
         }
 
         /// <summary>
-        /// Gets the JSON string of the deployed transform process Retrieves the JSON string of the deployed transform process 
+        /// Gets the JSON string of the deployed transform process (CSV or Image) 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>Task of TransformProcess</returns>
-        public async System.Threading.Tasks.Task<TransformProcess> TransformprocessGetAsync (string deploymentName, string versionName, string transformName)
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task TransformprocessGetAsync (string deploymentName, string versionName, string transformName)
         {
-             ApiResponse<TransformProcess> localVarResponse = await TransformprocessGetAsyncWithHttpInfo(deploymentName, versionName, transformName);
-             return localVarResponse.Data;
+             await TransformprocessGetAsyncWithHttpInfo(deploymentName, versionName, transformName);
 
         }
 
         /// <summary>
-        /// Gets the JSON string of the deployed transform process Retrieves the JSON string of the deployed transform process 
+        /// Gets the JSON string of the deployed transform process (CSV or Image) 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>Task of ApiResponse (TransformProcess)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TransformProcess>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string transformName)
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string transformName)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -19169,13 +18201,13 @@ namespace Skymind.SKIL.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TransformProcess>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (TransformProcess) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransformProcess)));
+                null);
         }
 
         /// <summary>
-        /// Sets the deployed transform process through the provided JSON string Sets the transform process with the provided JSON string
+        /// Sets the deployed (CSV or Image) transform process through the provided JSON string 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
@@ -19183,13 +18215,13 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns></returns>
-        public void TransformprocessPost (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null)
+        public void TransformprocessPost (string deploymentName, string versionName, string transformName,  transformProcess = null)
         {
              TransformprocessPostWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
         }
 
         /// <summary>
-        /// Sets the deployed transform process through the provided JSON string Sets the transform process with the provided JSON string
+        /// Sets the deployed (CSV or Image) transform process through the provided JSON string 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
@@ -19197,7 +18229,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null)
+        public ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName,  transformProcess = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -19268,7 +18300,7 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
-        /// Sets the deployed transform process through the provided JSON string Sets the transform process with the provided JSON string
+        /// Sets the deployed (CSV or Image) transform process through the provided JSON string 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
@@ -19276,14 +18308,14 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null)
+        public async System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string versionName, string transformName,  transformProcess = null)
         {
              await TransformprocessPostAsyncWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
 
         }
 
         /// <summary>
-        /// Sets the deployed transform process through the provided JSON string Sets the transform process with the provided JSON string
+        /// Sets the deployed (CSV or Image) transform process through the provided JSON string 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deploymentName">Name of the deployment group</param>
@@ -19291,7 +18323,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  transformProcess = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)

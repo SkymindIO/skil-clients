@@ -56,8 +56,7 @@ paths:
             $ref: "#/definitions/FileUploadList"
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess:
     get:
-      summary: "Gets the JSON string of the deployed transform process"
-      description: "Retrieves the JSON string of the deployed transform process\n"
+      summary: "Gets the JSON string of the deployed transform process (CSV or Image)"
       operationId: "transformprocess_get"
       produces:
       - "application/json"
@@ -84,15 +83,14 @@ paths:
       responses:
         200:
           description: "the deployed transform process"
-          schema:
-            $ref: "#/definitions/TransformProcess"
+          schema: {}
         400:
           description: "the transform process is probably null"
         500:
           description: "internal server error"
     post:
-      summary: "Sets the deployed transform process through the provided JSON string"
-      description: "Sets the transform process with the provided JSON string"
+      summary: "Sets the deployed (CSV or Image) transform process through the provided\
+        \ JSON string"
       operationId: "transformprocess_post"
       consumes:
       - "application/json"
@@ -122,12 +120,12 @@ paths:
         name: "TransformProcess"
         description: "The transform process to set"
         required: false
-        schema:
-          $ref: "#/definitions/TransformProcess"
+        schema: {}
         x-exportParamName: "TransformProcess"
       responses:
         200:
           description: "transform process set successfully"
+          schema: {}
         500:
           description: "internal server error"
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental:
@@ -221,10 +219,8 @@ paths:
           description: "internal server error during transforming the array"
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray:
     post:
-      summary: "Same as /transformincremental but returns Base64NDArrayBody"
-      description: "Takes a SingleCSVRecord object and transforms it into the desired\
-        \ format and returns it in the form of Base64NDArrayBody"
-      operationId: "transformincrementalarray_csv"
+      summary: "Same as /transformincremental but returns Base64NDArrayBody."
+      operationId: "transformincrementalarray"
       consumes:
       - "application/json"
       produces:
@@ -250,12 +246,11 @@ paths:
         type: "string"
         x-exportParamName: "TransformName"
       - in: "body"
-        name: "SingleCSVRecord"
+        name: "SingleRecord"
         description: "The input record array"
         required: false
-        schema:
-          $ref: "#/definitions/SingleCSVRecord"
-        x-exportParamName: "SingleCSVRecord"
+        schema: {}
+        x-exportParamName: "SingleRecord"
       responses:
         200:
           description: "array transformed and returned successfully"
@@ -266,9 +261,7 @@ paths:
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray:
     post:
       summary: "Takes a batch input arrays and transforms it"
-      description: "Takes a batch of SingleCSVRecord object and transforms it into\
-        \ the desired format and returns it in the form of Base64NDArrayBody"
-      operationId: "transformarray_csv"
+      operationId: "transformarray"
       consumes:
       - "application/json"
       produces:
@@ -294,128 +287,11 @@ paths:
         type: "string"
         x-exportParamName: "TransformName"
       - in: "body"
-        name: "BatchCSVRecord"
+        name: "BatchRecord"
         description: "The input batch of record arrays"
         required: false
-        schema:
-          $ref: "#/definitions/BatchCSVRecord"
-        x-exportParamName: "BatchCSVRecord"
-      responses:
-        200:
-          description: "array transformed and returned successfully"
-          schema:
-            $ref: "#/definitions/Base64NDArrayBody"
-        500:
-          description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess:
-    get:
-      summary: "Retrieves the image transform process JSON string"
-      operationId: "imagetransformprocess_get"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "deploymentName"
-        in: "path"
-        description: "Name of the deployment group"
-        required: true
-        type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "versionName"
-        in: "path"
-        description: "Version name of the endpoint. The default value is \"default\""
-        required: false
-        type: "string"
-        default: "default"
-        x-exportParamName: "VersionName"
-      - name: "imageTransformName"
-        in: "path"
-        description: "ID or name of the deployed image transform"
-        required: true
-        type: "string"
-        x-exportParamName: "ImageTransformName"
-      responses:
-        200:
-          description: "Image transform process JSON successfully retrieved"
-          schema:
-            $ref: "#/definitions/ImageTransformProcess"
-    post:
-      summary: "Sets the image transform process through the provided JSON string"
-      operationId: "imagetransformprocess_post"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "deploymentName"
-        in: "path"
-        description: "Name of the deployment group"
-        required: true
-        type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "versionName"
-        in: "path"
-        description: "Version name of the endpoint. The default value is \"default\""
-        required: false
-        type: "string"
-        default: "default"
-        x-exportParamName: "VersionName"
-      - name: "imageTransformName"
-        in: "path"
-        description: "ID or name of the deployed image transform"
-        required: true
-        type: "string"
-        x-exportParamName: "ImageTransformName"
-      - in: "body"
-        name: "body"
-        description: "The image transform process JSON"
-        required: true
-        schema:
-          $ref: "#/definitions/ImageTransformProcess"
-        x-exportParamName: "Body"
-      responses:
-        200:
-          description: "Image transform process JSON successfully set"
-          schema:
-            $ref: "#/definitions/ImageTransformProcess"
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray:
-    post:
-      summary: "Takes SingleImageRecord to transform and returns Base64NDArrayBody"
-      description: "Takes a SingleImageRecord object and transforms it into the desired\
-        \ format and returns it in the form of Base64NDArrayBody"
-      operationId: "transformincrementalarray_image"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "deploymentName"
-        in: "path"
-        description: "Name of the deployment group"
-        required: true
-        type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "versionName"
-        in: "path"
-        description: "Version name of the endpoint. The default value is \"default\""
-        required: false
-        type: "string"
-        default: "default"
-        x-exportParamName: "VersionName"
-      - name: "imageTransformName"
-        in: "path"
-        description: "ID or name of the deployed image transform"
-        required: true
-        type: "string"
-        x-exportParamName: "ImageTransformName"
-      - in: "body"
-        name: "SingleImageRecord"
-        description: "The input record array"
-        required: true
-        schema:
-          $ref: "#/definitions/SingleImageRecord"
-        x-exportParamName: "SingleImageRecord"
+        schema: {}
+        x-exportParamName: "BatchRecord"
       responses:
         200:
           description: "array transformed and returned successfully"
@@ -466,50 +342,6 @@ paths:
             $ref: "#/definitions/Base64NDArrayBody"
         400:
           description: "No uploaded file found or the file couldn't be loaded"
-        500:
-          description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray:
-    post:
-      summary: "Takes a batch of images uri and transforms it and returns Base64NDArrayBody"
-      description: "Takes a batch of SingleImageRecord object and transforms it into\
-        \ the desired format and returns it in the form of Base64NDArrayBody"
-      operationId: "transformarray_image"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "deploymentName"
-        in: "path"
-        description: "Name of the deployment group"
-        required: true
-        type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "versionName"
-        in: "path"
-        description: "Version name of the endpoint. The default value is \"default\""
-        required: false
-        type: "string"
-        default: "default"
-        x-exportParamName: "VersionName"
-      - name: "imageTransformName"
-        in: "path"
-        description: "ID or name of the deployed image transform"
-        required: true
-        type: "string"
-        x-exportParamName: "ImageTransformName"
-      - in: "body"
-        name: "BatchImageRecord"
-        description: "The input batch of record arrays"
-        required: true
-        schema:
-          $ref: "#/definitions/BatchImageRecord"
-        x-exportParamName: "BatchImageRecord"
-      responses:
-        200:
-          description: "array transformed and returned successfully"
-          schema:
-            $ref: "#/definitions/Base64NDArrayBody"
         500:
           description: "internal server error during transforming the array"
   /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage:
@@ -2468,7 +2300,7 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/Resource"
-  /resources/resources/type/{resourceSubType}:
+  /resources/resources/subtype/{resourceSubType}:
     get:
       summary: "Get all the resources with the specified resource subtype"
       operationId: "getResourceBySubType"
@@ -2734,42 +2566,25 @@ paths:
           description: "The created credentials object"
           schema:
             $ref: "#/definitions/ResourceCredentials"
-  /jobs/{jobId}:
+  /jobs/{jobIdOrType}:
     get:
       summary: "Get a job by its ID"
       operationId: "getJobById"
       produces:
       - "application/json"
       parameters:
-      - name: "jobId"
+      - name: "jobIdOrType"
         in: "path"
         description: "Job ID"
         required: true
         type: "integer"
         format: "int64"
-        x-exportParamName: "JobId"
+        x-exportParamName: "JobIdOrType"
       responses:
         200:
           description: "Job entity Object"
           schema:
             $ref: "#/definitions/JobEntity"
-    delete:
-      summary: "Deletes a job given its ID"
-      operationId: "deleteJobById"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "jobId"
-        in: "path"
-        description: "Job ID"
-        required: true
-        type: "integer"
-        format: "int64"
-        x-exportParamName: "JobId"
-      responses:
-        200:
-          description: "Successfully deleted a job"
-  /jobs/{jobtype}:
     post:
       summary: "Create a job"
       operationId: "createJob"
@@ -2778,7 +2593,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "jobtype"
+      - name: "jobIdOrType"
         in: "path"
         description: "Job Type"
         required: true
@@ -2786,7 +2601,7 @@ paths:
         enum:
         - "TRAINING"
         - "INFERENCE"
-        x-exportParamName: "Jobtype"
+        x-exportParamName: "JobIdOrType"
       - in: "body"
         name: "CreateJobRequest"
         description: "Create job request object"
@@ -2799,6 +2614,22 @@ paths:
           description: "The created job entity object"
           schema:
             $ref: "#/definitions/JobEntity"
+    delete:
+      summary: "Deletes a job given its ID"
+      operationId: "deleteJobById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobIdOrType"
+        in: "path"
+        description: "Job ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "JobIdOrType"
+      responses:
+        200:
+          description: "Successfully deleted a job"
   /jobs:
     get:
       summary: "Get a list of all available jobs"
@@ -2930,8 +2761,6 @@ definitions:
       uri:
         type: "string"
         example: "file:/E:/Image/image.jpg"
-    example:
-      uri: "file:/E:/Image/image.jpg"
   BatchImageRecord:
     required:
     - "records"
@@ -2940,10 +2769,6 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/SingleImageRecord"
-    example:
-      records:
-      - uri: "file:/E:/Image/image.jpg"
-      - uri: "file:/E:/Image/image.jpg"
   Base64NDArrayBody:
     required:
     - "ndarray"
@@ -3940,6 +3765,7 @@ definitions:
       evalVersion: 0
       miniBatchId: "miniBatchId"
   ExampleEntity:
+    type: "object"
     properties:
       exampleId:
         type: "string"

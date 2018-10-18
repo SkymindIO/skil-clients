@@ -590,26 +590,6 @@
         done();
       });
     });
-    describe('imagetransformprocessGet', function() {
-      it('should call imagetransformprocessGet successfully', function(done) {
-        //uncomment below and update the code to test imagetransformprocessGet
-        //instance.imagetransformprocessGet(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('imagetransformprocessPost', function() {
-      it('should call imagetransformprocessPost successfully', function(done) {
-        //uncomment below and update the code to test imagetransformprocessPost
-        //instance.imagetransformprocessPost(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('jsonarray', function() {
       it('should call jsonarray successfully', function(done) {
         //uncomment below and update the code to test jsonarray
@@ -850,20 +830,10 @@
         done();
       });
     });
-    describe('transformarrayCsv', function() {
-      it('should call transformarrayCsv successfully', function(done) {
-        //uncomment below and update the code to test transformarrayCsv
-        //instance.transformarrayCsv(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('transformarrayImage', function() {
-      it('should call transformarrayImage successfully', function(done) {
-        //uncomment below and update the code to test transformarrayImage
-        //instance.transformarrayImage(function(error) {
+    describe('transformarray', function() {
+      it('should call transformarray successfully', function(done) {
+        //uncomment below and update the code to test transformarray
+        //instance.transformarray(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -890,20 +860,10 @@
         done();
       });
     });
-    describe('transformincrementalarrayCsv', function() {
-      it('should call transformincrementalarrayCsv successfully', function(done) {
-        //uncomment below and update the code to test transformincrementalarrayCsv
-        //instance.transformincrementalarrayCsv(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('transformincrementalarrayImage', function() {
-      it('should call transformincrementalarrayImage successfully', function(done) {
-        //uncomment below and update the code to test transformincrementalarrayImage
-        //instance.transformincrementalarrayImage(function(error) {
+    describe('transformincrementalarray', function() {
+      it('should call transformincrementalarray successfully', function(done) {
+        //uncomment below and update the code to test transformincrementalarray
+        //instance.transformincrementalarray(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

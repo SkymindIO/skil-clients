@@ -282,9 +282,9 @@ namespace Skymind.SKIL.Test
         public void CreateJobTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string jobtype = null;
+            //string jobIdOrType = null;
             //CreateJobRequest createJobRequest = null;
-            //var response = instance.CreateJob(jobtype, createJobRequest);
+            //var response = instance.CreateJob(jobIdOrType, createJobRequest);
             //Assert.IsInstanceOf<JobEntity> (response, "response is JobEntity");
         }
         
@@ -333,8 +333,8 @@ namespace Skymind.SKIL.Test
         public void DeleteJobByIdTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //long? jobId = null;
-            //instance.DeleteJobById(jobId);
+            //long? jobIdOrType = null;
+            //instance.DeleteJobById(jobIdOrType);
             
         }
         
@@ -600,8 +600,8 @@ namespace Skymind.SKIL.Test
         public void GetJobByIdTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //long? jobId = null;
-            //var response = instance.GetJobById(jobId);
+            //long? jobIdOrType = null;
+            //var response = instance.GetJobById(jobIdOrType);
             //Assert.IsInstanceOf<JobEntity> (response, "response is JobEntity");
         }
         
@@ -749,35 +749,6 @@ namespace Skymind.SKIL.Test
             //long? resourceGroupId = null;
             //var response = instance.GetResourcesFromGroup(resourceGroupId);
             //Assert.IsInstanceOf<List<Resource>> (response, "response is List<Resource>");
-        }
-        
-        /// <summary>
-        /// Test ImagetransformprocessGet
-        /// </summary>
-        [Test]
-        public void ImagetransformprocessGetTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string deploymentName = null;
-            //string versionName = null;
-            //string imageTransformName = null;
-            //var response = instance.ImagetransformprocessGet(deploymentName, versionName, imageTransformName);
-            //Assert.IsInstanceOf<ImageTransformProcess> (response, "response is ImageTransformProcess");
-        }
-        
-        /// <summary>
-        /// Test ImagetransformprocessPost
-        /// </summary>
-        [Test]
-        public void ImagetransformprocessPostTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string deploymentName = null;
-            //string versionName = null;
-            //string imageTransformName = null;
-            //ImageTransformProcess body = null;
-            //var response = instance.ImagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
-            //Assert.IsInstanceOf<ImageTransformProcess> (response, "response is ImageTransformProcess");
         }
         
         /// <summary>
@@ -1123,32 +1094,17 @@ namespace Skymind.SKIL.Test
         }
         
         /// <summary>
-        /// Test TransformarrayCsv
+        /// Test Transformarray
         /// </summary>
         [Test]
-        public void TransformarrayCsvTest()
+        public void TransformarrayTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
             //string versionName = null;
             //string transformName = null;
-            //BatchCSVRecord batchCSVRecord = null;
-            //var response = instance.TransformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
-            //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
-        }
-        
-        /// <summary>
-        /// Test TransformarrayImage
-        /// </summary>
-        [Test]
-        public void TransformarrayImageTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string deploymentName = null;
-            //string versionName = null;
-            //string imageTransformName = null;
-            //BatchImageRecord batchImageRecord = null;
-            //var response = instance.TransformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
+            // batchRecord = null;
+            //var response = instance.Transformarray(deploymentName, versionName, transformName, batchRecord);
             //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
         }
         
@@ -1183,32 +1139,17 @@ namespace Skymind.SKIL.Test
         }
         
         /// <summary>
-        /// Test TransformincrementalarrayCsv
+        /// Test Transformincrementalarray
         /// </summary>
         [Test]
-        public void TransformincrementalarrayCsvTest()
+        public void TransformincrementalarrayTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string deploymentName = null;
             //string versionName = null;
             //string transformName = null;
-            //SingleCSVRecord singleCSVRecord = null;
-            //var response = instance.TransformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
-            //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
-        }
-        
-        /// <summary>
-        /// Test TransformincrementalarrayImage
-        /// </summary>
-        [Test]
-        public void TransformincrementalarrayImageTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string deploymentName = null;
-            //string versionName = null;
-            //string imageTransformName = null;
-            //SingleImageRecord singleImageRecord = null;
-            //var response = instance.TransformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
+            // singleRecord = null;
+            //var response = instance.Transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
             //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
         }
         
@@ -1237,8 +1178,8 @@ namespace Skymind.SKIL.Test
             //string deploymentName = null;
             //string versionName = null;
             //string transformName = null;
-            //var response = instance.TransformprocessGet(deploymentName, versionName, transformName);
-            //Assert.IsInstanceOf<TransformProcess> (response, "response is TransformProcess");
+            //instance.TransformprocessGet(deploymentName, versionName, transformName);
+            
         }
         
         /// <summary>
@@ -1251,7 +1192,7 @@ namespace Skymind.SKIL.Test
             //string deploymentName = null;
             //string versionName = null;
             //string transformName = null;
-            //TransformProcess transformProcess = null;
+            // transformProcess = null;
             //instance.TransformprocessPost(deploymentName, versionName, transformName, transformProcess);
             
         }

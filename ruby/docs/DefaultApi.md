@@ -20,11 +20,11 @@ Method | HTTP request | Description
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-[**create_job**](DefaultApi.md#create_job) | **POST** /jobs/{jobtype} | Create a job
+[**create_job**](DefaultApi.md#create_job) | **POST** /jobs/{jobIdOrType} | Create a job
 [**create_model_history**](DefaultApi.md#create_model_history) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 [**delete_credentials_by_id**](DefaultApi.md#delete_credentials_by_id) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
 [**delete_experiment**](DefaultApi.md#delete_experiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
-[**delete_job_by_id**](DefaultApi.md#delete_job_by_id) | **DELETE** /jobs/{jobId} | Deletes a job given its ID
+[**delete_job_by_id**](DefaultApi.md#delete_job_by_id) | **DELETE** /jobs/{jobIdOrType} | Deletes a job given its ID
 [**delete_model**](DefaultApi.md#delete_model) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 [**delete_model_history**](DefaultApi.md#delete_model_history) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 [**delete_model_instance**](DefaultApi.md#delete_model_instance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
@@ -45,21 +45,19 @@ Method | HTTP request | Description
 [**get_examples_for_minibatch**](DefaultApi.md#get_examples_for_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**get_experiment**](DefaultApi.md#get_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**get_experiments_for_model_history**](DefaultApi.md#get_experiments_for_model_history) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-[**get_job_by_id**](DefaultApi.md#get_job_by_id) | **GET** /jobs/{jobId} | Get a job by its ID
+[**get_job_by_id**](DefaultApi.md#get_job_by_id) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**get_minibatch**](DefaultApi.md#get_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**get_model_history**](DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**get_model_instance**](DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
 [**get_resource_by_id**](DefaultApi.md#get_resource_by_id) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
-[**get_resource_by_sub_type**](DefaultApi.md#get_resource_by_sub_type) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**get_resource_by_sub_type**](DefaultApi.md#get_resource_by_sub_type) | **GET** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
 [**get_resource_by_type**](DefaultApi.md#get_resource_by_type) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
 [**get_resource_details_by_id**](DefaultApi.md#get_resource_details_by_id) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
 [**get_resource_group_by_id**](DefaultApi.md#get_resource_group_by_id) | **GET** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
 [**get_resource_groups**](DefaultApi.md#get_resource_groups) | **GET** /resources/groups | Get a list of all the resource groups
 [**get_resources**](DefaultApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**get_resources_from_group**](DefaultApi.md#get_resources_from_group) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
-[**imagetransformprocess_get**](DefaultApi.md#imagetransformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-[**imagetransformprocess_post**](DefaultApi.md#imagetransformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -84,15 +82,13 @@ Method | HTTP request | Description
 [**reimport_model**](DefaultApi.md#reimport_model) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
 [**run_a_job**](DefaultApi.md#run_a_job) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transform_csv**](DefaultApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**transformarray_csv**](DefaultApi.md#transformarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-[**transformarray_image**](DefaultApi.md#transformarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 [**transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 [**transformincremental_csv**](DefaultApi.md#transformincremental_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**transformincrementalarray_csv**](DefaultApi.md#transformincrementalarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**transformincrementalarray_image**](DefaultApi.md#transformincrementalarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**transformincrementalarray**](DefaultApi.md#transformincrementalarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 [**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**transformprocess_get**](DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-[**transformprocess_post**](DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**transformprocess_get**](DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+[**transformprocess_post**](DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 [**update_best_model_for_experiment**](DefaultApi.md#update_best_model_for_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**update_experiment**](DefaultApi.md#update_experiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**update_model_history**](DefaultApi.md#update_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
@@ -989,7 +985,7 @@ Name | Type | Description  | Notes
 
 
 # **create_job**
-> JobEntity create_job(jobtype, create_job_request)
+> JobEntity create_job(job_id_or_type, create_job_request)
 
 Create a job
 
@@ -1007,14 +1003,14 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-jobtype = 'jobtype_example' # String | Job Type
+job_id_or_type = 'job_id_or_type_example' # String | Job Type
 
 create_job_request = SkilCient::CreateJobRequest.new # CreateJobRequest | Create job request object
 
 
 begin
   #Create a job
-  result = api_instance.create_job(jobtype, create_job_request)
+  result = api_instance.create_job(job_id_or_type, create_job_request)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->create_job: #{e}"
@@ -1025,7 +1021,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobtype** | **String**| Job Type | 
+ **job_id_or_type** | **String**| Job Type | 
  **create_job_request** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object | 
 
 ### Return type
@@ -1205,7 +1201,7 @@ Name | Type | Description  | Notes
 
 
 # **delete_job_by_id**
-> delete_job_by_id(job_id)
+> delete_job_by_id(job_id_or_type)
 
 Deletes a job given its ID
 
@@ -1223,12 +1219,12 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-job_id = 789 # Integer | Job ID
+job_id_or_type = 789 # Integer | Job ID
 
 
 begin
   #Deletes a job given its ID
-  api_instance.delete_job_by_id(job_id)
+  api_instance.delete_job_by_id(job_id_or_type)
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->delete_job_by_id: #{e}"
 end
@@ -1238,7 +1234,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **Integer**| Job ID | 
+ **job_id_or_type** | **Integer**| Job ID | 
 
 ### Return type
 
@@ -2332,7 +2328,7 @@ Name | Type | Description  | Notes
 
 
 # **get_job_by_id**
-> JobEntity get_job_by_id(job_id)
+> JobEntity get_job_by_id(job_id_or_type)
 
 Get a job by its ID
 
@@ -2350,12 +2346,12 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-job_id = 789 # Integer | Job ID
+job_id_or_type = 789 # Integer | Job ID
 
 
 begin
   #Get a job by its ID
-  result = api_instance.get_job_by_id(job_id)
+  result = api_instance.get_job_by_id(job_id_or_type)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->get_job_by_id: #{e}"
@@ -2366,7 +2362,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **Integer**| Job ID | 
+ **job_id_or_type** | **Integer**| Job ID | 
 
 ### Return type
 
@@ -3004,125 +3000,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-# **imagetransformprocess_get**
-> ImageTransformProcess imagetransformprocess_get(deployment_name, version_name, image_transform_name)
-
-Retrieves the image transform process JSON string
-
-### Example
-```ruby
-# load the gem
-require 'skil_client'
-# setup authorization
-SkilCient.configure do |config|
-  # Configure API key authorization: api_key
-  config.api_key['authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['authorization'] = 'Bearer'
-end
-
-api_instance = SkilCient::DefaultApi.new
-
-deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
-image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
-
-
-begin
-  #Retrieves the image transform process JSON string
-  result = api_instance.imagetransformprocess_get(deployment_name, version_name, image_transform_name)
-  p result
-rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->imagetransformprocess_get: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **String**| ID or name of the deployed image transform | 
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **imagetransformprocess_post**
-> ImageTransformProcess imagetransformprocess_post(deployment_name, version_name, image_transform_name, body)
-
-Sets the image transform process through the provided JSON string
-
-### Example
-```ruby
-# load the gem
-require 'skil_client'
-# setup authorization
-SkilCient.configure do |config|
-  # Configure API key authorization: api_key
-  config.api_key['authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['authorization'] = 'Bearer'
-end
-
-api_instance = SkilCient::DefaultApi.new
-
-deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
-image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
-
-body = SkilCient::ImageTransformProcess.new # ImageTransformProcess | The image transform process JSON
-
-
-begin
-  #Sets the image transform process through the provided JSON string
-  result = api_instance.imagetransformprocess_post(deployment_name, version_name, image_transform_name, body)
-  p result
-rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->imagetransformprocess_post: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **String**| ID or name of the deployed image transform | 
- **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4539,12 +4416,10 @@ Name | Type | Description  | Notes
 
 
 
-# **transformarray_csv**
-> Base64NDArrayBody transformarray_csv(deployment_name, version_name, transform_name, opts)
+# **transformarray**
+> Base64NDArrayBody transformarray(deployment_name, version_name, transform_name, opts)
 
 Takes a batch input arrays and transforms it
-
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
 ```ruby
@@ -4567,15 +4442,15 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  batch_csv_record: SkilCient::BatchCSVRecord.new # BatchCSVRecord | The input batch of record arrays
+  batch_record: SkilCient::null.new #  | The input batch of record arrays
 }
 
 begin
   #Takes a batch input arrays and transforms it
-  result = api_instance.transformarray_csv(deployment_name, version_name, transform_name, opts)
+  result = api_instance.transformarray(deployment_name, version_name, transform_name, opts)
   p result
 rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->transformarray_csv: #{e}"
+  puts "Exception when calling DefaultApi->transformarray: #{e}"
 end
 ```
 
@@ -4586,70 +4461,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **batch_csv_record** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **transformarray_image**
-> Base64NDArrayBody transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record)
-
-Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```ruby
-# load the gem
-require 'skil_client'
-# setup authorization
-SkilCient.configure do |config|
-  # Configure API key authorization: api_key
-  config.api_key['authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['authorization'] = 'Bearer'
-end
-
-api_instance = SkilCient::DefaultApi.new
-
-deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
-image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
-
-batch_image_record = SkilCient::BatchImageRecord.new # BatchImageRecord | The input batch of record arrays
-
-
-begin
-  #Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-  result = api_instance.transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record)
-  p result
-rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->transformarray_image: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **String**| ID or name of the deployed image transform | 
- **batch_image_record** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
+ **batch_record** | [****](.md)| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -4793,12 +4605,10 @@ Name | Type | Description  | Notes
 
 
 
-# **transformincrementalarray_csv**
-> Base64NDArrayBody transformincrementalarray_csv(deployment_name, version_name, transform_name, opts)
+# **transformincrementalarray**
+> Base64NDArrayBody transformincrementalarray(deployment_name, version_name, transform_name, opts)
 
-Same as /transformincremental but returns Base64NDArrayBody
-
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
 ```ruby
@@ -4821,15 +4631,15 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  single_csv_record: SkilCient::SingleCSVRecord.new # SingleCSVRecord | The input record array
+  single_record: SkilCient::null.new #  | The input record array
 }
 
 begin
-  #Same as /transformincremental but returns Base64NDArrayBody
-  result = api_instance.transformincrementalarray_csv(deployment_name, version_name, transform_name, opts)
+  #Same as /transformincremental but returns Base64NDArrayBody.
+  result = api_instance.transformincrementalarray(deployment_name, version_name, transform_name, opts)
   p result
 rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->transformincrementalarray_csv: #{e}"
+  puts "Exception when calling DefaultApi->transformincrementalarray: #{e}"
 end
 ```
 
@@ -4840,70 +4650,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **single_csv_record** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **transformincrementalarray_image**
-> Base64NDArrayBody transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record)
-
-Takes SingleImageRecord to transform and returns Base64NDArrayBody
-
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```ruby
-# load the gem
-require 'skil_client'
-# setup authorization
-SkilCient.configure do |config|
-  # Configure API key authorization: api_key
-  config.api_key['authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['authorization'] = 'Bearer'
-end
-
-api_instance = SkilCient::DefaultApi.new
-
-deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
-image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
-
-single_image_record = SkilCient::SingleImageRecord.new # SingleImageRecord | The input record array
-
-
-begin
-  #Takes SingleImageRecord to transform and returns Base64NDArrayBody
-  result = api_instance.transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record)
-  p result
-rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->transformincrementalarray_image: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **String**| ID or name of the deployed image transform | 
- **single_image_record** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
+ **single_record** | [****](.md)| The input record array | [optional] 
 
 ### Return type
 
@@ -4984,11 +4731,9 @@ Name | Type | Description  | Notes
 
 
 # **transformprocess_get**
-> TransformProcess transformprocess_get(deployment_name, version_name, transform_name)
+> transformprocess_get(deployment_name, version_name, transform_name)
 
-Gets the JSON string of the deployed transform process
-
-Retrieves the JSON string of the deployed transform process 
+Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
 ```ruby
@@ -5012,9 +4757,8 @@ transform_name = 'transform_name_example' # String | ID or name of the deployed 
 
 
 begin
-  #Gets the JSON string of the deployed transform process
-  result = api_instance.transformprocess_get(deployment_name, version_name, transform_name)
-  p result
+  #Gets the JSON string of the deployed transform process (CSV or Image)
+  api_instance.transformprocess_get(deployment_name, version_name, transform_name)
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->transformprocess_get: #{e}"
 end
@@ -5030,7 +4774,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransformProcess**](TransformProcess.md)
+nil (empty response body)
 
 ### Authorization
 
@@ -5046,9 +4790,7 @@ Name | Type | Description  | Notes
 # **transformprocess_post**
 > transformprocess_post(deployment_name, version_name, transform_name, opts)
 
-Sets the deployed transform process through the provided JSON string
-
-Sets the transform process with the provided JSON string
+Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
 ```ruby
@@ -5071,11 +4813,11 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  transform_process: SkilCient::TransformProcess.new # TransformProcess | The transform process to set
+  transform_process: SkilCient::null.new #  | The transform process to set
 }
 
 begin
-  #Sets the deployed transform process through the provided JSON string
+  #Sets the deployed (CSV or Image) transform process through the provided JSON string
   api_instance.transformprocess_post(deployment_name, version_name, transform_name, opts)
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->transformprocess_post: #{e}"
@@ -5089,7 +4831,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **transform_process** | [**TransformProcess**](TransformProcess.md)| The transform process to set | [optional] 
+ **transform_process** | [****](.md)| The transform process to set | [optional] 
 
 ### Return type
 

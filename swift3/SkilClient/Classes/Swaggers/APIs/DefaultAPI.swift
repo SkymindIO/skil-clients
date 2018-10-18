@@ -766,21 +766,21 @@ open class DefaultAPI: APIBase {
     }
 
     /**
-     * enum for parameter jobtype
+     * enum for parameter jobIdOrType
      */
-    public enum Jobtype_createJob: String { 
+    public enum JobIdOrType_createJob: String { 
         case training = "TRAINING"
         case inference = "INFERENCE"
     }
 
     /**
      Create a job
-     - parameter jobtype: (path) Job Type 
+     - parameter jobIdOrType: (path) Job Type 
      - parameter createJobRequest: (body) Create job request object 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func createJob(jobtype: Jobtype_createJob, createJobRequest: CreateJobRequest, completion: @escaping ((_ data: JobEntity?, _ error: ErrorResponse?) -> Void)) {
-        createJobWithRequestBuilder(jobtype: jobtype, createJobRequest: createJobRequest).execute { (response, error) -> Void in
+    open class func createJob(jobIdOrType: JobIdOrType_createJob, createJobRequest: CreateJobRequest, completion: @escaping ((_ data: JobEntity?, _ error: ErrorResponse?) -> Void)) {
+        createJobWithRequestBuilder(jobIdOrType: jobIdOrType, createJobRequest: createJobRequest).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -788,7 +788,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Create a job
-     - POST /jobs/{jobtype}
+     - POST /jobs/{jobIdOrType}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -802,15 +802,15 @@ open class DefaultAPI: APIBase {
   "computeResourceId" : 6,
   "status" : "PENDING"
 }}]
-     - parameter jobtype: (path) Job Type 
+     - parameter jobIdOrType: (path) Job Type 
      - parameter createJobRequest: (body) Create job request object 
      - returns: RequestBuilder<JobEntity> 
      */
-    open class func createJobWithRequestBuilder(jobtype: Jobtype_createJob, createJobRequest: CreateJobRequest) -> RequestBuilder<JobEntity> {
-        var path = "/jobs/{jobtype}"
-        let jobtypePreEscape = "\(jobtype.rawValue)"
-        let jobtypePostEscape = jobtypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{jobtype}", with: jobtypePostEscape, options: .literal, range: nil)
+    open class func createJobWithRequestBuilder(jobIdOrType: JobIdOrType_createJob, createJobRequest: CreateJobRequest) -> RequestBuilder<JobEntity> {
+        var path = "/jobs/{jobIdOrType}"
+        let jobIdOrTypePreEscape = "\(jobIdOrType.rawValue)"
+        let jobIdOrTypePostEscape = jobIdOrTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{jobIdOrType}", with: jobIdOrTypePostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters = createJobRequest.encodeToJSON()
 
@@ -947,11 +947,11 @@ open class DefaultAPI: APIBase {
 
     /**
      Deletes a job given its ID
-     - parameter jobId: (path) Job ID 
+     - parameter jobIdOrType: (path) Job ID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deleteJobById(jobId: Int64, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
-        deleteJobByIdWithRequestBuilder(jobId: jobId).execute { (response, error) -> Void in
+    open class func deleteJobById(jobIdOrType: Int64, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        deleteJobByIdWithRequestBuilder(jobIdOrType: jobIdOrType).execute { (response, error) -> Void in
             completion(error)
         }
     }
@@ -959,18 +959,18 @@ open class DefaultAPI: APIBase {
 
     /**
      Deletes a job given its ID
-     - DELETE /jobs/{jobId}
+     - DELETE /jobs/{jobIdOrType}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
-     - parameter jobId: (path) Job ID 
+     - parameter jobIdOrType: (path) Job ID 
      - returns: RequestBuilder<Void> 
      */
-    open class func deleteJobByIdWithRequestBuilder(jobId: Int64) -> RequestBuilder<Void> {
-        var path = "/jobs/{jobId}"
-        let jobIdPreEscape = "\(jobId)"
-        let jobIdPostEscape = jobIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{jobId}", with: jobIdPostEscape, options: .literal, range: nil)
+    open class func deleteJobByIdWithRequestBuilder(jobIdOrType: Int64) -> RequestBuilder<Void> {
+        var path = "/jobs/{jobIdOrType}"
+        let jobIdOrTypePreEscape = "\(jobIdOrType)"
+        let jobIdOrTypePostEscape = jobIdOrTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{jobIdOrType}", with: jobIdOrTypePostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -2121,11 +2121,11 @@ open class DefaultAPI: APIBase {
 
     /**
      Get a job by its ID
-     - parameter jobId: (path) Job ID 
+     - parameter jobIdOrType: (path) Job ID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getJobById(jobId: Int64, completion: @escaping ((_ data: JobEntity?, _ error: ErrorResponse?) -> Void)) {
-        getJobByIdWithRequestBuilder(jobId: jobId).execute { (response, error) -> Void in
+    open class func getJobById(jobIdOrType: Int64, completion: @escaping ((_ data: JobEntity?, _ error: ErrorResponse?) -> Void)) {
+        getJobByIdWithRequestBuilder(jobIdOrType: jobIdOrType).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2133,7 +2133,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Get a job by its ID
-     - GET /jobs/{jobId}
+     - GET /jobs/{jobIdOrType}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -2147,14 +2147,14 @@ open class DefaultAPI: APIBase {
   "computeResourceId" : 6,
   "status" : "PENDING"
 }}]
-     - parameter jobId: (path) Job ID 
+     - parameter jobIdOrType: (path) Job ID 
      - returns: RequestBuilder<JobEntity> 
      */
-    open class func getJobByIdWithRequestBuilder(jobId: Int64) -> RequestBuilder<JobEntity> {
-        var path = "/jobs/{jobId}"
-        let jobIdPreEscape = "\(jobId)"
-        let jobIdPostEscape = jobIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{jobId}", with: jobIdPostEscape, options: .literal, range: nil)
+    open class func getJobByIdWithRequestBuilder(jobIdOrType: Int64) -> RequestBuilder<JobEntity> {
+        var path = "/jobs/{jobIdOrType}"
+        let jobIdOrTypePreEscape = "\(jobIdOrType)"
+        let jobIdOrTypePostEscape = jobIdOrTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{jobIdOrType}", with: jobIdOrTypePostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -2453,7 +2453,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Get all the resources with the specified resource subtype
-     - GET /resources/resources/type/{resourceSubType}
+     - GET /resources/resources/subtype/{resourceSubType}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -2474,7 +2474,7 @@ open class DefaultAPI: APIBase {
      - returns: RequestBuilder<[Resource]> 
      */
     open class func getResourceBySubTypeWithRequestBuilder(resourceSubType: ResourceSubType_getResourceBySubType) -> RequestBuilder<[Resource]> {
-        var path = "/resources/resources/type/{resourceSubType}"
+        var path = "/resources/resources/subtype/{resourceSubType}"
         let resourceSubTypePreEscape = "\(resourceSubType.rawValue)"
         let resourceSubTypePostEscape = resourceSubTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{resourceSubType}", with: resourceSubTypePostEscape, options: .literal, range: nil)
@@ -2758,102 +2758,6 @@ open class DefaultAPI: APIBase {
         let requestBuilder: RequestBuilder<[Resource]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
-    /**
-     Retrieves the image transform process JSON string
-     - parameter deploymentName: (path) Name of the deployment group 
-     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
-     - parameter imageTransformName: (path) ID or name of the deployed image transform 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func imagetransformprocessGet(deploymentName: String, versionName: String, imageTransformName: String, completion: @escaping ((_ data: ImageTransformProcess?, _ error: ErrorResponse?) -> Void)) {
-        imagetransformprocessGetWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, imageTransformName: imageTransformName).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Retrieves the image transform process JSON string
-     - GET /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess
-     - API Key:
-       - type: apiKey authorization 
-       - name: api_key
-     - examples: [{contentType=application/json, example={ }}]
-     - parameter deploymentName: (path) Name of the deployment group 
-     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
-     - parameter imageTransformName: (path) ID or name of the deployed image transform 
-     - returns: RequestBuilder<ImageTransformProcess> 
-     */
-    open class func imagetransformprocessGetWithRequestBuilder(deploymentName: String, versionName: String, imageTransformName: String) -> RequestBuilder<ImageTransformProcess> {
-        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess"
-        let deploymentNamePreEscape = "\(deploymentName)"
-        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
-        let versionNamePreEscape = "\(versionName)"
-        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
-        let imageTransformNamePreEscape = "\(imageTransformName)"
-        let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
-        let URLString = SkilClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<ImageTransformProcess>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
-    /**
-     Sets the image transform process through the provided JSON string
-     - parameter deploymentName: (path) Name of the deployment group 
-     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
-     - parameter imageTransformName: (path) ID or name of the deployed image transform 
-     - parameter body: (body) The image transform process JSON 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func imagetransformprocessPost(deploymentName: String, versionName: String, imageTransformName: String, body: ImageTransformProcess, completion: @escaping ((_ data: ImageTransformProcess?, _ error: ErrorResponse?) -> Void)) {
-        imagetransformprocessPostWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, imageTransformName: imageTransformName, body: body).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Sets the image transform process through the provided JSON string
-     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess
-     - API Key:
-       - type: apiKey authorization 
-       - name: api_key
-     - examples: [{contentType=application/json, example={ }}]
-     - parameter deploymentName: (path) Name of the deployment group 
-     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
-     - parameter imageTransformName: (path) ID or name of the deployed image transform 
-     - parameter body: (body) The image transform process JSON 
-     - returns: RequestBuilder<ImageTransformProcess> 
-     */
-    open class func imagetransformprocessPostWithRequestBuilder(deploymentName: String, versionName: String, imageTransformName: String, body: ImageTransformProcess) -> RequestBuilder<ImageTransformProcess> {
-        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess"
-        let deploymentNamePreEscape = "\(deploymentName)"
-        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
-        let versionNamePreEscape = "\(versionName)"
-        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
-        let imageTransformNamePreEscape = "\(imageTransformName)"
-        let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
-        let URLString = SkilClientAPI.basePath + path
-        let parameters = body.encodeToJSON()
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<ImageTransformProcess>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
     /**
@@ -4185,11 +4089,11 @@ open class DefaultAPI: APIBase {
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
-     - parameter batchCSVRecord: (body) The input batch of record arrays (optional)
+     - parameter batchRecord: (body) The input batch of record arrays (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformarrayCsv(deploymentName: String, versionName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        transformarrayCsvWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, batchCSVRecord: batchCSVRecord).execute { (response, error) -> Void in
+    open class func transformarray(deploymentName: String, versionName: String, transformName: String, batchRecord: ERRORUNKNOWN? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformarrayWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, batchRecord: batchRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -4198,7 +4102,6 @@ open class DefaultAPI: APIBase {
     /**
      Takes a batch input arrays and transforms it
      - POST /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray
-     - Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -4208,10 +4111,10 @@ open class DefaultAPI: APIBase {
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
-     - parameter batchCSVRecord: (body) The input batch of record arrays (optional)
+     - parameter batchRecord: (body) The input batch of record arrays (optional)
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformarrayCsvWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, batchCSVRecord: BatchCSVRecord? = nil) -> RequestBuilder<Base64NDArrayBody> {
+    open class func transformarrayWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, batchRecord: ERRORUNKNOWN? = nil) -> RequestBuilder<Base64NDArrayBody> {
         var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -4223,59 +4126,7 @@ open class DefaultAPI: APIBase {
         let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
-        let parameters = batchCSVRecord?.encodeToJSON()
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-
-    /**
-     Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-     - parameter deploymentName: (path) Name of the deployment group 
-     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
-     - parameter imageTransformName: (path) ID or name of the deployed image transform 
-     - parameter batchImageRecord: (body) The input batch of record arrays 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func transformarrayImage(deploymentName: String, versionName: String, imageTransformName: String, batchImageRecord: BatchImageRecord, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        transformarrayImageWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, imageTransformName: imageTransformName, batchImageRecord: batchImageRecord).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray
-     - Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-     - API Key:
-       - type: apiKey authorization 
-       - name: api_key
-     - examples: [{contentType=application/json, example={
-  "ndarray" : "ndarray"
-}}]
-     - parameter deploymentName: (path) Name of the deployment group 
-     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
-     - parameter imageTransformName: (path) ID or name of the deployed image transform 
-     - parameter batchImageRecord: (body) The input batch of record arrays 
-     - returns: RequestBuilder<Base64NDArrayBody> 
-     */
-    open class func transformarrayImageWithRequestBuilder(deploymentName: String, versionName: String, imageTransformName: String, batchImageRecord: BatchImageRecord) -> RequestBuilder<Base64NDArrayBody> {
-        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray"
-        let deploymentNamePreEscape = "\(deploymentName)"
-        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
-        let versionNamePreEscape = "\(versionName)"
-        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
-        let imageTransformNamePreEscape = "\(imageTransformName)"
-        let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
-        let URLString = SkilClientAPI.basePath + path
-        let parameters = batchImageRecord.encodeToJSON()
+        let parameters = batchRecord?.encodeToJSON()
 
         let url = URLComponents(string: URLString)
 
@@ -4394,24 +4245,23 @@ open class DefaultAPI: APIBase {
     }
 
     /**
-     Same as /transformincremental but returns Base64NDArrayBody
+     Same as /transformincremental but returns Base64NDArrayBody.
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
-     - parameter singleCSVRecord: (body) The input record array (optional)
+     - parameter singleRecord: (body) The input record array (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformincrementalarrayCsv(deploymentName: String, versionName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        transformincrementalarrayCsvWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, singleCSVRecord: singleCSVRecord).execute { (response, error) -> Void in
+    open class func transformincrementalarray(deploymentName: String, versionName: String, transformName: String, singleRecord: ERRORUNKNOWN? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+        transformincrementalarrayWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, singleRecord: singleRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Same as /transformincremental but returns Base64NDArrayBody
+     Same as /transformincremental but returns Base64NDArrayBody.
      - POST /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray
-     - Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      - API Key:
        - type: apiKey authorization 
        - name: api_key
@@ -4421,10 +4271,10 @@ open class DefaultAPI: APIBase {
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
-     - parameter singleCSVRecord: (body) The input record array (optional)
+     - parameter singleRecord: (body) The input record array (optional)
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformincrementalarrayCsvWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, singleCSVRecord: SingleCSVRecord? = nil) -> RequestBuilder<Base64NDArrayBody> {
+    open class func transformincrementalarrayWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, singleRecord: ERRORUNKNOWN? = nil) -> RequestBuilder<Base64NDArrayBody> {
         var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -4436,59 +4286,7 @@ open class DefaultAPI: APIBase {
         let transformNamePostEscape = transformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{transformName}", with: transformNamePostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
-        let parameters = singleCSVRecord?.encodeToJSON()
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<Base64NDArrayBody>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-
-    /**
-     Takes SingleImageRecord to transform and returns Base64NDArrayBody
-     - parameter deploymentName: (path) Name of the deployment group 
-     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
-     - parameter imageTransformName: (path) ID or name of the deployed image transform 
-     - parameter singleImageRecord: (body) The input record array 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func transformincrementalarrayImage(deploymentName: String, versionName: String, imageTransformName: String, singleImageRecord: SingleImageRecord, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
-        transformincrementalarrayImageWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, imageTransformName: imageTransformName, singleImageRecord: singleImageRecord).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Takes SingleImageRecord to transform and returns Base64NDArrayBody
-     - POST /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray
-     - Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-     - API Key:
-       - type: apiKey authorization 
-       - name: api_key
-     - examples: [{contentType=application/json, example={
-  "ndarray" : "ndarray"
-}}]
-     - parameter deploymentName: (path) Name of the deployment group 
-     - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
-     - parameter imageTransformName: (path) ID or name of the deployed image transform 
-     - parameter singleImageRecord: (body) The input record array 
-     - returns: RequestBuilder<Base64NDArrayBody> 
-     */
-    open class func transformincrementalarrayImageWithRequestBuilder(deploymentName: String, versionName: String, imageTransformName: String, singleImageRecord: SingleImageRecord) -> RequestBuilder<Base64NDArrayBody> {
-        var path = "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray"
-        let deploymentNamePreEscape = "\(deploymentName)"
-        let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{deploymentName}", with: deploymentNamePostEscape, options: .literal, range: nil)
-        let versionNamePreEscape = "\(versionName)"
-        let versionNamePostEscape = versionNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{versionName}", with: versionNamePostEscape, options: .literal, range: nil)
-        let imageTransformNamePreEscape = "\(imageTransformName)"
-        let imageTransformNamePostEscape = imageTransformNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{imageTransformName}", with: imageTransformNamePostEscape, options: .literal, range: nil)
-        let URLString = SkilClientAPI.basePath + path
-        let parameters = singleImageRecord.encodeToJSON()
+        let parameters = singleRecord?.encodeToJSON()
 
         let url = URLComponents(string: URLString)
 
@@ -4555,13 +4353,13 @@ open class DefaultAPI: APIBase {
     }
 
     /**
-     Gets the JSON string of the deployed transform process
+     Gets the JSON string of the deployed transform process (CSV or Image)
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformprocessGet(deploymentName: String, versionName: String, transformName: String, completion: @escaping ((_ data: TransformProcess?, _ error: ErrorResponse?) -> Void)) {
+    open class func transformprocessGet(deploymentName: String, versionName: String, transformName: String, completion: @escaping ((_ data: ERRORUNKNOWN?, _ error: ErrorResponse?) -> Void)) {
         transformprocessGetWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -4569,19 +4367,18 @@ open class DefaultAPI: APIBase {
 
 
     /**
-     Gets the JSON string of the deployed transform process
+     Gets the JSON string of the deployed transform process (CSV or Image)
      - GET /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess
-     - Retrieves the JSON string of the deployed transform process 
      - API Key:
        - type: apiKey authorization 
        - name: api_key
-     - examples: [{contentType=application/json, example={ }}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
-     - returns: RequestBuilder<TransformProcess> 
+     - returns: RequestBuilder<ERRORUNKNOWN> 
      */
-    open class func transformprocessGetWithRequestBuilder(deploymentName: String, versionName: String, transformName: String) -> RequestBuilder<TransformProcess> {
+    open class func transformprocessGetWithRequestBuilder(deploymentName: String, versionName: String, transformName: String) -> RequestBuilder<ERRORUNKNOWN> {
         var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -4597,40 +4394,40 @@ open class DefaultAPI: APIBase {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<TransformProcess>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<ERRORUNKNOWN>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
 
     /**
-     Sets the deployed transform process through the provided JSON string
+     Sets the deployed (CSV or Image) transform process through the provided JSON string
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter transformProcess: (body) The transform process to set (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformprocessPost(deploymentName: String, versionName: String, transformName: String, transformProcess: TransformProcess? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func transformprocessPost(deploymentName: String, versionName: String, transformName: String, transformProcess: ERRORUNKNOWN? = nil, completion: @escaping ((_ data: ERRORUNKNOWN?, _ error: ErrorResponse?) -> Void)) {
         transformprocessPostWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, transformProcess: transformProcess).execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
 
     /**
-     Sets the deployed transform process through the provided JSON string
+     Sets the deployed (CSV or Image) transform process through the provided JSON string
      - POST /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess
-     - Sets the transform process with the provided JSON string
      - API Key:
        - type: apiKey authorization 
        - name: api_key
+     - examples: [{contentType=application/json, example=""}]
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter transformProcess: (body) The transform process to set (optional)
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<ERRORUNKNOWN> 
      */
-    open class func transformprocessPostWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, transformProcess: TransformProcess? = nil) -> RequestBuilder<Void> {
+    open class func transformprocessPostWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, transformProcess: ERRORUNKNOWN? = nil) -> RequestBuilder<ERRORUNKNOWN> {
         var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -4646,7 +4443,7 @@ open class DefaultAPI: APIBase {
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<ERRORUNKNOWN>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }

@@ -51,11 +51,11 @@ pub trait DefaultApi {
     fn classify(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>>;
     fn classifyarray(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
     fn classifyimage(&self, deployment_name: &str, version_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>>;
-    fn create_job(&self, jobtype: &str, create_job_request: ::models::CreateJobRequest) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
+    fn create_job(&self, job_id_or_type: &str, create_job_request: ::models::CreateJobRequest) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
     fn create_model_history(&self, model_history_server_id: &str, model_history_entity: ::models::ModelHistoryEntity) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
     fn delete_credentials_by_id(&self, credential_id: i64) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn delete_experiment(&self, model_history_server_id: &str, experiment_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
-    fn delete_job_by_id(&self, job_id: i64) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn delete_job_by_id(&self, job_id_or_type: i64) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn delete_model(&self, deployment_id: &str, model_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
     fn delete_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
     fn delete_model_instance(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
@@ -76,7 +76,7 @@ pub trait DefaultApi {
     fn get_examples_for_minibatch(&self, model_history_server_id: &str, minibatch_id: &str) -> Box<Future<Item = Vec<::models::ExampleEntity>, Error = Error<serde_json::Value>>>;
     fn get_experiment(&self, model_history_server_id: &str, experiment_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
     fn get_experiments_for_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
-    fn get_job_by_id(&self, job_id: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
+    fn get_job_by_id(&self, job_id_or_type: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
     fn get_minibatch(&self, model_history_server_id: &str, minibatch_id: &str) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>>;
     fn get_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
     fn get_model_instance(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>>;
@@ -89,8 +89,6 @@ pub trait DefaultApi {
     fn get_resource_groups(&self, ) -> Box<Future<Item = Vec<::models::ResourceGroup>, Error = Error<serde_json::Value>>>;
     fn get_resources(&self, ) -> Box<Future<Item = Vec<::models::Resource>, Error = Error<serde_json::Value>>>;
     fn get_resources_from_group(&self, resource_group_id: i64) -> Box<Future<Item = Vec<::models::Resource>, Error = Error<serde_json::Value>>>;
-    fn imagetransformprocess_get(&self, deployment_name: &str, version_name: &str, image_transform_name: &str) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>>;
-    fn imagetransformprocess_post(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, body: ::models::ImageTransformProcess) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>>;
     fn jsonarray(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>>;
     fn knn(&self, deployment_name: &str, version_name: &str, knn_name: &str, body: ::models::NearestNeighborRequest) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>>;
     fn knnnew(&self, deployment_name: &str, version_name: &str, knn_name: &str, body: ::models::Base64NdArrayBodyKnn) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>>;
@@ -115,15 +113,13 @@ pub trait DefaultApi {
     fn reimport_model(&self, deployment_id: &str, model_id: &str, body: ::models::ImportModelRequest) -> Box<Future<Item = ::models::ModelEntity, Error = Error<serde_json::Value>>>;
     fn run_a_job(&self, job_id: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
     fn transform_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::BatchCsvRecord, Error = Error<serde_json::Value>>>;
-    fn transformarray_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
-    fn transformarray_image(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, batch_image_record: ::models::BatchImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
+    fn transformarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_record: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
     fn transformimage(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, files: Vec<Vec<u8>>) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
     fn transformincremental_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::SingleCsvRecord, Error = Error<serde_json::Value>>>;
-    fn transformincrementalarray_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
-    fn transformincrementalarray_image(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, single_image_record: ::models::SingleImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
+    fn transformincrementalarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_record: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
     fn transformincrementalimage(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, file: ::models::File) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
-    fn transformprocess_get(&self, deployment_name: &str, version_name: &str, transform_name: &str) -> Box<Future<Item = ::models::TransformProcess, Error = Error<serde_json::Value>>>;
-    fn transformprocess_post(&self, deployment_name: &str, version_name: &str, transform_name: &str, transform_process: ::models::TransformProcess) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn transformprocess_get(&self, deployment_name: &str, version_name: &str, transform_name: &str) -> Box<Future<Item = ::models::ErrorUnknown, Error = Error<serde_json::Value>>>;
+    fn transformprocess_post(&self, deployment_name: &str, version_name: &str, transform_name: &str, transform_process: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::ErrorUnknown, Error = Error<serde_json::Value>>>;
     fn update_best_model_for_experiment(&self, model_history_server_id: &str, update_best_model: ::models::UpdateBestModel) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
     fn update_experiment(&self, model_history_server_id: &str, experiment_id: &str, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
     fn update_model_history(&self, model_history_server_id: &str, model_history_id: &str, update_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
@@ -1241,7 +1237,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn create_job(&self, jobtype: &str, create_job_request: ::models::CreateJobRequest) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>> {
+    fn create_job(&self, job_id_or_type: &str, create_job_request: ::models::CreateJobRequest) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1263,7 +1259,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/jobs/{jobtype}?{}", configuration.base_path, query_string, jobtype=jobtype);
+        let uri_str = format!("{}/jobs/{jobIdOrType}?{}", configuration.base_path, query_string, jobIdOrType=job_id_or_type);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -1510,7 +1506,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn delete_job_by_id(&self, job_id: i64) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn delete_job_by_id(&self, job_id_or_type: i64) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1532,7 +1528,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/jobs/{jobId}?{}", configuration.base_path, query_string, jobId=job_id);
+        let uri_str = format!("{}/jobs/{jobIdOrType}?{}", configuration.base_path, query_string, jobIdOrType=job_id_or_type);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -2900,7 +2896,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_job_by_id(&self, job_id: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>> {
+    fn get_job_by_id(&self, job_id_or_type: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2922,7 +2918,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/jobs/{jobId}?{}", configuration.base_path, query_string, jobId=job_id);
+        let uri_str = format!("{}/jobs/{jobIdOrType}?{}", configuration.base_path, query_string, jobIdOrType=job_id_or_type);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3318,7 +3314,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/resources/resources/type/{resourceSubType}?{}", configuration.base_path, query_string, resourceSubType=resource_sub_type);
+        let uri_str = format!("{}/resources/resources/subtype/{resourceSubType}?{}", configuration.base_path, query_string, resourceSubType=resource_sub_type);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -3753,142 +3749,6 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             })
             .and_then(|body| {
                 let parsed: Result<Vec<::models::Resource>, _> = serde_json::from_slice(&body);
-                parsed.map_err(|e| Error::from(e))
-            })
-        )
-    }
-
-    fn imagetransformprocess_get(&self, deployment_name: &str, version_name: &str, image_transform_name: &str) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>> {
-        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
-
-        let mut auth_headers = HashMap::<String, String>::new();
-        let mut auth_query = HashMap::<String, String>::new();
-        if let Some(ref apikey) = configuration.api_key {
-            let key = apikey.key.clone();
-            let val = match apikey.prefix {
-                Some(ref prefix) => format!("{} {}", prefix, key),
-                None => key,
-            };
-            auth_headers.insert("authorization".to_owned(), val);
-        };
-        let method = hyper::Method::Get;
-
-        let query_string = {
-            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
-            for (key, val) in &auth_query {
-                query.append_pair(key, val);
-            }
-            query.finish()
-        };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, imageTransformName=image_transform_name);
-
-        // TODO(farcaller): handle error
-        // if let Err(e) = uri {
-        //     return Box::new(futures::future::err(e));
-        // }
-        let mut uri: hyper::Uri = uri_str.parse().unwrap();
-
-        let mut req = hyper::Request::new(method, uri);
-
-        if let Some(ref user_agent) = configuration.user_agent {
-            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
-        }
-
-
-        for (key, val) in auth_headers {
-            req.headers_mut().set_raw(key, val);
-        }
-
-
-        // send request
-        Box::new(
-        configuration.client.request(req)
-            .map_err(|e| Error::from(e))
-            .and_then(|resp| {
-                let status = resp.status();
-                resp.body().concat2()
-                    .and_then(move |body| Ok((status, body)))
-                    .map_err(|e| Error::from(e))
-            })
-            .and_then(|(status, body)| {
-                if status.is_success() {
-                    Ok(body)
-                } else {
-                    Err(Error::from((status, &*body)))
-                }
-            })
-            .and_then(|body| {
-                let parsed: Result<::models::ImageTransformProcess, _> = serde_json::from_slice(&body);
-                parsed.map_err(|e| Error::from(e))
-            })
-        )
-    }
-
-    fn imagetransformprocess_post(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, body: ::models::ImageTransformProcess) -> Box<Future<Item = ::models::ImageTransformProcess, Error = Error<serde_json::Value>>> {
-        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
-
-        let mut auth_headers = HashMap::<String, String>::new();
-        let mut auth_query = HashMap::<String, String>::new();
-        if let Some(ref apikey) = configuration.api_key {
-            let key = apikey.key.clone();
-            let val = match apikey.prefix {
-                Some(ref prefix) => format!("{} {}", prefix, key),
-                None => key,
-            };
-            auth_headers.insert("authorization".to_owned(), val);
-        };
-        let method = hyper::Method::Post;
-
-        let query_string = {
-            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
-            for (key, val) in &auth_query {
-                query.append_pair(key, val);
-            }
-            query.finish()
-        };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, imageTransformName=image_transform_name);
-
-        // TODO(farcaller): handle error
-        // if let Err(e) = uri {
-        //     return Box::new(futures::future::err(e));
-        // }
-        let mut uri: hyper::Uri = uri_str.parse().unwrap();
-
-        let mut req = hyper::Request::new(method, uri);
-
-        if let Some(ref user_agent) = configuration.user_agent {
-            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
-        }
-
-
-        for (key, val) in auth_headers {
-            req.headers_mut().set_raw(key, val);
-        }
-
-        let serialized = serde_json::to_string(&body).unwrap();
-        req.headers_mut().set(hyper::header::ContentType::json());
-        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
-        req.set_body(serialized);
-
-        // send request
-        Box::new(
-        configuration.client.request(req)
-            .map_err(|e| Error::from(e))
-            .and_then(|resp| {
-                let status = resp.status();
-                resp.body().concat2()
-                    .and_then(move |body| Ok((status, body)))
-                    .map_err(|e| Error::from(e))
-            })
-            .and_then(|(status, body)| {
-                if status.is_success() {
-                    Ok(body)
-                } else {
-                    Err(Error::from((status, &*body)))
-                }
-            })
-            .and_then(|body| {
-                let parsed: Result<::models::ImageTransformProcess, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
@@ -5518,7 +5378,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformarray_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
+    fn transformarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_record: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -5559,77 +5419,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             req.headers_mut().set_raw(key, val);
         }
 
-        let serialized = serde_json::to_string(&batch_csv_record).unwrap();
-        req.headers_mut().set(hyper::header::ContentType::json());
-        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
-        req.set_body(serialized);
-
-        // send request
-        Box::new(
-        configuration.client.request(req)
-            .map_err(|e| Error::from(e))
-            .and_then(|resp| {
-                let status = resp.status();
-                resp.body().concat2()
-                    .and_then(move |body| Ok((status, body)))
-                    .map_err(|e| Error::from(e))
-            })
-            .and_then(|(status, body)| {
-                if status.is_success() {
-                    Ok(body)
-                } else {
-                    Err(Error::from((status, &*body)))
-                }
-            })
-            .and_then(|body| {
-                let parsed: Result<::models::Base64NdArrayBody, _> = serde_json::from_slice(&body);
-                parsed.map_err(|e| Error::from(e))
-            })
-        )
-    }
-
-    fn transformarray_image(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, batch_image_record: ::models::BatchImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
-        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
-
-        let mut auth_headers = HashMap::<String, String>::new();
-        let mut auth_query = HashMap::<String, String>::new();
-        if let Some(ref apikey) = configuration.api_key {
-            let key = apikey.key.clone();
-            let val = match apikey.prefix {
-                Some(ref prefix) => format!("{} {}", prefix, key),
-                None => key,
-            };
-            auth_headers.insert("authorization".to_owned(), val);
-        };
-        let method = hyper::Method::Post;
-
-        let query_string = {
-            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
-            for (key, val) in &auth_query {
-                query.append_pair(key, val);
-            }
-            query.finish()
-        };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, imageTransformName=image_transform_name);
-
-        // TODO(farcaller): handle error
-        // if let Err(e) = uri {
-        //     return Box::new(futures::future::err(e));
-        // }
-        let mut uri: hyper::Uri = uri_str.parse().unwrap();
-
-        let mut req = hyper::Request::new(method, uri);
-
-        if let Some(ref user_agent) = configuration.user_agent {
-            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
-        }
-
-
-        for (key, val) in auth_headers {
-            req.headers_mut().set_raw(key, val);
-        }
-
-        let serialized = serde_json::to_string(&batch_image_record).unwrap();
+        let serialized = serde_json::to_string(&batch_record).unwrap();
         req.headers_mut().set(hyper::header::ContentType::json());
         req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
         req.set_body(serialized);
@@ -5794,7 +5584,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformincrementalarray_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
+    fn transformincrementalarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_record: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -5835,77 +5625,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             req.headers_mut().set_raw(key, val);
         }
 
-        let serialized = serde_json::to_string(&single_csv_record).unwrap();
-        req.headers_mut().set(hyper::header::ContentType::json());
-        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
-        req.set_body(serialized);
-
-        // send request
-        Box::new(
-        configuration.client.request(req)
-            .map_err(|e| Error::from(e))
-            .and_then(|resp| {
-                let status = resp.status();
-                resp.body().concat2()
-                    .and_then(move |body| Ok((status, body)))
-                    .map_err(|e| Error::from(e))
-            })
-            .and_then(|(status, body)| {
-                if status.is_success() {
-                    Ok(body)
-                } else {
-                    Err(Error::from((status, &*body)))
-                }
-            })
-            .and_then(|body| {
-                let parsed: Result<::models::Base64NdArrayBody, _> = serde_json::from_slice(&body);
-                parsed.map_err(|e| Error::from(e))
-            })
-        )
-    }
-
-    fn transformincrementalarray_image(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, single_image_record: ::models::SingleImageRecord) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
-        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
-
-        let mut auth_headers = HashMap::<String, String>::new();
-        let mut auth_query = HashMap::<String, String>::new();
-        if let Some(ref apikey) = configuration.api_key {
-            let key = apikey.key.clone();
-            let val = match apikey.prefix {
-                Some(ref prefix) => format!("{} {}", prefix, key),
-                None => key,
-            };
-            auth_headers.insert("authorization".to_owned(), val);
-        };
-        let method = hyper::Method::Post;
-
-        let query_string = {
-            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
-            for (key, val) in &auth_query {
-                query.append_pair(key, val);
-            }
-            query.finish()
-        };
-        let uri_str = format!("{}/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray?{}", configuration.base_path, query_string, deploymentName=deployment_name, versionName=version_name, imageTransformName=image_transform_name);
-
-        // TODO(farcaller): handle error
-        // if let Err(e) = uri {
-        //     return Box::new(futures::future::err(e));
-        // }
-        let mut uri: hyper::Uri = uri_str.parse().unwrap();
-
-        let mut req = hyper::Request::new(method, uri);
-
-        if let Some(ref user_agent) = configuration.user_agent {
-            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
-        }
-
-
-        for (key, val) in auth_headers {
-            req.headers_mut().set_raw(key, val);
-        }
-
-        let serialized = serde_json::to_string(&single_image_record).unwrap();
+        let serialized = serde_json::to_string(&single_record).unwrap();
         req.headers_mut().set(hyper::header::ContentType::json());
         req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
         req.set_body(serialized);
@@ -6000,7 +5720,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformprocess_get(&self, deployment_name: &str, version_name: &str, transform_name: &str) -> Box<Future<Item = ::models::TransformProcess, Error = Error<serde_json::Value>>> {
+    fn transformprocess_get(&self, deployment_name: &str, version_name: &str, transform_name: &str) -> Box<Future<Item = ::models::ErrorUnknown, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -6060,13 +5780,13 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::TransformProcess, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::ErrorUnknown, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn transformprocess_post(&self, deployment_name: &str, version_name: &str, transform_name: &str, transform_process: ::models::TransformProcess) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn transformprocess_post(&self, deployment_name: &str, version_name: &str, transform_name: &str, transform_process: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::ErrorUnknown, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -6129,7 +5849,10 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<::models::ErrorUnknown, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 

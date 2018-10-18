@@ -1698,12 +1698,12 @@ func (a *DefaultApiService) Classifyimage(ctx context.Context, deploymentName st
 /* 
 DefaultApiService Create a job
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param jobtype Job Type
+ * @param jobIdOrType Job Type
  * @param createJobRequest Create job request object
 
 @return JobEntity
 */
-func (a *DefaultApiService) CreateJob(ctx context.Context, jobtype string, createJobRequest CreateJobRequest) (JobEntity, *http.Response, error) {
+func (a *DefaultApiService) CreateJob(ctx context.Context, jobIdOrType string, createJobRequest CreateJobRequest) (JobEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -1713,8 +1713,8 @@ func (a *DefaultApiService) CreateJob(ctx context.Context, jobtype string, creat
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/jobs/{jobtype}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobtype"+"}", fmt.Sprintf("%v", jobtype), -1)
+	localVarPath := a.client.cfg.BasePath + "/jobs/{jobIdOrType}"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobIdOrType"+"}", fmt.Sprintf("%v", jobIdOrType), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2103,11 +2103,11 @@ func (a *DefaultApiService) DeleteExperiment(ctx context.Context, modelHistorySe
 /* 
 DefaultApiService Deletes a job given its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param jobId Job ID
+ * @param jobIdOrType Job ID
 
 
 */
-func (a *DefaultApiService) DeleteJobById(ctx context.Context, jobId int64) (*http.Response, error) {
+func (a *DefaultApiService) DeleteJobById(ctx context.Context, jobIdOrType int64) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -2117,8 +2117,8 @@ func (a *DefaultApiService) DeleteJobById(ctx context.Context, jobId int64) (*ht
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/jobs/{jobId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", fmt.Sprintf("%v", jobId), -1)
+	localVarPath := a.client.cfg.BasePath + "/jobs/{jobIdOrType}"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobIdOrType"+"}", fmt.Sprintf("%v", jobIdOrType), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4202,11 +4202,11 @@ func (a *DefaultApiService) GetExperimentsForModelHistory(ctx context.Context, m
 /* 
 DefaultApiService Get a job by its ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param jobId Job ID
+ * @param jobIdOrType Job ID
 
 @return JobEntity
 */
-func (a *DefaultApiService) GetJobById(ctx context.Context, jobId int64) (JobEntity, *http.Response, error) {
+func (a *DefaultApiService) GetJobById(ctx context.Context, jobIdOrType int64) (JobEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -4216,8 +4216,8 @@ func (a *DefaultApiService) GetJobById(ctx context.Context, jobId int64) (JobEnt
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/jobs/{jobId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", fmt.Sprintf("%v", jobId), -1)
+	localVarPath := a.client.cfg.BasePath + "/jobs/{jobIdOrType}"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobIdOrType"+"}", fmt.Sprintf("%v", jobIdOrType), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4830,7 +4830,7 @@ func (a *DefaultApiService) GetResourceBySubType(ctx context.Context, resourceSu
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/resources/resources/type/{resourceSubType}"
+	localVarPath := a.client.cfg.BasePath + "/resources/resources/subtype/{resourceSubType}"
 	localVarPath = strings.Replace(localVarPath, "{"+"resourceSubType"+"}", fmt.Sprintf("%v", resourceSubType), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5502,219 +5502,6 @@ func (a *DefaultApiService) GetResourcesFromGroup(ctx context.Context, resourceG
 		
 		if localVarHttpResponse.StatusCode == 200 {
 			var v []Resource
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		
-		return localVarReturnValue, localVarHttpResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHttpResponse, nil
-}
-
-/* 
-DefaultApiService Retrieves the image transform process JSON string
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param deploymentName Name of the deployment group
- * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
- * @param imageTransformName ID or name of the deployed image transform
-
-@return ImageTransformProcess
-*/
-func (a *DefaultApiService) ImagetransformprocessGet(ctx context.Context, deploymentName string, versionName string, imageTransformName string) (ImageTransformProcess, *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-		localVarReturnValue ImageTransformProcess
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imageTransformName"+"}", fmt.Sprintf("%v", imageTransformName), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["authorization"] = key
-			
-		}
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode < 300 {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
-			return localVarReturnValue, localVarHttpResponse, err
-		}
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body: localVarBody,
-			error: localVarHttpResponse.Status,
-		}
-		
-		if localVarHttpResponse.StatusCode == 200 {
-			var v ImageTransformProcess
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		
-		return localVarReturnValue, localVarHttpResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHttpResponse, nil
-}
-
-/* 
-DefaultApiService Sets the image transform process through the provided JSON string
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param deploymentName Name of the deployment group
- * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
- * @param imageTransformName ID or name of the deployed image transform
- * @param body The image transform process JSON
-
-@return ImageTransformProcess
-*/
-func (a *DefaultApiService) ImagetransformprocessPost(ctx context.Context, deploymentName string, versionName string, imageTransformName string, body ImageTransformProcess) (ImageTransformProcess, *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-		localVarReturnValue ImageTransformProcess
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imageTransformName"+"}", fmt.Sprintf("%v", imageTransformName), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	localVarPostBody = &body
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["authorization"] = key
-			
-		}
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode < 300 {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
-			return localVarReturnValue, localVarHttpResponse, err
-		}
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body: localVarBody,
-			error: localVarHttpResponse.Status,
-		}
-		
-		if localVarHttpResponse.StatusCode == 200 {
-			var v ImageTransformProcess
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -8344,22 +8131,21 @@ func (a *DefaultApiService) TransformCsv(ctx context.Context, deploymentName str
 
 /* 
 DefaultApiService Takes a batch input arrays and transforms it
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
- * @param optional nil or *TransformarrayCsvOpts - Optional Parameters:
-     * @param "BatchCSVRecord" (optional.Interface of BatchCsvRecord) -  The input batch of record arrays
+ * @param optional nil or *TransformarrayOpts - Optional Parameters:
+     * @param "BatchRecord" (optional.Interface of ErrorUnknown) -  The input batch of record arrays
 
 @return Base64NdArrayBody
 */
 
-type TransformarrayCsvOpts struct { 
-	BatchCSVRecord optional.Interface
+type TransformarrayOpts struct { 
+	BatchRecord optional.Interface
 }
 
-func (a *DefaultApiService) TransformarrayCsv(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformarrayCsvOpts) (Base64NdArrayBody, *http.Response, error) {
+func (a *DefaultApiService) Transformarray(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformarrayOpts) (Base64NdArrayBody, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -8396,123 +8182,14 @@ func (a *DefaultApiService) TransformarrayCsv(ctx context.Context, deploymentNam
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.BatchCSVRecord.IsSet() {
+	if localVarOptionals != nil && localVarOptionals.BatchRecord.IsSet() {
 		
-		localVarOptionalBatchCSVRecord, localVarOptionalBatchCSVRecordok := localVarOptionals.BatchCSVRecord.Value().(BatchCsvRecord)
-		if !localVarOptionalBatchCSVRecordok {
-				return localVarReturnValue, nil, reportError("batchCSVRecord should be BatchCsvRecord")
+		localVarOptionalBatchRecord, localVarOptionalBatchRecordok := localVarOptionals.BatchRecord.Value().(ErrorUnknown)
+		if !localVarOptionalBatchRecordok {
+				return localVarReturnValue, nil, reportError("batchRecord should be ErrorUnknown")
 		}
-		localVarPostBody = &localVarOptionalBatchCSVRecord
+		localVarPostBody = &localVarOptionalBatchRecord
 	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["authorization"] = key
-			
-		}
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode < 300 {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
-			return localVarReturnValue, localVarHttpResponse, err
-		}
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body: localVarBody,
-			error: localVarHttpResponse.Status,
-		}
-		
-		if localVarHttpResponse.StatusCode == 200 {
-			var v Base64NdArrayBody
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		
-		return localVarReturnValue, localVarHttpResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHttpResponse, nil
-}
-
-/* 
-DefaultApiService Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param deploymentName Name of the deployment group
- * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
- * @param imageTransformName ID or name of the deployed image transform
- * @param batchImageRecord The input batch of record arrays
-
-@return Base64NdArrayBody
-*/
-func (a *DefaultApiService) TransformarrayImage(ctx context.Context, deploymentName string, versionName string, imageTransformName string, batchImageRecord BatchImageRecord) (Base64NdArrayBody, *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-		localVarReturnValue Base64NdArrayBody
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imageTransformName"+"}", fmt.Sprintf("%v", imageTransformName), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	localVarPostBody = &batchImageRecord
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -8804,23 +8481,22 @@ func (a *DefaultApiService) TransformincrementalCsv(ctx context.Context, deploym
 }
 
 /* 
-DefaultApiService Same as /transformincremental but returns Base64NDArrayBody
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+DefaultApiService Same as /transformincremental but returns Base64NDArrayBody.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
- * @param optional nil or *TransformincrementalarrayCsvOpts - Optional Parameters:
-     * @param "SingleCSVRecord" (optional.Interface of SingleCsvRecord) -  The input record array
+ * @param optional nil or *TransformincrementalarrayOpts - Optional Parameters:
+     * @param "SingleRecord" (optional.Interface of ErrorUnknown) -  The input record array
 
 @return Base64NdArrayBody
 */
 
-type TransformincrementalarrayCsvOpts struct { 
-	SingleCSVRecord optional.Interface
+type TransformincrementalarrayOpts struct { 
+	SingleRecord optional.Interface
 }
 
-func (a *DefaultApiService) TransformincrementalarrayCsv(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformincrementalarrayCsvOpts) (Base64NdArrayBody, *http.Response, error) {
+func (a *DefaultApiService) Transformincrementalarray(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformincrementalarrayOpts) (Base64NdArrayBody, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -8857,123 +8533,14 @@ func (a *DefaultApiService) TransformincrementalarrayCsv(ctx context.Context, de
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.SingleCSVRecord.IsSet() {
+	if localVarOptionals != nil && localVarOptionals.SingleRecord.IsSet() {
 		
-		localVarOptionalSingleCSVRecord, localVarOptionalSingleCSVRecordok := localVarOptionals.SingleCSVRecord.Value().(SingleCsvRecord)
-		if !localVarOptionalSingleCSVRecordok {
-				return localVarReturnValue, nil, reportError("singleCSVRecord should be SingleCsvRecord")
+		localVarOptionalSingleRecord, localVarOptionalSingleRecordok := localVarOptionals.SingleRecord.Value().(ErrorUnknown)
+		if !localVarOptionalSingleRecordok {
+				return localVarReturnValue, nil, reportError("singleRecord should be ErrorUnknown")
 		}
-		localVarPostBody = &localVarOptionalSingleCSVRecord
+		localVarPostBody = &localVarOptionalSingleRecord
 	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["authorization"] = key
-			
-		}
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode < 300 {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
-			return localVarReturnValue, localVarHttpResponse, err
-		}
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body: localVarBody,
-			error: localVarHttpResponse.Status,
-		}
-		
-		if localVarHttpResponse.StatusCode == 200 {
-			var v Base64NdArrayBody
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		
-		return localVarReturnValue, localVarHttpResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHttpResponse, nil
-}
-
-/* 
-DefaultApiService Takes SingleImageRecord to transform and returns Base64NDArrayBody
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param deploymentName Name of the deployment group
- * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
- * @param imageTransformName ID or name of the deployed image transform
- * @param singleImageRecord The input record array
-
-@return Base64NdArrayBody
-*/
-func (a *DefaultApiService) TransformincrementalarrayImage(ctx context.Context, deploymentName string, versionName string, imageTransformName string, singleImageRecord SingleImageRecord) (Base64NdArrayBody, *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-		localVarReturnValue Base64NdArrayBody
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentName"+"}", fmt.Sprintf("%v", deploymentName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"versionName"+"}", fmt.Sprintf("%v", versionName), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imageTransformName"+"}", fmt.Sprintf("%v", imageTransformName), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	localVarPostBody = &singleImageRecord
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -9148,22 +8715,21 @@ func (a *DefaultApiService) Transformincrementalimage(ctx context.Context, deplo
 }
 
 /* 
-DefaultApiService Gets the JSON string of the deployed transform process
-Retrieves the JSON string of the deployed transform process 
+DefaultApiService Gets the JSON string of the deployed transform process (CSV or Image)
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
 
-@return TransformProcess
+@return ErrorUnknown
 */
-func (a *DefaultApiService) TransformprocessGet(ctx context.Context, deploymentName string, versionName string, transformName string) (TransformProcess, *http.Response, error) {
+func (a *DefaultApiService) TransformprocessGet(ctx context.Context, deploymentName string, versionName string, transformName string) (ErrorUnknown, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue TransformProcess
+		localVarReturnValue ErrorUnknown
 	)
 
 	// create path and map variables
@@ -9237,7 +8803,7 @@ func (a *DefaultApiService) TransformprocessGet(ctx context.Context, deploymentN
 		}
 		
 		if localVarHttpResponse.StatusCode == 200 {
-			var v TransformProcess
+			var v ErrorUnknown
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -9254,29 +8820,28 @@ func (a *DefaultApiService) TransformprocessGet(ctx context.Context, deploymentN
 }
 
 /* 
-DefaultApiService Sets the deployed transform process through the provided JSON string
-Sets the transform process with the provided JSON string
+DefaultApiService Sets the deployed (CSV or Image) transform process through the provided JSON string
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param deploymentName Name of the deployment group
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformprocessPostOpts - Optional Parameters:
-     * @param "TransformProcess" (optional.Interface of TransformProcess) -  The transform process to set
+     * @param "TransformProcess" (optional.Interface of ErrorUnknown) -  The transform process to set
 
-
+@return ErrorUnknown
 */
 
 type TransformprocessPostOpts struct { 
 	TransformProcess optional.Interface
 }
 
-func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformprocessPostOpts) (*http.Response, error) {
+func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformprocessPostOpts) (ErrorUnknown, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		
+		localVarReturnValue ErrorUnknown
 	)
 
 	// create path and map variables
@@ -9309,9 +8874,9 @@ func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deployment
 	// body params
 	if localVarOptionals != nil && localVarOptionals.TransformProcess.IsSet() {
 		
-		localVarOptionalTransformProcess, localVarOptionalTransformProcessok := localVarOptionals.TransformProcess.Value().(TransformProcess)
+		localVarOptionalTransformProcess, localVarOptionalTransformProcessok := localVarOptionals.TransformProcess.Value().(ErrorUnknown)
 		if !localVarOptionalTransformProcessok {
-				return nil, reportError("transformProcess should be TransformProcess")
+				return localVarReturnValue, nil, reportError("transformProcess should be ErrorUnknown")
 		}
 		localVarPostBody = &localVarOptionalTransformProcess
 	}
@@ -9330,20 +8895,27 @@ func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deployment
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
+		return localVarReturnValue, localVarHttpResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
-		return localVarHttpResponse, err
+		return localVarReturnValue, localVarHttpResponse, err
 	}
 
+	if localVarHttpResponse.StatusCode < 300 {
+		// If we succeed, return the data, otherwise pass on to decode error.
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		if err == nil { 
+			return localVarReturnValue, localVarHttpResponse, err
+		}
+	}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
@@ -9351,10 +8923,21 @@ func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deployment
 			error: localVarHttpResponse.Status,
 		}
 		
-		return localVarHttpResponse, newErr
+		if localVarHttpResponse.StatusCode == 200 {
+			var v ErrorUnknown
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		
+		return localVarReturnValue, localVarHttpResponse, newErr
 	}
 
-	return localVarHttpResponse, nil
+	return localVarReturnValue, localVarHttpResponse, nil
 }
 
 /* 

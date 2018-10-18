@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'ai/skymind/skil/model/AddCredentialsRequest', 'ai/skymind/skil/model/AddExampleRequest', 'ai/skymind/skil/model/AddModelHistoryRequest', 'ai/skymind/skil/model/AddResourceRequest', 'ai/skymind/skil/model/AggregatePrediction', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/Base64NDArrayBodyKNN', 'ai/skymind/skil/model/BatchCSVRecord', 'ai/skymind/skil/model/BatchImageRecord', 'ai/skymind/skil/model/BestModel', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/CreateDeploymentRequest', 'ai/skymind/skil/model/CreateJobRequest', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeploymentResponse', 'ai/skymind/skil/model/DetectionResult', 'ai/skymind/skil/model/DownloadOutputFileRequest', 'ai/skymind/skil/model/ERRORUNKNOWN', 'ai/skymind/skil/model/EvaluationResultsEntity', 'ai/skymind/skil/model/ExampleEntity', 'ai/skymind/skil/model/ExperimentEntity', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/ImageTransformProcess', 'ai/skymind/skil/model/ImportModelRequest', 'ai/skymind/skil/model/InlineResponse200', 'ai/skymind/skil/model/JobEntity', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/MetaData', 'ai/skymind/skil/model/MinibatchEntity', 'ai/skymind/skil/model/ModelEntity', 'ai/skymind/skil/model/ModelFeedBackRequest', 'ai/skymind/skil/model/ModelHistoryEntity', 'ai/skymind/skil/model/ModelInstanceEntity', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/MultiPredictRequest', 'ai/skymind/skil/model/MultiPredictResponse', 'ai/skymind/skil/model/NearestNeighborRequest', 'ai/skymind/skil/model/NearestNeighborsResults', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Resource', 'ai/skymind/skil/model/ResourceCredentials', 'ai/skymind/skil/model/ResourceGroup', 'ai/skymind/skil/model/SetState', 'ai/skymind/skil/model/SingleCSVRecord', 'ai/skymind/skil/model/SingleImageRecord', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/model/TransformProcess', 'ai/skymind/skil/model/UpdateBestModel'], factory);
+    define(['ApiClient', 'ai/skymind/skil/model/AddCredentialsRequest', 'ai/skymind/skil/model/AddExampleRequest', 'ai/skymind/skil/model/AddModelHistoryRequest', 'ai/skymind/skil/model/AddResourceRequest', 'ai/skymind/skil/model/AggregatePrediction', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/Base64NDArrayBodyKNN', 'ai/skymind/skil/model/BatchCSVRecord', 'ai/skymind/skil/model/BestModel', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/CreateDeploymentRequest', 'ai/skymind/skil/model/CreateJobRequest', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeploymentResponse', 'ai/skymind/skil/model/DetectionResult', 'ai/skymind/skil/model/DownloadOutputFileRequest', 'ai/skymind/skil/model/ERRORUNKNOWN', 'ai/skymind/skil/model/EvaluationResultsEntity', 'ai/skymind/skil/model/ExampleEntity', 'ai/skymind/skil/model/ExperimentEntity', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/ImportModelRequest', 'ai/skymind/skil/model/InlineResponse200', 'ai/skymind/skil/model/JobEntity', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/MetaData', 'ai/skymind/skil/model/MinibatchEntity', 'ai/skymind/skil/model/ModelEntity', 'ai/skymind/skil/model/ModelFeedBackRequest', 'ai/skymind/skil/model/ModelHistoryEntity', 'ai/skymind/skil/model/ModelInstanceEntity', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/MultiPredictRequest', 'ai/skymind/skil/model/MultiPredictResponse', 'ai/skymind/skil/model/NearestNeighborRequest', 'ai/skymind/skil/model/NearestNeighborsResults', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Resource', 'ai/skymind/skil/model/ResourceCredentials', 'ai/skymind/skil/model/ResourceGroup', 'ai/skymind/skil/model/SetState', 'ai/skymind/skil/model/SingleCSVRecord', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/model/UpdateBestModel'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/AddCredentialsRequest'), require('../ai/skymind/skil/model/AddExampleRequest'), require('../ai/skymind/skil/model/AddModelHistoryRequest'), require('../ai/skymind/skil/model/AddResourceRequest'), require('../ai/skymind/skil/model/AggregatePrediction'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/Base64NDArrayBodyKNN'), require('../ai/skymind/skil/model/BatchCSVRecord'), require('../ai/skymind/skil/model/BatchImageRecord'), require('../ai/skymind/skil/model/BestModel'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/CreateDeploymentRequest'), require('../ai/skymind/skil/model/CreateJobRequest'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeploymentResponse'), require('../ai/skymind/skil/model/DetectionResult'), require('../ai/skymind/skil/model/DownloadOutputFileRequest'), require('../ai/skymind/skil/model/ERRORUNKNOWN'), require('../ai/skymind/skil/model/EvaluationResultsEntity'), require('../ai/skymind/skil/model/ExampleEntity'), require('../ai/skymind/skil/model/ExperimentEntity'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/ImageTransformProcess'), require('../ai/skymind/skil/model/ImportModelRequest'), require('../ai/skymind/skil/model/InlineResponse200'), require('../ai/skymind/skil/model/JobEntity'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/MetaData'), require('../ai/skymind/skil/model/MinibatchEntity'), require('../ai/skymind/skil/model/ModelEntity'), require('../ai/skymind/skil/model/ModelFeedBackRequest'), require('../ai/skymind/skil/model/ModelHistoryEntity'), require('../ai/skymind/skil/model/ModelInstanceEntity'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/MultiPredictRequest'), require('../ai/skymind/skil/model/MultiPredictResponse'), require('../ai/skymind/skil/model/NearestNeighborRequest'), require('../ai/skymind/skil/model/NearestNeighborsResults'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/Resource'), require('../ai/skymind/skil/model/ResourceCredentials'), require('../ai/skymind/skil/model/ResourceGroup'), require('../ai/skymind/skil/model/SetState'), require('../ai/skymind/skil/model/SingleCSVRecord'), require('../ai/skymind/skil/model/SingleImageRecord'), require('../ai/skymind/skil/model/Token'), require('../ai/skymind/skil/model/TransformProcess'), require('../ai/skymind/skil/model/UpdateBestModel'));
+    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/AddCredentialsRequest'), require('../ai/skymind/skil/model/AddExampleRequest'), require('../ai/skymind/skil/model/AddModelHistoryRequest'), require('../ai/skymind/skil/model/AddResourceRequest'), require('../ai/skymind/skil/model/AggregatePrediction'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/Base64NDArrayBodyKNN'), require('../ai/skymind/skil/model/BatchCSVRecord'), require('../ai/skymind/skil/model/BestModel'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/CreateDeploymentRequest'), require('../ai/skymind/skil/model/CreateJobRequest'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeploymentResponse'), require('../ai/skymind/skil/model/DetectionResult'), require('../ai/skymind/skil/model/DownloadOutputFileRequest'), require('../ai/skymind/skil/model/ERRORUNKNOWN'), require('../ai/skymind/skil/model/EvaluationResultsEntity'), require('../ai/skymind/skil/model/ExampleEntity'), require('../ai/skymind/skil/model/ExperimentEntity'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/ImportModelRequest'), require('../ai/skymind/skil/model/InlineResponse200'), require('../ai/skymind/skil/model/JobEntity'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/MetaData'), require('../ai/skymind/skil/model/MinibatchEntity'), require('../ai/skymind/skil/model/ModelEntity'), require('../ai/skymind/skil/model/ModelFeedBackRequest'), require('../ai/skymind/skil/model/ModelHistoryEntity'), require('../ai/skymind/skil/model/ModelInstanceEntity'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/MultiPredictRequest'), require('../ai/skymind/skil/model/MultiPredictResponse'), require('../ai/skymind/skil/model/NearestNeighborRequest'), require('../ai/skymind/skil/model/NearestNeighborsResults'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/Resource'), require('../ai/skymind/skil/model/ResourceCredentials'), require('../ai/skymind/skil/model/ResourceGroup'), require('../ai/skymind/skil/model/SetState'), require('../ai/skymind/skil/model/SingleCSVRecord'), require('../ai/skymind/skil/model/Token'), require('../ai/skymind/skil/model/UpdateBestModel'));
   } else {
     // Browser globals (root is window)
     if (!root.SkilClient) {
       root.SkilClient = {};
     }
-    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.AddCredentialsRequest, root.SkilClient.AddExampleRequest, root.SkilClient.AddModelHistoryRequest, root.SkilClient.AddResourceRequest, root.SkilClient.AggregatePrediction, root.SkilClient.Base64NDArrayBody, root.SkilClient.Base64NDArrayBodyKNN, root.SkilClient.BatchCSVRecord, root.SkilClient.BatchImageRecord, root.SkilClient.BestModel, root.SkilClient.ClassificationResult, root.SkilClient.CreateDeploymentRequest, root.SkilClient.CreateJobRequest, root.SkilClient.Credentials, root.SkilClient.DeploymentResponse, root.SkilClient.DetectionResult, root.SkilClient.DownloadOutputFileRequest, root.SkilClient.ERRORUNKNOWN, root.SkilClient.EvaluationResultsEntity, root.SkilClient.ExampleEntity, root.SkilClient.ExperimentEntity, root.SkilClient.FileUploadList, root.SkilClient.ImageTransformProcess, root.SkilClient.ImportModelRequest, root.SkilClient.InlineResponse200, root.SkilClient.JobEntity, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.MetaData, root.SkilClient.MinibatchEntity, root.SkilClient.ModelEntity, root.SkilClient.ModelFeedBackRequest, root.SkilClient.ModelHistoryEntity, root.SkilClient.ModelInstanceEntity, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.MultiPredictRequest, root.SkilClient.MultiPredictResponse, root.SkilClient.NearestNeighborRequest, root.SkilClient.NearestNeighborsResults, root.SkilClient.Prediction, root.SkilClient.Resource, root.SkilClient.ResourceCredentials, root.SkilClient.ResourceGroup, root.SkilClient.SetState, root.SkilClient.SingleCSVRecord, root.SkilClient.SingleImageRecord, root.SkilClient.Token, root.SkilClient.TransformProcess, root.SkilClient.UpdateBestModel);
+    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.AddCredentialsRequest, root.SkilClient.AddExampleRequest, root.SkilClient.AddModelHistoryRequest, root.SkilClient.AddResourceRequest, root.SkilClient.AggregatePrediction, root.SkilClient.Base64NDArrayBody, root.SkilClient.Base64NDArrayBodyKNN, root.SkilClient.BatchCSVRecord, root.SkilClient.BestModel, root.SkilClient.ClassificationResult, root.SkilClient.CreateDeploymentRequest, root.SkilClient.CreateJobRequest, root.SkilClient.Credentials, root.SkilClient.DeploymentResponse, root.SkilClient.DetectionResult, root.SkilClient.DownloadOutputFileRequest, root.SkilClient.ERRORUNKNOWN, root.SkilClient.EvaluationResultsEntity, root.SkilClient.ExampleEntity, root.SkilClient.ExperimentEntity, root.SkilClient.FileUploadList, root.SkilClient.ImportModelRequest, root.SkilClient.InlineResponse200, root.SkilClient.JobEntity, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.MetaData, root.SkilClient.MinibatchEntity, root.SkilClient.ModelEntity, root.SkilClient.ModelFeedBackRequest, root.SkilClient.ModelHistoryEntity, root.SkilClient.ModelInstanceEntity, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.MultiPredictRequest, root.SkilClient.MultiPredictResponse, root.SkilClient.NearestNeighborRequest, root.SkilClient.NearestNeighborsResults, root.SkilClient.Prediction, root.SkilClient.Resource, root.SkilClient.ResourceCredentials, root.SkilClient.ResourceGroup, root.SkilClient.SetState, root.SkilClient.SingleCSVRecord, root.SkilClient.Token, root.SkilClient.UpdateBestModel);
   }
-}(this, function(ApiClient, AddCredentialsRequest, AddExampleRequest, AddModelHistoryRequest, AddResourceRequest, AggregatePrediction, Base64NDArrayBody, Base64NDArrayBodyKNN, BatchCSVRecord, BatchImageRecord, BestModel, ClassificationResult, CreateDeploymentRequest, CreateJobRequest, Credentials, DeploymentResponse, DetectionResult, DownloadOutputFileRequest, ERRORUNKNOWN, EvaluationResultsEntity, ExampleEntity, ExperimentEntity, FileUploadList, ImageTransformProcess, ImportModelRequest, InlineResponse200, JobEntity, JsonArrayResponse, LogBatch, LogRequest, MetaData, MinibatchEntity, ModelEntity, ModelFeedBackRequest, ModelHistoryEntity, ModelInstanceEntity, ModelStatus, MultiClassClassificationResult, MultiPredictRequest, MultiPredictResponse, NearestNeighborRequest, NearestNeighborsResults, Prediction, Resource, ResourceCredentials, ResourceGroup, SetState, SingleCSVRecord, SingleImageRecord, Token, TransformProcess, UpdateBestModel) {
+}(this, function(ApiClient, AddCredentialsRequest, AddExampleRequest, AddModelHistoryRequest, AddResourceRequest, AggregatePrediction, Base64NDArrayBody, Base64NDArrayBodyKNN, BatchCSVRecord, BestModel, ClassificationResult, CreateDeploymentRequest, CreateJobRequest, Credentials, DeploymentResponse, DetectionResult, DownloadOutputFileRequest, ERRORUNKNOWN, EvaluationResultsEntity, ExampleEntity, ExperimentEntity, FileUploadList, ImportModelRequest, InlineResponse200, JobEntity, JsonArrayResponse, LogBatch, LogRequest, MetaData, MinibatchEntity, ModelEntity, ModelFeedBackRequest, ModelHistoryEntity, ModelInstanceEntity, ModelStatus, MultiClassClassificationResult, MultiPredictRequest, MultiPredictResponse, NearestNeighborRequest, NearestNeighborsResults, Prediction, Resource, ResourceCredentials, ResourceGroup, SetState, SingleCSVRecord, Token, UpdateBestModel) {
   'use strict';
 
   /**
@@ -924,17 +924,17 @@
 
     /**
      * Create a job
-     * @param {module:ai/skymind/skil/model/String} jobtype Job Type
+     * @param {module:ai/skymind/skil/model/String} jobIdOrType Job Type
      * @param {module:ai/skymind/skil/model/CreateJobRequest} createJobRequest Create job request object
      * @param {module:ai/skymind/skil/DefaultApi~createJobCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/JobEntity}
      */
-    this.createJob = function(jobtype, createJobRequest, callback) {
+    this.createJob = function(jobIdOrType, createJobRequest, callback) {
       var postBody = createJobRequest;
 
-      // verify the required parameter 'jobtype' is set
-      if (jobtype === undefined || jobtype === null) {
-        throw new Error("Missing the required parameter 'jobtype' when calling createJob");
+      // verify the required parameter 'jobIdOrType' is set
+      if (jobIdOrType === undefined || jobIdOrType === null) {
+        throw new Error("Missing the required parameter 'jobIdOrType' when calling createJob");
       }
 
       // verify the required parameter 'createJobRequest' is set
@@ -944,7 +944,7 @@
 
 
       var pathParams = {
-        'jobtype': jobtype
+        'jobIdOrType': jobIdOrType
       };
       var queryParams = {
       };
@@ -961,7 +961,7 @@
       var returnType = JobEntity;
 
       return this.apiClient.callApi(
-        '/jobs/{jobtype}', 'POST',
+        '/jobs/{jobIdOrType}', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1130,20 +1130,20 @@
 
     /**
      * Deletes a job given its ID
-     * @param {Number} jobId Job ID
+     * @param {Number} jobIdOrType Job ID
      * @param {module:ai/skymind/skil/DefaultApi~deleteJobByIdCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteJobById = function(jobId, callback) {
+    this.deleteJobById = function(jobIdOrType, callback) {
       var postBody = null;
 
-      // verify the required parameter 'jobId' is set
-      if (jobId === undefined || jobId === null) {
-        throw new Error("Missing the required parameter 'jobId' when calling deleteJobById");
+      // verify the required parameter 'jobIdOrType' is set
+      if (jobIdOrType === undefined || jobIdOrType === null) {
+        throw new Error("Missing the required parameter 'jobIdOrType' when calling deleteJobById");
       }
 
 
       var pathParams = {
-        'jobId': jobId
+        'jobIdOrType': jobIdOrType
       };
       var queryParams = {
       };
@@ -1160,7 +1160,7 @@
       var returnType = null;
 
       return this.apiClient.callApi(
-        '/jobs/{jobId}', 'DELETE',
+        '/jobs/{jobIdOrType}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2214,21 +2214,21 @@
 
     /**
      * Get a job by its ID
-     * @param {Number} jobId Job ID
+     * @param {Number} jobIdOrType Job ID
      * @param {module:ai/skymind/skil/DefaultApi~getJobByIdCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/JobEntity}
      */
-    this.getJobById = function(jobId, callback) {
+    this.getJobById = function(jobIdOrType, callback) {
       var postBody = null;
 
-      // verify the required parameter 'jobId' is set
-      if (jobId === undefined || jobId === null) {
-        throw new Error("Missing the required parameter 'jobId' when calling getJobById");
+      // verify the required parameter 'jobIdOrType' is set
+      if (jobIdOrType === undefined || jobIdOrType === null) {
+        throw new Error("Missing the required parameter 'jobIdOrType' when calling getJobById");
       }
 
 
       var pathParams = {
-        'jobId': jobId
+        'jobIdOrType': jobIdOrType
       };
       var queryParams = {
       };
@@ -2245,7 +2245,7 @@
       var returnType = JobEntity;
 
       return this.apiClient.callApi(
-        '/jobs/{jobId}', 'GET',
+        '/jobs/{jobIdOrType}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2555,7 +2555,7 @@
       var returnType = [Resource];
 
       return this.apiClient.callApi(
-        '/resources/resources/type/{resourceSubType}', 'GET',
+        '/resources/resources/subtype/{resourceSubType}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2825,134 +2825,6 @@
 
       return this.apiClient.callApi(
         '/resources/group/{resourceGroupId}/resources', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the imagetransformprocessGet operation.
-     * @callback module:ai/skymind/skil/DefaultApi~imagetransformprocessGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:ai/skymind/skil/model/ImageTransformProcess} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Retrieves the image transform process JSON string
-     * @param {String} deploymentName Name of the deployment group
-     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
-     * @param {String} imageTransformName ID or name of the deployed image transform
-     * @param {module:ai/skymind/skil/DefaultApi~imagetransformprocessGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:ai/skymind/skil/model/ImageTransformProcess}
-     */
-    this.imagetransformprocessGet = function(deploymentName, versionName, imageTransformName, callback) {
-      var postBody = null;
-
-      // verify the required parameter 'deploymentName' is set
-      if (deploymentName === undefined || deploymentName === null) {
-        throw new Error("Missing the required parameter 'deploymentName' when calling imagetransformprocessGet");
-      }
-
-      // verify the required parameter 'versionName' is set
-      if (versionName === undefined || versionName === null) {
-        throw new Error("Missing the required parameter 'versionName' when calling imagetransformprocessGet");
-      }
-
-      // verify the required parameter 'imageTransformName' is set
-      if (imageTransformName === undefined || imageTransformName === null) {
-        throw new Error("Missing the required parameter 'imageTransformName' when calling imagetransformprocessGet");
-      }
-
-
-      var pathParams = {
-        'deploymentName': deploymentName,
-        'versionName': versionName,
-        'imageTransformName': imageTransformName
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ImageTransformProcess;
-
-      return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the imagetransformprocessPost operation.
-     * @callback module:ai/skymind/skil/DefaultApi~imagetransformprocessPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:ai/skymind/skil/model/ImageTransformProcess} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Sets the image transform process through the provided JSON string
-     * @param {String} deploymentName Name of the deployment group
-     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
-     * @param {String} imageTransformName ID or name of the deployed image transform
-     * @param {module:ai/skymind/skil/model/ImageTransformProcess} body The image transform process JSON
-     * @param {module:ai/skymind/skil/DefaultApi~imagetransformprocessPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:ai/skymind/skil/model/ImageTransformProcess}
-     */
-    this.imagetransformprocessPost = function(deploymentName, versionName, imageTransformName, body, callback) {
-      var postBody = body;
-
-      // verify the required parameter 'deploymentName' is set
-      if (deploymentName === undefined || deploymentName === null) {
-        throw new Error("Missing the required parameter 'deploymentName' when calling imagetransformprocessPost");
-      }
-
-      // verify the required parameter 'versionName' is set
-      if (versionName === undefined || versionName === null) {
-        throw new Error("Missing the required parameter 'versionName' when calling imagetransformprocessPost");
-      }
-
-      // verify the required parameter 'imageTransformName' is set
-      if (imageTransformName === undefined || imageTransformName === null) {
-        throw new Error("Missing the required parameter 'imageTransformName' when calling imagetransformprocessPost");
-      }
-
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling imagetransformprocessPost");
-      }
-
-
-      var pathParams = {
-        'deploymentName': deploymentName,
-        'versionName': versionName,
-        'imageTransformName': imageTransformName
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ImageTransformProcess;
-
-      return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -4443,8 +4315,8 @@
     }
 
     /**
-     * Callback function to receive the result of the transformarrayCsv operation.
-     * @callback module:ai/skymind/skil/DefaultApi~transformarrayCsvCallback
+     * Callback function to receive the result of the transformarray operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformarrayCallback
      * @param {String} error Error message, if any.
      * @param {module:ai/skymind/skil/model/Base64NDArrayBody} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -4452,32 +4324,31 @@
 
     /**
      * Takes a batch input arrays and transforms it
-     * Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
      * @param {String} deploymentName Name of the deployment group
      * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {Object} opts Optional parameters
-     * @param {module:ai/skymind/skil/model/BatchCSVRecord} opts.batchCSVRecord The input batch of record arrays
-     * @param {module:ai/skymind/skil/DefaultApi~transformarrayCsvCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} opts.batchRecord The input batch of record arrays
+     * @param {module:ai/skymind/skil/DefaultApi~transformarrayCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
-    this.transformarrayCsv = function(deploymentName, versionName, transformName, opts, callback) {
+    this.transformarray = function(deploymentName, versionName, transformName, opts, callback) {
       opts = opts || {};
-      var postBody = opts['batchCSVRecord'];
+      var postBody = opts['batchRecord'];
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
-        throw new Error("Missing the required parameter 'deploymentName' when calling transformarrayCsv");
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformarray");
       }
 
       // verify the required parameter 'versionName' is set
       if (versionName === undefined || versionName === null) {
-        throw new Error("Missing the required parameter 'versionName' when calling transformarrayCsv");
+        throw new Error("Missing the required parameter 'versionName' when calling transformarray");
       }
 
       // verify the required parameter 'transformName' is set
       if (transformName === undefined || transformName === null) {
-        throw new Error("Missing the required parameter 'transformName' when calling transformarrayCsv");
+        throw new Error("Missing the required parameter 'transformName' when calling transformarray");
       }
 
 
@@ -4502,74 +4373,6 @@
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the transformarrayImage operation.
-     * @callback module:ai/skymind/skil/DefaultApi~transformarrayImageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:ai/skymind/skil/model/Base64NDArrayBody} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-     * Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-     * @param {String} deploymentName Name of the deployment group
-     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
-     * @param {String} imageTransformName ID or name of the deployed image transform
-     * @param {module:ai/skymind/skil/model/BatchImageRecord} batchImageRecord The input batch of record arrays
-     * @param {module:ai/skymind/skil/DefaultApi~transformarrayImageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
-     */
-    this.transformarrayImage = function(deploymentName, versionName, imageTransformName, batchImageRecord, callback) {
-      var postBody = batchImageRecord;
-
-      // verify the required parameter 'deploymentName' is set
-      if (deploymentName === undefined || deploymentName === null) {
-        throw new Error("Missing the required parameter 'deploymentName' when calling transformarrayImage");
-      }
-
-      // verify the required parameter 'versionName' is set
-      if (versionName === undefined || versionName === null) {
-        throw new Error("Missing the required parameter 'versionName' when calling transformarrayImage");
-      }
-
-      // verify the required parameter 'imageTransformName' is set
-      if (imageTransformName === undefined || imageTransformName === null) {
-        throw new Error("Missing the required parameter 'imageTransformName' when calling transformarrayImage");
-      }
-
-      // verify the required parameter 'batchImageRecord' is set
-      if (batchImageRecord === undefined || batchImageRecord === null) {
-        throw new Error("Missing the required parameter 'batchImageRecord' when calling transformarrayImage");
-      }
-
-
-      var pathParams = {
-        'deploymentName': deploymentName,
-        'versionName': versionName,
-        'imageTransformName': imageTransformName
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = Base64NDArrayBody;
-
-      return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -4710,41 +4513,40 @@
     }
 
     /**
-     * Callback function to receive the result of the transformincrementalarrayCsv operation.
-     * @callback module:ai/skymind/skil/DefaultApi~transformincrementalarrayCsvCallback
+     * Callback function to receive the result of the transformincrementalarray operation.
+     * @callback module:ai/skymind/skil/DefaultApi~transformincrementalarrayCallback
      * @param {String} error Error message, if any.
      * @param {module:ai/skymind/skil/model/Base64NDArrayBody} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Same as /transformincremental but returns Base64NDArrayBody
-     * Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+     * Same as /transformincremental but returns Base64NDArrayBody.
      * @param {String} deploymentName Name of the deployment group
      * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {Object} opts Optional parameters
-     * @param {module:ai/skymind/skil/model/SingleCSVRecord} opts.singleCSVRecord The input record array
-     * @param {module:ai/skymind/skil/DefaultApi~transformincrementalarrayCsvCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} opts.singleRecord The input record array
+     * @param {module:ai/skymind/skil/DefaultApi~transformincrementalarrayCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
-    this.transformincrementalarrayCsv = function(deploymentName, versionName, transformName, opts, callback) {
+    this.transformincrementalarray = function(deploymentName, versionName, transformName, opts, callback) {
       opts = opts || {};
-      var postBody = opts['singleCSVRecord'];
+      var postBody = opts['singleRecord'];
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
-        throw new Error("Missing the required parameter 'deploymentName' when calling transformincrementalarrayCsv");
+        throw new Error("Missing the required parameter 'deploymentName' when calling transformincrementalarray");
       }
 
       // verify the required parameter 'versionName' is set
       if (versionName === undefined || versionName === null) {
-        throw new Error("Missing the required parameter 'versionName' when calling transformincrementalarrayCsv");
+        throw new Error("Missing the required parameter 'versionName' when calling transformincrementalarray");
       }
 
       // verify the required parameter 'transformName' is set
       if (transformName === undefined || transformName === null) {
-        throw new Error("Missing the required parameter 'transformName' when calling transformincrementalarrayCsv");
+        throw new Error("Missing the required parameter 'transformName' when calling transformincrementalarray");
       }
 
 
@@ -4769,74 +4571,6 @@
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the transformincrementalarrayImage operation.
-     * @callback module:ai/skymind/skil/DefaultApi~transformincrementalarrayImageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:ai/skymind/skil/model/Base64NDArrayBody} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Takes SingleImageRecord to transform and returns Base64NDArrayBody
-     * Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-     * @param {String} deploymentName Name of the deployment group
-     * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
-     * @param {String} imageTransformName ID or name of the deployed image transform
-     * @param {module:ai/skymind/skil/model/SingleImageRecord} singleImageRecord The input record array
-     * @param {module:ai/skymind/skil/DefaultApi~transformincrementalarrayImageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
-     */
-    this.transformincrementalarrayImage = function(deploymentName, versionName, imageTransformName, singleImageRecord, callback) {
-      var postBody = singleImageRecord;
-
-      // verify the required parameter 'deploymentName' is set
-      if (deploymentName === undefined || deploymentName === null) {
-        throw new Error("Missing the required parameter 'deploymentName' when calling transformincrementalarrayImage");
-      }
-
-      // verify the required parameter 'versionName' is set
-      if (versionName === undefined || versionName === null) {
-        throw new Error("Missing the required parameter 'versionName' when calling transformincrementalarrayImage");
-      }
-
-      // verify the required parameter 'imageTransformName' is set
-      if (imageTransformName === undefined || imageTransformName === null) {
-        throw new Error("Missing the required parameter 'imageTransformName' when calling transformincrementalarrayImage");
-      }
-
-      // verify the required parameter 'singleImageRecord' is set
-      if (singleImageRecord === undefined || singleImageRecord === null) {
-        throw new Error("Missing the required parameter 'singleImageRecord' when calling transformincrementalarrayImage");
-      }
-
-
-      var pathParams = {
-        'deploymentName': deploymentName,
-        'versionName': versionName,
-        'imageTransformName': imageTransformName
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['api_key'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = Base64NDArrayBody;
-
-      return this.apiClient.callApi(
-        '/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -4915,18 +4649,17 @@
      * Callback function to receive the result of the transformprocessGet operation.
      * @callback module:ai/skymind/skil/DefaultApi~transformprocessGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:ai/skymind/skil/model/TransformProcess} data The data returned by the service call.
+     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Gets the JSON string of the deployed transform process
-     * Retrieves the JSON string of the deployed transform process 
+     * Gets the JSON string of the deployed transform process (CSV or Image)
      * @param {String} deploymentName Name of the deployment group
      * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {module:ai/skymind/skil/DefaultApi~transformprocessGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:ai/skymind/skil/model/TransformProcess}
+     * data is of type: {@link module:ai/skymind/skil/model/ERRORUNKNOWN}
      */
     this.transformprocessGet = function(deploymentName, versionName, transformName, callback) {
       var postBody = null;
@@ -4964,7 +4697,7 @@
       var authNames = ['api_key'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = TransformProcess;
+      var returnType = ERRORUNKNOWN;
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess', 'GET',
@@ -4977,19 +4710,19 @@
      * Callback function to receive the result of the transformprocessPost operation.
      * @callback module:ai/skymind/skil/DefaultApi~transformprocessPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Sets the deployed transform process through the provided JSON string
-     * Sets the transform process with the provided JSON string
+     * Sets the deployed (CSV or Image) transform process through the provided JSON string
      * @param {String} deploymentName Name of the deployment group
      * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {Object} opts Optional parameters
-     * @param {module:ai/skymind/skil/model/TransformProcess} opts.transformProcess The transform process to set
+     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} opts.transformProcess The transform process to set
      * @param {module:ai/skymind/skil/DefaultApi~transformprocessPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ERRORUNKNOWN}
      */
     this.transformprocessPost = function(deploymentName, versionName, transformName, opts, callback) {
       opts = opts || {};
@@ -5028,7 +4761,7 @@
       var authNames = ['api_key'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = ERRORUNKNOWN;
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess', 'POST',

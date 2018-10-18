@@ -20,11 +20,11 @@ Method | HTTP request | Description
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-[**createJob**](DefaultApi.md#createJob) | **POST** /jobs/{jobtype} | Create a job
+[**createJob**](DefaultApi.md#createJob) | **POST** /jobs/{jobIdOrType} | Create a job
 [**createModelHistory**](DefaultApi.md#createModelHistory) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 [**deleteCredentialsById**](DefaultApi.md#deleteCredentialsById) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
 [**deleteExperiment**](DefaultApi.md#deleteExperiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
-[**deleteJobById**](DefaultApi.md#deleteJobById) | **DELETE** /jobs/{jobId} | Deletes a job given its ID
+[**deleteJobById**](DefaultApi.md#deleteJobById) | **DELETE** /jobs/{jobIdOrType} | Deletes a job given its ID
 [**deleteModel**](DefaultApi.md#deleteModel) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 [**deleteModelHistory**](DefaultApi.md#deleteModelHistory) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 [**deleteModelInstance**](DefaultApi.md#deleteModelInstance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
@@ -45,21 +45,19 @@ Method | HTTP request | Description
 [**getExamplesForMinibatch**](DefaultApi.md#getExamplesForMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**getExperiment**](DefaultApi.md#getExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**getExperimentsForModelHistory**](DefaultApi.md#getExperimentsForModelHistory) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-[**getJobById**](DefaultApi.md#getJobById) | **GET** /jobs/{jobId} | Get a job by its ID
+[**getJobById**](DefaultApi.md#getJobById) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**getMinibatch**](DefaultApi.md#getMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**getModelHistory**](DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**getModelInstance**](DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**getModelsForExperiment**](DefaultApi.md#getModelsForExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
 [**getResourceById**](DefaultApi.md#getResourceById) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
-[**getResourceBySubType**](DefaultApi.md#getResourceBySubType) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**getResourceBySubType**](DefaultApi.md#getResourceBySubType) | **GET** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
 [**getResourceByType**](DefaultApi.md#getResourceByType) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
 [**getResourceDetailsById**](DefaultApi.md#getResourceDetailsById) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
 [**getResourceGroupById**](DefaultApi.md#getResourceGroupById) | **GET** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
 [**getResourceGroups**](DefaultApi.md#getResourceGroups) | **GET** /resources/groups | Get a list of all the resource groups
 [**getResources**](DefaultApi.md#getResources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**getResourcesFromGroup**](DefaultApi.md#getResourcesFromGroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
-[**imagetransformprocessGet**](DefaultApi.md#imagetransformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-[**imagetransformprocessPost**](DefaultApi.md#imagetransformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -84,15 +82,13 @@ Method | HTTP request | Description
 [**reimportModel**](DefaultApi.md#reimportModel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
 [**runAJob**](DefaultApi.md#runAJob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transformCsv**](DefaultApi.md#transformCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**transformarrayCsv**](DefaultApi.md#transformarrayCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-[**transformarrayImage**](DefaultApi.md#transformarrayImage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 [**transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 [**transformincrementalCsv**](DefaultApi.md#transformincrementalCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**transformincrementalarrayCsv**](DefaultApi.md#transformincrementalarrayCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**transformincrementalarrayImage**](DefaultApi.md#transformincrementalarrayImage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**transformincrementalarray**](DefaultApi.md#transformincrementalarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 [**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**transformprocessGet**](DefaultApi.md#transformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-[**transformprocessPost**](DefaultApi.md#transformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**transformprocessGet**](DefaultApi.md#transformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+[**transformprocessPost**](DefaultApi.md#transformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 [**updateBestModelForExperiment**](DefaultApi.md#updateBestModelForExperiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**updateExperiment**](DefaultApi.md#updateExperiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**updateModelHistory**](DefaultApi.md#updateModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
@@ -975,7 +971,7 @@ Name | Type | Description  | Notes
 
 <a name="createJob"></a>
 # **createJob**
-> JobEntity createJob(jobtype, createJobRequest)
+> JobEntity createJob(jobIdOrType, createJobRequest)
 
 Create a job
 
@@ -992,7 +988,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var jobtype = "jobtype_example"; // String | Job Type
+var jobIdOrType = "jobIdOrType_example"; // String | Job Type
 
 var createJobRequest = new SkilClient.CreateJobRequest(); // CreateJobRequest | Create job request object
 
@@ -1004,14 +1000,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.createJob(jobtype, createJobRequest, callback);
+apiInstance.createJob(jobIdOrType, createJobRequest, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobtype** | **String**| Job Type | 
+ **jobIdOrType** | **String**| Job Type | 
  **createJobRequest** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object | 
 
 ### Return type
@@ -1188,7 +1184,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteJobById"></a>
 # **deleteJobById**
-> deleteJobById(jobId)
+> deleteJobById(jobIdOrType)
 
 Deletes a job given its ID
 
@@ -1205,7 +1201,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var jobId = 789; // Number | Job ID
+var jobIdOrType = 789; // Number | Job ID
 
 
 var callback = function(error, data, response) {
@@ -1215,14 +1211,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.deleteJobById(jobId, callback);
+apiInstance.deleteJobById(jobIdOrType, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobId** | **Number**| Job ID | 
+ **jobIdOrType** | **Number**| Job ID | 
 
 ### Return type
 
@@ -2298,7 +2294,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobById"></a>
 # **getJobById**
-> JobEntity getJobById(jobId)
+> JobEntity getJobById(jobIdOrType)
 
 Get a job by its ID
 
@@ -2315,7 +2311,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var jobId = 789; // Number | Job ID
+var jobIdOrType = 789; // Number | Job ID
 
 
 var callback = function(error, data, response) {
@@ -2325,14 +2321,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getJobById(jobId, callback);
+apiInstance.getJobById(jobIdOrType, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobId** | **Number**| Job ID | 
+ **jobIdOrType** | **Number**| Job ID | 
 
 ### Return type
 
@@ -2959,123 +2955,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="imagetransformprocessGet"></a>
-# **imagetransformprocessGet**
-> ImageTransformProcess imagetransformprocessGet(deploymentName, versionName, imageTransformName)
-
-Retrieves the image transform process JSON string
-
-### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.imagetransformprocessGet(deploymentName, versionName, imageTransformName, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **String**| ID or name of the deployed image transform | 
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="imagetransformprocessPost"></a>
-# **imagetransformprocessPost**
-> ImageTransformProcess imagetransformprocessPost(deploymentName, versionName, imageTransformName, body)
-
-Sets the image transform process through the provided JSON string
-
-### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-
-var body = new SkilClient.ImageTransformProcess(); // ImageTransformProcess | The image transform process JSON
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.imagetransformprocessPost(deploymentName, versionName, imageTransformName, body, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **String**| ID or name of the deployed image transform | 
- **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="jsonarray"></a>
@@ -4466,13 +4345,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="transformarrayCsv"></a>
-# **transformarrayCsv**
-> Base64NDArrayBody transformarrayCsv(deploymentName, versionName, transformName, opts)
+<a name="transformarray"></a>
+# **transformarray**
+> Base64NDArrayBody transformarray(deploymentName, versionName, transformName, opts)
 
 Takes a batch input arrays and transforms it
-
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
 ```javascript
@@ -4494,7 +4371,7 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'batchCSVRecord': new SkilClient.BatchCSVRecord() // BatchCSVRecord | The input batch of record arrays
+  'batchRecord': new SkilClient.ERRORUNKNOWN() // ERRORUNKNOWN | The input batch of record arrays
 };
 
 var callback = function(error, data, response) {
@@ -4504,7 +4381,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.transformarrayCsv(deploymentName, versionName, transformName, opts, callback);
+apiInstance.transformarray(deploymentName, versionName, transformName, opts, callback);
 ```
 
 ### Parameters
@@ -4514,69 +4391,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **batchCSVRecord** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="transformarrayImage"></a>
-# **transformarrayImage**
-> Base64NDArrayBody transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord)
-
-Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-
-var batchImageRecord = new SkilClient.BatchImageRecord(); // BatchImageRecord | The input batch of record arrays
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **String**| ID or name of the deployed image transform | 
- **batchImageRecord** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
+ **batchRecord** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -4716,13 +4531,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="transformincrementalarrayCsv"></a>
-# **transformincrementalarrayCsv**
-> Base64NDArrayBody transformincrementalarrayCsv(deploymentName, versionName, transformName, opts)
+<a name="transformincrementalarray"></a>
+# **transformincrementalarray**
+> Base64NDArrayBody transformincrementalarray(deploymentName, versionName, transformName, opts)
 
-Same as /transformincremental but returns Base64NDArrayBody
-
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
 ```javascript
@@ -4744,7 +4557,7 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'singleCSVRecord': new SkilClient.SingleCSVRecord() // SingleCSVRecord | The input record array
+  'singleRecord': new SkilClient.ERRORUNKNOWN() // ERRORUNKNOWN | The input record array
 };
 
 var callback = function(error, data, response) {
@@ -4754,7 +4567,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.transformincrementalarrayCsv(deploymentName, versionName, transformName, opts, callback);
+apiInstance.transformincrementalarray(deploymentName, versionName, transformName, opts, callback);
 ```
 
 ### Parameters
@@ -4764,69 +4577,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **singleCSVRecord** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="transformincrementalarrayImage"></a>
-# **transformincrementalarrayImage**
-> Base64NDArrayBody transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord)
-
-Takes SingleImageRecord to transform and returns Base64NDArrayBody
-
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-
-var singleImageRecord = new SkilClient.SingleImageRecord(); // SingleImageRecord | The input record array
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **String**| ID or name of the deployed image transform | 
- **singleImageRecord** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
+ **singleRecord** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input record array | [optional] 
 
 ### Return type
 
@@ -4905,11 +4656,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessGet"></a>
 # **transformprocessGet**
-> TransformProcess transformprocessGet(deploymentName, versionName, transformName)
+> ERRORUNKNOWN transformprocessGet(deploymentName, versionName, transformName)
 
-Gets the JSON string of the deployed transform process
-
-Retrieves the JSON string of the deployed transform process 
+Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
 ```javascript
@@ -4951,7 +4700,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransformProcess**](TransformProcess.md)
+[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
 
 ### Authorization
 
@@ -4964,11 +4713,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessPost"></a>
 # **transformprocessPost**
-> transformprocessPost(deploymentName, versionName, transformName, opts)
+> ERRORUNKNOWN transformprocessPost(deploymentName, versionName, transformName, opts)
 
-Sets the deployed transform process through the provided JSON string
-
-Sets the transform process with the provided JSON string
+Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
 ```javascript
@@ -4990,14 +4737,14 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'transformProcess': new SkilClient.TransformProcess() // TransformProcess | The transform process to set
+  'transformProcess': new SkilClient.ERRORUNKNOWN() // ERRORUNKNOWN | The transform process to set
 };
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.transformprocessPost(deploymentName, versionName, transformName, opts, callback);
@@ -5010,11 +4757,11 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **transformProcess** | [**TransformProcess**](TransformProcess.md)| The transform process to set | [optional] 
+ **transformProcess** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The transform process to set | [optional] 
 
 ### Return type
 
-null (empty response body)
+[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
 
 ### Authorization
 

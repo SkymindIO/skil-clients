@@ -20,11 +20,11 @@ Method | HTTP request | Description
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-[**create_job**](DefaultApi.md#create_job) | **POST** /jobs/{jobtype} | Create a job
+[**create_job**](DefaultApi.md#create_job) | **POST** /jobs/{jobIdOrType} | Create a job
 [**create_model_history**](DefaultApi.md#create_model_history) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 [**delete_credentials_by_id**](DefaultApi.md#delete_credentials_by_id) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
 [**delete_experiment**](DefaultApi.md#delete_experiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
-[**delete_job_by_id**](DefaultApi.md#delete_job_by_id) | **DELETE** /jobs/{jobId} | Deletes a job given its ID
+[**delete_job_by_id**](DefaultApi.md#delete_job_by_id) | **DELETE** /jobs/{jobIdOrType} | Deletes a job given its ID
 [**delete_model**](DefaultApi.md#delete_model) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 [**delete_model_history**](DefaultApi.md#delete_model_history) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 [**delete_model_instance**](DefaultApi.md#delete_model_instance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
@@ -45,21 +45,19 @@ Method | HTTP request | Description
 [**get_examples_for_minibatch**](DefaultApi.md#get_examples_for_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**get_experiment**](DefaultApi.md#get_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**get_experiments_for_model_history**](DefaultApi.md#get_experiments_for_model_history) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-[**get_job_by_id**](DefaultApi.md#get_job_by_id) | **GET** /jobs/{jobId} | Get a job by its ID
+[**get_job_by_id**](DefaultApi.md#get_job_by_id) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**get_minibatch**](DefaultApi.md#get_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**get_model_history**](DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**get_model_instance**](DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
 [**get_resource_by_id**](DefaultApi.md#get_resource_by_id) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
-[**get_resource_by_sub_type**](DefaultApi.md#get_resource_by_sub_type) | **GET** /resources/resources/type/{resourceSubType} | Get all the resources with the specified resource subtype
+[**get_resource_by_sub_type**](DefaultApi.md#get_resource_by_sub_type) | **GET** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
 [**get_resource_by_type**](DefaultApi.md#get_resource_by_type) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
 [**get_resource_details_by_id**](DefaultApi.md#get_resource_details_by_id) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
 [**get_resource_group_by_id**](DefaultApi.md#get_resource_group_by_id) | **GET** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
 [**get_resource_groups**](DefaultApi.md#get_resource_groups) | **GET** /resources/groups | Get a list of all the resource groups
 [**get_resources**](DefaultApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**get_resources_from_group**](DefaultApi.md#get_resources_from_group) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
-[**imagetransformprocess_get**](DefaultApi.md#imagetransformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-[**imagetransformprocess_post**](DefaultApi.md#imagetransformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -84,15 +82,13 @@ Method | HTTP request | Description
 [**reimport_model**](DefaultApi.md#reimport_model) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
 [**run_a_job**](DefaultApi.md#run_a_job) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transform_csv**](DefaultApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**transformarray_csv**](DefaultApi.md#transformarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-[**transformarray_image**](DefaultApi.md#transformarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 [**transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 [**transformincremental_csv**](DefaultApi.md#transformincremental_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**transformincrementalarray_csv**](DefaultApi.md#transformincrementalarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**transformincrementalarray_image**](DefaultApi.md#transformincrementalarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**transformincrementalarray**](DefaultApi.md#transformincrementalarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 [**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**transformprocess_get**](DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-[**transformprocess_post**](DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**transformprocess_get**](DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+[**transformprocess_post**](DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 [**update_best_model_for_experiment**](DefaultApi.md#update_best_model_for_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**update_experiment**](DefaultApi.md#update_experiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**update_model_history**](DefaultApi.md#update_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
@@ -969,7 +965,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_job**
-> JobEntity create_job(jobtype, create_job_request)
+> JobEntity create_job(job_id_or_type, create_job_request)
 
 Create a job
 
@@ -989,12 +985,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-jobtype = 'jobtype_example' # str | Job Type
+job_id_or_type = 'job_id_or_type_example' # str | Job Type
 create_job_request = skil_client.CreateJobRequest() # CreateJobRequest | Create job request object
 
 try:
     # Create a job
-    api_response = api_instance.create_job(jobtype, create_job_request)
+    api_response = api_instance.create_job(job_id_or_type, create_job_request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->create_job: %s\n" % e)
@@ -1004,7 +1000,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobtype** | **str**| Job Type | 
+ **job_id_or_type** | **str**| Job Type | 
  **create_job_request** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object | 
 
 ### Return type
@@ -1182,7 +1178,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_job_by_id**
-> delete_job_by_id(job_id)
+> delete_job_by_id(job_id_or_type)
 
 Deletes a job given its ID
 
@@ -1202,11 +1198,11 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-job_id = 789 # int | Job ID
+job_id_or_type = 789 # int | Job ID
 
 try:
     # Deletes a job given its ID
-    api_instance.delete_job_by_id(job_id)
+    api_instance.delete_job_by_id(job_id_or_type)
 except ApiException as e:
     print("Exception when calling DefaultApi->delete_job_by_id: %s\n" % e)
 ```
@@ -1215,7 +1211,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**| Job ID | 
+ **job_id_or_type** | **int**| Job ID | 
 
 ### Return type
 
@@ -2296,7 +2292,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job_by_id**
-> JobEntity get_job_by_id(job_id)
+> JobEntity get_job_by_id(job_id_or_type)
 
 Get a job by its ID
 
@@ -2316,11 +2312,11 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-job_id = 789 # int | Job ID
+job_id_or_type = 789 # int | Job ID
 
 try:
     # Get a job by its ID
-    api_response = api_instance.get_job_by_id(job_id)
+    api_response = api_instance.get_job_by_id(job_id_or_type)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_job_by_id: %s\n" % e)
@@ -2330,7 +2326,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_id** | **int**| Job ID | 
+ **job_id_or_type** | **int**| Job ID | 
 
 ### Return type
 
@@ -2969,120 +2965,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **imagetransformprocess_get**
-> ImageTransformProcess imagetransformprocess_get(deployment_name, version_name, image_transform_name)
-
-Retrieves the image transform process JSON string
-
-### Example
-```python
-from __future__ import print_function
-import time
-import skil_client
-from skil_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: api_key
-configuration = skil_client.Configuration()
-configuration.api_key['authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
-image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
-
-try:
-    # Retrieves the image transform process JSON string
-    api_response = api_instance.imagetransformprocess_get(deployment_name, version_name, image_transform_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->imagetransformprocess_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **str**| ID or name of the deployed image transform | 
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **imagetransformprocess_post**
-> ImageTransformProcess imagetransformprocess_post(deployment_name, version_name, image_transform_name, body)
-
-Sets the image transform process through the provided JSON string
-
-### Example
-```python
-from __future__ import print_function
-import time
-import skil_client
-from skil_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: api_key
-configuration = skil_client.Configuration()
-configuration.api_key['authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
-image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
-body = skil_client.ImageTransformProcess() # ImageTransformProcess | The image transform process JSON
-
-try:
-    # Sets the image transform process through the provided JSON string
-    api_response = api_instance.imagetransformprocess_post(deployment_name, version_name, image_transform_name, body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->imagetransformprocess_post: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **str**| ID or name of the deployed image transform | 
- **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
-
-### Return type
-
-[**ImageTransformProcess**](ImageTransformProcess.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4443,12 +4325,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **transformarray_csv**
-> Base64NDArrayBody transformarray_csv(deployment_name, version_name, transform_name, batch_csv_record=batch_csv_record)
+# **transformarray**
+> Base64NDArrayBody transformarray(deployment_name, version_name, transform_name, batch_record=batch_record)
 
 Takes a batch input arrays and transforms it
-
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
 ```python
@@ -4469,14 +4349,14 @@ api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
 version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
-batch_csv_record = skil_client.BatchCSVRecord() # BatchCSVRecord | The input batch of record arrays (optional)
+batch_record = skil_client.ERRORUNKNOWN() # ERRORUNKNOWN | The input batch of record arrays (optional)
 
 try:
     # Takes a batch input arrays and transforms it
-    api_response = api_instance.transformarray_csv(deployment_name, version_name, transform_name, batch_csv_record=batch_csv_record)
+    api_response = api_instance.transformarray(deployment_name, version_name, transform_name, batch_record=batch_record)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->transformarray_csv: %s\n" % e)
+    print("Exception when calling DefaultApi->transformarray: %s\n" % e)
 ```
 
 ### Parameters
@@ -4486,67 +4366,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **str**| Name of the deployment group | 
  **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
- **batch_csv_record** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **transformarray_image**
-> Base64NDArrayBody transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record)
-
-Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```python
-from __future__ import print_function
-import time
-import skil_client
-from skil_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: api_key
-configuration = skil_client.Configuration()
-configuration.api_key['authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
-image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
-batch_image_record = skil_client.BatchImageRecord() # BatchImageRecord | The input batch of record arrays
-
-try:
-    # Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-    api_response = api_instance.transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->transformarray_image: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **str**| ID or name of the deployed image transform | 
- **batch_image_record** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
+ **batch_record** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -4683,12 +4503,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **transformincrementalarray_csv**
-> Base64NDArrayBody transformincrementalarray_csv(deployment_name, version_name, transform_name, single_csv_record=single_csv_record)
+# **transformincrementalarray**
+> Base64NDArrayBody transformincrementalarray(deployment_name, version_name, transform_name, single_record=single_record)
 
-Same as /transformincremental but returns Base64NDArrayBody
-
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
 ```python
@@ -4709,14 +4527,14 @@ api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
 version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
-single_csv_record = skil_client.SingleCSVRecord() # SingleCSVRecord | The input record array (optional)
+single_record = skil_client.ERRORUNKNOWN() # ERRORUNKNOWN | The input record array (optional)
 
 try:
-    # Same as /transformincremental but returns Base64NDArrayBody
-    api_response = api_instance.transformincrementalarray_csv(deployment_name, version_name, transform_name, single_csv_record=single_csv_record)
+    # Same as /transformincremental but returns Base64NDArrayBody.
+    api_response = api_instance.transformincrementalarray(deployment_name, version_name, transform_name, single_record=single_record)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->transformincrementalarray_csv: %s\n" % e)
+    print("Exception when calling DefaultApi->transformincrementalarray: %s\n" % e)
 ```
 
 ### Parameters
@@ -4726,67 +4544,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **str**| Name of the deployment group | 
  **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
- **single_csv_record** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **transformincrementalarray_image**
-> Base64NDArrayBody transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record)
-
-Takes SingleImageRecord to transform and returns Base64NDArrayBody
-
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```python
-from __future__ import print_function
-import time
-import skil_client
-from skil_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: api_key
-configuration = skil_client.Configuration()
-configuration.api_key['authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
-image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
-single_image_record = skil_client.SingleImageRecord() # SingleImageRecord | The input record array
-
-try:
-    # Takes SingleImageRecord to transform and returns Base64NDArrayBody
-    api_response = api_instance.transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->transformincrementalarray_image: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **str**| ID or name of the deployed image transform | 
- **single_image_record** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
+ **single_record** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input record array | [optional] 
 
 ### Return type
 
@@ -4864,11 +4622,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_get**
-> TransformProcess transformprocess_get(deployment_name, version_name, transform_name)
+> ERRORUNKNOWN transformprocess_get(deployment_name, version_name, transform_name)
 
-Gets the JSON string of the deployed transform process
-
-Retrieves the JSON string of the deployed transform process 
+Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
 ```python
@@ -4891,7 +4647,7 @@ version_name = 'version_name_example' # str | Version name of the endpoint. The 
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 
 try:
-    # Gets the JSON string of the deployed transform process
+    # Gets the JSON string of the deployed transform process (CSV or Image)
     api_response = api_instance.transformprocess_get(deployment_name, version_name, transform_name)
     pprint(api_response)
 except ApiException as e:
@@ -4908,7 +4664,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransformProcess**](TransformProcess.md)
+[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
 
 ### Authorization
 
@@ -4922,11 +4678,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_post**
-> transformprocess_post(deployment_name, version_name, transform_name, transform_process=transform_process)
+> ERRORUNKNOWN transformprocess_post(deployment_name, version_name, transform_name, transform_process=transform_process)
 
-Sets the deployed transform process through the provided JSON string
-
-Sets the transform process with the provided JSON string
+Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
 ```python
@@ -4947,11 +4701,12 @@ api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
 version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
-transform_process = skil_client.TransformProcess() # TransformProcess | The transform process to set (optional)
+transform_process = skil_client.ERRORUNKNOWN() # ERRORUNKNOWN | The transform process to set (optional)
 
 try:
-    # Sets the deployed transform process through the provided JSON string
-    api_instance.transformprocess_post(deployment_name, version_name, transform_name, transform_process=transform_process)
+    # Sets the deployed (CSV or Image) transform process through the provided JSON string
+    api_response = api_instance.transformprocess_post(deployment_name, version_name, transform_name, transform_process=transform_process)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformprocess_post: %s\n" % e)
 ```
@@ -4963,11 +4718,11 @@ Name | Type | Description  | Notes
  **deployment_name** | **str**| Name of the deployment group | 
  **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
- **transform_process** | [**TransformProcess**](TransformProcess.md)| The transform process to set | [optional] 
+ **transform_process** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The transform process to set | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
 
 ### Authorization
 
