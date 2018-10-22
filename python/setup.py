@@ -25,11 +25,11 @@ VERSION = "1.1.2"
 REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 
 setup(
-    name=NAME,
-    version=VERSION,
+    name="skil-client",
+    version="1.1.1",
     description="Endpoints",
-    author_email="",
-    url="",
+    author_email="engineering@skymind.io",
+    url="https://github.com/SkymindIO/skil-clients/tree/master/python",
     keywords=["Swagger", "Endpoints"],
     install_requires=REQUIRES,
     packages=find_packages(),
