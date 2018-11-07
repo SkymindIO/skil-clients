@@ -46,7 +46,7 @@ class AzureStorageResourceDetails(object):
         'container_name': 'containerName'
     }
 
-    def __init__(self, _class='io.skymind.resource.data.subtypes.storage.AzureStorageResourceDetails', resource_id=None, type=None, sub_type=None, container_name=None):  # noqa: E501
+    def __init__(self, _class='io.skymind.resource.model.subtypes.storage.AzureStorageResourceDetails', resource_id=None, type=None, sub_type=None, container_name=None):  # noqa: E501
         """AzureStorageResourceDetails - a model defined in Swagger"""  # noqa: E501
 
         self.__class = None

@@ -50,7 +50,7 @@ class DataProcResourceDetails(object):
         'spark_cluster_name': 'sparkClusterName'
     }
 
-    def __init__(self, _class='io.skymind.resource.data.subtypes.compute.DataProcResourceDetails', resource_id=None, type=None, sub_type=None, project_id=None, region=None, spark_cluster_name=None):  # noqa: E501
+    def __init__(self, _class='io.skymind.resource.model.subtypes.compute.DataProcResourceDetails', resource_id=None, type=None, sub_type=None, project_id=None, region=None, spark_cluster_name=None):  # noqa: E501
         """DataProcResourceDetails - a model defined in Swagger"""  # noqa: E501
 
         self.__class = None

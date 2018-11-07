@@ -48,7 +48,7 @@ class HDFSResourceDetails(object):
         'name_node_port': 'nameNodePort'
     }
 
-    def __init__(self, _class='io.skymind.resource.data.subtypes.storage.HDFSResourceDetails', resource_id=None, type=None, sub_type=None, name_node_host=None, name_node_port=None):  # noqa: E501
+    def __init__(self, _class='io.skymind.resource.model.subtypes.storage.HDFSResourceDetails', resource_id=None, type=None, sub_type=None, name_node_host=None, name_node_port=None):  # noqa: E501
         """HDFSResourceDetails - a model defined in Swagger"""  # noqa: E501
 
         self.__class = None

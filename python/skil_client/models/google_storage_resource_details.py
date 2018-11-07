@@ -48,7 +48,7 @@ class GoogleStorageResourceDetails(object):
         'bucket_name': 'bucketName'
     }
 
-    def __init__(self, _class='io.skymind.resource.data.subtypes.storage.GoogleStorageResourceDetails', resource_id=None, type=None, sub_type=None, project_id=None, bucket_name=None):  # noqa: E501
+    def __init__(self, _class='io.skymind.resource.model.subtypes.storage.GoogleStorageResourceDetails', resource_id=None, type=None, sub_type=None, project_id=None, bucket_name=None):  # noqa: E501
         """GoogleStorageResourceDetails - a model defined in Swagger"""  # noqa: E501
 
         self.__class = None

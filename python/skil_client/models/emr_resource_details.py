@@ -48,7 +48,7 @@ class EMRResourceDetails(object):
         'region': 'region'
     }
 
-    def __init__(self, _class='io.skymind.resource.data.subtypes.compute.EMRResourceDetails', resource_id=None, type=None, sub_type=None, cluster_id=None, region=None):  # noqa: E501
+    def __init__(self, _class='io.skymind.resource.model.subtypes.compute.EMRResourceDetails', resource_id=None, type=None, sub_type=None, cluster_id=None, region=None):  # noqa: E501
         """EMRResourceDetails - a model defined in Swagger"""  # noqa: E501
 
         self.__class = None

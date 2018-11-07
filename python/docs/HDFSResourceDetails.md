@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_class** | **str** |  | [optional] [default to 'io.skymind.resource.data.subtypes.storage.HDFSResourceDetails']
+**_class** | **str** |  | [optional] [default to 'io.skymind.resource.model.subtypes.storage.HDFSResourceDetails']
 **resource_id** | **int** | ID of the resource | [optional] 
 **type** | **str** | Resource type | [optional] 
 **sub_type** | **str** | Resource subtype | [optional] 

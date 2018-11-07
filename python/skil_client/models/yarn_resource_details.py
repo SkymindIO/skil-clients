@@ -46,7 +46,7 @@ class YARNResourceDetails(object):
         'local_spark_home': 'localSparkHome'
     }
 
-    def __init__(self, _class='io.skymind.resource.data.subtypes.compute.YARNResourceDetails', resource_id=None, type=None, sub_type=None, local_spark_home=None):  # noqa: E501
+    def __init__(self, _class='io.skymind.resource.model.subtypes.compute.YARNResourceDetails', resource_id=None, type=None, sub_type=None, local_spark_home=None):  # noqa: E501
         """YARNResourceDetails - a model defined in Swagger"""  # noqa: E501
 
         self.__class = None

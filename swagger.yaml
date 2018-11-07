@@ -3341,7 +3341,7 @@ definitions:
     properties:
       '@class':
         type: string
-        default: 'io.skymind.resource.data.subtypes.compute.EMRResourceDetails'
+        default: 'io.skymind.resource.model.subtypes.compute.EMRResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3367,7 +3367,7 @@ definitions:
     properties:
       '@class':
         type: string
-        default: 'io.skymind.resource.data.subtypes.storage.S3ResourceDetails'
+        default: 'io.skymind.resource.model.subtypes.storage.S3ResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3393,7 +3393,7 @@ definitions:
     properties:
       '@class':
         type: string
-        default: 'io.skymind.resource.data.subtypes.storage.GoogleStorageResourceDetails'
+        default: 'io.skymind.resource.model.subtypes.storage.GoogleStorageResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3419,7 +3419,7 @@ definitions:
     properties:
       '@class':
         type: string
-        default: 'io.skymind.resource.data.subtypes.compute.DataProcResourceDetails'
+        default: 'io.skymind.resource.model.subtypes.compute.DataProcResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3448,7 +3448,7 @@ definitions:
     properties:
       '@class':
         type: string
-        default: 'io.skymind.resource.data.subtypes.compute.HDInsightResourceDetails'
+        default: 'io.skymind.resource.model.subtypes.compute.HDInsightResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3477,7 +3477,7 @@ definitions:
     properties:
       '@class':
         type: string
-        default: 'io.skymind.resource.data.subtypes.storage.AzureStorageResourceDetails'
+        default: 'io.skymind.resource.model.subtypes.storage.AzureStorageResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3500,7 +3500,7 @@ definitions:
     properties:
       '@class':
         type: string
-        default: 'io.skymind.resource.data.subtypes.storage.HDFSResourceDetails'
+        default: 'io.skymind.resource.model.subtypes.storage.HDFSResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3526,7 +3526,7 @@ definitions:
     properties:
       '@class':
         type: string
-        default: 'io.skymind.resource.data.subtypes.compute.YARNResourceDetails'
+        default: 'io.skymind.resource.model.subtypes.compute.YARNResourceDetails'
       resourceId:
         type: integer
         format: int64

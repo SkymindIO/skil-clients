@@ -50,7 +50,7 @@ class HDInsightResourceDetails(object):
         'cluster_name': 'clusterName'
     }
 
-    def __init__(self, _class='io.skymind.resource.data.subtypes.compute.HDInsightResourceDetails', resource_id=None, type=None, sub_type=None, subscription_id=None, resource_group_name=None, cluster_name=None):  # noqa: E501
+    def __init__(self, _class='io.skymind.resource.model.subtypes.compute.HDInsightResourceDetails', resource_id=None, type=None, sub_type=None, subscription_id=None, resource_group_name=None, cluster_name=None):  # noqa: E501
         """HDInsightResourceDetails - a model defined in Swagger"""  # noqa: E501
 
         self.__class = None

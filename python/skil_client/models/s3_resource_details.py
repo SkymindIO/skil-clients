@@ -48,7 +48,7 @@ class S3ResourceDetails(object):
         'region': 'region'
     }
 
-    def __init__(self, _class='io.skymind.resource.data.subtypes.storage.S3ResourceDetails', resource_id=None, type=None, sub_type=None, bucket=None, region=None):  # noqa: E501
+    def __init__(self, _class='io.skymind.resource.model.subtypes.storage.S3ResourceDetails', resource_id=None, type=None, sub_type=None, bucket=None, region=None):  # noqa: E501
         """S3ResourceDetails - a model defined in Swagger"""  # noqa: E501
 
         self.__class = None
