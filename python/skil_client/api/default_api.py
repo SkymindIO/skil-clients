@@ -5013,7 +5013,7 @@ class DefaultApi(object):
 
         :param async bool
         :param int resource_id: ID of the resource (required)
-        :return: ERRORUNKNOWN
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -5035,7 +5035,7 @@ class DefaultApi(object):
 
         :param async bool
         :param int resource_id: ID of the resource (required)
-        :return: ERRORUNKNOWN
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -5089,7 +5089,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ERRORUNKNOWN',  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -8201,7 +8201,7 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param ERRORUNKNOWN batch_record: The input batch of record arrays
+        :param object batch_record: The input batch of record arrays
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8225,7 +8225,7 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param ERRORUNKNOWN batch_record: The input batch of record arrays
+        :param object batch_record: The input batch of record arrays
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8561,7 +8561,7 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param ERRORUNKNOWN single_record: The input record array
+        :param object single_record: The input record array
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8585,7 +8585,7 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param ERRORUNKNOWN single_record: The input record array
+        :param object single_record: The input record array
         :return: Base64NDArrayBody
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8801,7 +8801,7 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :return: ERRORUNKNOWN
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -8824,7 +8824,7 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :return: ERRORUNKNOWN
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -8890,7 +8890,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ERRORUNKNOWN',  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -8910,8 +8910,8 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param ERRORUNKNOWN transform_process: The transform process to set
-        :return: ERRORUNKNOWN
+        :param object transform_process: The transform process to set
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -8934,8 +8934,8 @@ class DefaultApi(object):
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str transform_name: ID or name of the deployed transform (required)
-        :param ERRORUNKNOWN transform_process: The transform process to set
-        :return: ERRORUNKNOWN
+        :param object transform_process: The transform process to set
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -9007,7 +9007,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ERRORUNKNOWN',  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),

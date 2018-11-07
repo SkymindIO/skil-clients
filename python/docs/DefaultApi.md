@@ -2716,7 +2716,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_resource_details_by_id**
-> ERRORUNKNOWN get_resource_details_by_id(resource_id)
+> object get_resource_details_by_id(resource_id)
 
 Get the resource details with the specified resource ID
 
@@ -2756,7 +2756,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+**object**
 
 ### Authorization
 
@@ -4349,7 +4349,7 @@ api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
 version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
-batch_record = skil_client.ERRORUNKNOWN() # ERRORUNKNOWN | The input batch of record arrays (optional)
+batch_record = NULL # object | The input batch of record arrays (optional)
 
 try:
     # Takes a batch input arrays and transforms it
@@ -4366,7 +4366,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **str**| Name of the deployment group | 
  **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
- **batch_record** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input batch of record arrays | [optional] 
+ **batch_record** | **object**| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -4527,7 +4527,7 @@ api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
 version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
-single_record = skil_client.ERRORUNKNOWN() # ERRORUNKNOWN | The input record array (optional)
+single_record = NULL # object | The input record array (optional)
 
 try:
     # Same as /transformincremental but returns Base64NDArrayBody.
@@ -4544,7 +4544,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **str**| Name of the deployment group | 
  **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
- **single_record** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input record array | [optional] 
+ **single_record** | **object**| The input record array | [optional] 
 
 ### Return type
 
@@ -4622,7 +4622,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_get**
-> ERRORUNKNOWN transformprocess_get(deployment_name, version_name, transform_name)
+> object transformprocess_get(deployment_name, version_name, transform_name)
 
 Gets the JSON string of the deployed transform process (CSV or Image)
 
@@ -4664,7 +4664,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+**object**
 
 ### Authorization
 
@@ -4678,7 +4678,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_post**
-> ERRORUNKNOWN transformprocess_post(deployment_name, version_name, transform_name, transform_process=transform_process)
+> object transformprocess_post(deployment_name, version_name, transform_name, transform_process=transform_process)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
@@ -4701,7 +4701,7 @@ api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
 version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
-transform_process = skil_client.ERRORUNKNOWN() # ERRORUNKNOWN | The transform process to set (optional)
+transform_process = NULL # object | The transform process to set (optional)
 
 try:
     # Sets the deployed (CSV or Image) transform process through the provided JSON string
@@ -4718,11 +4718,11 @@ Name | Type | Description  | Notes
  **deployment_name** | **str**| Name of the deployment group | 
  **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
- **transform_process** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The transform process to set | [optional] 
+ **transform_process** | **object**| The transform process to set | [optional] 
 
 ### Return type
 
-[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+**object**
 
 ### Authorization
 
