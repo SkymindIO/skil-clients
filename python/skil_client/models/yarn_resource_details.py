@@ -31,6 +31,7 @@ class YARNResourceDetails(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        '_class': 'str',
         'resource_id': 'int',
         'type': 'str',
         'sub_type': 'str',
@@ -38,21 +39,25 @@ class YARNResourceDetails(object):
     }
 
     attribute_map = {
+        '_class': '@class',
         'resource_id': 'resourceId',
         'type': 'type',
         'sub_type': 'subType',
         'local_spark_home': 'localSparkHome'
     }
 
-    def __init__(self, resource_id=None, type=None, sub_type=None, local_spark_home=None):  # noqa: E501
+    def __init__(self, _class='io.skymind.resource.data.subtypes.compute.YARNResourceDetails', resource_id=None, type=None, sub_type=None, local_spark_home=None):  # noqa: E501
         """YARNResourceDetails - a model defined in Swagger"""  # noqa: E501
 
+        self.__class = None
         self._resource_id = None
         self._type = None
         self._sub_type = None
         self._local_spark_home = None
         self.discriminator = None
 
+        if _class is not None:
+            self._class = _class
         if resource_id is not None:
             self.resource_id = resource_id
         if type is not None:
@@ -61,6 +66,27 @@ class YARNResourceDetails(object):
             self.sub_type = sub_type
         if local_spark_home is not None:
             self.local_spark_home = local_spark_home
+
+    @property
+    def _class(self):
+        """Gets the _class of this YARNResourceDetails.  # noqa: E501
+
+
+        :return: The _class of this YARNResourceDetails.  # noqa: E501
+        :rtype: str
+        """
+        return self.__class
+
+    @_class.setter
+    def _class(self, _class):
+        """Sets the _class of this YARNResourceDetails.
+
+
+        :param _class: The _class of this YARNResourceDetails.  # noqa: E501
+        :type: str
+        """
+
+        self.__class = _class
 
     @property
     def resource_id(self):

@@ -31,6 +31,7 @@ class HDFSResourceDetails(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        '_class': 'str',
         'resource_id': 'int',
         'type': 'str',
         'sub_type': 'str',
@@ -39,6 +40,7 @@ class HDFSResourceDetails(object):
     }
 
     attribute_map = {
+        '_class': '@class',
         'resource_id': 'resourceId',
         'type': 'type',
         'sub_type': 'subType',
@@ -46,9 +48,10 @@ class HDFSResourceDetails(object):
         'name_node_port': 'nameNodePort'
     }
 
-    def __init__(self, resource_id=None, type=None, sub_type=None, name_node_host=None, name_node_port=None):  # noqa: E501
+    def __init__(self, _class='io.skymind.resource.data.subtypes.storage.HDFSResourceDetails', resource_id=None, type=None, sub_type=None, name_node_host=None, name_node_port=None):  # noqa: E501
         """HDFSResourceDetails - a model defined in Swagger"""  # noqa: E501
 
+        self.__class = None
         self._resource_id = None
         self._type = None
         self._sub_type = None
@@ -56,6 +59,8 @@ class HDFSResourceDetails(object):
         self._name_node_port = None
         self.discriminator = None
 
+        if _class is not None:
+            self._class = _class
         if resource_id is not None:
             self.resource_id = resource_id
         if type is not None:
@@ -66,6 +71,27 @@ class HDFSResourceDetails(object):
             self.name_node_host = name_node_host
         if name_node_port is not None:
             self.name_node_port = name_node_port
+
+    @property
+    def _class(self):
+        """Gets the _class of this HDFSResourceDetails.  # noqa: E501
+
+
+        :return: The _class of this HDFSResourceDetails.  # noqa: E501
+        :rtype: str
+        """
+        return self.__class
+
+    @_class.setter
+    def _class(self, _class):
+        """Sets the _class of this HDFSResourceDetails.
+
+
+        :param _class: The _class of this HDFSResourceDetails.  # noqa: E501
+        :type: str
+        """
+
+        self.__class = _class
 
     @property
     def resource_id(self):

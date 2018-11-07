@@ -3248,7 +3248,7 @@ definitions:
       exampleVersion:
         type: integer
         description: Example version
-      int rowNumber:
+      rowNumber:
         type: integer
         description: Row Number
       created:
@@ -3357,6 +3357,9 @@ definitions:
   EMRResourceDetails:
     type: object
     properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.data.subtypes.compute.EMRResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3380,6 +3383,9 @@ definitions:
   S3ResourceDetails:
     type: object
     properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.data.subtypes.storage.S3ResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3403,6 +3409,9 @@ definitions:
   GoogleStorageResourceDetails:
     type: object
     properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.data.subtypes.storage.GoogleStorageResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3426,6 +3435,9 @@ definitions:
   DataProcResourceDetails:
     type: object
     properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.data.subtypes.compute.DataProcResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3452,6 +3464,9 @@ definitions:
   HDInsightResourceDetails:
     type: object
     properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.data.subtypes.compute.HDInsightResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3478,6 +3493,9 @@ definitions:
   AzureStorageResourceDetails:
     type: object
     properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.data.subtypes.storage.AzureStorageResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3498,6 +3516,9 @@ definitions:
   HDFSResourceDetails:
     type: object
     properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.data.subtypes.storage.HDFSResourceDetails'
       resourceId:
         type: integer
         format: int64
@@ -3521,6 +3542,9 @@ definitions:
   YARNResourceDetails:
     type: object
     properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.data.subtypes.compute.YARNResourceDetails'
       resourceId:
         type: integer
         format: int64
