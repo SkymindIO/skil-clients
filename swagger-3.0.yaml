@@ -3425,7 +3425,7 @@ components:
         exampleVersion:
           type: integer
           description: Example version
-        int rowNumber:
+        rowNumber:
           type: integer
           description: Row Number
         created:
@@ -3538,6 +3538,9 @@ components:
     EMRResourceDetails:
       type: object
       properties:
+        '@class':
+          type: string
+          default: 'io.skymind.resource.model.subtypes.compute.EMRResourceDetails'
         resourceId:
           type: integer
           format: int64
@@ -3561,6 +3564,9 @@ components:
     S3ResourceDetails:
       type: object
       properties:
+        '@class':
+          type: string
+          default: 'io.skymind.resource.data.subtypes.storage.S3ResourceDetails'
         resourceId:
           type: integer
           format: int64
@@ -3584,6 +3590,9 @@ components:
     GoogleStorageResourceDetails:
       type: object
       properties:
+        '@class':
+          type: string
+          default: 'io.skymind.resource.data.subtypes.storage.GoogleStorageResourceDetails'
         resourceId:
           type: integer
           format: int64
@@ -3607,6 +3616,9 @@ components:
     DataProcResourceDetails:
       type: object
       properties:
+        '@class':
+          type: string
+          default: 'io.skymind.resource.model.subtypes.compute.DataProcResourceDetails'
         resourceId:
           type: integer
           format: int64
@@ -3633,6 +3645,9 @@ components:
     HDInsightResourceDetails:
       type: object
       properties:
+        '@class':
+          type: string
+          default: 'io.skymind.resource.model.subtypes.compute.HDInsightResourceDetails'
         resourceId:
           type: integer
           format: int64
@@ -3659,6 +3674,9 @@ components:
     AzureStorageResourceDetails:
       type: object
       properties:
+        '@class':
+          type: string
+          default: 'io.skymind.resource.data.subtypes.storage.AzureStorageResourceDetails'
         resourceId:
           type: integer
           format: int64
@@ -3679,6 +3697,9 @@ components:
     HDFSResourceDetails:
       type: object
       properties:
+        '@class':
+          type: string
+          default: 'io.skymind.resource.data.subtypes.storage.HDFSResourceDetails'
         resourceId:
           type: integer
           format: int64
@@ -3702,6 +3723,9 @@ components:
     YARNResourceDetails:
       type: object
       properties:
+        '@class':
+          type: string
+          default: 'io.skymind.resource.model.subtypes.compute.YARNResourceDetails'
         resourceId:
           type: integer
           format: int64
