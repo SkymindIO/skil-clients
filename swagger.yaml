@@ -3655,9 +3655,9 @@ definitions:
         type: integer
         format: int64
         description: Storage resource ID
-      skilSparkMainArgs:
+      jobArgs:
         type: string
-        description: SKILSparkMain class arguments
+        description: Job arguments
       runId:
         type: string
         description: Job run ID
@@ -3686,9 +3686,9 @@ definitions:
         type: integer
         format: int64
         description: Storage resource ID
-      skilSparkMainArgs:
+      jobArgs:
         type: string
-        description: SKILSparkMain class arguments
+        description: Job arguments
       outputFileName:
         type: string
         description: Output file name
