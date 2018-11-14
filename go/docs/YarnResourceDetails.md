@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Class** | **string** |  | [optional] [default to null]
 **ResourceId** | **int64** | ID of the resource | [optional] [default to null]
 **Type_** | **string** | Resource type | [optional] [default to null]
 **SubType** | **string** | Resource subtype | [optional] [default to null]

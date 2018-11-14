@@ -14,6 +14,8 @@ use serde_json::Value;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AzureStorageResourceDetails {
+  #[serde(rename = "@class")]
+  class: Option<String>,
   /// ID of the resource
   #[serde(rename = "resourceId")]
   resource_id: Option<i64>,
@@ -31,11 +33,29 @@ pub struct AzureStorageResourceDetails {
 impl AzureStorageResourceDetails {
   pub fn new() -> AzureStorageResourceDetails {
     AzureStorageResourceDetails {
+      class: None,
       resource_id: None,
       _type: None,
       sub_type: None,
       container_name: None
     }
+  }
+
+  pub fn set_class(&mut self, class: String) {
+    self.class = Some(class);
+  }
+
+  pub fn with_class(mut self, class: String) -> AzureStorageResourceDetails {
+    self.class = Some(class);
+    self
+  }
+
+  pub fn class(&self) -> Option<&String> {
+    self.class.as_ref()
+  }
+
+  pub fn reset_class(&mut self) {
+    self.class = None;
   }
 
   pub fn set_resource_id(&mut self, resource_id: i64) {

@@ -3305,7 +3305,7 @@ Name | Type | Description  | Notes
 
 <a name="getresourcedetailsbyid"></a>
 # **GetResourceDetailsById**
-> void GetResourceDetailsById (long? resourceId)
+> Object GetResourceDetailsById (long? resourceId)
 
 Get the resource details with the specified resource ID
 
@@ -3336,7 +3336,8 @@ namespace Example
             try
             {
                 // Get the resource details with the specified resource ID
-                apiInstance.GetResourceDetailsById(resourceId);
+                Object result = apiInstance.GetResourceDetailsById(resourceId);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -3355,7 +3356,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -5263,7 +5264,7 @@ Name | Type | Description  | Notes
 
 <a name="transformarray"></a>
 # **Transformarray**
-> Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName,  batchRecord = null)
+> Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName, Object batchRecord = null)
 
 Takes a batch input arrays and transforms it
 
@@ -5290,7 +5291,7 @@ namespace Example
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var batchRecord = new (); //  | The input batch of record arrays (optional) 
+            var batchRecord = ;  // Object | The input batch of record arrays (optional) 
 
             try
             {
@@ -5314,7 +5315,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **batchRecord** | [****](.md)| The input batch of record arrays | [optional] 
+ **batchRecord** | **Object**| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -5477,7 +5478,7 @@ Name | Type | Description  | Notes
 
 <a name="transformincrementalarray"></a>
 # **Transformincrementalarray**
-> Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName,  singleRecord = null)
+> Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName, Object singleRecord = null)
 
 Same as /transformincremental but returns Base64NDArrayBody.
 
@@ -5504,7 +5505,7 @@ namespace Example
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var singleRecord = new (); //  | The input record array (optional) 
+            var singleRecord = ;  // Object | The input record array (optional) 
 
             try
             {
@@ -5528,7 +5529,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **singleRecord** | [****](.md)| The input record array | [optional] 
+ **singleRecord** | **Object**| The input record array | [optional] 
 
 ### Return type
 
@@ -5619,7 +5620,7 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessget"></a>
 # **TransformprocessGet**
-> void TransformprocessGet (string deploymentName, string versionName, string transformName)
+> Object TransformprocessGet (string deploymentName, string versionName, string transformName)
 
 Gets the JSON string of the deployed transform process (CSV or Image)
 
@@ -5650,7 +5651,8 @@ namespace Example
             try
             {
                 // Gets the JSON string of the deployed transform process (CSV or Image)
-                apiInstance.TransformprocessGet(deploymentName, versionName, transformName);
+                Object result = apiInstance.TransformprocessGet(deploymentName, versionName, transformName);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -5671,7 +5673,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -5686,7 +5688,7 @@ void (empty response body)
 
 <a name="transformprocesspost"></a>
 # **TransformprocessPost**
-> void TransformprocessPost (string deploymentName, string versionName, string transformName,  transformProcess = null)
+> Object TransformprocessPost (string deploymentName, string versionName, string transformName, Object transformProcess = null)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
@@ -5713,12 +5715,13 @@ namespace Example
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var transformProcess = new (); //  | The transform process to set (optional) 
+            var transformProcess = ;  // Object | The transform process to set (optional) 
 
             try
             {
                 // Sets the deployed (CSV or Image) transform process through the provided JSON string
-                apiInstance.TransformprocessPost(deploymentName, versionName, transformName, transformProcess);
+                Object result = apiInstance.TransformprocessPost(deploymentName, versionName, transformName, transformProcess);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -5736,11 +5739,11 @@ Name | Type | Description  | Notes
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **transformProcess** | [****](.md)| The transform process to set | [optional] 
+ **transformProcess** | **Object**| The transform process to set | [optional] 
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 

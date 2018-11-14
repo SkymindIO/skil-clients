@@ -457,6 +457,12 @@ class Decoders {
         Decoders.addDecoder(clazz: AzureStorageResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<AzureStorageResourceDetails> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
                 let _result = instance == nil ? AzureStorageResourceDetails() : instance as! AzureStorageResourceDetails
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["@class"] as AnyObject?) {
+                
+                case let .success(value): _result._class = value
+                case let .failure(error): break
+                
+                }
                 switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
                 
                 case let .success(value): _result.resourceId = value
@@ -683,9 +689,9 @@ class Decoders {
                 case let .failure(error): break
                 
                 }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["skilSparkMainArgs"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["jobArgs"] as AnyObject?) {
                 
-                case let .success(value): _result.skilSparkMainArgs = value
+                case let .success(value): _result.jobArgs = value
                 case let .failure(error): break
                 
                 }
@@ -735,6 +741,12 @@ class Decoders {
         Decoders.addDecoder(clazz: DataProcResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<DataProcResourceDetails> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
                 let _result = instance == nil ? DataProcResourceDetails() : instance as! DataProcResourceDetails
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["@class"] as AnyObject?) {
+                
+                case let .success(value): _result._class = value
+                case let .failure(error): break
+                
+                }
                 switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
                 
                 case let .success(value): _result.resourceId = value
@@ -957,6 +969,12 @@ class Decoders {
         Decoders.addDecoder(clazz: EMRResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<EMRResourceDetails> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
                 let _result = instance == nil ? EMRResourceDetails() : instance as! EMRResourceDetails
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["@class"] as AnyObject?) {
+                
+                case let .success(value): _result._class = value
+                case let .failure(error): break
+                
+                }
                 switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
                 
                 case let .success(value): _result.resourceId = value
@@ -1129,9 +1147,9 @@ class Decoders {
                 case let .failure(error): break
                 
                 }
-                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["int rowNumber"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["rowNumber"] as AnyObject?) {
                 
-                case let .success(value): _result.intRowNumber = value
+                case let .success(value): _result.rowNumber = value
                 case let .failure(error): break
                 
                 }
@@ -1311,6 +1329,12 @@ class Decoders {
         Decoders.addDecoder(clazz: GoogleStorageResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<GoogleStorageResourceDetails> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
                 let _result = instance == nil ? GoogleStorageResourceDetails() : instance as! GoogleStorageResourceDetails
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["@class"] as AnyObject?) {
+                
+                case let .success(value): _result._class = value
+                case let .failure(error): break
+                
+                }
                 switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
                 
                 case let .success(value): _result.resourceId = value
@@ -1355,6 +1379,12 @@ class Decoders {
         Decoders.addDecoder(clazz: HDFSResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<HDFSResourceDetails> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
                 let _result = instance == nil ? HDFSResourceDetails() : instance as! HDFSResourceDetails
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["@class"] as AnyObject?) {
+                
+                case let .success(value): _result._class = value
+                case let .failure(error): break
+                
+                }
                 switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
                 
                 case let .success(value): _result.resourceId = value
@@ -1399,6 +1429,12 @@ class Decoders {
         Decoders.addDecoder(clazz: HDInsightResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<HDInsightResourceDetails> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
                 let _result = instance == nil ? HDInsightResourceDetails() : instance as! HDInsightResourceDetails
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["@class"] as AnyObject?) {
+                
+                case let .success(value): _result._class = value
+                case let .failure(error): break
+                
+                }
                 switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
                 
                 case let .success(value): _result.resourceId = value
@@ -1636,9 +1672,9 @@ class Decoders {
                 case let .failure(error): break
                 
                 }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["skilSparkMainArgs"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["jobArgs"] as AnyObject?) {
                 
-                case let .success(value): _result.skilSparkMainArgs = value
+                case let .success(value): _result.jobArgs = value
                 case let .failure(error): break
                 
                 }
@@ -2491,6 +2527,12 @@ class Decoders {
         Decoders.addDecoder(clazz: S3ResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<S3ResourceDetails> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
                 let _result = instance == nil ? S3ResourceDetails() : instance as! S3ResourceDetails
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["@class"] as AnyObject?) {
+                
+                case let .success(value): _result._class = value
+                case let .failure(error): break
+                
+                }
                 switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
                 
                 case let .success(value): _result.resourceId = value
@@ -2654,6 +2696,12 @@ class Decoders {
         Decoders.addDecoder(clazz: YARNResourceDetails.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<YARNResourceDetails> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
                 let _result = instance == nil ? YARNResourceDetails() : instance as! YARNResourceDetails
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["@class"] as AnyObject?) {
+                
+                case let .success(value): _result._class = value
+                case let .failure(error): break
+                
+                }
                 switch Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["resourceId"] as AnyObject?) {
                 
                 case let .success(value): _result.resourceId = value

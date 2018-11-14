@@ -15,7 +15,7 @@ type ExampleEntity struct {
 	// Example version
 	ExampleVersion int32 `json:"exampleVersion,omitempty"`
 	// Row Number
-	IntRowNumber int32 `json:"int rowNumber,omitempty"`
+	RowNumber int32 `json:"rowNumber,omitempty"`
 	// when the example was created
 	Created int64 `json:"created,omitempty"`
 	// The GUID of the minibatch

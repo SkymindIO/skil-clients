@@ -51,6 +51,7 @@
 
 
 
+
   };
 
   /**
@@ -64,6 +65,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('@class')) {
+        obj['@class'] = ApiClient.convertToType(data['@class'], 'String');
+      }
       if (data.hasOwnProperty('resourceId')) {
         obj['resourceId'] = ApiClient.convertToType(data['resourceId'], 'Number');
       }
@@ -80,6 +84,11 @@
     return obj;
   }
 
+  /**
+   * @member {String} @class
+   * @default 'io.skymind.resource.model.subtypes.storage.AzureStorageResourceDetails'
+   */
+  exports.prototype['@class'] = 'io.skymind.resource.model.subtypes.storage.AzureStorageResourceDetails';
   /**
    * ID of the resource
    * @member {Number} resourceId

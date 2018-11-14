@@ -19,6 +19,8 @@ import java.io.Serializable;
 @ApiModel(description = "")
 public class HDFSResourceDetails implements Serializable {
   
+  @SerializedName("@class")
+  private String _class = null;
   @SerializedName("resourceId")
   private Long resourceId = null;
   public enum TypeEnum {
@@ -35,6 +37,16 @@ public class HDFSResourceDetails implements Serializable {
   private String nameNodeHost = null;
   @SerializedName("nameNodePort")
   private String nameNodePort = null;
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getClass() {
+    return _class;
+  }
+  public void setClass(String _class) {
+    this._class = _class;
+  }
 
   /**
    * ID of the resource
@@ -101,7 +113,8 @@ public class HDFSResourceDetails implements Serializable {
       return false;
     }
     HDFSResourceDetails hDFSResourceDetails = (HDFSResourceDetails) o;
-    return (this.resourceId == null ? hDFSResourceDetails.resourceId == null : this.resourceId.equals(hDFSResourceDetails.resourceId)) &&
+    return (this._class == null ? hDFSResourceDetails._class == null : this._class.equals(hDFSResourceDetails._class)) &&
+        (this.resourceId == null ? hDFSResourceDetails.resourceId == null : this.resourceId.equals(hDFSResourceDetails.resourceId)) &&
         (this.type == null ? hDFSResourceDetails.type == null : this.type.equals(hDFSResourceDetails.type)) &&
         (this.subType == null ? hDFSResourceDetails.subType == null : this.subType.equals(hDFSResourceDetails.subType)) &&
         (this.nameNodeHost == null ? hDFSResourceDetails.nameNodeHost == null : this.nameNodeHost.equals(hDFSResourceDetails.nameNodeHost)) &&
@@ -111,6 +124,7 @@ public class HDFSResourceDetails implements Serializable {
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this._class == null ? 0: this._class.hashCode());
     result = 31 * result + (this.resourceId == null ? 0: this.resourceId.hashCode());
     result = 31 * result + (this.type == null ? 0: this.type.hashCode());
     result = 31 * result + (this.subType == null ? 0: this.subType.hashCode());
@@ -124,6 +138,7 @@ public class HDFSResourceDetails implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class HDFSResourceDetails {\n");
     
+    sb.append("  _class: ").append(_class).append("\n");
     sb.append("  resourceId: ").append(resourceId).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  subType: ").append(subType).append("\n");

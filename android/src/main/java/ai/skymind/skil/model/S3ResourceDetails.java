@@ -19,6 +19,8 @@ import java.io.Serializable;
 @ApiModel(description = "")
 public class S3ResourceDetails implements Serializable {
   
+  @SerializedName("@class")
+  private String _class = null;
   @SerializedName("resourceId")
   private Long resourceId = null;
   public enum TypeEnum {
@@ -35,6 +37,16 @@ public class S3ResourceDetails implements Serializable {
   private String bucket = null;
   @SerializedName("region")
   private String region = null;
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getClass() {
+    return _class;
+  }
+  public void setClass(String _class) {
+    this._class = _class;
+  }
 
   /**
    * ID of the resource
@@ -101,7 +113,8 @@ public class S3ResourceDetails implements Serializable {
       return false;
     }
     S3ResourceDetails s3ResourceDetails = (S3ResourceDetails) o;
-    return (this.resourceId == null ? s3ResourceDetails.resourceId == null : this.resourceId.equals(s3ResourceDetails.resourceId)) &&
+    return (this._class == null ? s3ResourceDetails._class == null : this._class.equals(s3ResourceDetails._class)) &&
+        (this.resourceId == null ? s3ResourceDetails.resourceId == null : this.resourceId.equals(s3ResourceDetails.resourceId)) &&
         (this.type == null ? s3ResourceDetails.type == null : this.type.equals(s3ResourceDetails.type)) &&
         (this.subType == null ? s3ResourceDetails.subType == null : this.subType.equals(s3ResourceDetails.subType)) &&
         (this.bucket == null ? s3ResourceDetails.bucket == null : this.bucket.equals(s3ResourceDetails.bucket)) &&
@@ -111,6 +124,7 @@ public class S3ResourceDetails implements Serializable {
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this._class == null ? 0: this._class.hashCode());
     result = 31 * result + (this.resourceId == null ? 0: this.resourceId.hashCode());
     result = 31 * result + (this.type == null ? 0: this.type.hashCode());
     result = 31 * result + (this.subType == null ? 0: this.subType.hashCode());
@@ -124,6 +138,7 @@ public class S3ResourceDetails implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class S3ResourceDetails {\n");
     
+    sb.append("  _class: ").append(_class).append("\n");
     sb.append("  resourceId: ").append(resourceId).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  subType: ").append(subType).append("\n");

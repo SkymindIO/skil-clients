@@ -48,7 +48,6 @@ import ai.skymind.skil.model.ModelEntity
 import ai.skymind.skil.model.ModelFeedBackRequest
 import ai.skymind.skil.model.ModelHistoryEntity
 import ai.skymind.skil.model.ModelInstanceEntity
-import ai.skymind.skil.model.ModelNull
 import ai.skymind.skil.model.ModelStatus
 import ai.skymind.skil.model.MultiClassClassificationResult
 import ai.skymind.skil.model.MultiPredictRequest
@@ -1488,9 +1487,9 @@ class DefaultApi(
    * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
    *
    * @param ResourceId ID of the resource 
-   * @return ModelNull
+   * @return Any
    */
-  def getResourceDetailsById(ResourceId: Long): Option[ModelNull] = {
+  def getResourceDetailsById(ResourceId: Long): Option[Any] = {
     val await = Try(Await.result(getResourceDetailsByIdAsync(ResourceId), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -1503,9 +1502,9 @@ class DefaultApi(
    * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
    *
    * @param ResourceId ID of the resource 
-   * @return Future(ModelNull)
+   * @return Future(Any)
    */
-  def getResourceDetailsByIdAsync(ResourceId: Long): Future[ModelNull] = {
+  def getResourceDetailsByIdAsync(ResourceId: Long): Future[Any] = {
       helper.getResourceDetailsById(ResourceId)
   }
 
@@ -2351,7 +2350,7 @@ class DefaultApi(
    * @param BatchRecord The input batch of record arrays (optional)
    * @return Base64NDArrayBody
    */
-  def transformarray(DeploymentName: String, VersionName: String, TransformName: String, BatchRecord: Option[ModelNull] = None): Option[Base64NDArrayBody] = {
+  def transformarray(DeploymentName: String, VersionName: String, TransformName: String, BatchRecord: Option[Any] = None): Option[Base64NDArrayBody] = {
     val await = Try(Await.result(transformarrayAsync(DeploymentName, VersionName, TransformName, BatchRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -2369,7 +2368,7 @@ class DefaultApi(
    * @param BatchRecord The input batch of record arrays (optional)
    * @return Future(Base64NDArrayBody)
    */
-  def transformarrayAsync(DeploymentName: String, VersionName: String, TransformName: String, BatchRecord: Option[ModelNull] = None): Future[Base64NDArrayBody] = {
+  def transformarrayAsync(DeploymentName: String, VersionName: String, TransformName: String, BatchRecord: Option[Any] = None): Future[Base64NDArrayBody] = {
       helper.transformarray(DeploymentName, VersionName, TransformName, BatchRecord)
   }
 
@@ -2447,7 +2446,7 @@ class DefaultApi(
    * @param SingleRecord The input record array (optional)
    * @return Base64NDArrayBody
    */
-  def transformincrementalarray(DeploymentName: String, VersionName: String, TransformName: String, SingleRecord: Option[ModelNull] = None): Option[Base64NDArrayBody] = {
+  def transformincrementalarray(DeploymentName: String, VersionName: String, TransformName: String, SingleRecord: Option[Any] = None): Option[Base64NDArrayBody] = {
     val await = Try(Await.result(transformincrementalarrayAsync(DeploymentName, VersionName, TransformName, SingleRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -2465,7 +2464,7 @@ class DefaultApi(
    * @param SingleRecord The input record array (optional)
    * @return Future(Base64NDArrayBody)
    */
-  def transformincrementalarrayAsync(DeploymentName: String, VersionName: String, TransformName: String, SingleRecord: Option[ModelNull] = None): Future[Base64NDArrayBody] = {
+  def transformincrementalarrayAsync(DeploymentName: String, VersionName: String, TransformName: String, SingleRecord: Option[Any] = None): Future[Base64NDArrayBody] = {
       helper.transformincrementalarray(DeploymentName, VersionName, TransformName, SingleRecord)
   }
 
@@ -2508,9 +2507,9 @@ class DefaultApi(
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
-   * @return ModelNull
+   * @return Any
    */
-  def transformprocessGet(DeploymentName: String, VersionName: String, TransformName: String): Option[ModelNull] = {
+  def transformprocessGet(DeploymentName: String, VersionName: String, TransformName: String): Option[Any] = {
     val await = Try(Await.result(transformprocessGetAsync(DeploymentName, VersionName, TransformName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -2525,9 +2524,9 @@ class DefaultApi(
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
-   * @return Future(ModelNull)
+   * @return Future(Any)
    */
-  def transformprocessGetAsync(DeploymentName: String, VersionName: String, TransformName: String): Future[ModelNull] = {
+  def transformprocessGetAsync(DeploymentName: String, VersionName: String, TransformName: String): Future[Any] = {
       helper.transformprocessGet(DeploymentName, VersionName, TransformName)
   }
 
@@ -2539,9 +2538,9 @@ class DefaultApi(
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param TransformProcess The transform process to set (optional)
-   * @return ModelNull
+   * @return Any
    */
-  def transformprocessPost(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[ModelNull] = None): Option[ModelNull] = {
+  def transformprocessPost(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[Any] = None): Option[Any] = {
     val await = Try(Await.result(transformprocessPostAsync(DeploymentName, VersionName, TransformName, TransformProcess), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -2557,9 +2556,9 @@ class DefaultApi(
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
    * @param TransformProcess The transform process to set (optional)
-   * @return Future(ModelNull)
+   * @return Future(Any)
    */
-  def transformprocessPostAsync(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[ModelNull] = None): Future[ModelNull] = {
+  def transformprocessPostAsync(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[Any] = None): Future[Any] = {
       helper.transformprocessPost(DeploymentName, VersionName, TransformName, TransformProcess)
   }
 
@@ -3654,7 +3653,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getResourceDetailsById(ResourceId: Long)(implicit reader: ClientResponseReader[ModelNull]): Future[ModelNull] = {
+  def getResourceDetailsById(ResourceId: Long)(implicit reader: ClientResponseReader[Any]): Future[Any] = {
     // create path and map variables
     val path = (addFmt("/resources/details/{resourceId}")
       replaceAll("\\{" + "resourceId" + "\\}", ResourceId.toString))
@@ -4338,8 +4337,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def transformarray(DeploymentName: String,
     VersionName: String,
     TransformName: String,
-    BatchRecord: Option[ModelNull] = None
-    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[ModelNull]]): Future[Base64NDArrayBody] = {
+    BatchRecord: Option[Any] = None
+    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[Any]]): Future[Base64NDArrayBody] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -4422,8 +4421,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def transformincrementalarray(DeploymentName: String,
     VersionName: String,
     TransformName: String,
-    SingleRecord: Option[ModelNull] = None
-    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[ModelNull]]): Future[Base64NDArrayBody] = {
+    SingleRecord: Option[Any] = None
+    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[Any]]): Future[Base64NDArrayBody] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -4477,7 +4476,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def transformprocessGet(DeploymentName: String,
     VersionName: String,
-    TransformName: String)(implicit reader: ClientResponseReader[ModelNull]): Future[ModelNull] = {
+    TransformName: String)(implicit reader: ClientResponseReader[Any]): Future[Any] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -4504,8 +4503,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def transformprocessPost(DeploymentName: String,
     VersionName: String,
     TransformName: String,
-    TransformProcess: Option[ModelNull] = None
-    )(implicit reader: ClientResponseReader[ModelNull], writer: RequestWriter[Option[ModelNull]]): Future[ModelNull] = {
+    TransformProcess: Option[Any] = None
+    )(implicit reader: ClientResponseReader[Any], writer: RequestWriter[Option[Any]]): Future[Any] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)

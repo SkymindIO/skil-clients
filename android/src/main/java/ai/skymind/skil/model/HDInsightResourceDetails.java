@@ -19,6 +19,8 @@ import java.io.Serializable;
 @ApiModel(description = "")
 public class HDInsightResourceDetails implements Serializable {
   
+  @SerializedName("@class")
+  private String _class = null;
   @SerializedName("resourceId")
   private Long resourceId = null;
   public enum TypeEnum {
@@ -37,6 +39,16 @@ public class HDInsightResourceDetails implements Serializable {
   private String resourceGroupName = null;
   @SerializedName("clusterName")
   private String clusterName = null;
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getClass() {
+    return _class;
+  }
+  public void setClass(String _class) {
+    this._class = _class;
+  }
 
   /**
    * ID of the resource
@@ -114,7 +126,8 @@ public class HDInsightResourceDetails implements Serializable {
       return false;
     }
     HDInsightResourceDetails hDInsightResourceDetails = (HDInsightResourceDetails) o;
-    return (this.resourceId == null ? hDInsightResourceDetails.resourceId == null : this.resourceId.equals(hDInsightResourceDetails.resourceId)) &&
+    return (this._class == null ? hDInsightResourceDetails._class == null : this._class.equals(hDInsightResourceDetails._class)) &&
+        (this.resourceId == null ? hDInsightResourceDetails.resourceId == null : this.resourceId.equals(hDInsightResourceDetails.resourceId)) &&
         (this.type == null ? hDInsightResourceDetails.type == null : this.type.equals(hDInsightResourceDetails.type)) &&
         (this.subType == null ? hDInsightResourceDetails.subType == null : this.subType.equals(hDInsightResourceDetails.subType)) &&
         (this.subscriptionId == null ? hDInsightResourceDetails.subscriptionId == null : this.subscriptionId.equals(hDInsightResourceDetails.subscriptionId)) &&
@@ -125,6 +138,7 @@ public class HDInsightResourceDetails implements Serializable {
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this._class == null ? 0: this._class.hashCode());
     result = 31 * result + (this.resourceId == null ? 0: this.resourceId.hashCode());
     result = 31 * result + (this.type == null ? 0: this.type.hashCode());
     result = 31 * result + (this.subType == null ? 0: this.subType.hashCode());
@@ -139,6 +153,7 @@ public class HDInsightResourceDetails implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class HDInsightResourceDetails {\n");
     
+    sb.append("  _class: ").append(_class).append("\n");
     sb.append("  resourceId: ").append(resourceId).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  subType: ").append(subType).append("\n");

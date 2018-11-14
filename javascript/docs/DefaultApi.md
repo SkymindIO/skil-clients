@@ -2714,7 +2714,7 @@ Name | Type | Description  | Notes
 
 <a name="getResourceDetailsById"></a>
 # **getResourceDetailsById**
-> ERRORUNKNOWN getResourceDetailsById(resourceId)
+> Object getResourceDetailsById(resourceId)
 
 Get the resource details with the specified resource ID
 
@@ -2754,7 +2754,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+**Object**
 
 ### Authorization
 
@@ -4371,7 +4371,7 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'batchRecord': new SkilClient.ERRORUNKNOWN() // ERRORUNKNOWN | The input batch of record arrays
+  'batchRecord': null // Object | The input batch of record arrays
 };
 
 var callback = function(error, data, response) {
@@ -4391,7 +4391,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **batchRecord** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input batch of record arrays | [optional] 
+ **batchRecord** | **Object**| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -4557,7 +4557,7 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'singleRecord': new SkilClient.ERRORUNKNOWN() // ERRORUNKNOWN | The input record array
+  'singleRecord': null // Object | The input record array
 };
 
 var callback = function(error, data, response) {
@@ -4577,7 +4577,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **singleRecord** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input record array | [optional] 
+ **singleRecord** | **Object**| The input record array | [optional] 
 
 ### Return type
 
@@ -4656,7 +4656,7 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessGet"></a>
 # **transformprocessGet**
-> ERRORUNKNOWN transformprocessGet(deploymentName, versionName, transformName)
+> Object transformprocessGet(deploymentName, versionName, transformName)
 
 Gets the JSON string of the deployed transform process (CSV or Image)
 
@@ -4700,7 +4700,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+**Object**
 
 ### Authorization
 
@@ -4713,7 +4713,7 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessPost"></a>
 # **transformprocessPost**
-> ERRORUNKNOWN transformprocessPost(deploymentName, versionName, transformName, opts)
+> Object transformprocessPost(deploymentName, versionName, transformName, opts)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
@@ -4737,7 +4737,7 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'transformProcess': new SkilClient.ERRORUNKNOWN() // ERRORUNKNOWN | The transform process to set
+  'transformProcess': null // Object | The transform process to set
 };
 
 var callback = function(error, data, response) {
@@ -4757,11 +4757,11 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **transformProcess** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The transform process to set | [optional] 
+ **transformProcess** | **Object**| The transform process to set | [optional] 
 
 ### Return type
 
-[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+**Object**
 
 ### Authorization
 

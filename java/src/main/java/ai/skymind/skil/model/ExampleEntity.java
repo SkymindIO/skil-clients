@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ExampleEntity
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-17T08:50:23.609+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-14T15:11:49.806+05:00")
 public class ExampleEntity {
   @SerializedName("exampleId")
   private String exampleId = null;
@@ -35,8 +35,8 @@ public class ExampleEntity {
   @SerializedName("exampleVersion")
   private Integer exampleVersion = null;
 
-  @SerializedName("int rowNumber")
-  private Integer intRowNumber = null;
+  @SerializedName("rowNumber")
+  private Integer rowNumber = null;
 
   @SerializedName("created")
   private Long created = null;
@@ -83,22 +83,22 @@ public class ExampleEntity {
     this.exampleVersion = exampleVersion;
   }
 
-  public ExampleEntity intRowNumber(Integer intRowNumber) {
-    this.intRowNumber = intRowNumber;
+  public ExampleEntity rowNumber(Integer rowNumber) {
+    this.rowNumber = rowNumber;
     return this;
   }
 
    /**
    * Row Number
-   * @return intRowNumber
+   * @return rowNumber
   **/
   @ApiModelProperty(value = "Row Number")
-  public Integer getIntRowNumber() {
-    return intRowNumber;
+  public Integer getRowNumber() {
+    return rowNumber;
   }
 
-  public void setIntRowNumber(Integer intRowNumber) {
-    this.intRowNumber = intRowNumber;
+  public void setRowNumber(Integer rowNumber) {
+    this.rowNumber = rowNumber;
   }
 
   public ExampleEntity created(Long created) {
@@ -167,7 +167,7 @@ public class ExampleEntity {
     ExampleEntity exampleEntity = (ExampleEntity) o;
     return Objects.equals(this.exampleId, exampleEntity.exampleId) &&
         Objects.equals(this.exampleVersion, exampleEntity.exampleVersion) &&
-        Objects.equals(this.intRowNumber, exampleEntity.intRowNumber) &&
+        Objects.equals(this.rowNumber, exampleEntity.rowNumber) &&
         Objects.equals(this.created, exampleEntity.created) &&
         Objects.equals(this.miniBatchId, exampleEntity.miniBatchId) &&
         Objects.equals(this.miniBatchVersion, exampleEntity.miniBatchVersion);
@@ -175,7 +175,7 @@ public class ExampleEntity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(exampleId, exampleVersion, intRowNumber, created, miniBatchId, miniBatchVersion);
+    return Objects.hash(exampleId, exampleVersion, rowNumber, created, miniBatchId, miniBatchVersion);
   }
 
 
@@ -186,7 +186,7 @@ public class ExampleEntity {
     
     sb.append("    exampleId: ").append(toIndentedString(exampleId)).append("\n");
     sb.append("    exampleVersion: ").append(toIndentedString(exampleVersion)).append("\n");
-    sb.append("    intRowNumber: ").append(toIndentedString(intRowNumber)).append("\n");
+    sb.append("    rowNumber: ").append(toIndentedString(rowNumber)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    miniBatchId: ").append(toIndentedString(miniBatchId)).append("\n");
     sb.append("    miniBatchVersion: ").append(toIndentedString(miniBatchVersion)).append("\n");

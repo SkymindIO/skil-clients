@@ -30,8 +30,8 @@ public class JobEntity implements Serializable {
   private Long computeResourceId = null;
   @SerializedName("storageResourceId")
   private Long storageResourceId = null;
-  @SerializedName("skilSparkMainArgs")
-  private String skilSparkMainArgs = null;
+  @SerializedName("jobArgs")
+  private String jobArgs = null;
   @SerializedName("runId")
   private String runId = null;
   public enum StatusEnum {
@@ -87,14 +87,14 @@ public class JobEntity implements Serializable {
   }
 
   /**
-   * SKILSparkMain class arguments
+   * Job arguments
    **/
-  @ApiModelProperty(value = "SKILSparkMain class arguments")
-  public String getSkilSparkMainArgs() {
-    return skilSparkMainArgs;
+  @ApiModelProperty(value = "Job arguments")
+  public String getJobArgs() {
+    return jobArgs;
   }
-  public void setSkilSparkMainArgs(String skilSparkMainArgs) {
-    this.skilSparkMainArgs = skilSparkMainArgs;
+  public void setJobArgs(String jobArgs) {
+    this.jobArgs = jobArgs;
   }
 
   /**
@@ -144,7 +144,7 @@ public class JobEntity implements Serializable {
         (this.jobType == null ? jobEntity.jobType == null : this.jobType.equals(jobEntity.jobType)) &&
         (this.computeResourceId == null ? jobEntity.computeResourceId == null : this.computeResourceId.equals(jobEntity.computeResourceId)) &&
         (this.storageResourceId == null ? jobEntity.storageResourceId == null : this.storageResourceId.equals(jobEntity.storageResourceId)) &&
-        (this.skilSparkMainArgs == null ? jobEntity.skilSparkMainArgs == null : this.skilSparkMainArgs.equals(jobEntity.skilSparkMainArgs)) &&
+        (this.jobArgs == null ? jobEntity.jobArgs == null : this.jobArgs.equals(jobEntity.jobArgs)) &&
         (this.runId == null ? jobEntity.runId == null : this.runId.equals(jobEntity.runId)) &&
         (this.status == null ? jobEntity.status == null : this.status.equals(jobEntity.status)) &&
         (this.outputFileName == null ? jobEntity.outputFileName == null : this.outputFileName.equals(jobEntity.outputFileName));
@@ -157,7 +157,7 @@ public class JobEntity implements Serializable {
     result = 31 * result + (this.jobType == null ? 0: this.jobType.hashCode());
     result = 31 * result + (this.computeResourceId == null ? 0: this.computeResourceId.hashCode());
     result = 31 * result + (this.storageResourceId == null ? 0: this.storageResourceId.hashCode());
-    result = 31 * result + (this.skilSparkMainArgs == null ? 0: this.skilSparkMainArgs.hashCode());
+    result = 31 * result + (this.jobArgs == null ? 0: this.jobArgs.hashCode());
     result = 31 * result + (this.runId == null ? 0: this.runId.hashCode());
     result = 31 * result + (this.status == null ? 0: this.status.hashCode());
     result = 31 * result + (this.outputFileName == null ? 0: this.outputFileName.hashCode());
@@ -173,7 +173,7 @@ public class JobEntity implements Serializable {
     sb.append("  jobType: ").append(jobType).append("\n");
     sb.append("  computeResourceId: ").append(computeResourceId).append("\n");
     sb.append("  storageResourceId: ").append(storageResourceId).append("\n");
-    sb.append("  skilSparkMainArgs: ").append(skilSparkMainArgs).append("\n");
+    sb.append("  jobArgs: ").append(jobArgs).append("\n");
     sb.append("  runId: ").append(runId).append("\n");
     sb.append("  status: ").append(status).append("\n");
     sb.append("  outputFileName: ").append(outputFileName).append("\n");

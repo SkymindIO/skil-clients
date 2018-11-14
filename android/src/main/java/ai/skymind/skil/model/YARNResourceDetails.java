@@ -19,6 +19,8 @@ import java.io.Serializable;
 @ApiModel(description = "")
 public class YARNResourceDetails implements Serializable {
   
+  @SerializedName("@class")
+  private String _class = null;
   @SerializedName("resourceId")
   private Long resourceId = null;
   public enum TypeEnum {
@@ -33,6 +35,16 @@ public class YARNResourceDetails implements Serializable {
   private SubTypeEnum subType = null;
   @SerializedName("localSparkHome")
   private String localSparkHome = null;
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getClass() {
+    return _class;
+  }
+  public void setClass(String _class) {
+    this._class = _class;
+  }
 
   /**
    * ID of the resource
@@ -88,7 +100,8 @@ public class YARNResourceDetails implements Serializable {
       return false;
     }
     YARNResourceDetails yARNResourceDetails = (YARNResourceDetails) o;
-    return (this.resourceId == null ? yARNResourceDetails.resourceId == null : this.resourceId.equals(yARNResourceDetails.resourceId)) &&
+    return (this._class == null ? yARNResourceDetails._class == null : this._class.equals(yARNResourceDetails._class)) &&
+        (this.resourceId == null ? yARNResourceDetails.resourceId == null : this.resourceId.equals(yARNResourceDetails.resourceId)) &&
         (this.type == null ? yARNResourceDetails.type == null : this.type.equals(yARNResourceDetails.type)) &&
         (this.subType == null ? yARNResourceDetails.subType == null : this.subType.equals(yARNResourceDetails.subType)) &&
         (this.localSparkHome == null ? yARNResourceDetails.localSparkHome == null : this.localSparkHome.equals(yARNResourceDetails.localSparkHome));
@@ -97,6 +110,7 @@ public class YARNResourceDetails implements Serializable {
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this._class == null ? 0: this._class.hashCode());
     result = 31 * result + (this.resourceId == null ? 0: this.resourceId.hashCode());
     result = 31 * result + (this.type == null ? 0: this.type.hashCode());
     result = 31 * result + (this.subType == null ? 0: this.subType.hashCode());
@@ -109,6 +123,7 @@ public class YARNResourceDetails implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class YARNResourceDetails {\n");
     
+    sb.append("  _class: ").append(_class).append("\n");
     sb.append("  resourceId: ").append(resourceId).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  subType: ").append(subType).append("\n");

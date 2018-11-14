@@ -174,10 +174,10 @@ open class DefaultAPI: APIBase {
        - name: api_key
      - examples: [{contentType=application/json, example={
   "exampleId" : "exampleId",
-  "int rowNumber" : 6,
   "created" : 1,
   "miniBatchId" : "miniBatchId",
   "miniBatchVersion" : 5,
+  "rowNumber" : 6,
   "exampleVersion" : 0
 }}]
      - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
@@ -796,7 +796,7 @@ open class DefaultAPI: APIBase {
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -1756,7 +1756,7 @@ open class DefaultAPI: APIBase {
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -1765,7 +1765,7 @@ open class DefaultAPI: APIBase {
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -1978,17 +1978,17 @@ open class DefaultAPI: APIBase {
        - name: api_key
      - examples: [{contentType=application/json, example=[ {
   "exampleId" : "exampleId",
-  "int rowNumber" : 6,
   "created" : 1,
   "miniBatchId" : "miniBatchId",
   "miniBatchVersion" : 5,
+  "rowNumber" : 6,
   "exampleVersion" : 0
 }, {
   "exampleId" : "exampleId",
-  "int rowNumber" : 6,
   "created" : 1,
   "miniBatchId" : "miniBatchId",
   "miniBatchVersion" : 5,
+  "rowNumber" : 6,
   "exampleVersion" : 0
 } ]}]
      - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
@@ -2141,7 +2141,7 @@ open class DefaultAPI: APIBase {
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -2550,7 +2550,7 @@ open class DefaultAPI: APIBase {
      - parameter resourceId: (path) ID of the resource 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getResourceDetailsById(resourceId: Int64, completion: @escaping ((_ data: ERRORUNKNOWN?, _ error: ErrorResponse?) -> Void)) {
+    open class func getResourceDetailsById(resourceId: Int64, completion: @escaping ((_ data: Any?, _ error: ErrorResponse?) -> Void)) {
         getResourceDetailsByIdWithRequestBuilder(resourceId: resourceId).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -2564,11 +2564,11 @@ open class DefaultAPI: APIBase {
      - API Key:
        - type: apiKey authorization 
        - name: api_key
-     - examples: [{contentType=application/json, example=""}]
+     - examples: [{contentType=application/json, example="{}"}]
      - parameter resourceId: (path) ID of the resource 
-     - returns: RequestBuilder<ERRORUNKNOWN> 
+     - returns: RequestBuilder<Any> 
      */
-    open class func getResourceDetailsByIdWithRequestBuilder(resourceId: Int64) -> RequestBuilder<ERRORUNKNOWN> {
+    open class func getResourceDetailsByIdWithRequestBuilder(resourceId: Int64) -> RequestBuilder<Any> {
         var path = "/resources/details/{resourceId}"
         let resourceIdPreEscape = "\(resourceId)"
         let resourceIdPostEscape = resourceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2578,7 +2578,7 @@ open class DefaultAPI: APIBase {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<ERRORUNKNOWN>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<Any>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -3898,7 +3898,7 @@ open class DefaultAPI: APIBase {
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -4004,7 +4004,7 @@ open class DefaultAPI: APIBase {
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -4092,7 +4092,7 @@ open class DefaultAPI: APIBase {
      - parameter batchRecord: (body) The input batch of record arrays (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformarray(deploymentName: String, versionName: String, transformName: String, batchRecord: ERRORUNKNOWN? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+    open class func transformarray(deploymentName: String, versionName: String, transformName: String, batchRecord: Any? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
         transformarrayWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, batchRecord: batchRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -4114,7 +4114,7 @@ open class DefaultAPI: APIBase {
      - parameter batchRecord: (body) The input batch of record arrays (optional)
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformarrayWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, batchRecord: ERRORUNKNOWN? = nil) -> RequestBuilder<Base64NDArrayBody> {
+    open class func transformarrayWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, batchRecord: Any? = nil) -> RequestBuilder<Base64NDArrayBody> {
         var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -4252,7 +4252,7 @@ open class DefaultAPI: APIBase {
      - parameter singleRecord: (body) The input record array (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformincrementalarray(deploymentName: String, versionName: String, transformName: String, singleRecord: ERRORUNKNOWN? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+    open class func transformincrementalarray(deploymentName: String, versionName: String, transformName: String, singleRecord: Any? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
         transformincrementalarrayWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, singleRecord: singleRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -4274,7 +4274,7 @@ open class DefaultAPI: APIBase {
      - parameter singleRecord: (body) The input record array (optional)
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformincrementalarrayWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, singleRecord: ERRORUNKNOWN? = nil) -> RequestBuilder<Base64NDArrayBody> {
+    open class func transformincrementalarrayWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, singleRecord: Any? = nil) -> RequestBuilder<Base64NDArrayBody> {
         var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -4359,7 +4359,7 @@ open class DefaultAPI: APIBase {
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformprocessGet(deploymentName: String, versionName: String, transformName: String, completion: @escaping ((_ data: ERRORUNKNOWN?, _ error: ErrorResponse?) -> Void)) {
+    open class func transformprocessGet(deploymentName: String, versionName: String, transformName: String, completion: @escaping ((_ data: Any?, _ error: ErrorResponse?) -> Void)) {
         transformprocessGetWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -4372,13 +4372,13 @@ open class DefaultAPI: APIBase {
      - API Key:
        - type: apiKey authorization 
        - name: api_key
-     - examples: [{contentType=application/json, example=""}]
+     - examples: [{contentType=application/json, example="{}"}]
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
-     - returns: RequestBuilder<ERRORUNKNOWN> 
+     - returns: RequestBuilder<Any> 
      */
-    open class func transformprocessGetWithRequestBuilder(deploymentName: String, versionName: String, transformName: String) -> RequestBuilder<ERRORUNKNOWN> {
+    open class func transformprocessGetWithRequestBuilder(deploymentName: String, versionName: String, transformName: String) -> RequestBuilder<Any> {
         var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -4394,7 +4394,7 @@ open class DefaultAPI: APIBase {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<ERRORUNKNOWN>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<Any>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -4407,7 +4407,7 @@ open class DefaultAPI: APIBase {
      - parameter transformProcess: (body) The transform process to set (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformprocessPost(deploymentName: String, versionName: String, transformName: String, transformProcess: ERRORUNKNOWN? = nil, completion: @escaping ((_ data: ERRORUNKNOWN?, _ error: ErrorResponse?) -> Void)) {
+    open class func transformprocessPost(deploymentName: String, versionName: String, transformName: String, transformProcess: Any? = nil, completion: @escaping ((_ data: Any?, _ error: ErrorResponse?) -> Void)) {
         transformprocessPostWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, transformProcess: transformProcess).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -4420,14 +4420,14 @@ open class DefaultAPI: APIBase {
      - API Key:
        - type: apiKey authorization 
        - name: api_key
-     - examples: [{contentType=application/json, example=""}]
+     - examples: [{contentType=application/json, example="{}"}]
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
      - parameter transformProcess: (body) The transform process to set (optional)
-     - returns: RequestBuilder<ERRORUNKNOWN> 
+     - returns: RequestBuilder<Any> 
      */
-    open class func transformprocessPostWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, transformProcess: ERRORUNKNOWN? = nil) -> RequestBuilder<ERRORUNKNOWN> {
+    open class func transformprocessPostWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, transformProcess: Any? = nil) -> RequestBuilder<Any> {
         var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -4443,7 +4443,7 @@ open class DefaultAPI: APIBase {
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<ERRORUNKNOWN>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<Any>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }

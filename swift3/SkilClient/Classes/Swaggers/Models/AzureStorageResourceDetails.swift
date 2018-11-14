@@ -16,6 +16,7 @@ open class AzureStorageResourceDetails: JSONEncodable {
     public enum SubType: String { 
         case azureStorage = "AzureStorage"
     }
+    public var _class: String?
     /** ID of the resource */
     public var resourceId: Int64?
     /** Resource type */
@@ -30,6 +31,7 @@ open class AzureStorageResourceDetails: JSONEncodable {
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
+        nillableDictionary["@class"] = self._class
         nillableDictionary["resourceId"] = self.resourceId?.encodeToJSON()
         nillableDictionary["type"] = self.type?.rawValue
         nillableDictionary["subType"] = self.subType?.rawValue

@@ -3,6 +3,8 @@ package ai.skymind.skil.client.model {
 
     [XmlRootNode(name="AzureStorageResourceDetails")]
     public class AzureStorageResourceDetails {
+                [XmlElement(name="@class")]
+        public var @Class: String = null;
         /* ID of the resource */
         [XmlElement(name="resourceId")]
         public var resourceId: Number = 0;
@@ -18,6 +20,7 @@ package ai.skymind.skil.client.model {
 
     public function toString(): String {
         var str: String = "AzureStorageResourceDetails: ";
+        str += " (@Class: " + @Class + ")";
         str += " (resourceId: " + resourceId + ")";
         str += " (type: " + type + ")";
         str += " (subType: " + subType + ")";

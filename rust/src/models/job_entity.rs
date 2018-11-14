@@ -26,9 +26,9 @@ pub struct JobEntity {
   /// Storage resource ID
   #[serde(rename = "storageResourceId")]
   storage_resource_id: Option<i64>,
-  /// SKILSparkMain class arguments
-  #[serde(rename = "skilSparkMainArgs")]
-  skil_spark_main_args: Option<String>,
+  /// Job arguments
+  #[serde(rename = "jobArgs")]
+  job_args: Option<String>,
   /// Job run ID
   #[serde(rename = "runId")]
   run_id: Option<String>,
@@ -47,7 +47,7 @@ impl JobEntity {
       job_type: None,
       compute_resource_id: None,
       storage_resource_id: None,
-      skil_spark_main_args: None,
+      job_args: None,
       run_id: None,
       status: None,
       output_file_name: None
@@ -122,21 +122,21 @@ impl JobEntity {
     self.storage_resource_id = None;
   }
 
-  pub fn set_skil_spark_main_args(&mut self, skil_spark_main_args: String) {
-    self.skil_spark_main_args = Some(skil_spark_main_args);
+  pub fn set_job_args(&mut self, job_args: String) {
+    self.job_args = Some(job_args);
   }
 
-  pub fn with_skil_spark_main_args(mut self, skil_spark_main_args: String) -> JobEntity {
-    self.skil_spark_main_args = Some(skil_spark_main_args);
+  pub fn with_job_args(mut self, job_args: String) -> JobEntity {
+    self.job_args = Some(job_args);
     self
   }
 
-  pub fn skil_spark_main_args(&self) -> Option<&String> {
-    self.skil_spark_main_args.as_ref()
+  pub fn job_args(&self) -> Option<&String> {
+    self.job_args.as_ref()
   }
 
-  pub fn reset_skil_spark_main_args(&mut self) {
-    self.skil_spark_main_args = None;
+  pub fn reset_job_args(&mut self) {
+    self.job_args = None;
   }
 
   pub fn set_run_id(&mut self, run_id: String) {

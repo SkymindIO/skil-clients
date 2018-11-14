@@ -14,6 +14,8 @@ use serde_json::Value;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct GoogleStorageResourceDetails {
+  #[serde(rename = "@class")]
+  class: Option<String>,
   /// ID of the resource
   #[serde(rename = "resourceId")]
   resource_id: Option<i64>,
@@ -34,12 +36,30 @@ pub struct GoogleStorageResourceDetails {
 impl GoogleStorageResourceDetails {
   pub fn new() -> GoogleStorageResourceDetails {
     GoogleStorageResourceDetails {
+      class: None,
       resource_id: None,
       _type: None,
       sub_type: None,
       project_id: None,
       bucket_name: None
     }
+  }
+
+  pub fn set_class(&mut self, class: String) {
+    self.class = Some(class);
+  }
+
+  pub fn with_class(mut self, class: String) -> GoogleStorageResourceDetails {
+    self.class = Some(class);
+    self
+  }
+
+  pub fn class(&self) -> Option<&String> {
+    self.class.as_ref()
+  }
+
+  pub fn reset_class(&mut self) {
+    self.class = None;
   }
 
   pub fn set_resource_id(&mut self, resource_id: i64) {

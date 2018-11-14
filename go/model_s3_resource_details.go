@@ -10,6 +10,7 @@
 package skilclient
 
 type S3ResourceDetails struct {
+	Class string `json:"@class,omitempty"`
 	// ID of the resource
 	ResourceId int64 `json:"resourceId,omitempty"`
 	// Resource type

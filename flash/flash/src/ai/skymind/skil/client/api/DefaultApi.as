@@ -22,7 +22,6 @@ import ai.skymind.skil.client.model.Credentials;
 import ai.skymind.skil.client.model.DeploymentResponse;
 import ai.skymind.skil.client.model.DetectionResult;
 import ai.skymind.skil.client.model.DownloadOutputFileRequest;
-import ai.skymind.skil.client.model.ERRORUNKNOWN;
 import ai.skymind.skil.client.model.EvaluationResultsEntity;
 import ai.skymind.skil.client.model.ExampleEntity;
 import ai.skymind.skil.client.model.ExperimentEntity;
@@ -1797,7 +1796,7 @@ public class DefaultApi extends SwaggerApi {
     }
 
     /*
-     * Returns ERRORUNKNOWN 
+     * Returns Object 
      */
     public function get_resource_details_by_id (resourceId: Number): String {
         // create path and map variables
@@ -1821,7 +1820,7 @@ public class DefaultApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "get_resource_details_by_id";
 
-        token.returnType = ERRORUNKNOWN;
+        token.returnType = Object;
         return requestId;
 
     }
@@ -2877,7 +2876,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformarray (deploymentName: String, versionName: String, transformName: String, batchRecord: ERRORUNKNOWN): String {
+    public function transformarray (deploymentName: String, versionName: String, transformName: String, batchRecord: Object): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
@@ -3003,7 +3002,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformincrementalarray (deploymentName: String, versionName: String, transformName: String, singleRecord: ERRORUNKNOWN): String {
+    public function transformincrementalarray (deploymentName: String, versionName: String, transformName: String, singleRecord: Object): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
@@ -3085,7 +3084,7 @@ public class DefaultApi extends SwaggerApi {
     }
 
     /*
-     * Returns ERRORUNKNOWN 
+     * Returns Object 
      */
     public function transformprocess_get (deploymentName: String, versionName: String, transformName: String): String {
         // create path and map variables
@@ -3117,15 +3116,15 @@ public class DefaultApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "transformprocess_get";
 
-        token.returnType = ERRORUNKNOWN;
+        token.returnType = Object;
         return requestId;
 
     }
 
     /*
-     * Returns ERRORUNKNOWN 
+     * Returns Object 
      */
-    public function transformprocess_post (deploymentName: String, versionName: String, transformName: String, transformProcess: ERRORUNKNOWN): String {
+    public function transformprocess_post (deploymentName: String, versionName: String, transformName: String, transformProcess: Object): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
@@ -3159,7 +3158,7 @@ public class DefaultApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "transformprocess_post";
 
-        token.returnType = ERRORUNKNOWN;
+        token.returnType = Object;
         return requestId;
 
     }

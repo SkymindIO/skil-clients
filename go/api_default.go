@@ -5021,15 +5021,15 @@ Get the details for the resource, for the given ID. Note that a &#39;ResourceDet
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param resourceId ID of the resource
 
-@return ErrorUnknown
+@return interface{}
 */
-func (a *DefaultApiService) GetResourceDetailsById(ctx context.Context, resourceId int64) (ErrorUnknown, *http.Response, error) {
+func (a *DefaultApiService) GetResourceDetailsById(ctx context.Context, resourceId int64) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue ErrorUnknown
+		localVarReturnValue interface{}
 	)
 
 	// create path and map variables
@@ -5101,7 +5101,7 @@ func (a *DefaultApiService) GetResourceDetailsById(ctx context.Context, resource
 		}
 		
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ErrorUnknown
+			var v interface{}
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -8136,7 +8136,7 @@ DefaultApiService Takes a batch input arrays and transforms it
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformarrayOpts - Optional Parameters:
-     * @param "BatchRecord" (optional.Interface of ErrorUnknown) -  The input batch of record arrays
+     * @param "BatchRecord" (optional.Interface of interface{}) -  The input batch of record arrays
 
 @return Base64NdArrayBody
 */
@@ -8184,9 +8184,9 @@ func (a *DefaultApiService) Transformarray(ctx context.Context, deploymentName s
 	// body params
 	if localVarOptionals != nil && localVarOptionals.BatchRecord.IsSet() {
 		
-		localVarOptionalBatchRecord, localVarOptionalBatchRecordok := localVarOptionals.BatchRecord.Value().(ErrorUnknown)
+		localVarOptionalBatchRecord, localVarOptionalBatchRecordok := localVarOptionals.BatchRecord.Value().(interface{})
 		if !localVarOptionalBatchRecordok {
-				return localVarReturnValue, nil, reportError("batchRecord should be ErrorUnknown")
+				return localVarReturnValue, nil, reportError("batchRecord should be interface{}")
 		}
 		localVarPostBody = &localVarOptionalBatchRecord
 	}
@@ -8487,7 +8487,7 @@ DefaultApiService Same as /transformincremental but returns Base64NDArrayBody.
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformincrementalarrayOpts - Optional Parameters:
-     * @param "SingleRecord" (optional.Interface of ErrorUnknown) -  The input record array
+     * @param "SingleRecord" (optional.Interface of interface{}) -  The input record array
 
 @return Base64NdArrayBody
 */
@@ -8535,9 +8535,9 @@ func (a *DefaultApiService) Transformincrementalarray(ctx context.Context, deplo
 	// body params
 	if localVarOptionals != nil && localVarOptionals.SingleRecord.IsSet() {
 		
-		localVarOptionalSingleRecord, localVarOptionalSingleRecordok := localVarOptionals.SingleRecord.Value().(ErrorUnknown)
+		localVarOptionalSingleRecord, localVarOptionalSingleRecordok := localVarOptionals.SingleRecord.Value().(interface{})
 		if !localVarOptionalSingleRecordok {
-				return localVarReturnValue, nil, reportError("singleRecord should be ErrorUnknown")
+				return localVarReturnValue, nil, reportError("singleRecord should be interface{}")
 		}
 		localVarPostBody = &localVarOptionalSingleRecord
 	}
@@ -8721,15 +8721,15 @@ DefaultApiService Gets the JSON string of the deployed transform process (CSV or
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
 
-@return ErrorUnknown
+@return interface{}
 */
-func (a *DefaultApiService) TransformprocessGet(ctx context.Context, deploymentName string, versionName string, transformName string) (ErrorUnknown, *http.Response, error) {
+func (a *DefaultApiService) TransformprocessGet(ctx context.Context, deploymentName string, versionName string, transformName string) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue ErrorUnknown
+		localVarReturnValue interface{}
 	)
 
 	// create path and map variables
@@ -8803,7 +8803,7 @@ func (a *DefaultApiService) TransformprocessGet(ctx context.Context, deploymentN
 		}
 		
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ErrorUnknown
+			var v interface{}
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -8826,22 +8826,22 @@ DefaultApiService Sets the deployed (CSV or Image) transform process through the
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformprocessPostOpts - Optional Parameters:
-     * @param "TransformProcess" (optional.Interface of ErrorUnknown) -  The transform process to set
+     * @param "TransformProcess" (optional.Interface of interface{}) -  The transform process to set
 
-@return ErrorUnknown
+@return interface{}
 */
 
 type TransformprocessPostOpts struct { 
 	TransformProcess optional.Interface
 }
 
-func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformprocessPostOpts) (ErrorUnknown, *http.Response, error) {
+func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformprocessPostOpts) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue ErrorUnknown
+		localVarReturnValue interface{}
 	)
 
 	// create path and map variables
@@ -8874,9 +8874,9 @@ func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deployment
 	// body params
 	if localVarOptionals != nil && localVarOptionals.TransformProcess.IsSet() {
 		
-		localVarOptionalTransformProcess, localVarOptionalTransformProcessok := localVarOptionals.TransformProcess.Value().(ErrorUnknown)
+		localVarOptionalTransformProcess, localVarOptionalTransformProcessok := localVarOptionals.TransformProcess.Value().(interface{})
 		if !localVarOptionalTransformProcessok {
-				return localVarReturnValue, nil, reportError("transformProcess should be ErrorUnknown")
+				return localVarReturnValue, nil, reportError("transformProcess should be interface{}")
 		}
 		localVarPostBody = &localVarOptionalTransformProcess
 	}
@@ -8924,7 +8924,7 @@ func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deployment
 		}
 		
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ErrorUnknown
+			var v interface{}
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

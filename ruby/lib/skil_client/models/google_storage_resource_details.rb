@@ -14,6 +14,8 @@ require 'date'
 
 module SkilCient
   class GoogleStorageResourceDetails
+    attr_accessor :_class
+
     # ID of the resource
     attr_accessor :resource_id
 
@@ -54,6 +56,7 @@ module SkilCient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'_class' => :'@class',
         :'resource_id' => :'resourceId',
         :'type' => :'type',
         :'sub_type' => :'subType',
@@ -65,6 +68,7 @@ module SkilCient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'_class' => :'String',
         :'resource_id' => :'Integer',
         :'type' => :'String',
         :'sub_type' => :'String',
@@ -80,6 +84,12 @@ module SkilCient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'@class')
+        self._class = attributes[:'@class']
+      else
+        self._class = 'io.skymind.resource.model.subtypes.storage.GoogleStorageResourceDetails'
+      end
 
       if attributes.has_key?(:'resourceId')
         self.resource_id = attributes[:'resourceId']
@@ -144,6 +154,7 @@ module SkilCient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          _class == o._class &&
           resource_id == o.resource_id &&
           type == o.type &&
           sub_type == o.sub_type &&
@@ -160,7 +171,7 @@ module SkilCient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [resource_id, type, sub_type, project_id, bucket_name].hash
+      [_class, resource_id, type, sub_type, project_id, bucket_name].hash
     end
 
     # Builds the object from hash

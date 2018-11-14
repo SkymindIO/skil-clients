@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'ai/skymind/skil/model/AddCredentialsRequest', 'ai/skymind/skil/model/AddExampleRequest', 'ai/skymind/skil/model/AddModelHistoryRequest', 'ai/skymind/skil/model/AddResourceRequest', 'ai/skymind/skil/model/AggregatePrediction', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/Base64NDArrayBodyKNN', 'ai/skymind/skil/model/BatchCSVRecord', 'ai/skymind/skil/model/BestModel', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/CreateDeploymentRequest', 'ai/skymind/skil/model/CreateJobRequest', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeploymentResponse', 'ai/skymind/skil/model/DetectionResult', 'ai/skymind/skil/model/DownloadOutputFileRequest', 'ai/skymind/skil/model/ERRORUNKNOWN', 'ai/skymind/skil/model/EvaluationResultsEntity', 'ai/skymind/skil/model/ExampleEntity', 'ai/skymind/skil/model/ExperimentEntity', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/ImportModelRequest', 'ai/skymind/skil/model/InlineResponse200', 'ai/skymind/skil/model/JobEntity', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/MetaData', 'ai/skymind/skil/model/MinibatchEntity', 'ai/skymind/skil/model/ModelEntity', 'ai/skymind/skil/model/ModelFeedBackRequest', 'ai/skymind/skil/model/ModelHistoryEntity', 'ai/skymind/skil/model/ModelInstanceEntity', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/MultiPredictRequest', 'ai/skymind/skil/model/MultiPredictResponse', 'ai/skymind/skil/model/NearestNeighborRequest', 'ai/skymind/skil/model/NearestNeighborsResults', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Resource', 'ai/skymind/skil/model/ResourceCredentials', 'ai/skymind/skil/model/ResourceGroup', 'ai/skymind/skil/model/SetState', 'ai/skymind/skil/model/SingleCSVRecord', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/model/UpdateBestModel'], factory);
+    define(['ApiClient', 'ai/skymind/skil/model/AddCredentialsRequest', 'ai/skymind/skil/model/AddExampleRequest', 'ai/skymind/skil/model/AddModelHistoryRequest', 'ai/skymind/skil/model/AddResourceRequest', 'ai/skymind/skil/model/AggregatePrediction', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/Base64NDArrayBodyKNN', 'ai/skymind/skil/model/BatchCSVRecord', 'ai/skymind/skil/model/BestModel', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/CreateDeploymentRequest', 'ai/skymind/skil/model/CreateJobRequest', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeploymentResponse', 'ai/skymind/skil/model/DetectionResult', 'ai/skymind/skil/model/DownloadOutputFileRequest', 'ai/skymind/skil/model/EvaluationResultsEntity', 'ai/skymind/skil/model/ExampleEntity', 'ai/skymind/skil/model/ExperimentEntity', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/ImportModelRequest', 'ai/skymind/skil/model/InlineResponse200', 'ai/skymind/skil/model/JobEntity', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/MetaData', 'ai/skymind/skil/model/MinibatchEntity', 'ai/skymind/skil/model/ModelEntity', 'ai/skymind/skil/model/ModelFeedBackRequest', 'ai/skymind/skil/model/ModelHistoryEntity', 'ai/skymind/skil/model/ModelInstanceEntity', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/MultiPredictRequest', 'ai/skymind/skil/model/MultiPredictResponse', 'ai/skymind/skil/model/NearestNeighborRequest', 'ai/skymind/skil/model/NearestNeighborsResults', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Resource', 'ai/skymind/skil/model/ResourceCredentials', 'ai/skymind/skil/model/ResourceGroup', 'ai/skymind/skil/model/SetState', 'ai/skymind/skil/model/SingleCSVRecord', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/model/UpdateBestModel'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/AddCredentialsRequest'), require('../ai/skymind/skil/model/AddExampleRequest'), require('../ai/skymind/skil/model/AddModelHistoryRequest'), require('../ai/skymind/skil/model/AddResourceRequest'), require('../ai/skymind/skil/model/AggregatePrediction'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/Base64NDArrayBodyKNN'), require('../ai/skymind/skil/model/BatchCSVRecord'), require('../ai/skymind/skil/model/BestModel'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/CreateDeploymentRequest'), require('../ai/skymind/skil/model/CreateJobRequest'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeploymentResponse'), require('../ai/skymind/skil/model/DetectionResult'), require('../ai/skymind/skil/model/DownloadOutputFileRequest'), require('../ai/skymind/skil/model/ERRORUNKNOWN'), require('../ai/skymind/skil/model/EvaluationResultsEntity'), require('../ai/skymind/skil/model/ExampleEntity'), require('../ai/skymind/skil/model/ExperimentEntity'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/ImportModelRequest'), require('../ai/skymind/skil/model/InlineResponse200'), require('../ai/skymind/skil/model/JobEntity'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/MetaData'), require('../ai/skymind/skil/model/MinibatchEntity'), require('../ai/skymind/skil/model/ModelEntity'), require('../ai/skymind/skil/model/ModelFeedBackRequest'), require('../ai/skymind/skil/model/ModelHistoryEntity'), require('../ai/skymind/skil/model/ModelInstanceEntity'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/MultiPredictRequest'), require('../ai/skymind/skil/model/MultiPredictResponse'), require('../ai/skymind/skil/model/NearestNeighborRequest'), require('../ai/skymind/skil/model/NearestNeighborsResults'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/Resource'), require('../ai/skymind/skil/model/ResourceCredentials'), require('../ai/skymind/skil/model/ResourceGroup'), require('../ai/skymind/skil/model/SetState'), require('../ai/skymind/skil/model/SingleCSVRecord'), require('../ai/skymind/skil/model/Token'), require('../ai/skymind/skil/model/UpdateBestModel'));
+    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/AddCredentialsRequest'), require('../ai/skymind/skil/model/AddExampleRequest'), require('../ai/skymind/skil/model/AddModelHistoryRequest'), require('../ai/skymind/skil/model/AddResourceRequest'), require('../ai/skymind/skil/model/AggregatePrediction'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/Base64NDArrayBodyKNN'), require('../ai/skymind/skil/model/BatchCSVRecord'), require('../ai/skymind/skil/model/BestModel'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/CreateDeploymentRequest'), require('../ai/skymind/skil/model/CreateJobRequest'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeploymentResponse'), require('../ai/skymind/skil/model/DetectionResult'), require('../ai/skymind/skil/model/DownloadOutputFileRequest'), require('../ai/skymind/skil/model/EvaluationResultsEntity'), require('../ai/skymind/skil/model/ExampleEntity'), require('../ai/skymind/skil/model/ExperimentEntity'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/ImportModelRequest'), require('../ai/skymind/skil/model/InlineResponse200'), require('../ai/skymind/skil/model/JobEntity'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/MetaData'), require('../ai/skymind/skil/model/MinibatchEntity'), require('../ai/skymind/skil/model/ModelEntity'), require('../ai/skymind/skil/model/ModelFeedBackRequest'), require('../ai/skymind/skil/model/ModelHistoryEntity'), require('../ai/skymind/skil/model/ModelInstanceEntity'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/MultiPredictRequest'), require('../ai/skymind/skil/model/MultiPredictResponse'), require('../ai/skymind/skil/model/NearestNeighborRequest'), require('../ai/skymind/skil/model/NearestNeighborsResults'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/Resource'), require('../ai/skymind/skil/model/ResourceCredentials'), require('../ai/skymind/skil/model/ResourceGroup'), require('../ai/skymind/skil/model/SetState'), require('../ai/skymind/skil/model/SingleCSVRecord'), require('../ai/skymind/skil/model/Token'), require('../ai/skymind/skil/model/UpdateBestModel'));
   } else {
     // Browser globals (root is window)
     if (!root.SkilClient) {
       root.SkilClient = {};
     }
-    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.AddCredentialsRequest, root.SkilClient.AddExampleRequest, root.SkilClient.AddModelHistoryRequest, root.SkilClient.AddResourceRequest, root.SkilClient.AggregatePrediction, root.SkilClient.Base64NDArrayBody, root.SkilClient.Base64NDArrayBodyKNN, root.SkilClient.BatchCSVRecord, root.SkilClient.BestModel, root.SkilClient.ClassificationResult, root.SkilClient.CreateDeploymentRequest, root.SkilClient.CreateJobRequest, root.SkilClient.Credentials, root.SkilClient.DeploymentResponse, root.SkilClient.DetectionResult, root.SkilClient.DownloadOutputFileRequest, root.SkilClient.ERRORUNKNOWN, root.SkilClient.EvaluationResultsEntity, root.SkilClient.ExampleEntity, root.SkilClient.ExperimentEntity, root.SkilClient.FileUploadList, root.SkilClient.ImportModelRequest, root.SkilClient.InlineResponse200, root.SkilClient.JobEntity, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.MetaData, root.SkilClient.MinibatchEntity, root.SkilClient.ModelEntity, root.SkilClient.ModelFeedBackRequest, root.SkilClient.ModelHistoryEntity, root.SkilClient.ModelInstanceEntity, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.MultiPredictRequest, root.SkilClient.MultiPredictResponse, root.SkilClient.NearestNeighborRequest, root.SkilClient.NearestNeighborsResults, root.SkilClient.Prediction, root.SkilClient.Resource, root.SkilClient.ResourceCredentials, root.SkilClient.ResourceGroup, root.SkilClient.SetState, root.SkilClient.SingleCSVRecord, root.SkilClient.Token, root.SkilClient.UpdateBestModel);
+    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.AddCredentialsRequest, root.SkilClient.AddExampleRequest, root.SkilClient.AddModelHistoryRequest, root.SkilClient.AddResourceRequest, root.SkilClient.AggregatePrediction, root.SkilClient.Base64NDArrayBody, root.SkilClient.Base64NDArrayBodyKNN, root.SkilClient.BatchCSVRecord, root.SkilClient.BestModel, root.SkilClient.ClassificationResult, root.SkilClient.CreateDeploymentRequest, root.SkilClient.CreateJobRequest, root.SkilClient.Credentials, root.SkilClient.DeploymentResponse, root.SkilClient.DetectionResult, root.SkilClient.DownloadOutputFileRequest, root.SkilClient.EvaluationResultsEntity, root.SkilClient.ExampleEntity, root.SkilClient.ExperimentEntity, root.SkilClient.FileUploadList, root.SkilClient.ImportModelRequest, root.SkilClient.InlineResponse200, root.SkilClient.JobEntity, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.MetaData, root.SkilClient.MinibatchEntity, root.SkilClient.ModelEntity, root.SkilClient.ModelFeedBackRequest, root.SkilClient.ModelHistoryEntity, root.SkilClient.ModelInstanceEntity, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.MultiPredictRequest, root.SkilClient.MultiPredictResponse, root.SkilClient.NearestNeighborRequest, root.SkilClient.NearestNeighborsResults, root.SkilClient.Prediction, root.SkilClient.Resource, root.SkilClient.ResourceCredentials, root.SkilClient.ResourceGroup, root.SkilClient.SetState, root.SkilClient.SingleCSVRecord, root.SkilClient.Token, root.SkilClient.UpdateBestModel);
   }
-}(this, function(ApiClient, AddCredentialsRequest, AddExampleRequest, AddModelHistoryRequest, AddResourceRequest, AggregatePrediction, Base64NDArrayBody, Base64NDArrayBodyKNN, BatchCSVRecord, BestModel, ClassificationResult, CreateDeploymentRequest, CreateJobRequest, Credentials, DeploymentResponse, DetectionResult, DownloadOutputFileRequest, ERRORUNKNOWN, EvaluationResultsEntity, ExampleEntity, ExperimentEntity, FileUploadList, ImportModelRequest, InlineResponse200, JobEntity, JsonArrayResponse, LogBatch, LogRequest, MetaData, MinibatchEntity, ModelEntity, ModelFeedBackRequest, ModelHistoryEntity, ModelInstanceEntity, ModelStatus, MultiClassClassificationResult, MultiPredictRequest, MultiPredictResponse, NearestNeighborRequest, NearestNeighborsResults, Prediction, Resource, ResourceCredentials, ResourceGroup, SetState, SingleCSVRecord, Token, UpdateBestModel) {
+}(this, function(ApiClient, AddCredentialsRequest, AddExampleRequest, AddModelHistoryRequest, AddResourceRequest, AggregatePrediction, Base64NDArrayBody, Base64NDArrayBodyKNN, BatchCSVRecord, BestModel, ClassificationResult, CreateDeploymentRequest, CreateJobRequest, Credentials, DeploymentResponse, DetectionResult, DownloadOutputFileRequest, EvaluationResultsEntity, ExampleEntity, ExperimentEntity, FileUploadList, ImportModelRequest, InlineResponse200, JobEntity, JsonArrayResponse, LogBatch, LogRequest, MetaData, MinibatchEntity, ModelEntity, ModelFeedBackRequest, ModelHistoryEntity, ModelInstanceEntity, ModelStatus, MultiClassClassificationResult, MultiPredictRequest, MultiPredictResponse, NearestNeighborRequest, NearestNeighborsResults, Prediction, Resource, ResourceCredentials, ResourceGroup, SetState, SingleCSVRecord, Token, UpdateBestModel) {
   'use strict';
 
   /**
@@ -2612,7 +2612,7 @@
      * Callback function to receive the result of the getResourceDetailsById operation.
      * @callback module:ai/skymind/skil/DefaultApi~getResourceDetailsByIdCallback
      * @param {String} error Error message, if any.
-     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} data The data returned by the service call.
+     * @param {Object} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2621,7 +2621,7 @@
      * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
      * @param {Number} resourceId ID of the resource
      * @param {module:ai/skymind/skil/DefaultApi~getResourceDetailsByIdCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:ai/skymind/skil/model/ERRORUNKNOWN}
+     * data is of type: {@link Object}
      */
     this.getResourceDetailsById = function(resourceId, callback) {
       var postBody = null;
@@ -2647,7 +2647,7 @@
       var authNames = ['api_key'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = ERRORUNKNOWN;
+      var returnType = Object;
 
       return this.apiClient.callApi(
         '/resources/details/{resourceId}', 'GET',
@@ -4328,7 +4328,7 @@
      * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {Object} opts Optional parameters
-     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} opts.batchRecord The input batch of record arrays
+     * @param {Object} opts.batchRecord The input batch of record arrays
      * @param {module:ai/skymind/skil/DefaultApi~transformarrayCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
@@ -4526,7 +4526,7 @@
      * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {Object} opts Optional parameters
-     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} opts.singleRecord The input record array
+     * @param {Object} opts.singleRecord The input record array
      * @param {module:ai/skymind/skil/DefaultApi~transformincrementalarrayCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/Base64NDArrayBody}
      */
@@ -4649,7 +4649,7 @@
      * Callback function to receive the result of the transformprocessGet operation.
      * @callback module:ai/skymind/skil/DefaultApi~transformprocessGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} data The data returned by the service call.
+     * @param {Object} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -4659,7 +4659,7 @@
      * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {module:ai/skymind/skil/DefaultApi~transformprocessGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:ai/skymind/skil/model/ERRORUNKNOWN}
+     * data is of type: {@link Object}
      */
     this.transformprocessGet = function(deploymentName, versionName, transformName, callback) {
       var postBody = null;
@@ -4697,7 +4697,7 @@
       var authNames = ['api_key'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = ERRORUNKNOWN;
+      var returnType = Object;
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess', 'GET',
@@ -4710,7 +4710,7 @@
      * Callback function to receive the result of the transformprocessPost operation.
      * @callback module:ai/skymind/skil/DefaultApi~transformprocessPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} data The data returned by the service call.
+     * @param {Object} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -4720,9 +4720,9 @@
      * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} transformName ID or name of the deployed transform
      * @param {Object} opts Optional parameters
-     * @param {module:ai/skymind/skil/model/ERRORUNKNOWN} opts.transformProcess The transform process to set
+     * @param {Object} opts.transformProcess The transform process to set
      * @param {module:ai/skymind/skil/DefaultApi~transformprocessPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:ai/skymind/skil/model/ERRORUNKNOWN}
+     * data is of type: {@link Object}
      */
     this.transformprocessPost = function(deploymentName, versionName, transformName, opts, callback) {
       opts = opts || {};
@@ -4761,7 +4761,7 @@
       var authNames = ['api_key'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ERRORUNKNOWN;
+      var returnType = Object;
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess', 'POST',

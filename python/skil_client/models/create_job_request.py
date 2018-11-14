@@ -33,23 +33,23 @@ class CreateJobRequest(object):
     swagger_types = {
         'compute_resource_id': 'int',
         'storage_resource_id': 'int',
-        'skil_spark_main_args': 'str',
+        'job_args': 'str',
         'output_file_name': 'str'
     }
 
     attribute_map = {
         'compute_resource_id': 'computeResourceId',
         'storage_resource_id': 'storageResourceId',
-        'skil_spark_main_args': 'skilSparkMainArgs',
+        'job_args': 'jobArgs',
         'output_file_name': 'outputFileName'
     }
 
-    def __init__(self, compute_resource_id=None, storage_resource_id=None, skil_spark_main_args=None, output_file_name=None):  # noqa: E501
+    def __init__(self, compute_resource_id=None, storage_resource_id=None, job_args=None, output_file_name=None):  # noqa: E501
         """CreateJobRequest - a model defined in Swagger"""  # noqa: E501
 
         self._compute_resource_id = None
         self._storage_resource_id = None
-        self._skil_spark_main_args = None
+        self._job_args = None
         self._output_file_name = None
         self.discriminator = None
 
@@ -57,8 +57,8 @@ class CreateJobRequest(object):
             self.compute_resource_id = compute_resource_id
         if storage_resource_id is not None:
             self.storage_resource_id = storage_resource_id
-        if skil_spark_main_args is not None:
-            self.skil_spark_main_args = skil_spark_main_args
+        if job_args is not None:
+            self.job_args = job_args
         if output_file_name is not None:
             self.output_file_name = output_file_name
 
@@ -109,27 +109,27 @@ class CreateJobRequest(object):
         self._storage_resource_id = storage_resource_id
 
     @property
-    def skil_spark_main_args(self):
-        """Gets the skil_spark_main_args of this CreateJobRequest.  # noqa: E501
+    def job_args(self):
+        """Gets the job_args of this CreateJobRequest.  # noqa: E501
 
-        SKILSparkMain class arguments  # noqa: E501
+        Job arguments  # noqa: E501
 
-        :return: The skil_spark_main_args of this CreateJobRequest.  # noqa: E501
+        :return: The job_args of this CreateJobRequest.  # noqa: E501
         :rtype: str
         """
-        return self._skil_spark_main_args
+        return self._job_args
 
-    @skil_spark_main_args.setter
-    def skil_spark_main_args(self, skil_spark_main_args):
-        """Sets the skil_spark_main_args of this CreateJobRequest.
+    @job_args.setter
+    def job_args(self, job_args):
+        """Sets the job_args of this CreateJobRequest.
 
-        SKILSparkMain class arguments  # noqa: E501
+        Job arguments  # noqa: E501
 
-        :param skil_spark_main_args: The skil_spark_main_args of this CreateJobRequest.  # noqa: E501
+        :param job_args: The job_args of this CreateJobRequest.  # noqa: E501
         :type: str
         """
 
-        self._skil_spark_main_args = skil_spark_main_args
+        self._job_args = job_args
 
     @property
     def output_file_name(self):

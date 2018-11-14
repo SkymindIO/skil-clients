@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **JobType** | **string** | Whether a job is for training or inference | [optional] [default to null]
 **ComputeResourceId** | **int64** | Compute resource ID | [optional] [default to null]
 **StorageResourceId** | **int64** | Storage resource ID | [optional] [default to null]
-**SkilSparkMainArgs** | **string** | SKILSparkMain class arguments | [optional] [default to null]
+**JobArgs** | **string** | Job arguments | [optional] [default to null]
 **RunId** | **string** | Job run ID | [optional] [default to null]
 **Status** | **string** | Job&#39;s status | [optional] [default to null]
 **OutputFileName** | **string** | Output file name | [optional] [default to null]

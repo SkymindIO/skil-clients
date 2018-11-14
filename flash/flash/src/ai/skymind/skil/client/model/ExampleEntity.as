@@ -10,8 +10,8 @@ package ai.skymind.skil.client.model {
         [XmlElement(name="exampleVersion")]
         public var exampleVersion: Number = NaN;
         /* Row Number */
-        [XmlElement(name="int rowNumber")]
-        public var int rowNumber: Number = NaN;
+        [XmlElement(name="rowNumber")]
+        public var rowNumber: Number = NaN;
         /* when the example was created */
         [XmlElement(name="created")]
         public var created: Number = 0;
@@ -26,7 +26,7 @@ package ai.skymind.skil.client.model {
         var str: String = "ExampleEntity: ";
         str += " (exampleId: " + exampleId + ")";
         str += " (exampleVersion: " + exampleVersion + ")";
-        str += " (int rowNumber: " + int rowNumber + ")";
+        str += " (rowNumber: " + rowNumber + ")";
         str += " (created: " + created + ")";
         str += " (miniBatchId: " + miniBatchId + ")";
         str += " (miniBatchVersion: " + miniBatchVersion + ")";

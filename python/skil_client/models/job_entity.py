@@ -35,7 +35,7 @@ class JobEntity(object):
         'job_type': 'str',
         'compute_resource_id': 'int',
         'storage_resource_id': 'int',
-        'skil_spark_main_args': 'str',
+        'job_args': 'str',
         'run_id': 'str',
         'status': 'str',
         'output_file_name': 'str'
@@ -46,20 +46,20 @@ class JobEntity(object):
         'job_type': 'jobType',
         'compute_resource_id': 'computeResourceId',
         'storage_resource_id': 'storageResourceId',
-        'skil_spark_main_args': 'skilSparkMainArgs',
+        'job_args': 'jobArgs',
         'run_id': 'runId',
         'status': 'status',
         'output_file_name': 'outputFileName'
     }
 
-    def __init__(self, job_id=None, job_type=None, compute_resource_id=None, storage_resource_id=None, skil_spark_main_args=None, run_id=None, status=None, output_file_name=None):  # noqa: E501
+    def __init__(self, job_id=None, job_type=None, compute_resource_id=None, storage_resource_id=None, job_args=None, run_id=None, status=None, output_file_name=None):  # noqa: E501
         """JobEntity - a model defined in Swagger"""  # noqa: E501
 
         self._job_id = None
         self._job_type = None
         self._compute_resource_id = None
         self._storage_resource_id = None
-        self._skil_spark_main_args = None
+        self._job_args = None
         self._run_id = None
         self._status = None
         self._output_file_name = None
@@ -73,8 +73,8 @@ class JobEntity(object):
             self.compute_resource_id = compute_resource_id
         if storage_resource_id is not None:
             self.storage_resource_id = storage_resource_id
-        if skil_spark_main_args is not None:
-            self.skil_spark_main_args = skil_spark_main_args
+        if job_args is not None:
+            self.job_args = job_args
         if run_id is not None:
             self.run_id = run_id
         if status is not None:
@@ -181,27 +181,27 @@ class JobEntity(object):
         self._storage_resource_id = storage_resource_id
 
     @property
-    def skil_spark_main_args(self):
-        """Gets the skil_spark_main_args of this JobEntity.  # noqa: E501
+    def job_args(self):
+        """Gets the job_args of this JobEntity.  # noqa: E501
 
-        SKILSparkMain class arguments  # noqa: E501
+        Job arguments  # noqa: E501
 
-        :return: The skil_spark_main_args of this JobEntity.  # noqa: E501
+        :return: The job_args of this JobEntity.  # noqa: E501
         :rtype: str
         """
-        return self._skil_spark_main_args
+        return self._job_args
 
-    @skil_spark_main_args.setter
-    def skil_spark_main_args(self, skil_spark_main_args):
-        """Sets the skil_spark_main_args of this JobEntity.
+    @job_args.setter
+    def job_args(self, job_args):
+        """Sets the job_args of this JobEntity.
 
-        SKILSparkMain class arguments  # noqa: E501
+        Job arguments  # noqa: E501
 
-        :param skil_spark_main_args: The skil_spark_main_args of this JobEntity.  # noqa: E501
+        :param job_args: The job_args of this JobEntity.  # noqa: E501
         :type: str
         """
 
-        self._skil_spark_main_args = skil_spark_main_args
+        self._job_args = job_args
 
     @property
     def run_id(self):

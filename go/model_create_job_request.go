@@ -14,8 +14,8 @@ type CreateJobRequest struct {
 	ComputeResourceId int64 `json:"computeResourceId,omitempty"`
 	// Storage resource ID
 	StorageResourceId int64 `json:"storageResourceId,omitempty"`
-	// SKILSparkMain class arguments
-	SkilSparkMainArgs string `json:"skilSparkMainArgs,omitempty"`
+	// Job arguments
+	JobArgs string `json:"jobArgs,omitempty"`
 	// Output file name
 	OutputFileName string `json:"outputFileName,omitempty"`
 }

@@ -14,6 +14,7 @@ package ai.skymind.skil.model
 
 
 case class DataProcResourceDetails (
+  `Class`: Option[String] = None,
   // ID of the resource
   ResourceId: Option[Long] = None,
   // Resource type

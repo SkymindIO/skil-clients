@@ -15,9 +15,9 @@ package ai.skymind.skil.client.model {
         /* Storage resource ID */
         [XmlElement(name="storageResourceId")]
         public var storageResourceId: Number = 0;
-        /* SKILSparkMain class arguments */
-        [XmlElement(name="skilSparkMainArgs")]
-        public var skilSparkMainArgs: String = null;
+        /* Job arguments */
+        [XmlElement(name="jobArgs")]
+        public var jobArgs: String = null;
         /* Job run ID */
         [XmlElement(name="runId")]
         public var runId: String = null;
@@ -34,7 +34,7 @@ package ai.skymind.skil.client.model {
         str += " (jobType: " + jobType + ")";
         str += " (computeResourceId: " + computeResourceId + ")";
         str += " (storageResourceId: " + storageResourceId + ")";
-        str += " (skilSparkMainArgs: " + skilSparkMainArgs + ")";
+        str += " (jobArgs: " + jobArgs + ")";
         str += " (runId: " + runId + ")";
         str += " (status: " + status + ")";
         str += " (outputFileName: " + outputFileName + ")";

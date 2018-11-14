@@ -1143,8 +1143,8 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">ID of the resource</param>
-        /// <returns></returns>
-        void GetResourceDetailsById (long? resourceId);
+        /// <returns>Object</returns>
+        Object GetResourceDetailsById (long? resourceId);
 
         /// <summary>
         /// Get the resource details with the specified resource ID
@@ -1154,7 +1154,7 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">ID of the resource</param>
-        /// <returns>ApiResponse of Object(void)</returns>
+        /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> GetResourceDetailsByIdWithHttpInfo (long? resourceId);
         /// <summary>
         /// Get the resource group with the specified resource group ID
@@ -1860,7 +1860,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName,  batchRecord = null);
+        Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName, Object batchRecord = null);
 
         /// <summary>
         /// Takes a batch input arrays and transforms it
@@ -1874,7 +1874,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformarrayWithHttpInfo (string deploymentName, string versionName, string transformName,  batchRecord = null);
+        ApiResponse<Base64NDArrayBody> TransformarrayWithHttpInfo (string deploymentName, string versionName, string transformName, Object batchRecord = null);
         /// <summary>
         /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -1941,7 +1941,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName,  singleRecord = null);
+        Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName, Object singleRecord = null);
 
         /// <summary>
         /// Same as /transformincremental but returns Base64NDArrayBody.
@@ -1955,7 +1955,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformincrementalarrayWithHttpInfo (string deploymentName, string versionName, string transformName,  singleRecord = null);
+        ApiResponse<Base64NDArrayBody> TransformincrementalarrayWithHttpInfo (string deploymentName, string versionName, string transformName, Object singleRecord = null);
         /// <summary>
         /// Takes a single multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -1993,8 +1993,8 @@ namespace Skymind.SKIL.Api
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns></returns>
-        void TransformprocessGet (string deploymentName, string versionName, string transformName);
+        /// <returns>Object</returns>
+        Object TransformprocessGet (string deploymentName, string versionName, string transformName);
 
         /// <summary>
         /// Gets the JSON string of the deployed transform process (CSV or Image)
@@ -2006,7 +2006,7 @@ namespace Skymind.SKIL.Api
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>ApiResponse of Object(void)</returns>
+        /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> TransformprocessGetWithHttpInfo (string deploymentName, string versionName, string transformName);
         /// <summary>
         /// Sets the deployed (CSV or Image) transform process through the provided JSON string
@@ -2019,8 +2019,8 @@ namespace Skymind.SKIL.Api
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
-        /// <returns></returns>
-        void TransformprocessPost (string deploymentName, string versionName, string transformName,  transformProcess = null);
+        /// <returns>Object</returns>
+        Object TransformprocessPost (string deploymentName, string versionName, string transformName, Object transformProcess = null);
 
         /// <summary>
         /// Sets the deployed (CSV or Image) transform process through the provided JSON string
@@ -2033,8 +2033,8 @@ namespace Skymind.SKIL.Api
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName,  transformProcess = null);
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName, Object transformProcess = null);
         /// <summary>
         /// Updates the best model for an experiment
         /// </summary>
@@ -3250,8 +3250,8 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">ID of the resource</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetResourceDetailsByIdAsync (long? resourceId);
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> GetResourceDetailsByIdAsync (long? resourceId);
 
         /// <summary>
         /// Get the resource details with the specified resource ID
@@ -3261,7 +3261,7 @@ namespace Skymind.SKIL.Api
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">ID of the resource</param>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetResourceDetailsByIdAsyncWithHttpInfo (long? resourceId);
         /// <summary>
         /// Get the resource group with the specified resource group ID
@@ -3967,7 +3967,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayAsync (string deploymentName, string versionName, string transformName,  batchRecord = null);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayAsync (string deploymentName, string versionName, string transformName, Object batchRecord = null);
 
         /// <summary>
         /// Takes a batch input arrays and transforms it
@@ -3981,7 +3981,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  batchRecord = null);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object batchRecord = null);
         /// <summary>
         /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -4048,7 +4048,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayAsync (string deploymentName, string versionName, string transformName,  singleRecord = null);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayAsync (string deploymentName, string versionName, string transformName, Object singleRecord = null);
 
         /// <summary>
         /// Same as /transformincremental but returns Base64NDArrayBody.
@@ -4062,7 +4062,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  singleRecord = null);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object singleRecord = null);
         /// <summary>
         /// Takes a single multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -4100,8 +4100,8 @@ namespace Skymind.SKIL.Api
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task TransformprocessGetAsync (string deploymentName, string versionName, string transformName);
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> TransformprocessGetAsync (string deploymentName, string versionName, string transformName);
 
         /// <summary>
         /// Gets the JSON string of the deployed transform process (CSV or Image)
@@ -4113,7 +4113,7 @@ namespace Skymind.SKIL.Api
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string transformName);
         /// <summary>
         /// Sets the deployed (CSV or Image) transform process through the provided JSON string
@@ -4126,8 +4126,8 @@ namespace Skymind.SKIL.Api
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string versionName, string transformName,  transformProcess = null);
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> TransformprocessPostAsync (string deploymentName, string versionName, string transformName, Object transformProcess = null);
 
         /// <summary>
         /// Sets the deployed (CSV or Image) transform process through the provided JSON string
@@ -4140,8 +4140,8 @@ namespace Skymind.SKIL.Api
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  transformProcess = null);
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object transformProcess = null);
         /// <summary>
         /// Updates the best model for an experiment
         /// </summary>
@@ -12146,10 +12146,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">ID of the resource</param>
-        /// <returns></returns>
-        public void GetResourceDetailsById (long? resourceId)
+        /// <returns>Object</returns>
+        public Object GetResourceDetailsById (long? resourceId)
         {
-             GetResourceDetailsByIdWithHttpInfo(resourceId);
+             ApiResponse<Object> localVarResponse = GetResourceDetailsByIdWithHttpInfo(resourceId);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -12157,8 +12158,8 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">ID of the resource</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetResourceDetailsByIdWithHttpInfo (long? resourceId)
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > GetResourceDetailsByIdWithHttpInfo (long? resourceId)
         {
             // verify the required parameter 'resourceId' is set
             if (resourceId == null)
@@ -12208,7 +12209,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -12216,10 +12217,11 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">ID of the resource</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetResourceDetailsByIdAsync (long? resourceId)
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> GetResourceDetailsByIdAsync (long? resourceId)
         {
-             await GetResourceDetailsByIdAsyncWithHttpInfo(resourceId);
+             ApiResponse<Object> localVarResponse = await GetResourceDetailsByIdAsyncWithHttpInfo(resourceId);
+             return localVarResponse.Data;
 
         }
 
@@ -12228,7 +12230,7 @@ namespace Skymind.SKIL.Api
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">ID of the resource</param>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetResourceDetailsByIdAsyncWithHttpInfo (long? resourceId)
         {
             // verify the required parameter 'resourceId' is set
@@ -12279,7 +12281,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -17121,7 +17123,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName,  batchRecord = null)
+        public Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName, Object batchRecord = null)
         {
              ApiResponse<Base64NDArrayBody> localVarResponse = TransformarrayWithHttpInfo(deploymentName, versionName, transformName, batchRecord);
              return localVarResponse.Data;
@@ -17136,7 +17138,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformarrayWithHttpInfo (string deploymentName, string versionName, string transformName,  batchRecord = null)
+        public ApiResponse< Base64NDArrayBody > TransformarrayWithHttpInfo (string deploymentName, string versionName, string transformName, Object batchRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -17215,7 +17217,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayAsync (string deploymentName, string versionName, string transformName,  batchRecord = null)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayAsync (string deploymentName, string versionName, string transformName, Object batchRecord = null)
         {
              ApiResponse<Base64NDArrayBody> localVarResponse = await TransformarrayAsyncWithHttpInfo(deploymentName, versionName, transformName, batchRecord);
              return localVarResponse.Data;
@@ -17231,7 +17233,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  batchRecord = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object batchRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -17680,7 +17682,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName,  singleRecord = null)
+        public Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName, Object singleRecord = null)
         {
              ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalarrayWithHttpInfo(deploymentName, versionName, transformName, singleRecord);
              return localVarResponse.Data;
@@ -17695,7 +17697,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayWithHttpInfo (string deploymentName, string versionName, string transformName,  singleRecord = null)
+        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayWithHttpInfo (string deploymentName, string versionName, string transformName, Object singleRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -17774,7 +17776,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayAsync (string deploymentName, string versionName, string transformName,  singleRecord = null)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayAsync (string deploymentName, string versionName, string transformName, Object singleRecord = null)
         {
              ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalarrayAsyncWithHttpInfo(deploymentName, versionName, transformName, singleRecord);
              return localVarResponse.Data;
@@ -17790,7 +17792,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  singleRecord = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object singleRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -18048,10 +18050,11 @@ namespace Skymind.SKIL.Api
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns></returns>
-        public void TransformprocessGet (string deploymentName, string versionName, string transformName)
+        /// <returns>Object</returns>
+        public Object TransformprocessGet (string deploymentName, string versionName, string transformName)
         {
-             TransformprocessGetWithHttpInfo(deploymentName, versionName, transformName);
+             ApiResponse<Object> localVarResponse = TransformprocessGetWithHttpInfo(deploymentName, versionName, transformName);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -18061,8 +18064,8 @@ namespace Skymind.SKIL.Api
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> TransformprocessGetWithHttpInfo (string deploymentName, string versionName, string transformName)
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > TransformprocessGetWithHttpInfo (string deploymentName, string versionName, string transformName)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -18120,7 +18123,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -18130,10 +18133,11 @@ namespace Skymind.SKIL.Api
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task TransformprocessGetAsync (string deploymentName, string versionName, string transformName)
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> TransformprocessGetAsync (string deploymentName, string versionName, string transformName)
         {
-             await TransformprocessGetAsyncWithHttpInfo(deploymentName, versionName, transformName);
+             ApiResponse<Object> localVarResponse = await TransformprocessGetAsyncWithHttpInfo(deploymentName, versionName, transformName);
+             return localVarResponse.Data;
 
         }
 
@@ -18144,7 +18148,7 @@ namespace Skymind.SKIL.Api
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessGetAsyncWithHttpInfo (string deploymentName, string versionName, string transformName)
         {
             // verify the required parameter 'deploymentName' is set
@@ -18203,7 +18207,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -18214,10 +18218,11 @@ namespace Skymind.SKIL.Api
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
-        /// <returns></returns>
-        public void TransformprocessPost (string deploymentName, string versionName, string transformName,  transformProcess = null)
+        /// <returns>Object</returns>
+        public Object TransformprocessPost (string deploymentName, string versionName, string transformName, Object transformProcess = null)
         {
-             TransformprocessPostWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
+             ApiResponse<Object> localVarResponse = TransformprocessPostWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -18228,8 +18233,8 @@ namespace Skymind.SKIL.Api
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName,  transformProcess = null)
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName, Object transformProcess = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -18296,7 +18301,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -18307,10 +18312,11 @@ namespace Skymind.SKIL.Api
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task TransformprocessPostAsync (string deploymentName, string versionName, string transformName,  transformProcess = null)
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> TransformprocessPostAsync (string deploymentName, string versionName, string transformName, Object transformProcess = null)
         {
-             await TransformprocessPostAsyncWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
+             ApiResponse<Object> localVarResponse = await TransformprocessPostAsyncWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
+             return localVarResponse.Data;
 
         }
 
@@ -18322,8 +18328,8 @@ namespace Skymind.SKIL.Api
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="transformProcess">The transform process to set (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName,  transformProcess = null)
+        /// <returns>Task of ApiResponse (Object)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object transformProcess = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -18390,7 +18396,7 @@ namespace Skymind.SKIL.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>

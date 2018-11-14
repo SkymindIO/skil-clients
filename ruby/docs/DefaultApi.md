@@ -2756,7 +2756,7 @@ Name | Type | Description  | Notes
 
 
 # **get_resource_details_by_id**
-> get_resource_details_by_id(resource_id)
+> Object get_resource_details_by_id(resource_id)
 
 Get the resource details with the specified resource ID
 
@@ -2781,7 +2781,8 @@ resource_id = 789 # Integer | ID of the resource
 
 begin
   #Get the resource details with the specified resource ID
-  api_instance.get_resource_details_by_id(resource_id)
+  result = api_instance.get_resource_details_by_id(resource_id)
+  p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->get_resource_details_by_id: #{e}"
 end
@@ -2795,7 +2796,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -4442,7 +4443,7 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  batch_record: SkilCient::null.new #  | The input batch of record arrays
+  batch_record: nil # Object | The input batch of record arrays
 }
 
 begin
@@ -4461,7 +4462,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **batch_record** | [****](.md)| The input batch of record arrays | [optional] 
+ **batch_record** | **Object**| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -4631,7 +4632,7 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  single_record: SkilCient::null.new #  | The input record array
+  single_record: nil # Object | The input record array
 }
 
 begin
@@ -4650,7 +4651,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **single_record** | [****](.md)| The input record array | [optional] 
+ **single_record** | **Object**| The input record array | [optional] 
 
 ### Return type
 
@@ -4731,7 +4732,7 @@ Name | Type | Description  | Notes
 
 
 # **transformprocess_get**
-> transformprocess_get(deployment_name, version_name, transform_name)
+> Object transformprocess_get(deployment_name, version_name, transform_name)
 
 Gets the JSON string of the deployed transform process (CSV or Image)
 
@@ -4758,7 +4759,8 @@ transform_name = 'transform_name_example' # String | ID or name of the deployed 
 
 begin
   #Gets the JSON string of the deployed transform process (CSV or Image)
-  api_instance.transformprocess_get(deployment_name, version_name, transform_name)
+  result = api_instance.transformprocess_get(deployment_name, version_name, transform_name)
+  p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->transformprocess_get: #{e}"
 end
@@ -4774,7 +4776,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -4788,7 +4790,7 @@ nil (empty response body)
 
 
 # **transformprocess_post**
-> transformprocess_post(deployment_name, version_name, transform_name, opts)
+> Object transformprocess_post(deployment_name, version_name, transform_name, opts)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
@@ -4813,12 +4815,13 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  transform_process: SkilCient::null.new #  | The transform process to set
+  transform_process: nil # Object | The transform process to set
 }
 
 begin
   #Sets the deployed (CSV or Image) transform process through the provided JSON string
-  api_instance.transformprocess_post(deployment_name, version_name, transform_name, opts)
+  result = api_instance.transformprocess_post(deployment_name, version_name, transform_name, opts)
+  p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->transformprocess_post: #{e}"
 end
@@ -4831,11 +4834,11 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **transform_process** | [****](.md)| The transform process to set | [optional] 
+ **transform_process** | **Object**| The transform process to set | [optional] 
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 

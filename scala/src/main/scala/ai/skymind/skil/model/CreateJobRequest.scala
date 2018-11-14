@@ -18,8 +18,8 @@ case class CreateJobRequest (
   ComputeResourceId: Option[Long] = None,
   // Storage resource ID
   StorageResourceId: Option[Long] = None,
-  // SKILSparkMain class arguments
-  SkilSparkMainArgs: Option[String] = None,
+  // Job arguments
+  JobArgs: Option[String] = None,
   // Output file name
   OutputFileName: Option[String] = None
 )

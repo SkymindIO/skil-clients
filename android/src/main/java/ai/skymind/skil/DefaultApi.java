@@ -39,7 +39,6 @@ import ai.skymind.skil.model.Credentials;
 import ai.skymind.skil.model.DeploymentResponse;
 import ai.skymind.skil.model.DetectionResult;
 import ai.skymind.skil.model.DownloadOutputFileRequest;
-import ai.skymind.skil.model.ERRORUNKNOWN;
 import ai.skymind.skil.model.EvaluationResultsEntity;
 import ai.skymind.skil.model.ExampleEntity;
 import ai.skymind.skil.model.ExperimentEntity;
@@ -6812,9 +6811,9 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * Get the resource details with the specified resource ID
   * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
    * @param resourceId ID of the resource
-   * @return ERRORUNKNOWN
+   * @return Object
   */
-  public ERRORUNKNOWN getResourceDetailsById (Long resourceId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Object getResourceDetailsById (Long resourceId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'resourceId' is set
     if (resourceId == null) {
@@ -6849,7 +6848,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse, "", ERRORUNKNOWN.class);
+         return (Object) ApiInvoker.deserialize(localVarResponse, "", Object.class);
       } else {
          return null;
       }
@@ -6875,7 +6874,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
    * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
    * @param resourceId ID of the resource
   */
-  public void getResourceDetailsById (Long resourceId, final Response.Listener<ERRORUNKNOWN> responseListener, final Response.ErrorListener errorListener) {
+  public void getResourceDetailsById (Long resourceId, final Response.Listener<Object> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'resourceId' is set
@@ -6920,7 +6919,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse,  "", ERRORUNKNOWN.class));
+              responseListener.onResponse((Object) ApiInvoker.deserialize(localVarResponse,  "", Object.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -11102,7 +11101,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * @param batchRecord The input batch of record arrays
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformarray (String deploymentName, String versionName, String transformName, ERRORUNKNOWN batchRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody transformarray (String deploymentName, String versionName, String transformName, Object batchRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = batchRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
@@ -11174,7 +11173,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * 
    * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param batchRecord The input batch of record arrays
   */
-  public void transformarray (String deploymentName, String versionName, String transformName, ERRORUNKNOWN batchRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void transformarray (String deploymentName, String versionName, String transformName, Object batchRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = batchRecord;
 
     // verify the required parameter 'deploymentName' is set
@@ -11574,7 +11573,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * @param singleRecord The input record array
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformincrementalarray (String deploymentName, String versionName, String transformName, ERRORUNKNOWN singleRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody transformincrementalarray (String deploymentName, String versionName, String transformName, Object singleRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = singleRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
@@ -11646,7 +11645,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * 
    * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param singleRecord The input record array
   */
-  public void transformincrementalarray (String deploymentName, String versionName, String transformName, ERRORUNKNOWN singleRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void transformincrementalarray (String deploymentName, String versionName, String transformName, Object singleRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = singleRecord;
 
     // verify the required parameter 'deploymentName' is set
@@ -11891,9 +11890,9 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * @param deploymentName Name of the deployment group
    * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
-   * @return ERRORUNKNOWN
+   * @return Object
   */
-  public ERRORUNKNOWN transformprocessGet (String deploymentName, String versionName, String transformName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Object transformprocessGet (String deploymentName, String versionName, String transformName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
@@ -11938,7 +11937,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse, "", ERRORUNKNOWN.class);
+         return (Object) ApiInvoker.deserialize(localVarResponse, "", Object.class);
       } else {
          return null;
       }
@@ -11964,7 +11963,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * 
    * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform
   */
-  public void transformprocessGet (String deploymentName, String versionName, String transformName, final Response.Listener<ERRORUNKNOWN> responseListener, final Response.ErrorListener errorListener) {
+  public void transformprocessGet (String deploymentName, String versionName, String transformName, final Response.Listener<Object> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'deploymentName' is set
@@ -12019,7 +12018,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse,  "", ERRORUNKNOWN.class));
+              responseListener.onResponse((Object) ApiInvoker.deserialize(localVarResponse,  "", Object.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -12041,9 +12040,9 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
    * @param transformProcess The transform process to set
-   * @return ERRORUNKNOWN
+   * @return Object
   */
-  public ERRORUNKNOWN transformprocessPost (String deploymentName, String versionName, String transformName, ERRORUNKNOWN transformProcess) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Object transformprocessPost (String deploymentName, String versionName, String transformName, Object transformProcess) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = transformProcess;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
@@ -12089,7 +12088,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse, "", ERRORUNKNOWN.class);
+         return (Object) ApiInvoker.deserialize(localVarResponse, "", Object.class);
       } else {
          return null;
       }
@@ -12115,7 +12114,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * 
    * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param transformProcess The transform process to set
   */
-  public void transformprocessPost (String deploymentName, String versionName, String transformName, ERRORUNKNOWN transformProcess, final Response.Listener<ERRORUNKNOWN> responseListener, final Response.ErrorListener errorListener) {
+  public void transformprocessPost (String deploymentName, String versionName, String transformName, Object transformProcess, final Response.Listener<Object> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = transformProcess;
 
     // verify the required parameter 'deploymentName' is set
@@ -12170,7 +12169,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse,  "", ERRORUNKNOWN.class));
+              responseListener.onResponse((Object) ApiInvoker.deserialize(localVarResponse,  "", Object.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

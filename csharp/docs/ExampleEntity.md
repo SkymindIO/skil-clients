@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExampleId** | **string** | the GUID of the example | [optional] 
 **ExampleVersion** | **int?** | Example version | [optional] 
-**IntRowNumber** | **int?** | Row Number | [optional] 
+**RowNumber** | **int?** | Row Number | [optional] 
 **Created** | **long?** | when the example was created | [optional] 
 **MiniBatchId** | **string** | The GUID of the minibatch | [optional] 
 **MiniBatchVersion** | **int?** | minibatch version | [optional] 

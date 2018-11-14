@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * JobEntity
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-17T08:50:23.609+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-14T15:11:49.806+05:00")
 public class JobEntity {
   @SerializedName("jobId")
   private Long jobId = null;
@@ -88,8 +88,8 @@ public class JobEntity {
   @SerializedName("storageResourceId")
   private Long storageResourceId = null;
 
-  @SerializedName("skilSparkMainArgs")
-  private String skilSparkMainArgs = null;
+  @SerializedName("jobArgs")
+  private String jobArgs = null;
 
   @SerializedName("runId")
   private String runId = null;
@@ -229,22 +229,22 @@ public class JobEntity {
     this.storageResourceId = storageResourceId;
   }
 
-  public JobEntity skilSparkMainArgs(String skilSparkMainArgs) {
-    this.skilSparkMainArgs = skilSparkMainArgs;
+  public JobEntity jobArgs(String jobArgs) {
+    this.jobArgs = jobArgs;
     return this;
   }
 
    /**
-   * SKILSparkMain class arguments
-   * @return skilSparkMainArgs
+   * Job arguments
+   * @return jobArgs
   **/
-  @ApiModelProperty(value = "SKILSparkMain class arguments")
-  public String getSkilSparkMainArgs() {
-    return skilSparkMainArgs;
+  @ApiModelProperty(value = "Job arguments")
+  public String getJobArgs() {
+    return jobArgs;
   }
 
-  public void setSkilSparkMainArgs(String skilSparkMainArgs) {
-    this.skilSparkMainArgs = skilSparkMainArgs;
+  public void setJobArgs(String jobArgs) {
+    this.jobArgs = jobArgs;
   }
 
   public JobEntity runId(String runId) {
@@ -315,7 +315,7 @@ public class JobEntity {
         Objects.equals(this.jobType, jobEntity.jobType) &&
         Objects.equals(this.computeResourceId, jobEntity.computeResourceId) &&
         Objects.equals(this.storageResourceId, jobEntity.storageResourceId) &&
-        Objects.equals(this.skilSparkMainArgs, jobEntity.skilSparkMainArgs) &&
+        Objects.equals(this.jobArgs, jobEntity.jobArgs) &&
         Objects.equals(this.runId, jobEntity.runId) &&
         Objects.equals(this.status, jobEntity.status) &&
         Objects.equals(this.outputFileName, jobEntity.outputFileName);
@@ -323,7 +323,7 @@ public class JobEntity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(jobId, jobType, computeResourceId, storageResourceId, skilSparkMainArgs, runId, status, outputFileName);
+    return Objects.hash(jobId, jobType, computeResourceId, storageResourceId, jobArgs, runId, status, outputFileName);
   }
 
 
@@ -336,7 +336,7 @@ public class JobEntity {
     sb.append("    jobType: ").append(toIndentedString(jobType)).append("\n");
     sb.append("    computeResourceId: ").append(toIndentedString(computeResourceId)).append("\n");
     sb.append("    storageResourceId: ").append(toIndentedString(storageResourceId)).append("\n");
-    sb.append("    skilSparkMainArgs: ").append(toIndentedString(skilSparkMainArgs)).append("\n");
+    sb.append("    jobArgs: ").append(toIndentedString(jobArgs)).append("\n");
     sb.append("    runId: ").append(toIndentedString(runId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    outputFileName: ").append(toIndentedString(outputFileName)).append("\n");

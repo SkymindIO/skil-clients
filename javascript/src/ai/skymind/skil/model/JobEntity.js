@@ -80,8 +80,8 @@
       if (data.hasOwnProperty('storageResourceId')) {
         obj['storageResourceId'] = ApiClient.convertToType(data['storageResourceId'], 'Number');
       }
-      if (data.hasOwnProperty('skilSparkMainArgs')) {
-        obj['skilSparkMainArgs'] = ApiClient.convertToType(data['skilSparkMainArgs'], 'String');
+      if (data.hasOwnProperty('jobArgs')) {
+        obj['jobArgs'] = ApiClient.convertToType(data['jobArgs'], 'String');
       }
       if (data.hasOwnProperty('runId')) {
         obj['runId'] = ApiClient.convertToType(data['runId'], 'String');
@@ -117,10 +117,10 @@
    */
   exports.prototype['storageResourceId'] = undefined;
   /**
-   * SKILSparkMain class arguments
-   * @member {String} skilSparkMainArgs
+   * Job arguments
+   * @member {String} jobArgs
    */
-  exports.prototype['skilSparkMainArgs'] = undefined;
+  exports.prototype['jobArgs'] = undefined;
   /**
    * Job run ID
    * @member {String} runId

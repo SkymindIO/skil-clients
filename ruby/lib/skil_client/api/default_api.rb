@@ -2770,17 +2770,17 @@ module SkilCient
     # Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
     # @param resource_id ID of the resource
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [Object]
     def get_resource_details_by_id(resource_id, opts = {})
-      get_resource_details_by_id_with_http_info(resource_id, opts)
-      nil
+      data, _status_code, _headers = get_resource_details_by_id_with_http_info(resource_id, opts)
+      data
     end
 
     # Get the resource details with the specified resource ID
     # Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
     # @param resource_id ID of the resource
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(Object, Fixnum, Hash)>] Object data, response status code and response headers
     def get_resource_details_by_id_with_http_info(resource_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_resource_details_by_id ...'
@@ -2811,7 +2811,8 @@ module SkilCient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'Object')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_resource_details_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -4572,7 +4573,7 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [] :batch_record The input batch of record arrays
+    # @option opts [Object] :batch_record The input batch of record arrays
     # @return [Base64NDArrayBody]
     def transformarray(deployment_name, version_name, transform_name, opts = {})
       data, _status_code, _headers = transformarray_with_http_info(deployment_name, version_name, transform_name, opts)
@@ -4584,7 +4585,7 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [] :batch_record The input batch of record arrays
+    # @option opts [Object] :batch_record The input batch of record arrays
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
     def transformarray_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
@@ -4779,7 +4780,7 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [] :single_record The input record array
+    # @option opts [Object] :single_record The input record array
     # @return [Base64NDArrayBody]
     def transformincrementalarray(deployment_name, version_name, transform_name, opts = {})
       data, _status_code, _headers = transformincrementalarray_with_http_info(deployment_name, version_name, transform_name, opts)
@@ -4791,7 +4792,7 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [] :single_record The input record array
+    # @option opts [Object] :single_record The input record array
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
     def transformincrementalarray_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
@@ -4918,10 +4919,10 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [Object]
     def transformprocess_get(deployment_name, version_name, transform_name, opts = {})
-      transformprocess_get_with_http_info(deployment_name, version_name, transform_name, opts)
-      nil
+      data, _status_code, _headers = transformprocess_get_with_http_info(deployment_name, version_name, transform_name, opts)
+      data
     end
 
     # Gets the JSON string of the deployed transform process (CSV or Image)
@@ -4929,7 +4930,7 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(Object, Fixnum, Hash)>] Object data, response status code and response headers
     def transformprocess_get_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformprocess_get ...'
@@ -4968,7 +4969,8 @@ module SkilCient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'Object')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#transformprocess_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -4979,11 +4981,11 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [] :transform_process The transform process to set
-    # @return [nil]
+    # @option opts [Object] :transform_process The transform process to set
+    # @return [Object]
     def transformprocess_post(deployment_name, version_name, transform_name, opts = {})
-      transformprocess_post_with_http_info(deployment_name, version_name, transform_name, opts)
-      nil
+      data, _status_code, _headers = transformprocess_post_with_http_info(deployment_name, version_name, transform_name, opts)
+      data
     end
 
     # Sets the deployed (CSV or Image) transform process through the provided JSON string
@@ -4991,8 +4993,8 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [] :transform_process The transform process to set
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @option opts [Object] :transform_process The transform process to set
+    # @return [Array<(Object, Fixnum, Hash)>] Object data, response status code and response headers
     def transformprocess_post_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformprocess_post ...'
@@ -5033,7 +5035,8 @@ module SkilCient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'Object')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#transformprocess_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

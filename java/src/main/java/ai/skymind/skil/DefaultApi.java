@@ -43,7 +43,6 @@ import ai.skymind.skil.model.Credentials;
 import ai.skymind.skil.model.DeploymentResponse;
 import ai.skymind.skil.model.DetectionResult;
 import ai.skymind.skil.model.DownloadOutputFileRequest;
-import ai.skymind.skil.model.ERRORUNKNOWN;
 import ai.skymind.skil.model.EvaluationResultsEntity;
 import ai.skymind.skil.model.ExampleEntity;
 import ai.skymind.skil.model.ExperimentEntity;
@@ -6562,11 +6561,11 @@ public class DefaultApi {
      * Get the resource details with the specified resource ID
      * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
      * @param resourceId ID of the resource (required)
-     * @return ERRORUNKNOWN
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ERRORUNKNOWN getResourceDetailsById(Long resourceId) throws ApiException {
-        ApiResponse<ERRORUNKNOWN> resp = getResourceDetailsByIdWithHttpInfo(resourceId);
+    public Object getResourceDetailsById(Long resourceId) throws ApiException {
+        ApiResponse<Object> resp = getResourceDetailsByIdWithHttpInfo(resourceId);
         return resp.getData();
     }
 
@@ -6574,12 +6573,12 @@ public class DefaultApi {
      * Get the resource details with the specified resource ID
      * Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
      * @param resourceId ID of the resource (required)
-     * @return ApiResponse&lt;ERRORUNKNOWN&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ERRORUNKNOWN> getResourceDetailsByIdWithHttpInfo(Long resourceId) throws ApiException {
+    public ApiResponse<Object> getResourceDetailsByIdWithHttpInfo(Long resourceId) throws ApiException {
         com.squareup.okhttp.Call call = getResourceDetailsByIdValidateBeforeCall(resourceId, null, null);
-        Type localVarReturnType = new TypeToken<ERRORUNKNOWN>(){}.getType();
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -6591,7 +6590,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getResourceDetailsByIdAsync(Long resourceId, final ApiCallback<ERRORUNKNOWN> callback) throws ApiException {
+    public com.squareup.okhttp.Call getResourceDetailsByIdAsync(Long resourceId, final ApiCallback<Object> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6613,7 +6612,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = getResourceDetailsByIdValidateBeforeCall(resourceId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ERRORUNKNOWN>(){}.getType();
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -10564,7 +10563,7 @@ public class DefaultApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call transformarrayCall(String deploymentName, String versionName, String transformName, ERRORUNKNOWN batchRecord, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call transformarrayCall(String deploymentName, String versionName, String transformName, Object batchRecord, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = batchRecord;
 
         // create path and map variables
@@ -10609,7 +10608,7 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call transformarrayValidateBeforeCall(String deploymentName, String versionName, String transformName, ERRORUNKNOWN batchRecord, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call transformarrayValidateBeforeCall(String deploymentName, String versionName, String transformName, Object batchRecord, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'deploymentName' is set
         if (deploymentName == null) {
@@ -10642,7 +10641,7 @@ public class DefaultApi {
      * @return Base64NDArrayBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Base64NDArrayBody transformarray(String deploymentName, String versionName, String transformName, ERRORUNKNOWN batchRecord) throws ApiException {
+    public Base64NDArrayBody transformarray(String deploymentName, String versionName, String transformName, Object batchRecord) throws ApiException {
         ApiResponse<Base64NDArrayBody> resp = transformarrayWithHttpInfo(deploymentName, versionName, transformName, batchRecord);
         return resp.getData();
     }
@@ -10657,7 +10656,7 @@ public class DefaultApi {
      * @return ApiResponse&lt;Base64NDArrayBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Base64NDArrayBody> transformarrayWithHttpInfo(String deploymentName, String versionName, String transformName, ERRORUNKNOWN batchRecord) throws ApiException {
+    public ApiResponse<Base64NDArrayBody> transformarrayWithHttpInfo(String deploymentName, String versionName, String transformName, Object batchRecord) throws ApiException {
         com.squareup.okhttp.Call call = transformarrayValidateBeforeCall(deploymentName, versionName, transformName, batchRecord, null, null);
         Type localVarReturnType = new TypeToken<Base64NDArrayBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -10674,7 +10673,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call transformarrayAsync(String deploymentName, String versionName, String transformName, ERRORUNKNOWN batchRecord, final ApiCallback<Base64NDArrayBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call transformarrayAsync(String deploymentName, String versionName, String transformName, Object batchRecord, final ApiCallback<Base64NDArrayBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -11012,7 +11011,7 @@ public class DefaultApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call transformincrementalarrayCall(String deploymentName, String versionName, String transformName, ERRORUNKNOWN singleRecord, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call transformincrementalarrayCall(String deploymentName, String versionName, String transformName, Object singleRecord, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = singleRecord;
 
         // create path and map variables
@@ -11057,7 +11056,7 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call transformincrementalarrayValidateBeforeCall(String deploymentName, String versionName, String transformName, ERRORUNKNOWN singleRecord, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call transformincrementalarrayValidateBeforeCall(String deploymentName, String versionName, String transformName, Object singleRecord, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'deploymentName' is set
         if (deploymentName == null) {
@@ -11090,7 +11089,7 @@ public class DefaultApi {
      * @return Base64NDArrayBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Base64NDArrayBody transformincrementalarray(String deploymentName, String versionName, String transformName, ERRORUNKNOWN singleRecord) throws ApiException {
+    public Base64NDArrayBody transformincrementalarray(String deploymentName, String versionName, String transformName, Object singleRecord) throws ApiException {
         ApiResponse<Base64NDArrayBody> resp = transformincrementalarrayWithHttpInfo(deploymentName, versionName, transformName, singleRecord);
         return resp.getData();
     }
@@ -11105,7 +11104,7 @@ public class DefaultApi {
      * @return ApiResponse&lt;Base64NDArrayBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Base64NDArrayBody> transformincrementalarrayWithHttpInfo(String deploymentName, String versionName, String transformName, ERRORUNKNOWN singleRecord) throws ApiException {
+    public ApiResponse<Base64NDArrayBody> transformincrementalarrayWithHttpInfo(String deploymentName, String versionName, String transformName, Object singleRecord) throws ApiException {
         com.squareup.okhttp.Call call = transformincrementalarrayValidateBeforeCall(deploymentName, versionName, transformName, singleRecord, null, null);
         Type localVarReturnType = new TypeToken<Base64NDArrayBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -11122,7 +11121,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call transformincrementalarrayAsync(String deploymentName, String versionName, String transformName, ERRORUNKNOWN singleRecord, final ApiCallback<Base64NDArrayBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call transformincrementalarrayAsync(String deploymentName, String versionName, String transformName, Object singleRecord, final ApiCallback<Base64NDArrayBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -11386,11 +11385,11 @@ public class DefaultApi {
      * @param deploymentName Name of the deployment group (required)
      * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot; (required)
      * @param transformName ID or name of the deployed transform (required)
-     * @return ERRORUNKNOWN
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ERRORUNKNOWN transformprocessGet(String deploymentName, String versionName, String transformName) throws ApiException {
-        ApiResponse<ERRORUNKNOWN> resp = transformprocessGetWithHttpInfo(deploymentName, versionName, transformName);
+    public Object transformprocessGet(String deploymentName, String versionName, String transformName) throws ApiException {
+        ApiResponse<Object> resp = transformprocessGetWithHttpInfo(deploymentName, versionName, transformName);
         return resp.getData();
     }
 
@@ -11400,12 +11399,12 @@ public class DefaultApi {
      * @param deploymentName Name of the deployment group (required)
      * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot; (required)
      * @param transformName ID or name of the deployed transform (required)
-     * @return ApiResponse&lt;ERRORUNKNOWN&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ERRORUNKNOWN> transformprocessGetWithHttpInfo(String deploymentName, String versionName, String transformName) throws ApiException {
+    public ApiResponse<Object> transformprocessGetWithHttpInfo(String deploymentName, String versionName, String transformName) throws ApiException {
         com.squareup.okhttp.Call call = transformprocessGetValidateBeforeCall(deploymentName, versionName, transformName, null, null);
-        Type localVarReturnType = new TypeToken<ERRORUNKNOWN>(){}.getType();
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -11419,7 +11418,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call transformprocessGetAsync(String deploymentName, String versionName, String transformName, final ApiCallback<ERRORUNKNOWN> callback) throws ApiException {
+    public com.squareup.okhttp.Call transformprocessGetAsync(String deploymentName, String versionName, String transformName, final ApiCallback<Object> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -11441,7 +11440,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = transformprocessGetValidateBeforeCall(deploymentName, versionName, transformName, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ERRORUNKNOWN>(){}.getType();
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -11456,7 +11455,7 @@ public class DefaultApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call transformprocessPostCall(String deploymentName, String versionName, String transformName, ERRORUNKNOWN transformProcess, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call transformprocessPostCall(String deploymentName, String versionName, String transformName, Object transformProcess, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = transformProcess;
 
         // create path and map variables
@@ -11501,7 +11500,7 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call transformprocessPostValidateBeforeCall(String deploymentName, String versionName, String transformName, ERRORUNKNOWN transformProcess, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call transformprocessPostValidateBeforeCall(String deploymentName, String versionName, String transformName, Object transformProcess, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'deploymentName' is set
         if (deploymentName == null) {
@@ -11531,11 +11530,11 @@ public class DefaultApi {
      * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot; (required)
      * @param transformName ID or name of the deployed transform (required)
      * @param transformProcess The transform process to set (optional)
-     * @return ERRORUNKNOWN
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ERRORUNKNOWN transformprocessPost(String deploymentName, String versionName, String transformName, ERRORUNKNOWN transformProcess) throws ApiException {
-        ApiResponse<ERRORUNKNOWN> resp = transformprocessPostWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
+    public Object transformprocessPost(String deploymentName, String versionName, String transformName, Object transformProcess) throws ApiException {
+        ApiResponse<Object> resp = transformprocessPostWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
         return resp.getData();
     }
 
@@ -11546,12 +11545,12 @@ public class DefaultApi {
      * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot; (required)
      * @param transformName ID or name of the deployed transform (required)
      * @param transformProcess The transform process to set (optional)
-     * @return ApiResponse&lt;ERRORUNKNOWN&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ERRORUNKNOWN> transformprocessPostWithHttpInfo(String deploymentName, String versionName, String transformName, ERRORUNKNOWN transformProcess) throws ApiException {
+    public ApiResponse<Object> transformprocessPostWithHttpInfo(String deploymentName, String versionName, String transformName, Object transformProcess) throws ApiException {
         com.squareup.okhttp.Call call = transformprocessPostValidateBeforeCall(deploymentName, versionName, transformName, transformProcess, null, null);
-        Type localVarReturnType = new TypeToken<ERRORUNKNOWN>(){}.getType();
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -11566,7 +11565,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call transformprocessPostAsync(String deploymentName, String versionName, String transformName, ERRORUNKNOWN transformProcess, final ApiCallback<ERRORUNKNOWN> callback) throws ApiException {
+    public com.squareup.okhttp.Call transformprocessPostAsync(String deploymentName, String versionName, String transformName, Object transformProcess, final ApiCallback<Object> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -11588,7 +11587,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = transformprocessPostValidateBeforeCall(deploymentName, versionName, transformName, transformProcess, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ERRORUNKNOWN>(){}.getType();
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

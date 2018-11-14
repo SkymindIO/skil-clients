@@ -791,6 +791,10 @@ margin-bottom: 20px;
             defs.AzureStorageResourceDetails = {
   "type" : "object",
   "properties" : {
+    "@class" : {
+      "type" : "string",
+      "default" : "io.skymind.resource.model.subtypes.storage.AzureStorageResourceDetails"
+    },
     "resourceId" : {
       "type" : "integer",
       "format" : "int64",
@@ -934,9 +938,9 @@ margin-bottom: 20px;
       "format" : "int64",
       "description" : "Storage resource ID"
     },
-    "skilSparkMainArgs" : {
+    "jobArgs" : {
       "type" : "string",
-      "description" : "SKILSparkMain class arguments"
+      "description" : "Job arguments"
     },
     "outputFileName" : {
       "type" : "string",
@@ -962,6 +966,10 @@ margin-bottom: 20px;
             defs.DataProcResourceDetails = {
   "type" : "object",
   "properties" : {
+    "@class" : {
+      "type" : "string",
+      "default" : "io.skymind.resource.model.subtypes.compute.DataProcResourceDetails"
+    },
     "resourceId" : {
       "type" : "integer",
       "format" : "int64",
@@ -1094,6 +1102,10 @@ margin-bottom: 20px;
             defs.EMRResourceDetails = {
   "type" : "object",
   "properties" : {
+    "@class" : {
+      "type" : "string",
+      "default" : "io.skymind.resource.model.subtypes.compute.EMRResourceDetails"
+    },
     "resourceId" : {
       "type" : "integer",
       "format" : "int64",
@@ -1202,7 +1214,7 @@ margin-bottom: 20px;
       "type" : "integer",
       "description" : "Example version"
     },
-    "int rowNumber" : {
+    "rowNumber" : {
       "type" : "integer",
       "description" : "Row Number"
     },
@@ -1305,6 +1317,10 @@ margin-bottom: 20px;
             defs.GoogleStorageResourceDetails = {
   "type" : "object",
   "properties" : {
+    "@class" : {
+      "type" : "string",
+      "default" : "io.skymind.resource.model.subtypes.storage.GoogleStorageResourceDetails"
+    },
     "resourceId" : {
       "type" : "integer",
       "format" : "int64",
@@ -1333,6 +1349,10 @@ margin-bottom: 20px;
             defs.HDFSResourceDetails = {
   "type" : "object",
   "properties" : {
+    "@class" : {
+      "type" : "string",
+      "default" : "io.skymind.resource.model.subtypes.storage.HDFSResourceDetails"
+    },
     "resourceId" : {
       "type" : "integer",
       "format" : "int64",
@@ -1361,6 +1381,10 @@ margin-bottom: 20px;
             defs.HDInsightResourceDetails = {
   "type" : "object",
   "properties" : {
+    "@class" : {
+      "type" : "string",
+      "default" : "io.skymind.resource.model.subtypes.compute.HDInsightResourceDetails"
+    },
     "resourceId" : {
       "type" : "integer",
       "format" : "int64",
@@ -1510,9 +1534,9 @@ margin-bottom: 20px;
       "format" : "int64",
       "description" : "Storage resource ID"
     },
-    "skilSparkMainArgs" : {
+    "jobArgs" : {
       "type" : "string",
-      "description" : "SKILSparkMain class arguments"
+      "description" : "Job arguments"
     },
     "runId" : {
       "type" : "string",
@@ -2040,6 +2064,10 @@ margin-bottom: 20px;
             defs.S3ResourceDetails = {
   "type" : "object",
   "properties" : {
+    "@class" : {
+      "type" : "string",
+      "default" : "io.skymind.resource.model.subtypes.storage.S3ResourceDetails"
+    },
     "resourceId" : {
       "type" : "integer",
       "format" : "int64",
@@ -2126,6 +2154,10 @@ margin-bottom: 20px;
             defs.YARNResourceDetails = {
   "type" : "object",
   "properties" : {
+    "@class" : {
+      "type" : "string",
+      "default" : "io.skymind.resource.model.subtypes.compute.YARNResourceDetails"
+    },
     "resourceId" : {
       "type" : "integer",
       "format" : "int64",
@@ -20541,7 +20573,8 @@ public class DefaultApiExample {
         DefaultApi apiInstance = new DefaultApi();
         Long resourceId = 789; // Long | ID of the resource
         try {
-            apiInstance.getResourceDetailsById(resourceId);
+            Object result = apiInstance.getResourceDetailsById(resourceId);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getResourceDetailsById");
             e.printStackTrace();
@@ -20559,7 +20592,8 @@ public class DefaultApiExample {
         DefaultApi apiInstance = new DefaultApi();
         Long resourceId = 789; // Long | ID of the resource
         try {
-            apiInstance.getResourceDetailsById(resourceId);
+            Object result = apiInstance.getResourceDetailsById(resourceId);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getResourceDetailsById");
             e.printStackTrace();
@@ -20585,7 +20619,10 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Get the resource details with the specified resource ID
 [apiInstance getResourceDetailsByIdWith:resourceId
-              completionHandler: ^(NSError* error) {
+              completionHandler: ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -20612,7 +20649,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.getResourceDetailsById(resourceId, callback);
@@ -20647,7 +20684,8 @@ namespace Example
             try
             {
                 // Get the resource details with the specified resource ID
-                apiInstance.getResourceDetailsById(resourceId);
+                Object result = apiInstance.getResourceDetailsById(resourceId);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -20672,7 +20710,8 @@ $api_instance = new Swagger\Client\Api\DefaultApi();
 $resourceId = 789; // Long | ID of the resource
 
 try {
-    $api_instance->getResourceDetailsById($resourceId);
+    $result = $api_instance->getResourceDetailsById($resourceId);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getResourceDetailsById: ', $e->getMessage(), PHP_EOL;
 }
@@ -20693,7 +20732,8 @@ my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $resourceId = 789; # Long | ID of the resource
 
 eval { 
-    $api_instance->getResourceDetailsById(resourceId => $resourceId);
+    my $result = $api_instance->getResourceDetailsById(resourceId => $resourceId);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->getResourceDetailsById: $@\n";
@@ -20718,7 +20758,8 @@ resourceId = 789 # Long | ID of the resource
 
 try: 
     # Get the resource details with the specified resource ID
-    api_instance.get_resource_details_by_id(resourceId)
+    api_response = api_instance.get_resource_details_by_id(resourceId)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->getResourceDetailsById: %s\n" % e)</code></pre>
                             </div>
@@ -20781,7 +20822,10 @@ except ApiException as e:
                                       $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "One of the resource details object",
-  "schema" : { }
+  "schema" : {
+    "type" : "object",
+    "properties" : { }
+  }
 };
                                         var schema = schemaWrapper.schema;
                                         if (schema.$ref != null) {
@@ -32319,7 +32363,7 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-         batchRecord = ; //  | The input batch of record arrays
+        Object batchRecord = ; // Object | The input batch of record arrays
         try {
             Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
             System.out.println(result);
@@ -32341,7 +32385,7 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-         batchRecord = ; //  | The input batch of record arrays
+        Object batchRecord = ; // Object | The input batch of record arrays
         try {
             Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
             System.out.println(result);
@@ -32367,7 +32411,7 @@ public class DefaultApiExample {
 String *deploymentName = deploymentName_example; // Name of the deployment group
 String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
 String *transformName = transformName_example; // ID or name of the deployed transform
- *batchRecord = ; // The input batch of record arrays (optional)
+Object *batchRecord = ; // The input batch of record arrays (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
@@ -32406,7 +32450,7 @@ var versionName = versionName_example; // {String} Version name of the endpoint.
 var transformName = transformName_example; // {String} ID or name of the deployed transform
 
 var opts = { 
-  'batchRecord':  // {} The input batch of record arrays
+  'batchRecord':  // {Object} The input batch of record arrays
 };
 
 var callback = function(error, data, response) {
@@ -32446,7 +32490,7 @@ namespace Example
             var deploymentName = deploymentName_example;  // String | Name of the deployment group
             var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
             var transformName = transformName_example;  // String | ID or name of the deployed transform
-            var batchRecord = new (); //  | The input batch of record arrays (optional) 
+            var batchRecord = new Object(); // Object | The input batch of record arrays (optional) 
 
             try
             {
@@ -32477,7 +32521,7 @@ $api_instance = new Swagger\Client\Api\DefaultApi();
 $deploymentName = deploymentName_example; // String | Name of the deployment group
 $versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
 $transformName = transformName_example; // String | ID or name of the deployed transform
-$batchRecord = ; //  | The input batch of record arrays
+$batchRecord = ; // Object | The input batch of record arrays
 
 try {
     $result = $api_instance->transformarray($deploymentName, $versionName, $transformName, $batchRecord);
@@ -32502,7 +32546,7 @@ my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $deploymentName = deploymentName_example; # String | Name of the deployment group
 my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
 my $transformName = transformName_example; # String | ID or name of the deployed transform
-my $batchRecord = WWW::SwaggerClient::Object::->new(); #  | The input batch of record arrays
+my $batchRecord = WWW::SwaggerClient::Object::Object->new(); # Object | The input batch of record arrays
 
 eval { 
     my $result = $api_instance->transformarray(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, batchRecord => $batchRecord);
@@ -32530,7 +32574,7 @@ api_instance = swagger_client.DefaultApi()
 deploymentName = deploymentName_example # String | Name of the deployment group
 versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
 transformName = transformName_example # String | ID or name of the deployed transform
-batchRecord =  #  | The input batch of record arrays (optional)
+batchRecord =  # Object | The input batch of record arrays (optional)
 
 try: 
     # Takes a batch input arrays and transforms it
@@ -32638,7 +32682,9 @@ $(document).ready(function() {
   "name" : "BatchRecord",
   "description" : "The input batch of record arrays",
   "required" : false,
-  "schema" : { }
+  "schema" : {
+    "type" : "object"
+  }
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -33695,7 +33741,7 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-         singleRecord = ; //  | The input record array
+        Object singleRecord = ; // Object | The input record array
         try {
             Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
             System.out.println(result);
@@ -33717,7 +33763,7 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-         singleRecord = ; //  | The input record array
+        Object singleRecord = ; // Object | The input record array
         try {
             Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
             System.out.println(result);
@@ -33743,7 +33789,7 @@ public class DefaultApiExample {
 String *deploymentName = deploymentName_example; // Name of the deployment group
 String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
 String *transformName = transformName_example; // ID or name of the deployed transform
- *singleRecord = ; // The input record array (optional)
+Object *singleRecord = ; // The input record array (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
@@ -33782,7 +33828,7 @@ var versionName = versionName_example; // {String} Version name of the endpoint.
 var transformName = transformName_example; // {String} ID or name of the deployed transform
 
 var opts = { 
-  'singleRecord':  // {} The input record array
+  'singleRecord':  // {Object} The input record array
 };
 
 var callback = function(error, data, response) {
@@ -33822,7 +33868,7 @@ namespace Example
             var deploymentName = deploymentName_example;  // String | Name of the deployment group
             var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
             var transformName = transformName_example;  // String | ID or name of the deployed transform
-            var singleRecord = new (); //  | The input record array (optional) 
+            var singleRecord = new Object(); // Object | The input record array (optional) 
 
             try
             {
@@ -33853,7 +33899,7 @@ $api_instance = new Swagger\Client\Api\DefaultApi();
 $deploymentName = deploymentName_example; // String | Name of the deployment group
 $versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
 $transformName = transformName_example; // String | ID or name of the deployed transform
-$singleRecord = ; //  | The input record array
+$singleRecord = ; // Object | The input record array
 
 try {
     $result = $api_instance->transformincrementalarray($deploymentName, $versionName, $transformName, $singleRecord);
@@ -33878,7 +33924,7 @@ my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $deploymentName = deploymentName_example; # String | Name of the deployment group
 my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
 my $transformName = transformName_example; # String | ID or name of the deployed transform
-my $singleRecord = WWW::SwaggerClient::Object::->new(); #  | The input record array
+my $singleRecord = WWW::SwaggerClient::Object::Object->new(); # Object | The input record array
 
 eval { 
     my $result = $api_instance->transformincrementalarray(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, singleRecord => $singleRecord);
@@ -33906,7 +33952,7 @@ api_instance = swagger_client.DefaultApi()
 deploymentName = deploymentName_example # String | Name of the deployment group
 versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
 transformName = transformName_example # String | ID or name of the deployed transform
-singleRecord =  #  | The input record array (optional)
+singleRecord =  # Object | The input record array (optional)
 
 try: 
     # Same as /transformincremental but returns Base64NDArrayBody.
@@ -34014,7 +34060,9 @@ $(document).ready(function() {
   "name" : "SingleRecord",
   "description" : "The input record array",
   "required" : false,
-  "schema" : { }
+  "schema" : {
+    "type" : "object"
+  }
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -34609,7 +34657,8 @@ public class DefaultApiExample {
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
         try {
-            apiInstance.transformprocessGet(deploymentName, versionName, transformName);
+            Object result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#transformprocessGet");
             e.printStackTrace();
@@ -34629,7 +34678,8 @@ public class DefaultApiExample {
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
         try {
-            apiInstance.transformprocessGet(deploymentName, versionName, transformName);
+            Object result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#transformprocessGet");
             e.printStackTrace();
@@ -34659,7 +34709,10 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 [apiInstance transformprocessGetWith:deploymentName
     versionName:versionName
     transformName:transformName
-              completionHandler: ^(NSError* error) {
+              completionHandler: ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -34690,7 +34743,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.transformprocessGet(deploymentName, versionName, transformName, callback);
@@ -34727,7 +34780,8 @@ namespace Example
             try
             {
                 // Gets the JSON string of the deployed transform process (CSV or Image)
-                apiInstance.transformprocessGet(deploymentName, versionName, transformName);
+                Object result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -34754,7 +34808,8 @@ $versionName = versionName_example; // String | Version name of the endpoint. Th
 $transformName = transformName_example; // String | ID or name of the deployed transform
 
 try {
-    $api_instance->transformprocessGet($deploymentName, $versionName, $transformName);
+    $result = $api_instance->transformprocessGet($deploymentName, $versionName, $transformName);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->transformprocessGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -34777,7 +34832,8 @@ my $versionName = versionName_example; # String | Version name of the endpoint. 
 my $transformName = transformName_example; # String | ID or name of the deployed transform
 
 eval { 
-    $api_instance->transformprocessGet(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName);
+    my $result = $api_instance->transformprocessGet(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->transformprocessGet: $@\n";
@@ -34804,7 +34860,8 @@ transformName = transformName_example # String | ID or name of the deployed tran
 
 try: 
     # Gets the JSON string of the deployed transform process (CSV or Image)
-    api_instance.transformprocess_get(deploymentName, versionName, transformName)
+    api_response = api_instance.transformprocess_get(deploymentName, versionName, transformName)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformprocessGet: %s\n" % e)</code></pre>
                             </div>
@@ -34910,7 +34967,10 @@ except ApiException as e:
                                       $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "the deployed transform process",
-  "schema" : { }
+  "schema" : {
+    "type" : "object",
+    "properties" : { }
+  }
 };
                                         var schema = schemaWrapper.schema;
                                         if (schema.$ref != null) {
@@ -35012,9 +35072,10 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-         transformProcess = ; //  | The transform process to set
+        Object transformProcess = ; // Object | The transform process to set
         try {
-            apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+            Object result = apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#transformprocessPost");
             e.printStackTrace();
@@ -35033,9 +35094,10 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-         transformProcess = ; //  | The transform process to set
+        Object transformProcess = ; // Object | The transform process to set
         try {
-            apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+            Object result = apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#transformprocessPost");
             e.printStackTrace();
@@ -35058,7 +35120,7 @@ public class DefaultApiExample {
 String *deploymentName = deploymentName_example; // Name of the deployment group
 String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
 String *transformName = transformName_example; // ID or name of the deployed transform
- *transformProcess = ; // The transform process to set (optional)
+Object *transformProcess = ; // The transform process to set (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
@@ -35067,7 +35129,10 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
     versionName:versionName
     transformName:transformName
     transformProcess:transformProcess
-              completionHandler: ^(NSError* error) {
+              completionHandler: ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -35094,14 +35159,14 @@ var versionName = versionName_example; // {String} Version name of the endpoint.
 var transformName = transformName_example; // {String} ID or name of the deployed transform
 
 var opts = { 
-  'transformProcess':  // {} The transform process to set
+  'transformProcess':  // {Object} The transform process to set
 };
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.transformprocessPost(deploymentName, versionName, transformName, opts, callback);
@@ -35134,12 +35199,13 @@ namespace Example
             var deploymentName = deploymentName_example;  // String | Name of the deployment group
             var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
             var transformName = transformName_example;  // String | ID or name of the deployed transform
-            var transformProcess = new (); //  | The transform process to set (optional) 
+            var transformProcess = new Object(); // Object | The transform process to set (optional) 
 
             try
             {
                 // Sets the deployed (CSV or Image) transform process through the provided JSON string
-                apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+                Object result = apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -35164,10 +35230,11 @@ $api_instance = new Swagger\Client\Api\DefaultApi();
 $deploymentName = deploymentName_example; // String | Name of the deployment group
 $versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
 $transformName = transformName_example; // String | ID or name of the deployed transform
-$transformProcess = ; //  | The transform process to set
+$transformProcess = ; // Object | The transform process to set
 
 try {
-    $api_instance->transformprocessPost($deploymentName, $versionName, $transformName, $transformProcess);
+    $result = $api_instance->transformprocessPost($deploymentName, $versionName, $transformName, $transformProcess);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->transformprocessPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -35188,10 +35255,11 @@ my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $deploymentName = deploymentName_example; # String | Name of the deployment group
 my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
 my $transformName = transformName_example; # String | ID or name of the deployed transform
-my $transformProcess = WWW::SwaggerClient::Object::->new(); #  | The transform process to set
+my $transformProcess = WWW::SwaggerClient::Object::Object->new(); # Object | The transform process to set
 
 eval { 
-    $api_instance->transformprocessPost(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, transformProcess => $transformProcess);
+    my $result = $api_instance->transformprocessPost(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, transformProcess => $transformProcess);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->transformprocessPost: $@\n";
@@ -35215,11 +35283,12 @@ api_instance = swagger_client.DefaultApi()
 deploymentName = deploymentName_example # String | Name of the deployment group
 versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
 transformName = transformName_example # String | ID or name of the deployed transform
-transformProcess =  #  | The transform process to set (optional)
+transformProcess =  # Object | The transform process to set (optional)
 
 try: 
     # Sets the deployed (CSV or Image) transform process through the provided JSON string
-    api_instance.transformprocess_post(deploymentName, versionName, transformName, transformProcess=transformProcess)
+    api_response = api_instance.transformprocess_post(deploymentName, versionName, transformName, transformProcess=transformProcess)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformprocessPost: %s\n" % e)</code></pre>
                             </div>
@@ -35322,7 +35391,9 @@ $(document).ready(function() {
   "name" : "TransformProcess",
   "description" : "The transform process to set",
   "required" : false,
-  "schema" : { }
+  "schema" : {
+    "type" : "object"
+  }
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -35365,7 +35436,10 @@ $(document).ready(function() {
                                       $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "transform process set successfully",
-  "schema" : { }
+  "schema" : {
+    "type" : "object",
+    "properties" : { }
+  }
 };
                                         var schema = schemaWrapper.schema;
                                         if (schema.$ref != null) {

@@ -1415,7 +1415,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetResourceDetailsById**
-> ErrorUnknown GetResourceDetailsById(ctx, resourceId)
+> interface{} GetResourceDetailsById(ctx, resourceId)
 Get the resource details with the specified resource ID
 
 Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
@@ -1429,7 +1429,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**ErrorUnknown**
+[**interface{}**](interface{}.md)
 
 ### Authorization
 
@@ -2283,7 +2283,7 @@ Name | Type | Description  | Notes
 
 
 
- **batchRecord** | [**optional.Interface of ErrorUnknown**](.md)| The input batch of record arrays | 
+ **batchRecord** | [**optional.Interface of interface{}**](interface{}.md)| The input batch of record arrays | 
 
 ### Return type
 
@@ -2394,7 +2394,7 @@ Name | Type | Description  | Notes
 
 
 
- **singleRecord** | [**optional.Interface of ErrorUnknown**](.md)| The input record array | 
+ **singleRecord** | [**optional.Interface of interface{}**](interface{}.md)| The input record array | 
 
 ### Return type
 
@@ -2443,7 +2443,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformprocessGet**
-> ErrorUnknown TransformprocessGet(ctx, deploymentName, versionName, transformName)
+> interface{} TransformprocessGet(ctx, deploymentName, versionName, transformName)
 Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Required Parameters
@@ -2457,7 +2457,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**ErrorUnknown**
+[**interface{}**](interface{}.md)
 
 ### Authorization
 
@@ -2471,7 +2471,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformprocessPost**
-> ErrorUnknown TransformprocessPost(ctx, deploymentName, versionName, transformName, optional)
+> interface{} TransformprocessPost(ctx, deploymentName, versionName, transformName, optional)
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Required Parameters
@@ -2492,11 +2492,11 @@ Name | Type | Description  | Notes
 
 
 
- **transformProcess** | [**optional.Interface of ErrorUnknown**](.md)| The transform process to set | 
+ **transformProcess** | [**optional.Interface of interface{}**](interface{}.md)| The transform process to set | 
 
 ### Return type
 
-**ErrorUnknown**
+[**interface{}**](interface{}.md)
 
 ### Authorization
 

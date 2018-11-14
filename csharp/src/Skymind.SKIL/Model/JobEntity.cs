@@ -121,17 +121,17 @@ namespace Skymind.SKIL.Model
         /// <param name="jobType">Whether a job is for training or inference.</param>
         /// <param name="computeResourceId">Compute resource ID.</param>
         /// <param name="storageResourceId">Storage resource ID.</param>
-        /// <param name="skilSparkMainArgs">SKILSparkMain class arguments.</param>
+        /// <param name="jobArgs">Job arguments.</param>
         /// <param name="runId">Job run ID.</param>
         /// <param name="status">Job&#39;s status.</param>
         /// <param name="outputFileName">Output file name.</param>
-        public JobEntity(long? jobId = default(long?), JobTypeEnum? jobType = default(JobTypeEnum?), long? computeResourceId = default(long?), long? storageResourceId = default(long?), string skilSparkMainArgs = default(string), string runId = default(string), StatusEnum? status = default(StatusEnum?), string outputFileName = default(string))
+        public JobEntity(long? jobId = default(long?), JobTypeEnum? jobType = default(JobTypeEnum?), long? computeResourceId = default(long?), long? storageResourceId = default(long?), string jobArgs = default(string), string runId = default(string), StatusEnum? status = default(StatusEnum?), string outputFileName = default(string))
         {
             this.JobId = jobId;
             this.JobType = jobType;
             this.ComputeResourceId = computeResourceId;
             this.StorageResourceId = storageResourceId;
-            this.SkilSparkMainArgs = skilSparkMainArgs;
+            this.JobArgs = jobArgs;
             this.RunId = runId;
             this.Status = status;
             this.OutputFileName = outputFileName;
@@ -160,11 +160,11 @@ namespace Skymind.SKIL.Model
         public long? StorageResourceId { get; set; }
 
         /// <summary>
-        /// SKILSparkMain class arguments
+        /// Job arguments
         /// </summary>
-        /// <value>SKILSparkMain class arguments</value>
-        [DataMember(Name="skilSparkMainArgs", EmitDefaultValue=false)]
-        public string SkilSparkMainArgs { get; set; }
+        /// <value>Job arguments</value>
+        [DataMember(Name="jobArgs", EmitDefaultValue=false)]
+        public string JobArgs { get; set; }
 
         /// <summary>
         /// Job run ID
@@ -193,7 +193,7 @@ namespace Skymind.SKIL.Model
             sb.Append("  JobType: ").Append(JobType).Append("\n");
             sb.Append("  ComputeResourceId: ").Append(ComputeResourceId).Append("\n");
             sb.Append("  StorageResourceId: ").Append(StorageResourceId).Append("\n");
-            sb.Append("  SkilSparkMainArgs: ").Append(SkilSparkMainArgs).Append("\n");
+            sb.Append("  JobArgs: ").Append(JobArgs).Append("\n");
             sb.Append("  RunId: ").Append(RunId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  OutputFileName: ").Append(OutputFileName).Append("\n");
@@ -252,9 +252,9 @@ namespace Skymind.SKIL.Model
                     this.StorageResourceId.Equals(input.StorageResourceId))
                 ) && 
                 (
-                    this.SkilSparkMainArgs == input.SkilSparkMainArgs ||
-                    (this.SkilSparkMainArgs != null &&
-                    this.SkilSparkMainArgs.Equals(input.SkilSparkMainArgs))
+                    this.JobArgs == input.JobArgs ||
+                    (this.JobArgs != null &&
+                    this.JobArgs.Equals(input.JobArgs))
                 ) && 
                 (
                     this.RunId == input.RunId ||
@@ -290,8 +290,8 @@ namespace Skymind.SKIL.Model
                     hashCode = hashCode * 59 + this.ComputeResourceId.GetHashCode();
                 if (this.StorageResourceId != null)
                     hashCode = hashCode * 59 + this.StorageResourceId.GetHashCode();
-                if (this.SkilSparkMainArgs != null)
-                    hashCode = hashCode * 59 + this.SkilSparkMainArgs.GetHashCode();
+                if (this.JobArgs != null)
+                    hashCode = hashCode * 59 + this.JobArgs.GetHashCode();
                 if (this.RunId != null)
                     hashCode = hashCode * 59 + this.RunId.GetHashCode();
                 if (this.Status != null)

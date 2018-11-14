@@ -75,13 +75,23 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EMRResourceDetails" /> class.
         /// </summary>
+        /// <param name="_class">_class (default to &quot;io.skymind.resource.model.subtypes.compute.EMRResourceDetails&quot;).</param>
         /// <param name="resourceId">ID of the resource.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="subType">Resource subtype.</param>
         /// <param name="clusterId">EMR cluster ID.</param>
         /// <param name="region">Region name where the cluster is deployed.</param>
-        public EMRResourceDetails(long? resourceId = default(long?), TypeEnum? type = default(TypeEnum?), SubTypeEnum? subType = default(SubTypeEnum?), string clusterId = default(string), string region = default(string))
+        public EMRResourceDetails(string _class = "io.skymind.resource.model.subtypes.compute.EMRResourceDetails", long? resourceId = default(long?), TypeEnum? type = default(TypeEnum?), SubTypeEnum? subType = default(SubTypeEnum?), string clusterId = default(string), string region = default(string))
         {
+            // use default value if no "_class" provided
+            if (_class == null)
+            {
+                this.Class = "io.skymind.resource.model.subtypes.compute.EMRResourceDetails";
+            }
+            else
+            {
+                this.Class = _class;
+            }
             this.ResourceId = resourceId;
             this.Type = type;
             this.SubType = subType;
@@ -89,6 +99,12 @@ namespace Skymind.SKIL.Model
             this.Region = region;
         }
         
+        /// <summary>
+        /// Gets or Sets Class
+        /// </summary>
+        [DataMember(Name="@class", EmitDefaultValue=false)]
+        public string Class { get; set; }
+
         /// <summary>
         /// ID of the resource
         /// </summary>
@@ -120,6 +136,7 @@ namespace Skymind.SKIL.Model
         {
             var sb = new StringBuilder();
             sb.Append("class EMRResourceDetails {\n");
+            sb.Append("  Class: ").Append(Class).Append("\n");
             sb.Append("  ResourceId: ").Append(ResourceId).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  SubType: ").Append(SubType).Append("\n");
@@ -160,6 +177,11 @@ namespace Skymind.SKIL.Model
 
             return 
                 (
+                    this.Class == input.Class ||
+                    (this.Class != null &&
+                    this.Class.Equals(input.Class))
+                ) && 
+                (
                     this.ResourceId == input.ResourceId ||
                     (this.ResourceId != null &&
                     this.ResourceId.Equals(input.ResourceId))
@@ -195,6 +217,8 @@ namespace Skymind.SKIL.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Class != null)
+                    hashCode = hashCode * 59 + this.Class.GetHashCode();
                 if (this.ResourceId != null)
                     hashCode = hashCode * 59 + this.ResourceId.GetHashCode();
                 if (this.Type != null)

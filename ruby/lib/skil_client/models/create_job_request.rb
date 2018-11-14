@@ -20,8 +20,8 @@ module SkilCient
     # Storage resource ID
     attr_accessor :storage_resource_id
 
-    # SKILSparkMain class arguments
-    attr_accessor :skil_spark_main_args
+    # Job arguments
+    attr_accessor :job_args
 
     # Output file name
     attr_accessor :output_file_name
@@ -31,7 +31,7 @@ module SkilCient
       {
         :'compute_resource_id' => :'computeResourceId',
         :'storage_resource_id' => :'storageResourceId',
-        :'skil_spark_main_args' => :'skilSparkMainArgs',
+        :'job_args' => :'jobArgs',
         :'output_file_name' => :'outputFileName'
       }
     end
@@ -41,7 +41,7 @@ module SkilCient
       {
         :'compute_resource_id' => :'Integer',
         :'storage_resource_id' => :'Integer',
-        :'skil_spark_main_args' => :'String',
+        :'job_args' => :'String',
         :'output_file_name' => :'String'
       }
     end
@@ -62,8 +62,8 @@ module SkilCient
         self.storage_resource_id = attributes[:'storageResourceId']
       end
 
-      if attributes.has_key?(:'skilSparkMainArgs')
-        self.skil_spark_main_args = attributes[:'skilSparkMainArgs']
+      if attributes.has_key?(:'jobArgs')
+        self.job_args = attributes[:'jobArgs']
       end
 
       if attributes.has_key?(:'outputFileName')
@@ -91,7 +91,7 @@ module SkilCient
       self.class == o.class &&
           compute_resource_id == o.compute_resource_id &&
           storage_resource_id == o.storage_resource_id &&
-          skil_spark_main_args == o.skil_spark_main_args &&
+          job_args == o.job_args &&
           output_file_name == o.output_file_name
     end
 
@@ -104,7 +104,7 @@ module SkilCient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [compute_resource_id, storage_resource_id, skil_spark_main_args, output_file_name].hash
+      [compute_resource_id, storage_resource_id, job_args, output_file_name].hash
     end
 
     # Builds the object from hash

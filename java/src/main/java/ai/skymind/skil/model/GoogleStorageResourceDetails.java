@@ -27,8 +27,11 @@ import java.io.IOException;
 /**
  * GoogleStorageResourceDetails
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-17T08:50:23.609+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-14T15:11:49.806+05:00")
 public class GoogleStorageResourceDetails {
+  @SerializedName("@class")
+  private String propertyClass = "io.skymind.resource.model.subtypes.storage.GoogleStorageResourceDetails";
+
   @SerializedName("resourceId")
   private Long resourceId = null;
 
@@ -134,6 +137,24 @@ public class GoogleStorageResourceDetails {
   @SerializedName("bucketName")
   private String bucketName = null;
 
+  public GoogleStorageResourceDetails propertyClass(String propertyClass) {
+    this.propertyClass = propertyClass;
+    return this;
+  }
+
+   /**
+   * Get propertyClass
+   * @return propertyClass
+  **/
+  @ApiModelProperty(value = "")
+  public String getPropertyClass() {
+    return propertyClass;
+  }
+
+  public void setPropertyClass(String propertyClass) {
+    this.propertyClass = propertyClass;
+  }
+
   public GoogleStorageResourceDetails resourceId(Long resourceId) {
     this.resourceId = resourceId;
     return this;
@@ -234,7 +255,8 @@ public class GoogleStorageResourceDetails {
       return false;
     }
     GoogleStorageResourceDetails googleStorageResourceDetails = (GoogleStorageResourceDetails) o;
-    return Objects.equals(this.resourceId, googleStorageResourceDetails.resourceId) &&
+    return Objects.equals(this.propertyClass, googleStorageResourceDetails.propertyClass) &&
+        Objects.equals(this.resourceId, googleStorageResourceDetails.resourceId) &&
         Objects.equals(this.type, googleStorageResourceDetails.type) &&
         Objects.equals(this.subType, googleStorageResourceDetails.subType) &&
         Objects.equals(this.projectId, googleStorageResourceDetails.projectId) &&
@@ -243,7 +265,7 @@ public class GoogleStorageResourceDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(resourceId, type, subType, projectId, bucketName);
+    return Objects.hash(propertyClass, resourceId, type, subType, projectId, bucketName);
   }
 
 
@@ -252,6 +274,7 @@ public class GoogleStorageResourceDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class GoogleStorageResourceDetails {\n");
     
+    sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
     sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    subType: ").append(toIndentedString(subType)).append("\n");

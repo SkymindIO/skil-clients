@@ -14,8 +14,8 @@ open class CreateJobRequest: JSONEncodable {
     public var computeResourceId: Int64?
     /** Storage resource ID */
     public var storageResourceId: Int64?
-    /** SKILSparkMain class arguments */
-    public var skilSparkMainArgs: String?
+    /** Job arguments */
+    public var jobArgs: String?
     /** Output file name */
     public var outputFileName: String?
 
@@ -26,7 +26,7 @@ open class CreateJobRequest: JSONEncodable {
         var nillableDictionary = [String:Any?]()
         nillableDictionary["computeResourceId"] = self.computeResourceId?.encodeToJSON()
         nillableDictionary["storageResourceId"] = self.storageResourceId?.encodeToJSON()
-        nillableDictionary["skilSparkMainArgs"] = self.skilSparkMainArgs
+        nillableDictionary["jobArgs"] = self.jobArgs
         nillableDictionary["outputFileName"] = self.outputFileName
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]

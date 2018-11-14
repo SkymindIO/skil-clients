@@ -1415,7 +1415,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_resource_details_by_id**
-> ::models::ErrorUnknown get_resource_details_by_id(ctx, resource_id)
+> Value get_resource_details_by_id(ctx, resource_id)
 Get the resource details with the specified resource ID
 
 Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
@@ -1429,7 +1429,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**::models::ErrorUnknown**
+[**Value**](Value.md)
 
 ### Authorization
 
@@ -2282,7 +2282,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **batch_record** | [**::models::ErrorUnknown**](.md)| The input batch of record arrays | 
+ **batch_record** | [**Value**](Value.md)| The input batch of record arrays | 
 
 ### Return type
 
@@ -2393,7 +2393,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **single_record** | [**::models::ErrorUnknown**](.md)| The input record array | 
+ **single_record** | [**Value**](Value.md)| The input record array | 
 
 ### Return type
 
@@ -2442,7 +2442,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_get**
-> ::models::ErrorUnknown transformprocess_get(ctx, deployment_name, version_name, transform_name)
+> Value transformprocess_get(ctx, deployment_name, version_name, transform_name)
 Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Required Parameters
@@ -2456,7 +2456,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**::models::ErrorUnknown**
+[**Value**](Value.md)
 
 ### Authorization
 
@@ -2470,7 +2470,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_post**
-> ::models::ErrorUnknown transformprocess_post(ctx, deployment_name, version_name, transform_name, optional)
+> Value transformprocess_post(ctx, deployment_name, version_name, transform_name, optional)
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Required Parameters
@@ -2491,11 +2491,11 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **transform_process** | [**::models::ErrorUnknown**](.md)| The transform process to set | 
+ **transform_process** | [**Value**](Value.md)| The transform process to set | 
 
 ### Return type
 
-**::models::ErrorUnknown**
+[**Value**](Value.md)
 
 ### Authorization
 

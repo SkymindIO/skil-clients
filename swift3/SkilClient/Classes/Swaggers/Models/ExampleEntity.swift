@@ -15,7 +15,7 @@ open class ExampleEntity: JSONEncodable {
     /** Example version */
     public var exampleVersion: Int32?
     /** Row Number */
-    public var intRowNumber: Int32?
+    public var rowNumber: Int32?
     /** when the example was created */
     public var created: Int64?
     /** The GUID of the minibatch */
@@ -30,7 +30,7 @@ open class ExampleEntity: JSONEncodable {
         var nillableDictionary = [String:Any?]()
         nillableDictionary["exampleId"] = self.exampleId
         nillableDictionary["exampleVersion"] = self.exampleVersion?.encodeToJSON()
-        nillableDictionary["int rowNumber"] = self.intRowNumber?.encodeToJSON()
+        nillableDictionary["rowNumber"] = self.rowNumber?.encodeToJSON()
         nillableDictionary["created"] = self.created?.encodeToJSON()
         nillableDictionary["miniBatchId"] = self.miniBatchId
         nillableDictionary["miniBatchVersion"] = self.miniBatchVersion?.encodeToJSON()

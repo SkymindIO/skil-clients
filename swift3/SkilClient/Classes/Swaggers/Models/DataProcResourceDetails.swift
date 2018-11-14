@@ -16,6 +16,7 @@ open class DataProcResourceDetails: JSONEncodable {
     public enum SubType: String { 
         case dataProc = "DataProc"
     }
+    public var _class: String?
     /** ID of the resource */
     public var resourceId: Int64?
     /** Resource type */
@@ -34,6 +35,7 @@ open class DataProcResourceDetails: JSONEncodable {
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
+        nillableDictionary["@class"] = self._class
         nillableDictionary["resourceId"] = self.resourceId?.encodeToJSON()
         nillableDictionary["type"] = self.type?.rawValue
         nillableDictionary["subType"] = self.subType?.rawValue

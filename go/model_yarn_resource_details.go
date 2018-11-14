@@ -10,6 +10,7 @@
 package skilclient
 
 type YarnResourceDetails struct {
+	Class string `json:"@class,omitempty"`
 	// ID of the resource
 	ResourceId int64 `json:"resourceId,omitempty"`
 	// Resource type

@@ -27,8 +27,11 @@ import java.io.IOException;
 /**
  * S3ResourceDetails
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-17T08:50:23.609+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-14T15:11:49.806+05:00")
 public class S3ResourceDetails {
+  @SerializedName("@class")
+  private String propertyClass = "io.skymind.resource.model.subtypes.storage.S3ResourceDetails";
+
   @SerializedName("resourceId")
   private Long resourceId = null;
 
@@ -134,6 +137,24 @@ public class S3ResourceDetails {
   @SerializedName("region")
   private String region = null;
 
+  public S3ResourceDetails propertyClass(String propertyClass) {
+    this.propertyClass = propertyClass;
+    return this;
+  }
+
+   /**
+   * Get propertyClass
+   * @return propertyClass
+  **/
+  @ApiModelProperty(value = "")
+  public String getPropertyClass() {
+    return propertyClass;
+  }
+
+  public void setPropertyClass(String propertyClass) {
+    this.propertyClass = propertyClass;
+  }
+
   public S3ResourceDetails resourceId(Long resourceId) {
     this.resourceId = resourceId;
     return this;
@@ -234,7 +255,8 @@ public class S3ResourceDetails {
       return false;
     }
     S3ResourceDetails s3ResourceDetails = (S3ResourceDetails) o;
-    return Objects.equals(this.resourceId, s3ResourceDetails.resourceId) &&
+    return Objects.equals(this.propertyClass, s3ResourceDetails.propertyClass) &&
+        Objects.equals(this.resourceId, s3ResourceDetails.resourceId) &&
         Objects.equals(this.type, s3ResourceDetails.type) &&
         Objects.equals(this.subType, s3ResourceDetails.subType) &&
         Objects.equals(this.bucket, s3ResourceDetails.bucket) &&
@@ -243,7 +265,7 @@ public class S3ResourceDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(resourceId, type, subType, bucket, region);
+    return Objects.hash(propertyClass, resourceId, type, subType, bucket, region);
   }
 
 
@@ -252,6 +274,7 @@ public class S3ResourceDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class S3ResourceDetails {\n");
     
+    sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
     sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    subType: ").append(toIndentedString(subType)).append("\n");

@@ -14,6 +14,8 @@ use serde_json::Value;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct EmrResourceDetails {
+  #[serde(rename = "@class")]
+  class: Option<String>,
   /// ID of the resource
   #[serde(rename = "resourceId")]
   resource_id: Option<i64>,
@@ -34,12 +36,30 @@ pub struct EmrResourceDetails {
 impl EmrResourceDetails {
   pub fn new() -> EmrResourceDetails {
     EmrResourceDetails {
+      class: None,
       resource_id: None,
       _type: None,
       sub_type: None,
       cluster_id: None,
       region: None
     }
+  }
+
+  pub fn set_class(&mut self, class: String) {
+    self.class = Some(class);
+  }
+
+  pub fn with_class(mut self, class: String) -> EmrResourceDetails {
+    self.class = Some(class);
+    self
+  }
+
+  pub fn class(&self) -> Option<&String> {
+    self.class.as_ref()
+  }
+
+  pub fn reset_class(&mut self) {
+    self.class = None;
   }
 
   pub fn set_resource_id(&mut self, resource_id: i64) {

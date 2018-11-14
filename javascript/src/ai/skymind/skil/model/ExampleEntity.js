@@ -72,8 +72,8 @@
       if (data.hasOwnProperty('exampleVersion')) {
         obj['exampleVersion'] = ApiClient.convertToType(data['exampleVersion'], 'Number');
       }
-      if (data.hasOwnProperty('int rowNumber')) {
-        obj['int rowNumber'] = ApiClient.convertToType(data['int rowNumber'], 'Number');
+      if (data.hasOwnProperty('rowNumber')) {
+        obj['rowNumber'] = ApiClient.convertToType(data['rowNumber'], 'Number');
       }
       if (data.hasOwnProperty('created')) {
         obj['created'] = ApiClient.convertToType(data['created'], 'Number');
@@ -100,9 +100,9 @@
   exports.prototype['exampleVersion'] = undefined;
   /**
    * Row Number
-   * @member {Number} int rowNumber
+   * @member {Number} rowNumber
    */
-  exports.prototype['int rowNumber'] = undefined;
+  exports.prototype['rowNumber'] = undefined;
   /**
    * when the example was created
    * @member {Number} created

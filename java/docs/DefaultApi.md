@@ -2766,7 +2766,7 @@ Name | Type | Description  | Notes
 
 <a name="getResourceDetailsById"></a>
 # **getResourceDetailsById**
-> ERRORUNKNOWN getResourceDetailsById(resourceId)
+> Object getResourceDetailsById(resourceId)
 
 Get the resource details with the specified resource ID
 
@@ -2792,7 +2792,7 @@ api_key.setApiKey("YOUR API KEY");
 DefaultApi apiInstance = new DefaultApi();
 Long resourceId = 789L; // Long | ID of the resource
 try {
-    ERRORUNKNOWN result = apiInstance.getResourceDetailsById(resourceId);
+    Object result = apiInstance.getResourceDetailsById(resourceId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#getResourceDetailsById");
@@ -2808,7 +2808,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+**Object**
 
 ### Authorization
 
@@ -4426,7 +4426,7 @@ DefaultApi apiInstance = new DefaultApi();
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-ERRORUNKNOWN batchRecord = new ERRORUNKNOWN(); // ERRORUNKNOWN | The input batch of record arrays
+Object batchRecord = null; // Object | The input batch of record arrays
 try {
     Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
     System.out.println(result);
@@ -4443,7 +4443,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **batchRecord** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input batch of record arrays | [optional]
+ **batchRecord** | **Object**| The input batch of record arrays | [optional]
 
 ### Return type
 
@@ -4607,7 +4607,7 @@ DefaultApi apiInstance = new DefaultApi();
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-ERRORUNKNOWN singleRecord = new ERRORUNKNOWN(); // ERRORUNKNOWN | The input record array
+Object singleRecord = null; // Object | The input record array
 try {
     Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
     System.out.println(result);
@@ -4624,7 +4624,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **singleRecord** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The input record array | [optional]
+ **singleRecord** | **Object**| The input record array | [optional]
 
 ### Return type
 
@@ -4702,7 +4702,7 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessGet"></a>
 # **transformprocessGet**
-> ERRORUNKNOWN transformprocessGet(deploymentName, versionName, transformName)
+> Object transformprocessGet(deploymentName, versionName, transformName)
 
 Gets the JSON string of the deployed transform process (CSV or Image)
 
@@ -4728,7 +4728,7 @@ String deploymentName = "deploymentName_example"; // String | Name of the deploy
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
 try {
-    ERRORUNKNOWN result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
+    Object result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#transformprocessGet");
@@ -4746,7 +4746,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+**Object**
 
 ### Authorization
 
@@ -4759,7 +4759,7 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessPost"></a>
 # **transformprocessPost**
-> ERRORUNKNOWN transformprocessPost(deploymentName, versionName, transformName, transformProcess)
+> Object transformprocessPost(deploymentName, versionName, transformName, transformProcess)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
@@ -4784,9 +4784,9 @@ DefaultApi apiInstance = new DefaultApi();
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-ERRORUNKNOWN transformProcess = new ERRORUNKNOWN(); // ERRORUNKNOWN | The transform process to set
+Object transformProcess = null; // Object | The transform process to set
 try {
-    ERRORUNKNOWN result = apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+    Object result = apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#transformprocessPost");
@@ -4801,11 +4801,11 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **transformProcess** | [**ERRORUNKNOWN**](ERRORUNKNOWN.md)| The transform process to set | [optional]
+ **transformProcess** | **Object**| The transform process to set | [optional]
 
 ### Return type
 
-[**ERRORUNKNOWN**](ERRORUNKNOWN.md)
+**Object**
 
 ### Authorization
 

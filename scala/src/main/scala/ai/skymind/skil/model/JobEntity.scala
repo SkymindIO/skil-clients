@@ -22,8 +22,8 @@ case class JobEntity (
   ComputeResourceId: Option[Long] = None,
   // Storage resource ID
   StorageResourceId: Option[Long] = None,
-  // SKILSparkMain class arguments
-  SkilSparkMainArgs: Option[String] = None,
+  // Job arguments
+  JobArgs: Option[String] = None,
   // Job run ID
   RunId: Option[String] = None,
   // Job's status

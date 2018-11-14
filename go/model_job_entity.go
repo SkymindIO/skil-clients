@@ -18,8 +18,8 @@ type JobEntity struct {
 	ComputeResourceId int64 `json:"computeResourceId,omitempty"`
 	// Storage resource ID
 	StorageResourceId int64 `json:"storageResourceId,omitempty"`
-	// SKILSparkMain class arguments
-	SkilSparkMainArgs string `json:"skilSparkMainArgs,omitempty"`
+	// Job arguments
+	JobArgs string `json:"jobArgs,omitempty"`
 	// Job run ID
 	RunId string `json:"runId,omitempty"`
 	// Job's status

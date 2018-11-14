@@ -31,8 +31,8 @@ open class JobEntity: JSONEncodable {
     public var computeResourceId: Int64?
     /** Storage resource ID */
     public var storageResourceId: Int64?
-    /** SKILSparkMain class arguments */
-    public var skilSparkMainArgs: String?
+    /** Job arguments */
+    public var jobArgs: String?
     /** Job run ID */
     public var runId: String?
     /** Job&#39;s status */
@@ -49,7 +49,7 @@ open class JobEntity: JSONEncodable {
         nillableDictionary["jobType"] = self.jobType?.rawValue
         nillableDictionary["computeResourceId"] = self.computeResourceId?.encodeToJSON()
         nillableDictionary["storageResourceId"] = self.storageResourceId?.encodeToJSON()
-        nillableDictionary["skilSparkMainArgs"] = self.skilSparkMainArgs
+        nillableDictionary["jobArgs"] = self.jobArgs
         nillableDictionary["runId"] = self.runId
         nillableDictionary["status"] = self.status?.rawValue
         nillableDictionary["outputFileName"] = self.outputFileName

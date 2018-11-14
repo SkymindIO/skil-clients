@@ -19,6 +19,8 @@ import java.io.Serializable;
 @ApiModel(description = "")
 public class DataProcResourceDetails implements Serializable {
   
+  @SerializedName("@class")
+  private String _class = null;
   @SerializedName("resourceId")
   private Long resourceId = null;
   public enum TypeEnum {
@@ -37,6 +39,16 @@ public class DataProcResourceDetails implements Serializable {
   private String region = null;
   @SerializedName("sparkClusterName")
   private String sparkClusterName = null;
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getClass() {
+    return _class;
+  }
+  public void setClass(String _class) {
+    this._class = _class;
+  }
 
   /**
    * ID of the resource
@@ -114,7 +126,8 @@ public class DataProcResourceDetails implements Serializable {
       return false;
     }
     DataProcResourceDetails dataProcResourceDetails = (DataProcResourceDetails) o;
-    return (this.resourceId == null ? dataProcResourceDetails.resourceId == null : this.resourceId.equals(dataProcResourceDetails.resourceId)) &&
+    return (this._class == null ? dataProcResourceDetails._class == null : this._class.equals(dataProcResourceDetails._class)) &&
+        (this.resourceId == null ? dataProcResourceDetails.resourceId == null : this.resourceId.equals(dataProcResourceDetails.resourceId)) &&
         (this.type == null ? dataProcResourceDetails.type == null : this.type.equals(dataProcResourceDetails.type)) &&
         (this.subType == null ? dataProcResourceDetails.subType == null : this.subType.equals(dataProcResourceDetails.subType)) &&
         (this.projectId == null ? dataProcResourceDetails.projectId == null : this.projectId.equals(dataProcResourceDetails.projectId)) &&
@@ -125,6 +138,7 @@ public class DataProcResourceDetails implements Serializable {
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this._class == null ? 0: this._class.hashCode());
     result = 31 * result + (this.resourceId == null ? 0: this.resourceId.hashCode());
     result = 31 * result + (this.type == null ? 0: this.type.hashCode());
     result = 31 * result + (this.subType == null ? 0: this.subType.hashCode());
@@ -139,6 +153,7 @@ public class DataProcResourceDetails implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class DataProcResourceDetails {\n");
     
+    sb.append("  _class: ").append(_class).append("\n");
     sb.append("  resourceId: ").append(resourceId).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  subType: ").append(subType).append("\n");

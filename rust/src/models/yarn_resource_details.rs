@@ -14,6 +14,8 @@ use serde_json::Value;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct YarnResourceDetails {
+  #[serde(rename = "@class")]
+  class: Option<String>,
   /// ID of the resource
   #[serde(rename = "resourceId")]
   resource_id: Option<i64>,
@@ -31,11 +33,29 @@ pub struct YarnResourceDetails {
 impl YarnResourceDetails {
   pub fn new() -> YarnResourceDetails {
     YarnResourceDetails {
+      class: None,
       resource_id: None,
       _type: None,
       sub_type: None,
       local_spark_home: None
     }
+  }
+
+  pub fn set_class(&mut self, class: String) {
+    self.class = Some(class);
+  }
+
+  pub fn with_class(mut self, class: String) -> YarnResourceDetails {
+    self.class = Some(class);
+    self
+  }
+
+  pub fn class(&self) -> Option<&String> {
+    self.class.as_ref()
+  }
+
+  pub fn reset_class(&mut self) {
+    self.class = None;
   }
 
   pub fn set_resource_id(&mut self, resource_id: i64) {

@@ -53,6 +53,7 @@
 
 
 
+
   };
 
   /**
@@ -66,6 +67,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('@class')) {
+        obj['@class'] = ApiClient.convertToType(data['@class'], 'String');
+      }
       if (data.hasOwnProperty('resourceId')) {
         obj['resourceId'] = ApiClient.convertToType(data['resourceId'], 'Number');
       }
@@ -88,6 +92,11 @@
     return obj;
   }
 
+  /**
+   * @member {String} @class
+   * @default 'io.skymind.resource.model.subtypes.compute.DataProcResourceDetails'
+   */
+  exports.prototype['@class'] = 'io.skymind.resource.model.subtypes.compute.DataProcResourceDetails';
   /**
    * ID of the resource
    * @member {Number} resourceId

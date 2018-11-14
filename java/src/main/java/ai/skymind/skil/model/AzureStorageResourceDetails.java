@@ -27,8 +27,11 @@ import java.io.IOException;
 /**
  * AzureStorageResourceDetails
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-17T08:50:23.609+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-14T15:11:49.806+05:00")
 public class AzureStorageResourceDetails {
+  @SerializedName("@class")
+  private String propertyClass = "io.skymind.resource.model.subtypes.storage.AzureStorageResourceDetails";
+
   @SerializedName("resourceId")
   private Long resourceId = null;
 
@@ -131,6 +134,24 @@ public class AzureStorageResourceDetails {
   @SerializedName("containerName")
   private String containerName = null;
 
+  public AzureStorageResourceDetails propertyClass(String propertyClass) {
+    this.propertyClass = propertyClass;
+    return this;
+  }
+
+   /**
+   * Get propertyClass
+   * @return propertyClass
+  **/
+  @ApiModelProperty(value = "")
+  public String getPropertyClass() {
+    return propertyClass;
+  }
+
+  public void setPropertyClass(String propertyClass) {
+    this.propertyClass = propertyClass;
+  }
+
   public AzureStorageResourceDetails resourceId(Long resourceId) {
     this.resourceId = resourceId;
     return this;
@@ -213,7 +234,8 @@ public class AzureStorageResourceDetails {
       return false;
     }
     AzureStorageResourceDetails azureStorageResourceDetails = (AzureStorageResourceDetails) o;
-    return Objects.equals(this.resourceId, azureStorageResourceDetails.resourceId) &&
+    return Objects.equals(this.propertyClass, azureStorageResourceDetails.propertyClass) &&
+        Objects.equals(this.resourceId, azureStorageResourceDetails.resourceId) &&
         Objects.equals(this.type, azureStorageResourceDetails.type) &&
         Objects.equals(this.subType, azureStorageResourceDetails.subType) &&
         Objects.equals(this.containerName, azureStorageResourceDetails.containerName);
@@ -221,7 +243,7 @@ public class AzureStorageResourceDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(resourceId, type, subType, containerName);
+    return Objects.hash(propertyClass, resourceId, type, subType, containerName);
   }
 
 
@@ -230,6 +252,7 @@ public class AzureStorageResourceDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class AzureStorageResourceDetails {\n");
     
+    sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
     sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    subType: ").append(toIndentedString(subType)).append("\n");

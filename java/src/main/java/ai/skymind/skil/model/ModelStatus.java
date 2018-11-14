@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ModelStatus
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-17T08:50:23.609+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-14T15:11:49.806+05:00")
 public class ModelStatus {
   @SerializedName("status")
   private Integer status = null;

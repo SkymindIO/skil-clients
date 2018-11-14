@@ -19,7 +19,7 @@ case class ExampleEntity (
   // Example version
   ExampleVersion: Option[Integer] = None,
   // Row Number
-  IntRowNumber: Option[Integer] = None,
+  RowNumber: Option[Integer] = None,
   // when the example was created
   Created: Option[Long] = None,
   // The GUID of the minibatch

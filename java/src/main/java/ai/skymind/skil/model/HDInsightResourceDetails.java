@@ -27,8 +27,11 @@ import java.io.IOException;
 /**
  * HDInsightResourceDetails
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-17T08:50:23.609+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-14T15:11:49.806+05:00")
 public class HDInsightResourceDetails {
+  @SerializedName("@class")
+  private String propertyClass = "io.skymind.resource.model.subtypes.compute.HDInsightResourceDetails";
+
   @SerializedName("resourceId")
   private Long resourceId = null;
 
@@ -136,6 +139,24 @@ public class HDInsightResourceDetails {
 
   @SerializedName("clusterName")
   private String clusterName = null;
+
+  public HDInsightResourceDetails propertyClass(String propertyClass) {
+    this.propertyClass = propertyClass;
+    return this;
+  }
+
+   /**
+   * Get propertyClass
+   * @return propertyClass
+  **/
+  @ApiModelProperty(value = "")
+  public String getPropertyClass() {
+    return propertyClass;
+  }
+
+  public void setPropertyClass(String propertyClass) {
+    this.propertyClass = propertyClass;
+  }
 
   public HDInsightResourceDetails resourceId(Long resourceId) {
     this.resourceId = resourceId;
@@ -255,7 +276,8 @@ public class HDInsightResourceDetails {
       return false;
     }
     HDInsightResourceDetails hdInsightResourceDetails = (HDInsightResourceDetails) o;
-    return Objects.equals(this.resourceId, hdInsightResourceDetails.resourceId) &&
+    return Objects.equals(this.propertyClass, hdInsightResourceDetails.propertyClass) &&
+        Objects.equals(this.resourceId, hdInsightResourceDetails.resourceId) &&
         Objects.equals(this.type, hdInsightResourceDetails.type) &&
         Objects.equals(this.subType, hdInsightResourceDetails.subType) &&
         Objects.equals(this.subscriptionId, hdInsightResourceDetails.subscriptionId) &&
@@ -265,7 +287,7 @@ public class HDInsightResourceDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(resourceId, type, subType, subscriptionId, resourceGroupName, clusterName);
+    return Objects.hash(propertyClass, resourceId, type, subType, subscriptionId, resourceGroupName, clusterName);
   }
 
 
@@ -274,6 +296,7 @@ public class HDInsightResourceDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class HDInsightResourceDetails {\n");
     
+    sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
     sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    subType: ").append(toIndentedString(subType)).append("\n");

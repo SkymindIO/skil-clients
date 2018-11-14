@@ -83,7 +83,9 @@ paths:
       responses:
         200:
           description: "the deployed transform process"
-          schema: {}
+          schema:
+            type: "object"
+            properties: {}
         400:
           description: "the transform process is probably null"
         500:
@@ -120,12 +122,15 @@ paths:
         name: "TransformProcess"
         description: "The transform process to set"
         required: false
-        schema: {}
+        schema:
+          type: "object"
         x-exportParamName: "TransformProcess"
       responses:
         200:
           description: "transform process set successfully"
-          schema: {}
+          schema:
+            type: "object"
+            properties: {}
         500:
           description: "internal server error"
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental:
@@ -249,7 +254,8 @@ paths:
         name: "SingleRecord"
         description: "The input record array"
         required: false
-        schema: {}
+        schema:
+          type: "object"
         x-exportParamName: "SingleRecord"
       responses:
         200:
@@ -290,7 +296,8 @@ paths:
         name: "BatchRecord"
         description: "The input batch of record arrays"
         required: false
-        schema: {}
+        schema:
+          type: "object"
         x-exportParamName: "BatchRecord"
       responses:
         200:
@@ -2262,7 +2269,9 @@ paths:
       responses:
         200:
           description: "One of the resource details object"
-          schema: {}
+          schema:
+            type: "object"
+            properties: {}
   /resources/resources:
     get:
       summary: "A list of all known/registered resources, of all types"
@@ -3774,7 +3783,7 @@ definitions:
       exampleVersion:
         type: "integer"
         description: "Example version"
-      int rowNumber:
+      rowNumber:
         type: "integer"
         description: "Row Number"
       created:
@@ -3790,10 +3799,10 @@ definitions:
         description: "minibatch version"
     example:
       exampleId: "exampleId"
-      int rowNumber: 6
       created: 1
       miniBatchId: "miniBatchId"
       miniBatchVersion: 5
+      rowNumber: 6
       exampleVersion: 0
   AddExampleRequest:
     type: "object"
@@ -3915,6 +3924,9 @@ definitions:
   EMRResourceDetails:
     type: "object"
     properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.compute.EMRResourceDetails"
       resourceId:
         type: "integer"
         format: "int64"
@@ -3938,6 +3950,9 @@ definitions:
   S3ResourceDetails:
     type: "object"
     properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.storage.S3ResourceDetails"
       resourceId:
         type: "integer"
         format: "int64"
@@ -3961,6 +3976,9 @@ definitions:
   GoogleStorageResourceDetails:
     type: "object"
     properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.storage.GoogleStorageResourceDetails"
       resourceId:
         type: "integer"
         format: "int64"
@@ -3984,6 +4002,9 @@ definitions:
   DataProcResourceDetails:
     type: "object"
     properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.compute.DataProcResourceDetails"
       resourceId:
         type: "integer"
         format: "int64"
@@ -4010,6 +4031,9 @@ definitions:
   HDInsightResourceDetails:
     type: "object"
     properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.compute.HDInsightResourceDetails"
       resourceId:
         type: "integer"
         format: "int64"
@@ -4036,6 +4060,9 @@ definitions:
   AzureStorageResourceDetails:
     type: "object"
     properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.storage.AzureStorageResourceDetails"
       resourceId:
         type: "integer"
         format: "int64"
@@ -4056,6 +4083,9 @@ definitions:
   HDFSResourceDetails:
     type: "object"
     properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.storage.HDFSResourceDetails"
       resourceId:
         type: "integer"
         format: "int64"
@@ -4079,6 +4109,9 @@ definitions:
   YARNResourceDetails:
     type: "object"
     properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.compute.YARNResourceDetails"
       resourceId:
         type: "integer"
         format: "int64"
@@ -4232,9 +4265,9 @@ definitions:
         type: "integer"
         format: "int64"
         description: "Storage resource ID"
-      skilSparkMainArgs:
+      jobArgs:
         type: "string"
-        description: "SKILSparkMain class arguments"
+        description: "Job arguments"
       runId:
         type: "string"
         description: "Job run ID"
@@ -4256,7 +4289,7 @@ definitions:
       storageResourceId: 1
       jobId: 0
       outputFileName: "outputFileName"
-      skilSparkMainArgs: "skilSparkMainArgs"
+      jobArgs: "jobArgs"
       runId: "runId"
       jobType: "TRAINING"
       computeResourceId: 6
@@ -4272,16 +4305,16 @@ definitions:
         type: "integer"
         format: "int64"
         description: "Storage resource ID"
-      skilSparkMainArgs:
+      jobArgs:
         type: "string"
-        description: "SKILSparkMain class arguments"
+        description: "Job arguments"
       outputFileName:
         type: "string"
         description: "Output file name"
     example:
       storageResourceId: 6
       outputFileName: "outputFileName"
-      skilSparkMainArgs: "skilSparkMainArgs"
+      jobArgs: "jobArgs"
       computeResourceId: 0
   DownloadOutputFileRequest:
     type: "object"

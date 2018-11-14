@@ -19,6 +19,8 @@ import java.io.Serializable;
 @ApiModel(description = "")
 public class EMRResourceDetails implements Serializable {
   
+  @SerializedName("@class")
+  private String _class = null;
   @SerializedName("resourceId")
   private Long resourceId = null;
   public enum TypeEnum {
@@ -35,6 +37,16 @@ public class EMRResourceDetails implements Serializable {
   private String clusterId = null;
   @SerializedName("region")
   private String region = null;
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getClass() {
+    return _class;
+  }
+  public void setClass(String _class) {
+    this._class = _class;
+  }
 
   /**
    * ID of the resource
@@ -101,7 +113,8 @@ public class EMRResourceDetails implements Serializable {
       return false;
     }
     EMRResourceDetails eMRResourceDetails = (EMRResourceDetails) o;
-    return (this.resourceId == null ? eMRResourceDetails.resourceId == null : this.resourceId.equals(eMRResourceDetails.resourceId)) &&
+    return (this._class == null ? eMRResourceDetails._class == null : this._class.equals(eMRResourceDetails._class)) &&
+        (this.resourceId == null ? eMRResourceDetails.resourceId == null : this.resourceId.equals(eMRResourceDetails.resourceId)) &&
         (this.type == null ? eMRResourceDetails.type == null : this.type.equals(eMRResourceDetails.type)) &&
         (this.subType == null ? eMRResourceDetails.subType == null : this.subType.equals(eMRResourceDetails.subType)) &&
         (this.clusterId == null ? eMRResourceDetails.clusterId == null : this.clusterId.equals(eMRResourceDetails.clusterId)) &&
@@ -111,6 +124,7 @@ public class EMRResourceDetails implements Serializable {
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this._class == null ? 0: this._class.hashCode());
     result = 31 * result + (this.resourceId == null ? 0: this.resourceId.hashCode());
     result = 31 * result + (this.type == null ? 0: this.type.hashCode());
     result = 31 * result + (this.subType == null ? 0: this.subType.hashCode());
@@ -124,6 +138,7 @@ public class EMRResourceDetails implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class EMRResourceDetails {\n");
     
+    sb.append("  _class: ").append(_class).append("\n");
     sb.append("  resourceId: ").append(resourceId).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  subType: ").append(subType).append("\n");

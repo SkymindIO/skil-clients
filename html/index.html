@@ -527,10 +527,10 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "exampleId" : "exampleId",
-  "int rowNumber" : 6,
   "created" : 1,
   "miniBatchId" : "miniBatchId",
   "miniBatchVersion" : 5,
+  "rowNumber" : 6,
   "exampleVersion" : 0
 }</code></pre>
 
@@ -1331,7 +1331,7 @@ font-style: italic;
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -2403,7 +2403,7 @@ font-style: italic;
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -2412,7 +2412,7 @@ font-style: italic;
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -2665,17 +2665,17 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>[ {
   "exampleId" : "exampleId",
-  "int rowNumber" : 6,
   "created" : 1,
   "miniBatchId" : "miniBatchId",
   "miniBatchVersion" : 5,
+  "rowNumber" : 6,
   "exampleVersion" : 0
 }, {
   "exampleId" : "exampleId",
-  "int rowNumber" : 6,
   "created" : 1,
   "miniBatchId" : "miniBatchId",
   "miniBatchVersion" : 5,
+  "rowNumber" : 6,
   "exampleVersion" : 0
 } ]</code></pre>
 
@@ -2839,7 +2839,7 @@ font-style: italic;
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -3275,12 +3275,17 @@ object contains only general information (name, id, type, subtype).</div>
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
+    <pre class="example"><code>"{}"</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3292,7 +3297,7 @@ object contains only general information (name, id, type, subtype).</div>
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     One of the resource details object
-        <a href="#"></a>
+        <a href="#Object">Object</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getResourceGroupById"/>
@@ -4881,7 +4886,7 @@ object contains only general information (name, id, type, subtype).</div>
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -5013,7 +5018,7 @@ object contains only general information (name, id, type, subtype).</div>
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
-  "skilSparkMainArgs" : "skilSparkMainArgs",
+  "jobArgs" : "jobArgs",
   "runId" : "runId",
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
@@ -5128,7 +5133,7 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">BatchRecord  (optional)</div>
+      <div class="param">BatchRecord <a href="#object">object</a> (optional)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input batch of record arrays </div>
 
@@ -5325,7 +5330,7 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">SingleRecord  (optional)</div>
+      <div class="param">SingleRecord <a href="#object">object</a> (optional)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input record array </div>
 
@@ -5454,12 +5459,17 @@ object contains only general information (name, id, type, subtype).</div>
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
+    <pre class="example"><code>"{}"</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -5471,7 +5481,7 @@ object contains only general information (name, id, type, subtype).</div>
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     the deployed transform process
-        <a href="#"></a>
+        <a href="#Object">Object</a>
     <h4 class="field-label">400</h4>
     the transform process is probably null
         <a href="#"></a>
@@ -5506,7 +5516,7 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">TransformProcess  (optional)</div>
+      <div class="param">TransformProcess <a href="#object">object</a> (optional)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The transform process to set </div>
 
@@ -5515,12 +5525,17 @@ object contains only general information (name, id, type, subtype).</div>
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
+    <pre class="example"><code>"{}"</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -5532,7 +5547,7 @@ object contains only general information (name, id, type, subtype).</div>
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     transform process set successfully
-        <a href="#"></a>
+        <a href="#Object">Object</a>
     <h4 class="field-label">500</h4>
     internal server error
         <a href="#"></a>
@@ -5932,7 +5947,8 @@ object contains only general information (name, id, type, subtype).</div>
     <h3><a name="AzureStorageResourceDetails"><code>AzureStorageResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
+      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">STORAGE</div>
@@ -6007,7 +6023,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">computeResourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Compute resource ID format: int64</div>
 <div class="param">storageResourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Storage resource ID format: int64</div>
-<div class="param">skilSparkMainArgs (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> SKILSparkMain class arguments </div>
+<div class="param">jobArgs (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Job arguments </div>
 <div class="param">outputFileName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Output file name </div>
     </div>  <!-- field-items -->
   </div>
@@ -6023,7 +6039,8 @@ object contains only general information (name, id, type, subtype).</div>
     <h3><a name="DataProcResourceDetails"><code>DataProcResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
+      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">COMPUTE</div>
@@ -6086,7 +6103,8 @@ object contains only general information (name, id, type, subtype).</div>
     <h3><a name="EMRResourceDetails"><code>EMRResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
+      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">COMPUTE</div>
@@ -6126,7 +6144,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">exampleId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the GUID of the example format: guid</div>
 <div class="param">exampleVersion (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Example version </div>
-<div class="param">int rowNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Row Number </div>
+<div class="param">rowNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Row Number </div>
 <div class="param">created (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> when the example was created format: int64</div>
 <div class="param">miniBatchId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The GUID of the minibatch format: guid</div>
 <div class="param">miniBatchVersion (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> minibatch version </div>
@@ -6171,7 +6189,8 @@ object contains only general information (name, id, type, subtype).</div>
     <h3><a name="GoogleStorageResourceDetails"><code>GoogleStorageResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
+      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">STORAGE</div>
@@ -6186,7 +6205,8 @@ object contains only general information (name, id, type, subtype).</div>
     <h3><a name="HDFSResourceDetails"><code>HDFSResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
+      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">STORAGE</div>
@@ -6201,7 +6221,8 @@ object contains only general information (name, id, type, subtype).</div>
     <h3><a name="HDInsightResourceDetails"><code>HDInsightResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
+      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">COMPUTE</div>
@@ -6262,7 +6283,7 @@ object contains only general information (name, id, type, subtype).</div>
         <div class="param-enum">TRAINING</div><div class="param-enum">INFERENCE</div>
 <div class="param">computeResourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Compute resource ID format: int64</div>
 <div class="param">storageResourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Storage resource ID format: int64</div>
-<div class="param">skilSparkMainArgs (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> SKILSparkMain class arguments </div>
+<div class="param">jobArgs (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Job arguments </div>
 <div class="param">runId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Job run ID </div>
 <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Job's status </div>
         <div class="param-enum-header">Enum:</div>
@@ -6505,7 +6526,8 @@ object contains only general information (name, id, type, subtype).</div>
     <h3><a name="S3ResourceDetails"><code>S3ResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
+      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">STORAGE</div>
@@ -6564,7 +6586,8 @@ object contains only general information (name, id, type, subtype).</div>
     <h3><a name="YARNResourceDetails"><code>YARNResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
+      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">COMPUTE</div>

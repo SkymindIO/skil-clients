@@ -3,6 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Class** | **string** |  | [optional] [default to "io.skymind.resource.model.subtypes.compute.EMRResourceDetails"]
 **ResourceId** | **long?** | ID of the resource | [optional] 
 **Type** | **string** | Resource type | [optional] 
 **SubType** | **string** | Resource subtype | [optional] 

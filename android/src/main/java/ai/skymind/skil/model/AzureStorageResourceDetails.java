@@ -19,6 +19,8 @@ import java.io.Serializable;
 @ApiModel(description = "")
 public class AzureStorageResourceDetails implements Serializable {
   
+  @SerializedName("@class")
+  private String _class = null;
   @SerializedName("resourceId")
   private Long resourceId = null;
   public enum TypeEnum {
@@ -33,6 +35,16 @@ public class AzureStorageResourceDetails implements Serializable {
   private SubTypeEnum subType = null;
   @SerializedName("containerName")
   private String containerName = null;
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getClass() {
+    return _class;
+  }
+  public void setClass(String _class) {
+    this._class = _class;
+  }
 
   /**
    * ID of the resource
@@ -88,7 +100,8 @@ public class AzureStorageResourceDetails implements Serializable {
       return false;
     }
     AzureStorageResourceDetails azureStorageResourceDetails = (AzureStorageResourceDetails) o;
-    return (this.resourceId == null ? azureStorageResourceDetails.resourceId == null : this.resourceId.equals(azureStorageResourceDetails.resourceId)) &&
+    return (this._class == null ? azureStorageResourceDetails._class == null : this._class.equals(azureStorageResourceDetails._class)) &&
+        (this.resourceId == null ? azureStorageResourceDetails.resourceId == null : this.resourceId.equals(azureStorageResourceDetails.resourceId)) &&
         (this.type == null ? azureStorageResourceDetails.type == null : this.type.equals(azureStorageResourceDetails.type)) &&
         (this.subType == null ? azureStorageResourceDetails.subType == null : this.subType.equals(azureStorageResourceDetails.subType)) &&
         (this.containerName == null ? azureStorageResourceDetails.containerName == null : this.containerName.equals(azureStorageResourceDetails.containerName));
@@ -97,6 +110,7 @@ public class AzureStorageResourceDetails implements Serializable {
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this._class == null ? 0: this._class.hashCode());
     result = 31 * result + (this.resourceId == null ? 0: this.resourceId.hashCode());
     result = 31 * result + (this.type == null ? 0: this.type.hashCode());
     result = 31 * result + (this.subType == null ? 0: this.subType.hashCode());
@@ -109,6 +123,7 @@ public class AzureStorageResourceDetails implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class AzureStorageResourceDetails {\n");
     
+    sb.append("  _class: ").append(_class).append("\n");
     sb.append("  resourceId: ").append(resourceId).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  subType: ").append(subType).append("\n");

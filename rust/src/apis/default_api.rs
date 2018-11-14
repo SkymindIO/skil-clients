@@ -84,7 +84,7 @@ pub trait DefaultApi {
     fn get_resource_by_id(&self, resource_id: i64) -> Box<Future<Item = ::models::Resource, Error = Error<serde_json::Value>>>;
     fn get_resource_by_sub_type(&self, resource_sub_type: &str) -> Box<Future<Item = Vec<::models::Resource>, Error = Error<serde_json::Value>>>;
     fn get_resource_by_type(&self, resource_type: &str) -> Box<Future<Item = Vec<::models::Resource>, Error = Error<serde_json::Value>>>;
-    fn get_resource_details_by_id(&self, resource_id: i64) -> Box<Future<Item = ::models::ErrorUnknown, Error = Error<serde_json::Value>>>;
+    fn get_resource_details_by_id(&self, resource_id: i64) -> Box<Future<Item = Value, Error = Error<serde_json::Value>>>;
     fn get_resource_group_by_id(&self, resource_group_id: i64) -> Box<Future<Item = ::models::ResourceGroup, Error = Error<serde_json::Value>>>;
     fn get_resource_groups(&self, ) -> Box<Future<Item = Vec<::models::ResourceGroup>, Error = Error<serde_json::Value>>>;
     fn get_resources(&self, ) -> Box<Future<Item = Vec<::models::Resource>, Error = Error<serde_json::Value>>>;
@@ -113,13 +113,13 @@ pub trait DefaultApi {
     fn reimport_model(&self, deployment_id: &str, model_id: &str, body: ::models::ImportModelRequest) -> Box<Future<Item = ::models::ModelEntity, Error = Error<serde_json::Value>>>;
     fn run_a_job(&self, job_id: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
     fn transform_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::BatchCsvRecord, Error = Error<serde_json::Value>>>;
-    fn transformarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_record: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
+    fn transformarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_record: ::models::Value) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
     fn transformimage(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, files: Vec<Vec<u8>>) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
     fn transformincremental_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_csv_record: ::models::SingleCsvRecord) -> Box<Future<Item = ::models::SingleCsvRecord, Error = Error<serde_json::Value>>>;
-    fn transformincrementalarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_record: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
+    fn transformincrementalarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_record: ::models::Value) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
     fn transformincrementalimage(&self, deployment_name: &str, version_name: &str, image_transform_name: &str, file: ::models::File) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
-    fn transformprocess_get(&self, deployment_name: &str, version_name: &str, transform_name: &str) -> Box<Future<Item = ::models::ErrorUnknown, Error = Error<serde_json::Value>>>;
-    fn transformprocess_post(&self, deployment_name: &str, version_name: &str, transform_name: &str, transform_process: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::ErrorUnknown, Error = Error<serde_json::Value>>>;
+    fn transformprocess_get(&self, deployment_name: &str, version_name: &str, transform_name: &str) -> Box<Future<Item = Value, Error = Error<serde_json::Value>>>;
+    fn transformprocess_post(&self, deployment_name: &str, version_name: &str, transform_name: &str, transform_process: ::models::Value) -> Box<Future<Item = Value, Error = Error<serde_json::Value>>>;
     fn update_best_model_for_experiment(&self, model_history_server_id: &str, update_best_model: ::models::UpdateBestModel) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
     fn update_experiment(&self, model_history_server_id: &str, experiment_id: &str, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
     fn update_model_history(&self, model_history_server_id: &str, model_history_id: &str, update_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
@@ -3424,7 +3424,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_resource_details_by_id(&self, resource_id: i64) -> Box<Future<Item = ::models::ErrorUnknown, Error = Error<serde_json::Value>>> {
+    fn get_resource_details_by_id(&self, resource_id: i64) -> Box<Future<Item = Value, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3484,7 +3484,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::ErrorUnknown, _> = serde_json::from_slice(&body);
+                let parsed: Result<Value, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
@@ -5378,7 +5378,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_record: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
+    fn transformarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_record: ::models::Value) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -5584,7 +5584,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformincrementalarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_record: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
+    fn transformincrementalarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, single_record: ::models::Value) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -5720,7 +5720,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn transformprocess_get(&self, deployment_name: &str, version_name: &str, transform_name: &str) -> Box<Future<Item = ::models::ErrorUnknown, Error = Error<serde_json::Value>>> {
+    fn transformprocess_get(&self, deployment_name: &str, version_name: &str, transform_name: &str) -> Box<Future<Item = Value, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -5780,13 +5780,13 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::ErrorUnknown, _> = serde_json::from_slice(&body);
+                let parsed: Result<Value, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn transformprocess_post(&self, deployment_name: &str, version_name: &str, transform_name: &str, transform_process: ::models::::models::ErrorUnknown) -> Box<Future<Item = ::models::ErrorUnknown, Error = Error<serde_json::Value>>> {
+    fn transformprocess_post(&self, deployment_name: &str, version_name: &str, transform_name: &str, transform_process: ::models::Value) -> Box<Future<Item = Value, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -5850,7 +5850,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::ErrorUnknown, _> = serde_json::from_slice(&body);
+                let parsed: Result<Value, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

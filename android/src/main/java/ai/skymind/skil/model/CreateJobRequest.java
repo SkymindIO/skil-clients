@@ -23,8 +23,8 @@ public class CreateJobRequest implements Serializable {
   private Long computeResourceId = null;
   @SerializedName("storageResourceId")
   private Long storageResourceId = null;
-  @SerializedName("skilSparkMainArgs")
-  private String skilSparkMainArgs = null;
+  @SerializedName("jobArgs")
+  private String jobArgs = null;
   @SerializedName("outputFileName")
   private String outputFileName = null;
 
@@ -51,14 +51,14 @@ public class CreateJobRequest implements Serializable {
   }
 
   /**
-   * SKILSparkMain class arguments
+   * Job arguments
    **/
-  @ApiModelProperty(value = "SKILSparkMain class arguments")
-  public String getSkilSparkMainArgs() {
-    return skilSparkMainArgs;
+  @ApiModelProperty(value = "Job arguments")
+  public String getJobArgs() {
+    return jobArgs;
   }
-  public void setSkilSparkMainArgs(String skilSparkMainArgs) {
-    this.skilSparkMainArgs = skilSparkMainArgs;
+  public void setJobArgs(String jobArgs) {
+    this.jobArgs = jobArgs;
   }
 
   /**
@@ -84,7 +84,7 @@ public class CreateJobRequest implements Serializable {
     CreateJobRequest createJobRequest = (CreateJobRequest) o;
     return (this.computeResourceId == null ? createJobRequest.computeResourceId == null : this.computeResourceId.equals(createJobRequest.computeResourceId)) &&
         (this.storageResourceId == null ? createJobRequest.storageResourceId == null : this.storageResourceId.equals(createJobRequest.storageResourceId)) &&
-        (this.skilSparkMainArgs == null ? createJobRequest.skilSparkMainArgs == null : this.skilSparkMainArgs.equals(createJobRequest.skilSparkMainArgs)) &&
+        (this.jobArgs == null ? createJobRequest.jobArgs == null : this.jobArgs.equals(createJobRequest.jobArgs)) &&
         (this.outputFileName == null ? createJobRequest.outputFileName == null : this.outputFileName.equals(createJobRequest.outputFileName));
   }
 
@@ -93,7 +93,7 @@ public class CreateJobRequest implements Serializable {
     int result = 17;
     result = 31 * result + (this.computeResourceId == null ? 0: this.computeResourceId.hashCode());
     result = 31 * result + (this.storageResourceId == null ? 0: this.storageResourceId.hashCode());
-    result = 31 * result + (this.skilSparkMainArgs == null ? 0: this.skilSparkMainArgs.hashCode());
+    result = 31 * result + (this.jobArgs == null ? 0: this.jobArgs.hashCode());
     result = 31 * result + (this.outputFileName == null ? 0: this.outputFileName.hashCode());
     return result;
   }
@@ -105,7 +105,7 @@ public class CreateJobRequest implements Serializable {
     
     sb.append("  computeResourceId: ").append(computeResourceId).append("\n");
     sb.append("  storageResourceId: ").append(storageResourceId).append("\n");
-    sb.append("  skilSparkMainArgs: ").append(skilSparkMainArgs).append("\n");
+    sb.append("  jobArgs: ").append(jobArgs).append("\n");
     sb.append("  outputFileName: ").append(outputFileName).append("\n");
     sb.append("}\n");
     return sb.toString();
