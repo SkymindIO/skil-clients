@@ -44,7 +44,7 @@ tags:
   - name: Resource
     description: Resource Endpoints
   - name: Job
-    desciption: Job endpoints
+    description: Job endpoints
 paths:
   # ---------------------------------------------------------------------------------------
   # Authentication endpoint
