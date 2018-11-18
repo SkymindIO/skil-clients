@@ -1485,6 +1485,13 @@ paths:
       summary: List all of the experiments in every model history / workspace
       produces:
       - application/json
+      parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       responses:
         200:
           description: List of all the experiment entities.
