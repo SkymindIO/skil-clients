@@ -2171,15 +2171,6 @@ paths:
           description: One of the resource details object
           schema:
             type: object
-            anyOf:
-              - $ref: '#/definitions/EMRResourceDetails'
-              - $ref: '#/definitions/S3ResourceDetails'
-              - $ref: '#/definitions/GoogleStorageResourceDetails'
-              - $ref: '#/definitions/DataProcResourceDetails'
-              - $ref: '#/definitions/HDInsightResourceDetails'
-              - $ref: '#/definitions/AzureStorageResourceDetails'
-              - $ref: '#/definitions/HDFSResourceDetails'
-              - $ref: '#/definitions/YARNResourceDetails'
   /resources/remove/resource/{resourceId}:
     delete:
       operationId: deleteResourceById
