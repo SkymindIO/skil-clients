@@ -2162,7 +2162,6 @@ paths:
       parameters:
         - name: AddResourceRequest
           in: body
-          type: object
           required: true
           description: The Add resource request object
           schema:
