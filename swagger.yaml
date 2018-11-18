@@ -1404,7 +1404,6 @@ paths:
         format: guid
       - name: addModelHistoryRequest
         in: body
-        type: object
         required: true
         description: The model history request object
         schema:
@@ -1437,7 +1436,6 @@ paths:
         description: the GUID of the model history / workspace to update
       - name: updateModelHistoryRequest
         in: body
-        type: object
         required: true
         description: The model history request object
         schema:
@@ -1563,7 +1561,6 @@ paths:
         description: the GUID of the experiment to update
       - name: experimentEntity
         in: body
-        type: object
         required: true
         description: The experiment entity to update with
         schema:
@@ -1623,7 +1620,6 @@ paths:
         format: guid
       - name: experimentEntity
         in: body
-        type: object
         required: true
         description: The experiment entity to add
         schema:
@@ -1650,7 +1646,6 @@ paths:
         format: guid
       - name: updateBestModel
         in: body
-        type: object
         required: true
         description: Model encapsulating the experiment id to update and the best model id.
         schema:
@@ -1746,7 +1741,6 @@ paths:
         format: guid
       - name: modelInstanceEntity
         in: body
-        type: object
         required: true
         description: The object encapsulating the model instance id and evaluation type to aggregate
         schema:
@@ -1773,7 +1767,6 @@ paths:
         format: guid
       - name: bestModel
         in: body
-        type: object
         required: true
         description: Object encapsulating the model ids, eval type and column metric name
         schema:
@@ -1800,7 +1793,6 @@ paths:
         format: guid
       - name: modelHistoryEntity
         in: body
-        type: object
         required: true
         description: The model history entity
         schema:
@@ -1827,7 +1819,6 @@ paths:
         format: guid
       - name: evaluationResultsEntity
         in: body
-        type: object
         required: true
         description: The evaluation result entity
         schema:
@@ -1879,7 +1870,6 @@ paths:
         format: guid
       - name: aggregatePrediction
         in: body
-        type: object
         required: true
         description: The object encapsulating the model instance id and evaluation type to aggregate
         schema:
@@ -1929,7 +1919,6 @@ paths:
         format: guid
       - name: minibatchEntity
         in: body
-        type: object
         required: true
         description: The minibatch entity to add
         schema:
@@ -1981,7 +1970,6 @@ paths:
         format: guid
       - name: exampleEntity
         in: body
-        type: object
         required: true
         description: The example to add to the minibatch
         schema:
@@ -2008,7 +1996,6 @@ paths:
         format: guid
       - name: AddExampleRequest
         in: body
-        type: object
         required: true
         description: The add example request, encapsulating minibatch details and examples batch size
         schema:
@@ -2035,7 +2022,6 @@ paths:
         format: guid
       - name: ModelFeedBackRequest
         in: body
-        type: object
         required: true
         description: The model feedback request object
         schema:
