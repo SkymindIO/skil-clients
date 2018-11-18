@@ -2517,7 +2517,6 @@ paths:
           required: true
         - name: DownloadOutputFileRequest
           in: body
-          type: object
           required: true
           description: Download output file request object
           schema:
