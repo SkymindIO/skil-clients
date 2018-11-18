@@ -89,7 +89,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -122,7 +122,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -160,7 +160,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -198,7 +198,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -235,7 +235,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -272,7 +272,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -313,7 +313,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: imageTransformName
@@ -353,7 +353,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: imageTransformName
@@ -399,7 +399,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: knnName
@@ -438,7 +438,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: knnName
@@ -487,7 +487,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -525,7 +525,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -564,7 +564,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -612,7 +612,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -650,7 +650,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -688,7 +688,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -726,7 +726,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -766,7 +766,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -805,7 +805,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -832,7 +832,7 @@ paths:
       - name: file
         in: formData
         description: The model file to update with (.pb file)
-        required: false
+        required: true
         type: file
       - name: deploymentName
         in: path
@@ -842,7 +842,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -880,7 +880,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -920,7 +920,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -960,7 +960,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -998,7 +998,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1028,7 +1028,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1061,7 +1061,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1095,7 +1095,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1146,7 +1146,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
