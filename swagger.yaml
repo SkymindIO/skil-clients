@@ -2500,30 +2500,6 @@ paths:
           description: The associated job entity object
           schema:
             $ref: '#/definitions/JobEntity'
-  /jobs/{jobId}/outputfile:
-    post:
-      operationId: downloadJobOutputFile
-      summary: Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: jobId
-          in: path
-          type: integer
-          format: int64
-          description: Job ID
-          required: true
-        - name: DownloadOutputFileRequest
-          in: body
-          required: true
-          description: Download output file request object
-          schema:
-            $ref: '#/definitions/DownloadOutputFileRequest'
-      responses:
-        200:
-          description: The file download has started
 definitions:
   TransformProcess:
     type: object
