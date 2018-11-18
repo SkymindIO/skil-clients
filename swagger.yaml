@@ -2241,9 +2241,10 @@ paths:
       parameters:
         - name: groupName
           in: body
-          type: string
           required: true
           description: Name of the resource group
+          schema:
+            type: string
       responses:
         200:
           description: The created resource group object
