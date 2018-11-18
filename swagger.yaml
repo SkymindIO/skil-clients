@@ -26,6 +26,25 @@ securityDefinitions:
          Bearer xxxxxx.yyyyyyy.zzzzzz
 security:
   - api_key: []
+tags:
+  - name: Authentication
+    description: Authentication endpoints
+  - name: Utilities
+    description: Utilities endpoints
+  - name: ModelHistory
+    description: Model History endpoints
+  - name: Deployment
+    description: Deployment Endpoints
+  - name: Transform
+    description: Transform endpoints
+  - name: Inference
+    description: Inference endpoints
+  - name: KNN
+    description: KNN endpoints
+  - name: Resource
+    description: Resource Endpoints
+  - name: Job
+    desciption: Job endpoints
 paths:
   # ---------------------------------------------------------------------------------------
   # Authentication endpoint
@@ -34,6 +53,8 @@ paths:
     post:
       operationId: login
       summary: Post JSON credentials and obtain a JWT authorization token.
+      tags:
+      - Authentication
       security: []
       consumes:
       - application/json
@@ -57,6 +78,8 @@ paths:
     post:
       operationId: upload
       summary: Upload a model file to SKIL for import.
+      tags:
+      - Utilities
       consumes:
       - multipart/form-data
       produces:
@@ -78,6 +101,8 @@ paths:
     get:
       operationId: transformprocess_get
       summary: Gets the JSON string of the deployed transform process (CSV or Image)
+      tags:
+      - Transform
       produces:
       - application/json
       parameters:
@@ -109,6 +134,8 @@ paths:
     post:
       operationId: transformprocess_post
       summary: Sets the deployed (CSV or Image) transform process through the provided JSON string
+      tags:
+      - Transform
       consumes:
       - application/json
       produces:
@@ -146,6 +173,8 @@ paths:
     post:
       operationId: transformincremental_csv
       summary: Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+      tags:
+      - Transform
       description: Takes a SingleCSVRecord object and transforms it into the desired format
       consumes:
       - application/json
@@ -184,6 +213,8 @@ paths:
     post:
       operationId: transform_csv
       summary: Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+      tags:
+      - Transform
       description: Takes a batch of SingleCSVRecord object and transforms it into the desired format
       consumes:
       - application/json
@@ -222,6 +253,8 @@ paths:
     post:
       operationId: transformincrementalarray
       summary: Same as /transformincremental but returns Base64NDArrayBody.
+      tags:
+      - Transform
       consumes:
       - application/json
       produces:
@@ -259,6 +292,8 @@ paths:
     post:
       operationId: transformarray
       summary: Takes a batch input arrays and transforms it
+      tags:
+      - Transform
       consumes:
       - application/json
       produces:
@@ -300,6 +335,8 @@ paths:
       operationId: transformincrementalimage
       summary: Takes a single multipart image file to transform and returns Base64NDArrayBody
       description: Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+      tags:
+      - Transform
       consumes:
       - multipart/form-data
       produces:
@@ -340,6 +377,8 @@ paths:
       operationId: transformimage
       summary: Takes multiple multipart image file to transform and returns Base64NDArrayBody
       description: Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+      tags:
+      - Transform
       consumes:
       - multipart/form-data
       produces:
@@ -386,6 +425,8 @@ paths:
       operationId: knn
       summary: Runs knn on the given index with the given k
       description: Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+      tags:
+      - KNN
       consumes:
       - application/json
       produces:
@@ -425,6 +466,8 @@ paths:
     post:
       operationId: knnnew
       summary: Run a k nearest neighbors search on a NEW data point
+      tags:
+      - KNN
       consumes:
       - application/json
       produces:
@@ -468,6 +511,8 @@ paths:
     post:
       operationId: predict
       summary: Run inference on the input array.
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -508,6 +553,8 @@ paths:
     post:
       operationId: predictimage
       summary: Run inference on the input array, using input image file from multipart form data.
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -545,6 +592,8 @@ paths:
       operationId: multipredict
       summary: Get the output from the network, based on the given INDArray[] input
       description: Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -584,6 +633,8 @@ paths:
       operationId: multipredictimage
       summary: Get the output from the network using the given image file using the /multipredict endpoint's method
       description: Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -631,6 +682,8 @@ paths:
     post:
       operationId: classify
       summary: Use the deployed model to classify the input
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -671,6 +724,8 @@ paths:
     post:
       operationId: classifyimage
       summary: Use the deployed model to classify the input, using input image file from multipart form data.
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -707,6 +762,8 @@ paths:
     post:
       operationId: classifyarray
       summary: Same as /classify but returns the output as Base64NDArrayBody
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -747,6 +804,8 @@ paths:
     post:
       operationId: multiclassify
       summary: Represents all of the labels for a given classification
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -787,6 +846,8 @@ paths:
     post:
       operationId: modelset
       summary: Set the model to be served
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -824,6 +885,8 @@ paths:
     post:
       operationId: modelupdate
       summary: Update the model to be served
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -861,6 +924,8 @@ paths:
     post:
       operationId: jsonarray
       summary: Run inference on the input and returns it as a JsonArrayResponse
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -899,6 +964,8 @@ paths:
     post:
       operationId: predictwithpreprocess
       summary: Preprocesses the input and run inference on it
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -939,6 +1006,8 @@ paths:
     post:
       operationId: predictwithpreprocessjson
       summary: Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -979,6 +1048,8 @@ paths:
     post:
       operationId: logs
       summary: Get logs
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -1017,6 +1088,8 @@ paths:
     get:
       operationId: logfilepath
       summary: Get logs file path
+      tags:
+      - Inference
       produces:
       - text
       parameters:
@@ -1048,6 +1121,8 @@ paths:
     get:
       operationId: meta_get
       summary: this method can be used to get the meta data for the current model which set to the server
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -1077,6 +1152,8 @@ paths:
     post:
       operationId: meta_post
       summary: This method can be used to set meta data for the current model which is set to the server
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -1113,6 +1190,8 @@ paths:
     post:
       operationId: detectobjects
       summary: Detect the objects, given a (input) prediction request
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -1167,6 +1246,8 @@ paths:
     get:
       operationId: deployments
       summary: Get a list of deployments
+      tags:
+      - Deployment
       produces:
       - application/json
       responses:
@@ -1180,6 +1261,8 @@ paths:
     get:
       operationId: deployment_get
       summary: Get a deployment details by id
+      tags:
+      - Deployment
       produces:
       - application/json
       parameters:
@@ -1196,6 +1279,8 @@ paths:
     delete:
       operationId: deployment_delete
       summary: Delete a deployment by id
+      tags:
+      - Deployment
       produces:
       - application/json
       parameters:
@@ -1216,6 +1301,8 @@ paths:
     post:
       operationId: deploymentCreate
       summary: Create a new deployment group.
+      tags:
+      - Deployment
       consumes:
       - application/json
       produces:
@@ -1238,6 +1325,8 @@ paths:
     get:
       operationId: models
       summary: Retrieve a list of all the deployed models given a deployment id
+      tags:
+      - Deployment
       produces:
       - application/json
       parameters:
@@ -1257,6 +1346,8 @@ paths:
     post:
       operationId: deployModel
       summary: Deploy a model in a deployment group.
+      tags:
+      - Deployment
       consumes:
       - application/json
       produces:
@@ -1282,6 +1373,8 @@ paths:
     post:
       operationId: reimportModel
       summary: Reimport a model to a previous deployed model in a deployment
+      tags:
+      - Deployment
       consumes:
       - application/json
       produces:
@@ -1311,6 +1404,8 @@ paths:
     delete:
       operationId: delete_model
       summary: Delete a model by deployment and model id
+      tags:
+      - Deployment
       produces:
       - application/json
       parameters:
@@ -1336,6 +1431,8 @@ paths:
     post:
       operationId: modelStateChange
       summary: Modify the state (start/stop) of a deployed model
+      tags:
+      - Deployment
       consumes:
       - application/json
       produces:
@@ -1369,6 +1466,8 @@ paths:
     get:
       operationId: getModelHistory
       summary: Gets a model history, given its ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1392,6 +1491,8 @@ paths:
     post:
       operationId: addModelHistory
       summary: Add a model history / workspace
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1418,6 +1519,8 @@ paths:
     post:
       operationId: updateModelHistory
       summary: Update a model history / workspace
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1449,6 +1552,8 @@ paths:
     delete:
       operationId: deleteModelHistory
       summary: Deletes a model history / workspace, given its ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1483,6 +1588,8 @@ paths:
     get:
       operationId: listAllExperiments
       summary: List all of the experiments in every model history / workspace
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1503,6 +1610,8 @@ paths:
     get:
       operationId: getExperimentsForModelHistory
       summary: Obtain all experiments for a model history / workspace
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1527,6 +1636,8 @@ paths:
     get:
       operationId: getExperiment
       summary: Obtain an experiment's details, given its ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1550,6 +1661,8 @@ paths:
     put:
       operationId: updateExperiment
       summary: Updates an experiment, given an experiment entity
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1581,6 +1694,8 @@ paths:
     delete:
       operationId: deleteExperiment
       summary: Deletes an experiment, given an experiment entity
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1615,6 +1730,8 @@ paths:
     post:
       operationId: addExperiment
       summary: Add an experiment, given an experiment entity
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1641,6 +1758,8 @@ paths:
     post:
       operationId: updateBestModelForExperiment
       summary: Updates the best model for an experiment
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1667,6 +1786,8 @@ paths:
     get:
       operationId: getModelsForExperiment
       summary: Obtain a list of all the models for an experiment
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1693,6 +1814,8 @@ paths:
     get:
       operationId: getModelInstance
       summary: Gets a model instance, given its ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1715,6 +1838,8 @@ paths:
     delete:
       operationId: deleteModelInstance
       summary: Deletes a model instance, given its ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1736,6 +1861,8 @@ paths:
     post:
       operationId: addModelInstance
       summary: Adds a model
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1762,6 +1889,8 @@ paths:
     post:
       operationId: getBestModelAmongModelIds
       summary: Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1788,6 +1917,8 @@ paths:
     post:
       operationId: createModelHistory
       summary: Creates model History
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1814,6 +1945,8 @@ paths:
     post:
       operationId: addEvaluationResult
       summary: Adds an evaluation result
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1840,6 +1973,8 @@ paths:
     get:
       operationId: getEvaluationForModelID
       summary: Gets the list of evaluation results entity, given a model instance ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1865,6 +2000,8 @@ paths:
     post:
       operationId: aggregateModelResults
       summary: Aggregates the evaluaition results of a model instance, based on the evaluation type
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1891,6 +2028,8 @@ paths:
     get:
       operationId: getMinibatch
       summary: Gets a minibatch for the model
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1914,6 +2053,8 @@ paths:
     post:
       operationId: addMinibatch
       summary: Adds a minibatch
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1940,6 +2081,8 @@ paths:
     get:
       operationId: getExamplesForMinibatch
       summary: Gets all the examples for a minibatch ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1965,6 +2108,8 @@ paths:
     post:
       operationId: addExampleToMinibatch
       summary: Adds an example to a minibatch
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1991,6 +2136,8 @@ paths:
     post:
       operationId: addExampleForBatch
       summary: Adds a number of examples to a minibatch ID given an AddExampleRequest.
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -2017,6 +2164,8 @@ paths:
     post:
       operationId: addModelFeedback
       summary: Adds an evaluation feedback to the model against a given minibatch id.
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -2046,6 +2195,8 @@ paths:
     get:
       operationId: getResourceById
       summary: Get the resource with the specified resource ID
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2068,6 +2219,8 @@ paths:
         Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information
         about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource'
         object contains only general information (name, id, type, subtype).
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2086,6 +2239,8 @@ paths:
     get:
       operationId: getResources
       summary: A list of all known/registered resources, of all types
+      tags:
+      - Resource
       produces:
         - application/json
       responses:
@@ -2099,6 +2254,8 @@ paths:
     get:
       operationId: getResourceByType
       summary: Get all the resources with the specified resource type
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2121,6 +2278,8 @@ paths:
     get:
       operationId: getResourceBySubType
       summary: Get all the resources with the specified resource subtype
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2149,6 +2308,8 @@ paths:
     post:
       operationId: addResource
       summary: Adds a resource
+      tags:
+      - Resource
       consumes:
         - application/json
       produces:
@@ -2169,6 +2330,8 @@ paths:
     delete:
       operationId: deleteResourceById
       summary: Delete the resource with the specified resource ID
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2187,6 +2350,8 @@ paths:
     get:
       operationId: getResourceGroupById
       summary: Get the resource group with the specified resource group ID
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2205,6 +2370,8 @@ paths:
     get:
       operationId: getResourceGroups
       summary: Get a list of all the resource groups
+      tags:
+      - Resource
       produces:
         - application/json
       responses:
@@ -2218,6 +2385,8 @@ paths:
     post:
       operationId: addResourceGroup
       summary: Adds a resource group
+      tags:
+      - Resource
       consumes:
         - text/plain; charset=utf-8
       produces:
@@ -2238,6 +2407,8 @@ paths:
     delete:
       operationId: deleteResourceGroupById
       summary: Delete the resource group with the specified resource group ID
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2256,6 +2427,8 @@ paths:
     get:
       operationId: addResourceToGroup
       summary: Adds a resource to a resource group
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2278,6 +2451,8 @@ paths:
     get:
       operationId: deleteResourceFromGroup
       summary: Removes a resource from a resource group
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2300,6 +2475,8 @@ paths:
     get:
       operationId: getResourcesFromGroup
       summary: Get all resources from a resource group
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2320,6 +2497,8 @@ paths:
     get:
       operationId: getCredentialsById
       summary: Get credentials given an ID
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2337,6 +2516,8 @@ paths:
     delete:
       operationId: deleteCredentialsById
       summary: Delete credentials given an ID
+      tags:
+      - Resource
       produces:
         - application/json
       parameters:
@@ -2353,6 +2534,8 @@ paths:
     post:
       operationId: addCredentials
       summary: Adds credentials
+      tags:
+      - Resource
       consumes:
         - application/json
       produces:
@@ -2376,6 +2559,8 @@ paths:
     get:
       operationId: getJobById
       summary: Get a job by its ID
+      tags:
+      - Job
       produces:
         - application/json
       parameters:
@@ -2393,6 +2578,8 @@ paths:
     post:
       operationId: createJob
       summary: Create a job
+      tags:
+      - Job
       consumes:
         - application/json
       produces:
@@ -2420,6 +2607,8 @@ paths:
     delete:
       operationId: deleteJobById
       summary: Deletes a job given its ID
+      tags:
+      - Job
       produces:
         - application/json
       parameters:
@@ -2436,6 +2625,8 @@ paths:
     get:
       operationId: getAllJobs
       summary: Get a list of all available jobs
+      tags:
+      - Job
       produces:
         - application/json
       responses:
@@ -2449,6 +2640,8 @@ paths:
     post:
       operationId: runAJob
       summary: Start running an (already created) job on the remote resource
+      tags:
+      - Job
       consumes:
         - application/json
       produces:
@@ -2469,6 +2662,8 @@ paths:
     get:
       operationId: refreshJobStatus
       summary: Refresh the remote job status. Can be used for monitoring.
+      tags:
+      - Job
       produces:
         - application/json
       parameters:
@@ -2487,6 +2682,8 @@ paths:
     post:
       operationId: downloadJobOutputFile
       summary: Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
+      tags:
+      - Job
       consumes:
         - application/json
       produces:
