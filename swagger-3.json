@@ -1,0 +1,5963 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Endpoints API for different services in SKIL",
+    "version": "1.2.0-beta",
+    "title": "Endpoints"
+  },
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Authentication",
+      "description": "Authentication endpoints"
+    },
+    {
+      "name": "Utilities",
+      "description": "Utilities endpoints"
+    },
+    {
+      "name": "ModelHistory",
+      "description": "Model History endpoints"
+    },
+    {
+      "name": "Deployment",
+      "description": "Deployment Endpoints"
+    },
+    {
+      "name": "Transform",
+      "description": "Transform endpoints"
+    },
+    {
+      "name": "Inference",
+      "description": "Inference endpoints"
+    },
+    {
+      "name": "KNN",
+      "description": "KNN endpoints"
+    },
+    {
+      "name": "Resource",
+      "description": "Resource Endpoints"
+    },
+    {
+      "name": "Job",
+      "description": "Job endpoints"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "operationId": "login",
+        "summary": "Post JSON credentials and obtain a JWT authorization token.",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid credentials"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Credentials"
+              }
+            }
+          },
+          "description": "Login credentials.",
+          "required": true
+        }
+      }
+    },
+    "/api/upload/model": {
+      "post": {
+        "operationId": "upload",
+        "summary": "Upload a model file to SKIL for import.",
+        "tags": [
+          "Utilities"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileUploadList"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "description": "The file to upload.",
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess": {
+      "get": {
+        "operationId": "transformprocess_get",
+        "summary": "Gets the JSON string of the deployed transform process (CSV or Image)",
+        "tags": [
+          "Transform"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "transformName",
+            "in": "path",
+            "description": "ID or name of the deployed transform",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the deployed transform process",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "the transform process is probably null"
+          },
+          "500": {
+            "description": "internal server error"
+          }
+        }
+      },
+      "post": {
+        "operationId": "transformprocess_post",
+        "summary": "Sets the deployed (CSV or Image) transform process through the provided JSON string",
+        "tags": [
+          "Transform"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "transformName",
+            "in": "path",
+            "description": "ID or name of the deployed transform",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "transform process set successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal server error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "description": "The transform process to set"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental": {
+      "post": {
+        "operationId": "transformincremental_csv",
+        "summary": "Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord",
+        "tags": [
+          "Transform"
+        ],
+        "description": "Takes a SingleCSVRecord object and transforms it into the desired format",
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "transformName",
+            "in": "path",
+            "description": "ID or name of the deployed transform",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "array transformed and returned successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleCSVRecord"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal server error during transforming the array"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SingleCSVRecord"
+              }
+            }
+          },
+          "description": "The input record array"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform": {
+      "post": {
+        "operationId": "transform_csv",
+        "summary": "Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord",
+        "tags": [
+          "Transform"
+        ],
+        "description": "Takes a batch of SingleCSVRecord object and transforms it into the desired format",
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "transformName",
+            "in": "path",
+            "description": "ID or name of the deployed transform",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "array transformed and returned successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchCSVRecord"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal server error during transforming the array"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchCSVRecord"
+              }
+            }
+          },
+          "description": "The input batch of record arrays"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray": {
+      "post": {
+        "operationId": "transformincrementalarray",
+        "summary": "Same as /transformincremental but returns Base64NDArrayBody.",
+        "tags": [
+          "Transform"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "transformName",
+            "in": "path",
+            "description": "ID or name of the deployed transform",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "array transformed and returned successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Base64NDArrayBody"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal server error during transforming the array"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "description": "The input record array"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray": {
+      "post": {
+        "operationId": "transformarray",
+        "summary": "Takes a batch input arrays and transforms it",
+        "tags": [
+          "Transform"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "transformName",
+            "in": "path",
+            "description": "ID or name of the deployed transform",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "array transformed and returned successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Base64NDArrayBody"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal server error during transforming the array"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "description": "The input batch of record arrays"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage": {
+      "post": {
+        "operationId": "transformincrementalimage",
+        "summary": "Takes a single multipart image file to transform and returns Base64NDArrayBody",
+        "description": "Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody",
+        "tags": [
+          "Transform"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "imageTransformName",
+            "in": "path",
+            "description": "ID or name of the deployed image transform",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "array transformed and returned successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Base64NDArrayBody"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No uploaded file found or the file couldn't be loaded"
+          },
+          "500": {
+            "description": "internal server error during transforming the array"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "description": "The image file to upload",
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage": {
+      "post": {
+        "operationId": "transformimage",
+        "summary": "Takes multiple multipart image file to transform and returns Base64NDArrayBody",
+        "description": "Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody",
+        "tags": [
+          "Transform"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "imageTransformName",
+            "in": "path",
+            "description": "ID or name of the deployed image transform",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "array transformed and returned successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Base64NDArrayBody"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No uploaded files found"
+          },
+          "500": {
+            "description": "internal server error during transforming the array"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "description": "The image files to upload",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                },
+                "required": [
+                  "files"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn": {
+      "post": {
+        "operationId": "knn",
+        "summary": "Runs knn on the given index with the given k",
+        "description": "Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)",
+        "tags": [
+          "KNN"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "knnName",
+            "in": "path",
+            "description": "ID or name of the deployed knn",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NearestNeighborsResults"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NearestNeighborRequest"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew": {
+      "post": {
+        "operationId": "knnnew",
+        "summary": "Run a k nearest neighbors search on a NEW data point",
+        "tags": [
+          "KNN"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "knnName",
+            "in": "path",
+            "description": "ID or name of the deployed knn",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NearestNeighborsResults"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Base64NDArrayBodyKNN"
+              }
+            }
+          },
+          "description": "The input NDArray",
+          "required": true
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict": {
+      "post": {
+        "operationId": "predict",
+        "summary": "Run inference on the input array.",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Prediction"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Invalid deployment or model name"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Prediction"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage": {
+      "post": {
+        "operationId": "predictimage",
+        "summary": "Run inference on the input array, using input image file from multipart form data.",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Prediction"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error generating prediction"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/predictimage"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict": {
+      "post": {
+        "operationId": "multipredict",
+        "summary": "Get the output from the network, based on the given INDArray[] input",
+        "description": "Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MultiPredictResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error generating prediction"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MultiPredictRequest"
+              }
+            }
+          },
+          "description": "The multiple input arrays with mask inputs to run inferences on",
+          "required": true
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage": {
+      "post": {
+        "operationId": "multipredictimage",
+        "summary": "Get the output from the network using the given image file using the /multipredict endpoint's method",
+        "description": "Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MultiPredictResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error generating prediction"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "description": "The image file to run the prediction on",
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "id": {
+                    "description": "The id of the request (could be self generated)",
+                    "type": "string"
+                  },
+                  "needs_preprocessing": {
+                    "description": "Whether or not the preprocessing is required (either 'true' or 'false')",
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "file",
+                  "id",
+                  "needs_preprocessing"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify": {
+      "post": {
+        "operationId": "classify",
+        "summary": "Use the deployed model to classify the input",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassificationResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Invalid deployment or model name"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Prediction"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage": {
+      "post": {
+        "operationId": "classifyimage",
+        "summary": "Use the deployed model to classify the input, using input image file from multipart form data.",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClassificationResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error generating classification"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/predictimage"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray": {
+      "post": {
+        "operationId": "classifyarray",
+        "summary": "Same as /classify but returns the output as Base64NDArrayBody",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Base64NDArrayBody"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Invalid deployment or model name"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Prediction"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify": {
+      "post": {
+        "operationId": "multiclassify",
+        "summary": "Represents all of the labels for a given classification",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MultiClassClassificationResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Invalid deployment or model name"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Prediction"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset": {
+      "post": {
+        "operationId": "modelset",
+        "summary": "Set the model to be served",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Model set successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelStatus"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error setting model"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "description": "The model file to upload (.pb file)",
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate": {
+      "post": {
+        "operationId": "modelupdate",
+        "summary": "Update the model to be served",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Model updated successfully or model update failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelStatus"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating model"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "description": "The model file to update with (.pb file)",
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray": {
+      "post": {
+        "operationId": "jsonarray",
+        "summary": "Run inference on the input and returns it as a JsonArrayResponse",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonArrayResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error generating array prediction"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Prediction"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess": {
+      "post": {
+        "operationId": "predictwithpreprocess",
+        "summary": "Preprocesses the input and run inference on it",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Prediction"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error executing predictPreProcess"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/predictwithpreprocessBody"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson": {
+      "post": {
+        "operationId": "predictwithpreprocessjson",
+        "summary": "Preprocesses the input and run inference on it and returns it as a JsonArrayResponse",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonArrayResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error executing predictPreProcessJson"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/predictwithpreprocessBody"
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs": {
+      "post": {
+        "operationId": "logs",
+        "summary": "Get logs",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "logs obtained successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogBatch"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error retrieving logs"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogRequest"
+              }
+            }
+          },
+          "description": "the the log request",
+          "required": true
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath": {
+      "get": {
+        "operationId": "logfilepath",
+        "summary": "Get logs file path",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the retrieved log file path",
+            "content": {
+              "text": {
+                "schema": {
+                  "type": "string",
+                  "example": "log_file_path"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error retrieving log file path"
+          }
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta": {
+      "get": {
+        "operationId": "meta_get",
+        "summary": "this method can be used to get the meta data for the current model which set to the server",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The meta data details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetaData"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "meta_post",
+        "summary": "This method can be used to set meta data for the current model which is set to the server",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the meta data object that was set",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetaData"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetaData"
+              }
+            }
+          },
+          "description": "the meta data object",
+          "required": true
+        }
+      }
+    },
+    "/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects": {
+      "post": {
+        "operationId": "detectobjects",
+        "summary": "Detect the objects, given a (input) prediction request",
+        "tags": [
+          "Inference"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentName",
+            "in": "path",
+            "description": "Name of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "versionName",
+            "in": "path",
+            "description": "Version name of the endpoint. The default value is \"default\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "name": "modelName",
+            "in": "path",
+            "description": "ID or name of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the detected objects in the given input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetectionResult"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "the GUID for mapping the results in the detections",
+                    "type": "string"
+                  },
+                  "needsPreprocessing": {
+                    "description": "(true) if the image needs preprocessing",
+                    "type": "boolean"
+                  },
+                  "threshold": {
+                    "description": "A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.",
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "imageFile": {
+                    "description": "the image file to detect objects from",
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "id",
+                  "needsPreprocessing",
+                  "threshold",
+                  "imageFile"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deployments": {
+      "get": {
+        "operationId": "deployments",
+        "summary": "Get a list of deployments",
+        "tags": [
+          "Deployment"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of the deployments retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeploymentResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deployment/{deploymentId}": {
+      "get": {
+        "operationId": "deployment_get",
+        "summary": "Get a deployment details by id",
+        "tags": [
+          "Deployment"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentId",
+            "in": "path",
+            "description": "Id of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The deployment details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeploymentResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deployment_delete",
+        "summary": "Delete a deployment by id",
+        "tags": [
+          "Deployment"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentId",
+            "in": "path",
+            "description": "Id of the deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The status of the removed deployment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deployment": {
+      "post": {
+        "operationId": "deploymentCreate",
+        "summary": "Create a new deployment group.",
+        "tags": [
+          "Deployment"
+        ],
+        "responses": {
+          "200": {
+            "description": "the added deployment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeploymentResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error creating deployment"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDeploymentRequest"
+              }
+            }
+          },
+          "description": "the deployment request",
+          "required": true
+        }
+      }
+    },
+    "/deployment/{deploymentId}/models": {
+      "get": {
+        "operationId": "models",
+        "summary": "Retrieve a list of all the deployed models given a deployment id",
+        "tags": [
+          "Deployment"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentId",
+            "in": "path",
+            "description": "ID deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved model list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModelEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deployment/{deploymentId}/model": {
+      "post": {
+        "operationId": "deployModel",
+        "summary": "Deploy a model in a deployment group.",
+        "tags": [
+          "Deployment"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentId",
+            "in": "path",
+            "description": "ID deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the deployed model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportModelRequest"
+              }
+            }
+          },
+          "description": "the model import request",
+          "required": true
+        }
+      }
+    },
+    "/deployment/{deploymentId}/model/{modelId}": {
+      "post": {
+        "operationId": "reimportModel",
+        "summary": "Reimport a model to a previous deployed model in a deployment",
+        "tags": [
+          "Deployment"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentId",
+            "in": "path",
+            "description": "ID deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "modelId",
+            "in": "path",
+            "description": "the id of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the reimported model entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportModelRequest"
+              }
+            }
+          },
+          "description": "the deployment request",
+          "required": true
+        }
+      },
+      "delete": {
+        "operationId": "delete_model",
+        "summary": "Delete a model by deployment and model id",
+        "tags": [
+          "Deployment"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentId",
+            "in": "path",
+            "description": "ID deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "modelId",
+            "in": "path",
+            "description": "the id of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the deleted model status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deployment/{deploymentId}/model/{modelId}/state": {
+      "post": {
+        "operationId": "modelStateChange",
+        "summary": "Modify the state (start/stop) of a deployed model",
+        "tags": [
+          "Deployment"
+        ],
+        "parameters": [
+          {
+            "name": "deploymentId",
+            "in": "path",
+            "description": "ID deployment group",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "modelId",
+            "in": "path",
+            "description": "the id of the deployed model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the model entity with its state changed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetState"
+              }
+            }
+          },
+          "description": "the model state object",
+          "required": true
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}": {
+      "get": {
+        "operationId": "getModelHistory",
+        "summary": "Gets a model history, given its ID",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "modelHistoryID",
+            "in": "path",
+            "required": true,
+            "description": "GUID of the model history to get information of.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Model history entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelHistoryEntity"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/modelhistory": {
+      "post": {
+        "operationId": "addModelHistory",
+        "summary": "Add a model history / workspace",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The added model history entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelHistoryEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/AddModelHistoryRequest"
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}": {
+      "post": {
+        "operationId": "updateModelHistory",
+        "summary": "Update a model history / workspace",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "modelHistoryID",
+            "in": "path",
+            "required": true,
+            "description": "the GUID of the model history / workspace to update",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The updated model history entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelHistoryEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/AddModelHistoryRequest"
+        }
+      },
+      "delete": {
+        "operationId": "deleteModelHistory",
+        "summary": "Deletes a model history / workspace, given its ID",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "modelHistoryID",
+            "in": "path",
+            "required": true,
+            "description": "the GUID of the model history / workspace to delete",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workspace deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The specified Workspace no longer exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/experiments": {
+      "get": {
+        "operationId": "listAllExperiments",
+        "summary": "List all of the experiments in every model history / workspace",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all the experiment entities.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ExperimentEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}": {
+      "get": {
+        "operationId": "getExperimentsForModelHistory",
+        "summary": "Obtain all experiments for a model history / workspace",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "modelHistoryID",
+            "in": "path",
+            "required": true,
+            "description": "the GUID of the model history / workspace",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all the experiment entities in a model history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperimentEntity"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/experiment/{experimentID}": {
+      "get": {
+        "operationId": "getExperiment",
+        "summary": "Obtain an experiment's details, given its ID",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "experimentID",
+            "in": "path",
+            "required": true,
+            "description": "the GUID of the experiment to obtain",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Experiment Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperimentEntity"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateExperiment",
+        "summary": "Updates an experiment, given an experiment entity",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "experimentID",
+            "in": "path",
+            "required": true,
+            "description": "the GUID of the experiment to update",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The updated experiment entity.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperimentEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExperimentEntity"
+              }
+            }
+          },
+          "description": "The experiment entity to update with",
+          "required": true
+        }
+      },
+      "delete": {
+        "operationId": "deleteExperiment",
+        "summary": "Deletes an experiment, given an experiment entity",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "experimentID",
+            "in": "path",
+            "required": true,
+            "description": "the GUID of the experiment to delete",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Experiment deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Experiment no longer exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/experiment": {
+      "post": {
+        "operationId": "addExperiment",
+        "summary": "Add an experiment, given an experiment entity",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The added experiment entity.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperimentEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExperimentEntity"
+              }
+            }
+          },
+          "description": "The experiment entity to add",
+          "required": true
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/experiment/best": {
+      "post": {
+        "operationId": "updateBestModelForExperiment",
+        "summary": "Updates the best model for an experiment",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The updated experiment entity.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperimentEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBestModel"
+              }
+            }
+          },
+          "description": "Model encapsulating the experiment id to update and the best model id.",
+          "required": true
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/experiment/{experimentID}/models": {
+      "get": {
+        "operationId": "getModelsForExperiment",
+        "summary": "Obtain a list of all the models for an experiment",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "experimentID",
+            "in": "path",
+            "required": true,
+            "description": "the GUID of the experiment",
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all the models for the specified experiment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ModelInstanceEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/{modelInstanceID}": {
+      "get": {
+        "operationId": "getModelInstance",
+        "summary": "Gets a model instance, given its ID",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "modelInstanceID",
+            "in": "path",
+            "required": true,
+            "description": "GUID of the model instance to get information of.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Model instance entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelInstanceEntity"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteModelInstance",
+        "summary": "Deletes a model instance, given its ID",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "modelInstanceID",
+            "in": "path",
+            "required": true,
+            "description": "GUID of the model instance to delete.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Empty content"
+          }
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model": {
+      "post": {
+        "operationId": "addModelInstance",
+        "summary": "Adds a model",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The added model instance entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelInstanceEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModelInstanceEntity"
+              }
+            }
+          },
+          "description": "The object encapsulating the model instance id and evaluation type to aggregate",
+          "required": true
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/best": {
+      "post": {
+        "operationId": "getBestModelAmongModelIds",
+        "summary": "Gets the best model among the given model instance IDs, based on the evaluation type and column metric",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The best model instance entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelInstanceEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BestModel"
+              }
+            }
+          },
+          "description": "Object encapsulating the model ids, eval type and column metric name",
+          "required": true
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/revisions": {
+      "post": {
+        "operationId": "createModelHistory",
+        "summary": "Creates model History",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The created model history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelHistoryEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModelHistoryEntity"
+              }
+            }
+          },
+          "description": "The model history entity",
+          "required": true
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/revisions/evaluations/": {
+      "post": {
+        "operationId": "addEvaluationResult",
+        "summary": "Adds an evaluation result",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The added evaluation result entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvaluationResultsEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EvaluationResultsEntity"
+              }
+            }
+          },
+          "description": "The evaluation result entity",
+          "required": true
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}": {
+      "get": {
+        "operationId": "getEvaluationForModelID",
+        "summary": "Gets the list of evaluation results entity, given a model instance ID",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "modelInstanceID",
+            "in": "path",
+            "required": true,
+            "description": "GUID of the model instance to get evaluation results for.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of evaluation result entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EvaluationResultsEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/aggregateresults": {
+      "post": {
+        "operationId": "aggregateModelResults",
+        "summary": "Aggregates the evaluaition results of a model instance, based on the evaluation type",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Evaluation result entity contained the aggregated/merged results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvaluationResultsEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AggregatePrediction"
+              }
+            }
+          },
+          "description": "The object encapsulating the model instance id and evaluation type to aggregate",
+          "required": true
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}": {
+      "get": {
+        "operationId": "getMinibatch",
+        "summary": "Gets a minibatch for the model",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "minibatchId",
+            "in": "path",
+            "required": true,
+            "description": "The GUID of the minibatch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The minibatch entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MinibatchEntity"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/minibatch": {
+      "post": {
+        "operationId": "addMinibatch",
+        "summary": "Adds a minibatch",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The added minibatch entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MinibatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MinibatchEntity"
+              }
+            }
+          },
+          "description": "The minibatch entity to add",
+          "required": true
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/example/{minibatchId}": {
+      "get": {
+        "operationId": "getExamplesForMinibatch",
+        "summary": "Gets all the examples for a minibatch ID",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          {
+            "name": "minibatchId",
+            "in": "path",
+            "required": true,
+            "description": "The GUID of the minibatch",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of the associated examples with the minibatch",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ExampleEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/example": {
+      "post": {
+        "operationId": "addExampleToMinibatch",
+        "summary": "Adds an example to a minibatch",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The added example entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExampleEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExampleEntity"
+              }
+            }
+          },
+          "description": "The example to add to the minibatch",
+          "required": true
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/exampleForBatch": {
+      "post": {
+        "operationId": "addExampleForBatch",
+        "summary": "Adds a number of examples to a minibatch ID given an AddExampleRequest.",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The add example request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddExampleRequest"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddExampleRequest"
+              }
+            }
+          },
+          "description": "The add example request, encapsulating minibatch details and examples batch size",
+          "required": true
+        }
+      }
+    },
+    "/rpc/{modelHistoryServerId}/model/feedback": {
+      "post": {
+        "operationId": "addModelFeedback",
+        "summary": "Adds an evaluation feedback to the model against a given minibatch id.",
+        "tags": [
+          "ModelHistory"
+        ],
+        "parameters": [
+          {
+            "name": "modelHistoryServerId",
+            "in": "path",
+            "description": "Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The model feedback request object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelFeedBackRequest"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModelFeedBackRequest"
+              }
+            }
+          },
+          "description": "The model feedback request object",
+          "required": true
+        }
+      }
+    },
+    "/resources/resource/{resourceId}": {
+      "get": {
+        "operationId": "getResourceById",
+        "summary": "Get the resource with the specified resource ID",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "resourceId",
+            "in": "path",
+            "description": "ID of the resource",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource Object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resource"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/details/{resourceId}": {
+      "get": {
+        "operationId": "getResourceDetailsById",
+        "summary": "Get the resource details with the specified resource ID",
+        "description": "Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information\nabout the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource'\nobject contains only general information (name, id, type, subtype).\n",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "resourceId",
+            "in": "path",
+            "description": "ID of the resource",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "One of the resource details object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/resources": {
+      "get": {
+        "operationId": "getResources",
+        "summary": "A list of all known/registered resources, of all types",
+        "tags": [
+          "Resource"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Resource Objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/AzureStorageResourceDetails"
+                      },
+                      {
+                        "$ref": "#/components/schemas/HDInsightResourceDetails"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/resources/type/{resourceType}": {
+      "get": {
+        "operationId": "getResourceByType",
+        "summary": "Get all the resources with the specified resource type",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "resourceType",
+            "in": "path",
+            "description": "Type of the resource",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "COMPUTE",
+                "STORAGE"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Resource Objects by specified type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Resource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/resources/subtype/{resourceSubType}": {
+      "get": {
+        "operationId": "getResourceBySubType",
+        "summary": "Get all the resources with the specified resource subtype",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "resourceSubType",
+            "in": "path",
+            "description": "Subtype of the resource",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "EMR",
+                "S3",
+                "GoogleStorage",
+                "DataProc",
+                "HDInsight",
+                "AzureStorage",
+                "HDFS",
+                "YARN"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Resource Objects by specified subtype",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Resource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/add/resource": {
+      "post": {
+        "operationId": "addResource",
+        "summary": "Adds a resource",
+        "tags": [
+          "Resource"
+        ],
+        "responses": {
+          "200": {
+            "description": "One of the resource details object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddResourceRequest"
+              }
+            }
+          },
+          "description": "The Add resource request object",
+          "required": true
+        }
+      }
+    },
+    "/resources/remove/resource/{resourceId}": {
+      "delete": {
+        "operationId": "deleteResourceById",
+        "summary": "Delete the resource with the specified resource ID",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "resourceId",
+            "in": "path",
+            "description": "ID of the resource",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource Object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resource"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/group/{resourceGroupId}": {
+      "get": {
+        "operationId": "getResourceGroupById",
+        "summary": "Get the resource group with the specified resource group ID",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "resourceGroupId",
+            "in": "path",
+            "description": "ID of the resource group",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource Group Object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceGroup"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/groups": {
+      "get": {
+        "operationId": "getResourceGroups",
+        "summary": "Get a list of all the resource groups",
+        "tags": [
+          "Resource"
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource Group Object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ResourceGroup"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/add/group": {
+      "post": {
+        "operationId": "addResourceGroup",
+        "summary": "Adds a resource group",
+        "tags": [
+          "Resource"
+        ],
+        "responses": {
+          "200": {
+            "description": "The created resource group object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceGroup"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "text/plain; charset=utf-8": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Name of the resource group",
+          "required": true
+        }
+      }
+    },
+    "/resources/remove/group/{resourceGroupId}": {
+      "delete": {
+        "operationId": "deleteResourceGroupById",
+        "summary": "Delete the resource group with the specified resource group ID",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "resourceGroupId",
+            "in": "path",
+            "description": "ID of the resource group",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource Group Object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceGroup"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/add/resourcetogroup/{resourceGroupId}/{resourceId}": {
+      "get": {
+        "operationId": "addResourceToGroup",
+        "summary": "Adds a resource to a resource group",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "resourceGroupId",
+            "in": "path",
+            "description": "ID of the resource group",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "resourceId",
+            "in": "path",
+            "description": "ID of the resource",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully added resource to the resource group"
+          }
+        }
+      }
+    },
+    "/resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId}": {
+      "get": {
+        "operationId": "deleteResourceFromGroup",
+        "summary": "Removes a resource from a resource group",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "resourceGroupId",
+            "in": "path",
+            "description": "ID of the resource group",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "resourceId",
+            "in": "path",
+            "description": "ID of the resource",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully removed resource from the resource group"
+          }
+        }
+      }
+    },
+    "/resources/group/{resourceGroupId}/resources": {
+      "get": {
+        "operationId": "getResourcesFromGroup",
+        "summary": "Get all resources from a resource group",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "resourceGroupId",
+            "in": "path",
+            "description": "ID of the resource group",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of resources from a resource group",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Resource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resources/credentials/{credentialId}": {
+      "get": {
+        "operationId": "getCredentialsById",
+        "summary": "Get credentials given an ID",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "credentialId",
+            "in": "path",
+            "description": "Credentials ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Credentials Object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceCredentials"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteCredentialsById",
+        "summary": "Delete credentials given an ID",
+        "tags": [
+          "Resource"
+        ],
+        "parameters": [
+          {
+            "name": "credentialId",
+            "in": "path",
+            "description": "Credentials ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Credentials successfully deteled"
+          }
+        }
+      }
+    },
+    "/resources/credentials": {
+      "post": {
+        "operationId": "addCredentials",
+        "summary": "Adds credentials",
+        "tags": [
+          "Resource"
+        ],
+        "responses": {
+          "200": {
+            "description": "The created credentials object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceCredentials"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCredentialsRequest"
+              }
+            }
+          },
+          "description": "Add credentials request object",
+          "required": true
+        }
+      }
+    },
+    "/jobs/{jobIdOrType}": {
+      "get": {
+        "operationId": "getJobById",
+        "summary": "Get a job by its ID",
+        "tags": [
+          "Job"
+        ],
+        "parameters": [
+          {
+            "name": "jobIdOrType",
+            "in": "path",
+            "description": "Job ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Job entity Object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobEntity"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createJob",
+        "summary": "Create a job",
+        "tags": [
+          "Job"
+        ],
+        "parameters": [
+          {
+            "name": "jobIdOrType",
+            "in": "path",
+            "description": "Job Type",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "TRAINING",
+                "INFERENCE"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The created job entity object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobEntity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateJobRequest"
+              }
+            }
+          },
+          "description": "Create job request object",
+          "required": true
+        }
+      },
+      "delete": {
+        "operationId": "deleteJobById",
+        "summary": "Deletes a job given its ID",
+        "tags": [
+          "Job"
+        ],
+        "parameters": [
+          {
+            "name": "jobIdOrType",
+            "in": "path",
+            "description": "Job ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted a job"
+          }
+        }
+      }
+    },
+    "/jobs": {
+      "get": {
+        "operationId": "getAllJobs",
+        "summary": "Get a list of all available jobs",
+        "tags": [
+          "Job"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of job entity objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{jobId}/run": {
+      "post": {
+        "operationId": "runAJob",
+        "summary": "Start running an (already created) job on the remote resource",
+        "tags": [
+          "Job"
+        ],
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "Job ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The associated job entity object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobEntity"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{jobId}/refresh": {
+      "get": {
+        "operationId": "refreshJobStatus",
+        "summary": "Refresh the remote job status. Can be used for monitoring.",
+        "tags": [
+          "Job"
+        ],
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "Job ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The associated job entity object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobEntity"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{jobId}/outputfile": {
+      "post": {
+        "operationId": "downloadJobOutputFile",
+        "summary": "Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.",
+        "tags": [
+          "Job"
+        ],
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "Job ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The file download has started"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DownloadOutputFileRequest"
+              }
+            }
+          },
+          "description": "Download output file request object",
+          "required": true
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9008/"
+    },
+    {
+      "url": "http://skildemo1.southcentralus.cloudapp.azure.com:9008"
+    }
+  ],
+  "components": {
+    "requestBodies": {
+      "predictimage": {
+        "content": {
+          "multipart/form-data": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "image": {
+                  "description": "The file to upload.",
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Prediction": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Prediction"
+            }
+          }
+        },
+        "description": "The input NDArray",
+        "required": true
+      },
+      "predictwithpreprocessBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": "The input array",
+        "required": true
+      },
+      "AddModelHistoryRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AddModelHistoryRequest"
+            }
+          }
+        },
+        "description": "The model history request object",
+        "required": true
+      }
+    },
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "authorization",
+        "in": "header",
+        "description": "For accessing the API a valid JWT token must be passed in all the queries in\nthe 'Authorization' header.\n\n\nA valid JWT token is generated by the API and retourned as answer of a call\nto the route /login giving a valid user & password.\n\n\nThe following syntax must be used in the 'Authorization' header :\n\n    Bearer xxxxxx.yyyyyyy.zzzzzz\n"
+      }
+    },
+    "schemas": {
+      "TransformProcess": {
+        "type": "object"
+      },
+      "SingleCSVRecord": {
+        "required": [
+          "values"
+        ],
+        "properties": {
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "BatchCSVRecord": {
+        "required": [
+          "records"
+        ],
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SingleCSVRecord"
+            }
+          }
+        }
+      },
+      "ImageTransformProcess": {
+        "type": "object"
+      },
+      "SingleImageRecord": {
+        "required": [
+          "uri"
+        ],
+        "properties": {
+          "uri": {
+            "type": "string",
+            "example": "file:/E:/Image/image.jpg"
+          }
+        }
+      },
+      "BatchImageRecord": {
+        "required": [
+          "records"
+        ],
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SingleImageRecord"
+            }
+          }
+        }
+      },
+      "Base64NDArrayBody": {
+        "required": [
+          "ndarray"
+        ],
+        "properties": {
+          "ndarray": {
+            "type": "string"
+          }
+        }
+      },
+      "Base64NDArrayBodyKNN": {
+        "required": [
+          "ndarray",
+          "k"
+        ],
+        "properties": {
+          "ndarray": {
+            "type": "string",
+            "description": "the array to run the search on. Note that this must be a row vector"
+          },
+          "k": {
+            "type": "integer",
+            "description": "the number of results to retrieve",
+            "example": 2
+          },
+          "forceFillK": {
+            "type": "boolean",
+            "example": false,
+            "description": "If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched."
+          }
+        }
+      },
+      "NearestNeighborRequest": {
+        "properties": {
+          "k": {
+            "type": "integer",
+            "description": "the number of results",
+            "example": 2
+          },
+          "inputIndex": {
+            "type": "integer",
+            "description": "the index of the EXISTING ndarray to run a search on",
+            "example": 3
+          }
+        }
+      },
+      "NearestNeighborsResult": {
+        "properties": {
+          "index": {
+            "type": "integer",
+            "example": 0
+          },
+          "distance": {
+            "type": "number",
+            "example": 1
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      },
+      "NearestNeighborsResults": {
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NearestNeighborsResult"
+            }
+          }
+        }
+      },
+      "ImportModelRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "scale": {
+            "type": "integer"
+          },
+          "uri": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "modelType": {
+            "type": "string"
+          },
+          "fileLocation": {
+            "type": "string"
+          },
+          "jvmArgs": {
+            "type": "string"
+          },
+          "subType": {
+            "type": "string"
+          },
+          "labelsFileLocation": {
+            "type": "string"
+          },
+          "extraArgs": {
+            "type": "string"
+          },
+          "etlJson": {
+            "type": "string"
+          },
+          "inputNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "outputNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "example": {
+          "name": "new_model",
+          "scale": 1,
+          "uri": "my_deployment/model/new_model/v1",
+          "modelType": "model",
+          "fileLocation": "file:///var/skil/storage/models/d8...eb28.zip"
+        }
+      },
+      "DeploymentResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "deploymentSlug": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "body": {
+            "$ref": "#/components/schemas/DeploymentObjects"
+          }
+        }
+      },
+      "DeploymentObjects": {
+        "type": "object",
+        "properties": {
+          "models": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelResponse"
+            }
+          },
+          "transforms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelResponse"
+            }
+          },
+          "knn": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelResponse"
+            }
+          }
+        }
+      },
+      "CreateDeploymentRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name of the deployment"
+          }
+        }
+      },
+      "ModelEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "created": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "updated": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "modelType": {
+            "type": "string",
+            "enum": [
+              "transform",
+              "model",
+              "knn"
+            ]
+          },
+          "deploymentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "scale": {
+            "type": "number"
+          },
+          "fileLocation": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "created",
+              "starting",
+              "started",
+              "stopping",
+              "stopped",
+              "unhealthy",
+              "failed"
+            ]
+          },
+          "jvmArgs": {
+            "type": "string"
+          },
+          "subType": {
+            "type": "string"
+          },
+          "labelsFileLocation": {
+            "type": "string"
+          },
+          "extraArgs": {
+            "type": "string"
+          },
+          "launchPolicy": {
+            "type": "object"
+          },
+          "modelState": {
+            "type": "string",
+            "enum": [
+              "CREATED",
+              "STARTING",
+              "STARTED",
+              "STOPPING",
+              "STOPPED",
+              "UNHEALTHY",
+              "FAILED"
+            ]
+          }
+        }
+      },
+      "SetState": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "start",
+              "stop"
+            ]
+          }
+        }
+      },
+      "ModelResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "scale": {
+            "type": "integer"
+          },
+          "uri": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "NewDeployment": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "name": "productiongroup"
+        }
+      },
+      "Credentials": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "userId": "admin",
+          "password": "admin"
+        }
+      },
+      "Token": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "token": "xxxxxxx.yyyyyyy.zzzzzz"
+        }
+      },
+      "FileUploadList": {
+        "type": "object",
+        "properties": {
+          "fileUploadResponseList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileUpload"
+            }
+          }
+        }
+      },
+      "FileUpload": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "fileContent": {
+            "type": "string"
+          }
+        }
+      },
+      "INDArray": {
+        "type": "object",
+        "properties": {
+          "array": {
+            "type": "string",
+            "format": "guid"
+          },
+          "shape": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "ordering": {
+            "type": "string",
+            "enum": [
+              "f",
+              "c"
+            ]
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "dataType": {
+            "type": "string",
+            "enum": [
+              "INT8",
+              "UINT8",
+              "INT16",
+              "FLOAT16"
+            ]
+          }
+        }
+      },
+      "Prediction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "needsPreProcessing": {
+            "type": "boolean"
+          },
+          "prediction": {
+            "$ref": "#/components/schemas/INDArray"
+          },
+          "inputMask": {
+            "$ref": "#/components/schemas/INDArray"
+          }
+        },
+        "example": {
+          "needsPreProcessing": true,
+          "prediction": {
+            "array": "array"
+          },
+          "id": "id"
+        }
+      },
+      "MultiPredictRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "needsPreProcessing": {
+            "type": "boolean"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/INDArray"
+            }
+          },
+          "inputMasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/INDArray"
+            }
+          }
+        }
+      },
+      "MultiPredictResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "needsPreProcessing": {
+            "type": "boolean"
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/INDArray"
+            }
+          }
+        }
+      },
+      "ClassificationResult": {
+        "properties": {
+          "results": {
+            "type": "array",
+            "description": "index classification results for the minibatch",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "probabilities": {
+            "type": "array",
+            "description": "max probabilities for the batch items",
+            "items": {
+              "type": "number",
+              "example": 0.452
+            }
+          },
+          "minibatchId": {
+            "type": "string",
+            "description": "minibatch ID"
+          }
+        },
+        "example": {
+          "minibatchId": "minibatchId",
+          "results": [
+            0,
+            0
+          ],
+          "probabilities": [
+            0.452,
+            0.452
+          ]
+        }
+      },
+      "MultiClassClassificationResult": {
+        "properties": {
+          "rankedOutcomes": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "maxOutcomes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "probabilities": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "example": 0.4
+              }
+            }
+          }
+        },
+        "description": "Represents all of the labels for a given classification",
+        "example": {
+          "maxOutcomes": [
+            "maxOutcomes",
+            "maxOutcomes"
+          ],
+          "rankedOutcomes": [
+            [
+              "rankedOutcomes",
+              "rankedOutcomes"
+            ],
+            [
+              "rankedOutcomes",
+              "rankedOutcomes"
+            ]
+          ],
+          "probabilities": [
+            [
+              0.4,
+              0.4
+            ],
+            [
+              0.4,
+              0.4
+            ]
+          ]
+        }
+      },
+      "ModelStatus": {
+        "properties": {
+          "status": {
+            "type": "integer",
+            "example": 100,
+            "description": "100 - Model set successfully\n200 - Model Updated Successfully\n201 - Model Update Failed\n"
+          }
+        },
+        "example": {
+          "status": 100
+        }
+      },
+      "JsonArrayResponse": {
+        "properties": {
+          "array": {
+            "$ref": "#/components/schemas/INDArray"
+          }
+        },
+        "example": {
+          "array": {
+            "array": "array"
+          }
+        }
+      },
+      "LogRequest": {
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "example": 0
+          },
+          "rowCount": {
+            "type": "integer",
+            "example": 2
+          },
+          "head": {
+            "type": "boolean",
+            "example": false
+          }
+        },
+        "example": {
+          "head": false,
+          "offset": 0,
+          "rowCount": 2
+        }
+      },
+      "LogBatch": {
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "example": 0
+          },
+          "rowCount": {
+            "type": "integer",
+            "example": 2
+          },
+          "logs": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "offset": 0,
+          "rowCount": 2,
+          "logs": "logs"
+        }
+      },
+      "MetaData": {
+        "type": "object"
+      },
+      "DetectedObject": {
+        "type": "object",
+        "properties": {
+          "centerX": {
+            "type": "number",
+            "format": "float"
+          },
+          "centerY": {
+            "type": "number",
+            "format": "float"
+          },
+          "width": {
+            "type": "number",
+            "format": "float"
+          },
+          "height": {
+            "type": "number",
+            "format": "float"
+          },
+          "predictedClasses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidences": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        }
+      },
+      "DetectionResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "objects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetectedObject"
+            }
+          }
+        }
+      },
+      "ModelHistoryEntity": {
+        "type": "object",
+        "properties": {
+          "created": {
+            "type": "integer",
+            "format": "int64",
+            "description": "When the model history / workspace was created"
+          },
+          "modelHistoryId": {
+            "type": "string",
+            "format": "guid",
+            "description": "The GUID of the model history / workspace"
+          },
+          "modelName": {
+            "type": "string",
+            "description": "Name of the model history / workspace"
+          },
+          "modelLabels": {
+            "type": "string",
+            "description": "Model history / workspace labels"
+          }
+        }
+      },
+      "AddModelHistoryRequest": {
+        "type": "object",
+        "properties": {
+          "modelName": {
+            "type": "string",
+            "description": "Name of the model history / workspace"
+          },
+          "modelLabels": {
+            "type": "string",
+            "description": "Model history / workspace labels"
+          }
+        }
+      },
+      "ExperimentEntity": {
+        "type": "object",
+        "properties": {
+          "bestModelId": {
+            "type": "string",
+            "description": "GUID of the best selected model in an experiment"
+          },
+          "inputDataUri": {
+            "type": "string",
+            "description": "Input data URI"
+          },
+          "experimentId": {
+            "type": "string",
+            "description": "GUID of the experiment"
+          },
+          "experimentName": {
+            "type": "string",
+            "description": "Experiment's name"
+          },
+          "experimentDescription": {
+            "type": "string",
+            "description": "Experiment's description"
+          },
+          "notebookJson": {
+            "type": "string",
+            "description": "The associated Zeppelin notebook JSON string"
+          },
+          "notebookUrl": {
+            "type": "string",
+            "description": "URL of the associated Zeppelin notebook"
+          },
+          "zeppelinId": {
+            "type": "string",
+            "description": "Zeppelin ID"
+          },
+          "modelHistoryId": {
+            "type": "string",
+            "description": "Id of the model history / workspace"
+          },
+          "lastUpdated": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Indicates the time when experiment was last updated"
+          }
+        }
+      },
+      "UpdateBestModel": {
+        "type": "object",
+        "properties": {
+          "experimentId": {
+            "type": "string",
+            "format": "guid",
+            "description": "GUID of the experiment to update."
+          },
+          "bestModelId": {
+            "type": "string",
+            "format": "guid",
+            "description": "GUID of the model to set as the best model."
+          }
+        }
+      },
+      "ModelInstanceEntity": {
+        "type": "object",
+        "properties": {
+          "uri": {
+            "type": "string",
+            "format": "uri",
+            "description": "The model URI"
+          },
+          "etlJson": {
+            "type": "string",
+            "description": "The json string for the ETL (Extract, Transform and Load)"
+          },
+          "modelId": {
+            "type": "string",
+            "format": "guid",
+            "description": "GUID of the model."
+          },
+          "modelLabels": {
+            "type": "string",
+            "description": "Comma-separated labels string for the model"
+          },
+          "inputFormats": {
+            "type": "string",
+            "description": "Format for the model input"
+          },
+          "created": {
+            "type": "integer",
+            "format": "int64",
+            "description": "When the model was created"
+          },
+          "notebookJson": {
+            "type": "string",
+            "description": "JSON string of the associated Zeppelin Notebook"
+          },
+          "evalId": {
+            "type": "string",
+            "format": "guid",
+            "description": "GUID for the model evaluation"
+          },
+          "modelName": {
+            "type": "string",
+            "description": "Model's name"
+          },
+          "originalModelId": {
+            "type": "string",
+            "format": "guid",
+            "description": "Original GUID of the model (used for maintaining revisions of a particular model)"
+          },
+          "modelVersion": {
+            "type": "string",
+            "description": "Model version"
+          },
+          "experimentId": {
+            "type": "string",
+            "format": "guid",
+            "description": "GUID of the Experiment which is associated with the model."
+          }
+        }
+      },
+      "EvaluationResultsEntity": {
+        "type": "object",
+        "properties": {
+          "evaluation": {
+            "type": "string"
+          },
+          "evalName": {
+            "type": "string"
+          },
+          "modelInstanceId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "created": {
+            "type": "integer",
+            "format": "int64",
+            "description": "When the evaluation result was created"
+          },
+          "f1": {
+            "type": "number",
+            "format": "double"
+          },
+          "precision": {
+            "type": "number",
+            "format": "double"
+          },
+          "recall": {
+            "type": "number",
+            "format": "double"
+          },
+          "accuracy": {
+            "type": "number",
+            "format": "double"
+          },
+          "rmse": {
+            "type": "number",
+            "format": "double"
+          },
+          "auc": {
+            "type": "number",
+            "format": "double"
+          },
+          "meanAbsoluteError": {
+            "type": "number",
+            "format": "double"
+          },
+          "meanRelativeError": {
+            "type": "number",
+            "format": "double"
+          },
+          "r2": {
+            "type": "number",
+            "format": "double"
+          },
+          "evalId": {
+            "type": "string",
+            "format": "guid",
+            "description": "GUID of the evaluation"
+          },
+          "evalVersion": {
+            "type": "integer"
+          },
+          "binaryThreshold": {
+            "type": "number",
+            "format": "double"
+          },
+          "binaryThresholds": {
+            "type": "string"
+          }
+        }
+      },
+      "AggregatePrediction": {
+        "type": "object",
+        "properties": {
+          "modelId": {
+            "type": "string",
+            "format": "guid",
+            "description": "GUID of model instance"
+          },
+          "evalType": {
+            "type": "string",
+            "enum": [
+              "ROC_BINARY",
+              "ROC",
+              "EVALUATION_BINARY",
+              "EVALUATION",
+              "REGRESSON_EVALUATION",
+              "ROC_MULTI_CLASS"
+            ],
+            "description": "the evaluation type to aggregate"
+          }
+        }
+      },
+      "MinibatchEntity": {
+        "type": "object",
+        "properties": {
+          "miniBatchId": {
+            "type": "string",
+            "format": "guid",
+            "description": "GUID of mini batch"
+          },
+          "evalId": {
+            "type": "string",
+            "format": "guid",
+            "description": "GUID of the evaluation"
+          },
+          "evalVersion": {
+            "type": "integer",
+            "description": "Eval version"
+          },
+          "batchVersion": {
+            "type": "integer",
+            "description": "Batch version"
+          }
+        }
+      },
+      "ExampleEntity": {
+        "type": "object",
+        "properties": {
+          "exampleId": {
+            "type": "string",
+            "format": "guid",
+            "description": "the GUID of the example"
+          },
+          "exampleVersion": {
+            "type": "integer",
+            "description": "Example version"
+          },
+          "rowNumber": {
+            "type": "integer",
+            "description": "Row Number"
+          },
+          "created": {
+            "type": "integer",
+            "format": "int64",
+            "description": "when the example was created"
+          },
+          "miniBatchId": {
+            "type": "string",
+            "format": "guid",
+            "description": "The GUID of the minibatch"
+          },
+          "miniBatchVersion": {
+            "type": "integer",
+            "description": "minibatch version"
+          }
+        }
+      },
+      "AddExampleRequest": {
+        "type": "object",
+        "properties": {
+          "minibatch": {
+            "$ref": "#/components/schemas/MinibatchEntity",
+            "description": "the minibatch the examples are going to be associated with"
+          },
+          "batchSize": {
+            "type": "integer",
+            "description": "the size of the batch to create"
+          }
+        }
+      },
+      "BestModel": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "guid"
+            },
+            "description": "the list of GUIDs for the models to get the best model from"
+          },
+          "columnNameMetric": {
+            "type": "string",
+            "enum": [
+              "f1",
+              "precision",
+              "recall",
+              "accuracy",
+              "rmse",
+              "auc",
+              "meanAbsoluteError",
+              "meanRelativeError",
+              "r2"
+            ],
+            "description": "Name of the column metric (in an evaluation result) to get the best model from."
+          },
+          "evalType": {
+            "type": "string",
+            "enum": [
+              "ROC_BINARY",
+              "ROC",
+              "EVALUATION_BINARY",
+              "EVALUATION",
+              "REGRESSON_EVALUATION",
+              "ROC_MULTI_CLASS"
+            ],
+            "description": "the evaluation type to aggregate for each model's revisions"
+          }
+        }
+      },
+      "ModelFeedBackRequest": {
+        "type": "object",
+        "properties": {
+          "batchId": {
+            "type": "string",
+            "format": "guid",
+            "description": "The GUID of the minibatch this feedback corresponds to"
+          },
+          "guesses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The guessed label IDs by the model",
+            "example": "[\"0\", \"1\", \"2\"]"
+          },
+          "correct": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The actual label IDs",
+            "example": "[\"0\", \"0\", \"2\"]"
+          }
+        }
+      },
+      "Resource": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the resource"
+          },
+          "name": {
+            "type": "string",
+            "description": "Resource nickname"
+          },
+          "type": {
+            "type": "string",
+            "description": "Resource type (whether COMPUTE or STORAGE)",
+            "enum": [
+              "COMPUTE",
+              "STORAGE"
+            ]
+          },
+          "subType": {
+            "type": "string",
+            "description": "Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN] | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])",
+            "enum": [
+              "EMR",
+              "S3",
+              "GoogleStorage",
+              "DataProc",
+              "HDInsight",
+              "AzureStorage",
+              "HDFS",
+              "YARN"
+            ]
+          },
+          "credentialId": {
+            "type": "string",
+            "description": "Credentials GUID",
+            "format": "guid"
+          }
+        }
+      },
+      "EMRResourceDetails": {
+        "type": "object",
+        "properties": {
+          "@class": {
+            "type": "string",
+            "default": "io.skymind.resource.model.subtypes.compute.EMRResourceDetails"
+          },
+          "resourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the resource"
+          },
+          "type": {
+            "type": "string",
+            "description": "Resource type",
+            "enum": [
+              "COMPUTE"
+            ]
+          },
+          "subType": {
+            "type": "string",
+            "description": "Resource subtype",
+            "enum": [
+              "EMR"
+            ]
+          },
+          "clusterId": {
+            "type": "string",
+            "description": "EMR cluster ID"
+          },
+          "region": {
+            "type": "string",
+            "description": "Region name where the cluster is deployed"
+          }
+        }
+      },
+      "S3ResourceDetails": {
+        "type": "object",
+        "properties": {
+          "@class": {
+            "type": "string",
+            "default": "io.skymind.resource.model.subtypes.storage.S3ResourceDetails"
+          },
+          "resourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the resource"
+          },
+          "type": {
+            "type": "string",
+            "description": "Resource type",
+            "enum": [
+              "STORAGE"
+            ]
+          },
+          "subType": {
+            "type": "string",
+            "description": "Resource subtype",
+            "enum": [
+              "S3"
+            ]
+          },
+          "bucket": {
+            "type": "string",
+            "description": "S3 Bucket Name"
+          },
+          "region": {
+            "type": "string",
+            "description": "Region name where the S3 bucket is present"
+          }
+        }
+      },
+      "GoogleStorageResourceDetails": {
+        "type": "object",
+        "properties": {
+          "@class": {
+            "type": "string",
+            "default": "io.skymind.resource.model.subtypes.storage.GoogleStorageResourceDetails"
+          },
+          "resourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the resource"
+          },
+          "type": {
+            "type": "string",
+            "description": "Resource type",
+            "enum": [
+              "STORAGE"
+            ]
+          },
+          "subType": {
+            "type": "string",
+            "description": "Resource subtype",
+            "enum": [
+              "GoogleStorage"
+            ]
+          },
+          "projectId": {
+            "type": "string",
+            "description": "Project ID"
+          },
+          "bucketName": {
+            "type": "string",
+            "description": "Name of the storage bucket"
+          }
+        }
+      },
+      "DataProcResourceDetails": {
+        "type": "object",
+        "properties": {
+          "@class": {
+            "type": "string",
+            "default": "io.skymind.resource.model.subtypes.compute.DataProcResourceDetails"
+          },
+          "resourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the resource"
+          },
+          "type": {
+            "type": "string",
+            "description": "Resource type",
+            "enum": [
+              "COMPUTE"
+            ]
+          },
+          "subType": {
+            "type": "string",
+            "description": "Resource subtype",
+            "enum": [
+              "DataProc"
+            ]
+          },
+          "projectId": {
+            "type": "string",
+            "description": "Project ID"
+          },
+          "region": {
+            "type": "string",
+            "description": "DataProc region"
+          },
+          "sparkClusterName": {
+            "type": "string",
+            "description": "Name of the spark cluster"
+          }
+        }
+      },
+      "HDInsightResourceDetails": {
+        "type": "object",
+        "properties": {
+          "@class": {
+            "type": "string",
+            "default": "io.skymind.resource.model.subtypes.compute.HDInsightResourceDetails"
+          },
+          "resourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the resource"
+          },
+          "type": {
+            "type": "string",
+            "description": "Resource type",
+            "enum": [
+              "COMPUTE"
+            ]
+          },
+          "subType": {
+            "type": "string",
+            "description": "Resource subtype",
+            "enum": [
+              "HDInsight"
+            ]
+          },
+          "subscriptionId": {
+            "type": "string",
+            "description": "Azure subscription ID"
+          },
+          "resourceGroupName": {
+            "type": "string",
+            "description": "name of the resource group"
+          },
+          "clusterName": {
+            "type": "string",
+            "description": "Cluster name"
+          }
+        }
+      },
+      "AzureStorageResourceDetails": {
+        "type": "object",
+        "properties": {
+          "@class": {
+            "type": "string",
+            "default": "io.skymind.resource.model.subtypes.storage.AzureStorageResourceDetails"
+          },
+          "resourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the resource"
+          },
+          "type": {
+            "type": "string",
+            "description": "Resource type",
+            "enum": [
+              "STORAGE"
+            ]
+          },
+          "subType": {
+            "type": "string",
+            "description": "Resource subtype",
+            "enum": [
+              "AzureStorage"
+            ]
+          },
+          "containerName": {
+            "type": "string",
+            "description": "Storage container name"
+          }
+        }
+      },
+      "HDFSResourceDetails": {
+        "type": "object",
+        "properties": {
+          "@class": {
+            "type": "string",
+            "default": "io.skymind.resource.model.subtypes.storage.HDFSResourceDetails"
+          },
+          "resourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the resource"
+          },
+          "type": {
+            "type": "string",
+            "description": "Resource type",
+            "enum": [
+              "STORAGE"
+            ]
+          },
+          "subType": {
+            "type": "string",
+            "description": "Resource subtype",
+            "enum": [
+              "HDFS"
+            ]
+          },
+          "nameNodeHost": {
+            "type": "string",
+            "description": "Host of the node running the NameNode"
+          },
+          "nameNodePort": {
+            "type": "string",
+            "description": "Port of the node running the NameNode"
+          }
+        }
+      },
+      "YARNResourceDetails": {
+        "type": "object",
+        "properties": {
+          "@class": {
+            "type": "string",
+            "default": "io.skymind.resource.model.subtypes.compute.YARNResourceDetails"
+          },
+          "resourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the resource"
+          },
+          "type": {
+            "type": "string",
+            "description": "Resource type",
+            "enum": [
+              "COMPUTE"
+            ]
+          },
+          "subType": {
+            "type": "string",
+            "description": "Resource subtype",
+            "enum": [
+              "YARN"
+            ]
+          },
+          "localSparkHome": {
+            "type": "string",
+            "description": "Local Spark Home path"
+          }
+        }
+      },
+      "ResourceGroup": {
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the resource group"
+          },
+          "groupName": {
+            "type": "string",
+            "description": "Name of the resource group"
+          },
+          "added": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Milliseconds in Long when the resource group was added"
+          },
+          "updated": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Milliseconds in Long when the resource group was updated"
+          }
+        }
+      },
+      "ResourceCredentials": {
+        "type": "object",
+        "properties": {
+          "credentialId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the credentials"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "AWS",
+              "Azure",
+              "GoogleCloud",
+              "Hadoop"
+            ],
+            "description": "Type of the credentials"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the credentials"
+          },
+          "uri": {
+            "type": "string",
+            "description": "URI of the credentials"
+          }
+        }
+      },
+      "AddResourceRequest": {
+        "type": "object",
+        "properties": {
+          "resourceName": {
+            "type": "string",
+            "description": "Name of the new resource"
+          },
+          "resourceDetails": {
+            "type": "object",
+            "description": "One of the resource details object",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AzureStorageResourceDetails"
+              },
+              {
+                "$ref": "#/components/schemas/HDInsightResourceDetails"
+              }
+            ]
+          },
+          "credentialUri": {
+            "type": "string",
+            "description": "URI of the credentials. If this is present, you can leave out the 'credentialId'"
+          },
+          "type": {
+            "type": "string",
+            "description": "Resource type (whether COMPUTE or STORAGE)",
+            "enum": [
+              "COMPUTE",
+              "STORAGE"
+            ]
+          },
+          "subType": {
+            "type": "string",
+            "description": "Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN] | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])",
+            "enum": [
+              "EMR",
+              "S3",
+              "GoogleStorage",
+              "DataProc",
+              "HDInsight",
+              "AzureStorage",
+              "HDFS",
+              "YARN"
+            ]
+          },
+          "credentialId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the credentials. If this is given then you can leave out the 'credentialsUri'"
+          }
+        }
+      },
+      "AddCredentialsRequest": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "AWS",
+              "Azure",
+              "GoogleCloud",
+              "Hadoop"
+            ],
+            "description": "Type of the credentials"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the credentials"
+          },
+          "uri": {
+            "type": "string",
+            "description": "URI of the credentials"
+          }
+        }
+      },
+      "JobEntity": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Job ID"
+          },
+          "jobType": {
+            "type": "string",
+            "enum": [
+              "TRAINING",
+              "INFERENCE"
+            ],
+            "description": "Whether a job is for training or inference"
+          },
+          "computeResourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Compute resource ID"
+          },
+          "storageResourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Storage resource ID"
+          },
+          "jobArgs": {
+            "type": "string",
+            "description": "Job arguments"
+          },
+          "runId": {
+            "type": "string",
+            "description": "Job run ID"
+          },
+          "status": {
+            "type": "string",
+            "description": "Job's status",
+            "enum": [
+              "PENDING",
+              "RUNNING",
+              "CONTINUE",
+              "COMPLETED",
+              "CANCELLED",
+              "FAILED",
+              "INTERRUPTED"
+            ]
+          },
+          "outputFileName": {
+            "type": "string",
+            "description": "Output file name"
+          }
+        }
+      },
+      "CreateJobRequest": {
+        "type": "object",
+        "properties": {
+          "computeResourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Compute resource ID"
+          },
+          "storageResourceId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Storage resource ID"
+          },
+          "jobArgs": {
+            "type": "string",
+            "description": "Job arguments"
+          },
+          "outputFileName": {
+            "type": "string",
+            "description": "Output file name"
+          }
+        }
+      },
+      "DownloadOutputFileRequest": {
+        "type": "object",
+        "properties": {
+          "localDownloadPath": {
+            "type": "string",
+            "description": "Local path where the file is to be downloaded"
+          }
+        }
+      }
+    }
+  }
+}
