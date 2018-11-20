@@ -2383,7 +2383,9 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Resource'
+                  oneOf:
+                  - $ref: '#/components/schemas/AzureStorageResourceDetails'
+                  - $ref: '#/components/schemas/HDInsightResourceDetails'
   '/resources/resources/type/{resourceType}':
     get:
       operationId: getResourceByType
@@ -3975,6 +3977,9 @@ components:
         resourceDetails:
           type: object
           description: One of the resource details object
+          oneOf:
+          - $ref: '#/components/schemas/AzureStorageResourceDetails'
+          - $ref: '#/components/schemas/HDInsightResourceDetails'
         credentialUri:
           type: string
           description: >-
