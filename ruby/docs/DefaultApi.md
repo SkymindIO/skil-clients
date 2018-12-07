@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_credentials**](DefaultApi.md#add_credentials) | **POST** /resources/credentials | Adds credentials
 [**add_evaluation_result**](DefaultApi.md#add_evaluation_result) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
 [**add_example_for_batch**](DefaultApi.md#add_example_for_batch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 [**add_example_to_minibatch**](DefaultApi.md#add_example_to_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
@@ -12,32 +13,51 @@ Method | HTTP request | Description
 [**add_model_feedback**](DefaultApi.md#add_model_feedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**add_model_history**](DefaultApi.md#add_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**add_model_instance**](DefaultApi.md#add_model_instance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+[**add_resource**](DefaultApi.md#add_resource) | **POST** /resources/add/resource | Adds a resource
+[**add_resource_group**](DefaultApi.md#add_resource_group) | **POST** /resources/add/group | Adds a resource group
+[**add_resource_to_group**](DefaultApi.md#add_resource_to_group) | **GET** /resources/add/resourcetogroup/{resourceGroupId}/{resourceId} | Adds a resource to a resource group
 [**aggregate_model_results**](DefaultApi.md#aggregate_model_results) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**create_job**](DefaultApi.md#create_job) | **POST** /jobs/{jobIdOrType} | Create a job
 [**create_model_history**](DefaultApi.md#create_model_history) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
+[**delete_credentials_by_id**](DefaultApi.md#delete_credentials_by_id) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
 [**delete_experiment**](DefaultApi.md#delete_experiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
+[**delete_job_by_id**](DefaultApi.md#delete_job_by_id) | **DELETE** /jobs/{jobIdOrType} | Deletes a job given its ID
 [**delete_model**](DefaultApi.md#delete_model) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 [**delete_model_history**](DefaultApi.md#delete_model_history) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 [**delete_model_instance**](DefaultApi.md#delete_model_instance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
+[**delete_resource_by_id**](DefaultApi.md#delete_resource_by_id) | **DELETE** /resources/remove/resource/{resourceId} | Delete the resource with the specified resource ID
+[**delete_resource_from_group**](DefaultApi.md#delete_resource_from_group) | **GET** /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId} | Removes a resource from a resource group
+[**delete_resource_group_by_id**](DefaultApi.md#delete_resource_group_by_id) | **DELETE** /resources/remove/group/{resourceGroupId} | Delete the resource group with the specified resource group ID
 [**deploy_model**](DefaultApi.md#deploy_model) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**deployment_create**](DefaultApi.md#deployment_create) | **POST** /deployment | Create a new deployment group.
 [**deployment_delete**](DefaultApi.md#deployment_delete) | **DELETE** /deployment/{deploymentId} | Delete a deployment by id
 [**deployment_get**](DefaultApi.md#deployment_get) | **GET** /deployment/{deploymentId} | Get a deployment details by id
 [**deployments**](DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
 [**detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
+[**download_job_output_file**](DefaultApi.md#download_job_output_file) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+[**get_all_jobs**](DefaultApi.md#get_all_jobs) | **GET** /jobs | Get a list of all available jobs
 [**get_best_model_among_model_ids**](DefaultApi.md#get_best_model_among_model_ids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+[**get_credentials_by_id**](DefaultApi.md#get_credentials_by_id) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
 [**get_evaluation_for_model_id**](DefaultApi.md#get_evaluation_for_model_id) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
 [**get_examples_for_minibatch**](DefaultApi.md#get_examples_for_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**get_experiment**](DefaultApi.md#get_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**get_experiments_for_model_history**](DefaultApi.md#get_experiments_for_model_history) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
+[**get_job_by_id**](DefaultApi.md#get_job_by_id) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**get_minibatch**](DefaultApi.md#get_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**get_model_history**](DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**get_model_instance**](DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
-[**imagetransformprocess_get**](DefaultApi.md#imagetransformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-[**imagetransformprocess_post**](DefaultApi.md#imagetransformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
+[**get_resource_by_id**](DefaultApi.md#get_resource_by_id) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**get_resource_by_sub_type**](DefaultApi.md#get_resource_by_sub_type) | **GET** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
+[**get_resource_by_type**](DefaultApi.md#get_resource_by_type) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**get_resource_details_by_id**](DefaultApi.md#get_resource_details_by_id) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**get_resource_group_by_id**](DefaultApi.md#get_resource_group_by_id) | **GET** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
+[**get_resource_groups**](DefaultApi.md#get_resource_groups) | **GET** /resources/groups | Get a list of all the resource groups
+[**get_resources**](DefaultApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
+[**get_resources_from_group**](DefaultApi.md#get_resources_from_group) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -58,21 +78,73 @@ Method | HTTP request | Description
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**refresh_job_status**](DefaultApi.md#refresh_job_status) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
 [**reimport_model**](DefaultApi.md#reimport_model) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**run_a_job**](DefaultApi.md#run_a_job) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transform_csv**](DefaultApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**transformarray_csv**](DefaultApi.md#transformarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-[**transformarray_image**](DefaultApi.md#transformarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 [**transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 [**transformincremental_csv**](DefaultApi.md#transformincremental_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**transformincrementalarray_csv**](DefaultApi.md#transformincrementalarray_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**transformincrementalarray_image**](DefaultApi.md#transformincrementalarray_image) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**transformincrementalarray**](DefaultApi.md#transformincrementalarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 [**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**transformprocess_get**](DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-[**transformprocess_post**](DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**transformprocess_get**](DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+[**transformprocess_post**](DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 [**update_best_model_for_experiment**](DefaultApi.md#update_best_model_for_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**update_experiment**](DefaultApi.md#update_experiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**update_model_history**](DefaultApi.md#update_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
+
+
+# **add_credentials**
+> ResourceCredentials add_credentials(add_credentials_request)
+
+Adds credentials
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+add_credentials_request = SkilCient::AddCredentialsRequest.new # AddCredentialsRequest | Add credentials request object
+
+
+begin
+  #Adds credentials
+  result = api_instance.add_credentials(add_credentials_request)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->add_credentials: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **add_credentials_request** | [**AddCredentialsRequest**](AddCredentialsRequest.md)| Add credentials request object | 
+
+### Return type
+
+[**ResourceCredentials**](ResourceCredentials.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 
 
 # **add_evaluation_result**
@@ -515,6 +587,164 @@ Name | Type | Description  | Notes
 
 
 
+# **add_resource**
+> Object add_resource(add_resource_request)
+
+Adds a resource
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+add_resource_request = SkilCient::AddResourceRequest.new # AddResourceRequest | The Add resource request object
+
+
+begin
+  #Adds a resource
+  result = api_instance.add_resource(add_resource_request)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->add_resource: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **add_resource_request** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **add_resource_group**
+> ResourceGroup add_resource_group(group_name)
+
+Adds a resource group
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+group_name = SkilCient::null.new #  | Name of the resource group
+
+
+begin
+  #Adds a resource group
+  result = api_instance.add_resource_group(group_name)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->add_resource_group: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_name** | [****](.md)| Name of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain; charset=utf-8
+ - **Accept**: application/json
+
+
+
+# **add_resource_to_group**
+> add_resource_to_group(resource_group_id, resource_id)
+
+Adds a resource to a resource group
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_group_id = 789 # Integer | ID of the resource group
+
+resource_id = 789 # Integer | ID of the resource
+
+
+begin
+  #Adds a resource to a resource group
+  api_instance.add_resource_to_group(resource_group_id, resource_id)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->add_resource_to_group: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_group_id** | **Integer**| ID of the resource group | 
+ **resource_id** | **Integer**| ID of the resource | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
 # **aggregate_model_results**
 > EvaluationResultsEntity aggregate_model_results(model_history_server_id, aggregate_prediction)
 
@@ -754,6 +984,61 @@ Name | Type | Description  | Notes
 
 
 
+# **create_job**
+> JobEntity create_job(job_id_or_type, create_job_request)
+
+Create a job
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+job_id_or_type = 'job_id_or_type_example' # String | Job Type
+
+create_job_request = SkilCient::CreateJobRequest.new # CreateJobRequest | Create job request object
+
+
+begin
+  #Create a job
+  result = api_instance.create_job(job_id_or_type, create_job_request)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->create_job: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id_or_type** | **String**| Job Type | 
+ **create_job_request** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **create_model_history**
 > ModelHistoryEntity create_model_history(model_history_server_id, model_history_entity)
 
@@ -809,6 +1094,57 @@ Name | Type | Description  | Notes
 
 
 
+# **delete_credentials_by_id**
+> delete_credentials_by_id(credential_id)
+
+Delete credentials given an ID
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+credential_id = 789 # Integer | Credentials ID
+
+
+begin
+  #Delete credentials given an ID
+  api_instance.delete_credentials_by_id(credential_id)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->delete_credentials_by_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credential_id** | **Integer**| Credentials ID | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
 # **delete_experiment**
 > InlineResponse200 delete_experiment(model_history_server_id, experiment_id)
 
@@ -852,6 +1188,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **delete_job_by_id**
+> delete_job_by_id(job_id_or_type)
+
+Deletes a job given its ID
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+job_id_or_type = 789 # Integer | Job ID
+
+
+begin
+  #Deletes a job given its ID
+  api_instance.delete_job_by_id(job_id_or_type)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->delete_job_by_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id_or_type** | **Integer**| Job ID | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -1016,6 +1403,164 @@ Name | Type | Description  | Notes
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **delete_resource_by_id**
+> Resource delete_resource_by_id(resource_id)
+
+Delete the resource with the specified resource ID
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_id = 789 # Integer | ID of the resource
+
+
+begin
+  #Delete the resource with the specified resource ID
+  result = api_instance.delete_resource_by_id(resource_id)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->delete_resource_by_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_id** | **Integer**| ID of the resource | 
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **delete_resource_from_group**
+> delete_resource_from_group(resource_group_id, resource_id)
+
+Removes a resource from a resource group
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_group_id = 789 # Integer | ID of the resource group
+
+resource_id = 789 # Integer | ID of the resource
+
+
+begin
+  #Removes a resource from a resource group
+  api_instance.delete_resource_from_group(resource_group_id, resource_id)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->delete_resource_from_group: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_group_id** | **Integer**| ID of the resource group | 
+ **resource_id** | **Integer**| ID of the resource | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **delete_resource_group_by_id**
+> ResourceGroup delete_resource_group_by_id(resource_group_id)
+
+Delete the resource group with the specified resource group ID
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_group_id = 789 # Integer | ID of the resource group
+
+
+begin
+  #Delete the resource group with the specified resource group ID
+  result = api_instance.delete_resource_group_by_id(resource_group_id)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->delete_resource_group_by_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_group_id** | **Integer**| ID of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
 
 ### Authorization
 
@@ -1355,6 +1900,106 @@ Name | Type | Description  | Notes
 
 
 
+# **download_job_output_file**
+> download_job_output_file(job_id, download_output_file_request)
+
+Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+job_id = 789 # Integer | Job ID
+
+download_output_file_request = SkilCient::DownloadOutputFileRequest.new # DownloadOutputFileRequest | Download output file request object
+
+
+begin
+  #Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
+  api_instance.download_job_output_file(job_id, download_output_file_request)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->download_job_output_file: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **Integer**| Job ID | 
+ **download_output_file_request** | [**DownloadOutputFileRequest**](DownloadOutputFileRequest.md)| Download output file request object | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_all_jobs**
+> Array&lt;JobEntity&gt; get_all_jobs
+
+Get a list of all available jobs
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+begin
+  #Get a list of all available jobs
+  result = api_instance.get_all_jobs
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_all_jobs: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;JobEntity&gt;**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
 # **get_best_model_among_model_ids**
 > ModelInstanceEntity get_best_model_among_model_ids(model_history_server_id, best_model)
 
@@ -1406,6 +2051,58 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_credentials_by_id**
+> ResourceCredentials get_credentials_by_id(credential_id)
+
+Get credentials given an ID
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+credential_id = 789 # Integer | Credentials ID
+
+
+begin
+  #Get credentials given an ID
+  result = api_instance.get_credentials_by_id(credential_id)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_credentials_by_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credential_id** | **Integer**| Credentials ID | 
+
+### Return type
+
+[**ResourceCredentials**](ResourceCredentials.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -1618,6 +2315,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExperimentEntity**](ExperimentEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_job_by_id**
+> JobEntity get_job_by_id(job_id_or_type)
+
+Get a job by its ID
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+job_id_or_type = 789 # Integer | Job ID
+
+
+begin
+  #Get a job by its ID
+  result = api_instance.get_job_by_id(job_id_or_type)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_job_by_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id_or_type** | **Integer**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
 
 ### Authorization
 
@@ -1850,10 +2599,10 @@ Name | Type | Description  | Notes
 
 
 
-# **imagetransformprocess_get**
-> ImageTransformProcess imagetransformprocess_get(deployment_name, version_name, image_transform_name)
+# **get_resource_by_id**
+> Resource get_resource_by_id(resource_id)
 
-Retrieves the image transform process JSON string
+Get the resource with the specified resource ID
 
 ### Example
 ```ruby
@@ -1869,19 +2618,15 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
-image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
+resource_id = 789 # Integer | ID of the resource
 
 
 begin
-  #Retrieves the image transform process JSON string
-  result = api_instance.imagetransformprocess_get(deployment_name, version_name, image_transform_name)
+  #Get the resource with the specified resource ID
+  result = api_instance.get_resource_by_id(resource_id)
   p result
 rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->imagetransformprocess_get: #{e}"
+  puts "Exception when calling DefaultApi->get_resource_by_id: #{e}"
 end
 ```
 
@@ -1889,13 +2634,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **String**| ID or name of the deployed image transform | 
+ **resource_id** | **Integer**| ID of the resource | 
 
 ### Return type
 
-[**ImageTransformProcess**](ImageTransformProcess.md)
+[**Resource**](Resource.md)
 
 ### Authorization
 
@@ -1903,15 +2646,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
 
-# **imagetransformprocess_post**
-> ImageTransformProcess imagetransformprocess_post(deployment_name, version_name, image_transform_name, body)
+# **get_resource_by_sub_type**
+> Array&lt;Resource&gt; get_resource_by_sub_type(resource_sub_type)
 
-Sets the image transform process through the provided JSON string
+Get all the resources with the specified resource subtype
 
 ### Example
 ```ruby
@@ -1927,21 +2670,15 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
-image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
-
-body = SkilCient::ImageTransformProcess.new # ImageTransformProcess | The image transform process JSON
+resource_sub_type = 'resource_sub_type_example' # String | Subtype of the resource
 
 
 begin
-  #Sets the image transform process through the provided JSON string
-  result = api_instance.imagetransformprocess_post(deployment_name, version_name, image_transform_name, body)
+  #Get all the resources with the specified resource subtype
+  result = api_instance.get_resource_by_sub_type(resource_sub_type)
   p result
 rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->imagetransformprocess_post: #{e}"
+  puts "Exception when calling DefaultApi->get_resource_by_sub_type: #{e}"
 end
 ```
 
@@ -1949,14 +2686,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **String**| ID or name of the deployed image transform | 
- **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
+ **resource_sub_type** | **String**| Subtype of the resource | 
 
 ### Return type
 
-[**ImageTransformProcess**](ImageTransformProcess.md)
+[**Array&lt;Resource&gt;**](Resource.md)
 
 ### Authorization
 
@@ -1964,7 +2698,309 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_resource_by_type**
+> Array&lt;Resource&gt; get_resource_by_type(resource_type)
+
+Get all the resources with the specified resource type
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_type = 'resource_type_example' # String | Type of the resource
+
+
+begin
+  #Get all the resources with the specified resource type
+  result = api_instance.get_resource_by_type(resource_type)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_resource_by_type: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_type** | **String**| Type of the resource | 
+
+### Return type
+
+[**Array&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_resource_details_by_id**
+> Object get_resource_details_by_id(resource_id)
+
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_id = 789 # Integer | ID of the resource
+
+
+begin
+  #Get the resource details with the specified resource ID
+  result = api_instance.get_resource_details_by_id(resource_id)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_resource_details_by_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_id** | **Integer**| ID of the resource | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_resource_group_by_id**
+> ResourceGroup get_resource_group_by_id(resource_group_id)
+
+Get the resource group with the specified resource group ID
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_group_id = 789 # Integer | ID of the resource group
+
+
+begin
+  #Get the resource group with the specified resource group ID
+  result = api_instance.get_resource_group_by_id(resource_group_id)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_resource_group_by_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_group_id** | **Integer**| ID of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_resource_groups**
+> Array&lt;ResourceGroup&gt; get_resource_groups
+
+Get a list of all the resource groups
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+begin
+  #Get a list of all the resource groups
+  result = api_instance.get_resource_groups
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_resource_groups: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;ResourceGroup&gt;**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_resources**
+> Array&lt;Resource&gt; get_resources
+
+A list of all known/registered resources, of all types
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+begin
+  #A list of all known/registered resources, of all types
+  result = api_instance.get_resources
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_resources: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_resources_from_group**
+> Array&lt;Resource&gt; get_resources_from_group(resource_group_id)
+
+Get all resources from a resource group
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+resource_group_id = 789 # Integer | ID of the resource group
+
+
+begin
+  #Get all resources from a resource group
+  result = api_instance.get_resources_from_group(resource_group_id)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_resources_from_group: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource_group_id** | **Integer**| ID of the resource group | 
+
+### Return type
+
+[**Array&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -2267,13 +3303,6 @@ Post JSON credentials and obtain a JWT authorization token.
 ```ruby
 # load the gem
 require 'skil_client'
-# setup authorization
-SkilCient.configure do |config|
-  # Configure API key authorization: api_key
-  config.api_key['authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['authorization'] = 'Bearer'
-end
 
 api_instance = SkilCient::DefaultApi.new
 
@@ -2301,7 +3330,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -3162,6 +4191,58 @@ Name | Type | Description  | Notes
 
 
 
+# **refresh_job_status**
+> JobEntity refresh_job_status(job_id)
+
+Refresh the remote job status. Can be used for monitoring.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+job_id = 789 # Integer | Job ID
+
+
+begin
+  #Refresh the remote job status. Can be used for monitoring.
+  result = api_instance.refresh_job_status(job_id)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->refresh_job_status: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **Integer**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
 # **reimport_model**
 > ModelEntity reimport_model(deployment_id, model_id, body)
 
@@ -3208,6 +4289,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelEntity**](ModelEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **run_a_job**
+> JobEntity run_a_job(job_id)
+
+Start running an (already created) job on the remote resource
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+job_id = 789 # Integer | Job ID
+
+
+begin
+  #Start running an (already created) job on the remote resource
+  result = api_instance.run_a_job(job_id)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->run_a_job: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **Integer**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
 
 ### Authorization
 
@@ -3284,12 +4417,10 @@ Name | Type | Description  | Notes
 
 
 
-# **transformarray_csv**
-> Base64NDArrayBody transformarray_csv(deployment_name, version_name, transform_name, opts)
+# **transformarray**
+> Base64NDArrayBody transformarray(deployment_name, version_name, transform_name, opts)
 
 Takes a batch input arrays and transforms it
-
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
 ```ruby
@@ -3312,15 +4443,15 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  batch_csv_record: SkilCient::BatchCSVRecord.new # BatchCSVRecord | The input batch of record arrays
+  batch_record: nil # Object | The input batch of record arrays
 }
 
 begin
   #Takes a batch input arrays and transforms it
-  result = api_instance.transformarray_csv(deployment_name, version_name, transform_name, opts)
+  result = api_instance.transformarray(deployment_name, version_name, transform_name, opts)
   p result
 rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->transformarray_csv: #{e}"
+  puts "Exception when calling DefaultApi->transformarray: #{e}"
 end
 ```
 
@@ -3331,70 +4462,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **batch_csv_record** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **transformarray_image**
-> Base64NDArrayBody transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record)
-
-Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```ruby
-# load the gem
-require 'skil_client'
-# setup authorization
-SkilCient.configure do |config|
-  # Configure API key authorization: api_key
-  config.api_key['authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['authorization'] = 'Bearer'
-end
-
-api_instance = SkilCient::DefaultApi.new
-
-deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
-image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
-
-batch_image_record = SkilCient::BatchImageRecord.new # BatchImageRecord | The input batch of record arrays
-
-
-begin
-  #Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-  result = api_instance.transformarray_image(deployment_name, version_name, image_transform_name, batch_image_record)
-  p result
-rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->transformarray_image: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **String**| ID or name of the deployed image transform | 
- **batch_image_record** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
+ **batch_record** | **Object**| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -3538,12 +4606,10 @@ Name | Type | Description  | Notes
 
 
 
-# **transformincrementalarray_csv**
-> Base64NDArrayBody transformincrementalarray_csv(deployment_name, version_name, transform_name, opts)
+# **transformincrementalarray**
+> Base64NDArrayBody transformincrementalarray(deployment_name, version_name, transform_name, opts)
 
-Same as /transformincremental but returns Base64NDArrayBody
-
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
 ```ruby
@@ -3566,15 +4632,15 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  single_csv_record: SkilCient::SingleCSVRecord.new # SingleCSVRecord | The input record array
+  single_record: nil # Object | The input record array
 }
 
 begin
-  #Same as /transformincremental but returns Base64NDArrayBody
-  result = api_instance.transformincrementalarray_csv(deployment_name, version_name, transform_name, opts)
+  #Same as /transformincremental but returns Base64NDArrayBody.
+  result = api_instance.transformincrementalarray(deployment_name, version_name, transform_name, opts)
   p result
 rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->transformincrementalarray_csv: #{e}"
+  puts "Exception when calling DefaultApi->transformincrementalarray: #{e}"
 end
 ```
 
@@ -3585,70 +4651,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **single_csv_record** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **transformincrementalarray_image**
-> Base64NDArrayBody transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record)
-
-Takes SingleImageRecord to transform and returns Base64NDArrayBody
-
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```ruby
-# load the gem
-require 'skil_client'
-# setup authorization
-SkilCient.configure do |config|
-  # Configure API key authorization: api_key
-  config.api_key['authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['authorization'] = 'Bearer'
-end
-
-api_instance = SkilCient::DefaultApi.new
-
-deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
-image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
-
-single_image_record = SkilCient::SingleImageRecord.new # SingleImageRecord | The input record array
-
-
-begin
-  #Takes SingleImageRecord to transform and returns Base64NDArrayBody
-  result = api_instance.transformincrementalarray_image(deployment_name, version_name, image_transform_name, single_image_record)
-  p result
-rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->transformincrementalarray_image: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **image_transform_name** | **String**| ID or name of the deployed image transform | 
- **single_image_record** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
+ **single_record** | **Object**| The input record array | [optional] 
 
 ### Return type
 
@@ -3729,11 +4732,9 @@ Name | Type | Description  | Notes
 
 
 # **transformprocess_get**
-> TransformProcess transformprocess_get(deployment_name, version_name, transform_name)
+> Object transformprocess_get(deployment_name, version_name, transform_name)
 
-Gets the JSON string of the deployed transform process
-
-Retrieves the JSON string of the deployed transform process 
+Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
 ```ruby
@@ -3757,7 +4758,7 @@ transform_name = 'transform_name_example' # String | ID or name of the deployed 
 
 
 begin
-  #Gets the JSON string of the deployed transform process
+  #Gets the JSON string of the deployed transform process (CSV or Image)
   result = api_instance.transformprocess_get(deployment_name, version_name, transform_name)
   p result
 rescue SkilCient::ApiError => e
@@ -3775,7 +4776,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransformProcess**](TransformProcess.md)
+**Object**
 
 ### Authorization
 
@@ -3789,11 +4790,9 @@ Name | Type | Description  | Notes
 
 
 # **transformprocess_post**
-> transformprocess_post(deployment_name, version_name, transform_name, opts)
+> Object transformprocess_post(deployment_name, version_name, transform_name, opts)
 
-Sets the deployed transform process through the provided JSON string
-
-Sets the transform process with the provided JSON string
+Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
 ```ruby
@@ -3816,12 +4815,13 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  transform_process: SkilCient::TransformProcess.new # TransformProcess | The transform process to set
+  transform_process: nil # Object | The transform process to set
 }
 
 begin
-  #Sets the deployed transform process through the provided JSON string
-  api_instance.transformprocess_post(deployment_name, version_name, transform_name, opts)
+  #Sets the deployed (CSV or Image) transform process through the provided JSON string
+  result = api_instance.transformprocess_post(deployment_name, version_name, transform_name, opts)
+  p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->transformprocess_post: #{e}"
 end
@@ -3834,11 +4834,11 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **transform_process** | [**TransformProcess**](TransformProcess.md)| The transform process to set | [optional] 
+ **transform_process** | **Object**| The transform process to set | [optional] 
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 

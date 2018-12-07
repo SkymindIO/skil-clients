@@ -36,4 +36,10 @@ java -jar swagger-codegen-cli.jar generate -i swagger.yaml -l flash -o flash -c 
 
 # swift3
 java -jar swagger-codegen-cli.jar generate -i swagger.yaml -l swift3 -o swift3 -c config/swift3.json
+
+# html (For documentation site)
+java -jar swagger-codegen-cli.jar generate -i swagger.yaml -l html -o html
+
+# html2 (For documentation site)
+java -jar swagger-codegen-cli.jar generate -i swagger.yaml -l html2 -o html2
 # ---------------------------------------------------------

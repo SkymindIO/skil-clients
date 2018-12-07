@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Endpoints API for different services in SKIL
-  version: 1.1.0-beta
+  version: 1.2.0-beta
   title: Endpoints
 host: localhost:9008
 schemes:
@@ -26,6 +26,25 @@ securityDefinitions:
          Bearer xxxxxx.yyyyyyy.zzzzzz
 security:
   - api_key: []
+tags:
+  - name: Authentication
+    description: Authentication endpoints
+  - name: Utilities
+    description: Utilities endpoints
+  - name: ModelHistory
+    description: Model History endpoints
+  - name: Deployment
+    description: Deployment Endpoints
+  - name: Transform
+    description: Transform endpoints
+  - name: Inference
+    description: Inference endpoints
+  - name: KNN
+    description: KNN endpoints
+  - name: Resource
+    description: Resource Endpoints
+  - name: Job
+    description: Job endpoints
 paths:
   # ---------------------------------------------------------------------------------------
   # Authentication endpoint
@@ -34,6 +53,9 @@ paths:
     post:
       operationId: login
       summary: Post JSON credentials and obtain a JWT authorization token.
+      tags:
+      - Authentication
+      security: []
       consumes:
       - application/json
       produces:
@@ -56,6 +78,8 @@ paths:
     post:
       operationId: upload
       summary: Upload a model file to SKIL for import.
+      tags:
+      - Utilities
       consumes:
       - multipart/form-data
       produces:
@@ -71,14 +95,14 @@ paths:
           schema:
             $ref: '#/definitions/FileUploadList'
   # ---------------------------------------------------------------------------------------
-  # CSV transform server endpoints
+  # CSV and/or IMAGE transform server endpoints
   # ---------------------------------------------------------------------------------------
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess:
     get:
       operationId: transformprocess_get
-      summary: Gets the JSON string of the deployed transform process
-      description: |
-        Retrieves the JSON string of the deployed transform process
+      summary: Gets the JSON string of the deployed transform process (CSV or Image)
+      tags:
+      - Transform
       produces:
       - application/json
       parameters:
@@ -90,7 +114,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -102,15 +126,16 @@ paths:
         200:
           description: the deployed transform process
           schema:
-            $ref: '#/definitions/TransformProcess'
+            type: object
         400:
           description: the transform process is probably null
         500:
           description: internal server error
     post:
       operationId: transformprocess_post
-      summary: Sets the deployed transform process through the provided JSON string
-      description: Sets the transform process with the provided JSON string
+      summary: Sets the deployed (CSV or Image) transform process through the provided JSON string
+      tags:
+      - Transform
       consumes:
       - application/json
       produces:
@@ -124,7 +149,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -136,16 +161,20 @@ paths:
         name: TransformProcess
         description: The transform process to set
         schema:
-          $ref: '#/definitions/TransformProcess'
+          type: object
       responses:
         200:
           description: transform process set successfully
+          schema:
+            type: object
         500:
           description: internal server error
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental:
     post:
       operationId: transformincremental_csv
       summary: Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+      tags:
+      - Transform
       description: Takes a SingleCSVRecord object and transforms it into the desired format
       consumes:
       - application/json
@@ -160,7 +189,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -184,6 +213,8 @@ paths:
     post:
       operationId: transform_csv
       summary: Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+      tags:
+      - Transform
       description: Takes a batch of SingleCSVRecord object and transforms it into the desired format
       consumes:
       - application/json
@@ -198,7 +229,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -220,9 +251,10 @@ paths:
           description: internal server error during transforming the array
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray:
     post:
-      operationId: transformincrementalarray_csv
-      summary: Same as /transformincremental but returns Base64NDArrayBody
-      description: Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+      operationId: transformincrementalarray
+      summary: Same as /transformincremental but returns Base64NDArrayBody.
+      tags:
+      - Transform
       consumes:
       - application/json
       produces:
@@ -236,7 +268,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -245,10 +277,10 @@ paths:
         required: true
         type: string
       - in: body
-        name: SingleCSVRecord
+        name: SingleRecord
         description: The input record array
         schema:
-          $ref: '#/definitions/SingleCSVRecord'
+          type: object
       responses:
         200:
           description: array transformed and returned successfully
@@ -258,9 +290,10 @@ paths:
           description: internal server error during transforming the array
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray:
     post:
-      operationId: transformarray_csv
+      operationId: transformarray
       summary: Takes a batch input arrays and transforms it
-      description: Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+      tags:
+      - Transform
       consumes:
       - application/json
       produces:
@@ -274,7 +307,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: transformName
@@ -283,10 +316,10 @@ paths:
         required: true
         type: string
       - in: body
-        name: BatchCSVRecord
+        name: BatchRecord
         description: The input batch of record arrays
         schema:
-          $ref: '#/definitions/BatchCSVRecord'
+          type: object
       responses:
         200:
           description: array transformed and returned successfully
@@ -295,117 +328,15 @@ paths:
         500:
           description: internal server error during transforming the array
   # ---------------------------------------------------------------------------------------
-  # Image transform server endpoint
+  # Image only transform server endpoint
   # ---------------------------------------------------------------------------------------
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess:
-    get:
-      operationId: imagetransformprocess_get
-      summary: Retrieves the image transform process JSON string
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: deploymentName
-        in: path
-        description: Name of the deployment group
-        required: true
-        type: string
-      - name: versionName
-        in: path
-        description: Version name of the endpoint. The default value is "default"
-        required: false
-        default: default
-        type: string
-      - name: imageTransformName
-        in: path
-        description: ID or name of the deployed image transform
-        required: true
-        type: string
-      responses:
-        200:
-          description: Image transform process JSON successfully retrieved
-          schema:
-            $ref: '#/definitions/ImageTransformProcess'
-    post:
-      operationId: imagetransformprocess_post
-      summary: Sets the image transform process through the provided JSON string
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: deploymentName
-        in: path
-        description: Name of the deployment group
-        required: true
-        type: string
-      - name: versionName
-        in: path
-        description: Version name of the endpoint. The default value is "default"
-        required: false
-        default: default
-        type: string
-      - name: imageTransformName
-        in: path
-        description: ID or name of the deployed image transform
-        required: true
-        type: string
-      - name: body
-        in: body
-        description: The image transform process JSON
-        required: true
-        schema:
-          $ref: '#/definitions/ImageTransformProcess'
-      responses:
-        200:
-          description: Image transform process JSON successfully set
-          schema:
-            $ref: '#/definitions/ImageTransformProcess'
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray:
-    post:
-      operationId: transformincrementalarray_image
-      summary: Takes SingleImageRecord to transform and returns Base64NDArrayBody
-      description: Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: deploymentName
-        in: path
-        description: Name of the deployment group
-        required: true
-        type: string
-      - name: versionName
-        in: path
-        description: Version name of the endpoint. The default value is "default"
-        required: false
-        default: default
-        type: string
-      - name: imageTransformName
-        in: path
-        description: ID or name of the deployed image transform
-        required: true
-        type: string
-      - in: body
-        name: SingleImageRecord
-        required: true
-        description: The input record array
-        schema:
-          $ref: '#/definitions/SingleImageRecord'
-      responses:
-        200:
-          description: array transformed and returned successfully
-          schema:
-            $ref: '#/definitions/Base64NDArrayBody'
-        500:
-          description: internal server error during transforming the array
   /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage:
     post:
       operationId: transformincrementalimage
       summary: Takes a single multipart image file to transform and returns Base64NDArrayBody
       description: Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+      tags:
+      - Transform
       consumes:
       - multipart/form-data
       produces:
@@ -419,7 +350,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: imageTransformName
@@ -441,50 +372,13 @@ paths:
           description: No uploaded file found or the file couldn't be loaded
         500:
           description: internal server error during transforming the array
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray:
-    post:
-      operationId: transformarray_image
-      summary: Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-      description: Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: deploymentName
-        in: path
-        description: Name of the deployment group
-        required: true
-        type: string
-      - name: versionName
-        in: path
-        description: Version name of the endpoint. The default value is "default"
-        required: false
-        default: default
-        type: string
-      - name: imageTransformName
-        in: path
-        description: ID or name of the deployed image transform
-        required: true
-        type: string
-      - in: body
-        name: BatchImageRecord
-        required: true
-        description: The input batch of record arrays
-        schema:
-          $ref: '#/definitions/BatchImageRecord'
-      responses:
-        200:
-          description: array transformed and returned successfully
-          schema:
-            $ref: '#/definitions/Base64NDArrayBody'
-        500:
-          description: internal server error during transforming the array
   /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage:
     post:
       operationId: transformimage
       summary: Takes multiple multipart image file to transform and returns Base64NDArrayBody
       description: Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+      tags:
+      - Transform
       consumes:
       - multipart/form-data
       produces:
@@ -498,7 +392,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: imageTransformName
@@ -531,6 +425,8 @@ paths:
       operationId: knn
       summary: Runs knn on the given index with the given k
       description: Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
+      tags:
+      - KNN
       consumes:
       - application/json
       produces:
@@ -544,7 +440,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: knnName
@@ -570,6 +466,8 @@ paths:
     post:
       operationId: knnnew
       summary: Run a k nearest neighbors search on a NEW data point
+      tags:
+      - KNN
       consumes:
       - application/json
       produces:
@@ -583,7 +481,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: knnName
@@ -613,6 +511,8 @@ paths:
     post:
       operationId: predict
       summary: Run inference on the input array.
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -632,7 +532,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -653,6 +553,8 @@ paths:
     post:
       operationId: predictimage
       summary: Run inference on the input array, using input image file from multipart form data.
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -670,7 +572,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -690,6 +592,8 @@ paths:
       operationId: multipredict
       summary: Get the output from the network, based on the given INDArray[] input
       description: Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -709,7 +613,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -729,6 +633,8 @@ paths:
       operationId: multipredictimage
       summary: Get the output from the network using the given image file using the /multipredict endpoint's method
       description: Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -757,7 +663,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -776,6 +682,8 @@ paths:
     post:
       operationId: classify
       summary: Use the deployed model to classify the input
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -795,7 +703,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -816,6 +724,8 @@ paths:
     post:
       operationId: classifyimage
       summary: Use the deployed model to classify the input, using input image file from multipart form data.
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -833,7 +743,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -852,6 +762,8 @@ paths:
     post:
       operationId: classifyarray
       summary: Same as /classify but returns the output as Base64NDArrayBody
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -871,7 +783,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -892,6 +804,8 @@ paths:
     post:
       operationId: multiclassify
       summary: Represents all of the labels for a given classification
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -911,7 +825,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -932,6 +846,8 @@ paths:
     post:
       operationId: modelset
       summary: Set the model to be served
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -950,7 +866,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -969,6 +885,8 @@ paths:
     post:
       operationId: modelupdate
       summary: Update the model to be served
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -977,7 +895,7 @@ paths:
       - name: file
         in: formData
         description: The model file to update with (.pb file)
-        required: false
+        required: true
         type: file
       - name: deploymentName
         in: path
@@ -987,7 +905,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1006,6 +924,8 @@ paths:
     post:
       operationId: jsonarray
       summary: Run inference on the input and returns it as a JsonArrayResponse
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -1025,7 +945,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1044,6 +964,8 @@ paths:
     post:
       operationId: predictwithpreprocess
       summary: Preprocesses the input and run inference on it
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -1065,7 +987,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1084,6 +1006,8 @@ paths:
     post:
       operationId: predictwithpreprocessjson
       summary: Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -1105,7 +1029,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1124,6 +1048,8 @@ paths:
     post:
       operationId: logs
       summary: Get logs
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -1143,7 +1069,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1162,6 +1088,8 @@ paths:
     get:
       operationId: logfilepath
       summary: Get logs file path
+      tags:
+      - Inference
       produces:
       - text
       parameters:
@@ -1173,7 +1101,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1193,6 +1121,8 @@ paths:
     get:
       operationId: meta_get
       summary: this method can be used to get the meta data for the current model which set to the server
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -1206,7 +1136,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1216,11 +1146,14 @@ paths:
         type: string
       responses:
         200:
+          description: The meta data details
           schema:
             $ref: '#/definitions/MetaData'
     post:
       operationId: meta_post
       summary: This method can be used to set meta data for the current model which is set to the server
+      tags:
+      - Inference
       consumes:
       - application/json
       produces:
@@ -1240,7 +1173,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1257,6 +1190,8 @@ paths:
     post:
       operationId: detectobjects
       summary: Detect the objects, given a (input) prediction request
+      tags:
+      - Inference
       consumes:
       - multipart/form-data
       produces:
@@ -1291,7 +1226,7 @@ paths:
       - name: versionName
         in: path
         description: Version name of the endpoint. The default value is "default"
-        required: false
+        required: true
         default: default
         type: string
       - name: modelName
@@ -1311,6 +1246,8 @@ paths:
     get:
       operationId: deployments
       summary: Get a list of deployments
+      tags:
+      - Deployment
       produces:
       - application/json
       responses:
@@ -1324,6 +1261,8 @@ paths:
     get:
       operationId: deployment_get
       summary: Get a deployment details by id
+      tags:
+      - Deployment
       produces:
       - application/json
       parameters:
@@ -1340,6 +1279,8 @@ paths:
     delete:
       operationId: deployment_delete
       summary: Delete a deployment by id
+      tags:
+      - Deployment
       produces:
       - application/json
       parameters:
@@ -1360,6 +1301,8 @@ paths:
     post:
       operationId: deploymentCreate
       summary: Create a new deployment group.
+      tags:
+      - Deployment
       consumes:
       - application/json
       produces:
@@ -1382,6 +1325,8 @@ paths:
     get:
       operationId: models
       summary: Retrieve a list of all the deployed models given a deployment id
+      tags:
+      - Deployment
       produces:
       - application/json
       parameters:
@@ -1401,6 +1346,8 @@ paths:
     post:
       operationId: deployModel
       summary: Deploy a model in a deployment group.
+      tags:
+      - Deployment
       consumes:
       - application/json
       produces:
@@ -1426,6 +1373,8 @@ paths:
     post:
       operationId: reimportModel
       summary: Reimport a model to a previous deployed model in a deployment
+      tags:
+      - Deployment
       consumes:
       - application/json
       produces:
@@ -1455,6 +1404,8 @@ paths:
     delete:
       operationId: delete_model
       summary: Delete a model by deployment and model id
+      tags:
+      - Deployment
       produces:
       - application/json
       parameters:
@@ -1480,6 +1431,8 @@ paths:
     post:
       operationId: modelStateChange
       summary: Modify the state (start/stop) of a deployed model
+      tags:
+      - Deployment
       consumes:
       - application/json
       produces:
@@ -1513,6 +1466,8 @@ paths:
     get:
       operationId: getModelHistory
       summary: Gets a model history, given its ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1536,6 +1491,8 @@ paths:
     post:
       operationId: addModelHistory
       summary: Add a model history / workspace
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1549,7 +1506,6 @@ paths:
         format: guid
       - name: addModelHistoryRequest
         in: body
-        type: object
         required: true
         description: The model history request object
         schema:
@@ -1563,6 +1519,8 @@ paths:
     post:
       operationId: updateModelHistory
       summary: Update a model history / workspace
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1582,7 +1540,6 @@ paths:
         description: the GUID of the model history / workspace to update
       - name: updateModelHistoryRequest
         in: body
-        type: object
         required: true
         description: The model history request object
         schema:
@@ -1595,6 +1552,8 @@ paths:
     delete:
       operationId: deleteModelHistory
       summary: Deletes a model history / workspace, given its ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1629,8 +1588,17 @@ paths:
     get:
       operationId: listAllExperiments
       summary: List all of the experiments in every model history / workspace
+      tags:
+      - ModelHistory
       produces:
       - application/json
+      parameters:
+      - name: modelHistoryServerId
+        in: path
+        description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+        required: true
+        type: string
+        format: guid
       responses:
         200:
           description: List of all the experiment entities.
@@ -1642,6 +1610,8 @@ paths:
     get:
       operationId: getExperimentsForModelHistory
       summary: Obtain all experiments for a model history / workspace
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1666,6 +1636,8 @@ paths:
     get:
       operationId: getExperiment
       summary: Obtain an experiment's details, given its ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1689,6 +1661,8 @@ paths:
     put:
       operationId: updateExperiment
       summary: Updates an experiment, given an experiment entity
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1708,7 +1682,6 @@ paths:
         description: the GUID of the experiment to update
       - name: experimentEntity
         in: body
-        type: object
         required: true
         description: The experiment entity to update with
         schema:
@@ -1721,6 +1694,8 @@ paths:
     delete:
       operationId: deleteExperiment
       summary: Deletes an experiment, given an experiment entity
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1755,6 +1730,8 @@ paths:
     post:
       operationId: addExperiment
       summary: Add an experiment, given an experiment entity
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1768,7 +1745,6 @@ paths:
         format: guid
       - name: experimentEntity
         in: body
-        type: object
         required: true
         description: The experiment entity to add
         schema:
@@ -1782,6 +1758,8 @@ paths:
     post:
       operationId: updateBestModelForExperiment
       summary: Updates the best model for an experiment
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1795,7 +1773,6 @@ paths:
         format: guid
       - name: updateBestModel
         in: body
-        type: object
         required: true
         description: Model encapsulating the experiment id to update and the best model id.
         schema:
@@ -1809,6 +1786,8 @@ paths:
     get:
       operationId: getModelsForExperiment
       summary: Obtain a list of all the models for an experiment
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1835,6 +1814,8 @@ paths:
     get:
       operationId: getModelInstance
       summary: Gets a model instance, given its ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1857,6 +1838,8 @@ paths:
     delete:
       operationId: deleteModelInstance
       summary: Deletes a model instance, given its ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -1878,6 +1861,8 @@ paths:
     post:
       operationId: addModelInstance
       summary: Adds a model
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1891,7 +1876,6 @@ paths:
         format: guid
       - name: modelInstanceEntity
         in: body
-        type: object
         required: true
         description: The object encapsulating the model instance id and evaluation type to aggregate
         schema:
@@ -1905,6 +1889,8 @@ paths:
     post:
       operationId: getBestModelAmongModelIds
       summary: Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1918,7 +1904,6 @@ paths:
         format: guid
       - name: bestModel
         in: body
-        type: object
         required: true
         description: Object encapsulating the model ids, eval type and column metric name
         schema:
@@ -1932,6 +1917,8 @@ paths:
     post:
       operationId: createModelHistory
       summary: Creates model History
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1945,7 +1932,6 @@ paths:
         format: guid
       - name: modelHistoryEntity
         in: body
-        type: object
         required: true
         description: The model history entity
         schema:
@@ -1959,6 +1945,8 @@ paths:
     post:
       operationId: addEvaluationResult
       summary: Adds an evaluation result
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -1972,7 +1960,6 @@ paths:
         format: guid
       - name: evaluationResultsEntity
         in: body
-        type: object
         required: true
         description: The evaluation result entity
         schema:
@@ -1986,6 +1973,8 @@ paths:
     get:
       operationId: getEvaluationForModelID
       summary: Gets the list of evaluation results entity, given a model instance ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -2011,6 +2000,8 @@ paths:
     post:
       operationId: aggregateModelResults
       summary: Aggregates the evaluaition results of a model instance, based on the evaluation type
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -2024,7 +2015,6 @@ paths:
         format: guid
       - name: aggregatePrediction
         in: body
-        type: object
         required: true
         description: The object encapsulating the model instance id and evaluation type to aggregate
         schema:
@@ -2038,6 +2028,8 @@ paths:
     get:
       operationId: getMinibatch
       summary: Gets a minibatch for the model
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -2061,6 +2053,8 @@ paths:
     post:
       operationId: addMinibatch
       summary: Adds a minibatch
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -2074,7 +2068,6 @@ paths:
         format: guid
       - name: minibatchEntity
         in: body
-        type: object
         required: true
         description: The minibatch entity to add
         schema:
@@ -2088,6 +2081,8 @@ paths:
     get:
       operationId: getExamplesForMinibatch
       summary: Gets all the examples for a minibatch ID
+      tags:
+      - ModelHistory
       produces:
       - application/json
       parameters:
@@ -2113,6 +2108,8 @@ paths:
     post:
       operationId: addExampleToMinibatch
       summary: Adds an example to a minibatch
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -2126,7 +2123,6 @@ paths:
         format: guid
       - name: exampleEntity
         in: body
-        type: object
         required: true
         description: The example to add to the minibatch
         schema:
@@ -2140,6 +2136,8 @@ paths:
     post:
       operationId: addExampleForBatch
       summary: Adds a number of examples to a minibatch ID given an AddExampleRequest.
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -2153,7 +2151,6 @@ paths:
         format: guid
       - name: AddExampleRequest
         in: body
-        type: object
         required: true
         description: The add example request, encapsulating minibatch details and examples batch size
         schema:
@@ -2162,11 +2159,13 @@ paths:
         200:
           description: The add example request
           schema:
-            $ref: '#/definitions/addExampleRequest'
+            $ref: '#/definitions/AddExampleRequest'
   /rpc/{modelHistoryServerId}/model/feedback:
     post:
       operationId: addModelFeedback
       summary: Adds an evaluation feedback to the model against a given minibatch id.
+      tags:
+      - ModelHistory
       consumes:
       - application/json
       produces:
@@ -2180,7 +2179,6 @@ paths:
         format: guid
       - name: ModelFeedBackRequest
         in: body
-        type: object
         required: true
         description: The model feedback request object
         schema:
@@ -2190,6 +2188,522 @@ paths:
           description: The model feedback request object
           schema:
             $ref: '#/definitions/ModelFeedBackRequest'
+  # ---------------------------------------------------------------------------------------
+  # Resources endpoints
+  # ---------------------------------------------------------------------------------------
+  /resources/resource/{resourceId}:
+    get:
+      operationId: getResourceById
+      summary: Get the resource with the specified resource ID
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: resourceId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource
+          required: true
+      responses:
+        200:
+          description: Resource Object
+          schema:
+            $ref: '#/definitions/Resource'
+  /resources/details/{resourceId}:
+    get:
+      operationId: getResourceDetailsById
+      summary: Get the resource details with the specified resource ID
+      description: |
+        Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information
+        about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource'
+        object contains only general information (name, id, type, subtype).
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: resourceId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource
+          required: true
+      responses:
+        200:
+          description: One of the resource details object
+          schema:
+            type: object
+  /resources/resources:
+    get:
+      operationId: getResources
+      summary: A list of all known/registered resources, of all types
+      tags:
+      - Resource
+      produces:
+        - application/json
+      responses:
+        200:
+          description: List of Resource Objects
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Resource'
+  /resources/resources/type/{resourceType}:
+    get:
+      operationId: getResourceByType
+      summary: Get all the resources with the specified resource type
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: resourceType
+          in: path
+          type: string
+          enum:
+            - COMPUTE
+            - STORAGE
+          description: Type of the resource
+          required: true
+      responses:
+        200:
+          description: List of Resource Objects by specified type
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Resource'
+  /resources/resources/subtype/{resourceSubType}:
+    get:
+      operationId: getResourceBySubType
+      summary: Get all the resources with the specified resource subtype
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: resourceSubType
+          in: path
+          type: string
+          enum:
+            - EMR                   # AWS Elastic Map Reduce(Compute)
+            - S3                    # AWS Simple Storage Service
+            - GoogleStorage         # Google Cloud Storage
+            - DataProc              # Google Big Data Compute Engine
+            - HDInsight             # Azure Compute
+            - AzureStorage          # Azure Blob Storage
+            - HDFS                  # in house Hadoop (Storage)
+            - YARN                  # in house YARN (Compute)
+          description: Subtype of the resource
+          required: true
+      responses:
+        200:
+          description: List of Resource Objects by specified subtype
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Resource'
+  /resources/add/resource:
+    post:
+      operationId: addResource
+      summary: Adds a resource
+      tags:
+      - Resource
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: AddResourceRequest
+          in: body
+          required: true
+          description: The Add resource request object
+          schema:
+            $ref: '#/definitions/AddResourceRequest'
+      responses:
+        200:
+          description: One of the resource details object
+          schema:
+            type: object
+  /resources/remove/resource/{resourceId}:
+    delete:
+      operationId: deleteResourceById
+      summary: Delete the resource with the specified resource ID
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: resourceId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource
+          required: true
+      responses:
+        200:
+          description: Resource Object
+          schema:
+            $ref: '#/definitions/Resource'
+  /resources/group/{resourceGroupId}:
+    get:
+      operationId: getResourceGroupById
+      summary: Get the resource group with the specified resource group ID
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: resourceGroupId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource group
+          required: true
+      responses:
+        200:
+          description: Resource Group Object
+          schema:
+            $ref: '#/definitions/ResourceGroup'
+  /resources/groups:
+    get:
+      operationId: getResourceGroups
+      summary: Get a list of all the resource groups
+      tags:
+      - Resource
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Resource Group Object
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ResourceGroup'
+  /resources/add/group:
+    post:
+      operationId: addResourceGroup
+      summary: Adds a resource group
+      tags:
+      - Resource
+      consumes:
+        - text/plain; charset=utf-8
+      produces:
+        - application/json
+      parameters:
+        - name: groupName
+          in: body
+          required: true
+          description: Name of the resource group
+          schema:
+            type: string
+      responses:
+        200:
+          description: The created resource group object
+          schema:
+            $ref: '#/definitions/ResourceGroup'
+  /resources/remove/group/{resourceGroupId}:
+    delete:
+      operationId: deleteResourceGroupById
+      summary: Delete the resource group with the specified resource group ID
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: resourceGroupId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource group
+          required: true
+      responses:
+        200:
+          description: Resource Group Object
+          schema:
+            $ref: '#/definitions/ResourceGroup'
+  /resources/add/resourcetogroup/{resourceGroupId}/{resourceId}:
+    get:
+      operationId: addResourceToGroup
+      summary: Adds a resource to a resource group
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: resourceGroupId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource group
+          required: true
+        - name: resourceId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource
+          required: true
+      responses:
+        200:
+          description: Successfully added resource to the resource group
+  /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId}:
+    get:
+      operationId: deleteResourceFromGroup
+      summary: Removes a resource from a resource group
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: resourceGroupId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource group
+          required: true
+        - name: resourceId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource
+          required: true
+      responses:
+        200:
+          description: Successfully removed resource from the resource group
+  /resources/group/{resourceGroupId}/resources:
+    get:
+      operationId: getResourcesFromGroup
+      summary: Get all resources from a resource group
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: resourceGroupId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the resource group
+          required: true
+      responses:
+        200:
+          description: List of resources from a resource group
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Resource'
+  /resources/credentials/{credentialId}:
+    get:
+      operationId: getCredentialsById
+      summary: Get credentials given an ID
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: credentialId
+          in: path
+          type: integer
+          format: int64
+          description: Credentials ID
+          required: true
+      responses:
+        200:
+          description: Credentials Object
+          schema:
+            $ref: '#/definitions/ResourceCredentials'
+    delete:
+      operationId: deleteCredentialsById
+      summary: Delete credentials given an ID
+      tags:
+      - Resource
+      produces:
+        - application/json
+      parameters:
+        - name: credentialId
+          in: path
+          type: integer
+          format: int64
+          description: Credentials ID
+          required: true
+      responses:
+        200:
+          description: Credentials successfully deteled
+  /resources/credentials:
+    post:
+      operationId: addCredentials
+      summary: Adds credentials
+      tags:
+      - Resource
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: AddCredentialsRequest
+          in: body
+          required: true
+          description: Add credentials request object
+          schema:
+            $ref: '#/definitions/AddCredentialsRequest'
+      responses:
+        200:
+          description: The created credentials object
+          schema:
+            $ref: '#/definitions/ResourceCredentials'
+  # ---------------------------------------------------------------------------------------
+  # Jobs endpoints
+  # ---------------------------------------------------------------------------------------
+  /jobs/{jobIdOrType}:
+    get:
+      operationId: getJobById
+      summary: Get a job by its ID
+      tags:
+      - Job
+      produces:
+        - application/json
+      parameters:
+        - name: jobIdOrType
+          in: path
+          type: integer
+          format: int64
+          description: Job ID
+          required: true
+      responses:
+        200:
+          description: Job entity Object
+          schema:
+            $ref: '#/definitions/JobEntity'
+    post:
+      operationId: createJob
+      summary: Create a job
+      tags:
+      - Job
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: jobIdOrType
+          in: path
+          type: string
+          enum:
+            - TRAINING
+            - INFERENCE
+          description: Job Type
+          required: true
+        - name: CreateJobRequest
+          in: body
+          required: true
+          description: Create job request object
+          schema:
+            $ref: '#/definitions/CreateJobRequest'
+      responses:
+        200:
+          description: The created job entity object
+          schema:
+            $ref: '#/definitions/JobEntity'
+    delete:
+      operationId: deleteJobById
+      summary: Deletes a job given its ID
+      tags:
+      - Job
+      produces:
+        - application/json
+      parameters:
+        - name: jobIdOrType
+          in: path
+          type: integer
+          format: int64
+          description: Job ID
+          required: true
+      responses:
+        200:
+          description: Successfully deleted a job
+  /jobs:
+    get:
+      operationId: getAllJobs
+      summary: Get a list of all available jobs
+      tags:
+      - Job
+      produces:
+        - application/json
+      responses:
+        200:
+          description: List of job entity objects
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/JobEntity'
+  /jobs/{jobId}/run:
+    post:
+      operationId: runAJob
+      summary: Start running an (already created) job on the remote resource
+      tags:
+      - Job
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: jobId
+          in: path
+          type: integer
+          format: int64
+          description: Job ID
+          required: true
+      responses:
+        200:
+          description: The associated job entity object
+          schema:
+            $ref: '#/definitions/JobEntity'
+  /jobs/{jobId}/refresh:
+    get:
+      operationId: refreshJobStatus
+      summary: Refresh the remote job status. Can be used for monitoring.
+      tags:
+      - Job
+      produces:
+        - application/json
+      parameters:
+        - name: jobId
+          in: path
+          type: integer
+          format: int64
+          description: Job ID
+          required: true
+      responses:
+        200:
+          description: The associated job entity object
+          schema:
+            $ref: '#/definitions/JobEntity'
+  /jobs/{jobId}/outputfile:
+    post:
+      operationId: downloadJobOutputFile
+      summary: Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
+      tags:
+      - Job
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: jobId
+          in: path
+          type: integer
+          format: int64
+          description: Job ID
+          required: true
+        - name: DownloadOutputFileRequest
+          in: body
+          required: true
+          description: Download output file request object
+          schema:
+            $ref: '#/definitions/DownloadOutputFileRequest'
+      responses:
+        200:
+          description: The file download has started
 definitions:
   TransformProcess:
     type: object
@@ -2886,7 +3400,7 @@ definitions:
         type: integer
         description: Batch version
   ExampleEntity:
-    type:
+    type: object
     properties:
       exampleId:
         type: string
@@ -2895,7 +3409,7 @@ definitions:
       exampleVersion:
         type: integer
         description: Example version
-      int rowNumber:
+      rowNumber:
         type: integer
         description: Row Number
       created:
@@ -2969,3 +3483,397 @@ definitions:
           type: string
         description: The actual label IDs
         example: '["0", "0", "2"]'
+  Resource:
+    type: object
+    properties:
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      name:
+        type: string
+        description: Resource nickname
+      type:
+        type: string
+        description: Resource type (whether COMPUTE or STORAGE)
+        enum:
+          - COMPUTE
+          - STORAGE
+      subType:
+        type: string
+        description: Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN] | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])
+        enum:
+          - EMR                   # AWS Elastic Map Reduce(Compute)
+          - S3                    # AWS Simple Storage Service
+          - GoogleStorage         # Google Cloud Storage
+          - DataProc              # Google Big Data Compute Engine
+          - HDInsight             # Azure Compute
+          - AzureStorage          # Azure Blob Storage
+          - HDFS                  # in house Hadoop (Storage)
+          - YARN                  # in house YARN (Compute)
+      credentialId:
+        type: string
+        description: Credentials GUID
+        format: guid
+  EMRResourceDetails:
+    type: object
+    properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.model.subtypes.compute.EMRResourceDetails'
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - COMPUTE
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - EMR                   # AWS Elastic Map Reduce(Compute)
+      clusterId:
+        type: string
+        description: EMR cluster ID
+      region:
+        type: string
+        description: Region name where the cluster is deployed
+  S3ResourceDetails:
+    type: object
+    properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.model.subtypes.storage.S3ResourceDetails'
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - STORAGE
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - S3                    # AWS Simple Storage Service
+      bucket:
+        type: string
+        description: S3 Bucket Name
+      region:
+        type: string
+        description: Region name where the S3 bucket is present
+  GoogleStorageResourceDetails:
+    type: object
+    properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.model.subtypes.storage.GoogleStorageResourceDetails'
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - STORAGE
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - GoogleStorage         # Google Cloud Storage
+      projectId:
+        type: string
+        description: Project ID
+      bucketName:
+        type: string
+        description: Name of the storage bucket
+  DataProcResourceDetails:
+    type: object
+    properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.model.subtypes.compute.DataProcResourceDetails'
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - COMPUTE
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - DataProc              # Google Big Data Compute Engine
+      projectId:
+        type: string
+        description: Project ID
+      region:
+        type: string
+        description: DataProc region
+      sparkClusterName:
+        type: string
+        description: Name of the spark cluster
+  HDInsightResourceDetails:
+    type: object
+    properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.model.subtypes.compute.HDInsightResourceDetails'
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - COMPUTE
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - HDInsight             # Azure Compute
+      subscriptionId:
+        type: string
+        description: Azure subscription ID
+      resourceGroupName:
+        type: string
+        description: name of the resource group
+      clusterName:
+        type: string
+        description: Cluster name
+  AzureStorageResourceDetails:
+    type: object
+    properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.model.subtypes.storage.AzureStorageResourceDetails'
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - STORAGE
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - AzureStorage          # Azure Blob Storage
+      containerName:
+        type: string
+        description: Storage container name
+  HDFSResourceDetails:
+    type: object
+    properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.model.subtypes.storage.HDFSResourceDetails'
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - STORAGE
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - HDFS                  # in house Hadoop (Storage)
+      nameNodeHost:
+        type: string
+        description: Host of the node running the NameNode
+      nameNodePort:
+        type: string
+        description: Port of the node running the NameNode
+  YARNResourceDetails:
+    type: object
+    properties:
+      '@class':
+        type: string
+        default: 'io.skymind.resource.model.subtypes.compute.YARNResourceDetails'
+      resourceId:
+        type: integer
+        format: int64
+        description: ID of the resource
+      type:
+        type: string
+        description: Resource type
+        enum:
+          - COMPUTE
+      subType:
+        type: string
+        description: Resource subtype
+        enum:
+          - YARN                  # in house YARN (Compute)
+      localSparkHome:
+        type: string
+        description: Local Spark Home path
+  ResourceGroup:
+    type: object
+    properties:
+      groupId:
+        type: integer
+        format: int64
+        description: ID of the resource group
+      groupName:
+        type: string
+        description: Name of the resource group
+      added:
+        type: integer
+        format: int64
+        description: Milliseconds in Long when the resource group was added
+      updated:
+        type: integer
+        format: int64
+        description: Milliseconds in Long when the resource group was updated
+  ResourceCredentials:
+    type: object
+    properties:
+      credentialId:
+        type: integer
+        format: int64
+        description: ID of the credentials
+      type:
+        type: string
+        enum:
+          - AWS
+          - Azure
+          - GoogleCloud
+          - Hadoop
+        description: Type of the credentials
+      name:
+        type: string
+        description: Name of the credentials
+      uri:
+        type: string
+        description: URI of the credentials
+  AddResourceRequest:
+    type: object
+    properties:
+      resourceName:
+        type: string
+        description: Name of the new resource
+      resourceDetails:
+        type: object
+        description: One of the resource details object
+      credentialUri:
+        type: string
+        description: URI of the credentials. If this is present, you can leave out the 'credentialId'
+      type:
+        type: string
+        description: Resource type (whether COMPUTE or STORAGE)
+        enum:
+          - COMPUTE
+          - STORAGE
+      subType:
+        type: string
+        description: Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN] | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])
+        enum:
+          - EMR                   # AWS Elastic Map Reduce(Compute)
+          - S3                    # AWS Simple Storage Service
+          - GoogleStorage         # Google Cloud Storage
+          - DataProc              # Google Big Data Compute Engine
+          - HDInsight             # Azure Compute
+          - AzureStorage          # Azure Blob Storage
+          - HDFS                  # in house Hadoop (Storage)
+          - YARN                  # in house YARN (Compute)
+      credentialId:
+        type: integer
+        format: int64
+        description: ID of the credentials. If this is given then you can leave out the 'credentialsUri'
+  AddCredentialsRequest:
+    type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - AWS
+          - Azure
+          - GoogleCloud
+          - Hadoop
+        description: Type of the credentials
+      name:
+        type: string
+        description: Name of the credentials
+      uri:
+        type: string
+        description: URI of the credentials
+  JobEntity:
+    type: object
+    properties:
+      jobId:
+        type: integer
+        format: int64
+        description: Job ID
+      jobType:
+        type: string
+        enum:
+         - TRAINING
+         - INFERENCE
+        description: Whether a job is for training or inference
+      computeResourceId:
+        type: integer
+        format: int64
+        description: Compute resource ID
+      storageResourceId:
+        type: integer
+        format: int64
+        description: Storage resource ID
+      jobArgs:
+        type: string
+        description: Job arguments
+      runId:
+        type: string
+        description: Job run ID
+      status:
+        type: string
+        description: Job's status
+        enum:
+          - PENDING
+          - RUNNING
+          - CONTINUE
+          - COMPLETED
+          - CANCELLED
+          - FAILED
+          - INTERRUPTED
+      outputFileName:
+        type: string
+        description: Output file name
+  CreateJobRequest:
+    type: object
+    properties:
+      computeResourceId:
+        type: integer
+        format: int64
+        description: Compute resource ID
+      storageResourceId:
+        type: integer
+        format: int64
+        description: Storage resource ID
+      jobArgs:
+        type: string
+        description: Job arguments
+      outputFileName:
+        type: string
+        description: Output file name
+  DownloadOutputFileRequest:
+    type: object
+    properties:
+      localDownloadPath:
+        type: string
+        description: Local path where the file is to be downloaded

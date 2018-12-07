@@ -1,0 +1,12 @@
+Metadata-Version: 1.0
+Name: skil-client
+Version: 1.2.0
+Summary: Endpoints
+Home-page: UNKNOWN
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: UNKNOWN
+Description:     Endpoints API for different services in SKIL  # noqa: E501
+            
+Keywords: Swagger,Endpoints
+Platform: UNKNOWN

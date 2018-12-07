@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AddCredentials**](DefaultApi.md#addcredentials) | **POST** /resources/credentials | Adds credentials
 [**AddEvaluationResult**](DefaultApi.md#addevaluationresult) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
 [**AddExampleForBatch**](DefaultApi.md#addexampleforbatch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 [**AddExampleToMinibatch**](DefaultApi.md#addexampletominibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
@@ -12,32 +13,51 @@ Method | HTTP request | Description
 [**AddModelFeedback**](DefaultApi.md#addmodelfeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**AddModelHistory**](DefaultApi.md#addmodelhistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**AddModelInstance**](DefaultApi.md#addmodelinstance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+[**AddResource**](DefaultApi.md#addresource) | **POST** /resources/add/resource | Adds a resource
+[**AddResourceGroup**](DefaultApi.md#addresourcegroup) | **POST** /resources/add/group | Adds a resource group
+[**AddResourceToGroup**](DefaultApi.md#addresourcetogroup) | **GET** /resources/add/resourcetogroup/{resourceGroupId}/{resourceId} | Adds a resource to a resource group
 [**AggregateModelResults**](DefaultApi.md#aggregatemodelresults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**Classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**Classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**Classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**CreateJob**](DefaultApi.md#createjob) | **POST** /jobs/{jobIdOrType} | Create a job
 [**CreateModelHistory**](DefaultApi.md#createmodelhistory) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
+[**DeleteCredentialsById**](DefaultApi.md#deletecredentialsbyid) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
 [**DeleteExperiment**](DefaultApi.md#deleteexperiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
+[**DeleteJobById**](DefaultApi.md#deletejobbyid) | **DELETE** /jobs/{jobIdOrType} | Deletes a job given its ID
 [**DeleteModel**](DefaultApi.md#deletemodel) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 [**DeleteModelHistory**](DefaultApi.md#deletemodelhistory) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 [**DeleteModelInstance**](DefaultApi.md#deletemodelinstance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
+[**DeleteResourceById**](DefaultApi.md#deleteresourcebyid) | **DELETE** /resources/remove/resource/{resourceId} | Delete the resource with the specified resource ID
+[**DeleteResourceFromGroup**](DefaultApi.md#deleteresourcefromgroup) | **GET** /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId} | Removes a resource from a resource group
+[**DeleteResourceGroupById**](DefaultApi.md#deleteresourcegroupbyid) | **DELETE** /resources/remove/group/{resourceGroupId} | Delete the resource group with the specified resource group ID
 [**DeployModel**](DefaultApi.md#deploymodel) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**DeploymentCreate**](DefaultApi.md#deploymentcreate) | **POST** /deployment | Create a new deployment group.
 [**DeploymentDelete**](DefaultApi.md#deploymentdelete) | **DELETE** /deployment/{deploymentId} | Delete a deployment by id
 [**DeploymentGet**](DefaultApi.md#deploymentget) | **GET** /deployment/{deploymentId} | Get a deployment details by id
 [**Deployments**](DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
 [**Detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
+[**DownloadJobOutputFile**](DefaultApi.md#downloadjoboutputfile) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+[**GetAllJobs**](DefaultApi.md#getalljobs) | **GET** /jobs | Get a list of all available jobs
 [**GetBestModelAmongModelIds**](DefaultApi.md#getbestmodelamongmodelids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+[**GetCredentialsById**](DefaultApi.md#getcredentialsbyid) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
 [**GetEvaluationForModelID**](DefaultApi.md#getevaluationformodelid) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
 [**GetExamplesForMinibatch**](DefaultApi.md#getexamplesforminibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**GetExperiment**](DefaultApi.md#getexperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**GetExperimentsForModelHistory**](DefaultApi.md#getexperimentsformodelhistory) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
+[**GetJobById**](DefaultApi.md#getjobbyid) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**GetMinibatch**](DefaultApi.md#getminibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**GetModelHistory**](DefaultApi.md#getmodelhistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**GetModelInstance**](DefaultApi.md#getmodelinstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**GetModelsForExperiment**](DefaultApi.md#getmodelsforexperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
-[**ImagetransformprocessGet**](DefaultApi.md#imagetransformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-[**ImagetransformprocessPost**](DefaultApi.md#imagetransformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
+[**GetResourceById**](DefaultApi.md#getresourcebyid) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**GetResourceBySubType**](DefaultApi.md#getresourcebysubtype) | **GET** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
+[**GetResourceByType**](DefaultApi.md#getresourcebytype) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**GetResourceDetailsById**](DefaultApi.md#getresourcedetailsbyid) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**GetResourceGroupById**](DefaultApi.md#getresourcegroupbyid) | **GET** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
+[**GetResourceGroups**](DefaultApi.md#getresourcegroups) | **GET** /resources/groups | Get a list of all the resource groups
+[**GetResources**](DefaultApi.md#getresources) | **GET** /resources/resources | A list of all known/registered resources, of all types
+[**GetResourcesFromGroup**](DefaultApi.md#getresourcesfromgroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
 [**Jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**Knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**Knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -58,22 +78,86 @@ Method | HTTP request | Description
 [**Predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**Predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**Predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**RefreshJobStatus**](DefaultApi.md#refreshjobstatus) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
 [**ReimportModel**](DefaultApi.md#reimportmodel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**RunAJob**](DefaultApi.md#runajob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**TransformCsv**](DefaultApi.md#transformcsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**TransformarrayCsv**](DefaultApi.md#transformarraycsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-[**TransformarrayImage**](DefaultApi.md#transformarrayimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**Transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 [**Transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 [**TransformincrementalCsv**](DefaultApi.md#transformincrementalcsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**TransformincrementalarrayCsv**](DefaultApi.md#transformincrementalarraycsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**TransformincrementalarrayImage**](DefaultApi.md#transformincrementalarrayimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**Transformincrementalarray**](DefaultApi.md#transformincrementalarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 [**Transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**TransformprocessGet**](DefaultApi.md#transformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-[**TransformprocessPost**](DefaultApi.md#transformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**TransformprocessGet**](DefaultApi.md#transformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+[**TransformprocessPost**](DefaultApi.md#transformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 [**UpdateBestModelForExperiment**](DefaultApi.md#updatebestmodelforexperiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**UpdateExperiment**](DefaultApi.md#updateexperiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**UpdateModelHistory**](DefaultApi.md#updatemodelhistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**Upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
+
+<a name="addcredentials"></a>
+# **AddCredentials**
+> ResourceCredentials AddCredentials (AddCredentialsRequest addCredentialsRequest)
+
+Adds credentials
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class AddCredentialsExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var addCredentialsRequest = new AddCredentialsRequest(); // AddCredentialsRequest | Add credentials request object
+
+            try
+            {
+                // Adds credentials
+                ResourceCredentials result = apiInstance.AddCredentials(addCredentialsRequest);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.AddCredentials: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addCredentialsRequest** | [**AddCredentialsRequest**](AddCredentialsRequest.md)| Add credentials request object | 
+
+### Return type
+
+[**ResourceCredentials**](ResourceCredentials.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="addevaluationresult"></a>
 # **AddEvaluationResult**
@@ -603,6 +687,199 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="addresource"></a>
+# **AddResource**
+> Object AddResource (AddResourceRequest addResourceRequest)
+
+Adds a resource
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class AddResourceExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var addResourceRequest = new AddResourceRequest(); // AddResourceRequest | The Add resource request object
+
+            try
+            {
+                // Adds a resource
+                Object result = apiInstance.AddResource(addResourceRequest);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.AddResource: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addResourceRequest** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="addresourcegroup"></a>
+# **AddResourceGroup**
+> ResourceGroup AddResourceGroup ( groupName)
+
+Adds a resource group
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class AddResourceGroupExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var groupName = new (); //  | Name of the resource group
+
+            try
+            {
+                // Adds a resource group
+                ResourceGroup result = apiInstance.AddResourceGroup(groupName);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.AddResourceGroup: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupName** | [****](.md)| Name of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="addresourcetogroup"></a>
+# **AddResourceToGroup**
+> void AddResourceToGroup (long? resourceGroupId, long? resourceId)
+
+Adds a resource to a resource group
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class AddResourceToGroupExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceGroupId = 789;  // long? | ID of the resource group
+            var resourceId = 789;  // long? | ID of the resource
+
+            try
+            {
+                // Adds a resource to a resource group
+                apiInstance.AddResourceToGroup(resourceGroupId, resourceId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.AddResourceToGroup: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **long?**| ID of the resource group | 
+ **resourceId** | **long?**| ID of the resource | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="aggregatemodelresults"></a>
 # **AggregateModelResults**
 > EvaluationResultsEntity AggregateModelResults (string modelHistoryServerId, AggregatePrediction aggregatePrediction)
@@ -879,6 +1156,72 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="createjob"></a>
+# **CreateJob**
+> JobEntity CreateJob (string jobIdOrType, CreateJobRequest createJobRequest)
+
+Create a job
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class CreateJobExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var jobIdOrType = jobIdOrType_example;  // string | Job Type
+            var createJobRequest = new CreateJobRequest(); // CreateJobRequest | Create job request object
+
+            try
+            {
+                // Create a job
+                JobEntity result = apiInstance.CreateJob(jobIdOrType, createJobRequest);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.CreateJob: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobIdOrType** | **string**| Job Type | 
+ **createJobRequest** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="createmodelhistory"></a>
 # **CreateModelHistory**
 > ModelHistoryEntity CreateModelHistory (string modelHistoryServerId, ModelHistoryEntity modelHistoryEntity)
@@ -945,6 +1288,69 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="deletecredentialsbyid"></a>
+# **DeleteCredentialsById**
+> void DeleteCredentialsById (long? credentialId)
+
+Delete credentials given an ID
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class DeleteCredentialsByIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var credentialId = 789;  // long? | Credentials ID
+
+            try
+            {
+                // Delete credentials given an ID
+                apiInstance.DeleteCredentialsById(credentialId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DeleteCredentialsById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentialId** | **long?**| Credentials ID | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deleteexperiment"></a>
 # **DeleteExperiment**
 > InlineResponse200 DeleteExperiment (string modelHistoryServerId, string experimentID)
@@ -999,6 +1405,69 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="deletejobbyid"></a>
+# **DeleteJobById**
+> void DeleteJobById (long? jobIdOrType)
+
+Deletes a job given its ID
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class DeleteJobByIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var jobIdOrType = 789;  // long? | Job ID
+
+            try
+            {
+                // Deletes a job given its ID
+                apiInstance.DeleteJobById(jobIdOrType);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DeleteJobById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobIdOrType** | **long?**| Job ID | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -1196,6 +1665,199 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="deleteresourcebyid"></a>
+# **DeleteResourceById**
+> Resource DeleteResourceById (long? resourceId)
+
+Delete the resource with the specified resource ID
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class DeleteResourceByIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceId = 789;  // long? | ID of the resource
+
+            try
+            {
+                // Delete the resource with the specified resource ID
+                Resource result = apiInstance.DeleteResourceById(resourceId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DeleteResourceById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **long?**| ID of the resource | 
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="deleteresourcefromgroup"></a>
+# **DeleteResourceFromGroup**
+> void DeleteResourceFromGroup (long? resourceGroupId, long? resourceId)
+
+Removes a resource from a resource group
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class DeleteResourceFromGroupExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceGroupId = 789;  // long? | ID of the resource group
+            var resourceId = 789;  // long? | ID of the resource
+
+            try
+            {
+                // Removes a resource from a resource group
+                apiInstance.DeleteResourceFromGroup(resourceGroupId, resourceId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DeleteResourceFromGroup: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **long?**| ID of the resource group | 
+ **resourceId** | **long?**| ID of the resource | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="deleteresourcegroupbyid"></a>
+# **DeleteResourceGroupById**
+> ResourceGroup DeleteResourceGroupById (long? resourceGroupId)
+
+Delete the resource group with the specified resource group ID
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class DeleteResourceGroupByIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceGroupId = 789;  // long? | ID of the resource group
+
+            try
+            {
+                // Delete the resource group with the specified resource group ID
+                ResourceGroup result = apiInstance.DeleteResourceGroupById(resourceGroupId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DeleteResourceGroupById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **long?**| ID of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
 
 ### Authorization
 
@@ -1602,6 +2264,131 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="downloadjoboutputfile"></a>
+# **DownloadJobOutputFile**
+> void DownloadJobOutputFile (long? jobId, DownloadOutputFileRequest downloadOutputFileRequest)
+
+Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class DownloadJobOutputFileExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var jobId = 789;  // long? | Job ID
+            var downloadOutputFileRequest = new DownloadOutputFileRequest(); // DownloadOutputFileRequest | Download output file request object
+
+            try
+            {
+                // Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
+                apiInstance.DownloadJobOutputFile(jobId, downloadOutputFileRequest);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.DownloadJobOutputFile: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **long?**| Job ID | 
+ **downloadOutputFileRequest** | [**DownloadOutputFileRequest**](DownloadOutputFileRequest.md)| Download output file request object | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getalljobs"></a>
+# **GetAllJobs**
+> List<JobEntity> GetAllJobs ()
+
+Get a list of all available jobs
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetAllJobsExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Get a list of all available jobs
+                List&lt;JobEntity&gt; result = apiInstance.GetAllJobs();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetAllJobs: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<JobEntity>**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getbestmodelamongmodelids"></a>
 # **GetBestModelAmongModelIds**
 > ModelInstanceEntity GetBestModelAmongModelIds (string modelHistoryServerId, BestModel bestModel)
@@ -1664,6 +2451,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getcredentialsbyid"></a>
+# **GetCredentialsById**
+> ResourceCredentials GetCredentialsById (long? credentialId)
+
+Get credentials given an ID
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetCredentialsByIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var credentialId = 789;  // long? | Credentials ID
+
+            try
+            {
+                // Get credentials given an ID
+                ResourceCredentials result = apiInstance.GetCredentialsById(credentialId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetCredentialsById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentialId** | **long?**| Credentials ID | 
+
+### Return type
+
+[**ResourceCredentials**](ResourceCredentials.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1920,6 +2771,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExperimentEntity**](ExperimentEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getjobbyid"></a>
+# **GetJobById**
+> JobEntity GetJobById (long? jobIdOrType)
+
+Get a job by its ID
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetJobByIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var jobIdOrType = 789;  // long? | Job ID
+
+            try
+            {
+                // Get a job by its ID
+                JobEntity result = apiInstance.GetJobById(jobIdOrType);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetJobById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobIdOrType** | **long?**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
 
 ### Authorization
 
@@ -2196,11 +3111,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="imagetransformprocessget"></a>
-# **ImagetransformprocessGet**
-> ImageTransformProcess ImagetransformprocessGet (string deploymentName, string versionName, string imageTransformName)
+<a name="getresourcebyid"></a>
+# **GetResourceById**
+> Resource GetResourceById (long? resourceId)
 
-Retrieves the image transform process JSON string
+Get the resource with the specified resource ID
 
 ### Example
 ```csharp
@@ -2212,7 +3127,7 @@ using Skymind.SKIL.Model;
 
 namespace Example
 {
-    public class ImagetransformprocessGetExample
+    public class GetResourceByIdExample
     {
         public void main()
         {
@@ -2222,19 +3137,17 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
-            var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
+            var resourceId = 789;  // long? | ID of the resource
 
             try
             {
-                // Retrieves the image transform process JSON string
-                ImageTransformProcess result = apiInstance.ImagetransformprocessGet(deploymentName, versionName, imageTransformName);
+                // Get the resource with the specified resource ID
+                Resource result = apiInstance.GetResourceById(resourceId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.ImagetransformprocessGet: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.GetResourceById: " + e.Message );
             }
         }
     }
@@ -2245,13 +3158,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **string**| ID or name of the deployed image transform | 
+ **resourceId** | **long?**| ID of the resource | 
 
 ### Return type
 
-[**ImageTransformProcess**](ImageTransformProcess.md)
+[**Resource**](Resource.md)
 
 ### Authorization
 
@@ -2259,16 +3170,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="imagetransformprocesspost"></a>
-# **ImagetransformprocessPost**
-> ImageTransformProcess ImagetransformprocessPost (string deploymentName, string versionName, string imageTransformName, ImageTransformProcess body)
+<a name="getresourcebysubtype"></a>
+# **GetResourceBySubType**
+> List<Resource> GetResourceBySubType (string resourceSubType)
 
-Sets the image transform process through the provided JSON string
+Get all the resources with the specified resource subtype
 
 ### Example
 ```csharp
@@ -2280,7 +3191,7 @@ using Skymind.SKIL.Model;
 
 namespace Example
 {
-    public class ImagetransformprocessPostExample
+    public class GetResourceBySubTypeExample
     {
         public void main()
         {
@@ -2290,20 +3201,17 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
-            var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
-            var body = new ImageTransformProcess(); // ImageTransformProcess | The image transform process JSON
+            var resourceSubType = resourceSubType_example;  // string | Subtype of the resource
 
             try
             {
-                // Sets the image transform process through the provided JSON string
-                ImageTransformProcess result = apiInstance.ImagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
+                // Get all the resources with the specified resource subtype
+                List&lt;Resource&gt; result = apiInstance.GetResourceBySubType(resourceSubType);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.ImagetransformprocessPost: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.GetResourceBySubType: " + e.Message );
             }
         }
     }
@@ -2314,14 +3222,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **string**| ID or name of the deployed image transform | 
- **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
+ **resourceSubType** | **string**| Subtype of the resource | 
 
 ### Return type
 
-[**ImageTransformProcess**](ImageTransformProcess.md)
+[**List<Resource>**](Resource.md)
 
 ### Authorization
 
@@ -2329,7 +3234,385 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getresourcebytype"></a>
+# **GetResourceByType**
+> List<Resource> GetResourceByType (string resourceType)
+
+Get all the resources with the specified resource type
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetResourceByTypeExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceType = resourceType_example;  // string | Type of the resource
+
+            try
+            {
+                // Get all the resources with the specified resource type
+                List&lt;Resource&gt; result = apiInstance.GetResourceByType(resourceType);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetResourceByType: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceType** | **string**| Type of the resource | 
+
+### Return type
+
+[**List<Resource>**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getresourcedetailsbyid"></a>
+# **GetResourceDetailsById**
+> Object GetResourceDetailsById (long? resourceId)
+
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetResourceDetailsByIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceId = 789;  // long? | ID of the resource
+
+            try
+            {
+                // Get the resource details with the specified resource ID
+                Object result = apiInstance.GetResourceDetailsById(resourceId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetResourceDetailsById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **long?**| ID of the resource | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getresourcegroupbyid"></a>
+# **GetResourceGroupById**
+> ResourceGroup GetResourceGroupById (long? resourceGroupId)
+
+Get the resource group with the specified resource group ID
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetResourceGroupByIdExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceGroupId = 789;  // long? | ID of the resource group
+
+            try
+            {
+                // Get the resource group with the specified resource group ID
+                ResourceGroup result = apiInstance.GetResourceGroupById(resourceGroupId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetResourceGroupById: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **long?**| ID of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getresourcegroups"></a>
+# **GetResourceGroups**
+> List<ResourceGroup> GetResourceGroups ()
+
+Get a list of all the resource groups
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetResourceGroupsExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Get a list of all the resource groups
+                List&lt;ResourceGroup&gt; result = apiInstance.GetResourceGroups();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetResourceGroups: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<ResourceGroup>**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getresources"></a>
+# **GetResources**
+> List<Resource> GetResources ()
+
+A list of all known/registered resources, of all types
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetResourcesExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // A list of all known/registered resources, of all types
+                List&lt;Resource&gt; result = apiInstance.GetResources();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetResources: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<Resource>**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getresourcesfromgroup"></a>
+# **GetResourcesFromGroup**
+> List<Resource> GetResourcesFromGroup (long? resourceGroupId)
+
+Get all resources from a resource group
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetResourcesFromGroupExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var resourceGroupId = 789;  // long? | ID of the resource group
+
+            try
+            {
+                // Get all resources from a resource group
+                List&lt;Resource&gt; result = apiInstance.GetResourcesFromGroup(resourceGroupId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetResourcesFromGroup: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **long?**| ID of the resource group | 
+
+### Return type
+
+[**List<Resource>**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2694,11 +3977,6 @@ namespace Example
     {
         public void main()
         {
-            // Configure API key authorization: api_key
-            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
-
             var apiInstance = new DefaultApi();
             var credentials = new Credentials(); // Credentials | Login credentials.
 
@@ -2729,7 +4007,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -3716,6 +4994,70 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="refreshjobstatus"></a>
+# **RefreshJobStatus**
+> JobEntity RefreshJobStatus (long? jobId)
+
+Refresh the remote job status. Can be used for monitoring.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class RefreshJobStatusExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var jobId = 789;  // long? | Job ID
+
+            try
+            {
+                // Refresh the remote job status. Can be used for monitoring.
+                JobEntity result = apiInstance.RefreshJobStatus(jobId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.RefreshJobStatus: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **long?**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="reimportmodel"></a>
 # **ReimportModel**
 > ModelEntity ReimportModel (string deploymentId, string modelId, ImportModelRequest body)
@@ -3772,6 +5114,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelEntity**](ModelEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="runajob"></a>
+# **RunAJob**
+> JobEntity RunAJob (long? jobId)
+
+Start running an (already created) job on the remote resource
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class RunAJobExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var jobId = 789;  // long? | Job ID
+
+            try
+            {
+                // Start running an (already created) job on the remote resource
+                JobEntity result = apiInstance.RunAJob(jobId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.RunAJob: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **long?**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
 
 ### Authorization
 
@@ -3856,13 +5262,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="transformarraycsv"></a>
-# **TransformarrayCsv**
-> Base64NDArrayBody TransformarrayCsv (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
+<a name="transformarray"></a>
+# **Transformarray**
+> Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName, Object batchRecord = null)
 
 Takes a batch input arrays and transforms it
-
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
 ```csharp
@@ -3874,7 +5278,7 @@ using Skymind.SKIL.Model;
 
 namespace Example
 {
-    public class TransformarrayCsvExample
+    public class TransformarrayExample
     {
         public void main()
         {
@@ -3887,17 +5291,17 @@ namespace Example
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var batchCSVRecord = new BatchCSVRecord(); // BatchCSVRecord | The input batch of record arrays (optional) 
+            var batchRecord = ;  // Object | The input batch of record arrays (optional) 
 
             try
             {
                 // Takes a batch input arrays and transforms it
-                Base64NDArrayBody result = apiInstance.TransformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
+                Base64NDArrayBody result = apiInstance.Transformarray(deploymentName, versionName, transformName, batchRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.TransformarrayCsv: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.Transformarray: " + e.Message );
             }
         }
     }
@@ -3911,79 +5315,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **batchCSVRecord** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="transformarrayimage"></a>
-# **TransformarrayImage**
-> Base64NDArrayBody TransformarrayImage (string deploymentName, string versionName, string imageTransformName, BatchImageRecord batchImageRecord)
-
-Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
-
-namespace Example
-{
-    public class TransformarrayImageExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: api_key
-            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
-            var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
-            var batchImageRecord = new BatchImageRecord(); // BatchImageRecord | The input batch of record arrays
-
-            try
-            {
-                // Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.TransformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.TransformarrayImage: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **string**| ID or name of the deployed image transform | 
- **batchImageRecord** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
+ **batchRecord** | **Object**| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -4144,13 +5476,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="transformincrementalarraycsv"></a>
-# **TransformincrementalarrayCsv**
-> Base64NDArrayBody TransformincrementalarrayCsv (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
+<a name="transformincrementalarray"></a>
+# **Transformincrementalarray**
+> Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName, Object singleRecord = null)
 
-Same as /transformincremental but returns Base64NDArrayBody
-
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
 ```csharp
@@ -4162,7 +5492,7 @@ using Skymind.SKIL.Model;
 
 namespace Example
 {
-    public class TransformincrementalarrayCsvExample
+    public class TransformincrementalarrayExample
     {
         public void main()
         {
@@ -4175,17 +5505,17 @@ namespace Example
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var singleCSVRecord = new SingleCSVRecord(); // SingleCSVRecord | The input record array (optional) 
+            var singleRecord = ;  // Object | The input record array (optional) 
 
             try
             {
-                // Same as /transformincremental but returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.TransformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
+                // Same as /transformincremental but returns Base64NDArrayBody.
+                Base64NDArrayBody result = apiInstance.Transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.TransformincrementalarrayCsv: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.Transformincrementalarray: " + e.Message );
             }
         }
     }
@@ -4199,79 +5529,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **singleCSVRecord** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="transformincrementalarrayimage"></a>
-# **TransformincrementalarrayImage**
-> Base64NDArrayBody TransformincrementalarrayImage (string deploymentName, string versionName, string imageTransformName, SingleImageRecord singleImageRecord)
-
-Takes SingleImageRecord to transform and returns Base64NDArrayBody
-
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
-
-namespace Example
-{
-    public class TransformincrementalarrayImageExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: api_key
-            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
-            var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
-            var singleImageRecord = new SingleImageRecord(); // SingleImageRecord | The input record array
-
-            try
-            {
-                // Takes SingleImageRecord to transform and returns Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.TransformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.TransformincrementalarrayImage: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **string**| ID or name of the deployed image transform | 
- **singleImageRecord** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
+ **singleRecord** | **Object**| The input record array | [optional] 
 
 ### Return type
 
@@ -4362,11 +5620,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessget"></a>
 # **TransformprocessGet**
-> TransformProcess TransformprocessGet (string deploymentName, string versionName, string transformName)
+> Object TransformprocessGet (string deploymentName, string versionName, string transformName)
 
-Gets the JSON string of the deployed transform process
-
-Retrieves the JSON string of the deployed transform process 
+Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
 ```csharp
@@ -4394,8 +5650,8 @@ namespace Example
 
             try
             {
-                // Gets the JSON string of the deployed transform process
-                TransformProcess result = apiInstance.TransformprocessGet(deploymentName, versionName, transformName);
+                // Gets the JSON string of the deployed transform process (CSV or Image)
+                Object result = apiInstance.TransformprocessGet(deploymentName, versionName, transformName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4417,7 +5673,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransformProcess**](TransformProcess.md)
+**Object**
 
 ### Authorization
 
@@ -4432,11 +5688,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocesspost"></a>
 # **TransformprocessPost**
-> void TransformprocessPost (string deploymentName, string versionName, string transformName, TransformProcess transformProcess = null)
+> Object TransformprocessPost (string deploymentName, string versionName, string transformName, Object transformProcess = null)
 
-Sets the deployed transform process through the provided JSON string
-
-Sets the transform process with the provided JSON string
+Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
 ```csharp
@@ -4461,12 +5715,13 @@ namespace Example
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var transformProcess = new TransformProcess(); // TransformProcess | The transform process to set (optional) 
+            var transformProcess = ;  // Object | The transform process to set (optional) 
 
             try
             {
-                // Sets the deployed transform process through the provided JSON string
-                apiInstance.TransformprocessPost(deploymentName, versionName, transformName, transformProcess);
+                // Sets the deployed (CSV or Image) transform process through the provided JSON string
+                Object result = apiInstance.TransformprocessPost(deploymentName, versionName, transformName, transformProcess);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -4484,11 +5739,11 @@ Name | Type | Description  | Notes
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **transformProcess** | [**TransformProcess**](TransformProcess.md)| The transform process to set | [optional] 
+ **transformProcess** | **Object**| The transform process to set | [optional] 
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 

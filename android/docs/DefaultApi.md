@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**addCredentials**](DefaultApi.md#addCredentials) | **POST** /resources/credentials | Adds credentials
 [**addEvaluationResult**](DefaultApi.md#addEvaluationResult) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
 [**addExampleForBatch**](DefaultApi.md#addExampleForBatch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 [**addExampleToMinibatch**](DefaultApi.md#addExampleToMinibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
@@ -12,32 +13,51 @@ Method | HTTP request | Description
 [**addModelFeedback**](DefaultApi.md#addModelFeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**addModelHistory**](DefaultApi.md#addModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**addModelInstance**](DefaultApi.md#addModelInstance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+[**addResource**](DefaultApi.md#addResource) | **POST** /resources/add/resource | Adds a resource
+[**addResourceGroup**](DefaultApi.md#addResourceGroup) | **POST** /resources/add/group | Adds a resource group
+[**addResourceToGroup**](DefaultApi.md#addResourceToGroup) | **GET** /resources/add/resourcetogroup/{resourceGroupId}/{resourceId} | Adds a resource to a resource group
 [**aggregateModelResults**](DefaultApi.md#aggregateModelResults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**createJob**](DefaultApi.md#createJob) | **POST** /jobs/{jobIdOrType} | Create a job
 [**createModelHistory**](DefaultApi.md#createModelHistory) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
+[**deleteCredentialsById**](DefaultApi.md#deleteCredentialsById) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
 [**deleteExperiment**](DefaultApi.md#deleteExperiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
+[**deleteJobById**](DefaultApi.md#deleteJobById) | **DELETE** /jobs/{jobIdOrType} | Deletes a job given its ID
 [**deleteModel**](DefaultApi.md#deleteModel) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 [**deleteModelHistory**](DefaultApi.md#deleteModelHistory) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 [**deleteModelInstance**](DefaultApi.md#deleteModelInstance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
+[**deleteResourceById**](DefaultApi.md#deleteResourceById) | **DELETE** /resources/remove/resource/{resourceId} | Delete the resource with the specified resource ID
+[**deleteResourceFromGroup**](DefaultApi.md#deleteResourceFromGroup) | **GET** /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId} | Removes a resource from a resource group
+[**deleteResourceGroupById**](DefaultApi.md#deleteResourceGroupById) | **DELETE** /resources/remove/group/{resourceGroupId} | Delete the resource group with the specified resource group ID
 [**deployModel**](DefaultApi.md#deployModel) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**deploymentCreate**](DefaultApi.md#deploymentCreate) | **POST** /deployment | Create a new deployment group.
 [**deploymentDelete**](DefaultApi.md#deploymentDelete) | **DELETE** /deployment/{deploymentId} | Delete a deployment by id
 [**deploymentGet**](DefaultApi.md#deploymentGet) | **GET** /deployment/{deploymentId} | Get a deployment details by id
 [**deployments**](DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
 [**detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
+[**downloadJobOutputFile**](DefaultApi.md#downloadJobOutputFile) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+[**getAllJobs**](DefaultApi.md#getAllJobs) | **GET** /jobs | Get a list of all available jobs
 [**getBestModelAmongModelIds**](DefaultApi.md#getBestModelAmongModelIds) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+[**getCredentialsById**](DefaultApi.md#getCredentialsById) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
 [**getEvaluationForModelID**](DefaultApi.md#getEvaluationForModelID) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
 [**getExamplesForMinibatch**](DefaultApi.md#getExamplesForMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**getExperiment**](DefaultApi.md#getExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**getExperimentsForModelHistory**](DefaultApi.md#getExperimentsForModelHistory) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
+[**getJobById**](DefaultApi.md#getJobById) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**getMinibatch**](DefaultApi.md#getMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**getModelHistory**](DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**getModelInstance**](DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**getModelsForExperiment**](DefaultApi.md#getModelsForExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
-[**imagetransformprocessGet**](DefaultApi.md#imagetransformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-[**imagetransformprocessPost**](DefaultApi.md#imagetransformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
+[**getResourceById**](DefaultApi.md#getResourceById) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**getResourceBySubType**](DefaultApi.md#getResourceBySubType) | **GET** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
+[**getResourceByType**](DefaultApi.md#getResourceByType) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**getResourceDetailsById**](DefaultApi.md#getResourceDetailsById) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**getResourceGroupById**](DefaultApi.md#getResourceGroupById) | **GET** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
+[**getResourceGroups**](DefaultApi.md#getResourceGroups) | **GET** /resources/groups | Get a list of all the resource groups
+[**getResources**](DefaultApi.md#getResources) | **GET** /resources/resources | A list of all known/registered resources, of all types
+[**getResourcesFromGroup**](DefaultApi.md#getResourcesFromGroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -58,22 +78,63 @@ Method | HTTP request | Description
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**refreshJobStatus**](DefaultApi.md#refreshJobStatus) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
 [**reimportModel**](DefaultApi.md#reimportModel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**runAJob**](DefaultApi.md#runAJob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transformCsv**](DefaultApi.md#transformCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**transformarrayCsv**](DefaultApi.md#transformarrayCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-[**transformarrayImage**](DefaultApi.md#transformarrayImage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 [**transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 [**transformincrementalCsv**](DefaultApi.md#transformincrementalCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**transformincrementalarrayCsv**](DefaultApi.md#transformincrementalarrayCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**transformincrementalarrayImage**](DefaultApi.md#transformincrementalarrayImage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**transformincrementalarray**](DefaultApi.md#transformincrementalarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 [**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**transformprocessGet**](DefaultApi.md#transformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-[**transformprocessPost**](DefaultApi.md#transformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**transformprocessGet**](DefaultApi.md#transformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+[**transformprocessPost**](DefaultApi.md#transformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 [**updateBestModelForExperiment**](DefaultApi.md#updateBestModelForExperiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**updateExperiment**](DefaultApi.md#updateExperiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**updateModelHistory**](DefaultApi.md#updateModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
+
+<a name="addCredentials"></a>
+# **addCredentials**
+> ResourceCredentials addCredentials(addCredentialsRequest)
+
+Adds credentials
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+AddCredentialsRequest addCredentialsRequest = new AddCredentialsRequest(); // AddCredentialsRequest | Add credentials request object
+try {
+    ResourceCredentials result = apiInstance.addCredentials(addCredentialsRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#addCredentials");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addCredentialsRequest** | [**AddCredentialsRequest**](AddCredentialsRequest.md)| Add credentials request object |
+
+### Return type
+
+[**ResourceCredentials**](ResourceCredentials.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="addEvaluationResult"></a>
 # **addEvaluationResult**
@@ -419,6 +480,130 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="addResource"></a>
+# **addResource**
+> Object addResource(addResourceRequest)
+
+Adds a resource
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+AddResourceRequest addResourceRequest = new AddResourceRequest(); // AddResourceRequest | The Add resource request object
+try {
+    Object result = apiInstance.addResource(addResourceRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#addResource");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addResourceRequest** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="addResourceGroup"></a>
+# **addResourceGroup**
+> ResourceGroup addResourceGroup(groupName)
+
+Adds a resource group
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+ groupName = new null(); //  | Name of the resource group
+try {
+    ResourceGroup result = apiInstance.addResourceGroup(groupName);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#addResourceGroup");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupName** | [****](.md)| Name of the resource group |
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain; charset=utf-8
+ - **Accept**: application/json
+
+<a name="addResourceToGroup"></a>
+# **addResourceToGroup**
+> addResourceToGroup(resourceGroupId, resourceId)
+
+Adds a resource to a resource group
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long resourceGroupId = 789L; // Long | ID of the resource group
+Long resourceId = 789L; // Long | ID of the resource
+try {
+    apiInstance.addResourceToGroup(resourceGroupId, resourceId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#addResourceToGroup");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **Long**| ID of the resource group |
+ **resourceId** | **Long**| ID of the resource |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="aggregateModelResults"></a>
 # **aggregateModelResults**
 > EvaluationResultsEntity aggregateModelResults(modelHistoryServerId, aggregatePrediction)
@@ -603,6 +788,49 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+<a name="createJob"></a>
+# **createJob**
+> JobEntity createJob(jobIdOrType, createJobRequest)
+
+Create a job
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+String jobIdOrType = "jobIdOrType_example"; // String | Job Type
+CreateJobRequest createJobRequest = new CreateJobRequest(); // CreateJobRequest | Create job request object
+try {
+    JobEntity result = apiInstance.createJob(jobIdOrType, createJobRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#createJob");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobIdOrType** | **String**| Job Type | [enum: TRAINING, INFERENCE]
+ **createJobRequest** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object |
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="createModelHistory"></a>
 # **createModelHistory**
 > ModelHistoryEntity createModelHistory(modelHistoryServerId, modelHistoryEntity)
@@ -646,6 +874,46 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="deleteCredentialsById"></a>
+# **deleteCredentialsById**
+> deleteCredentialsById(credentialId)
+
+Delete credentials given an ID
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long credentialId = 789L; // Long | Credentials ID
+try {
+    apiInstance.deleteCredentialsById(credentialId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#deleteCredentialsById");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentialId** | **Long**| Credentials ID |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="deleteExperiment"></a>
 # **deleteExperiment**
 > InlineResponse200 deleteExperiment(modelHistoryServerId, experimentID)
@@ -679,6 +947,46 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="deleteJobById"></a>
+# **deleteJobById**
+> deleteJobById(jobIdOrType)
+
+Deletes a job given its ID
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long jobIdOrType = 789L; // Long | Job ID
+try {
+    apiInstance.deleteJobById(jobIdOrType);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#deleteJobById");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobIdOrType** | **Long**| Job ID |
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 
@@ -807,6 +1115,130 @@ Name | Type | Description  | Notes
 ### Return type
 
 null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="deleteResourceById"></a>
+# **deleteResourceById**
+> Resource deleteResourceById(resourceId)
+
+Delete the resource with the specified resource ID
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long resourceId = 789L; // Long | ID of the resource
+try {
+    Resource result = apiInstance.deleteResourceById(resourceId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#deleteResourceById");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **Long**| ID of the resource |
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="deleteResourceFromGroup"></a>
+# **deleteResourceFromGroup**
+> deleteResourceFromGroup(resourceGroupId, resourceId)
+
+Removes a resource from a resource group
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long resourceGroupId = 789L; // Long | ID of the resource group
+Long resourceId = 789L; // Long | ID of the resource
+try {
+    apiInstance.deleteResourceFromGroup(resourceGroupId, resourceId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#deleteResourceFromGroup");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **Long**| ID of the resource group |
+ **resourceId** | **Long**| ID of the resource |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="deleteResourceGroupById"></a>
+# **deleteResourceGroupById**
+> ResourceGroup deleteResourceGroupById(resourceGroupId)
+
+Delete the resource group with the specified resource group ID
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long resourceGroupId = 789L; // Long | ID of the resource group
+try {
+    ResourceGroup result = apiInstance.deleteResourceGroupById(resourceGroupId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#deleteResourceGroupById");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **Long**| ID of the resource group |
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
 
 ### Authorization
 
@@ -1073,6 +1505,85 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+<a name="downloadJobOutputFile"></a>
+# **downloadJobOutputFile**
+> downloadJobOutputFile(jobId, downloadOutputFileRequest)
+
+Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long jobId = 789L; // Long | Job ID
+DownloadOutputFileRequest downloadOutputFileRequest = new DownloadOutputFileRequest(); // DownloadOutputFileRequest | Download output file request object
+try {
+    apiInstance.downloadJobOutputFile(jobId, downloadOutputFileRequest);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#downloadJobOutputFile");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **Long**| Job ID |
+ **downloadOutputFileRequest** | [**DownloadOutputFileRequest**](DownloadOutputFileRequest.md)| Download output file request object |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getAllJobs"></a>
+# **getAllJobs**
+> List&lt;JobEntity&gt; getAllJobs()
+
+Get a list of all available jobs
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+try {
+    List<JobEntity> result = apiInstance.getAllJobs();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getAllJobs");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List&lt;JobEntity&gt;**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getBestModelAmongModelIds"></a>
 # **getBestModelAmongModelIds**
 > ModelInstanceEntity getBestModelAmongModelIds(modelHistoryServerId, bestModel)
@@ -1114,6 +1625,47 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getCredentialsById"></a>
+# **getCredentialsById**
+> ResourceCredentials getCredentialsById(credentialId)
+
+Get credentials given an ID
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long credentialId = 789L; // Long | Credentials ID
+try {
+    ResourceCredentials result = apiInstance.getCredentialsById(credentialId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getCredentialsById");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentialId** | **Long**| Credentials ID |
+
+### Return type
+
+[**ResourceCredentials**](ResourceCredentials.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getEvaluationForModelID"></a>
@@ -1278,6 +1830,47 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExperimentEntity**](ExperimentEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getJobById"></a>
+# **getJobById**
+> JobEntity getJobById(jobIdOrType)
+
+Get a job by its ID
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long jobIdOrType = 789L; // Long | Job ID
+try {
+    JobEntity result = apiInstance.getJobById(jobIdOrType);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getJobById");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobIdOrType** | **Long**| Job ID |
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
 
 ### Authorization
 
@@ -1460,11 +2053,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="imagetransformprocessGet"></a>
-# **imagetransformprocessGet**
-> ImageTransformProcess imagetransformprocessGet(deploymentName, versionName, imageTransformName)
+<a name="getResourceById"></a>
+# **getResourceById**
+> Resource getResourceById(resourceId)
 
-Retrieves the image transform process JSON string
+Get the resource with the specified resource ID
 
 ### Example
 ```java
@@ -1472,14 +2065,12 @@ Retrieves the image transform process JSON string
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
+Long resourceId = 789L; // Long | ID of the resource
 try {
-    ImageTransformProcess result = apiInstance.imagetransformprocessGet(deploymentName, versionName, imageTransformName);
+    Resource result = apiInstance.getResourceById(resourceId);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#imagetransformprocessGet");
+    System.err.println("Exception when calling DefaultApi#getResourceById");
     e.printStackTrace();
 }
 ```
@@ -1488,13 +2079,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
- **imageTransformName** | **String**| ID or name of the deployed image transform |
+ **resourceId** | **Long**| ID of the resource |
 
 ### Return type
 
-[**ImageTransformProcess**](ImageTransformProcess.md)
+[**Resource**](Resource.md)
 
 ### Authorization
 
@@ -1502,14 +2091,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="imagetransformprocessPost"></a>
-# **imagetransformprocessPost**
-> ImageTransformProcess imagetransformprocessPost(deploymentName, versionName, imageTransformName, body)
+<a name="getResourceBySubType"></a>
+# **getResourceBySubType**
+> List&lt;Resource&gt; getResourceBySubType(resourceSubType)
 
-Sets the image transform process through the provided JSON string
+Get all the resources with the specified resource subtype
 
 ### Example
 ```java
@@ -1517,15 +2106,12 @@ Sets the image transform process through the provided JSON string
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-ImageTransformProcess body = new ImageTransformProcess(); // ImageTransformProcess | The image transform process JSON
+String resourceSubType = "resourceSubType_example"; // String | Subtype of the resource
 try {
-    ImageTransformProcess result = apiInstance.imagetransformprocessPost(deploymentName, versionName, imageTransformName, body);
+    List<Resource> result = apiInstance.getResourceBySubType(resourceSubType);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#imagetransformprocessPost");
+    System.err.println("Exception when calling DefaultApi#getResourceBySubType");
     e.printStackTrace();
 }
 ```
@@ -1534,14 +2120,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
- **imageTransformName** | **String**| ID or name of the deployed image transform |
- **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON |
+ **resourceSubType** | **String**| Subtype of the resource | [enum: EMR, S3, GoogleStorage, DataProc, HDInsight, AzureStorage, HDFS, YARN]
 
 ### Return type
 
-[**ImageTransformProcess**](ImageTransformProcess.md)
+[**List&lt;Resource&gt;**](Resource.md)
 
 ### Authorization
 
@@ -1549,7 +2132,247 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceByType"></a>
+# **getResourceByType**
+> List&lt;Resource&gt; getResourceByType(resourceType)
+
+Get all the resources with the specified resource type
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+String resourceType = "resourceType_example"; // String | Type of the resource
+try {
+    List<Resource> result = apiInstance.getResourceByType(resourceType);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getResourceByType");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceType** | **String**| Type of the resource | [enum: COMPUTE, STORAGE]
+
+### Return type
+
+[**List&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceDetailsById"></a>
+# **getResourceDetailsById**
+> Object getResourceDetailsById(resourceId)
+
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long resourceId = 789L; // Long | ID of the resource
+try {
+    Object result = apiInstance.getResourceDetailsById(resourceId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getResourceDetailsById");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **Long**| ID of the resource |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceGroupById"></a>
+# **getResourceGroupById**
+> ResourceGroup getResourceGroupById(resourceGroupId)
+
+Get the resource group with the specified resource group ID
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long resourceGroupId = 789L; // Long | ID of the resource group
+try {
+    ResourceGroup result = apiInstance.getResourceGroupById(resourceGroupId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getResourceGroupById");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **Long**| ID of the resource group |
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceGroups"></a>
+# **getResourceGroups**
+> List&lt;ResourceGroup&gt; getResourceGroups()
+
+Get a list of all the resource groups
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+try {
+    List<ResourceGroup> result = apiInstance.getResourceGroups();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getResourceGroups");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List&lt;ResourceGroup&gt;**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResources"></a>
+# **getResources**
+> List&lt;Resource&gt; getResources()
+
+A list of all known/registered resources, of all types
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+try {
+    List<Resource> result = apiInstance.getResources();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getResources");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourcesFromGroup"></a>
+# **getResourcesFromGroup**
+> List&lt;Resource&gt; getResourcesFromGroup(resourceGroupId)
+
+Get all resources from a resource group
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long resourceGroupId = 789L; // Long | ID of the resource group
+try {
+    List<Resource> result = apiInstance.getResourcesFromGroup(resourceGroupId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getResourcesFromGroup");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **Long**| ID of the resource group |
+
+### Return type
+
+[**List&lt;Resource&gt;**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="jsonarray"></a>
@@ -1811,7 +2634,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -2474,6 +3297,47 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="refreshJobStatus"></a>
+# **refreshJobStatus**
+> JobEntity refreshJobStatus(jobId)
+
+Refresh the remote job status. Can be used for monitoring.
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long jobId = 789L; // Long | Job ID
+try {
+    JobEntity result = apiInstance.refreshJobStatus(jobId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#refreshJobStatus");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **Long**| Job ID |
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="reimportModel"></a>
 # **reimportModel**
 > ModelEntity reimportModel(deploymentId, modelId, body)
@@ -2509,6 +3373,47 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelEntity**](ModelEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="runAJob"></a>
+# **runAJob**
+> JobEntity runAJob(jobId)
+
+Start running an (already created) job on the remote resource
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+Long jobId = 789L; // Long | Job ID
+try {
+    JobEntity result = apiInstance.runAJob(jobId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#runAJob");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **Long**| Job ID |
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
 
 ### Authorization
 
@@ -2568,13 +3473,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="transformarrayCsv"></a>
-# **transformarrayCsv**
-> Base64NDArrayBody transformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord)
+<a name="transformarray"></a>
+# **transformarray**
+> Base64NDArrayBody transformarray(deploymentName, versionName, transformName, batchRecord)
 
 Takes a batch input arrays and transforms it
-
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
 ```java
@@ -2585,12 +3488,12 @@ DefaultApi apiInstance = new DefaultApi();
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-BatchCSVRecord batchCSVRecord = new BatchCSVRecord(); // BatchCSVRecord | The input batch of record arrays
+Object batchRecord = null; // Object | The input batch of record arrays
 try {
-    Base64NDArrayBody result = apiInstance.transformarrayCsv(deploymentName, versionName, transformName, batchCSVRecord);
+    Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformarrayCsv");
+    System.err.println("Exception when calling DefaultApi#transformarray");
     e.printStackTrace();
 }
 ```
@@ -2602,56 +3505,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **batchCSVRecord** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional]
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="transformarrayImage"></a>
-# **transformarrayImage**
-> Base64NDArrayBody transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord)
-
-Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```java
-// Import classes:
-//import ai.skymind.skil.DefaultApi;
-
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-BatchImageRecord batchImageRecord = new BatchImageRecord(); // BatchImageRecord | The input batch of record arrays
-try {
-    Base64NDArrayBody result = apiInstance.transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformarrayImage");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
- **imageTransformName** | **String**| ID or name of the deployed image transform |
- **batchImageRecord** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays |
+ **batchRecord** | **Object**| The input batch of record arrays | [optional]
 
 ### Return type
 
@@ -2764,13 +3618,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="transformincrementalarrayCsv"></a>
-# **transformincrementalarrayCsv**
-> Base64NDArrayBody transformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord)
+<a name="transformincrementalarray"></a>
+# **transformincrementalarray**
+> Base64NDArrayBody transformincrementalarray(deploymentName, versionName, transformName, singleRecord)
 
-Same as /transformincremental but returns Base64NDArrayBody
-
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
 ```java
@@ -2781,12 +3633,12 @@ DefaultApi apiInstance = new DefaultApi();
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-SingleCSVRecord singleCSVRecord = new SingleCSVRecord(); // SingleCSVRecord | The input record array
+Object singleRecord = null; // Object | The input record array
 try {
-    Base64NDArrayBody result = apiInstance.transformincrementalarrayCsv(deploymentName, versionName, transformName, singleCSVRecord);
+    Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformincrementalarrayCsv");
+    System.err.println("Exception when calling DefaultApi#transformincrementalarray");
     e.printStackTrace();
 }
 ```
@@ -2798,56 +3650,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **singleCSVRecord** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional]
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="transformincrementalarrayImage"></a>
-# **transformincrementalarrayImage**
-> Base64NDArrayBody transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord)
-
-Takes SingleImageRecord to transform and returns Base64NDArrayBody
-
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```java
-// Import classes:
-//import ai.skymind.skil.DefaultApi;
-
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-SingleImageRecord singleImageRecord = new SingleImageRecord(); // SingleImageRecord | The input record array
-try {
-    Base64NDArrayBody result = apiInstance.transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformincrementalarrayImage");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
- **imageTransformName** | **String**| ID or name of the deployed image transform |
- **singleImageRecord** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array |
+ **singleRecord** | **Object**| The input record array | [optional]
 
 ### Return type
 
@@ -2913,11 +3716,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessGet"></a>
 # **transformprocessGet**
-> TransformProcess transformprocessGet(deploymentName, versionName, transformName)
+> Object transformprocessGet(deploymentName, versionName, transformName)
 
-Gets the JSON string of the deployed transform process
-
-Retrieves the JSON string of the deployed transform process 
+Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
 ```java
@@ -2929,7 +3730,7 @@ String deploymentName = "deploymentName_example"; // String | Name of the deploy
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
 try {
-    TransformProcess result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
+    Object result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#transformprocessGet");
@@ -2947,7 +3748,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransformProcess**](TransformProcess.md)
+**Object**
 
 ### Authorization
 
@@ -2960,11 +3761,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessPost"></a>
 # **transformprocessPost**
-> transformprocessPost(deploymentName, versionName, transformName, transformProcess)
+> Object transformprocessPost(deploymentName, versionName, transformName, transformProcess)
 
-Sets the deployed transform process through the provided JSON string
-
-Sets the transform process with the provided JSON string
+Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
 ```java
@@ -2975,9 +3774,10 @@ DefaultApi apiInstance = new DefaultApi();
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-TransformProcess transformProcess = new TransformProcess(); // TransformProcess | The transform process to set
+Object transformProcess = null; // Object | The transform process to set
 try {
-    apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+    Object result = apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#transformprocessPost");
     e.printStackTrace();
@@ -2991,11 +3791,11 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **transformProcess** | [**TransformProcess**](TransformProcess.md)| The transform process to set | [optional]
+ **transformProcess** | **Object**| The transform process to set | [optional]
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 

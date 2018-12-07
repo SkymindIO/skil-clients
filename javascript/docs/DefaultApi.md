@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**addCredentials**](DefaultApi.md#addCredentials) | **POST** /resources/credentials | Adds credentials
 [**addEvaluationResult**](DefaultApi.md#addEvaluationResult) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
 [**addExampleForBatch**](DefaultApi.md#addExampleForBatch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 [**addExampleToMinibatch**](DefaultApi.md#addExampleToMinibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
@@ -12,32 +13,51 @@ Method | HTTP request | Description
 [**addModelFeedback**](DefaultApi.md#addModelFeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**addModelHistory**](DefaultApi.md#addModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**addModelInstance**](DefaultApi.md#addModelInstance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+[**addResource**](DefaultApi.md#addResource) | **POST** /resources/add/resource | Adds a resource
+[**addResourceGroup**](DefaultApi.md#addResourceGroup) | **POST** /resources/add/group | Adds a resource group
+[**addResourceToGroup**](DefaultApi.md#addResourceToGroup) | **GET** /resources/add/resourcetogroup/{resourceGroupId}/{resourceId} | Adds a resource to a resource group
 [**aggregateModelResults**](DefaultApi.md#aggregateModelResults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**createJob**](DefaultApi.md#createJob) | **POST** /jobs/{jobIdOrType} | Create a job
 [**createModelHistory**](DefaultApi.md#createModelHistory) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
+[**deleteCredentialsById**](DefaultApi.md#deleteCredentialsById) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
 [**deleteExperiment**](DefaultApi.md#deleteExperiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
+[**deleteJobById**](DefaultApi.md#deleteJobById) | **DELETE** /jobs/{jobIdOrType} | Deletes a job given its ID
 [**deleteModel**](DefaultApi.md#deleteModel) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 [**deleteModelHistory**](DefaultApi.md#deleteModelHistory) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 [**deleteModelInstance**](DefaultApi.md#deleteModelInstance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
+[**deleteResourceById**](DefaultApi.md#deleteResourceById) | **DELETE** /resources/remove/resource/{resourceId} | Delete the resource with the specified resource ID
+[**deleteResourceFromGroup**](DefaultApi.md#deleteResourceFromGroup) | **GET** /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId} | Removes a resource from a resource group
+[**deleteResourceGroupById**](DefaultApi.md#deleteResourceGroupById) | **DELETE** /resources/remove/group/{resourceGroupId} | Delete the resource group with the specified resource group ID
 [**deployModel**](DefaultApi.md#deployModel) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**deploymentCreate**](DefaultApi.md#deploymentCreate) | **POST** /deployment | Create a new deployment group.
 [**deploymentDelete**](DefaultApi.md#deploymentDelete) | **DELETE** /deployment/{deploymentId} | Delete a deployment by id
 [**deploymentGet**](DefaultApi.md#deploymentGet) | **GET** /deployment/{deploymentId} | Get a deployment details by id
 [**deployments**](DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
 [**detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
+[**downloadJobOutputFile**](DefaultApi.md#downloadJobOutputFile) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+[**getAllJobs**](DefaultApi.md#getAllJobs) | **GET** /jobs | Get a list of all available jobs
 [**getBestModelAmongModelIds**](DefaultApi.md#getBestModelAmongModelIds) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+[**getCredentialsById**](DefaultApi.md#getCredentialsById) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
 [**getEvaluationForModelID**](DefaultApi.md#getEvaluationForModelID) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
 [**getExamplesForMinibatch**](DefaultApi.md#getExamplesForMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**getExperiment**](DefaultApi.md#getExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**getExperimentsForModelHistory**](DefaultApi.md#getExperimentsForModelHistory) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
+[**getJobById**](DefaultApi.md#getJobById) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**getMinibatch**](DefaultApi.md#getMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**getModelHistory**](DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**getModelInstance**](DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**getModelsForExperiment**](DefaultApi.md#getModelsForExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
-[**imagetransformprocessGet**](DefaultApi.md#imagetransformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-[**imagetransformprocessPost**](DefaultApi.md#imagetransformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
+[**getResourceById**](DefaultApi.md#getResourceById) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**getResourceBySubType**](DefaultApi.md#getResourceBySubType) | **GET** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
+[**getResourceByType**](DefaultApi.md#getResourceByType) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**getResourceDetailsById**](DefaultApi.md#getResourceDetailsById) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**getResourceGroupById**](DefaultApi.md#getResourceGroupById) | **GET** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
+[**getResourceGroups**](DefaultApi.md#getResourceGroups) | **GET** /resources/groups | Get a list of all the resource groups
+[**getResources**](DefaultApi.md#getResources) | **GET** /resources/resources | A list of all known/registered resources, of all types
+[**getResourcesFromGroup**](DefaultApi.md#getResourcesFromGroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -58,22 +78,73 @@ Method | HTTP request | Description
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**refreshJobStatus**](DefaultApi.md#refreshJobStatus) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
 [**reimportModel**](DefaultApi.md#reimportModel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**runAJob**](DefaultApi.md#runAJob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transformCsv**](DefaultApi.md#transformCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**transformarrayCsv**](DefaultApi.md#transformarrayCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-[**transformarrayImage**](DefaultApi.md#transformarrayImage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 [**transformimage**](DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 [**transformincrementalCsv**](DefaultApi.md#transformincrementalCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**transformincrementalarrayCsv**](DefaultApi.md#transformincrementalarrayCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**transformincrementalarrayImage**](DefaultApi.md#transformincrementalarrayImage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**transformincrementalarray**](DefaultApi.md#transformincrementalarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 [**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**transformprocessGet**](DefaultApi.md#transformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-[**transformprocessPost**](DefaultApi.md#transformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**transformprocessGet**](DefaultApi.md#transformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+[**transformprocessPost**](DefaultApi.md#transformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 [**updateBestModelForExperiment**](DefaultApi.md#updateBestModelForExperiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**updateExperiment**](DefaultApi.md#updateExperiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**updateModelHistory**](DefaultApi.md#updateModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
+
+<a name="addCredentials"></a>
+# **addCredentials**
+> ResourceCredentials addCredentials(addCredentialsRequest)
+
+Adds credentials
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var addCredentialsRequest = new SkilClient.AddCredentialsRequest(); // AddCredentialsRequest | Add credentials request object
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.addCredentials(addCredentialsRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addCredentialsRequest** | [**AddCredentialsRequest**](AddCredentialsRequest.md)| Add credentials request object | 
+
+### Return type
+
+[**ResourceCredentials**](ResourceCredentials.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="addEvaluationResult"></a>
 # **addEvaluationResult**
@@ -507,6 +578,162 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="addResource"></a>
+# **addResource**
+> Object addResource(addResourceRequest)
+
+Adds a resource
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var addResourceRequest = new SkilClient.AddResourceRequest(); // AddResourceRequest | The Add resource request object
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.addResource(addResourceRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addResourceRequest** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="addResourceGroup"></a>
+# **addResourceGroup**
+> ResourceGroup addResourceGroup(groupName)
+
+Adds a resource group
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var groupName = new SkilClient.null(); //  | Name of the resource group
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.addResourceGroup(groupName, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupName** | [****](.md)| Name of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain; charset=utf-8
+ - **Accept**: application/json
+
+<a name="addResourceToGroup"></a>
+# **addResourceToGroup**
+> addResourceToGroup(resourceGroupId, resourceId)
+
+Adds a resource to a resource group
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceGroupId = 789; // Number | ID of the resource group
+
+var resourceId = 789; // Number | ID of the resource
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.addResourceToGroup(resourceGroupId, resourceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **Number**| ID of the resource group | 
+ **resourceId** | **Number**| ID of the resource | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="aggregateModelResults"></a>
 # **aggregateModelResults**
 > EvaluationResultsEntity aggregateModelResults(modelHistoryServerId, aggregatePrediction)
@@ -742,6 +969,60 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+<a name="createJob"></a>
+# **createJob**
+> JobEntity createJob(jobIdOrType, createJobRequest)
+
+Create a job
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var jobIdOrType = "jobIdOrType_example"; // String | Job Type
+
+var createJobRequest = new SkilClient.CreateJobRequest(); // CreateJobRequest | Create job request object
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.createJob(jobIdOrType, createJobRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobIdOrType** | **String**| Job Type | 
+ **createJobRequest** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="createModelHistory"></a>
 # **createModelHistory**
 > ModelHistoryEntity createModelHistory(modelHistoryServerId, modelHistoryEntity)
@@ -796,6 +1077,57 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="deleteCredentialsById"></a>
+# **deleteCredentialsById**
+> deleteCredentialsById(credentialId)
+
+Delete credentials given an ID
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var credentialId = 789; // Number | Credentials ID
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.deleteCredentialsById(credentialId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentialId** | **Number**| Credentials ID | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="deleteExperiment"></a>
 # **deleteExperiment**
 > InlineResponse200 deleteExperiment(modelHistoryServerId, experimentID)
@@ -840,6 +1172,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="deleteJobById"></a>
+# **deleteJobById**
+> deleteJobById(jobIdOrType)
+
+Deletes a job given its ID
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var jobIdOrType = 789; // Number | Job ID
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.deleteJobById(jobIdOrType, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobIdOrType** | **Number**| Job ID | 
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 
@@ -1002,6 +1385,162 @@ Name | Type | Description  | Notes
 ### Return type
 
 null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="deleteResourceById"></a>
+# **deleteResourceById**
+> Resource deleteResourceById(resourceId)
+
+Delete the resource with the specified resource ID
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceId = 789; // Number | ID of the resource
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.deleteResourceById(resourceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **Number**| ID of the resource | 
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="deleteResourceFromGroup"></a>
+# **deleteResourceFromGroup**
+> deleteResourceFromGroup(resourceGroupId, resourceId)
+
+Removes a resource from a resource group
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceGroupId = 789; // Number | ID of the resource group
+
+var resourceId = 789; // Number | ID of the resource
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.deleteResourceFromGroup(resourceGroupId, resourceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **Number**| ID of the resource group | 
+ **resourceId** | **Number**| ID of the resource | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="deleteResourceGroupById"></a>
+# **deleteResourceGroupById**
+> ResourceGroup deleteResourceGroupById(resourceGroupId)
+
+Delete the resource group with the specified resource group ID
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceGroupId = 789; // Number | ID of the resource group
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.deleteResourceGroupById(resourceGroupId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **Number**| ID of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
 
 ### Authorization
 
@@ -1333,6 +1872,105 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+<a name="downloadJobOutputFile"></a>
+# **downloadJobOutputFile**
+> downloadJobOutputFile(jobId, downloadOutputFileRequest)
+
+Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var jobId = 789; // Number | Job ID
+
+var downloadOutputFileRequest = new SkilClient.DownloadOutputFileRequest(); // DownloadOutputFileRequest | Download output file request object
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.downloadJobOutputFile(jobId, downloadOutputFileRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **Number**| Job ID | 
+ **downloadOutputFileRequest** | [**DownloadOutputFileRequest**](DownloadOutputFileRequest.md)| Download output file request object | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getAllJobs"></a>
+# **getAllJobs**
+> [JobEntity] getAllJobs()
+
+Get a list of all available jobs
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getAllJobs(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[JobEntity]**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getBestModelAmongModelIds"></a>
 # **getBestModelAmongModelIds**
 > ModelInstanceEntity getBestModelAmongModelIds(modelHistoryServerId, bestModel)
@@ -1385,6 +2023,57 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getCredentialsById"></a>
+# **getCredentialsById**
+> ResourceCredentials getCredentialsById(credentialId)
+
+Get credentials given an ID
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var credentialId = 789; // Number | Credentials ID
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCredentialsById(credentialId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentialId** | **Number**| Credentials ID | 
+
+### Return type
+
+[**ResourceCredentials**](ResourceCredentials.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getEvaluationForModelID"></a>
@@ -1593,6 +2282,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExperimentEntity**](ExperimentEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getJobById"></a>
+# **getJobById**
+> JobEntity getJobById(jobIdOrType)
+
+Get a job by its ID
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var jobIdOrType = 789; // Number | Job ID
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getJobById(jobIdOrType, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobIdOrType** | **Number**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
 
 ### Authorization
 
@@ -1819,11 +2559,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="imagetransformprocessGet"></a>
-# **imagetransformprocessGet**
-> ImageTransformProcess imagetransformprocessGet(deploymentName, versionName, imageTransformName)
+<a name="getResourceById"></a>
+# **getResourceById**
+> Resource getResourceById(resourceId)
 
-Retrieves the image transform process JSON string
+Get the resource with the specified resource ID
 
 ### Example
 ```javascript
@@ -1838,11 +2578,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
+var resourceId = 789; // Number | ID of the resource
 
 
 var callback = function(error, data, response) {
@@ -1852,20 +2588,18 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.imagetransformprocessGet(deploymentName, versionName, imageTransformName, callback);
+apiInstance.getResourceById(resourceId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **String**| ID or name of the deployed image transform | 
+ **resourceId** | **Number**| ID of the resource | 
 
 ### Return type
 
-[**ImageTransformProcess**](ImageTransformProcess.md)
+[**Resource**](Resource.md)
 
 ### Authorization
 
@@ -1873,14 +2607,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="imagetransformprocessPost"></a>
-# **imagetransformprocessPost**
-> ImageTransformProcess imagetransformprocessPost(deploymentName, versionName, imageTransformName, body)
+<a name="getResourceBySubType"></a>
+# **getResourceBySubType**
+> [Resource] getResourceBySubType(resourceSubType)
 
-Sets the image transform process through the provided JSON string
+Get all the resources with the specified resource subtype
 
 ### Example
 ```javascript
@@ -1895,13 +2629,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-
-var body = new SkilClient.ImageTransformProcess(); // ImageTransformProcess | The image transform process JSON
+var resourceSubType = "resourceSubType_example"; // String | Subtype of the resource
 
 
 var callback = function(error, data, response) {
@@ -1911,21 +2639,18 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.imagetransformprocessPost(deploymentName, versionName, imageTransformName, body, callback);
+apiInstance.getResourceBySubType(resourceSubType, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **String**| ID or name of the deployed image transform | 
- **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
+ **resourceSubType** | **String**| Subtype of the resource | 
 
 ### Return type
 
-[**ImageTransformProcess**](ImageTransformProcess.md)
+[**[Resource]**](Resource.md)
 
 ### Authorization
 
@@ -1933,7 +2658,303 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceByType"></a>
+# **getResourceByType**
+> [Resource] getResourceByType(resourceType)
+
+Get all the resources with the specified resource type
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceType = "resourceType_example"; // String | Type of the resource
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getResourceByType(resourceType, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceType** | **String**| Type of the resource | 
+
+### Return type
+
+[**[Resource]**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceDetailsById"></a>
+# **getResourceDetailsById**
+> Object getResourceDetailsById(resourceId)
+
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceId = 789; // Number | ID of the resource
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getResourceDetailsById(resourceId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceId** | **Number**| ID of the resource | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceGroupById"></a>
+# **getResourceGroupById**
+> ResourceGroup getResourceGroupById(resourceGroupId)
+
+Get the resource group with the specified resource group ID
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceGroupId = 789; // Number | ID of the resource group
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getResourceGroupById(resourceGroupId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **Number**| ID of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourceGroups"></a>
+# **getResourceGroups**
+> [ResourceGroup] getResourceGroups()
+
+Get a list of all the resource groups
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getResourceGroups(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[ResourceGroup]**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResources"></a>
+# **getResources**
+> [Resource] getResources()
+
+A list of all known/registered resources, of all types
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getResources(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[Resource]**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getResourcesFromGroup"></a>
+# **getResourcesFromGroup**
+> [Resource] getResourcesFromGroup(resourceGroupId)
+
+Get all resources from a resource group
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var resourceGroupId = 789; // Number | ID of the resource group
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getResourcesFromGroup(resourceGroupId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resourceGroupId** | **Number**| ID of the resource group | 
+
+### Return type
+
+[**[Resource]**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="jsonarray"></a>
@@ -2229,13 +3250,6 @@ Post JSON credentials and obtain a JWT authorization token.
 ### Example
 ```javascript
 var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
 
 var apiInstance = new SkilClient.DefaultApi();
 
@@ -2264,7 +3278,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -3109,6 +4123,57 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="refreshJobStatus"></a>
+# **refreshJobStatus**
+> JobEntity refreshJobStatus(jobId)
+
+Refresh the remote job status. Can be used for monitoring.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var jobId = 789; // Number | Job ID
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.refreshJobStatus(jobId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **Number**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="reimportModel"></a>
 # **reimportModel**
 > ModelEntity reimportModel(deploymentId, modelId, body)
@@ -3156,6 +4221,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelEntity**](ModelEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="runAJob"></a>
+# **runAJob**
+> JobEntity runAJob(jobId)
+
+Start running an (already created) job on the remote resource
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var jobId = 789; // Number | Job ID
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.runAJob(jobId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **Number**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
 
 ### Authorization
 
@@ -3229,13 +4345,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="transformarrayCsv"></a>
-# **transformarrayCsv**
-> Base64NDArrayBody transformarrayCsv(deploymentName, versionName, transformName, opts)
+<a name="transformarray"></a>
+# **transformarray**
+> Base64NDArrayBody transformarray(deploymentName, versionName, transformName, opts)
 
 Takes a batch input arrays and transforms it
-
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
 ```javascript
@@ -3257,7 +4371,7 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'batchCSVRecord': new SkilClient.BatchCSVRecord() // BatchCSVRecord | The input batch of record arrays
+  'batchRecord': null // Object | The input batch of record arrays
 };
 
 var callback = function(error, data, response) {
@@ -3267,7 +4381,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.transformarrayCsv(deploymentName, versionName, transformName, opts, callback);
+apiInstance.transformarray(deploymentName, versionName, transformName, opts, callback);
 ```
 
 ### Parameters
@@ -3277,69 +4391,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **batchCSVRecord** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="transformarrayImage"></a>
-# **transformarrayImage**
-> Base64NDArrayBody transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord)
-
-Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-
-var batchImageRecord = new SkilClient.BatchImageRecord(); // BatchImageRecord | The input batch of record arrays
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.transformarrayImage(deploymentName, versionName, imageTransformName, batchImageRecord, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **String**| ID or name of the deployed image transform | 
- **batchImageRecord** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
+ **batchRecord** | **Object**| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -3479,13 +4531,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="transformincrementalarrayCsv"></a>
-# **transformincrementalarrayCsv**
-> Base64NDArrayBody transformincrementalarrayCsv(deploymentName, versionName, transformName, opts)
+<a name="transformincrementalarray"></a>
+# **transformincrementalarray**
+> Base64NDArrayBody transformincrementalarray(deploymentName, versionName, transformName, opts)
 
-Same as /transformincremental but returns Base64NDArrayBody
-
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
 ```javascript
@@ -3507,7 +4557,7 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'singleCSVRecord': new SkilClient.SingleCSVRecord() // SingleCSVRecord | The input record array
+  'singleRecord': null // Object | The input record array
 };
 
 var callback = function(error, data, response) {
@@ -3517,7 +4567,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.transformincrementalarrayCsv(deploymentName, versionName, transformName, opts, callback);
+apiInstance.transformincrementalarray(deploymentName, versionName, transformName, opts, callback);
 ```
 
 ### Parameters
@@ -3527,69 +4577,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **singleCSVRecord** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
-
-### Return type
-
-[**Base64NDArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="transformincrementalarrayImage"></a>
-# **transformincrementalarrayImage**
-> Base64NDArrayBody transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord)
-
-Takes SingleImageRecord to transform and returns Base64NDArrayBody
-
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-
-var singleImageRecord = new SkilClient.SingleImageRecord(); // SingleImageRecord | The input record array
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.transformincrementalarrayImage(deploymentName, versionName, imageTransformName, singleImageRecord, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **imageTransformName** | **String**| ID or name of the deployed image transform | 
- **singleImageRecord** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
+ **singleRecord** | **Object**| The input record array | [optional] 
 
 ### Return type
 
@@ -3668,11 +4656,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessGet"></a>
 # **transformprocessGet**
-> TransformProcess transformprocessGet(deploymentName, versionName, transformName)
+> Object transformprocessGet(deploymentName, versionName, transformName)
 
-Gets the JSON string of the deployed transform process
-
-Retrieves the JSON string of the deployed transform process 
+Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
 ```javascript
@@ -3714,7 +4700,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransformProcess**](TransformProcess.md)
+**Object**
 
 ### Authorization
 
@@ -3727,11 +4713,9 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessPost"></a>
 # **transformprocessPost**
-> transformprocessPost(deploymentName, versionName, transformName, opts)
+> Object transformprocessPost(deploymentName, versionName, transformName, opts)
 
-Sets the deployed transform process through the provided JSON string
-
-Sets the transform process with the provided JSON string
+Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
 ```javascript
@@ -3753,14 +4737,14 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'transformProcess': new SkilClient.TransformProcess() // TransformProcess | The transform process to set
+  'transformProcess': null // Object | The transform process to set
 };
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.transformprocessPost(deploymentName, versionName, transformName, opts, callback);
@@ -3773,11 +4757,11 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **transformProcess** | [**TransformProcess**](TransformProcess.md)| The transform process to set | [optional] 
+ **transformProcess** | **Object**| The transform process to set | [optional] 
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 

@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AddCredentials**](DefaultApi.md#AddCredentials) | **Post** /resources/credentials | Adds credentials
 [**AddEvaluationResult**](DefaultApi.md#AddEvaluationResult) | **Post** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
 [**AddExampleForBatch**](DefaultApi.md#AddExampleForBatch) | **Post** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 [**AddExampleToMinibatch**](DefaultApi.md#AddExampleToMinibatch) | **Post** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
@@ -12,32 +13,51 @@ Method | HTTP request | Description
 [**AddModelFeedback**](DefaultApi.md#AddModelFeedback) | **Post** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**AddModelHistory**](DefaultApi.md#AddModelHistory) | **Post** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
 [**AddModelInstance**](DefaultApi.md#AddModelInstance) | **Post** /rpc/{modelHistoryServerId}/model | Adds a model
+[**AddResource**](DefaultApi.md#AddResource) | **Post** /resources/add/resource | Adds a resource
+[**AddResourceGroup**](DefaultApi.md#AddResourceGroup) | **Post** /resources/add/group | Adds a resource group
+[**AddResourceToGroup**](DefaultApi.md#AddResourceToGroup) | **Get** /resources/add/resourcetogroup/{resourceGroupId}/{resourceId} | Adds a resource to a resource group
 [**AggregateModelResults**](DefaultApi.md#AggregateModelResults) | **Post** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
 [**Classify**](DefaultApi.md#Classify) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**Classifyarray**](DefaultApi.md#Classifyarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**Classifyimage**](DefaultApi.md#Classifyimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**CreateJob**](DefaultApi.md#CreateJob) | **Post** /jobs/{jobIdOrType} | Create a job
 [**CreateModelHistory**](DefaultApi.md#CreateModelHistory) | **Post** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
+[**DeleteCredentialsById**](DefaultApi.md#DeleteCredentialsById) | **Delete** /resources/credentials/{credentialId} | Delete credentials given an ID
 [**DeleteExperiment**](DefaultApi.md#DeleteExperiment) | **Delete** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
+[**DeleteJobById**](DefaultApi.md#DeleteJobById) | **Delete** /jobs/{jobIdOrType} | Deletes a job given its ID
 [**DeleteModel**](DefaultApi.md#DeleteModel) | **Delete** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
 [**DeleteModelHistory**](DefaultApi.md#DeleteModelHistory) | **Delete** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
 [**DeleteModelInstance**](DefaultApi.md#DeleteModelInstance) | **Delete** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
+[**DeleteResourceById**](DefaultApi.md#DeleteResourceById) | **Delete** /resources/remove/resource/{resourceId} | Delete the resource with the specified resource ID
+[**DeleteResourceFromGroup**](DefaultApi.md#DeleteResourceFromGroup) | **Get** /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId} | Removes a resource from a resource group
+[**DeleteResourceGroupById**](DefaultApi.md#DeleteResourceGroupById) | **Delete** /resources/remove/group/{resourceGroupId} | Delete the resource group with the specified resource group ID
 [**DeployModel**](DefaultApi.md#DeployModel) | **Post** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
 [**DeploymentCreate**](DefaultApi.md#DeploymentCreate) | **Post** /deployment | Create a new deployment group.
 [**DeploymentDelete**](DefaultApi.md#DeploymentDelete) | **Delete** /deployment/{deploymentId} | Delete a deployment by id
 [**DeploymentGet**](DefaultApi.md#DeploymentGet) | **Get** /deployment/{deploymentId} | Get a deployment details by id
 [**Deployments**](DefaultApi.md#Deployments) | **Get** /deployments | Get a list of deployments
 [**Detectobjects**](DefaultApi.md#Detectobjects) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
+[**DownloadJobOutputFile**](DefaultApi.md#DownloadJobOutputFile) | **Post** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+[**GetAllJobs**](DefaultApi.md#GetAllJobs) | **Get** /jobs | Get a list of all available jobs
 [**GetBestModelAmongModelIds**](DefaultApi.md#GetBestModelAmongModelIds) | **Post** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+[**GetCredentialsById**](DefaultApi.md#GetCredentialsById) | **Get** /resources/credentials/{credentialId} | Get credentials given an ID
 [**GetEvaluationForModelID**](DefaultApi.md#GetEvaluationForModelID) | **Get** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
 [**GetExamplesForMinibatch**](DefaultApi.md#GetExamplesForMinibatch) | **Get** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**GetExperiment**](DefaultApi.md#GetExperiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**GetExperimentsForModelHistory**](DefaultApi.md#GetExperimentsForModelHistory) | **Get** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
+[**GetJobById**](DefaultApi.md#GetJobById) | **Get** /jobs/{jobIdOrType} | Get a job by its ID
 [**GetMinibatch**](DefaultApi.md#GetMinibatch) | **Get** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**GetModelHistory**](DefaultApi.md#GetModelHistory) | **Get** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**GetModelInstance**](DefaultApi.md#GetModelInstance) | **Get** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**GetModelsForExperiment**](DefaultApi.md#GetModelsForExperiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
-[**ImagetransformprocessGet**](DefaultApi.md#ImagetransformprocessGet) | **Get** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Retrieves the image transform process JSON string
-[**ImagetransformprocessPost**](DefaultApi.md#ImagetransformprocessPost) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess | Sets the image transform process through the provided JSON string
+[**GetResourceById**](DefaultApi.md#GetResourceById) | **Get** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+[**GetResourceBySubType**](DefaultApi.md#GetResourceBySubType) | **Get** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
+[**GetResourceByType**](DefaultApi.md#GetResourceByType) | **Get** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+[**GetResourceDetailsById**](DefaultApi.md#GetResourceDetailsById) | **Get** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+[**GetResourceGroupById**](DefaultApi.md#GetResourceGroupById) | **Get** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
+[**GetResourceGroups**](DefaultApi.md#GetResourceGroups) | **Get** /resources/groups | Get a list of all the resource groups
+[**GetResources**](DefaultApi.md#GetResources) | **Get** /resources/resources | A list of all known/registered resources, of all types
+[**GetResourcesFromGroup**](DefaultApi.md#GetResourcesFromGroup) | **Get** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
 [**Jsonarray**](DefaultApi.md#Jsonarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**Knn**](DefaultApi.md#Knn) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**Knnnew**](DefaultApi.md#Knnnew) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -58,22 +78,48 @@ Method | HTTP request | Description
 [**Predictimage**](DefaultApi.md#Predictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**Predictwithpreprocess**](DefaultApi.md#Predictwithpreprocess) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**Predictwithpreprocessjson**](DefaultApi.md#Predictwithpreprocessjson) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**RefreshJobStatus**](DefaultApi.md#RefreshJobStatus) | **Get** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
 [**ReimportModel**](DefaultApi.md#ReimportModel) | **Post** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**RunAJob**](DefaultApi.md#RunAJob) | **Post** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**TransformCsv**](DefaultApi.md#TransformCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-[**TransformarrayCsv**](DefaultApi.md#TransformarrayCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-[**TransformarrayImage**](DefaultApi.md#TransformarrayImage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray | Takes a batch of images uri and transforms it and returns Base64NDArrayBody
+[**Transformarray**](DefaultApi.md#Transformarray) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
 [**Transformimage**](DefaultApi.md#Transformimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
 [**TransformincrementalCsv**](DefaultApi.md#TransformincrementalCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-[**TransformincrementalarrayCsv**](DefaultApi.md#TransformincrementalarrayCsv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody
-[**TransformincrementalarrayImage**](DefaultApi.md#TransformincrementalarrayImage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray | Takes SingleImageRecord to transform and returns Base64NDArrayBody
+[**Transformincrementalarray**](DefaultApi.md#Transformincrementalarray) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
 [**Transformincrementalimage**](DefaultApi.md#Transformincrementalimage) | **Post** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-[**TransformprocessGet**](DefaultApi.md#TransformprocessGet) | **Get** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process
-[**TransformprocessPost**](DefaultApi.md#TransformprocessPost) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed transform process through the provided JSON string
+[**TransformprocessGet**](DefaultApi.md#TransformprocessGet) | **Get** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+[**TransformprocessPost**](DefaultApi.md#TransformprocessPost) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
 [**UpdateBestModelForExperiment**](DefaultApi.md#UpdateBestModelForExperiment) | **Post** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**UpdateExperiment**](DefaultApi.md#UpdateExperiment) | **Put** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**UpdateModelHistory**](DefaultApi.md#UpdateModelHistory) | **Post** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**Upload**](DefaultApi.md#Upload) | **Post** /api/upload/model | Upload a model file to SKIL for import.
 
+
+# **AddCredentials**
+> ResourceCredentials AddCredentials(ctx, addCredentialsRequest)
+Adds credentials
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **addCredentialsRequest** | [**AddCredentialsRequest**](AddCredentialsRequest.md)| Add credentials request object | 
+
+### Return type
+
+[**ResourceCredentials**](ResourceCredentials.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AddEvaluationResult**
 > EvaluationResultsEntity AddEvaluationResult(ctx, modelHistoryServerId, evaluationResultsEntity)
@@ -116,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AddExampleRequest**](addExampleRequest.md)
+[**AddExampleRequest**](AddExampleRequest.md)
 
 ### Authorization
 
@@ -291,6 +337,85 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **AddResource**
+> interface{} AddResource(ctx, addResourceRequest)
+Adds a resource
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **addResourceRequest** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
+
+### Return type
+
+[**interface{}**](interface{}.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AddResourceGroup**
+> ResourceGroup AddResourceGroup(ctx, groupName)
+Adds a resource group
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **groupName** | [****](.md)| Name of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AddResourceToGroup**
+> AddResourceToGroup(ctx, resourceGroupId, resourceId)
+Adds a resource to a resource group
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceGroupId** | **int64**| ID of the resource group | 
+  **resourceId** | **int64**| ID of the resource | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **AggregateModelResults**
 > EvaluationResultsEntity AggregateModelResults(ctx, modelHistoryServerId, aggregatePrediction)
 Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -415,6 +540,33 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **CreateJob**
+> JobEntity CreateJob(ctx, jobIdOrType, createJobRequest)
+Create a job
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **jobIdOrType** | **string**| Job Type | 
+  **createJobRequest** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **CreateModelHistory**
 > ModelHistoryEntity CreateModelHistory(ctx, modelHistoryServerId, modelHistoryEntity)
 Creates model History
@@ -442,6 +594,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **DeleteCredentialsById**
+> DeleteCredentialsById(ctx, credentialId)
+Delete credentials given an ID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **credentialId** | **int64**| Credentials ID | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **DeleteExperiment**
 > InlineResponse200 DeleteExperiment(ctx, modelHistoryServerId, experimentID)
 Deletes an experiment, given an experiment entity
@@ -457,6 +635,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InlineResponse200**](inline_response_200.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DeleteJobById**
+> DeleteJobById(ctx, jobIdOrType)
+Deletes a job given its ID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **jobIdOrType** | **int64**| Job ID | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 
@@ -538,6 +742,85 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DeleteResourceById**
+> Resource DeleteResourceById(ctx, resourceId)
+Delete the resource with the specified resource ID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceId** | **int64**| ID of the resource | 
+
+### Return type
+
+[**Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DeleteResourceFromGroup**
+> DeleteResourceFromGroup(ctx, resourceGroupId, resourceId)
+Removes a resource from a resource group
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceGroupId** | **int64**| ID of the resource group | 
+  **resourceId** | **int64**| ID of the resource | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DeleteResourceGroupById**
+> ResourceGroup DeleteResourceGroupById(ctx, resourceGroupId)
+Delete the resource group with the specified resource group ID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceGroupId** | **int64**| ID of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
 
 ### Authorization
 
@@ -709,6 +992,55 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **DownloadJobOutputFile**
+> DownloadJobOutputFile(ctx, jobId, downloadOutputFileRequest)
+Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **jobId** | **int64**| Job ID | 
+  **downloadOutputFileRequest** | [**DownloadOutputFileRequest**](DownloadOutputFileRequest.md)| Download output file request object | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetAllJobs**
+> []JobEntity GetAllJobs(ctx, )
+Get a list of all available jobs
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[]JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **GetBestModelAmongModelIds**
 > ModelInstanceEntity GetBestModelAmongModelIds(ctx, modelHistoryServerId, bestModel)
 Gets the best model among the given model instance IDs, based on the evaluation type and column metric
@@ -732,6 +1064,32 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetCredentialsById**
+> ResourceCredentials GetCredentialsById(ctx, credentialId)
+Get credentials given an ID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **credentialId** | **int64**| Credentials ID | 
+
+### Return type
+
+[**ResourceCredentials**](ResourceCredentials.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -832,6 +1190,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExperimentEntity**](ExperimentEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetJobById**
+> JobEntity GetJobById(ctx, jobIdOrType)
+Get a job by its ID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **jobIdOrType** | **int64**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
 
 ### Authorization
 
@@ -952,22 +1336,20 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ImagetransformprocessGet**
-> ImageTransformProcess ImagetransformprocessGet(ctx, deploymentName, versionName, imageTransformName)
-Retrieves the image transform process JSON string
+# **GetResourceById**
+> Resource GetResourceById(ctx, resourceId)
+Get the resource with the specified resource ID
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **imageTransformName** | **string**| ID or name of the deployed image transform | 
+  **resourceId** | **int64**| ID of the resource | 
 
 ### Return type
 
-[**ImageTransformProcess**](ImageTransformProcess.md)
+[**Resource**](Resource.md)
 
 ### Authorization
 
@@ -975,28 +1357,25 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ImagetransformprocessPost**
-> ImageTransformProcess ImagetransformprocessPost(ctx, deploymentName, versionName, imageTransformName, body)
-Sets the image transform process through the provided JSON string
+# **GetResourceBySubType**
+> []Resource GetResourceBySubType(ctx, resourceSubType)
+Get all the resources with the specified resource subtype
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **imageTransformName** | **string**| ID or name of the deployed image transform | 
-  **body** | [**ImageTransformProcess**](ImageTransformProcess.md)| The image transform process JSON | 
+  **resourceSubType** | **string**| Subtype of the resource | 
 
 ### Return type
 
-[**ImageTransformProcess**](ImageTransformProcess.md)
+[**[]Resource**](Resource.md)
 
 ### Authorization
 
@@ -1004,7 +1383,157 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetResourceByType**
+> []Resource GetResourceByType(ctx, resourceType)
+Get all the resources with the specified resource type
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceType** | **string**| Type of the resource | 
+
+### Return type
+
+[**[]Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetResourceDetailsById**
+> interface{} GetResourceDetailsById(ctx, resourceId)
+Get the resource details with the specified resource ID
+
+Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceId** | **int64**| ID of the resource | 
+
+### Return type
+
+[**interface{}**](interface{}.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetResourceGroupById**
+> ResourceGroup GetResourceGroupById(ctx, resourceGroupId)
+Get the resource group with the specified resource group ID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceGroupId** | **int64**| ID of the resource group | 
+
+### Return type
+
+[**ResourceGroup**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetResourceGroups**
+> []ResourceGroup GetResourceGroups(ctx, )
+Get a list of all the resource groups
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[]ResourceGroup**](ResourceGroup.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetResources**
+> []Resource GetResources(ctx, )
+A list of all known/registered resources, of all types
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[]Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetResourcesFromGroup**
+> []Resource GetResourcesFromGroup(ctx, resourceGroupId)
+Get all resources from a resource group
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **resourceGroupId** | **int64**| ID of the resource group | 
+
+### Return type
+
+[**[]Resource**](Resource.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1165,7 +1694,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+No authorization required
 
 ### HTTP request headers
 
@@ -1611,6 +2140,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **RefreshJobStatus**
+> JobEntity RefreshJobStatus(ctx, jobId)
+Refresh the remote job status. Can be used for monitoring.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **jobId** | **int64**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **ReimportModel**
 > ModelEntity ReimportModel(ctx, deploymentId, modelId, body)
 Reimport a model to a previous deployed model in a deployment
@@ -1627,6 +2182,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelEntity**](ModelEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **RunAJob**
+> JobEntity RunAJob(ctx, jobId)
+Start running an (already created) job on the remote resource
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **jobId** | **int64**| Job ID | 
+
+### Return type
+
+[**JobEntity**](JobEntity.md)
 
 ### Authorization
 
@@ -1680,11 +2261,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **TransformarrayCsv**
-> Base64NdArrayBody TransformarrayCsv(ctx, deploymentName, versionName, transformName, optional)
+# **Transformarray**
+> Base64NdArrayBody Transformarray(ctx, deploymentName, versionName, transformName, optional)
 Takes a batch input arrays and transforms it
-
-Takes a batch of SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Required Parameters
 
@@ -1694,48 +2273,17 @@ Name | Type | Description  | Notes
   **deploymentName** | **string**| Name of the deployment group | 
   **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transformName** | **string**| ID or name of the deployed transform | 
- **optional** | ***TransformarrayCsvOpts** | optional parameters | nil if no parameters
+ **optional** | ***TransformarrayOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a TransformarrayCsvOpts struct
+Optional parameters are passed through a pointer to a TransformarrayOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
 
- **batchCSVRecord** | [**optional.Interface of BatchCsvRecord**](BatchCsvRecord.md)| The input batch of record arrays | 
-
-### Return type
-
-[**Base64NdArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **TransformarrayImage**
-> Base64NdArrayBody TransformarrayImage(ctx, deploymentName, versionName, imageTransformName, batchImageRecord)
-Takes a batch of images uri and transforms it and returns Base64NDArrayBody
-
-Takes a batch of SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **imageTransformName** | **string**| ID or name of the deployed image transform | 
-  **batchImageRecord** | [**BatchImageRecord**](BatchImageRecord.md)| The input batch of record arrays | 
+ **batchRecord** | [**optional.Interface of interface{}**](interface{}.md)| The input batch of record arrays | 
 
 ### Return type
 
@@ -1824,11 +2372,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **TransformincrementalarrayCsv**
-> Base64NdArrayBody TransformincrementalarrayCsv(ctx, deploymentName, versionName, transformName, optional)
-Same as /transformincremental but returns Base64NDArrayBody
-
-Takes a SingleCSVRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
+# **Transformincrementalarray**
+> Base64NdArrayBody Transformincrementalarray(ctx, deploymentName, versionName, transformName, optional)
+Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Required Parameters
 
@@ -1838,48 +2384,17 @@ Name | Type | Description  | Notes
   **deploymentName** | **string**| Name of the deployment group | 
   **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transformName** | **string**| ID or name of the deployed transform | 
- **optional** | ***TransformincrementalarrayCsvOpts** | optional parameters | nil if no parameters
+ **optional** | ***TransformincrementalarrayOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a TransformincrementalarrayCsvOpts struct
+Optional parameters are passed through a pointer to a TransformincrementalarrayOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
 
- **singleCSVRecord** | [**optional.Interface of SingleCsvRecord**](SingleCsvRecord.md)| The input record array | 
-
-### Return type
-
-[**Base64NdArrayBody**](Base64NDArrayBody.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **TransformincrementalarrayImage**
-> Base64NdArrayBody TransformincrementalarrayImage(ctx, deploymentName, versionName, imageTransformName, singleImageRecord)
-Takes SingleImageRecord to transform and returns Base64NDArrayBody
-
-Takes a SingleImageRecord object and transforms it into the desired format and returns it in the form of Base64NDArrayBody
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **imageTransformName** | **string**| ID or name of the deployed image transform | 
-  **singleImageRecord** | [**SingleImageRecord**](SingleImageRecord.md)| The input record array | 
+ **singleRecord** | [**optional.Interface of interface{}**](interface{}.md)| The input record array | 
 
 ### Return type
 
@@ -1928,10 +2443,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformprocessGet**
-> TransformProcess TransformprocessGet(ctx, deploymentName, versionName, transformName)
-Gets the JSON string of the deployed transform process
-
-Retrieves the JSON string of the deployed transform process 
+> interface{} TransformprocessGet(ctx, deploymentName, versionName, transformName)
+Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Required Parameters
 
@@ -1944,7 +2457,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransformProcess**](TransformProcess.md)
+[**interface{}**](interface{}.md)
 
 ### Authorization
 
@@ -1958,10 +2471,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformprocessPost**
-> TransformprocessPost(ctx, deploymentName, versionName, transformName, optional)
-Sets the deployed transform process through the provided JSON string
-
-Sets the transform process with the provided JSON string
+> interface{} TransformprocessPost(ctx, deploymentName, versionName, transformName, optional)
+Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Required Parameters
 
@@ -1981,11 +2492,11 @@ Name | Type | Description  | Notes
 
 
 
- **transformProcess** | [**optional.Interface of TransformProcess**](TransformProcess.md)| The transform process to set | 
+ **transformProcess** | [**optional.Interface of interface{}**](interface{}.md)| The transform process to set | 
 
 ### Return type
 
- (empty response body)
+[**interface{}**](interface{}.md)
 
 ### Authorization
 

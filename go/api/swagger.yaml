@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "Endpoints API for different services in SKIL"
-  version: "1.1.0-beta"
+  version: "1.2.0-beta"
   title: "Endpoints"
 host: "localhost:9008"
 schemes:
@@ -33,6 +33,7 @@ paths:
             $ref: "#/definitions/Token"
         401:
           description: "Invalid credentials"
+      security: []
   /api/upload/model:
     post:
       summary: "Upload a model file to SKIL for import."
@@ -55,8 +56,7 @@ paths:
             $ref: "#/definitions/FileUploadList"
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess:
     get:
-      summary: "Gets the JSON string of the deployed transform process"
-      description: "Retrieves the JSON string of the deployed transform process\n"
+      summary: "Gets the JSON string of the deployed transform process (CSV or Image)"
       operationId: "transformprocess_get"
       produces:
       - "application/json"
@@ -84,14 +84,15 @@ paths:
         200:
           description: "the deployed transform process"
           schema:
-            $ref: "#/definitions/TransformProcess"
+            type: "object"
+            properties: {}
         400:
           description: "the transform process is probably null"
         500:
           description: "internal server error"
     post:
-      summary: "Sets the deployed transform process through the provided JSON string"
-      description: "Sets the transform process with the provided JSON string"
+      summary: "Sets the deployed (CSV or Image) transform process through the provided\
+        \ JSON string"
       operationId: "transformprocess_post"
       consumes:
       - "application/json"
@@ -122,11 +123,14 @@ paths:
         description: "The transform process to set"
         required: false
         schema:
-          $ref: "#/definitions/TransformProcess"
+          type: "object"
         x-exportParamName: "TransformProcess"
       responses:
         200:
           description: "transform process set successfully"
+          schema:
+            type: "object"
+            properties: {}
         500:
           description: "internal server error"
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental:
@@ -220,10 +224,8 @@ paths:
           description: "internal server error during transforming the array"
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray:
     post:
-      summary: "Same as /transformincremental but returns Base64NDArrayBody"
-      description: "Takes a SingleCSVRecord object and transforms it into the desired\
-        \ format and returns it in the form of Base64NDArrayBody"
-      operationId: "transformincrementalarray_csv"
+      summary: "Same as /transformincremental but returns Base64NDArrayBody."
+      operationId: "transformincrementalarray"
       consumes:
       - "application/json"
       produces:
@@ -249,12 +251,12 @@ paths:
         type: "string"
         x-exportParamName: "TransformName"
       - in: "body"
-        name: "SingleCSVRecord"
+        name: "SingleRecord"
         description: "The input record array"
         required: false
         schema:
-          $ref: "#/definitions/SingleCSVRecord"
-        x-exportParamName: "SingleCSVRecord"
+          type: "object"
+        x-exportParamName: "SingleRecord"
       responses:
         200:
           description: "array transformed and returned successfully"
@@ -265,9 +267,7 @@ paths:
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray:
     post:
       summary: "Takes a batch input arrays and transforms it"
-      description: "Takes a batch of SingleCSVRecord object and transforms it into\
-        \ the desired format and returns it in the form of Base64NDArrayBody"
-      operationId: "transformarray_csv"
+      operationId: "transformarray"
       consumes:
       - "application/json"
       produces:
@@ -293,128 +293,12 @@ paths:
         type: "string"
         x-exportParamName: "TransformName"
       - in: "body"
-        name: "BatchCSVRecord"
+        name: "BatchRecord"
         description: "The input batch of record arrays"
         required: false
         schema:
-          $ref: "#/definitions/BatchCSVRecord"
-        x-exportParamName: "BatchCSVRecord"
-      responses:
-        200:
-          description: "array transformed and returned successfully"
-          schema:
-            $ref: "#/definitions/Base64NDArrayBody"
-        500:
-          description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformprocess:
-    get:
-      summary: "Retrieves the image transform process JSON string"
-      operationId: "imagetransformprocess_get"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "deploymentName"
-        in: "path"
-        description: "Name of the deployment group"
-        required: true
-        type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "versionName"
-        in: "path"
-        description: "Version name of the endpoint. The default value is \"default\""
-        required: false
-        type: "string"
-        default: "default"
-        x-exportParamName: "VersionName"
-      - name: "imageTransformName"
-        in: "path"
-        description: "ID or name of the deployed image transform"
-        required: true
-        type: "string"
-        x-exportParamName: "ImageTransformName"
-      responses:
-        200:
-          description: "Image transform process JSON successfully retrieved"
-          schema:
-            $ref: "#/definitions/ImageTransformProcess"
-    post:
-      summary: "Sets the image transform process through the provided JSON string"
-      operationId: "imagetransformprocess_post"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "deploymentName"
-        in: "path"
-        description: "Name of the deployment group"
-        required: true
-        type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "versionName"
-        in: "path"
-        description: "Version name of the endpoint. The default value is \"default\""
-        required: false
-        type: "string"
-        default: "default"
-        x-exportParamName: "VersionName"
-      - name: "imageTransformName"
-        in: "path"
-        description: "ID or name of the deployed image transform"
-        required: true
-        type: "string"
-        x-exportParamName: "ImageTransformName"
-      - in: "body"
-        name: "body"
-        description: "The image transform process JSON"
-        required: true
-        schema:
-          $ref: "#/definitions/ImageTransformProcess"
-        x-exportParamName: "Body"
-      responses:
-        200:
-          description: "Image transform process JSON successfully set"
-          schema:
-            $ref: "#/definitions/ImageTransformProcess"
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalarray:
-    post:
-      summary: "Takes SingleImageRecord to transform and returns Base64NDArrayBody"
-      description: "Takes a SingleImageRecord object and transforms it into the desired\
-        \ format and returns it in the form of Base64NDArrayBody"
-      operationId: "transformincrementalarray_image"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "deploymentName"
-        in: "path"
-        description: "Name of the deployment group"
-        required: true
-        type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "versionName"
-        in: "path"
-        description: "Version name of the endpoint. The default value is \"default\""
-        required: false
-        type: "string"
-        default: "default"
-        x-exportParamName: "VersionName"
-      - name: "imageTransformName"
-        in: "path"
-        description: "ID or name of the deployed image transform"
-        required: true
-        type: "string"
-        x-exportParamName: "ImageTransformName"
-      - in: "body"
-        name: "SingleImageRecord"
-        description: "The input record array"
-        required: true
-        schema:
-          $ref: "#/definitions/SingleImageRecord"
-        x-exportParamName: "SingleImageRecord"
+          type: "object"
+        x-exportParamName: "BatchRecord"
       responses:
         200:
           description: "array transformed and returned successfully"
@@ -465,50 +349,6 @@ paths:
             $ref: "#/definitions/Base64NDArrayBody"
         400:
           description: "No uploaded file found or the file couldn't be loaded"
-        500:
-          description: "internal server error during transforming the array"
-  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformarray:
-    post:
-      summary: "Takes a batch of images uri and transforms it and returns Base64NDArrayBody"
-      description: "Takes a batch of SingleImageRecord object and transforms it into\
-        \ the desired format and returns it in the form of Base64NDArrayBody"
-      operationId: "transformarray_image"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "deploymentName"
-        in: "path"
-        description: "Name of the deployment group"
-        required: true
-        type: "string"
-        x-exportParamName: "DeploymentName"
-      - name: "versionName"
-        in: "path"
-        description: "Version name of the endpoint. The default value is \"default\""
-        required: false
-        type: "string"
-        default: "default"
-        x-exportParamName: "VersionName"
-      - name: "imageTransformName"
-        in: "path"
-        description: "ID or name of the deployed image transform"
-        required: true
-        type: "string"
-        x-exportParamName: "ImageTransformName"
-      - in: "body"
-        name: "BatchImageRecord"
-        description: "The input batch of record arrays"
-        required: true
-        schema:
-          $ref: "#/definitions/BatchImageRecord"
-        x-exportParamName: "BatchImageRecord"
-      responses:
-        200:
-          description: "array transformed and returned successfully"
-          schema:
-            $ref: "#/definitions/Base64NDArrayBody"
         500:
           description: "internal server error during transforming the array"
   /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage:
@@ -2357,7 +2197,7 @@ paths:
         200:
           description: "The add example request"
           schema:
-            $ref: "#/definitions/addExampleRequest"
+            $ref: "#/definitions/AddExampleRequest"
   /rpc/{modelHistoryServerId}/model/feedback:
     post:
       summary: "Adds an evaluation feedback to the model against a given minibatch\
@@ -2388,6 +2228,498 @@ paths:
           description: "The model feedback request object"
           schema:
             $ref: "#/definitions/ModelFeedBackRequest"
+  /resources/resource/{resourceId}:
+    get:
+      summary: "Get the resource with the specified resource ID"
+      operationId: "getResourceById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "Resource Object"
+          schema:
+            $ref: "#/definitions/Resource"
+  /resources/details/{resourceId}:
+    get:
+      summary: "Get the resource details with the specified resource ID"
+      description: "Get the details for the resource, for the given ID. Note that\
+        \ a 'ResourceDetails' object contains specific information\nabout the resource\
+        \ (such as region for an AWS resource, or URI for a HDFS resource), where\
+        \ as the 'Resource'\nobject contains only general information (name, id, type,\
+        \ subtype).\n"
+      operationId: "getResourceDetailsById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "One of the resource details object"
+          schema:
+            type: "object"
+            properties: {}
+  /resources/resources:
+    get:
+      summary: "A list of all known/registered resources, of all types"
+      operationId: "getResources"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "List of Resource Objects"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Resource"
+  /resources/resources/type/{resourceType}:
+    get:
+      summary: "Get all the resources with the specified resource type"
+      operationId: "getResourceByType"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceType"
+        in: "path"
+        description: "Type of the resource"
+        required: true
+        type: "string"
+        enum:
+        - "COMPUTE"
+        - "STORAGE"
+        x-exportParamName: "ResourceType"
+      responses:
+        200:
+          description: "List of Resource Objects by specified type"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Resource"
+  /resources/resources/subtype/{resourceSubType}:
+    get:
+      summary: "Get all the resources with the specified resource subtype"
+      operationId: "getResourceBySubType"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceSubType"
+        in: "path"
+        description: "Subtype of the resource"
+        required: true
+        type: "string"
+        enum:
+        - "EMR"
+        - "S3"
+        - "GoogleStorage"
+        - "DataProc"
+        - "HDInsight"
+        - "AzureStorage"
+        - "HDFS"
+        - "YARN"
+        x-exportParamName: "ResourceSubType"
+      responses:
+        200:
+          description: "List of Resource Objects by specified subtype"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Resource"
+  /resources/add/resource:
+    post:
+      summary: "Adds a resource"
+      operationId: "addResource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "AddResourceRequest"
+        description: "The Add resource request object"
+        required: true
+        schema:
+          $ref: "#/definitions/AddResourceRequest"
+        x-exportParamName: "AddResourceRequest"
+      responses:
+        200:
+          description: "One of the resource details object"
+          schema:
+            type: "object"
+            properties: {}
+  /resources/remove/resource/{resourceId}:
+    delete:
+      summary: "Delete the resource with the specified resource ID"
+      operationId: "deleteResourceById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "Resource Object"
+          schema:
+            $ref: "#/definitions/Resource"
+  /resources/group/{resourceGroupId}:
+    get:
+      summary: "Get the resource group with the specified resource group ID"
+      operationId: "getResourceGroupById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceGroupId"
+        in: "path"
+        description: "ID of the resource group"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceGroupId"
+      responses:
+        200:
+          description: "Resource Group Object"
+          schema:
+            $ref: "#/definitions/ResourceGroup"
+  /resources/groups:
+    get:
+      summary: "Get a list of all the resource groups"
+      operationId: "getResourceGroups"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Resource Group Object"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ResourceGroup"
+  /resources/add/group:
+    post:
+      summary: "Adds a resource group"
+      operationId: "addResourceGroup"
+      consumes:
+      - "text/plain; charset=utf-8"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "groupName"
+        description: "Name of the resource group"
+        required: true
+        x-exportParamName: "GroupName"
+      responses:
+        200:
+          description: "The created resource group object"
+          schema:
+            $ref: "#/definitions/ResourceGroup"
+  /resources/remove/group/{resourceGroupId}:
+    delete:
+      summary: "Delete the resource group with the specified resource group ID"
+      operationId: "deleteResourceGroupById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceGroupId"
+        in: "path"
+        description: "ID of the resource group"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceGroupId"
+      responses:
+        200:
+          description: "Resource Group Object"
+          schema:
+            $ref: "#/definitions/ResourceGroup"
+  /resources/add/resourcetogroup/{resourceGroupId}/{resourceId}:
+    get:
+      summary: "Adds a resource to a resource group"
+      operationId: "addResourceToGroup"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceGroupId"
+        in: "path"
+        description: "ID of the resource group"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceGroupId"
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "Successfully added resource to the resource group"
+  /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId}:
+    get:
+      summary: "Removes a resource from a resource group"
+      operationId: "deleteResourceFromGroup"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceGroupId"
+        in: "path"
+        description: "ID of the resource group"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceGroupId"
+      - name: "resourceId"
+        in: "path"
+        description: "ID of the resource"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceId"
+      responses:
+        200:
+          description: "Successfully removed resource from the resource group"
+  /resources/group/{resourceGroupId}/resources:
+    get:
+      summary: "Get all resources from a resource group"
+      operationId: "getResourcesFromGroup"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "resourceGroupId"
+        in: "path"
+        description: "ID of the resource group"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ResourceGroupId"
+      responses:
+        200:
+          description: "List of resources from a resource group"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Resource"
+  /resources/credentials/{credentialId}:
+    get:
+      summary: "Get credentials given an ID"
+      operationId: "getCredentialsById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "credentialId"
+        in: "path"
+        description: "Credentials ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "CredentialId"
+      responses:
+        200:
+          description: "Credentials Object"
+          schema:
+            $ref: "#/definitions/ResourceCredentials"
+    delete:
+      summary: "Delete credentials given an ID"
+      operationId: "deleteCredentialsById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "credentialId"
+        in: "path"
+        description: "Credentials ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "CredentialId"
+      responses:
+        200:
+          description: "Credentials successfully deteled"
+  /resources/credentials:
+    post:
+      summary: "Adds credentials"
+      operationId: "addCredentials"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "AddCredentialsRequest"
+        description: "Add credentials request object"
+        required: true
+        schema:
+          $ref: "#/definitions/AddCredentialsRequest"
+        x-exportParamName: "AddCredentialsRequest"
+      responses:
+        200:
+          description: "The created credentials object"
+          schema:
+            $ref: "#/definitions/ResourceCredentials"
+  /jobs/{jobIdOrType}:
+    get:
+      summary: "Get a job by its ID"
+      operationId: "getJobById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobIdOrType"
+        in: "path"
+        description: "Job ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "JobIdOrType"
+      responses:
+        200:
+          description: "Job entity Object"
+          schema:
+            $ref: "#/definitions/JobEntity"
+    post:
+      summary: "Create a job"
+      operationId: "createJob"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobIdOrType"
+        in: "path"
+        description: "Job Type"
+        required: true
+        type: "string"
+        enum:
+        - "TRAINING"
+        - "INFERENCE"
+        x-exportParamName: "JobIdOrType"
+      - in: "body"
+        name: "CreateJobRequest"
+        description: "Create job request object"
+        required: true
+        schema:
+          $ref: "#/definitions/CreateJobRequest"
+        x-exportParamName: "CreateJobRequest"
+      responses:
+        200:
+          description: "The created job entity object"
+          schema:
+            $ref: "#/definitions/JobEntity"
+    delete:
+      summary: "Deletes a job given its ID"
+      operationId: "deleteJobById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobIdOrType"
+        in: "path"
+        description: "Job ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "JobIdOrType"
+      responses:
+        200:
+          description: "Successfully deleted a job"
+  /jobs:
+    get:
+      summary: "Get a list of all available jobs"
+      operationId: "getAllJobs"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "List of job entity objects"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/JobEntity"
+  /jobs/{jobId}/run:
+    post:
+      summary: "Start running an (already created) job on the remote resource"
+      operationId: "runAJob"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobId"
+        in: "path"
+        description: "Job ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "JobId"
+      responses:
+        200:
+          description: "The associated job entity object"
+          schema:
+            $ref: "#/definitions/JobEntity"
+  /jobs/{jobId}/refresh:
+    get:
+      summary: "Refresh the remote job status. Can be used for monitoring."
+      operationId: "refreshJobStatus"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobId"
+        in: "path"
+        description: "Job ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "JobId"
+      responses:
+        200:
+          description: "The associated job entity object"
+          schema:
+            $ref: "#/definitions/JobEntity"
+  /jobs/{jobId}/outputfile:
+    post:
+      summary: "Download the output file from the job's execution. This will ONLY\
+        \ work if the job's run status is 'COMPLETE'."
+      operationId: "downloadJobOutputFile"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "jobId"
+        in: "path"
+        description: "Job ID"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "JobId"
+      - in: "body"
+        name: "DownloadOutputFileRequest"
+        description: "Download output file request object"
+        required: true
+        schema:
+          $ref: "#/definitions/DownloadOutputFileRequest"
+        x-exportParamName: "DownloadOutputFileRequest"
+      responses:
+        200:
+          description: "The file download has started"
 securityDefinitions:
   api_key:
     description: "For accessing the API a valid JWT token must be passed in all the\
@@ -2438,8 +2770,6 @@ definitions:
       uri:
         type: "string"
         example: "file:/E:/Image/image.jpg"
-    example:
-      uri: "file:/E:/Image/image.jpg"
   BatchImageRecord:
     required:
     - "records"
@@ -2448,10 +2778,6 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/SingleImageRecord"
-    example:
-      records:
-      - uri: "file:/E:/Image/image.jpg"
-      - uri: "file:/E:/Image/image.jpg"
   Base64NDArrayBody:
     required:
     - "ndarray"
@@ -3448,6 +3774,7 @@ definitions:
       evalVersion: 0
       miniBatchId: "miniBatchId"
   ExampleEntity:
+    type: "object"
     properties:
       exampleId:
         type: "string"
@@ -3456,7 +3783,7 @@ definitions:
       exampleVersion:
         type: "integer"
         description: "Example version"
-      int rowNumber:
+      rowNumber:
         type: "integer"
         description: "Row Number"
       created:
@@ -3472,10 +3799,10 @@ definitions:
         description: "minibatch version"
     example:
       exampleId: "exampleId"
-      int rowNumber: 6
       created: 1
       miniBatchId: "miniBatchId"
       miniBatchVersion: 5
+      rowNumber: 6
       exampleVersion: 0
   AddExampleRequest:
     type: "object"
@@ -3555,6 +3882,448 @@ definitions:
       correct: "[\"0\", \"0\", \"2\"]"
       guesses: "[\"0\", \"1\", \"2\"]"
       batchId: "batchId"
+  Resource:
+    type: "object"
+    properties:
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      name:
+        type: "string"
+        description: "Resource nickname"
+      type:
+        type: "string"
+        description: "Resource type (whether COMPUTE or STORAGE)"
+        enum:
+        - "COMPUTE"
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN]\
+          \ | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])"
+        enum:
+        - "EMR"
+        - "S3"
+        - "GoogleStorage"
+        - "DataProc"
+        - "HDInsight"
+        - "AzureStorage"
+        - "HDFS"
+        - "YARN"
+      credentialId:
+        type: "string"
+        format: "guid"
+        description: "Credentials GUID"
+    example:
+      resourceId: 0
+      name: "name"
+      credentialId: "credentialId"
+      subType: "EMR"
+      type: "COMPUTE"
+  EMRResourceDetails:
+    type: "object"
+    properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.compute.EMRResourceDetails"
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "EMR"
+      clusterId:
+        type: "string"
+        description: "EMR cluster ID"
+      region:
+        type: "string"
+        description: "Region name where the cluster is deployed"
+  S3ResourceDetails:
+    type: "object"
+    properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.storage.S3ResourceDetails"
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "S3"
+      bucket:
+        type: "string"
+        description: "S3 Bucket Name"
+      region:
+        type: "string"
+        description: "Region name where the S3 bucket is present"
+  GoogleStorageResourceDetails:
+    type: "object"
+    properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.storage.GoogleStorageResourceDetails"
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "GoogleStorage"
+      projectId:
+        type: "string"
+        description: "Project ID"
+      bucketName:
+        type: "string"
+        description: "Name of the storage bucket"
+  DataProcResourceDetails:
+    type: "object"
+    properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.compute.DataProcResourceDetails"
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "DataProc"
+      projectId:
+        type: "string"
+        description: "Project ID"
+      region:
+        type: "string"
+        description: "DataProc region"
+      sparkClusterName:
+        type: "string"
+        description: "Name of the spark cluster"
+  HDInsightResourceDetails:
+    type: "object"
+    properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.compute.HDInsightResourceDetails"
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "HDInsight"
+      subscriptionId:
+        type: "string"
+        description: "Azure subscription ID"
+      resourceGroupName:
+        type: "string"
+        description: "name of the resource group"
+      clusterName:
+        type: "string"
+        description: "Cluster name"
+  AzureStorageResourceDetails:
+    type: "object"
+    properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.storage.AzureStorageResourceDetails"
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "AzureStorage"
+      containerName:
+        type: "string"
+        description: "Storage container name"
+  HDFSResourceDetails:
+    type: "object"
+    properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.storage.HDFSResourceDetails"
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "HDFS"
+      nameNodeHost:
+        type: "string"
+        description: "Host of the node running the NameNode"
+      nameNodePort:
+        type: "string"
+        description: "Port of the node running the NameNode"
+  YARNResourceDetails:
+    type: "object"
+    properties:
+      '@class':
+        type: "string"
+        default: "io.skymind.resource.model.subtypes.compute.YARNResourceDetails"
+      resourceId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource"
+      type:
+        type: "string"
+        description: "Resource type"
+        enum:
+        - "COMPUTE"
+      subType:
+        type: "string"
+        description: "Resource subtype"
+        enum:
+        - "YARN"
+      localSparkHome:
+        type: "string"
+        description: "Local Spark Home path"
+  ResourceGroup:
+    type: "object"
+    properties:
+      groupId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the resource group"
+      groupName:
+        type: "string"
+        description: "Name of the resource group"
+      added:
+        type: "integer"
+        format: "int64"
+        description: "Milliseconds in Long when the resource group was added"
+      updated:
+        type: "integer"
+        format: "int64"
+        description: "Milliseconds in Long when the resource group was updated"
+    example:
+      groupName: "groupName"
+      added: 6
+      groupId: 0
+      updated: 1
+  ResourceCredentials:
+    type: "object"
+    properties:
+      credentialId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the credentials"
+      type:
+        type: "string"
+        description: "Type of the credentials"
+        enum:
+        - "AWS"
+        - "Azure"
+        - "GoogleCloud"
+        - "Hadoop"
+      name:
+        type: "string"
+        description: "Name of the credentials"
+      uri:
+        type: "string"
+        description: "URI of the credentials"
+    example:
+      name: "name"
+      credentialId: 0
+      type: "AWS"
+      uri: "uri"
+  AddResourceRequest:
+    type: "object"
+    properties:
+      resourceName:
+        type: "string"
+        description: "Name of the new resource"
+      resourceDetails:
+        type: "object"
+        description: "One of the resource details object"
+        properties: {}
+      credentialUri:
+        type: "string"
+        description: "URI of the credentials. If this is present, you can leave out\
+          \ the 'credentialId'"
+      type:
+        type: "string"
+        description: "Resource type (whether COMPUTE or STORAGE)"
+        enum:
+        - "COMPUTE"
+        - "STORAGE"
+      subType:
+        type: "string"
+        description: "Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN]\
+          \ | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])"
+        enum:
+        - "EMR"
+        - "S3"
+        - "GoogleStorage"
+        - "DataProc"
+        - "HDInsight"
+        - "AzureStorage"
+        - "HDFS"
+        - "YARN"
+      credentialId:
+        type: "integer"
+        format: "int64"
+        description: "ID of the credentials. If this is given then you can leave out\
+          \ the 'credentialsUri'"
+    example:
+      resourceDetails: "{}"
+      credentialId: 0
+      resourceName: "resourceName"
+      subType: "EMR"
+      type: "COMPUTE"
+      credentialUri: "credentialUri"
+  AddCredentialsRequest:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        description: "Type of the credentials"
+        enum:
+        - "AWS"
+        - "Azure"
+        - "GoogleCloud"
+        - "Hadoop"
+      name:
+        type: "string"
+        description: "Name of the credentials"
+      uri:
+        type: "string"
+        description: "URI of the credentials"
+    example:
+      name: "name"
+      type: "AWS"
+      uri: "uri"
+  JobEntity:
+    type: "object"
+    properties:
+      jobId:
+        type: "integer"
+        format: "int64"
+        description: "Job ID"
+      jobType:
+        type: "string"
+        description: "Whether a job is for training or inference"
+        enum:
+        - "TRAINING"
+        - "INFERENCE"
+      computeResourceId:
+        type: "integer"
+        format: "int64"
+        description: "Compute resource ID"
+      storageResourceId:
+        type: "integer"
+        format: "int64"
+        description: "Storage resource ID"
+      jobArgs:
+        type: "string"
+        description: "Job arguments"
+      runId:
+        type: "string"
+        description: "Job run ID"
+      status:
+        type: "string"
+        description: "Job's status"
+        enum:
+        - "PENDING"
+        - "RUNNING"
+        - "CONTINUE"
+        - "COMPLETED"
+        - "CANCELLED"
+        - "FAILED"
+        - "INTERRUPTED"
+      outputFileName:
+        type: "string"
+        description: "Output file name"
+    example:
+      storageResourceId: 1
+      jobId: 0
+      outputFileName: "outputFileName"
+      jobArgs: "jobArgs"
+      runId: "runId"
+      jobType: "TRAINING"
+      computeResourceId: 6
+      status: "PENDING"
+  CreateJobRequest:
+    type: "object"
+    properties:
+      computeResourceId:
+        type: "integer"
+        format: "int64"
+        description: "Compute resource ID"
+      storageResourceId:
+        type: "integer"
+        format: "int64"
+        description: "Storage resource ID"
+      jobArgs:
+        type: "string"
+        description: "Job arguments"
+      outputFileName:
+        type: "string"
+        description: "Output file name"
+    example:
+      storageResourceId: 6
+      outputFileName: "outputFileName"
+      jobArgs: "jobArgs"
+      computeResourceId: 0
+  DownloadOutputFileRequest:
+    type: "object"
+    properties:
+      localDownloadPath:
+        type: "string"
+        description: "Local path where the file is to be downloaded"
+    example:
+      localDownloadPath: "localDownloadPath"
   inline_response_200:
     properties:
       status:

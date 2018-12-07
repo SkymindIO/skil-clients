@@ -12,7 +12,9 @@ directories_to_remove = [
     'rust',
     'android',
     'flash',
-    'swift3'
+    'swift3',
+    'html',
+    'html2'
 ]
 
 for directory_to_remove in directories_to_remove:
