@@ -60,7 +60,7 @@ describe 'JobEntity' do
     end
   end
 
-  describe 'test attribute "skil_spark_main_args"' do
+  describe 'test attribute "job_args"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

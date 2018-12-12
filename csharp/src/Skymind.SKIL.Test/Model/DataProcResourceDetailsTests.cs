@@ -67,6 +67,14 @@ namespace Skymind.SKIL.Test
 
 
         /// <summary>
+        /// Test the property 'Class'
+        /// </summary>
+        [Test]
+        public void ClassTest()
+        {
+            // TODO unit test for the property 'Class'
+        }
+        /// <summary>
         /// Test the property 'ResourceId'
         /// </summary>
         [Test]

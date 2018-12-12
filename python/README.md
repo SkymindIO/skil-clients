@@ -51,22 +51,16 @@ import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: api_key
-configuration = skil_client.Configuration()
-configuration.api_key['authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['authorization'] = 'Bearer'
-
 # create an instance of the API class
-api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-add_credentials_request = skil_client.AddCredentialsRequest() # AddCredentialsRequest | Add credentials request object
+api_instance = skil_client.AuthenticationApi(skil_client.ApiClient(configuration))
+credentials = skil_client.Credentials() # Credentials | Login credentials.
 
 try:
-    # Adds credentials
-    api_response = api_instance.add_credentials(add_credentials_request)
+    # Post JSON credentials and obtain a JWT authorization token.
+    api_response = api_instance.login(credentials)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->add_credentials: %s\n" % e)
+    print("Exception when calling AuthenticationApi->login: %s\n" % e)
 
 ```
 
@@ -76,95 +70,95 @@ All URIs are relative to *http://localhost:9008*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**add_credentials**](docs/DefaultApi.md#add_credentials) | **POST** /resources/credentials | Adds credentials
-*DefaultApi* | [**add_evaluation_result**](docs/DefaultApi.md#add_evaluation_result) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
-*DefaultApi* | [**add_example_for_batch**](docs/DefaultApi.md#add_example_for_batch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
-*DefaultApi* | [**add_example_to_minibatch**](docs/DefaultApi.md#add_example_to_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
-*DefaultApi* | [**add_experiment**](docs/DefaultApi.md#add_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
-*DefaultApi* | [**add_minibatch**](docs/DefaultApi.md#add_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
-*DefaultApi* | [**add_model_feedback**](docs/DefaultApi.md#add_model_feedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
-*DefaultApi* | [**add_model_history**](docs/DefaultApi.md#add_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
-*DefaultApi* | [**add_model_instance**](docs/DefaultApi.md#add_model_instance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
-*DefaultApi* | [**add_resource**](docs/DefaultApi.md#add_resource) | **POST** /resources/add/resource | Adds a resource
-*DefaultApi* | [**add_resource_group**](docs/DefaultApi.md#add_resource_group) | **POST** /resources/add/group | Adds a resource group
-*DefaultApi* | [**add_resource_to_group**](docs/DefaultApi.md#add_resource_to_group) | **GET** /resources/add/resourcetogroup/{resourceGroupId}/{resourceId} | Adds a resource to a resource group
-*DefaultApi* | [**aggregate_model_results**](docs/DefaultApi.md#aggregate_model_results) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
-*DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
-*DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
-*DefaultApi* | [**classifyimage**](docs/DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
-*DefaultApi* | [**create_job**](docs/DefaultApi.md#create_job) | **POST** /jobs/{jobIdOrType} | Create a job
-*DefaultApi* | [**create_model_history**](docs/DefaultApi.md#create_model_history) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
-*DefaultApi* | [**delete_credentials_by_id**](docs/DefaultApi.md#delete_credentials_by_id) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
-*DefaultApi* | [**delete_experiment**](docs/DefaultApi.md#delete_experiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
-*DefaultApi* | [**delete_job_by_id**](docs/DefaultApi.md#delete_job_by_id) | **DELETE** /jobs/{jobIdOrType} | Deletes a job given its ID
-*DefaultApi* | [**delete_model**](docs/DefaultApi.md#delete_model) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
-*DefaultApi* | [**delete_model_history**](docs/DefaultApi.md#delete_model_history) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
-*DefaultApi* | [**delete_model_instance**](docs/DefaultApi.md#delete_model_instance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
-*DefaultApi* | [**delete_resource_by_id**](docs/DefaultApi.md#delete_resource_by_id) | **DELETE** /resources/remove/resource/{resourceId} | Delete the resource with the specified resource ID
-*DefaultApi* | [**delete_resource_from_group**](docs/DefaultApi.md#delete_resource_from_group) | **GET** /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId} | Removes a resource from a resource group
-*DefaultApi* | [**delete_resource_group_by_id**](docs/DefaultApi.md#delete_resource_group_by_id) | **DELETE** /resources/remove/group/{resourceGroupId} | Delete the resource group with the specified resource group ID
-*DefaultApi* | [**deploy_model**](docs/DefaultApi.md#deploy_model) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
-*DefaultApi* | [**deployment_create**](docs/DefaultApi.md#deployment_create) | **POST** /deployment | Create a new deployment group.
-*DefaultApi* | [**deployment_delete**](docs/DefaultApi.md#deployment_delete) | **DELETE** /deployment/{deploymentId} | Delete a deployment by id
-*DefaultApi* | [**deployment_get**](docs/DefaultApi.md#deployment_get) | **GET** /deployment/{deploymentId} | Get a deployment details by id
-*DefaultApi* | [**deployments**](docs/DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
-*DefaultApi* | [**detectobjects**](docs/DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
-*DefaultApi* | [**download_job_output_file**](docs/DefaultApi.md#download_job_output_file) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
-*DefaultApi* | [**get_all_jobs**](docs/DefaultApi.md#get_all_jobs) | **GET** /jobs | Get a list of all available jobs
-*DefaultApi* | [**get_best_model_among_model_ids**](docs/DefaultApi.md#get_best_model_among_model_ids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
-*DefaultApi* | [**get_credentials_by_id**](docs/DefaultApi.md#get_credentials_by_id) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
-*DefaultApi* | [**get_evaluation_for_model_id**](docs/DefaultApi.md#get_evaluation_for_model_id) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
-*DefaultApi* | [**get_examples_for_minibatch**](docs/DefaultApi.md#get_examples_for_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
-*DefaultApi* | [**get_experiment**](docs/DefaultApi.md#get_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
-*DefaultApi* | [**get_experiments_for_model_history**](docs/DefaultApi.md#get_experiments_for_model_history) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
-*DefaultApi* | [**get_job_by_id**](docs/DefaultApi.md#get_job_by_id) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
-*DefaultApi* | [**get_minibatch**](docs/DefaultApi.md#get_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
-*DefaultApi* | [**get_model_history**](docs/DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
-*DefaultApi* | [**get_model_instance**](docs/DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
-*DefaultApi* | [**get_models_for_experiment**](docs/DefaultApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
-*DefaultApi* | [**get_resource_by_id**](docs/DefaultApi.md#get_resource_by_id) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
-*DefaultApi* | [**get_resource_by_sub_type**](docs/DefaultApi.md#get_resource_by_sub_type) | **GET** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
-*DefaultApi* | [**get_resource_by_type**](docs/DefaultApi.md#get_resource_by_type) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
-*DefaultApi* | [**get_resource_details_by_id**](docs/DefaultApi.md#get_resource_details_by_id) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
-*DefaultApi* | [**get_resource_group_by_id**](docs/DefaultApi.md#get_resource_group_by_id) | **GET** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
-*DefaultApi* | [**get_resource_groups**](docs/DefaultApi.md#get_resource_groups) | **GET** /resources/groups | Get a list of all the resource groups
-*DefaultApi* | [**get_resources**](docs/DefaultApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
-*DefaultApi* | [**get_resources_from_group**](docs/DefaultApi.md#get_resources_from_group) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
-*DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
-*DefaultApi* | [**knn**](docs/DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
-*DefaultApi* | [**knnnew**](docs/DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
-*DefaultApi* | [**list_all_experiments**](docs/DefaultApi.md#list_all_experiments) | **GET** /rpc/{modelHistoryServerId}/experiments | List all of the experiments in every model history / workspace
-*DefaultApi* | [**logfilepath**](docs/DefaultApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath | Get logs file path
-*DefaultApi* | [**login**](docs/DefaultApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
-*DefaultApi* | [**logs**](docs/DefaultApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs | Get logs
-*DefaultApi* | [**meta_get**](docs/DefaultApi.md#meta_get) | **GET** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | this method can be used to get the meta data for the current model which set to the server
-*DefaultApi* | [**meta_post**](docs/DefaultApi.md#meta_post) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | This method can be used to set meta data for the current model which is set to the server
-*DefaultApi* | [**model_state_change**](docs/DefaultApi.md#model_state_change) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Modify the state (start/stop) of a deployed model
-*DefaultApi* | [**models**](docs/DefaultApi.md#models) | **GET** /deployment/{deploymentId}/models | Retrieve a list of all the deployed models given a deployment id
-*DefaultApi* | [**modelset**](docs/DefaultApi.md#modelset) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset | Set the model to be served
-*DefaultApi* | [**modelupdate**](docs/DefaultApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate | Update the model to be served
-*DefaultApi* | [**multiclassify**](docs/DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
-*DefaultApi* | [**multipredict**](docs/DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
-*DefaultApi* | [**multipredictimage**](docs/DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
-*DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
-*DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
-*DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
-*DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-*DefaultApi* | [**refresh_job_status**](docs/DefaultApi.md#refresh_job_status) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
-*DefaultApi* | [**reimport_model**](docs/DefaultApi.md#reimport_model) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
-*DefaultApi* | [**run_a_job**](docs/DefaultApi.md#run_a_job) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
-*DefaultApi* | [**transform_csv**](docs/DefaultApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
-*DefaultApi* | [**transformarray**](docs/DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
-*DefaultApi* | [**transformimage**](docs/DefaultApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
-*DefaultApi* | [**transformincremental_csv**](docs/DefaultApi.md#transformincremental_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
-*DefaultApi* | [**transformincrementalarray**](docs/DefaultApi.md#transformincrementalarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
-*DefaultApi* | [**transformincrementalimage**](docs/DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
-*DefaultApi* | [**transformprocess_get**](docs/DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
-*DefaultApi* | [**transformprocess_post**](docs/DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
-*DefaultApi* | [**update_best_model_for_experiment**](docs/DefaultApi.md#update_best_model_for_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
-*DefaultApi* | [**update_experiment**](docs/DefaultApi.md#update_experiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
-*DefaultApi* | [**update_model_history**](docs/DefaultApi.md#update_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
-*DefaultApi* | [**upload**](docs/DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
+*AuthenticationApi* | [**login**](docs/AuthenticationApi.md#login) | **POST** /login | Post JSON credentials and obtain a JWT authorization token.
+*DeploymentApi* | [**delete_model**](docs/DeploymentApi.md#delete_model) | **DELETE** /deployment/{deploymentId}/model/{modelId} | Delete a model by deployment and model id
+*DeploymentApi* | [**deploy_model**](docs/DeploymentApi.md#deploy_model) | **POST** /deployment/{deploymentId}/model | Deploy a model in a deployment group.
+*DeploymentApi* | [**deployment_create**](docs/DeploymentApi.md#deployment_create) | **POST** /deployment | Create a new deployment group.
+*DeploymentApi* | [**deployment_delete**](docs/DeploymentApi.md#deployment_delete) | **DELETE** /deployment/{deploymentId} | Delete a deployment by id
+*DeploymentApi* | [**deployment_get**](docs/DeploymentApi.md#deployment_get) | **GET** /deployment/{deploymentId} | Get a deployment details by id
+*DeploymentApi* | [**deployments**](docs/DeploymentApi.md#deployments) | **GET** /deployments | Get a list of deployments
+*DeploymentApi* | [**model_state_change**](docs/DeploymentApi.md#model_state_change) | **POST** /deployment/{deploymentId}/model/{modelId}/state | Modify the state (start/stop) of a deployed model
+*DeploymentApi* | [**models**](docs/DeploymentApi.md#models) | **GET** /deployment/{deploymentId}/models | Retrieve a list of all the deployed models given a deployment id
+*DeploymentApi* | [**reimport_model**](docs/DeploymentApi.md#reimport_model) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+*InferenceApi* | [**classify**](docs/InferenceApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
+*InferenceApi* | [**classifyarray**](docs/InferenceApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
+*InferenceApi* | [**classifyimage**](docs/InferenceApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+*InferenceApi* | [**detectobjects**](docs/InferenceApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
+*InferenceApi* | [**jsonarray**](docs/InferenceApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
+*InferenceApi* | [**logfilepath**](docs/InferenceApi.md#logfilepath) | **GET** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath | Get logs file path
+*InferenceApi* | [**logs**](docs/InferenceApi.md#logs) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs | Get logs
+*InferenceApi* | [**meta_get**](docs/InferenceApi.md#meta_get) | **GET** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | this method can be used to get the meta data for the current model which set to the server
+*InferenceApi* | [**meta_post**](docs/InferenceApi.md#meta_post) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta | This method can be used to set meta data for the current model which is set to the server
+*InferenceApi* | [**modelset**](docs/InferenceApi.md#modelset) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset | Set the model to be served
+*InferenceApi* | [**modelupdate**](docs/InferenceApi.md#modelupdate) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate | Update the model to be served
+*InferenceApi* | [**multiclassify**](docs/InferenceApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
+*InferenceApi* | [**multipredict**](docs/InferenceApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
+*InferenceApi* | [**multipredictimage**](docs/InferenceApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+*InferenceApi* | [**predict**](docs/InferenceApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+*InferenceApi* | [**predictimage**](docs/InferenceApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
+*InferenceApi* | [**predictwithpreprocess**](docs/InferenceApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
+*InferenceApi* | [**predictwithpreprocessjson**](docs/InferenceApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+*JobApi* | [**create_job**](docs/JobApi.md#create_job) | **POST** /jobs/{jobIdOrType} | Create a job
+*JobApi* | [**delete_job_by_id**](docs/JobApi.md#delete_job_by_id) | **DELETE** /jobs/{jobIdOrType} | Deletes a job given its ID
+*JobApi* | [**download_job_output_file**](docs/JobApi.md#download_job_output_file) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+*JobApi* | [**get_all_jobs**](docs/JobApi.md#get_all_jobs) | **GET** /jobs | Get a list of all available jobs
+*JobApi* | [**get_job_by_id**](docs/JobApi.md#get_job_by_id) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
+*JobApi* | [**refresh_job_status**](docs/JobApi.md#refresh_job_status) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
+*JobApi* | [**run_a_job**](docs/JobApi.md#run_a_job) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
+*KNNApi* | [**knn**](docs/KNNApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
+*KNNApi* | [**knnnew**](docs/KNNApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
+*ModelHistoryApi* | [**add_evaluation_result**](docs/ModelHistoryApi.md#add_evaluation_result) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
+*ModelHistoryApi* | [**add_example_for_batch**](docs/ModelHistoryApi.md#add_example_for_batch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
+*ModelHistoryApi* | [**add_example_to_minibatch**](docs/ModelHistoryApi.md#add_example_to_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
+*ModelHistoryApi* | [**add_experiment**](docs/ModelHistoryApi.md#add_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+*ModelHistoryApi* | [**add_minibatch**](docs/ModelHistoryApi.md#add_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
+*ModelHistoryApi* | [**add_model_feedback**](docs/ModelHistoryApi.md#add_model_feedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
+*ModelHistoryApi* | [**add_model_history**](docs/ModelHistoryApi.md#add_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
+*ModelHistoryApi* | [**add_model_instance**](docs/ModelHistoryApi.md#add_model_instance) | **POST** /rpc/{modelHistoryServerId}/model | Adds a model
+*ModelHistoryApi* | [**aggregate_model_results**](docs/ModelHistoryApi.md#aggregate_model_results) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
+*ModelHistoryApi* | [**create_model_history**](docs/ModelHistoryApi.md#create_model_history) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
+*ModelHistoryApi* | [**delete_experiment**](docs/ModelHistoryApi.md#delete_experiment) | **DELETE** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Deletes an experiment, given an experiment entity
+*ModelHistoryApi* | [**delete_model_history**](docs/ModelHistoryApi.md#delete_model_history) | **DELETE** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Deletes a model history / workspace, given its ID
+*ModelHistoryApi* | [**delete_model_instance**](docs/ModelHistoryApi.md#delete_model_instance) | **DELETE** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Deletes a model instance, given its ID
+*ModelHistoryApi* | [**get_best_model_among_model_ids**](docs/ModelHistoryApi.md#get_best_model_among_model_ids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+*ModelHistoryApi* | [**get_evaluation_for_model_id**](docs/ModelHistoryApi.md#get_evaluation_for_model_id) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
+*ModelHistoryApi* | [**get_examples_for_minibatch**](docs/ModelHistoryApi.md#get_examples_for_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
+*ModelHistoryApi* | [**get_experiment**](docs/ModelHistoryApi.md#get_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
+*ModelHistoryApi* | [**get_experiments_for_model_history**](docs/ModelHistoryApi.md#get_experiments_for_model_history) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
+*ModelHistoryApi* | [**get_minibatch**](docs/ModelHistoryApi.md#get_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+*ModelHistoryApi* | [**get_model_history**](docs/ModelHistoryApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
+*ModelHistoryApi* | [**get_model_instance**](docs/ModelHistoryApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
+*ModelHistoryApi* | [**get_models_for_experiment**](docs/ModelHistoryApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
+*ModelHistoryApi* | [**list_all_experiments**](docs/ModelHistoryApi.md#list_all_experiments) | **GET** /rpc/{modelHistoryServerId}/experiments | List all of the experiments in every model history / workspace
+*ModelHistoryApi* | [**update_best_model_for_experiment**](docs/ModelHistoryApi.md#update_best_model_for_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
+*ModelHistoryApi* | [**update_experiment**](docs/ModelHistoryApi.md#update_experiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
+*ModelHistoryApi* | [**update_model_history**](docs/ModelHistoryApi.md#update_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
+*ResourceApi* | [**add_credentials**](docs/ResourceApi.md#add_credentials) | **POST** /resources/credentials | Adds credentials
+*ResourceApi* | [**add_resource**](docs/ResourceApi.md#add_resource) | **POST** /resources/add/resource | Adds a resource
+*ResourceApi* | [**add_resource_group**](docs/ResourceApi.md#add_resource_group) | **POST** /resources/add/group | Adds a resource group
+*ResourceApi* | [**add_resource_to_group**](docs/ResourceApi.md#add_resource_to_group) | **GET** /resources/add/resourcetogroup/{resourceGroupId}/{resourceId} | Adds a resource to a resource group
+*ResourceApi* | [**delete_credentials_by_id**](docs/ResourceApi.md#delete_credentials_by_id) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
+*ResourceApi* | [**delete_resource_by_id**](docs/ResourceApi.md#delete_resource_by_id) | **DELETE** /resources/remove/resource/{resourceId} | Delete the resource with the specified resource ID
+*ResourceApi* | [**delete_resource_from_group**](docs/ResourceApi.md#delete_resource_from_group) | **GET** /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId} | Removes a resource from a resource group
+*ResourceApi* | [**delete_resource_group_by_id**](docs/ResourceApi.md#delete_resource_group_by_id) | **DELETE** /resources/remove/group/{resourceGroupId} | Delete the resource group with the specified resource group ID
+*ResourceApi* | [**get_credentials_by_id**](docs/ResourceApi.md#get_credentials_by_id) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
+*ResourceApi* | [**get_resource_by_id**](docs/ResourceApi.md#get_resource_by_id) | **GET** /resources/resource/{resourceId} | Get the resource with the specified resource ID
+*ResourceApi* | [**get_resource_by_sub_type**](docs/ResourceApi.md#get_resource_by_sub_type) | **GET** /resources/resources/subtype/{resourceSubType} | Get all the resources with the specified resource subtype
+*ResourceApi* | [**get_resource_by_type**](docs/ResourceApi.md#get_resource_by_type) | **GET** /resources/resources/type/{resourceType} | Get all the resources with the specified resource type
+*ResourceApi* | [**get_resource_details_by_id**](docs/ResourceApi.md#get_resource_details_by_id) | **GET** /resources/details/{resourceId} | Get the resource details with the specified resource ID
+*ResourceApi* | [**get_resource_group_by_id**](docs/ResourceApi.md#get_resource_group_by_id) | **GET** /resources/group/{resourceGroupId} | Get the resource group with the specified resource group ID
+*ResourceApi* | [**get_resource_groups**](docs/ResourceApi.md#get_resource_groups) | **GET** /resources/groups | Get a list of all the resource groups
+*ResourceApi* | [**get_resources**](docs/ResourceApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
+*ResourceApi* | [**get_resources_from_group**](docs/ResourceApi.md#get_resources_from_group) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
+*TransformApi* | [**transform_csv**](docs/TransformApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+*TransformApi* | [**transformarray**](docs/TransformApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
+*TransformApi* | [**transformimage**](docs/TransformApi.md#transformimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage | Takes multiple multipart image file to transform and returns Base64NDArrayBody
+*TransformApi* | [**transformincremental_csv**](docs/TransformApi.md#transformincremental_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental | Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+*TransformApi* | [**transformincrementalarray**](docs/TransformApi.md#transformincrementalarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray | Same as /transformincremental but returns Base64NDArrayBody.
+*TransformApi* | [**transformincrementalimage**](docs/TransformApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
+*TransformApi* | [**transformprocess_get**](docs/TransformApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
+*TransformApi* | [**transformprocess_post**](docs/TransformApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
+*UtilitiesApi* | [**upload**](docs/UtilitiesApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
 ## Documentation For Models

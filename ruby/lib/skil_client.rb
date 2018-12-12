@@ -84,7 +84,15 @@ require 'skil_client/models/update_best_model'
 require 'skil_client/models/yarn_resource_details'
 
 # APIs
-require 'skil_client/api/default_api'
+require 'skil_client/api/authentication_api'
+require 'skil_client/api/deployment_api'
+require 'skil_client/api/inference_api'
+require 'skil_client/api/job_api'
+require 'skil_client/api/knn_api'
+require 'skil_client/api/model_history_api'
+require 'skil_client/api/resource_api'
+require 'skil_client/api/transform_api'
+require 'skil_client/api/utilities_api'
 
 module SkilCient
   class << self

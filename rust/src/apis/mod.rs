@@ -50,8 +50,24 @@ impl<T> From<serde_json::Error> for Error<T> {
 
 use super::models::*;
 
-mod default_api;
-pub use self::default_api::{ DefaultApi, DefaultApiClient };
+mod authentication_api;
+pub use self::authentication_api::{ AuthenticationApi, AuthenticationApiClient };
+mod deployment_api;
+pub use self::deployment_api::{ DeploymentApi, DeploymentApiClient };
+mod inference_api;
+pub use self::inference_api::{ InferenceApi, InferenceApiClient };
+mod job_api;
+pub use self::job_api::{ JobApi, JobApiClient };
+mod knn_api;
+pub use self::knn_api::{ KNNApi, KNNApiClient };
+mod model_history_api;
+pub use self::model_history_api::{ ModelHistoryApi, ModelHistoryApiClient };
+mod resource_api;
+pub use self::resource_api::{ ResourceApi, ResourceApiClient };
+mod transform_api;
+pub use self::transform_api::{ TransformApi, TransformApiClient };
+mod utilities_api;
+pub use self::utilities_api::{ UtilitiesApi, UtilitiesApiClient };
 
 pub mod configuration;
 pub mod client;

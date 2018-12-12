@@ -56,6 +56,12 @@
       //expect(instance).to.be.a(SkilClient.YARNResourceDetails);
     });
 
+    it('should have the property _class (base name: "@class")', function() {
+      // uncomment below and update the code to test the property _class
+      //var instance = new SkilClient.YARNResourceDetails();
+      //expect(instance).to.be();
+    });
+
     it('should have the property resourceId (base name: "resourceId")', function() {
       // uncomment below and update the code to test the property resourceId
       //var instance = new SkilClient.YARNResourceDetails();

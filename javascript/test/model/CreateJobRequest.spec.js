@@ -68,8 +68,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property skilSparkMainArgs (base name: "skilSparkMainArgs")', function() {
-      // uncomment below and update the code to test the property skilSparkMainArgs
+    it('should have the property jobArgs (base name: "jobArgs")', function() {
+      // uncomment below and update the code to test the property jobArgs
       //var instance = new SkilClient.CreateJobRequest();
       //expect(instance).to.be();
     });

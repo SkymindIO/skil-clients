@@ -45,7 +45,23 @@ type APIClient struct {
 
 	// API Services
 
-	DefaultApi *DefaultApiService
+	AuthenticationApi *AuthenticationApiService
+
+	DeploymentApi *DeploymentApiService
+
+	InferenceApi *InferenceApiService
+
+	JobApi *JobApiService
+
+	KNNApi *KNNApiService
+
+	ModelHistoryApi *ModelHistoryApiService
+
+	ResourceApi *ResourceApiService
+
+	TransformApi *TransformApiService
+
+	UtilitiesApi *UtilitiesApiService
 }
 
 type service struct {
@@ -64,7 +80,15 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.DefaultApi = (*DefaultApiService)(&c.common)
+	c.AuthenticationApi = (*AuthenticationApiService)(&c.common)
+	c.DeploymentApi = (*DeploymentApiService)(&c.common)
+	c.InferenceApi = (*InferenceApiService)(&c.common)
+	c.JobApi = (*JobApiService)(&c.common)
+	c.KNNApi = (*KNNApiService)(&c.common)
+	c.ModelHistoryApi = (*ModelHistoryApiService)(&c.common)
+	c.ResourceApi = (*ResourceApiService)(&c.common)
+	c.TransformApi = (*TransformApiService)(&c.common)
+	c.UtilitiesApi = (*UtilitiesApiService)(&c.common)
 
 	return c
 }
