@@ -1213,7 +1213,7 @@ paths:
         format: float
         required: true
         description: A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-      - name: imageFile
+      - name: file
         in: formData
         type: file
         required: true
