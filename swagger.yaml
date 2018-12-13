@@ -2678,6 +2678,7 @@ paths:
           description: The associated job entity object
           schema:
             $ref: '#/definitions/JobEntity'
+
   /jobs/{jobId}/outputfile:
     post:
       operationId: downloadJobOutputFile
@@ -2704,6 +2705,386 @@ paths:
       responses:
         200:
           description: The file download has started
+
+  /{operation}/{inputType}:
+     post:
+       operationId: predict
+       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
+       tags:
+         - Inference
+      consumes:
+         - application/json
+      produces:
+         - application/json
+
+      parameters:
+          - name: operation
+            in:   path
+            type: string
+
+          - name: inputType
+            in:   path
+            type: string
+
+          - name: inputData
+            in:   body
+            schema:
+               type: object
+
+      responses:
+         200:
+           description: Input data returned a prediction.
+
+  /{operation}/{inputType}/error:
+         post:
+           operationId: predictError
+           summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
+           tags:
+             - Inference
+          consumes:
+             - application/json
+          produces:
+             - application/json
+
+          parameters:
+              - name: operation
+                in:   path
+                type: string
+
+              - name: inputType
+                in:   path
+                type: string
+
+              - name: inputData
+                in:   body
+                schema:
+                  type: object
+
+          responses:
+             200:
+               description: Input data returned a prediction.
+
+  /{operation}/{inputType}:
+     post:
+       operationId: predictBinary
+       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+       tags:
+         - Inference
+      consumes:
+         - multipart/form-data
+      produces:
+         - application/json
+
+
+      parameters:
+          - name: operation
+            in:   path
+            type: string
+
+          - name: inputType
+            in:   path
+            type: string
+
+          - name: inputData
+            in:   body
+            schema:
+              type: file
+
+
+      responses:
+         200:
+           description: Input data returned a prediction.
+
+  /{operation}/{inputType}/error:
+         post:
+           operationId: predictBinaryError
+           summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
+           tags:
+             - Inference
+          consumes:
+             - multipart/form-data
+          produces:
+             - application/json
+
+          parameters:
+              - name: operation
+                in:   path
+                type: string
+
+              - name: inputType
+                in:   path
+                type: string
+
+              - name: inputData
+                in:   body
+                schema:
+                  type: file
+
+          responses:
+             200:
+               description: Input data returned a prediction.
+
+ /raw/{inputType}/{outputType}:
+     post:
+       operationId: rawPredictBinary
+       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+       tags:
+         - Inference
+      consumes:
+         - multipart/form-data
+      produces:
+         - application/octet-stream
+
+
+      parameters:
+          - name: operation
+            in:   path
+            type: string
+
+          - name: inputType
+            in:   path
+            type: string
+
+          - name: inputData
+            in:   body
+            schema:
+              type: file
+
+
+      responses:
+         200:
+           description: Input data returned a prediction.
+
+ /model:
+   get:
+    operationId: getCurrentModel
+    tags:
+      - Retrain
+    produces:
+      - application/octet-stream
+    responses:
+      200:
+        description: Returns the current model being used for retraining.
+
+ /feedback/{id}/json:
+    post:
+     operationId: addFeedbackJson
+     consumes:
+       - application/json
+     produces:
+       - application/json
+
+     responses:
+        200:
+         description: Adds feedback for data given a json input format.
+
+ /clear:
+    post:
+      operationId: clearState
+      tags:
+        - Retrain
+      produces:
+        - application/json
+
+ /istraining:
+    get:
+      operationId: isTraining
+      tags:
+       - Retraining
+
+      produces:
+        - application/json
+      responses:
+         200:
+          description: Returns whether the model is currently being trained or not.
+
+ /lastevaluation:
+    get:
+      operationId: getLastEvaluation
+      tags:
+        - Retrain
+
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Returns the last evaluation ran by the model.
+
+ /numrevisions:
+    get:
+      operationId: numRevisions
+      tags:
+        - Retrain
+      produces:
+        - application/json
+
+      responses:
+         200:
+           description: Returns the number of revisions for retraining of the model.
+
+
+ /accumulatedresults:
+    get:
+     operationId: accumulatedResults
+     tags:
+      - Retrain
+
+     produces:
+       - application/json
+
+     responses:
+       200:
+         description: Returns the accumulated results currently in ememory.
+
+ /rollback/{index}:
+   post:
+    operationId: rollback
+    tags:
+     - Retrain
+    produces:
+      - application/json
+    consumes:
+     - application/json
+    parameters:
+      - name: index
+        type: integer
+        in: path
+    responses:
+      200:
+        description: Returns the status of the rollback
+
+ /feedback/{id}/{type}:
+   post:
+      operationId: addFeedbackBinary
+      tags:
+         - Retrain
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+
+      responses:
+        200:
+          description: Returns the accmulated feedback
+
+
+ /array/json:
+     get:
+      operationId:  getArrayJson
+      tags:
+       - Memmap
+      produces:
+        - application/json
+      responses:
+          200:
+            description: Get the whole memory mapped array as json.
+
+ /array/binary:
+     post:
+      operationId:  getArrayBinary
+      tags:
+       - Mem map
+      produces:
+        - application/octet-stream
+      parameters:
+        - name: arrayType
+          type: string
+          in: path
+
+
+ /array/indices/json:
+     post:
+      operationId:  getArrayIndicesJson
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+         - name: indices
+           in: body
+           schema:
+              - type: object
+
+      responses:
+         200:
+           description: Returns the arrays given the indicies as json
+
+
+ /array/indices/json:
+     post:
+      operationId:  getArrayIndicesBinary
+      produces:
+        - application/octet-stream
+      consumes:
+        - application/json
+      parameters:
+         - name: indices
+           in: body
+           schema:
+              - type: object
+
+      responses:
+         200:
+           description: Returns the arrays given the indicies as json
+
+ /array/range/{from}/{to}/json:
+     post:
+      operationId:  getArrayRangeJson
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+         - name: indices
+           in: body
+           schema:
+              - type: object
+
+         - name: from
+           in: path
+           type: int
+
+         - name: to
+           in: path
+           type: int
+
+      responses:
+         200:
+           description: Returns the arrays given the indicies as json
+
+ /array/range/{from}/{to}/binary:
+     post:
+      operationId:  getArrayRangeBinary
+      produces:
+        - application/octet-stream
+      consumes:
+        - application/json
+      parameters:
+         - name: indices
+           in: body
+           schema:
+              - type: object
+
+        - name: from
+          in: path
+          type: int
+
+        - name: to
+          in: path
+          type: int
+
+      responses:
+         200:
+           description: Returns the arrays given the indicies as json
+
+
+
+
+
+
+
 definitions:
   TransformProcess:
     type: object
@@ -3877,3 +4258,5 @@ definitions:
       localDownloadPath:
         type: string
         description: Local path where the file is to be downloaded
+
+
