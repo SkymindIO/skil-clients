@@ -51,6 +51,7 @@ tags:
     description: Inference Endpoints
   - name: Retrain
     description: Retraining Endpoints
+
 paths:
   # ---------------------------------------------------------------------------------------
   # Authentication endpoint
@@ -2978,7 +2979,8 @@ paths:
      responses:
        200:
          description: Returns the accumulated results currently in meemory.
-         schema: type: object
+         schema:
+            type: object
 
  /rollback/{index}:
    post:
@@ -3064,7 +3066,7 @@ paths:
            required: true
 
            schema:
-              - type: object
+              - type: array
 
       responses:
          200:
@@ -3112,12 +3114,12 @@ paths:
 
          - name: from
            in: path
-           type: int
+           type: integer
            required: true
 
          - name: to
            in: path
-           type: int
+           type: integer
            required: true
 
       responses:
@@ -3144,7 +3146,7 @@ paths:
 
         - name: from
           in: path
-          type: int
+          type: integer
           required: true
 
         - name: to
@@ -3154,9 +3156,9 @@ paths:
 
       responses:
          200:
-           description: Returns the arrays given the indicies as json
+           description: Returns the arrays given the indices as json
            schema:
-              type: object
+              type: file
 
 
 
