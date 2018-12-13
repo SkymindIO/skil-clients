@@ -45,6 +45,12 @@ tags:
     description: Resource Endpoints
   - name: Job
     description: Job endpoints
+  - name: MemMap
+    description: Mem map Endpoints
+  - name: Inference
+    description: Inference Endpoints
+  - name: Retrain
+    description: Retraining Endpoints
 paths:
   # ---------------------------------------------------------------------------------------
   # Authentication endpoint
@@ -2721,19 +2727,25 @@ paths:
           - name: operation
             in:   path
             type: string
+            required: true
 
           - name: inputType
             in:   path
             type: string
+            required: true
 
           - name: inputData
             in:   body
+            required: true
+
             schema:
                type: object
 
       responses:
          200:
            description: Input data returned a prediction.
+           schema:
+              type: object
 
   /{operation}/{inputType}/error:
          post:
@@ -2750,19 +2762,24 @@ paths:
               - name: operation
                 in:   path
                 type: string
+                required: true
 
               - name: inputType
                 in:   path
                 type: string
+                required: true
 
               - name: inputData
                 in:   body
                 schema:
                   type: object
+                required: true
 
           responses:
              200:
                description: Input data returned a prediction.
+               schema:
+                 type: object
 
   /{operation}/{inputType}:
      post:
@@ -2781,20 +2798,24 @@ paths:
           - name: operation
             in:   path
             type: string
+            required: true
 
           - name: inputType
             in:   path
             type: string
+            required: true
 
           - name: inputData
             in:   body
             schema:
               type: file
-
+            required: true
 
       responses:
          200:
            description: Input data returned a prediction.
+           schema:
+            type: object
 
   /{operation}/{inputType}/error:
          post:
@@ -2811,13 +2832,16 @@ paths:
               - name: operation
                 in:   path
                 type: string
+                required: true
 
               - name: inputType
                 in:   path
                 type: string
+                required: :true
 
               - name: inputData
                 in:   body
+                required: : true
                 schema:
                   type: file
 
@@ -2842,13 +2866,16 @@ paths:
           - name: operation
             in:   path
             type: string
+            required: true
 
           - name: inputType
             in:   path
             type: string
+            required: true
 
           - name: inputData
             in:   body
+            required: true
             schema:
               type: file
 
@@ -2856,6 +2883,8 @@ paths:
       responses:
          200:
            description: Input data returned a prediction.
+           schema:
+              type: file
 
  /model:
    get:
@@ -2867,9 +2896,13 @@ paths:
     responses:
       200:
         description: Returns the current model being used for retraining.
+        schema:
+           type: file
 
  /feedback/{id}/json:
     post:
+     tags:
+      - Retrain
      operationId: addFeedbackJson
      consumes:
        - application/json
@@ -2879,6 +2912,8 @@ paths:
      responses:
         200:
          description: Adds feedback for data given a json input format.
+         schema:
+            type: object
 
  /clear:
     post:
@@ -2892,13 +2927,15 @@ paths:
     get:
       operationId: isTraining
       tags:
-       - Retraining
+       - Retrain
 
       produces:
         - application/json
       responses:
          200:
           description: Returns whether the model is currently being trained or not.
+          schema:
+              type: object
 
  /lastevaluation:
     get:
@@ -2911,6 +2948,8 @@ paths:
       responses:
         200:
           description: Returns the last evaluation ran by the model.
+          schema:
+             type: object
 
  /numrevisions:
     get:
@@ -2923,6 +2962,8 @@ paths:
       responses:
          200:
            description: Returns the number of revisions for retraining of the model.
+           schema:
+              type: object
 
 
  /accumulatedresults:
@@ -2936,7 +2977,8 @@ paths:
 
      responses:
        200:
-         description: Returns the accumulated results currently in ememory.
+         description: Returns the accumulated results currently in meemory.
+         schema: type: object
 
  /rollback/{index}:
    post:
@@ -2951,9 +2993,13 @@ paths:
       - name: index
         type: integer
         in: path
+        required: true
+
     responses:
       200:
         description: Returns the status of the rollback
+        schema:
+           type: object
 
  /feedback/{id}/{type}:
    post:
@@ -2968,35 +3014,46 @@ paths:
       responses:
         200:
           description: Returns the accmulated feedback
+          schema:
+             type: object
 
 
  /array/json:
      get:
       operationId:  getArrayJson
       tags:
-       - Memmap
+       - MemMap
       produces:
         - application/json
       responses:
           200:
             description: Get the whole memory mapped array as json.
+            schema:
+                type: object
 
  /array/binary:
      post:
       operationId:  getArrayBinary
       tags:
-       - Mem map
+       - MemMap
       produces:
         - application/octet-stream
       parameters:
         - name: arrayType
           type: string
           in: path
-
+          required: true
+      responses:
+         200:
+           description: This returns the whole memory mapped array.
+           schema:
+               type: file
 
  /array/indices/json:
      post:
       operationId:  getArrayIndicesJson
+      tags:
+        - MemMap
       produces:
         - application/json
       consumes:
@@ -3004,17 +3061,23 @@ paths:
       parameters:
          - name: indices
            in: body
+           required: true
+
            schema:
               - type: object
 
       responses:
          200:
            description: Returns the arrays given the indicies as json
+           schema:
+              type: object
 
 
  /array/indices/json:
      post:
       operationId:  getArrayIndicesBinary
+      tags:
+         - MemMap
       produces:
         - application/octet-stream
       consumes:
@@ -3022,16 +3085,21 @@ paths:
       parameters:
          - name: indices
            in: body
+           required: true
            schema:
               - type: object
 
       responses:
          200:
            description: Returns the arrays given the indicies as json
+           schema:
+              type: object
 
  /array/range/{from}/{to}/json:
      post:
       operationId:  getArrayRangeJson
+      tags:
+        - MemMap
       produces:
         - application/json
       consumes:
@@ -3045,18 +3113,24 @@ paths:
          - name: from
            in: path
            type: int
+           required: true
 
          - name: to
            in: path
            type: int
+           required: true
 
       responses:
          200:
            description: Returns the arrays given the indicies as json
+           schema:
+               type:  object
 
  /array/range/{from}/{to}/binary:
      post:
       operationId:  getArrayRangeBinary
+      tags:
+        - MemMap
       produces:
         - application/octet-stream
       consumes:
@@ -3064,20 +3138,25 @@ paths:
       parameters:
          - name: indices
            in: body
+           required: true
            schema:
               - type: object
 
         - name: from
           in: path
           type: int
+          required: true
 
         - name: to
           in: path
           type: int
+          required: true
 
       responses:
          200:
            description: Returns the arrays given the indicies as json
+           schema:
+              type: object
 
 
 
