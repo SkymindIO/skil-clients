@@ -27,6 +27,8 @@ securityDefinitions:
 security:
 - api_key: []
 tags:
+- name: Default
+  description: Default tag containing all the API endpoints
 - name: Authentication
   description: Authentication endpoints
 - name: Utilities
@@ -60,6 +62,7 @@ paths:
       operationId: login
       summary: Post JSON credentials and obtain a JWT authorization token.
       tags:
+      - Default
       - Authentication
       security: []
       consumes:
@@ -85,6 +88,7 @@ paths:
       operationId: upload
       summary: Upload a model file to SKIL for import.
       tags:
+      - Default
       - Utilities
       consumes:
       - multipart/form-data
@@ -108,6 +112,7 @@ paths:
       operationId: transformprocess_get
       summary: Gets the JSON string of the deployed transform process (CSV or Image)
       tags:
+      - Default
       - Transform
       produces:
       - application/json
@@ -141,6 +146,7 @@ paths:
       operationId: transformprocess_post
       summary: Sets the deployed (CSV or Image) transform process through the provided JSON string
       tags:
+      - Default
       - Transform
       consumes:
       - application/json
@@ -180,6 +186,7 @@ paths:
       operationId: transformincremental_csv
       summary: Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
       tags:
+      - Default
       - Transform
       description: Takes a SingleCSVRecord object and transforms it into the desired format
       consumes:
@@ -220,6 +227,7 @@ paths:
       operationId: transform_csv
       summary: Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
       tags:
+      - Default
       - Transform
       description: Takes a batch of SingleCSVRecord object and transforms it into the desired format
       consumes:
@@ -260,6 +268,7 @@ paths:
       operationId: transformincrementalarray
       summary: Same as /transformincremental but returns Base64NDArrayBody.
       tags:
+      - Default
       - Transform
       consumes:
       - application/json
@@ -299,6 +308,7 @@ paths:
       operationId: transformarray
       summary: Takes a batch input arrays and transforms it
       tags:
+      - Default
       - Transform
       consumes:
       - application/json
@@ -342,6 +352,7 @@ paths:
       summary: Takes a single multipart image file to transform and returns Base64NDArrayBody
       description: Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
       tags:
+      - Default
       - Transform
       consumes:
       - multipart/form-data
@@ -384,6 +395,7 @@ paths:
       summary: Takes multiple multipart image file to transform and returns Base64NDArrayBody
       description: Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
       tags:
+      - Default
       - Transform
       consumes:
       - multipart/form-data
@@ -432,6 +444,7 @@ paths:
       summary: Runs knn on the given index with the given k
       description: Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
       tags:
+      - Default
       - KNN
       consumes:
       - application/json
@@ -473,6 +486,7 @@ paths:
       operationId: knnnew
       summary: Run a k nearest neighbors search on a NEW data point
       tags:
+      - Default
       - KNN
       consumes:
       - application/json
@@ -518,6 +532,7 @@ paths:
       operationId: predict
       summary: Run inference on the input array.
       tags:
+      - Default
       - Inference
       consumes:
       - application/json
@@ -560,6 +575,7 @@ paths:
       operationId: predictimage
       summary: Run inference on the input array, using input image file from multipart form data.
       tags:
+      - Default
       - Inference
       consumes:
       - multipart/form-data
@@ -599,6 +615,7 @@ paths:
       summary: Get the output from the network, based on the given INDArray[] input
       description: Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
       tags:
+      - Default
       - Inference
       consumes:
       - application/json
@@ -640,6 +657,7 @@ paths:
       summary: Get the output from the network using the given image file using the /multipredict endpoint's method
       description: Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
       tags:
+      - Default
       - Inference
       consumes:
       - multipart/form-data
@@ -689,6 +707,7 @@ paths:
       operationId: classify
       summary: Use the deployed model to classify the input
       tags:
+      - Default
       - Inference
       consumes:
       - application/json
@@ -731,6 +750,7 @@ paths:
       operationId: classifyimage
       summary: Use the deployed model to classify the input, using input image file from multipart form data.
       tags:
+      - Default
       - Inference
       consumes:
       - multipart/form-data
@@ -769,6 +789,7 @@ paths:
       operationId: classifyarray
       summary: Same as /classify but returns the output as Base64NDArrayBody
       tags:
+      - Default
       - Inference
       consumes:
       - application/json
@@ -811,6 +832,7 @@ paths:
       operationId: multiclassify
       summary: Represents all of the labels for a given classification
       tags:
+      - Default
       - Inference
       consumes:
       - application/json
@@ -853,6 +875,7 @@ paths:
       operationId: modelset
       summary: Set the model to be served
       tags:
+      - Default
       - Inference
       consumes:
       - multipart/form-data
@@ -892,6 +915,7 @@ paths:
       operationId: modelupdate
       summary: Update the model to be served
       tags:
+      - Default
       - Inference
       consumes:
       - multipart/form-data
@@ -931,6 +955,7 @@ paths:
       operationId: jsonarray
       summary: Run inference on the input and returns it as a JsonArrayResponse
       tags:
+      - Default
       - Inference
       consumes:
       - application/json
@@ -971,6 +996,7 @@ paths:
       operationId: predictwithpreprocess
       summary: Preprocesses the input and run inference on it
       tags:
+      - Default
       - Inference
       consumes:
       - application/json
@@ -1013,6 +1039,7 @@ paths:
       operationId: predictwithpreprocessjson
       summary: Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
       tags:
+      - Default
       - Inference
       consumes:
       - application/json
@@ -1055,6 +1082,7 @@ paths:
       operationId: logs
       summary: Get logs
       tags:
+      - Default
       - Inference
       consumes:
       - application/json
@@ -1095,6 +1123,7 @@ paths:
       operationId: logfilepath
       summary: Get logs file path
       tags:
+      - Default
       - Inference
       produces:
       - text
@@ -1128,6 +1157,7 @@ paths:
       operationId: meta_get
       summary: this method can be used to get the meta data for the current model which set to the server
       tags:
+      - Default
       - Inference
       consumes:
       - application/json
@@ -1159,6 +1189,7 @@ paths:
       operationId: meta_post
       summary: This method can be used to set meta data for the current model which is set to the server
       tags:
+      - Default
       - Inference
       consumes:
       - application/json
@@ -1197,6 +1228,7 @@ paths:
       operationId: detectobjects
       summary: Detect the objects, given a (input) prediction request
       tags:
+      - Default
       - Inference
       consumes:
       - multipart/form-data
@@ -1253,6 +1285,7 @@ paths:
       operationId: deployments
       summary: Get a list of deployments
       tags:
+      - Default
       - Deployment
       produces:
       - application/json
@@ -1268,6 +1301,7 @@ paths:
       operationId: deployment_get
       summary: Get a deployment details by id
       tags:
+      - Default
       - Deployment
       produces:
       - application/json
@@ -1286,6 +1320,7 @@ paths:
       operationId: deployment_delete
       summary: Delete a deployment by id
       tags:
+      - Default
       - Deployment
       produces:
       - application/json
@@ -1308,6 +1343,7 @@ paths:
       operationId: deploymentCreate
       summary: Create a new deployment group.
       tags:
+      - Default
       - Deployment
       consumes:
       - application/json
@@ -1332,6 +1368,7 @@ paths:
       operationId: models
       summary: Retrieve a list of all the deployed models given a deployment id
       tags:
+      - Default
       - Deployment
       produces:
       - application/json
@@ -1353,6 +1390,7 @@ paths:
       operationId: deployModel
       summary: Deploy a model in a deployment group.
       tags:
+      - Default
       - Deployment
       consumes:
       - application/json
@@ -1380,6 +1418,7 @@ paths:
       operationId: reimportModel
       summary: Reimport a model to a previous deployed model in a deployment
       tags:
+      - Default
       - Deployment
       consumes:
       - application/json
@@ -1411,6 +1450,7 @@ paths:
       operationId: delete_model
       summary: Delete a model by deployment and model id
       tags:
+      - Default
       - Deployment
       produces:
       - application/json
@@ -1438,6 +1478,7 @@ paths:
       operationId: modelStateChange
       summary: Modify the state (start/stop) of a deployed model
       tags:
+      - Default
       - Deployment
       consumes:
       - application/json
@@ -1473,6 +1514,7 @@ paths:
       operationId: getModelHistory
       summary: Gets a model history, given its ID
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -1498,6 +1540,7 @@ paths:
       operationId: addModelHistory
       summary: Add a model history / workspace
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -1526,6 +1569,7 @@ paths:
       operationId: updateModelHistory
       summary: Update a model history / workspace
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -1559,6 +1603,7 @@ paths:
       operationId: deleteModelHistory
       summary: Deletes a model history / workspace, given its ID
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -1595,6 +1640,7 @@ paths:
       operationId: listAllExperiments
       summary: List all of the experiments in every model history / workspace
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -1617,6 +1663,7 @@ paths:
       operationId: getExperimentsForModelHistory
       summary: Obtain all experiments for a model history / workspace
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -1643,6 +1690,7 @@ paths:
       operationId: getExperiment
       summary: Obtain an experiment's details, given its ID
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -1668,6 +1716,7 @@ paths:
       operationId: updateExperiment
       summary: Updates an experiment, given an experiment entity
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -1701,6 +1750,7 @@ paths:
       operationId: deleteExperiment
       summary: Deletes an experiment, given an experiment entity
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -1737,6 +1787,7 @@ paths:
       operationId: addExperiment
       summary: Add an experiment, given an experiment entity
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -1765,6 +1816,7 @@ paths:
       operationId: updateBestModelForExperiment
       summary: Updates the best model for an experiment
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -1793,6 +1845,7 @@ paths:
       operationId: getModelsForExperiment
       summary: Obtain a list of all the models for an experiment
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -1821,6 +1874,7 @@ paths:
       operationId: getModelInstance
       summary: Gets a model instance, given its ID
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -1845,6 +1899,7 @@ paths:
       operationId: deleteModelInstance
       summary: Deletes a model instance, given its ID
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -1868,6 +1923,7 @@ paths:
       operationId: addModelInstance
       summary: Adds a model
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -1896,6 +1952,7 @@ paths:
       operationId: getBestModelAmongModelIds
       summary: Gets the best model among the given model instance IDs, based on the evaluation type and column metric
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -1924,6 +1981,7 @@ paths:
       operationId: createModelHistory
       summary: Creates model History
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -1952,6 +2010,7 @@ paths:
       operationId: addEvaluationResult
       summary: Adds an evaluation result
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -1980,6 +2039,7 @@ paths:
       operationId: getEvaluationForModelID
       summary: Gets the list of evaluation results entity, given a model instance ID
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -2007,6 +2067,7 @@ paths:
       operationId: aggregateModelResults
       summary: Aggregates the evaluaition results of a model instance, based on the evaluation type
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -2035,6 +2096,7 @@ paths:
       operationId: getMinibatch
       summary: Gets a minibatch for the model
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -2060,6 +2122,7 @@ paths:
       operationId: addMinibatch
       summary: Adds a minibatch
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -2088,6 +2151,7 @@ paths:
       operationId: getExamplesForMinibatch
       summary: Gets all the examples for a minibatch ID
       tags:
+      - Default
       - ModelHistory
       produces:
       - application/json
@@ -2115,6 +2179,7 @@ paths:
       operationId: addExampleToMinibatch
       summary: Adds an example to a minibatch
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -2143,6 +2208,7 @@ paths:
       operationId: addExampleForBatch
       summary: Adds a number of examples to a minibatch ID given an AddExampleRequest.
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -2171,6 +2237,7 @@ paths:
       operationId: addModelFeedback
       summary: Adds an evaluation feedback to the model against a given minibatch id.
       tags:
+      - Default
       - ModelHistory
       consumes:
       - application/json
@@ -2202,6 +2269,7 @@ paths:
       operationId: getResourceById
       summary: Get the resource with the specified resource ID
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2226,6 +2294,7 @@ paths:
         about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource'
         object contains only general information (name, id, type, subtype).
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2246,6 +2315,7 @@ paths:
       operationId: getResources
       summary: A list of all known/registered resources, of all types
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2261,6 +2331,7 @@ paths:
       operationId: getResourceByType
       summary: Get all the resources with the specified resource type
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2285,6 +2356,7 @@ paths:
       operationId: getResourceBySubType
       summary: Get all the resources with the specified resource subtype
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2315,6 +2387,7 @@ paths:
       operationId: addResource
       summary: Adds a resource
       tags:
+      - Default
       - Resource
       consumes:
       - application/json
@@ -2337,6 +2410,7 @@ paths:
       operationId: deleteResourceById
       summary: Delete the resource with the specified resource ID
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2357,6 +2431,7 @@ paths:
       operationId: getResourceGroupById
       summary: Get the resource group with the specified resource group ID
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2377,6 +2452,7 @@ paths:
       operationId: getResourceGroups
       summary: Get a list of all the resource groups
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2392,6 +2468,7 @@ paths:
       operationId: addResourceGroup
       summary: Adds a resource group
       tags:
+      - Default
       - Resource
       consumes:
       - text/plain; charset=utf-8
@@ -2414,6 +2491,7 @@ paths:
       operationId: deleteResourceGroupById
       summary: Delete the resource group with the specified resource group ID
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2434,6 +2512,7 @@ paths:
       operationId: addResourceToGroup
       summary: Adds a resource to a resource group
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2458,6 +2537,7 @@ paths:
       operationId: deleteResourceFromGroup
       summary: Removes a resource from a resource group
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2482,6 +2562,7 @@ paths:
       operationId: getResourcesFromGroup
       summary: Get all resources from a resource group
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2504,6 +2585,7 @@ paths:
       operationId: getCredentialsById
       summary: Get credentials given an ID
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2523,6 +2605,7 @@ paths:
       operationId: deleteCredentialsById
       summary: Delete credentials given an ID
       tags:
+      - Default
       - Resource
       produces:
       - application/json
@@ -2541,6 +2624,7 @@ paths:
       operationId: addCredentials
       summary: Adds credentials
       tags:
+      - Default
       - Resource
       consumes:
       - application/json
@@ -2566,6 +2650,7 @@ paths:
       operationId: getJobById
       summary: Get a job by its ID
       tags:
+      - Default
       - Job
       produces:
       - application/json
@@ -2585,6 +2670,7 @@ paths:
       operationId: createJob
       summary: Create a job
       tags:
+      - Default
       - Job
       consumes:
       - application/json
@@ -2614,6 +2700,7 @@ paths:
       operationId: deleteJobById
       summary: Deletes a job given its ID
       tags:
+      - Default
       - Job
       produces:
       - application/json
@@ -2632,6 +2719,7 @@ paths:
       operationId: getAllJobs
       summary: Get a list of all available jobs
       tags:
+      - Default
       - Job
       produces:
       - application/json
@@ -2647,6 +2735,7 @@ paths:
       operationId: runAJob
       summary: Start running an (already created) job on the remote resource
       tags:
+      - Default
       - Job
       consumes:
       - application/json
@@ -2669,6 +2758,7 @@ paths:
       operationId: refreshJobStatus
       summary: Refresh the remote job status. Can be used for monitoring.
       tags:
+      - Default
       - Job
       produces:
       - application/json
@@ -2689,6 +2779,7 @@ paths:
       operationId: downloadJobOutputFile
       summary: Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
       tags:
+      - Default
       - Job
       consumes:
       - application/json
@@ -2718,6 +2809,7 @@ paths:
       operationId: predict
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
       tags:
+      - Default
       - InferenceV2
       consumes:
       - application/json
@@ -2771,6 +2863,7 @@ paths:
       operationId: predictError
       summary: Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
       tags:
+      - Default
       - InferenceV2
       description: |
         These "error" endpoints are slower for inference, but will also ignore invalid rows
@@ -2809,6 +2902,7 @@ paths:
       operationId: rawPredictBinary
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
       tags:
+      - Default
       - InferenceV2
       consumes:
       - multipart/form-data
@@ -2848,6 +2942,7 @@ paths:
       operationId: getCurrentModel
       summary: Returns the current model being used for retraining.
       tags:
+      - Default
       - RetrainV2
       produces:
       - application/octet-stream
@@ -2859,6 +2954,7 @@ paths:
       operationId: addFeedbackJson
       summary: Gets the retraining feedback for the given batch ID.
       tags:
+      - Default
       - RetrainV2
       consumes:
       - application/json
@@ -2889,6 +2985,7 @@ paths:
       operationId: clearState
       summary: Clears the accumulated data for retraining.
       tags:
+      - Default
       - RetrainV2
       produces:
       - application/json
@@ -2902,6 +2999,7 @@ paths:
       operationId: isTraining
       summary: Get the retraining status
       tags:
+      - Default
       - RetrainV2
       produces:
       - application/json
@@ -2915,6 +3013,7 @@ paths:
       operationId: getLastEvaluation
       summary: Get the last evaluation specifications from the current model.
       tags:
+      - Default
       - RetrainV2
       produces:
       - application/json
@@ -2928,6 +3027,7 @@ paths:
       operationId: numRevisions
       summary: Gets the number of retrained models written with retraining.
       tags:
+      - Default
       - RetrainV2
       produces:
       - application/json
@@ -2941,6 +3041,7 @@ paths:
       operationId: accumulatedResults
       summary: Tells how many retraining examples have labels associated with them.
       tags:
+      - Default
       - RetrainV2
       produces:
       - application/json
@@ -2954,6 +3055,7 @@ paths:
       operationId: rollback
       summary: Rollback to a previous revision of the model.
       tags:
+      - Default
       - RetrainV2
       produces:
       - application/json
@@ -2974,6 +3076,7 @@ paths:
     post:
       operationId: addFeedbackBinary
       tags:
+      - Default
       - RetrainV2
       consumes:
       - multipart/form-data
@@ -3009,6 +3112,7 @@ paths:
       summary: Get the memory mapped array based on the array type.
       description: The array is specified through a file path, in the configuration object, during model server deployment.
       tags:
+      - Default
       - MemMapV2
       produces:
       - application/json
@@ -3030,6 +3134,7 @@ paths:
       operationId: getArrayIndices
       summary: Get the memory mapped array indices based on the array type.
       tags:
+      - Default
       - MemMapV2
       consumes:
       - application/json
@@ -3057,6 +3162,7 @@ paths:
       operationId: getArrayRange
       summary: Get the memory mapped array within a range based on the array type.
       tags:
+      - Default
       - MemMapV2
       produces:
       - application/json
