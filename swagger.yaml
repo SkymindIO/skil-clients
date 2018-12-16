@@ -41,6 +41,10 @@ tags:
   description: Inference endpoints
 - name: InferenceV2
   description: Inference endpoints for model server V2
+- name: RetrainV2
+  description: Retrain endpoints for model server V2
+- name: MemMapV2
+  description: Memory mapped endpoints for model server V2
 - name: KNN
   description: KNN endpoints
 - name: Resource
@@ -2843,6 +2847,8 @@ paths:
     get:
       operationId: getCurrentModel
       summary: Returns the current model being used for retraining.
+      tags:
+      - RetrainV2
       produces:
       - application/octet-stream
       responses:
@@ -2852,6 +2858,8 @@ paths:
     post:
       operationId: addFeedbackJson
       summary: Returns the current model being used for retraining.
+      tags:
+      - RetrainV2
       consumes:
       - application/json
       produces:
@@ -2862,11 +2870,15 @@ paths:
   /clear:
     post:
       operationId: clearState
+      tags:
+      - RetrainV2
       produces:
       - application/json
   /istraining:
     get:
       operationId: isTraining
+      tags:
+      - RetrainV2
       produces:
       - application/json
       responses:
@@ -2875,6 +2887,8 @@ paths:
   /lastevaluation:
     get:
       operationId: getLastEvaluation
+      tags:
+      - RetrainV2
       produces:
       - application/json
       responses:
@@ -2883,6 +2897,8 @@ paths:
   /numrevisions:
     get:
       operationId: numRevisions
+      tags:
+      - RetrainV2
       produces:
       - application/json
       responses:
@@ -2891,6 +2907,8 @@ paths:
   /accumulatedresults:
     get:
       operationId: accumulatedResults
+      tags:
+      - RetrainV2
       produces:
       - application/json
       responses:
@@ -2899,6 +2917,8 @@ paths:
   /rollback/{index}:
     post:
       operationId: rollback
+      tags:
+      - RetrainV2
       produces:
       - application/json
       consumes:
@@ -2913,6 +2933,8 @@ paths:
   /feedback/{id}/{type}:
     post:
       operationId: addFeedbackBinary
+      tags:
+      - RetrainV2
       consumes:
       - multipart/form-data
       produces:
@@ -2927,7 +2949,7 @@ paths:
     get:
       operationId:  getArrayJson
       tags:
-      - Memmap
+      - MemMapV2
       produces:
       - application/json
       responses:
@@ -2937,7 +2959,7 @@ paths:
     post:
       operationId:  getArrayBinary
       tags:
-      - Mem map
+      - MemMapV2
       produces:
       - application/octet-stream
       parameters:
@@ -2947,6 +2969,8 @@ paths:
   /array/indices/json:
     post:
       operationId:  getArrayIndicesJson
+      tags:
+      - MemMapV2
       produces:
       - application/json
       - application/octet-stream
@@ -2962,7 +2986,9 @@ paths:
           description: Returns the arrays given the indicies as json
   /array/range/{from}/{to}/json:
     post:
-      operationId:  getArrayRangeJson
+      operationId: getArrayRangeJson
+      tags:
+      - MemMapV2
       produces:
       - application/json
       consumes:
@@ -2984,6 +3010,8 @@ paths:
   /array/range/{from}/{to}/binary:
     post:
       operationId:  getArrayRangeBinary
+      tags:
+      - MemMapV2
       produces:
       - application/octet-stream
       consumes:
