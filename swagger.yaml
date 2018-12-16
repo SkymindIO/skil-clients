@@ -39,6 +39,8 @@ tags:
   description: Transform endpoints
 - name: Inference
   description: Inference endpoints
+- name: InferenceV2
+  description: Inference endpoints for model server V2
 - name: KNN
   description: KNN endpoints
 - name: Resource
@@ -2711,6 +2713,8 @@ paths:
     post:
       operationId: predict
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
+      tags:
+      - InferenceV2
       consumes:
       - application/json
       - multipart/form-data
@@ -2724,15 +2728,13 @@ paths:
         - REGRESSION
         - CLASSIFICATION
         - RAW
-        - CLASSIFICATION
         - YOLO
         - SSD
         - RCNN
-        - RAW
-        - REGRESSION
         description: |
-          The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type
-          while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type.
+          The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for
+          `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for
+          `multipart/form-data` content-type.
       - name: inputType
         in:   path
         type: string
@@ -2746,8 +2748,9 @@ paths:
         - NDARRAY
         - JSON
         description: |
-          The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type
-          while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type.
+          Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for
+          `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
+          `multipart/form-data` content-type.
       - name: inputData
         in:   body
         type: object
@@ -2763,6 +2766,8 @@ paths:
     post:
       operationId: predictError
       summary: Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+      tags:
+      - InferenceV2
       description: |
         These "error" endpoints are slower for inference, but will also ignore invalid rows
         that are found. They will output skipped rows where errors were encountered so users can
@@ -2779,6 +2784,7 @@ paths:
         - REGRESSION
         - CLASSIFICATION
         - RAW
+        descripton: Operation to perform on the input data.
       - name: inputType
         in:   path
         type: string
@@ -2787,6 +2793,7 @@ paths:
         - DICTIONARY
         - CSVPUBSUB
         - DICTIONARYPUBSUB
+        description: Type of the input data.
       - name: inputData
         in:   body
         type: array
@@ -2797,19 +2804,22 @@ paths:
     post:
       operationId: rawPredictBinary
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
+      tags:
+      - InferenceV2
       consumes:
       - multipart/form-data
       produces:
       - application/octet-stream
       parameters:
       - name: inputType
-          in:   path
-          type: string
-          enum:
-          - IMAGE
-          - NUMPY
-          - NDARRAY
-          - JSON
+        in:   path
+        type: string
+        enum:
+        - IMAGE
+        - NUMPY
+        - NDARRAY
+        - JSON
+        description: Input data type.
       - name: outputType
         in:   path
         type: string
@@ -2818,19 +2828,21 @@ paths:
         - NUMPY
         - ARROW
         - JSON
+        description: Binary output data type.
       - name: inputData
         in: formData
         type: file
         description: The input file to upload.
       responses:
         200:
-          description: Input data returned a prediction.
+          description: Input data returned a prediction in raw binary file format.
   # ---------------------------------------------------------------------------------------
   # Model Server v2 - Retraining
   # ---------------------------------------------------------------------------------------
   /model:
     get:
       operationId: getCurrentModel
+      summary: Returns the current model being used for retraining.
       produces:
       - application/octet-stream
       responses:
@@ -2839,6 +2851,7 @@ paths:
   /feedback/{id}/json:
     post:
       operationId: addFeedbackJson
+      summary: Returns the current model being used for retraining.
       consumes:
       - application/json
       produces:
