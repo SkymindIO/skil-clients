@@ -2724,6 +2724,15 @@ paths:
         - REGRESSION
         - CLASSIFICATION
         - RAW
+        - CLASSIFICATION
+        - YOLO
+        - SSD
+        - RCNN
+        - RAW
+        - REGRESSION
+        description: |
+          The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type
+          while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type.
       - name: inputType
         in:   path
         type: string
@@ -2732,24 +2741,34 @@ paths:
         - DICTIONARY
         - CSVPUBSUB
         - DICTIONARYPUBSUB
+        - IMAGE
+        - NUMPY
+        - NDARRAY
+        - JSON
+        description: |
+          The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type
+          while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type.
       - name: inputData
         in:   body
-        type: array
-        description: The input array when the
+        type: object
+        description: The input data when the content type is "application/json"
       - name: inputData
         in: formData
         type: file
-        description: The input file to upload.
+        description: The input file to upload, containing the input data when the content type is "multipart/form-data"
       responses:
         200:
           description: Input data returned a prediction.
   /{operation}/{inputType}/error:
     post:
       operationId: predictError
-      summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
+      summary: Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+      description: |
+        These "error" endpoints are slower for inference, but will also ignore invalid rows
+        that are found. They will output skipped rows where errors were encountered so users can
+        fix problems with input data pipelines.
       consumes:
       - application/json
-      - multipart/form-data
       produces:
       - application/json
       parameters:
@@ -2771,13 +2790,9 @@ paths:
       - name: inputData
         in:   body
         type: array
-      - name: inputData
-        in: formData
-        type: file
-        description: The input file to upload.
       responses:
         200:
-          description: Input data returned a prediction.
+          description: Input data returned a prediction along with the skipped, invalid data rows
   /raw/{inputType}/{outputType}:
     post:
       operationId: rawPredictBinary
@@ -2788,11 +2803,21 @@ paths:
       - application/octet-stream
       parameters:
       - name: inputType
-        in:   path
-        type: string
+          in:   path
+          type: string
+          enum:
+          - IMAGE
+          - NUMPY
+          - NDARRAY
+          - JSON
       - name: outputType
         in:   path
         type: string
+        enum:
+        - ND4J
+        - NUMPY
+        - ARROW
+        - JSON
       - name: inputData
         in: formData
         type: file
