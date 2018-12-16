@@ -2853,70 +2853,106 @@ paths:
       - application/octet-stream
       responses:
         200:
-          description: Returns the current model being used for retraining.
+          description: Returns the current model being used for retraining in the form of a downloadable file.
   /feedback/{id}/json:
     post:
       operationId: addFeedbackJson
-      summary: Returns the current model being used for retraining.
+      summary: Gets the retraining feedback for the given batch ID.
       tags:
       - RetrainV2
       consumes:
       - application/json
       produces:
       - application/json
+      parameters:
+      - name: id
+        in:   path
+        type: string
+        description: Batch ID to retrain the model with and get feedback for.
+      - name: labels
+        in: body
+        schema:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+              format: double
+        description: The associated labels (one-hot vectors) with the batch for retraining.
       responses:
         200:
-          description: Adds feedback for data given a json input format.
+          schema:
+            $ref: '#/definitions/FeedbackResponse'
+          description: The feedback response object
   /clear:
     post:
       operationId: clearState
-      tags:
-      - RetrainV2
-      produces:
-      - application/json
-  /istraining:
-    get:
-      operationId: isTraining
+      summary: Clears the accumulated data for retraining.
       tags:
       - RetrainV2
       produces:
       - application/json
       responses:
         200:
+          schema:
+            $ref: '#/definitions/FeedbackResponse'
+          description: The feedback response object
+  /istraining:
+    get:
+      operationId: isTraining
+      summary: Get the retraining status
+      tags:
+      - RetrainV2
+      produces:
+      - application/json
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/RetrainingStatus'
           description: Returns whether the model is currently being trained or not.
   /lastevaluation:
     get:
       operationId: getLastEvaluation
+      summary: Get the last evaluation specifications from the current model.
       tags:
       - RetrainV2
       produces:
       - application/json
       responses:
         200:
+          schema:
+            $ref: '#/definitions/EvaluationResultsEntity'
           description: Returns the last evaluation ran by the model.
   /numrevisions:
     get:
       operationId: numRevisions
+      summary: Gets the number of retrained models written with retraining.
       tags:
       - RetrainV2
       produces:
       - application/json
       responses:
         200:
+          schema:
+            $ref: '#/definitions/RevisionsWritten'
           description: Returns the number of revisions for retraining of the model.
   /accumulatedresults:
     get:
       operationId: accumulatedResults
+      summary: Tells how many retraining examples have labels associated with them.
       tags:
       - RetrainV2
       produces:
       - application/json
       responses:
         200:
+          schema:
+            $ref: '#/definitions/AccumulatedResults'
           description: Returns the accumulated results currently in ememory.
   /rollback/{index}:
     post:
       operationId: rollback
+      summary: Rollback to a previous revision of the model.
       tags:
       - RetrainV2
       produces:
@@ -2926,10 +2962,14 @@ paths:
       parameters:
       - name: index
         type: integer
+        format: int32
         in: path
+        description: Model revision index.
       responses:
         200:
-          description: Returns the status of the rollback
+          schema:
+            $ref: '#/definitions/RollbackStatus'
+          description: Returns the status of the rollback.
   /feedback/{id}/{type}:
     post:
       operationId: addFeedbackBinary
@@ -2939,9 +2979,24 @@ paths:
       - multipart/form-data
       produces:
       - application/json
+      parameters:
+      - name: id
+        in:   path
+        type: string
+        description: Batch ID to retrain the model with and get feedback for.
+      - name: type
+        in:   path
+        type: string
+        description: The type of the labels array.
+      - name: file
+        in: formData
+        type: file
+        description: The labels file to upload.
       responses:
         200:
-          description: Returns the accmulated feedback
+          schema:
+            $ref: '#/definitions/FeedbackResponse'
+          description: The feedback response object
   # ---------------------------------------------------------------------------------------
   # Model Server v2 - Memory Map
   # ---------------------------------------------------------------------------------------
@@ -4203,5 +4258,41 @@ definitions:
       localDownloadPath:
         type: string
         description: Local path where the file is to be downloaded
-
-
+  FeedbackResponse:
+    type: object
+    properties:
+      retrainThreshold:
+        type: integer
+        format: int32
+        description: The number of examples required to start the retraining process.
+      accumulatedSoFar:
+        type: integer
+        format: int32
+        description: The number of retraining examples accumulated so far.
+  RetrainingStatus:
+    type: object
+    properties:
+      istraining:
+        type: boolean
+        description: True if the retrainer is busy training.
+  RevisionsWritten:
+    type: object
+    properties:
+      numRevisions:
+        type: integer
+        format: int32
+  AccumulatedResults:
+    type: object
+    properties:
+      accumulatedDataWithLabels:
+        type: integer
+        format: int32
+      accumulatedDataWithOutLabels:
+        type: integer
+        format: int32
+  RollbackStatus:
+    type: object
+    properties:
+      status:
+        type: string
+        description: Status of the model revision rollback.
