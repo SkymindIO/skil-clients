@@ -2806,7 +2806,7 @@ paths:
   # ---------------------------------------------------------------------------------------
   /{operation}/{inputType}:
     post:
-      operationId: predict
+      operationId: predictV2
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
       tags:
       - Default
