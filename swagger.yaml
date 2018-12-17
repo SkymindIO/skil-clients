@@ -3156,7 +3156,7 @@ paths:
         description: Input indices array
       responses:
         200:
-          description: Returns the arrays given the indicies
+          description: Returns the arrays given the indices.
   /array/range/{from}/{to}/{arrayType}:
     post:
       operationId: getArrayRange
@@ -3188,7 +3188,7 @@ paths:
         format: int32
       responses:
         200:
-          description: Returns the arrays given the from/to indicies
+          description: Returns the arrays given the from/to indices
 definitions:
   TransformProcess:
     type: object
