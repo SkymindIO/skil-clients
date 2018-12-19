@@ -15,6 +15,7 @@
 from __future__ import absolute_import
 
 # import models into model package
+from skil_client.models.accumulated_results import AccumulatedResults
 from skil_client.models.add_credentials_request import AddCredentialsRequest
 from skil_client.models.add_example_request import AddExampleRequest
 from skil_client.models.add_model_history_request import AddModelHistoryRequest
@@ -40,6 +41,7 @@ from skil_client.models.emr_resource_details import EMRResourceDetails
 from skil_client.models.evaluation_results_entity import EvaluationResultsEntity
 from skil_client.models.example_entity import ExampleEntity
 from skil_client.models.experiment_entity import ExperimentEntity
+from skil_client.models.feedback_response import FeedbackResponse
 from skil_client.models.file_upload import FileUpload
 from skil_client.models.file_upload_list import FileUploadList
 from skil_client.models.google_storage_resource_details import GoogleStorageResourceDetails
@@ -72,6 +74,9 @@ from skil_client.models.prediction import Prediction
 from skil_client.models.resource import Resource
 from skil_client.models.resource_credentials import ResourceCredentials
 from skil_client.models.resource_group import ResourceGroup
+from skil_client.models.retraining_status import RetrainingStatus
+from skil_client.models.revisions_written import RevisionsWritten
+from skil_client.models.rollback_status import RollbackStatus
 from skil_client.models.s3_resource_details import S3ResourceDetails
 from skil_client.models.set_state import SetState
 from skil_client.models.single_csv_record import SingleCSVRecord

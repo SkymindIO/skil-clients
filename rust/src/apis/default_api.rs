@@ -35,22 +35,26 @@ impl<C: hyper::client::Connect> DefaultApiClient<C> {
 }
 
 pub trait DefaultApi {
+    fn accumulated_results(&self, ) -> Box<Future<Item = ::models::AccumulatedResults, Error = Error<serde_json::Value>>>;
     fn add_credentials(&self, add_credentials_request: ::models::AddCredentialsRequest) -> Box<Future<Item = ::models::ResourceCredentials, Error = Error<serde_json::Value>>>;
     fn add_evaluation_result(&self, model_history_server_id: &str, evaluation_results_entity: ::models::EvaluationResultsEntity) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>>;
     fn add_example_for_batch(&self, model_history_server_id: &str, add_example_request: ::models::AddExampleRequest) -> Box<Future<Item = ::models::AddExampleRequest, Error = Error<serde_json::Value>>>;
     fn add_example_to_minibatch(&self, model_history_server_id: &str, example_entity: ::models::ExampleEntity) -> Box<Future<Item = ::models::ExampleEntity, Error = Error<serde_json::Value>>>;
     fn add_experiment(&self, model_history_server_id: &str, experiment_entity: ::models::ExperimentEntity) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
+    fn add_feedback_binary(&self, id: &str, _type: &str, file: ::models::File) -> Box<Future<Item = ::models::FeedbackResponse, Error = Error<serde_json::Value>>>;
+    fn add_feedback_json(&self, id: &str, labels: Vec<Vec<f64>>) -> Box<Future<Item = ::models::FeedbackResponse, Error = Error<serde_json::Value>>>;
     fn add_minibatch(&self, model_history_server_id: &str, minibatch_entity: ::models::MinibatchEntity) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>>;
     fn add_model_feedback(&self, model_history_server_id: &str, model_feed_back_request: ::models::ModelFeedBackRequest) -> Box<Future<Item = ::models::ModelFeedBackRequest, Error = Error<serde_json::Value>>>;
     fn add_model_history(&self, model_history_server_id: &str, add_model_history_request: ::models::AddModelHistoryRequest) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
     fn add_model_instance(&self, model_history_server_id: &str, model_instance_entity: ::models::ModelInstanceEntity) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>>;
     fn add_resource(&self, add_resource_request: ::models::AddResourceRequest) -> Box<Future<Item = Value, Error = Error<serde_json::Value>>>;
-    fn add_resource_group(&self, group_name: ::models::) -> Box<Future<Item = ::models::ResourceGroup, Error = Error<serde_json::Value>>>;
+    fn add_resource_group(&self, group_name: &str) -> Box<Future<Item = ::models::ResourceGroup, Error = Error<serde_json::Value>>>;
     fn add_resource_to_group(&self, resource_group_id: i64, resource_id: i64) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn aggregate_model_results(&self, model_history_server_id: &str, aggregate_prediction: ::models::AggregatePrediction) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>>;
     fn classify(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>>;
     fn classifyarray(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
     fn classifyimage(&self, deployment_name: &str, version_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::ClassificationResult, Error = Error<serde_json::Value>>>;
+    fn clear_state(&self, ) -> Box<Future<Item = ::models::FeedbackResponse, Error = Error<serde_json::Value>>>;
     fn create_job(&self, job_id_or_type: &str, create_job_request: ::models::CreateJobRequest) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
     fn create_model_history(&self, model_history_server_id: &str, model_history_entity: ::models::ModelHistoryEntity) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
     fn delete_credentials_by_id(&self, credential_id: i64) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
@@ -67,16 +71,21 @@ pub trait DefaultApi {
     fn deployment_delete(&self, deployment_id: &str) -> Box<Future<Item = ::models::InlineResponse200, Error = Error<serde_json::Value>>>;
     fn deployment_get(&self, deployment_id: &str) -> Box<Future<Item = ::models::DeploymentResponse, Error = Error<serde_json::Value>>>;
     fn deployments(&self, ) -> Box<Future<Item = Vec<::models::DeploymentResponse>, Error = Error<serde_json::Value>>>;
-    fn detectobjects(&self, id: &str, needs_preprocessing: bool, threshold: f32, image_file: ::models::File, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::DetectionResult, Error = Error<serde_json::Value>>>;
+    fn detectobjects(&self, id: &str, needs_preprocessing: bool, threshold: f32, file: ::models::File, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::DetectionResult, Error = Error<serde_json::Value>>>;
     fn download_job_output_file(&self, job_id: i64, download_output_file_request: ::models::DownloadOutputFileRequest) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn get_all_jobs(&self, ) -> Box<Future<Item = Vec<::models::JobEntity>, Error = Error<serde_json::Value>>>;
+    fn get_array(&self, array_type: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn get_array_indices(&self, array_type: &str, input: ::models::) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn get_array_range(&self, array_type: &str, from: i32, to: i32) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn get_best_model_among_model_ids(&self, model_history_server_id: &str, best_model: ::models::BestModel) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>>;
     fn get_credentials_by_id(&self, credential_id: i64) -> Box<Future<Item = ::models::ResourceCredentials, Error = Error<serde_json::Value>>>;
+    fn get_current_model(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn get_evaluation_for_model_id(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = Vec<::models::EvaluationResultsEntity>, Error = Error<serde_json::Value>>>;
     fn get_examples_for_minibatch(&self, model_history_server_id: &str, minibatch_id: &str) -> Box<Future<Item = Vec<::models::ExampleEntity>, Error = Error<serde_json::Value>>>;
     fn get_experiment(&self, model_history_server_id: &str, experiment_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
     fn get_experiments_for_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
     fn get_job_by_id(&self, job_id_or_type: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
+    fn get_last_evaluation(&self, ) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>>;
     fn get_minibatch(&self, model_history_server_id: &str, minibatch_id: &str) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>>;
     fn get_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
     fn get_model_instance(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>>;
@@ -89,10 +98,11 @@ pub trait DefaultApi {
     fn get_resource_groups(&self, ) -> Box<Future<Item = Vec<::models::ResourceGroup>, Error = Error<serde_json::Value>>>;
     fn get_resources(&self, ) -> Box<Future<Item = Vec<::models::Resource>, Error = Error<serde_json::Value>>>;
     fn get_resources_from_group(&self, resource_group_id: i64) -> Box<Future<Item = Vec<::models::Resource>, Error = Error<serde_json::Value>>>;
+    fn is_training(&self, ) -> Box<Future<Item = ::models::RetrainingStatus, Error = Error<serde_json::Value>>>;
     fn jsonarray(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>>;
     fn knn(&self, deployment_name: &str, version_name: &str, knn_name: &str, body: ::models::NearestNeighborRequest) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>>;
     fn knnnew(&self, deployment_name: &str, version_name: &str, knn_name: &str, body: ::models::Base64NdArrayBodyKnn) -> Box<Future<Item = ::models::NearestNeighborsResults, Error = Error<serde_json::Value>>>;
-    fn list_all_experiments(&self, ) -> Box<Future<Item = Vec<::models::ExperimentEntity>, Error = Error<serde_json::Value>>>;
+    fn list_all_experiments(&self, model_history_server_id: &str) -> Box<Future<Item = Vec<::models::ExperimentEntity>, Error = Error<serde_json::Value>>>;
     fn logfilepath(&self, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn login(&self, credentials: ::models::Credentials) -> Box<Future<Item = ::models::Token, Error = Error<serde_json::Value>>>;
     fn logs(&self, body: ::models::LogRequest, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::LogBatch, Error = Error<serde_json::Value>>>;
@@ -101,16 +111,21 @@ pub trait DefaultApi {
     fn model_state_change(&self, deployment_id: &str, model_id: &str, body: ::models::SetState) -> Box<Future<Item = ::models::ModelEntity, Error = Error<serde_json::Value>>>;
     fn models(&self, deployment_id: &str) -> Box<Future<Item = Vec<::models::ModelEntity>, Error = Error<serde_json::Value>>>;
     fn modelset(&self, deployment_name: &str, version_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>>;
-    fn modelupdate(&self, deployment_name: &str, version_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>>;
+    fn modelupdate(&self, file: ::models::File, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>>;
     fn multiclassify(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiClassClassificationResult, Error = Error<serde_json::Value>>>;
     fn multipredict(&self, body: ::models::MultiPredictRequest, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error<serde_json::Value>>>;
     fn multipredictimage(&self, file: ::models::File, id: &str, needs_preprocessing: bool, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::MultiPredictResponse, Error = Error<serde_json::Value>>>;
+    fn num_revisions(&self, ) -> Box<Future<Item = ::models::RevisionsWritten, Error = Error<serde_json::Value>>>;
     fn predict(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>>;
+    fn predict_error(&self, operation: &str, input_type: &str, input_data: ::models::) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn predict_v2(&self, operation: &str, input_type: &str, input_data: ::models::, input_data2: ::models::File) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn predictimage(&self, deployment_name: &str, version_name: &str, model_name: &str, image: ::models::File) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>>;
     fn predictwithpreprocess(&self, body: Vec<String>, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>>;
     fn predictwithpreprocessjson(&self, body: Vec<String>, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>>;
+    fn raw_predict_binary(&self, input_type: &str, output_type: &str, input_data: ::models::File) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn refresh_job_status(&self, job_id: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
     fn reimport_model(&self, deployment_id: &str, model_id: &str, body: ::models::ImportModelRequest) -> Box<Future<Item = ::models::ModelEntity, Error = Error<serde_json::Value>>>;
+    fn rollback(&self, index: i32) -> Box<Future<Item = ::models::RollbackStatus, Error = Error<serde_json::Value>>>;
     fn run_a_job(&self, job_id: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
     fn transform_csv(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_csv_record: ::models::BatchCsvRecord) -> Box<Future<Item = ::models::BatchCsvRecord, Error = Error<serde_json::Value>>>;
     fn transformarray(&self, deployment_name: &str, version_name: &str, transform_name: &str, batch_record: ::models::Value) -> Box<Future<Item = ::models::Base64NdArrayBody, Error = Error<serde_json::Value>>>;
@@ -128,6 +143,72 @@ pub trait DefaultApi {
 
 
 impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
+    fn accumulated_results(&self, ) -> Box<Future<Item = ::models::AccumulatedResults, Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Get;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/accumulatedresults?{}", configuration.base_path, query_string);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|body| {
+                let parsed: Result<::models::AccumulatedResults, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
+        )
+    }
+
     fn add_credentials(&self, add_credentials_request: ::models::AddCredentialsRequest) -> Box<Future<Item = ::models::ResourceCredentials, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
@@ -473,6 +554,142 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             })
             .and_then(|body| {
                 let parsed: Result<::models::ExperimentEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
+        )
+    }
+
+    fn add_feedback_binary(&self, id: &str, _type: &str, file: ::models::File) -> Box<Future<Item = ::models::FeedbackResponse, Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Post;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/feedback/{id}/{type}?{}", configuration.base_path, query_string, id=id, type=_type);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|body| {
+                let parsed: Result<::models::FeedbackResponse, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
+        )
+    }
+
+    fn add_feedback_json(&self, id: &str, labels: Vec<Vec<f64>>) -> Box<Future<Item = ::models::FeedbackResponse, Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Post;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/feedback/{id}/json?{}", configuration.base_path, query_string, id=id);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+        let serialized = serde_json::to_string(&labels).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|body| {
+                let parsed: Result<::models::FeedbackResponse, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
@@ -828,7 +1045,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn add_resource_group(&self, group_name: ::models::) -> Box<Future<Item = ::models::ResourceGroup, Error = Error<serde_json::Value>>> {
+    fn add_resource_group(&self, group_name: &str) -> Box<Future<Item = ::models::ResourceGroup, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1232,6 +1449,72 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             })
             .and_then(|body| {
                 let parsed: Result<::models::ClassificationResult, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
+        )
+    }
+
+    fn clear_state(&self, ) -> Box<Future<Item = ::models::FeedbackResponse, Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Post;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/clear?{}", configuration.base_path, query_string);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|body| {
+                let parsed: Result<::models::FeedbackResponse, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
@@ -2297,7 +2580,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn detectobjects(&self, id: &str, needs_preprocessing: bool, threshold: f32, image_file: ::models::File, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::DetectionResult, Error = Error<serde_json::Value>>> {
+    fn detectobjects(&self, id: &str, needs_preprocessing: bool, threshold: f32, file: ::models::File, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::DetectionResult, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -2496,6 +2779,199 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
+    fn get_array(&self, array_type: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Post;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/array/{arrayType}?{}", configuration.base_path, query_string, arrayType=array_type);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|_| futures::future::ok(()))
+        )
+    }
+
+    fn get_array_indices(&self, array_type: &str, input: ::models::) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Post;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/array/indices/{arrayType}?{}", configuration.base_path, query_string, arrayType=array_type);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+        let serialized = serde_json::to_string(&input).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|_| futures::future::ok(()))
+        )
+    }
+
+    fn get_array_range(&self, array_type: &str, from: i32, to: i32) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Post;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/array/range/{from}/{to}/{arrayType}?{}", configuration.base_path, query_string, arrayType=array_type, from=from, to=to);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|_| futures::future::ok(()))
+        )
+    }
+
     fn get_best_model_among_model_ids(&self, model_history_server_id: &str, best_model: ::models::BestModel) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
@@ -2629,6 +3105,69 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
                 let parsed: Result<::models::ResourceCredentials, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
+        )
+    }
+
+    fn get_current_model(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Get;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/model?{}", configuration.base_path, query_string);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|_| futures::future::ok(()))
         )
     }
 
@@ -2957,6 +3496,72 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             })
             .and_then(|body| {
                 let parsed: Result<::models::JobEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
+        )
+    }
+
+    fn get_last_evaluation(&self, ) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Get;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/lastevaluation?{}", configuration.base_path, query_string);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|body| {
+                let parsed: Result<::models::EvaluationResultsEntity, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
@@ -3754,6 +4359,72 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
+    fn is_training(&self, ) -> Box<Future<Item = ::models::RetrainingStatus, Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Get;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/istraining?{}", configuration.base_path, query_string);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|body| {
+                let parsed: Result<::models::RetrainingStatus, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
+        )
+    }
+
     fn jsonarray(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::JsonArrayResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
@@ -3964,7 +4635,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn list_all_experiments(&self, ) -> Box<Future<Item = Vec<::models::ExperimentEntity>, Error = Error<serde_json::Value>>> {
+    fn list_all_experiments(&self, model_history_server_id: &str) -> Box<Future<Item = Vec<::models::ExperimentEntity>, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3986,7 +4657,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/rpc/{modelHistoryServerId}/experiments?{}", configuration.base_path, query_string);
+        let uri_str = format!("{}/rpc/{modelHistoryServerId}/experiments?{}", configuration.base_path, query_string, modelHistoryServerId=model_history_server_id);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -4558,7 +5229,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn modelupdate(&self, deployment_name: &str, version_name: &str, model_name: &str, file: ::models::File) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>> {
+    fn modelupdate(&self, file: ::models::File, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::ModelStatus, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -4830,6 +5501,72 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
+    fn num_revisions(&self, ) -> Box<Future<Item = ::models::RevisionsWritten, Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Get;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/numrevisions?{}", configuration.base_path, query_string);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|body| {
+                let parsed: Result<::models::RevisionsWritten, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
+        )
+    }
+
     fn predict(&self, body: ::models::Prediction, deployment_name: &str, version_name: &str, model_name: &str) -> Box<Future<Item = ::models::Prediction, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
@@ -4897,6 +5634,140 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
                 let parsed: Result<::models::Prediction, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
+        )
+    }
+
+    fn predict_error(&self, operation: &str, input_type: &str, input_data: ::models::) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Post;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/{operation}/{inputType}/error?{}", configuration.base_path, query_string, operation=operation, inputType=input_type);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+        let serialized = serde_json::to_string(&input_data).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|_| futures::future::ok(()))
+        )
+    }
+
+    fn predict_v2(&self, operation: &str, input_type: &str, input_data: ::models::, input_data2: ::models::File) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Post;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/{operation}/{inputType}?{}", configuration.base_path, query_string, operation=operation, inputType=input_type);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+        let serialized = serde_json::to_string(&input_data).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|_| futures::future::ok(()))
         )
     }
 
@@ -5106,6 +5977,69 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
+    fn raw_predict_binary(&self, input_type: &str, output_type: &str, input_data: ::models::File) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Post;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/raw/{inputType}/{outputType}?{}", configuration.base_path, query_string, inputType=input_type, outputType=output_type);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|_| futures::future::ok(()))
+        )
+    }
+
     fn refresh_job_status(&self, job_id: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
@@ -5237,6 +6171,72 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             })
             .and_then(|body| {
                 let parsed: Result<::models::ModelEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
+        )
+    }
+
+    fn rollback(&self, index: i32) -> Box<Future<Item = ::models::RollbackStatus, Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Post;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/rollback/{index}?{}", configuration.base_path, query_string, index=index);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|body| {
+                let parsed: Result<::models::RollbackStatus, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

@@ -29,6 +29,13 @@ class TestDefaultApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_accumulated_results(self):
+        """Test case for accumulated_results
+
+        Tells how many retraining examples have labels associated with them.  # noqa: E501
+        """
+        pass
+
     def test_add_credentials(self):
         """Test case for add_credentials
 
@@ -61,6 +68,19 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for add_experiment
 
         Add an experiment, given an experiment entity  # noqa: E501
+        """
+        pass
+
+    def test_add_feedback_binary(self):
+        """Test case for add_feedback_binary
+
+        """
+        pass
+
+    def test_add_feedback_json(self):
+        """Test case for add_feedback_json
+
+        Gets the retraining feedback for the given batch ID.  # noqa: E501
         """
         pass
 
@@ -138,6 +158,13 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for classifyimage
 
         Use the deployed model to classify the input, using input image file from multipart form data.  # noqa: E501
+        """
+        pass
+
+    def test_clear_state(self):
+        """Test case for clear_state
+
+        Clears the accumulated data for retraining.  # noqa: E501
         """
         pass
 
@@ -274,6 +301,27 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_get_array(self):
+        """Test case for get_array
+
+        Get the memory mapped array based on the array type.  # noqa: E501
+        """
+        pass
+
+    def test_get_array_indices(self):
+        """Test case for get_array_indices
+
+        Get the memory mapped array indices based on the array type.  # noqa: E501
+        """
+        pass
+
+    def test_get_array_range(self):
+        """Test case for get_array_range
+
+        Get the memory mapped array within a range based on the array type.  # noqa: E501
+        """
+        pass
+
     def test_get_best_model_among_model_ids(self):
         """Test case for get_best_model_among_model_ids
 
@@ -285,6 +333,13 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for get_credentials_by_id
 
         Get credentials given an ID  # noqa: E501
+        """
+        pass
+
+    def test_get_current_model(self):
+        """Test case for get_current_model
+
+        Returns the current model being used for retraining.  # noqa: E501
         """
         pass
 
@@ -320,6 +375,13 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for get_job_by_id
 
         Get a job by its ID  # noqa: E501
+        """
+        pass
+
+    def test_get_last_evaluation(self):
+        """Test case for get_last_evaluation
+
+        Get the last evaluation specifications from the current model.  # noqa: E501
         """
         pass
 
@@ -404,6 +466,13 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for get_resources_from_group
 
         Get all resources from a resource group  # noqa: E501
+        """
+        pass
+
+    def test_is_training(self):
+        """Test case for is_training
+
+        Get the retraining status  # noqa: E501
         """
         pass
 
@@ -519,10 +588,31 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_num_revisions(self):
+        """Test case for num_revisions
+
+        Gets the number of retrained models written with retraining.  # noqa: E501
+        """
+        pass
+
     def test_predict(self):
         """Test case for predict
 
         Run inference on the input array.  # noqa: E501
+        """
+        pass
+
+    def test_predict_error(self):
+        """Test case for predict_error
+
+        Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.  # noqa: E501
+        """
+        pass
+
+    def test_predict_v2(self):
+        """Test case for predict_v2
+
+        Runs inference based on the input data. Output is defined relative to the output adapter specified.  # noqa: E501
         """
         pass
 
@@ -547,6 +637,13 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_raw_predict_binary(self):
+        """Test case for raw_predict_binary
+
+        Runs inference based on the input data. Output is defined relative to the output adapter specified.  # noqa: E501
+        """
+        pass
+
     def test_refresh_job_status(self):
         """Test case for refresh_job_status
 
@@ -558,6 +655,13 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for reimport_model
 
         Reimport a model to a previous deployed model in a deployment  # noqa: E501
+        """
+        pass
+
+    def test_rollback(self):
+        """Test case for rollback
+
+        Rollback to a previous revision of the model.  # noqa: E501
         """
         pass
 

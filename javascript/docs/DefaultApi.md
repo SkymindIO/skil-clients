@@ -4,11 +4,14 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**accumulatedResults**](DefaultApi.md#accumulatedResults) | **GET** /accumulatedresults | Tells how many retraining examples have labels associated with them.
 [**addCredentials**](DefaultApi.md#addCredentials) | **POST** /resources/credentials | Adds credentials
 [**addEvaluationResult**](DefaultApi.md#addEvaluationResult) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
 [**addExampleForBatch**](DefaultApi.md#addExampleForBatch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 [**addExampleToMinibatch**](DefaultApi.md#addExampleToMinibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
 [**addExperiment**](DefaultApi.md#addExperiment) | **POST** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+[**addFeedbackBinary**](DefaultApi.md#addFeedbackBinary) | **POST** /feedback/{id}/{type} | 
+[**addFeedbackJson**](DefaultApi.md#addFeedbackJson) | **POST** /feedback/{id}/json | Gets the retraining feedback for the given batch ID.
 [**addMinibatch**](DefaultApi.md#addMinibatch) | **POST** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
 [**addModelFeedback**](DefaultApi.md#addModelFeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**addModelHistory**](DefaultApi.md#addModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
@@ -20,6 +23,7 @@ Method | HTTP request | Description
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**clearState**](DefaultApi.md#clearState) | **POST** /clear | Clears the accumulated data for retraining.
 [**createJob**](DefaultApi.md#createJob) | **POST** /jobs/{jobIdOrType} | Create a job
 [**createModelHistory**](DefaultApi.md#createModelHistory) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 [**deleteCredentialsById**](DefaultApi.md#deleteCredentialsById) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
@@ -39,13 +43,18 @@ Method | HTTP request | Description
 [**detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
 [**downloadJobOutputFile**](DefaultApi.md#downloadJobOutputFile) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
 [**getAllJobs**](DefaultApi.md#getAllJobs) | **GET** /jobs | Get a list of all available jobs
+[**getArray**](DefaultApi.md#getArray) | **POST** /array/{arrayType} | Get the memory mapped array based on the array type.
+[**getArrayIndices**](DefaultApi.md#getArrayIndices) | **POST** /array/indices/{arrayType} | Get the memory mapped array indices based on the array type.
+[**getArrayRange**](DefaultApi.md#getArrayRange) | **POST** /array/range/{from}/{to}/{arrayType} | Get the memory mapped array within a range based on the array type.
 [**getBestModelAmongModelIds**](DefaultApi.md#getBestModelAmongModelIds) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 [**getCredentialsById**](DefaultApi.md#getCredentialsById) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
+[**getCurrentModel**](DefaultApi.md#getCurrentModel) | **GET** /model | Returns the current model being used for retraining.
 [**getEvaluationForModelID**](DefaultApi.md#getEvaluationForModelID) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
 [**getExamplesForMinibatch**](DefaultApi.md#getExamplesForMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**getExperiment**](DefaultApi.md#getExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**getExperimentsForModelHistory**](DefaultApi.md#getExperimentsForModelHistory) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
 [**getJobById**](DefaultApi.md#getJobById) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
+[**getLastEvaluation**](DefaultApi.md#getLastEvaluation) | **GET** /lastevaluation | Get the last evaluation specifications from the current model.
 [**getMinibatch**](DefaultApi.md#getMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**getModelHistory**](DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**getModelInstance**](DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
@@ -58,6 +67,7 @@ Method | HTTP request | Description
 [**getResourceGroups**](DefaultApi.md#getResourceGroups) | **GET** /resources/groups | Get a list of all the resource groups
 [**getResources**](DefaultApi.md#getResources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**getResourcesFromGroup**](DefaultApi.md#getResourcesFromGroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
+[**isTraining**](DefaultApi.md#isTraining) | **GET** /istraining | Get the retraining status
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -74,12 +84,17 @@ Method | HTTP request | Description
 [**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
 [**multipredict**](DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
 [**multipredictimage**](DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+[**numRevisions**](DefaultApi.md#numRevisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 [**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+[**predictError**](DefaultApi.md#predictError) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+[**predictV2**](DefaultApi.md#predictV2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**rawPredictBinary**](DefaultApi.md#rawPredictBinary) | **POST** /raw/{inputType}/{outputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**refreshJobStatus**](DefaultApi.md#refreshJobStatus) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
 [**reimportModel**](DefaultApi.md#reimportModel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**rollback**](DefaultApi.md#rollback) | **POST** /rollback/{index} | Rollback to a previous revision of the model.
 [**runAJob**](DefaultApi.md#runAJob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transformCsv**](DefaultApi.md#transformCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 [**transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
@@ -94,6 +109,51 @@ Method | HTTP request | Description
 [**updateModelHistory**](DefaultApi.md#updateModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
+
+<a name="accumulatedResults"></a>
+# **accumulatedResults**
+> AccumulatedResults accumulatedResults()
+
+Tells how many retraining examples have labels associated with them.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.accumulatedResults(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AccumulatedResults**](AccumulatedResults.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="addCredentials"></a>
 # **addCredentials**
@@ -352,6 +412,119 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExperimentEntity**](ExperimentEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="addFeedbackBinary"></a>
+# **addFeedbackBinary**
+> FeedbackResponse addFeedbackBinary(id, type, opts)
+
+
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var id = "id_example"; // String | Batch ID to retrain the model with and get feedback for.
+
+var type = "type_example"; // String | The type of the labels array.
+
+var opts = { 
+  'file': "/path/to/file.txt" // File | The labels file to upload.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.addFeedbackBinary(id, type, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Batch ID to retrain the model with and get feedback for. | 
+ **type** | **String**| The type of the labels array. | 
+ **file** | **File**| The labels file to upload. | [optional] 
+
+### Return type
+
+[**FeedbackResponse**](FeedbackResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+<a name="addFeedbackJson"></a>
+# **addFeedbackJson**
+> FeedbackResponse addFeedbackJson(id, opts)
+
+Gets the retraining feedback for the given batch ID.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var id = "id_example"; // String | Batch ID to retrain the model with and get feedback for.
+
+var opts = { 
+  'labels': [new SkilClient.[[Number]]()] // [[Number]] | The associated labels (one-hot vectors) with the batch for retraining.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.addFeedbackJson(id, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Batch ID to retrain the model with and get feedback for. | 
+ **labels** | **[[Number]]**| The associated labels (one-hot vectors) with the batch for retraining. | [optional] 
+
+### Return type
+
+[**FeedbackResponse**](FeedbackResponse.md)
 
 ### Authorization
 
@@ -648,7 +821,7 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var groupName = new SkilClient.null(); //  | Name of the resource group
+var groupName = "groupName_example"; // String | Name of the resource group
 
 
 var callback = function(error, data, response) {
@@ -665,7 +838,7 @@ apiInstance.addResourceGroup(groupName, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupName** | [****](.md)| Name of the resource group | 
+ **groupName** | **String**| Name of the resource group | 
 
 ### Return type
 
@@ -967,6 +1140,51 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+<a name="clearState"></a>
+# **clearState**
+> FeedbackResponse clearState()
+
+Clears the accumulated data for retraining.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.clearState(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**FeedbackResponse**](FeedbackResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="createJob"></a>
@@ -1805,7 +2023,7 @@ This endpoint does not need any parameter.
 
 <a name="detectobjects"></a>
 # **detectobjects**
-> DetectionResult detectobjects(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName)
+> DetectionResult detectobjects(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName)
 
 Detect the objects, given a (input) prediction request
 
@@ -1828,7 +2046,7 @@ var needsPreprocessing = true; // Boolean | (true) if the image needs preprocess
 
 var threshold = 3.4; // Number | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
 
-var imageFile = "/path/to/file.txt"; // File | the image file to detect objects from
+var file = "/path/to/file.txt"; // File | the image file to detect objects from
 
 var deploymentName = "deploymentName_example"; // String | Name of the deployment group
 
@@ -1844,7 +2062,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.detectobjects(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName, callback);
+apiInstance.detectobjects(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName, callback);
 ```
 
 ### Parameters
@@ -1854,7 +2072,7 @@ Name | Type | Description  | Notes
  **id** | **String**| the GUID for mapping the results in the detections | 
  **needsPreprocessing** | **Boolean**| (true) if the image needs preprocessing | 
  **threshold** | **Number**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
- **imageFile** | **File**| the image file to detect objects from | 
+ **file** | **File**| the image file to detect objects from | 
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **String**| ID or name of the deployed model | 
@@ -1971,6 +2189,171 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getArray"></a>
+# **getArray**
+> getArray(arrayType)
+
+Get the memory mapped array based on the array type.
+
+The array is specified through a file path, in the configuration object, during model server deployment.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var arrayType = "arrayType_example"; // String | The format in which the memory mapped array is returned.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getArray(arrayType, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **arrayType** | **String**| The format in which the memory mapped array is returned. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/octet-stream
+
+<a name="getArrayIndices"></a>
+# **getArrayIndices**
+> getArrayIndices(arrayType, opts)
+
+Get the memory mapped array indices based on the array type.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
+
+var opts = { 
+  'input': new SkilClient.null() //  | Input indices array
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getArrayIndices(arrayType, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **arrayType** | **String**| Format in which the memory mapped array is returned in. | 
+ **input** | [****](.md)| Input indices array | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/octet-stream
+
+<a name="getArrayRange"></a>
+# **getArrayRange**
+> getArrayRange(arrayType, from, to)
+
+Get the memory mapped array within a range based on the array type.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
+
+var from = 56; // Number | 
+
+var to = 56; // Number | 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getArrayRange(arrayType, from, to, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **arrayType** | **String**| Format in which the memory mapped array is returned in. | 
+ **from** | **Number**|  | 
+ **to** | **Number**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/octet-stream
+ - **Accept**: application/json
+
 <a name="getBestModelAmongModelIds"></a>
 # **getBestModelAmongModelIds**
 > ModelInstanceEntity getBestModelAmongModelIds(modelHistoryServerId, bestModel)
@@ -2075,6 +2458,51 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+<a name="getCurrentModel"></a>
+# **getCurrentModel**
+> getCurrentModel()
+
+Returns the current model being used for retraining.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.getCurrentModel(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/octet-stream
 
 <a name="getEvaluationForModelID"></a>
 # **getEvaluationForModelID**
@@ -2333,6 +2761,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getLastEvaluation"></a>
+# **getLastEvaluation**
+> EvaluationResultsEntity getLastEvaluation()
+
+Get the last evaluation specifications from the current model.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getLastEvaluation(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**EvaluationResultsEntity**](EvaluationResultsEntity.md)
 
 ### Authorization
 
@@ -2957,6 +3430,51 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="isTraining"></a>
+# **isTraining**
+> RetrainingStatus isTraining()
+
+Get the retraining status
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.isTraining(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**RetrainingStatus**](RetrainingStatus.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="jsonarray"></a>
 # **jsonarray**
 > JsonArrayResponse jsonarray(body, deploymentName, versionName, modelName)
@@ -3141,7 +3659,7 @@ Name | Type | Description  | Notes
 
 <a name="listAllExperiments"></a>
 # **listAllExperiments**
-> [ExperimentEntity] listAllExperiments()
+> [ExperimentEntity] listAllExperiments(modelHistoryServerId)
 
 List all of the experiments in every model history / workspace
 
@@ -3158,6 +3676,9 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
+var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -3165,11 +3686,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.listAllExperiments(callback);
+apiInstance.listAllExperiments(modelHistoryServerId, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
 
 ### Return type
 
@@ -3633,7 +4157,7 @@ Name | Type | Description  | Notes
 
 <a name="modelupdate"></a>
 # **modelupdate**
-> ModelStatus modelupdate(deploymentName, versionName, modelName, opts)
+> ModelStatus modelupdate(file, deploymentName, versionName, modelName)
 
 Update the model to be served
 
@@ -3650,15 +4174,14 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
+var file = "/path/to/file.txt"; // File | The model file to update with (.pb file)
+
 var deploymentName = "deploymentName_example"; // String | Name of the deployment group
 
 var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 
 var modelName = "modelName_example"; // String | ID or name of the deployed model
 
-var opts = { 
-  'file': "/path/to/file.txt" // File | The model file to update with (.pb file)
-};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -3667,17 +4190,17 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.modelupdate(deploymentName, versionName, modelName, opts, callback);
+apiInstance.modelupdate(file, deploymentName, versionName, modelName, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **file** | **File**| The model file to update with (.pb file) | 
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **String**| ID or name of the deployed model | 
- **file** | **File**| The model file to update with (.pb file) | [optional] 
 
 ### Return type
 
@@ -3882,6 +4405,51 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+<a name="numRevisions"></a>
+# **numRevisions**
+> RevisionsWritten numRevisions()
+
+Gets the number of retrained models written with retraining.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.numRevisions(callback);
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**RevisionsWritten**](RevisionsWritten.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="predict"></a>
 # **predict**
 > Prediction predict(body, deploymentName, versionName, modelName)
@@ -3940,6 +4508,126 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="predictError"></a>
+# **predictError**
+> predictError(operation, inputType, opts)
+
+Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+
+These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var operation = "operation_example"; // String | 
+
+var inputType = "inputType_example"; // String | Type of the input data.
+
+var opts = { 
+  'inputData': new SkilClient.null() //  | 
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.predictError(operation, inputType, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **operation** | **String**|  | 
+ **inputType** | **String**| Type of the input data. | 
+ **inputData** | [****](.md)|  | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="predictV2"></a>
+# **predictV2**
+> predictV2(operation, inputType, opts)
+
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var operation = "operation_example"; // String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
+
+var inputType = "inputType_example"; // String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
+
+var opts = { 
+  'inputData': new SkilClient.null(), //  | The input data when the content type is \"application/json\"
+  'inputData2': "/path/to/file.txt" // File | The input file to upload, containing the input data when the content type is \"multipart/form-data\"
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.predictV2(operation, inputType, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **operation** | **String**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
+ **inputType** | **String**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
+ **inputData** | [****](.md)| The input data when the content type is \&quot;application/json\&quot; | [optional] 
+ **inputData2** | **File**| The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
  - **Accept**: application/json
 
 <a name="predictimage"></a>
@@ -4123,6 +4811,64 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="rawPredictBinary"></a>
+# **rawPredictBinary**
+> rawPredictBinary(inputType, outputType, opts)
+
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var inputType = "inputType_example"; // String | Input data type.
+
+var outputType = "outputType_example"; // String | Binary output data type.
+
+var opts = { 
+  'inputData': "/path/to/file.txt" // File | The input file to upload.
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.rawPredictBinary(inputType, outputType, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inputType** | **String**| Input data type. | 
+ **outputType** | **String**| Binary output data type. | 
+ **inputData** | **File**| The input file to upload. | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
 <a name="refreshJobStatus"></a>
 # **refreshJobStatus**
 > JobEntity refreshJobStatus(jobId)
@@ -4221,6 +4967,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelEntity**](ModelEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="rollback"></a>
+# **rollback**
+> RollbackStatus rollback(index)
+
+Rollback to a previous revision of the model.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var index = 56; // Number | Model revision index.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.rollback(index, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **index** | **Number**| Model revision index. | 
+
+### Return type
+
+[**RollbackStatus**](RollbackStatus.md)
 
 ### Authorization
 

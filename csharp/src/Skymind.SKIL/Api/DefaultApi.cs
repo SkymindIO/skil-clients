@@ -25,6 +25,25 @@ namespace Skymind.SKIL.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Tells how many retraining examples have labels associated with them.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>AccumulatedResults</returns>
+        AccumulatedResults AccumulatedResults ();
+
+        /// <summary>
+        /// Tells how many retraining examples have labels associated with them.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of AccumulatedResults</returns>
+        ApiResponse<AccumulatedResults> AccumulatedResultsWithHttpInfo ();
+        /// <summary>
         /// Adds credentials
         /// </summary>
         /// <remarks>
@@ -137,6 +156,54 @@ namespace Skymind.SKIL.Api
         /// <param name="experimentEntity">The experiment entity to add</param>
         /// <returns>ApiResponse of ExperimentEntity</returns>
         ApiResponse<ExperimentEntity> AddExperimentWithHttpInfo (string modelHistoryServerId, ExperimentEntity experimentEntity);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="type">The type of the labels array.</param>
+        /// <param name="file">The labels file to upload. (optional)</param>
+        /// <returns>FeedbackResponse</returns>
+        FeedbackResponse AddFeedbackBinary (string id, string type, System.IO.Stream file = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="type">The type of the labels array.</param>
+        /// <param name="file">The labels file to upload. (optional)</param>
+        /// <returns>ApiResponse of FeedbackResponse</returns>
+        ApiResponse<FeedbackResponse> AddFeedbackBinaryWithHttpInfo (string id, string type, System.IO.Stream file = null);
+        /// <summary>
+        /// Gets the retraining feedback for the given batch ID.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="labels">The associated labels (one-hot vectors) with the batch for retraining. (optional)</param>
+        /// <returns>FeedbackResponse</returns>
+        FeedbackResponse AddFeedbackJson (string id, List<List<double?>> labels = null);
+
+        /// <summary>
+        /// Gets the retraining feedback for the given batch ID.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="labels">The associated labels (one-hot vectors) with the batch for retraining. (optional)</param>
+        /// <returns>ApiResponse of FeedbackResponse</returns>
+        ApiResponse<FeedbackResponse> AddFeedbackJsonWithHttpInfo (string id, List<List<double?>> labels = null);
         /// <summary>
         /// Adds a minibatch
         /// </summary>
@@ -259,7 +326,7 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupName">Name of the resource group</param>
         /// <returns>ResourceGroup</returns>
-        ResourceGroup AddResourceGroup ( groupName);
+        ResourceGroup AddResourceGroup (string groupName);
 
         /// <summary>
         /// Adds a resource group
@@ -270,7 +337,7 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupName">Name of the resource group</param>
         /// <returns>ApiResponse of ResourceGroup</returns>
-        ApiResponse<ResourceGroup> AddResourceGroupWithHttpInfo ( groupName);
+        ApiResponse<ResourceGroup> AddResourceGroupWithHttpInfo (string groupName);
         /// <summary>
         /// Adds a resource to a resource group
         /// </summary>
@@ -398,6 +465,25 @@ namespace Skymind.SKIL.Api
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>ApiResponse of ClassificationResult</returns>
         ApiResponse<ClassificationResult> ClassifyimageWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream image = null);
+        /// <summary>
+        /// Clears the accumulated data for retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>FeedbackResponse</returns>
+        FeedbackResponse ClearState ();
+
+        /// <summary>
+        /// Clears the accumulated data for retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of FeedbackResponse</returns>
+        ApiResponse<FeedbackResponse> ClearStateWithHttpInfo ();
         /// <summary>
         /// Create a job
         /// </summary>
@@ -758,12 +844,12 @@ namespace Skymind.SKIL.Api
         /// <param name="id">the GUID for mapping the results in the detections</param>
         /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
-        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="file">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>DetectionResult</returns>
-        DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName);
+        DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream file, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Detect the objects, given a (input) prediction request
@@ -775,12 +861,12 @@ namespace Skymind.SKIL.Api
         /// <param name="id">the GUID for mapping the results in the detections</param>
         /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
-        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="file">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of DetectionResult</returns>
-        ApiResponse<DetectionResult> DetectobjectsWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName);
+        ApiResponse<DetectionResult> DetectobjectsWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream file, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
         /// </summary>
@@ -823,6 +909,75 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;JobEntity&gt;</returns>
         ApiResponse<List<JobEntity>> GetAllJobsWithHttpInfo ();
+        /// <summary>
+        /// Get the memory mapped array based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// The array is specified through a file path, in the configuration object, during model server deployment.
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
+        /// <returns></returns>
+        void GetArray (string arrayType);
+
+        /// <summary>
+        /// Get the memory mapped array based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// The array is specified through a file path, in the configuration object, during model server deployment.
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> GetArrayWithHttpInfo (string arrayType);
+        /// <summary>
+        /// Get the memory mapped array indices based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="input">Input indices array (optional)</param>
+        /// <returns></returns>
+        void GetArrayIndices (string arrayType,  input = null);
+
+        /// <summary>
+        /// Get the memory mapped array indices based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="input">Input indices array (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> GetArrayIndicesWithHttpInfo (string arrayType,  input = null);
+        /// <summary>
+        /// Get the memory mapped array within a range based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        void GetArrayRange (string arrayType, int? from, int? to);
+
+        /// <summary>
+        /// Get the memory mapped array within a range based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> GetArrayRangeWithHttpInfo (string arrayType, int? from, int? to);
         /// <summary>
         /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric
         /// </summary>
@@ -867,6 +1022,25 @@ namespace Skymind.SKIL.Api
         /// <param name="credentialId">Credentials ID</param>
         /// <returns>ApiResponse of ResourceCredentials</returns>
         ApiResponse<ResourceCredentials> GetCredentialsByIdWithHttpInfo (long? credentialId);
+        /// <summary>
+        /// Returns the current model being used for retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns></returns>
+        void GetCurrentModel ();
+
+        /// <summary>
+        /// Returns the current model being used for retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> GetCurrentModelWithHttpInfo ();
         /// <summary>
         /// Gets the list of evaluation results entity, given a model instance ID
         /// </summary>
@@ -980,6 +1154,25 @@ namespace Skymind.SKIL.Api
         /// <param name="jobIdOrType">Job ID</param>
         /// <returns>ApiResponse of JobEntity</returns>
         ApiResponse<JobEntity> GetJobByIdWithHttpInfo (long? jobIdOrType);
+        /// <summary>
+        /// Get the last evaluation specifications from the current model.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>EvaluationResultsEntity</returns>
+        EvaluationResultsEntity GetLastEvaluation ();
+
+        /// <summary>
+        /// Get the last evaluation specifications from the current model.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of EvaluationResultsEntity</returns>
+        ApiResponse<EvaluationResultsEntity> GetLastEvaluationWithHttpInfo ();
         /// <summary>
         /// Gets a minibatch for the model
         /// </summary>
@@ -1237,6 +1430,25 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of List&lt;Resource&gt;</returns>
         ApiResponse<List<Resource>> GetResourcesFromGroupWithHttpInfo (long? resourceGroupId);
         /// <summary>
+        /// Get the retraining status
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>RetrainingStatus</returns>
+        RetrainingStatus IsTraining ();
+
+        /// <summary>
+        /// Get the retraining status
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of RetrainingStatus</returns>
+        ApiResponse<RetrainingStatus> IsTrainingWithHttpInfo ();
+        /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
         /// </summary>
         /// <remarks>
@@ -1324,8 +1536,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <returns>List&lt;ExperimentEntity&gt;</returns>
-        List<ExperimentEntity> ListAllExperiments ();
+        List<ExperimentEntity> ListAllExperiments (string modelHistoryServerId);
 
         /// <summary>
         /// List all of the experiments in every model history / workspace
@@ -1334,8 +1547,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <returns>ApiResponse of List&lt;ExperimentEntity&gt;</returns>
-        ApiResponse<List<ExperimentEntity>> ListAllExperimentsWithHttpInfo ();
+        ApiResponse<List<ExperimentEntity>> ListAllExperimentsWithHttpInfo (string modelHistoryServerId);
         /// <summary>
         /// Get logs file path
         /// </summary>
@@ -1541,12 +1755,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The model file to update with (.pb file)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>ModelStatus</returns>
-        ModelStatus Modelupdate (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
+        ModelStatus Modelupdate (System.IO.Stream file, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Update the model to be served
@@ -1555,12 +1769,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The model file to update with (.pb file)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>ApiResponse of ModelStatus</returns>
-        ApiResponse<ModelStatus> ModelupdateWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
+        ApiResponse<ModelStatus> ModelupdateWithHttpInfo (System.IO.Stream file, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Represents all of the labels for a given classification
         /// </summary>
@@ -1647,6 +1861,25 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of MultiPredictResponse</returns>
         ApiResponse<MultiPredictResponse> MultipredictimageWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName);
         /// <summary>
+        /// Gets the number of retrained models written with retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>RevisionsWritten</returns>
+        RevisionsWritten NumRevisions ();
+
+        /// <summary>
+        /// Gets the number of retrained models written with retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of RevisionsWritten</returns>
+        ApiResponse<RevisionsWritten> NumRevisionsWithHttpInfo ();
+        /// <summary>
         /// Run inference on the input array.
         /// </summary>
         /// <remarks>
@@ -1673,6 +1906,58 @@ namespace Skymind.SKIL.Api
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of Prediction</returns>
         ApiResponse<Prediction> PredictWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
+        /// <summary>
+        /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation"></param>
+        /// <param name="inputType">Type of the input data.</param>
+        /// <param name="inputData"> (optional)</param>
+        /// <returns></returns>
+        void PredictError (string operation, string inputType,  inputData = null);
+
+        /// <summary>
+        /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation"></param>
+        /// <param name="inputType">Type of the input data.</param>
+        /// <param name="inputData"> (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> PredictErrorWithHttpInfo (string operation, string inputType,  inputData = null);
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputData">The input data when the content type is \&quot;application/json\&quot; (optional)</param>
+        /// <param name="inputData2">The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)</param>
+        /// <returns></returns>
+        void PredictV2 (string operation, string inputType,  inputData = null, System.IO.Stream inputData2 = null);
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputData">The input data when the content type is \&quot;application/json\&quot; (optional)</param>
+        /// <param name="inputData2">The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> PredictV2WithHttpInfo (string operation, string inputType,  inputData = null, System.IO.Stream inputData2 = null);
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
         /// </summary>
@@ -1755,6 +2040,31 @@ namespace Skymind.SKIL.Api
         /// <returns>ApiResponse of JsonArrayResponse</returns>
         ApiResponse<JsonArrayResponse> PredictwithpreprocessjsonWithHttpInfo (List<string> body, string deploymentName, string versionName, string modelName);
         /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputType">Input data type.</param>
+        /// <param name="outputType">Binary output data type.</param>
+        /// <param name="inputData">The input file to upload. (optional)</param>
+        /// <returns></returns>
+        void RawPredictBinary (string inputType, string outputType, System.IO.Stream inputData = null);
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputType">Input data type.</param>
+        /// <param name="outputType">Binary output data type.</param>
+        /// <param name="inputData">The input file to upload. (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> RawPredictBinaryWithHttpInfo (string inputType, string outputType, System.IO.Stream inputData = null);
+        /// <summary>
         /// Refresh the remote job status. Can be used for monitoring.
         /// </summary>
         /// <remarks>
@@ -1800,6 +2110,27 @@ namespace Skymind.SKIL.Api
         /// <param name="body">the deployment request</param>
         /// <returns>ApiResponse of ModelEntity</returns>
         ApiResponse<ModelEntity> ReimportModelWithHttpInfo (string deploymentId, string modelId, ImportModelRequest body);
+        /// <summary>
+        /// Rollback to a previous revision of the model.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="index">Model revision index.</param>
+        /// <returns>RollbackStatus</returns>
+        RollbackStatus Rollback (int? index);
+
+        /// <summary>
+        /// Rollback to a previous revision of the model.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="index">Model revision index.</param>
+        /// <returns>ApiResponse of RollbackStatus</returns>
+        ApiResponse<RollbackStatus> RollbackWithHttpInfo (int? index);
         /// <summary>
         /// Start running an (already created) job on the remote resource
         /// </summary>
@@ -2132,6 +2463,25 @@ namespace Skymind.SKIL.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
+        /// Tells how many retraining examples have labels associated with them.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of AccumulatedResults</returns>
+        System.Threading.Tasks.Task<AccumulatedResults> AccumulatedResultsAsync ();
+
+        /// <summary>
+        /// Tells how many retraining examples have labels associated with them.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (AccumulatedResults)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AccumulatedResults>> AccumulatedResultsAsyncWithHttpInfo ();
+        /// <summary>
         /// Adds credentials
         /// </summary>
         /// <remarks>
@@ -2244,6 +2594,54 @@ namespace Skymind.SKIL.Api
         /// <param name="experimentEntity">The experiment entity to add</param>
         /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
         System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> AddExperimentAsyncWithHttpInfo (string modelHistoryServerId, ExperimentEntity experimentEntity);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="type">The type of the labels array.</param>
+        /// <param name="file">The labels file to upload. (optional)</param>
+        /// <returns>Task of FeedbackResponse</returns>
+        System.Threading.Tasks.Task<FeedbackResponse> AddFeedbackBinaryAsync (string id, string type, System.IO.Stream file = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="type">The type of the labels array.</param>
+        /// <param name="file">The labels file to upload. (optional)</param>
+        /// <returns>Task of ApiResponse (FeedbackResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FeedbackResponse>> AddFeedbackBinaryAsyncWithHttpInfo (string id, string type, System.IO.Stream file = null);
+        /// <summary>
+        /// Gets the retraining feedback for the given batch ID.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="labels">The associated labels (one-hot vectors) with the batch for retraining. (optional)</param>
+        /// <returns>Task of FeedbackResponse</returns>
+        System.Threading.Tasks.Task<FeedbackResponse> AddFeedbackJsonAsync (string id, List<List<double?>> labels = null);
+
+        /// <summary>
+        /// Gets the retraining feedback for the given batch ID.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="labels">The associated labels (one-hot vectors) with the batch for retraining. (optional)</param>
+        /// <returns>Task of ApiResponse (FeedbackResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FeedbackResponse>> AddFeedbackJsonAsyncWithHttpInfo (string id, List<List<double?>> labels = null);
         /// <summary>
         /// Adds a minibatch
         /// </summary>
@@ -2366,7 +2764,7 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupName">Name of the resource group</param>
         /// <returns>Task of ResourceGroup</returns>
-        System.Threading.Tasks.Task<ResourceGroup> AddResourceGroupAsync ( groupName);
+        System.Threading.Tasks.Task<ResourceGroup> AddResourceGroupAsync (string groupName);
 
         /// <summary>
         /// Adds a resource group
@@ -2377,7 +2775,7 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupName">Name of the resource group</param>
         /// <returns>Task of ApiResponse (ResourceGroup)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ResourceGroup>> AddResourceGroupAsyncWithHttpInfo ( groupName);
+        System.Threading.Tasks.Task<ApiResponse<ResourceGroup>> AddResourceGroupAsyncWithHttpInfo (string groupName);
         /// <summary>
         /// Adds a resource to a resource group
         /// </summary>
@@ -2505,6 +2903,25 @@ namespace Skymind.SKIL.Api
         /// <param name="image">The file to upload. (optional)</param>
         /// <returns>Task of ApiResponse (ClassificationResult)</returns>
         System.Threading.Tasks.Task<ApiResponse<ClassificationResult>> ClassifyimageAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream image = null);
+        /// <summary>
+        /// Clears the accumulated data for retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of FeedbackResponse</returns>
+        System.Threading.Tasks.Task<FeedbackResponse> ClearStateAsync ();
+
+        /// <summary>
+        /// Clears the accumulated data for retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (FeedbackResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FeedbackResponse>> ClearStateAsyncWithHttpInfo ();
         /// <summary>
         /// Create a job
         /// </summary>
@@ -2865,12 +3282,12 @@ namespace Skymind.SKIL.Api
         /// <param name="id">the GUID for mapping the results in the detections</param>
         /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
-        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="file">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of DetectionResult</returns>
-        System.Threading.Tasks.Task<DetectionResult> DetectobjectsAsync (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName);
+        System.Threading.Tasks.Task<DetectionResult> DetectobjectsAsync (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream file, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Detect the objects, given a (input) prediction request
@@ -2882,12 +3299,12 @@ namespace Skymind.SKIL.Api
         /// <param name="id">the GUID for mapping the results in the detections</param>
         /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
-        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="file">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (DetectionResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DetectionResult>> DetectobjectsAsyncWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<DetectionResult>> DetectobjectsAsyncWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream file, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
         /// </summary>
@@ -2930,6 +3347,75 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;JobEntity&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<JobEntity>>> GetAllJobsAsyncWithHttpInfo ();
+        /// <summary>
+        /// Get the memory mapped array based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// The array is specified through a file path, in the configuration object, during model server deployment.
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task GetArrayAsync (string arrayType);
+
+        /// <summary>
+        /// Get the memory mapped array based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// The array is specified through a file path, in the configuration object, during model server deployment.
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayAsyncWithHttpInfo (string arrayType);
+        /// <summary>
+        /// Get the memory mapped array indices based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="input">Input indices array (optional)</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task GetArrayIndicesAsync (string arrayType,  input = null);
+
+        /// <summary>
+        /// Get the memory mapped array indices based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="input">Input indices array (optional)</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayIndicesAsyncWithHttpInfo (string arrayType,  input = null);
+        /// <summary>
+        /// Get the memory mapped array within a range based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task GetArrayRangeAsync (string arrayType, int? from, int? to);
+
+        /// <summary>
+        /// Get the memory mapped array within a range based on the array type.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayRangeAsyncWithHttpInfo (string arrayType, int? from, int? to);
         /// <summary>
         /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric
         /// </summary>
@@ -2974,6 +3460,25 @@ namespace Skymind.SKIL.Api
         /// <param name="credentialId">Credentials ID</param>
         /// <returns>Task of ApiResponse (ResourceCredentials)</returns>
         System.Threading.Tasks.Task<ApiResponse<ResourceCredentials>> GetCredentialsByIdAsyncWithHttpInfo (long? credentialId);
+        /// <summary>
+        /// Returns the current model being used for retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task GetCurrentModelAsync ();
+
+        /// <summary>
+        /// Returns the current model being used for retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetCurrentModelAsyncWithHttpInfo ();
         /// <summary>
         /// Gets the list of evaluation results entity, given a model instance ID
         /// </summary>
@@ -3087,6 +3592,25 @@ namespace Skymind.SKIL.Api
         /// <param name="jobIdOrType">Job ID</param>
         /// <returns>Task of ApiResponse (JobEntity)</returns>
         System.Threading.Tasks.Task<ApiResponse<JobEntity>> GetJobByIdAsyncWithHttpInfo (long? jobIdOrType);
+        /// <summary>
+        /// Get the last evaluation specifications from the current model.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of EvaluationResultsEntity</returns>
+        System.Threading.Tasks.Task<EvaluationResultsEntity> GetLastEvaluationAsync ();
+
+        /// <summary>
+        /// Get the last evaluation specifications from the current model.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (EvaluationResultsEntity)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> GetLastEvaluationAsyncWithHttpInfo ();
         /// <summary>
         /// Gets a minibatch for the model
         /// </summary>
@@ -3344,6 +3868,25 @@ namespace Skymind.SKIL.Api
         /// <returns>Task of ApiResponse (List&lt;Resource&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Resource>>> GetResourcesFromGroupAsyncWithHttpInfo (long? resourceGroupId);
         /// <summary>
+        /// Get the retraining status
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of RetrainingStatus</returns>
+        System.Threading.Tasks.Task<RetrainingStatus> IsTrainingAsync ();
+
+        /// <summary>
+        /// Get the retraining status
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (RetrainingStatus)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RetrainingStatus>> IsTrainingAsyncWithHttpInfo ();
+        /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse
         /// </summary>
         /// <remarks>
@@ -3431,8 +3974,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <returns>Task of List&lt;ExperimentEntity&gt;</returns>
-        System.Threading.Tasks.Task<List<ExperimentEntity>> ListAllExperimentsAsync ();
+        System.Threading.Tasks.Task<List<ExperimentEntity>> ListAllExperimentsAsync (string modelHistoryServerId);
 
         /// <summary>
         /// List all of the experiments in every model history / workspace
@@ -3441,8 +3985,9 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <returns>Task of ApiResponse (List&lt;ExperimentEntity&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ExperimentEntity>>> ListAllExperimentsAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<ExperimentEntity>>> ListAllExperimentsAsyncWithHttpInfo (string modelHistoryServerId);
         /// <summary>
         /// Get logs file path
         /// </summary>
@@ -3648,12 +4193,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The model file to update with (.pb file)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>Task of ModelStatus</returns>
-        System.Threading.Tasks.Task<ModelStatus> ModelupdateAsync (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
+        System.Threading.Tasks.Task<ModelStatus> ModelupdateAsync (System.IO.Stream file, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// Update the model to be served
@@ -3662,12 +4207,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The model file to update with (.pb file)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>Task of ApiResponse (ModelStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelupdateAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null);
+        System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelupdateAsyncWithHttpInfo (System.IO.Stream file, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Represents all of the labels for a given classification
         /// </summary>
@@ -3754,6 +4299,25 @@ namespace Skymind.SKIL.Api
         /// <returns>Task of ApiResponse (MultiPredictResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<MultiPredictResponse>> MultipredictimageAsyncWithHttpInfo (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName);
         /// <summary>
+        /// Gets the number of retrained models written with retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of RevisionsWritten</returns>
+        System.Threading.Tasks.Task<RevisionsWritten> NumRevisionsAsync ();
+
+        /// <summary>
+        /// Gets the number of retrained models written with retraining.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (RevisionsWritten)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RevisionsWritten>> NumRevisionsAsyncWithHttpInfo ();
+        /// <summary>
         /// Run inference on the input array.
         /// </summary>
         /// <remarks>
@@ -3780,6 +4344,58 @@ namespace Skymind.SKIL.Api
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (Prediction)</returns>
         System.Threading.Tasks.Task<ApiResponse<Prediction>> PredictAsyncWithHttpInfo (Prediction body, string deploymentName, string versionName, string modelName);
+        /// <summary>
+        /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation"></param>
+        /// <param name="inputType">Type of the input data.</param>
+        /// <param name="inputData"> (optional)</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task PredictErrorAsync (string operation, string inputType,  inputData = null);
+
+        /// <summary>
+        /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation"></param>
+        /// <param name="inputType">Type of the input data.</param>
+        /// <param name="inputData"> (optional)</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> PredictErrorAsyncWithHttpInfo (string operation, string inputType,  inputData = null);
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputData">The input data when the content type is \&quot;application/json\&quot; (optional)</param>
+        /// <param name="inputData2">The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task PredictV2Async (string operation, string inputType,  inputData = null, System.IO.Stream inputData2 = null);
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputData">The input data when the content type is \&quot;application/json\&quot; (optional)</param>
+        /// <param name="inputData2">The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> PredictV2AsyncWithHttpInfo (string operation, string inputType,  inputData = null, System.IO.Stream inputData2 = null);
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
         /// </summary>
@@ -3862,6 +4478,31 @@ namespace Skymind.SKIL.Api
         /// <returns>Task of ApiResponse (JsonArrayResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<JsonArrayResponse>> PredictwithpreprocessjsonAsyncWithHttpInfo (List<string> body, string deploymentName, string versionName, string modelName);
         /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputType">Input data type.</param>
+        /// <param name="outputType">Binary output data type.</param>
+        /// <param name="inputData">The input file to upload. (optional)</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task RawPredictBinaryAsync (string inputType, string outputType, System.IO.Stream inputData = null);
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputType">Input data type.</param>
+        /// <param name="outputType">Binary output data type.</param>
+        /// <param name="inputData">The input file to upload. (optional)</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> RawPredictBinaryAsyncWithHttpInfo (string inputType, string outputType, System.IO.Stream inputData = null);
+        /// <summary>
         /// Refresh the remote job status. Can be used for monitoring.
         /// </summary>
         /// <remarks>
@@ -3907,6 +4548,27 @@ namespace Skymind.SKIL.Api
         /// <param name="body">the deployment request</param>
         /// <returns>Task of ApiResponse (ModelEntity)</returns>
         System.Threading.Tasks.Task<ApiResponse<ModelEntity>> ReimportModelAsyncWithHttpInfo (string deploymentId, string modelId, ImportModelRequest body);
+        /// <summary>
+        /// Rollback to a previous revision of the model.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="index">Model revision index.</param>
+        /// <returns>Task of RollbackStatus</returns>
+        System.Threading.Tasks.Task<RollbackStatus> RollbackAsync (int? index);
+
+        /// <summary>
+        /// Rollback to a previous revision of the model.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="index">Model revision index.</param>
+        /// <returns>Task of ApiResponse (RollbackStatus)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RollbackStatus>> RollbackAsyncWithHttpInfo (int? index);
         /// <summary>
         /// Start running an (already created) job on the remote resource
         /// </summary>
@@ -4334,6 +4996,137 @@ namespace Skymind.SKIL.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Tells how many retraining examples have labels associated with them. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>AccumulatedResults</returns>
+        public AccumulatedResults AccumulatedResults ()
+        {
+             ApiResponse<AccumulatedResults> localVarResponse = AccumulatedResultsWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Tells how many retraining examples have labels associated with them. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of AccumulatedResults</returns>
+        public ApiResponse< AccumulatedResults > AccumulatedResultsWithHttpInfo ()
+        {
+
+            var localVarPath = "/accumulatedresults";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AccumulatedResults", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AccumulatedResults>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AccumulatedResults) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AccumulatedResults)));
+        }
+
+        /// <summary>
+        /// Tells how many retraining examples have labels associated with them. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of AccumulatedResults</returns>
+        public async System.Threading.Tasks.Task<AccumulatedResults> AccumulatedResultsAsync ()
+        {
+             ApiResponse<AccumulatedResults> localVarResponse = await AccumulatedResultsAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Tells how many retraining examples have labels associated with them. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (AccumulatedResults)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AccumulatedResults>> AccumulatedResultsAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/accumulatedresults";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AccumulatedResults", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AccumulatedResults>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AccumulatedResults) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AccumulatedResults)));
         }
 
         /// <summary>
@@ -5177,6 +5970,334 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<ExperimentEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="type">The type of the labels array.</param>
+        /// <param name="file">The labels file to upload. (optional)</param>
+        /// <returns>FeedbackResponse</returns>
+        public FeedbackResponse AddFeedbackBinary (string id, string type, System.IO.Stream file = null)
+        {
+             ApiResponse<FeedbackResponse> localVarResponse = AddFeedbackBinaryWithHttpInfo(id, type, file);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="type">The type of the labels array.</param>
+        /// <param name="file">The labels file to upload. (optional)</param>
+        /// <returns>ApiResponse of FeedbackResponse</returns>
+        public ApiResponse< FeedbackResponse > AddFeedbackBinaryWithHttpInfo (string id, string type, System.IO.Stream file = null)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->AddFeedbackBinary");
+            // verify the required parameter 'type' is set
+            if (type == null)
+                throw new ApiException(400, "Missing required parameter 'type' when calling DefaultApi->AddFeedbackBinary");
+
+            var localVarPath = "/feedback/{id}/{type}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (type != null) localVarPathParams.Add("type", this.Configuration.ApiClient.ParameterToString(type)); // path parameter
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddFeedbackBinary", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FeedbackResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (FeedbackResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FeedbackResponse)));
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="type">The type of the labels array.</param>
+        /// <param name="file">The labels file to upload. (optional)</param>
+        /// <returns>Task of FeedbackResponse</returns>
+        public async System.Threading.Tasks.Task<FeedbackResponse> AddFeedbackBinaryAsync (string id, string type, System.IO.Stream file = null)
+        {
+             ApiResponse<FeedbackResponse> localVarResponse = await AddFeedbackBinaryAsyncWithHttpInfo(id, type, file);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="type">The type of the labels array.</param>
+        /// <param name="file">The labels file to upload. (optional)</param>
+        /// <returns>Task of ApiResponse (FeedbackResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<FeedbackResponse>> AddFeedbackBinaryAsyncWithHttpInfo (string id, string type, System.IO.Stream file = null)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->AddFeedbackBinary");
+            // verify the required parameter 'type' is set
+            if (type == null)
+                throw new ApiException(400, "Missing required parameter 'type' when calling DefaultApi->AddFeedbackBinary");
+
+            var localVarPath = "/feedback/{id}/{type}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (type != null) localVarPathParams.Add("type", this.Configuration.ApiClient.ParameterToString(type)); // path parameter
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddFeedbackBinary", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FeedbackResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (FeedbackResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FeedbackResponse)));
+        }
+
+        /// <summary>
+        /// Gets the retraining feedback for the given batch ID. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="labels">The associated labels (one-hot vectors) with the batch for retraining. (optional)</param>
+        /// <returns>FeedbackResponse</returns>
+        public FeedbackResponse AddFeedbackJson (string id, List<List<double?>> labels = null)
+        {
+             ApiResponse<FeedbackResponse> localVarResponse = AddFeedbackJsonWithHttpInfo(id, labels);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets the retraining feedback for the given batch ID. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="labels">The associated labels (one-hot vectors) with the batch for retraining. (optional)</param>
+        /// <returns>ApiResponse of FeedbackResponse</returns>
+        public ApiResponse< FeedbackResponse > AddFeedbackJsonWithHttpInfo (string id, List<List<double?>> labels = null)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->AddFeedbackJson");
+
+            var localVarPath = "/feedback/{id}/json";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (labels != null && labels.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(labels); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = labels; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddFeedbackJson", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FeedbackResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (FeedbackResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FeedbackResponse)));
+        }
+
+        /// <summary>
+        /// Gets the retraining feedback for the given batch ID. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="labels">The associated labels (one-hot vectors) with the batch for retraining. (optional)</param>
+        /// <returns>Task of FeedbackResponse</returns>
+        public async System.Threading.Tasks.Task<FeedbackResponse> AddFeedbackJsonAsync (string id, List<List<double?>> labels = null)
+        {
+             ApiResponse<FeedbackResponse> localVarResponse = await AddFeedbackJsonAsyncWithHttpInfo(id, labels);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets the retraining feedback for the given batch ID. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Batch ID to retrain the model with and get feedback for.</param>
+        /// <param name="labels">The associated labels (one-hot vectors) with the batch for retraining. (optional)</param>
+        /// <returns>Task of ApiResponse (FeedbackResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<FeedbackResponse>> AddFeedbackJsonAsyncWithHttpInfo (string id, List<List<double?>> labels = null)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->AddFeedbackJson");
+
+            var localVarPath = "/feedback/{id}/json";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (labels != null && labels.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(labels); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = labels; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddFeedbackJson", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FeedbackResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (FeedbackResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FeedbackResponse)));
         }
 
         /// <summary>
@@ -6028,7 +7149,7 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupName">Name of the resource group</param>
         /// <returns>ResourceGroup</returns>
-        public ResourceGroup AddResourceGroup ( groupName)
+        public ResourceGroup AddResourceGroup (string groupName)
         {
              ApiResponse<ResourceGroup> localVarResponse = AddResourceGroupWithHttpInfo(groupName);
              return localVarResponse.Data;
@@ -6040,7 +7161,7 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupName">Name of the resource group</param>
         /// <returns>ApiResponse of ResourceGroup</returns>
-        public ApiResponse< ResourceGroup > AddResourceGroupWithHttpInfo ( groupName)
+        public ApiResponse< ResourceGroup > AddResourceGroupWithHttpInfo (string groupName)
         {
             // verify the required parameter 'groupName' is set
             if (groupName == null)
@@ -6107,7 +7228,7 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupName">Name of the resource group</param>
         /// <returns>Task of ResourceGroup</returns>
-        public async System.Threading.Tasks.Task<ResourceGroup> AddResourceGroupAsync ( groupName)
+        public async System.Threading.Tasks.Task<ResourceGroup> AddResourceGroupAsync (string groupName)
         {
              ApiResponse<ResourceGroup> localVarResponse = await AddResourceGroupAsyncWithHttpInfo(groupName);
              return localVarResponse.Data;
@@ -6120,7 +7241,7 @@ namespace Skymind.SKIL.Api
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupName">Name of the resource group</param>
         /// <returns>Task of ApiResponse (ResourceGroup)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ResourceGroup>> AddResourceGroupAsyncWithHttpInfo ( groupName)
+        public async System.Threading.Tasks.Task<ApiResponse<ResourceGroup>> AddResourceGroupAsyncWithHttpInfo (string groupName)
         {
             // verify the required parameter 'groupName' is set
             if (groupName == null)
@@ -7068,6 +8189,137 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<ClassificationResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ClassificationResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClassificationResult)));
+        }
+
+        /// <summary>
+        /// Clears the accumulated data for retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>FeedbackResponse</returns>
+        public FeedbackResponse ClearState ()
+        {
+             ApiResponse<FeedbackResponse> localVarResponse = ClearStateWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Clears the accumulated data for retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of FeedbackResponse</returns>
+        public ApiResponse< FeedbackResponse > ClearStateWithHttpInfo ()
+        {
+
+            var localVarPath = "/clear";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ClearState", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FeedbackResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (FeedbackResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FeedbackResponse)));
+        }
+
+        /// <summary>
+        /// Clears the accumulated data for retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of FeedbackResponse</returns>
+        public async System.Threading.Tasks.Task<FeedbackResponse> ClearStateAsync ()
+        {
+             ApiResponse<FeedbackResponse> localVarResponse = await ClearStateAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Clears the accumulated data for retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (FeedbackResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<FeedbackResponse>> ClearStateAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/clear";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ClearState", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FeedbackResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (FeedbackResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FeedbackResponse)));
         }
 
         /// <summary>
@@ -9505,14 +10757,14 @@ namespace Skymind.SKIL.Api
         /// <param name="id">the GUID for mapping the results in the detections</param>
         /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
-        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="file">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>DetectionResult</returns>
-        public DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName)
+        public DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream file, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<DetectionResult> localVarResponse = DetectobjectsWithHttpInfo(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName);
+             ApiResponse<DetectionResult> localVarResponse = DetectobjectsWithHttpInfo(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -9523,12 +10775,12 @@ namespace Skymind.SKIL.Api
         /// <param name="id">the GUID for mapping the results in the detections</param>
         /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
-        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="file">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of DetectionResult</returns>
-        public ApiResponse< DetectionResult > DetectobjectsWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName)
+        public ApiResponse< DetectionResult > DetectobjectsWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream file, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -9539,9 +10791,9 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'threshold' is set
             if (threshold == null)
                 throw new ApiException(400, "Missing required parameter 'threshold' when calling DefaultApi->Detectobjects");
-            // verify the required parameter 'imageFile' is set
-            if (imageFile == null)
-                throw new ApiException(400, "Missing required parameter 'imageFile' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling DefaultApi->Detectobjects");
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Detectobjects");
@@ -9580,7 +10832,7 @@ namespace Skymind.SKIL.Api
             if (id != null) localVarFormParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // form parameter
             if (needsPreprocessing != null) localVarFormParams.Add("needsPreprocessing", this.Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
             if (threshold != null) localVarFormParams.Add("threshold", this.Configuration.ApiClient.ParameterToString(threshold)); // form parameter
-            if (imageFile != null) localVarFileParams.Add("imageFile", this.Configuration.ApiClient.ParameterToFile("imageFile", imageFile));
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -9613,14 +10865,14 @@ namespace Skymind.SKIL.Api
         /// <param name="id">the GUID for mapping the results in the detections</param>
         /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
-        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="file">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of DetectionResult</returns>
-        public async System.Threading.Tasks.Task<DetectionResult> DetectobjectsAsync (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName)
+        public async System.Threading.Tasks.Task<DetectionResult> DetectobjectsAsync (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream file, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<DetectionResult> localVarResponse = await DetectobjectsAsyncWithHttpInfo(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName);
+             ApiResponse<DetectionResult> localVarResponse = await DetectobjectsAsyncWithHttpInfo(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -9632,12 +10884,12 @@ namespace Skymind.SKIL.Api
         /// <param name="id">the GUID for mapping the results in the detections</param>
         /// <param name="needsPreprocessing">(true) if the image needs preprocessing</param>
         /// <param name="threshold">A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.</param>
-        /// <param name="imageFile">the image file to detect objects from</param>
+        /// <param name="file">the image file to detect objects from</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (DetectionResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DetectionResult>> DetectobjectsAsyncWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<DetectionResult>> DetectobjectsAsyncWithHttpInfo (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream file, string deploymentName, string versionName, string modelName)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -9648,9 +10900,9 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'threshold' is set
             if (threshold == null)
                 throw new ApiException(400, "Missing required parameter 'threshold' when calling DefaultApi->Detectobjects");
-            // verify the required parameter 'imageFile' is set
-            if (imageFile == null)
-                throw new ApiException(400, "Missing required parameter 'imageFile' when calling DefaultApi->Detectobjects");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling DefaultApi->Detectobjects");
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Detectobjects");
@@ -9689,7 +10941,7 @@ namespace Skymind.SKIL.Api
             if (id != null) localVarFormParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // form parameter
             if (needsPreprocessing != null) localVarFormParams.Add("needsPreprocessing", this.Configuration.ApiClient.ParameterToString(needsPreprocessing)); // form parameter
             if (threshold != null) localVarFormParams.Add("threshold", this.Configuration.ApiClient.ParameterToString(threshold)); // form parameter
-            if (imageFile != null) localVarFileParams.Add("imageFile", this.Configuration.ApiClient.ParameterToFile("imageFile", imageFile));
+            if (file != null) localVarFileParams.Add("file", this.Configuration.ApiClient.ParameterToFile("file", file));
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -10016,6 +11268,483 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
+        /// Get the memory mapped array based on the array type. The array is specified through a file path, in the configuration object, during model server deployment.
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
+        /// <returns></returns>
+        public void GetArray (string arrayType)
+        {
+             GetArrayWithHttpInfo(arrayType);
+        }
+
+        /// <summary>
+        /// Get the memory mapped array based on the array type. The array is specified through a file path, in the configuration object, during model server deployment.
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> GetArrayWithHttpInfo (string arrayType)
+        {
+            // verify the required parameter 'arrayType' is set
+            if (arrayType == null)
+                throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArray");
+
+            var localVarPath = "/array/{arrayType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "application/octet-stream"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetArray", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Get the memory mapped array based on the array type. The array is specified through a file path, in the configuration object, during model server deployment.
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task GetArrayAsync (string arrayType)
+        {
+             await GetArrayAsyncWithHttpInfo(arrayType);
+
+        }
+
+        /// <summary>
+        /// Get the memory mapped array based on the array type. The array is specified through a file path, in the configuration object, during model server deployment.
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayAsyncWithHttpInfo (string arrayType)
+        {
+            // verify the required parameter 'arrayType' is set
+            if (arrayType == null)
+                throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArray");
+
+            var localVarPath = "/array/{arrayType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "application/octet-stream"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetArray", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Get the memory mapped array indices based on the array type. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="input">Input indices array (optional)</param>
+        /// <returns></returns>
+        public void GetArrayIndices (string arrayType,  input = null)
+        {
+             GetArrayIndicesWithHttpInfo(arrayType, input);
+        }
+
+        /// <summary>
+        /// Get the memory mapped array indices based on the array type. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="input">Input indices array (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> GetArrayIndicesWithHttpInfo (string arrayType,  input = null)
+        {
+            // verify the required parameter 'arrayType' is set
+            if (arrayType == null)
+                throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArrayIndices");
+
+            var localVarPath = "/array/indices/{arrayType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "application/octet-stream"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
+            if (input != null && input.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = input; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetArrayIndices", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Get the memory mapped array indices based on the array type. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="input">Input indices array (optional)</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task GetArrayIndicesAsync (string arrayType,  input = null)
+        {
+             await GetArrayIndicesAsyncWithHttpInfo(arrayType, input);
+
+        }
+
+        /// <summary>
+        /// Get the memory mapped array indices based on the array type. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="input">Input indices array (optional)</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayIndicesAsyncWithHttpInfo (string arrayType,  input = null)
+        {
+            // verify the required parameter 'arrayType' is set
+            if (arrayType == null)
+                throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArrayIndices");
+
+            var localVarPath = "/array/indices/{arrayType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "application/octet-stream"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
+            if (input != null && input.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = input; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetArrayIndices", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Get the memory mapped array within a range based on the array type. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        public void GetArrayRange (string arrayType, int? from, int? to)
+        {
+             GetArrayRangeWithHttpInfo(arrayType, from, to);
+        }
+
+        /// <summary>
+        /// Get the memory mapped array within a range based on the array type. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> GetArrayRangeWithHttpInfo (string arrayType, int? from, int? to)
+        {
+            // verify the required parameter 'arrayType' is set
+            if (arrayType == null)
+                throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArrayRange");
+            // verify the required parameter 'from' is set
+            if (from == null)
+                throw new ApiException(400, "Missing required parameter 'from' when calling DefaultApi->GetArrayRange");
+            // verify the required parameter 'to' is set
+            if (to == null)
+                throw new ApiException(400, "Missing required parameter 'to' when calling DefaultApi->GetArrayRange");
+
+            var localVarPath = "/array/range/{from}/{to}/{arrayType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "application/octet-stream"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
+            if (from != null) localVarPathParams.Add("from", this.Configuration.ApiClient.ParameterToString(from)); // path parameter
+            if (to != null) localVarPathParams.Add("to", this.Configuration.ApiClient.ParameterToString(to)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetArrayRange", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Get the memory mapped array within a range based on the array type. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task GetArrayRangeAsync (string arrayType, int? from, int? to)
+        {
+             await GetArrayRangeAsyncWithHttpInfo(arrayType, from, to);
+
+        }
+
+        /// <summary>
+        /// Get the memory mapped array within a range based on the array type. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayRangeAsyncWithHttpInfo (string arrayType, int? from, int? to)
+        {
+            // verify the required parameter 'arrayType' is set
+            if (arrayType == null)
+                throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArrayRange");
+            // verify the required parameter 'from' is set
+            if (from == null)
+                throw new ApiException(400, "Missing required parameter 'from' when calling DefaultApi->GetArrayRange");
+            // verify the required parameter 'to' is set
+            if (to == null)
+                throw new ApiException(400, "Missing required parameter 'to' when calling DefaultApi->GetArrayRange");
+
+            var localVarPath = "/array/range/{from}/{to}/{arrayType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "application/octet-stream"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
+            if (from != null) localVarPathParams.Add("from", this.Configuration.ApiClient.ParameterToString(from)); // path parameter
+            if (to != null) localVarPathParams.Add("to", this.Configuration.ApiClient.ParameterToString(to)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetArrayRange", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
         /// Gets the best model among the given model instance IDs, based on the evaluation type and column metric 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
@@ -10327,6 +12056,135 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<ResourceCredentials>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ResourceCredentials) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ResourceCredentials)));
+        }
+
+        /// <summary>
+        /// Returns the current model being used for retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns></returns>
+        public void GetCurrentModel ()
+        {
+             GetCurrentModelWithHttpInfo();
+        }
+
+        /// <summary>
+        /// Returns the current model being used for retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> GetCurrentModelWithHttpInfo ()
+        {
+
+            var localVarPath = "/model";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/octet-stream"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetCurrentModel", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Returns the current model being used for retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task GetCurrentModelAsync ()
+        {
+             await GetCurrentModelAsyncWithHttpInfo();
+
+        }
+
+        /// <summary>
+        /// Returns the current model being used for retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetCurrentModelAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/model";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/octet-stream"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetCurrentModel", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
@@ -11090,6 +12948,137 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<JobEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (JobEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobEntity)));
+        }
+
+        /// <summary>
+        /// Get the last evaluation specifications from the current model. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>EvaluationResultsEntity</returns>
+        public EvaluationResultsEntity GetLastEvaluation ()
+        {
+             ApiResponse<EvaluationResultsEntity> localVarResponse = GetLastEvaluationWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get the last evaluation specifications from the current model. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of EvaluationResultsEntity</returns>
+        public ApiResponse< EvaluationResultsEntity > GetLastEvaluationWithHttpInfo ()
+        {
+
+            var localVarPath = "/lastevaluation";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLastEvaluation", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<EvaluationResultsEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (EvaluationResultsEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
+        }
+
+        /// <summary>
+        /// Get the last evaluation specifications from the current model. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of EvaluationResultsEntity</returns>
+        public async System.Threading.Tasks.Task<EvaluationResultsEntity> GetLastEvaluationAsync ()
+        {
+             ApiResponse<EvaluationResultsEntity> localVarResponse = await GetLastEvaluationAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the last evaluation specifications from the current model. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (EvaluationResultsEntity)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<EvaluationResultsEntity>> GetLastEvaluationAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/lastevaluation";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLastEvaluation", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<EvaluationResultsEntity>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (EvaluationResultsEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EvaluationResultsEntity)));
         }
 
         /// <summary>
@@ -12833,6 +14822,137 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
+        /// Get the retraining status 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>RetrainingStatus</returns>
+        public RetrainingStatus IsTraining ()
+        {
+             ApiResponse<RetrainingStatus> localVarResponse = IsTrainingWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get the retraining status 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of RetrainingStatus</returns>
+        public ApiResponse< RetrainingStatus > IsTrainingWithHttpInfo ()
+        {
+
+            var localVarPath = "/istraining";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("IsTraining", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<RetrainingStatus>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (RetrainingStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RetrainingStatus)));
+        }
+
+        /// <summary>
+        /// Get the retraining status 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of RetrainingStatus</returns>
+        public async System.Threading.Tasks.Task<RetrainingStatus> IsTrainingAsync ()
+        {
+             ApiResponse<RetrainingStatus> localVarResponse = await IsTrainingAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the retraining status 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (RetrainingStatus)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<RetrainingStatus>> IsTrainingAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/istraining";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("IsTraining", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<RetrainingStatus>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (RetrainingStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RetrainingStatus)));
+        }
+
+        /// <summary>
         /// Run inference on the input and returns it as a JsonArrayResponse 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
@@ -13421,10 +15541,11 @@ namespace Skymind.SKIL.Api
         /// List all of the experiments in every model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <returns>List&lt;ExperimentEntity&gt;</returns>
-        public List<ExperimentEntity> ListAllExperiments ()
+        public List<ExperimentEntity> ListAllExperiments (string modelHistoryServerId)
         {
-             ApiResponse<List<ExperimentEntity>> localVarResponse = ListAllExperimentsWithHttpInfo();
+             ApiResponse<List<ExperimentEntity>> localVarResponse = ListAllExperimentsWithHttpInfo(modelHistoryServerId);
              return localVarResponse.Data;
         }
 
@@ -13432,9 +15553,13 @@ namespace Skymind.SKIL.Api
         /// List all of the experiments in every model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <returns>ApiResponse of List&lt;ExperimentEntity&gt;</returns>
-        public ApiResponse< List<ExperimentEntity> > ListAllExperimentsWithHttpInfo ()
+        public ApiResponse< List<ExperimentEntity> > ListAllExperimentsWithHttpInfo (string modelHistoryServerId)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->ListAllExperiments");
 
             var localVarPath = "/rpc/{modelHistoryServerId}/experiments";
             var localVarPathParams = new Dictionary<String, String>();
@@ -13457,6 +15582,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -13486,10 +15612,11 @@ namespace Skymind.SKIL.Api
         /// List all of the experiments in every model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <returns>Task of List&lt;ExperimentEntity&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ExperimentEntity>> ListAllExperimentsAsync ()
+        public async System.Threading.Tasks.Task<List<ExperimentEntity>> ListAllExperimentsAsync (string modelHistoryServerId)
         {
-             ApiResponse<List<ExperimentEntity>> localVarResponse = await ListAllExperimentsAsyncWithHttpInfo();
+             ApiResponse<List<ExperimentEntity>> localVarResponse = await ListAllExperimentsAsyncWithHttpInfo(modelHistoryServerId);
              return localVarResponse.Data;
 
         }
@@ -13498,9 +15625,13 @@ namespace Skymind.SKIL.Api
         /// List all of the experiments in every model history / workspace 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <returns>Task of ApiResponse (List&lt;ExperimentEntity&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ExperimentEntity>>> ListAllExperimentsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<List<ExperimentEntity>>> ListAllExperimentsAsyncWithHttpInfo (string modelHistoryServerId)
         {
+            // verify the required parameter 'modelHistoryServerId' is set
+            if (modelHistoryServerId == null)
+                throw new ApiException(400, "Missing required parameter 'modelHistoryServerId' when calling DefaultApi->ListAllExperiments");
 
             var localVarPath = "/rpc/{modelHistoryServerId}/experiments";
             var localVarPathParams = new Dictionary<String, String>();
@@ -13523,6 +15654,7 @@ namespace Skymind.SKIL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (modelHistoryServerId != null) localVarPathParams.Add("modelHistoryServerId", this.Configuration.ApiClient.ParameterToString(modelHistoryServerId)); // path parameter
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -14928,14 +17060,14 @@ namespace Skymind.SKIL.Api
         /// Update the model to be served 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The model file to update with (.pb file)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>ModelStatus</returns>
-        public ModelStatus Modelupdate (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
+        public ModelStatus Modelupdate (System.IO.Stream file, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<ModelStatus> localVarResponse = ModelupdateWithHttpInfo(deploymentName, versionName, modelName, file);
+             ApiResponse<ModelStatus> localVarResponse = ModelupdateWithHttpInfo(file, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -14943,13 +17075,16 @@ namespace Skymind.SKIL.Api
         /// Update the model to be served 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The model file to update with (.pb file)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>ApiResponse of ModelStatus</returns>
-        public ApiResponse< ModelStatus > ModelupdateWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
+        public ApiResponse< ModelStatus > ModelupdateWithHttpInfo (System.IO.Stream file, string deploymentName, string versionName, string modelName)
         {
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling DefaultApi->Modelupdate");
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Modelupdate");
@@ -15015,14 +17150,14 @@ namespace Skymind.SKIL.Api
         /// Update the model to be served 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The model file to update with (.pb file)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>Task of ModelStatus</returns>
-        public async System.Threading.Tasks.Task<ModelStatus> ModelupdateAsync (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
+        public async System.Threading.Tasks.Task<ModelStatus> ModelupdateAsync (System.IO.Stream file, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<ModelStatus> localVarResponse = await ModelupdateAsyncWithHttpInfo(deploymentName, versionName, modelName, file);
+             ApiResponse<ModelStatus> localVarResponse = await ModelupdateAsyncWithHttpInfo(file, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -15031,13 +17166,16 @@ namespace Skymind.SKIL.Api
         /// Update the model to be served 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The model file to update with (.pb file)</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
-        /// <param name="file">The model file to update with (.pb file) (optional)</param>
         /// <returns>Task of ApiResponse (ModelStatus)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelupdateAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ModelStatus>> ModelupdateAsyncWithHttpInfo (System.IO.Stream file, string deploymentName, string versionName, string modelName)
         {
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling DefaultApi->Modelupdate");
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Modelupdate");
@@ -15695,6 +17833,137 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
+        /// Gets the number of retrained models written with retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>RevisionsWritten</returns>
+        public RevisionsWritten NumRevisions ()
+        {
+             ApiResponse<RevisionsWritten> localVarResponse = NumRevisionsWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets the number of retrained models written with retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of RevisionsWritten</returns>
+        public ApiResponse< RevisionsWritten > NumRevisionsWithHttpInfo ()
+        {
+
+            var localVarPath = "/numrevisions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("NumRevisions", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<RevisionsWritten>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (RevisionsWritten) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RevisionsWritten)));
+        }
+
+        /// <summary>
+        /// Gets the number of retrained models written with retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of RevisionsWritten</returns>
+        public async System.Threading.Tasks.Task<RevisionsWritten> NumRevisionsAsync ()
+        {
+             ApiResponse<RevisionsWritten> localVarResponse = await NumRevisionsAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets the number of retrained models written with retraining. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (RevisionsWritten)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<RevisionsWritten>> NumRevisionsAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/numrevisions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("NumRevisions", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<RevisionsWritten>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (RevisionsWritten) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RevisionsWritten)));
+        }
+
+        /// <summary>
         /// Run inference on the input array. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
@@ -15887,6 +18156,364 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<Prediction>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (Prediction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Prediction)));
+        }
+
+        /// <summary>
+        /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified. These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation"></param>
+        /// <param name="inputType">Type of the input data.</param>
+        /// <param name="inputData"> (optional)</param>
+        /// <returns></returns>
+        public void PredictError (string operation, string inputType,  inputData = null)
+        {
+             PredictErrorWithHttpInfo(operation, inputType, inputData);
+        }
+
+        /// <summary>
+        /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified. These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation"></param>
+        /// <param name="inputType">Type of the input data.</param>
+        /// <param name="inputData"> (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> PredictErrorWithHttpInfo (string operation, string inputType,  inputData = null)
+        {
+            // verify the required parameter 'operation' is set
+            if (operation == null)
+                throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictError");
+            // verify the required parameter 'inputType' is set
+            if (inputType == null)
+                throw new ApiException(400, "Missing required parameter 'inputType' when calling DefaultApi->PredictError");
+
+            var localVarPath = "/{operation}/{inputType}/error";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (operation != null) localVarPathParams.Add("operation", this.Configuration.ApiClient.ParameterToString(operation)); // path parameter
+            if (inputType != null) localVarPathParams.Add("inputType", this.Configuration.ApiClient.ParameterToString(inputType)); // path parameter
+            if (inputData != null && inputData.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(inputData); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = inputData; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PredictError", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified. These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation"></param>
+        /// <param name="inputType">Type of the input data.</param>
+        /// <param name="inputData"> (optional)</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task PredictErrorAsync (string operation, string inputType,  inputData = null)
+        {
+             await PredictErrorAsyncWithHttpInfo(operation, inputType, inputData);
+
+        }
+
+        /// <summary>
+        /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified. These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation"></param>
+        /// <param name="inputType">Type of the input data.</param>
+        /// <param name="inputData"> (optional)</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PredictErrorAsyncWithHttpInfo (string operation, string inputType,  inputData = null)
+        {
+            // verify the required parameter 'operation' is set
+            if (operation == null)
+                throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictError");
+            // verify the required parameter 'inputType' is set
+            if (inputType == null)
+                throw new ApiException(400, "Missing required parameter 'inputType' when calling DefaultApi->PredictError");
+
+            var localVarPath = "/{operation}/{inputType}/error";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (operation != null) localVarPathParams.Add("operation", this.Configuration.ApiClient.ParameterToString(operation)); // path parameter
+            if (inputType != null) localVarPathParams.Add("inputType", this.Configuration.ApiClient.ParameterToString(inputType)); // path parameter
+            if (inputData != null && inputData.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(inputData); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = inputData; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PredictError", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputData">The input data when the content type is \&quot;application/json\&quot; (optional)</param>
+        /// <param name="inputData2">The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)</param>
+        /// <returns></returns>
+        public void PredictV2 (string operation, string inputType,  inputData = null, System.IO.Stream inputData2 = null)
+        {
+             PredictV2WithHttpInfo(operation, inputType, inputData, inputData2);
+        }
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputData">The input data when the content type is \&quot;application/json\&quot; (optional)</param>
+        /// <param name="inputData2">The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> PredictV2WithHttpInfo (string operation, string inputType,  inputData = null, System.IO.Stream inputData2 = null)
+        {
+            // verify the required parameter 'operation' is set
+            if (operation == null)
+                throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictV2");
+            // verify the required parameter 'inputType' is set
+            if (inputType == null)
+                throw new ApiException(400, "Missing required parameter 'inputType' when calling DefaultApi->PredictV2");
+
+            var localVarPath = "/{operation}/{inputType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (operation != null) localVarPathParams.Add("operation", this.Configuration.ApiClient.ParameterToString(operation)); // path parameter
+            if (inputType != null) localVarPathParams.Add("inputType", this.Configuration.ApiClient.ParameterToString(inputType)); // path parameter
+            if (inputData2 != null) localVarFileParams.Add("inputData", this.Configuration.ApiClient.ParameterToFile("inputData", inputData2));
+            if (inputData != null && inputData.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(inputData); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = inputData; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PredictV2", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputData">The input data when the content type is \&quot;application/json\&quot; (optional)</param>
+        /// <param name="inputData2">The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task PredictV2Async (string operation, string inputType,  inputData = null, System.IO.Stream inputData2 = null)
+        {
+             await PredictV2AsyncWithHttpInfo(operation, inputType, inputData, inputData2);
+
+        }
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
+        /// <param name="inputData">The input data when the content type is \&quot;application/json\&quot; (optional)</param>
+        /// <param name="inputData2">The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PredictV2AsyncWithHttpInfo (string operation, string inputType,  inputData = null, System.IO.Stream inputData2 = null)
+        {
+            // verify the required parameter 'operation' is set
+            if (operation == null)
+                throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictV2");
+            // verify the required parameter 'inputType' is set
+            if (inputType == null)
+                throw new ApiException(400, "Missing required parameter 'inputType' when calling DefaultApi->PredictV2");
+
+            var localVarPath = "/{operation}/{inputType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (operation != null) localVarPathParams.Add("operation", this.Configuration.ApiClient.ParameterToString(operation)); // path parameter
+            if (inputType != null) localVarPathParams.Add("inputType", this.Configuration.ApiClient.ParameterToString(inputType)); // path parameter
+            if (inputData2 != null) localVarFileParams.Add("inputData", this.Configuration.ApiClient.ParameterToFile("inputData", inputData2));
+            if (inputData != null && inputData.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(inputData); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = inputData; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PredictV2", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
@@ -16455,6 +19082,167 @@ namespace Skymind.SKIL.Api
         }
 
         /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputType">Input data type.</param>
+        /// <param name="outputType">Binary output data type.</param>
+        /// <param name="inputData">The input file to upload. (optional)</param>
+        /// <returns></returns>
+        public void RawPredictBinary (string inputType, string outputType, System.IO.Stream inputData = null)
+        {
+             RawPredictBinaryWithHttpInfo(inputType, outputType, inputData);
+        }
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputType">Input data type.</param>
+        /// <param name="outputType">Binary output data type.</param>
+        /// <param name="inputData">The input file to upload. (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> RawPredictBinaryWithHttpInfo (string inputType, string outputType, System.IO.Stream inputData = null)
+        {
+            // verify the required parameter 'inputType' is set
+            if (inputType == null)
+                throw new ApiException(400, "Missing required parameter 'inputType' when calling DefaultApi->RawPredictBinary");
+            // verify the required parameter 'outputType' is set
+            if (outputType == null)
+                throw new ApiException(400, "Missing required parameter 'outputType' when calling DefaultApi->RawPredictBinary");
+
+            var localVarPath = "/raw/{inputType}/{outputType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/octet-stream"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (inputType != null) localVarPathParams.Add("inputType", this.Configuration.ApiClient.ParameterToString(inputType)); // path parameter
+            if (outputType != null) localVarPathParams.Add("outputType", this.Configuration.ApiClient.ParameterToString(outputType)); // path parameter
+            if (inputData != null) localVarFileParams.Add("inputData", this.Configuration.ApiClient.ParameterToFile("inputData", inputData));
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("RawPredictBinary", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputType">Input data type.</param>
+        /// <param name="outputType">Binary output data type.</param>
+        /// <param name="inputData">The input file to upload. (optional)</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task RawPredictBinaryAsync (string inputType, string outputType, System.IO.Stream inputData = null)
+        {
+             await RawPredictBinaryAsyncWithHttpInfo(inputType, outputType, inputData);
+
+        }
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputType">Input data type.</param>
+        /// <param name="outputType">Binary output data type.</param>
+        /// <param name="inputData">The input file to upload. (optional)</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RawPredictBinaryAsyncWithHttpInfo (string inputType, string outputType, System.IO.Stream inputData = null)
+        {
+            // verify the required parameter 'inputType' is set
+            if (inputType == null)
+                throw new ApiException(400, "Missing required parameter 'inputType' when calling DefaultApi->RawPredictBinary");
+            // verify the required parameter 'outputType' is set
+            if (outputType == null)
+                throw new ApiException(400, "Missing required parameter 'outputType' when calling DefaultApi->RawPredictBinary");
+
+            var localVarPath = "/raw/{inputType}/{outputType}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/octet-stream"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (inputType != null) localVarPathParams.Add("inputType", this.Configuration.ApiClient.ParameterToString(inputType)); // path parameter
+            if (outputType != null) localVarPathParams.Add("outputType", this.Configuration.ApiClient.ParameterToString(outputType)); // path parameter
+            if (inputData != null) localVarFileParams.Add("inputData", this.Configuration.ApiClient.ParameterToFile("inputData", inputData));
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("RawPredictBinary", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
         /// Refresh the remote job status. Can be used for monitoring. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
@@ -16778,6 +19566,151 @@ namespace Skymind.SKIL.Api
             return new ApiResponse<ModelEntity>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ModelEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEntity)));
+        }
+
+        /// <summary>
+        /// Rollback to a previous revision of the model. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="index">Model revision index.</param>
+        /// <returns>RollbackStatus</returns>
+        public RollbackStatus Rollback (int? index)
+        {
+             ApiResponse<RollbackStatus> localVarResponse = RollbackWithHttpInfo(index);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Rollback to a previous revision of the model. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="index">Model revision index.</param>
+        /// <returns>ApiResponse of RollbackStatus</returns>
+        public ApiResponse< RollbackStatus > RollbackWithHttpInfo (int? index)
+        {
+            // verify the required parameter 'index' is set
+            if (index == null)
+                throw new ApiException(400, "Missing required parameter 'index' when calling DefaultApi->Rollback");
+
+            var localVarPath = "/rollback/{index}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (index != null) localVarPathParams.Add("index", this.Configuration.ApiClient.ParameterToString(index)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Rollback", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<RollbackStatus>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (RollbackStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RollbackStatus)));
+        }
+
+        /// <summary>
+        /// Rollback to a previous revision of the model. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="index">Model revision index.</param>
+        /// <returns>Task of RollbackStatus</returns>
+        public async System.Threading.Tasks.Task<RollbackStatus> RollbackAsync (int? index)
+        {
+             ApiResponse<RollbackStatus> localVarResponse = await RollbackAsyncWithHttpInfo(index);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Rollback to a previous revision of the model. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="index">Model revision index.</param>
+        /// <returns>Task of ApiResponse (RollbackStatus)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<RollbackStatus>> RollbackAsyncWithHttpInfo (int? index)
+        {
+            // verify the required parameter 'index' is set
+            if (index == null)
+                throw new ApiException(400, "Missing required parameter 'index' when calling DefaultApi->Rollback");
+
+            var localVarPath = "/rollback/{index}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (index != null) localVarPathParams.Add("index", this.Configuration.ApiClient.ParameterToString(index)); // path parameter
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Rollback", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<RollbackStatus>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (RollbackStatus) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RollbackStatus)));
         }
 
         /// <summary>

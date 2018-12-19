@@ -32,6 +32,16 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for accumulated_results
+  # Tells how many retraining examples have labels associated with them.
+  # @param [Hash] opts the optional parameters
+  # @return [AccumulatedResults]
+  describe 'accumulated_results test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for add_credentials
   # Adds credentials
   # @param add_credentials_request Add credentials request object
@@ -86,6 +96,30 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [ExperimentEntity]
   describe 'add_experiment test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for add_feedback_binary
+  # @param id Batch ID to retrain the model with and get feedback for.
+  # @param type The type of the labels array.
+  # @param [Hash] opts the optional parameters
+  # @option opts [File] :file The labels file to upload.
+  # @return [FeedbackResponse]
+  describe 'add_feedback_binary test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for add_feedback_json
+  # Gets the retraining feedback for the given batch ID.
+  # @param id Batch ID to retrain the model with and get feedback for.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Array<Array<Float>>] :labels The associated labels (one-hot vectors) with the batch for retraining.
+  # @return [FeedbackResponse]
+  describe 'add_feedback_json test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -222,6 +256,16 @@ describe 'DefaultApi' do
   # @option opts [File] :image The file to upload.
   # @return [ClassificationResult]
   describe 'classifyimage test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for clear_state
+  # Clears the accumulated data for retraining.
+  # @param [Hash] opts the optional parameters
+  # @return [FeedbackResponse]
+  describe 'clear_state test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -415,7 +459,7 @@ describe 'DefaultApi' do
   # @param id the GUID for mapping the results in the detections
   # @param needs_preprocessing (true) if the image needs preprocessing
   # @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-  # @param image_file the image file to detect objects from
+  # @param file the image file to detect objects from
   # @param deployment_name Name of the deployment group
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param model_name ID or name of the deployed model
@@ -449,6 +493,43 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for get_array
+  # Get the memory mapped array based on the array type.
+  # The array is specified through a file path, in the configuration object, during model server deployment.
+  # @param array_type The format in which the memory mapped array is returned.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'get_array test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_array_indices
+  # Get the memory mapped array indices based on the array type.
+  # @param array_type Format in which the memory mapped array is returned in.
+  # @param [Hash] opts the optional parameters
+  # @option opts [] :input Input indices array
+  # @return [nil]
+  describe 'get_array_indices test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_array_range
+  # Get the memory mapped array within a range based on the array type.
+  # @param array_type Format in which the memory mapped array is returned in.
+  # @param from 
+  # @param to 
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'get_array_range test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_best_model_among_model_ids
   # Gets the best model among the given model instance IDs, based on the evaluation type and column metric
   # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -467,6 +548,16 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [ResourceCredentials]
   describe 'get_credentials_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_current_model
+  # Returns the current model being used for retraining.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'get_current_model test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -526,6 +617,16 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [JobEntity]
   describe 'get_job_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_last_evaluation
+  # Get the last evaluation specifications from the current model.
+  # @param [Hash] opts the optional parameters
+  # @return [EvaluationResultsEntity]
+  describe 'get_last_evaluation test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -617,7 +718,7 @@ describe 'DefaultApi' do
   # Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
   # @param resource_id ID of the resource
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [Object]
   describe 'get_resource_details_by_id test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -661,6 +762,16 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<Resource>]
   describe 'get_resources_from_group test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for is_training
+  # Get the retraining status
+  # @param [Hash] opts the optional parameters
+  # @return [RetrainingStatus]
+  describe 'is_training test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -711,6 +822,7 @@ describe 'DefaultApi' do
 
   # unit tests for list_all_experiments
   # List all of the experiments in every model history / workspace
+  # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param [Hash] opts the optional parameters
   # @return [Array<ExperimentEntity>]
   describe 'list_all_experiments test' do
@@ -824,11 +936,11 @@ describe 'DefaultApi' do
 
   # unit tests for modelupdate
   # Update the model to be served
+  # @param file The model file to update with (.pb file)
   # @param deployment_name Name of the deployment group
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param model_name ID or name of the deployed model
   # @param [Hash] opts the optional parameters
-  # @option opts [File] :file The model file to update with (.pb file)
   # @return [ModelStatus]
   describe 'modelupdate test' do
     it 'should work' do
@@ -882,6 +994,16 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for num_revisions
+  # Gets the number of retrained models written with retraining.
+  # @param [Hash] opts the optional parameters
+  # @return [RevisionsWritten]
+  describe 'num_revisions test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for predict
   # Run inference on the input array.
   # @param body The input NDArray
@@ -891,6 +1013,34 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [Prediction]
   describe 'predict test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for predict_error
+  # Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+  # These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+  # @param operation 
+  # @param input_type Type of the input data.
+  # @param [Hash] opts the optional parameters
+  # @option opts [] :input_data 
+  # @return [nil]
+  describe 'predict_error test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for predict_v2
+  # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+  # @param operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+  # @param input_type Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+  # @param [Hash] opts the optional parameters
+  # @option opts [] :input_data The input data when the content type is \&quot;application/json\&quot;
+  # @option opts [File] :input_data2 The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot;
+  # @return [nil]
+  describe 'predict_v2 test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -938,6 +1088,19 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for raw_predict_binary
+  # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+  # @param input_type Input data type.
+  # @param output_type Binary output data type.
+  # @param [Hash] opts the optional parameters
+  # @option opts [File] :input_data The input file to upload.
+  # @return [nil]
+  describe 'raw_predict_binary test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for refresh_job_status
   # Refresh the remote job status. Can be used for monitoring.
   # @param job_id Job ID
@@ -957,6 +1120,17 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [ModelEntity]
   describe 'reimport_model test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for rollback
+  # Rollback to a previous revision of the model.
+  # @param index Model revision index.
+  # @param [Hash] opts the optional parameters
+  # @return [RollbackStatus]
+  describe 'rollback test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -994,7 +1168,7 @@ describe 'DefaultApi' do
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param transform_name ID or name of the deployed transform
   # @param [Hash] opts the optional parameters
-  # @option opts [] :batch_record The input batch of record arrays
+  # @option opts [Object] :batch_record The input batch of record arrays
   # @return [Base64NDArrayBody]
   describe 'transformarray test' do
     it 'should work' do
@@ -1038,7 +1212,7 @@ describe 'DefaultApi' do
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param transform_name ID or name of the deployed transform
   # @param [Hash] opts the optional parameters
-  # @option opts [] :single_record The input record array
+  # @option opts [Object] :single_record The input record array
   # @return [Base64NDArrayBody]
   describe 'transformincrementalarray test' do
     it 'should work' do
@@ -1067,7 +1241,7 @@ describe 'DefaultApi' do
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param transform_name ID or name of the deployed transform
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [Object]
   describe 'transformprocess_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -1080,8 +1254,8 @@ describe 'DefaultApi' do
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param transform_name ID or name of the deployed transform
   # @param [Hash] opts the optional parameters
-  # @option opts [] :transform_process The transform process to set
-  # @return [nil]
+  # @option opts [Object] :transform_process The transform process to set
+  # @return [Object]
   describe 'transformprocess_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

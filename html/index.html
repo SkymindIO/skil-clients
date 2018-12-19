@@ -199,11 +199,14 @@ font-style: italic;
   <div class="method-summary"></div>
   <h4><a href="#Default">Default</a></h4>
   <ul>
+  <li><a href="#accumulatedResults"><code><span class="http-method">get</span> /accumulatedresults</code></a></li>
   <li><a href="#addCredentials"><code><span class="http-method">post</span> /resources/credentials</code></a></li>
   <li><a href="#addEvaluationResult"><code><span class="http-method">post</span> /rpc/{modelHistoryServerId}/model/revisions/evaluations/</code></a></li>
   <li><a href="#addExampleForBatch"><code><span class="http-method">post</span> /rpc/{modelHistoryServerId}/model/exampleForBatch</code></a></li>
   <li><a href="#addExampleToMinibatch"><code><span class="http-method">post</span> /rpc/{modelHistoryServerId}/model/example</code></a></li>
   <li><a href="#addExperiment"><code><span class="http-method">post</span> /rpc/{modelHistoryServerId}/experiment</code></a></li>
+  <li><a href="#addFeedbackBinary"><code><span class="http-method">post</span> /feedback/{id}/{type}</code></a></li>
+  <li><a href="#addFeedbackJson"><code><span class="http-method">post</span> /feedback/{id}/json</code></a></li>
   <li><a href="#addMinibatch"><code><span class="http-method">post</span> /rpc/{modelHistoryServerId}/model/minibatch</code></a></li>
   <li><a href="#addModelFeedback"><code><span class="http-method">post</span> /rpc/{modelHistoryServerId}/model/feedback</code></a></li>
   <li><a href="#addModelHistory"><code><span class="http-method">post</span> /rpc/{modelHistoryServerId}/modelhistory</code></a></li>
@@ -215,6 +218,7 @@ font-style: italic;
   <li><a href="#classify"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify</code></a></li>
   <li><a href="#classifyarray"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray</code></a></li>
   <li><a href="#classifyimage"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage</code></a></li>
+  <li><a href="#clearState"><code><span class="http-method">post</span> /clear</code></a></li>
   <li><a href="#createJob"><code><span class="http-method">post</span> /jobs/{jobIdOrType}</code></a></li>
   <li><a href="#createModelHistory"><code><span class="http-method">post</span> /rpc/{modelHistoryServerId}/model/revisions</code></a></li>
   <li><a href="#deleteCredentialsById"><code><span class="http-method">delete</span> /resources/credentials/{credentialId}</code></a></li>
@@ -234,13 +238,18 @@ font-style: italic;
   <li><a href="#detectobjects"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects</code></a></li>
   <li><a href="#downloadJobOutputFile"><code><span class="http-method">post</span> /jobs/{jobId}/outputfile</code></a></li>
   <li><a href="#getAllJobs"><code><span class="http-method">get</span> /jobs</code></a></li>
+  <li><a href="#getArray"><code><span class="http-method">post</span> /array/{arrayType}</code></a></li>
+  <li><a href="#getArrayIndices"><code><span class="http-method">post</span> /array/indices/{arrayType}</code></a></li>
+  <li><a href="#getArrayRange"><code><span class="http-method">post</span> /array/range/{from}/{to}/{arrayType}</code></a></li>
   <li><a href="#getBestModelAmongModelIds"><code><span class="http-method">post</span> /rpc/{modelHistoryServerId}/model/best</code></a></li>
   <li><a href="#getCredentialsById"><code><span class="http-method">get</span> /resources/credentials/{credentialId}</code></a></li>
+  <li><a href="#getCurrentModel"><code><span class="http-method">get</span> /model</code></a></li>
   <li><a href="#getEvaluationForModelID"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}</code></a></li>
   <li><a href="#getExamplesForMinibatch"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/example/{minibatchId}</code></a></li>
   <li><a href="#getExperiment"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/experiment/{experimentID}</code></a></li>
   <li><a href="#getExperimentsForModelHistory"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/experiments/{modelHistoryID}</code></a></li>
   <li><a href="#getJobById"><code><span class="http-method">get</span> /jobs/{jobIdOrType}</code></a></li>
+  <li><a href="#getLastEvaluation"><code><span class="http-method">get</span> /lastevaluation</code></a></li>
   <li><a href="#getMinibatch"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}</code></a></li>
   <li><a href="#getModelHistory"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}</code></a></li>
   <li><a href="#getModelInstance"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/{modelInstanceID}</code></a></li>
@@ -253,6 +262,7 @@ font-style: italic;
   <li><a href="#getResourceGroups"><code><span class="http-method">get</span> /resources/groups</code></a></li>
   <li><a href="#getResources"><code><span class="http-method">get</span> /resources/resources</code></a></li>
   <li><a href="#getResourcesFromGroup"><code><span class="http-method">get</span> /resources/group/{resourceGroupId}/resources</code></a></li>
+  <li><a href="#isTraining"><code><span class="http-method">get</span> /istraining</code></a></li>
   <li><a href="#jsonarray"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray</code></a></li>
   <li><a href="#knn"><code><span class="http-method">post</span> /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn</code></a></li>
   <li><a href="#knnnew"><code><span class="http-method">post</span> /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew</code></a></li>
@@ -269,12 +279,17 @@ font-style: italic;
   <li><a href="#multiclassify"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify</code></a></li>
   <li><a href="#multipredict"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict</code></a></li>
   <li><a href="#multipredictimage"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage</code></a></li>
+  <li><a href="#numRevisions"><code><span class="http-method">get</span> /numrevisions</code></a></li>
   <li><a href="#predict"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict</code></a></li>
+  <li><a href="#predictError"><code><span class="http-method">post</span> /{operation}/{inputType}/error</code></a></li>
+  <li><a href="#predictV2"><code><span class="http-method">post</span> /{operation}/{inputType}</code></a></li>
   <li><a href="#predictimage"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage</code></a></li>
   <li><a href="#predictwithpreprocess"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess</code></a></li>
   <li><a href="#predictwithpreprocessjson"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson</code></a></li>
+  <li><a href="#rawPredictBinary"><code><span class="http-method">post</span> /raw/{inputType}/{outputType}</code></a></li>
   <li><a href="#refreshJobStatus"><code><span class="http-method">get</span> /jobs/{jobId}/refresh</code></a></li>
   <li><a href="#reimportModel"><code><span class="http-method">post</span> /deployment/{deploymentId}/model/{modelId}</code></a></li>
+  <li><a href="#rollback"><code><span class="http-method">post</span> /rollback/{index}</code></a></li>
   <li><a href="#runAJob"><code><span class="http-method">post</span> /jobs/{jobId}/run</code></a></li>
   <li><a href="#transformCsv"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform</code></a></li>
   <li><a href="#transformarray"><code><span class="http-method">post</span> /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray</code></a></li>
@@ -291,6 +306,47 @@ font-style: italic;
   </ul>
 
   <h1><a name="Default">Default</a></h1>
+  <div class="method"><a name="accumulatedResults"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /accumulatedresults</code></pre></div>
+    <div class="method-summary">Tells how many retraining examples have labels associated with them. (<span class="nickname">accumulatedResults</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#AccumulatedResults">AccumulatedResults</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "accumulatedDataWithLabels" : 0,
+  "accumulatedDataWithOutLabels" : 6
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Returns the accumulated results currently in ememory.
+        <a href="#AccumulatedResults">AccumulatedResults</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="addCredentials"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -614,6 +670,125 @@ font-style: italic;
         <a href="#ExperimentEntity">ExperimentEntity</a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="addFeedbackBinary"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /feedback/{id}/{type}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">addFeedbackBinary</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Batch ID to retrain the model with and get feedback for. </div><div class="param">type (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The type of the labels array. </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>multipart/form-data</code></li>
+    </ul>
+
+
+
+
+    <h3 class="field-label">Form parameters</h3>
+    <div class="field-items">
+      <div class="param">file (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The labels file to upload. </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#FeedbackResponse">FeedbackResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "accumulatedSoFar" : 6,
+  "retrainThreshold" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The feedback response object
+        <a href="#FeedbackResponse">FeedbackResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="addFeedbackJson"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /feedback/{id}/json</code></pre></div>
+    <div class="method-summary">Gets the retraining feedback for the given batch ID. (<span class="nickname">addFeedbackJson</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Batch ID to retrain the model with and get feedback for. </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">labels <a href="#array">array</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The associated labels (one-hot vectors) with the batch for retraining. </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#FeedbackResponse">FeedbackResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "accumulatedSoFar" : 6,
+  "retrainThreshold" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The feedback response object
+        <a href="#FeedbackResponse">FeedbackResponse</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="addMinibatch"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -931,7 +1106,7 @@ font-style: italic;
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">groupName  (required)</div>
+      <div class="param">groupName <a href="#string">string</a> (required)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Name of the resource group </div>
 
@@ -1284,6 +1459,47 @@ font-style: italic;
     <h4 class="field-label">500</h4>
     Error generating classification
         <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="clearState"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /clear</code></pre></div>
+    <div class="method-summary">Clears the accumulated data for retraining. (<span class="nickname">clearState</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#FeedbackResponse">FeedbackResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "accumulatedSoFar" : 6,
+  "retrainThreshold" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The feedback response object
+        <a href="#FeedbackResponse">FeedbackResponse</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="createJob"/>
@@ -2281,7 +2497,7 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; (true) if the image needs preprocessing </div><div class="param">threshold (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. format: float</div><div class="param">imageFile (required)</div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. format: float</div><div class="param">file (required)</div>
 
       <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; the image file to detect objects from </div>
     </div>  <!-- field-items -->
@@ -2432,6 +2648,138 @@ font-style: italic;
         
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="getArray"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /array/{arrayType}</code></pre></div>
+    <div class="method-summary">Get the memory mapped array based on the array type. (<span class="nickname">getArray</span>)</div>
+    <div class="method-notes">The array is specified through a file path, in the configuration object, during model server deployment.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">arrayType (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The format in which the memory mapped array is returned. </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>application/octet-stream</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Get the whole memory mapped array in the specified format.
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getArrayIndices"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /array/indices/{arrayType}</code></pre></div>
+    <div class="method-summary">Get the memory mapped array indices based on the array type. (<span class="nickname">getArrayIndices</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">arrayType (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Format in which the memory mapped array is returned in. </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">input  (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Input indices array </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>application/octet-stream</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Returns the arrays given the indices.
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getArrayRange"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /array/range/{from}/{to}/{arrayType}</code></pre></div>
+    <div class="method-summary">Get the memory mapped array within a range based on the array type. (<span class="nickname">getArrayRange</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">arrayType (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Format in which the memory mapped array is returned in. </div><div class="param">from (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  format: int32</div><div class="param">to (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  format: int32</div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>application/octet-stream</code></li>
+    </ul>
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Returns the arrays given the from/to indices
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="getBestModelAmongModelIds"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -2548,6 +2896,36 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     Credentials Object
         <a href="#ResourceCredentials">ResourceCredentials</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getCurrentModel"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /model</code></pre></div>
+    <div class="method-summary">Returns the current model being used for retraining. (<span class="nickname">getCurrentModel</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/octet-stream</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Returns the current model being used for retraining in the form of a downloadable file.
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getEvaluationForModelID"/>
@@ -2857,6 +3235,62 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     Job entity Object
         <a href="#JobEntity">JobEntity</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getLastEvaluation"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /lastevaluation</code></pre></div>
+    <div class="method-summary">Get the last evaluation specifications from the current model. (<span class="nickname">getLastEvaluation</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#EvaluationResultsEntity">EvaluationResultsEntity</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "r2" : 2.027123023002322,
+  "binaryThresholds" : "binaryThresholds",
+  "created" : 0,
+  "precision" : 1.4658129805029452,
+  "accuracy" : 5.637376656633329,
+  "f1" : 6.027456183070403,
+  "meanAbsoluteError" : 9.301444243932576,
+  "auc" : 7.061401241503109,
+  "evaluation" : "evaluation",
+  "evalId" : "evalId",
+  "meanRelativeError" : 3.616076749251911,
+  "evalVersion" : 4,
+  "evalName" : "evalName",
+  "modelInstanceId" : "modelInstanceId",
+  "recall" : 5.962133916683182,
+  "rmse" : 2.3021358869347655,
+  "binaryThreshold" : 7.386281948385884
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Returns the last evaluation ran by the model.
+        <a href="#EvaluationResultsEntity">EvaluationResultsEntity</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getMinibatch"/>
@@ -3503,6 +3937,46 @@ object contains only general information (name, id, type, subtype).</div>
         
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="isTraining"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /istraining</code></pre></div>
+    <div class="method-summary">Get the retraining status (<span class="nickname">isTraining</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#RetrainingStatus">RetrainingStatus</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "istraining" : true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Returns whether the model is currently being trained or not.
+        <a href="#RetrainingStatus">RetrainingStatus</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="jsonarray"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -3729,6 +4203,12 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="method-summary">List all of the experiments in every model history / workspace (<span class="nickname">listAllExperiments</span>)</div>
     <div class="method-notes"></div>
 
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">modelHistoryServerId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+    </div>  <!-- field-items -->
 
 
 
@@ -4004,7 +4484,7 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    
+    The meta data details
         <a href="#MetaData">MetaData</a>
   </div> <!-- method -->
   <hr/>
@@ -4311,7 +4791,7 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Form parameters</h3>
     <div class="field-items">
-      <div class="param">file (optional)</div>
+      <div class="param">file (required)</div>
 
       <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The model file to update with (.pb file) </div>
     </div>  <!-- field-items -->
@@ -4577,6 +5057,46 @@ object contains only general information (name, id, type, subtype).</div>
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="numRevisions"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /numrevisions</code></pre></div>
+    <div class="method-summary">Gets the number of retrained models written with retraining. (<span class="nickname">numRevisions</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#RevisionsWritten">RevisionsWritten</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "numRevisions" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Returns the number of revisions for retraining of the model.
+        <a href="#RevisionsWritten">RevisionsWritten</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="predict"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -4646,6 +5166,119 @@ object contains only general information (name, id, type, subtype).</div>
         <a href="#"></a>
     <h4 class="field-label">500</h4>
     Invalid deployment or model name
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="predictError"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /{operation}/{inputType}/error</code></pre></div>
+    <div class="method-summary">Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified. (<span class="nickname">predictError</span>)</div>
+    <div class="method-notes">These &quot;error&quot; endpoints are slower for inference, but will also ignore invalid rows
+that are found. They will output skipped rows where errors were encountered so users can
+fix problems with input data pipelines.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">operation (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div><div class="param">inputType (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the input data. </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">inputData  (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Input data returned a prediction along with the skipped, invalid data rows
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="predictV2"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /{operation}/{inputType}</code></pre></div>
+    <div class="method-summary">Runs inference based on the input data. Output is defined relative to the output adapter specified. (<span class="nickname">predictV2</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">operation (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The operation to perform on the input data. The operations <code>[REGRESSION, CLASSIFICATION, RAW]</code> are for
+<code>application/json</code> content-type while <code>[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]</code> are for
+<code>multipart/form-data</code> content-type. </div><div class="param">inputType (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the input data. The input data type. <code>[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]</code> are for
+<code>application/json</code> content-type while <code>[IMAGE, NUMPY, NDARRAY, JSON]</code> are for
+<code>multipart/form-data</code> content-type. </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>multipart/form-data</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">inputData  (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input data when the content type is &quot;application/json&quot; </div>
+
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Form parameters</h3>
+    <div class="field-items">
+      <div class="param">inputData (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The input file to upload, containing the input data when the content type is &quot;multipart/form-data&quot; </div>
+    </div>  <!-- field-items -->
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Input data returned a prediction.
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
@@ -4853,6 +5486,55 @@ object contains only general information (name, id, type, subtype).</div>
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="rawPredictBinary"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /raw/{inputType}/{outputType}</code></pre></div>
+    <div class="method-summary">Runs inference based on the input data. Output is defined relative to the output adapter specified. (<span class="nickname">rawPredictBinary</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">inputType (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Input data type. </div><div class="param">outputType (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Binary output data type. </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>multipart/form-data</code></li>
+    </ul>
+
+
+
+
+    <h3 class="field-label">Form parameters</h3>
+    <div class="field-items">
+      <div class="param">inputData (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The input file to upload. </div>
+    </div>  <!-- field-items -->
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/octet-stream</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Input data returned a prediction in raw binary file format.
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="refreshJobStatus"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -4978,6 +5660,57 @@ object contains only general information (name, id, type, subtype).</div>
     <h4 class="field-label">200</h4>
     the reimported model entity
         <a href="#ModelEntity">ModelEntity</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="rollback"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /rollback/{index}</code></pre></div>
+    <div class="method-summary">Rollback to a previous revision of the model. (<span class="nickname">rollback</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">index (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Model revision index. format: int32</div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#RollbackStatus">RollbackStatus</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "status" : "status"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Returns the status of the rollback.
+        <a href="#RollbackStatus">RollbackStatus</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="runAJob"/>
@@ -5823,6 +6556,7 @@ object contains only general information (name, id, type, subtype).</div>
 
   <h3>Table of Contents</h3>
   <ol>
+    <li><a href="#AccumulatedResults"><code>AccumulatedResults</code> - </a></li>
     <li><a href="#AddCredentialsRequest"><code>AddCredentialsRequest</code> - </a></li>
     <li><a href="#AddExampleRequest"><code>AddExampleRequest</code> - </a></li>
     <li><a href="#AddModelHistoryRequest"><code>AddModelHistoryRequest</code> - </a></li>
@@ -5848,6 +6582,7 @@ object contains only general information (name, id, type, subtype).</div>
     <li><a href="#EvaluationResultsEntity"><code>EvaluationResultsEntity</code> - </a></li>
     <li><a href="#ExampleEntity"><code>ExampleEntity</code> - </a></li>
     <li><a href="#ExperimentEntity"><code>ExperimentEntity</code> - </a></li>
+    <li><a href="#FeedbackResponse"><code>FeedbackResponse</code> - </a></li>
     <li><a href="#FileUpload"><code>FileUpload</code> - </a></li>
     <li><a href="#FileUploadList"><code>FileUploadList</code> - </a></li>
     <li><a href="#GoogleStorageResourceDetails"><code>GoogleStorageResourceDetails</code> - </a></li>
@@ -5879,6 +6614,9 @@ object contains only general information (name, id, type, subtype).</div>
     <li><a href="#Resource"><code>Resource</code> - </a></li>
     <li><a href="#ResourceCredentials"><code>ResourceCredentials</code> - </a></li>
     <li><a href="#ResourceGroup"><code>ResourceGroup</code> - </a></li>
+    <li><a href="#RetrainingStatus"><code>RetrainingStatus</code> - </a></li>
+    <li><a href="#RevisionsWritten"><code>RevisionsWritten</code> - </a></li>
+    <li><a href="#RollbackStatus"><code>RollbackStatus</code> - </a></li>
     <li><a href="#S3ResourceDetails"><code>S3ResourceDetails</code> - </a></li>
     <li><a href="#SetState"><code>SetState</code> - </a></li>
     <li><a href="#SingleCSVRecord"><code>SingleCSVRecord</code> - </a></li>
@@ -5890,6 +6628,14 @@ object contains only general information (name, id, type, subtype).</div>
     <li><a href="#inline_response_200"><code>inline_response_200</code> - </a></li>
   </ol>
 
+  <div class="model">
+    <h3><a name="AccumulatedResults"><code>AccumulatedResults</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">accumulatedDataWithLabels (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">accumulatedDataWithOutLabels (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
   <div class="model">
     <h3><a name="AddCredentialsRequest"><code>AddCredentialsRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
@@ -6164,6 +6910,14 @@ object contains only general information (name, id, type, subtype).</div>
 <div class="param">zeppelinId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Zeppelin ID </div>
 <div class="param">modelHistoryId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Id of the model history / workspace </div>
 <div class="param">lastUpdated (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Indicates the time when experiment was last updated format: int64</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="FeedbackResponse"><code>FeedbackResponse</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">retrainThreshold (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The number of examples required to start the retraining process. format: int32</div>
+<div class="param">accumulatedSoFar (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The number of retraining examples accumulated so far. format: int32</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -6520,6 +7274,27 @@ object contains only general information (name, id, type, subtype).</div>
 <div class="param">groupName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the resource group </div>
 <div class="param">added (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Milliseconds in Long when the resource group was added format: int64</div>
 <div class="param">updated (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Milliseconds in Long when the resource group was updated format: int64</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RetrainingStatus"><code>RetrainingStatus</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">istraining (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> True if the retrainer is busy training. </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RevisionsWritten"><code>RevisionsWritten</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">numRevisions (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RollbackStatus"><code>RollbackStatus</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Status of the model revision rollback. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

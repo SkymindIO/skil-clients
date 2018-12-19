@@ -83,12 +83,12 @@ namespace Skymind.SKIL.Test
             // TODO unit test for the property 'StorageResourceId'
         }
         /// <summary>
-        /// Test the property 'SkilSparkMainArgs'
+        /// Test the property 'JobArgs'
         /// </summary>
         [Test]
-        public void SkilSparkMainArgsTest()
+        public void JobArgsTest()
         {
-            // TODO unit test for the property 'SkilSparkMainArgs'
+            // TODO unit test for the property 'JobArgs'
         }
         /// <summary>
         /// Test the property 'OutputFileName'

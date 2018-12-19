@@ -57,6 +57,10 @@ public class JsonUtil {
   public static Type getListTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
+    if ("AccumulatedResults".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AccumulatedResults>>(){}.getType();
+    }
+    
     if ("AddCredentialsRequest".equalsIgnoreCase(className)) {
       return new TypeToken<List<AddCredentialsRequest>>(){}.getType();
     }
@@ -155,6 +159,10 @@ public class JsonUtil {
     
     if ("ExperimentEntity".equalsIgnoreCase(className)) {
       return new TypeToken<List<ExperimentEntity>>(){}.getType();
+    }
+    
+    if ("FeedbackResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<List<FeedbackResponse>>(){}.getType();
     }
     
     if ("FileUpload".equalsIgnoreCase(className)) {
@@ -285,6 +293,18 @@ public class JsonUtil {
       return new TypeToken<List<ResourceGroup>>(){}.getType();
     }
     
+    if ("RetrainingStatus".equalsIgnoreCase(className)) {
+      return new TypeToken<List<RetrainingStatus>>(){}.getType();
+    }
+    
+    if ("RevisionsWritten".equalsIgnoreCase(className)) {
+      return new TypeToken<List<RevisionsWritten>>(){}.getType();
+    }
+    
+    if ("RollbackStatus".equalsIgnoreCase(className)) {
+      return new TypeToken<List<RollbackStatus>>(){}.getType();
+    }
+    
     if ("S3ResourceDetails".equalsIgnoreCase(className)) {
       return new TypeToken<List<S3ResourceDetails>>(){}.getType();
     }
@@ -322,6 +342,10 @@ public class JsonUtil {
 
   public static Type getTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
+    
+    if ("AccumulatedResults".equalsIgnoreCase(className)) {
+      return new TypeToken<AccumulatedResults>(){}.getType();
+    }
     
     if ("AddCredentialsRequest".equalsIgnoreCase(className)) {
       return new TypeToken<AddCredentialsRequest>(){}.getType();
@@ -421,6 +445,10 @@ public class JsonUtil {
     
     if ("ExperimentEntity".equalsIgnoreCase(className)) {
       return new TypeToken<ExperimentEntity>(){}.getType();
+    }
+    
+    if ("FeedbackResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<FeedbackResponse>(){}.getType();
     }
     
     if ("FileUpload".equalsIgnoreCase(className)) {
@@ -549,6 +577,18 @@ public class JsonUtil {
     
     if ("ResourceGroup".equalsIgnoreCase(className)) {
       return new TypeToken<ResourceGroup>(){}.getType();
+    }
+    
+    if ("RetrainingStatus".equalsIgnoreCase(className)) {
+      return new TypeToken<RetrainingStatus>(){}.getType();
+    }
+    
+    if ("RevisionsWritten".equalsIgnoreCase(className)) {
+      return new TypeToken<RevisionsWritten>(){}.getType();
+    }
+    
+    if ("RollbackStatus".equalsIgnoreCase(className)) {
+      return new TypeToken<RollbackStatus>(){}.getType();
     }
     
     if ("S3ResourceDetails".equalsIgnoreCase(className)) {

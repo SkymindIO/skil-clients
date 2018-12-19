@@ -83,12 +83,12 @@ namespace Skymind.SKIL.Test
             // TODO unit test for the property 'ExampleVersion'
         }
         /// <summary>
-        /// Test the property 'IntRowNumber'
+        /// Test the property 'RowNumber'
         /// </summary>
         [Test]
-        public void IntRowNumberTest()
+        public void RowNumberTest()
         {
-            // TODO unit test for the property 'IntRowNumber'
+            // TODO unit test for the property 'RowNumber'
         }
         /// <summary>
         /// Test the property 'Created'

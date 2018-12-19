@@ -4,11 +4,14 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**accumulated_results**](DefaultApi.md#accumulated_results) | **Get** /accumulatedresults | Tells how many retraining examples have labels associated with them.
 [**add_credentials**](DefaultApi.md#add_credentials) | **Post** /resources/credentials | Adds credentials
 [**add_evaluation_result**](DefaultApi.md#add_evaluation_result) | **Post** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
 [**add_example_for_batch**](DefaultApi.md#add_example_for_batch) | **Post** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 [**add_example_to_minibatch**](DefaultApi.md#add_example_to_minibatch) | **Post** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
 [**add_experiment**](DefaultApi.md#add_experiment) | **Post** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+[**add_feedback_binary**](DefaultApi.md#add_feedback_binary) | **Post** /feedback/{id}/{type} | 
+[**add_feedback_json**](DefaultApi.md#add_feedback_json) | **Post** /feedback/{id}/json | Gets the retraining feedback for the given batch ID.
 [**add_minibatch**](DefaultApi.md#add_minibatch) | **Post** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
 [**add_model_feedback**](DefaultApi.md#add_model_feedback) | **Post** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**add_model_history**](DefaultApi.md#add_model_history) | **Post** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
@@ -20,6 +23,7 @@ Method | HTTP request | Description
 [**classify**](DefaultApi.md#classify) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**clear_state**](DefaultApi.md#clear_state) | **Post** /clear | Clears the accumulated data for retraining.
 [**create_job**](DefaultApi.md#create_job) | **Post** /jobs/{jobIdOrType} | Create a job
 [**create_model_history**](DefaultApi.md#create_model_history) | **Post** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 [**delete_credentials_by_id**](DefaultApi.md#delete_credentials_by_id) | **Delete** /resources/credentials/{credentialId} | Delete credentials given an ID
@@ -39,13 +43,18 @@ Method | HTTP request | Description
 [**detectobjects**](DefaultApi.md#detectobjects) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
 [**download_job_output_file**](DefaultApi.md#download_job_output_file) | **Post** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
 [**get_all_jobs**](DefaultApi.md#get_all_jobs) | **Get** /jobs | Get a list of all available jobs
+[**get_array**](DefaultApi.md#get_array) | **Post** /array/{arrayType} | Get the memory mapped array based on the array type.
+[**get_array_indices**](DefaultApi.md#get_array_indices) | **Post** /array/indices/{arrayType} | Get the memory mapped array indices based on the array type.
+[**get_array_range**](DefaultApi.md#get_array_range) | **Post** /array/range/{from}/{to}/{arrayType} | Get the memory mapped array within a range based on the array type.
 [**get_best_model_among_model_ids**](DefaultApi.md#get_best_model_among_model_ids) | **Post** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 [**get_credentials_by_id**](DefaultApi.md#get_credentials_by_id) | **Get** /resources/credentials/{credentialId} | Get credentials given an ID
+[**get_current_model**](DefaultApi.md#get_current_model) | **Get** /model | Returns the current model being used for retraining.
 [**get_evaluation_for_model_id**](DefaultApi.md#get_evaluation_for_model_id) | **Get** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
 [**get_examples_for_minibatch**](DefaultApi.md#get_examples_for_minibatch) | **Get** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**get_experiment**](DefaultApi.md#get_experiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**get_experiments_for_model_history**](DefaultApi.md#get_experiments_for_model_history) | **Get** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
 [**get_job_by_id**](DefaultApi.md#get_job_by_id) | **Get** /jobs/{jobIdOrType} | Get a job by its ID
+[**get_last_evaluation**](DefaultApi.md#get_last_evaluation) | **Get** /lastevaluation | Get the last evaluation specifications from the current model.
 [**get_minibatch**](DefaultApi.md#get_minibatch) | **Get** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**get_model_history**](DefaultApi.md#get_model_history) | **Get** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**get_model_instance**](DefaultApi.md#get_model_instance) | **Get** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
@@ -58,6 +67,7 @@ Method | HTTP request | Description
 [**get_resource_groups**](DefaultApi.md#get_resource_groups) | **Get** /resources/groups | Get a list of all the resource groups
 [**get_resources**](DefaultApi.md#get_resources) | **Get** /resources/resources | A list of all known/registered resources, of all types
 [**get_resources_from_group**](DefaultApi.md#get_resources_from_group) | **Get** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
+[**is_training**](DefaultApi.md#is_training) | **Get** /istraining | Get the retraining status
 [**jsonarray**](DefaultApi.md#jsonarray) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**knnnew**](DefaultApi.md#knnnew) | **Post** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -74,12 +84,17 @@ Method | HTTP request | Description
 [**multiclassify**](DefaultApi.md#multiclassify) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
 [**multipredict**](DefaultApi.md#multipredict) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
 [**multipredictimage**](DefaultApi.md#multipredictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+[**num_revisions**](DefaultApi.md#num_revisions) | **Get** /numrevisions | Gets the number of retrained models written with retraining.
 [**predict**](DefaultApi.md#predict) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+[**predict_error**](DefaultApi.md#predict_error) | **Post** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+[**predict_v2**](DefaultApi.md#predict_v2) | **Post** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**predictimage**](DefaultApi.md#predictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**raw_predict_binary**](DefaultApi.md#raw_predict_binary) | **Post** /raw/{inputType}/{outputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**refresh_job_status**](DefaultApi.md#refresh_job_status) | **Get** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
 [**reimport_model**](DefaultApi.md#reimport_model) | **Post** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**rollback**](DefaultApi.md#rollback) | **Post** /rollback/{index} | Rollback to a previous revision of the model.
 [**run_a_job**](DefaultApi.md#run_a_job) | **Post** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transform_csv**](DefaultApi.md#transform_csv) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 [**transformarray**](DefaultApi.md#transformarray) | **Post** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
@@ -94,6 +109,28 @@ Method | HTTP request | Description
 [**update_model_history**](DefaultApi.md#update_model_history) | **Post** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**upload**](DefaultApi.md#upload) | **Post** /api/upload/model | Upload a model file to SKIL for import.
 
+
+# **accumulated_results**
+> ::models::AccumulatedResults accumulated_results(ctx, )
+Tells how many retraining examples have labels associated with them.
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**::models::AccumulatedResults**](AccumulatedResults.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_credentials**
 > ::models::ResourceCredentials add_credentials(ctx, add_credentials_request)
@@ -217,6 +254,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**::models::ExperimentEntity**](ExperimentEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_feedback_binary**
+> ::models::FeedbackResponse add_feedback_binary(ctx, id, _type, optional)
+
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **String**| Batch ID to retrain the model with and get feedback for. | 
+  **_type** | **String**| The type of the labels array. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Batch ID to retrain the model with and get feedback for. | 
+ **_type** | **String**| The type of the labels array. | 
+ **file** | **File**| The labels file to upload. | 
+
+### Return type
+
+[**::models::FeedbackResponse**](FeedbackResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **add_feedback_json**
+> ::models::FeedbackResponse add_feedback_json(ctx, id, optional)
+Gets the retraining feedback for the given batch ID.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **String**| Batch ID to retrain the model with and get feedback for. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Batch ID to retrain the model with and get feedback for. | 
+ **labels** | [**Vec&lt;Vec&lt;f64&gt;&gt;**](array.md)| The associated labels (one-hot vectors) with the batch for retraining. | 
+
+### Return type
+
+[**::models::FeedbackResponse**](FeedbackResponse.md)
 
 ### Authorization
 
@@ -372,7 +481,7 @@ Adds a resource group
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **group_name** | [****](.md)| Name of the resource group | 
+  **group_name** | **String**| Name of the resource group | 
 
 ### Return type
 
@@ -536,6 +645,28 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clear_state**
+> ::models::FeedbackResponse clear_state(ctx, )
+Clears the accumulated data for retraining.
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**::models::FeedbackResponse**](FeedbackResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -961,7 +1092,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **detectobjects**
-> ::models::DetectionResult detectobjects(ctx, id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name)
+> ::models::DetectionResult detectobjects(ctx, id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name)
 Detect the objects, given a (input) prediction request
 
 ### Required Parameters
@@ -972,7 +1103,7 @@ Name | Type | Description  | Notes
   **id** | **String**| the GUID for mapping the results in the detections | 
   **needs_preprocessing** | **bool**| (true) if the image needs preprocessing | 
   **threshold** | **f32**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
-  **image_file** | **File**| the image file to detect objects from | 
+  **file** | **File**| the image file to detect objects from | 
   **deployment_name** | **String**| Name of the deployment group | 
   **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
@@ -1041,6 +1172,97 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_array**
+> get_array(ctx, array_type)
+Get the memory mapped array based on the array type.
+
+The array is specified through a file path, in the configuration object, during model server deployment.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **array_type** | **String**| The format in which the memory mapped array is returned. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_array_indices**
+> get_array_indices(ctx, array_type, optional)
+Get the memory mapped array indices based on the array type.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **array_type** | **String**| Format in which the memory mapped array is returned in. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **array_type** | **String**| Format in which the memory mapped array is returned in. | 
+ **input** | [****](.md)| Input indices array | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_array_range**
+> get_array_range(ctx, array_type, from, to)
+Get the memory mapped array within a range based on the array type.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **array_type** | **String**| Format in which the memory mapped array is returned in. | 
+  **from** | **i32**|  | 
+  **to** | **i32**|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/octet-stream
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_best_model_among_model_ids**
 > ::models::ModelInstanceEntity get_best_model_among_model_ids(ctx, model_history_server_id, best_model)
 Gets the best model among the given model instance IDs, based on the evaluation type and column metric
@@ -1091,6 +1313,28 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_current_model**
+> get_current_model(ctx, )
+Returns the current model being used for retraining.
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1216,6 +1460,28 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**::models::JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_last_evaluation**
+> ::models::EvaluationResultsEntity get_last_evaluation(ctx, )
+Get the last evaluation specifications from the current model.
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**::models::EvaluationResultsEntity**](EvaluationResultsEntity.md)
 
 ### Authorization
 
@@ -1538,6 +1804,28 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **is_training**
+> ::models::RetrainingStatus is_training(ctx, )
+Get the retraining status
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**::models::RetrainingStatus**](RetrainingStatus.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **jsonarray**
 > ::models::JsonArrayResponse jsonarray(ctx, body, deployment_name, version_name, model_name)
 Run inference on the input and returns it as a JsonArrayResponse
@@ -1628,11 +1916,15 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_all_experiments**
-> Vec<::models::ExperimentEntity> list_all_experiments(ctx, )
+> Vec<::models::ExperimentEntity> list_all_experiments(ctx, model_history_server_id)
 List all of the experiments in every model history / workspace
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
 
 ### Return type
 
@@ -1882,7 +2174,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **modelupdate**
-> ::models::ModelStatus modelupdate(ctx, deployment_name, version_name, model_name, optional)
+> ::models::ModelStatus modelupdate(ctx, file, deployment_name, version_name, model_name)
 Update the model to be served
 
 ### Required Parameters
@@ -1890,20 +2182,10 @@ Update the model to be served
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **file** | **File**| The model file to update with (.pb file) | 
   **deployment_name** | **String**| Name of the deployment group | 
   **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **model_name** | **String**| ID or name of the deployed model | 
- **file** | **File**| The model file to update with (.pb file) | 
 
 ### Return type
 
@@ -2013,6 +2295,28 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **num_revisions**
+> ::models::RevisionsWritten num_revisions(ctx, )
+Gets the number of retrained models written with retraining.
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**::models::RevisionsWritten**](RevisionsWritten.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **predict**
 > ::models::Prediction predict(ctx, body, deployment_name, version_name, model_name)
 Run inference on the input array.
@@ -2038,6 +2342,83 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **predict_error**
+> predict_error(ctx, operation, input_type, optional)
+Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+
+These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **operation** | **String**|  | 
+  **input_type** | **String**| Type of the input data. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **operation** | **String**|  | 
+ **input_type** | **String**| Type of the input data. | 
+ **input_data** | [****](.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **predict_v2**
+> predict_v2(ctx, operation, input_type, optional)
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **operation** | **String**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
+  **input_type** | **String**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **operation** | **String**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
+ **input_type** | **String**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
+ **input_data** | [****](.md)| The input data when the content type is \&quot;application/json\&quot; | 
+ **input_data2** | **File**| The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2139,6 +2520,43 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **raw_predict_binary**
+> raw_predict_binary(ctx, input_type, output_type, optional)
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **input_type** | **String**| Input data type. | 
+  **output_type** | **String**| Binary output data type. | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_type** | **String**| Input data type. | 
+ **output_type** | **String**| Binary output data type. | 
+ **input_data** | **File**| The input file to upload. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **refresh_job_status**
 > ::models::JobEntity refresh_job_status(ctx, job_id)
 Refresh the remote job status. Can be used for monitoring.
@@ -2181,6 +2599,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**::models::ModelEntity**](ModelEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **rollback**
+> ::models::RollbackStatus rollback(ctx, index)
+Rollback to a previous revision of the model.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **index** | **i32**| Model revision index. | 
+
+### Return type
+
+[**::models::RollbackStatus**](RollbackStatus.md)
 
 ### Authorization
 

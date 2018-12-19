@@ -288,6 +288,32 @@ class Decoders {
             }
         }
 
+        // Decoder for [AccumulatedResults]
+        Decoders.addDecoder(clazz: [AccumulatedResults].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[AccumulatedResults]> in
+            return Decoders.decode(clazz: [AccumulatedResults].self, source: source)
+        }
+
+        // Decoder for AccumulatedResults
+        Decoders.addDecoder(clazz: AccumulatedResults.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<AccumulatedResults> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? AccumulatedResults() : instance as! AccumulatedResults
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["accumulatedDataWithLabels"] as AnyObject?) {
+                
+                case let .success(value): _result.accumulatedDataWithLabels = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["accumulatedDataWithOutLabels"] as AnyObject?) {
+                
+                case let .success(value): _result.accumulatedDataWithOutLabels = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "AccumulatedResults", actual: "\(source)"))
+            }
+        }
         // Decoder for [AddCredentialsRequest]
         Decoders.addDecoder(clazz: [AddCredentialsRequest].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[AddCredentialsRequest]> in
             return Decoders.decode(clazz: [AddCredentialsRequest].self, source: source)
@@ -1248,6 +1274,32 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "ExperimentEntity", actual: "\(source)"))
+            }
+        }
+        // Decoder for [FeedbackResponse]
+        Decoders.addDecoder(clazz: [FeedbackResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[FeedbackResponse]> in
+            return Decoders.decode(clazz: [FeedbackResponse].self, source: source)
+        }
+
+        // Decoder for FeedbackResponse
+        Decoders.addDecoder(clazz: FeedbackResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<FeedbackResponse> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? FeedbackResponse() : instance as! FeedbackResponse
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["retrainThreshold"] as AnyObject?) {
+                
+                case let .success(value): _result.retrainThreshold = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["accumulatedSoFar"] as AnyObject?) {
+                
+                case let .success(value): _result.accumulatedSoFar = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "FeedbackResponse", actual: "\(source)"))
             }
         }
         // Decoder for [FileUpload]
@@ -2516,6 +2568,66 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "ResourceGroup", actual: "\(source)"))
+            }
+        }
+        // Decoder for [RetrainingStatus]
+        Decoders.addDecoder(clazz: [RetrainingStatus].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[RetrainingStatus]> in
+            return Decoders.decode(clazz: [RetrainingStatus].self, source: source)
+        }
+
+        // Decoder for RetrainingStatus
+        Decoders.addDecoder(clazz: RetrainingStatus.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<RetrainingStatus> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? RetrainingStatus() : instance as! RetrainingStatus
+                switch Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["istraining"] as AnyObject?) {
+                
+                case let .success(value): _result.istraining = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "RetrainingStatus", actual: "\(source)"))
+            }
+        }
+        // Decoder for [RevisionsWritten]
+        Decoders.addDecoder(clazz: [RevisionsWritten].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[RevisionsWritten]> in
+            return Decoders.decode(clazz: [RevisionsWritten].self, source: source)
+        }
+
+        // Decoder for RevisionsWritten
+        Decoders.addDecoder(clazz: RevisionsWritten.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<RevisionsWritten> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? RevisionsWritten() : instance as! RevisionsWritten
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["numRevisions"] as AnyObject?) {
+                
+                case let .success(value): _result.numRevisions = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "RevisionsWritten", actual: "\(source)"))
+            }
+        }
+        // Decoder for [RollbackStatus]
+        Decoders.addDecoder(clazz: [RollbackStatus].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[RollbackStatus]> in
+            return Decoders.decode(clazz: [RollbackStatus].self, source: source)
+        }
+
+        // Decoder for RollbackStatus
+        Decoders.addDecoder(clazz: RollbackStatus.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<RollbackStatus> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? RollbackStatus() : instance as! RollbackStatus
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["status"] as AnyObject?) {
+                
+                case let .success(value): _result.status = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "RollbackStatus", actual: "\(source)"))
             }
         }
         // Decoder for [S3ResourceDetails]
