@@ -14,6 +14,7 @@ package ai.skymind.skil
 
 import java.text.SimpleDateFormat
 
+import ai.skymind.skil.model.AccumulatedResults
 import ai.skymind.skil.model.AddCredentialsRequest
 import ai.skymind.skil.model.AddExampleRequest
 import ai.skymind.skil.model.AddModelHistoryRequest
@@ -34,6 +35,7 @@ import ai.skymind.skil.model.DownloadOutputFileRequest
 import ai.skymind.skil.model.EvaluationResultsEntity
 import ai.skymind.skil.model.ExampleEntity
 import ai.skymind.skil.model.ExperimentEntity
+import ai.skymind.skil.model.FeedbackResponse
 import java.io.File
 import ai.skymind.skil.model.FileUploadList
 import ai.skymind.skil.model.ImportModelRequest
@@ -58,6 +60,9 @@ import ai.skymind.skil.model.Prediction
 import ai.skymind.skil.model.Resource
 import ai.skymind.skil.model.ResourceCredentials
 import ai.skymind.skil.model.ResourceGroup
+import ai.skymind.skil.model.RetrainingStatus
+import ai.skymind.skil.model.RevisionsWritten
+import ai.skymind.skil.model.RollbackStatus
 import ai.skymind.skil.model.SetState
 import ai.skymind.skil.model.SingleCSVRecord
 import ai.skymind.skil.model.Token
@@ -125,6 +130,30 @@ class DefaultApi(
   val config: SwaggerConfig = SwaggerConfig.forUrl(new URI(defBasePath))
   val client = new RestClient(config)
   val helper = new DefaultApiAsyncHelper(client, config)
+
+  /**
+   * Tells how many retraining examples have labels associated with them.
+   * 
+   *
+   * @return AccumulatedResults
+   */
+  def accumulatedResults(): Option[AccumulatedResults] = {
+    val await = Try(Await.result(accumulatedResultsAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Tells how many retraining examples have labels associated with them. asynchronously
+   * 
+   *
+   * @return Future(AccumulatedResults)
+   */
+  def accumulatedResultsAsync(): Future[AccumulatedResults] = {
+      helper.accumulatedResults()
+  }
 
   /**
    * Adds credentials
@@ -262,6 +291,64 @@ class DefaultApi(
    */
   def addExperimentAsync(ModelHistoryServerId: String, ExperimentEntity: ExperimentEntity): Future[ExperimentEntity] = {
       helper.addExperiment(ModelHistoryServerId, ExperimentEntity)
+  }
+
+  /**
+   * 
+   * 
+   *
+   * @param Id Batch ID to retrain the model with and get feedback for. 
+   * @param `Type` The type of the labels array. 
+   * @param File The labels file to upload. (optional)
+   * @return FeedbackResponse
+   */
+  def addFeedbackBinary(Id: String, `Type`: String, File: Option[File] = None): Option[FeedbackResponse] = {
+    val await = Try(Await.result(addFeedbackBinaryAsync(Id, `Type`, File), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   *  asynchronously
+   * 
+   *
+   * @param Id Batch ID to retrain the model with and get feedback for. 
+   * @param `Type` The type of the labels array. 
+   * @param File The labels file to upload. (optional)
+   * @return Future(FeedbackResponse)
+   */
+  def addFeedbackBinaryAsync(Id: String, `Type`: String, File: Option[File] = None): Future[FeedbackResponse] = {
+      helper.addFeedbackBinary(Id, `Type`, File)
+  }
+
+  /**
+   * Gets the retraining feedback for the given batch ID.
+   * 
+   *
+   * @param Id Batch ID to retrain the model with and get feedback for. 
+   * @param Labels The associated labels (one-hot vectors) with the batch for retraining. (optional)
+   * @return FeedbackResponse
+   */
+  def addFeedbackJson(Id: String, Labels: Option[List[List[Double]]] = None): Option[FeedbackResponse] = {
+    val await = Try(Await.result(addFeedbackJsonAsync(Id, Labels), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Gets the retraining feedback for the given batch ID. asynchronously
+   * 
+   *
+   * @param Id Batch ID to retrain the model with and get feedback for. 
+   * @param Labels The associated labels (one-hot vectors) with the batch for retraining. (optional)
+   * @return Future(FeedbackResponse)
+   */
+  def addFeedbackJsonAsync(Id: String, Labels: Option[List[List[Double]]] = None): Future[FeedbackResponse] = {
+      helper.addFeedbackJson(Id, Labels)
   }
 
   /**
@@ -409,7 +496,7 @@ class DefaultApi(
    * @param GroupName Name of the resource group 
    * @return ResourceGroup
    */
-  def addResourceGroup(GroupName: ): Option[ResourceGroup] = {
+  def addResourceGroup(GroupName: String): Option[ResourceGroup] = {
     val await = Try(Await.result(addResourceGroupAsync(GroupName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -424,7 +511,7 @@ class DefaultApi(
    * @param GroupName Name of the resource group 
    * @return Future(ResourceGroup)
    */
-  def addResourceGroupAsync(GroupName: ): Future[ResourceGroup] = {
+  def addResourceGroupAsync(GroupName: String): Future[ResourceGroup] = {
       helper.addResourceGroup(GroupName)
   }
 
@@ -578,6 +665,30 @@ class DefaultApi(
    */
   def classifyimageAsync(DeploymentName: String, VersionName: String, ModelName: String, Image: Option[File] = None): Future[ClassificationResult] = {
       helper.classifyimage(DeploymentName, VersionName, ModelName, Image)
+  }
+
+  /**
+   * Clears the accumulated data for retraining.
+   * 
+   *
+   * @return FeedbackResponse
+   */
+  def clearState(): Option[FeedbackResponse] = {
+    val await = Try(Await.result(clearStateAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Clears the accumulated data for retraining. asynchronously
+   * 
+   *
+   * @return Future(FeedbackResponse)
+   */
+  def clearStateAsync(): Future[FeedbackResponse] = {
+      helper.clearState()
   }
 
   /**
@@ -1017,14 +1128,14 @@ class DefaultApi(
    * @param Id the GUID for mapping the results in the detections 
    * @param NeedsPreprocessing (true) if the image needs preprocessing 
    * @param Threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
-   * @param ImageFile the image file to detect objects from 
+   * @param File the image file to detect objects from 
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return DetectionResult
    */
-  def detectobjects(Id: String, NeedsPreprocessing: Boolean, Threshold: Float, ImageFile: File, DeploymentName: String, VersionName: String, ModelName: String): Option[DetectionResult] = {
-    val await = Try(Await.result(detectobjectsAsync(Id, NeedsPreprocessing, Threshold, ImageFile, DeploymentName, VersionName, ModelName), Duration.Inf))
+  def detectobjects(Id: String, NeedsPreprocessing: Boolean, Threshold: Float, File: File, DeploymentName: String, VersionName: String, ModelName: String): Option[DetectionResult] = {
+    val await = Try(Await.result(detectobjectsAsync(Id, NeedsPreprocessing, Threshold, File, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1038,14 +1149,14 @@ class DefaultApi(
    * @param Id the GUID for mapping the results in the detections 
    * @param NeedsPreprocessing (true) if the image needs preprocessing 
    * @param Threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
-   * @param ImageFile the image file to detect objects from 
+   * @param File the image file to detect objects from 
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(DetectionResult)
    */
-  def detectobjectsAsync(Id: String, NeedsPreprocessing: Boolean, Threshold: Float, ImageFile: File, DeploymentName: String, VersionName: String, ModelName: String): Future[DetectionResult] = {
-      helper.detectobjects(Id, NeedsPreprocessing, Threshold, ImageFile, DeploymentName, VersionName, ModelName)
+  def detectobjectsAsync(Id: String, NeedsPreprocessing: Boolean, Threshold: Float, File: File, DeploymentName: String, VersionName: String, ModelName: String): Future[DetectionResult] = {
+      helper.detectobjects(Id, NeedsPreprocessing, Threshold, File, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -1101,6 +1212,90 @@ class DefaultApi(
   }
 
   /**
+   * Get the memory mapped array based on the array type.
+   * The array is specified through a file path, in the configuration object, during model server deployment.
+   *
+   * @param ArrayType The format in which the memory mapped array is returned. 
+   * @return void
+   */
+  def getArray(ArrayType: String) = {
+    val await = Try(Await.result(getArrayAsync(ArrayType), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get the memory mapped array based on the array type. asynchronously
+   * The array is specified through a file path, in the configuration object, during model server deployment.
+   *
+   * @param ArrayType The format in which the memory mapped array is returned. 
+   * @return Future(void)
+   */
+  def getArrayAsync(ArrayType: String) = {
+      helper.getArray(ArrayType)
+  }
+
+  /**
+   * Get the memory mapped array indices based on the array type.
+   * 
+   *
+   * @param ArrayType Format in which the memory mapped array is returned in. 
+   * @param Input Input indices array (optional)
+   * @return void
+   */
+  def getArrayIndices(ArrayType: String, Input: Option[] = None) = {
+    val await = Try(Await.result(getArrayIndicesAsync(ArrayType, Input), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get the memory mapped array indices based on the array type. asynchronously
+   * 
+   *
+   * @param ArrayType Format in which the memory mapped array is returned in. 
+   * @param Input Input indices array (optional)
+   * @return Future(void)
+   */
+  def getArrayIndicesAsync(ArrayType: String, Input: Option[] = None) = {
+      helper.getArrayIndices(ArrayType, Input)
+  }
+
+  /**
+   * Get the memory mapped array within a range based on the array type.
+   * 
+   *
+   * @param ArrayType Format in which the memory mapped array is returned in. 
+   * @param From  
+   * @param To  
+   * @return void
+   */
+  def getArrayRange(ArrayType: String, From: Integer, To: Integer) = {
+    val await = Try(Await.result(getArrayRangeAsync(ArrayType, From, To), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get the memory mapped array within a range based on the array type. asynchronously
+   * 
+   *
+   * @param ArrayType Format in which the memory mapped array is returned in. 
+   * @param From  
+   * @param To  
+   * @return Future(void)
+   */
+  def getArrayRangeAsync(ArrayType: String, From: Integer, To: Integer) = {
+      helper.getArrayRange(ArrayType, From, To)
+  }
+
+  /**
    * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
    * 
    *
@@ -1152,6 +1347,30 @@ class DefaultApi(
    */
   def getCredentialsByIdAsync(CredentialId: Long): Future[ResourceCredentials] = {
       helper.getCredentialsById(CredentialId)
+  }
+
+  /**
+   * Returns the current model being used for retraining.
+   * 
+   *
+   * @return void
+   */
+  def getCurrentModel() = {
+    val await = Try(Await.result(getCurrentModelAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Returns the current model being used for retraining. asynchronously
+   * 
+   *
+   * @return Future(void)
+   */
+  def getCurrentModelAsync() = {
+      helper.getCurrentModel()
   }
 
   /**
@@ -1290,6 +1509,30 @@ class DefaultApi(
    */
   def getJobByIdAsync(JobIdOrType: Long): Future[JobEntity] = {
       helper.getJobById(JobIdOrType)
+  }
+
+  /**
+   * Get the last evaluation specifications from the current model.
+   * 
+   *
+   * @return EvaluationResultsEntity
+   */
+  def getLastEvaluation(): Option[EvaluationResultsEntity] = {
+    val await = Try(Await.result(getLastEvaluationAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get the last evaluation specifications from the current model. asynchronously
+   * 
+   *
+   * @return Future(EvaluationResultsEntity)
+   */
+  def getLastEvaluationAsync(): Future[EvaluationResultsEntity] = {
+      helper.getLastEvaluation()
   }
 
   /**
@@ -1609,6 +1852,30 @@ class DefaultApi(
   }
 
   /**
+   * Get the retraining status
+   * 
+   *
+   * @return RetrainingStatus
+   */
+  def isTraining(): Option[RetrainingStatus] = {
+    val await = Try(Await.result(isTrainingAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get the retraining status asynchronously
+   * 
+   *
+   * @return Future(RetrainingStatus)
+   */
+  def isTrainingAsync(): Future[RetrainingStatus] = {
+      helper.isTraining()
+  }
+
+  /**
    * Run inference on the input and returns it as a JsonArrayResponse
    * 
    *
@@ -1708,10 +1975,11 @@ class DefaultApi(
    * List all of the experiments in every model history / workspace
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @return List[ExperimentEntity]
    */
-  def listAllExperiments(): Option[List[ExperimentEntity]] = {
-    val await = Try(Await.result(listAllExperimentsAsync(), Duration.Inf))
+  def listAllExperiments(ModelHistoryServerId: String): Option[List[ExperimentEntity]] = {
+    val await = Try(Await.result(listAllExperimentsAsync(ModelHistoryServerId), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1722,10 +1990,11 @@ class DefaultApi(
    * List all of the experiments in every model history / workspace asynchronously
    * 
    *
+   * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @return Future(List[ExperimentEntity])
    */
-  def listAllExperimentsAsync(): Future[List[ExperimentEntity]] = {
-      helper.listAllExperiments()
+  def listAllExperimentsAsync(ModelHistoryServerId: String): Future[List[ExperimentEntity]] = {
+      helper.listAllExperiments(ModelHistoryServerId)
   }
 
   /**
@@ -1970,14 +2239,14 @@ class DefaultApi(
    * Update the model to be served
    * 
    *
+   * @param File The model file to update with (.pb file) 
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
-   * @param File The model file to update with (.pb file) (optional)
    * @return ModelStatus
    */
-  def modelupdate(DeploymentName: String, VersionName: String, ModelName: String, File: Option[File] = None): Option[ModelStatus] = {
-    val await = Try(Await.result(modelupdateAsync(DeploymentName, VersionName, ModelName, File), Duration.Inf))
+  def modelupdate(File: File, DeploymentName: String, VersionName: String, ModelName: String): Option[ModelStatus] = {
+    val await = Try(Await.result(modelupdateAsync(File, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1988,14 +2257,14 @@ class DefaultApi(
    * Update the model to be served asynchronously
    * 
    *
+   * @param File The model file to update with (.pb file) 
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
-   * @param File The model file to update with (.pb file) (optional)
    * @return Future(ModelStatus)
    */
-  def modelupdateAsync(DeploymentName: String, VersionName: String, ModelName: String, File: Option[File] = None): Future[ModelStatus] = {
-      helper.modelupdate(DeploymentName, VersionName, ModelName, File)
+  def modelupdateAsync(File: File, DeploymentName: String, VersionName: String, ModelName: String): Future[ModelStatus] = {
+      helper.modelupdate(File, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -2099,6 +2368,30 @@ class DefaultApi(
   }
 
   /**
+   * Gets the number of retrained models written with retraining.
+   * 
+   *
+   * @return RevisionsWritten
+   */
+  def numRevisions(): Option[RevisionsWritten] = {
+    val await = Try(Await.result(numRevisionsAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Gets the number of retrained models written with retraining. asynchronously
+   * 
+   *
+   * @return Future(RevisionsWritten)
+   */
+  def numRevisionsAsync(): Future[RevisionsWritten] = {
+      helper.numRevisions()
+  }
+
+  /**
    * Run inference on the input array.
    * 
    *
@@ -2128,6 +2421,68 @@ class DefaultApi(
    */
   def predictAsync(Body: Prediction, DeploymentName: String, VersionName: String, ModelName: String): Future[Prediction] = {
       helper.predict(Body, DeploymentName, VersionName, ModelName)
+  }
+
+  /**
+   * Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+   * These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+   *
+   * @param Operation  
+   * @param InputType Type of the input data. 
+   * @param InputData  (optional)
+   * @return void
+   */
+  def predictError(Operation: String, InputType: String, InputData: Option[] = None) = {
+    val await = Try(Await.result(predictErrorAsync(Operation, InputType, InputData), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified. asynchronously
+   * These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+   *
+   * @param Operation  
+   * @param InputType Type of the input data. 
+   * @param InputData  (optional)
+   * @return Future(void)
+   */
+  def predictErrorAsync(Operation: String, InputType: String, InputData: Option[] = None) = {
+      helper.predictError(Operation, InputType, InputData)
+  }
+
+  /**
+   * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+   * 
+   *
+   * @param Operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
+   * @param InputType Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
+   * @param InputData The input data when the content type is \&quot;application/json\&quot; (optional)
+   * @param InputData2 The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)
+   * @return void
+   */
+  def predictV2(Operation: String, InputType: String, InputData: Option[] = None, InputData2: Option[File] = None) = {
+    val await = Try(Await.result(predictV2Async(Operation, InputType, InputData, InputData2), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Runs inference based on the input data. Output is defined relative to the output adapter specified. asynchronously
+   * 
+   *
+   * @param Operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
+   * @param InputType Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
+   * @param InputData The input data when the content type is \&quot;application/json\&quot; (optional)
+   * @param InputData2 The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)
+   * @return Future(void)
+   */
+  def predictV2Async(Operation: String, InputType: String, InputData: Option[] = None, InputData2: Option[File] = None) = {
+      helper.predictV2(Operation, InputType, InputData, InputData2)
   }
 
   /**
@@ -2227,6 +2582,36 @@ class DefaultApi(
   }
 
   /**
+   * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+   * 
+   *
+   * @param InputType Input data type. 
+   * @param OutputType Binary output data type. 
+   * @param InputData The input file to upload. (optional)
+   * @return void
+   */
+  def rawPredictBinary(InputType: String, OutputType: String, InputData: Option[File] = None) = {
+    val await = Try(Await.result(rawPredictBinaryAsync(InputType, OutputType, InputData), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Runs inference based on the input data. Output is defined relative to the output adapter specified. asynchronously
+   * 
+   *
+   * @param InputType Input data type. 
+   * @param OutputType Binary output data type. 
+   * @param InputData The input file to upload. (optional)
+   * @return Future(void)
+   */
+  def rawPredictBinaryAsync(InputType: String, OutputType: String, InputData: Option[File] = None) = {
+      helper.rawPredictBinary(InputType, OutputType, InputData)
+  }
+
+  /**
    * Refresh the remote job status. Can be used for monitoring.
    * 
    *
@@ -2280,6 +2665,32 @@ class DefaultApi(
    */
   def reimportModelAsync(DeploymentId: String, ModelId: String, Body: ImportModelRequest): Future[ModelEntity] = {
       helper.reimportModel(DeploymentId, ModelId, Body)
+  }
+
+  /**
+   * Rollback to a previous revision of the model.
+   * 
+   *
+   * @param Index Model revision index. 
+   * @return RollbackStatus
+   */
+  def rollback(Index: Integer): Option[RollbackStatus] = {
+    val await = Try(Await.result(rollbackAsync(Index), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Rollback to a previous revision of the model. asynchronously
+   * 
+   *
+   * @param Index Model revision index. 
+   * @return Future(RollbackStatus)
+   */
+  def rollbackAsync(Index: Integer): Future[RollbackStatus] = {
+      helper.rollback(Index)
   }
 
   /**
@@ -2680,6 +3091,21 @@ class DefaultApi(
 
 class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
+  def accumulatedResults()(implicit reader: ClientResponseReader[AccumulatedResults]): Future[AccumulatedResults] = {
+    // create path and map variables
+    val path = (addFmt("/accumulatedresults"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
   def addCredentials(AddCredentialsRequest: AddCredentialsRequest)(implicit reader: ClientResponseReader[ResourceCredentials], writer: RequestWriter[AddCredentialsRequest]): Future[ResourceCredentials] = {
     // create path and map variables
     val path = (addFmt("/resources/credentials"))
@@ -2771,6 +3197,50 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     if (ExperimentEntity == null) throw new Exception("Missing required parameter 'ExperimentEntity' when calling DefaultApi->addExperiment")
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(ExperimentEntity))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def addFeedbackBinary(Id: String,
+    `Type`: String,
+    File: Option[File] = None
+    )(implicit reader: ClientResponseReader[FeedbackResponse]): Future[FeedbackResponse] = {
+    // create path and map variables
+    val path = (addFmt("/feedback/{id}/{type}")
+      replaceAll("\\{" + "id" + "\\}", Id.toString)
+      replaceAll("\\{" + "type" + "\\}", `Type`.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (Id == null) throw new Exception("Missing required parameter 'Id' when calling DefaultApi->addFeedbackBinary")
+
+    if (`Type` == null) throw new Exception("Missing required parameter '`Type`' when calling DefaultApi->addFeedbackBinary")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def addFeedbackJson(Id: String,
+    Labels: Option[List[List[Double]]] = None
+    )(implicit reader: ClientResponseReader[FeedbackResponse], writer: RequestWriter[Option[List[List[Double]]]]): Future[FeedbackResponse] = {
+    // create path and map variables
+    val path = (addFmt("/feedback/{id}/json")
+      replaceAll("\\{" + "id" + "\\}", Id.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (Id == null) throw new Exception("Missing required parameter 'Id' when calling DefaultApi->addFeedbackJson")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Labels))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -2872,7 +3342,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def addResourceGroup(GroupName: )(implicit reader: ClientResponseReader[ResourceGroup], writer: RequestWriter[]): Future[ResourceGroup] = {
+  def addResourceGroup(GroupName: String)(implicit reader: ClientResponseReader[ResourceGroup], writer: RequestWriter[String]): Future[ResourceGroup] = {
     // create path and map variables
     val path = (addFmt("/resources/add/group"))
 
@@ -2881,6 +3351,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (GroupName == null) throw new Exception("Missing required parameter 'GroupName' when calling DefaultApi->addResourceGroup")
+
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(GroupName))
     resFuture flatMap { resp =>
@@ -3002,6 +3473,21 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->classifyimage")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->classifyimage")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def clearState()(implicit reader: ClientResponseReader[FeedbackResponse]): Future[FeedbackResponse] = {
+    // create path and map variables
+    val path = (addFmt("/clear"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
 
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
@@ -3310,7 +3796,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def detectobjects(Id: String,
     NeedsPreprocessing: Boolean,
     Threshold: Float,
-    ImageFile: File,
+    File: File,
     DeploymentName: String,
     VersionName: String,
     ModelName: String)(implicit reader: ClientResponseReader[DetectionResult]): Future[DetectionResult] = {
@@ -3326,7 +3812,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (Id == null) throw new Exception("Missing required parameter 'Id' when calling DefaultApi->detectobjects")
 
-    if (ImageFile == null) throw new Exception("Missing required parameter 'ImageFile' when calling DefaultApi->detectobjects")
+    if (File == null) throw new Exception("Missing required parameter 'File' when calling DefaultApi->detectobjects")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->detectobjects")
 
     if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->detectobjects")
@@ -3373,6 +3859,66 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
+  def getArray(ArrayType: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/array/{arrayType}")
+      replaceAll("\\{" + "arrayType" + "\\}", ArrayType.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ArrayType == null) throw new Exception("Missing required parameter 'ArrayType' when calling DefaultApi->getArray")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getArrayIndices(ArrayType: String,
+    Input: Option[] = None
+    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[Option[]]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/array/indices/{arrayType}")
+      replaceAll("\\{" + "arrayType" + "\\}", ArrayType.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ArrayType == null) throw new Exception("Missing required parameter 'ArrayType' when calling DefaultApi->getArrayIndices")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Input))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getArrayRange(ArrayType: String,
+    From: Integer,
+    To: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/array/range/{from}/{to}/{arrayType}")
+      replaceAll("\\{" + "arrayType" + "\\}", ArrayType.toString)
+      replaceAll("\\{" + "from" + "\\}", From.toString)
+      replaceAll("\\{" + "to" + "\\}", To.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (ArrayType == null) throw new Exception("Missing required parameter 'ArrayType' when calling DefaultApi->getArrayRange")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
   def getBestModelAmongModelIds(ModelHistoryServerId: String,
     BestModel: BestModel)(implicit reader: ClientResponseReader[ModelInstanceEntity], writer: RequestWriter[BestModel]): Future[ModelInstanceEntity] = {
     // create path and map variables
@@ -3397,6 +3943,21 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     // create path and map variables
     val path = (addFmt("/resources/credentials/{credentialId}")
       replaceAll("\\{" + "credentialId" + "\\}", CredentialId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getCurrentModel()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/model"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -3501,6 +4062,21 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     // create path and map variables
     val path = (addFmt("/jobs/{jobIdOrType}")
       replaceAll("\\{" + "jobIdOrType" + "\\}", JobIdOrType.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getLastEvaluation()(implicit reader: ClientResponseReader[EvaluationResultsEntity]): Future[EvaluationResultsEntity] = {
+    // create path and map variables
+    val path = (addFmt("/lastevaluation"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -3731,6 +4307,21 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
+  def isTraining()(implicit reader: ClientResponseReader[RetrainingStatus]): Future[RetrainingStatus] = {
+    // create path and map variables
+    val path = (addFmt("/istraining"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
   def jsonarray(Body: Prediction,
     DeploymentName: String,
     VersionName: String,
@@ -3815,13 +4406,16 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def listAllExperiments()(implicit reader: ClientResponseReader[List[ExperimentEntity]]): Future[List[ExperimentEntity]] = {
+  def listAllExperiments(ModelHistoryServerId: String)(implicit reader: ClientResponseReader[List[ExperimentEntity]]): Future[List[ExperimentEntity]] = {
     // create path and map variables
-    val path = (addFmt("/rpc/{modelHistoryServerId}/experiments"))
+    val path = (addFmt("/rpc/{modelHistoryServerId}/experiments")
+      replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
+
+    if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->listAllExperiments")
 
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
@@ -4024,11 +4618,10 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def modelupdate(DeploymentName: String,
+  def modelupdate(File: File,
+    DeploymentName: String,
     VersionName: String,
-    ModelName: String,
-    File: Option[File] = None
-    )(implicit reader: ClientResponseReader[ModelStatus]): Future[ModelStatus] = {
+    ModelName: String)(implicit reader: ClientResponseReader[ModelStatus]): Future[ModelStatus] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -4039,6 +4632,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    if (File == null) throw new Exception("Missing required parameter 'File' when calling DefaultApi->modelupdate")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->modelupdate")
 
     if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->modelupdate")
@@ -4140,6 +4734,21 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
+  def numRevisions()(implicit reader: ClientResponseReader[RevisionsWritten]): Future[RevisionsWritten] = {
+    // create path and map variables
+    val path = (addFmt("/numrevisions"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
   def predict(Body: Prediction,
     DeploymentName: String,
     VersionName: String,
@@ -4163,6 +4772,55 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def predictError(Operation: String,
+    InputType: String,
+    InputData: Option[] = None
+    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[Option[]]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/{operation}/{inputType}/error")
+      replaceAll("\\{" + "operation" + "\\}", Operation.toString)
+      replaceAll("\\{" + "inputType" + "\\}", InputType.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (Operation == null) throw new Exception("Missing required parameter 'Operation' when calling DefaultApi->predictError")
+
+    if (InputType == null) throw new Exception("Missing required parameter 'InputType' when calling DefaultApi->predictError")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(InputData))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def predictV2(Operation: String,
+    InputType: String,
+    InputData: Option[] = None,
+    InputData2: Option[File] = None
+    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[Option[]]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/{operation}/{inputType}")
+      replaceAll("\\{" + "operation" + "\\}", Operation.toString)
+      replaceAll("\\{" + "inputType" + "\\}", InputType.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (Operation == null) throw new Exception("Missing required parameter 'Operation' when calling DefaultApi->predictV2")
+
+    if (InputType == null) throw new Exception("Missing required parameter 'InputType' when calling DefaultApi->predictV2")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(InputData))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -4250,6 +4908,30 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
+  def rawPredictBinary(InputType: String,
+    OutputType: String,
+    InputData: Option[File] = None
+    )(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/raw/{inputType}/{outputType}")
+      replaceAll("\\{" + "inputType" + "\\}", InputType.toString)
+      replaceAll("\\{" + "outputType" + "\\}", OutputType.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (InputType == null) throw new Exception("Missing required parameter 'InputType' when calling DefaultApi->rawPredictBinary")
+
+    if (OutputType == null) throw new Exception("Missing required parameter 'OutputType' when calling DefaultApi->rawPredictBinary")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
   def refreshJobStatus(JobId: Long)(implicit reader: ClientResponseReader[JobEntity]): Future[JobEntity] = {
     // create path and map variables
     val path = (addFmt("/jobs/{jobId}/refresh")
@@ -4285,6 +4967,22 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->reimportModel")
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def rollback(Index: Integer)(implicit reader: ClientResponseReader[RollbackStatus]): Future[RollbackStatus] = {
+    // create path and map variables
+    val path = (addFmt("/rollback/{index}")
+      replaceAll("\\{" + "index" + "\\}", Index.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

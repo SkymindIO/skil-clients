@@ -32,6 +32,12 @@ describe 'YARNResourceDetails' do
       expect(@instance).to be_instance_of(SkilCient::YARNResourceDetails)
     end
   end
+  describe 'test attribute "_class"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "resource_id"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

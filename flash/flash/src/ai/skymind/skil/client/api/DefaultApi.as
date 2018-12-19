@@ -6,6 +6,7 @@ import io.swagger.exception.ApiError;
 import io.swagger.common.ApiUserCredentials;
 import io.swagger.event.Response;
 import io.swagger.common.SwaggerApi;
+import ai.skymind.skil.client.model.AccumulatedResults;
 import ai.skymind.skil.client.model.AddCredentialsRequest;
 import ai.skymind.skil.client.model.AddExampleRequest;
 import ai.skymind.skil.client.model.AddModelHistoryRequest;
@@ -25,6 +26,7 @@ import ai.skymind.skil.client.model.DownloadOutputFileRequest;
 import ai.skymind.skil.client.model.EvaluationResultsEntity;
 import ai.skymind.skil.client.model.ExampleEntity;
 import ai.skymind.skil.client.model.ExperimentEntity;
+import ai.skymind.skil.client.model.FeedbackResponse;
 import flash.filesystem.File;
 import ai.skymind.skil.client.model.FileUploadList;
 import ai.skymind.skil.client.model.ImportModelRequest;
@@ -50,6 +52,9 @@ import ai.skymind.skil.client.model.Prediction;
 import ai.skymind.skil.client.model.Resource;
 import ai.skymind.skil.client.model.ResourceCredentials;
 import ai.skymind.skil.client.model.ResourceGroup;
+import ai.skymind.skil.client.model.RetrainingStatus;
+import ai.skymind.skil.client.model.RevisionsWritten;
+import ai.skymind.skil.client.model.RollbackStatus;
 import ai.skymind.skil.client.model.SetState;
 import ai.skymind.skil.client.model.SingleCSVRecord;
 import ai.skymind.skil.client.model.Token;
@@ -70,11 +75,14 @@ public class DefaultApi extends SwaggerApi {
         super(apiCredentials, eventDispatcher);
     }
 
+        public static const event_accumulated_results: String = "accumulated_results";
         public static const event_add_credentials: String = "add_credentials";
         public static const event_add_evaluation_result: String = "add_evaluation_result";
         public static const event_add_example_for_batch: String = "add_example_for_batch";
         public static const event_add_example_to_minibatch: String = "add_example_to_minibatch";
         public static const event_add_experiment: String = "add_experiment";
+        public static const event_add_feedback_binary: String = "add_feedback_binary";
+        public static const event_add_feedback_json: String = "add_feedback_json";
         public static const event_add_minibatch: String = "add_minibatch";
         public static const event_add_model_feedback: String = "add_model_feedback";
         public static const event_add_model_history: String = "add_model_history";
@@ -86,6 +94,7 @@ public class DefaultApi extends SwaggerApi {
         public static const event_classify: String = "classify";
         public static const event_classifyarray: String = "classifyarray";
         public static const event_classifyimage: String = "classifyimage";
+        public static const event_clear_state: String = "clear_state";
         public static const event_create_job: String = "create_job";
         public static const event_create_model_history: String = "create_model_history";
         public static const event_delete_credentials_by_id: String = "delete_credentials_by_id";
@@ -105,13 +114,18 @@ public class DefaultApi extends SwaggerApi {
         public static const event_detectobjects: String = "detectobjects";
         public static const event_download_job_output_file: String = "download_job_output_file";
         public static const event_get_all_jobs: String = "get_all_jobs";
+        public static const event_get_array: String = "get_array";
+        public static const event_get_array_indices: String = "get_array_indices";
+        public static const event_get_array_range: String = "get_array_range";
         public static const event_get_best_model_among_model_ids: String = "get_best_model_among_model_ids";
         public static const event_get_credentials_by_id: String = "get_credentials_by_id";
+        public static const event_get_current_model: String = "get_current_model";
         public static const event_get_evaluation_for_model_id: String = "get_evaluation_for_model_id";
         public static const event_get_examples_for_minibatch: String = "get_examples_for_minibatch";
         public static const event_get_experiment: String = "get_experiment";
         public static const event_get_experiments_for_model_history: String = "get_experiments_for_model_history";
         public static const event_get_job_by_id: String = "get_job_by_id";
+        public static const event_get_last_evaluation: String = "get_last_evaluation";
         public static const event_get_minibatch: String = "get_minibatch";
         public static const event_get_model_history: String = "get_model_history";
         public static const event_get_model_instance: String = "get_model_instance";
@@ -124,6 +138,7 @@ public class DefaultApi extends SwaggerApi {
         public static const event_get_resource_groups: String = "get_resource_groups";
         public static const event_get_resources: String = "get_resources";
         public static const event_get_resources_from_group: String = "get_resources_from_group";
+        public static const event_is_training: String = "is_training";
         public static const event_jsonarray: String = "jsonarray";
         public static const event_knn: String = "knn";
         public static const event_knnnew: String = "knnnew";
@@ -140,12 +155,17 @@ public class DefaultApi extends SwaggerApi {
         public static const event_multiclassify: String = "multiclassify";
         public static const event_multipredict: String = "multipredict";
         public static const event_multipredictimage: String = "multipredictimage";
+        public static const event_num_revisions: String = "num_revisions";
         public static const event_predict: String = "predict";
+        public static const event_predict_error: String = "predict_error";
+        public static const event_predict_v2: String = "predict_v2";
         public static const event_predictimage: String = "predictimage";
         public static const event_predictwithpreprocess: String = "predictwithpreprocess";
         public static const event_predictwithpreprocessjson: String = "predictwithpreprocessjson";
+        public static const event_raw_predict_binary: String = "raw_predict_binary";
         public static const event_refresh_job_status: String = "refresh_job_status";
         public static const event_reimport_model: String = "reimport_model";
+        public static const event_rollback: String = "rollback";
         public static const event_run_a_job: String = "run_a_job";
         public static const event_transform_csv: String = "transform_csv";
         public static const event_transformarray: String = "transformarray";
@@ -160,6 +180,32 @@ public class DefaultApi extends SwaggerApi {
         public static const event_update_model_history: String = "update_model_history";
         public static const event_upload: String = "upload";
 
+
+    /*
+     * Returns AccumulatedResults 
+     */
+    public function accumulated_results (): String {
+        // create path and map variables
+        var path: String = "/accumulatedresults".replace(/{format}/g,"xml");
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "accumulated_results";
+
+        token.returnType = AccumulatedResults;
+        return requestId;
+
+    }
 
     /*
      * Returns ResourceCredentials 
@@ -323,6 +369,78 @@ public class DefaultApi extends SwaggerApi {
         token.completionEventType = "add_experiment";
 
         token.returnType = ExperimentEntity;
+        return requestId;
+
+    }
+
+    /*
+     * Returns FeedbackResponse 
+     */
+    public function add_feedback_binary (id: String, type: String, file: File): String {
+        // create path and map variables
+        var path: String = "/feedback/{id}/{type}".replace(/{format}/g,"xml").replace("{" + "id" + "}", getApiInvoker().escapeString(id)).replace("{" + "type" + "}", getApiInvoker().escapeString(type));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "add_feedback_binary";
+
+        token.returnType = FeedbackResponse;
+        return requestId;
+
+    }
+
+    /*
+     * Returns FeedbackResponse 
+     */
+    public function add_feedback_json (id: String, labels: Array): String {
+        // create path and map variables
+        var path: String = "/feedback/{id}/json".replace(/{format}/g,"xml").replace("{" + "id" + "}", getApiInvoker().escapeString(id));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if(        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, labels, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "add_feedback_json";
+
+        token.returnType = FeedbackResponse;
         return requestId;
 
     }
@@ -496,7 +614,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ResourceGroup 
      */
-    public function add_resource_group (groupName: ): String {
+    public function add_resource_group (groupName: String): String {
         // create path and map variables
         var path: String = "/resources/add/group".replace(/{format}/g,"xml");
 
@@ -713,6 +831,32 @@ public class DefaultApi extends SwaggerApi {
         token.completionEventType = "classifyimage";
 
         token.returnType = ClassificationResult;
+        return requestId;
+
+    }
+
+    /*
+     * Returns FeedbackResponse 
+     */
+    public function clear_state (): String {
+        // create path and map variables
+        var path: String = "/clear".replace(/{format}/g,"xml");
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "clear_state";
+
+        token.returnType = FeedbackResponse;
         return requestId;
 
     }
@@ -1228,7 +1372,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns DetectionResult 
      */
-    public function detectobjects (id: String, needsPreprocessing: Boolean, threshold: Number, imageFile: File, deploymentName: String, versionName: String, modelName: String): String {
+    public function detectobjects (id: String, needsPreprocessing: Boolean, threshold: Number, file: File, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -1340,6 +1484,108 @@ public class DefaultApi extends SwaggerApi {
     }
 
     /*
+     * Returns void 
+     */
+    public function get_array (arrayType: String): String {
+        // create path and map variables
+        var path: String = "/array/{arrayType}".replace(/{format}/g,"xml").replace("{" + "arrayType" + "}", getApiInvoker().escapeString(arrayType));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "get_array";
+
+        token.returnType = null ;
+        return requestId;
+
+    }
+
+    /*
+     * Returns void 
+     */
+    public function get_array_indices (arrayType: String, input: ): String {
+        // create path and map variables
+        var path: String = "/array/indices/{arrayType}".replace(/{format}/g,"xml").replace("{" + "arrayType" + "}", getApiInvoker().escapeString(arrayType));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if(        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, input, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "get_array_indices";
+
+        token.returnType = null ;
+        return requestId;
+
+    }
+
+    /*
+     * Returns void 
+     */
+    public function get_array_range (arrayType: String, from: Number, to: Number): String {
+        // create path and map variables
+        var path: String = "/array/range/{from}/{to}/{arrayType}".replace(/{format}/g,"xml").replace("{" + "arrayType" + "}", getApiInvoker().escapeString(arrayType)).replace("{" + "from" + "}", getApiInvoker().escapeString(from)).replace("{" + "to" + "}", getApiInvoker().escapeString(to));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "get_array_range";
+
+        token.returnType = null ;
+        return requestId;
+
+    }
+
+    /*
      * Returns ModelInstanceEntity 
      */
     public function get_best_model_among_model_ids (modelHistoryServerId: String, bestModel: BestModel): String {
@@ -1399,6 +1645,32 @@ public class DefaultApi extends SwaggerApi {
         token.completionEventType = "get_credentials_by_id";
 
         token.returnType = ResourceCredentials;
+        return requestId;
+
+    }
+
+    /*
+     * Returns void 
+     */
+    public function get_current_model (): String {
+        // create path and map variables
+        var path: String = "/model".replace(/{format}/g,"xml");
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "get_current_model";
+
+        token.returnType = null ;
         return requestId;
 
     }
@@ -1565,6 +1837,32 @@ public class DefaultApi extends SwaggerApi {
         token.completionEventType = "get_job_by_id";
 
         token.returnType = JobEntity;
+        return requestId;
+
+    }
+
+    /*
+     * Returns EvaluationResultsEntity 
+     */
+    public function get_last_evaluation (): String {
+        // create path and map variables
+        var path: String = "/lastevaluation".replace(/{format}/g,"xml");
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "get_last_evaluation";
+
+        token.returnType = EvaluationResultsEntity;
         return requestId;
 
     }
@@ -1938,6 +2236,32 @@ public class DefaultApi extends SwaggerApi {
     }
 
     /*
+     * Returns RetrainingStatus 
+     */
+    public function is_training (): String {
+        // create path and map variables
+        var path: String = "/istraining".replace(/{format}/g,"xml");
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "is_training";
+
+        token.returnType = RetrainingStatus;
+        return requestId;
+
+    }
+
+    /*
      * Returns JsonArrayResponse 
      */
     public function jsonarray (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
@@ -2066,14 +2390,18 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Array 
      */
-    public function list_all_experiments (): String {
+    public function list_all_experiments (modelHistoryServerId: String): String {
         // create path and map variables
-        var path: String = "/rpc/{modelHistoryServerId}/experiments".replace(/{format}/g,"xml");
+        var path: String = "/rpc/{modelHistoryServerId}/experiments".replace(/{format}/g,"xml").replace("{" + "modelHistoryServerId" + "}", getApiInvoker().escapeString(modelHistoryServerId));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
         var headerParams: Dictionary = new Dictionary();
 
+        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
 
         
         
@@ -2392,7 +2720,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ModelStatus 
      */
-    public function modelupdate (deploymentName: String, versionName: String, modelName: String, file: File): String {
+    public function modelupdate (file: File, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -2566,6 +2894,32 @@ public class DefaultApi extends SwaggerApi {
     }
 
     /*
+     * Returns RevisionsWritten 
+     */
+    public function num_revisions (): String {
+        // create path and map variables
+        var path: String = "/numrevisions".replace(/{format}/g,"xml");
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "num_revisions";
+
+        token.returnType = RevisionsWritten;
+        return requestId;
+
+    }
+
+    /*
      * Returns Prediction 
      */
     public function predict (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
@@ -2603,6 +2957,86 @@ public class DefaultApi extends SwaggerApi {
         token.completionEventType = "predict";
 
         token.returnType = Prediction;
+        return requestId;
+
+    }
+
+    /*
+     * Returns void 
+     */
+    public function predict_error (operation: String, inputType: String, inputData: ): String {
+        // create path and map variables
+        var path: String = "/{operation}/{inputType}/error".replace(/{format}/g,"xml").replace("{" + "operation" + "}", getApiInvoker().escapeString(operation)).replace("{" + "inputType" + "}", getApiInvoker().escapeString(inputType));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, inputData, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "predict_error";
+
+        token.returnType = null ;
+        return requestId;
+
+    }
+
+    /*
+     * Returns void 
+     */
+    public function predict_v2 (operation: String, inputType: String, inputData: , inputData2: File): String {
+        // create path and map variables
+        var path: String = "/{operation}/{inputType}".replace(/{format}/g,"xml").replace("{" + "operation" + "}", getApiInvoker().escapeString(operation)).replace("{" + "inputType" + "}", getApiInvoker().escapeString(inputType));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, inputData, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "predict_v2";
+
+        token.returnType = null ;
         return requestId;
 
     }
@@ -2734,6 +3168,44 @@ public class DefaultApi extends SwaggerApi {
     }
 
     /*
+     * Returns void 
+     */
+    public function raw_predict_binary (inputType: String, outputType: String, inputData: File): String {
+        // create path and map variables
+        var path: String = "/raw/{inputType}/{outputType}".replace(/{format}/g,"xml").replace("{" + "inputType" + "}", getApiInvoker().escapeString(inputType)).replace("{" + "outputType" + "}", getApiInvoker().escapeString(outputType));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "raw_predict_binary";
+
+        token.returnType = null ;
+        return requestId;
+
+    }
+
+    /*
      * Returns JobEntity 
      */
     public function refresh_job_status (jobId: Number): String {
@@ -2797,6 +3269,36 @@ public class DefaultApi extends SwaggerApi {
         token.completionEventType = "reimport_model";
 
         token.returnType = ModelEntity;
+        return requestId;
+
+    }
+
+    /*
+     * Returns RollbackStatus 
+     */
+    public function rollback (index: Number): String {
+        // create path and map variables
+        var path: String = "/rollback/{index}".replace(/{format}/g,"xml").replace("{" + "index" + "}", getApiInvoker().escapeString(index));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "rollback";
+
+        token.returnType = RollbackStatus;
         return requestId;
 
     }

@@ -105,9 +105,6 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new SkilClient.DefaultApi()
 
-var addCredentialsRequest = new SkilClient.AddCredentialsRequest(); // {AddCredentialsRequest} Add credentials request object
-
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -115,7 +112,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.addCredentials(addCredentialsRequest, callback);
+api.accumulatedResults(callback);
 
 ```
 
@@ -125,11 +122,14 @@ All URIs are relative to *http://localhost:9008*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*SkilClient.DefaultApi* | [**accumulatedResults**](docs/DefaultApi.md#accumulatedResults) | **GET** /accumulatedresults | Tells how many retraining examples have labels associated with them.
 *SkilClient.DefaultApi* | [**addCredentials**](docs/DefaultApi.md#addCredentials) | **POST** /resources/credentials | Adds credentials
 *SkilClient.DefaultApi* | [**addEvaluationResult**](docs/DefaultApi.md#addEvaluationResult) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
 *SkilClient.DefaultApi* | [**addExampleForBatch**](docs/DefaultApi.md#addExampleForBatch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 *SkilClient.DefaultApi* | [**addExampleToMinibatch**](docs/DefaultApi.md#addExampleToMinibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
 *SkilClient.DefaultApi* | [**addExperiment**](docs/DefaultApi.md#addExperiment) | **POST** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+*SkilClient.DefaultApi* | [**addFeedbackBinary**](docs/DefaultApi.md#addFeedbackBinary) | **POST** /feedback/{id}/{type} | 
+*SkilClient.DefaultApi* | [**addFeedbackJson**](docs/DefaultApi.md#addFeedbackJson) | **POST** /feedback/{id}/json | Gets the retraining feedback for the given batch ID.
 *SkilClient.DefaultApi* | [**addMinibatch**](docs/DefaultApi.md#addMinibatch) | **POST** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
 *SkilClient.DefaultApi* | [**addModelFeedback**](docs/DefaultApi.md#addModelFeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 *SkilClient.DefaultApi* | [**addModelHistory**](docs/DefaultApi.md#addModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
@@ -141,6 +141,7 @@ Class | Method | HTTP request | Description
 *SkilClient.DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 *SkilClient.DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 *SkilClient.DefaultApi* | [**classifyimage**](docs/DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+*SkilClient.DefaultApi* | [**clearState**](docs/DefaultApi.md#clearState) | **POST** /clear | Clears the accumulated data for retraining.
 *SkilClient.DefaultApi* | [**createJob**](docs/DefaultApi.md#createJob) | **POST** /jobs/{jobIdOrType} | Create a job
 *SkilClient.DefaultApi* | [**createModelHistory**](docs/DefaultApi.md#createModelHistory) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 *SkilClient.DefaultApi* | [**deleteCredentialsById**](docs/DefaultApi.md#deleteCredentialsById) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
@@ -160,13 +161,18 @@ Class | Method | HTTP request | Description
 *SkilClient.DefaultApi* | [**detectobjects**](docs/DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
 *SkilClient.DefaultApi* | [**downloadJobOutputFile**](docs/DefaultApi.md#downloadJobOutputFile) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
 *SkilClient.DefaultApi* | [**getAllJobs**](docs/DefaultApi.md#getAllJobs) | **GET** /jobs | Get a list of all available jobs
+*SkilClient.DefaultApi* | [**getArray**](docs/DefaultApi.md#getArray) | **POST** /array/{arrayType} | Get the memory mapped array based on the array type.
+*SkilClient.DefaultApi* | [**getArrayIndices**](docs/DefaultApi.md#getArrayIndices) | **POST** /array/indices/{arrayType} | Get the memory mapped array indices based on the array type.
+*SkilClient.DefaultApi* | [**getArrayRange**](docs/DefaultApi.md#getArrayRange) | **POST** /array/range/{from}/{to}/{arrayType} | Get the memory mapped array within a range based on the array type.
 *SkilClient.DefaultApi* | [**getBestModelAmongModelIds**](docs/DefaultApi.md#getBestModelAmongModelIds) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 *SkilClient.DefaultApi* | [**getCredentialsById**](docs/DefaultApi.md#getCredentialsById) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
+*SkilClient.DefaultApi* | [**getCurrentModel**](docs/DefaultApi.md#getCurrentModel) | **GET** /model | Returns the current model being used for retraining.
 *SkilClient.DefaultApi* | [**getEvaluationForModelID**](docs/DefaultApi.md#getEvaluationForModelID) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
 *SkilClient.DefaultApi* | [**getExamplesForMinibatch**](docs/DefaultApi.md#getExamplesForMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 *SkilClient.DefaultApi* | [**getExperiment**](docs/DefaultApi.md#getExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 *SkilClient.DefaultApi* | [**getExperimentsForModelHistory**](docs/DefaultApi.md#getExperimentsForModelHistory) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
 *SkilClient.DefaultApi* | [**getJobById**](docs/DefaultApi.md#getJobById) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
+*SkilClient.DefaultApi* | [**getLastEvaluation**](docs/DefaultApi.md#getLastEvaluation) | **GET** /lastevaluation | Get the last evaluation specifications from the current model.
 *SkilClient.DefaultApi* | [**getMinibatch**](docs/DefaultApi.md#getMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 *SkilClient.DefaultApi* | [**getModelHistory**](docs/DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 *SkilClient.DefaultApi* | [**getModelInstance**](docs/DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
@@ -179,6 +185,7 @@ Class | Method | HTTP request | Description
 *SkilClient.DefaultApi* | [**getResourceGroups**](docs/DefaultApi.md#getResourceGroups) | **GET** /resources/groups | Get a list of all the resource groups
 *SkilClient.DefaultApi* | [**getResources**](docs/DefaultApi.md#getResources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 *SkilClient.DefaultApi* | [**getResourcesFromGroup**](docs/DefaultApi.md#getResourcesFromGroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
+*SkilClient.DefaultApi* | [**isTraining**](docs/DefaultApi.md#isTraining) | **GET** /istraining | Get the retraining status
 *SkilClient.DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 *SkilClient.DefaultApi* | [**knn**](docs/DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 *SkilClient.DefaultApi* | [**knnnew**](docs/DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -195,12 +202,17 @@ Class | Method | HTTP request | Description
 *SkilClient.DefaultApi* | [**multiclassify**](docs/DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
 *SkilClient.DefaultApi* | [**multipredict**](docs/DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
 *SkilClient.DefaultApi* | [**multipredictimage**](docs/DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+*SkilClient.DefaultApi* | [**numRevisions**](docs/DefaultApi.md#numRevisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 *SkilClient.DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+*SkilClient.DefaultApi* | [**predictError**](docs/DefaultApi.md#predictError) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+*SkilClient.DefaultApi* | [**predictV2**](docs/DefaultApi.md#predictV2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 *SkilClient.DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 *SkilClient.DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 *SkilClient.DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+*SkilClient.DefaultApi* | [**rawPredictBinary**](docs/DefaultApi.md#rawPredictBinary) | **POST** /raw/{inputType}/{outputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 *SkilClient.DefaultApi* | [**refreshJobStatus**](docs/DefaultApi.md#refreshJobStatus) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
 *SkilClient.DefaultApi* | [**reimportModel**](docs/DefaultApi.md#reimportModel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+*SkilClient.DefaultApi* | [**rollback**](docs/DefaultApi.md#rollback) | **POST** /rollback/{index} | Rollback to a previous revision of the model.
 *SkilClient.DefaultApi* | [**runAJob**](docs/DefaultApi.md#runAJob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 *SkilClient.DefaultApi* | [**transformCsv**](docs/DefaultApi.md#transformCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 *SkilClient.DefaultApi* | [**transformarray**](docs/DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
@@ -218,6 +230,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [SkilClient.AccumulatedResults](docs/AccumulatedResults.md)
  - [SkilClient.AddCredentialsRequest](docs/AddCredentialsRequest.md)
  - [SkilClient.AddExampleRequest](docs/AddExampleRequest.md)
  - [SkilClient.AddModelHistoryRequest](docs/AddModelHistoryRequest.md)
@@ -243,6 +256,7 @@ Class | Method | HTTP request | Description
  - [SkilClient.EvaluationResultsEntity](docs/EvaluationResultsEntity.md)
  - [SkilClient.ExampleEntity](docs/ExampleEntity.md)
  - [SkilClient.ExperimentEntity](docs/ExperimentEntity.md)
+ - [SkilClient.FeedbackResponse](docs/FeedbackResponse.md)
  - [SkilClient.FileUpload](docs/FileUpload.md)
  - [SkilClient.FileUploadList](docs/FileUploadList.md)
  - [SkilClient.GoogleStorageResourceDetails](docs/GoogleStorageResourceDetails.md)
@@ -275,6 +289,9 @@ Class | Method | HTTP request | Description
  - [SkilClient.Resource](docs/Resource.md)
  - [SkilClient.ResourceCredentials](docs/ResourceCredentials.md)
  - [SkilClient.ResourceGroup](docs/ResourceGroup.md)
+ - [SkilClient.RetrainingStatus](docs/RetrainingStatus.md)
+ - [SkilClient.RevisionsWritten](docs/RevisionsWritten.md)
+ - [SkilClient.RollbackStatus](docs/RollbackStatus.md)
  - [SkilClient.S3ResourceDetails](docs/S3ResourceDetails.md)
  - [SkilClient.SetState](docs/SetState.md)
  - [SkilClient.SingleCSVRecord](docs/SingleCSVRecord.md)

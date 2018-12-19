@@ -19,6 +19,50 @@ module SkilCient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Tells how many retraining examples have labels associated with them.
+    # @param [Hash] opts the optional parameters
+    # @return [AccumulatedResults]
+    def accumulated_results(opts = {})
+      data, _status_code, _headers = accumulated_results_with_http_info(opts)
+      data
+    end
+
+    # Tells how many retraining examples have labels associated with them.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AccumulatedResults, Fixnum, Hash)>] AccumulatedResults data, response status code and response headers
+    def accumulated_results_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.accumulated_results ...'
+      end
+      # resource path
+      local_var_path = '/accumulatedresults'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AccumulatedResults')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#accumulated_results\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Adds credentials
     # @param add_credentials_request Add credentials request object
     # @param [Hash] opts the optional parameters
@@ -300,6 +344,123 @@ module SkilCient
         :return_type => 'ExperimentEntity')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#add_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # @param id Batch ID to retrain the model with and get feedback for.
+    # @param type The type of the labels array.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file The labels file to upload.
+    # @return [FeedbackResponse]
+    def add_feedback_binary(id, type, opts = {})
+      data, _status_code, _headers = add_feedback_binary_with_http_info(id, type, opts)
+      data
+    end
+
+    # @param id Batch ID to retrain the model with and get feedback for.
+    # @param type The type of the labels array.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file The labels file to upload.
+    # @return [Array<(FeedbackResponse, Fixnum, Hash)>] FeedbackResponse data, response status code and response headers
+    def add_feedback_binary_with_http_info(id, type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.add_feedback_binary ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.add_feedback_binary"
+      end
+      # verify the required parameter 'type' is set
+      if @api_client.config.client_side_validation && type.nil?
+        fail ArgumentError, "Missing the required parameter 'type' when calling DefaultApi.add_feedback_binary"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['numpy', 'nd4j'].include?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of numpy, nd4j"
+      end
+      # resource path
+      local_var_path = '/feedback/{id}/{type}'.sub('{' + 'id' + '}', id.to_s).sub('{' + 'type' + '}', type.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FeedbackResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#add_feedback_binary\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Gets the retraining feedback for the given batch ID.
+    # @param id Batch ID to retrain the model with and get feedback for.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Array<Float>>] :labels The associated labels (one-hot vectors) with the batch for retraining.
+    # @return [FeedbackResponse]
+    def add_feedback_json(id, opts = {})
+      data, _status_code, _headers = add_feedback_json_with_http_info(id, opts)
+      data
+    end
+
+    # Gets the retraining feedback for the given batch ID.
+    # @param id Batch ID to retrain the model with and get feedback for.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Array<Float>>] :labels The associated labels (one-hot vectors) with the batch for retraining.
+    # @return [Array<(FeedbackResponse, Fixnum, Hash)>] FeedbackResponse data, response status code and response headers
+    def add_feedback_json_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.add_feedback_json ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.add_feedback_json"
+      end
+      # resource path
+      local_var_path = '/feedback/{id}/json'.sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'labels'])
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FeedbackResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#add_feedback_json\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -956,6 +1117,50 @@ module SkilCient
         :return_type => 'ClassificationResult')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#classifyimage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Clears the accumulated data for retraining.
+    # @param [Hash] opts the optional parameters
+    # @return [FeedbackResponse]
+    def clear_state(opts = {})
+      data, _status_code, _headers = clear_state_with_http_info(opts)
+      data
+    end
+
+    # Clears the accumulated data for retraining.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FeedbackResponse, Fixnum, Hash)>] FeedbackResponse data, response status code and response headers
+    def clear_state_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.clear_state ...'
+      end
+      # resource path
+      local_var_path = '/clear'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FeedbackResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#clear_state\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1813,14 +2018,14 @@ module SkilCient
     # @param id the GUID for mapping the results in the detections
     # @param needs_preprocessing (true) if the image needs preprocessing
     # @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-    # @param image_file the image file to detect objects from
+    # @param file the image file to detect objects from
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [DetectionResult]
-    def detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, opts = {})
-      data, _status_code, _headers = detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, opts)
+    def detectobjects(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = detectobjects_with_http_info(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name, opts)
       data
     end
 
@@ -1828,13 +2033,13 @@ module SkilCient
     # @param id the GUID for mapping the results in the detections
     # @param needs_preprocessing (true) if the image needs preprocessing
     # @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-    # @param image_file the image file to detect objects from
+    # @param file the image file to detect objects from
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(DetectionResult, Fixnum, Hash)>] DetectionResult data, response status code and response headers
-    def detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, opts = {})
+    def detectobjects_with_http_info(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.detectobjects ...'
       end
@@ -1850,9 +2055,9 @@ module SkilCient
       if @api_client.config.client_side_validation && threshold.nil?
         fail ArgumentError, "Missing the required parameter 'threshold' when calling DefaultApi.detectobjects"
       end
-      # verify the required parameter 'image_file' is set
-      if @api_client.config.client_side_validation && image_file.nil?
-        fail ArgumentError, "Missing the required parameter 'image_file' when calling DefaultApi.detectobjects"
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling DefaultApi.detectobjects"
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
@@ -1884,7 +2089,7 @@ module SkilCient
       form_params['id'] = id
       form_params['needsPreprocessing'] = needs_preprocessing
       form_params['threshold'] = threshold
-      form_params['imageFile'] = image_file
+      form_params['file'] = file
 
       # http body (model)
       post_body = nil
@@ -2002,6 +2207,185 @@ module SkilCient
       end
       return data, status_code, headers
     end
+    # Get the memory mapped array based on the array type.
+    # The array is specified through a file path, in the configuration object, during model server deployment.
+    # @param array_type The format in which the memory mapped array is returned.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def get_array(array_type, opts = {})
+      get_array_with_http_info(array_type, opts)
+      nil
+    end
+
+    # Get the memory mapped array based on the array type.
+    # The array is specified through a file path, in the configuration object, during model server deployment.
+    # @param array_type The format in which the memory mapped array is returned.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def get_array_with_http_info(array_type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_array ...'
+      end
+      # verify the required parameter 'array_type' is set
+      if @api_client.config.client_side_validation && array_type.nil?
+        fail ArgumentError, "Missing the required parameter 'array_type' when calling DefaultApi.get_array"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['json', 'numpy', 'nd4j'].include?(array_type)
+        fail ArgumentError, "invalid value for 'array_type', must be one of json, numpy, nd4j"
+      end
+      # resource path
+      local_var_path = '/array/{arrayType}'.sub('{' + 'arrayType' + '}', array_type.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_array\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get the memory mapped array indices based on the array type.
+    # @param array_type Format in which the memory mapped array is returned in.
+    # @param [Hash] opts the optional parameters
+    # @option opts [] :input Input indices array
+    # @return [nil]
+    def get_array_indices(array_type, opts = {})
+      get_array_indices_with_http_info(array_type, opts)
+      nil
+    end
+
+    # Get the memory mapped array indices based on the array type.
+    # @param array_type Format in which the memory mapped array is returned in.
+    # @param [Hash] opts the optional parameters
+    # @option opts [] :input Input indices array
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def get_array_indices_with_http_info(array_type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_array_indices ...'
+      end
+      # verify the required parameter 'array_type' is set
+      if @api_client.config.client_side_validation && array_type.nil?
+        fail ArgumentError, "Missing the required parameter 'array_type' when calling DefaultApi.get_array_indices"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['json', 'numpy', 'nd4j'].include?(array_type)
+        fail ArgumentError, "invalid value for 'array_type', must be one of json, numpy, nd4j"
+      end
+      # resource path
+      local_var_path = '/array/indices/{arrayType}'.sub('{' + 'arrayType' + '}', array_type.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/octet-stream'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'input'])
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_array_indices\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get the memory mapped array within a range based on the array type.
+    # @param array_type Format in which the memory mapped array is returned in.
+    # @param from 
+    # @param to 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def get_array_range(array_type, from, to, opts = {})
+      get_array_range_with_http_info(array_type, from, to, opts)
+      nil
+    end
+
+    # Get the memory mapped array within a range based on the array type.
+    # @param array_type Format in which the memory mapped array is returned in.
+    # @param from 
+    # @param to 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def get_array_range_with_http_info(array_type, from, to, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_array_range ...'
+      end
+      # verify the required parameter 'array_type' is set
+      if @api_client.config.client_side_validation && array_type.nil?
+        fail ArgumentError, "Missing the required parameter 'array_type' when calling DefaultApi.get_array_range"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['json', 'numpy', 'nd4j'].include?(array_type)
+        fail ArgumentError, "invalid value for 'array_type', must be one of json, numpy, nd4j"
+      end
+      # verify the required parameter 'from' is set
+      if @api_client.config.client_side_validation && from.nil?
+        fail ArgumentError, "Missing the required parameter 'from' when calling DefaultApi.get_array_range"
+      end
+      # verify the required parameter 'to' is set
+      if @api_client.config.client_side_validation && to.nil?
+        fail ArgumentError, "Missing the required parameter 'to' when calling DefaultApi.get_array_range"
+      end
+      # resource path
+      local_var_path = '/array/range/{from}/{to}/{arrayType}'.sub('{' + 'arrayType' + '}', array_type.to_s).sub('{' + 'from' + '}', from.to_s).sub('{' + 'to' + '}', to.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_array_range\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Gets the best model among the given model instance IDs, based on the evaluation type and column metric
     # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param best_model Object encapsulating the model ids, eval type and column metric name
@@ -2107,6 +2491,49 @@ module SkilCient
         :return_type => 'ResourceCredentials')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_credentials_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Returns the current model being used for retraining.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def get_current_model(opts = {})
+      get_current_model_with_http_info(opts)
+      nil
+    end
+
+    # Returns the current model being used for retraining.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def get_current_model_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_current_model ...'
+      end
+      # resource path
+      local_var_path = '/model'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_current_model\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2381,6 +2808,50 @@ module SkilCient
         :return_type => 'JobEntity')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_job_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get the last evaluation specifications from the current model.
+    # @param [Hash] opts the optional parameters
+    # @return [EvaluationResultsEntity]
+    def get_last_evaluation(opts = {})
+      data, _status_code, _headers = get_last_evaluation_with_http_info(opts)
+      data
+    end
+
+    # Get the last evaluation specifications from the current model.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EvaluationResultsEntity, Fixnum, Hash)>] EvaluationResultsEntity data, response status code and response headers
+    def get_last_evaluation_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_last_evaluation ...'
+      end
+      # resource path
+      local_var_path = '/lastevaluation'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EvaluationResultsEntity')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_last_evaluation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3006,6 +3477,50 @@ module SkilCient
       end
       return data, status_code, headers
     end
+    # Get the retraining status
+    # @param [Hash] opts the optional parameters
+    # @return [RetrainingStatus]
+    def is_training(opts = {})
+      data, _status_code, _headers = is_training_with_http_info(opts)
+      data
+    end
+
+    # Get the retraining status
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RetrainingStatus, Fixnum, Hash)>] RetrainingStatus data, response status code and response headers
+    def is_training_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.is_training ...'
+      end
+      # resource path
+      local_var_path = '/istraining'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'RetrainingStatus')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#is_training\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Run inference on the input and returns it as a JsonArrayResponse
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
@@ -3219,22 +3734,28 @@ module SkilCient
       return data, status_code, headers
     end
     # List all of the experiments in every model history / workspace
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param [Hash] opts the optional parameters
     # @return [Array<ExperimentEntity>]
-    def list_all_experiments(opts = {})
-      data, _status_code, _headers = list_all_experiments_with_http_info(opts)
+    def list_all_experiments(model_history_server_id, opts = {})
+      data, _status_code, _headers = list_all_experiments_with_http_info(model_history_server_id, opts)
       data
     end
 
     # List all of the experiments in every model history / workspace
+    # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<ExperimentEntity>, Fixnum, Hash)>] Array<ExperimentEntity> data, response status code and response headers
-    def list_all_experiments_with_http_info(opts = {})
+    def list_all_experiments_with_http_info(model_history_server_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.list_all_experiments ...'
       end
+      # verify the required parameter 'model_history_server_id' is set
+      if @api_client.config.client_side_validation && model_history_server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_history_server_id' when calling DefaultApi.list_all_experiments"
+      end
       # resource path
-      local_var_path = '/rpc/{modelHistoryServerId}/experiments'
+      local_var_path = '/rpc/{modelHistoryServerId}/experiments'.sub('{' + 'modelHistoryServerId' + '}', model_history_server_id.to_s)
 
       # query parameters
       query_params = {}
@@ -3762,27 +4283,31 @@ module SkilCient
       return data, status_code, headers
     end
     # Update the model to be served
+    # @param file The model file to update with (.pb file)
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
-    # @option opts [File] :file The model file to update with (.pb file)
     # @return [ModelStatus]
-    def modelupdate(deployment_name, version_name, model_name, opts = {})
-      data, _status_code, _headers = modelupdate_with_http_info(deployment_name, version_name, model_name, opts)
+    def modelupdate(file, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = modelupdate_with_http_info(file, deployment_name, version_name, model_name, opts)
       data
     end
 
     # Update the model to be served
+    # @param file The model file to update with (.pb file)
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
-    # @option opts [File] :file The model file to update with (.pb file)
     # @return [Array<(ModelStatus, Fixnum, Hash)>] ModelStatus data, response status code and response headers
-    def modelupdate_with_http_info(deployment_name, version_name, model_name, opts = {})
+    def modelupdate_with_http_info(file, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.modelupdate ...'
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling DefaultApi.modelupdate"
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
@@ -3811,7 +4336,7 @@ module SkilCient
 
       # form parameters
       form_params = {}
-      form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
+      form_params['file'] = file
 
       # http body (model)
       post_body = nil
@@ -4057,6 +4582,50 @@ module SkilCient
       end
       return data, status_code, headers
     end
+    # Gets the number of retrained models written with retraining.
+    # @param [Hash] opts the optional parameters
+    # @return [RevisionsWritten]
+    def num_revisions(opts = {})
+      data, _status_code, _headers = num_revisions_with_http_info(opts)
+      data
+    end
+
+    # Gets the number of retrained models written with retraining.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RevisionsWritten, Fixnum, Hash)>] RevisionsWritten data, response status code and response headers
+    def num_revisions_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.num_revisions ...'
+      end
+      # resource path
+      local_var_path = '/numrevisions'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'RevisionsWritten')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#num_revisions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Run inference on the input array.
     # @param body The input NDArray
     # @param deployment_name Name of the deployment group
@@ -4124,6 +4693,145 @@ module SkilCient
         :return_type => 'Prediction')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#predict\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+    # These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+    # @param operation 
+    # @param input_type Type of the input data.
+    # @param [Hash] opts the optional parameters
+    # @option opts [] :input_data 
+    # @return [nil]
+    def predict_error(operation, input_type, opts = {})
+      predict_error_with_http_info(operation, input_type, opts)
+      nil
+    end
+
+    # Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+    # These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+    # @param operation 
+    # @param input_type Type of the input data.
+    # @param [Hash] opts the optional parameters
+    # @option opts [] :input_data 
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def predict_error_with_http_info(operation, input_type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.predict_error ...'
+      end
+      # verify the required parameter 'operation' is set
+      if @api_client.config.client_side_validation && operation.nil?
+        fail ArgumentError, "Missing the required parameter 'operation' when calling DefaultApi.predict_error"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['REGRESSION', 'CLASSIFICATION', 'RAW'].include?(operation)
+        fail ArgumentError, "invalid value for 'operation', must be one of REGRESSION, CLASSIFICATION, RAW"
+      end
+      # verify the required parameter 'input_type' is set
+      if @api_client.config.client_side_validation && input_type.nil?
+        fail ArgumentError, "Missing the required parameter 'input_type' when calling DefaultApi.predict_error"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['CSV', 'DICTIONARY', 'CSVPUBSUB', 'DICTIONARYPUBSUB'].include?(input_type)
+        fail ArgumentError, "invalid value for 'input_type', must be one of CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB"
+      end
+      # resource path
+      local_var_path = '/{operation}/{inputType}/error'.sub('{' + 'operation' + '}', operation.to_s).sub('{' + 'inputType' + '}', input_type.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'input_data'])
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#predict_error\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+    # @param operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+    # @param input_type Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [] :input_data The input data when the content type is \&quot;application/json\&quot;
+    # @option opts [File] :input_data2 The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot;
+    # @return [nil]
+    def predict_v2(operation, input_type, opts = {})
+      predict_v2_with_http_info(operation, input_type, opts)
+      nil
+    end
+
+    # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+    # @param operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+    # @param input_type Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [] :input_data The input data when the content type is \&quot;application/json\&quot;
+    # @option opts [File] :input_data2 The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot;
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def predict_v2_with_http_info(operation, input_type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.predict_v2 ...'
+      end
+      # verify the required parameter 'operation' is set
+      if @api_client.config.client_side_validation && operation.nil?
+        fail ArgumentError, "Missing the required parameter 'operation' when calling DefaultApi.predict_v2"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['REGRESSION', 'CLASSIFICATION', 'RAW', 'YOLO', 'SSD', 'RCNN'].include?(operation)
+        fail ArgumentError, "invalid value for 'operation', must be one of REGRESSION, CLASSIFICATION, RAW, YOLO, SSD, RCNN"
+      end
+      # verify the required parameter 'input_type' is set
+      if @api_client.config.client_side_validation && input_type.nil?
+        fail ArgumentError, "Missing the required parameter 'input_type' when calling DefaultApi.predict_v2"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['CSV', 'DICTIONARY', 'CSVPUBSUB', 'DICTIONARYPUBSUB', 'IMAGE', 'NUMPY', 'NDARRAY', 'JSON'].include?(input_type)
+        fail ArgumentError, "invalid value for 'input_type', must be one of CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB, IMAGE, NUMPY, NDARRAY, JSON"
+      end
+      # resource path
+      local_var_path = '/{operation}/{inputType}'.sub('{' + 'operation' + '}', operation.to_s).sub('{' + 'inputType' + '}', input_type.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params['inputData'] = opts[:'input_data2'] if !opts[:'input_data2'].nil?
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'input_data'])
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#predict_v2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4334,6 +5042,74 @@ module SkilCient
       end
       return data, status_code, headers
     end
+    # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+    # @param input_type Input data type.
+    # @param output_type Binary output data type.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_data The input file to upload.
+    # @return [nil]
+    def raw_predict_binary(input_type, output_type, opts = {})
+      raw_predict_binary_with_http_info(input_type, output_type, opts)
+      nil
+    end
+
+    # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+    # @param input_type Input data type.
+    # @param output_type Binary output data type.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_data The input file to upload.
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def raw_predict_binary_with_http_info(input_type, output_type, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.raw_predict_binary ...'
+      end
+      # verify the required parameter 'input_type' is set
+      if @api_client.config.client_side_validation && input_type.nil?
+        fail ArgumentError, "Missing the required parameter 'input_type' when calling DefaultApi.raw_predict_binary"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['IMAGE', 'NUMPY', 'NDARRAY', 'JSON'].include?(input_type)
+        fail ArgumentError, "invalid value for 'input_type', must be one of IMAGE, NUMPY, NDARRAY, JSON"
+      end
+      # verify the required parameter 'output_type' is set
+      if @api_client.config.client_side_validation && output_type.nil?
+        fail ArgumentError, "Missing the required parameter 'output_type' when calling DefaultApi.raw_predict_binary"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['ND4J', 'NUMPY', 'ARROW', 'JSON'].include?(output_type)
+        fail ArgumentError, "invalid value for 'output_type', must be one of ND4J, NUMPY, ARROW, JSON"
+      end
+      # resource path
+      local_var_path = '/raw/{inputType}/{outputType}'.sub('{' + 'inputType' + '}', input_type.to_s).sub('{' + 'outputType' + '}', output_type.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params['inputData'] = opts[:'input_data'] if !opts[:'input_data'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#raw_predict_binary\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Refresh the remote job status. Can be used for monitoring.
     # @param job_id Job ID
     # @param [Hash] opts the optional parameters
@@ -4445,6 +5221,58 @@ module SkilCient
         :return_type => 'ModelEntity')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#reimport_model\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Rollback to a previous revision of the model.
+    # @param index Model revision index.
+    # @param [Hash] opts the optional parameters
+    # @return [RollbackStatus]
+    def rollback(index, opts = {})
+      data, _status_code, _headers = rollback_with_http_info(index, opts)
+      data
+    end
+
+    # Rollback to a previous revision of the model.
+    # @param index Model revision index.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RollbackStatus, Fixnum, Hash)>] RollbackStatus data, response status code and response headers
+    def rollback_with_http_info(index, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.rollback ...'
+      end
+      # verify the required parameter 'index' is set
+      if @api_client.config.client_side_validation && index.nil?
+        fail ArgumentError, "Missing the required parameter 'index' when calling DefaultApi.rollback"
+      end
+      # resource path
+      local_var_path = '/rollback/{index}'.sub('{' + 'index' + '}', index.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'RollbackStatus')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#rollback\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

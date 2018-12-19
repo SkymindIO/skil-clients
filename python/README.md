@@ -59,14 +59,13 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-add_credentials_request = skil_client.AddCredentialsRequest() # AddCredentialsRequest | Add credentials request object
 
 try:
-    # Adds credentials
-    api_response = api_instance.add_credentials(add_credentials_request)
+    # Tells how many retraining examples have labels associated with them.
+    api_response = api_instance.accumulated_results()
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->add_credentials: %s\n" % e)
+    print("Exception when calling DefaultApi->accumulated_results: %s\n" % e)
 
 ```
 
@@ -76,11 +75,14 @@ All URIs are relative to *http://localhost:9008*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**accumulated_results**](docs/DefaultApi.md#accumulated_results) | **GET** /accumulatedresults | Tells how many retraining examples have labels associated with them.
 *DefaultApi* | [**add_credentials**](docs/DefaultApi.md#add_credentials) | **POST** /resources/credentials | Adds credentials
 *DefaultApi* | [**add_evaluation_result**](docs/DefaultApi.md#add_evaluation_result) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
 *DefaultApi* | [**add_example_for_batch**](docs/DefaultApi.md#add_example_for_batch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 *DefaultApi* | [**add_example_to_minibatch**](docs/DefaultApi.md#add_example_to_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
 *DefaultApi* | [**add_experiment**](docs/DefaultApi.md#add_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+*DefaultApi* | [**add_feedback_binary**](docs/DefaultApi.md#add_feedback_binary) | **POST** /feedback/{id}/{type} | 
+*DefaultApi* | [**add_feedback_json**](docs/DefaultApi.md#add_feedback_json) | **POST** /feedback/{id}/json | Gets the retraining feedback for the given batch ID.
 *DefaultApi* | [**add_minibatch**](docs/DefaultApi.md#add_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
 *DefaultApi* | [**add_model_feedback**](docs/DefaultApi.md#add_model_feedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 *DefaultApi* | [**add_model_history**](docs/DefaultApi.md#add_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
@@ -92,6 +94,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 *DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 *DefaultApi* | [**classifyimage**](docs/DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+*DefaultApi* | [**clear_state**](docs/DefaultApi.md#clear_state) | **POST** /clear | Clears the accumulated data for retraining.
 *DefaultApi* | [**create_job**](docs/DefaultApi.md#create_job) | **POST** /jobs/{jobIdOrType} | Create a job
 *DefaultApi* | [**create_model_history**](docs/DefaultApi.md#create_model_history) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 *DefaultApi* | [**delete_credentials_by_id**](docs/DefaultApi.md#delete_credentials_by_id) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
@@ -111,13 +114,18 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**detectobjects**](docs/DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
 *DefaultApi* | [**download_job_output_file**](docs/DefaultApi.md#download_job_output_file) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
 *DefaultApi* | [**get_all_jobs**](docs/DefaultApi.md#get_all_jobs) | **GET** /jobs | Get a list of all available jobs
+*DefaultApi* | [**get_array**](docs/DefaultApi.md#get_array) | **POST** /array/{arrayType} | Get the memory mapped array based on the array type.
+*DefaultApi* | [**get_array_indices**](docs/DefaultApi.md#get_array_indices) | **POST** /array/indices/{arrayType} | Get the memory mapped array indices based on the array type.
+*DefaultApi* | [**get_array_range**](docs/DefaultApi.md#get_array_range) | **POST** /array/range/{from}/{to}/{arrayType} | Get the memory mapped array within a range based on the array type.
 *DefaultApi* | [**get_best_model_among_model_ids**](docs/DefaultApi.md#get_best_model_among_model_ids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 *DefaultApi* | [**get_credentials_by_id**](docs/DefaultApi.md#get_credentials_by_id) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
+*DefaultApi* | [**get_current_model**](docs/DefaultApi.md#get_current_model) | **GET** /model | Returns the current model being used for retraining.
 *DefaultApi* | [**get_evaluation_for_model_id**](docs/DefaultApi.md#get_evaluation_for_model_id) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
 *DefaultApi* | [**get_examples_for_minibatch**](docs/DefaultApi.md#get_examples_for_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 *DefaultApi* | [**get_experiment**](docs/DefaultApi.md#get_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 *DefaultApi* | [**get_experiments_for_model_history**](docs/DefaultApi.md#get_experiments_for_model_history) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
 *DefaultApi* | [**get_job_by_id**](docs/DefaultApi.md#get_job_by_id) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
+*DefaultApi* | [**get_last_evaluation**](docs/DefaultApi.md#get_last_evaluation) | **GET** /lastevaluation | Get the last evaluation specifications from the current model.
 *DefaultApi* | [**get_minibatch**](docs/DefaultApi.md#get_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 *DefaultApi* | [**get_model_history**](docs/DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 *DefaultApi* | [**get_model_instance**](docs/DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
@@ -130,6 +138,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_resource_groups**](docs/DefaultApi.md#get_resource_groups) | **GET** /resources/groups | Get a list of all the resource groups
 *DefaultApi* | [**get_resources**](docs/DefaultApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 *DefaultApi* | [**get_resources_from_group**](docs/DefaultApi.md#get_resources_from_group) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
+*DefaultApi* | [**is_training**](docs/DefaultApi.md#is_training) | **GET** /istraining | Get the retraining status
 *DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 *DefaultApi* | [**knn**](docs/DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 *DefaultApi* | [**knnnew**](docs/DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -146,12 +155,17 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**multiclassify**](docs/DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
 *DefaultApi* | [**multipredict**](docs/DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
 *DefaultApi* | [**multipredictimage**](docs/DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+*DefaultApi* | [**num_revisions**](docs/DefaultApi.md#num_revisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 *DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+*DefaultApi* | [**predict_error**](docs/DefaultApi.md#predict_error) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+*DefaultApi* | [**predict_v2**](docs/DefaultApi.md#predict_v2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 *DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 *DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 *DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+*DefaultApi* | [**raw_predict_binary**](docs/DefaultApi.md#raw_predict_binary) | **POST** /raw/{inputType}/{outputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 *DefaultApi* | [**refresh_job_status**](docs/DefaultApi.md#refresh_job_status) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
 *DefaultApi* | [**reimport_model**](docs/DefaultApi.md#reimport_model) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+*DefaultApi* | [**rollback**](docs/DefaultApi.md#rollback) | **POST** /rollback/{index} | Rollback to a previous revision of the model.
 *DefaultApi* | [**run_a_job**](docs/DefaultApi.md#run_a_job) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 *DefaultApi* | [**transform_csv**](docs/DefaultApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 *DefaultApi* | [**transformarray**](docs/DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
@@ -169,6 +183,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AccumulatedResults](docs/AccumulatedResults.md)
  - [AddCredentialsRequest](docs/AddCredentialsRequest.md)
  - [AddExampleRequest](docs/AddExampleRequest.md)
  - [AddModelHistoryRequest](docs/AddModelHistoryRequest.md)
@@ -194,6 +209,7 @@ Class | Method | HTTP request | Description
  - [EvaluationResultsEntity](docs/EvaluationResultsEntity.md)
  - [ExampleEntity](docs/ExampleEntity.md)
  - [ExperimentEntity](docs/ExperimentEntity.md)
+ - [FeedbackResponse](docs/FeedbackResponse.md)
  - [FileUpload](docs/FileUpload.md)
  - [FileUploadList](docs/FileUploadList.md)
  - [GoogleStorageResourceDetails](docs/GoogleStorageResourceDetails.md)
@@ -226,6 +242,9 @@ Class | Method | HTTP request | Description
  - [Resource](docs/Resource.md)
  - [ResourceCredentials](docs/ResourceCredentials.md)
  - [ResourceGroup](docs/ResourceGroup.md)
+ - [RetrainingStatus](docs/RetrainingStatus.md)
+ - [RevisionsWritten](docs/RevisionsWritten.md)
+ - [RollbackStatus](docs/RollbackStatus.md)
  - [S3ResourceDetails](docs/S3ResourceDetails.md)
  - [SetState](docs/SetState.md)
  - [SingleCSVRecord](docs/SingleCSVRecord.md)

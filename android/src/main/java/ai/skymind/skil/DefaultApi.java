@@ -23,6 +23,7 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import ai.skymind.skil.model.AccumulatedResults;
 import ai.skymind.skil.model.AddCredentialsRequest;
 import ai.skymind.skil.model.AddExampleRequest;
 import ai.skymind.skil.model.AddModelHistoryRequest;
@@ -42,6 +43,7 @@ import ai.skymind.skil.model.DownloadOutputFileRequest;
 import ai.skymind.skil.model.EvaluationResultsEntity;
 import ai.skymind.skil.model.ExampleEntity;
 import ai.skymind.skil.model.ExperimentEntity;
+import ai.skymind.skil.model.FeedbackResponse;
 import java.io.File;
 import ai.skymind.skil.model.FileUploadList;
 import ai.skymind.skil.model.ImportModelRequest;
@@ -67,6 +69,9 @@ import ai.skymind.skil.model.Prediction;
 import ai.skymind.skil.model.Resource;
 import ai.skymind.skil.model.ResourceCredentials;
 import ai.skymind.skil.model.ResourceGroup;
+import ai.skymind.skil.model.RetrainingStatus;
+import ai.skymind.skil.model.RevisionsWritten;
+import ai.skymind.skil.model.RollbackStatus;
 import ai.skymind.skil.model.SetState;
 import ai.skymind.skil.model.SingleCSVRecord;
 import ai.skymind.skil.model.Token;
@@ -102,6 +107,122 @@ public class DefaultApi {
     return basePath;
   }
 
+  /**
+  * Tells how many retraining examples have labels associated with them.
+  * 
+   * @return AccumulatedResults
+  */
+  public AccumulatedResults accumulatedResults () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+
+    // create path and map variables
+    String path = "/accumulatedresults";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (AccumulatedResults) ApiInvoker.deserialize(localVarResponse, "", AccumulatedResults.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Tells how many retraining examples have labels associated with them.
+   * 
+
+  */
+  public void accumulatedResults (final Response.Listener<AccumulatedResults> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+
+    // create path and map variables
+    String path = "/accumulatedresults".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((AccumulatedResults) ApiInvoker.deserialize(localVarResponse,  "", AccumulatedResults.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
   /**
   * Adds credentials
   * 
@@ -772,6 +893,283 @@ public class DefaultApi {
           public void onResponse(String localVarResponse) {
             try {
               responseListener.onResponse((ExperimentEntity) ApiInvoker.deserialize(localVarResponse,  "", ExperimentEntity.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * 
+  * 
+   * @param id Batch ID to retrain the model with and get feedback for.
+   * @param type The type of the labels array.
+   * @param file The labels file to upload.
+   * @return FeedbackResponse
+  */
+  public FeedbackResponse addFeedbackBinary (String id, String type, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'id' when calling addFeedbackBinary",
+        new ApiException(400, "Missing the required parameter 'id' when calling addFeedbackBinary"));
+    }
+    // verify the required parameter 'type' is set
+    if (type == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'type' when calling addFeedbackBinary",
+        new ApiException(400, "Missing the required parameter 'type' when calling addFeedbackBinary"));
+    }
+
+    // create path and map variables
+    String path = "/feedback/{id}/{type}".replaceAll("\\{" + "id" + "\\}", apiInvoker.escapeString(id.toString())).replaceAll("\\{" + "type" + "\\}", apiInvoker.escapeString(type.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "multipart/form-data"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      if (file != null) {
+        localVarBuilder.addBinaryBody("file", file);
+      }
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (FeedbackResponse) ApiInvoker.deserialize(localVarResponse, "", FeedbackResponse.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * 
+   * 
+   * @param id Batch ID to retrain the model with and get feedback for.   * @param type The type of the labels array.   * @param file The labels file to upload.
+  */
+  public void addFeedbackBinary (String id, String type, File file, final Response.Listener<FeedbackResponse> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'id' when calling addFeedbackBinary",
+        new ApiException(400, "Missing the required parameter 'id' when calling addFeedbackBinary"));
+    }
+    // verify the required parameter 'type' is set
+    if (type == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'type' when calling addFeedbackBinary",
+        new ApiException(400, "Missing the required parameter 'type' when calling addFeedbackBinary"));
+    }
+
+    // create path and map variables
+    String path = "/feedback/{id}/{type}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "id" + "\\}", apiInvoker.escapeString(id.toString())).replaceAll("\\{" + "type" + "\\}", apiInvoker.escapeString(type.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "multipart/form-data"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+      if (file != null) {
+        localVarBuilder.addBinaryBody("file", file);
+      }
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+      
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((FeedbackResponse) ApiInvoker.deserialize(localVarResponse,  "", FeedbackResponse.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Gets the retraining feedback for the given batch ID.
+  * 
+   * @param id Batch ID to retrain the model with and get feedback for.
+   * @param labels The associated labels (one-hot vectors) with the batch for retraining.
+   * @return FeedbackResponse
+  */
+  public FeedbackResponse addFeedbackJson (String id, List<List<Double>> labels) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = labels;
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'id' when calling addFeedbackJson",
+        new ApiException(400, "Missing the required parameter 'id' when calling addFeedbackJson"));
+    }
+
+    // create path and map variables
+    String path = "/feedback/{id}/json".replaceAll("\\{" + "id" + "\\}", apiInvoker.escapeString(id.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (FeedbackResponse) ApiInvoker.deserialize(localVarResponse, "", FeedbackResponse.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Gets the retraining feedback for the given batch ID.
+   * 
+   * @param id Batch ID to retrain the model with and get feedback for.   * @param labels The associated labels (one-hot vectors) with the batch for retraining.
+  */
+  public void addFeedbackJson (String id, List<List<Double>> labels, final Response.Listener<FeedbackResponse> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = labels;
+
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'id' when calling addFeedbackJson",
+        new ApiException(400, "Missing the required parameter 'id' when calling addFeedbackJson"));
+    }
+
+    // create path and map variables
+    String path = "/feedback/{id}/json".replaceAll("\\{format\\}","json").replaceAll("\\{" + "id" + "\\}", apiInvoker.escapeString(id.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((FeedbackResponse) ApiInvoker.deserialize(localVarResponse,  "", FeedbackResponse.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -1476,7 +1874,7 @@ public class DefaultApi {
    * @param groupName Name of the resource group
    * @return ResourceGroup
   */
-  public ResourceGroup addResourceGroup ( groupName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ResourceGroup addResourceGroup (String groupName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = groupName;
     // verify the required parameter 'groupName' is set
     if (groupName == null) {
@@ -1538,7 +1936,7 @@ public class DefaultApi {
    * 
    * @param groupName Name of the resource group
   */
-  public void addResourceGroup ( groupName, final Response.Listener<ResourceGroup> responseListener, final Response.ErrorListener errorListener) {
+  public void addResourceGroup (String groupName, final Response.Listener<ResourceGroup> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = groupName;
 
     // verify the required parameter 'groupName' is set
@@ -2338,6 +2736,122 @@ public class DefaultApi {
           public void onResponse(String localVarResponse) {
             try {
               responseListener.onResponse((ClassificationResult) ApiInvoker.deserialize(localVarResponse,  "", ClassificationResult.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Clears the accumulated data for retraining.
+  * 
+   * @return FeedbackResponse
+  */
+  public FeedbackResponse clearState () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+
+    // create path and map variables
+    String path = "/clear";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (FeedbackResponse) ApiInvoker.deserialize(localVarResponse, "", FeedbackResponse.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Clears the accumulated data for retraining.
+   * 
+
+  */
+  public void clearState (final Response.Listener<FeedbackResponse> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+
+    // create path and map variables
+    String path = "/clear".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((FeedbackResponse) ApiInvoker.deserialize(localVarResponse,  "", FeedbackResponse.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -4455,13 +4969,13 @@ public class DefaultApi {
    * @param id the GUID for mapping the results in the detections
    * @param needsPreprocessing (true) if the image needs preprocessing
    * @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-   * @param imageFile the image file to detect objects from
+   * @param file the image file to detect objects from
    * @param deploymentName Name of the deployment group
    * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return DetectionResult
   */
-  public DetectionResult detectobjects (String id, Boolean needsPreprocessing, Float threshold, File imageFile, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public DetectionResult detectobjects (String id, Boolean needsPreprocessing, Float threshold, File file, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'id' is set
     if (id == null) {
@@ -4478,10 +4992,10 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'threshold' when calling detectobjects",
         new ApiException(400, "Missing the required parameter 'threshold' when calling detectobjects"));
     }
-    // verify the required parameter 'imageFile' is set
-    if (imageFile == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'imageFile' when calling detectobjects",
-        new ApiException(400, "Missing the required parameter 'imageFile' when calling detectobjects"));
+    // verify the required parameter 'file' is set
+    if (file == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'file' when calling detectobjects",
+        new ApiException(400, "Missing the required parameter 'file' when calling detectobjects"));
     }
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
@@ -4525,8 +5039,8 @@ public class DefaultApi {
       if (threshold != null) {
         localVarBuilder.addTextBody("threshold", ApiInvoker.parameterToString(threshold), ApiInvoker.TEXT_PLAIN_UTF8);
       }
-      if (imageFile != null) {
-        localVarBuilder.addBinaryBody("imageFile", imageFile);
+      if (file != null) {
+        localVarBuilder.addBinaryBody("file", file);
       }
       HttpEntity httpEntity = localVarBuilder.build();
       postBody = httpEntity;
@@ -4566,9 +5080,9 @@ public class DefaultApi {
       /**
    * Detect the objects, given a (input) prediction request
    * 
-   * @param id the GUID for mapping the results in the detections   * @param needsPreprocessing (true) if the image needs preprocessing   * @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.   * @param imageFile the image file to detect objects from   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
+   * @param id the GUID for mapping the results in the detections   * @param needsPreprocessing (true) if the image needs preprocessing   * @param threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.   * @param file the image file to detect objects from   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void detectobjects (String id, Boolean needsPreprocessing, Float threshold, File imageFile, String deploymentName, String versionName, String modelName, final Response.Listener<DetectionResult> responseListener, final Response.ErrorListener errorListener) {
+  public void detectobjects (String id, Boolean needsPreprocessing, Float threshold, File file, String deploymentName, String versionName, String modelName, final Response.Listener<DetectionResult> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'id' is set
@@ -4586,10 +5100,10 @@ public class DefaultApi {
       VolleyError error = new VolleyError("Missing the required parameter 'threshold' when calling detectobjects",
         new ApiException(400, "Missing the required parameter 'threshold' when calling detectobjects"));
     }
-    // verify the required parameter 'imageFile' is set
-    if (imageFile == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'imageFile' when calling detectobjects",
-        new ApiException(400, "Missing the required parameter 'imageFile' when calling detectobjects"));
+    // verify the required parameter 'file' is set
+    if (file == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'file' when calling detectobjects",
+        new ApiException(400, "Missing the required parameter 'file' when calling detectobjects"));
     }
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
@@ -4640,8 +5154,8 @@ public class DefaultApi {
         localVarBuilder.addTextBody("threshold", ApiInvoker.parameterToString(threshold), ApiInvoker.TEXT_PLAIN_UTF8);
       }
       
-      if (imageFile != null) {
-        localVarBuilder.addBinaryBody("imageFile", imageFile);
+      if (file != null) {
+        localVarBuilder.addBinaryBody("file", file);
       }
       
 
@@ -4930,6 +5444,401 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
   }
   /**
+  * Get the memory mapped array based on the array type.
+  * The array is specified through a file path, in the configuration object, during model server deployment.
+   * @param arrayType The format in which the memory mapped array is returned.
+   * @return void
+  */
+  public void getArray (String arrayType) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'arrayType' is set
+    if (arrayType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArray",
+        new ApiException(400, "Missing the required parameter 'arrayType' when calling getArray"));
+    }
+
+    // create path and map variables
+    String path = "/array/{arrayType}".replaceAll("\\{" + "arrayType" + "\\}", apiInvoker.escapeString(arrayType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Get the memory mapped array based on the array type.
+   * The array is specified through a file path, in the configuration object, during model server deployment.
+   * @param arrayType The format in which the memory mapped array is returned.
+  */
+  public void getArray (String arrayType, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'arrayType' is set
+    if (arrayType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArray",
+        new ApiException(400, "Missing the required parameter 'arrayType' when calling getArray"));
+    }
+
+    // create path and map variables
+    String path = "/array/{arrayType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "arrayType" + "\\}", apiInvoker.escapeString(arrayType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Get the memory mapped array indices based on the array type.
+  * 
+   * @param arrayType Format in which the memory mapped array is returned in.
+   * @param input Input indices array
+   * @return void
+  */
+  public void getArrayIndices (String arrayType,  input) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = input;
+    // verify the required parameter 'arrayType' is set
+    if (arrayType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArrayIndices",
+        new ApiException(400, "Missing the required parameter 'arrayType' when calling getArrayIndices"));
+    }
+
+    // create path and map variables
+    String path = "/array/indices/{arrayType}".replaceAll("\\{" + "arrayType" + "\\}", apiInvoker.escapeString(arrayType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Get the memory mapped array indices based on the array type.
+   * 
+   * @param arrayType Format in which the memory mapped array is returned in.   * @param input Input indices array
+  */
+  public void getArrayIndices (String arrayType,  input, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = input;
+
+    // verify the required parameter 'arrayType' is set
+    if (arrayType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArrayIndices",
+        new ApiException(400, "Missing the required parameter 'arrayType' when calling getArrayIndices"));
+    }
+
+    // create path and map variables
+    String path = "/array/indices/{arrayType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "arrayType" + "\\}", apiInvoker.escapeString(arrayType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Get the memory mapped array within a range based on the array type.
+  * 
+   * @param arrayType Format in which the memory mapped array is returned in.
+   * @param from 
+   * @param to 
+   * @return void
+  */
+  public void getArrayRange (String arrayType, Integer from, Integer to) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'arrayType' is set
+    if (arrayType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArrayRange",
+        new ApiException(400, "Missing the required parameter 'arrayType' when calling getArrayRange"));
+    }
+    // verify the required parameter 'from' is set
+    if (from == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'from' when calling getArrayRange",
+        new ApiException(400, "Missing the required parameter 'from' when calling getArrayRange"));
+    }
+    // verify the required parameter 'to' is set
+    if (to == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'to' when calling getArrayRange",
+        new ApiException(400, "Missing the required parameter 'to' when calling getArrayRange"));
+    }
+
+    // create path and map variables
+    String path = "/array/range/{from}/{to}/{arrayType}".replaceAll("\\{" + "arrayType" + "\\}", apiInvoker.escapeString(arrayType.toString())).replaceAll("\\{" + "from" + "\\}", apiInvoker.escapeString(from.toString())).replaceAll("\\{" + "to" + "\\}", apiInvoker.escapeString(to.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json",
+      "application/octet-stream"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Get the memory mapped array within a range based on the array type.
+   * 
+   * @param arrayType Format in which the memory mapped array is returned in.   * @param from    * @param to 
+  */
+  public void getArrayRange (String arrayType, Integer from, Integer to, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'arrayType' is set
+    if (arrayType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArrayRange",
+        new ApiException(400, "Missing the required parameter 'arrayType' when calling getArrayRange"));
+    }
+    // verify the required parameter 'from' is set
+    if (from == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'from' when calling getArrayRange",
+        new ApiException(400, "Missing the required parameter 'from' when calling getArrayRange"));
+    }
+    // verify the required parameter 'to' is set
+    if (to == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'to' when calling getArrayRange",
+        new ApiException(400, "Missing the required parameter 'to' when calling getArrayRange"));
+    }
+
+    // create path and map variables
+    String path = "/array/range/{from}/{to}/{arrayType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "arrayType" + "\\}", apiInvoker.escapeString(arrayType.toString())).replaceAll("\\{" + "from" + "\\}", apiInvoker.escapeString(from.toString())).replaceAll("\\{" + "to" + "\\}", apiInvoker.escapeString(to.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json","application/octet-stream"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
   * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
   * 
    * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -5184,6 +6093,118 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Returns the current model being used for retraining.
+  * 
+   * @return void
+  */
+  public void getCurrentModel () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+
+    // create path and map variables
+    String path = "/model";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Returns the current model being used for retraining.
+   * 
+
+  */
+  public void getCurrentModel (final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+
+    // create path and map variables
+    String path = "/model".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
           }
       }, new Response.ErrorListener() {
           @Override
@@ -5860,6 +6881,122 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
           public void onResponse(String localVarResponse) {
             try {
               responseListener.onResponse((JobEntity) ApiInvoker.deserialize(localVarResponse,  "", JobEntity.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Get the last evaluation specifications from the current model.
+  * 
+   * @return EvaluationResultsEntity
+  */
+  public EvaluationResultsEntity getLastEvaluation () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+
+    // create path and map variables
+    String path = "/lastevaluation";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (EvaluationResultsEntity) ApiInvoker.deserialize(localVarResponse, "", EvaluationResultsEntity.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Get the last evaluation specifications from the current model.
+   * 
+
+  */
+  public void getLastEvaluation (final Response.Listener<EvaluationResultsEntity> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+
+    // create path and map variables
+    String path = "/lastevaluation".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((EvaluationResultsEntity) ApiInvoker.deserialize(localVarResponse,  "", EvaluationResultsEntity.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -7421,6 +8558,122 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
   }
   /**
+  * Get the retraining status
+  * 
+   * @return RetrainingStatus
+  */
+  public RetrainingStatus isTraining () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+
+    // create path and map variables
+    String path = "/istraining";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (RetrainingStatus) ApiInvoker.deserialize(localVarResponse, "", RetrainingStatus.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Get the retraining status
+   * 
+
+  */
+  public void isTraining (final Response.Listener<RetrainingStatus> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+
+    // create path and map variables
+    String path = "/istraining".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((RetrainingStatus) ApiInvoker.deserialize(localVarResponse,  "", RetrainingStatus.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
   * Run inference on the input and returns it as a JsonArrayResponse
   * 
    * @param body The input NDArray
@@ -7906,13 +9159,19 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * List all of the experiments in every model history / workspace
   * 
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @return List<ExperimentEntity>
   */
-  public List<ExperimentEntity> listAllExperiments () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public List<ExperimentEntity> listAllExperiments (String modelHistoryServerId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling listAllExperiments",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling listAllExperiments"));
+    }
 
     // create path and map variables
-    String path = "/rpc/{modelHistoryServerId}/experiments";
+    String path = "/rpc/{modelHistoryServerId}/experiments".replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -7962,14 +9221,19 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * List all of the experiments in every model history / workspace
    * 
-
+   * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   */
-  public void listAllExperiments (final Response.Listener<List<ExperimentEntity>> responseListener, final Response.ErrorListener errorListener) {
+  public void listAllExperiments (String modelHistoryServerId, final Response.Listener<List<ExperimentEntity>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'modelHistoryServerId' is set
+    if (modelHistoryServerId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelHistoryServerId' when calling listAllExperiments",
+        new ApiException(400, "Missing the required parameter 'modelHistoryServerId' when calling listAllExperiments"));
+    }
 
     // create path and map variables
-    String path = "/rpc/{modelHistoryServerId}/experiments".replaceAll("\\{format\\}","json");
+    String path = "/rpc/{modelHistoryServerId}/experiments".replaceAll("\\{format\\}","json").replaceAll("\\{" + "modelHistoryServerId" + "\\}", apiInvoker.escapeString(modelHistoryServerId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -9207,14 +10471,19 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Update the model to be served
   * 
+   * @param file The model file to update with (.pb file)
    * @param deploymentName Name of the deployment group
    * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
-   * @param file The model file to update with (.pb file)
    * @return ModelStatus
   */
-  public ModelStatus modelupdate (String deploymentName, String versionName, String modelName, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public ModelStatus modelupdate (File file, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'file' is set
+    if (file == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'file' when calling modelupdate",
+        new ApiException(400, "Missing the required parameter 'file' when calling modelupdate"));
+    }
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling modelupdate",
@@ -9286,11 +10555,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Update the model to be served
    * 
-   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model   * @param file The model file to update with (.pb file)
+   * @param file The model file to update with (.pb file)   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void modelupdate (String deploymentName, String versionName, String modelName, File file, final Response.Listener<ModelStatus> responseListener, final Response.ErrorListener errorListener) {
+  public void modelupdate (File file, String deploymentName, String versionName, String modelName, final Response.Listener<ModelStatus> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'file' is set
+    if (file == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'file' when calling modelupdate",
+        new ApiException(400, "Missing the required parameter 'file' when calling modelupdate"));
+    }
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling modelupdate",
@@ -9895,6 +11169,122 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
   }
   /**
+  * Gets the number of retrained models written with retraining.
+  * 
+   * @return RevisionsWritten
+  */
+  public RevisionsWritten numRevisions () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+
+    // create path and map variables
+    String path = "/numrevisions";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (RevisionsWritten) ApiInvoker.deserialize(localVarResponse, "", RevisionsWritten.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Gets the number of retrained models written with retraining.
+   * 
+
+  */
+  public void numRevisions (final Response.Listener<RevisionsWritten> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+
+    // create path and map variables
+    String path = "/numrevisions".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((RevisionsWritten) ApiInvoker.deserialize(localVarResponse,  "", RevisionsWritten.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
   * Run inference on the input array.
   * 
    * @param body The input NDArray
@@ -10044,6 +11434,288 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+  * These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+   * @param operation 
+   * @param inputType Type of the input data.
+   * @param inputData 
+   * @return void
+  */
+  public void predictError (String operation, String inputType,  inputData) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = inputData;
+    // verify the required parameter 'operation' is set
+    if (operation == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictError",
+        new ApiException(400, "Missing the required parameter 'operation' when calling predictError"));
+    }
+    // verify the required parameter 'inputType' is set
+    if (inputType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputType' when calling predictError",
+        new ApiException(400, "Missing the required parameter 'inputType' when calling predictError"));
+    }
+
+    // create path and map variables
+    String path = "/{operation}/{inputType}/error".replaceAll("\\{" + "operation" + "\\}", apiInvoker.escapeString(operation.toString())).replaceAll("\\{" + "inputType" + "\\}", apiInvoker.escapeString(inputType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+   * These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+   * @param operation    * @param inputType Type of the input data.   * @param inputData 
+  */
+  public void predictError (String operation, String inputType,  inputData, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = inputData;
+
+    // verify the required parameter 'operation' is set
+    if (operation == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictError",
+        new ApiException(400, "Missing the required parameter 'operation' when calling predictError"));
+    }
+    // verify the required parameter 'inputType' is set
+    if (inputType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputType' when calling predictError",
+        new ApiException(400, "Missing the required parameter 'inputType' when calling predictError"));
+    }
+
+    // create path and map variables
+    String path = "/{operation}/{inputType}/error".replaceAll("\\{format\\}","json").replaceAll("\\{" + "operation" + "\\}", apiInvoker.escapeString(operation.toString())).replaceAll("\\{" + "inputType" + "\\}", apiInvoker.escapeString(inputType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+  * 
+   * @param operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+   * @param inputType Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+   * @param inputData The input data when the content type is \&quot;application/json\&quot;
+   * @param inputData2 The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot;
+   * @return void
+  */
+  public void predictV2 (String operation, String inputType,  inputData, File inputData2) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = inputData;
+    // verify the required parameter 'operation' is set
+    if (operation == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictV2",
+        new ApiException(400, "Missing the required parameter 'operation' when calling predictV2"));
+    }
+    // verify the required parameter 'inputType' is set
+    if (inputType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputType' when calling predictV2",
+        new ApiException(400, "Missing the required parameter 'inputType' when calling predictV2"));
+    }
+
+    // create path and map variables
+    String path = "/{operation}/{inputType}".replaceAll("\\{" + "operation" + "\\}", apiInvoker.escapeString(operation.toString())).replaceAll("\\{" + "inputType" + "\\}", apiInvoker.escapeString(inputType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json",
+      "multipart/form-data"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      if (inputData2 != null) {
+        localVarBuilder.addBinaryBody("inputData", inputData2);
+      }
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+   * 
+   * @param operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.    * @param inputType Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.    * @param inputData The input data when the content type is \&quot;application/json\&quot;   * @param inputData2 The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot;
+  */
+  public void predictV2 (String operation, String inputType,  inputData, File inputData2, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = inputData;
+
+    // verify the required parameter 'operation' is set
+    if (operation == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictV2",
+        new ApiException(400, "Missing the required parameter 'operation' when calling predictV2"));
+    }
+    // verify the required parameter 'inputType' is set
+    if (inputType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputType' when calling predictV2",
+        new ApiException(400, "Missing the required parameter 'inputType' when calling predictV2"));
+    }
+
+    // create path and map variables
+    String path = "/{operation}/{inputType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "operation" + "\\}", apiInvoker.escapeString(operation.toString())).replaceAll("\\{" + "inputType" + "\\}", apiInvoker.escapeString(inputType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json","multipart/form-data"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+      if (inputData2 != null) {
+        localVarBuilder.addBinaryBody("inputData", inputData2);
+      }
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+      
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
           }
       }, new Response.ErrorListener() {
           @Override
@@ -10537,6 +12209,150 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     }
   }
   /**
+  * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+  * 
+   * @param inputType Input data type.
+   * @param outputType Binary output data type.
+   * @param inputData The input file to upload.
+   * @return void
+  */
+  public void rawPredictBinary (String inputType, String outputType, File inputData) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'inputType' is set
+    if (inputType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputType' when calling rawPredictBinary",
+        new ApiException(400, "Missing the required parameter 'inputType' when calling rawPredictBinary"));
+    }
+    // verify the required parameter 'outputType' is set
+    if (outputType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'outputType' when calling rawPredictBinary",
+        new ApiException(400, "Missing the required parameter 'outputType' when calling rawPredictBinary"));
+    }
+
+    // create path and map variables
+    String path = "/raw/{inputType}/{outputType}".replaceAll("\\{" + "inputType" + "\\}", apiInvoker.escapeString(inputType.toString())).replaceAll("\\{" + "outputType" + "\\}", apiInvoker.escapeString(outputType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "multipart/form-data"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      if (inputData != null) {
+        localVarBuilder.addBinaryBody("inputData", inputData);
+      }
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+   * 
+   * @param inputType Input data type.   * @param outputType Binary output data type.   * @param inputData The input file to upload.
+  */
+  public void rawPredictBinary (String inputType, String outputType, File inputData, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'inputType' is set
+    if (inputType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputType' when calling rawPredictBinary",
+        new ApiException(400, "Missing the required parameter 'inputType' when calling rawPredictBinary"));
+    }
+    // verify the required parameter 'outputType' is set
+    if (outputType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'outputType' when calling rawPredictBinary",
+        new ApiException(400, "Missing the required parameter 'outputType' when calling rawPredictBinary"));
+    }
+
+    // create path and map variables
+    String path = "/raw/{inputType}/{outputType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "inputType" + "\\}", apiInvoker.escapeString(inputType.toString())).replaceAll("\\{" + "outputType" + "\\}", apiInvoker.escapeString(outputType.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "multipart/form-data"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+      if (inputData != null) {
+        localVarBuilder.addBinaryBody("inputData", inputData);
+      }
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+      
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
   * Refresh the remote job status. Can be used for monitoring.
   * 
    * @param jobId Job ID
@@ -10799,6 +12615,134 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
           public void onResponse(String localVarResponse) {
             try {
               responseListener.onResponse((ModelEntity) ApiInvoker.deserialize(localVarResponse,  "", ModelEntity.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Rollback to a previous revision of the model.
+  * 
+   * @param index Model revision index.
+   * @return RollbackStatus
+  */
+  public RollbackStatus rollback (Integer index) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'index' is set
+    if (index == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'index' when calling rollback",
+        new ApiException(400, "Missing the required parameter 'index' when calling rollback"));
+    }
+
+    // create path and map variables
+    String path = "/rollback/{index}".replaceAll("\\{" + "index" + "\\}", apiInvoker.escapeString(index.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (RollbackStatus) ApiInvoker.deserialize(localVarResponse, "", RollbackStatus.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Rollback to a previous revision of the model.
+   * 
+   * @param index Model revision index.
+  */
+  public void rollback (Integer index, final Response.Listener<RollbackStatus> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'index' is set
+    if (index == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'index' when calling rollback",
+        new ApiException(400, "Missing the required parameter 'index' when calling rollback"));
+    }
+
+    // create path and map variables
+    String path = "/rollback/{index}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "index" + "\\}", apiInvoker.escapeString(index.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((RollbackStatus) ApiInvoker.deserialize(localVarResponse,  "", RollbackStatus.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

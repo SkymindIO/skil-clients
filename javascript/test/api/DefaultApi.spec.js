@@ -50,6 +50,16 @@
   }
 
   describe('DefaultApi', function() {
+    describe('accumulatedResults', function() {
+      it('should call accumulatedResults successfully', function(done) {
+        //uncomment below and update the code to test accumulatedResults
+        //instance.accumulatedResults(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('addCredentials', function() {
       it('should call addCredentials successfully', function(done) {
         //uncomment below and update the code to test addCredentials
@@ -94,6 +104,26 @@
       it('should call addExperiment successfully', function(done) {
         //uncomment below and update the code to test addExperiment
         //instance.addExperiment(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('addFeedbackBinary', function() {
+      it('should call addFeedbackBinary successfully', function(done) {
+        //uncomment below and update the code to test addFeedbackBinary
+        //instance.addFeedbackBinary(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('addFeedbackJson', function() {
+      it('should call addFeedbackJson successfully', function(done) {
+        //uncomment below and update the code to test addFeedbackJson
+        //instance.addFeedbackJson(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -204,6 +234,16 @@
       it('should call classifyimage successfully', function(done) {
         //uncomment below and update the code to test classifyimage
         //instance.classifyimage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('clearState', function() {
+      it('should call clearState successfully', function(done) {
+        //uncomment below and update the code to test clearState
+        //instance.clearState(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -400,6 +440,36 @@
         done();
       });
     });
+    describe('getArray', function() {
+      it('should call getArray successfully', function(done) {
+        //uncomment below and update the code to test getArray
+        //instance.getArray(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getArrayIndices', function() {
+      it('should call getArrayIndices successfully', function(done) {
+        //uncomment below and update the code to test getArrayIndices
+        //instance.getArrayIndices(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getArrayRange', function() {
+      it('should call getArrayRange successfully', function(done) {
+        //uncomment below and update the code to test getArrayRange
+        //instance.getArrayRange(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getBestModelAmongModelIds', function() {
       it('should call getBestModelAmongModelIds successfully', function(done) {
         //uncomment below and update the code to test getBestModelAmongModelIds
@@ -414,6 +484,16 @@
       it('should call getCredentialsById successfully', function(done) {
         //uncomment below and update the code to test getCredentialsById
         //instance.getCredentialsById(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getCurrentModel', function() {
+      it('should call getCurrentModel successfully', function(done) {
+        //uncomment below and update the code to test getCurrentModel
+        //instance.getCurrentModel(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -464,6 +544,16 @@
       it('should call getJobById successfully', function(done) {
         //uncomment below and update the code to test getJobById
         //instance.getJobById(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getLastEvaluation', function() {
+      it('should call getLastEvaluation successfully', function(done) {
+        //uncomment below and update the code to test getLastEvaluation
+        //instance.getLastEvaluation(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -584,6 +674,16 @@
       it('should call getResourcesFromGroup successfully', function(done) {
         //uncomment below and update the code to test getResourcesFromGroup
         //instance.getResourcesFromGroup(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('isTraining', function() {
+      it('should call isTraining successfully', function(done) {
+        //uncomment below and update the code to test isTraining
+        //instance.isTraining(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -750,10 +850,40 @@
         done();
       });
     });
+    describe('numRevisions', function() {
+      it('should call numRevisions successfully', function(done) {
+        //uncomment below and update the code to test numRevisions
+        //instance.numRevisions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('predict', function() {
       it('should call predict successfully', function(done) {
         //uncomment below and update the code to test predict
         //instance.predict(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('predictError', function() {
+      it('should call predictError successfully', function(done) {
+        //uncomment below and update the code to test predictError
+        //instance.predictError(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('predictV2', function() {
+      it('should call predictV2 successfully', function(done) {
+        //uncomment below and update the code to test predictV2
+        //instance.predictV2(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -790,6 +920,16 @@
         done();
       });
     });
+    describe('rawPredictBinary', function() {
+      it('should call rawPredictBinary successfully', function(done) {
+        //uncomment below and update the code to test rawPredictBinary
+        //instance.rawPredictBinary(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('refreshJobStatus', function() {
       it('should call refreshJobStatus successfully', function(done) {
         //uncomment below and update the code to test refreshJobStatus
@@ -804,6 +944,16 @@
       it('should call reimportModel successfully', function(done) {
         //uncomment below and update the code to test reimportModel
         //instance.reimportModel(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('rollback', function() {
+      it('should call rollback successfully', function(done) {
+        //uncomment below and update the code to test rollback
+        //instance.rollback(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

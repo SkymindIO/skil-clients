@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * MultiPredictResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-14T15:11:49.806+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-19T09:42:07.839+01:00")
 public class MultiPredictResponse {
   @SerializedName("id")
   private String id = null;

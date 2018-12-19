@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'ai/skymind/skil/model/AddCredentialsRequest', 'ai/skymind/skil/model/AddExampleRequest', 'ai/skymind/skil/model/AddModelHistoryRequest', 'ai/skymind/skil/model/AddResourceRequest', 'ai/skymind/skil/model/AggregatePrediction', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/Base64NDArrayBodyKNN', 'ai/skymind/skil/model/BatchCSVRecord', 'ai/skymind/skil/model/BestModel', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/CreateDeploymentRequest', 'ai/skymind/skil/model/CreateJobRequest', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeploymentResponse', 'ai/skymind/skil/model/DetectionResult', 'ai/skymind/skil/model/DownloadOutputFileRequest', 'ai/skymind/skil/model/EvaluationResultsEntity', 'ai/skymind/skil/model/ExampleEntity', 'ai/skymind/skil/model/ExperimentEntity', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/ImportModelRequest', 'ai/skymind/skil/model/InlineResponse200', 'ai/skymind/skil/model/JobEntity', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/MetaData', 'ai/skymind/skil/model/MinibatchEntity', 'ai/skymind/skil/model/ModelEntity', 'ai/skymind/skil/model/ModelFeedBackRequest', 'ai/skymind/skil/model/ModelHistoryEntity', 'ai/skymind/skil/model/ModelInstanceEntity', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/MultiPredictRequest', 'ai/skymind/skil/model/MultiPredictResponse', 'ai/skymind/skil/model/NearestNeighborRequest', 'ai/skymind/skil/model/NearestNeighborsResults', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Resource', 'ai/skymind/skil/model/ResourceCredentials', 'ai/skymind/skil/model/ResourceGroup', 'ai/skymind/skil/model/SetState', 'ai/skymind/skil/model/SingleCSVRecord', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/model/UpdateBestModel'], factory);
+    define(['ApiClient', 'ai/skymind/skil/model/AccumulatedResults', 'ai/skymind/skil/model/AddCredentialsRequest', 'ai/skymind/skil/model/AddExampleRequest', 'ai/skymind/skil/model/AddModelHistoryRequest', 'ai/skymind/skil/model/AddResourceRequest', 'ai/skymind/skil/model/AggregatePrediction', 'ai/skymind/skil/model/Base64NDArrayBody', 'ai/skymind/skil/model/Base64NDArrayBodyKNN', 'ai/skymind/skil/model/BatchCSVRecord', 'ai/skymind/skil/model/BestModel', 'ai/skymind/skil/model/ClassificationResult', 'ai/skymind/skil/model/CreateDeploymentRequest', 'ai/skymind/skil/model/CreateJobRequest', 'ai/skymind/skil/model/Credentials', 'ai/skymind/skil/model/DeploymentResponse', 'ai/skymind/skil/model/DetectionResult', 'ai/skymind/skil/model/DownloadOutputFileRequest', 'ai/skymind/skil/model/EvaluationResultsEntity', 'ai/skymind/skil/model/ExampleEntity', 'ai/skymind/skil/model/ExperimentEntity', 'ai/skymind/skil/model/FeedbackResponse', 'ai/skymind/skil/model/FileUploadList', 'ai/skymind/skil/model/ImportModelRequest', 'ai/skymind/skil/model/InlineResponse200', 'ai/skymind/skil/model/JobEntity', 'ai/skymind/skil/model/JsonArrayResponse', 'ai/skymind/skil/model/LogBatch', 'ai/skymind/skil/model/LogRequest', 'ai/skymind/skil/model/MetaData', 'ai/skymind/skil/model/MinibatchEntity', 'ai/skymind/skil/model/ModelEntity', 'ai/skymind/skil/model/ModelFeedBackRequest', 'ai/skymind/skil/model/ModelHistoryEntity', 'ai/skymind/skil/model/ModelInstanceEntity', 'ai/skymind/skil/model/ModelStatus', 'ai/skymind/skil/model/MultiClassClassificationResult', 'ai/skymind/skil/model/MultiPredictRequest', 'ai/skymind/skil/model/MultiPredictResponse', 'ai/skymind/skil/model/NearestNeighborRequest', 'ai/skymind/skil/model/NearestNeighborsResults', 'ai/skymind/skil/model/Prediction', 'ai/skymind/skil/model/Resource', 'ai/skymind/skil/model/ResourceCredentials', 'ai/skymind/skil/model/ResourceGroup', 'ai/skymind/skil/model/RetrainingStatus', 'ai/skymind/skil/model/RevisionsWritten', 'ai/skymind/skil/model/RollbackStatus', 'ai/skymind/skil/model/SetState', 'ai/skymind/skil/model/SingleCSVRecord', 'ai/skymind/skil/model/Token', 'ai/skymind/skil/model/UpdateBestModel'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/AddCredentialsRequest'), require('../ai/skymind/skil/model/AddExampleRequest'), require('../ai/skymind/skil/model/AddModelHistoryRequest'), require('../ai/skymind/skil/model/AddResourceRequest'), require('../ai/skymind/skil/model/AggregatePrediction'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/Base64NDArrayBodyKNN'), require('../ai/skymind/skil/model/BatchCSVRecord'), require('../ai/skymind/skil/model/BestModel'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/CreateDeploymentRequest'), require('../ai/skymind/skil/model/CreateJobRequest'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeploymentResponse'), require('../ai/skymind/skil/model/DetectionResult'), require('../ai/skymind/skil/model/DownloadOutputFileRequest'), require('../ai/skymind/skil/model/EvaluationResultsEntity'), require('../ai/skymind/skil/model/ExampleEntity'), require('../ai/skymind/skil/model/ExperimentEntity'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/ImportModelRequest'), require('../ai/skymind/skil/model/InlineResponse200'), require('../ai/skymind/skil/model/JobEntity'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/MetaData'), require('../ai/skymind/skil/model/MinibatchEntity'), require('../ai/skymind/skil/model/ModelEntity'), require('../ai/skymind/skil/model/ModelFeedBackRequest'), require('../ai/skymind/skil/model/ModelHistoryEntity'), require('../ai/skymind/skil/model/ModelInstanceEntity'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/MultiPredictRequest'), require('../ai/skymind/skil/model/MultiPredictResponse'), require('../ai/skymind/skil/model/NearestNeighborRequest'), require('../ai/skymind/skil/model/NearestNeighborsResults'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/Resource'), require('../ai/skymind/skil/model/ResourceCredentials'), require('../ai/skymind/skil/model/ResourceGroup'), require('../ai/skymind/skil/model/SetState'), require('../ai/skymind/skil/model/SingleCSVRecord'), require('../ai/skymind/skil/model/Token'), require('../ai/skymind/skil/model/UpdateBestModel'));
+    module.exports = factory(require('../ApiClient'), require('../ai/skymind/skil/model/AccumulatedResults'), require('../ai/skymind/skil/model/AddCredentialsRequest'), require('../ai/skymind/skil/model/AddExampleRequest'), require('../ai/skymind/skil/model/AddModelHistoryRequest'), require('../ai/skymind/skil/model/AddResourceRequest'), require('../ai/skymind/skil/model/AggregatePrediction'), require('../ai/skymind/skil/model/Base64NDArrayBody'), require('../ai/skymind/skil/model/Base64NDArrayBodyKNN'), require('../ai/skymind/skil/model/BatchCSVRecord'), require('../ai/skymind/skil/model/BestModel'), require('../ai/skymind/skil/model/ClassificationResult'), require('../ai/skymind/skil/model/CreateDeploymentRequest'), require('../ai/skymind/skil/model/CreateJobRequest'), require('../ai/skymind/skil/model/Credentials'), require('../ai/skymind/skil/model/DeploymentResponse'), require('../ai/skymind/skil/model/DetectionResult'), require('../ai/skymind/skil/model/DownloadOutputFileRequest'), require('../ai/skymind/skil/model/EvaluationResultsEntity'), require('../ai/skymind/skil/model/ExampleEntity'), require('../ai/skymind/skil/model/ExperimentEntity'), require('../ai/skymind/skil/model/FeedbackResponse'), require('../ai/skymind/skil/model/FileUploadList'), require('../ai/skymind/skil/model/ImportModelRequest'), require('../ai/skymind/skil/model/InlineResponse200'), require('../ai/skymind/skil/model/JobEntity'), require('../ai/skymind/skil/model/JsonArrayResponse'), require('../ai/skymind/skil/model/LogBatch'), require('../ai/skymind/skil/model/LogRequest'), require('../ai/skymind/skil/model/MetaData'), require('../ai/skymind/skil/model/MinibatchEntity'), require('../ai/skymind/skil/model/ModelEntity'), require('../ai/skymind/skil/model/ModelFeedBackRequest'), require('../ai/skymind/skil/model/ModelHistoryEntity'), require('../ai/skymind/skil/model/ModelInstanceEntity'), require('../ai/skymind/skil/model/ModelStatus'), require('../ai/skymind/skil/model/MultiClassClassificationResult'), require('../ai/skymind/skil/model/MultiPredictRequest'), require('../ai/skymind/skil/model/MultiPredictResponse'), require('../ai/skymind/skil/model/NearestNeighborRequest'), require('../ai/skymind/skil/model/NearestNeighborsResults'), require('../ai/skymind/skil/model/Prediction'), require('../ai/skymind/skil/model/Resource'), require('../ai/skymind/skil/model/ResourceCredentials'), require('../ai/skymind/skil/model/ResourceGroup'), require('../ai/skymind/skil/model/RetrainingStatus'), require('../ai/skymind/skil/model/RevisionsWritten'), require('../ai/skymind/skil/model/RollbackStatus'), require('../ai/skymind/skil/model/SetState'), require('../ai/skymind/skil/model/SingleCSVRecord'), require('../ai/skymind/skil/model/Token'), require('../ai/skymind/skil/model/UpdateBestModel'));
   } else {
     // Browser globals (root is window)
     if (!root.SkilClient) {
       root.SkilClient = {};
     }
-    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.AddCredentialsRequest, root.SkilClient.AddExampleRequest, root.SkilClient.AddModelHistoryRequest, root.SkilClient.AddResourceRequest, root.SkilClient.AggregatePrediction, root.SkilClient.Base64NDArrayBody, root.SkilClient.Base64NDArrayBodyKNN, root.SkilClient.BatchCSVRecord, root.SkilClient.BestModel, root.SkilClient.ClassificationResult, root.SkilClient.CreateDeploymentRequest, root.SkilClient.CreateJobRequest, root.SkilClient.Credentials, root.SkilClient.DeploymentResponse, root.SkilClient.DetectionResult, root.SkilClient.DownloadOutputFileRequest, root.SkilClient.EvaluationResultsEntity, root.SkilClient.ExampleEntity, root.SkilClient.ExperimentEntity, root.SkilClient.FileUploadList, root.SkilClient.ImportModelRequest, root.SkilClient.InlineResponse200, root.SkilClient.JobEntity, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.MetaData, root.SkilClient.MinibatchEntity, root.SkilClient.ModelEntity, root.SkilClient.ModelFeedBackRequest, root.SkilClient.ModelHistoryEntity, root.SkilClient.ModelInstanceEntity, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.MultiPredictRequest, root.SkilClient.MultiPredictResponse, root.SkilClient.NearestNeighborRequest, root.SkilClient.NearestNeighborsResults, root.SkilClient.Prediction, root.SkilClient.Resource, root.SkilClient.ResourceCredentials, root.SkilClient.ResourceGroup, root.SkilClient.SetState, root.SkilClient.SingleCSVRecord, root.SkilClient.Token, root.SkilClient.UpdateBestModel);
+    root.SkilClient.DefaultApi = factory(root.SkilClient.ApiClient, root.SkilClient.AccumulatedResults, root.SkilClient.AddCredentialsRequest, root.SkilClient.AddExampleRequest, root.SkilClient.AddModelHistoryRequest, root.SkilClient.AddResourceRequest, root.SkilClient.AggregatePrediction, root.SkilClient.Base64NDArrayBody, root.SkilClient.Base64NDArrayBodyKNN, root.SkilClient.BatchCSVRecord, root.SkilClient.BestModel, root.SkilClient.ClassificationResult, root.SkilClient.CreateDeploymentRequest, root.SkilClient.CreateJobRequest, root.SkilClient.Credentials, root.SkilClient.DeploymentResponse, root.SkilClient.DetectionResult, root.SkilClient.DownloadOutputFileRequest, root.SkilClient.EvaluationResultsEntity, root.SkilClient.ExampleEntity, root.SkilClient.ExperimentEntity, root.SkilClient.FeedbackResponse, root.SkilClient.FileUploadList, root.SkilClient.ImportModelRequest, root.SkilClient.InlineResponse200, root.SkilClient.JobEntity, root.SkilClient.JsonArrayResponse, root.SkilClient.LogBatch, root.SkilClient.LogRequest, root.SkilClient.MetaData, root.SkilClient.MinibatchEntity, root.SkilClient.ModelEntity, root.SkilClient.ModelFeedBackRequest, root.SkilClient.ModelHistoryEntity, root.SkilClient.ModelInstanceEntity, root.SkilClient.ModelStatus, root.SkilClient.MultiClassClassificationResult, root.SkilClient.MultiPredictRequest, root.SkilClient.MultiPredictResponse, root.SkilClient.NearestNeighborRequest, root.SkilClient.NearestNeighborsResults, root.SkilClient.Prediction, root.SkilClient.Resource, root.SkilClient.ResourceCredentials, root.SkilClient.ResourceGroup, root.SkilClient.RetrainingStatus, root.SkilClient.RevisionsWritten, root.SkilClient.RollbackStatus, root.SkilClient.SetState, root.SkilClient.SingleCSVRecord, root.SkilClient.Token, root.SkilClient.UpdateBestModel);
   }
-}(this, function(ApiClient, AddCredentialsRequest, AddExampleRequest, AddModelHistoryRequest, AddResourceRequest, AggregatePrediction, Base64NDArrayBody, Base64NDArrayBodyKNN, BatchCSVRecord, BestModel, ClassificationResult, CreateDeploymentRequest, CreateJobRequest, Credentials, DeploymentResponse, DetectionResult, DownloadOutputFileRequest, EvaluationResultsEntity, ExampleEntity, ExperimentEntity, FileUploadList, ImportModelRequest, InlineResponse200, JobEntity, JsonArrayResponse, LogBatch, LogRequest, MetaData, MinibatchEntity, ModelEntity, ModelFeedBackRequest, ModelHistoryEntity, ModelInstanceEntity, ModelStatus, MultiClassClassificationResult, MultiPredictRequest, MultiPredictResponse, NearestNeighborRequest, NearestNeighborsResults, Prediction, Resource, ResourceCredentials, ResourceGroup, SetState, SingleCSVRecord, Token, UpdateBestModel) {
+}(this, function(ApiClient, AccumulatedResults, AddCredentialsRequest, AddExampleRequest, AddModelHistoryRequest, AddResourceRequest, AggregatePrediction, Base64NDArrayBody, Base64NDArrayBodyKNN, BatchCSVRecord, BestModel, ClassificationResult, CreateDeploymentRequest, CreateJobRequest, Credentials, DeploymentResponse, DetectionResult, DownloadOutputFileRequest, EvaluationResultsEntity, ExampleEntity, ExperimentEntity, FeedbackResponse, FileUploadList, ImportModelRequest, InlineResponse200, JobEntity, JsonArrayResponse, LogBatch, LogRequest, MetaData, MinibatchEntity, ModelEntity, ModelFeedBackRequest, ModelHistoryEntity, ModelInstanceEntity, ModelStatus, MultiClassClassificationResult, MultiPredictRequest, MultiPredictResponse, NearestNeighborRequest, NearestNeighborsResults, Prediction, Resource, ResourceCredentials, ResourceGroup, RetrainingStatus, RevisionsWritten, RollbackStatus, SetState, SingleCSVRecord, Token, UpdateBestModel) {
   'use strict';
 
   /**
@@ -46,6 +46,46 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
+
+    /**
+     * Callback function to receive the result of the accumulatedResults operation.
+     * @callback module:ai/skymind/skil/DefaultApi~accumulatedResultsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/AccumulatedResults} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Tells how many retraining examples have labels associated with them.
+     * @param {module:ai/skymind/skil/DefaultApi~accumulatedResultsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/AccumulatedResults}
+     */
+    this.accumulatedResults = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = AccumulatedResults;
+
+      return this.apiClient.callApi(
+        '/accumulatedresults', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the addCredentials operation.
@@ -300,6 +340,113 @@
 
       return this.apiClient.callApi(
         '/rpc/{modelHistoryServerId}/experiment', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the addFeedbackBinary operation.
+     * @callback module:ai/skymind/skil/DefaultApi~addFeedbackBinaryCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/FeedbackResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} id Batch ID to retrain the model with and get feedback for.
+     * @param {module:ai/skymind/skil/model/String} type The type of the labels array.
+     * @param {Object} opts Optional parameters
+     * @param {File} opts.file The labels file to upload.
+     * @param {module:ai/skymind/skil/DefaultApi~addFeedbackBinaryCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/FeedbackResponse}
+     */
+    this.addFeedbackBinary = function(id, type, opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling addFeedbackBinary");
+      }
+
+      // verify the required parameter 'type' is set
+      if (type === undefined || type === null) {
+        throw new Error("Missing the required parameter 'type' when calling addFeedbackBinary");
+      }
+
+
+      var pathParams = {
+        'id': id,
+        'type': type
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+        'file': opts['file']
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['multipart/form-data'];
+      var accepts = ['application/json'];
+      var returnType = FeedbackResponse;
+
+      return this.apiClient.callApi(
+        '/feedback/{id}/{type}', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the addFeedbackJson operation.
+     * @callback module:ai/skymind/skil/DefaultApi~addFeedbackJsonCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/FeedbackResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Gets the retraining feedback for the given batch ID.
+     * @param {String} id Batch ID to retrain the model with and get feedback for.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:ai/skymind/skil/model/[Number]>} opts.labels The associated labels (one-hot vectors) with the batch for retraining.
+     * @param {module:ai/skymind/skil/DefaultApi~addFeedbackJsonCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/FeedbackResponse}
+     */
+    this.addFeedbackJson = function(id, opts, callback) {
+      opts = opts || {};
+      var postBody = opts['labels'];
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling addFeedbackJson");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = FeedbackResponse;
+
+      return this.apiClient.callApi(
+        '/feedback/{id}/json', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -573,7 +720,7 @@
 
     /**
      * Adds a resource group
-     * @param {module:ai/skymind/skil/model/null} groupName Name of the resource group
+     * @param {String} groupName Name of the resource group
      * @param {module:ai/skymind/skil/DefaultApi~addResourceGroupCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ResourceGroup}
      */
@@ -909,6 +1056,46 @@
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the clearState operation.
+     * @callback module:ai/skymind/skil/DefaultApi~clearStateCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/FeedbackResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Clears the accumulated data for retraining.
+     * @param {module:ai/skymind/skil/DefaultApi~clearStateCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/FeedbackResponse}
+     */
+    this.clearState = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = FeedbackResponse;
+
+      return this.apiClient.callApi(
+        '/clear', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1720,14 +1907,14 @@
      * @param {String} id the GUID for mapping the results in the detections
      * @param {Boolean} needsPreprocessing (true) if the image needs preprocessing
      * @param {Number} threshold A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-     * @param {File} imageFile the image file to detect objects from
+     * @param {File} file the image file to detect objects from
      * @param {String} deploymentName Name of the deployment group
      * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
      * @param {module:ai/skymind/skil/DefaultApi~detectobjectsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/DetectionResult}
      */
-    this.detectobjects = function(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName, callback) {
+    this.detectobjects = function(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -1745,9 +1932,9 @@
         throw new Error("Missing the required parameter 'threshold' when calling detectobjects");
       }
 
-      // verify the required parameter 'imageFile' is set
-      if (imageFile === undefined || imageFile === null) {
-        throw new Error("Missing the required parameter 'imageFile' when calling detectobjects");
+      // verify the required parameter 'file' is set
+      if (file === undefined || file === null) {
+        throw new Error("Missing the required parameter 'file' when calling detectobjects");
       }
 
       // verify the required parameter 'deploymentName' is set
@@ -1781,7 +1968,7 @@
         'id': id,
         'needsPreprocessing': needsPreprocessing,
         'threshold': threshold,
-        'imageFile': imageFile
+        'file': file
       };
 
       var authNames = ['api_key'];
@@ -1889,6 +2076,162 @@
     }
 
     /**
+     * Callback function to receive the result of the getArray operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getArrayCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the memory mapped array based on the array type.
+     * The array is specified through a file path, in the configuration object, during model server deployment.
+     * @param {module:ai/skymind/skil/model/String} arrayType The format in which the memory mapped array is returned.
+     * @param {module:ai/skymind/skil/DefaultApi~getArrayCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.getArray = function(arrayType, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'arrayType' is set
+      if (arrayType === undefined || arrayType === null) {
+        throw new Error("Missing the required parameter 'arrayType' when calling getArray");
+      }
+
+
+      var pathParams = {
+        'arrayType': arrayType
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json', 'application/octet-stream'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/array/{arrayType}', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getArrayIndices operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getArrayIndicesCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the memory mapped array indices based on the array type.
+     * @param {module:ai/skymind/skil/model/String} arrayType Format in which the memory mapped array is returned in.
+     * @param {Object} opts Optional parameters
+     * @param {module:ai/skymind/skil/model/null} opts.input Input indices array
+     * @param {module:ai/skymind/skil/DefaultApi~getArrayIndicesCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.getArrayIndices = function(arrayType, opts, callback) {
+      opts = opts || {};
+      var postBody = opts['input'];
+
+      // verify the required parameter 'arrayType' is set
+      if (arrayType === undefined || arrayType === null) {
+        throw new Error("Missing the required parameter 'arrayType' when calling getArrayIndices");
+      }
+
+
+      var pathParams = {
+        'arrayType': arrayType
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json', 'application/octet-stream'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/array/indices/{arrayType}', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getArrayRange operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getArrayRangeCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the memory mapped array within a range based on the array type.
+     * @param {module:ai/skymind/skil/model/String} arrayType Format in which the memory mapped array is returned in.
+     * @param {Number} from 
+     * @param {Number} to 
+     * @param {module:ai/skymind/skil/DefaultApi~getArrayRangeCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.getArrayRange = function(arrayType, from, to, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'arrayType' is set
+      if (arrayType === undefined || arrayType === null) {
+        throw new Error("Missing the required parameter 'arrayType' when calling getArrayRange");
+      }
+
+      // verify the required parameter 'from' is set
+      if (from === undefined || from === null) {
+        throw new Error("Missing the required parameter 'from' when calling getArrayRange");
+      }
+
+      // verify the required parameter 'to' is set
+      if (to === undefined || to === null) {
+        throw new Error("Missing the required parameter 'to' when calling getArrayRange");
+      }
+
+
+      var pathParams = {
+        'arrayType': arrayType,
+        'from': from,
+        'to': to
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json', 'application/octet-stream'];
+      var accepts = ['application/json'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/array/range/{from}/{to}/{arrayType}', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getBestModelAmongModelIds operation.
      * @callback module:ai/skymind/skil/DefaultApi~getBestModelAmongModelIdsCallback
      * @param {String} error Error message, if any.
@@ -1983,6 +2326,45 @@
 
       return this.apiClient.callApi(
         '/resources/credentials/{credentialId}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getCurrentModel operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getCurrentModelCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Returns the current model being used for retraining.
+     * @param {module:ai/skymind/skil/DefaultApi~getCurrentModelCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.getCurrentModel = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/octet-stream'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/model', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2246,6 +2628,46 @@
 
       return this.apiClient.callApi(
         '/jobs/{jobIdOrType}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getLastEvaluation operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getLastEvaluationCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/EvaluationResultsEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the last evaluation specifications from the current model.
+     * @param {module:ai/skymind/skil/DefaultApi~getLastEvaluationCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/EvaluationResultsEntity}
+     */
+    this.getLastEvaluation = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = EvaluationResultsEntity;
+
+      return this.apiClient.callApi(
+        '/lastevaluation', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -2831,6 +3253,46 @@
     }
 
     /**
+     * Callback function to receive the result of the isTraining operation.
+     * @callback module:ai/skymind/skil/DefaultApi~isTrainingCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/RetrainingStatus} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get the retraining status
+     * @param {module:ai/skymind/skil/DefaultApi~isTrainingCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/RetrainingStatus}
+     */
+    this.isTraining = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = RetrainingStatus;
+
+      return this.apiClient.callApi(
+        '/istraining', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the jsonarray operation.
      * @callback module:ai/skymind/skil/DefaultApi~jsonarrayCallback
      * @param {String} error Error message, if any.
@@ -3042,14 +3504,21 @@
 
     /**
      * List all of the experiments in every model history / workspace
+     * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {module:ai/skymind/skil/DefaultApi~listAllExperimentsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:ai/skymind/skil/model/ExperimentEntity>}
      */
-    this.listAllExperiments = function(callback) {
+    this.listAllExperiments = function(modelHistoryServerId, callback) {
       var postBody = null;
+
+      // verify the required parameter 'modelHistoryServerId' is set
+      if (modelHistoryServerId === undefined || modelHistoryServerId === null) {
+        throw new Error("Missing the required parameter 'modelHistoryServerId' when calling listAllExperiments");
+      }
 
 
       var pathParams = {
+        'modelHistoryServerId': modelHistoryServerId
       };
       var queryParams = {
       };
@@ -3556,17 +4025,20 @@
 
     /**
      * Update the model to be served
+     * @param {File} file The model file to update with (.pb file)
      * @param {String} deploymentName Name of the deployment group
      * @param {String} versionName Version name of the endpoint. The default value is \&quot;default\&quot;
      * @param {String} modelName ID or name of the deployed model
-     * @param {Object} opts Optional parameters
-     * @param {File} opts.file The model file to update with (.pb file)
      * @param {module:ai/skymind/skil/DefaultApi~modelupdateCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:ai/skymind/skil/model/ModelStatus}
      */
-    this.modelupdate = function(deploymentName, versionName, modelName, opts, callback) {
-      opts = opts || {};
+    this.modelupdate = function(file, deploymentName, versionName, modelName, callback) {
       var postBody = null;
+
+      // verify the required parameter 'file' is set
+      if (file === undefined || file === null) {
+        throw new Error("Missing the required parameter 'file' when calling modelupdate");
+      }
 
       // verify the required parameter 'deploymentName' is set
       if (deploymentName === undefined || deploymentName === null) {
@@ -3596,7 +4068,7 @@
       var headerParams = {
       };
       var formParams = {
-        'file': opts['file']
+        'file': file
       };
 
       var authNames = ['api_key'];
@@ -3830,6 +4302,46 @@
     }
 
     /**
+     * Callback function to receive the result of the numRevisions operation.
+     * @callback module:ai/skymind/skil/DefaultApi~numRevisionsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/RevisionsWritten} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Gets the number of retrained models written with retraining.
+     * @param {module:ai/skymind/skil/DefaultApi~numRevisionsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/RevisionsWritten}
+     */
+    this.numRevisions = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = RevisionsWritten;
+
+      return this.apiClient.callApi(
+        '/numrevisions', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the predict operation.
      * @callback module:ai/skymind/skil/DefaultApi~predictCallback
      * @param {String} error Error message, if any.
@@ -3891,6 +4403,121 @@
 
       return this.apiClient.callApi(
         '/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the predictError operation.
+     * @callback module:ai/skymind/skil/DefaultApi~predictErrorCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+     * These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+     * @param {module:ai/skymind/skil/model/String} operation 
+     * @param {module:ai/skymind/skil/model/String} inputType Type of the input data.
+     * @param {Object} opts Optional parameters
+     * @param {module:ai/skymind/skil/model/null} opts.inputData 
+     * @param {module:ai/skymind/skil/DefaultApi~predictErrorCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.predictError = function(operation, inputType, opts, callback) {
+      opts = opts || {};
+      var postBody = opts['inputData'];
+
+      // verify the required parameter 'operation' is set
+      if (operation === undefined || operation === null) {
+        throw new Error("Missing the required parameter 'operation' when calling predictError");
+      }
+
+      // verify the required parameter 'inputType' is set
+      if (inputType === undefined || inputType === null) {
+        throw new Error("Missing the required parameter 'inputType' when calling predictError");
+      }
+
+
+      var pathParams = {
+        'operation': operation,
+        'inputType': inputType
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/{operation}/{inputType}/error', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the predictV2 operation.
+     * @callback module:ai/skymind/skil/DefaultApi~predictV2Callback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+     * @param {module:ai/skymind/skil/model/String} operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+     * @param {module:ai/skymind/skil/model/String} inputType Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+     * @param {Object} opts Optional parameters
+     * @param {module:ai/skymind/skil/model/null} opts.inputData The input data when the content type is \&quot;application/json\&quot;
+     * @param {File} opts.inputData2 The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot;
+     * @param {module:ai/skymind/skil/DefaultApi~predictV2Callback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.predictV2 = function(operation, inputType, opts, callback) {
+      opts = opts || {};
+      var postBody = opts['inputData'];
+
+      // verify the required parameter 'operation' is set
+      if (operation === undefined || operation === null) {
+        throw new Error("Missing the required parameter 'operation' when calling predictV2");
+      }
+
+      // verify the required parameter 'inputType' is set
+      if (inputType === undefined || inputType === null) {
+        throw new Error("Missing the required parameter 'inputType' when calling predictV2");
+      }
+
+
+      var pathParams = {
+        'operation': operation,
+        'inputType': inputType
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+        'inputData': opts['inputData2']
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json', 'multipart/form-data'];
+      var accepts = ['application/json'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/{operation}/{inputType}', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -4096,6 +4723,63 @@
     }
 
     /**
+     * Callback function to receive the result of the rawPredictBinary operation.
+     * @callback module:ai/skymind/skil/DefaultApi~rawPredictBinaryCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+     * @param {module:ai/skymind/skil/model/String} inputType Input data type.
+     * @param {module:ai/skymind/skil/model/String} outputType Binary output data type.
+     * @param {Object} opts Optional parameters
+     * @param {File} opts.inputData The input file to upload.
+     * @param {module:ai/skymind/skil/DefaultApi~rawPredictBinaryCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.rawPredictBinary = function(inputType, outputType, opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'inputType' is set
+      if (inputType === undefined || inputType === null) {
+        throw new Error("Missing the required parameter 'inputType' when calling rawPredictBinary");
+      }
+
+      // verify the required parameter 'outputType' is set
+      if (outputType === undefined || outputType === null) {
+        throw new Error("Missing the required parameter 'outputType' when calling rawPredictBinary");
+      }
+
+
+      var pathParams = {
+        'inputType': inputType,
+        'outputType': outputType
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+        'inputData': opts['inputData']
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['multipart/form-data'];
+      var accepts = ['application/octet-stream'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/raw/{inputType}/{outputType}', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the refreshJobStatus operation.
      * @callback module:ai/skymind/skil/DefaultApi~refreshJobStatusCallback
      * @param {String} error Error message, if any.
@@ -4197,6 +4881,53 @@
 
       return this.apiClient.callApi(
         '/deployment/{deploymentId}/model/{modelId}', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the rollback operation.
+     * @callback module:ai/skymind/skil/DefaultApi~rollbackCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/RollbackStatus} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Rollback to a previous revision of the model.
+     * @param {Number} index Model revision index.
+     * @param {module:ai/skymind/skil/DefaultApi~rollbackCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/RollbackStatus}
+     */
+    this.rollback = function(index, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'index' is set
+      if (index === undefined || index === null) {
+        throw new Error("Missing the required parameter 'index' when calling rollback");
+      }
+
+
+      var pathParams = {
+        'index': index
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = RollbackStatus;
+
+      return this.apiClient.callApi(
+        '/rollback/{index}', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

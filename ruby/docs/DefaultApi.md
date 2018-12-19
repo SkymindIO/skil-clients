@@ -4,11 +4,14 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**accumulated_results**](DefaultApi.md#accumulated_results) | **GET** /accumulatedresults | Tells how many retraining examples have labels associated with them.
 [**add_credentials**](DefaultApi.md#add_credentials) | **POST** /resources/credentials | Adds credentials
 [**add_evaluation_result**](DefaultApi.md#add_evaluation_result) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
 [**add_example_for_batch**](DefaultApi.md#add_example_for_batch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 [**add_example_to_minibatch**](DefaultApi.md#add_example_to_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
 [**add_experiment**](DefaultApi.md#add_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+[**add_feedback_binary**](DefaultApi.md#add_feedback_binary) | **POST** /feedback/{id}/{type} | 
+[**add_feedback_json**](DefaultApi.md#add_feedback_json) | **POST** /feedback/{id}/json | Gets the retraining feedback for the given batch ID.
 [**add_minibatch**](DefaultApi.md#add_minibatch) | **POST** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
 [**add_model_feedback**](DefaultApi.md#add_model_feedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**add_model_history**](DefaultApi.md#add_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
@@ -20,6 +23,7 @@ Method | HTTP request | Description
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**clear_state**](DefaultApi.md#clear_state) | **POST** /clear | Clears the accumulated data for retraining.
 [**create_job**](DefaultApi.md#create_job) | **POST** /jobs/{jobIdOrType} | Create a job
 [**create_model_history**](DefaultApi.md#create_model_history) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 [**delete_credentials_by_id**](DefaultApi.md#delete_credentials_by_id) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
@@ -39,13 +43,18 @@ Method | HTTP request | Description
 [**detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
 [**download_job_output_file**](DefaultApi.md#download_job_output_file) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
 [**get_all_jobs**](DefaultApi.md#get_all_jobs) | **GET** /jobs | Get a list of all available jobs
+[**get_array**](DefaultApi.md#get_array) | **POST** /array/{arrayType} | Get the memory mapped array based on the array type.
+[**get_array_indices**](DefaultApi.md#get_array_indices) | **POST** /array/indices/{arrayType} | Get the memory mapped array indices based on the array type.
+[**get_array_range**](DefaultApi.md#get_array_range) | **POST** /array/range/{from}/{to}/{arrayType} | Get the memory mapped array within a range based on the array type.
 [**get_best_model_among_model_ids**](DefaultApi.md#get_best_model_among_model_ids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 [**get_credentials_by_id**](DefaultApi.md#get_credentials_by_id) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
+[**get_current_model**](DefaultApi.md#get_current_model) | **GET** /model | Returns the current model being used for retraining.
 [**get_evaluation_for_model_id**](DefaultApi.md#get_evaluation_for_model_id) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
 [**get_examples_for_minibatch**](DefaultApi.md#get_examples_for_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**get_experiment**](DefaultApi.md#get_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**get_experiments_for_model_history**](DefaultApi.md#get_experiments_for_model_history) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
 [**get_job_by_id**](DefaultApi.md#get_job_by_id) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
+[**get_last_evaluation**](DefaultApi.md#get_last_evaluation) | **GET** /lastevaluation | Get the last evaluation specifications from the current model.
 [**get_minibatch**](DefaultApi.md#get_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**get_model_history**](DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**get_model_instance**](DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
@@ -58,6 +67,7 @@ Method | HTTP request | Description
 [**get_resource_groups**](DefaultApi.md#get_resource_groups) | **GET** /resources/groups | Get a list of all the resource groups
 [**get_resources**](DefaultApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**get_resources_from_group**](DefaultApi.md#get_resources_from_group) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
+[**is_training**](DefaultApi.md#is_training) | **GET** /istraining | Get the retraining status
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -74,12 +84,17 @@ Method | HTTP request | Description
 [**multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
 [**multipredict**](DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
 [**multipredictimage**](DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+[**num_revisions**](DefaultApi.md#num_revisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 [**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+[**predict_error**](DefaultApi.md#predict_error) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+[**predict_v2**](DefaultApi.md#predict_v2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**raw_predict_binary**](DefaultApi.md#raw_predict_binary) | **POST** /raw/{inputType}/{outputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**refresh_job_status**](DefaultApi.md#refresh_job_status) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
 [**reimport_model**](DefaultApi.md#reimport_model) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**rollback**](DefaultApi.md#rollback) | **POST** /rollback/{index} | Rollback to a previous revision of the model.
 [**run_a_job**](DefaultApi.md#run_a_job) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transform_csv**](DefaultApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 [**transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
@@ -93,6 +108,52 @@ Method | HTTP request | Description
 [**update_experiment**](DefaultApi.md#update_experiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**update_model_history**](DefaultApi.md#update_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
+
+
+# **accumulated_results**
+> AccumulatedResults accumulated_results
+
+Tells how many retraining examples have labels associated with them.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+begin
+  #Tells how many retraining examples have labels associated with them.
+  result = api_instance.accumulated_results
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->accumulated_results: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AccumulatedResults**](AccumulatedResults.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 
 
 # **add_credentials**
@@ -355,6 +416,120 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExperimentEntity**](ExperimentEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **add_feedback_binary**
+> FeedbackResponse add_feedback_binary(id, type, opts)
+
+
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+id = 'id_example' # String | Batch ID to retrain the model with and get feedback for.
+
+type = 'type_example' # String | The type of the labels array.
+
+opts = { 
+  file: File.new('/path/to/file.txt') # File | The labels file to upload.
+}
+
+begin
+  result = api_instance.add_feedback_binary(id, type, opts)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->add_feedback_binary: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Batch ID to retrain the model with and get feedback for. | 
+ **type** | **String**| The type of the labels array. | 
+ **file** | **File**| The labels file to upload. | [optional] 
+
+### Return type
+
+[**FeedbackResponse**](FeedbackResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+
+# **add_feedback_json**
+> FeedbackResponse add_feedback_json(id, opts)
+
+Gets the retraining feedback for the given batch ID.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+id = 'id_example' # String | Batch ID to retrain the model with and get feedback for.
+
+opts = { 
+  labels: [SkilCient::Array<Array<Float>>.new] # Array<Array<Float>> | The associated labels (one-hot vectors) with the batch for retraining.
+}
+
+begin
+  #Gets the retraining feedback for the given batch ID.
+  result = api_instance.add_feedback_json(id, opts)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->add_feedback_json: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Batch ID to retrain the model with and get feedback for. | 
+ **labels** | **Array&lt;Array&lt;Float&gt;&gt;**| The associated labels (one-hot vectors) with the batch for retraining. | [optional] 
+
+### Return type
+
+[**FeedbackResponse**](FeedbackResponse.md)
 
 ### Authorization
 
@@ -658,7 +833,7 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-group_name = SkilCient::null.new #  | Name of the resource group
+group_name = 'group_name_example' # String | Name of the resource group
 
 
 begin
@@ -674,7 +849,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | [****](.md)| Name of the resource group | 
+ **group_name** | **String**| Name of the resource group | 
 
 ### Return type
 
@@ -980,6 +1155,52 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+
+# **clear_state**
+> FeedbackResponse clear_state
+
+Clears the accumulated data for retraining.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+begin
+  #Clears the accumulated data for retraining.
+  result = api_instance.clear_state
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->clear_state: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**FeedbackResponse**](FeedbackResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -1831,7 +2052,7 @@ This endpoint does not need any parameter.
 
 
 # **detectobjects**
-> DetectionResult detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name)
+> DetectionResult detectobjects(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name)
 
 Detect the objects, given a (input) prediction request
 
@@ -1855,7 +2076,7 @@ needs_preprocessing = true # BOOLEAN | (true) if the image needs preprocessing
 
 threshold = 3.4 # Float | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
 
-image_file = File.new('/path/to/file.txt') # File | the image file to detect objects from
+file = File.new('/path/to/file.txt') # File | the image file to detect objects from
 
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
@@ -1866,7 +2087,7 @@ model_name = 'model_name_example' # String | ID or name of the deployed model
 
 begin
   #Detect the objects, given a (input) prediction request
-  result = api_instance.detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name)
+  result = api_instance.detectobjects(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->detectobjects: #{e}"
@@ -1880,7 +2101,7 @@ Name | Type | Description  | Notes
  **id** | **String**| the GUID for mapping the results in the detections | 
  **needs_preprocessing** | **BOOLEAN**| (true) if the image needs preprocessing | 
  **threshold** | **Float**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
- **image_file** | **File**| the image file to detect objects from | 
+ **file** | **File**| the image file to detect objects from | 
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **String**| ID or name of the deployed model | 
@@ -2000,6 +2221,171 @@ This endpoint does not need any parameter.
 
 
 
+# **get_array**
+> get_array(array_type)
+
+Get the memory mapped array based on the array type.
+
+The array is specified through a file path, in the configuration object, during model server deployment.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+array_type = 'array_type_example' # String | The format in which the memory mapped array is returned.
+
+
+begin
+  #Get the memory mapped array based on the array type.
+  api_instance.get_array(array_type)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_array: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **array_type** | **String**| The format in which the memory mapped array is returned. | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/octet-stream
+
+
+
+# **get_array_indices**
+> get_array_indices(array_type, opts)
+
+Get the memory mapped array indices based on the array type.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+array_type = 'array_type_example' # String | Format in which the memory mapped array is returned in.
+
+opts = { 
+  input: SkilCient::null.new #  | Input indices array
+}
+
+begin
+  #Get the memory mapped array indices based on the array type.
+  api_instance.get_array_indices(array_type, opts)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_array_indices: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **array_type** | **String**| Format in which the memory mapped array is returned in. | 
+ **input** | [****](.md)| Input indices array | [optional] 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/octet-stream
+
+
+
+# **get_array_range**
+> get_array_range(array_type, from, to)
+
+Get the memory mapped array within a range based on the array type.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+array_type = 'array_type_example' # String | Format in which the memory mapped array is returned in.
+
+from = 56 # Integer | 
+
+to = 56 # Integer | 
+
+
+begin
+  #Get the memory mapped array within a range based on the array type.
+  api_instance.get_array_range(array_type, from, to)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_array_range: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **array_type** | **String**| Format in which the memory mapped array is returned in. | 
+ **from** | **Integer**|  | 
+ **to** | **Integer**|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/octet-stream
+ - **Accept**: application/json
+
+
+
 # **get_best_model_among_model_ids**
 > ModelInstanceEntity get_best_model_among_model_ids(model_history_server_id, best_model)
 
@@ -2104,6 +2490,51 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+
+
+# **get_current_model**
+> get_current_model
+
+Returns the current model being used for retraining.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+begin
+  #Returns the current model being used for retraining.
+  api_instance.get_current_model
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_current_model: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/octet-stream
 
 
 
@@ -2367,6 +2798,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_last_evaluation**
+> EvaluationResultsEntity get_last_evaluation
+
+Get the last evaluation specifications from the current model.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+begin
+  #Get the last evaluation specifications from the current model.
+  result = api_instance.get_last_evaluation
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_last_evaluation: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**EvaluationResultsEntity**](EvaluationResultsEntity.md)
 
 ### Authorization
 
@@ -3005,6 +3482,52 @@ Name | Type | Description  | Notes
 
 
 
+# **is_training**
+> RetrainingStatus is_training
+
+Get the retraining status
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+begin
+  #Get the retraining status
+  result = api_instance.is_training
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->is_training: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**RetrainingStatus**](RetrainingStatus.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
 # **jsonarray**
 > JsonArrayResponse jsonarray(body, deployment_name, version_name, model_name)
 
@@ -3191,7 +3714,7 @@ Name | Type | Description  | Notes
 
 
 # **list_all_experiments**
-> Array&lt;ExperimentEntity&gt; list_all_experiments
+> Array&lt;ExperimentEntity&gt; list_all_experiments(model_history_server_id)
 
 List all of the experiments in every model history / workspace
 
@@ -3209,9 +3732,12 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
+model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+
+
 begin
   #List all of the experiments in every model history / workspace
-  result = api_instance.list_all_experiments
+  result = api_instance.list_all_experiments(model_history_server_id)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->list_all_experiments: #{e}"
@@ -3219,7 +3745,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
 
 ### Return type
 
@@ -3692,7 +4221,7 @@ Name | Type | Description  | Notes
 
 
 # **modelupdate**
-> ModelStatus modelupdate(deployment_name, version_name, model_name, opts)
+> ModelStatus modelupdate(file, deployment_name, version_name, model_name)
 
 Update the model to be served
 
@@ -3710,19 +4239,18 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
+file = File.new('/path/to/file.txt') # File | The model file to update with (.pb file)
+
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
 version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
 
 model_name = 'model_name_example' # String | ID or name of the deployed model
 
-opts = { 
-  file: File.new('/path/to/file.txt') # File | The model file to update with (.pb file)
-}
 
 begin
   #Update the model to be served
-  result = api_instance.modelupdate(deployment_name, version_name, model_name, opts)
+  result = api_instance.modelupdate(file, deployment_name, version_name, model_name)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->modelupdate: #{e}"
@@ -3733,10 +4261,10 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **file** | **File**| The model file to update with (.pb file) | 
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **String**| ID or name of the deployed model | 
- **file** | **File**| The model file to update with (.pb file) | [optional] 
 
 ### Return type
 
@@ -3946,6 +4474,52 @@ Name | Type | Description  | Notes
 
 
 
+# **num_revisions**
+> RevisionsWritten num_revisions
+
+Gets the number of retrained models written with retraining.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+begin
+  #Gets the number of retrained models written with retraining.
+  result = api_instance.num_revisions
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->num_revisions: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**RevisionsWritten**](RevisionsWritten.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
 # **predict**
 > Prediction predict(body, deployment_name, version_name, model_name)
 
@@ -4003,6 +4577,126 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **predict_error**
+> predict_error(operation, input_type, opts)
+
+Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+
+These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+operation = 'operation_example' # String | 
+
+input_type = 'input_type_example' # String | Type of the input data.
+
+opts = { 
+  input_data: SkilCient::null.new #  | 
+}
+
+begin
+  #Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+  api_instance.predict_error(operation, input_type, opts)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->predict_error: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **operation** | **String**|  | 
+ **input_type** | **String**| Type of the input data. | 
+ **input_data** | [****](.md)|  | [optional] 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **predict_v2**
+> predict_v2(operation, input_type, opts)
+
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+operation = 'operation_example' # String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
+
+input_type = 'input_type_example' # String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
+
+opts = { 
+  input_data: SkilCient::null.new, #  | The input data when the content type is \"application/json\"
+  input_data2: File.new('/path/to/file.txt') # File | The input file to upload, containing the input data when the content type is \"multipart/form-data\"
+}
+
+begin
+  #Runs inference based on the input data. Output is defined relative to the output adapter specified.
+  api_instance.predict_v2(operation, input_type, opts)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->predict_v2: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **operation** | **String**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
+ **input_type** | **String**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
+ **input_data** | [****](.md)| The input data when the content type is \&quot;application/json\&quot; | [optional] 
+ **input_data2** | **File**| The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; | [optional] 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
  - **Accept**: application/json
 
 
@@ -4191,6 +4885,64 @@ Name | Type | Description  | Notes
 
 
 
+# **raw_predict_binary**
+> raw_predict_binary(input_type, output_type, opts)
+
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+input_type = 'input_type_example' # String | Input data type.
+
+output_type = 'output_type_example' # String | Binary output data type.
+
+opts = { 
+  input_data: File.new('/path/to/file.txt') # File | The input file to upload.
+}
+
+begin
+  #Runs inference based on the input data. Output is defined relative to the output adapter specified.
+  api_instance.raw_predict_binary(input_type, output_type, opts)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->raw_predict_binary: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_type** | **String**| Input data type. | 
+ **output_type** | **String**| Binary output data type. | 
+ **input_data** | **File**| The input file to upload. | [optional] 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+
+
 # **refresh_job_status**
 > JobEntity refresh_job_status(job_id)
 
@@ -4289,6 +5041,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelEntity**](ModelEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **rollback**
+> RollbackStatus rollback(index)
+
+Rollback to a previous revision of the model.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+index = 56 # Integer | Model revision index.
+
+
+begin
+  #Rollback to a previous revision of the model.
+  result = api_instance.rollback(index)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->rollback: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **index** | **Integer**| Model revision index. | 
+
+### Return type
+
+[**RollbackStatus**](RollbackStatus.md)
 
 ### Authorization
 

@@ -11,6 +11,41 @@ import Alamofire
 
 open class DefaultAPI: APIBase {
     /**
+     Tells how many retraining examples have labels associated with them.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func accumulatedResults(completion: @escaping ((_ data: AccumulatedResults?, _ error: ErrorResponse?) -> Void)) {
+        accumulatedResultsWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Tells how many retraining examples have labels associated with them.
+     - GET /accumulatedresults
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "accumulatedDataWithLabels" : 0,
+  "accumulatedDataWithOutLabels" : 6
+}}]
+     - returns: RequestBuilder<AccumulatedResults> 
+     */
+    open class func accumulatedResultsWithRequestBuilder() -> RequestBuilder<AccumulatedResults> {
+        let path = "/accumulatedresults"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<AccumulatedResults>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Adds credentials
      - parameter addCredentialsRequest: (body) Add credentials request object 
      - parameter completion: completion handler to receive the data and the error objects
@@ -250,6 +285,106 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     * enum for parameter type
+     */
+    public enum ModelType_addFeedbackBinary: String { 
+        case numpy = "numpy"
+        case nd4j = "nd4j"
+    }
+
+    /**
+     - parameter id: (path) Batch ID to retrain the model with and get feedback for. 
+     - parameter type: (path) The type of the labels array. 
+     - parameter file: (form) The labels file to upload. (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func addFeedbackBinary(id: String, type: ModelType_addFeedbackBinary, file: URL? = nil, completion: @escaping ((_ data: FeedbackResponse?, _ error: ErrorResponse?) -> Void)) {
+        addFeedbackBinaryWithRequestBuilder(id: id, type: type, file: file).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     - POST /feedback/{id}/{type}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "accumulatedSoFar" : 6,
+  "retrainThreshold" : 0
+}}]
+     - parameter id: (path) Batch ID to retrain the model with and get feedback for. 
+     - parameter type: (path) The type of the labels array. 
+     - parameter file: (form) The labels file to upload. (optional)
+     - returns: RequestBuilder<FeedbackResponse> 
+     */
+    open class func addFeedbackBinaryWithRequestBuilder(id: String, type: ModelType_addFeedbackBinary, file: URL? = nil) -> RequestBuilder<FeedbackResponse> {
+        var path = "/feedback/{id}/{type}"
+        let idPreEscape = "\(id)"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let typePreEscape = "\(type.rawValue)"
+        let typePostEscape = typePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{type}", with: typePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let formParams: [String:Any?] = [
+            "file": file
+        ]
+
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<FeedbackResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Gets the retraining feedback for the given batch ID.
+     - parameter id: (path) Batch ID to retrain the model with and get feedback for. 
+     - parameter labels: (body) The associated labels (one-hot vectors) with the batch for retraining. (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func addFeedbackJson(id: String, labels: [[Double]]? = nil, completion: @escaping ((_ data: FeedbackResponse?, _ error: ErrorResponse?) -> Void)) {
+        addFeedbackJsonWithRequestBuilder(id: id, labels: labels).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Gets the retraining feedback for the given batch ID.
+     - POST /feedback/{id}/json
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "accumulatedSoFar" : 6,
+  "retrainThreshold" : 0
+}}]
+     - parameter id: (path) Batch ID to retrain the model with and get feedback for. 
+     - parameter labels: (body) The associated labels (one-hot vectors) with the batch for retraining. (optional)
+     - returns: RequestBuilder<FeedbackResponse> 
+     */
+    open class func addFeedbackJsonWithRequestBuilder(id: String, labels: [[Double]]? = nil) -> RequestBuilder<FeedbackResponse> {
+        var path = "/feedback/{id}/json"
+        let idPreEscape = "\(id)"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = labels?.encodeToJSON()
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<FeedbackResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
      Adds a minibatch
      - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter minibatchEntity: (body) The minibatch entity to add 
@@ -471,7 +606,7 @@ open class DefaultAPI: APIBase {
      - parameter groupName: (body) Name of the resource group 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addResourceGroup(groupName: , completion: @escaping ((_ data: ResourceGroup?, _ error: ErrorResponse?) -> Void)) {
+    open class func addResourceGroup(groupName: String, completion: @escaping ((_ data: ResourceGroup?, _ error: ErrorResponse?) -> Void)) {
         addResourceGroupWithRequestBuilder(groupName: groupName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -493,7 +628,7 @@ open class DefaultAPI: APIBase {
      - parameter groupName: (body) Name of the resource group 
      - returns: RequestBuilder<ResourceGroup> 
      */
-    open class func addResourceGroupWithRequestBuilder(groupName: ) -> RequestBuilder<ResourceGroup> {
+    open class func addResourceGroupWithRequestBuilder(groupName: String) -> RequestBuilder<ResourceGroup> {
         let path = "/resources/add/group"
         let URLString = SkilClientAPI.basePath + path
         let parameters = groupName.encodeToJSON()
@@ -761,6 +896,41 @@ open class DefaultAPI: APIBase {
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ClassificationResult>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Clears the accumulated data for retraining.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func clearState(completion: @escaping ((_ data: FeedbackResponse?, _ error: ErrorResponse?) -> Void)) {
+        clearStateWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Clears the accumulated data for retraining.
+     - POST /clear
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "accumulatedSoFar" : 6,
+  "retrainThreshold" : 0
+}}]
+     - returns: RequestBuilder<FeedbackResponse> 
+     */
+    open class func clearStateWithRequestBuilder() -> RequestBuilder<FeedbackResponse> {
+        let path = "/clear"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<FeedbackResponse>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -1622,14 +1792,14 @@ open class DefaultAPI: APIBase {
      - parameter id: (form) the GUID for mapping the results in the detections 
      - parameter needsPreprocessing: (form) (true) if the image needs preprocessing 
      - parameter threshold: (form) A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
-     - parameter imageFile: (form) the image file to detect objects from 
+     - parameter file: (form) the image file to detect objects from 
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func detectobjects(id: String, needsPreprocessing: Bool, threshold: Float, imageFile: URL, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: DetectionResult?, _ error: ErrorResponse?) -> Void)) {
-        detectobjectsWithRequestBuilder(id: id, needsPreprocessing: needsPreprocessing, threshold: threshold, imageFile: imageFile, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
+    open class func detectobjects(id: String, needsPreprocessing: Bool, threshold: Float, file: URL, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: DetectionResult?, _ error: ErrorResponse?) -> Void)) {
+        detectobjectsWithRequestBuilder(id: id, needsPreprocessing: needsPreprocessing, threshold: threshold, file: file, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1662,13 +1832,13 @@ open class DefaultAPI: APIBase {
      - parameter id: (form) the GUID for mapping the results in the detections 
      - parameter needsPreprocessing: (form) (true) if the image needs preprocessing 
      - parameter threshold: (form) A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. 
-     - parameter imageFile: (form) the image file to detect objects from 
+     - parameter file: (form) the image file to detect objects from 
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<DetectionResult> 
      */
-    open class func detectobjectsWithRequestBuilder(id: String, needsPreprocessing: Bool, threshold: Float, imageFile: URL, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<DetectionResult> {
+    open class func detectobjectsWithRequestBuilder(id: String, needsPreprocessing: Bool, threshold: Float, file: URL, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<DetectionResult> {
         var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1684,7 +1854,7 @@ open class DefaultAPI: APIBase {
             "id": id,
             "needsPreprocessing": needsPreprocessing,
             "threshold": threshold,
-            "imageFile": imageFile
+            "file": file
         ]
 
         let nonNullParameters = APIHelper.rejectNil(formParams)
@@ -1786,6 +1956,154 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     * enum for parameter arrayType
+     */
+    public enum ArrayType_getArray: String { 
+        case json = "json"
+        case numpy = "numpy"
+        case nd4j = "nd4j"
+    }
+
+    /**
+     Get the memory mapped array based on the array type.
+     - parameter arrayType: (path) The format in which the memory mapped array is returned. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getArray(arrayType: ArrayType_getArray, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        getArrayWithRequestBuilder(arrayType: arrayType).execute { (response, error) -> Void in
+            completion(error)
+        }
+    }
+
+
+    /**
+     Get the memory mapped array based on the array type.
+     - POST /array/{arrayType}
+     - The array is specified through a file path, in the configuration object, during model server deployment.
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - parameter arrayType: (path) The format in which the memory mapped array is returned. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getArrayWithRequestBuilder(arrayType: ArrayType_getArray) -> RequestBuilder<Void> {
+        var path = "/array/{arrayType}"
+        let arrayTypePreEscape = "\(arrayType.rawValue)"
+        let arrayTypePostEscape = arrayTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{arrayType}", with: arrayTypePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     * enum for parameter arrayType
+     */
+    public enum ArrayType_getArrayIndices: String { 
+        case json = "json"
+        case numpy = "numpy"
+        case nd4j = "nd4j"
+    }
+
+    /**
+     Get the memory mapped array indices based on the array type.
+     - parameter arrayType: (path) Format in which the memory mapped array is returned in. 
+     - parameter input: (body) Input indices array (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getArrayIndices(arrayType: ArrayType_getArrayIndices, input: ? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        getArrayIndicesWithRequestBuilder(arrayType: arrayType, input: input).execute { (response, error) -> Void in
+            completion(error)
+        }
+    }
+
+
+    /**
+     Get the memory mapped array indices based on the array type.
+     - POST /array/indices/{arrayType}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - parameter arrayType: (path) Format in which the memory mapped array is returned in. 
+     - parameter input: (body) Input indices array (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getArrayIndicesWithRequestBuilder(arrayType: ArrayType_getArrayIndices, input: ? = nil) -> RequestBuilder<Void> {
+        var path = "/array/indices/{arrayType}"
+        let arrayTypePreEscape = "\(arrayType.rawValue)"
+        let arrayTypePostEscape = arrayTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{arrayType}", with: arrayTypePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = input?.encodeToJSON()
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     * enum for parameter arrayType
+     */
+    public enum ArrayType_getArrayRange: String { 
+        case json = "json"
+        case numpy = "numpy"
+        case nd4j = "nd4j"
+    }
+
+    /**
+     Get the memory mapped array within a range based on the array type.
+     - parameter arrayType: (path) Format in which the memory mapped array is returned in. 
+     - parameter from: (path)  
+     - parameter to: (path)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getArrayRange(arrayType: ArrayType_getArrayRange, from: Int32, to: Int32, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        getArrayRangeWithRequestBuilder(arrayType: arrayType, from: from, to: to).execute { (response, error) -> Void in
+            completion(error)
+        }
+    }
+
+
+    /**
+     Get the memory mapped array within a range based on the array type.
+     - POST /array/range/{from}/{to}/{arrayType}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - parameter arrayType: (path) Format in which the memory mapped array is returned in. 
+     - parameter from: (path)  
+     - parameter to: (path)  
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getArrayRangeWithRequestBuilder(arrayType: ArrayType_getArrayRange, from: Int32, to: Int32) -> RequestBuilder<Void> {
+        var path = "/array/range/{from}/{to}/{arrayType}"
+        let arrayTypePreEscape = "\(arrayType.rawValue)"
+        let arrayTypePostEscape = arrayTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{arrayType}", with: arrayTypePostEscape, options: .literal, range: nil)
+        let fromPreEscape = "\(from)"
+        let fromPostEscape = fromPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{from}", with: fromPostEscape, options: .literal, range: nil)
+        let toPreEscape = "\(to)"
+        let toPostEscape = toPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{to}", with: toPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Gets the best model among the given model instance IDs, based on the evaluation type and column metric
      - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter bestModel: (body) Object encapsulating the model ids, eval type and column metric name 
@@ -1875,6 +2193,37 @@ open class DefaultAPI: APIBase {
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ResourceCredentials>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Returns the current model being used for retraining.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getCurrentModel(completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        getCurrentModelWithRequestBuilder().execute { (response, error) -> Void in
+            completion(error)
+        }
+    }
+
+
+    /**
+     Returns the current model being used for retraining.
+     - GET /model
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getCurrentModelWithRequestBuilder() -> RequestBuilder<Void> {
+        let path = "/model"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -2161,6 +2510,56 @@ open class DefaultAPI: APIBase {
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<JobEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Get the last evaluation specifications from the current model.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getLastEvaluation(completion: @escaping ((_ data: EvaluationResultsEntity?, _ error: ErrorResponse?) -> Void)) {
+        getLastEvaluationWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get the last evaluation specifications from the current model.
+     - GET /lastevaluation
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "r2" : 2.027123023002322,
+  "binaryThresholds" : "binaryThresholds",
+  "created" : 0,
+  "precision" : 1.4658129805029452,
+  "accuracy" : 5.637376656633329,
+  "f1" : 6.027456183070403,
+  "meanAbsoluteError" : 9.301444243932576,
+  "auc" : 7.061401241503109,
+  "evaluation" : "evaluation",
+  "evalId" : "evalId",
+  "meanRelativeError" : 3.616076749251911,
+  "evalVersion" : 4,
+  "evalName" : "evalName",
+  "modelInstanceId" : "modelInstanceId",
+  "recall" : 5.962133916683182,
+  "rmse" : 2.3021358869347655,
+  "binaryThreshold" : 7.386281948385884
+}}]
+     - returns: RequestBuilder<EvaluationResultsEntity> 
+     */
+    open class func getLastEvaluationWithRequestBuilder() -> RequestBuilder<EvaluationResultsEntity> {
+        let path = "/lastevaluation"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<EvaluationResultsEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -2761,6 +3160,40 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     Get the retraining status
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func isTraining(completion: @escaping ((_ data: RetrainingStatus?, _ error: ErrorResponse?) -> Void)) {
+        isTrainingWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get the retraining status
+     - GET /istraining
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "istraining" : true
+}}]
+     - returns: RequestBuilder<RetrainingStatus> 
+     */
+    open class func isTrainingWithRequestBuilder() -> RequestBuilder<RetrainingStatus> {
+        let path = "/istraining"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<RetrainingStatus>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Run inference on the input and returns it as a JsonArrayResponse
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
@@ -2934,10 +3367,11 @@ open class DefaultAPI: APIBase {
 
     /**
      List all of the experiments in every model history / workspace
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func listAllExperiments(completion: @escaping ((_ data: [ExperimentEntity]?, _ error: ErrorResponse?) -> Void)) {
-        listAllExperimentsWithRequestBuilder().execute { (response, error) -> Void in
+    open class func listAllExperiments(modelHistoryServerId: String, completion: @escaping ((_ data: [ExperimentEntity]?, _ error: ErrorResponse?) -> Void)) {
+        listAllExperimentsWithRequestBuilder(modelHistoryServerId: modelHistoryServerId).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -2972,10 +3406,14 @@ open class DefaultAPI: APIBase {
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
 } ]}]
+     - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - returns: RequestBuilder<[ExperimentEntity]> 
      */
-    open class func listAllExperimentsWithRequestBuilder() -> RequestBuilder<[ExperimentEntity]> {
-        let path = "/rpc/{modelHistoryServerId}/experiments"
+    open class func listAllExperimentsWithRequestBuilder(modelHistoryServerId: String) -> RequestBuilder<[ExperimentEntity]> {
+        var path = "/rpc/{modelHistoryServerId}/experiments"
+        let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
+        let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelHistoryServerId}", with: modelHistoryServerIdPostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -3403,14 +3841,14 @@ open class DefaultAPI: APIBase {
 
     /**
      Update the model to be served
+     - parameter file: (form) The model file to update with (.pb file) 
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
-     - parameter file: (form) The model file to update with (.pb file) (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func modelupdate(deploymentName: String, versionName: String, modelName: String, file: URL? = nil, completion: @escaping ((_ data: ModelStatus?, _ error: ErrorResponse?) -> Void)) {
-        modelupdateWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, modelName: modelName, file: file).execute { (response, error) -> Void in
+    open class func modelupdate(file: URL, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: ModelStatus?, _ error: ErrorResponse?) -> Void)) {
+        modelupdateWithRequestBuilder(file: file, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3425,13 +3863,13 @@ open class DefaultAPI: APIBase {
      - examples: [{contentType=application/json, example={
   "status" : 100
 }}]
+     - parameter file: (form) The model file to update with (.pb file) 
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
-     - parameter file: (form) The model file to update with (.pb file) (optional)
      - returns: RequestBuilder<ModelStatus> 
      */
-    open class func modelupdateWithRequestBuilder(deploymentName: String, versionName: String, modelName: String, file: URL? = nil) -> RequestBuilder<ModelStatus> {
+    open class func modelupdateWithRequestBuilder(file: URL, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<ModelStatus> {
         var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -3654,6 +4092,40 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     Gets the number of retrained models written with retraining.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func numRevisions(completion: @escaping ((_ data: RevisionsWritten?, _ error: ErrorResponse?) -> Void)) {
+        numRevisionsWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Gets the number of retrained models written with retraining.
+     - GET /numrevisions
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "numRevisions" : 0
+}}]
+     - returns: RequestBuilder<RevisionsWritten> 
+     */
+    open class func numRevisionsWithRequestBuilder() -> RequestBuilder<RevisionsWritten> {
+        let path = "/numrevisions"
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<RevisionsWritten>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Run inference on the input array.
      - parameter body: (body) The input NDArray 
      - parameter deploymentName: (path) Name of the deployment group 
@@ -3704,6 +4176,140 @@ open class DefaultAPI: APIBase {
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<Prediction>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     * enum for parameter operation
+     */
+    public enum Operation_predictError: String { 
+        case regression = "REGRESSION"
+        case classification = "CLASSIFICATION"
+        case raw = "RAW"
+    }
+
+    /**
+     * enum for parameter inputType
+     */
+    public enum InputType_predictError: String { 
+        case csv = "CSV"
+        case dictionary = "DICTIONARY"
+        case csvpubsub = "CSVPUBSUB"
+        case dictionarypubsub = "DICTIONARYPUBSUB"
+    }
+
+    /**
+     Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+     - parameter operation: (path)  
+     - parameter inputType: (path) Type of the input data. 
+     - parameter inputData: (body)  (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func predictError(operation: Operation_predictError, inputType: InputType_predictError, inputData: ? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        predictErrorWithRequestBuilder(operation: operation, inputType: inputType, inputData: inputData).execute { (response, error) -> Void in
+            completion(error)
+        }
+    }
+
+
+    /**
+     Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+     - POST /{operation}/{inputType}/error
+     - These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - parameter operation: (path)  
+     - parameter inputType: (path) Type of the input data. 
+     - parameter inputData: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func predictErrorWithRequestBuilder(operation: Operation_predictError, inputType: InputType_predictError, inputData: ? = nil) -> RequestBuilder<Void> {
+        var path = "/{operation}/{inputType}/error"
+        let operationPreEscape = "\(operation.rawValue)"
+        let operationPostEscape = operationPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{operation}", with: operationPostEscape, options: .literal, range: nil)
+        let inputTypePreEscape = "\(inputType.rawValue)"
+        let inputTypePostEscape = inputTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{inputType}", with: inputTypePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = inputData?.encodeToJSON()
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     * enum for parameter operation
+     */
+    public enum Operation_predictV2: String { 
+        case regression = "REGRESSION"
+        case classification = "CLASSIFICATION"
+        case raw = "RAW"
+        case yolo = "YOLO"
+        case ssd = "SSD"
+        case rcnn = "RCNN"
+    }
+
+    /**
+     * enum for parameter inputType
+     */
+    public enum InputType_predictV2: String { 
+        case csv = "CSV"
+        case dictionary = "DICTIONARY"
+        case csvpubsub = "CSVPUBSUB"
+        case dictionarypubsub = "DICTIONARYPUBSUB"
+        case image = "IMAGE"
+        case numpy = "NUMPY"
+        case ndarray = "NDARRAY"
+        case json = "JSON"
+    }
+
+    /**
+     Runs inference based on the input data. Output is defined relative to the output adapter specified.
+     - parameter operation: (path) The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
+     - parameter inputType: (path) Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
+     - parameter inputData: (body) The input data when the content type is \&quot;application/json\&quot; (optional)
+     - parameter inputData2: (form) The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func predictV2(operation: Operation_predictV2, inputType: InputType_predictV2, inputData: ? = nil, inputData2: URL? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        predictV2WithRequestBuilder(operation: operation, inputType: inputType, inputData: inputData, inputData2: inputData2).execute { (response, error) -> Void in
+            completion(error)
+        }
+    }
+
+
+    /**
+     Runs inference based on the input data. Output is defined relative to the output adapter specified.
+     - POST /{operation}/{inputType}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - parameter operation: (path) The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
+     - parameter inputType: (path) Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
+     - parameter inputData: (body) The input data when the content type is \&quot;application/json\&quot; (optional)
+     - parameter inputData2: (form) The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func predictV2WithRequestBuilder(operation: Operation_predictV2, inputType: InputType_predictV2, inputData: ? = nil, inputData2: URL? = nil) -> RequestBuilder<Void> {
+        var path = "/{operation}/{inputType}"
+        let operationPreEscape = "\(operation.rawValue)"
+        let operationPostEscape = operationPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{operation}", with: operationPostEscape, options: .literal, range: nil)
+        let inputTypePreEscape = "\(inputType.rawValue)"
+        let inputTypePostEscape = inputTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{inputType}", with: inputTypePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = inputData?.encodeToJSON()
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -3877,6 +4483,74 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     * enum for parameter inputType
+     */
+    public enum InputType_rawPredictBinary: String { 
+        case image = "IMAGE"
+        case numpy = "NUMPY"
+        case ndarray = "NDARRAY"
+        case json = "JSON"
+    }
+
+    /**
+     * enum for parameter outputType
+     */
+    public enum OutputType_rawPredictBinary: String { 
+        case nd4j = "ND4J"
+        case numpy = "NUMPY"
+        case arrow = "ARROW"
+        case json = "JSON"
+    }
+
+    /**
+     Runs inference based on the input data. Output is defined relative to the output adapter specified.
+     - parameter inputType: (path) Input data type. 
+     - parameter outputType: (path) Binary output data type. 
+     - parameter inputData: (form) The input file to upload. (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func rawPredictBinary(inputType: InputType_rawPredictBinary, outputType: OutputType_rawPredictBinary, inputData: URL? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        rawPredictBinaryWithRequestBuilder(inputType: inputType, outputType: outputType, inputData: inputData).execute { (response, error) -> Void in
+            completion(error)
+        }
+    }
+
+
+    /**
+     Runs inference based on the input data. Output is defined relative to the output adapter specified.
+     - POST /raw/{inputType}/{outputType}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - parameter inputType: (path) Input data type. 
+     - parameter outputType: (path) Binary output data type. 
+     - parameter inputData: (form) The input file to upload. (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func rawPredictBinaryWithRequestBuilder(inputType: InputType_rawPredictBinary, outputType: OutputType_rawPredictBinary, inputData: URL? = nil) -> RequestBuilder<Void> {
+        var path = "/raw/{inputType}/{outputType}"
+        let inputTypePreEscape = "\(inputType.rawValue)"
+        let inputTypePostEscape = inputTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{inputType}", with: inputTypePostEscape, options: .literal, range: nil)
+        let outputTypePreEscape = "\(outputType.rawValue)"
+        let outputTypePostEscape = outputTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{outputType}", with: outputTypePostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let formParams: [String:Any?] = [
+            "inputData": inputData
+        ]
+
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Refresh the remote job status. Can be used for monitoring.
      - parameter jobId: (path) Job ID 
      - parameter completion: completion handler to receive the data and the error objects
@@ -3980,6 +4654,45 @@ open class DefaultAPI: APIBase {
         let requestBuilder: RequestBuilder<ModelEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Rollback to a previous revision of the model.
+     - parameter index: (path) Model revision index. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func rollback(index: Int32, completion: @escaping ((_ data: RollbackStatus?, _ error: ErrorResponse?) -> Void)) {
+        rollbackWithRequestBuilder(index: index).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Rollback to a previous revision of the model.
+     - POST /rollback/{index}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "status" : "status"
+}}]
+     - parameter index: (path) Model revision index. 
+     - returns: RequestBuilder<RollbackStatus> 
+     */
+    open class func rollbackWithRequestBuilder(index: Int32) -> RequestBuilder<RollbackStatus> {
+        var path = "/rollback/{index}"
+        let indexPreEscape = "\(index)"
+        let indexPostEscape = indexPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{index}", with: indexPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<RollbackStatus>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
 
     /**

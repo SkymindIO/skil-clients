@@ -14,6 +14,7 @@
 package ai.skymind.skil;
 
 import ai.skymind.ApiException;
+import ai.skymind.skil.model.AccumulatedResults;
 import ai.skymind.skil.model.AddCredentialsRequest;
 import ai.skymind.skil.model.AddExampleRequest;
 import ai.skymind.skil.model.AddModelHistoryRequest;
@@ -30,10 +31,10 @@ import ai.skymind.skil.model.Credentials;
 import ai.skymind.skil.model.DeploymentResponse;
 import ai.skymind.skil.model.DetectionResult;
 import ai.skymind.skil.model.DownloadOutputFileRequest;
-import ai.skymind.skil.model.ERRORUNKNOWN;
 import ai.skymind.skil.model.EvaluationResultsEntity;
 import ai.skymind.skil.model.ExampleEntity;
 import ai.skymind.skil.model.ExperimentEntity;
+import ai.skymind.skil.model.FeedbackResponse;
 import java.io.File;
 import ai.skymind.skil.model.FileUploadList;
 import ai.skymind.skil.model.ImportModelRequest;
@@ -58,6 +59,9 @@ import ai.skymind.skil.model.Prediction;
 import ai.skymind.skil.model.Resource;
 import ai.skymind.skil.model.ResourceCredentials;
 import ai.skymind.skil.model.ResourceGroup;
+import ai.skymind.skil.model.RetrainingStatus;
+import ai.skymind.skil.model.RevisionsWritten;
+import ai.skymind.skil.model.RollbackStatus;
 import ai.skymind.skil.model.SetState;
 import ai.skymind.skil.model.SingleCSVRecord;
 import ai.skymind.skil.model.Token;
@@ -78,6 +82,21 @@ public class DefaultApiTest {
 
     private final DefaultApi api = new DefaultApi();
 
+    
+    /**
+     * Tells how many retraining examples have labels associated with them.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void accumulatedResultsTest() throws ApiException {
+        AccumulatedResults response = api.accumulatedResults();
+
+        // TODO: test validations
+    }
     
     /**
      * Adds credentials
@@ -159,6 +178,41 @@ public class DefaultApiTest {
         String modelHistoryServerId = null;
         ExperimentEntity experimentEntity = null;
         ExperimentEntity response = api.addExperiment(modelHistoryServerId, experimentEntity);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void addFeedbackBinaryTest() throws ApiException {
+        String id = null;
+        String type = null;
+        File file = null;
+        FeedbackResponse response = api.addFeedbackBinary(id, type, file);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Gets the retraining feedback for the given batch ID.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void addFeedbackJsonTest() throws ApiException {
+        String id = null;
+        List<List<Double>> labels = null;
+        FeedbackResponse response = api.addFeedbackJson(id, labels);
 
         // TODO: test validations
     }
@@ -257,7 +311,7 @@ public class DefaultApiTest {
      */
     @Test
     public void addResourceGroupTest() throws ApiException {
-         groupName = null;
+        String groupName = null;
         ResourceGroup response = api.addResourceGroup(groupName);
 
         // TODO: test validations
@@ -350,6 +404,21 @@ public class DefaultApiTest {
         String modelName = null;
         File image = null;
         ClassificationResult response = api.classifyimage(deploymentName, versionName, modelName, image);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Clears the accumulated data for retraining.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void clearStateTest() throws ApiException {
+        FeedbackResponse response = api.clearState();
 
         // TODO: test validations
     }
@@ -630,11 +699,11 @@ public class DefaultApiTest {
         String id = null;
         Boolean needsPreprocessing = null;
         Float threshold = null;
-        File imageFile = null;
+        File file = null;
         String deploymentName = null;
         String versionName = null;
         String modelName = null;
-        DetectionResult response = api.detectobjects(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName);
+        DetectionResult response = api.detectobjects(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -672,6 +741,57 @@ public class DefaultApiTest {
     }
     
     /**
+     * Get the memory mapped array based on the array type.
+     *
+     * The array is specified through a file path, in the configuration object, during model server deployment.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getArrayTest() throws ApiException {
+        String arrayType = null;
+        api.getArray(arrayType);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get the memory mapped array indices based on the array type.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getArrayIndicesTest() throws ApiException {
+        String arrayType = null;
+         input = null;
+        api.getArrayIndices(arrayType, input);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get the memory mapped array within a range based on the array type.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getArrayRangeTest() throws ApiException {
+        String arrayType = null;
+        Integer from = null;
+        Integer to = null;
+        api.getArrayRange(arrayType, from, to);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Gets the best model among the given model instance IDs, based on the evaluation type and column metric
      *
      * 
@@ -700,6 +820,21 @@ public class DefaultApiTest {
     public void getCredentialsByIdTest() throws ApiException {
         Long credentialId = null;
         ResourceCredentials response = api.getCredentialsById(credentialId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Returns the current model being used for retraining.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCurrentModelTest() throws ApiException {
+        api.getCurrentModel();
 
         // TODO: test validations
     }
@@ -784,6 +919,21 @@ public class DefaultApiTest {
     public void getJobByIdTest() throws ApiException {
         Long jobIdOrType = null;
         JobEntity response = api.getJobById(jobIdOrType);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get the last evaluation specifications from the current model.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getLastEvaluationTest() throws ApiException {
+        EvaluationResultsEntity response = api.getLastEvaluation();
 
         // TODO: test validations
     }
@@ -915,7 +1065,7 @@ public class DefaultApiTest {
     @Test
     public void getResourceDetailsByIdTest() throws ApiException {
         Long resourceId = null;
-        ERRORUNKNOWN response = api.getResourceDetailsById(resourceId);
+        Object response = api.getResourceDetailsById(resourceId);
 
         // TODO: test validations
     }
@@ -978,6 +1128,21 @@ public class DefaultApiTest {
     public void getResourcesFromGroupTest() throws ApiException {
         Long resourceGroupId = null;
         List<Resource> response = api.getResourcesFromGroup(resourceGroupId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get the retraining status
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void isTrainingTest() throws ApiException {
+        RetrainingStatus response = api.isTraining();
 
         // TODO: test validations
     }
@@ -1049,7 +1214,8 @@ public class DefaultApiTest {
      */
     @Test
     public void listAllExperimentsTest() throws ApiException {
-        List<ExperimentEntity> response = api.listAllExperiments();
+        String modelHistoryServerId = null;
+        List<ExperimentEntity> response = api.listAllExperiments(modelHistoryServerId);
 
         // TODO: test validations
     }
@@ -1207,11 +1373,11 @@ public class DefaultApiTest {
      */
     @Test
     public void modelupdateTest() throws ApiException {
+        File file = null;
         String deploymentName = null;
         String versionName = null;
         String modelName = null;
-        File file = null;
-        ModelStatus response = api.modelupdate(deploymentName, versionName, modelName, file);
+        ModelStatus response = api.modelupdate(file, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -1276,6 +1442,21 @@ public class DefaultApiTest {
     }
     
     /**
+     * Gets the number of retrained models written with retraining.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void numRevisionsTest() throws ApiException {
+        RevisionsWritten response = api.numRevisions();
+
+        // TODO: test validations
+    }
+    
+    /**
      * Run inference on the input array.
      *
      * 
@@ -1290,6 +1471,43 @@ public class DefaultApiTest {
         String versionName = null;
         String modelName = null;
         Prediction response = api.predict(body, deploymentName, versionName, modelName);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+     *
+     * These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void predictErrorTest() throws ApiException {
+        String operation = null;
+        String inputType = null;
+         inputData = null;
+        api.predictError(operation, inputType, inputData);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void predictV2Test() throws ApiException {
+        String operation = null;
+        String inputType = null;
+         inputData = null;
+        File inputData2 = null;
+        api.predictV2(operation, inputType, inputData, inputData2);
 
         // TODO: test validations
     }
@@ -1352,6 +1570,24 @@ public class DefaultApiTest {
     }
     
     /**
+     * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void rawPredictBinaryTest() throws ApiException {
+        String inputType = null;
+        String outputType = null;
+        File inputData = null;
+        api.rawPredictBinary(inputType, outputType, inputData);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Refresh the remote job status. Can be used for monitoring.
      *
      * 
@@ -1381,6 +1617,22 @@ public class DefaultApiTest {
         String modelId = null;
         ImportModelRequest body = null;
         ModelEntity response = api.reimportModel(deploymentId, modelId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Rollback to a previous revision of the model.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void rollbackTest() throws ApiException {
+        Integer index = null;
+        RollbackStatus response = api.rollback(index);
 
         // TODO: test validations
     }
@@ -1433,7 +1685,7 @@ public class DefaultApiTest {
         String deploymentName = null;
         String versionName = null;
         String transformName = null;
-        ERRORUNKNOWN batchRecord = null;
+        Object batchRecord = null;
         Base64NDArrayBody response = api.transformarray(deploymentName, versionName, transformName, batchRecord);
 
         // TODO: test validations
@@ -1490,7 +1742,7 @@ public class DefaultApiTest {
         String deploymentName = null;
         String versionName = null;
         String transformName = null;
-        ERRORUNKNOWN singleRecord = null;
+        Object singleRecord = null;
         Base64NDArrayBody response = api.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
 
         // TODO: test validations
@@ -1528,7 +1780,7 @@ public class DefaultApiTest {
         String deploymentName = null;
         String versionName = null;
         String transformName = null;
-        ERRORUNKNOWN response = api.transformprocessGet(deploymentName, versionName, transformName);
+        Object response = api.transformprocessGet(deploymentName, versionName, transformName);
 
         // TODO: test validations
     }
@@ -1546,8 +1798,8 @@ public class DefaultApiTest {
         String deploymentName = null;
         String versionName = null;
         String transformName = null;
-        ERRORUNKNOWN transformProcess = null;
-        ERRORUNKNOWN response = api.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+        Object transformProcess = null;
+        Object response = api.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
 
         // TODO: test validations
     }

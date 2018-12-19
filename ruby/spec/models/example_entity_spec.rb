@@ -44,7 +44,7 @@ describe 'ExampleEntity' do
     end
   end
 
-  describe 'test attribute "int_row_number"' do
+  describe 'test attribute "row_number"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

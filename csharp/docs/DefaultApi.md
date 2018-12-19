@@ -4,11 +4,14 @@ All URIs are relative to *http://localhost:9008*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AccumulatedResults**](DefaultApi.md#accumulatedresults) | **GET** /accumulatedresults | Tells how many retraining examples have labels associated with them.
 [**AddCredentials**](DefaultApi.md#addcredentials) | **POST** /resources/credentials | Adds credentials
 [**AddEvaluationResult**](DefaultApi.md#addevaluationresult) | **POST** /rpc/{modelHistoryServerId}/model/revisions/evaluations/ | Adds an evaluation result
 [**AddExampleForBatch**](DefaultApi.md#addexampleforbatch) | **POST** /rpc/{modelHistoryServerId}/model/exampleForBatch | Adds a number of examples to a minibatch ID given an AddExampleRequest.
 [**AddExampleToMinibatch**](DefaultApi.md#addexampletominibatch) | **POST** /rpc/{modelHistoryServerId}/model/example | Adds an example to a minibatch
 [**AddExperiment**](DefaultApi.md#addexperiment) | **POST** /rpc/{modelHistoryServerId}/experiment | Add an experiment, given an experiment entity
+[**AddFeedbackBinary**](DefaultApi.md#addfeedbackbinary) | **POST** /feedback/{id}/{type} | 
+[**AddFeedbackJson**](DefaultApi.md#addfeedbackjson) | **POST** /feedback/{id}/json | Gets the retraining feedback for the given batch ID.
 [**AddMinibatch**](DefaultApi.md#addminibatch) | **POST** /rpc/{modelHistoryServerId}/model/minibatch | Adds a minibatch
 [**AddModelFeedback**](DefaultApi.md#addmodelfeedback) | **POST** /rpc/{modelHistoryServerId}/model/feedback | Adds an evaluation feedback to the model against a given minibatch id.
 [**AddModelHistory**](DefaultApi.md#addmodelhistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory | Add a model history / workspace
@@ -20,6 +23,7 @@ Method | HTTP request | Description
 [**Classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**Classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**Classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
+[**ClearState**](DefaultApi.md#clearstate) | **POST** /clear | Clears the accumulated data for retraining.
 [**CreateJob**](DefaultApi.md#createjob) | **POST** /jobs/{jobIdOrType} | Create a job
 [**CreateModelHistory**](DefaultApi.md#createmodelhistory) | **POST** /rpc/{modelHistoryServerId}/model/revisions | Creates model History
 [**DeleteCredentialsById**](DefaultApi.md#deletecredentialsbyid) | **DELETE** /resources/credentials/{credentialId} | Delete credentials given an ID
@@ -39,13 +43,18 @@ Method | HTTP request | Description
 [**Detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
 [**DownloadJobOutputFile**](DefaultApi.md#downloadjoboutputfile) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
 [**GetAllJobs**](DefaultApi.md#getalljobs) | **GET** /jobs | Get a list of all available jobs
+[**GetArray**](DefaultApi.md#getarray) | **POST** /array/{arrayType} | Get the memory mapped array based on the array type.
+[**GetArrayIndices**](DefaultApi.md#getarrayindices) | **POST** /array/indices/{arrayType} | Get the memory mapped array indices based on the array type.
+[**GetArrayRange**](DefaultApi.md#getarrayrange) | **POST** /array/range/{from}/{to}/{arrayType} | Get the memory mapped array within a range based on the array type.
 [**GetBestModelAmongModelIds**](DefaultApi.md#getbestmodelamongmodelids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 [**GetCredentialsById**](DefaultApi.md#getcredentialsbyid) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
+[**GetCurrentModel**](DefaultApi.md#getcurrentmodel) | **GET** /model | Returns the current model being used for retraining.
 [**GetEvaluationForModelID**](DefaultApi.md#getevaluationformodelid) | **GET** /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID} | Gets the list of evaluation results entity, given a model instance ID
 [**GetExamplesForMinibatch**](DefaultApi.md#getexamplesforminibatch) | **GET** /rpc/{modelHistoryServerId}/model/example/{minibatchId} | Gets all the examples for a minibatch ID
 [**GetExperiment**](DefaultApi.md#getexperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Obtain an experiment&#39;s details, given its ID
 [**GetExperimentsForModelHistory**](DefaultApi.md#getexperimentsformodelhistory) | **GET** /rpc/{modelHistoryServerId}/experiments/{modelHistoryID} | Obtain all experiments for a model history / workspace
 [**GetJobById**](DefaultApi.md#getjobbyid) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
+[**GetLastEvaluation**](DefaultApi.md#getlastevaluation) | **GET** /lastevaluation | Get the last evaluation specifications from the current model.
 [**GetMinibatch**](DefaultApi.md#getminibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
 [**GetModelHistory**](DefaultApi.md#getmodelhistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**GetModelInstance**](DefaultApi.md#getmodelinstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
@@ -58,6 +67,7 @@ Method | HTTP request | Description
 [**GetResourceGroups**](DefaultApi.md#getresourcegroups) | **GET** /resources/groups | Get a list of all the resource groups
 [**GetResources**](DefaultApi.md#getresources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**GetResourcesFromGroup**](DefaultApi.md#getresourcesfromgroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
+[**IsTraining**](DefaultApi.md#istraining) | **GET** /istraining | Get the retraining status
 [**Jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**Knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
 [**Knnnew**](DefaultApi.md#knnnew) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew | Run a k nearest neighbors search on a NEW data point
@@ -74,12 +84,17 @@ Method | HTTP request | Description
 [**Multiclassify**](DefaultApi.md#multiclassify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify | Represents all of the labels for a given classification
 [**Multipredict**](DefaultApi.md#multipredict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict | Get the output from the network, based on the given INDArray[] input
 [**Multipredictimage**](DefaultApi.md#multipredictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage | Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
+[**NumRevisions**](DefaultApi.md#numrevisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 [**Predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
+[**PredictError**](DefaultApi.md#predicterror) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+[**PredictV2**](DefaultApi.md#predictv2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**Predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**Predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**Predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+[**RawPredictBinary**](DefaultApi.md#rawpredictbinary) | **POST** /raw/{inputType}/{outputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**RefreshJobStatus**](DefaultApi.md#refreshjobstatus) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
 [**ReimportModel**](DefaultApi.md#reimportmodel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**Rollback**](DefaultApi.md#rollback) | **POST** /rollback/{index} | Rollback to a previous revision of the model.
 [**RunAJob**](DefaultApi.md#runajob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**TransformCsv**](DefaultApi.md#transformcsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 [**Transformarray**](DefaultApi.md#transformarray) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray | Takes a batch input arrays and transforms it
@@ -94,6 +109,66 @@ Method | HTTP request | Description
 [**UpdateModelHistory**](DefaultApi.md#updatemodelhistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
 [**Upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
+
+<a name="accumulatedresults"></a>
+# **AccumulatedResults**
+> AccumulatedResults AccumulatedResults ()
+
+Tells how many retraining examples have labels associated with them.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class AccumulatedResultsExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Tells how many retraining examples have labels associated with them.
+                AccumulatedResults result = apiInstance.AccumulatedResults();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.AccumulatedResults: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AccumulatedResults**](AccumulatedResults.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="addcredentials"></a>
 # **AddCredentials**
@@ -411,6 +486,139 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExperimentEntity**](ExperimentEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="addfeedbackbinary"></a>
+# **AddFeedbackBinary**
+> FeedbackResponse AddFeedbackBinary (string id, string type, System.IO.Stream file = null)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class AddFeedbackBinaryExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var id = id_example;  // string | Batch ID to retrain the model with and get feedback for.
+            var type = type_example;  // string | The type of the labels array.
+            var file = new System.IO.Stream(); // System.IO.Stream | The labels file to upload. (optional) 
+
+            try
+            {
+                FeedbackResponse result = apiInstance.AddFeedbackBinary(id, type, file);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.AddFeedbackBinary: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Batch ID to retrain the model with and get feedback for. | 
+ **type** | **string**| The type of the labels array. | 
+ **file** | **System.IO.Stream**| The labels file to upload. | [optional] 
+
+### Return type
+
+[**FeedbackResponse**](FeedbackResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="addfeedbackjson"></a>
+# **AddFeedbackJson**
+> FeedbackResponse AddFeedbackJson (string id, List<List<double?>> labels = null)
+
+Gets the retraining feedback for the given batch ID.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class AddFeedbackJsonExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var id = id_example;  // string | Batch ID to retrain the model with and get feedback for.
+            var labels = ;  // List<List<double?>> | The associated labels (one-hot vectors) with the batch for retraining. (optional) 
+
+            try
+            {
+                // Gets the retraining feedback for the given batch ID.
+                FeedbackResponse result = apiInstance.AddFeedbackJson(id, labels);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.AddFeedbackJson: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Batch ID to retrain the model with and get feedback for. | 
+ **labels** | **List&lt;List&lt;double?&gt;&gt;**| The associated labels (one-hot vectors) with the batch for retraining. | [optional] 
+
+### Return type
+
+[**FeedbackResponse**](FeedbackResponse.md)
 
 ### Authorization
 
@@ -753,7 +961,7 @@ Name | Type | Description  | Notes
 
 <a name="addresourcegroup"></a>
 # **AddResourceGroup**
-> ResourceGroup AddResourceGroup ( groupName)
+> ResourceGroup AddResourceGroup (string groupName)
 
 Adds a resource group
 
@@ -777,7 +985,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var groupName = new (); //  | Name of the resource group
+            var groupName = groupName_example;  // string | Name of the resource group
 
             try
             {
@@ -798,7 +1006,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupName** | [****](.md)| Name of the resource group | 
+ **groupName** | **string**| Name of the resource group | 
 
 ### Return type
 
@@ -1152,6 +1360,66 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="clearstate"></a>
+# **ClearState**
+> FeedbackResponse ClearState ()
+
+Clears the accumulated data for retraining.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class ClearStateExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Clears the accumulated data for retraining.
+                FeedbackResponse result = apiInstance.ClearState();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.ClearState: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**FeedbackResponse**](FeedbackResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2190,7 +2458,7 @@ This endpoint does not need any parameter.
 
 <a name="detectobjects"></a>
 # **Detectobjects**
-> DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream imageFile, string deploymentName, string versionName, string modelName)
+> DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream file, string deploymentName, string versionName, string modelName)
 
 Detect the objects, given a (input) prediction request
 
@@ -2217,7 +2485,7 @@ namespace Example
             var id = id_example;  // string | the GUID for mapping the results in the detections
             var needsPreprocessing = true;  // bool? | (true) if the image needs preprocessing
             var threshold = 3.4;  // float? | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-            var imageFile = new System.IO.Stream(); // System.IO.Stream | the image file to detect objects from
+            var file = new System.IO.Stream(); // System.IO.Stream | the image file to detect objects from
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
@@ -2225,7 +2493,7 @@ namespace Example
             try
             {
                 // Detect the objects, given a (input) prediction request
-                DetectionResult result = apiInstance.Detectobjects(id, needsPreprocessing, threshold, imageFile, deploymentName, versionName, modelName);
+                DetectionResult result = apiInstance.Detectobjects(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2244,7 +2512,7 @@ Name | Type | Description  | Notes
  **id** | **string**| the GUID for mapping the results in the detections | 
  **needsPreprocessing** | **bool?**| (true) if the image needs preprocessing | 
  **threshold** | **float?**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
- **imageFile** | **System.IO.Stream**| the image file to detect objects from | 
+ **file** | **System.IO.Stream**| the image file to detect objects from | 
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
@@ -2389,6 +2657,203 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getarray"></a>
+# **GetArray**
+> void GetArray (string arrayType)
+
+Get the memory mapped array based on the array type.
+
+The array is specified through a file path, in the configuration object, during model server deployment.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetArrayExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var arrayType = arrayType_example;  // string | The format in which the memory mapped array is returned.
+
+            try
+            {
+                // Get the memory mapped array based on the array type.
+                apiInstance.GetArray(arrayType);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetArray: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **arrayType** | **string**| The format in which the memory mapped array is returned. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getarrayindices"></a>
+# **GetArrayIndices**
+> void GetArrayIndices (string arrayType,  input = null)
+
+Get the memory mapped array indices based on the array type.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetArrayIndicesExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var arrayType = arrayType_example;  // string | Format in which the memory mapped array is returned in.
+            var input = new (); //  | Input indices array (optional) 
+
+            try
+            {
+                // Get the memory mapped array indices based on the array type.
+                apiInstance.GetArrayIndices(arrayType, input);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetArrayIndices: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **arrayType** | **string**| Format in which the memory mapped array is returned in. | 
+ **input** | [****](.md)| Input indices array | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getarrayrange"></a>
+# **GetArrayRange**
+> void GetArrayRange (string arrayType, int? from, int? to)
+
+Get the memory mapped array within a range based on the array type.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetArrayRangeExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var arrayType = arrayType_example;  // string | Format in which the memory mapped array is returned in.
+            var from = 56;  // int? | 
+            var to = 56;  // int? | 
+
+            try
+            {
+                // Get the memory mapped array within a range based on the array type.
+                apiInstance.GetArrayRange(arrayType, from, to);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetArrayRange: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **arrayType** | **string**| Format in which the memory mapped array is returned in. | 
+ **from** | **int?**|  | 
+ **to** | **int?**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/octet-stream
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getbestmodelamongmodelids"></a>
 # **GetBestModelAmongModelIds**
 > ModelInstanceEntity GetBestModelAmongModelIds (string modelHistoryServerId, BestModel bestModel)
@@ -2516,6 +2981,65 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getcurrentmodel"></a>
+# **GetCurrentModel**
+> void GetCurrentModel ()
+
+Returns the current model being used for retraining.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetCurrentModelExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Returns the current model being used for retraining.
+                apiInstance.GetCurrentModel();
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetCurrentModel: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2835,6 +3359,66 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobEntity**](JobEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getlastevaluation"></a>
+# **GetLastEvaluation**
+> EvaluationResultsEntity GetLastEvaluation ()
+
+Get the last evaluation specifications from the current model.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetLastEvaluationExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Get the last evaluation specifications from the current model.
+                EvaluationResultsEntity result = apiInstance.GetLastEvaluation();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetLastEvaluation: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**EvaluationResultsEntity**](EvaluationResultsEntity.md)
 
 ### Authorization
 
@@ -3617,6 +4201,66 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="istraining"></a>
+# **IsTraining**
+> RetrainingStatus IsTraining ()
+
+Get the retraining status
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class IsTrainingExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Get the retraining status
+                RetrainingStatus result = apiInstance.IsTraining();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.IsTraining: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**RetrainingStatus**](RetrainingStatus.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="jsonarray"></a>
 # **Jsonarray**
 > JsonArrayResponse Jsonarray (Prediction body, string deploymentName, string versionName, string modelName)
@@ -3831,7 +4475,7 @@ Name | Type | Description  | Notes
 
 <a name="listallexperiments"></a>
 # **ListAllExperiments**
-> List<ExperimentEntity> ListAllExperiments ()
+> List<ExperimentEntity> ListAllExperiments (string modelHistoryServerId)
 
 List all of the experiments in every model history / workspace
 
@@ -3855,11 +4499,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
             try
             {
                 // List all of the experiments in every model history / workspace
-                List&lt;ExperimentEntity&gt; result = apiInstance.ListAllExperiments();
+                List&lt;ExperimentEntity&gt; result = apiInstance.ListAllExperiments(modelHistoryServerId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3872,7 +4517,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
 
 ### Return type
 
@@ -4428,7 +5076,7 @@ Name | Type | Description  | Notes
 
 <a name="modelupdate"></a>
 # **Modelupdate**
-> ModelStatus Modelupdate (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
+> ModelStatus Modelupdate (System.IO.Stream file, string deploymentName, string versionName, string modelName)
 
 Update the model to be served
 
@@ -4452,15 +5100,15 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var file = new System.IO.Stream(); // System.IO.Stream | The model file to update with (.pb file)
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
-            var file = new System.IO.Stream(); // System.IO.Stream | The model file to update with (.pb file) (optional) 
 
             try
             {
                 // Update the model to be served
-                ModelStatus result = apiInstance.Modelupdate(deploymentName, versionName, modelName, file);
+                ModelStatus result = apiInstance.Modelupdate(file, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4476,10 +5124,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **file** | **System.IO.Stream**| The model file to update with (.pb file) | 
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
- **file** | **System.IO.Stream**| The model file to update with (.pb file) | [optional] 
 
 ### Return type
 
@@ -4714,6 +5362,66 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="numrevisions"></a>
+# **NumRevisions**
+> RevisionsWritten NumRevisions ()
+
+Gets the number of retrained models written with retraining.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class NumRevisionsExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Gets the number of retrained models written with retraining.
+                RevisionsWritten result = apiInstance.NumRevisions();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.NumRevisions: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**RevisionsWritten**](RevisionsWritten.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="predict"></a>
 # **Predict**
 > Prediction Predict (Prediction body, string deploymentName, string versionName, string modelName)
@@ -4780,6 +5488,144 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="predicterror"></a>
+# **PredictError**
+> void PredictError (string operation, string inputType,  inputData = null)
+
+Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+
+These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class PredictErrorExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var operation = operation_example;  // string | 
+            var inputType = inputType_example;  // string | Type of the input data.
+            var inputData = new (); //  |  (optional) 
+
+            try
+            {
+                // Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+                apiInstance.PredictError(operation, inputType, inputData);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.PredictError: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **operation** | **string**|  | 
+ **inputType** | **string**| Type of the input data. | 
+ **inputData** | [****](.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="predictv2"></a>
+# **PredictV2**
+> void PredictV2 (string operation, string inputType,  inputData = null, System.IO.Stream inputData2 = null)
+
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class PredictV2Example
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var operation = operation_example;  // string | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
+            var inputType = inputType_example;  // string | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
+            var inputData = new (); //  | The input data when the content type is \"application/json\" (optional) 
+            var inputData2 = new System.IO.Stream(); // System.IO.Stream | The input file to upload, containing the input data when the content type is \"multipart/form-data\" (optional) 
+
+            try
+            {
+                // Runs inference based on the input data. Output is defined relative to the output adapter specified.
+                apiInstance.PredictV2(operation, inputType, inputData, inputData2);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.PredictV2: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **operation** | **string**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
+ **inputType** | **string**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
+ **inputData** | [****](.md)| The input data when the content type is \&quot;application/json\&quot; | [optional] 
+ **inputData2** | **System.IO.Stream**| The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4994,6 +5840,73 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="rawpredictbinary"></a>
+# **RawPredictBinary**
+> void RawPredictBinary (string inputType, string outputType, System.IO.Stream inputData = null)
+
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class RawPredictBinaryExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var inputType = inputType_example;  // string | Input data type.
+            var outputType = outputType_example;  // string | Binary output data type.
+            var inputData = new System.IO.Stream(); // System.IO.Stream | The input file to upload. (optional) 
+
+            try
+            {
+                // Runs inference based on the input data. Output is defined relative to the output adapter specified.
+                apiInstance.RawPredictBinary(inputType, outputType, inputData);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.RawPredictBinary: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inputType** | **string**| Input data type. | 
+ **outputType** | **string**| Binary output data type. | 
+ **inputData** | **System.IO.Stream**| The input file to upload. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="refreshjobstatus"></a>
 # **RefreshJobStatus**
 > JobEntity RefreshJobStatus (long? jobId)
@@ -5114,6 +6027,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelEntity**](ModelEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="rollback"></a>
+# **Rollback**
+> RollbackStatus Rollback (int? index)
+
+Rollback to a previous revision of the model.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class RollbackExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var index = 56;  // int? | Model revision index.
+
+            try
+            {
+                // Rollback to a previous revision of the model.
+                RollbackStatus result = apiInstance.Rollback(index);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.Rollback: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **index** | **int?**| Model revision index. | 
+
+### Return type
+
+[**RollbackStatus**](RollbackStatus.md)
 
 ### Authorization
 

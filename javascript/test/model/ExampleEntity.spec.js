@@ -68,8 +68,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property intRowNumber (base name: "int rowNumber")', function() {
-      // uncomment below and update the code to test the property intRowNumber
+    it('should have the property rowNumber (base name: "rowNumber")', function() {
+      // uncomment below and update the code to test the property rowNumber
       //var instance = new SkilClient.ExampleEntity();
       //expect(instance).to.be();
     });

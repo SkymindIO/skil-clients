@@ -33,6 +33,91 @@ class DefaultApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def accumulated_results(self, **kwargs):  # noqa: E501
+        """Tells how many retraining examples have labels associated with them.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.accumulated_results(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: AccumulatedResults
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.accumulated_results_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.accumulated_results_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def accumulated_results_with_http_info(self, **kwargs):  # noqa: E501
+        """Tells how many retraining examples have labels associated with them.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.accumulated_results_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: AccumulatedResults
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method accumulated_results" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/accumulatedresults', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AccumulatedResults',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def add_credentials(self, add_credentials_request, **kwargs):  # noqa: E501
         """Adds credentials  # noqa: E501
 
@@ -543,6 +628,216 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='ExperimentEntity',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def add_feedback_binary(self, id, type, **kwargs):  # noqa: E501
+        """add_feedback_binary  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.add_feedback_binary(id, type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str id: Batch ID to retrain the model with and get feedback for. (required)
+        :param str type: The type of the labels array. (required)
+        :param file file: The labels file to upload.
+        :return: FeedbackResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.add_feedback_binary_with_http_info(id, type, **kwargs)  # noqa: E501
+        else:
+            (data) = self.add_feedback_binary_with_http_info(id, type, **kwargs)  # noqa: E501
+            return data
+
+    def add_feedback_binary_with_http_info(self, id, type, **kwargs):  # noqa: E501
+        """add_feedback_binary  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.add_feedback_binary_with_http_info(id, type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str id: Batch ID to retrain the model with and get feedback for. (required)
+        :param str type: The type of the labels array. (required)
+        :param file file: The labels file to upload.
+        :return: FeedbackResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'type', 'file']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method add_feedback_binary" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `add_feedback_binary`")  # noqa: E501
+        # verify the required parameter 'type' is set
+        if ('type' not in params or
+                params['type'] is None):
+            raise ValueError("Missing the required parameter `type` when calling `add_feedback_binary`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+        if 'type' in params:
+            path_params['type'] = params['type']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in params:
+            local_var_files['file'] = params['file']  # noqa: E501
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/feedback/{id}/{type}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='FeedbackResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def add_feedback_json(self, id, **kwargs):  # noqa: E501
+        """Gets the retraining feedback for the given batch ID.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.add_feedback_json(id, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str id: Batch ID to retrain the model with and get feedback for. (required)
+        :param list[list[float]] labels: The associated labels (one-hot vectors) with the batch for retraining.
+        :return: FeedbackResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.add_feedback_json_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.add_feedback_json_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def add_feedback_json_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Gets the retraining feedback for the given batch ID.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.add_feedback_json_with_http_info(id, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str id: Batch ID to retrain the model with and get feedback for. (required)
+        :param list[list[float]] labels: The associated labels (one-hot vectors) with the batch for retraining.
+        :return: FeedbackResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'labels']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method add_feedback_json" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `add_feedback_json`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'labels' in params:
+            body_params = params['labels']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/feedback/{id}/json', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='FeedbackResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1076,7 +1371,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param  group_name: Name of the resource group (required)
+        :param str group_name: Name of the resource group (required)
         :return: ResourceGroup
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1097,7 +1392,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param  group_name: Name of the resource group (required)
+        :param str group_name: Name of the resource group (required)
         :return: ResourceGroup
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1722,6 +2017,91 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='ClassificationResult',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def clear_state(self, **kwargs):  # noqa: E501
+        """Clears the accumulated data for retraining.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.clear_state(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: FeedbackResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.clear_state_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.clear_state_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def clear_state_with_http_info(self, **kwargs):  # noqa: E501
+        """Clears the accumulated data for retraining.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.clear_state_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: FeedbackResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method clear_state" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/clear', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='FeedbackResponse',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -3289,19 +3669,19 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def detectobjects(self, id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
+    def detectobjects(self, id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Detect the objects, given a (input) prediction request  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.detectobjects(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, async=True)
+        >>> thread = api.detectobjects(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str id: the GUID for mapping the results in the detections (required)
         :param bool needs_preprocessing: (true) if the image needs preprocessing (required)
         :param float threshold: A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. (required)
-        :param file image_file: the image file to detect objects from (required)
+        :param file file: the image file to detect objects from (required)
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
@@ -3311,24 +3691,24 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
+            return self.detectobjects_with_http_info(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.detectobjects_with_http_info(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def detectobjects_with_http_info(self, id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
+    def detectobjects_with_http_info(self, id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Detect the objects, given a (input) prediction request  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.detectobjects_with_http_info(id, needs_preprocessing, threshold, image_file, deployment_name, version_name, model_name, async=True)
+        >>> thread = api.detectobjects_with_http_info(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
         :param str id: the GUID for mapping the results in the detections (required)
         :param bool needs_preprocessing: (true) if the image needs preprocessing (required)
         :param float threshold: A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. (required)
-        :param file image_file: the image file to detect objects from (required)
+        :param file file: the image file to detect objects from (required)
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
@@ -3337,7 +3717,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['id', 'needs_preprocessing', 'threshold', 'image_file', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
+        all_params = ['id', 'needs_preprocessing', 'threshold', 'file', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3364,10 +3744,10 @@ class DefaultApi(object):
         if ('threshold' not in params or
                 params['threshold'] is None):
             raise ValueError("Missing the required parameter `threshold` when calling `detectobjects`")  # noqa: E501
-        # verify the required parameter 'image_file' is set
-        if ('image_file' not in params or
-                params['image_file'] is None):
-            raise ValueError("Missing the required parameter `image_file` when calling `detectobjects`")  # noqa: E501
+        # verify the required parameter 'file' is set
+        if ('file' not in params or
+                params['file'] is None):
+            raise ValueError("Missing the required parameter `file` when calling `detectobjects`")  # noqa: E501
         # verify the required parameter 'deployment_name' is set
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
@@ -3403,8 +3783,8 @@ class DefaultApi(object):
             form_params.append(('needsPreprocessing', params['needs_preprocessing']))  # noqa: E501
         if 'threshold' in params:
             form_params.append(('threshold', params['threshold']))  # noqa: E501
-        if 'image_file' in params:
-            local_var_files['imageFile'] = params['image_file']  # noqa: E501
+        if 'file' in params:
+            local_var_files['file'] = params['file']  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`
@@ -3624,6 +4004,315 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_array(self, array_type, **kwargs):  # noqa: E501
+        """Get the memory mapped array based on the array type.  # noqa: E501
+
+        The array is specified through a file path, in the configuration object, during model server deployment.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_array(array_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str array_type: The format in which the memory mapped array is returned. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.get_array_with_http_info(array_type, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_array_with_http_info(array_type, **kwargs)  # noqa: E501
+            return data
+
+    def get_array_with_http_info(self, array_type, **kwargs):  # noqa: E501
+        """Get the memory mapped array based on the array type.  # noqa: E501
+
+        The array is specified through a file path, in the configuration object, during model server deployment.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_array_with_http_info(array_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str array_type: The format in which the memory mapped array is returned. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['array_type']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_array" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'array_type' is set
+        if ('array_type' not in params or
+                params['array_type'] is None):
+            raise ValueError("Missing the required parameter `array_type` when calling `get_array`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'array_type' in params:
+            path_params['arrayType'] = params['array_type']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'application/octet-stream'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/array/{arrayType}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_array_indices(self, array_type, **kwargs):  # noqa: E501
+        """Get the memory mapped array indices based on the array type.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_array_indices(array_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str array_type: Format in which the memory mapped array is returned in. (required)
+        :param  input: Input indices array
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.get_array_indices_with_http_info(array_type, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_array_indices_with_http_info(array_type, **kwargs)  # noqa: E501
+            return data
+
+    def get_array_indices_with_http_info(self, array_type, **kwargs):  # noqa: E501
+        """Get the memory mapped array indices based on the array type.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_array_indices_with_http_info(array_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str array_type: Format in which the memory mapped array is returned in. (required)
+        :param  input: Input indices array
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['array_type', 'input']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_array_indices" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'array_type' is set
+        if ('array_type' not in params or
+                params['array_type'] is None):
+            raise ValueError("Missing the required parameter `array_type` when calling `get_array_indices`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'array_type' in params:
+            path_params['arrayType'] = params['array_type']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'input' in params:
+            body_params = params['input']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'application/octet-stream'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/array/indices/{arrayType}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_array_range(self, array_type, _from, to, **kwargs):  # noqa: E501
+        """Get the memory mapped array within a range based on the array type.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_array_range(array_type, _from, to, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str array_type: Format in which the memory mapped array is returned in. (required)
+        :param int _from: (required)
+        :param int to: (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.get_array_range_with_http_info(array_type, _from, to, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_array_range_with_http_info(array_type, _from, to, **kwargs)  # noqa: E501
+            return data
+
+    def get_array_range_with_http_info(self, array_type, _from, to, **kwargs):  # noqa: E501
+        """Get the memory mapped array within a range based on the array type.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_array_range_with_http_info(array_type, _from, to, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str array_type: Format in which the memory mapped array is returned in. (required)
+        :param int _from: (required)
+        :param int to: (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['array_type', '_from', 'to']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_array_range" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'array_type' is set
+        if ('array_type' not in params or
+                params['array_type'] is None):
+            raise ValueError("Missing the required parameter `array_type` when calling `get_array_range`")  # noqa: E501
+        # verify the required parameter '_from' is set
+        if ('_from' not in params or
+                params['_from'] is None):
+            raise ValueError("Missing the required parameter `_from` when calling `get_array_range`")  # noqa: E501
+        # verify the required parameter 'to' is set
+        if ('to' not in params or
+                params['to'] is None):
+            raise ValueError("Missing the required parameter `to` when calling `get_array_range`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'array_type' in params:
+            path_params['arrayType'] = params['array_type']  # noqa: E501
+        if '_from' in params:
+            path_params['from'] = params['_from']  # noqa: E501
+        if 'to' in params:
+            path_params['to'] = params['to']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'application/octet-stream'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/array/range/{from}/{to}/{arrayType}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_best_model_among_model_ids(self, model_history_server_id, best_model, **kwargs):  # noqa: E501
         """Gets the best model among the given model instance IDs, based on the evaluation type and column metric  # noqa: E501
 
@@ -3815,6 +4504,91 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='ResourceCredentials',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_current_model(self, **kwargs):  # noqa: E501
+        """Returns the current model being used for retraining.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_current_model(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.get_current_model_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.get_current_model_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def get_current_model_with_http_info(self, **kwargs):  # noqa: E501
+        """Returns the current model being used for retraining.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_current_model_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_current_model" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/octet-stream'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/model', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -4312,6 +5086,91 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='JobEntity',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_last_evaluation(self, **kwargs):  # noqa: E501
+        """Get the last evaluation specifications from the current model.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_last_evaluation(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: EvaluationResultsEntity
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.get_last_evaluation_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.get_last_evaluation_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def get_last_evaluation_with_http_info(self, **kwargs):  # noqa: E501
+        """Get the last evaluation specifications from the current model.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.get_last_evaluation_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: EvaluationResultsEntity
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_last_evaluation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/lastevaluation', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='EvaluationResultsEntity',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -5453,6 +6312,91 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def is_training(self, **kwargs):  # noqa: E501
+        """Get the retraining status  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.is_training(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: RetrainingStatus
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.is_training_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.is_training_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def is_training_with_http_info(self, **kwargs):  # noqa: E501
+        """Get the retraining status  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.is_training_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: RetrainingStatus
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method is_training" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/istraining', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='RetrainingStatus',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def jsonarray(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Run inference on the input and returns it as a JsonArrayResponse  # noqa: E501
 
@@ -5818,41 +6762,43 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def list_all_experiments(self, **kwargs):  # noqa: E501
+    def list_all_experiments(self, model_history_server_id, **kwargs):  # noqa: E501
         """List all of the experiments in every model history / workspace  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.list_all_experiments(async=True)
+        >>> thread = api.list_all_experiments(model_history_server_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :return: list[ExperimentEntity]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.list_all_experiments_with_http_info(**kwargs)  # noqa: E501
+            return self.list_all_experiments_with_http_info(model_history_server_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.list_all_experiments_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.list_all_experiments_with_http_info(model_history_server_id, **kwargs)  # noqa: E501
             return data
 
-    def list_all_experiments_with_http_info(self, **kwargs):  # noqa: E501
+    def list_all_experiments_with_http_info(self, model_history_server_id, **kwargs):  # noqa: E501
         """List all of the experiments in every model history / workspace  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.list_all_experiments_with_http_info(async=True)
+        >>> thread = api.list_all_experiments_with_http_info(model_history_server_id, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param str model_history_server_id: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID. (required)
         :return: list[ExperimentEntity]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['model_history_server_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5867,10 +6813,16 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'model_history_server_id' is set
+        if ('model_history_server_id' not in params or
+                params['model_history_server_id'] is None):
+            raise ValueError("Missing the required parameter `model_history_server_id` when calling `list_all_experiments`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if 'model_history_server_id' in params:
+            path_params['modelHistoryServerId'] = params['model_history_server_id']  # noqa: E501
 
         query_params = []
 
@@ -6787,49 +7739,49 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def modelupdate(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
+    def modelupdate(self, file, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Update the model to be served  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.modelupdate(deployment_name, version_name, model_name, async=True)
+        >>> thread = api.modelupdate(file, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param file file: The model file to update with (.pb file) (required)
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
-        :param file file: The model file to update with (.pb file)
         :return: ModelStatus
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.modelupdate_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
+            return self.modelupdate_with_http_info(file, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
         else:
-            (data) = self.modelupdate_with_http_info(deployment_name, version_name, model_name, **kwargs)  # noqa: E501
+            (data) = self.modelupdate_with_http_info(file, deployment_name, version_name, model_name, **kwargs)  # noqa: E501
             return data
 
-    def modelupdate_with_http_info(self, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
+    def modelupdate_with_http_info(self, file, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Update the model to be served  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.modelupdate_with_http_info(deployment_name, version_name, model_name, async=True)
+        >>> thread = api.modelupdate_with_http_info(file, deployment_name, version_name, model_name, async=True)
         >>> result = thread.get()
 
         :param async bool
+        :param file file: The model file to update with (.pb file) (required)
         :param str deployment_name: Name of the deployment group (required)
         :param str version_name: Version name of the endpoint. The default value is \"default\" (required)
         :param str model_name: ID or name of the deployed model (required)
-        :param file file: The model file to update with (.pb file)
         :return: ModelStatus
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['deployment_name', 'version_name', 'model_name', 'file']  # noqa: E501
+        all_params = ['file', 'deployment_name', 'version_name', 'model_name']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6844,6 +7796,10 @@ class DefaultApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'file' is set
+        if ('file' not in params or
+                params['file'] is None):
+            raise ValueError("Missing the required parameter `file` when calling `modelupdate`")  # noqa: E501
         # verify the required parameter 'deployment_name' is set
         if ('deployment_name' not in params or
                 params['deployment_name'] is None):
@@ -7287,6 +8243,91 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def num_revisions(self, **kwargs):  # noqa: E501
+        """Gets the number of retrained models written with retraining.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.num_revisions(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: RevisionsWritten
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.num_revisions_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.num_revisions_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def num_revisions_with_http_info(self, **kwargs):  # noqa: E501
+        """Gets the number of retrained models written with retraining.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.num_revisions_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :return: RevisionsWritten
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method num_revisions" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/numrevisions', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='RevisionsWritten',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def predict(self, body, deployment_name, version_name, model_name, **kwargs):  # noqa: E501
         """Run inference on the input array.  # noqa: E501
 
@@ -7401,6 +8442,230 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='Prediction',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def predict_error(self, operation, input_type, **kwargs):  # noqa: E501
+        """Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.  # noqa: E501
+
+        These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.predict_error(operation, input_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str operation: (required)
+        :param str input_type: Type of the input data. (required)
+        :param  input_data:
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.predict_error_with_http_info(operation, input_type, **kwargs)  # noqa: E501
+        else:
+            (data) = self.predict_error_with_http_info(operation, input_type, **kwargs)  # noqa: E501
+            return data
+
+    def predict_error_with_http_info(self, operation, input_type, **kwargs):  # noqa: E501
+        """Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.  # noqa: E501
+
+        These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.predict_error_with_http_info(operation, input_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str operation: (required)
+        :param str input_type: Type of the input data. (required)
+        :param  input_data:
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['operation', 'input_type', 'input_data']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method predict_error" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'operation' is set
+        if ('operation' not in params or
+                params['operation'] is None):
+            raise ValueError("Missing the required parameter `operation` when calling `predict_error`")  # noqa: E501
+        # verify the required parameter 'input_type' is set
+        if ('input_type' not in params or
+                params['input_type'] is None):
+            raise ValueError("Missing the required parameter `input_type` when calling `predict_error`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'operation' in params:
+            path_params['operation'] = params['operation']  # noqa: E501
+        if 'input_type' in params:
+            path_params['inputType'] = params['input_type']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'input_data' in params:
+            body_params = params['input_data']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{operation}/{inputType}/error', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def predict_v2(self, operation, input_type, **kwargs):  # noqa: E501
+        """Runs inference based on the input data. Output is defined relative to the output adapter specified.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.predict_v2(operation, input_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str operation: The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type.  (required)
+        :param str input_type: Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type.  (required)
+        :param  input_data: The input data when the content type is \"application/json\"
+        :param file input_data2: The input file to upload, containing the input data when the content type is \"multipart/form-data\"
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.predict_v2_with_http_info(operation, input_type, **kwargs)  # noqa: E501
+        else:
+            (data) = self.predict_v2_with_http_info(operation, input_type, **kwargs)  # noqa: E501
+            return data
+
+    def predict_v2_with_http_info(self, operation, input_type, **kwargs):  # noqa: E501
+        """Runs inference based on the input data. Output is defined relative to the output adapter specified.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.predict_v2_with_http_info(operation, input_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str operation: The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type.  (required)
+        :param str input_type: Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type.  (required)
+        :param  input_data: The input data when the content type is \"application/json\"
+        :param file input_data2: The input file to upload, containing the input data when the content type is \"multipart/form-data\"
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['operation', 'input_type', 'input_data', 'input_data2']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method predict_v2" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'operation' is set
+        if ('operation' not in params or
+                params['operation'] is None):
+            raise ValueError("Missing the required parameter `operation` when calling `predict_v2`")  # noqa: E501
+        # verify the required parameter 'input_type' is set
+        if ('input_type' not in params or
+                params['input_type'] is None):
+            raise ValueError("Missing the required parameter `input_type` when calling `predict_v2`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'operation' in params:
+            path_params['operation'] = params['operation']  # noqa: E501
+        if 'input_type' in params:
+            path_params['inputType'] = params['input_type']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'input_data2' in params:
+            local_var_files['inputData'] = params['input_data2']  # noqa: E501
+
+        body_params = None
+        if 'input_data' in params:
+            body_params = params['input_data']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{operation}/{inputType}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -7767,6 +9032,115 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def raw_predict_binary(self, input_type, output_type, **kwargs):  # noqa: E501
+        """Runs inference based on the input data. Output is defined relative to the output adapter specified.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.raw_predict_binary(input_type, output_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str input_type: Input data type. (required)
+        :param str output_type: Binary output data type. (required)
+        :param file input_data: The input file to upload.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.raw_predict_binary_with_http_info(input_type, output_type, **kwargs)  # noqa: E501
+        else:
+            (data) = self.raw_predict_binary_with_http_info(input_type, output_type, **kwargs)  # noqa: E501
+            return data
+
+    def raw_predict_binary_with_http_info(self, input_type, output_type, **kwargs):  # noqa: E501
+        """Runs inference based on the input data. Output is defined relative to the output adapter specified.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.raw_predict_binary_with_http_info(input_type, output_type, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str input_type: Input data type. (required)
+        :param str output_type: Binary output data type. (required)
+        :param file input_data: The input file to upload.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['input_type', 'output_type', 'input_data']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method raw_predict_binary" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'input_type' is set
+        if ('input_type' not in params or
+                params['input_type'] is None):
+            raise ValueError("Missing the required parameter `input_type` when calling `raw_predict_binary`")  # noqa: E501
+        # verify the required parameter 'output_type' is set
+        if ('output_type' not in params or
+                params['output_type'] is None):
+            raise ValueError("Missing the required parameter `output_type` when calling `raw_predict_binary`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'input_type' in params:
+            path_params['inputType'] = params['input_type']  # noqa: E501
+        if 'output_type' in params:
+            path_params['outputType'] = params['output_type']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'input_data' in params:
+            local_var_files['inputData'] = params['input_data']  # noqa: E501
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/octet-stream'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/raw/{inputType}/{outputType}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def refresh_job_status(self, job_id, **kwargs):  # noqa: E501
         """Refresh the remote job status. Can be used for monitoring.  # noqa: E501
 
@@ -7966,6 +9340,103 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='ModelEntity',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def rollback(self, index, **kwargs):  # noqa: E501
+        """Rollback to a previous revision of the model.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.rollback(index, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param int index: Model revision index. (required)
+        :return: RollbackStatus
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.rollback_with_http_info(index, **kwargs)  # noqa: E501
+        else:
+            (data) = self.rollback_with_http_info(index, **kwargs)  # noqa: E501
+            return data
+
+    def rollback_with_http_info(self, index, **kwargs):  # noqa: E501
+        """Rollback to a previous revision of the model.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.rollback_with_http_info(index, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param int index: Model revision index. (required)
+        :return: RollbackStatus
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['index']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method rollback" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'index' is set
+        if ('index' not in params or
+                params['index'] is None):
+            raise ValueError("Missing the required parameter `index` when calling `rollback`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'index' in params:
+            path_params['index'] = params['index']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/rollback/{index}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='RollbackStatus',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),

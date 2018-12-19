@@ -81,7 +81,7 @@ OpenAPI spec version: 1.2.0-beta
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\Skymind.SKIL\Skymind.SKIL.csproj">
-          <Project>{149EF8C5-695A-4F64-A804-097C04159DAA}</Project>
+          <Project>{ECA53C1B-A97B-4BDE-9E3A-656B82105674}</Project>
           <Name>Skymind.SKIL</Name>
       </ProjectReference>
   </ItemGroup>
