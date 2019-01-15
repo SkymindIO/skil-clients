@@ -3,10 +3,10 @@
   "modelPackage": "ai.skymind.skil.model",
   "groupId": "ai.skymind",
   "artifactId": "skil-client",
-  "artifactVersion": "1.2.0",
+  "artifactVersion": "1.2.0-SNAPSHOT",
   "artifactDescription": "Client for using the SKIL HTTP inference API",
   "developerName": "Justin Long",
   "developerOrganization": "Skymind, Inc.",
-  "developerOrganizationUrl": "http://skymind.ai/",
+  "developerOrganizationUrl": "https://skymind.ai/",
   "licenseName": "Apache 2.0"
 }
