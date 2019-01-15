@@ -2308,7 +2308,7 @@ api_key.setApiKey("YOUR API KEY");
 
 DefaultApi apiInstance = new DefaultApi();
 String arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
- input = new null(); //  | Input indices array
+Object input = null; // Object | Input indices array
 try {
     apiInstance.getArrayIndices(arrayType, input);
 } catch (ApiException e) {
@@ -2322,7 +2322,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **arrayType** | **String**| Format in which the memory mapped array is returned in. | [enum: json, numpy, nd4j]
- **input** | [****](.md)| Input indices array | [optional]
+ **input** | **Object**| Input indices array | [optional]
 
 ### Return type
 
@@ -4614,7 +4614,7 @@ api_key.setApiKey("YOUR API KEY");
 DefaultApi apiInstance = new DefaultApi();
 String operation = "operation_example"; // String | 
 String inputType = "inputType_example"; // String | Type of the input data.
- inputData = new null(); //  | 
+Object inputData = null; // Object | 
 try {
     apiInstance.predictError(operation, inputType, inputData);
 } catch (ApiException e) {
@@ -4629,7 +4629,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **operation** | **String**|  | [enum: REGRESSION, CLASSIFICATION, RAW]
  **inputType** | **String**| Type of the input data. | [enum: CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]
- **inputData** | [****](.md)|  | [optional]
+ **inputData** | **Object**|  | [optional]
 
 ### Return type
 

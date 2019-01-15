@@ -31,7 +31,7 @@ import java.util.List;
  * Represents all of the labels for a given classification
  */
 @ApiModel(description = "Represents all of the labels for a given classification")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-19T09:42:07.839+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-15T19:37:15.471+05:00")
 public class MultiClassClassificationResult {
   @SerializedName("rankedOutcomes")
   private List<List<String>> rankedOutcomes = null;

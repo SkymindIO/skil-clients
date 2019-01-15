@@ -5307,7 +5307,7 @@ public class DefaultApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getArrayIndicesCall(String arrayType,  input, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getArrayIndicesCall(String arrayType, Object input, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = input;
 
         // create path and map variables
@@ -5350,7 +5350,7 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getArrayIndicesValidateBeforeCall(String arrayType,  input, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getArrayIndicesValidateBeforeCall(String arrayType, Object input, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'arrayType' is set
         if (arrayType == null) {
@@ -5370,7 +5370,7 @@ public class DefaultApi {
      * @param input Input indices array (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getArrayIndices(String arrayType,  input) throws ApiException {
+    public void getArrayIndices(String arrayType, Object input) throws ApiException {
         getArrayIndicesWithHttpInfo(arrayType, input);
     }
 
@@ -5382,7 +5382,7 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getArrayIndicesWithHttpInfo(String arrayType,  input) throws ApiException {
+    public ApiResponse<Void> getArrayIndicesWithHttpInfo(String arrayType, Object input) throws ApiException {
         com.squareup.okhttp.Call call = getArrayIndicesValidateBeforeCall(arrayType, input, null, null);
         return apiClient.execute(call);
     }
@@ -5396,7 +5396,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getArrayIndicesAsync(String arrayType,  input, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call getArrayIndicesAsync(String arrayType, Object input, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -10915,7 +10915,7 @@ public class DefaultApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call predictErrorCall(String operation, String inputType,  inputData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call predictErrorCall(String operation, String inputType, Object inputData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = inputData;
 
         // create path and map variables
@@ -10959,7 +10959,7 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call predictErrorValidateBeforeCall(String operation, String inputType,  inputData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call predictErrorValidateBeforeCall(String operation, String inputType, Object inputData, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'operation' is set
         if (operation == null) {
@@ -10985,7 +10985,7 @@ public class DefaultApi {
      * @param inputData  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void predictError(String operation, String inputType,  inputData) throws ApiException {
+    public void predictError(String operation, String inputType, Object inputData) throws ApiException {
         predictErrorWithHttpInfo(operation, inputType, inputData);
     }
 
@@ -10998,7 +10998,7 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> predictErrorWithHttpInfo(String operation, String inputType,  inputData) throws ApiException {
+    public ApiResponse<Void> predictErrorWithHttpInfo(String operation, String inputType, Object inputData) throws ApiException {
         com.squareup.okhttp.Call call = predictErrorValidateBeforeCall(operation, inputType, inputData, null, null);
         return apiClient.execute(call);
     }
@@ -11013,7 +11013,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call predictErrorAsync(String operation, String inputType,  inputData, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call predictErrorAsync(String operation, String inputType, Object inputData, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

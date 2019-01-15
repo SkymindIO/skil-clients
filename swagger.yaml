@@ -2893,7 +2893,8 @@ paths:
         description: Type of the input data.
       - name: inputData
         in:   body
-        type: array
+        schema: 
+          type: object
       responses:
         200:
           description: Input data returned a prediction along with the skipped, invalid data rows
@@ -3151,8 +3152,9 @@ paths:
         in: path
         description: Format in which the memory mapped array is returned in.
       - name: input
-        type: array
         in: body
+        schema:
+          type: object
         description: Input indices array
       responses:
         200:
