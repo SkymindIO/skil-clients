@@ -4670,7 +4670,7 @@ api_key.setApiKey("YOUR API KEY");
 DefaultApi apiInstance = new DefaultApi();
 String operation = "operation_example"; // String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
 String inputType = "inputType_example"; // String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
- inputData = new null(); //  | The input data when the content type is \"application/json\"
+Object inputData = null; // Object | The input data when the content type is \"application/json\"
 File inputData2 = new File("/path/to/file.txt"); // File | The input file to upload, containing the input data when the content type is \"multipart/form-data\"
 try {
     apiInstance.predictV2(operation, inputType, inputData, inputData2);
@@ -4686,7 +4686,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **operation** | **String**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | [enum: REGRESSION, CLASSIFICATION, RAW, YOLO, SSD, RCNN]
  **inputType** | **String**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | [enum: CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB, IMAGE, NUMPY, NDARRAY, JSON]
- **inputData** | [****](.md)| The input data when the content type is \&quot;application/json\&quot; | [optional]
+ **inputData** | **Object**| The input data when the content type is \&quot;application/json\&quot; | [optional]
  **inputData2** | **File**| The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; | [optional]
 
 ### Return type

@@ -2849,7 +2849,8 @@ paths:
           `multipart/form-data` content-type.
       - name: inputData
         in:   body
-        type: object
+        schema:
+          type: object
         description: The input data when the content type is "application/json"
       - name: inputData
         in: formData

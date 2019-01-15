@@ -11049,7 +11049,7 @@ public class DefaultApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call predictV2Call(String operation, String inputType,  inputData, File inputData2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call predictV2Call(String operation, String inputType, Object inputData, File inputData2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = inputData;
 
         // create path and map variables
@@ -11095,7 +11095,7 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call predictV2ValidateBeforeCall(String operation, String inputType,  inputData, File inputData2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call predictV2ValidateBeforeCall(String operation, String inputType, Object inputData, File inputData2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'operation' is set
         if (operation == null) {
@@ -11122,7 +11122,7 @@ public class DefaultApi {
      * @param inputData2 The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void predictV2(String operation, String inputType,  inputData, File inputData2) throws ApiException {
+    public void predictV2(String operation, String inputType, Object inputData, File inputData2) throws ApiException {
         predictV2WithHttpInfo(operation, inputType, inputData, inputData2);
     }
 
@@ -11136,7 +11136,7 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> predictV2WithHttpInfo(String operation, String inputType,  inputData, File inputData2) throws ApiException {
+    public ApiResponse<Void> predictV2WithHttpInfo(String operation, String inputType, Object inputData, File inputData2) throws ApiException {
         com.squareup.okhttp.Call call = predictV2ValidateBeforeCall(operation, inputType, inputData, inputData2, null, null);
         return apiClient.execute(call);
     }
@@ -11152,7 +11152,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call predictV2Async(String operation, String inputType,  inputData, File inputData2, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call predictV2Async(String operation, String inputType, Object inputData, File inputData2, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

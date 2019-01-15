@@ -13,7 +13,7 @@
 
 package ai.skymind;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-15T19:37:15.471+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-15T19:45:50.599+05:00")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

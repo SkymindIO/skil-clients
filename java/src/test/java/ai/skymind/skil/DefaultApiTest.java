@@ -767,7 +767,7 @@ public class DefaultApiTest {
     @Test
     public void getArrayIndicesTest() throws ApiException {
         String arrayType = null;
-         input = null;
+        Object input = null;
         api.getArrayIndices(arrayType, input);
 
         // TODO: test validations
@@ -1487,7 +1487,7 @@ public class DefaultApiTest {
     public void predictErrorTest() throws ApiException {
         String operation = null;
         String inputType = null;
-         inputData = null;
+        Object inputData = null;
         api.predictError(operation, inputType, inputData);
 
         // TODO: test validations
@@ -1505,7 +1505,7 @@ public class DefaultApiTest {
     public void predictV2Test() throws ApiException {
         String operation = null;
         String inputType = null;
-         inputData = null;
+        Object inputData = null;
         File inputData2 = null;
         api.predictV2(operation, inputType, inputData, inputData2);
 
