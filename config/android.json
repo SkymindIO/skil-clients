@@ -4,6 +4,6 @@
   "invokerPackage": "ai.skymind",
   "groupId": "ai.skymind",
   "artifactId": "skil-client",
-  "artifactVersion": "1.2.0",
+  "artifactVersion": "1.2.1",
   "serializableModel": "true"
 }
