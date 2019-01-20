@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Endpoints API for different services in SKIL
-  version: 1.2.0-beta
+  version: 1.2.0-rc1
   title: Endpoints
 host: localhost:9008
 schemes:
@@ -27,10 +27,8 @@ securityDefinitions:
 security:
 - api_key: []
 tags:
-- name: Default
-  description: Default tag containing all the API endpoints
-- name: Authentication
-  description: Authentication endpoints
+- name: User
+  description: Users endpoints
 - name: Utilities
   description: Utilities endpoints
 - name: ModelHistory
@@ -53,9 +51,11 @@ tags:
   description: Resource Endpoints
 - name: Job
   description: Job endpoints
+- name: Default
+  description: Default tag containing all the API endpoints
 paths:
   # ---------------------------------------------------------------------------------------
-  # Authentication endpoint
+  # User endpoints
   # ---------------------------------------------------------------------------------------
   /login:
     post:
@@ -63,26 +63,262 @@ paths:
       summary: Post JSON credentials and obtain a JWT authorization token.
       tags:
       - Default
-      - Authentication
+      - User
       security: []
       consumes:
       - application/json
       produces:
       - application/json
       parameters:
-      - name: credentials
+      - name: LoginRequest
         in: body
         description: Login credentials.
         required: true
         schema:
-          $ref: '#/definitions/Credentials'
+          $ref: '#/definitions/LoginRequest'
       responses:
         200:
           description: successful operation
           schema:
-            $ref: '#/definitions/Token'
+            $ref: '#/definitions/LoginResponse'
         401:
           description: Invalid credentials
+  /user/register:
+    post:
+      operationId: registerUser
+      summary: Register a new user
+      tags:
+      - Default
+      - User
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: User
+        in: body
+        description: User details
+        required: true
+        schema:
+          $ref: '#/definitions/User'
+      responses:
+        200:
+          description: User added successfully.
+          schema:
+            $ref: '#/definitions/User'
+  /user/{userId}:
+    get:
+      operationId: getUser
+      summary: Get a user by user ID
+      tags:
+      - Default
+      - User
+      produces:
+      - application/json
+      parameters:
+      - name: userId
+        in: path
+        description: User's ID
+        required: true
+        type: string
+      responses:
+        200:
+          description: Successfully received the user details
+          schema:
+            $ref: '#/definitions/User'
+  /user:
+    put:
+      operationId: updateUser
+      summary: Update a user
+      tags:
+      - Default
+      - User
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: User
+        in: body
+        description: User details
+        required: true
+        schema:
+          $ref: '#/definitions/User'
+      responses:
+        200:
+          description: User updated successfully.
+          schema:
+            $ref: '#/definitions/User'
+  /user/{userId}/password:
+    post:
+      operationId: changeUserPassword
+      summary: Change user's password
+      tags:
+      - Default
+      - User
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: userId
+        in: path
+        description: User's ID
+        required: true
+        type: string
+      - name: ChangePasswordRequest
+        in: body
+        description: Password details.
+        required: true
+        schema:
+          $ref: '#/definitions/ChangePasswordRequest'
+      responses:
+        200:
+          description: Updated user.
+          schema:
+            $ref: '#/definitions/User'
+  /auth/policy:
+    get:
+      operationId: getAuthPolicy
+      summary: Get auth policy
+      tags:
+      - Default
+      - User
+      produces:
+      - application/json
+      responses:
+        200:
+          description: AuthPolicy object
+          schema:
+            $ref: '#/definitions/AuthPolicy'
+    put:
+      operationId: updateAuthPolicy
+      summary: Update auth policy
+      tags:
+      - Default
+      - User
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: AuthPolicy
+        in: body
+        description: Auth policy object
+        required: true
+        schema:
+          $ref: '#/definitions/AuthPolicy'
+      responses:
+        200:
+          description: Update AuthPolicy object
+          schema:
+            $ref: '#/definitions/AuthPolicy'
+  /auth/token:
+    post:
+      operationId: generateAuthToken
+      summary: Generate new auth token
+      tags:
+      - Default
+      - User
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: TokenGenerateRequest
+        in: body
+        description: Auth token details.
+        required: true
+        schema:
+          $ref: '#/definitions/TokenGenerateRequest'
+      responses:
+        200:
+          description: Generated auth token.
+          schema:
+            $ref: '#/definitions/Token'
+  /auth/{userId}/tokens:
+    get:
+      operationId: getUserAuthTokens
+      summary: Get auth tokens for a user.
+      tags:
+      - Default
+      - User
+      produces:
+      - application/json
+      parameters:
+      - name: userId
+        in: path
+        description: User's ID
+        required: true
+        type: string
+      - name: onlyValid
+        in: query
+        description: True if you only want the valid tokens.
+        required: false
+        type: boolean
+      responses:
+        200:
+          description: Successfully received the user auth tokens.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Token'
+  /auth/token/{tokenId}:
+    delete:
+      operationId: revokeUserToken
+      summary: Revoke a user token.
+      tags:
+      - Default
+      - User
+      produces:
+      - application/json
+      parameters:
+      - name: tokenId
+        in: path
+        description: Token ID
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: The revoked token object.
+          schema:
+            $ref: '#/definitions/Token'
+  /security/users:
+    get:
+      operationId: getUsers
+      summary: Get all users.
+      tags:
+      - Default
+      - User
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Successfully received all users.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+  /security/roles:
+    get:
+      operationId: getRoles
+      summary: Get all roles.
+      tags:
+      - Default
+      - User
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Successfully received all roles.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Role'
+  # ---------------------------------------------------------------------------------------
+  # Utilities endpoints
+  # ---------------------------------------------------------------------------------------
   /api/upload/model:
     post:
       operationId: upload
@@ -3446,7 +3682,7 @@ definitions:
         type: string
     example:
       name: productiongroup
-  Credentials:
+  LoginRequest:
     type: object
     properties:
       userId:
@@ -3456,13 +3692,76 @@ definitions:
     example:
       userId: admin
       password: admin
-  Token:
+  LoginResponse:
     type: object
     properties:
       token:
         type: string
+        description: Token received from the authentication server.
     example:
       token: xxxxxxx.yyyyyyy.zzzzzz
+  User:
+    type: object
+    properties:
+      userId:
+        type: string
+      userName:
+        type: string
+      password:
+        type: string
+      role:
+        type: string
+        description: User's role such as [user, admin, trial]
+      scope:
+        type: string
+        description: User's scope such as [all, skil, zeppelin]
+  ChangePasswordRequest:
+    type: object
+    properties:
+      password:
+        type: string
+  AuthPolicy:
+    type: object
+    properties:
+      '@class':
+        type: string
+        enum: 
+        - SimpleAuthPolicy
+        - RoleAuthPolicy
+  TokenGenerateRequest:
+    type: object
+    properties:
+      userId:
+        type: string
+      expiry:
+        type: integer
+        format: int64
+  Token:
+    type: object
+    properties:
+      tokenId:
+        type: integer
+        format: int64
+      issued:
+        type: integer
+        format: int64
+      expire:
+        type: integer
+        format: int64
+      token:
+        type: string
+      userId:
+        type: string
+      isRevoked:
+        type: integer
+        format: int32
+  Role:
+    type: object
+    properties:
+      roleId:
+        type: string
+      roleName:
+        type: string
   FileUploadList:
     type: object
     properties:
