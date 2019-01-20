@@ -1,14 +1,16 @@
 # skil-clients
+
 Clients for using SKIL's HTTP inference API in Java, Python, Javascript, and more.
 
 ## Getting Started
 
 Automatically-generated clients are available in each language folder in the root of this repository. Clients support SKIL's JWT authentication and currently only work for prediction/inference endpoints.
 
-**Python**
+### Python
+
 If you are a user of `pip`, you can install the Python client directly from this repository by using the command:
 
-```
+```bash
 pip install git+https://github.com/SkymindIO/skil-clients#subdirectory=python
 ```
 
@@ -16,7 +18,8 @@ pip install git+https://github.com/SkymindIO/skil-clients#subdirectory=python
 
 The default host in each client is `localhost:9008`. Because your SKIL instance may be running on a different server or port, you can supply a configuration using the following code:
 
-**Java**
+#### Java Client
+
 ```java
 String newHost = "x.x.x.x"
 URL url = new URL(apiClient.getBasePath());
@@ -24,7 +27,8 @@ URL newUrl = new URL(url.getProtocol(), newHost, url.getPort(), url.getFile());
 apiClient.setBasePath(newUrl.toString());
 ```
 
-**Python**
+#### Python Client
+
 ```python
 import skil_client
 from skil_client import ApiClient
@@ -54,6 +58,6 @@ If you want to fork this repository and make custom changes, you can rebuild the
 
 For example, if you have the `swagger-codegen` command installed on your system, you can build a Python client by running this command from the root of this directory:
 
-```
+```bash
 swagger-codegen generate -i swagger.yaml -l python -o python -c config/python.json
 ```

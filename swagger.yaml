@@ -2820,6 +2820,7 @@ paths:
       - name: operation
         in:   path
         type: string
+        required: true
         enum:
         - REGRESSION
         - CLASSIFICATION
@@ -2834,6 +2835,7 @@ paths:
       - name: inputType
         in:   path
         type: string
+        required: true
         enum:
         - CSV
         - DICTIONARY
@@ -2848,14 +2850,9 @@ paths:
           `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
           `multipart/form-data` content-type.
       - name: inputData
-        in:   body
-        schema:
-          type: object
-        description: The input data when the content type is "application/json"
-      - name: inputData
         in: formData
-        type: file
-        description: The input file to upload, containing the input data when the content type is "multipart/form-data"
+        type: string
+        description: The input data to run inference on.
       responses:
         200:
           description: Input data returned a prediction.
@@ -2882,10 +2879,12 @@ paths:
         - REGRESSION
         - CLASSIFICATION
         - RAW
-        descripton: Operation to perform on the input data.
+        required: true
+        description: Operation to perform on the input data.
       - name: inputType
         in:   path
         type: string
+        required: true
         enum:
         - CSV
         - DICTIONARY
@@ -2914,6 +2913,7 @@ paths:
       - name: inputType
         in:   path
         type: string
+        required: true
         enum:
         - IMAGE
         - NUMPY
@@ -2923,6 +2923,7 @@ paths:
       - name: outputType
         in:   path
         type: string
+        required: true
         enum:
         - ND4J
         - NUMPY
@@ -2966,6 +2967,7 @@ paths:
       - name: id
         in:   path
         type: string
+        required: true
         description: Batch ID to retrain the model with and get feedback for.
       - name: labels
         in: body
@@ -3068,6 +3070,7 @@ paths:
         type: integer
         format: int32
         in: path
+        required: true
         description: Model revision index.
       responses:
         200:
@@ -3088,9 +3091,11 @@ paths:
       - name: id
         in:   path
         type: string
+        required: true
         description: Batch ID to retrain the model with and get feedback for.
       - name: type
         in:   path
+        required: true
         type: string
         enum:
         - numpy
@@ -3127,6 +3132,7 @@ paths:
         - numpy
         - nd4j
         in: path
+        required: true
         description: The format in which the memory mapped array is returned.
       responses:
         200:
@@ -3151,6 +3157,7 @@ paths:
         - numpy
         - nd4j
         in: path
+        required: true
         description: Format in which the memory mapped array is returned in.
       - name: input
         in: body
@@ -3180,15 +3187,18 @@ paths:
         - numpy
         - nd4j
         in: path
+        required: true
         description: Format in which the memory mapped array is returned in.
       - name: from
         in: path
         type: integer
         format: int32
+        required: true
       - name: to
         in: path
         type: integer
         format: int32
+        required: true
       responses:
         200:
           description: Returns the arrays given the from/to indices
