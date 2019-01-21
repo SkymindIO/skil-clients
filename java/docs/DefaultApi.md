@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**addResourceGroup**](DefaultApi.md#addResourceGroup) | **POST** /resources/add/group | Adds a resource group
 [**addResourceToGroup**](DefaultApi.md#addResourceToGroup) | **GET** /resources/add/resourcetogroup/{resourceGroupId}/{resourceId} | Adds a resource to a resource group
 [**aggregateModelResults**](DefaultApi.md#aggregateModelResults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
+[**changeUserPassword**](DefaultApi.md#changeUserPassword) | **POST** /user/{userId}/password | Change user&#39;s password
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
@@ -42,10 +43,12 @@ Method | HTTP request | Description
 [**deployments**](DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
 [**detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
 [**downloadJobOutputFile**](DefaultApi.md#downloadJobOutputFile) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+[**generateAuthToken**](DefaultApi.md#generateAuthToken) | **POST** /auth/token | Generate new auth token
 [**getAllJobs**](DefaultApi.md#getAllJobs) | **GET** /jobs | Get a list of all available jobs
 [**getArray**](DefaultApi.md#getArray) | **POST** /array/{arrayType} | Get the memory mapped array based on the array type.
 [**getArrayIndices**](DefaultApi.md#getArrayIndices) | **POST** /array/indices/{arrayType} | Get the memory mapped array indices based on the array type.
 [**getArrayRange**](DefaultApi.md#getArrayRange) | **POST** /array/range/{from}/{to}/{arrayType} | Get the memory mapped array within a range based on the array type.
+[**getAuthPolicy**](DefaultApi.md#getAuthPolicy) | **GET** /auth/policy | Get auth policy
 [**getBestModelAmongModelIds**](DefaultApi.md#getBestModelAmongModelIds) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 [**getCredentialsById**](DefaultApi.md#getCredentialsById) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
 [**getCurrentModel**](DefaultApi.md#getCurrentModel) | **GET** /model | Returns the current model being used for retraining.
@@ -67,6 +70,10 @@ Method | HTTP request | Description
 [**getResourceGroups**](DefaultApi.md#getResourceGroups) | **GET** /resources/groups | Get a list of all the resource groups
 [**getResources**](DefaultApi.md#getResources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**getResourcesFromGroup**](DefaultApi.md#getResourcesFromGroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
+[**getRoles**](DefaultApi.md#getRoles) | **GET** /security/roles | Get all roles.
+[**getUser**](DefaultApi.md#getUser) | **GET** /user/{userId} | Get a user by user ID
+[**getUserAuthTokens**](DefaultApi.md#getUserAuthTokens) | **GET** /auth/{userId}/tokens | Get auth tokens for a user.
+[**getUsers**](DefaultApi.md#getUsers) | **GET** /security/users | Get all users.
 [**isTraining**](DefaultApi.md#isTraining) | **GET** /istraining | Get the retraining status
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
@@ -93,7 +100,9 @@ Method | HTTP request | Description
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**rawPredictBinary**](DefaultApi.md#rawPredictBinary) | **POST** /raw/{inputType}/{outputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**refreshJobStatus**](DefaultApi.md#refreshJobStatus) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
+[**registerUser**](DefaultApi.md#registerUser) | **POST** /user/register | Register a new user
 [**reimportModel**](DefaultApi.md#reimportModel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**revokeUserToken**](DefaultApi.md#revokeUserToken) | **DELETE** /auth/token/{tokenId} | Revoke a user token.
 [**rollback**](DefaultApi.md#rollback) | **POST** /rollback/{index} | Rollback to a previous revision of the model.
 [**runAJob**](DefaultApi.md#runAJob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transformCsv**](DefaultApi.md#transformCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
@@ -104,9 +113,11 @@ Method | HTTP request | Description
 [**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
 [**transformprocessGet**](DefaultApi.md#transformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
 [**transformprocessPost**](DefaultApi.md#transformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
+[**updateAuthPolicy**](DefaultApi.md#updateAuthPolicy) | **PUT** /auth/policy | Update auth policy
 [**updateBestModelForExperiment**](DefaultApi.md#updateBestModelForExperiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**updateExperiment**](DefaultApi.md#updateExperiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**updateModelHistory**](DefaultApi.md#updateModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
+[**updateUser**](DefaultApi.md#updateUser) | **PUT** /user | Update a user
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
@@ -969,6 +980,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EvaluationResultsEntity**](EvaluationResultsEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="changeUserPassword"></a>
+# **changeUserPassword**
+> User changeUserPassword(userId, changePasswordRequest)
+
+Change user&#39;s password
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String userId = "userId_example"; // String | User's ID
+ChangePasswordRequest changePasswordRequest = new ChangePasswordRequest(); // ChangePasswordRequest | Password details.
+try {
+    User result = apiInstance.changeUserPassword(userId, changePasswordRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#changeUserPassword");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**| User&#39;s ID |
+ **changePasswordRequest** | [**ChangePasswordRequest**](ChangePasswordRequest.md)| Password details. |
+
+### Return type
+
+[**User**](User.md)
 
 ### Authorization
 
@@ -2180,6 +2246,59 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="generateAuthToken"></a>
+# **generateAuthToken**
+> Token generateAuthToken(tokenGenerateRequest)
+
+Generate new auth token
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+TokenGenerateRequest tokenGenerateRequest = new TokenGenerateRequest(); // TokenGenerateRequest | Auth token details.
+try {
+    Token result = apiInstance.generateAuthToken(tokenGenerateRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#generateAuthToken");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tokenGenerateRequest** | [**TokenGenerateRequest**](TokenGenerateRequest.md)| Auth token details. |
+
+### Return type
+
+[**Token**](Token.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="getAllJobs"></a>
 # **getAllJobs**
 > List&lt;JobEntity&gt; getAllJobs()
@@ -2391,6 +2510,55 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/octet-stream
+ - **Accept**: application/json
+
+<a name="getAuthPolicy"></a>
+# **getAuthPolicy**
+> AuthPolicy getAuthPolicy()
+
+Get auth policy
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+try {
+    AuthPolicy result = apiInstance.getAuthPolicy();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getAuthPolicy");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AuthPolicy**](AuthPolicy.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getBestModelAmongModelIds"></a>
@@ -3509,6 +3677,212 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getRoles"></a>
+# **getRoles**
+> List&lt;Role&gt; getRoles()
+
+Get all roles.
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+try {
+    List<Role> result = apiInstance.getRoles();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getRoles");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List&lt;Role&gt;**](Role.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getUser"></a>
+# **getUser**
+> User getUser(userId)
+
+Get a user by user ID
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String userId = "userId_example"; // String | User's ID
+try {
+    User result = apiInstance.getUser(userId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getUser");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**| User&#39;s ID |
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getUserAuthTokens"></a>
+# **getUserAuthTokens**
+> List&lt;Token&gt; getUserAuthTokens(userId, onlyValid)
+
+Get auth tokens for a user.
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String userId = "userId_example"; // String | User's ID
+Boolean onlyValid = true; // Boolean | True if you only want the valid tokens.
+try {
+    List<Token> result = apiInstance.getUserAuthTokens(userId, onlyValid);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getUserAuthTokens");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**| User&#39;s ID |
+ **onlyValid** | **Boolean**| True if you only want the valid tokens. | [optional]
+
+### Return type
+
+[**List&lt;Token&gt;**](Token.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getUsers"></a>
+# **getUsers**
+> List&lt;User&gt; getUsers()
+
+Get all users.
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+try {
+    List<User> result = apiInstance.getUsers();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getUsers");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List&lt;User&gt;**](User.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="isTraining"></a>
 # **isTraining**
 > RetrainingStatus isTraining()
@@ -3849,7 +4223,7 @@ Name | Type | Description  | Notes
 
 <a name="login"></a>
 # **login**
-> Token login(credentials)
+> LoginResponse login(loginRequest)
 
 Post JSON credentials and obtain a JWT authorization token.
 
@@ -3861,9 +4235,9 @@ Post JSON credentials and obtain a JWT authorization token.
 
 
 DefaultApi apiInstance = new DefaultApi();
-Credentials credentials = new Credentials(); // Credentials | Login credentials.
+LoginRequest loginRequest = new LoginRequest(); // LoginRequest | Login credentials.
 try {
-    Token result = apiInstance.login(credentials);
+    LoginResponse result = apiInstance.login(loginRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#login");
@@ -3875,11 +4249,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials** | [**Credentials**](Credentials.md)| Login credentials. |
+ **loginRequest** | [**LoginRequest**](LoginRequest.md)| Login credentials. |
 
 ### Return type
 
-[**Token**](Token.md)
+[**LoginResponse**](LoginResponse.md)
 
 ### Authorization
 
@@ -4612,7 +4986,7 @@ api_key.setApiKey("YOUR API KEY");
 //api_key.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-String operation = "operation_example"; // String | 
+String operation = "operation_example"; // String | Operation to perform on the input data.
 String inputType = "inputType_example"; // String | Type of the input data.
 Object inputData = null; // Object | 
 try {
@@ -4627,7 +5001,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **operation** | **String**|  | [enum: REGRESSION, CLASSIFICATION, RAW]
+ **operation** | **String**| Operation to perform on the input data. | [enum: REGRESSION, CLASSIFICATION, RAW]
  **inputType** | **String**| Type of the input data. | [enum: CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]
  **inputData** | **Object**|  | [optional]
 
@@ -4646,7 +5020,7 @@ null (empty response body)
 
 <a name="predictV2"></a>
 # **predictV2**
-> predictV2(operation, inputType, inputData, inputData2)
+> predictV2(operation, inputType, inputData)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
@@ -4670,10 +5044,9 @@ api_key.setApiKey("YOUR API KEY");
 DefaultApi apiInstance = new DefaultApi();
 String operation = "operation_example"; // String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
 String inputType = "inputType_example"; // String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
-Object inputData = null; // Object | The input data when the content type is \"application/json\"
-File inputData2 = new File("/path/to/file.txt"); // File | The input file to upload, containing the input data when the content type is \"multipart/form-data\"
+String inputData = "inputData_example"; // String | The input data to run inference on.
 try {
-    apiInstance.predictV2(operation, inputType, inputData, inputData2);
+    apiInstance.predictV2(operation, inputType, inputData);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#predictV2");
     e.printStackTrace();
@@ -4686,8 +5059,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **operation** | **String**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | [enum: REGRESSION, CLASSIFICATION, RAW, YOLO, SSD, RCNN]
  **inputType** | **String**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | [enum: CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB, IMAGE, NUMPY, NDARRAY, JSON]
- **inputData** | **Object**| The input data when the content type is \&quot;application/json\&quot; | [optional]
- **inputData2** | **File**| The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; | [optional]
+ **inputData** | **String**| The input data to run inference on. | [optional]
 
 ### Return type
 
@@ -4988,6 +5360,59 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="registerUser"></a>
+# **registerUser**
+> User registerUser(user)
+
+Register a new user
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+User user = new User(); // User | User details
+try {
+    User result = apiInstance.registerUser(user);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#registerUser");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)| User details |
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="reimportModel"></a>
 # **reimportModel**
 > ModelEntity reimportModel(deploymentId, modelId, body)
@@ -5043,6 +5468,59 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="revokeUserToken"></a>
+# **revokeUserToken**
+> Token revokeUserToken(tokenId)
+
+Revoke a user token.
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+Long tokenId = 789L; // Long | Token ID
+try {
+    Token result = apiInstance.revokeUserToken(tokenId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#revokeUserToken");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tokenId** | **Long**| Token ID |
+
+### Return type
+
+[**Token**](Token.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="rollback"></a>
@@ -5629,6 +6107,59 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="updateAuthPolicy"></a>
+# **updateAuthPolicy**
+> AuthPolicy updateAuthPolicy(authPolicy)
+
+Update auth policy
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+AuthPolicy authPolicy = new AuthPolicy(); // AuthPolicy | Auth policy object
+try {
+    AuthPolicy result = apiInstance.updateAuthPolicy(authPolicy);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#updateAuthPolicy");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authPolicy** | [**AuthPolicy**](AuthPolicy.md)| Auth policy object |
+
+### Return type
+
+[**AuthPolicy**](AuthPolicy.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="updateBestModelForExperiment"></a>
 # **updateBestModelForExperiment**
 > ExperimentEntity updateBestModelForExperiment(modelHistoryServerId, updateBestModel)
@@ -5788,6 +6319,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelHistoryEntity**](ModelHistoryEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="updateUser"></a>
+# **updateUser**
+> User updateUser(user)
+
+Update a user
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.ApiClient;
+//import ai.skymind.ApiException;
+//import ai.skymind.Configuration;
+//import ai.skymind.auth.*;
+//import ai.skymind.skil.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+User user = new User(); // User | User details
+try {
+    User result = apiInstance.updateUser(user);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#updateUser");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)| User details |
+
+### Return type
+
+[**User**](User.md)
 
 ### Authorization
 

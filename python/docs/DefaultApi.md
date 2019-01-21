@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**add_resource_group**](DefaultApi.md#add_resource_group) | **POST** /resources/add/group | Adds a resource group
 [**add_resource_to_group**](DefaultApi.md#add_resource_to_group) | **GET** /resources/add/resourcetogroup/{resourceGroupId}/{resourceId} | Adds a resource to a resource group
 [**aggregate_model_results**](DefaultApi.md#aggregate_model_results) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
+[**change_user_password**](DefaultApi.md#change_user_password) | **POST** /user/{userId}/password | Change user&#39;s password
 [**classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
@@ -42,10 +43,12 @@ Method | HTTP request | Description
 [**deployments**](DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
 [**detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
 [**download_job_output_file**](DefaultApi.md#download_job_output_file) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+[**generate_auth_token**](DefaultApi.md#generate_auth_token) | **POST** /auth/token | Generate new auth token
 [**get_all_jobs**](DefaultApi.md#get_all_jobs) | **GET** /jobs | Get a list of all available jobs
 [**get_array**](DefaultApi.md#get_array) | **POST** /array/{arrayType} | Get the memory mapped array based on the array type.
 [**get_array_indices**](DefaultApi.md#get_array_indices) | **POST** /array/indices/{arrayType} | Get the memory mapped array indices based on the array type.
 [**get_array_range**](DefaultApi.md#get_array_range) | **POST** /array/range/{from}/{to}/{arrayType} | Get the memory mapped array within a range based on the array type.
+[**get_auth_policy**](DefaultApi.md#get_auth_policy) | **GET** /auth/policy | Get auth policy
 [**get_best_model_among_model_ids**](DefaultApi.md#get_best_model_among_model_ids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 [**get_credentials_by_id**](DefaultApi.md#get_credentials_by_id) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
 [**get_current_model**](DefaultApi.md#get_current_model) | **GET** /model | Returns the current model being used for retraining.
@@ -67,6 +70,10 @@ Method | HTTP request | Description
 [**get_resource_groups**](DefaultApi.md#get_resource_groups) | **GET** /resources/groups | Get a list of all the resource groups
 [**get_resources**](DefaultApi.md#get_resources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**get_resources_from_group**](DefaultApi.md#get_resources_from_group) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
+[**get_roles**](DefaultApi.md#get_roles) | **GET** /security/roles | Get all roles.
+[**get_user**](DefaultApi.md#get_user) | **GET** /user/{userId} | Get a user by user ID
+[**get_user_auth_tokens**](DefaultApi.md#get_user_auth_tokens) | **GET** /auth/{userId}/tokens | Get auth tokens for a user.
+[**get_users**](DefaultApi.md#get_users) | **GET** /security/users | Get all users.
 [**is_training**](DefaultApi.md#is_training) | **GET** /istraining | Get the retraining status
 [**jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
@@ -93,7 +100,9 @@ Method | HTTP request | Description
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**raw_predict_binary**](DefaultApi.md#raw_predict_binary) | **POST** /raw/{inputType}/{outputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**refresh_job_status**](DefaultApi.md#refresh_job_status) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
+[**register_user**](DefaultApi.md#register_user) | **POST** /user/register | Register a new user
 [**reimport_model**](DefaultApi.md#reimport_model) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**revoke_user_token**](DefaultApi.md#revoke_user_token) | **DELETE** /auth/token/{tokenId} | Revoke a user token.
 [**rollback**](DefaultApi.md#rollback) | **POST** /rollback/{index} | Rollback to a previous revision of the model.
 [**run_a_job**](DefaultApi.md#run_a_job) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**transform_csv**](DefaultApi.md#transform_csv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
@@ -104,9 +113,11 @@ Method | HTTP request | Description
 [**transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
 [**transformprocess_get**](DefaultApi.md#transformprocess_get) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
 [**transformprocess_post**](DefaultApi.md#transformprocess_post) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
+[**update_auth_policy**](DefaultApi.md#update_auth_policy) | **PUT** /auth/policy | Update auth policy
 [**update_best_model_for_experiment**](DefaultApi.md#update_best_model_for_experiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**update_experiment**](DefaultApi.md#update_experiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**update_model_history**](DefaultApi.md#update_model_history) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
+[**update_user**](DefaultApi.md#update_user) | **PUT** /user | Update a user
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
@@ -950,6 +961,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EvaluationResultsEntity**](EvaluationResultsEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **change_user_password**
+> User change_user_password(user_id, change_password_request)
+
+Change user's password
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+user_id = 'user_id_example' # str | User's ID
+change_password_request = skil_client.ChangePasswordRequest() # ChangePasswordRequest | Password details.
+
+try:
+    # Change user's password
+    api_response = api_instance.change_user_password(user_id, change_password_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->change_user_password: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**| User&#39;s ID | 
+ **change_password_request** | [**ChangePasswordRequest**](ChangePasswordRequest.md)| Password details. | 
+
+### Return type
+
+[**User**](User.md)
 
 ### Authorization
 
@@ -2141,6 +2206,58 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **generate_auth_token**
+> Token generate_auth_token(token_generate_request)
+
+Generate new auth token
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+token_generate_request = skil_client.TokenGenerateRequest() # TokenGenerateRequest | Auth token details.
+
+try:
+    # Generate new auth token
+    api_response = api_instance.generate_auth_token(token_generate_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->generate_auth_token: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token_generate_request** | [**TokenGenerateRequest**](TokenGenerateRequest.md)| Auth token details. | 
+
+### Return type
+
+[**Token**](Token.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_all_jobs**
 > list[JobEntity] get_all_jobs()
 
@@ -2264,7 +2381,7 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 array_type = 'array_type_example' # str | Format in which the memory mapped array is returned in.
-input = skil_client.null() #  | Input indices array (optional)
+input = NULL # object | Input indices array (optional)
 
 try:
     # Get the memory mapped array indices based on the array type.
@@ -2278,7 +2395,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **array_type** | **str**| Format in which the memory mapped array is returned in. | 
- **input** | [****](.md)| Input indices array | [optional] 
+ **input** | **object**| Input indices array | [optional] 
 
 ### Return type
 
@@ -2346,6 +2463,54 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/octet-stream
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_auth_policy**
+> AuthPolicy get_auth_policy()
+
+Get auth policy
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Get auth policy
+    api_response = api_instance.get_auth_policy()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_auth_policy: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AuthPolicy**](AuthPolicy.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3445,6 +3610,208 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_roles**
+> list[Role] get_roles()
+
+Get all roles.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Get all roles.
+    api_response = api_instance.get_roles()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_roles: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**list[Role]**](Role.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_user**
+> User get_user(user_id)
+
+Get a user by user ID
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+user_id = 'user_id_example' # str | User's ID
+
+try:
+    # Get a user by user ID
+    api_response = api_instance.get_user(user_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_user: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**| User&#39;s ID | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_user_auth_tokens**
+> list[Token] get_user_auth_tokens(user_id, only_valid=only_valid)
+
+Get auth tokens for a user.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+user_id = 'user_id_example' # str | User's ID
+only_valid = true # bool | True if you only want the valid tokens. (optional)
+
+try:
+    # Get auth tokens for a user.
+    api_response = api_instance.get_user_auth_tokens(user_id, only_valid=only_valid)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_user_auth_tokens: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**| User&#39;s ID | 
+ **only_valid** | **bool**| True if you only want the valid tokens. | [optional] 
+
+### Return type
+
+[**list[Token]**](Token.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_users**
+> list[User] get_users()
+
+Get all users.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Get all users.
+    api_response = api_instance.get_users()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_users: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**list[User]**](User.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **is_training**
 > RetrainingStatus is_training()
 
@@ -3778,7 +4145,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **login**
-> Token login(credentials)
+> LoginResponse login(login_request)
 
 Post JSON credentials and obtain a JWT authorization token.
 
@@ -3792,11 +4159,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi()
-credentials = skil_client.Credentials() # Credentials | Login credentials.
+login_request = skil_client.LoginRequest() # LoginRequest | Login credentials.
 
 try:
     # Post JSON credentials and obtain a JWT authorization token.
-    api_response = api_instance.login(credentials)
+    api_response = api_instance.login(login_request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->login: %s\n" % e)
@@ -3806,11 +4173,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials** | [**Credentials**](Credentials.md)| Login credentials. | 
+ **login_request** | [**LoginRequest**](LoginRequest.md)| Login credentials. | 
 
 ### Return type
 
-[**Token**](Token.md)
+[**LoginResponse**](LoginResponse.md)
 
 ### Authorization
 
@@ -4530,9 +4897,9 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-operation = 'operation_example' # str | 
+operation = 'operation_example' # str | Operation to perform on the input data.
 input_type = 'input_type_example' # str | Type of the input data.
-input_data = skil_client.null() #  |  (optional)
+input_data = NULL # object |  (optional)
 
 try:
     # Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
@@ -4545,9 +4912,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **operation** | **str**|  | 
+ **operation** | **str**| Operation to perform on the input data. | 
  **input_type** | **str**| Type of the input data. | 
- **input_data** | [****](.md)|  | [optional] 
+ **input_data** | **object**|  | [optional] 
 
 ### Return type
 
@@ -4565,7 +4932,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predict_v2**
-> predict_v2(operation, input_type, input_data=input_data, input_data2=input_data2)
+> predict_v2(operation, input_type, input_data=input_data)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
@@ -4587,12 +4954,11 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 operation = 'operation_example' # str | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
 input_type = 'input_type_example' # str | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
-input_data = skil_client.null() #  | The input data when the content type is \"application/json\" (optional)
-input_data2 = '/path/to/file.txt' # file | The input file to upload, containing the input data when the content type is \"multipart/form-data\" (optional)
+input_data = 'input_data_example' # str | The input data to run inference on. (optional)
 
 try:
     # Runs inference based on the input data. Output is defined relative to the output adapter specified.
-    api_instance.predict_v2(operation, input_type, input_data=input_data, input_data2=input_data2)
+    api_instance.predict_v2(operation, input_type, input_data=input_data)
 except ApiException as e:
     print("Exception when calling DefaultApi->predict_v2: %s\n" % e)
 ```
@@ -4603,8 +4969,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **operation** | **str**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
  **input_type** | **str**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **input_data** | [****](.md)| The input data when the content type is \&quot;application/json\&quot; | [optional] 
- **input_data2** | **file**| The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; | [optional] 
+ **input_data** | **str**| The input data to run inference on. | [optional] 
 
 ### Return type
 
@@ -4902,6 +5267,58 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **register_user**
+> User register_user(user)
+
+Register a new user
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+user = skil_client.User() # User | User details
+
+try:
+    # Register a new user
+    api_response = api_instance.register_user(user)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->register_user: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)| User details | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **reimport_model**
 > ModelEntity reimport_model(deployment_id, model_id, body)
 
@@ -4954,6 +5371,58 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **revoke_user_token**
+> Token revoke_user_token(token_id)
+
+Revoke a user token.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+token_id = 789 # int | Token ID
+
+try:
+    # Revoke a user token.
+    api_response = api_instance.revoke_user_token(token_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->revoke_user_token: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token_id** | **int**| Token ID | 
+
+### Return type
+
+[**Token**](Token.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5532,6 +6001,58 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_auth_policy**
+> AuthPolicy update_auth_policy(auth_policy)
+
+Update auth policy
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+auth_policy = skil_client.AuthPolicy() # AuthPolicy | Auth policy object
+
+try:
+    # Update auth policy
+    api_response = api_instance.update_auth_policy(auth_policy)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_auth_policy: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **auth_policy** | [**AuthPolicy**](AuthPolicy.md)| Auth policy object | 
+
+### Return type
+
+[**AuthPolicy**](AuthPolicy.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_best_model_for_experiment**
 > ExperimentEntity update_best_model_for_experiment(model_history_server_id, update_best_model)
 
@@ -5686,6 +6207,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelHistoryEntity**](ModelHistoryEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_user**
+> User update_user(user)
+
+Update a user
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+user = skil_client.User() # User | User details
+
+try:
+    # Update a user
+    api_response = api_instance.update_user(user)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_user: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)| User details | 
+
+### Return type
+
+[**User**](User.md)
 
 ### Authorization
 

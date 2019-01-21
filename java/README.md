@@ -1,8 +1,8 @@
 # skil-client
 
 Endpoints
-- API version: 1.2.0-beta
-  - Build date: 2018-12-19T09:42:07.839+01:00
+- API version: 1.2.0-rc1
+  - Build date: 2019-01-21T16:19:29.200+05:00
 
 Endpoints API for different services in SKIL
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>ai.skymind</groupId>
   <artifactId>skil-client</artifactId>
-  <version>1.2.0</version>
+  <version>1.2.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "ai.skymind:skil-client:1.2.0"
+compile "ai.skymind:skil-client:1.2.0-SNAPSHOT"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/skil-client-1.2.0.jar`
+* `target/skil-client-1.2.0-SNAPSHOT.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -126,6 +126,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**addResourceGroup**](docs/DefaultApi.md#addResourceGroup) | **POST** /resources/add/group | Adds a resource group
 *DefaultApi* | [**addResourceToGroup**](docs/DefaultApi.md#addResourceToGroup) | **GET** /resources/add/resourcetogroup/{resourceGroupId}/{resourceId} | Adds a resource to a resource group
 *DefaultApi* | [**aggregateModelResults**](docs/DefaultApi.md#aggregateModelResults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
+*DefaultApi* | [**changeUserPassword**](docs/DefaultApi.md#changeUserPassword) | **POST** /user/{userId}/password | Change user&#39;s password
 *DefaultApi* | [**classify**](docs/DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 *DefaultApi* | [**classifyarray**](docs/DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 *DefaultApi* | [**classifyimage**](docs/DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
@@ -148,10 +149,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**deployments**](docs/DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
 *DefaultApi* | [**detectobjects**](docs/DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
 *DefaultApi* | [**downloadJobOutputFile**](docs/DefaultApi.md#downloadJobOutputFile) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+*DefaultApi* | [**generateAuthToken**](docs/DefaultApi.md#generateAuthToken) | **POST** /auth/token | Generate new auth token
 *DefaultApi* | [**getAllJobs**](docs/DefaultApi.md#getAllJobs) | **GET** /jobs | Get a list of all available jobs
 *DefaultApi* | [**getArray**](docs/DefaultApi.md#getArray) | **POST** /array/{arrayType} | Get the memory mapped array based on the array type.
 *DefaultApi* | [**getArrayIndices**](docs/DefaultApi.md#getArrayIndices) | **POST** /array/indices/{arrayType} | Get the memory mapped array indices based on the array type.
 *DefaultApi* | [**getArrayRange**](docs/DefaultApi.md#getArrayRange) | **POST** /array/range/{from}/{to}/{arrayType} | Get the memory mapped array within a range based on the array type.
+*DefaultApi* | [**getAuthPolicy**](docs/DefaultApi.md#getAuthPolicy) | **GET** /auth/policy | Get auth policy
 *DefaultApi* | [**getBestModelAmongModelIds**](docs/DefaultApi.md#getBestModelAmongModelIds) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 *DefaultApi* | [**getCredentialsById**](docs/DefaultApi.md#getCredentialsById) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
 *DefaultApi* | [**getCurrentModel**](docs/DefaultApi.md#getCurrentModel) | **GET** /model | Returns the current model being used for retraining.
@@ -173,6 +176,10 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getResourceGroups**](docs/DefaultApi.md#getResourceGroups) | **GET** /resources/groups | Get a list of all the resource groups
 *DefaultApi* | [**getResources**](docs/DefaultApi.md#getResources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 *DefaultApi* | [**getResourcesFromGroup**](docs/DefaultApi.md#getResourcesFromGroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
+*DefaultApi* | [**getRoles**](docs/DefaultApi.md#getRoles) | **GET** /security/roles | Get all roles.
+*DefaultApi* | [**getUser**](docs/DefaultApi.md#getUser) | **GET** /user/{userId} | Get a user by user ID
+*DefaultApi* | [**getUserAuthTokens**](docs/DefaultApi.md#getUserAuthTokens) | **GET** /auth/{userId}/tokens | Get auth tokens for a user.
+*DefaultApi* | [**getUsers**](docs/DefaultApi.md#getUsers) | **GET** /security/users | Get all users.
 *DefaultApi* | [**isTraining**](docs/DefaultApi.md#isTraining) | **GET** /istraining | Get the retraining status
 *DefaultApi* | [**jsonarray**](docs/DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 *DefaultApi* | [**knn**](docs/DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
@@ -199,7 +206,9 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 *DefaultApi* | [**rawPredictBinary**](docs/DefaultApi.md#rawPredictBinary) | **POST** /raw/{inputType}/{outputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 *DefaultApi* | [**refreshJobStatus**](docs/DefaultApi.md#refreshJobStatus) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
+*DefaultApi* | [**registerUser**](docs/DefaultApi.md#registerUser) | **POST** /user/register | Register a new user
 *DefaultApi* | [**reimportModel**](docs/DefaultApi.md#reimportModel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+*DefaultApi* | [**revokeUserToken**](docs/DefaultApi.md#revokeUserToken) | **DELETE** /auth/token/{tokenId} | Revoke a user token.
 *DefaultApi* | [**rollback**](docs/DefaultApi.md#rollback) | **POST** /rollback/{index} | Rollback to a previous revision of the model.
 *DefaultApi* | [**runAJob**](docs/DefaultApi.md#runAJob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 *DefaultApi* | [**transformCsv**](docs/DefaultApi.md#transformCsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
@@ -210,9 +219,11 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**transformincrementalimage**](docs/DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
 *DefaultApi* | [**transformprocessGet**](docs/DefaultApi.md#transformprocessGet) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
 *DefaultApi* | [**transformprocessPost**](docs/DefaultApi.md#transformprocessPost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
+*DefaultApi* | [**updateAuthPolicy**](docs/DefaultApi.md#updateAuthPolicy) | **PUT** /auth/policy | Update auth policy
 *DefaultApi* | [**updateBestModelForExperiment**](docs/DefaultApi.md#updateBestModelForExperiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 *DefaultApi* | [**updateExperiment**](docs/DefaultApi.md#updateExperiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 *DefaultApi* | [**updateModelHistory**](docs/DefaultApi.md#updateModelHistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
+*DefaultApi* | [**updateUser**](docs/DefaultApi.md#updateUser) | **PUT** /user | Update a user
 *DefaultApi* | [**upload**](docs/DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
@@ -224,16 +235,17 @@ Class | Method | HTTP request | Description
  - [AddModelHistoryRequest](docs/AddModelHistoryRequest.md)
  - [AddResourceRequest](docs/AddResourceRequest.md)
  - [AggregatePrediction](docs/AggregatePrediction.md)
+ - [AuthPolicy](docs/AuthPolicy.md)
  - [AzureStorageResourceDetails](docs/AzureStorageResourceDetails.md)
  - [Base64NDArrayBody](docs/Base64NDArrayBody.md)
  - [Base64NDArrayBodyKNN](docs/Base64NDArrayBodyKNN.md)
  - [BatchCSVRecord](docs/BatchCSVRecord.md)
  - [BatchImageRecord](docs/BatchImageRecord.md)
  - [BestModel](docs/BestModel.md)
+ - [ChangePasswordRequest](docs/ChangePasswordRequest.md)
  - [ClassificationResult](docs/ClassificationResult.md)
  - [CreateDeploymentRequest](docs/CreateDeploymentRequest.md)
  - [CreateJobRequest](docs/CreateJobRequest.md)
- - [Credentials](docs/Credentials.md)
  - [DataProcResourceDetails](docs/DataProcResourceDetails.md)
  - [DeploymentObjects](docs/DeploymentObjects.md)
  - [DeploymentResponse](docs/DeploymentResponse.md)
@@ -258,6 +270,8 @@ Class | Method | HTTP request | Description
  - [JsonArrayResponse](docs/JsonArrayResponse.md)
  - [LogBatch](docs/LogBatch.md)
  - [LogRequest](docs/LogRequest.md)
+ - [LoginRequest](docs/LoginRequest.md)
+ - [LoginResponse](docs/LoginResponse.md)
  - [MetaData](docs/MetaData.md)
  - [MinibatchEntity](docs/MinibatchEntity.md)
  - [ModelEntity](docs/ModelEntity.md)
@@ -279,14 +293,17 @@ Class | Method | HTTP request | Description
  - [ResourceGroup](docs/ResourceGroup.md)
  - [RetrainingStatus](docs/RetrainingStatus.md)
  - [RevisionsWritten](docs/RevisionsWritten.md)
+ - [Role](docs/Role.md)
  - [RollbackStatus](docs/RollbackStatus.md)
  - [S3ResourceDetails](docs/S3ResourceDetails.md)
  - [SetState](docs/SetState.md)
  - [SingleCSVRecord](docs/SingleCSVRecord.md)
  - [SingleImageRecord](docs/SingleImageRecord.md)
  - [Token](docs/Token.md)
+ - [TokenGenerateRequest](docs/TokenGenerateRequest.md)
  - [TransformProcess](docs/TransformProcess.md)
  - [UpdateBestModel](docs/UpdateBestModel.md)
+ - [User](docs/User.md)
  - [YARNResourceDetails](docs/YARNResourceDetails.md)
 
 

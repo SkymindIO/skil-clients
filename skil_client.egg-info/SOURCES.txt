@@ -1,6 +1,0 @@
-README.md
-skil_client.egg-info/PKG-INFO
-skil_client.egg-info/SOURCES.txt
-skil_client.egg-info/dependency_links.txt
-skil_client.egg-info/requires.txt
-skil_client.egg-info/top_level.txt

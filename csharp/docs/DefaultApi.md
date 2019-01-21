@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**AddResourceGroup**](DefaultApi.md#addresourcegroup) | **POST** /resources/add/group | Adds a resource group
 [**AddResourceToGroup**](DefaultApi.md#addresourcetogroup) | **GET** /resources/add/resourcetogroup/{resourceGroupId}/{resourceId} | Adds a resource to a resource group
 [**AggregateModelResults**](DefaultApi.md#aggregatemodelresults) | **POST** /rpc/{modelHistoryServerId}/model/aggregateresults | Aggregates the evaluaition results of a model instance, based on the evaluation type
+[**ChangeUserPassword**](DefaultApi.md#changeuserpassword) | **POST** /user/{userId}/password | Change user&#39;s password
 [**Classify**](DefaultApi.md#classify) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify | Use the deployed model to classify the input
 [**Classifyarray**](DefaultApi.md#classifyarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray | Same as /classify but returns the output as Base64NDArrayBody
 [**Classifyimage**](DefaultApi.md#classifyimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage | Use the deployed model to classify the input, using input image file from multipart form data.
@@ -42,10 +43,12 @@ Method | HTTP request | Description
 [**Deployments**](DefaultApi.md#deployments) | **GET** /deployments | Get a list of deployments
 [**Detectobjects**](DefaultApi.md#detectobjects) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects | Detect the objects, given a (input) prediction request
 [**DownloadJobOutputFile**](DefaultApi.md#downloadjoboutputfile) | **POST** /jobs/{jobId}/outputfile | Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
+[**GenerateAuthToken**](DefaultApi.md#generateauthtoken) | **POST** /auth/token | Generate new auth token
 [**GetAllJobs**](DefaultApi.md#getalljobs) | **GET** /jobs | Get a list of all available jobs
 [**GetArray**](DefaultApi.md#getarray) | **POST** /array/{arrayType} | Get the memory mapped array based on the array type.
 [**GetArrayIndices**](DefaultApi.md#getarrayindices) | **POST** /array/indices/{arrayType} | Get the memory mapped array indices based on the array type.
 [**GetArrayRange**](DefaultApi.md#getarrayrange) | **POST** /array/range/{from}/{to}/{arrayType} | Get the memory mapped array within a range based on the array type.
+[**GetAuthPolicy**](DefaultApi.md#getauthpolicy) | **GET** /auth/policy | Get auth policy
 [**GetBestModelAmongModelIds**](DefaultApi.md#getbestmodelamongmodelids) | **POST** /rpc/{modelHistoryServerId}/model/best | Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 [**GetCredentialsById**](DefaultApi.md#getcredentialsbyid) | **GET** /resources/credentials/{credentialId} | Get credentials given an ID
 [**GetCurrentModel**](DefaultApi.md#getcurrentmodel) | **GET** /model | Returns the current model being used for retraining.
@@ -67,6 +70,10 @@ Method | HTTP request | Description
 [**GetResourceGroups**](DefaultApi.md#getresourcegroups) | **GET** /resources/groups | Get a list of all the resource groups
 [**GetResources**](DefaultApi.md#getresources) | **GET** /resources/resources | A list of all known/registered resources, of all types
 [**GetResourcesFromGroup**](DefaultApi.md#getresourcesfromgroup) | **GET** /resources/group/{resourceGroupId}/resources | Get all resources from a resource group
+[**GetRoles**](DefaultApi.md#getroles) | **GET** /security/roles | Get all roles.
+[**GetUser**](DefaultApi.md#getuser) | **GET** /user/{userId} | Get a user by user ID
+[**GetUserAuthTokens**](DefaultApi.md#getuserauthtokens) | **GET** /auth/{userId}/tokens | Get auth tokens for a user.
+[**GetUsers**](DefaultApi.md#getusers) | **GET** /security/users | Get all users.
 [**IsTraining**](DefaultApi.md#istraining) | **GET** /istraining | Get the retraining status
 [**Jsonarray**](DefaultApi.md#jsonarray) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray | Run inference on the input and returns it as a JsonArrayResponse
 [**Knn**](DefaultApi.md#knn) | **POST** /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn | Runs knn on the given index with the given k
@@ -93,7 +100,9 @@ Method | HTTP request | Description
 [**Predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 [**RawPredictBinary**](DefaultApi.md#rawpredictbinary) | **POST** /raw/{inputType}/{outputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**RefreshJobStatus**](DefaultApi.md#refreshjobstatus) | **GET** /jobs/{jobId}/refresh | Refresh the remote job status. Can be used for monitoring.
+[**RegisterUser**](DefaultApi.md#registeruser) | **POST** /user/register | Register a new user
 [**ReimportModel**](DefaultApi.md#reimportmodel) | **POST** /deployment/{deploymentId}/model/{modelId} | Reimport a model to a previous deployed model in a deployment
+[**RevokeUserToken**](DefaultApi.md#revokeusertoken) | **DELETE** /auth/token/{tokenId} | Revoke a user token.
 [**Rollback**](DefaultApi.md#rollback) | **POST** /rollback/{index} | Rollback to a previous revision of the model.
 [**RunAJob**](DefaultApi.md#runajob) | **POST** /jobs/{jobId}/run | Start running an (already created) job on the remote resource
 [**TransformCsv**](DefaultApi.md#transformcsv) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform | Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
@@ -104,9 +113,11 @@ Method | HTTP request | Description
 [**Transformincrementalimage**](DefaultApi.md#transformincrementalimage) | **POST** /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage | Takes a single multipart image file to transform and returns Base64NDArrayBody
 [**TransformprocessGet**](DefaultApi.md#transformprocessget) | **GET** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Gets the JSON string of the deployed transform process (CSV or Image)
 [**TransformprocessPost**](DefaultApi.md#transformprocesspost) | **POST** /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess | Sets the deployed (CSV or Image) transform process through the provided JSON string
+[**UpdateAuthPolicy**](DefaultApi.md#updateauthpolicy) | **PUT** /auth/policy | Update auth policy
 [**UpdateBestModelForExperiment**](DefaultApi.md#updatebestmodelforexperiment) | **POST** /rpc/{modelHistoryServerId}/experiment/best | Updates the best model for an experiment
 [**UpdateExperiment**](DefaultApi.md#updateexperiment) | **PUT** /rpc/{modelHistoryServerId}/experiment/{experimentID} | Updates an experiment, given an experiment entity
 [**UpdateModelHistory**](DefaultApi.md#updatemodelhistory) | **POST** /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID} | Update a model history / workspace
+[**UpdateUser**](DefaultApi.md#updateuser) | **PUT** /user | Update a user
 [**Upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
@@ -1142,6 +1153,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EvaluationResultsEntity**](EvaluationResultsEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="changeuserpassword"></a>
+# **ChangeUserPassword**
+> User ChangeUserPassword (string userId, ChangePasswordRequest changePasswordRequest)
+
+Change user's password
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class ChangeUserPasswordExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var userId = userId_example;  // string | User's ID
+            var changePasswordRequest = new ChangePasswordRequest(); // ChangePasswordRequest | Password details.
+
+            try
+            {
+                // Change user's password
+                User result = apiInstance.ChangeUserPassword(userId, changePasswordRequest);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.ChangeUserPassword: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **string**| User&#39;s ID | 
+ **changePasswordRequest** | [**ChangePasswordRequest**](ChangePasswordRequest.md)| Password details. | 
+
+### Return type
+
+[**User**](User.md)
 
 ### Authorization
 
@@ -2597,6 +2674,70 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="generateauthtoken"></a>
+# **GenerateAuthToken**
+> Token GenerateAuthToken (TokenGenerateRequest tokenGenerateRequest)
+
+Generate new auth token
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GenerateAuthTokenExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var tokenGenerateRequest = new TokenGenerateRequest(); // TokenGenerateRequest | Auth token details.
+
+            try
+            {
+                // Generate new auth token
+                Token result = apiInstance.GenerateAuthToken(tokenGenerateRequest);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GenerateAuthToken: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tokenGenerateRequest** | [**TokenGenerateRequest**](TokenGenerateRequest.md)| Auth token details. | 
+
+### Return type
+
+[**Token**](Token.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getalljobs"></a>
 # **GetAllJobs**
 > List<JobEntity> GetAllJobs ()
@@ -2724,7 +2865,7 @@ void (empty response body)
 
 <a name="getarrayindices"></a>
 # **GetArrayIndices**
-> void GetArrayIndices (string arrayType,  input = null)
+> void GetArrayIndices (string arrayType, Object input = null)
 
 Get the memory mapped array indices based on the array type.
 
@@ -2749,7 +2890,7 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var arrayType = arrayType_example;  // string | Format in which the memory mapped array is returned in.
-            var input = new (); //  | Input indices array (optional) 
+            var input = ;  // Object | Input indices array (optional) 
 
             try
             {
@@ -2770,7 +2911,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **arrayType** | **string**| Format in which the memory mapped array is returned in. | 
- **input** | [****](.md)| Input indices array | [optional] 
+ **input** | **Object**| Input indices array | [optional] 
 
 ### Return type
 
@@ -2850,6 +2991,66 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, application/octet-stream
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getauthpolicy"></a>
+# **GetAuthPolicy**
+> AuthPolicy GetAuthPolicy ()
+
+Get auth policy
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetAuthPolicyExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Get auth policy
+                AuthPolicy result = apiInstance.GetAuthPolicy();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetAuthPolicy: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AuthPolicy**](AuthPolicy.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4201,6 +4402,256 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getroles"></a>
+# **GetRoles**
+> List<Role> GetRoles ()
+
+Get all roles.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetRolesExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Get all roles.
+                List&lt;Role&gt; result = apiInstance.GetRoles();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetRoles: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<Role>**](Role.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getuser"></a>
+# **GetUser**
+> User GetUser (string userId)
+
+Get a user by user ID
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetUserExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var userId = userId_example;  // string | User's ID
+
+            try
+            {
+                // Get a user by user ID
+                User result = apiInstance.GetUser(userId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetUser: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **string**| User&#39;s ID | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getuserauthtokens"></a>
+# **GetUserAuthTokens**
+> List<Token> GetUserAuthTokens (string userId, bool? onlyValid = null)
+
+Get auth tokens for a user.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetUserAuthTokensExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var userId = userId_example;  // string | User's ID
+            var onlyValid = true;  // bool? | True if you only want the valid tokens. (optional) 
+
+            try
+            {
+                // Get auth tokens for a user.
+                List&lt;Token&gt; result = apiInstance.GetUserAuthTokens(userId, onlyValid);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetUserAuthTokens: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **string**| User&#39;s ID | 
+ **onlyValid** | **bool?**| True if you only want the valid tokens. | [optional] 
+
+### Return type
+
+[**List<Token>**](Token.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getusers"></a>
+# **GetUsers**
+> List<User> GetUsers ()
+
+Get all users.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class GetUsersExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Get all users.
+                List&lt;User&gt; result = apiInstance.GetUsers();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetUsers: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<User>**](User.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="istraining"></a>
 # **IsTraining**
 > RetrainingStatus IsTraining ()
@@ -4607,7 +5058,7 @@ Name | Type | Description  | Notes
 
 <a name="login"></a>
 # **Login**
-> Token Login (Credentials credentials)
+> LoginResponse Login (LoginRequest loginRequest)
 
 Post JSON credentials and obtain a JWT authorization token.
 
@@ -4626,12 +5077,12 @@ namespace Example
         public void main()
         {
             var apiInstance = new DefaultApi();
-            var credentials = new Credentials(); // Credentials | Login credentials.
+            var loginRequest = new LoginRequest(); // LoginRequest | Login credentials.
 
             try
             {
                 // Post JSON credentials and obtain a JWT authorization token.
-                Token result = apiInstance.Login(credentials);
+                LoginResponse result = apiInstance.Login(loginRequest);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4647,11 +5098,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials** | [**Credentials**](Credentials.md)| Login credentials. | 
+ **loginRequest** | [**LoginRequest**](LoginRequest.md)| Login credentials. | 
 
 ### Return type
 
-[**Token**](Token.md)
+[**LoginResponse**](LoginResponse.md)
 
 ### Authorization
 
@@ -5494,7 +5945,7 @@ Name | Type | Description  | Notes
 
 <a name="predicterror"></a>
 # **PredictError**
-> void PredictError (string operation, string inputType,  inputData = null)
+> void PredictError (string operation, string inputType, Object inputData = null)
 
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
 
@@ -5520,9 +5971,9 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var operation = operation_example;  // string | 
+            var operation = operation_example;  // string | Operation to perform on the input data.
             var inputType = inputType_example;  // string | Type of the input data.
-            var inputData = new (); //  |  (optional) 
+            var inputData = ;  // Object |  (optional) 
 
             try
             {
@@ -5542,9 +5993,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **operation** | **string**|  | 
+ **operation** | **string**| Operation to perform on the input data. | 
  **inputType** | **string**| Type of the input data. | 
- **inputData** | [****](.md)|  | [optional] 
+ **inputData** | **Object**|  | [optional] 
 
 ### Return type
 
@@ -5563,7 +6014,7 @@ void (empty response body)
 
 <a name="predictv2"></a>
 # **PredictV2**
-> void PredictV2 (string operation, string inputType,  inputData = null, System.IO.Stream inputData2 = null)
+> void PredictV2 (string operation, string inputType, string inputData = null)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
@@ -5589,13 +6040,12 @@ namespace Example
             var apiInstance = new DefaultApi();
             var operation = operation_example;  // string | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
             var inputType = inputType_example;  // string | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
-            var inputData = new (); //  | The input data when the content type is \"application/json\" (optional) 
-            var inputData2 = new System.IO.Stream(); // System.IO.Stream | The input file to upload, containing the input data when the content type is \"multipart/form-data\" (optional) 
+            var inputData = inputData_example;  // string | The input data to run inference on. (optional) 
 
             try
             {
                 // Runs inference based on the input data. Output is defined relative to the output adapter specified.
-                apiInstance.PredictV2(operation, inputType, inputData, inputData2);
+                apiInstance.PredictV2(operation, inputType, inputData);
             }
             catch (Exception e)
             {
@@ -5612,8 +6062,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **operation** | **string**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
  **inputType** | **string**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **inputData** | [****](.md)| The input data when the content type is \&quot;application/json\&quot; | [optional] 
- **inputData2** | **System.IO.Stream**| The input file to upload, containing the input data when the content type is \&quot;multipart/form-data\&quot; | [optional] 
+ **inputData** | **string**| The input data to run inference on. | [optional] 
 
 ### Return type
 
@@ -5971,6 +6420,70 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="registeruser"></a>
+# **RegisterUser**
+> User RegisterUser (User user)
+
+Register a new user
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class RegisterUserExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var user = new User(); // User | User details
+
+            try
+            {
+                // Register a new user
+                User result = apiInstance.RegisterUser(user);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.RegisterUser: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)| User details | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="reimportmodel"></a>
 # **ReimportModel**
 > ModelEntity ReimportModel (string deploymentId, string modelId, ImportModelRequest body)
@@ -6035,6 +6548,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="revokeusertoken"></a>
+# **RevokeUserToken**
+> Token RevokeUserToken (long? tokenId)
+
+Revoke a user token.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class RevokeUserTokenExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var tokenId = 789;  // long? | Token ID
+
+            try
+            {
+                // Revoke a user token.
+                Token result = apiInstance.RevokeUserToken(tokenId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.RevokeUserToken: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tokenId** | **long?**| Token ID | 
+
+### Return type
+
+[**Token**](Token.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6733,6 +7310,70 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="updateauthpolicy"></a>
+# **UpdateAuthPolicy**
+> AuthPolicy UpdateAuthPolicy (AuthPolicy authPolicy)
+
+Update auth policy
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class UpdateAuthPolicyExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var authPolicy = new AuthPolicy(); // AuthPolicy | Auth policy object
+
+            try
+            {
+                // Update auth policy
+                AuthPolicy result = apiInstance.UpdateAuthPolicy(authPolicy);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.UpdateAuthPolicy: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authPolicy** | [**AuthPolicy**](AuthPolicy.md)| Auth policy object | 
+
+### Return type
+
+[**AuthPolicy**](AuthPolicy.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatebestmodelforexperiment"></a>
 # **UpdateBestModelForExperiment**
 > ExperimentEntity UpdateBestModelForExperiment (string modelHistoryServerId, UpdateBestModel updateBestModel)
@@ -6923,6 +7564,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelHistoryEntity**](ModelHistoryEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateuser"></a>
+# **UpdateUser**
+> User UpdateUser (User user)
+
+Update a user
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class UpdateUserExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var user = new User(); // User | User details
+
+            try
+            {
+                // Update a user
+                User result = apiInstance.UpdateUser(user);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.UpdateUser: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)| User details | 
+
+### Return type
+
+[**User**](User.md)
 
 ### Authorization
 
