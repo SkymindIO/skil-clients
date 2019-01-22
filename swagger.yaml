@@ -368,10 +368,17 @@ paths:
       tags:
       - Transform
       consumes:
-      - application/json
+      - text/plain
       produces:
       - application/json
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        description: The `Content-Type` should be `application/json`.
+        type: string
+        enum:
+        - application/json
       - name: deploymentName
         in: path
         description: Name of the deployment group
@@ -390,9 +397,9 @@ paths:
         type: string
       - in: body
         name: TransformProcess
-        description: The transform process to set
+        description: The transform process to set (Specify a JSON string here).
         schema:
-          type: object
+          type: string
       responses:
         200:
           description: transform process set successfully
@@ -435,7 +442,7 @@ paths:
           $ref: '#/definitions/SingleCSVRecord'
       responses:
         200:
-          description: array transformed and returned successfully
+          description: Array transformed and returned successfully
           schema:
             $ref: '#/definitions/SingleCSVRecord'
         500:
@@ -511,7 +518,7 @@ paths:
         name: SingleRecord
         description: The input record array
         schema:
-          type: object
+          $ref: '#/definitions/SingleRecord'
       responses:
         200:
           description: array transformed and returned successfully
@@ -550,7 +557,7 @@ paths:
         name: BatchRecord
         description: The input batch of record arrays
         schema:
-          type: object
+          $ref: '#/definitions/BatchRecord'
       responses:
         200:
           description: array transformed and returned successfully
@@ -1386,16 +1393,23 @@ paths:
       tags:
       - Inference
       consumes:
-      - application/json
+      - text/plain
       produces:
       - application/json
       parameters:
+      - in: header
+        name: Content-Type
+        required: true
+        description: The `Content-Type` should always be `application/json`
+        type: string
+        enum
+        - application/json
       - in: body
         name: body
         description: the meta data object
         required: true
         schema:
-          $ref: '#/definitions/MetaData'
+          type: string
       - name: deploymentName
         in: path
         description: Name of the deployment group
@@ -1707,7 +1721,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelHistoryID
         in: path
         type: string
@@ -1734,7 +1747,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: addModelHistoryRequest
         in: body
         required: true
@@ -1762,12 +1774,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelHistoryID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the model history / workspace to update
       - name: updateModelHistoryRequest
         in: body
@@ -1793,12 +1803,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelHistoryID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the model history / workspace to delete
       responses:
         200:
@@ -1829,7 +1837,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       responses:
         200:
           description: List of all the experiment entities.
@@ -1851,12 +1858,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelHistoryID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the model history / workspace
       responses:
         200:
@@ -1877,12 +1882,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: experimentID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the experiment to obtain
       responses:
         200:
@@ -1904,12 +1907,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: experimentID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the experiment to update
       - name: experimentEntity
         in: body
@@ -1935,12 +1936,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: experimentID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the experiment to delete
       responses:
         200:
@@ -1973,7 +1972,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: experimentEntity
         in: body
         required: true
@@ -2001,7 +1999,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: updateBestModel
         in: body
         required: true
@@ -2027,12 +2024,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: experimentID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the experiment
       responses:
         200:
@@ -2055,7 +2050,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelInstanceID
         in: path
         type: string
@@ -2079,7 +2073,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelInstanceID
         in: path
         type: string
@@ -2104,7 +2097,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelInstanceEntity
         in: body
         required: true
@@ -2132,7 +2124,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: bestModel
         in: body
         required: true
@@ -2160,7 +2151,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelHistoryEntity
         in: body
         required: true
@@ -2188,7 +2178,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: evaluationResultsEntity
         in: body
         required: true
@@ -2214,7 +2203,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelInstanceID
         in: path
         type: string
@@ -2243,7 +2231,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: aggregatePrediction
         in: body
         required: true
@@ -2269,7 +2256,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: minibatchId
         in: path
         type: string
@@ -2296,7 +2282,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: minibatchEntity
         in: body
         required: true
@@ -2322,7 +2307,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: minibatchId
         in: path
         type: string
@@ -2351,7 +2335,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: exampleEntity
         in: body
         required: true
@@ -2379,7 +2362,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: AddExampleRequest
         in: body
         required: true
@@ -2407,7 +2389,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: ModelFeedBackRequest
         in: body
         required: true
@@ -2988,10 +2969,17 @@ paths:
       tags:
       - InferenceV2
       consumes:
-      - application/json
+      - text/plain
       produces:
       - application/json
       parameters:
+      - name: Content-Type
+        in: header
+        description: `Content-Type` should always be `application/json`.
+        required: true
+        type: string
+        enum:
+        - application/json
       - name: operation
         in:   path
         type: string
@@ -3016,11 +3004,9 @@ paths:
       - name: inputData
         in: body
         schema: 
-          type: array
-          items:
-            type: string
+          type: string
         required: true
-        description: The input data to run inference on.
+        description: The input data to run inference on. (Specify a JSON string here)
       responses:
         200:
           description: Input data returned a prediction.
@@ -3035,10 +3021,17 @@ paths:
         that are found. They will output skipped rows where errors were encountered so users can
         fix problems with input data pipelines.
       consumes:
-      - application/json
+      - text/plain
       produces:
       - application/json
       parameters:
+      - name: Content-Type
+        in: header
+        description: `Content-Type` should always be `application/json`.
+        required: true
+        type: string
+        enum:
+        - application/json
       - name: operation
         in:   path
         type: string
@@ -3061,7 +3054,7 @@ paths:
       - name: inputData
         in:   body
         schema: 
-          type: object
+          type: string
       responses:
         200:
           description: Input data returned a prediction along with the skipped, invalid data rows
@@ -3307,11 +3300,18 @@ paths:
       tags:
       - MemMapV2
       consumes:
-      - application/json
+      - text/plain
       produces:
       - application/json
       - application/octet-stream
       parameters:
+      - name: Content-Type
+        in: header
+        description: `Content-Type` should always be `application/json`.
+        required: true
+        type: string
+        enum:
+        - application/json
       - name: accept
         in: header
         required: true
@@ -3331,7 +3331,7 @@ paths:
       - name: input
         in: body
         schema:
-          type: object
+          type: string
         description: Input indices array
       responses:
         200:
@@ -3381,16 +3381,12 @@ definitions:
   TransformProcess:
     type: object
   SingleCSVRecord:
-    required:
-    - values
     properties:
       values:
         type: array
         items:
           type: string
   BatchCSVRecord:
-    required:
-    - records
     properties:
       records:
         type: array
@@ -3398,31 +3394,28 @@ definitions:
           $ref: '#/definitions/SingleCSVRecord'
   ImageTransformProcess:
     type: object
-  SingleImageRecord:
-    required:
-    - uri
+  SingleRecord:
     properties:
+      values:
+        required: false
+        type: array
+        items:
+          type: string
       uri:
+        required: false
         type: string
         example: file:/E:/Image/image.jpg
-  BatchImageRecord:
-    required:
-    - records
+  BatchRecord:
     properties:
       records:
         type: array
         items:
-          $ref: '#/definitions/SingleImageRecord'
+          $ref: '#/definitions/Record'
   Base64NDArrayBody:
-    required:
-    - ndarray
     properties:
       ndarray:
         type: string
   Base64NDArrayBodyKNN:
-    required:
-    - ndarray
-    - k
     properties:
       ndarray:
         type: string
@@ -3728,7 +3721,6 @@ definitions:
     properties:
       array:
         type: string
-        format: guid
       shape:
         type: array
         items:
@@ -3755,7 +3747,6 @@ definitions:
     properties:
       id:
         type: string
-        format: guid
       needsPreProcessing:
         type: boolean
       prediction:
@@ -3772,7 +3763,6 @@ definitions:
     properties:
       id:
         type: string
-        format: guid
       needsPreProcessing:
         type: boolean
       inputs:
@@ -3788,7 +3778,6 @@ definitions:
     properties:
       id:
         type: string
-        format: guid
       needsPreProcessing:
         type: boolean
       outputs:
@@ -3942,7 +3931,6 @@ definitions:
         description: When the model history / workspace was created
       modelHistoryId:
         type: string
-        format: guid
         description: The GUID of the model history / workspace
       modelName:
         type: string
@@ -3998,11 +3986,9 @@ definitions:
     properties:
       experimentId:
         type: string
-        format: guid
         description: GUID of the experiment to update.
       bestModelId:
         type: string
-        format: guid
         description: GUID of the model to set as the best model.
   ModelInstanceEntity:
     type: object
@@ -4016,7 +4002,6 @@ definitions:
         description: The json string for the ETL (Extract, Transform and Load)
       modelId:
         type: string
-        format: guid
         description: GUID of the model.
       modelLabels:
         type: string
@@ -4033,21 +4018,18 @@ definitions:
         description: JSON string of the associated Zeppelin Notebook
       evalId:
         type: string
-        format: guid
         description: GUID for the model evaluation
       modelName:
         type: string
         description: Model's name
       originalModelId:
         type: string
-        format: guid
         description: Original GUID of the model (used for maintaining revisions of a particular model)
       modelVersion:
         type: string
         description: Model version
       experimentId:
         type: string
-        format: guid
         description: GUID of the Experiment which is associated with the model.
   EvaluationResultsEntity:
     type: object
@@ -4058,7 +4040,6 @@ definitions:
         type: string
       modelInstanceId:
         type: string
-        format: guid
       created:
         type: integer
         format: int64
@@ -4092,7 +4073,6 @@ definitions:
         format: double
       evalId:
         type: string
-        format: guid
         description: GUID of the evaluation
       evalVersion:
         type: integer
@@ -4106,7 +4086,6 @@ definitions:
     properties:
       modelId:
         type: string
-        format: guid
         description: GUID of model instance
       evalType:
         type: string
@@ -4123,11 +4102,9 @@ definitions:
     properties:
       miniBatchId:
         type: string
-        format: guid
         description: GUID of mini batch
       evalId:
         type: string
-        format: guid
         description: GUID of the evaluation
       evalVersion:
         type: integer
@@ -4140,7 +4117,6 @@ definitions:
     properties:
       exampleId:
         type: string
-        format: guid
         description: the GUID of the example
       exampleVersion:
         type: integer
@@ -4154,7 +4130,6 @@ definitions:
         description: when the example was created
       miniBatchId:
         type: string
-        format: guid
         description: The GUID of the minibatch
       miniBatchVersion:
         type: integer
@@ -4175,7 +4150,6 @@ definitions:
         type: array
         items:
           type: string
-          format: guid
         description: the list of GUIDs for the models to get the best model from
       columnNameMetric:
         type: string
@@ -4205,7 +4179,6 @@ definitions:
     properties:
       batchId:
         type: string
-        format: guid
         description: The GUID of the minibatch this feedback corresponds to
       guesses:
         type: array
@@ -4250,7 +4223,6 @@ definitions:
       credentialId:
         type: string
         description: Credentials GUID
-        format: guid
   EMRResourceDetails:
     type: object
     properties:
@@ -4505,8 +4477,8 @@ definitions:
         type: string
         description: Name of the new resource
       resourceDetails:
-        type: object
-        description: One of the resource details object
+        type: string
+        description: One of the resource details object (Specify a JSON string here)
       credentialUri:
         type: string
         description: URI of the credentials. If this is present, you can leave out the 'credentialId'
