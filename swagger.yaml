@@ -28,29 +28,31 @@ security:
 - api_key: []
 tags:
 - name: User
-  description: Users endpoints
+  description: Users endpoints.
 - name: Utilities
-  description: Utilities endpoints
+  description: Utilities endpoints.
 - name: ModelHistory
-  description: Model History endpoints
+  description: Model History endpoints.
 - name: Deployment
-  description: Deployment Endpoints
+  description: Deployment Endpoints.
 - name: Transform
-  description: Transform endpoints
+  description: Transform endpoints.
 - name: Inference
-  description: Inference endpoints
+  description: Inference endpoints.
 - name: InferenceV2
-  description: Inference endpoints for model server V2
+  description: Inference endpoints for model server V2.
 - name: RetrainV2
-  description: Retrain endpoints for model server V2
+  description: Retrain endpoints for model server V2.
 - name: MemMapV2
-  description: Memory mapped endpoints for model server V2
+  description: Memory mapped endpoints for model server V2.
 - name: KNN
-  description: KNN endpoints
+  description: KNN endpoints.
 - name: Resource
-  description: Resource Endpoints
+  description: Resource Endpoints.
 - name: Job
-  description: Job endpoints
+  description: Job endpoints.
+- Default
+  description: Default tag containing all of the endpoints.
 paths:
   # ---------------------------------------------------------------------------------------
   # User endpoints
@@ -61,6 +63,7 @@ paths:
       summary: Post JSON credentials and obtain a JWT authorization token.
       tags:
       - User
+      - Default
       security: []
       consumes:
       - application/json
@@ -86,6 +89,7 @@ paths:
       summary: Register a new user
       tags:
       - User
+      - Default
       consumes:
       - application/json
       produces:
@@ -108,6 +112,7 @@ paths:
       summary: Get a user by user ID
       tags:
       - User
+      - Default
       produces:
       - application/json
       parameters:
@@ -127,6 +132,7 @@ paths:
       summary: Update a user
       tags:
       - User
+      - Default
       consumes:
       - application/json
       produces:
@@ -149,6 +155,7 @@ paths:
       summary: Change user's password
       tags:
       - User
+      - Default
       consumes:
       - application/json
       produces:
@@ -176,6 +183,7 @@ paths:
       summary: Get auth policy
       tags:
       - User
+      - Default
       produces:
       - application/json
       responses:
@@ -188,6 +196,7 @@ paths:
       summary: Update auth policy
       tags:
       - User
+      - Default
       consumes:
       - application/json
       produces:
@@ -210,6 +219,7 @@ paths:
       summary: Generate new auth token
       tags:
       - User
+      - Default
       consumes:
       - application/json
       produces:
@@ -232,6 +242,7 @@ paths:
       summary: Get auth tokens for a user.
       tags:
       - User
+      - Default
       produces:
       - application/json
       parameters:
@@ -258,6 +269,7 @@ paths:
       summary: Revoke a user token.
       tags:
       - User
+      - Default
       produces:
       - application/json
       parameters:
@@ -278,6 +290,7 @@ paths:
       summary: Get all users.
       tags:
       - User
+      - Default
       produces:
       - application/json
       responses:
@@ -293,6 +306,7 @@ paths:
       summary: Get all roles.
       tags:
       - User
+      - Default
       produces:
       - application/json
       responses:
@@ -311,6 +325,7 @@ paths:
       summary: Upload a model file to SKIL for import.
       tags:
       - Utilities
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -334,6 +349,7 @@ paths:
       summary: Gets the JSON string of the deployed transform process (CSV or Image)
       tags:
       - Transform
+      - Default
       produces:
       - application/json
       parameters:
@@ -367,6 +383,7 @@ paths:
       summary: Sets the deployed (CSV or Image) transform process through the provided JSON string
       tags:
       - Transform
+      - Default
       consumes:
       - text/plain
       produces:
@@ -413,6 +430,7 @@ paths:
       summary: Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
       tags:
       - Transform
+      - Default
       description: Takes a SingleCSVRecord object and transforms it into the desired format
       consumes:
       - application/json
@@ -453,6 +471,7 @@ paths:
       summary: Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
       tags:
       - Transform
+      - Default
       description: Takes a batch of SingleCSVRecord object and transforms it into the desired format
       consumes:
       - application/json
@@ -493,6 +512,7 @@ paths:
       summary: Same as /transformincremental but returns Base64NDArrayBody.
       tags:
       - Transform
+      - Default
       consumes:
       - application/json
       produces:
@@ -532,6 +552,7 @@ paths:
       summary: Takes a batch input arrays and transforms it
       tags:
       - Transform
+      - Default
       consumes:
       - application/json
       produces:
@@ -575,6 +596,7 @@ paths:
       description: Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
       tags:
       - Transform
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -617,6 +639,7 @@ paths:
       description: Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
       tags:
       - Transform
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -665,6 +688,7 @@ paths:
       description: Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
       tags:
       - KNN
+      - Default
       consumes:
       - application/json
       produces:
@@ -706,6 +730,7 @@ paths:
       summary: Run a k nearest neighbors search on a NEW data point
       tags:
       - KNN
+      - Default
       consumes:
       - application/json
       produces:
@@ -751,6 +776,7 @@ paths:
       summary: Run inference on the input array.
       tags:
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -793,6 +819,7 @@ paths:
       summary: Run inference on the input array, using input image file from multipart form data.
       tags:
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -832,6 +859,7 @@ paths:
       description: Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
       tags:
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -873,6 +901,7 @@ paths:
       description: Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
       tags:
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -922,6 +951,7 @@ paths:
       summary: Use the deployed model to classify the input
       tags:
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -964,6 +994,7 @@ paths:
       summary: Use the deployed model to classify the input, using input image file from multipart form data.
       tags:
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -1002,6 +1033,7 @@ paths:
       summary: Same as /classify but returns the output as Base64NDArrayBody
       tags:
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1044,6 +1076,7 @@ paths:
       summary: Represents all of the labels for a given classification
       tags:
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1086,6 +1119,7 @@ paths:
       summary: Set the model to be served
       tags:
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -1125,6 +1159,7 @@ paths:
       summary: Update the model to be served
       tags:
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -1164,6 +1199,7 @@ paths:
       summary: Run inference on the input and returns it as a JsonArrayResponse
       tags:
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1204,6 +1240,7 @@ paths:
       summary: Preprocesses the input and run inference on it
       tags:
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1246,6 +1283,7 @@ paths:
       summary: Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
       tags:
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1288,6 +1326,7 @@ paths:
       summary: Get logs
       tags:
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1328,6 +1367,7 @@ paths:
       summary: Get logs file path
       tags:
       - Inference
+      - Default
       produces:
       - text
       parameters:
@@ -1361,6 +1401,7 @@ paths:
       summary: this method can be used to get the meta data for the current model which set to the server
       tags:
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1392,6 +1433,7 @@ paths:
       summary: This method can be used to set meta data for the current model which is set to the server
       tags:
       - Inference
+      - Default
       consumes:
       - text/plain
       produces:
@@ -1437,6 +1479,7 @@ paths:
       summary: Detect the objects, given a (input) prediction request
       tags:
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -1493,6 +1536,7 @@ paths:
       summary: Get a list of deployments
       tags:
       - Deployment
+      - Default
       produces:
       - application/json
       responses:
@@ -1508,6 +1552,7 @@ paths:
       summary: Get a deployment details by id
       tags:
       - Deployment
+      - Default
       produces:
       - application/json
       parameters:
@@ -1526,6 +1571,7 @@ paths:
       summary: Delete a deployment by id
       tags:
       - Deployment
+      - Default
       produces:
       - application/json
       parameters:
@@ -1548,6 +1594,7 @@ paths:
       summary: Create a new deployment group.
       tags:
       - Deployment
+      - Default
       consumes:
       - application/json
       produces:
@@ -1572,6 +1619,7 @@ paths:
       summary: Retrieve a list of all the deployed models given a deployment id
       tags:
       - Deployment
+      - Default
       produces:
       - application/json
       parameters:
@@ -1593,6 +1641,7 @@ paths:
       summary: Deploy a model in a deployment group.
       tags:
       - Deployment
+      - Default
       consumes:
       - application/json
       produces:
@@ -1620,6 +1669,7 @@ paths:
       summary: Reimport a model to a previous deployed model in a deployment
       tags:
       - Deployment
+      - Default
       consumes:
       - application/json
       produces:
@@ -1651,6 +1701,7 @@ paths:
       summary: Delete a model by deployment and model id
       tags:
       - Deployment
+      - Default
       produces:
       - application/json
       parameters:
@@ -1678,6 +1729,7 @@ paths:
       summary: Modify the state (start/stop) of a deployed model
       tags:
       - Deployment
+      - Default
       consumes:
       - application/json
       produces:
@@ -1713,6 +1765,7 @@ paths:
       summary: Gets a model history, given its ID
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1737,6 +1790,7 @@ paths:
       summary: Add a model history / workspace
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -1764,6 +1818,7 @@ paths:
       summary: Update a model history / workspace
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -1795,6 +1850,7 @@ paths:
       summary: Deletes a model history / workspace, given its ID
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1829,6 +1885,7 @@ paths:
       summary: List all of the experiments in every model history / workspace
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1850,6 +1907,7 @@ paths:
       summary: Obtain all experiments for a model history / workspace
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1874,6 +1932,7 @@ paths:
       summary: Obtain an experiment's details, given its ID
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1897,6 +1956,7 @@ paths:
       summary: Updates an experiment, given an experiment entity
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -1928,6 +1988,7 @@ paths:
       summary: Deletes an experiment, given an experiment entity
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1962,6 +2023,7 @@ paths:
       summary: Add an experiment, given an experiment entity
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -1989,6 +2051,7 @@ paths:
       summary: Updates the best model for an experiment
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2016,6 +2079,7 @@ paths:
       summary: Obtain a list of all the models for an experiment
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2042,6 +2106,7 @@ paths:
       summary: Gets a model instance, given its ID
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2065,6 +2130,7 @@ paths:
       summary: Deletes a model instance, given its ID
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2087,6 +2153,7 @@ paths:
       summary: Adds a model
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2114,6 +2181,7 @@ paths:
       summary: Gets the best model among the given model instance IDs, based on the evaluation type and column metric
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2141,6 +2209,7 @@ paths:
       summary: Creates model History
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2168,6 +2237,7 @@ paths:
       summary: Adds an evaluation result
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2195,6 +2265,7 @@ paths:
       summary: Gets the list of evaluation results entity, given a model instance ID
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2221,6 +2292,7 @@ paths:
       summary: Aggregates the evaluaition results of a model instance, based on the evaluation type
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2248,6 +2320,7 @@ paths:
       summary: Gets a minibatch for the model
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2272,6 +2345,7 @@ paths:
       summary: Adds a minibatch
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2299,6 +2373,7 @@ paths:
       summary: Gets all the examples for a minibatch ID
       tags:
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2325,6 +2400,7 @@ paths:
       summary: Adds an example to a minibatch
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2352,6 +2428,7 @@ paths:
       summary: Adds a number of examples to a minibatch ID given an AddExampleRequest.
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2379,6 +2456,7 @@ paths:
       summary: Adds an evaluation feedback to the model against a given minibatch id.
       tags:
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2409,6 +2487,7 @@ paths:
       summary: Get the resource with the specified resource ID
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2433,6 +2512,7 @@ paths:
         object contains only general information (name, id, type, subtype).
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2453,6 +2533,7 @@ paths:
       summary: A list of all known/registered resources, of all types
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       responses:
@@ -2468,6 +2549,7 @@ paths:
       summary: Get all the resources with the specified resource type
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2492,6 +2574,7 @@ paths:
       summary: Get all the resources with the specified resource subtype
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2522,6 +2605,7 @@ paths:
       summary: Adds a resource
       tags:
       - Resource
+      - Default
       consumes:
       - application/json
       produces:
@@ -2544,6 +2628,7 @@ paths:
       summary: Delete the resource with the specified resource ID
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2564,6 +2649,7 @@ paths:
       summary: Get the resource group with the specified resource group ID
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2584,6 +2670,7 @@ paths:
       summary: Get a list of all the resource groups
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       responses:
@@ -2599,6 +2686,7 @@ paths:
       summary: Adds a resource group
       tags:
       - Resource
+      - Default
       consumes:
       - text/plain; charset=utf-8
       produces:
@@ -2621,6 +2709,7 @@ paths:
       summary: Delete the resource group with the specified resource group ID
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2641,6 +2730,7 @@ paths:
       summary: Adds a resource to a resource group
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2665,6 +2755,7 @@ paths:
       summary: Removes a resource from a resource group
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2689,6 +2780,7 @@ paths:
       summary: Get all resources from a resource group
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2711,6 +2803,7 @@ paths:
       summary: Get credentials given an ID
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2730,6 +2823,7 @@ paths:
       summary: Delete credentials given an ID
       tags:
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2748,6 +2842,7 @@ paths:
       summary: Adds credentials
       tags:
       - Resource
+      - Default
       consumes:
       - application/json
       produces:
@@ -2773,6 +2868,7 @@ paths:
       summary: Get a job by its ID
       tags:
       - Job
+      - Default
       produces:
       - application/json
       parameters:
@@ -2792,6 +2888,7 @@ paths:
       summary: Create a job
       tags:
       - Job
+      - Default
       consumes:
       - application/json
       produces:
@@ -2821,6 +2918,7 @@ paths:
       summary: Deletes a job given its ID
       tags:
       - Job
+      - Default
       produces:
       - application/json
       parameters:
@@ -2839,6 +2937,7 @@ paths:
       summary: Get a list of all available jobs
       tags:
       - Job
+      - Default
       produces:
       - application/json
       responses:
@@ -2854,6 +2953,7 @@ paths:
       summary: Start running an (already created) job on the remote resource
       tags:
       - Job
+      - Default
       consumes:
       - application/json
       produces:
@@ -2876,6 +2976,7 @@ paths:
       summary: Refresh the remote job status. Can be used for monitoring.
       tags:
       - Job
+      - Default
       produces:
       - application/json
       parameters:
@@ -2896,6 +2997,7 @@ paths:
       summary: Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
       tags:
       - Job
+      - Default
       consumes:
       - application/json
       produces:
@@ -2925,6 +3027,7 @@ paths:
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
       tags:
       - InferenceV2
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -2968,6 +3071,7 @@ paths:
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
       tags:
       - InferenceV2
+      - Default
       consumes:
       - text/plain
       produces:
@@ -3016,6 +3120,7 @@ paths:
       summary: Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
       tags:
       - InferenceV2
+      - Default
       description: |
         These "error" endpoints are slower for inference, but will also ignore invalid rows
         that are found. They will output skipped rows where errors were encountered so users can
@@ -3064,6 +3169,7 @@ paths:
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
       tags:
       - InferenceV2
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -3105,6 +3211,7 @@ paths:
       summary: Returns the current model being used for retraining.
       tags:
       - RetrainV2
+      - Default
       produces:
       - application/octet-stream
       responses:
@@ -3116,6 +3223,7 @@ paths:
       summary: Gets the retraining feedback for the given batch ID.
       tags:
       - RetrainV2
+      - Default
       consumes:
       - application/json
       produces:
@@ -3147,6 +3255,7 @@ paths:
       summary: Clears the accumulated data for retraining.
       tags:
       - RetrainV2
+      - Default
       produces:
       - application/json
       responses:
@@ -3160,6 +3269,7 @@ paths:
       summary: Get the retraining status
       tags:
       - RetrainV2
+      - Default
       produces:
       - application/json
       responses:
@@ -3173,6 +3283,7 @@ paths:
       summary: Get the last evaluation specifications from the current model.
       tags:
       - RetrainV2
+      - Default
       produces:
       - application/json
       responses:
@@ -3186,6 +3297,7 @@ paths:
       summary: Gets the number of retrained models written with retraining.
       tags:
       - RetrainV2
+      - Default
       produces:
       - application/json
       responses:
@@ -3199,6 +3311,7 @@ paths:
       summary: Tells how many retraining examples have labels associated with them.
       tags:
       - RetrainV2
+      - Default
       produces:
       - application/json
       responses:
@@ -3212,6 +3325,7 @@ paths:
       summary: Rollback to a previous revision of the model.
       tags:
       - RetrainV2
+      - Default
       produces:
       - application/json
       consumes:
@@ -3233,6 +3347,7 @@ paths:
       operationId: addFeedbackBinary
       tags:
       - RetrainV2
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -3270,6 +3385,7 @@ paths:
       description: The array is specified through a file path, in the configuration object, during model server deployment.
       tags:
       - MemMapV2
+      - Default
       produces:
       - application/json
       - application/octet-stream
@@ -3299,6 +3415,7 @@ paths:
       summary: Get the memory mapped array indices based on the array type.
       tags:
       - MemMapV2
+      - Default
       consumes:
       - text/plain
       produces:
@@ -3342,6 +3459,7 @@ paths:
       summary: Get the memory mapped array within a range based on the array type.
       tags:
       - MemMapV2
+      - Default
       consumes:
       - application/json
       produces:
