@@ -3410,7 +3410,7 @@ definitions:
       records:
         type: array
         items:
-          $ref: '#/definitions/Record'
+          $ref: '#/definitions/SingleRecord'
   Base64NDArrayBody:
     properties:
       ndarray:
