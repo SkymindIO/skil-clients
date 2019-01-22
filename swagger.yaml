@@ -2938,25 +2938,17 @@ paths:
   # ---------------------------------------------------------------------------------------
   # Model Server v2 - Inference
   # ---------------------------------------------------------------------------------------
-  /{operation}/{inputType}:
+  /{operation}/{inputTypeFile}:
     post:
-      operationId: predictV2
+      operationId: predictV2File
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
       tags:
       - InferenceV2
       consumes:
-      - application/json
       - multipart/form-data
       produces:
       - application/json
       parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        enum: 
-        - application/json
-        - multipart/form-data
       - name: operation
         in:   path
         type: string
@@ -2969,10 +2961,48 @@ paths:
         - SSD
         - RCNN
         description: |
-          The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for
-          `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for
-          `multipart/form-data` content-type.
-      - name: inputType
+          The operation to perform on the input data.
+      - name: inputTypeFile
+        in:   path
+        type: string
+        required: true
+        enum:
+        - IMAGE
+        - NUMPY
+        - NDARRAY
+        - JSON
+        description: |
+          Type of the input data.
+      - name: inputData
+        in: formData
+        type: file
+        required: true
+        description: The input data to run inference on.
+      responses:
+        200:
+          description: Input data returned a prediction.
+  /{operation}/{inputTypeJson}:
+    post:
+      operationId: predictV2Json
+      summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
+      tags:
+      - InferenceV2
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: operation
+        in:   path
+        type: string
+        required: true
+        enum:
+        - REGRESSION
+        - CLASSIFICATION
+        - RAW
+        description: |
+          The operation to perform on the input data.
+      - name: inputTypeJson
         in:   path
         type: string
         required: true
@@ -2981,24 +3011,16 @@ paths:
         - DICTIONARY
         - CSVPUBSUB
         - DICTIONARYPUBSUB
-        - IMAGE
-        - NUMPY
-        - NDARRAY
-        - JSON
         description: |
-          Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for
-          `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
-          `multipart/form-data` content-type.
+          Type of the input data.
       - name: inputData
-        in: formData
-        type: file
-        required: false
-        description: The input data to run inference on when the content-type is `multipart/form-data`.
-      - name: inputData
-        in: formData
-        type: string
-        required: false
-        description: The input data to run inference on when the content-type is `application/json`.
+        in: body
+        schema: 
+          type: array
+          items:
+            type: string
+        required: true
+        description: The input data to run inference on.
       responses:
         200:
           description: Input data returned a prediction.
