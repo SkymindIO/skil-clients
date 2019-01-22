@@ -2992,7 +2992,13 @@ paths:
       - name: inputData
         in: formData
         type: file
+        required: false
         description: The input data to run inference on when the content-type is `multipart/form-data`.
+      - name: inputData
+        in: formData
+        type: string
+        required: false
+        description: The input data to run inference on when the content-type is `application/json`.
       responses:
         200:
           description: Input data returned a prediction.
