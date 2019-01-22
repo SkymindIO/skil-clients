@@ -2944,12 +2944,16 @@ paths:
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
       tags:
       - InferenceV2
-      consumes:
-      - application/json
-      - multipart/form-data
       produces:
       - application/json
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        enum: 
+        - application/json
+        - multipart/form-data
       - name: operation
         in:   path
         type: string
@@ -2984,8 +2988,8 @@ paths:
           `multipart/form-data` content-type.
       - name: inputData
         in: formData
-        type: string
-        description: The input data to run inference on.
+        type: file
+        description: The input data to run inference on when the content-type is `multipart/form-data`.
       responses:
         200:
           description: Input data returned a prediction.
@@ -3242,10 +3246,14 @@ paths:
       description: The array is specified through a file path, in the configuration object, during model server deployment.
       tags:
       - MemMapV2
-      produces:
-      - application/json
-      - application/octet-stream
       parameters:
+      - name: accept
+        in: header
+        required: true
+        type: string
+        enum: 
+        - application/json
+        - application/octet-stream
       - name: arrayType
         type: string
         enum:
@@ -3266,10 +3274,14 @@ paths:
       - MemMapV2
       consumes:
       - application/json
-      produces:
-      - application/json
-      - application/octet-stream
       parameters:
+      - name: accept
+        in: header
+        required: true
+        type: string
+        enum: 
+        - application/json
+        - application/octet-stream
       - name: arrayType
         type: string
         enum:
@@ -3293,12 +3305,16 @@ paths:
       summary: Get the memory mapped array within a range based on the array type.
       tags:
       - MemMapV2
-      produces:
-      - application/json
       consumes:
       - application/json
-      - application/octet-stream
       parameters:
+      - name: accept
+        in: header
+        required: true
+        type: string
+        enum: 
+        - application/json
+        - application/octet-stream
       - name: arrayType
         type: string
         enum:
