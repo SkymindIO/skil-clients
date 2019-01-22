@@ -2975,7 +2975,7 @@ paths:
       parameters:
       - name: Content-Type
         in: header
-        description: `Content-Type` should always be `application/json`.
+        description: The `Content-Type` should always be `application/json`.
         required: true
         type: string
         enum:
