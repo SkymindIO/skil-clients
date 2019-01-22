@@ -1293,12 +1293,6 @@ paths:
       produces:
       - application/json
       parameters:
-      - in: body
-        name: body
-        description: the the log request
-        required: true
-        schema:
-          $ref: '#/definitions/LogRequest'
       - name: deploymentName
         in: path
         description: Name of the deployment group
@@ -1315,9 +1309,15 @@ paths:
         description: ID or name of the deployed model
         required: true
         type: string
+      - in: body
+        name: LogRequest
+        description: The log object
+        required: true
+        schema:
+          $ref: '#/definitions/LogRequest'
       responses:
         200:
-          description: logs obtained successfully
+          description: Logs obtained successfully
           schema:
             $ref: '#/definitions/LogBatch'
         500:
@@ -3860,10 +3860,19 @@ definitions:
     properties:
       offset:
         type: integer
+        format: int32
+        example: 0
       rowCount:
         type: integer
+        format: int32
+        example: 2
       head:
         type: boolean
+        example: false
+    example:
+      head: false
+      offset: 0
+      rowCount: 2
   LogBatch:
     properties:
       offset:
