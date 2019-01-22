@@ -3860,17 +3860,10 @@ definitions:
     properties:
       offset:
         type: integer
-        example: 0
       rowCount:
         type: integer
-        example: 2
       head:
         type: boolean
-        example: false
-    example:
-      head: false
-      offset: 0
-      rowCount: 2
   LogBatch:
     properties:
       offset:
