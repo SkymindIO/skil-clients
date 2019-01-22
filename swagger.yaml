@@ -51,7 +51,7 @@ tags:
   description: Resource Endpoints.
 - name: Job
   description: Job endpoints.
-- Default
+- name: Default
   description: Default tag containing all of the endpoints.
 paths:
   # ---------------------------------------------------------------------------------------
