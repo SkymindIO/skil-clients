@@ -3397,12 +3397,10 @@ definitions:
   SingleRecord:
     properties:
       values:
-        required: false
         type: array
         items:
           type: string
       uri:
-        required: false
         type: string
         example: file:/E:/Image/image.jpg
   BatchRecord:
