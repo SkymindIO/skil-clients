@@ -1402,7 +1402,7 @@ paths:
         required: true
         description: The `Content-Type` should always be `application/json`
         type: string
-        enum
+        enum:
         - application/json
       - in: body
         name: body
