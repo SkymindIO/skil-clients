@@ -53,6 +53,18 @@ tags:
   description: Job endpoints.
 - name: Default
   description: Default tag containing all of the endpoints.
+x-samples-languages:
+- curl
+- python
+- java
+- csharp
+- node
+- javascript
+- objectivec 
+- php
+- ruby
+- swift
+- go
 paths:
   # ---------------------------------------------------------------------------------------
   # User endpoints
@@ -3499,12 +3511,14 @@ definitions:
   TransformProcess:
     type: object
   SingleCSVRecord:
+    type: object
     properties:
       values:
         type: array
         items:
           type: string
   BatchCSVRecord:
+    type: object
     properties:
       records:
         type: array
@@ -3513,6 +3527,7 @@ definitions:
   ImageTransformProcess:
     type: object
   SingleRecord:
+    type: object
     properties:
       values:
         type: array
@@ -3520,18 +3535,21 @@ definitions:
           type: string
       uri:
         type: string
-        example: file:/E:/Image/image.jpg
+        example: file:///E:/Image/image.jpg
   BatchRecord:
+    type: object
     properties:
       records:
         type: array
         items:
           $ref: '#/definitions/SingleRecord'
   Base64NDArrayBody:
+    type: object    
     properties:
       ndarray:
         type: string
   Base64NDArrayBodyKNN:
+    type: object    
     properties:
       ndarray:
         type: string
@@ -3545,6 +3563,7 @@ definitions:
         example: false
         description: If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.
   NearestNeighborRequest:
+    type: object    
     properties:
       k:
         type: integer
@@ -3555,6 +3574,7 @@ definitions:
         description: the index of the EXISTING ndarray to run a search on
         example: 3
   NearestNeighborsResult:
+    type: object    
     properties:
       index:
         type: integer
@@ -3565,6 +3585,7 @@ definitions:
       label:
         type: string
   NearestNeighborsResults:
+    type: object    
     properties:
       results:
         type: array
@@ -3901,6 +3922,7 @@ definitions:
         items:
           $ref: '#/definitions/INDArray'
   ClassificationResult:
+    type: object    
     properties:
       results:
         type: array
@@ -3925,6 +3947,7 @@ definitions:
       - 0.452
       - 0.452
   MultiClassClassificationResult:
+    type: object    
     properties:
       rankedOutcomes:
         type: array
@@ -3959,15 +3982,19 @@ definitions:
       - - 0.4
         - 0.4
   ModelStatus:
+    type: object    
     properties:
       status:
         type: integer
         example: 100
-        description: "100 - Model set successfully \n200 - Model Updated Successfully\
-          \ \n201 - Model Update Failed\n"
+        description: | 
+          100 - Model set successfully.
+          200 - Model Updated Successfully.
+          201 - Model Update Failed.
     example:
       status: 100
   JsonArrayResponse:
+    type: object    
     properties:
       array:
         $ref: '#/definitions/INDArray'
@@ -3975,6 +4002,7 @@ definitions:
       array:
         array: array
   LogRequest:
+    type: object    
     properties:
       offset:
         type: integer
@@ -3985,6 +4013,7 @@ definitions:
       head:
         type: boolean
   LogBatch:
+    type: object    
     properties:
       offset:
         type: integer
