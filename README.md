@@ -2,6 +2,13 @@
 
 Clients for using SKIL's HTTP inference API in Java, Python, Javascript, and more.
 
+|Language|Package version|Build status|
+|------|:---:|:---:|
+|Java|![](https://img.shields.io/nexus/s/https/oss.sonatype.org/ai.skymind/skil-client.svg)|
+|Python|![](https://img.shields.io/pypi/v/skil-client.svg)|
+|C#|![](https://img.shields.io/nuget/v/Skymind.SKIL.svg)|
+
+
 ## Getting Started
 
 Automatically-generated clients are available in each language folder in the root of this repository. Clients support SKIL's JWT authentication and currently only work for prediction/inference endpoints.
